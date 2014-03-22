@@ -25,6 +25,9 @@
 		261EB89818DDB64F009DDF78 /* iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 261EB89718DDB64F009DDF78 /* iPhone.storyboard */; };
 		261EB8A118DDC1EB009DDF78 /* SPRHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 261EB8A018DDC1EB009DDF78 /* SPRHomeViewController.m */; };
 		261EB8A618DDC4AC009DDF78 /* SPRHomeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 261EB8A518DDC4AC009DDF78 /* SPRHomeTableViewCell.m */; };
+		261EB8AA18DDC57F009DDF78 /* SPRCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 261EB8A918DDC57F009DDF78 /* SPRCategory.m */; };
+		265997A118DDD2A60088E141 /* NSNumber+SPR.m in Sources */ = {isa = PBXBuildFile; fileRef = 265997A018DDD2A60088E141 /* NSNumber+SPR.m */; };
+		2677950118DDCB93005C74BA /* UILabel+SPR.m in Sources */ = {isa = PBXBuildFile; fileRef = 2677950018DDCB93005C74BA /* UILabel+SPR.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +65,12 @@
 		261EB8A018DDC1EB009DDF78 /* SPRHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRHomeViewController.m; sourceTree = "<group>"; };
 		261EB8A418DDC4AC009DDF78 /* SPRHomeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRHomeTableViewCell.h; sourceTree = "<group>"; };
 		261EB8A518DDC4AC009DDF78 /* SPRHomeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRHomeTableViewCell.m; sourceTree = "<group>"; };
+		261EB8A818DDC57F009DDF78 /* SPRCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRCategory.h; sourceTree = "<group>"; };
+		261EB8A918DDC57F009DDF78 /* SPRCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRCategory.m; sourceTree = "<group>"; };
+		2659979F18DDD2A60088E141 /* NSNumber+SPR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber+SPR.h"; sourceTree = "<group>"; };
+		265997A018DDD2A60088E141 /* NSNumber+SPR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+SPR.m"; sourceTree = "<group>"; };
+		267794FF18DDCB93005C74BA /* UILabel+SPR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+SPR.h"; sourceTree = "<group>"; };
+		2677950018DDCB93005C74BA /* UILabel+SPR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+SPR.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +133,8 @@
 		261EB86A18DDB631009DDF78 /* Spare */ = {
 			isa = PBXGroup;
 			children = (
+				267794FE18DDCB6F005C74BA /* Categories */,
+				261EB8A718DDC574009DDF78 /* Objects */,
 				261EB8A318DDC46B009DDF78 /* Custom Views */,
 				261EB89E18DDC1EB009DDF78 /* Screens */,
 				261EB87318DDB631009DDF78 /* SPRAppDelegate.h */,
@@ -182,6 +193,26 @@
 				261EB8A518DDC4AC009DDF78 /* SPRHomeTableViewCell.m */,
 			);
 			path = "Custom Views";
+			sourceTree = "<group>";
+		};
+		261EB8A718DDC574009DDF78 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				261EB8A818DDC57F009DDF78 /* SPRCategory.h */,
+				261EB8A918DDC57F009DDF78 /* SPRCategory.m */,
+			);
+			path = Objects;
+			sourceTree = "<group>";
+		};
+		267794FE18DDCB6F005C74BA /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				267794FF18DDCB93005C74BA /* UILabel+SPR.h */,
+				2677950018DDCB93005C74BA /* UILabel+SPR.m */,
+				2659979F18DDD2A60088E141 /* NSNumber+SPR.h */,
+				265997A018DDD2A60088E141 /* NSNumber+SPR.m */,
+			);
+			path = Categories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -281,9 +312,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2677950118DDCB93005C74BA /* UILabel+SPR.m in Sources */,
 				261EB8A618DDC4AC009DDF78 /* SPRHomeTableViewCell.m in Sources */,
 				261EB87818DDB631009DDF78 /* Spare.xcdatamodeld in Sources */,
+				265997A118DDD2A60088E141 /* NSNumber+SPR.m in Sources */,
 				261EB87518DDB631009DDF78 /* SPRAppDelegate.m in Sources */,
+				261EB8AA18DDC57F009DDF78 /* SPRCategory.m in Sources */,
 				261EB87118DDB631009DDF78 /* main.m in Sources */,
 				261EB8A118DDC1EB009DDF78 /* SPRHomeViewController.m in Sources */,
 			);
@@ -486,6 +520,7 @@
 				261EB89318DDB631009DDF78 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		261EB89418DDB631009DDF78 /* Build configuration list for PBXNativeTarget "SpareTests" */ = {
 			isa = XCConfigurationList;
@@ -494,6 +529,7 @@
 				261EB89618DDB631009DDF78 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
