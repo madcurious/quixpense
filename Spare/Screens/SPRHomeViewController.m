@@ -14,6 +14,9 @@
 // Custom views
 #import "SPRHomeTableViewCell.h"
 
+// Utilities
+#import "SPRIconFont.h"
+
 @interface SPRHomeViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -36,6 +39,18 @@ static NSString * const kCellIdentifier = @"Cell";
     [self.tableView registerClass:[SPRHomeTableViewCell class] forCellReuseIdentifier:kCellIdentifier];
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    [self setupBarButtonItems];
+}
+
+- (void)setupBarButtonItems
+{
+    UIButton *newCategoryButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    [newCategoryButton setAttributedTitle:[SPRIconFont iconForNewCategory] forState:UIControlStateNormal];
+    [newCategoryButton sizeToFit];
+    UIBarButtonItem *newCategoryBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:newCategoryButton];
+    
+    self.navigationItem.rightBarButtonItems = @[newCategoryBarButtonItem];
 }
 
 #pragma mark - Table view data source
