@@ -34,6 +34,8 @@ static NSString * const kCellIdentifier = @"Cell";
     
     // Register the table view cell class.
     [self.tableView registerClass:[SPRHomeTableViewCell class] forCellReuseIdentifier:kCellIdentifier];
+    
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
 #pragma mark - Table view data source
@@ -60,6 +62,11 @@ static NSString * const kCellIdentifier = @"Cell";
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return [SPRHomeTableViewCell heightForCategory:self.categories[indexPath.row]];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 @end

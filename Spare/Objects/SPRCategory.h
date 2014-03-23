@@ -16,5 +16,6 @@
 - (id)initWithName:(NSString *)name colorNumber:(NSNumber *)colorNumber;
 
 + (NSArray *)dummies;
++ (NSArray *)colors;
 
 @end

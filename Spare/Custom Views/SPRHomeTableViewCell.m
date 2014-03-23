@@ -14,13 +14,13 @@
 @interface SPRHomeTableViewCell ()
 
 @property (strong, nonatomic) UILabel *nameLabel;
-@property (strong, nonatomic) UILabel *priceLabel;
-@property (strong, nonatomic) UILabel *todayLabel;
+@property (strong, nonatomic) UILabel *amountLabel;
 
 @end
 
 static const CGFloat kInnerMargin = 10;
 static const CGFloat kMaxContentWidth = 300;
+static const CGFloat kSpaceBetweenNameAndAmount = 10;
 
 @implementation SPRHomeTableViewCell
 
@@ -28,12 +28,10 @@ static const CGFloat kMaxContentWidth = 300;
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         _nameLabel = [SPRHomeTableViewCell nameLabel];
-        _priceLabel = [SPRHomeTableViewCell priceLabel];
-        _todayLabel = [SPRHomeTableViewCell todayLabel];
+        _amountLabel = [SPRHomeTableViewCell amountLabel];
         
         [self.contentView addSubview:_nameLabel];
-        [self.contentView addSubview:_priceLabel];
-        [self.contentView addSubview:_todayLabel];
+        [self.contentView addSubview:_amountLabel];
     }
     return self;
 }
@@ -42,7 +40,9 @@ static const CGFloat kMaxContentWidth = 300;
 {
     _category = category;
     
-    self.nameLabel.text = category.name;
+    self.nameLabel.text = [category.name uppercaseString];
+    
+    self.backgroundColor = (UIColor *)[SPRCategory colors][[category.colorNumber integerValue]];
 }
 
 - (void)layoutSubviews
@@ -50,14 +50,11 @@ static const CGFloat kMaxContentWidth = 300;
     [self.nameLabel sizeToFitWidth:kMaxContentWidth];
     self.nameLabel.frame = CGRectMake(kInnerMargin, kInnerMargin, self.nameLabel.frame.size.width, self.nameLabel.frame.size.height);
     
-    CGFloat priceLabelY = kInnerMargin + self.nameLabel.frame.size.height + 10;
-    [self.priceLabel sizeToFitWidth:kMaxContentWidth];
-    self.priceLabel.frame = CGRectMake(kInnerMargin, priceLabelY, self.priceLabel.frame.size.width, self.priceLabel.frame.size.height);
+    CGFloat amountLabelY = kInnerMargin + self.nameLabel.frame.size.height + kSpaceBetweenNameAndAmount;
+    [self.amountLabel sizeToFitWidth:kMaxContentWidth];
+    self.amountLabel.frame = CGRectMake(kInnerMargin, amountLabelY, self.amountLabel.frame.size.width, self.amountLabel.frame.size.height);
     
-    CGFloat todayLabelY = priceLabelY + self.priceLabel.frame.size.height + 10;
-    self.todayLabel.frame = CGRectMake(kInnerMargin, todayLabelY, self.todayLabel.frame.size.width, self.todayLabel.frame.size.height);
-    
-    self.contentView.frame = CGRectMake(self.contentView.frame.origin.x, self.contentView.frame.origin.y, self.contentView.frame.size.width, todayLabelY + self.todayLabel.frame.size.height + 10);
+    self.contentView.frame = CGRectMake(self.contentView.frame.origin.x, self.contentView.frame.origin.y, self.contentView.frame.size.width, amountLabelY + self.amountLabel.frame.size.height + kInnerMargin);
     
     self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, self.contentView.frame.size.height);
 }
@@ -69,51 +66,48 @@ static const CGFloat kMaxContentWidth = 300;
     UILabel *nameLabel = [[UILabel alloc] init];
     nameLabel.numberOfLines = 0;
     nameLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    nameLabel.font = [UIFont systemFontOfSize:30];
+    nameLabel.font = [UIFont boldSystemFontOfSize:20];
+    nameLabel.textAlignment = NSTextAlignmentCenter;
     return nameLabel;
 }
 
-+ (UILabel *)priceLabel
++ (UILabel *)amountLabel
 {
-    UILabel *priceLabel = [[UILabel alloc] init];
-    priceLabel.numberOfLines = 1;
-    priceLabel.lineBreakMode = NSLineBreakByTruncatingTail;
-    priceLabel.font = [UIFont systemFontOfSize:20];
-    priceLabel.text = [[NSNumber numberWithDouble:15244.50f] currencyString];
-    return priceLabel;
+    UILabel *amountLabel = [[UILabel alloc] init];
+    amountLabel.numberOfLines = 1;
+    amountLabel.lineBreakMode = NSLineBreakByTruncatingTail;
+    amountLabel.font = [UIFont systemFontOfSize:18];
+    amountLabel.textAlignment = NSTextAlignmentCenter;
+    amountLabel.text = [[NSNumber numberWithDouble:15244.50f] currencyString];
+    return amountLabel;
 }
 
-+ (UILabel *)todayLabel
-{
-    UILabel *todayLabel = [[UILabel alloc] init];
-    todayLabel.numberOfLines = 1;
-    todayLabel.lineBreakMode = NSLineBreakByTruncatingTail;
-    todayLabel.font = [UIFont systemFontOfSize:14];
-    todayLabel.text = @"TODAY";
-    [todayLabel sizeToFitWidth:kMaxContentWidth];
-    return todayLabel;
-}
+//+ (UILabel *)todayLabel
+//{
+//    UILabel *todayLabel = [[UILabel alloc] init];
+//    todayLabel.numberOfLines = 1;
+//    todayLabel.lineBreakMode = NSLineBreakByTruncatingTail;
+//    todayLabel.font = [UIFont systemFontOfSize:10];
+//    todayLabel.textAlignment = NSTextAlignmentCenter;
+//    todayLabel.text = @"TODAY";
+//    [todayLabel sizeToFitWidth:kMaxContentWidth];
+//    return todayLabel;
+//}
 
 + (CGFloat)heightForCategory:(SPRCategory *)category
 {
     CGFloat height = kInnerMargin;
     
     UILabel *nameLabel = [SPRHomeTableViewCell nameLabel];
-    nameLabel.text = category.name;
+    nameLabel.text = [category.name uppercaseString];
     [nameLabel sizeToFitWidth:kMaxContentWidth];
     height += nameLabel.frame.size.height;
     
-    height += 10;
+    height += kSpaceBetweenNameAndAmount;
     
-    UILabel *priceLabel = [SPRHomeTableViewCell priceLabel];
-    [priceLabel sizeToFitWidth:kMaxContentWidth];
-    height += priceLabel.frame.size.height;
-    
-    height += 10;
-    
-    UILabel *todayLabel = [SPRHomeTableViewCell todayLabel];
-    [todayLabel sizeToFitWidth:kMaxContentWidth];
-    height += todayLabel.frame.size.height;
+    UILabel *amountLabel = [SPRHomeTableViewCell amountLabel];
+    [amountLabel sizeToFitWidth:kMaxContentWidth];
+    height += amountLabel.frame.size.height;
     
     height += kInnerMargin;
     

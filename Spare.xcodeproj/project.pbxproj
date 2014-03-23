@@ -26,6 +26,7 @@
 		261EB8A118DDC1EB009DDF78 /* SPRHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 261EB8A018DDC1EB009DDF78 /* SPRHomeViewController.m */; };
 		261EB8A618DDC4AC009DDF78 /* SPRHomeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 261EB8A518DDC4AC009DDF78 /* SPRHomeTableViewCell.m */; };
 		261EB8AA18DDC57F009DDF78 /* SPRCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 261EB8A918DDC57F009DDF78 /* SPRCategory.m */; };
+		262ABD0718DE94F4003C7C8B /* UIColor+HexColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 262ABD0618DE94F4003C7C8B /* UIColor+HexColor.m */; };
 		265997A118DDD2A60088E141 /* NSNumber+SPR.m in Sources */ = {isa = PBXBuildFile; fileRef = 265997A018DDD2A60088E141 /* NSNumber+SPR.m */; };
 		2677950118DDCB93005C74BA /* UILabel+SPR.m in Sources */ = {isa = PBXBuildFile; fileRef = 2677950018DDCB93005C74BA /* UILabel+SPR.m */; };
 /* End PBXBuildFile section */
@@ -67,6 +68,8 @@
 		261EB8A518DDC4AC009DDF78 /* SPRHomeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRHomeTableViewCell.m; sourceTree = "<group>"; };
 		261EB8A818DDC57F009DDF78 /* SPRCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRCategory.h; sourceTree = "<group>"; };
 		261EB8A918DDC57F009DDF78 /* SPRCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRCategory.m; sourceTree = "<group>"; };
+		262ABD0518DE94F4003C7C8B /* UIColor+HexColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+HexColor.h"; path = "../../../UIColorHexColor/UIColorHexColor/UIColor+HexColor/UIColor+HexColor.h"; sourceTree = "<group>"; };
+		262ABD0618DE94F4003C7C8B /* UIColor+HexColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+HexColor.m"; path = "../../../UIColorHexColor/UIColorHexColor/UIColor+HexColor/UIColor+HexColor.m"; sourceTree = "<group>"; };
 		2659979F18DDD2A60088E141 /* NSNumber+SPR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber+SPR.h"; sourceTree = "<group>"; };
 		265997A018DDD2A60088E141 /* NSNumber+SPR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+SPR.m"; sourceTree = "<group>"; };
 		267794FF18DDCB93005C74BA /* UILabel+SPR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+SPR.h"; sourceTree = "<group>"; };
@@ -207,6 +210,8 @@
 		267794FE18DDCB6F005C74BA /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				262ABD0518DE94F4003C7C8B /* UIColor+HexColor.h */,
+				262ABD0618DE94F4003C7C8B /* UIColor+HexColor.m */,
 				267794FF18DDCB93005C74BA /* UILabel+SPR.h */,
 				2677950018DDCB93005C74BA /* UILabel+SPR.m */,
 				2659979F18DDD2A60088E141 /* NSNumber+SPR.h */,
@@ -317,6 +322,7 @@
 				261EB87818DDB631009DDF78 /* Spare.xcdatamodeld in Sources */,
 				265997A118DDD2A60088E141 /* NSNumber+SPR.m in Sources */,
 				261EB87518DDB631009DDF78 /* SPRAppDelegate.m in Sources */,
+				262ABD0718DE94F4003C7C8B /* UIColor+HexColor.m in Sources */,
 				261EB8AA18DDC57F009DDF78 /* SPRCategory.m in Sources */,
 				261EB87118DDB631009DDF78 /* main.m in Sources */,
 				261EB8A118DDC1EB009DDF78 /* SPRHomeViewController.m in Sources */,
