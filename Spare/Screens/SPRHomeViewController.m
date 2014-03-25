@@ -45,14 +45,16 @@ static NSString * const kCellIdentifier = @"Cell";
     
     // Add a long press gesture recognizer to the table view.
     UILongPressGestureRecognizer *longPressRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(tableViewLongPressed)];
-    longPressRecognizer.minimumPressDuration = 1.5;
+    longPressRecognizer.minimumPressDuration = 1.0f;
     [self.tableView addGestureRecognizer:longPressRecognizer];
     
-    [self setupBarButtonItems];
+    [self setupDefaultNavigationBar];
 }
 
-- (void)setupBarButtonItems
+- (void)setupDefaultNavigationBar
 {
+    self.title = nil;
+    
     UIButton *newCategoryButton = [UIButton buttonWithType:UIButtonTypeSystem];
     [newCategoryButton setAttributedTitle:[SPRIconFont iconForNewCategory] forState:UIControlStateNormal];
     [newCategoryButton sizeToFit];
@@ -61,12 +63,31 @@ static NSString * const kCellIdentifier = @"Cell";
     self.navigationItem.rightBarButtonItems = @[newCategoryBarButtonItem];
 }
 
+- (void)setupEditingNavigationBar
+{
+    self.title = @"Reorder";
+    
+    UIBarButtonItem *doneEditingButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneEditingButtonTapped)];
+    
+    self.navigationItem.rightBarButtonItems = @[doneEditingButton];
+}
+
 #pragma mark - Target actions
 
 - (void)tableViewLongPressed
 {
     [self.tableView setEditing:YES animated:NO];
     [self.tableView reloadData];
+    
+    [self setupEditingNavigationBar];
+}
+
+- (void)doneEditingButtonTapped
+{
+    [self.tableView setEditing:NO animated:NO];
+    [self.tableView reloadData];
+    
+    [self setupDefaultNavigationBar];
 }
 
 #pragma mark - Table view data source
