@@ -82,18 +82,6 @@ static const CGFloat kSpaceBetweenNameAndAmount = 10;
     return amountLabel;
 }
 
-//+ (UILabel *)todayLabel
-//{
-//    UILabel *todayLabel = [[UILabel alloc] init];
-//    todayLabel.numberOfLines = 1;
-//    todayLabel.lineBreakMode = NSLineBreakByTruncatingTail;
-//    todayLabel.font = [UIFont systemFontOfSize:10];
-//    todayLabel.textAlignment = NSTextAlignmentCenter;
-//    todayLabel.text = @"TODAY";
-//    [todayLabel sizeToFitWidth:kMaxContentWidth];
-//    return todayLabel;
-//}
-
 + (CGFloat)heightForCategory:(SPRCategory *)category
 {
     CGFloat height = kInnerMargin;
