@@ -9,7 +9,7 @@
 #import "SPRHomeViewController.h"
 
 // Objects
-#import "SPRCategory.h"
+#import "OldSPRCategory.h"
 
 // Custom views
 #import "SPRHomeTableViewCell.h"
@@ -36,7 +36,7 @@ static NSString * const kCellIdentifier = @"Cell";
     [super viewDidLoad];
     
     // Prepare the data source.
-    self.categories = [SPRCategory dummies];
+    self.categories = [OldSPRCategory dummies];
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
@@ -58,6 +58,7 @@ static NSString * const kCellIdentifier = @"Cell";
     UIButton *newCategoryButton = [UIButton buttonWithType:UIButtonTypeSystem];
     [newCategoryButton setAttributedTitle:[SPRIconFont iconForNewCategory] forState:UIControlStateNormal];
     [newCategoryButton sizeToFit];
+    [newCategoryButton addTarget:self action:@selector(newCategoryButtonTapped) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *newCategoryBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:newCategoryButton];
     
     self.navigationItem.rightBarButtonItems = @[newCategoryBarButtonItem];
@@ -73,6 +74,11 @@ static NSString * const kCellIdentifier = @"Cell";
 }
 
 #pragma mark - Target actions
+
+- (void)newCategoryButtonTapped
+{
+    
+}
 
 - (void)tableViewLongPressed
 {

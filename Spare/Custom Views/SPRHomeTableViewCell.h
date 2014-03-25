@@ -8,12 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@class SPRCategory;
+@class OldSPRCategory;
 
 @interface SPRHomeTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) SPRCategory *category;
+@property (weak, nonatomic) OldSPRCategory *category;
 
-+ (CGFloat)heightForCategory:(SPRCategory *)category;
++ (CGFloat)heightForCategory:(OldSPRCategory *)category;
 
 @end

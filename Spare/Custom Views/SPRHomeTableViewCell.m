@@ -9,7 +9,7 @@
 #import "SPRHomeTableViewCell.h"
 
 // Objects
-#import "SPRCategory.h"
+#import "OldSPRCategory.h"
 
 @interface SPRHomeTableViewCell ()
 
@@ -36,13 +36,13 @@ static const CGFloat kSpaceBetweenNameAndAmount = 10;
     return self;
 }
 
-- (void)setCategory:(SPRCategory *)category
+- (void)setCategory:(OldSPRCategory *)category
 {
     _category = category;
     
     self.nameLabel.text = [category.name uppercaseString];
     
-    self.backgroundColor = (UIColor *)[SPRCategory colors][[category.colorNumber integerValue]];
+    self.backgroundColor = (UIColor *)[OldSPRCategory colors][[category.colorNumber integerValue]];
 }
 
 - (void)layoutSubviews
@@ -82,7 +82,7 @@ static const CGFloat kSpaceBetweenNameAndAmount = 10;
     return amountLabel;
 }
 
-+ (CGFloat)heightForCategory:(SPRCategory *)category
++ (CGFloat)heightForCategory:(OldSPRCategory *)category
 {
     CGFloat height = kInnerMargin;
     

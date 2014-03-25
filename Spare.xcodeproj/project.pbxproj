@@ -25,13 +25,14 @@
 		261EB89818DDB64F009DDF78 /* iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 261EB89718DDB64F009DDF78 /* iPhone.storyboard */; };
 		261EB8A118DDC1EB009DDF78 /* SPRHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 261EB8A018DDC1EB009DDF78 /* SPRHomeViewController.m */; };
 		261EB8A618DDC4AC009DDF78 /* SPRHomeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 261EB8A518DDC4AC009DDF78 /* SPRHomeTableViewCell.m */; };
-		261EB8AA18DDC57F009DDF78 /* SPRCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 261EB8A918DDC57F009DDF78 /* SPRCategory.m */; };
+		261EB8AA18DDC57F009DDF78 /* OldSPRCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 261EB8A918DDC57F009DDF78 /* OldSPRCategory.m */; };
 		262ABD0E18DEA1BF003C7C8B /* SPRIconFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 262ABD0D18DEA1BF003C7C8B /* SPRIconFont.m */; };
 		262ABD1018DEA433003C7C8B /* spare-icons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 262ABD0F18DEA2B1003C7C8B /* spare-icons.ttf */; };
 		265997A118DDD2A60088E141 /* NSNumber+SPR.m in Sources */ = {isa = PBXBuildFile; fileRef = 265997A018DDD2A60088E141 /* NSNumber+SPR.m */; };
 		2677950118DDCB93005C74BA /* UILabel+SPR.m in Sources */ = {isa = PBXBuildFile; fileRef = 2677950018DDCB93005C74BA /* UILabel+SPR.m */; };
 		26E2484618E1B7F900391354 /* UIColor+HexColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E2484518E1B7F900391354 /* UIColor+HexColor.m */; };
 		26E2484918E1B90F00391354 /* UIView+SubviewFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E2484818E1B90F00391354 /* UIView+SubviewFinder.m */; };
+		26E2484C18E1C8EC00391354 /* SPRCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E2484B18E1C8EC00391354 /* SPRCategory.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,8 +69,8 @@
 		261EB8A018DDC1EB009DDF78 /* SPRHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRHomeViewController.m; sourceTree = "<group>"; };
 		261EB8A418DDC4AC009DDF78 /* SPRHomeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRHomeTableViewCell.h; sourceTree = "<group>"; };
 		261EB8A518DDC4AC009DDF78 /* SPRHomeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRHomeTableViewCell.m; sourceTree = "<group>"; };
-		261EB8A818DDC57F009DDF78 /* SPRCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRCategory.h; sourceTree = "<group>"; };
-		261EB8A918DDC57F009DDF78 /* SPRCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRCategory.m; sourceTree = "<group>"; };
+		261EB8A818DDC57F009DDF78 /* OldSPRCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OldSPRCategory.h; sourceTree = "<group>"; };
+		261EB8A918DDC57F009DDF78 /* OldSPRCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OldSPRCategory.m; sourceTree = "<group>"; };
 		262ABD0C18DEA1BF003C7C8B /* SPRIconFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRIconFont.h; sourceTree = "<group>"; };
 		262ABD0D18DEA1BF003C7C8B /* SPRIconFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRIconFont.m; sourceTree = "<group>"; };
 		262ABD0F18DEA2B1003C7C8B /* spare-icons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "spare-icons.ttf"; sourceTree = "<group>"; };
@@ -81,6 +82,8 @@
 		26E2484518E1B7F900391354 /* UIColor+HexColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HexColor.m"; sourceTree = "<group>"; };
 		26E2484718E1B90F00391354 /* UIView+SubviewFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SubviewFinder.h"; sourceTree = "<group>"; };
 		26E2484818E1B90F00391354 /* UIView+SubviewFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SubviewFinder.m"; sourceTree = "<group>"; };
+		26E2484A18E1C8EC00391354 /* SPRCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRCategory.h; sourceTree = "<group>"; };
+		26E2484B18E1C8EC00391354 /* SPRCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRCategory.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,8 +212,10 @@
 		261EB8A718DDC574009DDF78 /* Objects */ = {
 			isa = PBXGroup;
 			children = (
-				261EB8A818DDC57F009DDF78 /* SPRCategory.h */,
-				261EB8A918DDC57F009DDF78 /* SPRCategory.m */,
+				26E2484A18E1C8EC00391354 /* SPRCategory.h */,
+				26E2484B18E1C8EC00391354 /* SPRCategory.m */,
+				261EB8A818DDC57F009DDF78 /* OldSPRCategory.h */,
+				261EB8A918DDC57F009DDF78 /* OldSPRCategory.m */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -340,11 +345,12 @@
 				2677950118DDCB93005C74BA /* UILabel+SPR.m in Sources */,
 				26E2484918E1B90F00391354 /* UIView+SubviewFinder.m in Sources */,
 				261EB8A618DDC4AC009DDF78 /* SPRHomeTableViewCell.m in Sources */,
+				26E2484C18E1C8EC00391354 /* SPRCategory.m in Sources */,
 				261EB87818DDB631009DDF78 /* Spare.xcdatamodeld in Sources */,
 				262ABD0E18DEA1BF003C7C8B /* SPRIconFont.m in Sources */,
 				265997A118DDD2A60088E141 /* NSNumber+SPR.m in Sources */,
 				261EB87518DDB631009DDF78 /* SPRAppDelegate.m in Sources */,
-				261EB8AA18DDC57F009DDF78 /* SPRCategory.m in Sources */,
+				261EB8AA18DDC57F009DDF78 /* OldSPRCategory.m in Sources */,
 				26E2484618E1B7F900391354 /* UIColor+HexColor.m in Sources */,
 				261EB87118DDB631009DDF78 /* main.m in Sources */,
 				261EB8A118DDC1EB009DDF78 /* SPRHomeViewController.m in Sources */,

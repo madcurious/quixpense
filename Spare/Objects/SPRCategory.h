@@ -2,20 +2,17 @@
 //  SPRCategory.h
 //  Spare
 //
-//  Created by Matt Quiros on 3/22/14.
+//  Created by Matt Quiros on 3/25/14.
 //  Copyright (c) 2014 Matt Quiros. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 
-@interface SPRCategory : NSObject
 
-@property (strong, nonatomic) NSString *name;
-@property (strong, nonatomic) NSNumber *colorNumber;
+@interface SPRCategory : NSManagedObject
 
-- (id)initWithName:(NSString *)name colorNumber:(NSNumber *)colorNumber;
-
-+ (NSArray *)dummies;
-+ (NSArray *)colors;
+@property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSNumber * colorNumber;
 
 @end
