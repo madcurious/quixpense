@@ -9,7 +9,7 @@
 #import "SPRNewCategoryViewController.h"
 
 // Objects
-#import "SPRCategory.h"
+#import "SPRCategory+Extension.h"
 
 // App delegate
 #import "SPRAppDelegate.h"
@@ -24,6 +24,7 @@ static NSString * const kNameCell = @"kNameCell";
 static NSString * const kColorCell = @"kColorCell";
 
 static const NSInteger kTextFieldTag = 1000;
+static const NSInteger kSelectedColorViewTag = 2000;
 
 @interface SPRNewCategoryViewController () <UITextFieldDelegate>
 
@@ -41,9 +42,19 @@ static const NSInteger kTextFieldTag = 1000;
     SPRAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *context = appDelegate.managedObjectContext;
     self.category = [NSEntityDescription insertNewObjectForEntityForName:@"SPRCategory" inManagedObjectContext:context];
+    
+    // Make the table view dismiss the keyboard when it is tapped.
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tableViewTapped)];
+    tapGestureRecognizer.cancelsTouchesInView = NO;
+    [self.tableView addGestureRecognizer:tapGestureRecognizer];
 }
 
 #pragma mark - Target actions
+
+- (void)tableViewTapped
+{
+    [self.view endEditing:YES];
+}
 
 - (IBAction)cancelButtonTapped:(id)sender
 {
@@ -64,7 +75,7 @@ static const NSInteger kTextFieldTag = 1000;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    return 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -84,13 +95,28 @@ static const NSInteger kTextFieldTag = 1000;
         
         textField.text = self.category.name;
     } else {
-        
+        UIView *selectedColorView = [cell viewWithTag:kSelectedColorViewTag];
+        selectedColorView.backgroundColor = [SPRCategory colors][[self.category.colorNumber integerValue]];
     }
     
     return cell;
 }
 
 #pragma mark - Table view delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == kRowColor) {
+        // Reassert the background color of the selected color view so that it does
+        // not disappear with the UITableViewCell highlight.
+        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        UIView *selectedColorView = [cell viewWithTag:kSelectedColorViewTag];
+        selectedColorView.backgroundColor = [SPRCategory colors][[self.category.colorNumber integerValue]];
+        
+        // Remove the table view cell highlight.
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    }
+}
 
 #pragma mark - Text field delegate
 
@@ -102,10 +128,17 @@ static const NSInteger kTextFieldTag = 1000;
     return YES;
 }
 
+- (BOOL)textFieldShouldClear:(UITextField *)textField
+{
+    self.category.name = @"";
+    return YES;
+}
+
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
     // Trim the trailing whitespaces in the category's name.
     self.category.name = [self.category.name trim];
+    textField.text = self.category.name;
 }
 
 @end

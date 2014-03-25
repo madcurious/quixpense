@@ -35,6 +35,7 @@
 		26E2485018E1CA9E00391354 /* SPRHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E2484F18E1CA9E00391354 /* SPRHomeViewController.m */; };
 		26E2485318E1CAB700391354 /* SPRNewCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E2485218E1CAB700391354 /* SPRNewCategoryViewController.m */; };
 		26E2485C18E1DA2B00391354 /* NSString+SPR.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E2485B18E1DA2B00391354 /* NSString+SPR.m */; };
+		26E2485F18E1DCEF00391354 /* SPRCategory+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E2485E18E1DCEF00391354 /* SPRCategory+Extension.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +91,8 @@
 		26E2485218E1CAB700391354 /* SPRNewCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRNewCategoryViewController.m; sourceTree = "<group>"; };
 		26E2485A18E1DA2B00391354 /* NSString+SPR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SPR.h"; sourceTree = "<group>"; };
 		26E2485B18E1DA2B00391354 /* NSString+SPR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SPR.m"; sourceTree = "<group>"; };
+		26E2485D18E1DCEF00391354 /* SPRCategory+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SPRCategory+Extension.h"; sourceTree = "<group>"; };
+		26E2485E18E1DCEF00391354 /* SPRCategory+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SPRCategory+Extension.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +216,8 @@
 				26E2484B18E1C8EC00391354 /* SPRCategory.m */,
 				261EB8A818DDC57F009DDF78 /* OldSPRCategory.h */,
 				261EB8A918DDC57F009DDF78 /* OldSPRCategory.m */,
+				26E2485D18E1DCEF00391354 /* SPRCategory+Extension.h */,
+				26E2485E18E1DCEF00391354 /* SPRCategory+Extension.m */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -357,6 +362,7 @@
 				261EB8A618DDC4AC009DDF78 /* SPRHomeTableViewCell.m in Sources */,
 				26E2485318E1CAB700391354 /* SPRNewCategoryViewController.m in Sources */,
 				26E2484C18E1C8EC00391354 /* SPRCategory.m in Sources */,
+				26E2485F18E1DCEF00391354 /* SPRCategory+Extension.m in Sources */,
 				26E2485C18E1DA2B00391354 /* NSString+SPR.m in Sources */,
 				261EB87818DDB631009DDF78 /* Spare.xcdatamodeld in Sources */,
 				262ABD0E18DEA1BF003C7C8B /* SPRIconFont.m in Sources */,
