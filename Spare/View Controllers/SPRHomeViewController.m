@@ -77,7 +77,7 @@ static NSString * const kCellIdentifier = @"Cell";
 
 - (void)newCategoryButtonTapped
 {
-    
+    [self performSegueWithIdentifier:@"presentNewCategoryModal" sender:self];
 }
 
 - (void)tableViewLongPressed

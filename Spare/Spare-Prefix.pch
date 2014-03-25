@@ -17,4 +17,5 @@
 
 #import "UILabel+SPR.h"
 #import "NSNumber+SPR.h"
+#import "NSString+SPR.h"
 #endif
