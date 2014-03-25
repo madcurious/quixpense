@@ -36,6 +36,7 @@
 		26E2485318E1CAB700391354 /* SPRNewCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E2485218E1CAB700391354 /* SPRNewCategoryViewController.m */; };
 		26E2485C18E1DA2B00391354 /* NSString+SPR.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E2485B18E1DA2B00391354 /* NSString+SPR.m */; };
 		26E2485F18E1DCEF00391354 /* SPRCategory+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E2485E18E1DCEF00391354 /* SPRCategory+Extension.m */; };
+		26E2486218E1E3C400391354 /* SPRColorChooserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E2486118E1E3C400391354 /* SPRColorChooserViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +94,8 @@
 		26E2485B18E1DA2B00391354 /* NSString+SPR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SPR.m"; sourceTree = "<group>"; };
 		26E2485D18E1DCEF00391354 /* SPRCategory+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SPRCategory+Extension.h"; sourceTree = "<group>"; };
 		26E2485E18E1DCEF00391354 /* SPRCategory+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SPRCategory+Extension.m"; sourceTree = "<group>"; };
+		26E2486018E1E3C400391354 /* SPRColorChooserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRColorChooserViewController.h; sourceTree = "<group>"; };
+		26E2486118E1E3C400391354 /* SPRColorChooserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRColorChooserViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -255,6 +258,8 @@
 				26E2484F18E1CA9E00391354 /* SPRHomeViewController.m */,
 				26E2485118E1CAB700391354 /* SPRNewCategoryViewController.h */,
 				26E2485218E1CAB700391354 /* SPRNewCategoryViewController.m */,
+				26E2486018E1E3C400391354 /* SPRColorChooserViewController.h */,
+				26E2486118E1E3C400391354 /* SPRColorChooserViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -357,6 +362,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26E2486218E1E3C400391354 /* SPRColorChooserViewController.m in Sources */,
 				2677950118DDCB93005C74BA /* UILabel+SPR.m in Sources */,
 				26E2484918E1B90F00391354 /* UIView+SubviewFinder.m in Sources */,
 				261EB8A618DDC4AC009DDF78 /* SPRHomeTableViewCell.m in Sources */,

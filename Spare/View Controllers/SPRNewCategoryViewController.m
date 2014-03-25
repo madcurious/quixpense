@@ -14,6 +14,9 @@
 // App delegate
 #import "SPRAppDelegate.h"
 
+// View Controllers
+#import "SPRColorChooserViewController.h"
+
 typedef NS_ENUM(NSInteger, kRow)
 {
     kRowName = 0,
@@ -26,7 +29,7 @@ static NSString * const kColorCell = @"kColorCell";
 static const NSInteger kTextFieldTag = 1000;
 static const NSInteger kSelectedColorViewTag = 2000;
 
-@interface SPRNewCategoryViewController () <UITextFieldDelegate>
+@interface SPRNewCategoryViewController () <UITextFieldDelegate, SPRColorChooserViewControllerDelegate>
 
 @property (strong, nonatomic) SPRCategory *category;
 
@@ -47,6 +50,22 @@ static const NSInteger kSelectedColorViewTag = 2000;
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tableViewTapped)];
     tapGestureRecognizer.cancelsTouchesInView = NO;
     [self.tableView addGestureRecognizer:tapGestureRecognizer];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    UINavigationController *navigationController = segue.destinationViewController;
+    SPRColorChooserViewController *colorChooser = navigationController.viewControllers[0];
+    colorChooser.selectedColorNumber = [self.category.colorNumber integerValue];
+    colorChooser.delegate = self;
+}
+
+#pragma mark - Color chooser view controller delegate
+
+- (void)colorChooserDidSelectColorNumber:(NSInteger)colorNumber
+{
+    self.category.colorNumber = [NSNumber numberWithInteger:colorNumber];
+    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:kRowColor inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
 }
 
 #pragma mark - Target actions
