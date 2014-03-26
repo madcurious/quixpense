@@ -10,9 +10,8 @@
 
 // Objects
 #import "SPRCategory+Extension.h"
-
-// App delegate
-#import "SPRAppDelegate.h"
+#import "SPRManagedDocument.h"
+#import "SPRField.h"
 
 // View Controllers
 #import "SPRColorChooserViewController.h"
@@ -31,7 +30,7 @@ static const NSInteger kSelectedColorViewTag = 2000;
 
 @interface SPRNewCategoryViewController () <UITextFieldDelegate, SPRColorChooserViewControllerDelegate>
 
-@property (strong, nonatomic) SPRCategory *category;
+@property (strong, nonatomic) NSArray *fields;
 
 @end
 
@@ -41,10 +40,8 @@ static const NSInteger kSelectedColorViewTag = 2000;
 {
     [super viewDidLoad];
     
-    // Create the SPRCategory object.
-    SPRAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = appDelegate.managedObjectContext;
-    self.category = [NSEntityDescription insertNewObjectForEntityForName:@"SPRCategory" inManagedObjectContext:context];
+    _fields = @[[[SPRField alloc] initWithName:@"Name"],
+                [[SPRField alloc] initWithName:@"Color"]];
     
     // Make the table view dismiss the keyboard when it is tapped.
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tableViewTapped)];
@@ -56,8 +53,10 @@ static const NSInteger kSelectedColorViewTag = 2000;
 {
     UINavigationController *navigationController = segue.destinationViewController;
     SPRColorChooserViewController *colorChooser = navigationController.viewControllers[0];
-    colorChooser.selectedColorNumber = [self.category.colorNumber integerValue];
     colorChooser.delegate = self;
+    
+    SPRField *colorField = self.fields[kRowColor];
+    colorChooser.selectedColorNumber = [colorField.value integerValue];
 }
 
 #pragma mark - Target actions
@@ -74,7 +73,25 @@ static const NSInteger kSelectedColorViewTag = 2000;
 
 - (IBAction)doneButtonTapped:(id)sender
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    SPRField *nameField = self.fields[kRowName];
+    if (((NSString *)nameField.value).length > 0) {
+        // Create the SPRCategory object.
+        SPRManagedDocument *document = [[SPRManagedDocument alloc] init];
+        
+        __weak SPRNewCategoryViewController *weakSelf = self;
+        [document prepareWithCompletionHandler:^(BOOL success) {
+            SPRNewCategoryViewController *innerSelf = weakSelf;
+            if (success) {
+                if (document.isReady) {
+                    SPRCategory *category = [NSEntityDescription insertNewObjectForEntityForName:@"SPRCategory" inManagedObjectContext:document.managedObjectContext];
+                    category.name = (NSString *)((SPRField *)innerSelf.fields[kRowName]).value;
+                    category.colorNumber = ((SPRField *)innerSelf.fields[kRowColor]).value;
+                    
+                    [innerSelf dismissViewControllerAnimated:YES completion:nil];
+                }
+            }
+        }];
+    }
 }
 
 #pragma mark - Table view data source
@@ -99,15 +116,16 @@ static const NSInteger kSelectedColorViewTag = 2000;
     }
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    SPRField *field = self.fields[indexPath.row];
     
     if (indexPath.row == kRowName) {
         UITextField *textField = (UITextField *)[cell viewWithTag:kTextFieldTag];
         textField.delegate = self;
         
-        textField.text = self.category.name;
+        textField.text = (NSString *)field.value;
     } else {
         UIView *selectedColorView = [cell viewWithTag:kSelectedColorViewTag];
-        selectedColorView.backgroundColor = [SPRCategory colors][[self.category.colorNumber integerValue]];
+        selectedColorView.backgroundColor = [SPRCategory colors][[field.value integerValue] ];
     }
     
     return cell;
@@ -122,7 +140,9 @@ static const NSInteger kSelectedColorViewTag = 2000;
         // not disappear with the UITableViewCell highlight.
         UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
         UIView *selectedColorView = [cell viewWithTag:kSelectedColorViewTag];
-        selectedColorView.backgroundColor = [SPRCategory colors][[self.category.colorNumber integerValue]];
+        
+        SPRField *colorField = self.fields[kRowColor];
+        selectedColorView.backgroundColor = [SPRCategory colors][[colorField.value integerValue]];
         
         // Remove the table view cell highlight.
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -133,7 +153,8 @@ static const NSInteger kSelectedColorViewTag = 2000;
 
 - (void)colorChooserDidSelectColorNumber:(NSInteger)colorNumber
 {
-    self.category.colorNumber = [NSNumber numberWithInteger:colorNumber];
+    SPRField *colorField = self.fields[kRowColor];
+    colorField.value = @(colorNumber);
     [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:kRowColor inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
 }
 
@@ -142,22 +163,25 @@ static const NSInteger kSelectedColorViewTag = 2000;
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     // Set the category's name to whatever is in the text field.
-    self.category.name = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    SPRField *nameField = self.fields[kRowName];
+    nameField.value = [textField.text stringByReplacingCharactersInRange:range withString:string];
     
     return YES;
 }
 
 - (BOOL)textFieldShouldClear:(UITextField *)textField
 {
-    self.category.name = @"";
+    SPRField *nameField = self.fields[kRowName];
+    nameField.value = @"";
     return YES;
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
     // Trim the trailing whitespaces in the category's name.
-    self.category.name = [self.category.name trim];
-    textField.text = self.category.name;
+    SPRField *nameField = self.fields[kRowName];
+    nameField.value = [((NSString *)nameField.value) trim];
+    textField.text = nameField.value;
 }
 
 @end
