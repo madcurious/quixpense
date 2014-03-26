@@ -11,15 +11,28 @@
 // Objects
 #import "SPRCategory+Extension.h"
 
+// Custom views
+#import "SPRColorChooserSectionHeader.h"
+
 static NSString * const kCellIdentifier = @"Cell";
+static NSString * const kSectionHeaderView = @"kSectionHeaderView";
 
 static const NSInteger kColorViewTag = 1000;
 
 @interface SPRColorChooserViewController ()
 
+@property (strong, nonatomic) NSArray *sectionTitles;
+
 @end
 
 @implementation SPRColorChooserViewController
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    self.sectionTitles = @[@"Canary", @"Neon", @"Ultra", @"Tropical", @"Samba", @"Aquatic", @"Sunbrite", @"Classic"];
+}
 
 - (NSInteger)colorNumberForIndexPath:(NSIndexPath *)indexPath
 {
@@ -94,6 +107,19 @@ static const NSInteger kColorViewTag = 1000;
     }
     
     return cell;
+}
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
+    if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
+        SPRColorChooserSectionHeader *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:kSectionHeaderView forIndexPath:indexPath];
+        
+        headerView.titleLabel.text = self.sectionTitles[indexPath.section];
+        
+        return headerView;
+    }
+    
+    return nil;
 }
 
 #pragma mark - Collection view delegate

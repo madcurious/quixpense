@@ -60,14 +60,6 @@ static const NSInteger kSelectedColorViewTag = 2000;
     colorChooser.delegate = self;
 }
 
-#pragma mark - Color chooser view controller delegate
-
-- (void)colorChooserDidSelectColorNumber:(NSInteger)colorNumber
-{
-    self.category.colorNumber = [NSNumber numberWithInteger:colorNumber];
-    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:kRowColor inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
-}
-
 #pragma mark - Target actions
 
 - (void)tableViewTapped
@@ -135,6 +127,14 @@ static const NSInteger kSelectedColorViewTag = 2000;
         // Remove the table view cell highlight.
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
+}
+
+#pragma mark - Color chooser view controller delegate
+
+- (void)colorChooserDidSelectColorNumber:(NSInteger)colorNumber
+{
+    self.category.colorNumber = [NSNumber numberWithInteger:colorNumber];
+    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:kRowColor inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
 }
 
 #pragma mark - Text field delegate
