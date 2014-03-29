@@ -9,7 +9,8 @@
 #import "SPRHomeViewController.h"
 
 // Objects
-#import "OldSPRCategory.h"
+#import "SPRCategory+Extension.h"
+#import "SPRManagedDocument.h"
 
 // Custom views
 #import "SPRHomeTableViewCell.h"
@@ -35,9 +36,6 @@ static NSString * const kCellIdentifier = @"Cell";
 {
     [super viewDidLoad];
     
-    // Prepare the data source.
-    self.categories = [OldSPRCategory dummies];
-    
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     // Register the table view cell class.
@@ -49,6 +47,32 @@ static NSString * const kCellIdentifier = @"Cell";
     [self.tableView addGestureRecognizer:longPressRecognizer];
     
     [self setupDefaultNavigationBar];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    if (self.categories == nil) {
+        SPRManagedDocument *managedDocument = [[SPRManagedDocument alloc] init];
+        __weak SPRHomeViewController *weakSelf = self;
+        
+        [managedDocument prepareWithCompletionHandler:^(BOOL success) {
+            SPRHomeViewController *innerSelf = weakSelf;
+            
+            NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"SPRCategory"];
+            NSManagedObjectContext *context = managedDocument.managedObjectContext;
+            NSError *error;
+            
+            innerSelf.categories = [context executeFetchRequest:fetchRequest error:&error];
+            
+            if (error) {
+                NSLog(@"Error fetching all categories: %@", error);
+            } else {
+                [innerSelf.tableView reloadData];
+            }
+        }];
+    }
 }
 
 - (void)setupDefaultNavigationBar

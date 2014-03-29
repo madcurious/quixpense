@@ -32,8 +32,8 @@
 
 - (BOOL)exists
 {
-    BOOL exists = [[NSFileManager defaultManager] fileExistsAtPath:self.documentURL.path];
-    return exists;
+    _exists = [[NSFileManager defaultManager] fileExistsAtPath:self.documentURL.path];
+    return _exists;
 }
 
 - (void)prepareWithCompletionHandler:(void (^)(BOOL))completionHandler

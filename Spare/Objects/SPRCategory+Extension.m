@@ -11,6 +11,9 @@
 // Categories
 #import "UIColor+HexColor.h"
 
+// Objects
+#import "SPRManagedDocument.h"
+
 @implementation SPRCategory (Extension)
 
 + (NSArray *)colors

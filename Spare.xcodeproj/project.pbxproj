@@ -24,7 +24,6 @@
 		261EB88E18DDB631009DDF78 /* SpareTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 261EB88D18DDB631009DDF78 /* SpareTests.m */; };
 		261EB89818DDB64F009DDF78 /* iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 261EB89718DDB64F009DDF78 /* iPhone.storyboard */; };
 		261EB8A618DDC4AC009DDF78 /* SPRHomeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 261EB8A518DDC4AC009DDF78 /* SPRHomeTableViewCell.m */; };
-		261EB8AA18DDC57F009DDF78 /* OldSPRCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 261EB8A918DDC57F009DDF78 /* OldSPRCategory.m */; };
 		262ABD0E18DEA1BF003C7C8B /* SPRIconFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 262ABD0D18DEA1BF003C7C8B /* SPRIconFont.m */; };
 		262ABD1018DEA433003C7C8B /* spare-icons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 262ABD0F18DEA2B1003C7C8B /* spare-icons.ttf */; };
 		265997A118DDD2A60088E141 /* NSNumber+SPR.m in Sources */ = {isa = PBXBuildFile; fileRef = 265997A018DDD2A60088E141 /* NSNumber+SPR.m */; };
@@ -74,8 +73,6 @@
 		261EB89718DDB64F009DDF78 /* iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPhone.storyboard; sourceTree = "<group>"; };
 		261EB8A418DDC4AC009DDF78 /* SPRHomeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRHomeTableViewCell.h; sourceTree = "<group>"; };
 		261EB8A518DDC4AC009DDF78 /* SPRHomeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRHomeTableViewCell.m; sourceTree = "<group>"; };
-		261EB8A818DDC57F009DDF78 /* OldSPRCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OldSPRCategory.h; sourceTree = "<group>"; };
-		261EB8A918DDC57F009DDF78 /* OldSPRCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OldSPRCategory.m; sourceTree = "<group>"; };
 		262ABD0C18DEA1BF003C7C8B /* SPRIconFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRIconFont.h; sourceTree = "<group>"; };
 		262ABD0D18DEA1BF003C7C8B /* SPRIconFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRIconFont.m; sourceTree = "<group>"; };
 		262ABD0F18DEA2B1003C7C8B /* spare-icons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "spare-icons.ttf"; sourceTree = "<group>"; };
@@ -228,8 +225,6 @@
 			children = (
 				26E2484A18E1C8EC00391354 /* SPRCategory.h */,
 				26E2484B18E1C8EC00391354 /* SPRCategory.m */,
-				261EB8A818DDC57F009DDF78 /* OldSPRCategory.h */,
-				261EB8A918DDC57F009DDF78 /* OldSPRCategory.m */,
 				26E2485D18E1DCEF00391354 /* SPRCategory+Extension.h */,
 				26E2485E18E1DCEF00391354 /* SPRCategory+Extension.m */,
 				2688628118E3370400B8D167 /* SPRManagedDocument.h */,
@@ -324,7 +319,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = SPR;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Matt Quiros";
 				TargetAttributes = {
 					261EB87E18DDB631009DDF78 = {
@@ -392,7 +387,6 @@
 				265997A118DDD2A60088E141 /* NSNumber+SPR.m in Sources */,
 				2688627D18E31E2F00B8D167 /* SPRColorChooserSectionHeader.m in Sources */,
 				261EB87518DDB631009DDF78 /* SPRAppDelegate.m in Sources */,
-				261EB8AA18DDC57F009DDF78 /* OldSPRCategory.m in Sources */,
 				26E2484618E1B7F900391354 /* UIColor+HexColor.m in Sources */,
 				261EB87118DDB631009DDF78 /* main.m in Sources */,
 				26E2485018E1CA9E00391354 /* SPRHomeViewController.m in Sources */,
@@ -441,7 +435,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -480,7 +473,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -538,7 +530,6 @@
 		261EB89518DDB631009DDF78 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Spare.app/Spare";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -561,7 +552,6 @@
 		261EB89618DDB631009DDF78 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Spare.app/Spare";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",

@@ -87,7 +87,9 @@ static const NSInteger kSelectedColorViewTag = 2000;
                     category.name = (NSString *)((SPRField *)innerSelf.fields[kRowName]).value;
                     category.colorNumber = ((SPRField *)innerSelf.fields[kRowColor]).value;
                     
-                    [innerSelf dismissViewControllerAnimated:YES completion:nil];
+                    [document saveToURL:document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success) {
+                        [innerSelf dismissViewControllerAnimated:YES completion:nil];
+                    }];
                 }
             }
         }];

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>C6B419FB-86EB-46C5-A53E-C8E4F16C74B7</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Spare</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>9AC88073-3B1B-44DF-B6C1-D742AFCCAAEA</key>
+		<string>https://github.com/mattquiros/spare-ios.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Spare.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>9AC88073-3B1B-44DF-B6C1-D742AFCCAAEA</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/mattquiros/spare-ios.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>9AC88073-3B1B-44DF-B6C1-D742AFCCAAEA</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>9AC88073-3B1B-44DF-B6C1-D742AFCCAAEA</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Spare</string>
+		</dict>
+	</array>
+</dict>
+</plist>
