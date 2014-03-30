@@ -122,11 +122,17 @@ static const NSInteger kTextFieldTag = 1000;
 {
     SPRTextField *theTextField = (SPRTextField *)textField;
     SPRField *field = theTextField.field;
-    NSString *value = field.value ? field.value : @"";
     
+    if (field == self.fields[kRowAmount]) {
+        NSCharacterSet *invalidCharacterSet = [[NSCharacterSet characterSetWithCharactersInString:@"1234567890."] invertedSet];
+        if ([string containsCharacterFromCharacterSet:invalidCharacterSet]) {
+            return NO;
+        }
+    }
+    
+    NSString *value = field.value ? field.value : @"";
     value = [value stringByReplacingCharactersInRange:range withString:string];
     field.value = value;
-    
     return YES;
 }
 

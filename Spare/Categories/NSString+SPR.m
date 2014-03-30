@@ -15,4 +15,10 @@
     return [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 }
 
+- (BOOL)containsCharacterFromCharacterSet:(NSCharacterSet *)characterSet
+{
+    NSRange range = [self rangeOfCharacterFromSet:characterSet];
+    return range.location != NSNotFound;
+}
+
 @end
