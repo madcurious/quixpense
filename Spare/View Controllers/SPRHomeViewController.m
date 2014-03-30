@@ -14,6 +14,7 @@
 
 // Custom views
 #import "SPRHomeTableViewCell.h"
+#import "SPRStatusView.h"
 
 // Utilities
 #import "SPRIconFont.h"
@@ -25,6 +26,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray *categories;
+@property (strong, nonatomic) SPRStatusView *statusView;
 
 @end
 
@@ -54,6 +56,9 @@ static NSString * const kCellIdentifier = @"Cell";
     [super viewWillAppear:animated];
     
     if (self.categories == nil) {
+        [self.view addSubview:self.statusView];
+        self.statusView.status = SPRStatusViewStatusLoading;
+        
         SPRManagedDocument *managedDocument = [[SPRManagedDocument alloc] init];
         __weak SPRHomeViewController *weakSelf = self;
         
@@ -69,7 +74,12 @@ static NSString * const kCellIdentifier = @"Cell";
             if (error) {
                 NSLog(@"Error fetching all categories: %@", error);
             } else {
-                [innerSelf.tableView reloadData];
+                if (innerSelf.categories.count > 0) {
+                    [innerSelf.statusView fadeOutAndRemoveFromSuperview];
+                    [innerSelf.tableView reloadData];
+                } else {
+                    innerSelf.statusView.status = SPRStatusViewStatusNoResults;
+                }
             }
         }];
     }
@@ -216,6 +226,17 @@ static NSString * const kCellIdentifier = @"Cell";
 		if([cellGrip isKindOfClass:[UIImageView class]])
 			[cellGrip setImage:nil];
 	}
+}
+
+#pragma mark - Getters
+
+- (SPRStatusView *)statusView
+{
+    if (!_statusView) {
+        _statusView = [[SPRStatusView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+        _statusView.noResultsText = @"You have no categories yet.";
+    }
+    return _statusView;
 }
 
 @end

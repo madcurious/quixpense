@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2612C89118E7BC3400DE2765 /* SPRStatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2612C89018E7BC3400DE2765 /* SPRStatusView.m */; };
 		261EB86318DDB630009DDF78 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86218DDB630009DDF78 /* Foundation.framework */; };
 		261EB86518DDB630009DDF78 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86418DDB630009DDF78 /* CoreGraphics.framework */; };
 		261EB86718DDB631009DDF78 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86618DDB631009DDF78 /* UIKit.framework */; };
@@ -52,6 +53,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2612C88F18E7BC3400DE2765 /* SPRStatusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRStatusView.h; sourceTree = "<group>"; };
+		2612C89018E7BC3400DE2765 /* SPRStatusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRStatusView.m; sourceTree = "<group>"; };
 		261EB85F18DDB630009DDF78 /* Spare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		261EB86218DDB630009DDF78 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		261EB86418DDB630009DDF78 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -216,6 +219,8 @@
 				261EB8A518DDC4AC009DDF78 /* SPRHomeTableViewCell.m */,
 				2688627B18E31E2F00B8D167 /* SPRColorChooserSectionHeader.h */,
 				2688627C18E31E2F00B8D167 /* SPRColorChooserSectionHeader.m */,
+				2612C88F18E7BC3400DE2765 /* SPRStatusView.h */,
+				2612C89018E7BC3400DE2765 /* SPRStatusView.m */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -379,6 +384,7 @@
 				26E2485318E1CAB700391354 /* SPRNewCategoryViewController.m in Sources */,
 				2688628318E3370400B8D167 /* SPRManagedDocument.m in Sources */,
 				26E2484C18E1C8EC00391354 /* SPRCategory.m in Sources */,
+				2612C89118E7BC3400DE2765 /* SPRStatusView.m in Sources */,
 				2688628618E339F900B8D167 /* SPRField.m in Sources */,
 				26E2485F18E1DCEF00391354 /* SPRCategory+Extension.m in Sources */,
 				26E2485C18E1DA2B00391354 /* NSString+SPR.m in Sources */,
