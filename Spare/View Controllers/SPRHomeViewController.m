@@ -24,12 +24,14 @@
 
 // View controllers
 #import "SPRNewCategoryViewController.h"
+#import "SPRCategoryViewController.h"
 
 @interface SPRHomeViewController () <UITableViewDataSource, UITableViewDelegate, SPRNewCategoryViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray *categories;
 @property (strong, nonatomic) SPRStatusView *statusView;
+@property (weak, nonatomic) SPRCategory *selectedCategory;
 
 @end
 
@@ -131,6 +133,13 @@ static NSString * const kCellIdentifier = @"Cell";
         
         SPRNewCategoryViewController *newCategoryScreen = modalNavigationController.viewControllers[0];
         newCategoryScreen.delegate = self;
+        return;
+    }
+    
+    if ([segue.identifier isEqualToString:@"pushCategory"]) {
+        SPRCategoryViewController *categoryScreen = segue.destinationViewController;
+        categoryScreen.category = self.selectedCategory;
+        return;
     }
 }
 
@@ -213,6 +222,10 @@ static NSString * const kCellIdentifier = @"Cell";
         
     } else {
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        
+        self.selectedCategory = self.categories[indexPath.row];
+        
+        [self performSegueWithIdentifier:@"pushCategory" sender:self];
     }
 }
 

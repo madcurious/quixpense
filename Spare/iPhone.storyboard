@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="XMk-D6-Jmw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="XMk-D6-Jmw">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
         <!--Home View Controller-->
@@ -32,11 +32,41 @@
                     <connections>
                         <outlet property="tableView" destination="QfY-Uq-TtZ" id="SUm-WT-Bv0"/>
                         <segue destination="22g-yd-WJt" kind="modal" identifier="presentNewCategoryModal" id="CBk-Uy-75b"/>
+                        <segue destination="XW0-3j-tXb" kind="push" identifier="pushCategory" id="a8y-Aq-PCH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RYh-3n-zQk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="874" y="38"/>
+        </scene>
+        <!--Category View Controller-->
+        <scene sceneID="QBG-t7-wLN">
+            <objects>
+                <viewController id="XW0-3j-tXb" customClass="SPRCategoryViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ly1-Ef-e6W"/>
+                        <viewControllerLayoutGuide type="bottom" id="zO4-4x-Yor"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0Dk-Ms-ajb">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="NqK-hC-8m8">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="JKg-Sw-WAG"/>
+                    <connections>
+                        <outlet property="tableView" destination="NqK-hC-8m8" id="lFs-9T-GEj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zOf-6F-cS6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1425" y="38"/>
         </scene>
         <!--New Category View Controller - New Category-->
         <scene sceneID="TmU-UW-oOy">

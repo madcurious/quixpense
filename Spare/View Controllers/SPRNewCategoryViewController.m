@@ -80,21 +80,23 @@ static const NSInteger kSelectedColorViewTag = 2000;
         
         __weak SPRNewCategoryViewController *weakSelf = self;
         [document prepareWithCompletionHandler:^(BOOL success) {
+            if (!success) {
+                return;
+            }
+            
             SPRNewCategoryViewController *innerSelf = weakSelf;
-            if (success) {
-                if (document.isReady) {
-                    SPRCategory *category = [NSEntityDescription insertNewObjectForEntityForName:@"SPRCategory" inManagedObjectContext:document.managedObjectContext];
-                    category.name = (NSString *)((SPRField *)innerSelf.fields[kRowName]).value;
-                    category.colorNumber = ((SPRField *)innerSelf.fields[kRowColor]).value;
+            if (document.isReady) {
+                SPRCategory *category = [NSEntityDescription insertNewObjectForEntityForName:@"SPRCategory" inManagedObjectContext:document.managedObjectContext];
+                category.name = (NSString *)((SPRField *)innerSelf.fields[kRowName]).value;
+                category.colorNumber = ((SPRField *)innerSelf.fields[kRowColor]).value;
+                
+                [document saveToURL:document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success) {
+                    if ([innerSelf.delegate respondsToSelector:@selector(newCategoryViewControllerDidAddCategory)]) {
+                        [innerSelf.delegate newCategoryViewControllerDidAddCategory];
+                    }
                     
-                    [document saveToURL:document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success) {
-                        if ([innerSelf.delegate respondsToSelector:@selector(newCategoryViewControllerDidAddCategory)]) {
-                            [innerSelf.delegate newCategoryViewControllerDidAddCategory];
-                        }
-                        
-                        [innerSelf dismissViewControllerAnimated:YES completion:nil];
-                    }];
-                }
+                    [innerSelf dismissViewControllerAnimated:YES completion:nil];
+                }];
             }
         }];
     }
