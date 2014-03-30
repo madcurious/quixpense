@@ -14,5 +14,6 @@
 @property (nonatomic) id value;
 
 - (id)initWithName:(NSString *)name;
+- (id)initWithName:(NSString *)name value:(id)value;
 
 @end

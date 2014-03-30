@@ -18,4 +18,12 @@
     return self;
 }
 
+- (id)initWithName:(NSString *)name value:(id)value
+{
+    if (self = [self initWithName:name]) {
+        _value = value;
+    }
+    return self;
+}
+
 @end

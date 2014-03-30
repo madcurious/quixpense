@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class SPRCategory;
+
 @interface SPRNewExpenseViewController : UITableViewController
+
+@property (strong, nonatomic) SPRCategory *category;
 
 @end

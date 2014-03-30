@@ -14,6 +14,7 @@
 		2612C8A618E8147300DE2765 /* SPRCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2612C8A518E8147300DE2765 /* SPRCategory.m */; };
 		2612C8A918E815FF00DE2765 /* SPRNewExpenseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2612C8A818E815FF00DE2765 /* SPRNewExpenseViewController.m */; };
 		2612C8AC18E831F600DE2765 /* SPRTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 2612C8AB18E831F600DE2765 /* SPRTextField.m */; };
+		2612C8AF18E847DB00DE2765 /* NSDate+SPR.m in Sources */ = {isa = PBXBuildFile; fileRef = 2612C8AE18E847DB00DE2765 /* NSDate+SPR.m */; };
 		261EB86318DDB630009DDF78 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86218DDB630009DDF78 /* Foundation.framework */; };
 		261EB86518DDB630009DDF78 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86418DDB630009DDF78 /* CoreGraphics.framework */; };
 		261EB86718DDB631009DDF78 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86618DDB631009DDF78 /* UIKit.framework */; };
@@ -72,6 +73,8 @@
 		2612C8A818E815FF00DE2765 /* SPRNewExpenseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRNewExpenseViewController.m; sourceTree = "<group>"; };
 		2612C8AA18E831F600DE2765 /* SPRTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRTextField.h; sourceTree = "<group>"; };
 		2612C8AB18E831F600DE2765 /* SPRTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRTextField.m; sourceTree = "<group>"; };
+		2612C8AD18E847DB00DE2765 /* NSDate+SPR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+SPR.h"; sourceTree = "<group>"; };
+		2612C8AE18E847DB00DE2765 /* NSDate+SPR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+SPR.m"; sourceTree = "<group>"; };
 		261EB85F18DDB630009DDF78 /* Spare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		261EB86218DDB630009DDF78 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		261EB86418DDB630009DDF78 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -283,6 +286,8 @@
 				26E2484818E1B90F00391354 /* UIView+SubviewFinder.m */,
 				26E2485A18E1DA2B00391354 /* NSString+SPR.h */,
 				26E2485B18E1DA2B00391354 /* NSString+SPR.m */,
+				2612C8AD18E847DB00DE2765 /* NSDate+SPR.h */,
+				2612C8AE18E847DB00DE2765 /* NSDate+SPR.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -420,6 +425,7 @@
 				261EB87818DDB631009DDF78 /* Spare.xcdatamodeld in Sources */,
 				262ABD0E18DEA1BF003C7C8B /* SPRIconFont.m in Sources */,
 				265997A118DDD2A60088E141 /* NSNumber+SPR.m in Sources */,
+				2612C8AF18E847DB00DE2765 /* NSDate+SPR.m in Sources */,
 				2688627D18E31E2F00B8D167 /* SPRColorChooserSectionHeader.m in Sources */,
 				261EB87518DDB631009DDF78 /* SPRAppDelegate.m in Sources */,
 				2612C89418E7E64C00DE2765 /* SPRCategoryViewController.m in Sources */,

@@ -10,6 +10,7 @@
 
 // Objects
 #import "SPRField.h"
+#import "SPRCategory+Extension.h"
 
 // Custom views
 #import "SPRTextField.h"
@@ -46,8 +47,8 @@ static const NSInteger kTextFieldTag = 1000;
     
     self.fields = @[[[SPRField alloc] initWithName:@"Description"],
                     [[SPRField alloc] initWithName:@"Amount"],
-                    [[SPRField alloc] initWithName:@"Category"],
-                    [[SPRField alloc] initWithName:@"Date spent"]];
+                    [[SPRField alloc] initWithName:@"Category" value:self.category],
+                    [[SPRField alloc] initWithName:@"Date spent" value:[NSDate date]]];
 }
 
 #pragma mark - Target actions
@@ -85,14 +86,22 @@ static const NSInteger kTextFieldTag = 1000;
         case kRowDescription:
         case kRowAmount: {
             SPRTextField *textField = (SPRTextField *)[cell viewWithTag:kTextFieldTag];
+            textField.field = field;
             textField.text = (NSString *)field.value;
             textField.delegate = self;
             break;
         }
         case kRowCategory: {
+            SPRCategory *selectedCategory = field.value;
+            if (selectedCategory) {
+                cell.detailTextLabel.text = selectedCategory.name;
+                cell.detailTextLabel.textColor = [UIColor blackColor];
+            }
             break;
         }
         case kRowDateSpent: {
+            NSDate *date = (NSDate *)field.value;
+            cell.detailTextLabel.text = [date textInForm];
             break;
         }
     }
@@ -113,9 +122,19 @@ static const NSInteger kTextFieldTag = 1000;
 {
     SPRTextField *theTextField = (SPRTextField *)textField;
     SPRField *field = theTextField.field;
-    NSString *value = field.value;
+    NSString *value = field.value ? field.value : @"";
+    
     value = [value stringByReplacingCharactersInRange:range withString:string];
     field.value = value;
+    
+    return YES;
+}
+
+- (BOOL)textFieldShouldClear:(UITextField *)textField
+{
+    SPRTextField *theTextField = (SPRTextField *)textField;
+    SPRField *field = theTextField.field;
+    field.value = nil;
     
     return YES;
 }
