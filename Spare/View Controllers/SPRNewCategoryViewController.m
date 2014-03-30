@@ -88,6 +88,10 @@ static const NSInteger kSelectedColorViewTag = 2000;
                     category.colorNumber = ((SPRField *)innerSelf.fields[kRowColor]).value;
                     
                     [document saveToURL:document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success) {
+                        if ([innerSelf.delegate respondsToSelector:@selector(newCategoryViewControllerDidAddCategory)]) {
+                            [innerSelf.delegate newCategoryViewControllerDidAddCategory];
+                        }
+                        
                         [innerSelf dismissViewControllerAnimated:YES completion:nil];
                     }];
                 }

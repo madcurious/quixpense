@@ -22,7 +22,10 @@
 // Categories
 #import "UIView+SubviewFinder.h"
 
-@interface SPRHomeViewController () <UITableViewDataSource, UITableViewDelegate>
+// View controllers
+#import "SPRNewCategoryViewController.h"
+
+@interface SPRHomeViewController () <UITableViewDataSource, UITableViewDelegate, SPRNewCategoryViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray *categories;
@@ -56,33 +59,47 @@ static NSString * const kCellIdentifier = @"Cell";
     [super viewWillAppear:animated];
     
     if (self.categories == nil) {
+        [self reloadTableView];
+    }
+}
+
+- (void)reloadTableView
+{
+    // If the categories array is nil or has zero count,
+    // the table view is not visible in the screen and we can therefore put
+    // a status view on top of it.
+    if (self.categories == nil || self.categories.count == 0) {
         [self.view addSubview:self.statusView];
         self.statusView.status = SPRStatusViewStatusLoading;
-        
-        SPRManagedDocument *managedDocument = [[SPRManagedDocument alloc] init];
-        __weak SPRHomeViewController *weakSelf = self;
-        
-        [managedDocument prepareWithCompletionHandler:^(BOOL success) {
-            SPRHomeViewController *innerSelf = weakSelf;
-            
-            NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"SPRCategory"];
-            NSManagedObjectContext *context = managedDocument.managedObjectContext;
-            NSError *error;
-            
-            innerSelf.categories = [context executeFetchRequest:fetchRequest error:&error];
-            
-            if (error) {
-                NSLog(@"Error fetching all categories: %@", error);
-            } else {
-                if (innerSelf.categories.count > 0) {
-                    [innerSelf.statusView fadeOutAndRemoveFromSuperview];
-                    [innerSelf.tableView reloadData];
-                } else {
-                    innerSelf.statusView.status = SPRStatusViewStatusNoResults;
-                }
-            }
-        }];
     }
+    
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    
+    SPRManagedDocument *managedDocument = [[SPRManagedDocument alloc] init];
+    __weak SPRHomeViewController *weakSelf = self;
+    
+    [managedDocument prepareWithCompletionHandler:^(BOOL success) {
+        SPRHomeViewController *innerSelf = weakSelf;
+        
+        NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"SPRCategory"];
+        NSManagedObjectContext *context = managedDocument.managedObjectContext;
+        NSError *error;
+        
+        innerSelf.categories = [context executeFetchRequest:fetchRequest error:&error];
+        
+        if (error) {
+            NSLog(@"Error fetching all categories: %@", error);
+        } else {
+            if (innerSelf.categories.count > 0) {
+                [innerSelf.statusView fadeOutAndRemoveFromSuperview];
+                [innerSelf.tableView reloadData];
+            } else {
+                innerSelf.statusView.status = SPRStatusViewStatusNoResults;
+            }
+        }
+        
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    }];
 }
 
 - (void)setupDefaultNavigationBar
@@ -105,6 +122,16 @@ static NSString * const kCellIdentifier = @"Cell";
     UIBarButtonItem *doneEditingButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneEditingButtonTapped)];
     
     self.navigationItem.rightBarButtonItems = @[doneEditingButton];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"presentNewCategoryModal"]) {
+        UINavigationController *modalNavigationController = segue.destinationViewController;
+        
+        SPRNewCategoryViewController *newCategoryScreen = modalNavigationController.viewControllers[0];
+        newCategoryScreen.delegate = self;
+    }
 }
 
 #pragma mark - Target actions
@@ -226,6 +253,13 @@ static NSString * const kCellIdentifier = @"Cell";
 		if([cellGrip isKindOfClass:[UIImageView class]])
 			[cellGrip setImage:nil];
 	}
+}
+
+#pragma mark - New category view controller delegate
+
+- (void)newCategoryViewControllerDidAddCategory
+{
+    [self reloadTableView];
 }
 
 #pragma mark - Getters
