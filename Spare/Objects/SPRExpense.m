@@ -1,19 +1,20 @@
 //
-//  SPRCategory.m
+//  SPRExpense.m
 //  Spare
 //
 //  Created by Matt Quiros on 3/30/14.
 //  Copyright (c) 2014 Matt Quiros. All rights reserved.
 //
 
-#import "SPRCategory.h"
 #import "SPRExpense.h"
+#import "SPRCategory.h"
 
 
-@implementation SPRCategory
+@implementation SPRExpense
 
-@dynamic colorNumber;
 @dynamic name;
-@dynamic expenses;
+@dynamic amount;
+@dynamic dateSpent;
+@dynamic category;
 
 @end
