@@ -14,6 +14,7 @@
 
 // Custom views
 #import "SPRTextField.h"
+#import "SPRCategoryPickerView.h"
 
 typedef NS_ENUM(NSInteger, kRow)
 {
@@ -30,7 +31,7 @@ static NSString * const kDateSpentCell = @"kDateSpentCell";
 
 static const NSInteger kTextFieldTag = 1000;
 
-@interface SPRNewExpenseViewController () <UITextFieldDelegate>
+@interface SPRNewExpenseViewController () <UITextFieldDelegate, SPRCategoryPickerViewDelegate>
 
 @property (strong, nonatomic) NSArray *identifiers;
 @property (strong, nonatomic) NSArray *fields;
@@ -113,7 +114,15 @@ static const NSInteger kTextFieldTag = 1000;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    switch (indexPath.row) {
+        case kRowCategory: {
+            SPRCategoryPickerView *categoryPicker = [[SPRCategoryPickerView alloc] initWithFrame:CGRectMake(0, 0, self.navigationController.view.frame.size.width, self.navigationController.view.frame.size.height)];
+            categoryPicker.delegate = self;
+            [self.navigationController.view addSubview:categoryPicker];
+            [categoryPicker show];
+            break;
+        }
+    }
 }
 
 #pragma mark - Text field delegate
@@ -143,6 +152,18 @@ static const NSInteger kTextFieldTag = 1000;
     field.value = nil;
     
     return YES;
+}
+
+#pragma mark - Category picker view delegate
+
+- (void)categoryPickerView:(SPRCategoryPickerView *)categoryPickerView didSelectCategory:(SPRCategory *)category
+{
+    
+}
+
+- (void)willDismissCategoryPickerView:(SPRCategoryPickerView *)categoryPickerView
+{
+    [self.tableView deselectRowAtIndexPath:[NSIndexPath indexPathForRow:kRowCategory inSection:0] animated:YES];
 }
 
 @end

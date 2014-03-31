@@ -16,6 +16,31 @@
 
 @implementation SPRCategory (Extension)
 
++ (void)enumerateAllCategoriesWithCompletion:(void (^)(NSArray *, NSError *))completionBlock
+{
+    static NSArray *allCategories = nil;
+    
+    if (allCategories == nil) {
+        SPRManagedDocument *managedDocument = [[SPRManagedDocument alloc] init];
+        [managedDocument prepareWithCompletionHandler:^(BOOL success) {
+            NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"SPRCategory"];
+            NSManagedObjectContext *context = managedDocument.managedObjectContext;
+            NSError *error;
+            
+            allCategories = [context executeFetchRequest:fetchRequest error:&error];
+            
+            if (error) {
+                NSLog(@"Error fetching all categories: %@", error);
+                completionBlock(nil, error);
+            } else {
+                completionBlock(allCategories, nil);
+            }
+        }];
+    } else {
+        completionBlock(allCategories, nil);
+    }
+}
+
 + (NSArray *)colors
 {
     return @[// Canary

@@ -10,6 +10,7 @@
 
 @interface SPRCategory (Extension)
 
++ (void)enumerateAllCategoriesWithCompletion:(void (^)(NSArray *categories, NSError *error))completionBlock;
 + (NSArray *)colors;
 
 @end
