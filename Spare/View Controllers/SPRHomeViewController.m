@@ -31,7 +31,8 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray *categories;
 @property (strong, nonatomic) SPRStatusView *statusView;
-@property (weak, nonatomic) SPRCategory *selectedCategory;
+// @property (weak, nonatomic) SPRCategory *selectedCategory;
+@property (nonatomic) NSInteger selectedCategoryIndex;
 
 @end
 
@@ -75,24 +76,46 @@ static NSString * const kCellIdentifier = @"Cell";
         self.statusView.status = SPRStatusViewStatusLoading;
     }
     
+//    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+//    
+//    SPRManagedDocument *managedDocument = [[SPRManagedDocument alloc] init];
+//    __weak SPRHomeViewController *weakSelf = self;
+//    
+//    [managedDocument prepareWithCompletionHandler:^(BOOL success) {
+//        SPRHomeViewController *innerSelf = weakSelf;
+//        
+//        NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"SPRCategory"];
+//        NSManagedObjectContext *context = managedDocument.managedObjectContext;
+//        NSError *error;
+//        
+//        innerSelf.categories = [context executeFetchRequest:fetchRequest error:&error];
+//        
+//        if (error) {
+//            NSLog(@"Error fetching all categories: %@", error);
+//        } else {
+//            if (innerSelf.categories.count > 0) {
+//                [innerSelf.statusView fadeOutAndRemoveFromSuperview];
+//                [innerSelf.tableView reloadData];
+//            } else {
+//                innerSelf.statusView.status = SPRStatusViewStatusNoResults;
+//            }
+//        }
+//        
+//        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+//    }];
+    
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     
-    SPRManagedDocument *managedDocument = [[SPRManagedDocument alloc] init];
     __weak SPRHomeViewController *weakSelf = self;
-    
-    [managedDocument prepareWithCompletionHandler:^(BOOL success) {
+    [SPRCategory enumerateAllCategoriesWithCompletion:^(NSArray *categories, NSError *error) {
         SPRHomeViewController *innerSelf = weakSelf;
-        
-        NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"SPRCategory"];
-        NSManagedObjectContext *context = managedDocument.managedObjectContext;
-        NSError *error;
-        
-        innerSelf.categories = [context executeFetchRequest:fetchRequest error:&error];
         
         if (error) {
             NSLog(@"Error fetching all categories: %@", error);
         } else {
-            if (innerSelf.categories.count > 0) {
+            innerSelf.categories = categories;
+            
+            if (categories.count > 0) {
                 [innerSelf.statusView fadeOutAndRemoveFromSuperview];
                 [innerSelf.tableView reloadData];
             } else {
@@ -138,7 +161,8 @@ static NSString * const kCellIdentifier = @"Cell";
     
     if ([segue.identifier isEqualToString:@"pushCategory"]) {
         SPRCategoryViewController *categoryScreen = segue.destinationViewController;
-        categoryScreen.category = self.selectedCategory;
+//        categoryScreen.category = self.selectedCategory;
+        categoryScreen.categoryIndex = self.selectedCategoryIndex;
         return;
     }
 }
@@ -223,7 +247,8 @@ static NSString * const kCellIdentifier = @"Cell";
     } else {
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         
-        self.selectedCategory = self.categories[indexPath.row];
+//        self.selectedCategory = self.categories[indexPath.row];
+        self.selectedCategoryIndex = indexPath.row;
         
         [self performSegueWithIdentifier:@"pushCategory" sender:self];
     }

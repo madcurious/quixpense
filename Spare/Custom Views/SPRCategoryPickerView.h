@@ -21,6 +21,8 @@
 @interface SPRCategoryPickerView : UIView
 
 @property (weak, nonatomic) id<SPRCategoryPickerViewDelegate> delegate;
+//@property (strong, nonatomic) SPRCategory *preselectedCategory;
+@property (nonatomic) NSInteger preselectedRow;
 
 - (void)show;
 

@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@class SPRCategory;
+//@class SPRCategory;
 
 @interface SPRCategoryViewController : UIViewController
 
-@property (strong, nonatomic) SPRCategory *category;
+//@property (strong, nonatomic) SPRCategory *category;
+@property (nonatomic) NSInteger categoryIndex;
 
 @end

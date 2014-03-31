@@ -14,12 +14,17 @@
 // Objects
 #import "SPRManagedDocument.h"
 
+static NSArray *allCategories = nil;
+
 @implementation SPRCategory (Extension)
+
++ (NSArray *)allCategories
+{
+    return allCategories;
+}
 
 + (void)enumerateAllCategoriesWithCompletion:(void (^)(NSArray *, NSError *))completionBlock
 {
-    static NSArray *allCategories = nil;
-    
     if (allCategories == nil) {
         SPRManagedDocument *managedDocument = [[SPRManagedDocument alloc] init];
         [managedDocument prepareWithCompletionHandler:^(BOOL success) {

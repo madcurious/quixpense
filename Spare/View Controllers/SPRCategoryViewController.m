@@ -17,9 +17,13 @@
 // Utilities
 #import "SPRIconFont.h"
 
+// View controllers
+#import "SPRNewExpenseViewController.h"
+
 @interface SPRCategoryViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) SPRCategory *category;
 
 @end
 
@@ -30,6 +34,8 @@
     [super viewDidLoad];
     
     [self setupBarButtonItems];
+    
+    self.category = [SPRCategory allCategories][self.categoryIndex];
     
     SPRCategoryHeaderView *headerView = [[SPRCategoryHeaderView alloc] initWithCategory:self.category];
     self.tableView.tableHeaderView = headerView;
@@ -44,6 +50,16 @@
     UIBarButtonItem *newExpenseBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:newExpenseButton];
     
     self.navigationItem.rightBarButtonItems = @[newExpenseBarButtonItem];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"presentNewExpense"]) {
+        UINavigationController *navigationController = segue.destinationViewController;
+        SPRNewExpenseViewController *newExpenseScreen = (SPRNewExpenseViewController *)navigationController.topViewController;
+//        newExpenseScreen.category = self.category;
+        newExpenseScreen.categoryIndex = self.categoryIndex;
+    }
 }
 
 #pragma mark - Target actions

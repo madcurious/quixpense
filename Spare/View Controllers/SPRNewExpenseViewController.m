@@ -35,6 +35,7 @@ static const NSInteger kTextFieldTag = 1000;
 
 @property (strong, nonatomic) NSArray *identifiers;
 @property (strong, nonatomic) NSArray *fields;
+@property (strong, nonatomic) SPRCategory *category;
 
 @end
 
@@ -45,6 +46,8 @@ static const NSInteger kTextFieldTag = 1000;
     [super viewDidLoad];
     
     self.identifiers = @[kDescriptionCell, kAmountCell, kCategoryCell, kDateSpentCell];
+    
+    self.category = [SPRCategory allCategories][self.categoryIndex];
     
     self.fields = @[[[SPRField alloc] initWithName:@"Description"],
                     [[SPRField alloc] initWithName:@"Amount"],
@@ -118,6 +121,8 @@ static const NSInteger kTextFieldTag = 1000;
         case kRowCategory: {
             SPRCategoryPickerView *categoryPicker = [[SPRCategoryPickerView alloc] initWithFrame:CGRectMake(0, 0, self.navigationController.view.frame.size.width, self.navigationController.view.frame.size.height)];
             categoryPicker.delegate = self;
+//            categoryPicker.preselectedCategory = self.category;
+            categoryPicker.preselectedRow = self.categoryIndex;
             [self.navigationController.view addSubview:categoryPicker];
             [categoryPicker show];
             break;

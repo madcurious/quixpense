@@ -29,6 +29,8 @@ static NSArray *allCategories;
 - (id)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
+        _preselectedRow = -1;
+        
         _translucentBackground = [[UIView alloc] init];
         _translucentBackground.backgroundColor = [UIColor blackColor];
         _translucentBackground.alpha = 0.3;
@@ -87,6 +89,15 @@ static NSArray *allCategories;
                     allCategories = categories;
                     [innerSelf.pickerView reloadAllComponents];
                     
+                    // If there is a pre-selected category, select it.
+                    // Otherwise, pre-select the category in the middle.
+                    if (innerSelf.preselectedRow == -1) {
+                        NSInteger row = allCategories.count / 2;
+                        [innerSelf.pickerView selectRow:row inComponent:0 animated:NO];
+                    } else {
+                        [innerSelf.pickerView selectRow:innerSelf.preselectedRow inComponent:0 animated:NO];
+                    }
+                    
                     [UIView animateWithDuration:kAnimationDuration animations:^{
                         innerSelf.loadingAnimation.alpha = 0;
                         innerSelf.pickerView.alpha = 1;
@@ -99,6 +110,15 @@ static NSArray *allCategories;
     } else {
         [self.pickerView reloadAllComponents];
         self.pickerView.alpha = 1;
+        
+        // If there is a pre-selected category, select it.
+        // Otherwise, pre-select the category in the middle.
+        if (self.preselectedRow == -1) {
+            NSInteger row = allCategories.count / 2;
+            [self.pickerView selectRow:row inComponent:0 animated:NO];
+        } else {
+            [self.pickerView selectRow:self.preselectedRow inComponent:0 animated:NO];
+        }
         
         [UIView animateWithDuration:kAnimationDuration animations:^{
             self.alpha = 1;
