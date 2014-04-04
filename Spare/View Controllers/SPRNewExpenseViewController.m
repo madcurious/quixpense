@@ -163,7 +163,16 @@ static const NSInteger kTextFieldTag = 1000;
 
 - (void)categoryPickerView:(SPRCategoryPickerView *)categoryPickerView didSelectCategory:(SPRCategory *)category
 {
+    SPRField *categoryField = self.fields[kRowCategory];
+    categoryField.value = category;
     
+    NSIndexPath *categoryIndexPath = [NSIndexPath indexPathForRow:kRowCategory inSection:0];
+    
+    // Reload the category cell to display the name of the selection.
+    [self.tableView reloadRowsAtIndexPaths:@[categoryIndexPath] withRowAnimation:UITableViewRowAnimationNone];
+    
+    // Keep the category cell selected.
+    [self.tableView selectRowAtIndexPath:categoryIndexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
 }
 
 - (void)willDismissCategoryPickerView:(SPRCategoryPickerView *)categoryPickerView
