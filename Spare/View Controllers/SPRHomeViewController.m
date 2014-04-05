@@ -76,34 +76,6 @@ static NSString * const kCellIdentifier = @"Cell";
         self.statusView.status = SPRStatusViewStatusLoading;
     }
     
-//    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-//    
-//    SPRManagedDocument *managedDocument = [[SPRManagedDocument alloc] init];
-//    __weak SPRHomeViewController *weakSelf = self;
-//    
-//    [managedDocument prepareWithCompletionHandler:^(BOOL success) {
-//        SPRHomeViewController *innerSelf = weakSelf;
-//        
-//        NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"SPRCategory"];
-//        NSManagedObjectContext *context = managedDocument.managedObjectContext;
-//        NSError *error;
-//        
-//        innerSelf.categories = [context executeFetchRequest:fetchRequest error:&error];
-//        
-//        if (error) {
-//            NSLog(@"Error fetching all categories: %@", error);
-//        } else {
-//            if (innerSelf.categories.count > 0) {
-//                [innerSelf.statusView fadeOutAndRemoveFromSuperview];
-//                [innerSelf.tableView reloadData];
-//            } else {
-//                innerSelf.statusView.status = SPRStatusViewStatusNoResults;
-//            }
-//        }
-//        
-//        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-//    }];
-    
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     
     __weak SPRHomeViewController *weakSelf = self;

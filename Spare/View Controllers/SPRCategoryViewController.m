@@ -13,6 +13,7 @@
 
 // Objects
 #import "SPRCategory+Extension.h"
+#import "SPRExpense+Extension.h"
 
 // Utilities
 #import "SPRIconFont.h"
@@ -20,10 +21,15 @@
 // View controllers
 #import "SPRNewExpenseViewController.h"
 
-@interface SPRCategoryViewController ()
+static NSString * const kExpenseCell = @"kExpenseCell";
+static const NSInteger kDescriptionLabelTag = 1000;
+static const NSInteger kAmountLabelTag = 2000;
+
+@interface SPRCategoryViewController () <UITableViewDataSource, UITableViewDelegate, SPRNewExpenseViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) SPRCategory *category;
+@property (strong, nonatomic) NSArray *expenses;
 
 @end
 
@@ -41,6 +47,15 @@
     self.tableView.tableHeaderView = headerView;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    if (self.expenses == nil) {
+        [self loadExpenses];
+    }
+}
+
 - (void)setupBarButtonItems
 {
     UIButton *newExpenseButton = [UIButton buttonWithType:UIButtonTypeSystem];
@@ -52,13 +67,19 @@
     self.navigationItem.rightBarButtonItems = @[newExpenseBarButtonItem];
 }
 
+- (void)loadExpenses
+{
+    self.expenses = self.category.expenses.allObjects;
+    [self.tableView reloadData];
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"presentNewExpense"]) {
         UINavigationController *navigationController = segue.destinationViewController;
         SPRNewExpenseViewController *newExpenseScreen = (SPRNewExpenseViewController *)navigationController.topViewController;
-//        newExpenseScreen.category = self.category;
         newExpenseScreen.categoryIndex = self.categoryIndex;
+        newExpenseScreen.delegate = self;
     }
 }
 
@@ -67,6 +88,41 @@
 - (void)newExpenseButtonTapped
 {
     [self performSegueWithIdentifier:@"presentNewExpense" sender:self];
+}
+
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.expenses.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kExpenseCell];
+    
+    SPRExpense *expense = self.expenses[indexPath.row];
+    
+    UILabel *descriptionLabel = (UILabel *)[cell viewWithTag:kDescriptionLabelTag];
+    descriptionLabel.text = expense.name;
+    
+    UILabel *amountLabel = (UILabel *)[cell viewWithTag:kAmountLabelTag];
+    amountLabel.text = expense.amountAsString;
+    
+    return cell;
+}
+
+#pragma mark - New expense screen delegate
+
+- (void)newExpenseViewControllerDidAddExpense
+{
+    self.expenses = nil;
+    [self loadExpenses];
 }
 
 @end

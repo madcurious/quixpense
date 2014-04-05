@@ -11,6 +11,8 @@
 // Objects
 #import "SPRField.h"
 #import "SPRCategory+Extension.h"
+#import "SPRManagedDocument.h"
+#import "SPRExpense.h"
 
 // Custom views
 #import "SPRTextField.h"
@@ -64,7 +66,33 @@ static const NSInteger kTextFieldTag = 1000;
 
 - (IBAction)doneButtonTapped:(id)sender
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+//    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    SPRManagedDocument *document = [[SPRManagedDocument alloc] init];
+    
+    __weak SPRNewExpenseViewController *weakSelf = self;
+    [document prepareWithCompletionHandler:^(BOOL success) {
+        if (!success) {
+            return;
+        }
+        
+        SPRNewExpenseViewController *innerSelf = weakSelf;
+        if (document.isReady) {
+            SPRExpense *expense = [NSEntityDescription insertNewObjectForEntityForName:@"SPRExpense" inManagedObjectContext:self.category.managedObjectContext];
+            expense.name = ((SPRField *)innerSelf.fields[kRowDescription]).value;
+            expense.amount = [NSDecimalNumber decimalNumberWithString:((SPRField *)innerSelf.fields[kRowAmount]).value];
+            expense.category = ((SPRField *)innerSelf.fields[kRowCategory]).value;
+            expense.dateSpent = ((SPRField *)innerSelf.fields[kRowDateSpent]).value;
+            
+            [document saveToURL:document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success) {
+                if ([innerSelf.delegate respondsToSelector:@selector(newExpenseViewControllerDidAddExpense)]) {
+                    [innerSelf.delegate newExpenseViewControllerDidAddExpense];
+                }
+                
+                [innerSelf dismissViewControllerAnimated:YES completion:nil];
+            }];
+        }
+    }];
 }
 
 #pragma mark - Table view data source
@@ -121,7 +149,6 @@ static const NSInteger kTextFieldTag = 1000;
         case kRowCategory: {
             SPRCategoryPickerView *categoryPicker = [[SPRCategoryPickerView alloc] initWithFrame:CGRectMake(0, 0, self.navigationController.view.frame.size.width, self.navigationController.view.frame.size.height)];
             categoryPicker.delegate = self;
-//            categoryPicker.preselectedCategory = self.category;
             categoryPicker.preselectedRow = self.categoryIndex;
             [self.navigationController.view addSubview:categoryPicker];
             [categoryPicker show];
