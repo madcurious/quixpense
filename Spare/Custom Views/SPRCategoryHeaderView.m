@@ -28,7 +28,7 @@ static const CGFloat kMaxContentWidth = 300;
     label.text = category.name;
     [label sizeToFitWidth:kMaxContentWidth];
     
-    if (self = [super initWithFrame:CGRectMake(0, 0, 320, label.frame.size.height)]) {
+    if (self = [super initWithFrame:CGRectMake(0, 0, 320, label.frame.size.height + kInnerMargin * 2)]) {
         _label = label;
         [self addSubview:_label];
         
