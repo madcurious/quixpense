@@ -31,7 +31,6 @@
 		261EB88C18DDB631009DDF78 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 261EB88A18DDB631009DDF78 /* InfoPlist.strings */; };
 		261EB88E18DDB631009DDF78 /* SpareTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 261EB88D18DDB631009DDF78 /* SpareTests.m */; };
 		261EB89818DDB64F009DDF78 /* iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 261EB89718DDB64F009DDF78 /* iPhone.storyboard */; };
-		261EB8A618DDC4AC009DDF78 /* SPRHomeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 261EB8A518DDC4AC009DDF78 /* SPRHomeTableViewCell.m */; };
 		262ABD0E18DEA1BF003C7C8B /* SPRIconFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 262ABD0D18DEA1BF003C7C8B /* SPRIconFont.m */; };
 		262ABD1018DEA433003C7C8B /* spare-icons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 262ABD0F18DEA2B1003C7C8B /* spare-icons.ttf */; };
 		265997A118DDD2A60088E141 /* NSNumber+SPR.m in Sources */ = {isa = PBXBuildFile; fileRef = 265997A018DDD2A60088E141 /* NSNumber+SPR.m */; };
@@ -41,14 +40,14 @@
 		2688627D18E31E2F00B8D167 /* SPRColorChooserSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2688627C18E31E2F00B8D167 /* SPRColorChooserSectionHeader.m */; };
 		2688628318E3370400B8D167 /* SPRManagedDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 2688628218E3370400B8D167 /* SPRManagedDocument.m */; };
 		2688628618E339F900B8D167 /* SPRField.m in Sources */ = {isa = PBXBuildFile; fileRef = 2688628518E339F900B8D167 /* SPRField.m */; };
-		26D08D2318F1031800AE018F /* LXReorderableCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 26D08D2218F1031800AE018F /* LXReorderableCollectionViewFlowLayout.m */; };
+		26D08D2618F105C600AE018F /* SPRHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26D08D2518F105C600AE018F /* SPRHomeViewController.m */; };
 		26E2484618E1B7F900391354 /* UIColor+HexColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E2484518E1B7F900391354 /* UIColor+HexColor.m */; };
 		26E2484918E1B90F00391354 /* UIView+SubviewFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E2484818E1B90F00391354 /* UIView+SubviewFinder.m */; };
-		26E2485018E1CA9E00391354 /* SPRHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E2484F18E1CA9E00391354 /* SPRHomeViewController.m */; };
 		26E2485318E1CAB700391354 /* SPRNewCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E2485218E1CAB700391354 /* SPRNewCategoryViewController.m */; };
 		26E2485C18E1DA2B00391354 /* NSString+SPR.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E2485B18E1DA2B00391354 /* NSString+SPR.m */; };
 		26E2485F18E1DCEF00391354 /* SPRCategory+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E2485E18E1DCEF00391354 /* SPRCategory+Extension.m */; };
 		26E2486218E1E3C400391354 /* SPRColorChooserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E2486118E1E3C400391354 /* SPRColorChooserViewController.m */; };
+		28822B437E5247E3BDE57F66 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F6196FFB0C5B41DEB0DB54BF /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +61,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1D78CD279F1A45BD8D86373D /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		2612C88F18E7BC3400DE2765 /* SPRStatusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRStatusView.h; sourceTree = "<group>"; };
 		2612C89018E7BC3400DE2765 /* SPRStatusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRStatusView.m; sourceTree = "<group>"; };
 		2612C89218E7E64C00DE2765 /* SPRCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRCategoryViewController.h; sourceTree = "<group>"; };
@@ -97,8 +97,6 @@
 		261EB88B18DDB631009DDF78 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		261EB88D18DDB631009DDF78 /* SpareTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpareTests.m; sourceTree = "<group>"; };
 		261EB89718DDB64F009DDF78 /* iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPhone.storyboard; sourceTree = "<group>"; };
-		261EB8A418DDC4AC009DDF78 /* SPRHomeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRHomeTableViewCell.h; sourceTree = "<group>"; };
-		261EB8A518DDC4AC009DDF78 /* SPRHomeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRHomeTableViewCell.m; sourceTree = "<group>"; };
 		262ABD0C18DEA1BF003C7C8B /* SPRIconFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRIconFont.h; sourceTree = "<group>"; };
 		262ABD0D18DEA1BF003C7C8B /* SPRIconFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRIconFont.m; sourceTree = "<group>"; };
 		262ABD0F18DEA2B1003C7C8B /* spare-icons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "spare-icons.ttf"; sourceTree = "<group>"; };
@@ -116,14 +114,12 @@
 		2688628218E3370400B8D167 /* SPRManagedDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRManagedDocument.m; sourceTree = "<group>"; };
 		2688628418E339F900B8D167 /* SPRField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRField.h; sourceTree = "<group>"; };
 		2688628518E339F900B8D167 /* SPRField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRField.m; sourceTree = "<group>"; };
-		26D08D2118F1031800AE018F /* LXReorderableCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXReorderableCollectionViewFlowLayout.h; sourceTree = "<group>"; };
-		26D08D2218F1031800AE018F /* LXReorderableCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXReorderableCollectionViewFlowLayout.m; sourceTree = "<group>"; };
+		26D08D2418F105C600AE018F /* SPRHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRHomeViewController.h; sourceTree = "<group>"; };
+		26D08D2518F105C600AE018F /* SPRHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRHomeViewController.m; sourceTree = "<group>"; };
 		26E2484418E1B7F900391354 /* UIColor+HexColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HexColor.h"; sourceTree = "<group>"; };
 		26E2484518E1B7F900391354 /* UIColor+HexColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HexColor.m"; sourceTree = "<group>"; };
 		26E2484718E1B90F00391354 /* UIView+SubviewFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SubviewFinder.h"; sourceTree = "<group>"; };
 		26E2484818E1B90F00391354 /* UIView+SubviewFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SubviewFinder.m"; sourceTree = "<group>"; };
-		26E2484E18E1CA9E00391354 /* SPRHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRHomeViewController.h; sourceTree = "<group>"; };
-		26E2484F18E1CA9E00391354 /* SPRHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRHomeViewController.m; sourceTree = "<group>"; };
 		26E2485118E1CAB700391354 /* SPRNewCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRNewCategoryViewController.h; sourceTree = "<group>"; };
 		26E2485218E1CAB700391354 /* SPRNewCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRNewCategoryViewController.m; sourceTree = "<group>"; };
 		26E2485A18E1DA2B00391354 /* NSString+SPR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SPR.h"; sourceTree = "<group>"; };
@@ -132,6 +128,7 @@
 		26E2485E18E1DCEF00391354 /* SPRCategory+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SPRCategory+Extension.m"; sourceTree = "<group>"; };
 		26E2486018E1E3C400391354 /* SPRColorChooserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRColorChooserViewController.h; sourceTree = "<group>"; };
 		26E2486118E1E3C400391354 /* SPRColorChooserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRColorChooserViewController.m; sourceTree = "<group>"; };
+		F6196FFB0C5B41DEB0DB54BF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +140,7 @@
 				261EB86918DDB631009DDF78 /* CoreData.framework in Frameworks */,
 				261EB86718DDB631009DDF78 /* UIKit.framework in Frameworks */,
 				261EB86318DDB630009DDF78 /* Foundation.framework in Frameworks */,
+				28822B437E5247E3BDE57F66 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,6 +165,7 @@
 				261EB88718DDB631009DDF78 /* SpareTests */,
 				261EB86118DDB630009DDF78 /* Frameworks */,
 				261EB86018DDB630009DDF78 /* Products */,
+				1D78CD279F1A45BD8D86373D /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -187,6 +186,7 @@
 				261EB86618DDB631009DDF78 /* UIKit.framework */,
 				261EB86818DDB631009DDF78 /* CoreData.framework */,
 				261EB88018DDB631009DDF78 /* XCTest.framework */,
+				F6196FFB0C5B41DEB0DB54BF /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -194,7 +194,6 @@
 		261EB86A18DDB631009DDF78 /* Spare */ = {
 			isa = PBXGroup;
 			children = (
-				26D08D1F18F1031800AE018F /* Library */,
 				26E2484D18E1CA9E00391354 /* View Controllers */,
 				262ABD0B18DEA1A3003C7C8B /* Utilities */,
 				267794FE18DDCB6F005C74BA /* Categories */,
@@ -243,8 +242,6 @@
 		261EB8A318DDC46B009DDF78 /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
-				261EB8A418DDC4AC009DDF78 /* SPRHomeTableViewCell.h */,
-				261EB8A518DDC4AC009DDF78 /* SPRHomeTableViewCell.m */,
 				2688627B18E31E2F00B8D167 /* SPRColorChooserSectionHeader.h */,
 				2688627C18E31E2F00B8D167 /* SPRColorChooserSectionHeader.m */,
 				2612C88F18E7BC3400DE2765 /* SPRStatusView.h */,
@@ -306,28 +303,9 @@
 			path = Categories;
 			sourceTree = "<group>";
 		};
-		26D08D1F18F1031800AE018F /* Library */ = {
-			isa = PBXGroup;
-			children = (
-				26D08D2018F1031800AE018F /* LXReorderableCollectionViewFlowLayout */,
-			);
-			path = Library;
-			sourceTree = "<group>";
-		};
-		26D08D2018F1031800AE018F /* LXReorderableCollectionViewFlowLayout */ = {
-			isa = PBXGroup;
-			children = (
-				26D08D2118F1031800AE018F /* LXReorderableCollectionViewFlowLayout.h */,
-				26D08D2218F1031800AE018F /* LXReorderableCollectionViewFlowLayout.m */,
-			);
-			path = LXReorderableCollectionViewFlowLayout;
-			sourceTree = "<group>";
-		};
 		26E2484D18E1CA9E00391354 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				26E2484E18E1CA9E00391354 /* SPRHomeViewController.h */,
-				26E2484F18E1CA9E00391354 /* SPRHomeViewController.m */,
 				26E2485118E1CAB700391354 /* SPRNewCategoryViewController.h */,
 				26E2485218E1CAB700391354 /* SPRNewCategoryViewController.m */,
 				26E2486018E1E3C400391354 /* SPRColorChooserViewController.h */,
@@ -336,6 +314,8 @@
 				2612C89318E7E64C00DE2765 /* SPRCategoryViewController.m */,
 				2612C8A718E815FF00DE2765 /* SPRNewExpenseViewController.h */,
 				2612C8A818E815FF00DE2765 /* SPRNewExpenseViewController.m */,
+				26D08D2418F105C600AE018F /* SPRHomeViewController.h */,
+				26D08D2518F105C600AE018F /* SPRHomeViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -347,9 +327,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 261EB89118DDB631009DDF78 /* Build configuration list for PBXNativeTarget "Spare" */;
 			buildPhases = (
+				99DF9AC0C8D8411EB8E3F8AF /* Check Pods Manifest.lock */,
 				261EB85B18DDB630009DDF78 /* Sources */,
 				261EB85C18DDB630009DDF78 /* Frameworks */,
 				261EB85D18DDB630009DDF78 /* Resources */,
+				D50A65DD683E419BAE237FE7 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -433,22 +415,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		99DF9AC0C8D8411EB8E3F8AF /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D50A65DD683E419BAE237FE7 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		261EB85B18DDB630009DDF78 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26D08D2618F105C600AE018F /* SPRHomeViewController.m in Sources */,
 				2612C8A918E815FF00DE2765 /* SPRNewExpenseViewController.m in Sources */,
 				26E2486218E1E3C400391354 /* SPRColorChooserViewController.m in Sources */,
 				2677950118DDCB93005C74BA /* UILabel+SPR.m in Sources */,
 				26E2484918E1B90F00391354 /* UIView+SubviewFinder.m in Sources */,
-				261EB8A618DDC4AC009DDF78 /* SPRHomeTableViewCell.m in Sources */,
 				2612C8A318E8147200DE2765 /* SPRExpense.m in Sources */,
 				2612C8A618E8147300DE2765 /* SPRCategory.m in Sources */,
 				2612C8AC18E831F600DE2765 /* SPRTextField.m in Sources */,
 				2667A32118E9D8D000A9EC01 /* SPRCategoryPickerView.m in Sources */,
 				26E2485318E1CAB700391354 /* SPRNewCategoryViewController.m in Sources */,
-				26D08D2318F1031800AE018F /* LXReorderableCollectionViewFlowLayout.m in Sources */,
 				2688628318E3370400B8D167 /* SPRManagedDocument.m in Sources */,
 				2612C89118E7BC3400DE2765 /* SPRStatusView.m in Sources */,
 				2688628618E339F900B8D167 /* SPRField.m in Sources */,
@@ -464,7 +478,6 @@
 				2612C89418E7E64C00DE2765 /* SPRCategoryViewController.m in Sources */,
 				26E2484618E1B7F900391354 /* UIColor+HexColor.m in Sources */,
 				261EB87118DDB631009DDF78 /* main.m in Sources */,
-				26E2485018E1CA9E00391354 /* SPRHomeViewController.m in Sources */,
 				266065BD18F055D50085F877 /* SPRExpense+Extension.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -579,6 +592,7 @@
 		};
 		261EB89218DDB631009DDF78 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1D78CD279F1A45BD8D86373D /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -592,6 +606,7 @@
 		};
 		261EB89318DDB631009DDF78 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1D78CD279F1A45BD8D86373D /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;

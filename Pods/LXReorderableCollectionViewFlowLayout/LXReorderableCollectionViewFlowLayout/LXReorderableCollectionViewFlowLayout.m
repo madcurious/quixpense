@@ -213,7 +213,6 @@ static NSString * const kLXCollectionViewKeyPath = @"collectionView";
     CGSize frameSize = self.collectionView.bounds.size;
     CGSize contentSize = self.collectionView.contentSize;
     CGPoint contentOffset = self.collectionView.contentOffset;
-    UIEdgeInsets contentInset = self.collectionView.contentInset;
     // Important to have an integer `distance` as the `contentOffset` property automatically gets rounded
     // and it would diverge from the view's center resulting in a "cell is slipping away under finger"-bug.
     CGFloat distance = rint(self.scrollingSpeed / LX_FRAMES_PER_SECOND);
@@ -222,16 +221,16 @@ static NSString * const kLXCollectionViewKeyPath = @"collectionView";
     switch(direction) {
         case LXScrollingDirectionUp: {
             distance = -distance;
-            CGFloat minY = 0.0f - contentInset.top;
+            CGFloat minY = 0.0f;
             
             if ((contentOffset.y + distance) <= minY) {
-                distance = -contentOffset.y - contentInset.top;
+                distance = -contentOffset.y;
             }
             
             translation = CGPointMake(0.0f, distance);
         } break;
         case LXScrollingDirectionDown: {
-            CGFloat maxY = MAX(contentSize.height, frameSize.height) - frameSize.height + contentInset.bottom;
+            CGFloat maxY = MAX(contentSize.height, frameSize.height) - frameSize.height;
             
             if ((contentOffset.y + distance) >= maxY) {
                 distance = maxY - contentOffset.y;
@@ -241,16 +240,16 @@ static NSString * const kLXCollectionViewKeyPath = @"collectionView";
         } break;
         case LXScrollingDirectionLeft: {
             distance = -distance;
-            CGFloat minX = 0.0f - contentInset.left;
+            CGFloat minX = 0.0f;
             
             if ((contentOffset.x + distance) <= minX) {
-                distance = -contentOffset.x - contentInset.left;
+                distance = -contentOffset.x;
             }
             
             translation = CGPointMake(distance, 0.0f);
         } break;
         case LXScrollingDirectionRight: {
-            CGFloat maxX = MAX(contentSize.width, frameSize.width) - frameSize.width + contentInset.right;
+            CGFloat maxX = MAX(contentSize.width, frameSize.width) - frameSize.width;
             
             if ((contentOffset.x + distance) >= maxX) {
                 distance = maxX - contentOffset.x;
