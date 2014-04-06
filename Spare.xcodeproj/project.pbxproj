@@ -41,6 +41,7 @@
 		2688627D18E31E2F00B8D167 /* SPRColorChooserSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2688627C18E31E2F00B8D167 /* SPRColorChooserSectionHeader.m */; };
 		2688628318E3370400B8D167 /* SPRManagedDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 2688628218E3370400B8D167 /* SPRManagedDocument.m */; };
 		2688628618E339F900B8D167 /* SPRField.m in Sources */ = {isa = PBXBuildFile; fileRef = 2688628518E339F900B8D167 /* SPRField.m */; };
+		26D08D2318F1031800AE018F /* LXReorderableCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 26D08D2218F1031800AE018F /* LXReorderableCollectionViewFlowLayout.m */; };
 		26E2484618E1B7F900391354 /* UIColor+HexColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E2484518E1B7F900391354 /* UIColor+HexColor.m */; };
 		26E2484918E1B90F00391354 /* UIView+SubviewFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E2484818E1B90F00391354 /* UIView+SubviewFinder.m */; };
 		26E2485018E1CA9E00391354 /* SPRHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E2484F18E1CA9E00391354 /* SPRHomeViewController.m */; };
@@ -115,6 +116,8 @@
 		2688628218E3370400B8D167 /* SPRManagedDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRManagedDocument.m; sourceTree = "<group>"; };
 		2688628418E339F900B8D167 /* SPRField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRField.h; sourceTree = "<group>"; };
 		2688628518E339F900B8D167 /* SPRField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRField.m; sourceTree = "<group>"; };
+		26D08D2118F1031800AE018F /* LXReorderableCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXReorderableCollectionViewFlowLayout.h; sourceTree = "<group>"; };
+		26D08D2218F1031800AE018F /* LXReorderableCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXReorderableCollectionViewFlowLayout.m; sourceTree = "<group>"; };
 		26E2484418E1B7F900391354 /* UIColor+HexColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HexColor.h"; sourceTree = "<group>"; };
 		26E2484518E1B7F900391354 /* UIColor+HexColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HexColor.m"; sourceTree = "<group>"; };
 		26E2484718E1B90F00391354 /* UIView+SubviewFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SubviewFinder.h"; sourceTree = "<group>"; };
@@ -191,6 +194,7 @@
 		261EB86A18DDB631009DDF78 /* Spare */ = {
 			isa = PBXGroup;
 			children = (
+				26D08D1F18F1031800AE018F /* Library */,
 				26E2484D18E1CA9E00391354 /* View Controllers */,
 				262ABD0B18DEA1A3003C7C8B /* Utilities */,
 				267794FE18DDCB6F005C74BA /* Categories */,
@@ -300,6 +304,23 @@
 				2612C8AE18E847DB00DE2765 /* NSDate+SPR.m */,
 			);
 			path = Categories;
+			sourceTree = "<group>";
+		};
+		26D08D1F18F1031800AE018F /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				26D08D2018F1031800AE018F /* LXReorderableCollectionViewFlowLayout */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		26D08D2018F1031800AE018F /* LXReorderableCollectionViewFlowLayout */ = {
+			isa = PBXGroup;
+			children = (
+				26D08D2118F1031800AE018F /* LXReorderableCollectionViewFlowLayout.h */,
+				26D08D2218F1031800AE018F /* LXReorderableCollectionViewFlowLayout.m */,
+			);
+			path = LXReorderableCollectionViewFlowLayout;
 			sourceTree = "<group>";
 		};
 		26E2484D18E1CA9E00391354 /* View Controllers */ = {
@@ -427,6 +448,7 @@
 				2612C8AC18E831F600DE2765 /* SPRTextField.m in Sources */,
 				2667A32118E9D8D000A9EC01 /* SPRCategoryPickerView.m in Sources */,
 				26E2485318E1CAB700391354 /* SPRNewCategoryViewController.m in Sources */,
+				26D08D2318F1031800AE018F /* LXReorderableCollectionViewFlowLayout.m in Sources */,
 				2688628318E3370400B8D167 /* SPRManagedDocument.m in Sources */,
 				2612C89118E7BC3400DE2765 /* SPRStatusView.m in Sources */,
 				2688628618E339F900B8D167 /* SPRField.m in Sources */,
