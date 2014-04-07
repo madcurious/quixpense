@@ -40,6 +40,7 @@
 		2688627D18E31E2F00B8D167 /* SPRColorChooserSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2688627C18E31E2F00B8D167 /* SPRColorChooserSectionHeader.m */; };
 		2688628318E3370400B8D167 /* SPRManagedDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 2688628218E3370400B8D167 /* SPRManagedDocument.m */; };
 		2688628618E339F900B8D167 /* SPRField.m in Sources */ = {isa = PBXBuildFile; fileRef = 2688628518E339F900B8D167 /* SPRField.m */; };
+		26B4B75618F277B5001B119D /* SPRCategoryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B4B75518F277B5001B119D /* SPRCategoryCollectionViewCell.m */; };
 		26D08D2618F105C600AE018F /* SPRHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26D08D2518F105C600AE018F /* SPRHomeViewController.m */; };
 		26E2484618E1B7F900391354 /* UIColor+HexColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E2484518E1B7F900391354 /* UIColor+HexColor.m */; };
 		26E2484918E1B90F00391354 /* UIView+SubviewFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E2484818E1B90F00391354 /* UIView+SubviewFinder.m */; };
@@ -114,6 +115,8 @@
 		2688628218E3370400B8D167 /* SPRManagedDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRManagedDocument.m; sourceTree = "<group>"; };
 		2688628418E339F900B8D167 /* SPRField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRField.h; sourceTree = "<group>"; };
 		2688628518E339F900B8D167 /* SPRField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRField.m; sourceTree = "<group>"; };
+		26B4B75418F277B5001B119D /* SPRCategoryCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRCategoryCollectionViewCell.h; sourceTree = "<group>"; };
+		26B4B75518F277B5001B119D /* SPRCategoryCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRCategoryCollectionViewCell.m; sourceTree = "<group>"; };
 		26D08D2418F105C600AE018F /* SPRHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRHomeViewController.h; sourceTree = "<group>"; };
 		26D08D2518F105C600AE018F /* SPRHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRHomeViewController.m; sourceTree = "<group>"; };
 		26E2484418E1B7F900391354 /* UIColor+HexColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HexColor.h"; sourceTree = "<group>"; };
@@ -252,6 +255,8 @@
 				2612C8AB18E831F600DE2765 /* SPRTextField.m */,
 				2667A31F18E9D8D000A9EC01 /* SPRCategoryPickerView.h */,
 				2667A32018E9D8D000A9EC01 /* SPRCategoryPickerView.m */,
+				26B4B75418F277B5001B119D /* SPRCategoryCollectionViewCell.h */,
+				26B4B75518F277B5001B119D /* SPRCategoryCollectionViewCell.m */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -479,6 +484,7 @@
 				26E2484618E1B7F900391354 /* UIColor+HexColor.m in Sources */,
 				261EB87118DDB631009DDF78 /* main.m in Sources */,
 				266065BD18F055D50085F877 /* SPRExpense+Extension.m in Sources */,
+				26B4B75618F277B5001B119D /* SPRCategoryCollectionViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

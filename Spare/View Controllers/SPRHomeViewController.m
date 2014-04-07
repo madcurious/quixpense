@@ -13,6 +13,7 @@
 
 // Custom views
 #import "SPRStatusView.h"
+#import "SPRCategoryCollectionViewCell.h"
 
 // View controllers
 #import "SPRNewCategoryViewController.h"
@@ -25,7 +26,6 @@
 #import "LXReorderableCollectionViewFlowLayout.h"
 
 static NSString * const kCellIdentifier = @"kCellIdentifier";
-static const NSInteger kCategoryLabelTag = 1000;
 
 @interface SPRHomeViewController () <LXReorderableCollectionViewDataSource, UICollectionViewDelegate, LXReorderableCollectionViewDelegateFlowLayout, SPRNewCategoryViewControllerDelegate>
 
@@ -52,6 +52,8 @@ static const NSInteger kCategoryLabelTag = 1000;
     UIBarButtonItem *newCategoryBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:newCategoryButton];
     
     self.navigationItem.rightBarButtonItems = @[newCategoryBarButtonItem];
+    
+    [self.collectionView registerClass:[SPRCategoryCollectionViewCell class] forCellWithReuseIdentifier:kCellIdentifier];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -129,18 +131,12 @@ static const NSInteger kCategoryLabelTag = 1000;
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
+    SPRCategoryCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
     
     // Get the category at the index path.
     SPRCategory *category = self.categories[indexPath.row];
     
-    // Set the category label text.
-    UILabel *categoryLabel = (UILabel *)[cell viewWithTag:kCategoryLabelTag];
-    categoryLabel.text = category.name;
-    
-    // Set the cell's background color.
-    UIColor *color = [SPRCategory colors][[category.colorNumber integerValue]];
-    cell.backgroundColor = color;
+    cell.category = category;
     
     return cell;
 }
@@ -155,6 +151,14 @@ static const NSInteger kCategoryLabelTag = 1000;
 - (BOOL)collectionView:(UICollectionView *)collectionView canMoveItemAtIndexPath:(NSIndexPath *)indexPath
 {
     return YES;
+}
+
+#pragma mark - Collection view delegate
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    self.selectedCategoryIndex = indexPath.row;
+    [self performSegueWithIdentifier:@"pushCategory" sender:self];
 }
 
 #pragma mark - New category view controller delegate

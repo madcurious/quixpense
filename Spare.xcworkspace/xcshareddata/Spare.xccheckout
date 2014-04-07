@@ -5,19 +5,19 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>381E18E0-87F6-408D-8C5C-C3C3053E2852</string>
+	<string>DECC0A6C-7FAB-428E-8CE8-0BED89642177</string>
 	<key>IDESourceControlProjectName</key>
 	<string>Spare</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>72E9CDDE-95E4-4242-B011-5AA74ABE9DE2</key>
+		<key>22E1AE43-6AEF-4DAA-9AB8-4D73C56F732B</key>
 		<string>https://github.com/mattquiros/spare-ios.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Spare.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>72E9CDDE-95E4-4242-B011-5AA74ABE9DE2</key>
+		<key>22E1AE43-6AEF-4DAA-9AB8-4D73C56F732B</key>
 		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
@@ -25,16 +25,16 @@
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>72E9CDDE-95E4-4242-B011-5AA74ABE9DE2</string>
+	<string>22E1AE43-6AEF-4DAA-9AB8-4D73C56F732B</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>72E9CDDE-95E4-4242-B011-5AA74ABE9DE2</string>
+			<string>22E1AE43-6AEF-4DAA-9AB8-4D73C56F732B</string>
 			<key>IDESourceControlWCCName</key>
-			<string>Spare</string>
+			<string>spare-ios</string>
 		</dict>
 	</array>
 </dict>
