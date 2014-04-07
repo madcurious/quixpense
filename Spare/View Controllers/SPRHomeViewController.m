@@ -35,6 +35,8 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
 @property (strong, nonatomic) NSArray *categories;
 @property (nonatomic) NSInteger selectedCategoryIndex;
 
+@property (nonatomic) BOOL hasBeenSetup;
+
 @end
 
 @implementation SPRHomeViewController
@@ -60,46 +62,20 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
 {
     [super viewWillAppear:animated];
     
-    if (self.categories == nil) {
-        [self reloadTableView];
+    if (self.hasBeenSetup) {
+        if (self.categories == nil) {
+            [self reloadTableView];
+        }
+    } else {
+        [self performSegueWithIdentifier:@"presentSetup" sender:self];
+        self.hasBeenSetup = YES;
     }
 }
 
 - (void)reloadTableView
-{
-    // If the categories array is nil or has zero count,
-    // the table view is not visible in the screen and we can therefore put
-    // a status view on top of it.
-//    if (self.categories == nil || self.categories.count == 0) {
-//        [self.view addSubview:self.statusView];
-//        self.statusView.status = SPRStatusViewStatusLoading;
-//    }
-    
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    
-//    __weak SPRHomeViewController *weakSelf = self;
-//    [SPRCategory enumerateAllCategoriesWithCompletion:^(NSArray *categories, NSError *error) {
-//        SPRHomeViewController *innerSelf = weakSelf;
-//        
-//        if (error) {
-//            NSLog(@"Error fetching all categories: %@", error);
-//        } else {
-//            innerSelf.categories = categories;
-//            
-//            if (categories.count > 0) {
-//                [innerSelf.statusView fadeOutAndRemoveFromSuperview];
-//                [innerSelf.collectionView reloadData];
-//            } else {
-//                innerSelf.statusView.status = SPRStatusViewStatusNoResults;
-//            }
-//        }
-//        
-//        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-//    }];
-    
+{    
     self.categories = [SPRCategory allCategories];
-    
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    [self.collectionView reloadData];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

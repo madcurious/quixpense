@@ -78,34 +78,53 @@ static NSArray *allCategories;
         [UIView animateWithDuration:kAnimationDuration animations:^{
             self.alpha = 1;
         } completion:^(BOOL finished) {
+            allCategories = [SPRCategory allCategories];
+            [self.pickerView reloadAllComponents];
             
-            __weak SPRCategoryPickerView *weakSelf = self;
-            [SPRCategory enumerateAllCategoriesWithCompletion:^(NSArray *categories, NSError *error) {
-                SPRCategoryPickerView *innerSelf = weakSelf;
-                
-                if (error) {
-                    // What to do?
-                } else {
-                    allCategories = categories;
-                    [innerSelf.pickerView reloadAllComponents];
-                    
-                    // If there is a pre-selected category, select it.
-                    // Otherwise, pre-select the category in the middle.
-                    if (innerSelf.preselectedRow == -1) {
-                        NSInteger row = allCategories.count / 2;
-                        [innerSelf.pickerView selectRow:row inComponent:0 animated:NO];
-                    } else {
-                        [innerSelf.pickerView selectRow:innerSelf.preselectedRow inComponent:0 animated:NO];
-                    }
-                    
-                    [UIView animateWithDuration:kAnimationDuration animations:^{
-                        innerSelf.loadingAnimation.alpha = 0;
-                        innerSelf.pickerView.alpha = 1;
-                    } completion:^(BOOL finished) {
-                        [innerSelf.loadingAnimation stopAnimating];
-                    }];
-                }
+            // If there is a pre-selected category, select it.
+            // Otherwise, pre-select the category in the middle.
+            if (self.preselectedRow == -1) {
+                NSInteger row = allCategories.count / 2;
+                [self.pickerView selectRow:row inComponent:0 animated:NO];
+            } else {
+                [self.pickerView selectRow:self.preselectedRow inComponent:0 animated:NO];
+            }
+            
+            [UIView animateWithDuration:kAnimationDuration animations:^{
+                self.loadingAnimation.alpha = 0;
+                self.pickerView.alpha = 1;
+            } completion:^(BOOL finished) {
+                [self.loadingAnimation stopAnimating];
             }];
+
+            
+//            __weak SPRCategoryPickerView *weakSelf = self;
+//            [SPRCategory enumerateAllCategoriesWithCompletion:^(NSArray *categories, NSError *error) {
+//                SPRCategoryPickerView *innerSelf = weakSelf;
+//                
+//                if (error) {
+//                    // What to do?
+//                } else {
+//                    allCategories = categories;
+//                    [innerSelf.pickerView reloadAllComponents];
+//                    
+//                    // If there is a pre-selected category, select it.
+//                    // Otherwise, pre-select the category in the middle.
+//                    if (innerSelf.preselectedRow == -1) {
+//                        NSInteger row = allCategories.count / 2;
+//                        [innerSelf.pickerView selectRow:row inComponent:0 animated:NO];
+//                    } else {
+//                        [innerSelf.pickerView selectRow:innerSelf.preselectedRow inComponent:0 animated:NO];
+//                    }
+//                    
+//                    [UIView animateWithDuration:kAnimationDuration animations:^{
+//                        innerSelf.loadingAnimation.alpha = 0;
+//                        innerSelf.pickerView.alpha = 1;
+//                    } completion:^(BOOL finished) {
+//                        [innerSelf.loadingAnimation stopAnimating];
+//                    }];
+//                }
+//            }];
         }];
     } else {
         [self.pickerView reloadAllComponents];

@@ -10,7 +10,6 @@
 
 @interface SPRManagedDocument : UIManagedDocument
 
-// To delete
 @property (nonatomic, getter = isReady) BOOL ready;
 
 + (instancetype)sharedDocument;

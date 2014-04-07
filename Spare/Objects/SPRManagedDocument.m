@@ -42,31 +42,37 @@
 
 - (void)prepareWithCompletionHandler:(void (^)(BOOL))completionHandler
 {
-    __block BOOL successful;
-    
     if (self.exists) {
         [self openWithCompletionHandler:^(BOOL success) {
-            successful = success;
-            
             if (success) {
-                if (self.documentState != UIDocumentStateNormal) {
-                    successful = NO;
+                if (self.documentState == UIDocumentStateNormal) {
+                    completionHandler(YES);
+                } else {
+                    completionHandler(NO);
                 }
+            } else {
+                completionHandler(NO);
             }
-            completionHandler(successful);
         }];
     } else {
         [self saveToURL:self.fileURL forSaveOperation:UIDocumentSaveForCreating completionHandler:^(BOOL success) {
-            successful = success;
-            
             if (success) {
-                if (self.documentState != UIDocumentStateNormal) {
-                    successful = NO;
+                if (self.documentState == UIDocumentStateNormal) {
+                    completionHandler(YES);
+                } else {
+                    completionHandler(NO);
                 }
+            } else {
+                completionHandler(NO);
             }
-            completionHandler(successful);
         }];
     }
+}
+
+- (BOOL)isReady
+{
+    _ready = self.documentState == UIDocumentStateNormal;
+    return _ready;
 }
 
 @end
