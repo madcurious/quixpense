@@ -10,55 +10,63 @@
 
 @interface SPRManagedDocument ()
 
-@property (strong, nonatomic) NSURL *documentURL;
+@property (nonatomic) BOOL exists;
 
 @end
 
 @implementation SPRManagedDocument
 
-- (id)init
++ (instancetype)sharedDocument
 {
-    // Build the document URL.
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSURL *documentsDirectory = [[fileManager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
-    NSString *documentName = @"SpareUIManagedDocument";
-    NSURL *documentURL = [documentsDirectory URLByAppendingPathComponent:documentName];
-    
-    if (self = [super initWithFileURL:documentURL]) {
-        _documentURL = documentURL;
+    static SPRManagedDocument *sharedDocument = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        // Build the document URL.
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        NSURL *documentsDirectory = [[fileManager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+        NSString *documentName = @"SpareUIManagedDocument";
+        NSURL *documentURL = [documentsDirectory URLByAppendingPathComponent:documentName];
+        
+        sharedDocument = [[SPRManagedDocument alloc] initWithFileURL:documentURL];
+    });
+    return sharedDocument;
+}
+
+- (id)initWithFileURL:(NSURL *)url
+{
+    if (self = [super initWithFileURL:url]) {
+        _exists = [[NSFileManager defaultManager] fileExistsAtPath:url.path];
     }
     return self;
 }
 
-- (BOOL)exists
-{
-    _exists = [[NSFileManager defaultManager] fileExistsAtPath:self.documentURL.path];
-    return _exists;
-}
-
 - (void)prepareWithCompletionHandler:(void (^)(BOOL))completionHandler
 {
+    __block BOOL successful;
+    
     if (self.exists) {
         [self openWithCompletionHandler:^(BOOL success) {
-            if (!success) {
-                NSLog(@"Can't open document at %@", self.documentURL);
+            successful = success;
+            
+            if (success) {
+                if (self.documentState != UIDocumentStateNormal) {
+                    successful = NO;
+                }
             }
-            completionHandler(success);
+            completionHandler(successful);
         }];
     } else {
-        [self saveToURL:self.documentURL forSaveOperation:UIDocumentSaveForCreating completionHandler:^(BOOL success) {
-            if (!success) {
-                NSLog(@"Can't create document at %@", self.documentURL);
+        [self saveToURL:self.fileURL forSaveOperation:UIDocumentSaveForCreating completionHandler:^(BOOL success) {
+            successful = success;
+            
+            if (success) {
+                if (self.documentState != UIDocumentStateNormal) {
+                    successful = NO;
+                }
             }
-            completionHandler(success);
+            completionHandler(successful);
         }];
     }
-}
-
-- (BOOL)isReady
-{
-    _ready = self.documentState == UIDocumentStateNormal;
-    return _ready;
 }
 
 @end

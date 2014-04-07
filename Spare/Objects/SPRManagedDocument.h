@@ -10,8 +10,10 @@
 
 @interface SPRManagedDocument : UIManagedDocument
 
-@property (nonatomic) BOOL exists;
+// To delete
 @property (nonatomic, getter = isReady) BOOL ready;
+
++ (instancetype)sharedDocument;
 
 - (void)prepareWithCompletionHandler:(void (^)(BOOL success))completionHandler;
 

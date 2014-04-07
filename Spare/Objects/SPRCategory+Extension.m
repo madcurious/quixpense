@@ -20,6 +20,20 @@ static NSArray *allCategories = nil;
 
 + (NSArray *)allCategories
 {
+    if (!allCategories) {
+        SPRManagedDocument *document = [SPRManagedDocument sharedDocument];
+        
+        NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"SPRCategory"];
+        NSManagedObjectContext *context = document.managedObjectContext;
+        NSError *error;
+        
+        allCategories = [context executeFetchRequest:fetchRequest error:&error];
+        
+        if (error) {
+            NSLog(@"Error fetching all categories: %@", error);
+        }
+    }
+    
     return allCategories;
 }
 

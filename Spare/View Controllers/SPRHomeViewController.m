@@ -70,32 +70,36 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
     // If the categories array is nil or has zero count,
     // the table view is not visible in the screen and we can therefore put
     // a status view on top of it.
-    if (self.categories == nil || self.categories.count == 0) {
-        [self.view addSubview:self.statusView];
-        self.statusView.status = SPRStatusViewStatusLoading;
-    }
+//    if (self.categories == nil || self.categories.count == 0) {
+//        [self.view addSubview:self.statusView];
+//        self.statusView.status = SPRStatusViewStatusLoading;
+//    }
     
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     
-    __weak SPRHomeViewController *weakSelf = self;
-    [SPRCategory enumerateAllCategoriesWithCompletion:^(NSArray *categories, NSError *error) {
-        SPRHomeViewController *innerSelf = weakSelf;
-        
-        if (error) {
-            NSLog(@"Error fetching all categories: %@", error);
-        } else {
-            innerSelf.categories = categories;
-            
-            if (categories.count > 0) {
-                [innerSelf.statusView fadeOutAndRemoveFromSuperview];
-                [innerSelf.collectionView reloadData];
-            } else {
-                innerSelf.statusView.status = SPRStatusViewStatusNoResults;
-            }
-        }
-        
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-    }];
+//    __weak SPRHomeViewController *weakSelf = self;
+//    [SPRCategory enumerateAllCategoriesWithCompletion:^(NSArray *categories, NSError *error) {
+//        SPRHomeViewController *innerSelf = weakSelf;
+//        
+//        if (error) {
+//            NSLog(@"Error fetching all categories: %@", error);
+//        } else {
+//            innerSelf.categories = categories;
+//            
+//            if (categories.count > 0) {
+//                [innerSelf.statusView fadeOutAndRemoveFromSuperview];
+//                [innerSelf.collectionView reloadData];
+//            } else {
+//                innerSelf.statusView.status = SPRStatusViewStatusNoResults;
+//            }
+//        }
+//        
+//        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+//    }];
+    
+    self.categories = [SPRCategory allCategories];
+    
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
