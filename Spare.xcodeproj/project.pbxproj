@@ -11,7 +11,6 @@
 		2612C89418E7E64C00DE2765 /* SPRCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2612C89318E7E64C00DE2765 /* SPRCategoryViewController.m */; };
 		2612C89A18E8040600DE2765 /* SPRCategoryHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2612C89918E8040600DE2765 /* SPRCategoryHeaderView.m */; };
 		2612C8A318E8147200DE2765 /* SPRExpense.m in Sources */ = {isa = PBXBuildFile; fileRef = 2612C8A218E8147200DE2765 /* SPRExpense.m */; };
-		2612C8A618E8147300DE2765 /* SPRCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2612C8A518E8147300DE2765 /* SPRCategory.m */; };
 		2612C8A918E815FF00DE2765 /* SPRNewExpenseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2612C8A818E815FF00DE2765 /* SPRNewExpenseViewController.m */; };
 		2612C8AC18E831F600DE2765 /* SPRTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 2612C8AB18E831F600DE2765 /* SPRTextField.m */; };
 		2612C8AF18E847DB00DE2765 /* NSDate+SPR.m in Sources */ = {isa = PBXBuildFile; fileRef = 2612C8AE18E847DB00DE2765 /* NSDate+SPR.m */; };
@@ -31,6 +30,7 @@
 		261EB88C18DDB631009DDF78 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 261EB88A18DDB631009DDF78 /* InfoPlist.strings */; };
 		261EB88E18DDB631009DDF78 /* SpareTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 261EB88D18DDB631009DDF78 /* SpareTests.m */; };
 		261EB89818DDB64F009DDF78 /* iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 261EB89718DDB64F009DDF78 /* iPhone.storyboard */; };
+		2628563A18F3B1E800C1930A /* SPRCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2628563918F3B1E800C1930A /* SPRCategory.m */; };
 		262ABD0E18DEA1BF003C7C8B /* SPRIconFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 262ABD0D18DEA1BF003C7C8B /* SPRIconFont.m */; };
 		262ABD1018DEA433003C7C8B /* spare-icons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 262ABD0F18DEA2B1003C7C8B /* spare-icons.ttf */; };
 		265997A118DDD2A60088E141 /* NSNumber+SPR.m in Sources */ = {isa = PBXBuildFile; fileRef = 265997A018DDD2A60088E141 /* NSNumber+SPR.m */; };
@@ -99,6 +99,8 @@
 		261EB88B18DDB631009DDF78 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		261EB88D18DDB631009DDF78 /* SpareTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpareTests.m; sourceTree = "<group>"; };
 		261EB89718DDB64F009DDF78 /* iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPhone.storyboard; sourceTree = "<group>"; };
+		2628563818F3B1E800C1930A /* SPRCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPRCategory.h; path = Objects/SPRCategory.h; sourceTree = "<group>"; };
+		2628563918F3B1E800C1930A /* SPRCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPRCategory.m; path = Objects/SPRCategory.m; sourceTree = "<group>"; };
 		262ABD0C18DEA1BF003C7C8B /* SPRIconFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRIconFont.h; sourceTree = "<group>"; };
 		262ABD0D18DEA1BF003C7C8B /* SPRIconFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRIconFont.m; sourceTree = "<group>"; };
 		262ABD0F18DEA2B1003C7C8B /* spare-icons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "spare-icons.ttf"; sourceTree = "<group>"; };
@@ -209,6 +211,8 @@
 				261EB87418DDB631009DDF78 /* SPRAppDelegate.m */,
 				261EB87918DDB631009DDF78 /* Images.xcassets */,
 				261EB87618DDB631009DDF78 /* Spare.xcdatamodeld */,
+				2628563818F3B1E800C1930A /* SPRCategory.h */,
+				2628563918F3B1E800C1930A /* SPRCategory.m */,
 				261EB86B18DDB631009DDF78 /* Supporting Files */,
 				261EB89718DDB64F009DDF78 /* iPhone.storyboard */,
 			);
@@ -470,7 +474,7 @@
 				2677950118DDCB93005C74BA /* UILabel+SPR.m in Sources */,
 				26E2484918E1B90F00391354 /* UIView+SubviewFinder.m in Sources */,
 				2612C8A318E8147200DE2765 /* SPRExpense.m in Sources */,
-				2612C8A618E8147300DE2765 /* SPRCategory.m in Sources */,
+				2628563A18F3B1E800C1930A /* SPRCategory.m in Sources */,
 				2612C8AC18E831F600DE2765 /* SPRTextField.m in Sources */,
 				2667A32118E9D8D000A9EC01 /* SPRCategoryPickerView.m in Sources */,
 				26E2485318E1CAB700391354 /* SPRNewCategoryViewController.m in Sources */,

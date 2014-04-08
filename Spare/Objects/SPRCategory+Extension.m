@@ -21,6 +21,10 @@
     SPRManagedDocument *document = [SPRManagedDocument sharedDocument];
     
     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"SPRCategory"];
+    
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"displayOrder" ascending:YES];
+    [fetchRequest setSortDescriptors:@[sortDescriptor]];
+    
     NSManagedObjectContext *context = document.managedObjectContext;
     NSError *error;
     

@@ -21,6 +21,7 @@
 
 // Objects
 #import "SPRCategory+Extension.h"
+#import "SPRManagedDocument.h"
 
 // Pods
 #import "LXReorderableCollectionViewFlowLayout.h"
@@ -32,7 +33,7 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (strong, nonatomic) SPRStatusView *statusView;
 
-@property (strong, nonatomic) NSArray *categories;
+@property (strong, nonatomic) NSMutableArray *categories;
 @property (nonatomic) NSInteger selectedCategoryIndex;
 
 @property (nonatomic) BOOL hasBeenSetup;
@@ -64,7 +65,7 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
     
     if (self.hasBeenSetup) {
         if (self.categories == nil) {
-            [self reloadTableView];
+            [self reloadCategories];
         }
     } else {
         [self performSegueWithIdentifier:@"presentSetup" sender:self];
@@ -72,9 +73,9 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
     }
 }
 
-- (void)reloadTableView
+- (void)reloadCategories
 {    
-    self.categories = [SPRCategory allCategories];
+    self.categories = [[SPRCategory allCategories] mutableCopy];
     [self.collectionView reloadData];
 }
 
@@ -123,6 +124,21 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
 
 #pragma mark - LXReorderableCollectionView data source
 
+- (void)collectionView:(UICollectionView *)collectionView itemAtIndexPath:(NSIndexPath *)fromIndexPath willMoveToIndexPath:(NSIndexPath *)toIndexPath
+{
+    SPRCategory *category = self.categories[fromIndexPath.row];
+    [self.categories removeObject:category];
+    [self.categories insertObject:category atIndex:toIndexPath.row];
+    
+    for (int i = 0; i < self.categories.count; i++) {
+        category = self.categories[i];
+        category.displayOrder = @(i);
+    }
+    
+    SPRManagedDocument *document = [SPRManagedDocument sharedDocument];
+    [document saveToURL:document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:nil];
+}
+
 - (BOOL)collectionView:(UICollectionView *)collectionView itemAtIndexPath:(NSIndexPath *)fromIndexPath canMoveToIndexPath:(NSIndexPath *)toIndexPath
 {
     return YES;
@@ -145,7 +161,7 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
 
 - (void)newCategoryViewControllerDidAddCategory
 {
-    [self reloadTableView];
+    [self reloadCategories];
 }
 
 #pragma mark - Getters

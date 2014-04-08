@@ -82,6 +82,9 @@ static const NSInteger kSelectedColorViewTag = 2000;
         category.name = (NSString *)((SPRField *)self.fields[kRowName]).value;
         category.colorNumber = ((SPRField *)self.fields[kRowColor]).value;
         
+        // Set the display order to be at the end of the array.
+        category.displayOrder = @([SPRCategory allCategories].count);
+        
         [document saveToURL:document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success) {
             if ([self.delegate respondsToSelector:@selector(newCategoryViewControllerDidAddCategory)]) {
                 [self.delegate newCategoryViewControllerDidAddCategory];
