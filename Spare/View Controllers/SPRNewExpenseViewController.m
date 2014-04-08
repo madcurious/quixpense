@@ -55,6 +55,10 @@ static const NSInteger kTextFieldTag = 1000;
                     [[SPRField alloc] initWithName:@"Amount"],
                     [[SPRField alloc] initWithName:@"Category" value:self.category],
                     [[SPRField alloc] initWithName:@"Date spent" value:[NSDate date]]];
+    
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
+    tapRecognizer.cancelsTouchesInView = NO;
+    [self.tableView addGestureRecognizer:tapRecognizer];
 }
 
 #pragma mark - Target actions
@@ -66,33 +70,26 @@ static const NSInteger kTextFieldTag = 1000;
 
 - (IBAction)doneButtonTapped:(id)sender
 {
-//    [self dismissViewControllerAnimated:YES completion:nil];
+    SPRManagedDocument *document = [SPRManagedDocument sharedDocument];
     
-    SPRManagedDocument *document = [[SPRManagedDocument alloc] init];
+    SPRExpense *expense = [NSEntityDescription insertNewObjectForEntityForName:@"SPRExpense" inManagedObjectContext:self.category.managedObjectContext];
+    expense.name = ((SPRField *)self.fields[kRowDescription]).value;
+    expense.amount = [NSDecimalNumber decimalNumberWithString:((SPRField *)self.fields[kRowAmount]).value];
+    expense.category = ((SPRField *)self.fields[kRowCategory]).value;
+    expense.dateSpent = ((SPRField *)self.fields[kRowDateSpent]).value;
     
-    __weak SPRNewExpenseViewController *weakSelf = self;
-    [document prepareWithCompletionHandler:^(BOOL success) {
-        if (!success) {
-            return;
+    [document saveToURL:document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success) {
+        if ([self.delegate respondsToSelector:@selector(newExpenseViewControllerDidAddExpense)]) {
+            [self.delegate newExpenseViewControllerDidAddExpense];
         }
         
-        SPRNewExpenseViewController *innerSelf = weakSelf;
-        if (document.isReady) {
-            SPRExpense *expense = [NSEntityDescription insertNewObjectForEntityForName:@"SPRExpense" inManagedObjectContext:self.category.managedObjectContext];
-            expense.name = ((SPRField *)innerSelf.fields[kRowDescription]).value;
-            expense.amount = [NSDecimalNumber decimalNumberWithString:((SPRField *)innerSelf.fields[kRowAmount]).value];
-            expense.category = ((SPRField *)innerSelf.fields[kRowCategory]).value;
-            expense.dateSpent = ((SPRField *)innerSelf.fields[kRowDateSpent]).value;
-            
-            [document saveToURL:document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success) {
-                if ([innerSelf.delegate respondsToSelector:@selector(newExpenseViewControllerDidAddExpense)]) {
-                    [innerSelf.delegate newExpenseViewControllerDidAddExpense];
-                }
-                
-                [innerSelf dismissViewControllerAnimated:YES completion:nil];
-            }];
-        }
+        [self dismissViewControllerAnimated:YES completion:nil];
     }];
+}
+
+- (void)hideKeyboard
+{
+    [self.view endEditing:YES];
 }
 
 #pragma mark - Table view data source
