@@ -48,9 +48,11 @@
                 if (self.documentState == UIDocumentStateNormal) {
                     completionHandler(YES);
                 } else {
+                    NSLog(@"Managed document state not ready: %d", (int)self.documentState);
                     completionHandler(NO);
                 }
             } else {
+                NSLog(@"Can't open managed document.");
                 completionHandler(NO);
             }
         }];
@@ -60,9 +62,11 @@
                 if (self.documentState == UIDocumentStateNormal) {
                     completionHandler(YES);
                 } else {
+                    NSLog(@"Managed document state not ready: %d", (int)self.documentState);
                     completionHandler(NO);
                 }
             } else {
+                NSLog(@"Can't create managed document.");
                 completionHandler(NO);
             }
         }];

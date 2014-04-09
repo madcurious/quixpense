@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Matt Quiros. All rights reserved.
 //
 
-#import "SPRCategoryPickerView.h"
+#import "SPRCategoryPicker.h"
 
 // Objects
 #import "SPRCategory+Extension.h"
@@ -16,7 +16,7 @@ static const CGFloat kAnimationDuration = 0.1;
 
 static NSArray *allCategories;
 
-@interface SPRCategoryPickerView () <UIPickerViewDataSource, UIPickerViewDelegate>
+@interface SPRCategoryPicker () <UIPickerViewDataSource, UIPickerViewDelegate>
 
 @property (strong, nonatomic) UIView *translucentBackground;
 @property (strong, nonatomic) UIActivityIndicatorView *loadingAnimation;
@@ -24,7 +24,7 @@ static NSArray *allCategories;
 
 @end
 
-@implementation SPRCategoryPickerView
+@implementation SPRCategoryPicker
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -64,9 +64,9 @@ static NSArray *allCategories;
     self.translucentBackground.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
     
     if (allCategories == nil) {
-    CGFloat loadingAnimationX = self.frame.size.width / 2 - self.loadingAnimation.frame.size.width / 2;
-    CGFloat loadingAnimationY = self.frame.size.height / 2 - self.loadingAnimation.frame.size.height / 2;
-    self.loadingAnimation.frame = CGRectMake(loadingAnimationX, loadingAnimationY, self.loadingAnimation.frame.size.width, self.loadingAnimation.frame.size.height);
+        CGFloat loadingAnimationX = self.frame.size.width / 2 - self.loadingAnimation.frame.size.width / 2;
+        CGFloat loadingAnimationY = self.frame.size.height / 2 - self.loadingAnimation.frame.size.height / 2;
+        self.loadingAnimation.frame = CGRectMake(loadingAnimationX, loadingAnimationY, self.loadingAnimation.frame.size.width, self.loadingAnimation.frame.size.height);
     }
 
     self.pickerView.frame = CGRectMake(0, self.frame.size.height - kPickerViewHeight, self.frame.size.width, kPickerViewHeight);
@@ -96,35 +96,6 @@ static NSArray *allCategories;
             } completion:^(BOOL finished) {
                 [self.loadingAnimation stopAnimating];
             }];
-
-            
-//            __weak SPRCategoryPickerView *weakSelf = self;
-//            [SPRCategory enumerateAllCategoriesWithCompletion:^(NSArray *categories, NSError *error) {
-//                SPRCategoryPickerView *innerSelf = weakSelf;
-//                
-//                if (error) {
-//                    // What to do?
-//                } else {
-//                    allCategories = categories;
-//                    [innerSelf.pickerView reloadAllComponents];
-//                    
-//                    // If there is a pre-selected category, select it.
-//                    // Otherwise, pre-select the category in the middle.
-//                    if (innerSelf.preselectedRow == -1) {
-//                        NSInteger row = allCategories.count / 2;
-//                        [innerSelf.pickerView selectRow:row inComponent:0 animated:NO];
-//                    } else {
-//                        [innerSelf.pickerView selectRow:innerSelf.preselectedRow inComponent:0 animated:NO];
-//                    }
-//                    
-//                    [UIView animateWithDuration:kAnimationDuration animations:^{
-//                        innerSelf.loadingAnimation.alpha = 0;
-//                        innerSelf.pickerView.alpha = 1;
-//                    } completion:^(BOOL finished) {
-//                        [innerSelf.loadingAnimation stopAnimating];
-//                    }];
-//                }
-//            }];
         }];
     } else {
         [self.pickerView reloadAllComponents];
@@ -147,8 +118,8 @@ static NSArray *allCategories;
 
 - (void)hide
 {
-    if ([self.delegate respondsToSelector:@selector(willDismissCategoryPickerView:)]) {
-        [self.delegate willDismissCategoryPickerView:self];
+    if ([self.delegate respondsToSelector:@selector(categoryPickerWillDisappear:)]) {
+        [self.delegate categoryPickerWillDisappear:self];
     }
     
     [UIView animateWithDuration:kAnimationDuration animations:^{
@@ -180,8 +151,8 @@ static NSArray *allCategories;
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    if ([self.delegate respondsToSelector:@selector(categoryPickerView:didSelectCategory:)]) {
-        [self.delegate categoryPickerView:self didSelectCategory:allCategories[row]];
+    if ([self.delegate respondsToSelector:@selector(categoryPicker:didSelectCategory:)]) {
+        [self.delegate categoryPicker:self didSelectCategory:allCategories[row]];
     }
 }
 

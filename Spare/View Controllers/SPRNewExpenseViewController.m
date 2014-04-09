@@ -16,7 +16,8 @@
 
 // Custom views
 #import "SPRTextField.h"
-#import "SPRCategoryPickerView.h"
+#import "SPRCategoryPicker.h"
+#import "SPRDatePicker.h"
 
 typedef NS_ENUM(NSInteger, kRow)
 {
@@ -33,7 +34,7 @@ static NSString * const kDateSpentCell = @"kDateSpentCell";
 
 static const NSInteger kTextFieldTag = 1000;
 
-@interface SPRNewExpenseViewController () <UITextFieldDelegate, SPRCategoryPickerViewDelegate>
+@interface SPRNewExpenseViewController () <UITextFieldDelegate, SPRCategoryPickerDelegate, SPRDatePickerDelegate>
 
 @property (strong, nonatomic) NSArray *identifiers;
 @property (strong, nonatomic) NSArray *fields;
@@ -70,20 +71,21 @@ static const NSInteger kTextFieldTag = 1000;
 
 - (IBAction)doneButtonTapped:(id)sender
 {
-    SPRManagedDocument *document = [SPRManagedDocument sharedDocument];
-    
     SPRExpense *expense = [NSEntityDescription insertNewObjectForEntityForName:@"SPRExpense" inManagedObjectContext:self.category.managedObjectContext];
     expense.name = ((SPRField *)self.fields[kRowDescription]).value;
     expense.amount = [NSDecimalNumber decimalNumberWithString:((SPRField *)self.fields[kRowAmount]).value];
     expense.category = ((SPRField *)self.fields[kRowCategory]).value;
     expense.dateSpent = ((SPRField *)self.fields[kRowDateSpent]).value;
     
+    SPRManagedDocument *document = [SPRManagedDocument sharedDocument];
+    __weak SPRNewExpenseViewController *weakSelf = self;
     [document saveToURL:document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success) {
-        if ([self.delegate respondsToSelector:@selector(newExpenseViewControllerDidAddExpense)]) {
-            [self.delegate newExpenseViewControllerDidAddExpense];
+        SPRNewExpenseViewController *innerSelf = weakSelf;
+        if ([innerSelf.delegate respondsToSelector:@selector(newExpenseViewControllerDidAddExpense)]) {
+            [innerSelf.delegate newExpenseViewControllerDidAddExpense];
         }
         
-        [self dismissViewControllerAnimated:YES completion:nil];
+        [innerSelf dismissViewControllerAnimated:YES completion:nil];
     }];
 }
 
@@ -144,11 +146,19 @@ static const NSInteger kTextFieldTag = 1000;
 {
     switch (indexPath.row) {
         case kRowCategory: {
-            SPRCategoryPickerView *categoryPicker = [[SPRCategoryPickerView alloc] initWithFrame:CGRectMake(0, 0, self.navigationController.view.frame.size.width, self.navigationController.view.frame.size.height)];
+            SPRCategoryPicker *categoryPicker = [[SPRCategoryPicker alloc] initWithFrame:CGRectMake(0, 0, self.navigationController.view.frame.size.width, self.navigationController.view.frame.size.height)];
             categoryPicker.delegate = self;
             categoryPicker.preselectedRow = self.categoryIndex;
             [self.navigationController.view addSubview:categoryPicker];
             [categoryPicker show];
+            break;
+        }
+        case kRowDateSpent: {
+            SPRDatePicker *datePicker = [[SPRDatePicker alloc] initWithFrame:CGRectMake(0, 0, self.navigationController.view.frame.size.width, self.navigationController.view.frame.size.height)];
+            datePicker.delegate = self;
+            datePicker.preselectedDate = ((SPRField *)self.fields[kRowDateSpent]).value;
+            [self.navigationController.view addSubview:datePicker];
+            [datePicker show];
             break;
         }
     }
@@ -183,9 +193,9 @@ static const NSInteger kTextFieldTag = 1000;
     return YES;
 }
 
-#pragma mark - Category picker view delegate
+#pragma mark - Category picker delegate
 
-- (void)categoryPickerView:(SPRCategoryPickerView *)categoryPickerView didSelectCategory:(SPRCategory *)category
+- (void)categoryPicker:(SPRCategoryPicker *)categoryPickerView didSelectCategory:(SPRCategory *)category
 {
     SPRField *categoryField = self.fields[kRowCategory];
     categoryField.value = category;
@@ -199,9 +209,26 @@ static const NSInteger kTextFieldTag = 1000;
     [self.tableView selectRowAtIndexPath:categoryIndexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
 }
 
-- (void)willDismissCategoryPickerView:(SPRCategoryPickerView *)categoryPickerView
+- (void)categoryPickerWillDisappear:(SPRCategoryPicker *)categoryPickerView
 {
     [self.tableView deselectRowAtIndexPath:[NSIndexPath indexPathForRow:kRowCategory inSection:0] animated:YES];
+}
+
+#pragma mark - Date picker delegate
+
+- (void)datePicker:(SPRDatePicker *)datePicker didSelectDate:(NSDate *)date
+{
+    SPRField *dateSpentField = self.fields[kRowDateSpent];
+    dateSpentField.value = date;
+    
+    NSIndexPath *dateSpentIndexPath = [NSIndexPath indexPathForRow:kRowDateSpent inSection:0];
+    [self.tableView reloadRowsAtIndexPaths:@[dateSpentIndexPath] withRowAnimation:UITableViewRowAnimationNone];
+    [self.tableView selectRowAtIndexPath:dateSpentIndexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
+}
+
+- (void)datePickerWillDisappear:(SPRDatePicker *)datePicker
+{
+    [self.tableView deselectRowAtIndexPath:[NSIndexPath indexPathForRow:kRowDateSpent inSection:0] animated:YES];
 }
 
 @end
