@@ -13,4 +13,6 @@
 - (BOOL)isSameDayAsDate:(NSDate *)date;
 - (NSString *)textInForm;
 
++ (NSDate *)simplifyToDayComponent:(NSDate *)date;
+
 @end

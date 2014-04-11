@@ -28,27 +28,32 @@ static NSString * const kFontName = @"spare-icons";
 
 + (NSString *)stringForNewExpense
 {
-    return @"1";
+    return @"e";
 }
 
 + (NSString *)stringForNewCategory
 {
-    return @"2";
+    return @"d";
 }
 
 + (NSString *)stringForSettings
 {
-    return @"3";
+    return @"a";
 }
 
 + (NSString *)stringForArchive
 {
-    return @"4";
+    return @"f";
 }
 
-+ (NSString *)stringForDollarSign
++ (NSString *)stringForCategory
 {
-    return @"5";
+    return @"b";
+}
+
++ (NSString *)stringForDelete
+{
+    return @"c";
 }
 
 @end
