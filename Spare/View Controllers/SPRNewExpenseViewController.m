@@ -55,7 +55,7 @@ static const NSInteger kTextFieldTag = 1000;
     self.fields = @[[[SPRField alloc] initWithName:@"Description"],
                     [[SPRField alloc] initWithName:@"Amount"],
                     [[SPRField alloc] initWithName:@"Category" value:self.category],
-                    [[SPRField alloc] initWithName:@"Date spent" value:[NSDate date]]];
+                    [[SPRField alloc] initWithName:@"Date spent" value:[NSDate simplifiedDate]]];
     
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
     tapRecognizer.cancelsTouchesInView = NO;
@@ -81,10 +81,6 @@ static const NSInteger kTextFieldTag = 1000;
     __weak SPRNewExpenseViewController *weakSelf = self;
     [document saveToURL:document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success) {
         SPRNewExpenseViewController *innerSelf = weakSelf;
-        if ([innerSelf.delegate respondsToSelector:@selector(newExpenseViewControllerDidAddExpense)]) {
-            [innerSelf.delegate newExpenseViewControllerDidAddExpense];
-        }
-        
         [innerSelf dismissViewControllerAnimated:YES completion:nil];
     }];
 }

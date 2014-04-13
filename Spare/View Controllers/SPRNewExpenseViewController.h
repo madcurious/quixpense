@@ -8,15 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol SPRNewExpenseViewControllerDelegate <NSObject>
-
-- (void)newExpenseViewControllerDidAddExpense;
-
-@end
-
 @interface SPRNewExpenseViewController : UITableViewController
 
-@property (weak, nonatomic) id<SPRNewExpenseViewControllerDelegate> delegate;
 @property (nonatomic) NSInteger categoryIndex;
 
 @end

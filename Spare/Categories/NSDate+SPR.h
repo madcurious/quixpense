@@ -14,5 +14,7 @@
 - (NSString *)textInForm;
 
 + (NSDate *)simplifyToDayComponent:(NSDate *)date;
++ (NSDate *)simplifiedDate;
++ (NSDate *)simplifiedDateFromDate:(NSDate *)date;
 
 @end

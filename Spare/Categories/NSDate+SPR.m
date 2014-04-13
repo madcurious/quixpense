@@ -50,4 +50,18 @@
     return simplifiedDate;
 }
 
++ (NSDate *)simplifiedDate
+{
+    return [self simplifiedDateFromDate:[NSDate date]];
+}
+
++ (NSDate *)simplifiedDateFromDate:(NSDate *)date
+{
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *significantComponents = [calendar components:NSCalendarUnitMonth|NSCalendarUnitDay|NSCalendarUnitYear fromDate:date];
+    significantComponents.calendar = calendar;
+    NSDate *simplifiedDate = [calendar dateFromComponents:significantComponents];
+    return simplifiedDate;
+}
+
 @end

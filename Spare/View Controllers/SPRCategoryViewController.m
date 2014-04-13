@@ -26,12 +26,11 @@ static NSString * const kExpenseCell = @"kExpenseCell";
 static const NSInteger kDescriptionLabelTag = 1000;
 static const NSInteger kAmountLabelTag = 2000;
 
-@interface SPRCategoryViewController () <UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate, SPRNewExpenseViewControllerDelegate>
+@interface SPRCategoryViewController () <UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (strong, nonatomic) SPRCategory *category;
-//@property (strong, nonatomic) NSArray *expenses;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 
 @end
@@ -60,10 +59,6 @@ static const NSInteger kAmountLabelTag = 2000;
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-//    if (self.expenses == nil) {
-//        [self loadExpenses];
-//    }
 }
 
 - (void)setupBarButtonItems
@@ -77,19 +72,12 @@ static const NSInteger kAmountLabelTag = 2000;
     self.navigationItem.rightBarButtonItems = @[newExpenseBarButtonItem];
 }
 
-//- (void)loadExpenses
-//{
-//    self.expenses = self.category.expenses.allObjects;
-//    [self.tableView reloadData];
-//}
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"presentNewExpense"]) {
         UINavigationController *navigationController = segue.destinationViewController;
         SPRNewExpenseViewController *newExpenseScreen = (SPRNewExpenseViewController *)navigationController.topViewController;
         newExpenseScreen.categoryIndex = self.categoryIndex;
-        newExpenseScreen.delegate = self;
     }
 }
 
@@ -109,7 +97,6 @@ static const NSInteger kAmountLabelTag = 2000;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-//    return self.expenses.count;
     id<NSFetchedResultsSectionInfo> theSection = [self.fetchedResultsController sections][section];
     return [theSection numberOfObjects];
 }
@@ -118,7 +105,6 @@ static const NSInteger kAmountLabelTag = 2000;
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kExpenseCell];
     
-//    SPRExpense *expense = self.expenses[indexPath.row];
     SPRExpense *expense = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
     UILabel *descriptionLabel = (UILabel *)[cell viewWithTag:kDescriptionLabelTag];
@@ -134,29 +120,15 @@ static const NSInteger kAmountLabelTag = 2000;
 {
     id<NSFetchedResultsSectionInfo> theSection = self.fetchedResultsController.sections[section];
     
-//    static NSDateFormatter *sectionDateFormatter = nil;
-//    
-//    if (!sectionDateFormatter) {
-//        sectionDateFormatter = [[NSDateFormatter alloc] init];
-//        sectionDateFormatter.calendar = [NSCalendar currentCalendar];
-//        sectionDateFormatter.dateFormat = @"yyyy-dd-MM HH:mm:ss ZZZ";
-//    }
-//    
-//    NSString *sectionName = theSection.name;
-//    NSDate *dateSpent = [sectionDateFormatter dateFromString:sectionName];
-//    return [dateSpent textInForm];
-    
     NSTimeInterval timeInterval = [[theSection name] doubleValue];
     NSDate *dateSpent = [NSDate dateWithTimeIntervalSince1970:timeInterval];
-//    NSCalendar *calendar = [NSCalendar currentCalendar];
-//    NSDateComponents *components = [calendar components:NSCalendarUnitMonth|NSCalendarUnitDay|NSCalendarUnitYear fromDate:dateSpent];
     
     static NSDateFormatter *sectionDateFormatter = nil;
     
     if (!sectionDateFormatter) {
         sectionDateFormatter = [[NSDateFormatter alloc] init];
         sectionDateFormatter.calendar = [NSCalendar currentCalendar];
-        sectionDateFormatter.dateFormat = @"MMM dd yy";
+        sectionDateFormatter.dateStyle = NSDateFormatterMediumStyle;
     }
     
     NSString *sectionTitle = [sectionDateFormatter stringFromDate:dateSpent];
@@ -164,13 +136,9 @@ static const NSInteger kAmountLabelTag = 2000;
     return sectionTitle;
 }
 
-#pragma mark - New expense screen delegate
-
-- (void)newExpenseViewControllerDidAddExpense
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
-//    self.expenses = nil;
-//    [self loadExpenses];
-#warning UNFINISHED
+    [self.tableView reloadData];
 }
 
 #pragma mark - Getters
@@ -185,7 +153,7 @@ static const NSInteger kAmountLabelTag = 2000;
     NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"SPRExpense" inManagedObjectContext:[SPRManagedDocument sharedDocument].managedObjectContext];
     fetchRequest.entity = entityDescription;
     
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"dateSpent" ascending:YES];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"dateSpent" ascending:NO];
     fetchRequest.sortDescriptors = @[sortDescriptor];
     
     _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:[SPRManagedDocument sharedDocument].managedObjectContext sectionNameKeyPath:@"dateSpentAsSectionTitle" cacheName:nil];
