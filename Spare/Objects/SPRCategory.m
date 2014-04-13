@@ -2,7 +2,7 @@
 //  SPRCategory.m
 //  Spare
 //
-//  Created by Matt Quiros on 4/8/14.
+//  Created by Matt Quiros on 4/12/14.
 //  Copyright (c) 2014 Matt Quiros. All rights reserved.
 //
 
@@ -13,8 +13,8 @@
 @implementation SPRCategory
 
 @dynamic colorNumber;
-@dynamic name;
 @dynamic displayOrder;
+@dynamic name;
 @dynamic expenses;
 
 @end

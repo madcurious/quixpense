@@ -2,7 +2,7 @@
 //  SPRCategory.h
 //  Spare
 //
-//  Created by Matt Quiros on 4/8/14.
+//  Created by Matt Quiros on 4/12/14.
 //  Copyright (c) 2014 Matt Quiros. All rights reserved.
 //
 
@@ -14,8 +14,8 @@
 @interface SPRCategory : NSManagedObject
 
 @property (nonatomic, retain) NSNumber * colorNumber;
-@property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSNumber * displayOrder;
+@property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSSet *expenses;
 @end
 

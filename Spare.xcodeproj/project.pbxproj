@@ -10,7 +10,6 @@
 		2612C89118E7BC3400DE2765 /* SPRStatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2612C89018E7BC3400DE2765 /* SPRStatusView.m */; };
 		2612C89418E7E64C00DE2765 /* SPRCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2612C89318E7E64C00DE2765 /* SPRCategoryViewController.m */; };
 		2612C89A18E8040600DE2765 /* SPRCategoryHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2612C89918E8040600DE2765 /* SPRCategoryHeaderView.m */; };
-		2612C8A318E8147200DE2765 /* SPRExpense.m in Sources */ = {isa = PBXBuildFile; fileRef = 2612C8A218E8147200DE2765 /* SPRExpense.m */; };
 		2612C8AC18E831F600DE2765 /* SPRTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 2612C8AB18E831F600DE2765 /* SPRTextField.m */; };
 		2612C8AF18E847DB00DE2765 /* NSDate+SPR.m in Sources */ = {isa = PBXBuildFile; fileRef = 2612C8AE18E847DB00DE2765 /* NSDate+SPR.m */; };
 		261EB86318DDB630009DDF78 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86218DDB630009DDF78 /* Foundation.framework */; };
@@ -29,7 +28,6 @@
 		261EB88C18DDB631009DDF78 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 261EB88A18DDB631009DDF78 /* InfoPlist.strings */; };
 		261EB88E18DDB631009DDF78 /* SpareTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 261EB88D18DDB631009DDF78 /* SpareTests.m */; };
 		261EB89818DDB64F009DDF78 /* iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 261EB89718DDB64F009DDF78 /* iPhone.storyboard */; };
-		2628563A18F3B1E800C1930A /* SPRCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2628563918F3B1E800C1930A /* SPRCategory.m */; };
 		262ABD0E18DEA1BF003C7C8B /* SPRIconFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 262ABD0D18DEA1BF003C7C8B /* SPRIconFont.m */; };
 		262ABD1018DEA433003C7C8B /* spare-icons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 262ABD0F18DEA2B1003C7C8B /* spare-icons.ttf */; };
 		26369E6618F57817000A9ADA /* SPRCategoryPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 26369E6318F57817000A9ADA /* SPRCategoryPicker.m */; };
@@ -38,6 +36,8 @@
 		265997A118DDD2A60088E141 /* NSNumber+SPR.m in Sources */ = {isa = PBXBuildFile; fileRef = 265997A018DDD2A60088E141 /* NSNumber+SPR.m */; };
 		266065BD18F055D50085F877 /* SPRExpense+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 266065BC18F055D50085F877 /* SPRExpense+Extension.m */; };
 		26617D6918F308F800CA51EA /* SPRSetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26617D6818F308F800CA51EA /* SPRSetupViewController.m */; };
+		2675081E18F97A6000F3E456 /* SPRCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2675081D18F97A6000F3E456 /* SPRCategory.m */; };
+		26769AF118FA376D00C9D441 /* SPRExpense.m in Sources */ = {isa = PBXBuildFile; fileRef = 26769AF018FA376D00C9D441 /* SPRExpense.m */; };
 		2677950118DDCB93005C74BA /* UILabel+SPR.m in Sources */ = {isa = PBXBuildFile; fileRef = 2677950018DDCB93005C74BA /* UILabel+SPR.m */; };
 		2688627D18E31E2F00B8D167 /* SPRColorChooserSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2688627C18E31E2F00B8D167 /* SPRColorChooserSectionHeader.m */; };
 		2688628318E3370400B8D167 /* SPRManagedDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 2688628218E3370400B8D167 /* SPRManagedDocument.m */; };
@@ -98,8 +98,6 @@
 		261EB88B18DDB631009DDF78 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		261EB88D18DDB631009DDF78 /* SpareTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpareTests.m; sourceTree = "<group>"; };
 		261EB89718DDB64F009DDF78 /* iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPhone.storyboard; sourceTree = "<group>"; };
-		2628563818F3B1E800C1930A /* SPRCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPRCategory.h; path = Objects/SPRCategory.h; sourceTree = "<group>"; };
-		2628563918F3B1E800C1930A /* SPRCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPRCategory.m; path = Objects/SPRCategory.m; sourceTree = "<group>"; };
 		262ABD0C18DEA1BF003C7C8B /* SPRIconFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRIconFont.h; sourceTree = "<group>"; };
 		262ABD0D18DEA1BF003C7C8B /* SPRIconFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRIconFont.m; sourceTree = "<group>"; };
 		262ABD0F18DEA2B1003C7C8B /* spare-icons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "spare-icons.ttf"; sourceTree = "<group>"; };
@@ -115,6 +113,12 @@
 		266065BC18F055D50085F877 /* SPRExpense+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SPRExpense+Extension.m"; sourceTree = "<group>"; };
 		26617D6718F308F800CA51EA /* SPRSetupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRSetupViewController.h; sourceTree = "<group>"; };
 		26617D6818F308F800CA51EA /* SPRSetupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRSetupViewController.m; sourceTree = "<group>"; };
+		2675081C18F97A6000F3E456 /* SPRCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPRCategory.h; path = Objects/SPRCategory.h; sourceTree = "<group>"; };
+		2675081D18F97A6000F3E456 /* SPRCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPRCategory.m; path = Objects/SPRCategory.m; sourceTree = "<group>"; };
+		2675081F18F97A6000F3E456 /* SPRExpense.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPRExpense.h; path = Objects/SPRExpense.h; sourceTree = "<group>"; };
+		2675082018F97A6000F3E456 /* SPRExpense.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPRExpense.m; path = Objects/SPRExpense.m; sourceTree = "<group>"; };
+		26769AEF18FA376D00C9D441 /* SPRExpense.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPRExpense.h; path = Spare/Objects/SPRExpense.h; sourceTree = "<group>"; };
+		26769AF018FA376D00C9D441 /* SPRExpense.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPRExpense.m; path = Spare/Objects/SPRExpense.m; sourceTree = "<group>"; };
 		267794FF18DDCB93005C74BA /* UILabel+SPR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+SPR.h"; sourceTree = "<group>"; };
 		2677950018DDCB93005C74BA /* UILabel+SPR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+SPR.m"; sourceTree = "<group>"; };
 		2688627B18E31E2F00B8D167 /* SPRColorChooserSectionHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRColorChooserSectionHeader.h; sourceTree = "<group>"; };
@@ -173,6 +177,8 @@
 			isa = PBXGroup;
 			children = (
 				261EB86A18DDB631009DDF78 /* Spare */,
+				26769AEF18FA376D00C9D441 /* SPRExpense.h */,
+				26769AF018FA376D00C9D441 /* SPRExpense.m */,
 				261EB88718DDB631009DDF78 /* SpareTests */,
 				261EB86118DDB630009DDF78 /* Frameworks */,
 				261EB86018DDB630009DDF78 /* Products */,
@@ -213,9 +219,11 @@
 				261EB87318DDB631009DDF78 /* SPRAppDelegate.h */,
 				261EB87418DDB631009DDF78 /* SPRAppDelegate.m */,
 				261EB87918DDB631009DDF78 /* Images.xcassets */,
+				2675081C18F97A6000F3E456 /* SPRCategory.h */,
+				2675081F18F97A6000F3E456 /* SPRExpense.h */,
+				2675082018F97A6000F3E456 /* SPRExpense.m */,
+				2675081D18F97A6000F3E456 /* SPRCategory.m */,
 				261EB87618DDB631009DDF78 /* Spare.xcdatamodeld */,
-				2628563818F3B1E800C1930A /* SPRCategory.h */,
-				2628563918F3B1E800C1930A /* SPRCategory.m */,
 				261EB86B18DDB631009DDF78 /* Supporting Files */,
 				261EB89718DDB64F009DDF78 /* iPhone.storyboard */,
 			);
@@ -475,10 +483,9 @@
 				26617D6918F308F800CA51EA /* SPRSetupViewController.m in Sources */,
 				26D08D2618F105C600AE018F /* SPRHomeViewController.m in Sources */,
 				26E2486218E1E3C400391354 /* SPRColorChooserViewController.m in Sources */,
+				2675081E18F97A6000F3E456 /* SPRCategory.m in Sources */,
 				2677950118DDCB93005C74BA /* UILabel+SPR.m in Sources */,
 				26E2484918E1B90F00391354 /* UIView+SubviewFinder.m in Sources */,
-				2612C8A318E8147200DE2765 /* SPRExpense.m in Sources */,
-				2628563A18F3B1E800C1930A /* SPRCategory.m in Sources */,
 				2612C8AC18E831F600DE2765 /* SPRTextField.m in Sources */,
 				26E2485318E1CAB700391354 /* SPRNewCategoryViewController.m in Sources */,
 				2688628318E3370400B8D167 /* SPRManagedDocument.m in Sources */,
@@ -492,6 +499,7 @@
 				262ABD0E18DEA1BF003C7C8B /* SPRIconFont.m in Sources */,
 				265997A118DDD2A60088E141 /* NSNumber+SPR.m in Sources */,
 				2612C8AF18E847DB00DE2765 /* NSDate+SPR.m in Sources */,
+				26769AF118FA376D00C9D441 /* SPRExpense.m in Sources */,
 				2688627D18E31E2F00B8D167 /* SPRColorChooserSectionHeader.m in Sources */,
 				261EB87518DDB631009DDF78 /* SPRAppDelegate.m in Sources */,
 				2612C89418E7E64C00DE2765 /* SPRCategoryViewController.m in Sources */,

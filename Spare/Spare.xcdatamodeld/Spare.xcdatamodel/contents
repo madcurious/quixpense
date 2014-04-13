@@ -9,11 +9,12 @@
     <entity name="SPRExpense" representedClassName="SPRExpense" syncable="YES">
         <attribute name="amount" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <attribute name="dateSpent" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="dateSpentAsSectionTitle" optional="YES" transient="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SPRCategory" inverseName="expenses" inverseEntity="SPRCategory" syncable="YES"/>
     </entity>
     <elements>
         <element name="SPRCategory" positionX="160" positionY="192" width="128" height="105"/>
-        <element name="SPRExpense" positionX="385" positionY="126" width="128" height="103"/>
+        <element name="SPRExpense" positionX="385" positionY="126" width="128" height="118"/>
     </elements>
 </model>
