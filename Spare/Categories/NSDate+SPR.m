@@ -38,4 +38,16 @@
     return text;
 }
 
++ (NSDate *)simplifyToDayComponent:(NSDate *)date
+{
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *components = [calendar components:NSUIntegerMax fromDate:date];
+    components.hour = 0;
+    components.minute = 0;
+    components.second = 0;
+    
+    NSDate *simplifiedDate = [calendar dateFromComponents:components];
+    return simplifiedDate;
+}
+
 @end

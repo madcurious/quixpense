@@ -59,7 +59,10 @@ static const CGFloat kAnimationDuration = 0.1;
 - (void)datePickerChanged
 {
     if ([self.delegate respondsToSelector:@selector(datePicker:didSelectDate:)]) {
-        [self.delegate datePicker:self didSelectDate:self.datePicker.date];
+        // Set the insignificant date components of the selected date to zero.
+        NSDate *simplifiedDate = [NSDate simplifyToDayComponent:self.datePicker.date];
+        
+        [self.delegate datePicker:self didSelectDate:simplifiedDate];
     }
 }
 
