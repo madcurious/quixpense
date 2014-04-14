@@ -10,6 +10,7 @@
 
 // Custom views
 #import "SPRCategoryHeaderView.h"
+#import "SPRCategorySectionHeader.h"
 
 // Objects
 #import "SPRCategory+Extension.h"
@@ -33,6 +34,8 @@ static const NSInteger kAmountLabelTag = 2000;
 @property (strong, nonatomic) SPRCategory *category;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 
+@property (strong, nonatomic) NSMutableArray *sectionTotals;
+
 @end
 
 @implementation SPRCategoryViewController
@@ -50,9 +53,13 @@ static const NSInteger kAmountLabelTag = 2000;
     
     NSError *error;
     if (![self.fetchedResultsController performFetch:&error]) {
-        if (error) {
-            NSLog(@"%@", error);
-        }
+        NSLog(@"%@", error);
+    }
+    
+    // Initialize _sectionTotals as an empty array of the same size as the number of sections.
+    self.sectionTotals = [NSMutableArray array];
+    for (int i = 0; i < [[self.fetchedResultsController sections] count]; i++) {
+        self.sectionTotals[i] = [NSNull null];
     }
 }
 
@@ -116,25 +123,42 @@ static const NSInteger kAmountLabelTag = 2000;
     return cell;
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return SPRCategorySectionHeaderHeight;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     id<NSFetchedResultsSectionInfo> theSection = self.fetchedResultsController.sections[section];
     
     NSTimeInterval timeInterval = [[theSection name] doubleValue];
     NSDate *dateSpent = [NSDate dateWithTimeIntervalSince1970:timeInterval];
     
-    static NSDateFormatter *sectionDateFormatter = nil;
-    
-    if (!sectionDateFormatter) {
-        sectionDateFormatter = [[NSDateFormatter alloc] init];
-        sectionDateFormatter.calendar = [NSCalendar currentCalendar];
-        sectionDateFormatter.dateStyle = NSDateFormatterMediumStyle;
+    // Total the expenses in a section if they have never been computed yet.
+    if (self.sectionTotals[section] == [NSNull null]) {
+        NSArray *expenses = [theSection objects];
+        SPRExpense *expense = [expenses firstObject];
+        NSDecimalNumber *total = expense.amount;
+        for (int i = 1; i < expenses.count; i++) {
+            expense = expenses[i];
+            total = [total decimalNumberByAdding:expense.amount];
+        }
+        self.sectionTotals[section] = total;
     }
     
-    NSString *sectionTitle = [sectionDateFormatter stringFromDate:dateSpent];
-    
-    return sectionTitle;
+    SPRCategorySectionHeader *header = [[SPRCategorySectionHeader alloc] initWithDate:dateSpent total:self.sectionTotals[section]];
+    return header;
 }
+
+#pragma mark - Table view delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+#pragma mark - Fetched results controller delegate
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
