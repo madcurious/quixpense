@@ -56,11 +56,7 @@ static const NSInteger kAmountLabelTag = 2000;
         NSLog(@"%@", error);
     }
     
-    // Initialize _sectionTotals as an empty array of the same size as the number of sections.
-    self.sectionTotals = [NSMutableArray array];
-    for (int i = 0; i < [[self.fetchedResultsController sections] count]; i++) {
-        self.sectionTotals[i] = [NSNull null];
-    }
+    [self initializeTotals];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -77,6 +73,15 @@ static const NSInteger kAmountLabelTag = 2000;
     UIBarButtonItem *newExpenseBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:newExpenseButton];
     
     self.navigationItem.rightBarButtonItems = @[newExpenseBarButtonItem];
+}
+
+- (void)initializeTotals
+{
+    // Initialize _sectionTotals as an empty array of the same size as the number of sections.
+    self.sectionTotals = [NSMutableArray array];
+    for (int i = 0; i < [[self.fetchedResultsController sections] count]; i++) {
+        self.sectionTotals[i] = [NSNull null];
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -162,6 +167,7 @@ static const NSInteger kAmountLabelTag = 2000;
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
+    [self initializeTotals];
     [self.tableView reloadData];
 }
 
