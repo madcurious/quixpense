@@ -153,6 +153,9 @@ static const NSInteger kAmountLabelTag = 2000;
     NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"SPRExpense" inManagedObjectContext:[SPRManagedDocument sharedDocument].managedObjectContext];
     fetchRequest.entity = entityDescription;
     
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"category == %@", self.category];
+    fetchRequest.predicate = predicate;
+    
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"dateSpent" ascending:NO];
     fetchRequest.sortDescriptors = @[sortDescriptor];
     
