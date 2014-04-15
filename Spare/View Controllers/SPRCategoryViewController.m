@@ -123,7 +123,7 @@ static const NSInteger kAmountLabelTag = 2000;
     descriptionLabel.text = expense.name;
     
     UILabel *amountLabel = (UILabel *)[cell viewWithTag:kAmountLabelTag];
-    amountLabel.text = expense.amountAsString;
+    amountLabel.text = [expense.amount currencyString];
     
     return cell;
 }

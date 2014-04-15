@@ -13,5 +13,6 @@
 @interface SPRCategoryCollectionViewCell : UICollectionViewCell
 
 @property (weak, nonatomic) SPRCategory *category;
+@property (weak, nonatomic) NSDecimalNumber *displayedTotal;
 
 @end

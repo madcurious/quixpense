@@ -1,14 +1,14 @@
 //
-//  NSNumber+SPR.h
+//  NSDecimalNumber+SPR.h
 //  Spare
 //
-//  Created by Matt Quiros on 3/22/14.
+//  Created by Matt Quiros on 4/15/14.
 //  Copyright (c) 2014 Matt Quiros. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
-@interface NSNumber (SPR)
+@interface NSDecimalNumber (SPR)
 
 - (NSString *)currencyString;
 

@@ -21,6 +21,7 @@ static const CGFloat kLabelWidth = kCellWidth - kInnerMargin * 2;
 @interface SPRCategoryCollectionViewCell ()
 
 @property (strong, nonatomic) UILabel *categoryLabel;
+@property (strong, nonatomic) UILabel *totalLabel;
 
 @end
 
@@ -32,11 +33,20 @@ static const CGFloat kLabelWidth = kCellWidth - kInnerMargin * 2;
     if (self) {
         _categoryLabel = [[UILabel alloc] init];
         _categoryLabel.textColor = [UIColor colorFromHex:0x3b3b3b];
-        _categoryLabel.font = [UIFont boldSystemFontOfSize:17];
-        _categoryLabel.numberOfLines = 0;
-        _categoryLabel.lineBreakMode = NSLineBreakByWordWrapping;
+        _categoryLabel.font = [UIFont systemFontOfSize:17];
+        _categoryLabel.numberOfLines = 4;
+        _categoryLabel.lineBreakMode = NSLineBreakByTruncatingTail;
+        
+        _totalLabel = [[UILabel alloc] init];
+        _totalLabel.textColor = [UIColor colorFromHex:0x3b3b3b];
+        _totalLabel.font = [UIFont systemFontOfSize:22];
+        _totalLabel.numberOfLines = 1;
+        _totalLabel.lineBreakMode = NSLineBreakByTruncatingTail;
+        _totalLabel.textAlignment = NSTextAlignmentRight;
+        _totalLabel.text = @"P1,289.50";
         
         [self.contentView addSubview:_categoryLabel];
+        [self.contentView addSubview:_totalLabel];
     }
     return self;
 }
@@ -45,6 +55,10 @@ static const CGFloat kLabelWidth = kCellWidth - kInnerMargin * 2;
 {
     [self.categoryLabel sizeToFitWidth:kLabelWidth];
     self.categoryLabel.frame = CGRectMake(kInnerMargin, kInnerMargin, kLabelWidth, self.categoryLabel.frame.size.height);
+    
+    [self.totalLabel sizeToFitWidth:kLabelWidth];
+    CGFloat totalLabelY = self.frame.size.height - kInnerMargin - self.totalLabel.frame.size.height;
+    self.totalLabel.frame = CGRectMake(kInnerMargin, totalLabelY, kLabelWidth, self.totalLabel.frame.size.height);
 }
 
 - (void)setCategory:(SPRCategory *)category
@@ -55,6 +69,12 @@ static const CGFloat kLabelWidth = kCellWidth - kInnerMargin * 2;
     self.backgroundColor = [SPRCategory colors][[category.colorNumber integerValue]];
     
     [self setNeedsLayout];
+}
+
+- (void)setDisplayedTotal:(NSDecimalNumber *)displayedTotal
+{
+    _displayedTotal = displayedTotal;
+    self.totalLabel.text = [displayedTotal currencyString];
 }
 
 @end

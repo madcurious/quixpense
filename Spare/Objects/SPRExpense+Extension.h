@@ -10,6 +10,6 @@
 
 @interface SPRExpense (Extension)
 
-- (NSString *)amountAsString;
+
 
 @end

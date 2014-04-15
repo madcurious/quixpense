@@ -16,7 +16,7 @@
     #import <CoreData/CoreData.h>
 
 #import "UILabel+SPR.h"
-#import "NSNumber+SPR.h"
+#import "NSDecimalNumber+SPR.h"
 #import "NSString+SPR.h"
 #import "NSDate+SPR.h"
 #endif

@@ -45,17 +45,9 @@ const CGFloat SPRCategorySectionHeaderHeight = 22;
         _dateLabel.font = [UIFont boldSystemFontOfSize:14];
         _dateLabel.text = [NSString stringWithString:dateLabelText];
         
-        static NSNumberFormatter *amountFormatter = nil;
-        
-        if (!amountFormatter) {
-            amountFormatter = [[NSNumberFormatter alloc] init];
-            amountFormatter.locale = [NSLocale currentLocale];
-            amountFormatter.numberStyle = NSNumberFormatterCurrencyStyle;
-        }
-        
         _totalLabel = [[UILabel alloc] init];
         _totalLabel.font = [UIFont boldSystemFontOfSize:14];
-        _totalLabel.text = [amountFormatter stringFromNumber:total];
+        _totalLabel.text = [total currencyString];
         _totalLabel.textAlignment = NSTextAlignmentRight;
         _totalLabel.lineBreakMode = NSLineBreakByTruncatingHead;
         
