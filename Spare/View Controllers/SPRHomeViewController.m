@@ -22,13 +22,14 @@
 // Objects
 #import "SPRCategory+Extension.h"
 #import "SPRManagedDocument.h"
+#import "SPRExpense.h"
 
 // Pods
 #import "LXReorderableCollectionViewFlowLayout.h"
 
 static NSString * const kCellIdentifier = @"kCellIdentifier";
 
-@interface SPRHomeViewController () <LXReorderableCollectionViewDataSource, UICollectionViewDelegate, LXReorderableCollectionViewDelegateFlowLayout, SPRNewCategoryViewControllerDelegate>
+@interface SPRHomeViewController () <LXReorderableCollectionViewDataSource, UICollectionViewDelegate, LXReorderableCollectionViewDelegateFlowLayout, SPRNewCategoryViewControllerDelegate, NSFetchedResultsControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (strong, nonatomic) SPRStatusView *statusView;
@@ -37,6 +38,9 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
 @property (nonatomic) NSInteger selectedCategoryIndex;
 
 @property (nonatomic) BOOL hasBeenSetup;
+
+@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
+@property (strong, nonatomic) NSMutableArray *todayTotals;
 
 @end
 
@@ -67,6 +71,11 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
         if (self.categories == nil) {
             [self reloadCategories];
         }
+        
+        NSError *error;
+        if (![self.fetchedResultsController performFetch:&error]) {
+            NSLog(@"%@", error.localizedDescription);
+        }
     } else {
         [self performSegueWithIdentifier:@"presentSetup" sender:self];
         self.hasBeenSetup = YES;
@@ -74,7 +83,7 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
 }
 
 - (void)reloadCategories
-{    
+{
     self.categories = [[SPRCategory allCategories] mutableCopy];
     [self.collectionView reloadData];
 }
@@ -118,6 +127,13 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
     SPRCategory *category = self.categories[indexPath.row];
     
     cell.category = category;
+    
+    if (indexPath.row < [[self.fetchedResultsController fetchedObjects] count]) {
+        NSDictionary *categoryTotal = [self.fetchedResultsController fetchedObjects][indexPath.row];
+        cell.displayedTotal = categoryTotal[@"total"];
+    } else {
+        cell.displayedTotal = [[NSDecimalNumber alloc] initWithInt:0];
+    }
     
     return cell;
 }
@@ -173,6 +189,33 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
         _statusView.noResultsText = @"You have no categories yet.";
     }
     return _statusView;
+}
+
+- (NSFetchedResultsController *)fetchedResultsController
+{
+    if (_fetchedResultsController) {
+        return _fetchedResultsController;
+    }
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:NSStringFromClass([SPRExpense class]) inManagedObjectContext:[SPRManagedDocument sharedDocument].managedObjectContext];
+    fetchRequest.entity = entityDescription;
+    
+    NSExpressionDescription *expressionDescription = [[NSExpressionDescription alloc] init];
+    expressionDescription.name = @"total";
+    expressionDescription.expression = [NSExpression expressionWithFormat:@"@sum.amount"];
+    expressionDescription.expressionResultType = NSDecimalAttributeType;
+    
+    fetchRequest.propertiesToFetch = @[expressionDescription];
+    fetchRequest.propertiesToGroupBy = @[@"category"];
+    fetchRequest.resultType = NSDictionaryResultType;
+    
+    fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"category.displayOrder" ascending:YES]];
+    
+    _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:[SPRManagedDocument sharedDocument].managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+    _fetchedResultsController.delegate = self;
+    
+    return _fetchedResultsController;
 }
 
 @end
