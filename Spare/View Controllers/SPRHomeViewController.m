@@ -27,6 +27,13 @@
 // Pods
 #import "LXReorderableCollectionViewFlowLayout.h"
 
+typedef NS_ENUM(NSUInteger, SPRTotalTimeFrame) {
+    SPRTotalTimeFrameDay = 0,
+    SPRTotalTimeFrameWeek = 1,
+    SPRTotalTimeFrameMonth,
+    SPRTotalTimeFrameYear,
+};
+
 static NSString * const kCellIdentifier = @"kCellIdentifier";
 
 @interface SPRHomeViewController () <LXReorderableCollectionViewDataSource, UICollectionViewDelegate, LXReorderableCollectionViewDelegateFlowLayout, NSFetchedResultsControllerDelegate>
@@ -43,6 +50,8 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
 @property (strong, nonatomic) NSFetchedResultsController *weeklyTotalFetcher;
 @property (strong, nonatomic) NSFetchedResultsController *monthlyTotalFetcher;
 @property (strong, nonatomic) NSFetchedResultsController *yearlyTotalFetcher;
+@property (nonatomic) NSInteger activeTotalFetcher;
+@property (strong, nonatomic) NSArray *totalFetchers;
 
 @end
 
@@ -63,6 +72,8 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
     self.navigationItem.rightBarButtonItems = @[newCategoryBarButtonItem];
     
     [self.collectionView registerClass:[SPRCategoryCollectionViewCell class] forCellWithReuseIdentifier:kCellIdentifier];
+    
+    self.totalFetchers = @[self.categoryFetcher];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -72,6 +83,9 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
     if (self.hasBeenSetup) {
         NSError *error;
         if (![self.categoryFetcher performFetch:&error]) {
+            NSLog(@"%@", error);
+        }
+        if (![self.dailyTotalFetcher performFetch:&error]) {
             NSLog(@"%@", error);
         }
         [self.collectionView reloadData];
@@ -138,7 +152,12 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
     
     // Persist the reordering into the managed document.
     SPRManagedDocument *document = [SPRManagedDocument sharedDocument];
-    [document saveToURL:document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:nil];
+    [document saveToURL:document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success) {
+        NSError *error;
+        if (![self.dailyTotalFetcher performFetch:&error]) {
+            NSLog(@"%@", error);
+        }
+    }];
 }
 
 - (BOOL)collectionView:(UICollectionView *)collectionView itemAtIndexPath:(NSIndexPath *)fromIndexPath canMoveToIndexPath:(NSIndexPath *)toIndexPath
@@ -164,6 +183,8 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
     NSLog(@"Controller changed");
+    
+    
 }
 
 #pragma mark - Getters
@@ -195,31 +216,77 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
     return _categoryFetcher;
 }
 
-//- (NSFetchedResultsController *)dailyTotalFetcher
-//{
-//    if (_dailyTotalFetcher) {
-//        return _dailyTotalFetcher;
-//    }
-//    
-//    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-//    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:NSStringFromClass([SPRExpense class]) inManagedObjectContext:[SPRManagedDocument sharedDocument].managedObjectContext];
-//    fetchRequest.entity = entityDescription;
-//    
-//    NSExpressionDescription *expressionDescription = [[NSExpressionDescription alloc] init];
-//    expressionDescription.name = @"total";
-//    expressionDescription.expression = [NSExpression expressionWithFormat:@"@sum.amount"];
-//    expressionDescription.expressionResultType = NSDecimalAttributeType;
-//    
-//    fetchRequest.propertiesToFetch = @[expressionDescription];
-//    fetchRequest.propertiesToGroupBy = @[@"category"];
-//    fetchRequest.resultType = NSDictionaryResultType;
-//    
-//    fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"category.displayOrder" ascending:YES]];
-//    
-//    _dailyTotalFetcher = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:[SPRManagedDocument sharedDocument].managedObjectContext sectionNameKeyPath:nil cacheName:nil];
-//    _dailyTotalFetcher.delegate = self;
-//    
-//    return _dailyTotalFetcher;
-//}
+- (NSFetchedResultsController *)dailyTotalFetcher
+{
+    if (_dailyTotalFetcher) {
+        return _dailyTotalFetcher;
+    }
+    
+    _dailyTotalFetcher = [SPRHomeViewController totalFetcherForTimeFrame:SPRTotalTimeFrameDay];
+    
+    return _dailyTotalFetcher;
+}
+
++ (NSFetchedResultsController *)totalFetcherForTimeFrame:(SPRTotalTimeFrame)timeFrame
+{
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:NSStringFromClass([SPRExpense class]) inManagedObjectContext:[SPRManagedDocument sharedDocument].managedObjectContext];
+    fetchRequest.entity = entityDescription;
+    
+    NSDate *currentDate = [NSDate date];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *currentDateComponents = [calendar components:NSMonthCalendarUnit|NSDayCalendarUnit|NSYearCalendarUnit fromDate:currentDate];
+    
+    NSDate *startDate, *endDate;
+    switch (timeFrame) {
+        case SPRTotalTimeFrameDay: {
+            NSDateComponents *startDateComponents = [[NSDateComponents alloc] init];
+            startDateComponents.month = currentDateComponents.month;
+            startDateComponents.day = currentDateComponents.day;
+            startDateComponents.year = currentDateComponents.year;
+            startDateComponents.hour = 0;
+            startDateComponents.minute = 0;
+            startDateComponents.second = 0;
+            startDate = [calendar dateFromComponents:startDateComponents];
+            
+            NSDateComponents *endDateComponents = [[NSDateComponents alloc] init];
+            endDateComponents.month = currentDateComponents.month;
+            endDateComponents.day = currentDateComponents.day;
+            endDateComponents.year = currentDateComponents.year;
+            endDateComponents.hour = 23;
+            endDateComponents.minute = 59;
+            endDateComponents.second = 59;
+            endDate = [calendar dateFromComponents:endDateComponents];
+            break;
+        }
+        case SPRTotalTimeFrameWeek: {
+            break;
+        }
+        case SPRTotalTimeFrameMonth: {
+            break;
+        }
+        case SPRTotalTimeFrameYear: {
+            break;
+        }
+    }
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"dateSpent >= %@ AND dateSpent <= %@", startDate, endDate];
+    fetchRequest.predicate = predicate;
+    
+    NSExpressionDescription *expressionDescription = [[NSExpressionDescription alloc] init];
+    expressionDescription.name = @"total";
+    expressionDescription.expression = [NSExpression expressionWithFormat:@"@sum.amount"];
+    expressionDescription.expressionResultType = NSDecimalAttributeType;
+    
+    fetchRequest.propertiesToFetch = @[expressionDescription];
+    fetchRequest.propertiesToGroupBy = @[@"category"];
+    fetchRequest.resultType = NSDictionaryResultType;
+    
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"category.displayOrder" ascending:YES];
+    fetchRequest.sortDescriptors = @[sortDescriptor];
+    
+    NSFetchedResultsController *fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:[SPRManagedDocument sharedDocument].managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+    return fetchedResultsController;
+}
 
 @end
