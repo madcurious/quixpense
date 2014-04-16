@@ -2,7 +2,7 @@
 //  SPRExpense.h
 //  Spare
 //
-//  Created by Matt Quiros on 4/13/14.
+//  Created by Matt Quiros on 4/16/14.
 //  Copyright (c) 2014 Matt Quiros. All rights reserved.
 //
 
@@ -15,8 +15,8 @@
 
 @property (nonatomic, retain) NSDecimalNumber * amount;
 @property (nonatomic, retain) NSDate * dateSpent;
-@property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * dateSpentAsSectionTitle;
+@property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) SPRCategory *category;
 
 @end

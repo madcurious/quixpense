@@ -8,14 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol SPRNewCategoryViewControllerDelegate <NSObject>
-
-- (void)newCategoryViewControllerDidAddCategory;
-
-@end
-
 @interface SPRNewCategoryViewController : UITableViewController
-
-@property (weak, nonatomic) id<SPRNewCategoryViewControllerDelegate> delegate;
 
 @end

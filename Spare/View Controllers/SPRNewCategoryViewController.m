@@ -86,10 +86,6 @@ static const NSInteger kSelectedColorViewTag = 2000;
         category.displayOrder = @([SPRCategory allCategories].count);
         
         [document saveToURL:document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success) {
-            if ([self.delegate respondsToSelector:@selector(newCategoryViewControllerDidAddCategory)]) {
-                [self.delegate newCategoryViewControllerDidAddCategory];
-            }
-            
             [self dismissViewControllerAnimated:YES completion:nil];
         }];
     }

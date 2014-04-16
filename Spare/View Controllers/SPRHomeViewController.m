@@ -29,18 +29,20 @@
 
 static NSString * const kCellIdentifier = @"kCellIdentifier";
 
-@interface SPRHomeViewController () <LXReorderableCollectionViewDataSource, UICollectionViewDelegate, LXReorderableCollectionViewDelegateFlowLayout, SPRNewCategoryViewControllerDelegate, NSFetchedResultsControllerDelegate>
+@interface SPRHomeViewController () <LXReorderableCollectionViewDataSource, UICollectionViewDelegate, LXReorderableCollectionViewDelegateFlowLayout, NSFetchedResultsControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (strong, nonatomic) SPRStatusView *statusView;
 
-@property (strong, nonatomic) NSMutableArray *categories;
 @property (nonatomic) NSInteger selectedCategoryIndex;
 
 @property (nonatomic) BOOL hasBeenSetup;
 
-@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
-@property (strong, nonatomic) NSMutableArray *todayTotals;
+@property (strong, nonatomic) NSFetchedResultsController *categoryFetcher;
+@property (strong, nonatomic) NSFetchedResultsController *dailyTotalFetcher;
+@property (strong, nonatomic) NSFetchedResultsController *weeklyTotalFetcher;
+@property (strong, nonatomic) NSFetchedResultsController *monthlyTotalFetcher;
+@property (strong, nonatomic) NSFetchedResultsController *yearlyTotalFetcher;
 
 @end
 
@@ -68,36 +70,18 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
     [super viewWillAppear:animated];
     
     if (self.hasBeenSetup) {
-        if (self.categories == nil) {
-            [self reloadCategories];
-        }
-        
         NSError *error;
-        if (![self.fetchedResultsController performFetch:&error]) {
-            NSLog(@"%@", error.localizedDescription);
+        if (![self.categoryFetcher performFetch:&error]) {
+            NSLog(@"%@", error);
         }
+        [self.collectionView reloadData];
     } else {
         [self performSegueWithIdentifier:@"presentSetup" sender:self];
         self.hasBeenSetup = YES;
     }
 }
-
-- (void)reloadCategories
-{
-    self.categories = [[SPRCategory allCategories] mutableCopy];
-    [self.collectionView reloadData];
-}
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"presentNewCategoryModal"]) {
-        UINavigationController *modalNavigationController = segue.destinationViewController;
-        
-        SPRNewCategoryViewController *newCategoryScreen = modalNavigationController.viewControllers[0];
-        newCategoryScreen.delegate = self;
-        return;
-    }
-    
     if ([segue.identifier isEqualToString:@"pushCategory"]) {
         SPRCategoryViewController *categoryScreen = segue.destinationViewController;
         categoryScreen.categoryIndex = self.selectedCategoryIndex;
@@ -116,7 +100,7 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return self.categories.count;
+    return [[self.categoryFetcher fetchedObjects] count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -124,12 +108,12 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
     SPRCategoryCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
     
     // Get the category at the index path.
-    SPRCategory *category = self.categories[indexPath.row];
+    SPRCategory *category = [self.categoryFetcher fetchedObjects][indexPath.row];
     
     cell.category = category;
     
-    if (indexPath.row < [[self.fetchedResultsController fetchedObjects] count]) {
-        NSDictionary *categoryTotal = [self.fetchedResultsController fetchedObjects][indexPath.row];
+    if (indexPath.row < [[self.dailyTotalFetcher fetchedObjects] count]) {
+        NSDictionary *categoryTotal = [self.dailyTotalFetcher fetchedObjects][indexPath.row];
         cell.displayedTotal = categoryTotal[@"total"];
     } else {
         cell.displayedTotal = [[NSDecimalNumber alloc] initWithInt:0];
@@ -142,15 +126,17 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
 
 - (void)collectionView:(UICollectionView *)collectionView itemAtIndexPath:(NSIndexPath *)fromIndexPath willMoveToIndexPath:(NSIndexPath *)toIndexPath
 {
-    SPRCategory *category = self.categories[fromIndexPath.row];
-    [self.categories removeObject:category];
-    [self.categories insertObject:category atIndex:toIndexPath.row];
+    NSMutableArray *categories = [[self.categoryFetcher fetchedObjects] mutableCopy];
+    SPRCategory *category = categories[fromIndexPath.row];
+    [categories removeObject:category];
+    [categories insertObject:category atIndex:toIndexPath.row];
     
-    for (int i = 0; i < self.categories.count; i++) {
-        category = self.categories[i];
+    for (int i = 0; i < categories.count; i++) {
+        category = categories[i];
         category.displayOrder = @(i);
     }
     
+    // Persist the reordering into the managed document.
     SPRManagedDocument *document = [SPRManagedDocument sharedDocument];
     [document saveToURL:document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:nil];
 }
@@ -173,11 +159,11 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
     [self performSegueWithIdentifier:@"pushCategory" sender:self];
 }
 
-#pragma mark - New category view controller delegate
+#pragma mark - Fetched results controller delegate
 
-- (void)newCategoryViewControllerDidAddCategory
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
-    [self reloadCategories];
+    NSLog(@"Controller changed");
 }
 
 #pragma mark - Getters
@@ -191,31 +177,49 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
     return _statusView;
 }
 
-- (NSFetchedResultsController *)fetchedResultsController
+- (NSFetchedResultsController *)categoryFetcher
 {
-    if (_fetchedResultsController) {
-        return _fetchedResultsController;
+    if (_categoryFetcher) {
+        return _categoryFetcher;
     }
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:NSStringFromClass([SPRExpense class]) inManagedObjectContext:[SPRManagedDocument sharedDocument].managedObjectContext];
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:NSStringFromClass([SPRCategory class]) inManagedObjectContext:[SPRManagedDocument sharedDocument].managedObjectContext];
     fetchRequest.entity = entityDescription;
     
-    NSExpressionDescription *expressionDescription = [[NSExpressionDescription alloc] init];
-    expressionDescription.name = @"total";
-    expressionDescription.expression = [NSExpression expressionWithFormat:@"@sum.amount"];
-    expressionDescription.expressionResultType = NSDecimalAttributeType;
+    fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"displayOrder" ascending:YES]];
     
-    fetchRequest.propertiesToFetch = @[expressionDescription];
-    fetchRequest.propertiesToGroupBy = @[@"category"];
-    fetchRequest.resultType = NSDictionaryResultType;
+    _categoryFetcher = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:[SPRManagedDocument sharedDocument].managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+    _categoryFetcher.delegate = self;
     
-    fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"category.displayOrder" ascending:YES]];
-    
-    _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:[SPRManagedDocument sharedDocument].managedObjectContext sectionNameKeyPath:nil cacheName:nil];
-    _fetchedResultsController.delegate = self;
-    
-    return _fetchedResultsController;
+    return _categoryFetcher;
 }
+
+//- (NSFetchedResultsController *)dailyTotalFetcher
+//{
+//    if (_dailyTotalFetcher) {
+//        return _dailyTotalFetcher;
+//    }
+//    
+//    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+//    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:NSStringFromClass([SPRExpense class]) inManagedObjectContext:[SPRManagedDocument sharedDocument].managedObjectContext];
+//    fetchRequest.entity = entityDescription;
+//    
+//    NSExpressionDescription *expressionDescription = [[NSExpressionDescription alloc] init];
+//    expressionDescription.name = @"total";
+//    expressionDescription.expression = [NSExpression expressionWithFormat:@"@sum.amount"];
+//    expressionDescription.expressionResultType = NSDecimalAttributeType;
+//    
+//    fetchRequest.propertiesToFetch = @[expressionDescription];
+//    fetchRequest.propertiesToGroupBy = @[@"category"];
+//    fetchRequest.resultType = NSDictionaryResultType;
+//    
+//    fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"category.displayOrder" ascending:YES]];
+//    
+//    _dailyTotalFetcher = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:[SPRManagedDocument sharedDocument].managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+//    _dailyTotalFetcher.delegate = self;
+//    
+//    return _dailyTotalFetcher;
+//}
 
 @end
