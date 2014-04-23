@@ -10,6 +10,10 @@
 
 @implementation SPRExpense (Extension)
 
-
+- (NSString *)dateSpentAsSectionTitle
+{
+    NSString *sectionInfo = [NSString stringWithFormat:@"%f", self.dateSpent.timeIntervalSince1970];
+    return sectionInfo;
+}
 
 @end
