@@ -1,9 +1,9 @@
 //
 //  SPRExpense.h
-//  Spare
+//  Pods
 //
-//  Created by Matt Quiros on 4/16/14.
-//  Copyright (c) 2014 Matt Quiros. All rights reserved.
+//  Created by Matt Quiros on 4/29/14.
+//
 //
 
 #import <Foundation/Foundation.h>
