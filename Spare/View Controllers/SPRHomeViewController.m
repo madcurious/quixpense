@@ -44,6 +44,7 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
 @property (strong, nonatomic) NSMutableArray *dailyTotals;
 @property (strong, nonatomic) NSMutableArray *weeklyTotals;
 @property (strong, nonatomic) NSMutableArray *monthlyTotals;
+@property (strong, nonatomic) NSMutableArray *yearlyTotals;
 @property (strong, nonatomic, readonly) NSMutableArray *activeTotals;
 
 @property (nonatomic) SPRTimeFrame activeTimeFrame;
@@ -190,11 +191,13 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
     NSLog(@"Controller changed");
+    
     if (controller == self.categoryFetcher) {
         [self initializeCategories];
         self.dailyTotals = nil;
         self.weeklyTotals = nil;
         self.monthlyTotals = nil;
+        self.yearlyTotals = nil;
     }
 }
 
@@ -211,6 +214,9 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
         }
         case SPRTimeFrameMonth: {
             return self.monthlyTotals;
+        }
+        case SPRTimeFrameYear: {
+            return self.yearlyTotals;
         }
         default:
             return nil;
@@ -268,6 +274,14 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
     return _monthlyTotals;
 }
 
+- (NSMutableArray *)yearlyTotals
+{
+    if (!_yearlyTotals) {
+        _yearlyTotals = [SPRHomeViewController totalsForCategories:self.categoryFetcher.fetchedObjects timeFrame:SPRTimeFrameYear];
+    }
+    return _yearlyTotals;
+}
+
 #pragma mark -
 
 + (NSMutableArray *)totalsForCategories:(NSArray *)categories timeFrame:(SPRTimeFrame)timeFrame
@@ -294,28 +308,8 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
     fetchRequest.entity = entityDescription;
     
     NSDate *currentDate = [NSDate date];
-    
-    NSDate *startDate, *endDate;
-    switch (timeFrame) {
-        case SPRTimeFrameDay: {
-            startDate = [currentDate firstMomentInTimeFrame:SPRTimeFrameDay];
-            endDate = [currentDate lastMomentInTimeFrame:SPRTimeFrameDay];
-            break;
-        }
-        case SPRTimeFrameWeek: {
-            startDate = [currentDate firstMomentInTimeFrame:SPRTimeFrameWeek];
-            endDate = [currentDate lastMomentInTimeFrame:SPRTimeFrameWeek];
-            break;
-        }
-        case SPRTimeFrameMonth: {
-            startDate = [currentDate firstMomentInTimeFrame:SPRTimeFrameMonth];
-            endDate = [currentDate lastMomentInTimeFrame:SPRTimeFrameMonth];
-            break;
-        }
-        case SPRTimeFrameYear: {
-            break;
-        }
-    }
+    NSDate *startDate = [currentDate firstMomentInTimeFrame:timeFrame];
+    NSDate *endDate = [currentDate lastMomentInTimeFrame:timeFrame];
     
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"category == %@ AND dateSpent >= %@ AND dateSpent <= %@", category, startDate, endDate];
     fetchRequest.predicate = predicate;

@@ -61,6 +61,12 @@
             components.day = 1;
             break;
         }
+        case SPRTimeFrameYear: {
+            components = [calendar components:commonComponents|NSDayCalendarUnit fromDate:self];
+            components.month = 1;
+            components.day = 1;
+            break;
+        }
         default:
             break;
     }
@@ -97,6 +103,12 @@
             
             components = [calendar components:commonComponents|NSDayCalendarUnit fromDate:self];
             components.day = days.length;
+            break;
+        }
+        case SPRTimeFrameYear: {
+            components = [calendar components:commonComponents|NSDayCalendarUnit fromDate:self];
+            components.month = 12;
+            components.day = 31;
             break;
         }
         default:
