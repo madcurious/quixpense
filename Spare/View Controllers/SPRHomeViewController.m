@@ -194,6 +194,7 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
         [self initializeCategories];
         self.dailyTotals = nil;
         self.weeklyTotals = nil;
+        self.monthlyTotals = nil;
     }
 }
 
@@ -207,6 +208,9 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
         }
         case SPRTimeFrameWeek: {
             return self.weeklyTotals;
+        }
+        case SPRTimeFrameMonth: {
+            return self.monthlyTotals;
         }
         default:
             return nil;
@@ -256,6 +260,14 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
     return _weeklyTotals;
 }
 
+- (NSMutableArray *)monthlyTotals
+{
+    if (!_monthlyTotals) {
+        _monthlyTotals = [SPRHomeViewController totalsForCategories:self.categoryFetcher.fetchedObjects timeFrame:SPRTimeFrameMonth];
+    }
+    return _monthlyTotals;
+}
+
 #pragma mark -
 
 + (NSMutableArray *)totalsForCategories:(NSArray *)categories timeFrame:(SPRTimeFrame)timeFrame
@@ -296,6 +308,8 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
             break;
         }
         case SPRTimeFrameMonth: {
+            startDate = [currentDate firstMomentInTimeFrame:SPRTimeFrameMonth];
+            endDate = [currentDate lastMomentInTimeFrame:SPRTimeFrameMonth];
             break;
         }
         case SPRTimeFrameYear: {

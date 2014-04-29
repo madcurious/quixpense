@@ -44,25 +44,30 @@
     NSDateComponents *components;
     NSDate *firstMoment = nil;
     
+    NSUInteger commonComponents = NSYearCalendarUnit|NSMonthCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit|NSSecondCalendarUnit;
+    
     switch (timeFrame) {
         case SPRTimeFrameDay: {
-            components = [calendar components:NSMonthCalendarUnit|NSDayCalendarUnit|NSYearCalendarUnit fromDate:self];
-            components.hour = 0;
-            components.minute = 0;
-            components.second = 0;
+            components = [calendar components:commonComponents fromDate:self];
             break;
         }
         case SPRTimeFrameWeek: {
-            components = [calendar components:NSYearForWeekOfYearCalendarUnit|NSYearCalendarUnit|NSMonthCalendarUnit|NSWeekCalendarUnit|NSWeekdayCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit|NSSecondCalendarUnit fromDate:self];
+            components = [calendar components:commonComponents|NSYearForWeekOfYearCalendarUnit|NSWeekCalendarUnit|NSWeekdayCalendarUnit fromDate:self];
             components.weekday = 1;
-            components.hour = 0;
-            components.minute = 0;
-            components.second = 0;
+            break;
+        }
+        case SPRTimeFrameMonth: {
+            components = [calendar components:commonComponents|NSDayCalendarUnit fromDate:self];
+            components.day = 1;
             break;
         }
         default:
             break;
     }
+    
+    components.hour = 0;
+    components.minute = 0;
+    components.second = 0;
     
     firstMoment = [calendar dateFromComponents:components];
     return firstMoment;
@@ -74,25 +79,33 @@
     NSDateComponents *components;
     NSDate *lastMoment = nil;
     
+    NSUInteger commonComponents = NSYearCalendarUnit|NSMonthCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit|NSSecondCalendarUnit;
+    
     switch (timeFrame) {
         case SPRTimeFrameDay: {
-            components = [calendar components:NSMonthCalendarUnit|NSDayCalendarUnit|NSYearCalendarUnit fromDate:self];
-            components.hour = 23;
-            components.minute = 59;
-            components.second = 59;
+            components = [calendar components:commonComponents fromDate:self];
             break;
         }
         case SPRTimeFrameWeek: {
-            components = [calendar components:NSYearForWeekOfYearCalendarUnit|NSYearCalendarUnit|NSMonthCalendarUnit|NSWeekCalendarUnit|NSWeekdayCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit|NSSecondCalendarUnit fromDate:self];
+            components = [calendar components:commonComponents|NSYearForWeekOfYearCalendarUnit|NSWeekCalendarUnit|NSWeekdayCalendarUnit fromDate:self];
             components.weekday = 7;
-            components.hour = 23;
-            components.minute = 59;
-            components.second = 59;
+            break;
+        }
+        case SPRTimeFrameMonth: {
+            // Get the number of days in this date's month.
+            NSRange days = [calendar rangeOfUnit:NSDayCalendarUnit inUnit:NSMonthCalendarUnit forDate:self];
+            
+            components = [calendar components:commonComponents|NSDayCalendarUnit fromDate:self];
+            components.day = days.length;
             break;
         }
         default:
             return nil;
     }
+    
+    components.hour = 23;
+    components.minute = 59;
+    components.second = 59;
     
     lastMoment = [calendar dateFromComponents:components];
     
