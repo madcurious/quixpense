@@ -38,16 +38,65 @@
     return text;
 }
 
-+ (NSDate *)simplifyToDayComponent:(NSDate *)date
+- (NSDate *)firstMomentInTimeFrame:(SPRTimeFrame)timeFrame
 {
     NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSDateComponents *components = [calendar components:NSUIntegerMax fromDate:date];
-    components.hour = 0;
-    components.minute = 0;
-    components.second = 0;
+    NSDateComponents *components;
+    NSDate *firstMoment = nil;
     
-    NSDate *simplifiedDate = [calendar dateFromComponents:components];
-    return simplifiedDate;
+    switch (timeFrame) {
+        case SPRTimeFrameDay: {
+            components = [calendar components:NSMonthCalendarUnit|NSDayCalendarUnit|NSYearCalendarUnit fromDate:self];
+            components.hour = 0;
+            components.minute = 0;
+            components.second = 0;
+            break;
+        }
+        case SPRTimeFrameWeek: {
+            components = [calendar components:NSYearForWeekOfYearCalendarUnit|NSYearCalendarUnit|NSMonthCalendarUnit|NSWeekCalendarUnit|NSWeekdayCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit|NSSecondCalendarUnit fromDate:self];
+            components.weekday = 1;
+            components.hour = 0;
+            components.minute = 0;
+            components.second = 0;
+            break;
+        }
+        default:
+            break;
+    }
+    
+    firstMoment = [calendar dateFromComponents:components];
+    return firstMoment;
+}
+
+- (NSDate *)lastMomentInTimeFrame:(SPRTimeFrame)timeFrame
+{
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *components;
+    NSDate *lastMoment = nil;
+    
+    switch (timeFrame) {
+        case SPRTimeFrameDay: {
+            components = [calendar components:NSMonthCalendarUnit|NSDayCalendarUnit|NSYearCalendarUnit fromDate:self];
+            components.hour = 23;
+            components.minute = 59;
+            components.second = 59;
+            break;
+        }
+        case SPRTimeFrameWeek: {
+            components = [calendar components:NSYearForWeekOfYearCalendarUnit|NSYearCalendarUnit|NSMonthCalendarUnit|NSWeekCalendarUnit|NSWeekdayCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit|NSSecondCalendarUnit fromDate:self];
+            components.weekday = 7;
+            components.hour = 23;
+            components.minute = 59;
+            components.second = 59;
+            break;
+        }
+        default:
+            return nil;
+    }
+    
+    lastMoment = [calendar dateFromComponents:components];
+    
+    return lastMoment;
 }
 
 + (NSDate *)simplifiedDate

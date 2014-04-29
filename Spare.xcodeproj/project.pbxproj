@@ -66,6 +66,7 @@
 
 /* Begin PBXFileReference section */
 		1D78CD279F1A45BD8D86373D /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		260F2BF61910053300FAEA5C /* SPRTimeFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRTimeFrame.h; sourceTree = "<group>"; };
 		2612A25318FBEEE300E4848E /* SPRCategorySectionHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRCategorySectionHeader.h; sourceTree = "<group>"; };
 		2612A25418FBEEE300E4848E /* SPRCategorySectionHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRCategorySectionHeader.m; sourceTree = "<group>"; };
 		2612C88F18E7BC3400DE2765 /* SPRStatusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRStatusView.h; sourceTree = "<group>"; };
@@ -176,6 +177,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		260F2BF5191004FF00FAEA5C /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				260F2BF61910053300FAEA5C /* SPRTimeFrame.h */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
 		261EB85618DDB630009DDF78 = {
 			isa = PBXGroup;
 			children = (
@@ -214,6 +223,7 @@
 		261EB86A18DDB631009DDF78 /* Spare */ = {
 			isa = PBXGroup;
 			children = (
+				260F2BF5191004FF00FAEA5C /* Constants */,
 				26E2484D18E1CA9E00391354 /* View Controllers */,
 				262ABD0B18DEA1A3003C7C8B /* Utilities */,
 				267794FE18DDCB6F005C74BA /* Categories */,

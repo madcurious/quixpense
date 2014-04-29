@@ -27,12 +27,8 @@
 // Pods
 #import "LXReorderableCollectionViewFlowLayout.h"
 
-typedef NS_ENUM(NSUInteger, SPRTotalTimeFrame) {
-    SPRTotalTimeFrameDay = 0,
-    SPRTotalTimeFrameWeek = 1,
-    SPRTotalTimeFrameMonth,
-    SPRTotalTimeFrameYear,
-};
+// Constants
+#import "SPRTimeFrame.h"
 
 static NSString * const kCellIdentifier = @"kCellIdentifier";
 
@@ -47,15 +43,14 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
 
 @property (strong, nonatomic) NSMutableArray *dailyTotals;
 @property (strong, nonatomic) NSMutableArray *weeklyTotals;
+@property (strong, nonatomic) NSMutableArray *monthlyTotals;
 @property (strong, nonatomic, readonly) NSMutableArray *activeTotals;
 
-@property (nonatomic) SPRTotalTimeFrame activeTimeFrame;
+@property (nonatomic) SPRTimeFrame activeTimeFrame;
 
 @end
 
 @implementation SPRHomeViewController
-
-@synthesize activeTotals = _activeTotals;
 
 - (void)viewDidLoad
 {
@@ -73,7 +68,7 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
     
     [self.collectionView registerClass:[SPRCategoryCollectionViewCell class] forCellWithReuseIdentifier:kCellIdentifier];
     
-    self.activeTimeFrame = SPRTotalTimeFrameDay;
+    self.activeTimeFrame = SPRTimeFrameDay;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -207,10 +202,10 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
 - (NSMutableArray *)activeTotals
 {
     switch (self.activeTimeFrame) {
-        case SPRTotalTimeFrameDay: {
+        case SPRTimeFrameDay: {
             return self.dailyTotals;
         }
-        case SPRTotalTimeFrameWeek: {
+        case SPRTimeFrameWeek: {
             return self.weeklyTotals;
         }
         default:
@@ -248,18 +243,7 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
 - (NSMutableArray *)dailyTotals
 {
     if (!_dailyTotals) {
-        _dailyTotals = [NSMutableArray array];
-        NSArray *categories = self.categoryFetcher.fetchedObjects;
-        
-        NSFetchedResultsController *fetcher;
-        
-        for (int i = 0; i < categories.count; i++) {
-            fetcher = [SPRHomeViewController totalFetcherForCategory:categories[i] timeFrame:SPRTotalTimeFrameDay];
-            [fetcher performFetch:nil];
-            
-            NSDictionary *dictionary = fetcher.fetchedObjects[0];
-            _dailyTotals[i] = dictionary[@"total"];
-        }
+        _dailyTotals = [SPRHomeViewController totalsForCategories:self.categoryFetcher.fetchedObjects timeFrame:SPRTimeFrameDay];
     }
     return _dailyTotals;
 }
@@ -267,76 +251,54 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
 - (NSMutableArray *)weeklyTotals
 {
     if (!_weeklyTotals) {
-        _weeklyTotals = [NSMutableArray array];
-        NSArray *categories = self.categoryFetcher.fetchedObjects;
-        
-        NSFetchedResultsController *fetcher;
-        
-        for (int i = 0; i < categories.count; i++) {
-            fetcher = [SPRHomeViewController totalFetcherForCategory:categories[i] timeFrame:SPRTotalTimeFrameWeek];
-            [fetcher performFetch:nil];
-            
-            NSDictionary *dictionary = fetcher.fetchedObjects[0];
-            _weeklyTotals[i] = dictionary[@"total"];
-        }
+        _weeklyTotals = [SPRHomeViewController totalsForCategories:self.categoryFetcher.fetchedObjects timeFrame:SPRTimeFrameWeek];
     }
     return _weeklyTotals;
 }
 
 #pragma mark -
 
-+ (NSFetchedResultsController *)totalFetcherForCategory:(SPRCategory *)category timeFrame:(SPRTotalTimeFrame)timeFrame
++ (NSMutableArray *)totalsForCategories:(NSArray *)categories timeFrame:(SPRTimeFrame)timeFrame
+{
+    NSMutableArray *totals = [NSMutableArray array];
+    
+    NSFetchedResultsController *fetcher;
+    
+    for (int i = 0; i < categories.count; i++) {
+        fetcher = [SPRHomeViewController totalFetcherForCategory:categories[i] timeFrame:timeFrame];
+        [fetcher performFetch:nil];
+        
+        NSDictionary *dictionary = fetcher.fetchedObjects[0];
+        totals[i] = dictionary[@"total"];
+    }
+    
+    return totals;
+}
+
++ (NSFetchedResultsController *)totalFetcherForCategory:(SPRCategory *)category timeFrame:(SPRTimeFrame)timeFrame
 {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entityDescription = [NSEntityDescription entityForName:NSStringFromClass([SPRExpense class]) inManagedObjectContext:[SPRManagedDocument sharedDocument].managedObjectContext];
     fetchRequest.entity = entityDescription;
     
     NSDate *currentDate = [NSDate date];
-    NSCalendar *calendar = [NSCalendar currentCalendar];
     
     NSDate *startDate, *endDate;
     switch (timeFrame) {
-        case SPRTotalTimeFrameDay: {
-            NSDateComponents *components = [calendar components:NSMonthCalendarUnit|NSDayCalendarUnit|NSYearCalendarUnit fromDate:currentDate];
-            
-            NSDateComponents *startDateComponents = [[NSDateComponents alloc] init];
-            startDateComponents.month = components.month;
-            startDateComponents.day = components.day;
-            startDateComponents.year = components.year;
-            startDateComponents.hour = 0;
-            startDateComponents.minute = 0;
-            startDateComponents.second = 0;
-            startDate = [calendar dateFromComponents:startDateComponents];
-            
-            NSDateComponents *endDateComponents = [[NSDateComponents alloc] init];
-            endDateComponents.month = components.month;
-            endDateComponents.day = components.day;
-            endDateComponents.year = components.year;
-            endDateComponents.hour = 23;
-            endDateComponents.minute = 59;
-            endDateComponents.second = 59;
-            endDate = [calendar dateFromComponents:endDateComponents];
+        case SPRTimeFrameDay: {
+            startDate = [currentDate firstMomentInTimeFrame:SPRTimeFrameDay];
+            endDate = [currentDate lastMomentInTimeFrame:SPRTimeFrameDay];
             break;
         }
-        case SPRTotalTimeFrameWeek: {
-            NSDateComponents *components = [calendar components:NSYearForWeekOfYearCalendarUnit|NSYearCalendarUnit|NSMonthCalendarUnit|NSWeekCalendarUnit|NSWeekdayCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit|NSSecondCalendarUnit fromDate:currentDate];
-            components.weekday = 1;
-            components.hour = 0;
-            components.minute = 0;
-            components.second = 0;
-            startDate = [calendar dateFromComponents:components];
-            
-            components.weekday = 7;
-            components.hour = 23;
-            components.minute = 59;
-            components.second = 59;
-            endDate = [calendar dateFromComponents:components];
+        case SPRTimeFrameWeek: {
+            startDate = [currentDate firstMomentInTimeFrame:SPRTimeFrameWeek];
+            endDate = [currentDate lastMomentInTimeFrame:SPRTimeFrameWeek];
             break;
         }
-        case SPRTotalTimeFrameMonth: {
+        case SPRTimeFrameMonth: {
             break;
         }
-        case SPRTotalTimeFrameYear: {
+        case SPRTimeFrameYear: {
             break;
         }
     }

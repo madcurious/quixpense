@@ -8,12 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
+// Constants
+#import "SPRTimeFrame.h"
+
 @interface NSDate (SPR)
 
 - (BOOL)isSameDayAsDate:(NSDate *)date;
 - (NSString *)textInForm;
 
-+ (NSDate *)simplifyToDayComponent:(NSDate *)date;
+- (NSDate *)firstMomentInTimeFrame:(SPRTimeFrame)timeFrame;
+- (NSDate *)lastMomentInTimeFrame:(SPRTimeFrame)timeFrame;
+
 + (NSDate *)simplifiedDate;
 + (NSDate *)simplifiedDateFromDate:(NSDate *)date;
 
