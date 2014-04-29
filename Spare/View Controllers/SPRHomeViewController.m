@@ -47,11 +47,15 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
 
 @property (strong, nonatomic) NSMutableArray *dailyTotals;
 @property (strong, nonatomic) NSMutableArray *weeklyTotals;
-@property (strong, nonatomic) NSMutableArray *activeTotals;
+@property (strong, nonatomic, readonly) NSMutableArray *activeTotals;
+
+@property (nonatomic) SPRTotalTimeFrame activeTimeFrame;
 
 @end
 
 @implementation SPRHomeViewController
+
+@synthesize activeTotals = _activeTotals;
 
 - (void)viewDidLoad
 {
@@ -68,6 +72,8 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
     self.navigationItem.rightBarButtonItems = @[newCategoryBarButtonItem];
     
     [self.collectionView registerClass:[SPRCategoryCollectionViewCell class] forCellWithReuseIdentifier:kCellIdentifier];
+    
+    self.activeTimeFrame = SPRTotalTimeFrameDay;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -76,7 +82,6 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
     
     if (self.hasBeenSetup) {
         [self initializeCategories];
-        self.activeTotals = self.dailyTotals;
         [self.collectionView reloadData];
     } else {
         [self performSegueWithIdentifier:@"presentSetup" sender:self];
@@ -113,21 +118,7 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
 - (IBAction)segmentedControlChanged:(id)sender
 {
     UISegmentedControl *segmentedControl = (UISegmentedControl *)sender;
-    
-    switch (segmentedControl.selectedSegmentIndex) {
-        case SPRTotalTimeFrameDay: {
-            self.activeTotals = self.dailyTotals;
-            break;
-        }
-        case SPRTotalTimeFrameWeek: {
-            self.activeTotals = self.weeklyTotals;
-            break;
-        }
-        default: {
-            break;
-        }
-    }
-    
+    self.activeTimeFrame = segmentedControl.selectedSegmentIndex;
     [self.collectionView reloadData];
 }
 
@@ -204,9 +195,28 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
     NSLog(@"Controller changed");
+    if (controller == self.categoryFetcher) {
+        [self initializeCategories];
+        self.dailyTotals = nil;
+        self.weeklyTotals = nil;
+    }
 }
 
 #pragma mark - Getters
+
+- (NSMutableArray *)activeTotals
+{
+    switch (self.activeTimeFrame) {
+        case SPRTotalTimeFrameDay: {
+            return self.dailyTotals;
+        }
+        case SPRTotalTimeFrameWeek: {
+            return self.weeklyTotals;
+        }
+        default:
+            return nil;
+    }
+}
 
 - (SPRStatusView *)statusView
 {
