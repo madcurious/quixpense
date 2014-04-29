@@ -43,9 +43,11 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
 @property (nonatomic) NSInteger selectedCategoryIndex;
 @property (nonatomic) BOOL hasBeenSetup;
 
-@property (strong, nonatomic) NSMutableArray *totals;
 @property (strong, nonatomic) NSFetchedResultsController *categoryFetcher;
-@property (strong, nonatomic) NSMutableArray *dailyTotalFetchers;
+
+@property (strong, nonatomic) NSMutableArray *dailyTotals;
+@property (strong, nonatomic) NSMutableArray *weeklyTotals;
+@property (strong, nonatomic) NSMutableArray *activeTotals;
 
 @end
 
@@ -74,7 +76,7 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
     
     if (self.hasBeenSetup) {
         [self initializeCategories];
-        [self initializeTotals];
+        self.activeTotals = self.dailyTotals;
         [self.collectionView reloadData];
     } else {
         [self performSegueWithIdentifier:@"presentSetup" sender:self];
@@ -101,34 +103,32 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
     }
 }
 
-- (void)initializeTotals
-{
-    self.totals = [NSMutableArray array];
-    self.dailyTotalFetchers = [NSMutableArray array];
-    NSArray *categories = self.categoryFetcher.fetchedObjects;
-    
-    NSFetchedResultsController *fetcher;
-    
-    for (int i = 0; i < categories.count; i++) {
-        fetcher = [SPRHomeViewController totalFetcherForCategory:categories[i] timeFrame:SPRTotalTimeFrameDay];
-        [fetcher performFetch:nil];
-        
-        if (fetcher.fetchedObjects.count == 1) {
-            NSDictionary *dictionary = fetcher.fetchedObjects[0];
-            self.totals[i] = dictionary[@"total"];
-        } else {
-            self.totals[i] = @0;
-        }
-        
-        [self.dailyTotalFetchers addObject:fetcher];
-    }
-}
-
 #pragma mark - Target actions
 
 - (void)newCategoryButtonTapped
 {
     [self performSegueWithIdentifier:@"presentNewCategoryModal" sender:self];
+}
+
+- (IBAction)segmentedControlChanged:(id)sender
+{
+    UISegmentedControl *segmentedControl = (UISegmentedControl *)sender;
+    
+    switch (segmentedControl.selectedSegmentIndex) {
+        case SPRTotalTimeFrameDay: {
+            self.activeTotals = self.dailyTotals;
+            break;
+        }
+        case SPRTotalTimeFrameWeek: {
+            self.activeTotals = self.weeklyTotals;
+            break;
+        }
+        default: {
+            break;
+        }
+    }
+    
+    [self.collectionView reloadData];
 }
 
 #pragma mark - Collection view data source
@@ -146,7 +146,7 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
     SPRCategory *category = self.categoryFetcher.fetchedObjects[indexPath.row];
     
     cell.category = category;
-    cell.displayedTotal = self.totals[indexPath.row];
+    cell.displayedTotal = self.activeTotals[indexPath.row];
     
     return cell;
 }
@@ -166,10 +166,13 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
         category.displayOrder = @(i);
     }
     
-    // Reorder the totals.
-    NSDecimalNumber *total = self.totals[fromIndexPath.row];
-    [self.totals removeObjectAtIndex:fromIndexPath.row];
-    [self.totals insertObject:total atIndex:toIndexPath.row];
+    // Reorder the totals in all of the totals arrays.
+    NSArray *totals = @[self.dailyTotals, self.weeklyTotals];
+    for (NSMutableArray *array in totals) {
+        NSDecimalNumber *total = array[fromIndexPath.row];
+        [array removeObjectAtIndex:fromIndexPath.row];
+        [array insertObject:total atIndex:toIndexPath.row];
+    }
     
     // Persist the reordering into the managed document.
     SPRManagedDocument *document = [SPRManagedDocument sharedDocument];
@@ -232,6 +235,46 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
     return _categoryFetcher;
 }
 
+- (NSMutableArray *)dailyTotals
+{
+    if (!_dailyTotals) {
+        _dailyTotals = [NSMutableArray array];
+        NSArray *categories = self.categoryFetcher.fetchedObjects;
+        
+        NSFetchedResultsController *fetcher;
+        
+        for (int i = 0; i < categories.count; i++) {
+            fetcher = [SPRHomeViewController totalFetcherForCategory:categories[i] timeFrame:SPRTotalTimeFrameDay];
+            [fetcher performFetch:nil];
+            
+            NSDictionary *dictionary = fetcher.fetchedObjects[0];
+            _dailyTotals[i] = dictionary[@"total"];
+        }
+    }
+    return _dailyTotals;
+}
+
+- (NSMutableArray *)weeklyTotals
+{
+    if (!_weeklyTotals) {
+        _weeklyTotals = [NSMutableArray array];
+        NSArray *categories = self.categoryFetcher.fetchedObjects;
+        
+        NSFetchedResultsController *fetcher;
+        
+        for (int i = 0; i < categories.count; i++) {
+            fetcher = [SPRHomeViewController totalFetcherForCategory:categories[i] timeFrame:SPRTotalTimeFrameWeek];
+            [fetcher performFetch:nil];
+            
+            NSDictionary *dictionary = fetcher.fetchedObjects[0];
+            _weeklyTotals[i] = dictionary[@"total"];
+        }
+    }
+    return _weeklyTotals;
+}
+
+#pragma mark -
+
 + (NSFetchedResultsController *)totalFetcherForCategory:(SPRCategory *)category timeFrame:(SPRTotalTimeFrame)timeFrame
 {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
@@ -240,24 +283,25 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
     
     NSDate *currentDate = [NSDate date];
     NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSDateComponents *currentDateComponents = [calendar components:NSMonthCalendarUnit|NSDayCalendarUnit|NSYearCalendarUnit fromDate:currentDate];
     
     NSDate *startDate, *endDate;
     switch (timeFrame) {
         case SPRTotalTimeFrameDay: {
+            NSDateComponents *components = [calendar components:NSMonthCalendarUnit|NSDayCalendarUnit|NSYearCalendarUnit fromDate:currentDate];
+            
             NSDateComponents *startDateComponents = [[NSDateComponents alloc] init];
-            startDateComponents.month = currentDateComponents.month;
-            startDateComponents.day = currentDateComponents.day;
-            startDateComponents.year = currentDateComponents.year;
+            startDateComponents.month = components.month;
+            startDateComponents.day = components.day;
+            startDateComponents.year = components.year;
             startDateComponents.hour = 0;
             startDateComponents.minute = 0;
             startDateComponents.second = 0;
             startDate = [calendar dateFromComponents:startDateComponents];
             
             NSDateComponents *endDateComponents = [[NSDateComponents alloc] init];
-            endDateComponents.month = currentDateComponents.month;
-            endDateComponents.day = currentDateComponents.day;
-            endDateComponents.year = currentDateComponents.year;
+            endDateComponents.month = components.month;
+            endDateComponents.day = components.day;
+            endDateComponents.year = components.year;
             endDateComponents.hour = 23;
             endDateComponents.minute = 59;
             endDateComponents.second = 59;
@@ -265,6 +309,18 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
             break;
         }
         case SPRTotalTimeFrameWeek: {
+            NSDateComponents *components = [calendar components:NSYearForWeekOfYearCalendarUnit|NSYearCalendarUnit|NSMonthCalendarUnit|NSWeekCalendarUnit|NSWeekdayCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit|NSSecondCalendarUnit fromDate:currentDate];
+            components.weekday = 1;
+            components.hour = 0;
+            components.minute = 0;
+            components.second = 0;
+            startDate = [calendar dateFromComponents:components];
+            
+            components.weekday = 7;
+            components.hour = 23;
+            components.minute = 59;
+            components.second = 59;
+            endDate = [calendar dateFromComponents:components];
             break;
         }
         case SPRTotalTimeFrameMonth: {
