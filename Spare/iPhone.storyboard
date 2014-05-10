@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="XMk-D6-Jmw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="XMk-D6-Jmw">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -73,6 +73,7 @@
                         <segue destination="22g-yd-WJt" kind="modal" identifier="presentNewCategoryModal" id="CBk-Uy-75b"/>
                         <segue destination="XW0-3j-tXb" kind="push" identifier="pushCategory" id="a8y-Aq-PCH"/>
                         <segue destination="tZm-44-Hlv" kind="modal" identifier="presentSetup" modalTransitionStyle="crossDissolve" animates="NO" id="ugL-lv-idL"/>
+                        <segue destination="r9o-Oe-28q" kind="modal" identifier="presentNewExpenseModal" id="qWV-fi-0eV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RYh-3n-zQk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -144,12 +145,12 @@
                     <navigationItem key="navigationItem" id="JKg-Sw-WAG"/>
                     <connections>
                         <outlet property="tableView" destination="NqK-hC-8m8" id="lFs-9T-GEj"/>
-                        <segue destination="r9o-Oe-28q" kind="modal" identifier="presentNewExpense" id="oGa-Ue-Z8v"/>
+                        <segue destination="r9o-Oe-28q" kind="modal" identifier="presentNewExpenseModal" id="oGa-Ue-Z8v"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zOf-6F-cS6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1425" y="38"/>
+            <point key="canvasLocation" x="1425" y="-142"/>
         </scene>
         <!--New Expense View Controller - New Expense-->
         <scene sceneID="16t-vG-X1k">
@@ -544,4 +545,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="qWV-fi-0eV"/>
+    </inferredMetricsTieBreakers>
 </document>

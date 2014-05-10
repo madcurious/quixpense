@@ -86,7 +86,7 @@ static const NSInteger kAmountLabelTag = 2000;
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"presentNewExpense"]) {
+    if ([segue.identifier isEqualToString:@"presentNewExpenseModal"]) {
         UINavigationController *navigationController = segue.destinationViewController;
         SPRNewExpenseViewController *newExpenseScreen = (SPRNewExpenseViewController *)navigationController.topViewController;
         newExpenseScreen.categoryIndex = self.categoryIndex;
@@ -97,7 +97,7 @@ static const NSInteger kAmountLabelTag = 2000;
 
 - (void)newExpenseButtonTapped
 {
-    [self performSegueWithIdentifier:@"presentNewExpense" sender:self];
+    [self performSegueWithIdentifier:@"presentNewExpenseModal" sender:self];
 }
 
 #pragma mark - Table view data source

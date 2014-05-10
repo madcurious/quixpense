@@ -57,18 +57,13 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
 {
     [super viewDidLoad];
     
-    self.title = nil;
+    // Set up the bar button item.s
+    [self setupBarButtonItems];
     
-    UIButton *newCategoryButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    [newCategoryButton setAttributedTitle:[SPRIconFont iconForNewCategory] forState:UIControlStateNormal];
-    [newCategoryButton sizeToFit];
-    [newCategoryButton addTarget:self action:@selector(newCategoryButtonTapped) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *newCategoryBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:newCategoryButton];
-    
-    self.navigationItem.rightBarButtonItems = @[newCategoryBarButtonItem];
-    
+    // Register a collection view cell class.
     [self.collectionView registerClass:[SPRCategoryCollectionViewCell class] forCellWithReuseIdentifier:kCellIdentifier];
     
+    // By default, the active time frame for totals is daily.
     self.activeTimeFrame = SPRTimeFrameDay;
 }
 
@@ -94,7 +89,26 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
     }
 }
 
-#pragma mark - Initializer methods
+#pragma mark - Helper methods
+
+- (void)setupBarButtonItems
+{
+    // The new category button.
+    UIButton *newCategoryButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    [newCategoryButton setAttributedTitle:[SPRIconFont iconForNewCategory] forState:UIControlStateNormal];
+    [newCategoryButton sizeToFit];
+    [newCategoryButton addTarget:self action:@selector(newCategoryButtonTapped) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *newCategoryBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:newCategoryButton];
+    
+    // The new expense button.
+    UIButton *newExpenseButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    [newExpenseButton setAttributedTitle:[SPRIconFont iconForNewExpense] forState:UIControlStateNormal];
+    [newExpenseButton sizeToFit];
+    [newExpenseButton addTarget:self action:@selector(newExpenseButtonTapped) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *newExpenseBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:newExpenseButton];
+    
+    self.navigationItem.rightBarButtonItems = @[newExpenseBarButtonItem, newCategoryBarButtonItem];
+}
 
 - (void)initializeCategories
 {
@@ -109,6 +123,11 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
 - (void)newCategoryButtonTapped
 {
     [self performSegueWithIdentifier:@"presentNewCategoryModal" sender:self];
+}
+
+- (void)newExpenseButtonTapped
+{
+    [self performSegueWithIdentifier:@"presentNewExpenseModal" sender:self];
 }
 
 - (IBAction)segmentedControlChanged:(id)sender
