@@ -22,6 +22,7 @@
 
 // View controllers
 #import "SPRNewExpenseViewController.h"
+#import "SPREditExpenseViewController.h"
 
 static NSString * const kExpenseCell = @"kExpenseCell";
 static const NSInteger kDescriptionLabelTag = 1000;
@@ -161,6 +162,10 @@ static const NSInteger kAmountLabelTag = 2000;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    SPREditExpenseViewController *editExpenseScreen = [[SPREditExpenseViewController alloc] init];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:editExpenseScreen];
+    [self presentViewController:navigationController animated:YES completion:nil];
 }
 
 #pragma mark - Fetched results controller delegate
