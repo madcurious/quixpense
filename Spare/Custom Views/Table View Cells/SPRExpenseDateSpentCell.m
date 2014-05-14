@@ -11,6 +11,9 @@
 // Utilities
 #import "SPRFormComponents.h"
 
+// Objects
+#import "SPRField.h"
+
 @interface SPRExpenseDateSpentCell ()
 
 @property (strong, nonatomic) UILabel *fieldLabel;
@@ -40,6 +43,16 @@
     
     CGFloat valueLabelY = [self.valueLabel centerYInParent:self];
     self.valueLabel.frame = CGRectMake(kSPRFormRightComponentX, valueLabelY, kSPRFormRightComponentWidth, self.valueLabel.intrinsicContentSize.height);
+}
+
+- (void)setField:(SPRField *)field
+{
+    [super setField:field];
+    
+    NSDate *dateSpent = field.value;
+    self.valueLabel.text = dateSpent.textInForm;
+    
+    [self setNeedsLayout];
 }
 
 @end

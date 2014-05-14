@@ -11,7 +11,10 @@
 // Utilities
 #import "SPRFormComponents.h"
 
-@interface SPRExpenseAmountCell ()
+// Objects
+#import "SPRField.h"
+
+@interface SPRExpenseAmountCell () <UITextFieldDelegate>
 
 @property (strong, nonatomic) UILabel *fieldLabel;
 @property (strong, nonatomic) UITextField *textField;
@@ -28,8 +31,11 @@
         [self.contentView addSubview:_fieldLabel];
         
         _textField = [SPRFormComponents textField];
+        _textField.delegate = self;
         _textField.keyboardType = UIKeyboardTypeDecimalPad;
         [self.contentView addSubview:_textField];
+        
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     return self;
 }
@@ -41,6 +47,34 @@
     
     CGFloat textFieldY = [self.textField centerYInParent:self];
     self.textField.frame = CGRectMake(kSPRFormRightComponentX, textFieldY, kSPRFormRightComponentWidth, self.textField.intrinsicContentSize.height);
+}
+
+- (void)setField:(SPRField *)field
+{
+    [super setField:field];
+    
+    NSDecimalNumber *amount = field.value;
+    self.textField.text = [amount stringValue];
+}
+
+#pragma mark - Text field delegate
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    NSCharacterSet *invalidCharacterSet = [[NSCharacterSet characterSetWithCharactersInString:@"1234567890."] invertedSet];
+    if ([string intersectsWithCharacterSet:invalidCharacterSet]) {
+        return NO;
+    }
+    
+    NSString *amountText = [self.textField.text stringByReplacingCharactersInRange:range withString:string];
+    self.field.value = [NSDecimalNumber decimalNumberWithString:amountText];
+    return YES;
+}
+
+- (BOOL)textFieldShouldClear:(UITextField *)textField
+{
+    self.field.value = [[NSDecimalNumber alloc] initWithInt:0];
+    return YES;
 }
 
 @end

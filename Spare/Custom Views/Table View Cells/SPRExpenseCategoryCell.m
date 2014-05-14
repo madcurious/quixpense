@@ -11,6 +11,10 @@
 // Utilities
 #import "SPRFormComponents.h"
 
+// Objects
+#import "SPRCategory+Extension.h"
+#import "SPRField.h"
+
 @interface SPRExpenseCategoryCell ()
 
 @property (strong, nonatomic) UILabel *fieldLabel;
@@ -39,6 +43,16 @@
     
     CGFloat valueLabelY = [self.valueLabel centerYInParent:self];
     self.valueLabel.frame = CGRectMake(kSPRFormRightComponentX, valueLabelY, kSPRFormRightComponentWidth, self.valueLabel.intrinsicContentSize.height);
+}
+
+- (void)setField:(SPRField *)field
+{
+    [super setField:field];
+    
+    SPRCategory *category = field.value;
+    self.valueLabel.text = category.name;
+    
+    [self setNeedsLayout];
 }
 
 @end
