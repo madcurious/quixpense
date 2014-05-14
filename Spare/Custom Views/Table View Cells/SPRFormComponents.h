@@ -18,5 +18,6 @@ extern const CGFloat kSPRFormRightComponentWidth;
 
 + (UILabel *)fieldLabelWithTitle:(NSString *)title;
 + (UITextField *)textField;
++ (UILabel *)valueLabel;
 
 @end

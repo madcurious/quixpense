@@ -10,8 +10,8 @@
 
 @interface UIView (SPR)
 
-- (void)sizeToFitWidth:(CGFloat)width;
 - (CGFloat)centerXInParent:(UIView *)parent;
 - (CGFloat)centerYInParent:(UIView *)parent;
+- (void)sizeToFitWidth:(CGFloat)width;
 
 @end

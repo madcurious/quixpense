@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2602A7D0192421A00050B91E /* SPRExpenseCategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2602A7CF192421A00050B91E /* SPRExpenseCategoryCell.m */; };
+		2602A7D6192428BE0050B91E /* SPRExpenseDateSpentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2602A7D5192428BE0050B91E /* SPRExpenseDateSpentCell.m */; };
 		26115594191F137500554D1F /* SPRExpenseAmountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26115593191F137500554D1F /* SPRExpenseAmountCell.m */; };
 		2612A25518FBEEE300E4848E /* SPRCategorySectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2612A25418FBEEE300E4848E /* SPRCategorySectionHeader.m */; };
 		2612C89118E7BC3400DE2765 /* SPRStatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2612C89018E7BC3400DE2765 /* SPRStatusView.m */; };
@@ -69,6 +71,10 @@
 
 /* Begin PBXFileReference section */
 		1D78CD279F1A45BD8D86373D /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		2602A7CE192421A00050B91E /* SPRExpenseCategoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRExpenseCategoryCell.h; sourceTree = "<group>"; };
+		2602A7CF192421A00050B91E /* SPRExpenseCategoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRExpenseCategoryCell.m; sourceTree = "<group>"; };
+		2602A7D4192428BE0050B91E /* SPRExpenseDateSpentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRExpenseDateSpentCell.h; sourceTree = "<group>"; };
+		2602A7D5192428BE0050B91E /* SPRExpenseDateSpentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRExpenseDateSpentCell.m; sourceTree = "<group>"; };
 		260F2BF61910053300FAEA5C /* SPRTimeFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRTimeFrame.h; sourceTree = "<group>"; };
 		26115592191F137500554D1F /* SPRExpenseAmountCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRExpenseAmountCell.h; sourceTree = "<group>"; };
 		26115593191F137500554D1F /* SPRExpenseAmountCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRExpenseAmountCell.m; sourceTree = "<group>"; };
@@ -356,10 +362,14 @@
 			children = (
 				26A90292191DD18500CEE065 /* SPRExpenseDescriptionCell.h */,
 				26A90293191DD18500CEE065 /* SPRExpenseDescriptionCell.m */,
+				2602A7CE192421A00050B91E /* SPRExpenseCategoryCell.h */,
+				2602A7CF192421A00050B91E /* SPRExpenseCategoryCell.m */,
 				26A90298191DD4FD00CEE065 /* SPRFormComponents.h */,
 				26A90299191DD4FD00CEE065 /* SPRFormComponents.m */,
 				26115592191F137500554D1F /* SPRExpenseAmountCell.h */,
 				26115593191F137500554D1F /* SPRExpenseAmountCell.m */,
+				2602A7D4192428BE0050B91E /* SPRExpenseDateSpentCell.h */,
+				2602A7D5192428BE0050B91E /* SPRExpenseDateSpentCell.m */,
 			);
 			path = "Table View Cells";
 			sourceTree = "<group>";
@@ -518,6 +528,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2602A7D6192428BE0050B91E /* SPRExpenseDateSpentCell.m in Sources */,
 				26488F9E190EBE480050EE36 /* SPRExpense.m in Sources */,
 				26617D6918F308F800CA51EA /* SPRSetupViewController.m in Sources */,
 				26D08D2618F105C600AE018F /* SPRHomeViewController.m in Sources */,
@@ -538,6 +549,7 @@
 				2699AC4B18FCF716009FEBB3 /* NSDecimalNumber+SPR.m in Sources */,
 				2612A25518FBEEE300E4848E /* SPRCategorySectionHeader.m in Sources */,
 				2612C8AF18E847DB00DE2765 /* NSDate+SPR.m in Sources */,
+				2602A7D0192421A00050B91E /* SPRExpenseCategoryCell.m in Sources */,
 				262F32E018FE3EE600F01B13 /* SPRCategory.m in Sources */,
 				2688627D18E31E2F00B8D167 /* SPRColorChooserSectionHeader.m in Sources */,
 				261EB87518DDB631009DDF78 /* SPRAppDelegate.m in Sources */,

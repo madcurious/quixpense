@@ -11,9 +11,13 @@
 // Custom views
 #import "SPRExpenseDescriptionCell.h"
 #import "SPRExpenseAmountCell.h"
+#import "SPRExpenseCategoryCell.h"
+#import "SPRExpenseDateSpentCell.h"
 
 static NSString * const kDescriptionCell = @"kDescriptionCell";
 static NSString * const kAmountCell = @"kAmountCell";
+static NSString * const kCategoryCell = @"kCategoryCell";
+static NSString * const kDateSpentCell = @"kDateSpentCell";
 
 typedef NS_ENUM(NSUInteger, kRow)
 {
@@ -46,11 +50,13 @@ typedef NS_ENUM(NSUInteger, kRow)
     // Register table view cell classes.
     [self.tableView registerClass:[SPRExpenseDescriptionCell class] forCellReuseIdentifier:kDescriptionCell];
     [self.tableView registerClass:[SPRExpenseAmountCell class] forCellReuseIdentifier:kAmountCell];
+    [self.tableView registerClass:[SPRExpenseCategoryCell class] forCellReuseIdentifier:kCategoryCell];
+    [self.tableView registerClass:[SPRExpenseDateSpentCell class] forCellReuseIdentifier:kDateSpentCell];
     
     // Set up the bar button items.
     [self setupBarButtonItems];
     
-    self.cellIdentifiers = @[kDescriptionCell, kAmountCell];
+    self.cellIdentifiers = @[kDescriptionCell, kAmountCell, kCategoryCell, kDateSpentCell];
 }
 
 #pragma mark - Helper methods
@@ -85,7 +91,7 @@ typedef NS_ENUM(NSUInteger, kRow)
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 2;
+    return self.cellIdentifiers.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

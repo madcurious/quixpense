@@ -13,7 +13,7 @@
 
 @interface SPRExpenseDescriptionCell ()
 
-@property (strong, nonatomic) UILabel *descriptionLabel;
+@property (strong, nonatomic) UILabel *fieldLabel;
 @property (strong, nonatomic) UITextField *textField;
 
 @end
@@ -24,8 +24,8 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        _descriptionLabel = [SPRFormComponents fieldLabelWithTitle:@"Description"];
-        [self.contentView addSubview:_descriptionLabel];
+        _fieldLabel = [SPRFormComponents fieldLabelWithTitle:@"Description"];
+        [self.contentView addSubview:_fieldLabel];
         
         _textField = [SPRFormComponents textField];
         [self.contentView addSubview:_textField];
@@ -37,13 +37,11 @@
 
 - (void)layoutSubviews
 {
-    [self.descriptionLabel sizeToFitWidth:kSPRFormFieldLabelWidth];
-    CGFloat descriptionLabelY = [self.descriptionLabel centerYInParent:self];
-    self.descriptionLabel.frame = CGRectMake(kSPRFormSideMargin, descriptionLabelY, kSPRFormFieldLabelWidth, self.descriptionLabel.frame.size.height);
+    CGFloat descriptionLabelY = [self.fieldLabel centerYInParent:self];
+    self.fieldLabel.frame = CGRectMake(kSPRFormSideMargin, descriptionLabelY, kSPRFormFieldLabelWidth, self.fieldLabel.intrinsicContentSize.height);
     
-    [self.textField sizeToFitWidth:kSPRFormRightComponentWidth];
     CGFloat textFieldY = [self.textField centerYInParent:self];
-    self.textField.frame = CGRectMake(kSPRFormRightComponentX, textFieldY, kSPRFormRightComponentWidth, self.textField.frame.size.height);
+    self.textField.frame = CGRectMake(kSPRFormRightComponentX, textFieldY, kSPRFormRightComponentWidth, self.textField.intrinsicContentSize.height);
 }
 
 @end

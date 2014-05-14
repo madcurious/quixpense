@@ -24,11 +24,11 @@ const CGFloat kSPRFormRightComponentWidth = 194;
 {
     UILabel *label = [[UILabel alloc] init];
     label.font = [UIFont systemFontOfSize:17];
-    label.textColor = [UIColor colorFromHex:0x007aff];
-    label.textAlignment = NSTextAlignmentRight;
-    label.numberOfLines = 1;
     label.lineBreakMode = NSLineBreakByTruncatingTail;
+    label.numberOfLines = 1;
     label.text = title;
+    label.textAlignment = NSTextAlignmentRight;
+    label.textColor = [UIColor colorFromHex:0x007aff];
     return label;
 }
 
@@ -38,6 +38,16 @@ const CGFloat kSPRFormRightComponentWidth = 194;
     textField.placeholder = @"Tap to edit";
     textField.clearButtonMode = UITextFieldViewModeWhileEditing;
     return textField;
+}
+
++ (UILabel *)valueLabel
+{
+    UILabel *label = [[UILabel alloc] init];
+//    label.font = [UIFont systemFontOfSize:17];
+    label.lineBreakMode = NSLineBreakByTruncatingTail;
+    label.numberOfLines = 1;
+//    label.textColor = [UIColor blackColor];
+    return label;
 }
 
 @end

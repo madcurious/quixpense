@@ -38,13 +38,11 @@
 
 - (void)layoutSubviews
 {
-    [self.fieldLabel sizeToFitWidth:kSPRFormFieldLabelWidth];
     CGFloat descriptionLabelY = [self.fieldLabel centerYInParent:self];
-    self.fieldLabel.frame = CGRectMake(kSPRFormSideMargin, descriptionLabelY, kSPRFormFieldLabelWidth, self.fieldLabel.frame.size.height);
+    self.fieldLabel.frame = CGRectMake(kSPRFormSideMargin, descriptionLabelY, kSPRFormFieldLabelWidth, self.fieldLabel.intrinsicContentSize.height);
     
-    [self.textField sizeToFitWidth:kSPRFormRightComponentWidth];
     CGFloat textFieldY = [self.textField centerYInParent:self];
-    self.textField.frame = CGRectMake(kSPRFormRightComponentX, textFieldY, kSPRFormRightComponentWidth, self.textField.frame.size.height);
+    self.textField.frame = CGRectMake(kSPRFormRightComponentX, textFieldY, kSPRFormRightComponentWidth, self.textField.intrinsicContentSize.height);
 }
 
 @end
