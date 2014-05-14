@@ -30,8 +30,6 @@
         _textField = [SPRFormComponents textField];
         _textField.keyboardType = UIKeyboardTypeDecimalPad;
         [self.contentView addSubview:_textField];
-        
-        self.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     return self;
 }

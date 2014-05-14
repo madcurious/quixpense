@@ -11,7 +11,10 @@
 // Utilities
 #import "SPRFormComponents.h"
 
-@interface SPRExpenseDescriptionCell ()
+// Objects
+#import "SPRField.h"
+
+@interface SPRExpenseDescriptionCell () <UITextFieldDelegate>
 
 @property (strong, nonatomic) UILabel *fieldLabel;
 @property (strong, nonatomic) UITextField *textField;
@@ -28,6 +31,7 @@
         [self.contentView addSubview:_fieldLabel];
         
         _textField = [SPRFormComponents textField];
+        _textField.delegate = self;
         [self.contentView addSubview:_textField];
         
         self.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -42,6 +46,26 @@
     
     CGFloat textFieldY = [self.textField centerYInParent:self];
     self.textField.frame = CGRectMake(kSPRFormRightComponentX, textFieldY, kSPRFormRightComponentWidth, self.textField.intrinsicContentSize.height);
+}
+
+- (void)setField:(SPRField *)field
+{
+    [super setField:field];
+    self.textField.text = field.value;
+}
+
+#pragma mark - Text field delegate
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    self.field.value = [self.textField.text stringByReplacingCharactersInRange:range withString:string];
+    return YES;
+}
+
+- (BOOL)textFieldShouldClear:(UITextField *)textField
+{
+    self.field.value = nil;
+    return YES;
 }
 
 @end

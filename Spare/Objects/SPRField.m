@@ -10,7 +10,7 @@
 
 @implementation SPRField
 
-- (id)initWithName:(NSString *)name
+- (instancetype)initWithName:(NSString *)name
 {
     if (self = [super init]) {
         _name = name;
@@ -18,9 +18,17 @@
     return self;
 }
 
-- (id)initWithName:(NSString *)name value:(id)value
+- (instancetype)initWithName:(NSString *)name value:(id)value
 {
     if (self = [self initWithName:name]) {
+        _value = value;
+    }
+    return self;
+}
+
+- (instancetype)initWithValue:(id)value
+{
+    if (self = [self initWithName:nil]) {
         _value = value;
     }
     return self;

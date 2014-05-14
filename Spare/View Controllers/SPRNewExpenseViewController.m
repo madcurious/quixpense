@@ -169,7 +169,7 @@ static const NSInteger kTextFieldTag = 1000;
     
     if (field == self.fields[kRowAmount]) {
         NSCharacterSet *invalidCharacterSet = [[NSCharacterSet characterSetWithCharactersInString:@"1234567890."] invertedSet];
-        if ([string containsCharacterFromCharacterSet:invalidCharacterSet]) {
+        if ([string intersectsWithCharacterSet:invalidCharacterSet]) {
             return NO;
         }
     }

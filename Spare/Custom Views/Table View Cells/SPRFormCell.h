@@ -1,5 +1,5 @@
 //
-//  SPRExpenseCategoryCell.h
+//  SPRFormCell.h
 //  Spare
 //
 //  Created by Matt Quiros on 5/15/14.
@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-// Custom views
-#import "SPRFormCell.h"
+@class SPRField;
 
-@interface SPRExpenseCategoryCell : SPRFormCell
+@interface SPRFormCell : UITableViewCell
+
+@property (weak, nonatomic) SPRField *field;
 
 @end

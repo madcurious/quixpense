@@ -164,6 +164,7 @@ static const NSInteger kAmountLabelTag = 2000;
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     SPREditExpenseViewController *editExpenseScreen = [[SPREditExpenseViewController alloc] init];
+    editExpenseScreen.expense = [self.fetchedResultsController objectAtIndexPath:indexPath];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:editExpenseScreen];
     [self presentViewController:navigationController animated:YES completion:nil];
 }

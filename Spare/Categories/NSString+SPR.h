@@ -12,6 +12,6 @@
 
 - (NSString *)trim;
 
-- (BOOL)containsCharacterFromCharacterSet:(NSCharacterSet *)characterSet;
+- (BOOL)intersectsWithCharacterSet:(NSCharacterSet *)characterSet;
 
 @end

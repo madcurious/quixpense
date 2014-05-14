@@ -13,7 +13,8 @@
 @property (strong, nonatomic) NSString *name;
 @property (nonatomic) id value;
 
-- (id)initWithName:(NSString *)name;
-- (id)initWithName:(NSString *)name value:(id)value;
+- (instancetype)initWithName:(NSString *)name;
+- (instancetype)initWithName:(NSString *)name value:(id)value;
+- (instancetype)initWithValue:(id)value;
 
 @end

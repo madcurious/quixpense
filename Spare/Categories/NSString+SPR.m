@@ -15,7 +15,7 @@
     return [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 }
 
-- (BOOL)containsCharacterFromCharacterSet:(NSCharacterSet *)characterSet
+- (BOOL)intersectsWithCharacterSet:(NSCharacterSet *)characterSet
 {
     NSRange range = [self rangeOfCharacterFromSet:characterSet];
     return range.location != NSNotFound;

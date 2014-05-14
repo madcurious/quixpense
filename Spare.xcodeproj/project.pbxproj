@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2602A7D0192421A00050B91E /* SPRExpenseCategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2602A7CF192421A00050B91E /* SPRExpenseCategoryCell.m */; };
 		2602A7D6192428BE0050B91E /* SPRExpenseDateSpentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2602A7D5192428BE0050B91E /* SPRExpenseDateSpentCell.m */; };
+		2602A7D919242DD10050B91E /* SPRFormCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2602A7D819242DD10050B91E /* SPRFormCell.m */; };
 		26115594191F137500554D1F /* SPRExpenseAmountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26115593191F137500554D1F /* SPRExpenseAmountCell.m */; };
 		2612A25518FBEEE300E4848E /* SPRCategorySectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2612A25418FBEEE300E4848E /* SPRCategorySectionHeader.m */; };
 		2612C89118E7BC3400DE2765 /* SPRStatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2612C89018E7BC3400DE2765 /* SPRStatusView.m */; };
@@ -75,6 +76,8 @@
 		2602A7CF192421A00050B91E /* SPRExpenseCategoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRExpenseCategoryCell.m; sourceTree = "<group>"; };
 		2602A7D4192428BE0050B91E /* SPRExpenseDateSpentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRExpenseDateSpentCell.h; sourceTree = "<group>"; };
 		2602A7D5192428BE0050B91E /* SPRExpenseDateSpentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRExpenseDateSpentCell.m; sourceTree = "<group>"; };
+		2602A7D719242DD10050B91E /* SPRFormCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRFormCell.h; sourceTree = "<group>"; };
+		2602A7D819242DD10050B91E /* SPRFormCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRFormCell.m; sourceTree = "<group>"; };
 		260F2BF61910053300FAEA5C /* SPRTimeFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRTimeFrame.h; sourceTree = "<group>"; };
 		26115592191F137500554D1F /* SPRExpenseAmountCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRExpenseAmountCell.h; sourceTree = "<group>"; };
 		26115593191F137500554D1F /* SPRExpenseAmountCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRExpenseAmountCell.m; sourceTree = "<group>"; };
@@ -370,6 +373,8 @@
 				26115593191F137500554D1F /* SPRExpenseAmountCell.m */,
 				2602A7D4192428BE0050B91E /* SPRExpenseDateSpentCell.h */,
 				2602A7D5192428BE0050B91E /* SPRExpenseDateSpentCell.m */,
+				2602A7D719242DD10050B91E /* SPRFormCell.h */,
+				2602A7D819242DD10050B91E /* SPRFormCell.m */,
 			);
 			path = "Table View Cells";
 			sourceTree = "<group>";
@@ -561,6 +566,7 @@
 				26A90290191DCF9000CEE065 /* SPREditExpenseViewController.m in Sources */,
 				261EB87118DDB631009DDF78 /* main.m in Sources */,
 				26369E6A18F5787D000A9ADA /* SPRNewExpenseViewController.m in Sources */,
+				2602A7D919242DD10050B91E /* SPRFormCell.m in Sources */,
 				266065BD18F055D50085F877 /* SPRExpense+Extension.m in Sources */,
 				26B4B75618F277B5001B119D /* SPRCategoryCollectionViewCell.m in Sources */,
 			);

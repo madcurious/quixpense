@@ -14,6 +14,10 @@
 #import "SPRExpenseCategoryCell.h"
 #import "SPRExpenseDateSpentCell.h"
 
+// Objects
+#import "SPRField.h"
+#import "SPRExpense.h"
+
 static NSString * const kDescriptionCell = @"kDescriptionCell";
 static NSString * const kAmountCell = @"kAmountCell";
 static NSString * const kCategoryCell = @"kCategoryCell";
@@ -30,6 +34,7 @@ typedef NS_ENUM(NSUInteger, kRow)
 @interface SPREditExpenseViewController ()
 
 @property (strong, nonatomic) NSArray *cellIdentifiers;
+@property (strong, nonatomic) NSArray *fields;
 
 @end
 
@@ -57,6 +62,11 @@ typedef NS_ENUM(NSUInteger, kRow)
     [self setupBarButtonItems];
     
     self.cellIdentifiers = @[kDescriptionCell, kAmountCell, kCategoryCell, kDateSpentCell];
+    
+    self.fields = @[[[SPRField alloc] initWithValue:self.expense.name],
+                    [[SPRField alloc] initWithValue:self.expense.amount],
+                    [[SPRField alloc] initWithValue:self.expense.category],
+                    [[SPRField alloc] initWithValue:self.expense.dateSpent]];
 }
 
 #pragma mark - Helper methods
@@ -97,9 +107,9 @@ typedef NS_ENUM(NSUInteger, kRow)
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *identifier = self.cellIdentifiers[indexPath.row];
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    SPRFormCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    cell.field = self.fields[indexPath.row];
     return cell;
 }
-
 
 @end

@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SPRExpenseAmountCell : UITableViewCell
+// Custom views
+#import "SPRFormCell.h"
+
+@interface SPRExpenseAmountCell : SPRFormCell
 
 @end

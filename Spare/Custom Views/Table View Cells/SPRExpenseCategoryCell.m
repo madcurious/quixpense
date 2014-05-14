@@ -28,8 +28,6 @@
         
         _valueLabel = [SPRFormComponents valueLabel];
         [self.contentView addSubview:_valueLabel];
-        
-        self.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     return self;
 }
