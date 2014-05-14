@@ -10,12 +10,22 @@
 
 // Custom views
 #import "SPRExpenseDescriptionCell.h"
+#import "SPRExpenseAmountCell.h"
 
 static NSString * const kDescriptionCell = @"kDescriptionCell";
+static NSString * const kAmountCell = @"kAmountCell";
+
+typedef NS_ENUM(NSUInteger, kRow)
+{
+    kRowDescription = 0,
+    kRowAmount = 1,
+    kRowCategory,
+    kRowDateSpent,
+};
 
 @interface SPREditExpenseViewController ()
 
-
+@property (strong, nonatomic) NSArray *cellIdentifiers;
 
 @end
 
@@ -33,11 +43,14 @@ static NSString * const kDescriptionCell = @"kDescriptionCell";
 {
     [super viewDidLoad];
     
-    // Register a table view cell class.
+    // Register table view cell classes.
     [self.tableView registerClass:[SPRExpenseDescriptionCell class] forCellReuseIdentifier:kDescriptionCell];
+    [self.tableView registerClass:[SPRExpenseAmountCell class] forCellReuseIdentifier:kAmountCell];
     
     // Set up the bar button items.
     [self setupBarButtonItems];
+    
+    self.cellIdentifiers = @[kDescriptionCell, kAmountCell];
 }
 
 #pragma mark - Helper methods
@@ -72,12 +85,12 @@ static NSString * const kDescriptionCell = @"kDescriptionCell";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    return 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *identifier = kDescriptionCell;
+    NSString *identifier = self.cellIdentifiers[indexPath.row];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     return cell;
 }

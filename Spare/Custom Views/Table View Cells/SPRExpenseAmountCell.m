@@ -1,33 +1,34 @@
 //
-//  SPRExpenseDescriptionCell.m
+//  SPRExpenseAmountCell.m
 //  Spare
 //
-//  Created by Matt Quiros on 5/10/14.
+//  Created by Matt Quiros on 5/11/14.
 //  Copyright (c) 2014 Matt Quiros. All rights reserved.
 //
 
-#import "SPRExpenseDescriptionCell.h"
+#import "SPRExpenseAmountCell.h"
 
 // Utilities
 #import "SPRFormComponents.h"
 
-@interface SPRExpenseDescriptionCell ()
+@interface SPRExpenseAmountCell ()
 
-@property (strong, nonatomic) UILabel *descriptionLabel;
+@property (strong, nonatomic) UILabel *fieldLabel;
 @property (strong, nonatomic) UITextField *textField;
 
 @end
 
-@implementation SPRExpenseDescriptionCell
+@implementation SPRExpenseAmountCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        _descriptionLabel = [SPRFormComponents fieldLabelWithTitle:@"Description"];
-        [self.contentView addSubview:_descriptionLabel];
+        _fieldLabel = [SPRFormComponents fieldLabelWithTitle:@"Amount"];
+        [self.contentView addSubview:_fieldLabel];
         
         _textField = [SPRFormComponents textField];
+        _textField.keyboardType = UIKeyboardTypeDecimalPad;
         [self.contentView addSubview:_textField];
         
         self.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -37,9 +38,9 @@
 
 - (void)layoutSubviews
 {
-    [self.descriptionLabel sizeToFitWidth:kSPRFormFieldLabelWidth];
-    CGFloat descriptionLabelY = [self.descriptionLabel centerYInParent:self];
-    self.descriptionLabel.frame = CGRectMake(kSPRFormSideMargin, descriptionLabelY, kSPRFormFieldLabelWidth, self.descriptionLabel.frame.size.height);
+    [self.fieldLabel sizeToFitWidth:kSPRFormFieldLabelWidth];
+    CGFloat descriptionLabelY = [self.fieldLabel centerYInParent:self];
+    self.fieldLabel.frame = CGRectMake(kSPRFormSideMargin, descriptionLabelY, kSPRFormFieldLabelWidth, self.fieldLabel.frame.size.height);
     
     [self.textField sizeToFitWidth:kSPRFormRightComponentWidth];
     CGFloat textFieldY = [self.textField centerYInParent:self];
