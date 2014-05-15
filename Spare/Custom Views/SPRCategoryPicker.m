@@ -156,4 +156,12 @@ static NSArray *allCategories;
     }
 }
 
+#pragma mark - Setters
+
+- (void)setPreselectedCategory:(SPRCategory *)preselectedCategory
+{
+    _preselectedCategory = preselectedCategory;
+    self.preselectedRow = [preselectedCategory.displayOrder integerValue];
+}
+
 @end
