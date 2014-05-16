@@ -21,7 +21,6 @@
 @interface SPRCategoryPicker : UIView
 
 @property (weak, nonatomic) id<SPRCategoryPickerDelegate> delegate;
-@property (nonatomic) NSInteger preselectedRow DEPRECATED_MSG_ATTRIBUTE("Use preselectedCategory instead");
 @property (strong, nonatomic) SPRCategory *preselectedCategory;
 
 - (void)show;

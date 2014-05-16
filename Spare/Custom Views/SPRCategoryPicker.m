@@ -29,8 +29,6 @@ static NSArray *allCategories;
 - (id)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
-        _preselectedRow = -1;
-        
         _translucentBackground = [[UIView alloc] init];
         _translucentBackground.backgroundColor = [UIColor blackColor];
         _translucentBackground.alpha = 0.3;
@@ -83,11 +81,11 @@ static NSArray *allCategories;
             
             // If there is a pre-selected category, select it.
             // Otherwise, pre-select the category in the middle.
-            if (self.preselectedRow == -1) {
+            if (self.preselectedCategory) {
+                [self.pickerView selectRow:[self.preselectedCategory.displayOrder integerValue] inComponent:0 animated:NO];
+            } else {
                 NSInteger row = allCategories.count / 2;
                 [self.pickerView selectRow:row inComponent:0 animated:NO];
-            } else {
-                [self.pickerView selectRow:self.preselectedRow inComponent:0 animated:NO];
             }
             
             [UIView animateWithDuration:kAnimationDuration animations:^{
@@ -103,11 +101,11 @@ static NSArray *allCategories;
         
         // If there is a pre-selected category, select it.
         // Otherwise, pre-select the category in the middle.
-        if (self.preselectedRow == -1) {
+        if (self.preselectedCategory) {
+            [self.pickerView selectRow:[self.preselectedCategory.displayOrder integerValue] inComponent:0 animated:NO];
+        } else {
             NSInteger row = allCategories.count / 2;
             [self.pickerView selectRow:row inComponent:0 animated:NO];
-        } else {
-            [self.pickerView selectRow:self.preselectedRow inComponent:0 animated:NO];
         }
         
         [UIView animateWithDuration:kAnimationDuration animations:^{
@@ -161,7 +159,6 @@ static NSArray *allCategories;
 - (void)setPreselectedCategory:(SPRCategory *)preselectedCategory
 {
     _preselectedCategory = preselectedCategory;
-    self.preselectedRow = [preselectedCategory.displayOrder integerValue];
 }
 
 @end

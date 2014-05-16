@@ -144,7 +144,10 @@ static const NSInteger kTextFieldTag = 1000;
         case kRowCategory: {
             SPRCategoryPicker *categoryPicker = [[SPRCategoryPicker alloc] initWithFrame:CGRectMake(0, 0, self.navigationController.view.frame.size.width, self.navigationController.view.frame.size.height)];
             categoryPicker.delegate = self;
-            categoryPicker.preselectedRow = self.categoryIndex;
+            
+            SPRField *categoryField = self.fields[kRowCategory];
+            categoryPicker.preselectedCategory = categoryField.value;
+            
             [self.navigationController.view addSubview:categoryPicker];
             [categoryPicker show];
             break;

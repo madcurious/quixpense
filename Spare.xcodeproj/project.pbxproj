@@ -38,6 +38,7 @@
 		26369E6618F57817000A9ADA /* SPRCategoryPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 26369E6318F57817000A9ADA /* SPRCategoryPicker.m */; };
 		26369E6718F57817000A9ADA /* SPRDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 26369E6518F57817000A9ADA /* SPRDatePicker.m */; };
 		26369E6A18F5787D000A9ADA /* SPRNewExpenseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26369E6918F5787D000A9ADA /* SPRNewExpenseViewController.m */; };
+		2638AAAC19260B7A00D3D3E2 /* SPREditCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2638AAAB19260B7A00D3D3E2 /* SPREditCategoryViewController.m */; };
 		263E88A918F7D25000F9B2DD /* spare-icons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 263E88A818F7D1BD00F9B2DD /* spare-icons.ttf */; };
 		26488F9E190EBE480050EE36 /* SPRExpense.m in Sources */ = {isa = PBXBuildFile; fileRef = 26488F96190EB72D0050EE36 /* SPRExpense.m */; };
 		266065BD18F055D50085F877 /* SPRExpense+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 266065BC18F055D50085F877 /* SPRExpense+Extension.m */; };
@@ -126,6 +127,8 @@
 		26369E6518F57817000A9ADA /* SPRDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRDatePicker.m; sourceTree = "<group>"; };
 		26369E6818F5787D000A9ADA /* SPRNewExpenseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRNewExpenseViewController.h; sourceTree = "<group>"; };
 		26369E6918F5787D000A9ADA /* SPRNewExpenseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRNewExpenseViewController.m; sourceTree = "<group>"; };
+		2638AAAA19260B7A00D3D3E2 /* SPREditCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPREditCategoryViewController.h; sourceTree = "<group>"; };
+		2638AAAB19260B7A00D3D3E2 /* SPREditCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPREditCategoryViewController.m; sourceTree = "<group>"; };
 		263E88A818F7D1BD00F9B2DD /* spare-icons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "spare-icons.ttf"; sourceTree = "<group>"; };
 		26488F95190EB72D0050EE36 /* SPRExpense.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPRExpense.h; path = Objects/SPRExpense.h; sourceTree = "<group>"; };
 		26488F96190EB72D0050EE36 /* SPRExpense.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPRExpense.m; path = Objects/SPRExpense.m; sourceTree = "<group>"; };
@@ -396,6 +399,8 @@
 				26617D6818F308F800CA51EA /* SPRSetupViewController.m */,
 				26A9028E191DCF9000CEE065 /* SPREditExpenseViewController.h */,
 				26A9028F191DCF9000CEE065 /* SPREditExpenseViewController.m */,
+				2638AAAA19260B7A00D3D3E2 /* SPREditCategoryViewController.h */,
+				2638AAAB19260B7A00D3D3E2 /* SPREditCategoryViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -558,6 +563,7 @@
 				262F32E018FE3EE600F01B13 /* SPRCategory.m in Sources */,
 				2688627D18E31E2F00B8D167 /* SPRColorChooserSectionHeader.m in Sources */,
 				261EB87518DDB631009DDF78 /* SPRAppDelegate.m in Sources */,
+				2638AAAC19260B7A00D3D3E2 /* SPREditCategoryViewController.m in Sources */,
 				2612C89418E7E64C00DE2765 /* SPRCategoryViewController.m in Sources */,
 				26369E6718F57817000A9ADA /* SPRDatePicker.m in Sources */,
 				26A9029D191DD81400CEE065 /* UIView+SPR.m in Sources */,
