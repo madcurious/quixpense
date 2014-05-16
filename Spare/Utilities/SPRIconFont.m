@@ -12,23 +12,39 @@ static NSString * const kFontName = @"spare-icons";
 
 @implementation SPRIconFont
 
++ (NSAttributedString *)iconForEdit
+{
+    NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:[SPRIconFont stringForEdit] attributes:@{NSFontAttributeName : [UIFont fontWithName:kFontName size:20]}];
+    return attributedString;
+}
+
 + (NSAttributedString *)iconForNewCategory
 {
-    NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:[SPRIconFont stringForNewCategory] attributes:@{NSFontAttributeName : [UIFont fontWithName:kFontName size:20]}];
+    NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:[SPRIconFont stringForNewCategory] attributes:@{NSFontAttributeName : [UIFont fontWithName:kFontName size:22]}];
     return attributedString;
 }
 
 + (NSAttributedString *)iconForNewExpense
 {
-    NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:[SPRIconFont stringForNewExpense] attributes:@{NSFontAttributeName : [UIFont fontWithName:kFontName size:20]}];
+    NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:[SPRIconFont stringForNewExpense] attributes:@{NSFontAttributeName : [UIFont fontWithName:kFontName size:30]}];
     return attributedString;
 }
 
 #pragma mark - Character mappings
 
-+ (NSString *)stringForNewExpense
++ (NSString *)stringForArchive
 {
-    return @"e";
+    return @"f";
+}
+
++ (NSString *)stringForDelete
+{
+    return @"c";
+}
+
++ (NSString *)stringForEdit
+{
+    return @"b";
 }
 
 + (NSString *)stringForNewCategory
@@ -36,24 +52,14 @@ static NSString * const kFontName = @"spare-icons";
     return @"d";
 }
 
++ (NSString *)stringForNewExpense
+{
+    return @"e";
+}
+
 + (NSString *)stringForSettings
 {
     return @"a";
-}
-
-+ (NSString *)stringForArchive
-{
-    return @"f";
-}
-
-+ (NSString *)stringForCategory
-{
-    return @"b";
-}
-
-+ (NSString *)stringForDelete
-{
-    return @"c";
 }
 
 @end

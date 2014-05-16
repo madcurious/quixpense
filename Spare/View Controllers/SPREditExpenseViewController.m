@@ -46,7 +46,7 @@ typedef NS_ENUM(NSUInteger, kRow)
 - (id)init
 {
     if (self = [super initWithStyle:UITableViewStyleGrouped]) {
-        self.title = @"Edit";
+        self.title = @"Edit Expense";
     }
     return self;
 }

@@ -10,6 +10,7 @@
 
 @interface SPRIconFont : NSObject
 
++ (NSAttributedString *)iconForEdit;
 + (NSAttributedString *)iconForNewCategory;
 + (NSAttributedString *)iconForNewExpense;
 

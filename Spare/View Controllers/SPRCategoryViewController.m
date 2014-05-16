@@ -73,7 +73,13 @@ static const NSInteger kAmountLabelTag = 2000;
     [newExpenseButton addTarget:self action:@selector(newExpenseButtonTapped) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *newExpenseBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:newExpenseButton];
     
-    self.navigationItem.rightBarButtonItems = @[newExpenseBarButtonItem];
+    UIButton *editCategoryButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    [editCategoryButton setAttributedTitle:[SPRIconFont iconForEdit] forState:UIControlStateNormal];
+    [editCategoryButton sizeToFit];
+    [editCategoryButton addTarget:self action:@selector(editCategoryButtonTapped) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *editCategoryBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:editCategoryButton];
+    
+    self.navigationItem.rightBarButtonItems = @[newExpenseBarButtonItem, editCategoryBarButtonItem];
 }
 
 - (void)initializeTotals
@@ -99,6 +105,11 @@ static const NSInteger kAmountLabelTag = 2000;
 - (void)newExpenseButtonTapped
 {
     [self performSegueWithIdentifier:@"presentNewExpenseModal" sender:self];
+}
+
+- (void)editCategoryButtonTapped
+{
+    
 }
 
 #pragma mark - Table view data source

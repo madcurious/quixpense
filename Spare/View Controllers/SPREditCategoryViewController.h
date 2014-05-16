@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class SPRCategory;
+
 @interface SPREditCategoryViewController : UITableViewController
+
+- (instancetype)initWithCategory:(SPRCategory *)category;
 
 @end
