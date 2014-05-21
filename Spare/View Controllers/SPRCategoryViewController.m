@@ -23,6 +23,7 @@
 // View controllers
 #import "SPRNewExpenseViewController.h"
 #import "SPREditExpenseViewController.h"
+#import "SPREditCategoryViewController.h"
 
 static NSString * const kExpenseCell = @"kExpenseCell";
 static const NSInteger kDescriptionLabelTag = 1000;
@@ -109,7 +110,10 @@ static const NSInteger kAmountLabelTag = 2000;
 
 - (void)editCategoryButtonTapped
 {
-    
+    // Display the edit category modal.
+    SPREditCategoryViewController *editCategoryViewController = [[SPREditCategoryViewController alloc] initWithCategory:self.category];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:editCategoryViewController];
+    [self presentViewController:navigationController animated:YES completion:nil];
 }
 
 #pragma mark - Table view data source
@@ -184,6 +188,10 @@ static const NSInteger kAmountLabelTag = 2000;
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
+    // Update the table header view.
+    SPRCategoryHeaderView *headerView = [[SPRCategoryHeaderView alloc] initWithCategory:self.category];
+    self.tableView.tableHeaderView = headerView;
+    
     [self initializeTotals];
     [self.tableView reloadData];
 }
