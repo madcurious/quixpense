@@ -80,6 +80,9 @@ static NSString * const kColorCell = @"kColorCell";
     __weak SPREditCategoryViewController *weakSelf = self;
     [document saveToURL:document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success) {
         SPREditCategoryViewController *innerSelf = weakSelf;
+        if ([innerSelf.delegate respondsToSelector:@selector(editCategoryScreen:didEditCategory:)]) {
+            [innerSelf.delegate editCategoryScreen:innerSelf didEditCategory:innerSelf.category];
+        }
         [innerSelf dismissViewControllerAnimated:YES completion:nil];
     }];
 }

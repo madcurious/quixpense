@@ -8,9 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
-@class SPRCategory;
+@class SPREditCategoryViewController, SPRCategory;
+
+@protocol SPREditCategoryViewControllerDelegate <NSObject>
+
+- (void)editCategoryScreen:(SPREditCategoryViewController *)editCategoryScreen didEditCategory:(SPRCategory *)category;
+
+@end
 
 @interface SPREditCategoryViewController : UITableViewController
+
+@property (weak, nonatomic) id<SPREditCategoryViewControllerDelegate> delegate;
 
 - (instancetype)initWithCategory:(SPRCategory *)category;
 

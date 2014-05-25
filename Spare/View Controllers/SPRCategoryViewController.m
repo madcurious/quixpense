@@ -9,7 +9,7 @@
 #import "SPRCategoryViewController.h"
 
 // Custom views
-#import "SPRCategoryHeaderView.h"
+#import "SPRCategoryHeaderCell.h"
 #import "SPRCategorySectionHeader.h"
 
 // Objects
@@ -25,15 +25,18 @@
 #import "SPREditExpenseViewController.h"
 #import "SPREditCategoryViewController.h"
 
+static NSString * const kCategoryCell = @"kCategoryCell";
 static NSString * const kExpenseCell = @"kExpenseCell";
+
 static const NSInteger kDescriptionLabelTag = 1000;
 static const NSInteger kAmountLabelTag = 2000;
 
-@interface SPRCategoryViewController () <UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate>
+@interface SPRCategoryViewController () <UITableViewDataSource, UITableViewDelegate,
+NSFetchedResultsControllerDelegate,
+SPREditCategoryViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
-@property (strong, nonatomic) SPRCategory *category;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 
 @property (strong, nonatomic) NSMutableArray *sectionTotals;
@@ -48,10 +51,7 @@ static const NSInteger kAmountLabelTag = 2000;
     
     [self setupBarButtonItems];
     
-    self.category = [SPRCategory allCategories][self.categoryIndex];
-    
-    SPRCategoryHeaderView *headerView = [[SPRCategoryHeaderView alloc] initWithCategory:self.category];
-    self.tableView.tableHeaderView = headerView;
+    [self.tableView registerClass:[SPRCategoryHeaderCell class] forCellReuseIdentifier:kCategoryCell];
     
     NSError *error;
     if (![self.fetchedResultsController performFetch:&error]) {
@@ -59,11 +59,6 @@ static const NSInteger kAmountLabelTag = 2000;
     }
     
     [self initializeTotals];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
 }
 
 - (void)setupBarButtonItems
@@ -97,7 +92,7 @@ static const NSInteger kAmountLabelTag = 2000;
     if ([segue.identifier isEqualToString:@"presentNewExpenseModal"]) {
         UINavigationController *navigationController = segue.destinationViewController;
         SPRNewExpenseViewController *newExpenseScreen = (SPRNewExpenseViewController *)navigationController.topViewController;
-        newExpenseScreen.categoryIndex = self.categoryIndex;
+        newExpenseScreen.categoryIndex = [self.category.displayOrder integerValue];
     }
 }
 
@@ -112,6 +107,7 @@ static const NSInteger kAmountLabelTag = 2000;
 {
     // Display the edit category modal.
     SPREditCategoryViewController *editCategoryViewController = [[SPREditCategoryViewController alloc] initWithCategory:self.category];
+    editCategoryViewController.delegate = self;
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:editCategoryViewController];
     [self presentViewController:navigationController animated:YES completion:nil];
 }
@@ -120,44 +116,73 @@ static const NSInteger kAmountLabelTag = 2000;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return [[self.fetchedResultsController sections] count];
+    NSUInteger numberOfSections = 1 + [[self.fetchedResultsController sections] count];
+    return numberOfSections;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    id<NSFetchedResultsSectionInfo> theSection = [self.fetchedResultsController sections][section];
-    return [theSection numberOfObjects];
+    if (section == 0) {
+        return 1;
+    } else {
+        id<NSFetchedResultsSectionInfo> theSection = [self.fetchedResultsController sections][section - 1];
+        return [theSection numberOfObjects];
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kExpenseCell];
+    UITableViewCell *cell;
     
-    SPRExpense *expense = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    
-    UILabel *descriptionLabel = (UILabel *)[cell viewWithTag:kDescriptionLabelTag];
-    descriptionLabel.text = expense.name;
-    
-    UILabel *amountLabel = (UILabel *)[cell viewWithTag:kAmountLabelTag];
-    amountLabel.text = [expense.amount currencyString];
+    if (indexPath.section == 0) {
+        SPRCategoryHeaderCell *categoryCell = [tableView dequeueReusableCellWithIdentifier:kCategoryCell];
+        categoryCell.category = self.category;
+        cell = categoryCell;
+    } else {
+        cell = [tableView dequeueReusableCellWithIdentifier:kExpenseCell];
+        
+        // Subtract 1 from the indexPath.section because the fetched results controller
+        // does not count the category cell as a separate section.
+        NSIndexPath *offsetIndexpath = [NSIndexPath indexPathForRow:indexPath.row inSection:(indexPath.section - 1)];
+        SPRExpense *expense = [self.fetchedResultsController objectAtIndexPath:offsetIndexpath];
+        
+        UILabel *descriptionLabel = (UILabel *)[cell viewWithTag:kDescriptionLabelTag];
+        descriptionLabel.text = expense.name;
+        
+        UILabel *amountLabel = (UILabel *)[cell viewWithTag:kAmountLabelTag];
+        amountLabel.text = [expense.amount currencyString];
+    }
     
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
+    if (section == 0) {
+        return UITableViewAutomaticDimension;
+    }
+    
     return SPRCategorySectionHeaderHeight;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    id<NSFetchedResultsSectionInfo> theSection = self.fetchedResultsController.sections[section];
+    // The category cell has no header view.
+    if (section == 0) {
+        return nil;
+    }
+    
+    // Otherwise, the header view should contain a date and total of expenses in the date.
+    
+    NSInteger offsetSection = section - 1;
+    
+    id<NSFetchedResultsSectionInfo> theSection = self.fetchedResultsController.sections[offsetSection];
     
     NSTimeInterval timeInterval = [[theSection name] doubleValue];
     NSDate *dateSpent = [NSDate dateWithTimeIntervalSince1970:timeInterval];
     
     // Total the expenses in a section if they have never been computed yet.
-    if (self.sectionTotals[section] == [NSNull null]) {
+    if (self.sectionTotals[offsetSection] == [NSNull null]) {
         NSArray *expenses = [theSection objects];
         SPRExpense *expense = [expenses firstObject];
         NSDecimalNumber *total = expense.amount;
@@ -165,10 +190,10 @@ static const NSInteger kAmountLabelTag = 2000;
             expense = expenses[i];
             total = [total decimalNumberByAdding:expense.amount];
         }
-        self.sectionTotals[section] = total;
+        self.sectionTotals[offsetSection] = total;
     }
     
-    SPRCategorySectionHeader *header = [[SPRCategorySectionHeader alloc] initWithDate:dateSpent total:self.sectionTotals[section]];
+    SPRCategorySectionHeader *header = [[SPRCategorySectionHeader alloc] initWithDate:dateSpent total:self.sectionTotals[offsetSection]];
     return header;
 }
 
@@ -176,24 +201,42 @@ static const NSInteger kAmountLabelTag = 2000;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.section == 0) {
+        return;
+    }
+    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+    NSIndexPath *offsetIndexPath = [NSIndexPath indexPathForRow:indexPath.row inSection:(indexPath.section - 1)];
+    
     SPREditExpenseViewController *editExpenseScreen = [[SPREditExpenseViewController alloc] init];
-    editExpenseScreen.expense = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    editExpenseScreen.expense = [self.fetchedResultsController objectAtIndexPath:offsetIndexPath];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:editExpenseScreen];
     [self presentViewController:navigationController animated:YES completion:nil];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0) {
+        return [SPRCategoryHeaderCell heightForCategory:self.category];
+    }
+    
+    return UITableViewAutomaticDimension;
 }
 
 #pragma mark - Fetched results controller delegate
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
-    // Update the table header view.
-    SPRCategoryHeaderView *headerView = [[SPRCategoryHeaderView alloc] initWithCategory:self.category];
-    self.tableView.tableHeaderView = headerView;
-    
     [self initializeTotals];
     [self.tableView reloadData];
+}
+
+#pragma mark - Edit category screen delegate
+
+- (void)editCategoryScreen:(SPREditCategoryViewController *)editCategoryScreen didEditCategory:(SPRCategory *)category
+{
+    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 #pragma mark - Getters

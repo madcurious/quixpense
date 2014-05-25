@@ -84,7 +84,7 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
 {
     if ([segue.identifier isEqualToString:@"pushCategory"]) {
         SPRCategoryViewController *categoryScreen = segue.destinationViewController;
-        categoryScreen.categoryIndex = self.selectedCategoryIndex;
+        categoryScreen.category = self.categoryFetcher.fetchedObjects[self.selectedCategoryIndex];
         return;
     }
 }
