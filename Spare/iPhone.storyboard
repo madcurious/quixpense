@@ -488,7 +488,7 @@
         <!--Navigation Controller-->
         <scene sceneID="FLE-j6-oBE">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="67U-Ay-GlY" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="ColorChooserNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="67U-Ay-GlY" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="T7h-G3-rJl">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

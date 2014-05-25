@@ -17,10 +17,13 @@
 #import "SPRCategoryNameCell.h"
 #import "SPRCategoryColorCell.h"
 
+// View controllers
+#import "SPRColorChooserViewController.h"
+
 static NSString * const kNameCell = @"kNameCell";
 static NSString * const kColorCell = @"kColorCell";
 
-@interface SPREditCategoryViewController ()
+@interface SPREditCategoryViewController () <SPRColorChooserViewControllerDelegate>
 
 @property (strong, nonatomic) SPRCategory *category;
 @property (strong, nonatomic) NSArray *fields;
@@ -111,7 +114,29 @@ static NSString * const kColorCell = @"kColorCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.row == 0) {
+        return;
+    }
+    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"iPhone" bundle:nil];
+    UINavigationController *navigationController = [storyboard instantiateViewControllerWithIdentifier:@"ColorChooserNavigationController"];
+    SPRColorChooserViewController *colorChooser = navigationController.viewControllers[0];
+    colorChooser.delegate = self;
+    colorChooser.selectedColorNumber = [self.category.colorNumber integerValue];
+    
+    [self presentViewController:navigationController animated:YES completion:nil];
+}
+
+#pragma mark - Color chooser delegate
+
+- (void)colorChooserDidSelectColorNumber:(NSInteger)colorNumber
+{
+    SPRField *colorField = self.fields[1];
+    colorField.value = @(colorNumber);
+    
+    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:1 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
 }
 
 @end
