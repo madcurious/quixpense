@@ -48,7 +48,7 @@
     
     switch (timeFrame) {
         case SPRTimeFrameDay: {
-            components = [calendar components:commonComponents fromDate:self];
+            components = [calendar components:commonComponents|NSDayCalendarUnit fromDate:self];
             break;
         }
         case SPRTimeFrameWeek: {
@@ -89,7 +89,7 @@
     
     switch (timeFrame) {
         case SPRTimeFrameDay: {
-            components = [calendar components:commonComponents fromDate:self];
+            components = [calendar components:commonComponents|NSDayCalendarUnit fromDate:self];
             break;
         }
         case SPRTimeFrameWeek: {
