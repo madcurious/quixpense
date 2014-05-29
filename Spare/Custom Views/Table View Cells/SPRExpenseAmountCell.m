@@ -53,7 +53,7 @@
 {
     [super setField:field];
     
-    self.textField.text = [field.value stringValue];
+    self.textField.text = field.value;
 }
 
 #pragma mark - Text field delegate

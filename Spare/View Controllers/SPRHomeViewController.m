@@ -12,7 +12,6 @@
 #import "SPRIconFont.h"
 
 // Custom views
-#import "SPRStatusView.h"
 #import "SPRCategoryCollectionViewCell.h"
 
 // View controllers
@@ -37,17 +36,17 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (strong, nonatomic) UILabel *noCategoriesLabel;
 @property (strong, nonatomic) UIButton *addExpenseButton;
+@property (strong, nonatomic) UILabel *totalLabel;
+
 @property (nonatomic) NSInteger selectedCategoryIndex;
 @property (nonatomic) BOOL hasBeenSetup;
 
 @property (strong, nonatomic) NSFetchedResultsController *categoryFetcher;
-
 @property (strong, nonatomic) NSMutableArray *dailyTotals;
 @property (strong, nonatomic) NSMutableArray *weeklyTotals;
 @property (strong, nonatomic) NSMutableArray *monthlyTotals;
 @property (strong, nonatomic) NSMutableArray *yearlyTotals;
 @property (strong, nonatomic, readonly) NSMutableArray *activeTotals;
-
 @property (nonatomic) SPRTimeFrame activeTimeFrame;
 
 @end
@@ -74,6 +73,7 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
     
     if (self.hasBeenSetup) {
         [self initializeCategories];
+        [self updateTotalLabel];
         
         // If there are no categories yet...
         if (self.categoryFetcher.fetchedObjects.count == 0) {
@@ -114,6 +114,10 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
 
 - (void)setupBarButtonItems
 {
+    // The total label.
+    UIBarButtonItem *totalLabelBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.totalLabel];
+    self.navigationItem.leftBarButtonItem = totalLabelBarButtonItem;
+    
     // The new category button.
     UIButton *newCategoryButton = [UIButton buttonWithType:UIButtonTypeSystem];
     [newCategoryButton setAttributedTitle:[SPRIconFont addCategoryIcon] forState:UIControlStateNormal];
@@ -135,6 +139,14 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
     }
 }
 
+- (void)updateTotalLabel
+{
+    // Sum all the active totals and set it as the total label's text.
+    NSDecimalNumber *total = [self.activeTotals valueForKeyPath:@"@sum.self"];
+    self.totalLabel.text = [total currencyString];
+    [self.totalLabel sizeToFit];
+}
+
 #pragma mark - Target actions
 
 - (void)newCategoryButtonTapped
@@ -151,6 +163,9 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
 {
     UISegmentedControl *segmentedControl = (UISegmentedControl *)sender;
     self.activeTimeFrame = segmentedControl.selectedSegmentIndex;
+    
+    [self updateTotalLabel];
+    
     [self.collectionView reloadData];
 }
 
@@ -228,6 +243,7 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
 {
     if (controller == self.categoryFetcher) {
         [self initializeCategories];
+        [self updateTotalLabel];
         self.dailyTotals = nil;
         self.weeklyTotals = nil;
         self.monthlyTotals = nil;
@@ -266,6 +282,20 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
     [_noCategoriesLabel sizeToFitWidth:300];
     
     return _noCategoriesLabel;
+}
+
+- (UILabel *)totalLabel
+{
+    if (_totalLabel) {
+        return _totalLabel;
+    }
+    
+    _totalLabel = [[UILabel alloc] init];
+    _totalLabel.numberOfLines = 1;
+    _totalLabel.lineBreakMode = NSLineBreakByTruncatingTail;
+    _totalLabel.font = [UIFont systemFontOfSize:18];
+    _totalLabel.textColor = [UIColor darkGrayColor];
+    return _totalLabel;
 }
 
 - (UIButton *)addExpenseButton

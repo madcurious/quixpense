@@ -71,7 +71,7 @@ typedef NS_ENUM(NSUInteger, kRow)
     self.cellIdentifiers = @[kDescriptionCell, kAmountCell, kCategoryCell, kDateSpentCell];
     
     self.fields = @[[[SPRField alloc] initWithValue:self.expense.name],
-                    [[SPRField alloc] initWithValue:self.expense.amount],
+                    [[SPRField alloc] initWithValue:[self.expense.amount stringValue]],
                     [[SPRField alloc] initWithValue:self.expense.category],
                     [[SPRField alloc] initWithValue:self.expense.dateSpent]];
     
