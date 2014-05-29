@@ -38,7 +38,6 @@ static const NSInteger kTextFieldTag = 1000;
 
 @property (strong, nonatomic) NSArray *identifiers;
 @property (strong, nonatomic) NSArray *fields;
-@property (strong, nonatomic) SPRCategory *category;
 
 @end
 
@@ -49,8 +48,6 @@ static const NSInteger kTextFieldTag = 1000;
     [super viewDidLoad];
     
     self.identifiers = @[kDescriptionCell, kAmountCell, kCategoryCell, kDateSpentCell];
-    
-    self.category = [SPRCategory allCategories][self.categoryIndex];
     
     self.fields = @[[[SPRField alloc] initWithName:@"Description"],
                     [[SPRField alloc] initWithName:@"Amount"],

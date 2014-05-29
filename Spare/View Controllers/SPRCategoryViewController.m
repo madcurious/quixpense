@@ -36,9 +36,9 @@ NSFetchedResultsControllerDelegate,
 SPREditCategoryViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) UILabel *noExpensesLabel;
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
-
 @property (strong, nonatomic) NSMutableArray *sectionTotals;
 
 @end
@@ -61,16 +61,30 @@ SPREditCategoryViewControllerDelegate>
     [self initializeTotals];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    self.tableView.tableFooterView = [[UIView alloc] init];
+    
+    if (self.fetchedResultsController.fetchedObjects.count == 0) {
+        CGFloat labelX = [UIScreen mainScreen].bounds.size.width / 2 - self.noExpensesLabel.frame.size.width / 2;
+        CGFloat labelY = [self.noExpensesLabel centerYInParent:self.view];
+        self.noExpensesLabel.frame = CGRectMake(labelX, labelY, self.noExpensesLabel.frame.size.width, self.noExpensesLabel.frame.size.height);
+        [self.view addSubview:self.noExpensesLabel];
+    }
+}
+
 - (void)setupBarButtonItems
 {
     UIButton *newExpenseButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    [newExpenseButton setAttributedTitle:[SPRIconFont iconForNewExpense] forState:UIControlStateNormal];
+    [newExpenseButton setAttributedTitle:[SPRIconFont addExpenseIcon] forState:UIControlStateNormal];
     [newExpenseButton sizeToFit];
     [newExpenseButton addTarget:self action:@selector(newExpenseButtonTapped) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *newExpenseBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:newExpenseButton];
     
     UIButton *editCategoryButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    [editCategoryButton setAttributedTitle:[SPRIconFont iconForEdit] forState:UIControlStateNormal];
+    [editCategoryButton setAttributedTitle:[SPRIconFont editIcon] forState:UIControlStateNormal];
     [editCategoryButton sizeToFit];
     [editCategoryButton addTarget:self action:@selector(editCategoryButtonTapped) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *editCategoryBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:editCategoryButton];
@@ -92,7 +106,7 @@ SPREditCategoryViewControllerDelegate>
     if ([segue.identifier isEqualToString:@"presentNewExpenseModal"]) {
         UINavigationController *navigationController = segue.destinationViewController;
         SPRNewExpenseViewController *newExpenseScreen = (SPRNewExpenseViewController *)navigationController.topViewController;
-        newExpenseScreen.categoryIndex = [self.category.displayOrder integerValue];
+        newExpenseScreen.category = self.category;
     }
 }
 
@@ -230,6 +244,10 @@ SPREditCategoryViewControllerDelegate>
 {
     [self initializeTotals];
     [self.tableView reloadData];
+    
+    if (self.fetchedResultsController.fetchedObjects.count > 0) {
+        [self.noExpensesLabel removeFromSuperview];
+    }
 }
 
 #pragma mark - Edit category screen delegate
@@ -240,6 +258,31 @@ SPREditCategoryViewControllerDelegate>
 }
 
 #pragma mark - Getters
+
+- (UILabel *)noExpensesLabel
+{
+    if (_noExpensesLabel) {
+        return _noExpensesLabel;
+    }
+    
+    _noExpensesLabel = [[UILabel alloc] init];
+    _noExpensesLabel.numberOfLines = 0;
+    _noExpensesLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    _noExpensesLabel.textAlignment = NSTextAlignmentCenter;
+    
+    // Build the NSAttributedString which is to be the label's text.
+    NSDictionary *textAttributes = @{NSFontAttributeName : [UIFont systemFontOfSize:17], NSForegroundColorAttributeName : [UIColor grayColor]};
+    NSMutableAttributedString *labelText = [[NSMutableAttributedString alloc] initWithString:@"No expenses here yet!\nTap " attributes:textAttributes];
+    NSMutableAttributedString *expenseIcon = [[SPRIconFont addExpenseIconDisabled] mutableCopy];
+    [expenseIcon addAttribute:NSBaselineOffsetAttributeName value:@(-8) range:NSMakeRange(0, expenseIcon.length)];
+    [labelText appendAttributedString:expenseIcon];
+    [labelText appendAttributedString:[[NSAttributedString alloc] initWithString:@" to add one." attributes:textAttributes]];
+    
+    _noExpensesLabel.attributedText = labelText;
+    [_noExpensesLabel sizeToFitWidth:300];
+    
+    return _noExpensesLabel;
+}
 
 - (NSFetchedResultsController *)fetchedResultsController
 {

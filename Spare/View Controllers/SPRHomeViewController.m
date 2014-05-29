@@ -35,7 +35,8 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
 @interface SPRHomeViewController () <LXReorderableCollectionViewDataSource, UICollectionViewDelegate, LXReorderableCollectionViewDelegateFlowLayout, NSFetchedResultsControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-@property (strong, nonatomic) SPRStatusView *statusView;
+@property (strong, nonatomic) UILabel *noCategoriesLabel;
+@property (strong, nonatomic) UIButton *addExpenseButton;
 @property (nonatomic) NSInteger selectedCategoryIndex;
 @property (nonatomic) BOOL hasBeenSetup;
 
@@ -73,8 +74,28 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
     
     if (self.hasBeenSetup) {
         [self initializeCategories];
-        [self.collectionView reloadData];
-    } else {
+        
+        // If there are no categories yet...
+        if (self.categoryFetcher.fetchedObjects.count == 0) {
+            // Disable the add expenses button.
+            self.addExpenseButton.enabled = NO;
+            
+            // Display a none-yet label.
+            CGFloat labelX = [UIScreen mainScreen].bounds.size.width / 2 - self.noCategoriesLabel.frame.size.width / 2;
+            CGFloat labelY = [self.noCategoriesLabel centerYInParent:self.view];
+            self.noCategoriesLabel.frame = CGRectMake(labelX, labelY, self.noCategoriesLabel.frame.size.width, self.noCategoriesLabel.frame.size.height);
+            [self.view addSubview:self.noCategoriesLabel];
+        }
+        
+        // Otherwise, enable the add expense button and reload the collection view.
+        else {
+            self.addExpenseButton.enabled = YES;
+            [self.collectionView reloadData];
+        }
+    }
+    
+    // If the screen has not been set up yet, display a loading modal.
+    else {
         [self performSegueWithIdentifier:@"presentSetup" sender:self];
         self.hasBeenSetup = YES;
     }
@@ -95,17 +116,13 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
 {
     // The new category button.
     UIButton *newCategoryButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    [newCategoryButton setAttributedTitle:[SPRIconFont iconForNewCategory] forState:UIControlStateNormal];
+    [newCategoryButton setAttributedTitle:[SPRIconFont addCategoryIcon] forState:UIControlStateNormal];
     [newCategoryButton sizeToFit];
     [newCategoryButton addTarget:self action:@selector(newCategoryButtonTapped) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *newCategoryBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:newCategoryButton];
     
     // The new expense button.
-    UIButton *newExpenseButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    [newExpenseButton setAttributedTitle:[SPRIconFont iconForNewExpense] forState:UIControlStateNormal];
-    [newExpenseButton sizeToFit];
-    [newExpenseButton addTarget:self action:@selector(newExpenseButtonTapped) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *newExpenseBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:newExpenseButton];
+    UIBarButtonItem *newExpenseBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.addExpenseButton];
     
     self.navigationItem.rightBarButtonItems = @[newExpenseBarButtonItem, newCategoryBarButtonItem];
 }
@@ -209,18 +226,60 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
-    NSLog(@"Controller changed");
-    
     if (controller == self.categoryFetcher) {
         [self initializeCategories];
         self.dailyTotals = nil;
         self.weeklyTotals = nil;
         self.monthlyTotals = nil;
         self.yearlyTotals = nil;
+        
+        // If the user has already added categories, remove the
+        // No Categories Yet label.
+        if (self.categoryFetcher.fetchedObjects.count > 0) {
+            [self.noCategoriesLabel removeFromSuperview];
+        }
     }
 }
 
 #pragma mark - Getters
+
+- (UILabel *)noCategoriesLabel
+{
+    if (_noCategoriesLabel) {
+        return _noCategoriesLabel;
+    }
+    
+    _noCategoriesLabel = [[UILabel alloc] init];
+    _noCategoriesLabel.numberOfLines = 0;
+    _noCategoriesLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    _noCategoriesLabel.textAlignment = NSTextAlignmentCenter;
+    
+    // Build the NSAttributedString which is to be the label's text.
+    NSDictionary *textAttributes = @{NSFontAttributeName : [UIFont systemFontOfSize:17], NSForegroundColorAttributeName : [UIColor grayColor]};
+    NSMutableAttributedString *labelText = [[NSMutableAttributedString alloc] initWithString:@"You have no categories yet!\nTap " attributes:textAttributes];
+    [labelText appendAttributedString:[SPRIconFont addCategoryIconDisabled]];
+    [labelText appendAttributedString:[[NSAttributedString alloc] initWithString:@" to add one." attributes:textAttributes]];
+    
+    _noCategoriesLabel.attributedText = labelText;
+    [_noCategoriesLabel sizeToFitWidth:300];
+    
+    return _noCategoriesLabel;
+}
+
+- (UIButton *)addExpenseButton
+{
+    if (_addExpenseButton) {
+        return _addExpenseButton;
+    }
+    
+    _addExpenseButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    [_addExpenseButton setAttributedTitle:[SPRIconFont addExpenseIcon] forState:UIControlStateNormal];
+    [_addExpenseButton setAttributedTitle:[SPRIconFont addExpenseIconDisabled] forState:UIControlStateDisabled];
+    [_addExpenseButton sizeToFit];
+    [_addExpenseButton addTarget:self action:@selector(newExpenseButtonTapped) forControlEvents:UIControlEventTouchUpInside];
+    
+    return _addExpenseButton;
+}
 
 - (NSMutableArray *)activeTotals
 {
@@ -240,15 +299,6 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
         default:
             return nil;
     }
-}
-
-- (SPRStatusView *)statusView
-{
-    if (!_statusView) {
-        _statusView = [[SPRStatusView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-        _statusView.noResultsText = @"You have no categories yet.";
-    }
-    return _statusView;
 }
 
 - (NSFetchedResultsController *)categoryFetcher

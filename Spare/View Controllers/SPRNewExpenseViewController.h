@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class SPRCategory;
+
 @interface SPRNewExpenseViewController : UITableViewController
 
-@property (nonatomic) NSInteger categoryIndex;
+@property (strong, nonatomic) SPRCategory *category;
 
 @end
