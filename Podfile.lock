@@ -1,10 +1,10 @@
 PODS:
-  - LXReorderableCollectionViewFlowLayout (0.1.1)
+  - DraggableCollectionView (0.1)
 
 DEPENDENCIES:
-  - LXReorderableCollectionViewFlowLayout
+  - DraggableCollectionView
 
 SPEC CHECKSUMS:
-  LXReorderableCollectionViewFlowLayout: 7476503803af6badf13fb6164953880396726cb3
+  DraggableCollectionView: bb1feb9e0c06d89c9de0645e951e6491003a2120
 
-COCOAPODS: 0.31.1
+COCOAPODS: 0.33.1

@@ -6,9 +6,9 @@
 // project.
 
 
-// LXReorderableCollectionViewFlowLayout
-#define COCOAPODS_POD_AVAILABLE_LXReorderableCollectionViewFlowLayout
-#define COCOAPODS_VERSION_MAJOR_LXReorderableCollectionViewFlowLayout 0
-#define COCOAPODS_VERSION_MINOR_LXReorderableCollectionViewFlowLayout 1
-#define COCOAPODS_VERSION_PATCH_LXReorderableCollectionViewFlowLayout 1
+// DraggableCollectionView
+#define COCOAPODS_POD_AVAILABLE_DraggableCollectionView
+#define COCOAPODS_VERSION_MAJOR_DraggableCollectionView 0
+#define COCOAPODS_VERSION_MINOR_DraggableCollectionView 1
+#define COCOAPODS_VERSION_PATCH_DraggableCollectionView 0
 

@@ -24,7 +24,7 @@
 #import "SPRExpense.h"
 
 // Pods
-#import "LXReorderableCollectionViewFlowLayout.h"
+#import "UICollectionView+Draggable.h"
 
 // Constants
 #import "SPRTimeFrame.h"
@@ -34,7 +34,9 @@
 
 static NSString * const kCellIdentifier = @"kCellIdentifier";
 
-@interface SPRHomeViewController () <LXReorderableCollectionViewDataSource, UICollectionViewDelegate, LXReorderableCollectionViewDelegateFlowLayout, NSFetchedResultsControllerDelegate>
+@interface SPRHomeViewController () <UICollectionViewDataSource_Draggable,
+UICollectionViewDelegate,
+NSFetchedResultsControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (strong, nonatomic) UILabel *noCategoriesLabel;
@@ -63,6 +65,7 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
     // Set up the bar button item.s
     [self setupBarButtonItems];
     
+    self.collectionView.draggable = YES;
     // Register a collection view cell class.
     [self.collectionView registerClass:[SPRCategoryCollectionViewCell class] forCellWithReuseIdentifier:kCellIdentifier];
     
@@ -210,9 +213,9 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
     return cell;
 }
 
-#pragma mark - LXReorderableCollectionView data source
+#pragma mark - Draggable collection view data source
 
-- (void)collectionView:(UICollectionView *)collectionView itemAtIndexPath:(NSIndexPath *)fromIndexPath willMoveToIndexPath:(NSIndexPath *)toIndexPath
+- (void)collectionView:(UICollectionView *)collectionView moveItemAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
 {
     // Reassign the display order of categories.
     NSMutableArray *categories = [self.categoryFetcher.fetchedObjects mutableCopy];
@@ -240,14 +243,14 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
     }];
 }
 
-- (BOOL)collectionView:(UICollectionView *)collectionView itemAtIndexPath:(NSIndexPath *)fromIndexPath canMoveToIndexPath:(NSIndexPath *)toIndexPath
+- (BOOL)collectionView:(UICollectionView *)collectionView canMoveItemAtIndexPath:(NSIndexPath *)indexPath
 {
     return YES;
 }
 
-- (BOOL)collectionView:(UICollectionView *)collectionView canMoveItemAtIndexPath:(NSIndexPath *)indexPath
+- (CGAffineTransform)collectionView:(UICollectionView *)collectionView transformForDraggingItemAtIndexPath:(NSIndexPath *)indexPath duration:(NSTimeInterval *)duration
 {
-    return YES;
+    return CGAffineTransformMakeScale(1.15, 1.15);
 }
 
 #pragma mark - Collection view delegate

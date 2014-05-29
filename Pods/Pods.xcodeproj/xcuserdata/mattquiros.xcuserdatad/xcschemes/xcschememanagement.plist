@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Pods-LXReorderableCollectionViewFlowLayout.xcscheme</key>
+		<key>Pods-DraggableCollectionView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -17,12 +17,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>2D0369712B034D559BFD79EE</key>
+		<key>6CC772A8EBBA494784720CC1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>369E92FA182D4F6FA5D071D5</key>
+		<key>AD9CAB8E8C0A4AF0892E9CE4</key>
 		<dict>
 			<key>primary</key>
 			<true/>

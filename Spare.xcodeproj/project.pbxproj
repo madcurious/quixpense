@@ -59,6 +59,7 @@
 		26E2485C18E1DA2B00391354 /* NSString+SPR.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E2485B18E1DA2B00391354 /* NSString+SPR.m */; };
 		26E2485F18E1DCEF00391354 /* SPRCategory+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E2485E18E1DCEF00391354 /* SPRCategory+Extension.m */; };
 		26E2486218E1E3C400391354 /* SPRColorChooserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E2486118E1E3C400391354 /* SPRColorChooserViewController.m */; };
+		26E4E0591937AF690096191A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E4E0581937AF690096191A /* QuartzCore.framework */; };
 		28822B437E5247E3BDE57F66 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F6196FFB0C5B41DEB0DB54BF /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -171,6 +172,7 @@
 		26E2485E18E1DCEF00391354 /* SPRCategory+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SPRCategory+Extension.m"; sourceTree = "<group>"; };
 		26E2486018E1E3C400391354 /* SPRColorChooserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRColorChooserViewController.h; sourceTree = "<group>"; };
 		26E2486118E1E3C400391354 /* SPRColorChooserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRColorChooserViewController.m; sourceTree = "<group>"; };
+		26E4E0581937AF690096191A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F6196FFB0C5B41DEB0DB54BF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -181,6 +183,7 @@
 			files = (
 				261EB86518DDB630009DDF78 /* CoreGraphics.framework in Frameworks */,
 				261EB86918DDB631009DDF78 /* CoreData.framework in Frameworks */,
+				26E4E0591937AF690096191A /* QuartzCore.framework in Frameworks */,
 				261EB86718DDB631009DDF78 /* UIKit.framework in Frameworks */,
 				261EB86318DDB630009DDF78 /* Foundation.framework in Frameworks */,
 				28822B437E5247E3BDE57F66 /* libPods.a in Frameworks */,
@@ -234,6 +237,7 @@
 		261EB86118DDB630009DDF78 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				26E4E0581937AF690096191A /* QuartzCore.framework */,
 				261EB86218DDB630009DDF78 /* Foundation.framework */,
 				261EB86418DDB630009DDF78 /* CoreGraphics.framework */,
 				261EB86618DDB631009DDF78 /* UIKit.framework */,
