@@ -10,12 +10,13 @@
 
 @interface SPRIconFont : NSObject
 
-+ (NSAttributedString *)editIcon;
-
 + (NSAttributedString *)addCategoryIcon;
 + (NSAttributedString *)addCategoryIconDisabled;
 
 + (NSAttributedString *)addExpenseIcon;
 + (NSAttributedString *)addExpenseIconDisabled;
+
++ (NSAttributedString *)deleteIcon;
++ (NSAttributedString *)editIcon;
 
 @end

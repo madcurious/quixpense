@@ -12,12 +12,6 @@ static NSString * const kFontName = @"spare-icons";
 
 @implementation SPRIconFont
 
-+ (NSAttributedString *)editIcon
-{
-    NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:[SPRIconFont stringForEdit] attributes:@{NSFontAttributeName : [UIFont fontWithName:kFontName size:20]}];
-    return attributedString;
-}
-
 + (NSAttributedString *)addCategoryIcon
 {
     NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:[SPRIconFont stringForNewCategory] attributes:@{NSFontAttributeName : [UIFont fontWithName:kFontName size:22]}];
@@ -39,6 +33,18 @@ static NSString * const kFontName = @"spare-icons";
 + (NSAttributedString *)addExpenseIconDisabled
 {
     NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:[SPRIconFont stringForNewExpense] attributes:@{NSFontAttributeName : [UIFont fontWithName:kFontName size:30], NSForegroundColorAttributeName : [UIColor grayColor]}];
+    return attributedString;
+}
+
++ (NSAttributedString *)deleteIcon
+{
+    NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:[SPRIconFont stringForDelete] attributes:@{NSFontAttributeName : [UIFont fontWithName:kFontName size:20]}];
+    return attributedString;
+}
+
++ (NSAttributedString *)editIcon
+{
+    NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:[SPRIconFont stringForEdit] attributes:@{NSFontAttributeName : [UIFont fontWithName:kFontName size:20]}];
     return attributedString;
 }
 

@@ -33,7 +33,8 @@ static const NSInteger kAmountLabelTag = 2000;
 
 @interface SPRCategoryViewController () <UITableViewDataSource, UITableViewDelegate,
 NSFetchedResultsControllerDelegate,
-SPREditCategoryViewControllerDelegate>
+SPREditCategoryViewControllerDelegate,
+UIAlertViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) UILabel *noExpensesLabel;
@@ -89,7 +90,13 @@ SPREditCategoryViewControllerDelegate>
     [editCategoryButton addTarget:self action:@selector(editCategoryButtonTapped) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *editCategoryBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:editCategoryButton];
     
-    self.navigationItem.rightBarButtonItems = @[newExpenseBarButtonItem, editCategoryBarButtonItem];
+    UIButton *deleteCategoryButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    [deleteCategoryButton setAttributedTitle:[SPRIconFont deleteIcon] forState:UIControlStateNormal];
+    [deleteCategoryButton sizeToFit];
+    [deleteCategoryButton addTarget:self action:@selector(deleteCategoryButtonTapped) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *deleteCategoryBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:deleteCategoryButton];
+    
+    self.navigationItem.rightBarButtonItems = @[newExpenseBarButtonItem, editCategoryBarButtonItem, deleteCategoryBarButtonItem];
 }
 
 - (void)initializeTotals
@@ -124,6 +131,11 @@ SPREditCategoryViewControllerDelegate>
     editCategoryViewController.delegate = self;
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:editCategoryViewController];
     [self presentViewController:navigationController animated:YES completion:nil];
+}
+
+- (void)deleteCategoryButtonTapped
+{
+    [[[UIAlertView alloc] initWithTitle:@"Confirm delete" message:@"Deleting a category also deletes all its expenses. This cannot be undone. Continue?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Delete", nil] show];
 }
 
 #pragma mark - Table view data source
@@ -255,6 +267,23 @@ SPREditCategoryViewControllerDelegate>
 - (void)editCategoryScreen:(SPREditCategoryViewController *)editCategoryScreen didEditCategory:(SPRCategory *)category
 {
     [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
+#pragma mark - Alert view delegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    // The only alert view in this screen is the Confirm Delete dialog.
+    // If one is pressed, the user confirms deleting the category and
+    // all the expenses under it.
+    if (buttonIndex == 1) {
+        [self.category.managedObjectContext deleteObject:self.category];
+        
+        SPRManagedDocument *managedDocument = [SPRManagedDocument sharedDocument];
+        [managedDocument saveToURL:managedDocument.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success) {
+            [self.navigationController popViewControllerAnimated:YES];
+        }];
+    }
 }
 
 #pragma mark - Getters
