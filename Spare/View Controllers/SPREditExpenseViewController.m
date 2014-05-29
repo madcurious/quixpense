@@ -74,6 +74,11 @@ typedef NS_ENUM(NSUInteger, kRow)
                     [[SPRField alloc] initWithValue:self.expense.amount],
                     [[SPRField alloc] initWithValue:self.expense.category],
                     [[SPRField alloc] initWithValue:self.expense.dateSpent]];
+    
+    // Add a tap gesture recognizer to hide the keyboard when the user taps outside the fields.
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
+    tapRecognizer.cancelsTouchesInView = NO;
+    [self.tableView addGestureRecognizer:tapRecognizer];
 }
 
 #pragma mark - Helper methods
@@ -131,6 +136,11 @@ typedef NS_ENUM(NSUInteger, kRow)
         SPREditExpenseViewController *innerSelf = weakSelf;
         [innerSelf dismissViewControllerAnimated:YES completion:nil];
     }];
+}
+
+- (void)hideKeyboard
+{
+    [self.view endEditing:YES];
 }
 
 #pragma mark - Table view data source
