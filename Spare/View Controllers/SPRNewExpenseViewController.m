@@ -68,17 +68,41 @@ static const NSInteger kTextFieldTag = 1000;
 
 - (IBAction)doneButtonTapped:(id)sender
 {
-    SPRExpense *expense = [NSEntityDescription insertNewObjectForEntityForName:@"SPRExpense" inManagedObjectContext:self.category.managedObjectContext];
-    expense.name = ((SPRField *)self.fields[kRowDescription]).value;
-    expense.amount = [NSDecimalNumber decimalNumberWithString:((SPRField *)self.fields[kRowAmount]).value];
-    expense.category = ((SPRField *)self.fields[kRowCategory]).value;
+    // First, find the missing fields.
+    
+    NSString *name = [((SPRField *)self.fields[kRowDescription]).value trim];
+    NSString *amount = [((SPRField *)self.fields[kRowAmount]).value trim];
+    SPRCategory *category = ((SPRField *)self.fields[kRowCategory]).value;
+    
+    NSMutableArray *missingFields = [NSMutableArray array];
+    if (name.length == 0) {
+        [missingFields addObject:@"Name"];
+    }
+    if (amount.length == 0) {
+        [missingFields addObject:@"Amount"];
+    }
+    if (category == nil) {
+        [missingFields addObject:@"Category"];
+    }
+    
+    // If there are missing fields, display a dialog.
+    if (missingFields.count > 0) {
+        NSString *message = [NSString stringWithFormat:@"You must enter the following:\n%@", [missingFields componentsJoinedByString:@", "]];
+        [[[UIAlertView alloc] initWithTitle:@"Missing fields" message:message delegate:nil cancelButtonTitle:@"Got it!" otherButtonTitles:nil] show];
+        return;
+    }
+    
+    // Otherwise, proceed with saving the expense.
+    SPRManagedDocument *document = [SPRManagedDocument sharedDocument];
+    
+    SPRExpense *expense = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([SPRExpense class]) inManagedObjectContext:document.managedObjectContext];
+    expense.name = name;
+    expense.amount = [NSDecimalNumber decimalNumberWithString:amount];
+    expense.category = category;
     expense.dateSpent = ((SPRField *)self.fields[kRowDateSpent]).value;
     
-    SPRManagedDocument *document = [SPRManagedDocument sharedDocument];
-    __weak SPRNewExpenseViewController *weakSelf = self;
     [document saveToURL:document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success) {
-        SPRNewExpenseViewController *innerSelf = weakSelf;
-        [innerSelf dismissViewControllerAnimated:YES completion:nil];
+        [self dismissViewControllerAnimated:YES completion:nil];
     }];
 }
 

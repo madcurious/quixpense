@@ -74,6 +74,7 @@ static const NSInteger kSelectedColorViewTag = 2000;
 - (IBAction)doneButtonTapped:(id)sender
 {
     SPRField *nameField = self.fields[kRowName];
+    
     if (((NSString *)nameField.value).length > 0) {
         // Create the SPRCategory object.
         SPRManagedDocument *document = [SPRManagedDocument sharedDocument];
@@ -88,6 +89,10 @@ static const NSInteger kSelectedColorViewTag = 2000;
         [document saveToURL:document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success) {
             [self dismissViewControllerAnimated:YES completion:nil];
         }];
+    }
+    
+    else {
+        [[[UIAlertView alloc] initWithTitle:@"Missing field" message:@"You must name the category." delegate:nil cancelButtonTitle:@"Got it!" otherButtonTitles:nil] show];
     }
 }
 

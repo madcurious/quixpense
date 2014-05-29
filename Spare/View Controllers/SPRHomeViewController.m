@@ -238,6 +238,8 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
         if (self.categoryFetcher.fetchedObjects.count > 0) {
             [self.noCategoriesLabel removeFromSuperview];
         }
+        
+        [self.collectionView reloadData];
     }
 }
 

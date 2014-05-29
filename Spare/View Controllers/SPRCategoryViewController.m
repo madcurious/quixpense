@@ -73,6 +73,8 @@ UIAlertViewDelegate>
         CGFloat labelY = [self.noExpensesLabel centerYInParent:self.view];
         self.noExpensesLabel.frame = CGRectMake(labelX, labelY, self.noExpensesLabel.frame.size.width, self.noExpensesLabel.frame.size.height);
         [self.view addSubview:self.noExpensesLabel];
+    } else {
+        [self.tableView reloadData];
     }
 }
 
@@ -223,6 +225,18 @@ UIAlertViewDelegate>
     return header;
 }
 
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        NSIndexPath *offsetIndexPath = [NSIndexPath indexPathForRow:indexPath.row inSection:(indexPath.section - 1)];
+        SPRExpense *expense = [self.fetchedResultsController objectAtIndexPath:offsetIndexPath];
+        
+        SPRManagedDocument *managedDocument = [SPRManagedDocument sharedDocument];
+        [managedDocument.managedObjectContext deleteObject:expense];
+        [managedDocument saveToURL:managedDocument.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:nil];
+    }
+}
+
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -259,6 +273,11 @@ UIAlertViewDelegate>
     
     if (self.fetchedResultsController.fetchedObjects.count > 0) {
         [self.noExpensesLabel removeFromSuperview];
+    } else {
+        CGFloat labelX = [UIScreen mainScreen].bounds.size.width / 2 - self.noExpensesLabel.frame.size.width / 2;
+        CGFloat labelY = [self.noExpensesLabel centerYInParent:self.view];
+        self.noExpensesLabel.frame = CGRectMake(labelX, labelY, self.noExpensesLabel.frame.size.width, self.noExpensesLabel.frame.size.height);
+        [self.view addSubview:self.noExpensesLabel];
     }
 }
 

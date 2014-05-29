@@ -53,8 +53,7 @@
 {
     [super setField:field];
     
-    NSDecimalNumber *amount = field.value;
-    self.textField.text = [amount stringValue];
+    self.textField.text = [field.value stringValue];
 }
 
 #pragma mark - Text field delegate
@@ -67,13 +66,13 @@
     }
     
     NSString *amountText = [self.textField.text stringByReplacingCharactersInRange:range withString:string];
-    self.field.value = [NSDecimalNumber decimalNumberWithString:amountText];
+    self.field.value = amountText;
     return YES;
 }
 
 - (BOOL)textFieldShouldClear:(UITextField *)textField
 {
-    self.field.value = [[NSDecimalNumber alloc] initWithInt:0];
+    self.field.value = @"";
     return YES;
 }
 

@@ -25,6 +25,9 @@ static NSString * const kDescriptionCell = @"kDescriptionCell";
 static NSString * const kAmountCell = @"kAmountCell";
 static NSString * const kCategoryCell = @"kCategoryCell";
 static NSString * const kDateSpentCell = @"kDateSpentCell";
+static NSString * const kDeleteCell = @"kDeleteCell";
+
+static const NSInteger kConfirmDeleteAlertViewTag = 1000;
 
 typedef NS_ENUM(NSUInteger, kRow)
 {
@@ -34,7 +37,7 @@ typedef NS_ENUM(NSUInteger, kRow)
     kRowDateSpent,
 };
 
-@interface SPREditExpenseViewController () <SPRCategoryPickerDelegate, SPRDatePickerDelegate>
+@interface SPREditExpenseViewController () <SPRCategoryPickerDelegate, SPRDatePickerDelegate, UIAlertViewDelegate>
 
 @property (strong, nonatomic) NSArray *cellIdentifiers;
 @property (strong, nonatomic) NSArray *fields;
@@ -60,6 +63,7 @@ typedef NS_ENUM(NSUInteger, kRow)
     [self.tableView registerClass:[SPRExpenseAmountCell class] forCellReuseIdentifier:kAmountCell];
     [self.tableView registerClass:[SPRExpenseCategoryCell class] forCellReuseIdentifier:kCategoryCell];
     [self.tableView registerClass:[SPRExpenseDateSpentCell class] forCellReuseIdentifier:kDateSpentCell];
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kDeleteCell];
     
     // Set up the bar button items.
     [self setupBarButtonItems];
@@ -92,9 +96,33 @@ typedef NS_ENUM(NSUInteger, kRow)
 
 - (void)doneButtonTapped
 {
-    self.expense.name = ((SPRField *)self.fields[kRowDescription]).value;
-    self.expense.amount = ((SPRField *)self.fields[kRowAmount]).value;
-    self.expense.category = ((SPRField *)self.fields[kRowCategory]).value;
+    // First, check if any of the fields are missing.
+    
+    NSString *name = [((SPRField *)self.fields[kRowDescription]).value trim];
+    NSString *amount = [((SPRField *)self.fields[kRowAmount]).value trim];
+    SPRCategory *category = ((SPRField *)self.fields[kRowCategory]).value;
+    
+    NSMutableArray *missingFields = [NSMutableArray array];
+    if (name.length == 0) {
+        [missingFields addObject:@"Name"];
+    }
+    if (amount.length == 0) {
+        [missingFields addObject:@"Amount"];
+    }
+    if (category == nil) {
+        [missingFields addObject:@"Category"];
+    }
+    
+    // If there are missing fields, display a dialog.
+    if (missingFields.count > 0) {
+        NSString *message = [NSString stringWithFormat:@"You must enter the following:\n%@", [missingFields componentsJoinedByString:@", "]];
+        [[[UIAlertView alloc] initWithTitle:@"Missing fields" message:message delegate:nil cancelButtonTitle:@"Got it!" otherButtonTitles:nil] show];
+        return;
+    }
+    
+    self.expense.name = name;
+    self.expense.amount = [NSDecimalNumber decimalNumberWithString:amount];
+    self.expense.category = category;
     self.expense.dateSpent = ((SPRField *)self.fields[kRowDateSpent]).value;
     
     SPRManagedDocument *document = [SPRManagedDocument sharedDocument];
@@ -109,19 +137,30 @@ typedef NS_ENUM(NSUInteger, kRow)
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.cellIdentifiers.count;
+    if (section == 0) {
+        return self.cellIdentifiers.count;
+    }
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *identifier = self.cellIdentifiers[indexPath.row];
-    SPRFormCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    cell.field = self.fields[indexPath.row];
+    if (indexPath.section == 0) {
+        NSString *identifier = self.cellIdentifiers[indexPath.row];
+        SPRFormCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+        cell.field = self.fields[indexPath.row];
+        return cell;
+    }
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kDeleteCell];
+    cell.textLabel.text = @"Delete Expense";
+    cell.textLabel.textColor = [UIColor redColor];
+    cell.textLabel.textAlignment = NSTextAlignmentCenter;
     return cell;
 }
 
@@ -129,6 +168,14 @@ typedef NS_ENUM(NSUInteger, kRow)
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    // If this is the Delete cell section.
+    if (indexPath.section == 1) {
+        UIAlertView *confirmDialog = [[UIAlertView alloc] initWithTitle:@"Confirm action" message:@"This can't be undone. Are you sure you want to delete?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Delete", nil];
+        confirmDialog.tag = kConfirmDeleteAlertViewTag;
+        [confirmDialog show];
+        return;
+    }
+    
     switch (indexPath.row) {
         case kRowCategory: {
             SPRCategoryPicker *categoryPicker = [[SPRCategoryPicker alloc] initWithFrame:CGRectMake(0, 0, self.navigationController.view.frame.size.width, self.navigationController.view.frame.size.height)];
@@ -144,6 +191,28 @@ typedef NS_ENUM(NSUInteger, kRow)
             datePicker.preselectedDate = ((SPRField *)self.fields[kRowDateSpent]).value;
             [self.navigationController.view addSubview:datePicker];
             [datePicker show];
+            break;
+        }
+    }
+}
+
+#pragma mark - Alert view delegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    switch (alertView.tag) {
+        case kConfirmDeleteAlertViewTag: {
+            // First, deselect the Delete Expense cell.
+            [self.tableView deselectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1] animated:YES];
+            
+            // If the user confirms deleting the expense...
+            if (buttonIndex == 1) {
+                SPRManagedDocument *managedDocument = [SPRManagedDocument sharedDocument];
+                [managedDocument.managedObjectContext deleteObject:self.expense];
+                [managedDocument saveToURL:managedDocument.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success) {
+                    [self dismissViewControllerAnimated:YES completion:nil];
+                }];
+            }
             break;
         }
     }
