@@ -29,6 +29,9 @@
 // Constants
 #import "SPRTimeFrame.h"
 
+// Categories
+#import "UIColor+HexColor.h"
+
 static NSString * const kCellIdentifier = @"kCellIdentifier";
 
 @interface SPRHomeViewController () <LXReorderableCollectionViewDataSource, UICollectionViewDelegate, LXReorderableCollectionViewDelegateFlowLayout, NSFetchedResultsControllerDelegate>
@@ -223,7 +226,7 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
     }
     
     // Reorder the totals in all of the totals arrays.
-    NSArray *totals = @[self.dailyTotals, self.weeklyTotals];
+    NSArray *totals = @[self.dailyTotals, self.weeklyTotals, self.monthlyTotals, self.yearlyTotals];
     for (NSMutableArray *array in totals) {
         NSDecimalNumber *total = array[fromIndexPath.row];
         [array removeObjectAtIndex:fromIndexPath.row];
@@ -312,7 +315,7 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
     _totalLabel.numberOfLines = 1;
     _totalLabel.lineBreakMode = NSLineBreakByTruncatingTail;
     _totalLabel.font = [UIFont systemFontOfSize:18];
-    _totalLabel.textColor = [UIColor darkGrayColor];
+    _totalLabel.textColor = [UIColor colorFromHex:0x007aff];
     return _totalLabel;
 }
 
