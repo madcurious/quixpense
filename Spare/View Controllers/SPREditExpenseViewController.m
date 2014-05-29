@@ -134,6 +134,11 @@ typedef NS_ENUM(NSUInteger, kRow)
     __weak SPREditExpenseViewController *weakSelf = self;
     [document saveToURL:document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success) {
         SPREditExpenseViewController *innerSelf = weakSelf;
+        
+        // Send a notification that an expense has been edited.
+        NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+        [notificationCenter postNotificationName:@"SPRExpenseEditedNotification" object:nil];
+        
         [innerSelf dismissViewControllerAnimated:YES completion:nil];
     }];
 }

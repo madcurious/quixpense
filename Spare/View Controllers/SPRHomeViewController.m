@@ -65,6 +65,13 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
     
     // By default, the active time frame for totals is daily.
     self.activeTimeFrame = SPRTimeFrameDay;
+    
+    // Register to be notified of the edit expense event.
+    // This currently feels like a poor solution to refreshing the category totals
+    // when an expense is edited. When an expense is added or deleted, the fetched results
+    // controller is notified, but not when any of the expenses are changed.
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    [notificationCenter addObserver:self selector:@selector(expenseEditedNotificationReceived) name:@"SPRExpenseEditedNotification" object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -167,6 +174,17 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
     [self updateTotalLabel];
     
     [self.collectionView reloadData];
+}
+
+- (void)expenseEditedNotificationReceived
+{
+    [self controllerDidChangeContent:self.categoryFetcher];
+}
+
+- (void)dealloc
+{
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    [notificationCenter removeObserver:self];
 }
 
 #pragma mark - Collection view data source
