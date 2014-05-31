@@ -345,8 +345,8 @@ UIAlertViewDelegate>
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"category == %@", self.category];
     fetchRequest.predicate = predicate;
     
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"dateSpent" ascending:NO];
-    fetchRequest.sortDescriptors = @[sortDescriptor];
+    fetchRequest.sortDescriptors = @[[[NSSortDescriptor alloc] initWithKey:@"dateSpent" ascending:NO],
+                                     [[NSSortDescriptor alloc] initWithKey:@"dateCreated" ascending:NO]];
     
     _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:[SPRManagedDocument sharedDocument].managedObjectContext sectionNameKeyPath:@"dateSpentAsSectionTitle" cacheName:nil];
     _fetchedResultsController.delegate = self;

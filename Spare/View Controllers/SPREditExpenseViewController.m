@@ -129,6 +129,7 @@ typedef NS_ENUM(NSUInteger, kRow)
     self.expense.amount = [NSDecimalNumber decimalNumberWithString:amount];
     self.expense.category = category;
     self.expense.dateSpent = ((SPRField *)self.fields[kRowDateSpent]).value;
+    self.expense.dateLastModified = [NSDate date];
     
     SPRManagedDocument *document = [SPRManagedDocument sharedDocument];
     __weak SPREditExpenseViewController *weakSelf = self;
