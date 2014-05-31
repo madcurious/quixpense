@@ -22,6 +22,7 @@
 #import "SPRCategory+Extension.h"
 #import "SPRManagedDocument.h"
 #import "SPRExpense.h"
+#import "SPRCategorySummary.h"
 
 // Pods
 #import "UICollectionView+Draggable.h"
@@ -47,11 +48,7 @@ NSFetchedResultsControllerDelegate>
 @property (nonatomic) BOOL hasBeenSetup;
 
 @property (strong, nonatomic) NSFetchedResultsController *categoryFetcher;
-@property (strong, nonatomic) NSMutableArray *dailyTotals;
-@property (strong, nonatomic) NSMutableArray *weeklyTotals;
-@property (strong, nonatomic) NSMutableArray *monthlyTotals;
-@property (strong, nonatomic) NSMutableArray *yearlyTotals;
-@property (strong, nonatomic, readonly) NSMutableArray *activeTotals;
+@property (strong, nonatomic) NSMutableArray *summaries;
 @property (nonatomic) SPRTimeFrame activeTimeFrame;
 
 @end
@@ -71,13 +68,6 @@ NSFetchedResultsControllerDelegate>
     
     // By default, the active time frame for totals is daily.
     self.activeTimeFrame = SPRTimeFrameDay;
-    
-    // Register to be notified of the edit expense event.
-    // This currently feels like a poor solution to refreshing the category totals
-    // when an expense is edited. When an expense is added or deleted, the fetched results
-    // controller is notified, but not when any of the expenses are changed.
-    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
-    [notificationCenter addObserver:self selector:@selector(expenseEditedNotificationReceived) name:@"SPRExpenseEditedNotification" object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -85,7 +75,7 @@ NSFetchedResultsControllerDelegate>
     [super viewWillAppear:animated];
     
     if (self.hasBeenSetup) {
-        [self initializeCategories];
+        [self initializeSummaries];
         [self updateTotalLabel];
         
         // If there are no categories yet...
@@ -118,7 +108,8 @@ NSFetchedResultsControllerDelegate>
 {
     if ([segue.identifier isEqualToString:@"pushCategory"]) {
         SPRCategoryViewController *categoryScreen = segue.destinationViewController;
-        categoryScreen.category = self.categoryFetcher.fetchedObjects[self.selectedCategoryIndex];
+        SPRCategorySummary *summary = self.summaries[self.selectedCategoryIndex];
+        categoryScreen.category = summary.category;
         return;
     }
 }
@@ -144,18 +135,26 @@ NSFetchedResultsControllerDelegate>
     self.navigationItem.rightBarButtonItems = @[newExpenseBarButtonItem, newCategoryBarButtonItem];
 }
 
-- (void)initializeCategories
+- (void)initializeSummaries
 {
-    NSError *error;
-    if (![self.categoryFetcher performFetch:&error]) {
-        NSLog(@"%@", error);
+    self.summaries = [NSMutableArray array];
+    [self.categoryFetcher performFetch:nil];
+    for (SPRCategory *category in self.categoryFetcher.fetchedObjects) {
+        [self.summaries addObject:[[SPRCategorySummary alloc] initWithCategory:category]];
     }
 }
 
 - (void)updateTotalLabel
 {
     // Sum all the active totals and set it as the total label's text.
-    NSDecimalNumber *total = [self.activeTotals valueForKeyPath:@"@sum.self"];
+    NSDecimalNumber *total = [NSDecimalNumber decimalNumberWithString:@"0"];
+    NSDecimalNumber *singleTotal;
+    
+    for (SPRCategorySummary *summary in self.summaries) {
+        singleTotal = [summary totalForTimeFrame:self.activeTimeFrame];
+        total = [total decimalNumberByAdding:singleTotal];
+    }
+    
     self.totalLabel.text = [total currencyString];
     [self.totalLabel sizeToFit];
 }
@@ -182,33 +181,20 @@ NSFetchedResultsControllerDelegate>
     [self.collectionView reloadData];
 }
 
-- (void)expenseEditedNotificationReceived
-{
-    [self controllerDidChangeContent:self.categoryFetcher];
-}
-
-- (void)dealloc
-{
-    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
-    [notificationCenter removeObserver:self];
-}
-
 #pragma mark - Collection view data source
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return self.categoryFetcher.fetchedObjects.count;
+    return self.summaries.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     SPRCategoryCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
     
-    // Get the category at the index path.
-    SPRCategory *category = self.categoryFetcher.fetchedObjects[indexPath.row];
-    
-    cell.category = category;
-    cell.displayedTotal = self.activeTotals[indexPath.row];
+    SPRCategorySummary *summary = self.summaries[indexPath.row];
+    cell.category = summary.category;
+    cell.displayedTotal = [summary totalForTimeFrame:self.activeTimeFrame];
     
     return cell;
 }
@@ -217,30 +203,20 @@ NSFetchedResultsControllerDelegate>
 
 - (void)collectionView:(UICollectionView *)collectionView moveItemAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
 {
+    // Move the summary's location in the array.
+    SPRCategorySummary *summary = self.summaries[fromIndexPath.row];
+    [self.summaries removeObject:summary];
+    [self.summaries insertObject:summary atIndex:toIndexPath.row];
+    
     // Reassign the display order of categories.
-    NSMutableArray *categories = [self.categoryFetcher.fetchedObjects mutableCopy];
-    SPRCategory *category = categories[fromIndexPath.row];
-    [categories removeObject:category];
-    [categories insertObject:category atIndex:toIndexPath.row];
-    
-    for (int i = 0; i < categories.count; i++) {
-        category = categories[i];
-        category.displayOrder = @(i);
-    }
-    
-    // Reorder the totals in all of the totals arrays.
-    NSArray *totals = @[self.dailyTotals, self.weeklyTotals, self.monthlyTotals, self.yearlyTotals];
-    for (NSMutableArray *array in totals) {
-        NSDecimalNumber *total = array[fromIndexPath.row];
-        [array removeObjectAtIndex:fromIndexPath.row];
-        [array insertObject:total atIndex:toIndexPath.row];
+    for (int i = 0; i < self.summaries.count; i++) {
+        summary = self.summaries[i];
+        summary.category.displayOrder = @(i);
     }
     
     // Persist the reordering into the managed document.
     SPRManagedDocument *document = [SPRManagedDocument sharedDocument];
-    [document saveToURL:document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success) {
-        [self.collectionView reloadData];
-    }];
+    [document saveToURL:document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:nil];
 }
 
 - (BOOL)collectionView:(UICollectionView *)collectionView canMoveItemAtIndexPath:(NSIndexPath *)indexPath
@@ -265,20 +241,13 @@ NSFetchedResultsControllerDelegate>
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
-    if (controller == self.categoryFetcher) {
-        [self initializeCategories];
-        [self updateTotalLabel];
-        self.dailyTotals = nil;
-        self.weeklyTotals = nil;
-        self.monthlyTotals = nil;
-        self.yearlyTotals = nil;
-        
-        // If the user has already added categories, remove the
-        // No Categories Yet label.
-        if (self.categoryFetcher.fetchedObjects.count > 0) {
-            [self.noCategoriesLabel removeFromSuperview];
-        }
-        
+    if (controller != self.categoryFetcher) {
+        return;
+    }
+    
+    if (self.categoryFetcher.fetchedObjects.count > 0) {
+        [self.noCategoriesLabel removeFromSuperview];
+    } else {
         [self.collectionView reloadData];
     }
 }
@@ -337,26 +306,6 @@ NSFetchedResultsControllerDelegate>
     return _addExpenseButton;
 }
 
-- (NSMutableArray *)activeTotals
-{
-    switch (self.activeTimeFrame) {
-        case SPRTimeFrameDay: {
-            return self.dailyTotals;
-        }
-        case SPRTimeFrameWeek: {
-            return self.weeklyTotals;
-        }
-        case SPRTimeFrameMonth: {
-            return self.monthlyTotals;
-        }
-        case SPRTimeFrameYear: {
-            return self.yearlyTotals;
-        }
-        default:
-            return nil;
-    }
-}
-
 - (NSFetchedResultsController *)categoryFetcher
 {
     if (_categoryFetcher) {
@@ -373,85 +322,6 @@ NSFetchedResultsControllerDelegate>
     _categoryFetcher.delegate = self;
     
     return _categoryFetcher;
-}
-
-- (NSMutableArray *)dailyTotals
-{
-    if (!_dailyTotals) {
-        _dailyTotals = [SPRHomeViewController totalsForCategories:self.categoryFetcher.fetchedObjects timeFrame:SPRTimeFrameDay];
-    }
-    return _dailyTotals;
-}
-
-- (NSMutableArray *)weeklyTotals
-{
-    if (!_weeklyTotals) {
-        _weeklyTotals = [SPRHomeViewController totalsForCategories:self.categoryFetcher.fetchedObjects timeFrame:SPRTimeFrameWeek];
-    }
-    return _weeklyTotals;
-}
-
-- (NSMutableArray *)monthlyTotals
-{
-    if (!_monthlyTotals) {
-        _monthlyTotals = [SPRHomeViewController totalsForCategories:self.categoryFetcher.fetchedObjects timeFrame:SPRTimeFrameMonth];
-    }
-    return _monthlyTotals;
-}
-
-- (NSMutableArray *)yearlyTotals
-{
-    if (!_yearlyTotals) {
-        _yearlyTotals = [SPRHomeViewController totalsForCategories:self.categoryFetcher.fetchedObjects timeFrame:SPRTimeFrameYear];
-    }
-    return _yearlyTotals;
-}
-
-#pragma mark -
-
-+ (NSMutableArray *)totalsForCategories:(NSArray *)categories timeFrame:(SPRTimeFrame)timeFrame
-{
-    NSMutableArray *totals = [NSMutableArray array];
-    
-    NSFetchedResultsController *fetcher;
-    
-    for (int i = 0; i < categories.count; i++) {
-        fetcher = [SPRHomeViewController totalFetcherForCategory:categories[i] timeFrame:timeFrame];
-        [fetcher performFetch:nil];
-        
-        NSDictionary *dictionary = fetcher.fetchedObjects[0];
-        totals[i] = dictionary[@"total"];
-    }
-    
-    return totals;
-}
-
-+ (NSFetchedResultsController *)totalFetcherForCategory:(SPRCategory *)category timeFrame:(SPRTimeFrame)timeFrame
-{
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:NSStringFromClass([SPRExpense class]) inManagedObjectContext:[SPRManagedDocument sharedDocument].managedObjectContext];
-    fetchRequest.entity = entityDescription;
-    
-    NSDate *currentDate = [NSDate date];
-    NSDate *startDate = [currentDate firstMomentInTimeFrame:timeFrame];
-    NSDate *endDate = [currentDate lastMomentInTimeFrame:timeFrame];
-    
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"category == %@ AND dateSpent >= %@ AND dateSpent <= %@", category, startDate, endDate];
-    fetchRequest.predicate = predicate;
-    
-    NSExpressionDescription *totalColumn = [[NSExpressionDescription alloc] init];
-    totalColumn.name = @"total";
-    totalColumn.expression = [NSExpression expressionWithFormat:@"@sum.amount"];
-    totalColumn.expressionResultType = NSDecimalAttributeType;
-    
-    fetchRequest.propertiesToFetch = @[totalColumn];
-    fetchRequest.resultType = NSDictionaryResultType;
-    
-    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"dateSpent" ascending:NO];
-    fetchRequest.sortDescriptors = @[sortDescriptor];
-    
-    NSFetchedResultsController *fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:[SPRManagedDocument sharedDocument].managedObjectContext sectionNameKeyPath:nil cacheName:nil];
-    return fetchedResultsController;
 }
 
 @end
