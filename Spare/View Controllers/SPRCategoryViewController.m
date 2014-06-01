@@ -54,11 +54,6 @@ UIAlertViewDelegate>
     
     [self.tableView registerClass:[SPRCategoryHeaderCell class] forCellReuseIdentifier:kCategoryCell];
     
-    NSError *error;
-    if (![self.fetchedResultsController performFetch:&error]) {
-        NSLog(@"%@", error);
-    }
-    
     [self initializeTotals];
 }
 
@@ -103,6 +98,11 @@ UIAlertViewDelegate>
 
 - (void)initializeTotals
 {
+    NSError *error;
+    if (![self.fetchedResultsController performFetch:&error]) {
+        NSLog(@"%@", error);
+    }
+    
     // Initialize _sectionTotals as an empty array of the same size as the number of sections.
     self.sectionTotals = [NSMutableArray array];
     for (int i = 0; i < [[self.fetchedResultsController sections] count]; i++) {
