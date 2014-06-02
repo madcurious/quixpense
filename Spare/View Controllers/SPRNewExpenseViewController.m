@@ -100,8 +100,7 @@ static const NSInteger kTextFieldTag = 1000;
     expense.amount = [NSDecimalNumber decimalNumberWithString:amount];
     expense.category = category;
     expense.dateSpent = ((SPRField *)self.fields[kRowDateSpent]).value;
-    expense.dateCreated = [NSDate date];
-    expense.dateLastModified = expense.dateCreated;
+    expense.displayOrder = [NSNumber numberWithDouble:[[NSDate date] timeIntervalSince1970]];
     
     [document saveToURL:document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success) {
         [self dismissViewControllerAnimated:YES completion:nil];

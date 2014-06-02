@@ -51,9 +51,7 @@ UIAlertViewDelegate>
     [super viewDidLoad];
     
     [self setupBarButtonItems];
-    
     [self.tableView registerClass:[SPRCategoryHeaderCell class] forCellReuseIdentifier:kCategoryCell];
-    
     [self initializeTotals];
 }
 
@@ -154,7 +152,8 @@ UIAlertViewDelegate>
         return 1;
     } else {
         id<NSFetchedResultsSectionInfo> theSection = [self.fetchedResultsController sections][section - 1];
-        return [theSection numberOfObjects];
+        NSUInteger numberOfRows = [theSection numberOfObjects];
+        return numberOfRows;
     }
 }
 
@@ -345,8 +344,10 @@ UIAlertViewDelegate>
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"category == %@", self.category];
     fetchRequest.predicate = predicate;
     
+    // First, sort the expenses by most recent dateSpent so that sections are also sorted by most recent.
+    // Next, sort the expenses according to displayOrder.
     fetchRequest.sortDescriptors = @[[[NSSortDescriptor alloc] initWithKey:@"dateSpent" ascending:NO],
-                                     [[NSSortDescriptor alloc] initWithKey:@"dateCreated" ascending:NO]];
+                                     [[NSSortDescriptor alloc] initWithKey:@"displayOrder" ascending:NO]];
     
     _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:[SPRManagedDocument sharedDocument].managedObjectContext sectionNameKeyPath:@"dateSpentAsSectionTitle" cacheName:nil];
     _fetchedResultsController.delegate = self;

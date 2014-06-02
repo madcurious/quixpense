@@ -128,8 +128,13 @@ typedef NS_ENUM(NSUInteger, kRow)
     self.expense.name = name;
     self.expense.amount = [NSDecimalNumber decimalNumberWithString:amount];
     self.expense.category = category;
-    self.expense.dateSpent = ((SPRField *)self.fields[kRowDateSpent]).value;
-    self.expense.dateLastModified = [NSDate date];
+    
+    // Only assign the dateSpent and displayOrder if the expense was moved to another day.
+    NSDate *newDateSpent = ((SPRField *)self.fields[kRowDateSpent]).value;
+    if (![self.expense.dateSpent isSameDayAsDate:newDateSpent]) {
+        self.expense.dateSpent = newDateSpent;
+        self.expense.displayOrder = [NSNumber numberWithDouble:[newDateSpent timeIntervalSince1970]];
+    }
     
     SPRManagedDocument *document = [SPRManagedDocument sharedDocument];
     __weak SPREditExpenseViewController *weakSelf = self;
