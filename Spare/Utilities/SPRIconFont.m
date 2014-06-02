@@ -38,7 +38,13 @@ static NSString * const kFontName = @"spare-icons";
 
 + (NSAttributedString *)deleteIcon
 {
-    NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:[SPRIconFont stringForDelete] attributes:@{NSFontAttributeName : [UIFont fontWithName:kFontName size:20]}];
+    NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:[SPRIconFont stringForDelete] attributes:@{NSFontAttributeName : [UIFont fontWithName:kFontName size:18]}];
+    return attributedString;
+}
+
++ (NSAttributedString *)moveIcon
+{
+    NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:[SPRIconFont stringForMove] attributes:@{NSFontAttributeName : [UIFont fontWithName:kFontName size:20]}];
     return attributedString;
 }
 
@@ -63,6 +69,11 @@ static NSString * const kFontName = @"spare-icons";
 + (NSString *)stringForEdit
 {
     return @"b";
+}
+
++ (NSString *)stringForMove
+{
+    return @"g";
 }
 
 + (NSString *)stringForNewCategory

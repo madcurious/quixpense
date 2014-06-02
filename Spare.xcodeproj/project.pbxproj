@@ -11,6 +11,7 @@
 		2602A7D6192428BE0050B91E /* SPRExpenseDateSpentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2602A7D5192428BE0050B91E /* SPRExpenseDateSpentCell.m */; };
 		2602A7D919242DD10050B91E /* SPRFormCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2602A7D819242DD10050B91E /* SPRFormCell.m */; };
 		2603E758193C4E5C009F9AD6 /* SPRExpense.m in Sources */ = {isa = PBXBuildFile; fileRef = 2603E757193C4E5C009F9AD6 /* SPRExpense.m */; };
+		2603E75A193C85F9009F9AD6 /* spare-icons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2603E759193C83F1009F9AD6 /* spare-icons.ttf */; };
 		260F58C4192C331E00F27F28 /* SPRCategoryNameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 260F58C3192C331E00F27F28 /* SPRCategoryNameCell.m */; };
 		260F58C7192C33B800F27F28 /* SPRFormComponents.m in Sources */ = {isa = PBXBuildFile; fileRef = 260F58C6192C33B800F27F28 /* SPRFormComponents.m */; };
 		260F58CA192C42B700F27F28 /* SPRCategoryColorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 260F58C9192C42B700F27F28 /* SPRCategoryColorCell.m */; };
@@ -42,7 +43,6 @@
 		2638AAAC19260B7A00D3D3E2 /* SPREditCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2638AAAB19260B7A00D3D3E2 /* SPREditCategoryViewController.m */; };
 		263B09351939ADD900454F2D /* SPRCategorySummary.m in Sources */ = {isa = PBXBuildFile; fileRef = 263B09341939ADD900454F2D /* SPRCategorySummary.m */; };
 		263B093A1939C88000454F2D /* SPRCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2612C8A518E8147300DE2765 /* SPRCategory.m */; };
-		263E88A918F7D25000F9B2DD /* spare-icons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 263E88A818F7D1BD00F9B2DD /* spare-icons.ttf */; };
 		266065BD18F055D50085F877 /* SPRExpense+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 266065BC18F055D50085F877 /* SPRExpense+Extension.m */; };
 		26617D6918F308F800CA51EA /* SPRSetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26617D6818F308F800CA51EA /* SPRSetupViewController.m */; };
 		2661CD7619321751009C7034 /* SPRCategoryHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2661CD7519321751009C7034 /* SPRCategoryHeaderCell.m */; };
@@ -84,6 +84,7 @@
 		2602A7D819242DD10050B91E /* SPRFormCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRFormCell.m; sourceTree = "<group>"; };
 		2603E756193C4E5C009F9AD6 /* SPRExpense.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPRExpense.h; path = Objects/SPRExpense.h; sourceTree = "<group>"; };
 		2603E757193C4E5C009F9AD6 /* SPRExpense.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPRExpense.m; path = Objects/SPRExpense.m; sourceTree = "<group>"; };
+		2603E759193C83F1009F9AD6 /* spare-icons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "spare-icons.ttf"; sourceTree = "<group>"; };
 		260F2BF61910053300FAEA5C /* SPRTimeFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRTimeFrame.h; sourceTree = "<group>"; };
 		260F58C2192C331E00F27F28 /* SPRCategoryNameCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRCategoryNameCell.h; sourceTree = "<group>"; };
 		260F58C3192C331E00F27F28 /* SPRCategoryNameCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRCategoryNameCell.m; sourceTree = "<group>"; };
@@ -136,7 +137,6 @@
 		2638AAAB19260B7A00D3D3E2 /* SPREditCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPREditCategoryViewController.m; sourceTree = "<group>"; };
 		263B09331939ADD900454F2D /* SPRCategorySummary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRCategorySummary.h; sourceTree = "<group>"; };
 		263B09341939ADD900454F2D /* SPRCategorySummary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRCategorySummary.m; sourceTree = "<group>"; };
-		263E88A818F7D1BD00F9B2DD /* spare-icons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "spare-icons.ttf"; sourceTree = "<group>"; };
 		266065BB18F055D50085F877 /* SPRExpense+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SPRExpense+Extension.h"; sourceTree = "<group>"; };
 		266065BC18F055D50085F877 /* SPRExpense+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SPRExpense+Extension.m"; sourceTree = "<group>"; };
 		26617D6718F308F800CA51EA /* SPRSetupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRSetupViewController.h; sourceTree = "<group>"; };
@@ -269,7 +269,7 @@
 		261EB86B18DDB631009DDF78 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				263E88A818F7D1BD00F9B2DD /* spare-icons.ttf */,
+				2603E759193C83F1009F9AD6 /* spare-icons.ttf */,
 				261EB86C18DDB631009DDF78 /* Spare-Info.plist */,
 				261EB86D18DDB631009DDF78 /* InfoPlist.strings */,
 				261EB87018DDB631009DDF78 /* main.m */,
@@ -489,7 +489,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				263E88A918F7D25000F9B2DD /* spare-icons.ttf in Resources */,
+				2603E75A193C85F9009F9AD6 /* spare-icons.ttf in Resources */,
 				261EB86F18DDB631009DDF78 /* InfoPlist.strings in Resources */,
 				261EB89818DDB64F009DDF78 /* iPhone.storyboard in Resources */,
 				261EB87A18DDB631009DDF78 /* Images.xcassets in Resources */,

@@ -17,6 +17,7 @@
 + (NSAttributedString *)addExpenseIconDisabled;
 
 + (NSAttributedString *)deleteIcon;
++ (NSAttributedString *)moveIcon;
 + (NSAttributedString *)editIcon;
 
 @end

@@ -24,8 +24,6 @@
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         _label = [SPRCategoryHeaderCell label];
         [self.contentView addSubview:_label];
-        
-        self.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     return self;
 }

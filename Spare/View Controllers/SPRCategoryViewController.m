@@ -79,11 +79,17 @@ UIAlertViewDelegate>
     [newExpenseButton addTarget:self action:@selector(newExpenseButtonTapped) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *newExpenseBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:newExpenseButton];
     
-    UIButton *editCategoryButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    [editCategoryButton setAttributedTitle:[SPRIconFont editIcon] forState:UIControlStateNormal];
-    [editCategoryButton sizeToFit];
-    [editCategoryButton addTarget:self action:@selector(editCategoryButtonTapped) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *editCategoryBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:editCategoryButton];
+    UIButton *editButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    [editButton setAttributedTitle:[SPRIconFont editIcon] forState:UIControlStateNormal];
+    [editButton sizeToFit];
+    [editButton addTarget:self action:@selector(editButtonTapped) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *editBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:editButton];
+    
+    UIButton *moveButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    [moveButton setAttributedTitle:[SPRIconFont moveIcon] forState:UIControlStateNormal];
+    [moveButton sizeToFit];
+    [moveButton addTarget:self action:@selector(moveButtonTapped) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *moveBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:moveButton];
     
     UIButton *deleteCategoryButton = [UIButton buttonWithType:UIButtonTypeSystem];
     [deleteCategoryButton setAttributedTitle:[SPRIconFont deleteIcon] forState:UIControlStateNormal];
@@ -91,7 +97,7 @@ UIAlertViewDelegate>
     [deleteCategoryButton addTarget:self action:@selector(deleteCategoryButtonTapped) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *deleteCategoryBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:deleteCategoryButton];
     
-    self.navigationItem.rightBarButtonItems = @[newExpenseBarButtonItem, editCategoryBarButtonItem, deleteCategoryBarButtonItem];
+    self.navigationItem.rightBarButtonItems = @[newExpenseBarButtonItem, editBarButtonItem, moveBarButtonItem, deleteCategoryBarButtonItem];
 }
 
 - (void)initializeTotals
@@ -117,6 +123,24 @@ UIAlertViewDelegate>
     }
 }
 
+- (void)deleteCategory
+{
+    [self.category.managedObjectContext deleteObject:self.category];
+    
+    SPRManagedDocument *managedDocument = [SPRManagedDocument sharedDocument];
+    [managedDocument saveToURL:managedDocument.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
+}
+
+- (void)showEditCategoryModal
+{
+    SPREditCategoryViewController *editCategoryViewController = [[SPREditCategoryViewController alloc] initWithCategory:self.category];
+    editCategoryViewController.delegate = self;
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:editCategoryViewController];
+    [self presentViewController:navigationController animated:YES completion:nil];
+}
+
 #pragma mark - Target actions
 
 - (void)newExpenseButtonTapped
@@ -124,18 +148,41 @@ UIAlertViewDelegate>
     [self performSegueWithIdentifier:@"presentNewExpenseModal" sender:self];
 }
 
-- (void)editCategoryButtonTapped
+- (void)editButtonTapped
 {
-    // Display the edit category modal.
-    SPREditCategoryViewController *editCategoryViewController = [[SPREditCategoryViewController alloc] initWithCategory:self.category];
-    editCategoryViewController.delegate = self;
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:editCategoryViewController];
-    [self presentViewController:navigationController animated:YES completion:nil];
+    [self showEditCategoryModal];
+}
+
+- (void)moveButtonTapped
+{
+    self.tableView.allowsSelection = NO;
+    
+    // Set editing to no before setting it to yes, so that any currently showing
+    // Delete buttons in a left-swiped table view cell are hidden.
+    self.tableView.editing = NO;
+    [self.tableView setEditing:YES animated:YES];
+    
+    self.navigationItem.hidesBackButton = YES;
+    UIBarButtonItem *doneEditingBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneEditingButtonTapped)];
+    self.navigationItem.rightBarButtonItems = @[doneEditingBarButtonItem];
+}
+
+- (void)doneEditingButtonTapped
+{
+    self.tableView.allowsSelection = YES;
+    [self.tableView setEditing:NO animated:YES];
+    self.navigationItem.hidesBackButton = NO;
+    [self setupBarButtonItems];
 }
 
 - (void)deleteCategoryButtonTapped
 {
-    [[[UIAlertView alloc] initWithTitle:@"Confirm delete" message:@"Deleting a category also deletes all its expenses. This cannot be undone. Continue?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Delete", nil] show];
+    if (self.fetchedResultsController.fetchedObjects.count > 0) {
+        [[[UIAlertView alloc] initWithTitle:@"Confirm delete" message:@"Deleting a category also deletes all its expenses. This cannot be undone. Continue?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Delete", nil] show];
+        return;
+    } else {
+        [self deleteCategory];
+    }
 }
 
 #pragma mark - Table view data source
@@ -236,15 +283,50 @@ UIAlertViewDelegate>
     }
 }
 
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section > 0) {
+        return YES;
+    }
+    return NO;
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section > 0) {
+        return YES;
+    }
+    return NO;
+}
+
 #pragma mark - Table view delegate
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (self.tableView.editing) {
+        return UITableViewCellEditingStyleNone;
+    } else {
+        if (indexPath.section > 0) {
+            return UITableViewCellEditingStyleDelete;
+        }
+        return UITableViewCellEditingStyleNone;
+    }
+}
+
+- (BOOL)tableView:(UITableView *)tableView shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return NO;
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
     if (indexPath.section == 0) {
+        // Display the edit category modal.
+        [self showEditCategoryModal];
         return;
     }
-    
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     NSIndexPath *offsetIndexPath = [NSIndexPath indexPathForRow:indexPath.row inSection:(indexPath.section - 1)];
     
@@ -252,6 +334,24 @@ UIAlertViewDelegate>
     editExpenseScreen.expense = [self.fetchedResultsController objectAtIndexPath:offsetIndexPath];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:editExpenseScreen];
     [self presentViewController:navigationController animated:YES completion:nil];
+}
+
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
+{
+    
+}
+
+- (NSIndexPath *)tableView:(UITableView *)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath
+{
+    // If the cell was dragged to where the colored category cell is,
+    // put it on the first row of the first section of expenses.
+    NSIndexPath *destinationIndexPath;
+    if (proposedDestinationIndexPath.section == 0) {
+        destinationIndexPath = [NSIndexPath indexPathForRow:0 inSection:1];
+    } else {
+        destinationIndexPath = proposedDestinationIndexPath;
+    }
+    return destinationIndexPath;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -295,12 +395,7 @@ UIAlertViewDelegate>
     // If one is pressed, the user confirms deleting the category and
     // all the expenses under it.
     if (buttonIndex == 1) {
-        [self.category.managedObjectContext deleteObject:self.category];
-        
-        SPRManagedDocument *managedDocument = [SPRManagedDocument sharedDocument];
-        [managedDocument saveToURL:managedDocument.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success) {
-            [self.navigationController popViewControllerAnimated:YES];
-        }];
+        [self deleteCategory];
     }
 }
 

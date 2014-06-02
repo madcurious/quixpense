@@ -133,7 +133,7 @@ typedef NS_ENUM(NSUInteger, kRow)
     NSDate *newDateSpent = ((SPRField *)self.fields[kRowDateSpent]).value;
     if (![self.expense.dateSpent isSameDayAsDate:newDateSpent]) {
         self.expense.dateSpent = newDateSpent;
-        self.expense.displayOrder = [NSNumber numberWithDouble:[newDateSpent timeIntervalSince1970]];
+        self.expense.displayOrder = [NSNumber numberWithDouble:[[NSDate date] timeIntervalSince1970]];
     }
     
     SPRManagedDocument *document = [SPRManagedDocument sharedDocument];
