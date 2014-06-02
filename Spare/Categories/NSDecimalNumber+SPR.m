@@ -20,4 +20,10 @@
     return currencyString;
 }
 
++ (instancetype)decimalNumberWithNumber:(NSNumber *)number
+{
+    NSDecimalNumber *decimalNumber = [[NSDecimalNumber alloc] initWithDecimal:[number decimalValue]];
+    return decimalNumber;
+}
+
 @end

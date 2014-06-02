@@ -38,6 +38,7 @@ UIAlertViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) UILabel *noExpensesLabel;
+@property (strong, nonatomic) UIBarButtonItem *backButton;
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSMutableArray *sectionTotals;
@@ -50,6 +51,7 @@ UIAlertViewDelegate>
 {
     [super viewDidLoad];
     
+    self.backButton = self.navigationItem.leftBarButtonItem;
     [self setupBarButtonItems];
     [self.tableView registerClass:[SPRCategoryHeaderCell class] forCellReuseIdentifier:kCategoryCell];
     [self initializeTotals];
@@ -68,6 +70,41 @@ UIAlertViewDelegate>
         [self.view addSubview:self.noExpensesLabel];
     } else {
         [self.tableView reloadData];
+    }
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"presentNewExpenseModal"]) {
+        UINavigationController *navigationController = segue.destinationViewController;
+        SPRNewExpenseViewController *newExpenseScreen = (SPRNewExpenseViewController *)navigationController.topViewController;
+        newExpenseScreen.category = self.category;
+    }
+}
+
+#pragma mark - Helper methods
+
+- (void)deleteCategory
+{
+    [self.category.managedObjectContext deleteObject:self.category];
+    
+    SPRManagedDocument *managedDocument = [SPRManagedDocument sharedDocument];
+    [managedDocument saveToURL:managedDocument.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
+}
+
+- (void)initializeTotals
+{
+    NSError *error;
+    if (![self.fetchedResultsController performFetch:&error]) {
+        NSLog(@"%@", error);
+    }
+    
+    // Initialize _sectionTotals as an empty array of the same size as the number of sections.
+    self.sectionTotals = [NSMutableArray array];
+    for (int i = 0; i < [[self.fetchedResultsController sections] count]; i++) {
+        self.sectionTotals[i] = [NSNull null];
     }
 }
 
@@ -98,39 +135,8 @@ UIAlertViewDelegate>
     UIBarButtonItem *deleteCategoryBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:deleteCategoryButton];
     
     self.navigationItem.rightBarButtonItems = @[newExpenseBarButtonItem, editBarButtonItem, moveBarButtonItem, deleteCategoryBarButtonItem];
-}
-
-- (void)initializeTotals
-{
-    NSError *error;
-    if (![self.fetchedResultsController performFetch:&error]) {
-        NSLog(@"%@", error);
-    }
     
-    // Initialize _sectionTotals as an empty array of the same size as the number of sections.
-    self.sectionTotals = [NSMutableArray array];
-    for (int i = 0; i < [[self.fetchedResultsController sections] count]; i++) {
-        self.sectionTotals[i] = [NSNull null];
-    }
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([segue.identifier isEqualToString:@"presentNewExpenseModal"]) {
-        UINavigationController *navigationController = segue.destinationViewController;
-        SPRNewExpenseViewController *newExpenseScreen = (SPRNewExpenseViewController *)navigationController.topViewController;
-        newExpenseScreen.category = self.category;
-    }
-}
-
-- (void)deleteCategory
-{
-    [self.category.managedObjectContext deleteObject:self.category];
-    
-    SPRManagedDocument *managedDocument = [SPRManagedDocument sharedDocument];
-    [managedDocument saveToURL:managedDocument.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success) {
-        [self.navigationController popViewControllerAnimated:YES];
-    }];
+    self.navigationItem.leftBarButtonItem = self.backButton;
 }
 
 - (void)showEditCategoryModal
@@ -139,6 +145,14 @@ UIAlertViewDelegate>
     editCategoryViewController.delegate = self;
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:editCategoryViewController];
     [self presentViewController:navigationController animated:YES completion:nil];
+}
+
+- (NSDate *)dateForHeaderInSection:(NSUInteger)section
+{
+    id<NSFetchedResultsSectionInfo> theSection = self.fetchedResultsController.sections[section];
+    NSTimeInterval timeInterval = [[theSection name] doubleValue];
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:timeInterval];
+    return date;
 }
 
 #pragma mark - Target actions
@@ -157,19 +171,43 @@ UIAlertViewDelegate>
 {
     self.tableView.allowsSelection = NO;
     
+    self.title = @"Move";
+    
     // Set editing to no before setting it to yes, so that any currently showing
     // Delete buttons in a left-swiped table view cell are hidden.
     self.tableView.editing = NO;
     [self.tableView setEditing:YES animated:YES];
     
+    // Hide the Back button.
     self.navigationItem.hidesBackButton = YES;
-    UIBarButtonItem *doneEditingBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneEditingButtonTapped)];
-    self.navigationItem.rightBarButtonItems = @[doneEditingBarButtonItem];
+    
+    UIBarButtonItem *cancelMovingBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelMovingButtonTapped)];
+    self.navigationItem.leftBarButtonItem = cancelMovingBarButtonItem;
+    
+    UIBarButtonItem *doneMovingBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneMovingButtonTapped)];
+    self.navigationItem.rightBarButtonItems = @[doneMovingBarButtonItem];
 }
 
-- (void)doneEditingButtonTapped
+- (void)cancelMovingButtonTapped
 {
+    [self.category.managedObjectContext rollback];
+    [self.tableView reloadData];
+    
     self.tableView.allowsSelection = YES;
+    self.title = nil;
+    [self.tableView setEditing:NO animated:YES];
+    self.navigationItem.hidesBackButton = NO;
+    [self setupBarButtonItems];
+}
+
+- (void)doneMovingButtonTapped
+{
+    // Save the changes.
+    SPRManagedDocument *document = [SPRManagedDocument sharedDocument];
+    [document saveToURL:document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:nil];
+    
+    self.tableView.allowsSelection = YES;
+    self.title = nil;
     [self.tableView setEditing:NO animated:YES];
     self.navigationItem.hidesBackButton = NO;
     [self setupBarButtonItems];
@@ -198,9 +236,7 @@ UIAlertViewDelegate>
     if (section == 0) {
         return 1;
     } else {
-        id<NSFetchedResultsSectionInfo> theSection = [self.fetchedResultsController sections][section - 1];
-        NSUInteger numberOfRows = [theSection numberOfObjects];
-        return numberOfRows;
+        return [self.fetchedResultsController numberOfObjectsInSection:section - 1];
     }
 }
 
@@ -249,13 +285,10 @@ UIAlertViewDelegate>
     // Otherwise, the header view should contain a date and total of expenses in the date.
     
     NSInteger offsetSection = section - 1;
-    
-    id<NSFetchedResultsSectionInfo> theSection = self.fetchedResultsController.sections[offsetSection];
-    
-    NSTimeInterval timeInterval = [[theSection name] doubleValue];
-    NSDate *dateSpent = [NSDate dateWithTimeIntervalSince1970:timeInterval];
+    NSDate *dateSpent = [self dateForHeaderInSection:offsetSection];
     
     // Total the expenses in a section if they have never been computed yet.
+    id<NSFetchedResultsSectionInfo> theSection = self.fetchedResultsController.sections[offsetSection];
     if (self.sectionTotals[offsetSection] == [NSNull null]) {
         NSArray *expenses = [theSection objects];
         SPRExpense *expense = [expenses firstObject];
@@ -338,7 +371,56 @@ UIAlertViewDelegate>
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
 {
+    NSIndexPath *offsetSourceIndexPath = [sourceIndexPath indexPathByOffsettingSection:-1];
+    SPRExpense *expense = [self.fetchedResultsController objectAtIndexPath:offsetSourceIndexPath];
     
+    // Set the expense's date to the date in section of destination index path.
+    NSDate *sourceDate = [self dateForHeaderInSection:offsetSourceIndexPath.section];
+    NSDate *destinationDate = [self dateForHeaderInSection:(destinationIndexPath.section - 1)];
+    expense.dateSpent = destinationDate;
+    
+    // Prepare to set the display order.
+    NSIndexPath *offsetDestinationIndexPath = [destinationIndexPath indexPathByOffsettingSection:-1];
+    
+    // If the row is the topmost, make the display order higher than all the others.
+    if (offsetDestinationIndexPath.row == 0) {
+        SPRExpense *currentTop = [self.fetchedResultsController objectAtIndexPath:offsetDestinationIndexPath];
+        double newDisplayOrder = [currentTop.displayOrder doubleValue] + 1;
+        expense.displayOrder = @(newDisplayOrder);
+    }
+    
+    // If the expense is being moved to the bottommost of the section,
+    // make the display order lower than all others.
+    else {
+        NSUInteger rowCount = [self.fetchedResultsController numberOfObjectsInSection:offsetDestinationIndexPath.section];
+        BOOL movingToBottom;
+        if ([sourceDate isSameDayAsDate:destinationDate]) {
+            movingToBottom = offsetDestinationIndexPath.row == rowCount - 1;
+        } else {
+            movingToBottom = offsetDestinationIndexPath.row == rowCount;
+        }
+        
+        if (movingToBottom) {
+            SPRExpense *currentBottom = [self.fetchedResultsController lastObjectInSection:offsetDestinationIndexPath.section];
+            double newDisplayOrder = [currentBottom.displayOrder doubleValue] - 1;
+            expense.displayOrder = @(newDisplayOrder);
+        }
+        
+        // If put between two expenses, set the display order to be
+        // a number between the display orders of the two expenses.
+        else {
+            NSIndexPath *topIndexPath = offsetDestinationIndexPath;
+            SPRExpense *topExpense = [self.fetchedResultsController objectAtIndexPath:topIndexPath];
+            double topExpenseDisplayOrder = [topExpense.displayOrder doubleValue];
+            
+            NSIndexPath *bottomIndexPath = [offsetDestinationIndexPath indexPathByOffsettingRow:1];
+            SPRExpense *bottomExpense = [self.fetchedResultsController objectAtIndexPath:bottomIndexPath];
+            double bottomExpenseDisplayOrder = [bottomExpense.displayOrder doubleValue];
+            
+            double newDisplayOrder = bottomExpenseDisplayOrder + (topExpenseDisplayOrder - bottomExpenseDisplayOrder) / 2;
+            expense.displayOrder = [NSNumber numberWithDouble:newDisplayOrder];
+        }
+    }
 }
 
 - (NSIndexPath *)tableView:(UITableView *)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath

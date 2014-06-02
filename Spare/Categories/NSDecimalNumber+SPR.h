@@ -12,4 +12,6 @@
 
 - (NSString *)currencyString;
 
++ (instancetype)decimalNumberWithNumber:(NSNumber *)number;
+
 @end

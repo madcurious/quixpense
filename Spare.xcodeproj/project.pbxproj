@@ -61,6 +61,8 @@
 		26E2485F18E1DCEF00391354 /* SPRCategory+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E2485E18E1DCEF00391354 /* SPRCategory+Extension.m */; };
 		26E2486218E1E3C400391354 /* SPRColorChooserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E2486118E1E3C400391354 /* SPRColorChooserViewController.m */; };
 		26E4E0591937AF690096191A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E4E0581937AF690096191A /* QuartzCore.framework */; };
+		26E9C310193CC41B009F18D9 /* NSIndexPath+SPR.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E9C30F193CC41B009F18D9 /* NSIndexPath+SPR.m */; };
+		26E9C313193CC76F009F18D9 /* NSFetchedResultsController+SPR.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E9C312193CC76F009F18D9 /* NSFetchedResultsController+SPR.m */; };
 		28822B437E5247E3BDE57F66 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F6196FFB0C5B41DEB0DB54BF /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -172,6 +174,10 @@
 		26E2486018E1E3C400391354 /* SPRColorChooserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRColorChooserViewController.h; sourceTree = "<group>"; };
 		26E2486118E1E3C400391354 /* SPRColorChooserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRColorChooserViewController.m; sourceTree = "<group>"; };
 		26E4E0581937AF690096191A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		26E9C30E193CC41B009F18D9 /* NSIndexPath+SPR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSIndexPath+SPR.h"; sourceTree = "<group>"; };
+		26E9C30F193CC41B009F18D9 /* NSIndexPath+SPR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSIndexPath+SPR.m"; sourceTree = "<group>"; };
+		26E9C311193CC76F009F18D9 /* NSFetchedResultsController+SPR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFetchedResultsController+SPR.h"; sourceTree = "<group>"; };
+		26E9C312193CC76F009F18D9 /* NSFetchedResultsController+SPR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFetchedResultsController+SPR.m"; sourceTree = "<group>"; };
 		F6196FFB0C5B41DEB0DB54BF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -363,6 +369,10 @@
 				2699AC4A18FCF716009FEBB3 /* NSDecimalNumber+SPR.m */,
 				26A9029B191DD81400CEE065 /* UIView+SPR.h */,
 				26A9029C191DD81400CEE065 /* UIView+SPR.m */,
+				26E9C30E193CC41B009F18D9 /* NSIndexPath+SPR.h */,
+				26E9C30F193CC41B009F18D9 /* NSIndexPath+SPR.m */,
+				26E9C311193CC76F009F18D9 /* NSFetchedResultsController+SPR.h */,
+				26E9C312193CC76F009F18D9 /* NSFetchedResultsController+SPR.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -553,6 +563,7 @@
 				260F58C4192C331E00F27F28 /* SPRCategoryNameCell.m in Sources */,
 				26A90294191DD18500CEE065 /* SPRExpenseDescriptionCell.m in Sources */,
 				26E2485318E1CAB700391354 /* SPRNewCategoryViewController.m in Sources */,
+				26E9C313193CC76F009F18D9 /* NSFetchedResultsController+SPR.m in Sources */,
 				2688628318E3370400B8D167 /* SPRManagedDocument.m in Sources */,
 				2688628618E339F900B8D167 /* SPRField.m in Sources */,
 				2603E758193C4E5C009F9AD6 /* SPRExpense.m in Sources */,
@@ -578,6 +589,7 @@
 				26E2484618E1B7F900391354 /* UIColor+HexColor.m in Sources */,
 				26115594191F137500554D1F /* SPRExpenseAmountCell.m in Sources */,
 				26A90290191DCF9000CEE065 /* SPREditExpenseViewController.m in Sources */,
+				26E9C310193CC41B009F18D9 /* NSIndexPath+SPR.m in Sources */,
 				261EB87118DDB631009DDF78 /* main.m in Sources */,
 				26369E6A18F5787D000A9ADA /* SPRNewExpenseViewController.m in Sources */,
 				2602A7D919242DD10050B91E /* SPRFormCell.m in Sources */,

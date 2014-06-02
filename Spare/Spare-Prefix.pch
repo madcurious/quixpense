@@ -19,4 +19,7 @@
 #import "NSDecimalNumber+SPR.h"
 #import "NSString+SPR.h"
 #import "NSDate+SPR.h"
+#import "NSIndexPath+SPR.h"
+#import "NSFetchedResultsController+SPR.h"
+
 #endif
