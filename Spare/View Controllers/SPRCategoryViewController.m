@@ -10,12 +10,13 @@
 
 // Custom views
 #import "SPRCategoryHeaderCell.h"
-#import "SPRCategorySectionHeader.h"
+#import "SPRExpenseSectionHeaderView.h"
 
 // Objects
 #import "SPRCategory+Extension.h"
 #import "SPRExpense+Extension.h"
 #import "SPRManagedDocument.h"
+#import "SPRExpenseSection.h"
 
 // Utilities
 #import "SPRIconFont.h"
@@ -40,8 +41,9 @@ UIAlertViewDelegate>
 @property (strong, nonatomic) UILabel *noExpensesLabel;
 @property (strong, nonatomic) UIBarButtonItem *backButton;
 
+@property (strong, nonatomic) NSMutableArray *expenses;
+@property (strong, nonatomic) NSMutableArray *sections;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
-@property (strong, nonatomic) NSMutableArray *sectionTotals;
 
 @end
 
@@ -54,7 +56,8 @@ UIAlertViewDelegate>
     self.backButton = self.navigationItem.leftBarButtonItem;
     [self setupBarButtonItems];
     [self.tableView registerClass:[SPRCategoryHeaderCell class] forCellReuseIdentifier:kCategoryCell];
-    [self initializeTotals];
+//    [self initializeTotals];
+    [self performFetch];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -94,20 +97,6 @@ UIAlertViewDelegate>
     }];
 }
 
-- (void)initializeTotals
-{
-    NSError *error;
-    if (![self.fetchedResultsController performFetch:&error]) {
-        NSLog(@"%@", error);
-    }
-    
-    // Initialize _sectionTotals as an empty array of the same size as the number of sections.
-    self.sectionTotals = [NSMutableArray array];
-    for (int i = 0; i < [[self.fetchedResultsController sections] count]; i++) {
-        self.sectionTotals[i] = [NSNull null];
-    }
-}
-
 - (void)setupBarButtonItems
 {
     UIButton *newExpenseButton = [UIButton buttonWithType:UIButtonTypeSystem];
@@ -122,11 +111,11 @@ UIAlertViewDelegate>
     [editButton addTarget:self action:@selector(editButtonTapped) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *editBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:editButton];
     
-    UIButton *moveButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    [moveButton setAttributedTitle:[SPRIconFont moveIcon] forState:UIControlStateNormal];
-    [moveButton sizeToFit];
-    [moveButton addTarget:self action:@selector(moveButtonTapped) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *moveBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:moveButton];
+//    UIButton *moveButton = [UIButton buttonWithType:UIButtonTypeSystem];
+//    [moveButton setAttributedTitle:[SPRIconFont moveIcon] forState:UIControlStateNormal];
+//    [moveButton sizeToFit];
+//    [moveButton addTarget:self action:@selector(moveButtonTapped) forControlEvents:UIControlEventTouchUpInside];
+//    UIBarButtonItem *moveBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:moveButton];
     
     UIButton *deleteCategoryButton = [UIButton buttonWithType:UIButtonTypeSystem];
     [deleteCategoryButton setAttributedTitle:[SPRIconFont deleteIcon] forState:UIControlStateNormal];
@@ -134,7 +123,7 @@ UIAlertViewDelegate>
     [deleteCategoryButton addTarget:self action:@selector(deleteCategoryButtonTapped) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *deleteCategoryBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:deleteCategoryButton];
     
-    self.navigationItem.rightBarButtonItems = @[newExpenseBarButtonItem, editBarButtonItem, moveBarButtonItem, deleteCategoryBarButtonItem];
+    self.navigationItem.rightBarButtonItems = @[newExpenseBarButtonItem, editBarButtonItem, deleteCategoryBarButtonItem];
     
     self.navigationItem.leftBarButtonItem = self.backButton;
 }
@@ -147,12 +136,47 @@ UIAlertViewDelegate>
     [self presentViewController:navigationController animated:YES completion:nil];
 }
 
-- (NSDate *)dateForHeaderInSection:(NSUInteger)section
+- (SPRExpense *)expenseAtIndexPath:(NSIndexPath *)indexPath
 {
-    id<NSFetchedResultsSectionInfo> theSection = self.fetchedResultsController.sections[section];
-    NSTimeInterval timeInterval = [[theSection name] doubleValue];
-    NSDate *date = [NSDate dateWithTimeIntervalSince1970:timeInterval];
-    return date;
+    NSMutableArray *expensesInSection = self.expenses[indexPath.section];
+    SPRExpense *expense = expensesInSection[indexPath.row];
+    return expense;
+}
+
+- (void)performFetch
+{
+    NSError *error;
+    if (![self.fetchedResultsController performFetch:&error]) {
+        NSLog(@"%@", error);
+    }
+    
+    // Initialize the arrays
+    self.sections = [NSMutableArray array];
+    self.expenses = [NSMutableArray array];
+    
+    id<NSFetchedResultsSectionInfo> sectionInfo;
+    NSDate *dateSpent;
+    SPRExpenseSection *section;
+    SPRExpense *expense;
+    NSMutableArray *expenses;
+    
+    // Create the sections.
+    for (int i = 0; i < self.fetchedResultsController.sections.count; i++) {
+        sectionInfo = self.fetchedResultsController.sections[i];
+        NSTimeInterval timeInterval = [[sectionInfo name] doubleValue];
+        dateSpent = [NSDate dateWithTimeIntervalSince1970:timeInterval];
+        
+        section = [[SPRExpenseSection alloc] initWithDate:dateSpent];
+        [self.sections addObject:section];
+        
+        // Create the expenses.
+        expenses = [NSMutableArray array];
+        for (int j = 0; j < [sectionInfo numberOfObjects]; j++) {
+            expense = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForRow:j inSection:i]];
+            [expenses addObject:expense];
+        }
+        [self.expenses addObject:expenses];
+    }
 }
 
 #pragma mark - Target actions
@@ -250,11 +274,7 @@ UIAlertViewDelegate>
         cell = categoryCell;
     } else {
         cell = [tableView dequeueReusableCellWithIdentifier:kExpenseCell];
-        
-        // Subtract 1 from the indexPath.section because the fetched results controller
-        // does not count the category cell as a separate section.
-        NSIndexPath *offsetIndexpath = [NSIndexPath indexPathForRow:indexPath.row inSection:(indexPath.section - 1)];
-        SPRExpense *expense = [self.fetchedResultsController objectAtIndexPath:offsetIndexpath];
+        SPRExpense *expense = [self expenseAtIndexPath:[indexPath indexPathByOffsettingSection:-1]];
         
         UILabel *descriptionLabel = (UILabel *)[cell viewWithTag:kDescriptionLabelTag];
         descriptionLabel.text = expense.name;
@@ -284,32 +304,23 @@ UIAlertViewDelegate>
     
     // Otherwise, the header view should contain a date and total of expenses in the date.
     
-    NSInteger offsetSection = section - 1;
-    NSDate *dateSpent = [self dateForHeaderInSection:offsetSection];
+    NSUInteger offsetSection = section - 1;
+    SPRExpenseSection *sectionInfo = self.sections[offsetSection];
     
-    // Total the expenses in a section if they have never been computed yet.
-    id<NSFetchedResultsSectionInfo> theSection = self.fetchedResultsController.sections[offsetSection];
-    if (self.sectionTotals[offsetSection] == [NSNull null]) {
-        NSArray *expenses = [theSection objects];
-        SPRExpense *expense = [expenses firstObject];
-        NSDecimalNumber *total = expense.amount;
-        for (int i = 1; i < expenses.count; i++) {
-            expense = expenses[i];
-            total = [total decimalNumberByAdding:expense.amount];
-        }
-        self.sectionTotals[offsetSection] = total;
+    // If the total has not yet been computed, compute for it.
+    if (sectionInfo.total == nil) {
+        NSMutableArray *expenses = self.expenses[offsetSection];
+        sectionInfo.total = [expenses valueForKeyPath:@"@sum.amount"];
     }
     
-    SPRCategorySectionHeader *header = [[SPRCategorySectionHeader alloc] initWithDate:dateSpent total:self.sectionTotals[offsetSection]];
+    SPRExpenseSectionHeaderView *header = [[SPRExpenseSectionHeaderView alloc] initWithDate:sectionInfo.date total:sectionInfo.total];
     return header;
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        NSIndexPath *offsetIndexPath = [NSIndexPath indexPathForRow:indexPath.row inSection:(indexPath.section - 1)];
-        SPRExpense *expense = [self.fetchedResultsController objectAtIndexPath:offsetIndexPath];
-        
+        SPRExpense *expense = [self expenseAtIndexPath:[indexPath indexPathByOffsettingSection:-1]];
         SPRManagedDocument *managedDocument = [SPRManagedDocument sharedDocument];
         [managedDocument.managedObjectContext deleteObject:expense];
         [managedDocument saveToURL:managedDocument.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:nil];
@@ -361,36 +372,43 @@ UIAlertViewDelegate>
         return;
     }
     
-    NSIndexPath *offsetIndexPath = [NSIndexPath indexPathForRow:indexPath.row inSection:(indexPath.section - 1)];
+    NSIndexPath *offsetIndexPath = [indexPath indexPathByOffsettingSection:-1];
     
     SPREditExpenseViewController *editExpenseScreen = [[SPREditExpenseViewController alloc] init];
-    editExpenseScreen.expense = [self.fetchedResultsController objectAtIndexPath:offsetIndexPath];
+    editExpenseScreen.expense = [self expenseAtIndexPath:offsetIndexPath];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:editExpenseScreen];
     [self presentViewController:navigationController animated:YES completion:nil];
 }
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
 {
+    // Prepare the needed variables.
+    
     NSIndexPath *offsetSourceIndexPath = [sourceIndexPath indexPathByOffsettingSection:-1];
-    SPRExpense *expense = [self.fetchedResultsController objectAtIndexPath:offsetSourceIndexPath];
-    
-    // Set the expense's date to the date in section of destination index path.
-    NSDate *sourceDate = [self dateForHeaderInSection:offsetSourceIndexPath.section];
-    NSDate *destinationDate = [self dateForHeaderInSection:(destinationIndexPath.section - 1)];
-    expense.dateSpent = destinationDate;
-    
-    // Prepare to set the display order.
     NSIndexPath *offsetDestinationIndexPath = [destinationIndexPath indexPathByOffsettingSection:-1];
     
+    SPRExpenseSection *sourceSection = self.sections[offsetSourceIndexPath.section];
+    NSDate *sourceDate = sourceSection.date;
+    SPRExpenseSection *destinationSection = self.sections[offsetDestinationIndexPath.section];
+    NSDate *destinationDate = destinationSection.date;
+    
+    SPRExpense *expense = [self expenseAtIndexPath:offsetSourceIndexPath];
+    
+    // Set the expense's date to destination section's date.
+    
+    expense.dateSpent = destinationDate;
+    
     // If the row is the topmost, make the display order higher than all the others.
+    
     if (offsetDestinationIndexPath.row == 0) {
-        SPRExpense *currentTop = [self.fetchedResultsController objectAtIndexPath:offsetDestinationIndexPath];
+        SPRExpense *currentTop = [self expenseAtIndexPath:offsetDestinationIndexPath];
         double newDisplayOrder = [currentTop.displayOrder doubleValue] + 1;
         expense.displayOrder = @(newDisplayOrder);
     }
     
     // If the expense is being moved to the bottommost of the section,
     // make the display order lower than all others.
+    
     else {
         NSUInteger rowCount = [self.fetchedResultsController numberOfObjectsInSection:offsetDestinationIndexPath.section];
         BOOL movingToBottom;
@@ -408,13 +426,15 @@ UIAlertViewDelegate>
         
         // If put between two expenses, set the display order to be
         // a number between the display orders of the two expenses.
+        
         else {
-            NSIndexPath *topIndexPath = offsetDestinationIndexPath;
-            SPRExpense *topExpense = [self.fetchedResultsController objectAtIndexPath:topIndexPath];
+            NSIndexPath *topIndexPath = [offsetDestinationIndexPath indexPathByOffsettingRow:-1];
+            SPRExpense *topExpense = [self expenseAtIndexPath:topIndexPath];
             double topExpenseDisplayOrder = [topExpense.displayOrder doubleValue];
             
-            NSIndexPath *bottomIndexPath = [offsetDestinationIndexPath indexPathByOffsettingRow:1];
-            SPRExpense *bottomExpense = [self.fetchedResultsController objectAtIndexPath:bottomIndexPath];
+//            NSIndexPath *bottomIndexPath = [offsetDestinationIndexPath indexPathByOffsettingRow:1];
+            NSIndexPath *bottomIndexPath = offsetDestinationIndexPath;
+            SPRExpense *bottomExpense = [self expenseAtIndexPath:bottomIndexPath];
             double bottomExpenseDisplayOrder = [bottomExpense.displayOrder doubleValue];
             
             double newDisplayOrder = bottomExpenseDisplayOrder + (topExpenseDisplayOrder - bottomExpenseDisplayOrder) / 2;
@@ -447,9 +467,13 @@ UIAlertViewDelegate>
 
 #pragma mark - Fetched results controller delegate
 
-- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
+- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath
 {
-    [self initializeTotals];
+    if (type == NSFetchedResultsChangeMove) {
+        return;
+    }
+    
+    [self performFetch];
     [self.tableView reloadData];
     
     if (self.fetchedResultsController.fetchedObjects.count > 0) {

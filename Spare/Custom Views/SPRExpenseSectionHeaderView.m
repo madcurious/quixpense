@@ -6,23 +6,23 @@
 //  Copyright (c) 2014 Matt Quiros. All rights reserved.
 //
 
-#import "SPRCategorySectionHeader.h"
+#import "SPRExpenseSectionHeaderView.h"
 
 // Categories
 #import "UIColor+HexColor.h"
 
 const CGFloat SPRCategorySectionHeaderHeight = 22;
 
-@interface SPRCategorySectionHeader ()
+@interface SPRExpenseSectionHeaderView ()
 
 @property (strong, nonatomic) UILabel *dateLabel;
 @property (strong, nonatomic) UILabel *totalLabel;
 
 @end
 
-@implementation SPRCategorySectionHeader
+@implementation SPRExpenseSectionHeaderView
 
-- (instancetype)initWithDate:(NSDate *)date total:(NSDecimalNumber *)total
+- (instancetype)initWithDate:(NSDate *)date total:(NSNumber *)total
 {
     if (self = [super init]) {
         static NSDateFormatter *sectionDateFormatter = nil;

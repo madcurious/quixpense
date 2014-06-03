@@ -10,8 +10,8 @@
 
 extern const CGFloat SPRCategorySectionHeaderHeight;
 
-@interface SPRCategorySectionHeader : UIView
+@interface SPRExpenseSectionHeaderView : UIView
 
-- (instancetype)initWithDate:(NSDate *)date total:(NSDecimalNumber *)total;
+- (instancetype)initWithDate:(NSDate *)date total:(NSNumber *)total;
 
 @end
