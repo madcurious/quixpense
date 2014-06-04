@@ -100,9 +100,11 @@ static const NSInteger kTextFieldTag = 1000;
     expense.amount = [NSDecimalNumber decimalNumberWithString:amount];
     expense.category = category;
     expense.dateSpent = ((SPRField *)self.fields[kRowDateSpent]).value;
-    expense.displayOrder = [NSNumber numberWithDouble:[[NSDate date] timeIntervalSince1970]];
     
     [document saveToURL:document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success) {
+        if ([self.delegate respondsToSelector:@selector(newExpenseScreenDidAddExpense:)]) {
+            [self.delegate newExpenseScreenDidAddExpense:expense];
+        }
         [self dismissViewControllerAnimated:YES completion:nil];
     }];
 }

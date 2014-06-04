@@ -239,7 +239,7 @@ NSFetchedResultsControllerDelegate>
 
 #pragma mark - Fetched results controller delegate
 
-- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
+- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath
 {
     if (controller != self.categoryFetcher) {
         return;

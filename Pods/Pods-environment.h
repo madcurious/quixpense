@@ -12,3 +12,9 @@
 #define COCOAPODS_VERSION_MINOR_DraggableCollectionView 1
 #define COCOAPODS_VERSION_PATCH_DraggableCollectionView 0
 
+// M13OrderedDictionary
+#define COCOAPODS_POD_AVAILABLE_M13OrderedDictionary
+#define COCOAPODS_VERSION_MAJOR_M13OrderedDictionary 1
+#define COCOAPODS_VERSION_MINOR_M13OrderedDictionary 0
+#define COCOAPODS_VERSION_PATCH_M13OrderedDictionary 2
+

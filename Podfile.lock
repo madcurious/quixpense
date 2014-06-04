@@ -1,10 +1,13 @@
 PODS:
   - DraggableCollectionView (0.1)
+  - M13OrderedDictionary (1.0.2)
 
 DEPENDENCIES:
   - DraggableCollectionView
+  - M13OrderedDictionary
 
 SPEC CHECKSUMS:
   DraggableCollectionView: bb1feb9e0c06d89c9de0645e951e6491003a2120
+  M13OrderedDictionary: a3adfce26e271ef03cf0d9cedc7d85a4f1ae5806
 
 COCOAPODS: 0.33.1

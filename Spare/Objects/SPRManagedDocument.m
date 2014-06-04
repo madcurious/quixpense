@@ -79,4 +79,9 @@
     return _ready;
 }
 
+- (void)saveWithCompletionHandler:(void (^)(BOOL))completionHandler
+{
+    [self saveToURL:self.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:completionHandler];
+}
+
 @end

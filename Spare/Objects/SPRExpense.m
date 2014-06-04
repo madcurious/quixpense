@@ -2,7 +2,7 @@
 //  SPRExpense.m
 //  Spare
 //
-//  Created by Matt Quiros on 6/2/14.
+//  Created by Matt Quiros on 6/5/14.
 //  Copyright (c) 2014 Matt Quiros. All rights reserved.
 //
 
@@ -15,8 +15,8 @@
 @dynamic amount;
 @dynamic dateSpent;
 @dynamic dateSpentAsSectionTitle;
-@dynamic name;
 @dynamic displayOrder;
+@dynamic name;
 @dynamic category;
 
 @end
