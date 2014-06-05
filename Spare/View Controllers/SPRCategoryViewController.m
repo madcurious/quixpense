@@ -480,12 +480,12 @@ UIAlertViewDelegate>
     
     // Reset the display orders of the expenses in the sections affected.
     SPRExpense *currentExpense;
-    for (int i = offsetSourceIndexPath.row; i < sourceArray.count; i++) {
+    for (NSInteger i = offsetSourceIndexPath.row; i < sourceArray.count; i++) {
         currentExpense.displayOrder = @(i);
     }
     // Only modify the expenses in the destination array if it's not the same as the source array.
     if (sourceArray != destinationArray) {
-        for (int i = offsetDestinationIndexPath.row; i < destinationArray.count; i++) {
+        for (NSInteger i = offsetDestinationIndexPath.row; i < destinationArray.count; i++) {
             currentExpense.displayOrder = @(i);
         }
     }
@@ -526,10 +526,12 @@ UIAlertViewDelegate>
         NSMutableArray *expenses = self.expenses[sectionNumber];
         [expenses insertObject:expense atIndex:0];
         
-        // Modify the displayOrders of the expenses in that section
-        SPRExpense *currentExpense;
-        for (int i = 0; i < expenses.count; i++) {
-            currentExpense.displayOrder = @(i);
+        // Modify the displayOrders of the other expenses in that section
+        if (expenses.count > 1) {
+            SPRExpense *currentExpense = expenses[1];
+            for (int i = 1; i < expenses.count; i++) {
+                currentExpense.displayOrder = @(i);
+            }
         }
         
         // Save the changes.
@@ -544,7 +546,7 @@ UIAlertViewDelegate>
         } else {
             // Use binary search to find the index of insertion.
             int start = 0;
-            int end = dates.count;
+            int end = (int)dates.count;
             int middle;
             
             while (true) {

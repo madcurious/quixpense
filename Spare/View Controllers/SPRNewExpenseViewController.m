@@ -100,6 +100,7 @@ static const NSInteger kTextFieldTag = 1000;
     expense.amount = [NSDecimalNumber decimalNumberWithString:amount];
     expense.category = category;
     expense.dateSpent = ((SPRField *)self.fields[kRowDateSpent]).value;
+    expense.displayOrder = @(0);
     
     [document saveToURL:document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success) {
         if ([self.delegate respondsToSelector:@selector(newExpenseScreenDidAddExpense:)]) {

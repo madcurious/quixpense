@@ -17,6 +17,7 @@
 // View controllers
 #import "SPRNewCategoryViewController.h"
 #import "SPRCategoryViewController.h"
+#import "SPRNewExpenseViewController.h"
 
 // Objects
 #import "SPRCategory+Extension.h"
@@ -37,7 +38,8 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
 
 @interface SPRHomeViewController () <UICollectionViewDataSource_Draggable,
 UICollectionViewDelegate,
-NSFetchedResultsControllerDelegate>
+NSFetchedResultsControllerDelegate,
+SPRNewExpenseViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (strong, nonatomic) UILabel *noCategoriesLabel;
@@ -110,6 +112,13 @@ NSFetchedResultsControllerDelegate>
         SPRCategoryViewController *categoryScreen = segue.destinationViewController;
         SPRCategorySummary *summary = self.summaries[self.selectedCategoryIndex];
         categoryScreen.category = summary.category;
+        return;
+    }
+    
+    else if ([segue.identifier isEqualToString:@"presentNewExpenseModal"]) {
+        UINavigationController *navigationController = segue.destinationViewController;
+        SPRNewExpenseViewController *newExpenseScreen = navigationController.viewControllers[0];
+        newExpenseScreen.delegate = self;
         return;
     }
 }
@@ -249,6 +258,39 @@ NSFetchedResultsControllerDelegate>
         [self.noCategoriesLabel removeFromSuperview];
     } else {
         [self.collectionView reloadData];
+    }
+}
+
+#pragma mark - New expense screen delegate
+
+- (void)newExpenseScreenDidAddExpense:(SPRExpense *)expense
+{
+    // Fetch all the expenses with the same dateSpent sorted by displayOrder.
+    // Avoid fetching the newly created expense.
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:NSStringFromClass([SPRExpense class]) inManagedObjectContext:expense.managedObjectContext];
+    fetchRequest.entity = entityDescription;
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"category == %@ AND dateSpent == %@ AND self != %@", expense.category, expense.dateSpent, expense];
+    fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"displayOrder" ascending:YES]];
+    
+    NSError *error;
+    NSMutableArray *expenses = [[expense.managedObjectContext executeFetchRequest:fetchRequest error:&error] mutableCopy];
+    if (error) {
+        NSLog(@"%@", error);
+    }
+    
+    // Then, set their displayOrder values from 1 onwards.
+    
+    if (expenses.count > 0) {
+        SPRExpense *currentExpense;
+        for (int i = 0; i < expenses.count; i++) {
+            currentExpense = expenses[i];
+            currentExpense.displayOrder = @(i + 1);
+        }
+        
+        // Save the changes.
+        [[SPRManagedDocument sharedDocument] saveWithCompletionHandler:nil];
     }
 }
 
