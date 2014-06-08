@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SPRExpenseSection : NSObject
+@interface SPRExpenseSectionHeader : NSObject
 
 @property (strong, nonatomic) NSDate *date;
 @property (strong, nonatomic) NSNumber *total;

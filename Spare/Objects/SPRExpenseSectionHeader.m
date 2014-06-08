@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Matt Quiros. All rights reserved.
 //
 
-#import "SPRExpenseSection.h"
+#import "SPRExpenseSectionHeader.h"
 
-@implementation SPRExpenseSection
+@implementation SPRExpenseSectionHeader
 
 - (instancetype)initWithDate:(NSDate *)date
 {

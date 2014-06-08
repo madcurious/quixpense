@@ -43,7 +43,7 @@
 		2638AAAC19260B7A00D3D3E2 /* SPREditCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2638AAAB19260B7A00D3D3E2 /* SPREditCategoryViewController.m */; };
 		263B09351939ADD900454F2D /* SPRCategorySummary.m in Sources */ = {isa = PBXBuildFile; fileRef = 263B09341939ADD900454F2D /* SPRCategorySummary.m */; };
 		263B093A1939C88000454F2D /* SPRCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2612C8A518E8147300DE2765 /* SPRCategory.m */; };
-		263BA034193E39750022BFDC /* SPRExpenseSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 263BA033193E39750022BFDC /* SPRExpenseSection.m */; };
+		263BA034193E39750022BFDC /* SPRExpenseSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 263BA033193E39750022BFDC /* SPRExpenseSectionHeader.m */; };
 		263BA037193E3D3E0022BFDC /* NSNumber+SPR.m in Sources */ = {isa = PBXBuildFile; fileRef = 263BA036193E3D3E0022BFDC /* NSNumber+SPR.m */; };
 		266065BD18F055D50085F877 /* SPRExpense+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 266065BC18F055D50085F877 /* SPRExpense+Extension.m */; };
 		26617D6918F308F800CA51EA /* SPRSetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26617D6818F308F800CA51EA /* SPRSetupViewController.m */; };
@@ -141,8 +141,8 @@
 		2638AAAB19260B7A00D3D3E2 /* SPREditCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPREditCategoryViewController.m; sourceTree = "<group>"; };
 		263B09331939ADD900454F2D /* SPRCategorySummary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRCategorySummary.h; sourceTree = "<group>"; };
 		263B09341939ADD900454F2D /* SPRCategorySummary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRCategorySummary.m; sourceTree = "<group>"; };
-		263BA032193E39750022BFDC /* SPRExpenseSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRExpenseSection.h; sourceTree = "<group>"; };
-		263BA033193E39750022BFDC /* SPRExpenseSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRExpenseSection.m; sourceTree = "<group>"; };
+		263BA032193E39750022BFDC /* SPRExpenseSectionHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRExpenseSectionHeader.h; sourceTree = "<group>"; };
+		263BA033193E39750022BFDC /* SPRExpenseSectionHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRExpenseSectionHeader.m; sourceTree = "<group>"; };
 		263BA035193E3D3E0022BFDC /* NSNumber+SPR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber+SPR.h"; sourceTree = "<group>"; };
 		263BA036193E3D3E0022BFDC /* NSNumber+SPR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+SPR.m"; sourceTree = "<group>"; };
 		266065BB18F055D50085F877 /* SPRExpense+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SPRExpense+Extension.h"; sourceTree = "<group>"; };
@@ -351,8 +351,8 @@
 				266065BC18F055D50085F877 /* SPRExpense+Extension.m */,
 				263B09331939ADD900454F2D /* SPRCategorySummary.h */,
 				263B09341939ADD900454F2D /* SPRCategorySummary.m */,
-				263BA032193E39750022BFDC /* SPRExpenseSection.h */,
-				263BA033193E39750022BFDC /* SPRExpenseSection.m */,
+				263BA032193E39750022BFDC /* SPRExpenseSectionHeader.h */,
+				263BA033193E39750022BFDC /* SPRExpenseSectionHeader.m */,
 				26922D9D19443D6D00074638 /* SPRNSIndexPathTransformer.h */,
 				26922D9E19443D6D00074638 /* SPRNSIndexPathTransformer.m */,
 			);
@@ -585,7 +585,7 @@
 				2688628618E339F900B8D167 /* SPRField.m in Sources */,
 				26E2485F18E1DCEF00391354 /* SPRCategory+Extension.m in Sources */,
 				26E2485C18E1DA2B00391354 /* NSString+SPR.m in Sources */,
-				263BA034193E39750022BFDC /* SPRExpenseSection.m in Sources */,
+				263BA034193E39750022BFDC /* SPRExpenseSectionHeader.m in Sources */,
 				261EB87818DDB631009DDF78 /* Spare.xcdatamodeld in Sources */,
 				26369E6618F57817000A9ADA /* SPRCategoryPicker.m in Sources */,
 				262ABD0E18DEA1BF003C7C8B /* SPRIconFont.m in Sources */,

@@ -16,7 +16,7 @@
 #import "SPRCategory+Extension.h"
 #import "SPRExpense+Extension.h"
 #import "SPRManagedDocument.h"
-#import "SPRExpenseSection.h"
+#import "SPRExpenseSectionHeader.h"
 
 // Utilities
 #import "SPRIconFont.h"
@@ -46,7 +46,7 @@ UIAlertViewDelegate>
 @property (strong, nonatomic) UIBarButtonItem *backButton;
 
 @property (strong, nonatomic) NSMutableArray *expenses;
-@property (strong, nonatomic) NSMutableOrderedDictionary *sections;
+@property (strong, nonatomic) NSMutableOrderedDictionary *headers;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 
 @end
@@ -70,7 +70,7 @@ UIAlertViewDelegate>
     
     self.tableView.tableFooterView = [[UIView alloc] init];
     
-    if (self.sections.count == 0) {
+    if (self.headers.count == 0) {
         [self displayNoExpensesLabel];
     } else {
         [self.tableView reloadData];
@@ -146,12 +146,12 @@ UIAlertViewDelegate>
     }
     
     // Initialize the arrays
-    self.sections = [NSMutableOrderedDictionary orderedDictionaryWithCapacity:0];
+    self.headers = [NSMutableOrderedDictionary orderedDictionaryWithCapacity:0];
     self.expenses = [NSMutableArray array];
     
     id<NSFetchedResultsSectionInfo> sectionInfo;
     NSDate *dateSpent;
-    SPRExpenseSection *section;
+    SPRExpenseSectionHeader *header;
     SPRExpense *expense;
     NSMutableArray *expenses;
     
@@ -161,8 +161,8 @@ UIAlertViewDelegate>
         NSTimeInterval timeInterval = [[sectionInfo name] doubleValue];
         dateSpent = [NSDate dateWithTimeIntervalSince1970:timeInterval];
         
-        section = [[SPRExpenseSection alloc] initWithDate:dateSpent];
-        [self.sections addEntry:@{dateSpent : section}];
+        header = [[SPRExpenseSectionHeader alloc] initWithDate:dateSpent];
+        [self.headers addEntry:@{dateSpent : header}];
         
         // Create the expenses.
         expenses = [NSMutableArray array];
@@ -187,11 +187,11 @@ UIAlertViewDelegate>
     // If there are no more expenses for the section, remove the array
     // and section from the data source.
     if (expenses.count > 0) {
-        SPRExpenseSection *section = self.sections[offsetSection];
-        section.total = [expenses valueForKeyPath:@"@sum.amount"];
+        SPRExpenseSectionHeader *header = self.headers[offsetSection];
+        header.total = [expenses valueForKeyPath:@"@sum.amount"];
     } else {
         [self.expenses removeObjectAtIndex:offsetSection];
-        [self.sections removeEntryAtIndex:offsetSection];
+        [self.headers removeEntryAtIndex:offsetSection];
     }
 }
 
@@ -275,7 +275,7 @@ UIAlertViewDelegate>
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    NSUInteger numberOfSections = 1 + self.sections.count;
+    NSUInteger numberOfSections = 1 + self.headers.count;
     return numberOfSections;
 }
 
@@ -331,16 +331,16 @@ UIAlertViewDelegate>
     // Otherwise, the header view should contain a date and total of expenses in the date.
     
     NSUInteger offsetSection = section - 1;
-    SPRExpenseSection *sectionInfo = self.sections[offsetSection];
+    SPRExpenseSectionHeader *header = self.headers[offsetSection];
     
     // If the total has not yet been computed, compute for it.
-    if (sectionInfo.total == nil) {
+    if (header.total == nil) {
         NSMutableArray *expenses = self.expenses[offsetSection];
-        sectionInfo.total = [expenses valueForKeyPath:@"@sum.amount"];
+        header.total = [expenses valueForKeyPath:@"@sum.amount"];
     }
     
-    SPRExpenseSectionHeaderView *header = [[SPRExpenseSectionHeaderView alloc] initWithDate:sectionInfo.date total:sectionInfo.total];
-    return header;
+    SPRExpenseSectionHeaderView *headerView = [[SPRExpenseSectionHeaderView alloc] initWithDate:header.date total:header.total];
+    return headerView;
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -357,7 +357,7 @@ UIAlertViewDelegate>
         [self removeExpenseAtOriginalIndexPath:indexPath];
         [self.tableView reloadData];
         
-        if (self.sections.count == 0) {
+        if (self.headers.count == 0) {
             [self displayNoExpensesLabel];
         }
     }
@@ -508,7 +508,7 @@ UIAlertViewDelegate>
     [destinationArray insertObject:expense atIndex:offsetDestinationIndexPath.row];
     
     // Set the expense's dateSpent to the date in the section it was moved to.
-    SPRExpenseSection *destinationSection = self.sections[offsetDestinationIndexPath.section];
+    SPRExpenseSectionHeader *destinationSection = self.headers[offsetDestinationIndexPath.section];
     NSDate *destinationDate = destinationSection.date;
     expense.dateSpent = destinationDate;
     
@@ -551,11 +551,11 @@ UIAlertViewDelegate>
 
 - (void)newExpenseScreenDidAddExpense:(SPRExpense *)expense
 {
-    NSArray *dates = self.sections.allKeys;
+    NSArray *dates = self.headers.allKeys;
     
     // Find out which section the expense will be added to,
     // then add the expense to the head of the section.
-    if ([self.sections.allKeys containsObject:expense.dateSpent]) {
+    if ([self.headers.allKeys containsObject:expense.dateSpent]) {
         NSUInteger sectionNumber = [dates indexOfObject:expense.dateSpent];
         NSMutableArray *expenses = self.expenses[sectionNumber];
         [expenses insertObject:expense atIndex:0];
@@ -569,6 +569,10 @@ UIAlertViewDelegate>
             }
         }
         
+        // Re-total the expenses in the section.
+        SPRExpenseSectionHeader *header = self.headers[sectionNumber];
+        header.total = [expenses valueForKeyPath:@"@sum.amount"];
+        
         // Save the changes.
         [[SPRManagedDocument sharedDocument] saveWithCompletionHandler:nil];
     }
@@ -576,7 +580,7 @@ UIAlertViewDelegate>
     // If the section does not exist, create it and add the section in the location.
     else {
         NSUInteger insertionIndex;
-        if (self.sections.count == 0) {
+        if (self.headers.count == 0) {
             insertionIndex = 0;
         } else {
             // Use binary search to find the index of insertion.
@@ -605,11 +609,11 @@ UIAlertViewDelegate>
             }
         }
         
-        SPRExpenseSection *expenseSection = [[SPRExpenseSection alloc] initWithDate:expense.dateSpent];
+        SPRExpenseSectionHeader *expenseSection = [[SPRExpenseSectionHeader alloc] initWithDate:expense.dateSpent];
         expenseSection.total = expense.amount;
         
         // Add the section.
-        [self.sections insertEntry:@{expense.dateSpent : expenseSection} atIndex:insertionIndex];
+        [self.headers insertEntry:@{expense.dateSpent : expenseSection} atIndex:insertionIndex];
         
         // Add the expense.
         NSMutableArray *expenses = [NSMutableArray array];
@@ -618,7 +622,7 @@ UIAlertViewDelegate>
     }
     
     // Either remove or add the No Expenses Yet label.
-    if (self.sections.count > 0) {
+    if (self.headers.count > 0) {
         [self.noExpensesLabel removeFromSuperview];
     } else {
         [self displayNoExpensesLabel];
@@ -631,7 +635,7 @@ UIAlertViewDelegate>
     [self removeExpenseAtOriginalIndexPath:expense.indexPath];
     [self.tableView reloadData];
     
-    if (self.sections.count == 0) {
+    if (self.headers.count == 0) {
         [self displayNoExpensesLabel];
     }
 }
