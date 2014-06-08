@@ -10,8 +10,16 @@
 
 @class SPRExpense;
 
+@protocol SPREditExpenseViewControllerDelegate <NSObject>
+
+- (void)editExpenseScreenDidDeleteExpense:(SPRExpense *)expense;
+
+@end
+
 @interface SPREditExpenseViewController : UITableViewController
 
+@property (weak, nonatomic) id<SPREditExpenseViewControllerDelegate> delegate;
 @property (strong, nonatomic) SPRExpense *expense;
+@property (strong, nonatomic) NSArray *nextExpenses;
 
 @end

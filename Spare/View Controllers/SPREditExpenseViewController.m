@@ -136,12 +136,8 @@ typedef NS_ENUM(NSUInteger, kRow)
         self.expense.displayOrder = [NSNumber numberWithDouble:[[NSDate date] timeIntervalSince1970]];
     }
     
-    SPRManagedDocument *document = [SPRManagedDocument sharedDocument];
-    __weak SPREditExpenseViewController *weakSelf = self;
-    [document saveToURL:document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success) {
-        SPREditExpenseViewController *innerSelf = weakSelf;
-        
-        [innerSelf dismissViewControllerAnimated:YES completion:nil];
+    [[SPRManagedDocument sharedDocument] saveWithCompletionHandler:^(BOOL success) {
+        [self dismissViewControllerAnimated:YES completion:nil];
     }];
 }
 
@@ -224,9 +220,25 @@ typedef NS_ENUM(NSUInteger, kRow)
             
             // If the user confirms deleting the expense...
             if (buttonIndex == 1) {
+                // Decrement the displayOrder of the next expenses.
+                SPRExpense *nextExpense;
+                NSInteger newDisplayOrder;
+                for (int i = 0; i < self.nextExpenses.count; i++) {
+                    nextExpense = self.nextExpenses[i];
+                    newDisplayOrder = [nextExpense.displayOrder integerValue] - 1;
+                    nextExpense.displayOrder = @(newDisplayOrder);
+                }
+                
+                // Delete the expense.
                 SPRManagedDocument *managedDocument = [SPRManagedDocument sharedDocument];
                 [managedDocument.managedObjectContext deleteObject:self.expense];
-                [managedDocument saveToURL:managedDocument.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success) {
+                
+                if ([self.delegate respondsToSelector:@selector(editExpenseScreenDidDeleteExpense:)]) {
+                    [self.delegate editExpenseScreenDidDeleteExpense:self.expense];
+                }
+                
+                // Save the managed document.
+                [managedDocument saveWithCompletionHandler:^(BOOL success) {
                     [self dismissViewControllerAnimated:YES completion:nil];
                 }];
             }

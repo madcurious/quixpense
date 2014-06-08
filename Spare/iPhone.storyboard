@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="1s3-EN-58Y">
+                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="1s3-EN-58Y">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -42,10 +42,13 @@
                                     <outlet property="delegate" destination="PDP-O7-nbk" id="IIV-xc-B5n"/>
                                 </connections>
                             </collectionView>
-                            <toolbar clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kah-9I-uoe">
+                            <toolbar clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kah-9I-uoe">
                                 <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="320" id="kjU-S9-gIK"/>
+                                </constraints>
                                 <items>
                                     <barButtonItem style="plain" id="RxR-2b-R4b">
                                         <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="y2f-O2-b7v">
@@ -67,6 +70,14 @@
                             </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="1s3-EN-58Y" firstAttribute="width" secondItem="AVU-JV-kQz" secondAttribute="width" id="3US-0T-RLC"/>
+                            <constraint firstItem="Kah-9I-uoe" firstAttribute="leading" secondItem="AVU-JV-kQz" secondAttribute="leading" id="BwJ-iz-hAW"/>
+                            <constraint firstItem="Kah-9I-uoe" firstAttribute="top" secondItem="1s3-EN-58Y" secondAttribute="bottom" id="PR3-de-5qT"/>
+                            <constraint firstItem="1s3-EN-58Y" firstAttribute="leading" secondItem="AVU-JV-kQz" secondAttribute="leading" id="PeT-PK-tdM"/>
+                            <constraint firstItem="1s3-EN-58Y" firstAttribute="top" secondItem="iYG-qf-Jrg" secondAttribute="bottom" constant="-64" id="aLM-Tb-WgN"/>
+                            <constraint firstItem="KFN-NH-RpE" firstAttribute="top" secondItem="Kah-9I-uoe" secondAttribute="bottom" id="ohK-Q2-ptn"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="imP-sI-kO1"/>
                     <connections>
@@ -93,7 +104,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="NqK-hC-8m8">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="NqK-hC-8m8">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -142,6 +153,13 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="NqK-hC-8m8" secondAttribute="width" id="0mI-E6-MRJ"/>
+                            <constraint firstItem="NqK-hC-8m8" firstAttribute="top" secondItem="ly1-Ef-e6W" secondAttribute="bottom" constant="-64" id="UWE-J1-ygp"/>
+                            <constraint firstItem="NqK-hC-8m8" firstAttribute="leading" secondItem="0Dk-Ms-ajb" secondAttribute="leading" id="f5w-2C-Dsc"/>
+                            <constraint firstAttribute="height" secondItem="NqK-hC-8m8" secondAttribute="height" id="uQ9-gr-6qh"/>
+                            <constraint firstItem="NqK-hC-8m8" firstAttribute="top" secondItem="ly1-Ef-e6W" secondAttribute="bottom" constant="-64" id="vJI-la-aSL"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="JKg-Sw-WAG"/>
                     <connections>

@@ -79,7 +79,7 @@
     return _ready;
 }
 
-- (void)saveWithCompletionHandler:(void (^)(BOOL))completionHandler
+- (void)saveWithCompletionHandler:(void (^)(BOOL success))completionHandler
 {
     [self saveToURL:self.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:completionHandler];
 }

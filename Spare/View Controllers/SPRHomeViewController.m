@@ -147,7 +147,13 @@ SPRNewExpenseViewControllerDelegate>
 - (void)initializeSummaries
 {
     self.summaries = [NSMutableArray array];
-    [self.categoryFetcher performFetch:nil];
+    
+    NSError *error;
+    [self.categoryFetcher performFetch:&error];
+    if (error) {
+        NSLog(@"Error fetching categories: %@", error);
+    }
+    
     for (SPRCategory *category in self.categoryFetcher.fetchedObjects) {
         [self.summaries addObject:[[SPRCategorySummary alloc] initWithCategory:category]];
     }

@@ -51,6 +51,7 @@
 		2688627D18E31E2F00B8D167 /* SPRColorChooserSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2688627C18E31E2F00B8D167 /* SPRColorChooserSectionHeader.m */; };
 		2688628318E3370400B8D167 /* SPRManagedDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 2688628218E3370400B8D167 /* SPRManagedDocument.m */; };
 		2688628618E339F900B8D167 /* SPRField.m in Sources */ = {isa = PBXBuildFile; fileRef = 2688628518E339F900B8D167 /* SPRField.m */; };
+		26922D9F19443D6D00074638 /* SPRNSIndexPathTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 26922D9E19443D6D00074638 /* SPRNSIndexPathTransformer.m */; };
 		26A90290191DCF9000CEE065 /* SPREditExpenseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A9028F191DCF9000CEE065 /* SPREditExpenseViewController.m */; };
 		26A90294191DD18500CEE065 /* SPRExpenseDescriptionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A90293191DD18500CEE065 /* SPRExpenseDescriptionCell.m */; };
 		26A9029D191DD81400CEE065 /* UIView+SPR.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A9029C191DD81400CEE065 /* UIView+SPR.m */; };
@@ -156,6 +157,10 @@
 		2688628218E3370400B8D167 /* SPRManagedDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRManagedDocument.m; sourceTree = "<group>"; };
 		2688628418E339F900B8D167 /* SPRField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRField.h; sourceTree = "<group>"; };
 		2688628518E339F900B8D167 /* SPRField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRField.m; sourceTree = "<group>"; };
+		26922D9D19443D6D00074638 /* SPRNSIndexPathTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRNSIndexPathTransformer.h; sourceTree = "<group>"; };
+		26922D9E19443D6D00074638 /* SPRNSIndexPathTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRNSIndexPathTransformer.m; sourceTree = "<group>"; };
+		26922DA0194441E100074638 /* SPRExpense.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SPRExpense.h; path = Spare/Objects/SPRExpense.h; sourceTree = "<group>"; };
+		26922DA1194441E100074638 /* SPRExpense.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SPRExpense.m; path = Spare/Objects/SPRExpense.m; sourceTree = "<group>"; };
 		26A9028E191DCF9000CEE065 /* SPREditExpenseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPREditExpenseViewController.h; sourceTree = "<group>"; };
 		26A9028F191DCF9000CEE065 /* SPREditExpenseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPREditExpenseViewController.m; sourceTree = "<group>"; };
 		26A90292191DD18500CEE065 /* SPRExpenseDescriptionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRExpenseDescriptionCell.h; sourceTree = "<group>"; };
@@ -223,6 +228,8 @@
 		261EB85618DDB630009DDF78 = {
 			isa = PBXGroup;
 			children = (
+				26922DA0194441E100074638 /* SPRExpense.h */,
+				26922DA1194441E100074638 /* SPRExpense.m */,
 				261EB86A18DDB631009DDF78 /* Spare */,
 				261EB88718DDB631009DDF78 /* SpareTests */,
 				261EB86118DDB630009DDF78 /* Frameworks */,
@@ -346,6 +353,8 @@
 				263B09341939ADD900454F2D /* SPRCategorySummary.m */,
 				263BA032193E39750022BFDC /* SPRExpenseSection.h */,
 				263BA033193E39750022BFDC /* SPRExpenseSection.m */,
+				26922D9D19443D6D00074638 /* SPRNSIndexPathTransformer.h */,
+				26922D9E19443D6D00074638 /* SPRNSIndexPathTransformer.m */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -476,6 +485,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Matt Quiros";
 				TargetAttributes = {
+					261EB85E18DDB630009DDF78 = {
+						DevelopmentTeam = FPAETPH845;
+					};
 					261EB87E18DDB631009DDF78 = {
 						TestTargetID = 261EB85E18DDB630009DDF78;
 					};
@@ -583,6 +595,7 @@
 				2612C8AF18E847DB00DE2765 /* NSDate+SPR.m in Sources */,
 				260F58C7192C33B800F27F28 /* SPRFormComponents.m in Sources */,
 				260F58CA192C42B700F27F28 /* SPRCategoryColorCell.m in Sources */,
+				26922D9F19443D6D00074638 /* SPRNSIndexPathTransformer.m in Sources */,
 				2602A7D0192421A00050B91E /* SPRExpenseCategoryCell.m in Sources */,
 				2688627D18E31E2F00B8D167 /* SPRColorChooserSectionHeader.m in Sources */,
 				261EB87518DDB631009DDF78 /* SPRAppDelegate.m in Sources */,
@@ -718,10 +731,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Spare/Spare-Prefix.pch";
 				INFOPLIST_FILE = "Spare/Spare-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -732,10 +748,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Spare/Spare-Prefix.pch";
 				INFOPLIST_FILE = "Spare/Spare-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

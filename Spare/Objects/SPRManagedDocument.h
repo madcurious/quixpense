@@ -15,6 +15,6 @@
 + (instancetype)sharedDocument;
 
 - (void)prepareWithCompletionHandler:(void (^)(BOOL success))completionHandler;
-- (void)saveWithCompletionHandler:(void (^)(BOOL))completionHandler;
+- (void)saveWithCompletionHandler:(void (^)(BOOL success))completionHandler;
 
 @end

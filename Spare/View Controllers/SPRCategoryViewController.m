@@ -37,6 +37,7 @@ static const NSInteger kAmountLabelTag = 2000;
 
 @interface SPRCategoryViewController () <UITableViewDataSource, UITableViewDelegate,
 SPRNewExpenseViewControllerDelegate,
+SPREditExpenseViewControllerDelegate,
 SPREditCategoryViewControllerDelegate,
 UIAlertViewDelegate>
 
@@ -70,10 +71,7 @@ UIAlertViewDelegate>
     self.tableView.tableFooterView = [[UIView alloc] init];
     
     if (self.sections.count == 0) {
-        CGFloat labelX = [UIScreen mainScreen].bounds.size.width / 2 - self.noExpensesLabel.frame.size.width / 2;
-        CGFloat labelY = [self.noExpensesLabel centerYInParent:self.view];
-        self.noExpensesLabel.frame = CGRectMake(labelX, labelY, self.noExpensesLabel.frame.size.width, self.noExpensesLabel.frame.size.height);
-        [self.view addSubview:self.noExpensesLabel];
+        [self displayNoExpensesLabel];
     } else {
         [self.tableView reloadData];
     }
@@ -140,13 +138,6 @@ UIAlertViewDelegate>
     [self presentViewController:navigationController animated:YES completion:nil];
 }
 
-- (SPRExpense *)expenseAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSMutableArray *expensesInSection = self.expenses[indexPath.section];
-    SPRExpense *expense = expensesInSection[indexPath.row];
-    return expense;
-}
-
 - (void)performFetch
 {
     NSError *error;
@@ -183,17 +174,33 @@ UIAlertViewDelegate>
     }
 }
 
-- (void)reassignDisplayOrdersForSection:(NSUInteger)section
+- (void)removeExpenseAtOriginalIndexPath:(NSIndexPath *)indexPath
 {
-    NSMutableArray *expenses = self.expenses[section];
-    SPRExpense *expense;
-    for (int i = 0; i < expenses.count; i++) {
-        expense = expenses[i];
-        expense.displayOrder = @(i);
-    }
+    NSInteger offsetSection = indexPath.section - 1;
     
-    // Save the changes.
-    [[SPRManagedDocument sharedDocument] saveWithCompletionHandler:nil];
+    // Get a reference to the expenses array at an offset index,
+    // then remove the expense.
+    NSMutableArray *expenses = self.expenses[offsetSection];
+    [expenses removeObjectAtIndex:indexPath.row];
+    
+    // Recalculate the totals for the section.
+    // If there are no more expenses for the section, remove the array
+    // and section from the data source.
+    if (expenses.count > 0) {
+        SPRExpenseSection *section = self.sections[offsetSection];
+        section.total = [expenses valueForKeyPath:@"@sum.amount"];
+    } else {
+        [self.expenses removeObjectAtIndex:offsetSection];
+        [self.sections removeEntryAtIndex:offsetSection];
+    }
+}
+
+- (void)displayNoExpensesLabel
+{
+    CGFloat labelX = [UIScreen mainScreen].bounds.size.width / 2 - self.noExpensesLabel.frame.size.width / 2;
+    CGFloat labelY = [self.noExpensesLabel centerYInParent:self.view];
+    self.noExpensesLabel.frame = CGRectMake(labelX, labelY, self.noExpensesLabel.frame.size.width, self.noExpensesLabel.frame.size.height);
+    [self.view addSubview:self.noExpensesLabel];
 }
 
 #pragma mark - Target actions
@@ -292,7 +299,8 @@ UIAlertViewDelegate>
         cell = categoryCell;
     } else {
         cell = [tableView dequeueReusableCellWithIdentifier:kExpenseCell];
-        SPRExpense *expense = [self expenseAtIndexPath:[indexPath indexPathByOffsettingSection:-1]];
+        NSMutableArray *expensesInSection = self.expenses[indexPath.section - 1];
+        SPRExpense *expense = expensesInSection[indexPath.row];
         
         UILabel *descriptionLabel = (UILabel *)[cell viewWithTag:kDescriptionLabelTag];
         descriptionLabel.text = expense.name;
@@ -338,10 +346,20 @@ UIAlertViewDelegate>
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        SPRExpense *expense = [self expenseAtIndexPath:[indexPath indexPathByOffsettingSection:-1]];
-        SPRManagedDocument *managedDocument = [SPRManagedDocument sharedDocument];
-        [managedDocument.managedObjectContext deleteObject:expense];
-        [managedDocument saveToURL:managedDocument.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:nil];
+        // Remove the expense from the managed document.
+        NSMutableArray *expensesInSection = self.expenses[indexPath.section - 1];
+        SPRExpense *expense = expensesInSection[indexPath.row];
+        SPRManagedDocument *document = [SPRManagedDocument sharedDocument];
+        [document.managedObjectContext deleteObject:expense];
+        [document saveWithCompletionHandler:nil];
+        
+        // Remove the expense from the data source.
+        [self removeExpenseAtOriginalIndexPath:indexPath];
+        [self.tableView reloadData];
+        
+        if (self.sections.count == 0) {
+            [self displayNoExpensesLabel];
+        }
     }
 }
 
@@ -390,10 +408,26 @@ UIAlertViewDelegate>
         return;
     }
     
+    // Offset the index path.
     NSIndexPath *offsetIndexPath = [indexPath indexPathByOffsettingSection:-1];
     
+    // Get a reference to the expense.
+    NSMutableArray *expensesInSection = self.expenses[offsetIndexPath.section];
+    SPRExpense *expense = expensesInSection[offsetIndexPath.row];
+    expense.indexPath = indexPath;
+    
+    // Create an edit expense screen.
     SPREditExpenseViewController *editExpenseScreen = [[SPREditExpenseViewController alloc] init];
-    editExpenseScreen.expense = [self expenseAtIndexPath:offsetIndexPath];
+    editExpenseScreen.delegate = self;
+    editExpenseScreen.expense = expense;
+    
+    // Also pass a reference to the expenses after the one to edit.
+    NSMutableArray *nextExpenses = [NSMutableArray array];
+    for (int i = (int)offsetIndexPath.row; i < expensesInSection.count; i++) {
+        [nextExpenses addObject:expensesInSection[i]];
+    }
+    editExpenseScreen.nextExpenses = [NSArray arrayWithArray:nextExpenses];
+    
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:editExpenseScreen];
     [self presentViewController:navigationController animated:YES completion:nil];
 }
@@ -513,7 +547,7 @@ UIAlertViewDelegate>
     return UITableViewAutomaticDimension;
 }
 
-#pragma mark - New expense screen delegate
+#pragma mark - Expense CRUD delegates
 
 - (void)newExpenseScreenDidAddExpense:(SPRExpense *)expense
 {
@@ -528,8 +562,9 @@ UIAlertViewDelegate>
         
         // Modify the displayOrders of the other expenses in that section
         if (expenses.count > 1) {
-            SPRExpense *currentExpense = expenses[1];
+            SPRExpense *currentExpense;
             for (int i = 1; i < expenses.count; i++) {
+                currentExpense = expenses[i];
                 currentExpense.displayOrder = @(i);
             }
         }
@@ -582,15 +617,22 @@ UIAlertViewDelegate>
         [self.expenses insertObject:expenses atIndex:insertionIndex];
     }
     
-    
     // Either remove or add the No Expenses Yet label.
     if (self.sections.count > 0) {
         [self.noExpensesLabel removeFromSuperview];
     } else {
-        CGFloat labelX = [UIScreen mainScreen].bounds.size.width / 2 - self.noExpensesLabel.frame.size.width / 2;
-        CGFloat labelY = [self.noExpensesLabel centerYInParent:self.view];
-        self.noExpensesLabel.frame = CGRectMake(labelX, labelY, self.noExpensesLabel.frame.size.width, self.noExpensesLabel.frame.size.height);
-        [self.view addSubview:self.noExpensesLabel];
+        [self displayNoExpensesLabel];
+    }
+}
+
+- (void)editExpenseScreenDidDeleteExpense:(SPRExpense *)expense
+{
+    // Remove the expense from the data source.
+    [self removeExpenseAtOriginalIndexPath:expense.indexPath];
+    [self.tableView reloadData];
+    
+    if (self.sections.count == 0) {
+        [self displayNoExpensesLabel];
     }
 }
 
@@ -661,6 +703,15 @@ UIAlertViewDelegate>
     _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:[SPRManagedDocument sharedDocument].managedObjectContext sectionNameKeyPath:@"dateSpentAsSectionTitle" cacheName:nil];
     
     return _fetchedResultsController;
+}
+
+#pragma mark -
+
+- (void)dealloc
+{
+    // Set the table view's editing to NO when view controller is popped, or else app crashes.
+    // http://stackoverflow.com/questions/19230446/tableviewcaneditrowatindexpath-crash-when-popping-viewcontroller
+    self.tableView.editing = NO;
 }
 
 @end
