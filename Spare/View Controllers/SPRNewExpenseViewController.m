@@ -102,7 +102,7 @@ static const NSInteger kTextFieldTag = 1000;
     expense.dateSpent = ((SPRField *)self.fields[kRowDateSpent]).value;
     expense.displayOrder = @(0);
     
-    [document saveToURL:document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success) {
+    [document saveWithCompletionHandler:^(BOOL success) {
         if ([self.delegate respondsToSelector:@selector(newExpenseScreenDidAddExpense:)]) {
             [self.delegate newExpenseScreenDidAddExpense:expense];
         }

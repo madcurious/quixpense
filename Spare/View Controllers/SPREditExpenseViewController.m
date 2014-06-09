@@ -233,8 +233,8 @@ typedef NS_ENUM(NSUInteger, kRow)
                 SPRManagedDocument *managedDocument = [SPRManagedDocument sharedDocument];
                 [managedDocument.managedObjectContext deleteObject:self.expense];
                 
-                if ([self.delegate respondsToSelector:@selector(editExpenseScreenDidDeleteExpense:)]) {
-                    [self.delegate editExpenseScreenDidDeleteExpense:self.expense];
+                if ([self.delegate respondsToSelector:@selector(editExpenseScreenDidDeleteExpense:atCellIndexPath:)]) {
+                    [self.delegate editExpenseScreenDidDeleteExpense:self.expense atCellIndexPath:self.cellIndexPath];
                 }
                 
                 // Save the managed document.

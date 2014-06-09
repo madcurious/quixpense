@@ -12,7 +12,7 @@
 
 @protocol SPREditExpenseViewControllerDelegate <NSObject>
 
-- (void)editExpenseScreenDidDeleteExpense:(SPRExpense *)expense;
+- (void)editExpenseScreenDidDeleteExpense:(SPRExpense *)expense atCellIndexPath:(NSIndexPath *)indexPath;
 
 @end
 
@@ -20,6 +20,7 @@
 
 @property (weak, nonatomic) id<SPREditExpenseViewControllerDelegate> delegate;
 @property (strong, nonatomic) SPRExpense *expense;
+@property (strong, nonatomic) NSIndexPath *cellIndexPath;
 @property (strong, nonatomic) NSArray *nextExpenses;
 
 @end

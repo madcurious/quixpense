@@ -414,12 +414,12 @@ UIAlertViewDelegate>
     // Get a reference to the expense.
     NSMutableArray *expensesInSection = self.expenses[offsetIndexPath.section];
     SPRExpense *expense = expensesInSection[offsetIndexPath.row];
-    expense.indexPath = indexPath;
     
     // Create an edit expense screen.
     SPREditExpenseViewController *editExpenseScreen = [[SPREditExpenseViewController alloc] init];
     editExpenseScreen.delegate = self;
     editExpenseScreen.expense = expense;
+    editExpenseScreen.cellIndexPath = indexPath;
     
     // Also pass a reference to the expenses after the one to edit.
     NSMutableArray *nextExpenses = [NSMutableArray array];
@@ -629,10 +629,10 @@ UIAlertViewDelegate>
     }
 }
 
-- (void)editExpenseScreenDidDeleteExpense:(SPRExpense *)expense
+- (void)editExpenseScreenDidDeleteExpense:(SPRExpense *)expense atCellIndexPath:(NSIndexPath *)indexPath
 {
     // Remove the expense from the data source.
-    [self removeExpenseAtOriginalIndexPath:expense.indexPath];
+    [self removeExpenseAtOriginalIndexPath:indexPath];
     [self.tableView reloadData];
     
     if (self.headers.count == 0) {
