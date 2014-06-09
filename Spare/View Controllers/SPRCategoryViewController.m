@@ -48,6 +48,7 @@ UIAlertViewDelegate>
 @property (strong, nonatomic) NSMutableArray *expenses;
 @property (strong, nonatomic) NSMutableOrderedDictionary *headers;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
+@property (strong, nonatomic) NSMutableArray *sectionsToRemove;
 
 @end
 
@@ -61,6 +62,7 @@ UIAlertViewDelegate>
     [self setupBarButtonItems];
     [self.tableView registerClass:[SPRCategoryHeaderCell class] forCellReuseIdentifier:kCategoryCell];
     
+    self.sectionsToRemove = [NSMutableArray array];
     [self performFetch];
 }
 
@@ -238,6 +240,7 @@ UIAlertViewDelegate>
 
 - (void)cancelMovingButtonTapped
 {
+    [self.category.managedObjectContext rollback];
     [self performFetch];
     [self.tableView reloadData];
     
@@ -250,9 +253,19 @@ UIAlertViewDelegate>
 
 - (void)doneMovingButtonTapped
 {
+    // Remove the sections that no longer contain expenses.
+    if (self.sectionsToRemove.count > 0) {
+        NSInteger sectionIndex;
+        for (int i = 0; i < self.sectionsToRemove.count; i++) {
+            sectionIndex = [self.expenses indexOfObject:self.sectionsToRemove[i]];
+            [self.expenses removeObjectAtIndex:sectionIndex];
+            [self.headers removeEntryAtIndex:sectionIndex];
+        }
+        [self.tableView reloadData];
+    }
+    
     // Save the changes.
-    SPRManagedDocument *document = [SPRManagedDocument sharedDocument];
-    [document saveToURL:document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:nil];
+    [[SPRManagedDocument sharedDocument] saveWithCompletionHandler:nil];
     
     self.tableView.allowsSelection = YES;
     self.title = nil;
@@ -433,97 +446,51 @@ UIAlertViewDelegate>
     [self presentViewController:navigationController animated:YES completion:nil];
 }
 
-//- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
-//{
-//    // Prepare the needed variables.
-//    
-//    NSIndexPath *offsetSourceIndexPath = [sourceIndexPath indexPathByOffsettingSection:-1];
-//    NSIndexPath *offsetDestinationIndexPath = [destinationIndexPath indexPathByOffsettingSection:-1];
-//    
-//    SPRExpenseSection *sourceSection = self.sections[offsetSourceIndexPath.section];
-//    NSDate *sourceDate = sourceSection.date;
-//    SPRExpenseSection *destinationSection = self.sections[offsetDestinationIndexPath.section];
-//    NSDate *destinationDate = destinationSection.date;
-//
-//    SPRExpense *expense = [self expenseAtIndexPath:offsetSourceIndexPath];
-//    
-//    // Set the expense's date to destination section's date.
-//    
-//    expense.dateSpent = destinationDate;
-//    
-//    // If the row is the topmost, make the display order higher than all the others.
-//    
-//    if (offsetDestinationIndexPath.row == 0) {
-//        SPRExpense *currentTop = [self expenseAtIndexPath:offsetDestinationIndexPath];
-//        double newDisplayOrder = [currentTop.displayOrder doubleValue] + 1;
-//        expense.displayOrder = @(newDisplayOrder);
-//    }
-//    
-//    // If the expense is being moved to the bottommost of the section,
-//    // make the display order lower than all others.
-//    
-//    else {
-//        NSMutableArray *expensesInSection = self.expenses[offsetDestinationIndexPath.section];
-//        NSUInteger rowCount = expensesInSection.count;
-//        BOOL movingToBottom;
-//        if ([sourceDate isSameDayAsDate:destinationDate]) {
-//            movingToBottom = offsetDestinationIndexPath.row == rowCount - 1;
-//        } else {
-//            movingToBottom = offsetDestinationIndexPath.row == rowCount;
-//        }
-//        
-//        if (movingToBottom) {
-//            SPRExpense *currentBottom = [expensesInSection lastObject];
-//            double newDisplayOrder = [currentBottom.displayOrder doubleValue] - 1;
-//            expense.displayOrder = @(newDisplayOrder);
-//        }
-//        
-//        // If put between two expenses, set the display order to be
-//        // a number between the display orders of the two expenses.
-//        
-//        else {
-//            NSIndexPath *topIndexPath = [offsetDestinationIndexPath indexPathByOffsettingRow:-1];
-//            SPRExpense *topExpense = [self expenseAtIndexPath:topIndexPath];
-//            double topExpenseDisplayOrder = [topExpense.displayOrder doubleValue];
-//            
-//            NSIndexPath *bottomIndexPath = offsetDestinationIndexPath;
-//            SPRExpense *bottomExpense = [self expenseAtIndexPath:bottomIndexPath];
-//            double bottomExpenseDisplayOrder = [bottomExpense.displayOrder doubleValue];
-//            
-//            double newDisplayOrder = bottomExpenseDisplayOrder + (topExpenseDisplayOrder - bottomExpenseDisplayOrder) / 2;
-//            expense.displayOrder = [NSNumber numberWithDouble:newDisplayOrder];
-//        }
-//    }
-//}
-
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
 {
-    NSIndexPath *offsetSourceIndexPath = [sourceIndexPath indexPathByOffsettingSection:-1];
-    NSIndexPath *offsetDestinationIndexPath = [destinationIndexPath indexPathByOffsettingSection:-1];
+    NSInteger sourceSection = sourceIndexPath.section - 1;
+    NSInteger destinationSection = destinationIndexPath.section - 1;
     
     // Remove the expense from its previous position and insert to the new one.
-    NSMutableArray *sourceArray = self.expenses[offsetSourceIndexPath.section];
-    NSMutableArray *destinationArray = self.expenses[offsetDestinationIndexPath.section];
-    SPRExpense *expense = sourceArray[offsetSourceIndexPath.row];
-    [sourceArray removeObjectAtIndex:offsetSourceIndexPath.row];
-    [destinationArray insertObject:expense atIndex:offsetDestinationIndexPath.row];
+    NSMutableArray *sourceArray = self.expenses[sourceSection];
+    NSMutableArray *destinationArray = self.expenses[destinationSection];
+    SPRExpense *expense = sourceArray[sourceIndexPath.row];
+    [sourceArray removeObjectAtIndex:sourceIndexPath.row];
+    [destinationArray insertObject:expense atIndex:destinationIndexPath.row];
     
     // Set the expense's dateSpent to the date in the section it was moved to.
-    SPRExpenseSectionHeader *destinationSection = self.headers[offsetDestinationIndexPath.section];
-    NSDate *destinationDate = destinationSection.date;
+    SPRExpenseSectionHeader *header = self.headers[destinationSection];
+    NSDate *destinationDate = header.date;
     expense.dateSpent = destinationDate;
     
     // Reset the display orders of the expenses in the sections affected.
     SPRExpense *currentExpense;
-    for (NSInteger i = offsetSourceIndexPath.row; i < sourceArray.count; i++) {
+    for (NSInteger i = 0; i < sourceArray.count; i++) {
+        currentExpense = sourceArray[i];
         currentExpense.displayOrder = @(i);
     }
+    // Update the total in the header.
+    header = self.headers[sourceSection];
+    header.total = [self.expenses[sourceSection] valueForKeyPath:@"@sum.amount"];
+    
     // Only modify the expenses in the destination array if it's not the same as the source array.
     if (sourceArray != destinationArray) {
-        for (NSInteger i = offsetDestinationIndexPath.row; i < destinationArray.count; i++) {
+        for (NSInteger i = 0; i < destinationArray.count; i++) {
+            currentExpense = destinationArray[i];
             currentExpense.displayOrder = @(i);
         }
+        header = self.headers[destinationSection];
+        header.total = [self.expenses[destinationSection] valueForKeyPath:@"@sum.amount"];
     }
+    
+    // If the source array no longer has expenses under it, mark it for deletion later when Done is tapped.
+    if (sourceArray.count == 0) {
+        [self.sectionsToRemove addObject:sourceArray];
+    } else {
+        [self.sectionsToRemove removeObject:sourceArray];
+    }
+    
+    [self.tableView reloadData];
 }
 
 - (NSIndexPath *)tableView:(UITableView *)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath

@@ -146,11 +146,4 @@ static const CGFloat kAnimationDuration = 0.1;
     }
 }
 
-#pragma mark - Setters
-
-- (void)setPreselectedCategory:(SPRCategory *)preselectedCategory
-{
-    _preselectedCategory = preselectedCategory;
-}
-
 @end
