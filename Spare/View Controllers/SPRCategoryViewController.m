@@ -420,6 +420,7 @@ UIAlertViewDelegate>
     editExpenseScreen.delegate = self;
     editExpenseScreen.expense = expense;
     editExpenseScreen.cellIndexPath = indexPath;
+    editExpenseScreen.dateSections = self.headers.allKeys;
     
     // Also pass a reference to the expenses after the one to edit.
     NSMutableArray *nextExpenses = [NSMutableArray array];
@@ -638,6 +639,12 @@ UIAlertViewDelegate>
     if (self.headers.count == 0) {
         [self displayNoExpensesLabel];
     }
+}
+
+- (void)editExpenseScreenDidEditExpense:(SPRExpense *)expense atCellIndexPath:(NSIndexPath *)indexPath
+{
+    [self performFetch];
+    [self.tableView reloadData];
 }
 
 #pragma mark - Edit category screen delegate

@@ -101,6 +101,8 @@ typedef NS_ENUM(NSUInteger, kRow)
 
 - (void)doneButtonTapped
 {
+    self.navigationItem.rightBarButtonItem.enabled = NO;
+    
     // First, check if any of the fields are missing.
     
     NSString *name = [((SPRField *)self.fields[kRowDescription]).value trim];
@@ -122,6 +124,7 @@ typedef NS_ENUM(NSUInteger, kRow)
     if (missingFields.count > 0) {
         NSString *message = [NSString stringWithFormat:@"You must enter the following:\n%@", [missingFields componentsJoinedByString:@", "]];
         [[[UIAlertView alloc] initWithTitle:@"Missing fields" message:message delegate:nil cancelButtonTitle:@"Got it!" otherButtonTitles:nil] show];
+        self.navigationItem.rightBarButtonItem.enabled = YES;
         return;
     }
     
@@ -129,14 +132,39 @@ typedef NS_ENUM(NSUInteger, kRow)
     self.expense.amount = [NSDecimalNumber decimalNumberWithString:amount];
     self.expense.category = category;
     
-    // Only assign the dateSpent and displayOrder if the expense was moved to another day.
     NSDate *newDateSpent = ((SPRField *)self.fields[kRowDateSpent]).value;
-    if (![self.expense.dateSpent isSameDayAsDate:newDateSpent]) {
+    
+    // If the date was changed, this counts as a "move" action, not just an update.
+    // Put the edited expense on top of the others that are in newDateSpent.
+    if ([self.expense.dateSpent isSameDayAsDate:newDateSpent] == NO) {
+        // First, get all the expenses in the date.
+        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+        fetchRequest.entity = [NSEntityDescription entityForName:NSStringFromClass([SPRExpense class]) inManagedObjectContext:self.expense.managedObjectContext];
+        fetchRequest.predicate = [NSPredicate predicateWithFormat:@"category == %@ AND dateSpent == %@", self.expense.category, newDateSpent];
+        fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"displayOrder" ascending:YES]];
+        
+        NSError *error;
+        NSArray *expenses = [self.expense.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+        if (error) {
+            NSLog(@"Error fetching expenses: %@", error);
+        }
+        
+        // Increment the displayOrders of existing expenses by 1.
+        SPRExpense *expense;
+        for (int i = 0; i < expenses.count; i++) {
+            expense = expenses[i];
+            expense.displayOrder = @(i + 1);
+        }
+        
+        // Put the edited expense on top of the date's section.
+        self.expense.displayOrder = @(0);
         self.expense.dateSpent = newDateSpent;
-        self.expense.displayOrder = [NSNumber numberWithDouble:[[NSDate date] timeIntervalSince1970]];
     }
     
     [[SPRManagedDocument sharedDocument] saveWithCompletionHandler:^(BOOL success) {
+        if ([self.delegate respondsToSelector:@selector(editExpenseScreenDidEditExpense:atCellIndexPath:)]) {
+            [self.delegate editExpenseScreenDidEditExpense:self.expense atCellIndexPath:self.cellIndexPath];
+        }
         [self dismissViewControllerAnimated:YES completion:nil];
     }];
 }

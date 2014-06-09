@@ -13,6 +13,7 @@
 @protocol SPREditExpenseViewControllerDelegate <NSObject>
 
 - (void)editExpenseScreenDidDeleteExpense:(SPRExpense *)expense atCellIndexPath:(NSIndexPath *)indexPath;
+- (void)editExpenseScreenDidEditExpense:(SPRExpense *)expense atCellIndexPath:(NSIndexPath *)indexPath;
 
 @end
 
@@ -22,5 +23,6 @@
 @property (strong, nonatomic) SPRExpense *expense;
 @property (strong, nonatomic) NSIndexPath *cellIndexPath;
 @property (strong, nonatomic) NSArray *nextExpenses;
+@property (strong, nonatomic) NSArray *dateSections;
 
 @end
