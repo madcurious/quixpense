@@ -57,6 +57,7 @@
 		26A9029D191DD81400CEE065 /* UIView+SPR.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A9029C191DD81400CEE065 /* UIView+SPR.m */; };
 		26B4B75618F277B5001B119D /* SPRCategoryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B4B75518F277B5001B119D /* SPRCategoryCollectionViewCell.m */; };
 		26D08D2618F105C600AE018F /* SPRHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26D08D2518F105C600AE018F /* SPRHomeViewController.m */; };
+		26D4C8F51946E624001B42DC /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26D4C8F41946E624001B42DC /* Crashlytics.framework */; };
 		26E2484618E1B7F900391354 /* UIColor+HexColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E2484518E1B7F900391354 /* UIColor+HexColor.m */; };
 		26E2485318E1CAB700391354 /* SPRNewCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E2485218E1CAB700391354 /* SPRNewCategoryViewController.m */; };
 		26E2485C18E1DA2B00391354 /* NSString+SPR.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E2485B18E1DA2B00391354 /* NSString+SPR.m */; };
@@ -171,6 +172,7 @@
 		26B4B75518F277B5001B119D /* SPRCategoryCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRCategoryCollectionViewCell.m; sourceTree = "<group>"; };
 		26D08D2418F105C600AE018F /* SPRHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRHomeViewController.h; sourceTree = "<group>"; };
 		26D08D2518F105C600AE018F /* SPRHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRHomeViewController.m; sourceTree = "<group>"; };
+		26D4C8F41946E624001B42DC /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		26E2484418E1B7F900391354 /* UIColor+HexColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HexColor.h"; sourceTree = "<group>"; };
 		26E2484518E1B7F900391354 /* UIColor+HexColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HexColor.m"; sourceTree = "<group>"; };
 		26E2485118E1CAB700391354 /* SPRNewCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRNewCategoryViewController.h; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 				261EB86718DDB631009DDF78 /* UIKit.framework in Frameworks */,
 				261EB86318DDB630009DDF78 /* Foundation.framework in Frameworks */,
 				28822B437E5247E3BDE57F66 /* libPods.a in Frameworks */,
+				26D4C8F51946E624001B42DC /* Crashlytics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,6 +253,7 @@
 		261EB86118DDB630009DDF78 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				26D4C8F41946E624001B42DC /* Crashlytics.framework */,
 				26E4E0581937AF690096191A /* QuartzCore.framework */,
 				261EB86218DDB630009DDF78 /* Foundation.framework */,
 				261EB86418DDB630009DDF78 /* CoreGraphics.framework */,
@@ -447,6 +451,7 @@
 				261EB85C18DDB630009DDF78 /* Frameworks */,
 				261EB85D18DDB630009DDF78 /* Resources */,
 				D50A65DD683E419BAE237FE7 /* Copy Pods Resources */,
+				26D4C8F31946E5AF001B42DC /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -534,6 +539,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		26D4C8F31946E5AF001B42DC /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Crashlytics.framework/run 5777ab02ad26fe0af3227a87ff1a25c1314bab82 7263d85aaedce46d808fc300c69ac1242cd98890e51763da44fdacd7129eafcc";
+		};
 		99DF9AC0C8D8411EB8E3F8AF /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -733,6 +751,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Spare/Spare-Prefix.pch";
 				INFOPLIST_FILE = "Spare/Spare-Info.plist";
@@ -750,6 +772,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Spare/Spare-Prefix.pch";
 				INFOPLIST_FILE = "Spare/Spare-Info.plist";

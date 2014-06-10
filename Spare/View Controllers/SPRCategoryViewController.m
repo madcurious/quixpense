@@ -207,71 +207,9 @@ UIAlertViewDelegate>
 
 #pragma mark - Target actions
 
-- (void)newExpenseButtonTapped
-{
-    [self performSegueWithIdentifier:@"presentNewExpenseModal" sender:self];
-}
-
 - (void)editButtonTapped
 {
     [self showEditCategoryModal];
-}
-
-- (void)moveButtonTapped
-{
-    self.tableView.allowsSelection = NO;
-    
-    self.title = @"Move";
-    
-    // Set editing to no before setting it to yes, so that any currently showing
-    // Delete buttons in a left-swiped table view cell are hidden.
-    self.tableView.editing = NO;
-    [self.tableView setEditing:YES animated:YES];
-    
-    // Hide the Back button.
-    self.navigationItem.hidesBackButton = YES;
-    
-    UIBarButtonItem *cancelMovingBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelMovingButtonTapped)];
-    self.navigationItem.leftBarButtonItem = cancelMovingBarButtonItem;
-    
-    UIBarButtonItem *doneMovingBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneMovingButtonTapped)];
-    self.navigationItem.rightBarButtonItems = @[doneMovingBarButtonItem];
-}
-
-- (void)cancelMovingButtonTapped
-{
-    [self.category.managedObjectContext rollback];
-    [self performFetch];
-    [self.tableView reloadData];
-    
-    self.tableView.allowsSelection = YES;
-    self.title = nil;
-    [self.tableView setEditing:NO animated:YES];
-    self.navigationItem.hidesBackButton = NO;
-    [self setupBarButtonItems];
-}
-
-- (void)doneMovingButtonTapped
-{
-    // Remove the sections that no longer contain expenses.
-    if (self.sectionsToRemove.count > 0) {
-        NSInteger sectionIndex;
-        for (int i = 0; i < self.sectionsToRemove.count; i++) {
-            sectionIndex = [self.expenses indexOfObject:self.sectionsToRemove[i]];
-            [self.expenses removeObjectAtIndex:sectionIndex];
-            [self.headers removeEntryAtIndex:sectionIndex];
-        }
-        [self.tableView reloadData];
-    }
-    
-    // Save the changes.
-    [[SPRManagedDocument sharedDocument] saveWithCompletionHandler:nil];
-    
-    self.tableView.allowsSelection = YES;
-    self.title = nil;
-    [self.tableView setEditing:NO animated:YES];
-    self.navigationItem.hidesBackButton = NO;
-    [self setupBarButtonItems];
 }
 
 - (void)deleteCategoryButtonTapped
@@ -376,22 +314,6 @@ UIAlertViewDelegate>
     }
 }
 
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (indexPath.section > 0) {
-        return YES;
-    }
-    return NO;
-}
-
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (indexPath.section > 0) {
-        return YES;
-    }
-    return NO;
-}
-
 #pragma mark - Table view delegate
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -446,65 +368,7 @@ UIAlertViewDelegate>
     [self presentViewController:navigationController animated:YES completion:nil];
 }
 
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
-{
-    NSInteger sourceSection = sourceIndexPath.section - 1;
-    NSInteger destinationSection = destinationIndexPath.section - 1;
-    
-    // Remove the expense from its previous position and insert to the new one.
-    NSMutableArray *sourceArray = self.expenses[sourceSection];
-    NSMutableArray *destinationArray = self.expenses[destinationSection];
-    SPRExpense *expense = sourceArray[sourceIndexPath.row];
-    [sourceArray removeObjectAtIndex:sourceIndexPath.row];
-    [destinationArray insertObject:expense atIndex:destinationIndexPath.row];
-    
-    // Set the expense's dateSpent to the date in the section it was moved to.
-    SPRExpenseSectionHeader *header = self.headers[destinationSection];
-    NSDate *destinationDate = header.date;
-    expense.dateSpent = destinationDate;
-    
-    // Reset the display orders of the expenses in the sections affected.
-    SPRExpense *currentExpense;
-    for (NSInteger i = 0; i < sourceArray.count; i++) {
-        currentExpense = sourceArray[i];
-        currentExpense.displayOrder = @(i);
-    }
-    // Update the total in the header.
-    header = self.headers[sourceSection];
-    header.total = [self.expenses[sourceSection] valueForKeyPath:@"@sum.amount"];
-    
-    // Only modify the expenses in the destination array if it's not the same as the source array.
-    if (sourceArray != destinationArray) {
-        for (NSInteger i = 0; i < destinationArray.count; i++) {
-            currentExpense = destinationArray[i];
-            currentExpense.displayOrder = @(i);
-        }
-        header = self.headers[destinationSection];
-        header.total = [self.expenses[destinationSection] valueForKeyPath:@"@sum.amount"];
-    }
-    
-    // If the source array no longer has expenses under it, mark it for deletion later when Done is tapped.
-    if (sourceArray.count == 0) {
-        [self.sectionsToRemove addObject:sourceArray];
-    } else {
-        [self.sectionsToRemove removeObject:sourceArray];
-    }
-    
-    [self.tableView reloadData];
-}
 
-- (NSIndexPath *)tableView:(UITableView *)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath
-{
-    // If the cell was dragged to where the colored category cell is,
-    // put it on the first row of the first section of expenses.
-    NSIndexPath *destinationIndexPath;
-    if (proposedDestinationIndexPath.section == 0) {
-        destinationIndexPath = [NSIndexPath indexPathForRow:0 inSection:1];
-    } else {
-        destinationIndexPath = proposedDestinationIndexPath;
-    }
-    return destinationIndexPath;
-}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -515,7 +379,12 @@ UIAlertViewDelegate>
     return UITableViewAutomaticDimension;
 }
 
-#pragma mark - Expense CRUD delegates
+#pragma mark - Addition
+
+- (void)newExpenseButtonTapped
+{
+    [self performSegueWithIdentifier:@"presentNewExpenseModal" sender:self];
+}
 
 - (void)newExpenseScreenDidAddExpense:(SPRExpense *)expense
 {
@@ -597,6 +466,8 @@ UIAlertViewDelegate>
     }
 }
 
+#pragma mark - Deletion
+
 - (void)editExpenseScreenDidDeleteExpense:(SPRExpense *)expense atCellIndexPath:(NSIndexPath *)indexPath
 {
     // Remove the expense from the data source.
@@ -608,10 +479,149 @@ UIAlertViewDelegate>
     }
 }
 
+#pragma mark - Editing
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section > 0) {
+        return YES;
+    }
+    return NO;
+}
+
 - (void)editExpenseScreenDidEditExpense:(SPRExpense *)expense atCellIndexPath:(NSIndexPath *)indexPath
 {
     [self performFetch];
     [self.tableView reloadData];
+}
+
+#pragma mark - Moving
+- (void)moveButtonTapped
+{
+    self.tableView.allowsSelection = NO;
+    
+    self.title = @"Move";
+    
+    // Set editing to no before setting it to yes, so that any currently showing
+    // Delete buttons in a left-swiped table view cell are hidden.
+    self.tableView.editing = NO;
+    [self.tableView setEditing:YES animated:YES];
+    
+    // Hide the Back button.
+    self.navigationItem.hidesBackButton = YES;
+    
+    UIBarButtonItem *cancelMovingBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelMovingButtonTapped)];
+    self.navigationItem.leftBarButtonItem = cancelMovingBarButtonItem;
+    
+    UIBarButtonItem *doneMovingBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneMovingButtonTapped)];
+    self.navigationItem.rightBarButtonItems = @[doneMovingBarButtonItem];
+}
+
+- (void)cancelMovingButtonTapped
+{
+    [self.category.managedObjectContext rollback];
+    [self performFetch];
+    [self.tableView reloadData];
+    
+    self.tableView.allowsSelection = YES;
+    self.title = nil;
+    [self.tableView setEditing:NO animated:YES];
+    self.navigationItem.hidesBackButton = NO;
+    [self setupBarButtonItems];
+}
+
+- (void)doneMovingButtonTapped
+{
+    // Remove the sections that no longer contain expenses.
+    if (self.sectionsToRemove.count > 0) {
+        NSInteger sectionIndex;
+        for (int i = 0; i < self.sectionsToRemove.count; i++) {
+            sectionIndex = [self.expenses indexOfObject:self.sectionsToRemove[i]];
+            [self.expenses removeObjectAtIndex:sectionIndex];
+            [self.headers removeEntryAtIndex:sectionIndex];
+        }
+        [self.tableView reloadData];
+    }
+    
+    // Save the changes.
+    [[SPRManagedDocument sharedDocument] saveWithCompletionHandler:nil];
+    
+    self.tableView.allowsSelection = YES;
+    self.title = nil;
+    [self.tableView setEditing:NO animated:YES];
+    self.navigationItem.hidesBackButton = NO;
+    [self setupBarButtonItems];
+}
+
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section > 0) {
+        return YES;
+    }
+    return NO;
+}
+
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
+{
+    NSInteger sourceSection = sourceIndexPath.section - 1;
+    NSInteger destinationSection = destinationIndexPath.section - 1;
+    
+    // Remove the expense from its previous position and insert to the new one.
+    NSMutableArray *sourceArray = self.expenses[sourceSection];
+    NSMutableArray *destinationArray = self.expenses[destinationSection];
+    SPRExpense *expense = sourceArray[sourceIndexPath.row];
+    [sourceArray removeObjectAtIndex:sourceIndexPath.row];
+    [destinationArray insertObject:expense atIndex:destinationIndexPath.row];
+    
+    // Set the expense's dateSpent to the date in the section it was moved to.
+    SPRExpenseSectionHeader *header = self.headers[destinationSection];
+    NSDate *destinationDate = header.date;
+    expense.dateSpent = destinationDate;
+    
+    // Reset the display orders of the expenses in the sections affected.
+    SPRExpense *currentExpense;
+    for (NSInteger i = 0; i < sourceArray.count; i++) {
+        currentExpense = sourceArray[i];
+        currentExpense.displayOrder = @(i);
+    }
+    // Update the total in the header.
+    header = self.headers[sourceSection];
+    header.total = [self.expenses[sourceSection] valueForKeyPath:@"@sum.amount"];
+    
+    // Only modify the expenses in the destination array if it's not the same as the source array.
+    if (sourceArray != destinationArray) {
+        for (NSInteger i = 0; i < destinationArray.count; i++) {
+            currentExpense = destinationArray[i];
+            currentExpense.displayOrder = @(i);
+        }
+        header = self.headers[destinationSection];
+        header.total = [self.expenses[destinationSection] valueForKeyPath:@"@sum.amount"];
+    }
+    
+    // If the source array no longer contains expenses, mark it for deletion later when Done is tapped.
+    if (sourceArray.count == 0) {
+        [self.sectionsToRemove addObject:sourceArray];
+    }
+    
+    // If the destination array now contains expenses, unmark it for deletion.
+    if (destinationArray.count > 0) {
+        [self.sectionsToRemove removeObject:destinationArray];
+    }
+    
+    [self.tableView reloadData];
+}
+
+- (NSIndexPath *)tableView:(UITableView *)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath
+{
+    // If the cell was dragged to where the colored category cell is,
+    // put it on the first row of the first section of expenses.
+    NSIndexPath *destinationIndexPath;
+    if (proposedDestinationIndexPath.section == 0) {
+        destinationIndexPath = [NSIndexPath indexPathForRow:0 inSection:1];
+    } else {
+        destinationIndexPath = proposedDestinationIndexPath;
+    }
+    return destinationIndexPath;
 }
 
 #pragma mark - Edit category screen delegate

@@ -11,10 +11,14 @@
 // Objects
 #import "SPRManagedDocument.h"
 
+// Libraries
+#import <Crashlytics/Crashlytics.h>
+
 @implementation SPRAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [Crashlytics startWithAPIKey:@"5777ab02ad26fe0af3227a87ff1a25c1314bab82"];
     return YES;
 }
 
