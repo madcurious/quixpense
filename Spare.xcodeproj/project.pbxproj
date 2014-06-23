@@ -48,6 +48,11 @@
 		266065BD18F055D50085F877 /* SPRExpense+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 266065BC18F055D50085F877 /* SPRExpense+Extension.m */; };
 		26617D6918F308F800CA51EA /* SPRSetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26617D6818F308F800CA51EA /* SPRSetupViewController.m */; };
 		2661CD7619321751009C7034 /* SPRCategoryHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2661CD7519321751009C7034 /* SPRCategoryHeaderCell.m */; };
+		2666C2C21957CF4F003752BF /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2666C2C11957CF4F003752BF /* libGoogleAnalyticsServices.a */; };
+		2666C2C51957CF7A003752BF /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2666C2C31957CF7A003752BF /* AdSupport.framework */; };
+		2666C2C61957CF7A003752BF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2666C2C41957CF7A003752BF /* SystemConfiguration.framework */; };
+		2666C2C81957CF93003752BF /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2666C2C71957CF93003752BF /* libz.dylib */; };
+		2666C2CA1957CFA1003752BF /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2666C2C91957CFA1003752BF /* libsqlite3.dylib */; };
 		2688627D18E31E2F00B8D167 /* SPRColorChooserSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2688627C18E31E2F00B8D167 /* SPRColorChooserSectionHeader.m */; };
 		2688628318E3370400B8D167 /* SPRManagedDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 2688628218E3370400B8D167 /* SPRManagedDocument.m */; };
 		2688628618E339F900B8D167 /* SPRField.m in Sources */ = {isa = PBXBuildFile; fileRef = 2688628518E339F900B8D167 /* SPRField.m */; };
@@ -152,6 +157,18 @@
 		26617D6818F308F800CA51EA /* SPRSetupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRSetupViewController.m; sourceTree = "<group>"; };
 		2661CD7419321751009C7034 /* SPRCategoryHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRCategoryHeaderCell.h; sourceTree = "<group>"; };
 		2661CD7519321751009C7034 /* SPRCategoryHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRCategoryHeaderCell.m; sourceTree = "<group>"; };
+		2666C2B91957CF04003752BF /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
+		2666C2BA1957CF04003752BF /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIDictionaryBuilder.h; sourceTree = "<group>"; };
+		2666C2BB1957CF04003752BF /* GAIFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIFields.h; sourceTree = "<group>"; };
+		2666C2BC1957CF04003752BF /* GAILogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAILogger.h; sourceTree = "<group>"; };
+		2666C2BD1957CF04003752BF /* GAITrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITrackedViewController.h; sourceTree = "<group>"; };
+		2666C2BE1957CF04003752BF /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
+		2666C2BF1957CF04003752BF /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
+		2666C2C11957CF4F003752BF /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalyticsServices.a; path = GoogleAnalytics/libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
+		2666C2C31957CF7A003752BF /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		2666C2C41957CF7A003752BF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		2666C2C71957CF93003752BF /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		2666C2C91957CFA1003752BF /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		2688627B18E31E2F00B8D167 /* SPRColorChooserSectionHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRColorChooserSectionHeader.h; sourceTree = "<group>"; };
 		2688627C18E31E2F00B8D167 /* SPRColorChooserSectionHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRColorChooserSectionHeader.m; sourceTree = "<group>"; };
 		2688628118E3370400B8D167 /* SPRManagedDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRManagedDocument.h; sourceTree = "<group>"; };
@@ -196,9 +213,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2666C2CA1957CFA1003752BF /* libsqlite3.dylib in Frameworks */,
+				2666C2C81957CF93003752BF /* libz.dylib in Frameworks */,
 				261EB86518DDB630009DDF78 /* CoreGraphics.framework in Frameworks */,
+				2666C2C51957CF7A003752BF /* AdSupport.framework in Frameworks */,
 				261EB86918DDB631009DDF78 /* CoreData.framework in Frameworks */,
+				2666C2C21957CF4F003752BF /* libGoogleAnalyticsServices.a in Frameworks */,
 				26E4E0591937AF690096191A /* QuartzCore.framework in Frameworks */,
+				2666C2C61957CF7A003752BF /* SystemConfiguration.framework in Frameworks */,
 				261EB86718DDB631009DDF78 /* UIKit.framework in Frameworks */,
 				261EB86318DDB630009DDF78 /* Foundation.framework in Frameworks */,
 				28822B437E5247E3BDE57F66 /* libPods.a in Frameworks */,
@@ -236,6 +258,7 @@
 				261EB86A18DDB631009DDF78 /* Spare */,
 				261EB88718DDB631009DDF78 /* SpareTests */,
 				261EB86118DDB630009DDF78 /* Frameworks */,
+				2666C2B81957CF04003752BF /* GoogleAnalytics */,
 				261EB86018DDB630009DDF78 /* Products */,
 				1D78CD279F1A45BD8D86373D /* Pods.xcconfig */,
 			);
@@ -253,6 +276,11 @@
 		261EB86118DDB630009DDF78 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2666C2C91957CFA1003752BF /* libsqlite3.dylib */,
+				2666C2C71957CF93003752BF /* libz.dylib */,
+				2666C2C31957CF7A003752BF /* AdSupport.framework */,
+				2666C2C41957CF7A003752BF /* SystemConfiguration.framework */,
+				2666C2C11957CF4F003752BF /* libGoogleAnalyticsServices.a */,
 				26D4C8F41946E624001B42DC /* Crashlytics.framework */,
 				26E4E0581937AF690096191A /* QuartzCore.framework */,
 				261EB86218DDB630009DDF78 /* Foundation.framework */,
@@ -372,6 +400,20 @@
 				262ABD0D18DEA1BF003C7C8B /* SPRIconFont.m */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		2666C2B81957CF04003752BF /* GoogleAnalytics */ = {
+			isa = PBXGroup;
+			children = (
+				2666C2B91957CF04003752BF /* GAI.h */,
+				2666C2BA1957CF04003752BF /* GAIDictionaryBuilder.h */,
+				2666C2BB1957CF04003752BF /* GAIFields.h */,
+				2666C2BC1957CF04003752BF /* GAILogger.h */,
+				2666C2BD1957CF04003752BF /* GAITrackedViewController.h */,
+				2666C2BE1957CF04003752BF /* GAITracker.h */,
+				2666C2BF1957CF04003752BF /* libGoogleAnalyticsServices.a */,
+			);
+			path = GoogleAnalytics;
 			sourceTree = "<group>";
 		};
 		267794FE18DDCB6F005C74BA /* Categories */ = {
@@ -758,6 +800,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Spare/Spare-Prefix.pch";
 				INFOPLIST_FILE = "Spare/Spare-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/GoogleAnalytics",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -779,6 +825,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Spare/Spare-Prefix.pch";
 				INFOPLIST_FILE = "Spare/Spare-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/GoogleAnalytics",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;

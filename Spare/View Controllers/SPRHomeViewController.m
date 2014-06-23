@@ -34,6 +34,11 @@
 // Categories
 #import "UIColor+HexColor.h"
 
+// Libraries
+#import "GAI.h"
+#import "GAIFields.h"
+#import "GAIDictionaryBuilder.h"
+
 static NSString * const kCellIdentifier = @"kCellIdentifier";
 
 @interface SPRHomeViewController () <UICollectionViewDataSource_Draggable,
@@ -61,7 +66,7 @@ SPRNewExpenseViewControllerDelegate>
 {
     [super viewDidLoad];
     
-    // Set up the bar button item.s
+    // Set up the bar button items.
     [self setupBarButtonItems];
     
     self.collectionView.draggable = YES;
@@ -70,6 +75,12 @@ SPRNewExpenseViewControllerDelegate>
     
     // By default, the active time frame for totals is daily.
     self.activeTimeFrame = SPRTimeFrameDay;
+    
+    // Google Analytics tracking.
+    id tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker set:kGAIScreenName
+           value:@"Home Screen"];
+    [tracker send:[[GAIDictionaryBuilder createAppView] build]];
 }
 
 - (void)viewWillAppear:(BOOL)animated
