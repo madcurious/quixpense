@@ -19,6 +19,9 @@
 #import "SPRCategoryPicker.h"
 #import "SPRDatePicker.h"
 
+// Libraries
+#import <Crashlytics/Crashlytics.h>
+
 typedef NS_ENUM(NSInteger, kRow)
 {
     kRowDescription = 0,
@@ -192,8 +195,14 @@ static const NSInteger kTextFieldTag = 1000;
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
+    [Crashlytics setIntValue:range.location forKey:@"range.location"];
+    [Crashlytics setIntValue:range.length forKey:@"range.length"];
+    [Crashlytics setObjectValue:string forKey:@"replacementString"];
+    
     SPRTextField *theTextField = (SPRTextField *)textField;
     SPRField *field = theTextField.field;
+    
+    [Crashlytics setObjectValue:field.name forKey:@"fieldName"];
     
     if (field == self.fields[kRowAmount]) {
         NSCharacterSet *invalidCharacterSet = [[NSCharacterSet characterSetWithCharactersInString:@"1234567890."] invertedSet];
@@ -203,7 +212,9 @@ static const NSInteger kTextFieldTag = 1000;
     }
     
     NSString *value = field.value ? field.value : @"";
+    [Crashlytics setObjectValue:value forKey:@"currentValue"];
     value = [value stringByReplacingCharactersInRange:range withString:string];
+    [Crashlytics setObjectValue:value forKey:@"newValue"];
     field.value = value;
     return YES;
 }

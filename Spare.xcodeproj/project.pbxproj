@@ -177,8 +177,6 @@
 		2688628518E339F900B8D167 /* SPRField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRField.m; sourceTree = "<group>"; };
 		26922D9D19443D6D00074638 /* SPRNSIndexPathTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRNSIndexPathTransformer.h; sourceTree = "<group>"; };
 		26922D9E19443D6D00074638 /* SPRNSIndexPathTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRNSIndexPathTransformer.m; sourceTree = "<group>"; };
-		26922DA0194441E100074638 /* SPRExpense.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SPRExpense.h; path = Spare/Objects/SPRExpense.h; sourceTree = "<group>"; };
-		26922DA1194441E100074638 /* SPRExpense.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SPRExpense.m; path = Spare/Objects/SPRExpense.m; sourceTree = "<group>"; };
 		26A9028E191DCF9000CEE065 /* SPREditExpenseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPREditExpenseViewController.h; sourceTree = "<group>"; };
 		26A9028F191DCF9000CEE065 /* SPREditExpenseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPREditExpenseViewController.m; sourceTree = "<group>"; };
 		26A90292191DD18500CEE065 /* SPRExpenseDescriptionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRExpenseDescriptionCell.h; sourceTree = "<group>"; };
@@ -253,8 +251,6 @@
 		261EB85618DDB630009DDF78 = {
 			isa = PBXGroup;
 			children = (
-				26922DA0194441E100074638 /* SPRExpense.h */,
-				26922DA1194441E100074638 /* SPRExpense.m */,
 				261EB86A18DDB631009DDF78 /* Spare */,
 				261EB88718DDB631009DDF78 /* SpareTests */,
 				261EB86118DDB630009DDF78 /* Frameworks */,
@@ -791,8 +787,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -805,7 +801,7 @@
 					"$(PROJECT_DIR)/GoogleAnalytics",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "612623F1-B0E5-4EE4-B655-2CC0C1ACEC60";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -816,8 +812,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -830,7 +826,7 @@
 					"$(PROJECT_DIR)/GoogleAnalytics",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "612623F1-B0E5-4EE4-B655-2CC0C1ACEC60";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
