@@ -73,6 +73,10 @@
 		2669468E1CC7711000A68424 /* Spare-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 266946551CC7711000A68424 /* Spare-Info.plist */; };
 		2669468F1CC7711000A68424 /* Spare.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 266946571CC7711000A68424 /* Spare.xcdatamodeld */; };
 		266946931CC77A1A00A68424 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266946921CC77A1A00A68424 /* AppDelegate.swift */; };
+		2669469B1CC77C5700A68424 /* RootVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2669469A1CC77C5700A68424 /* RootVC.swift */; };
+		266946A31CC77E7200A68424 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266946A21CC77E7200A68424 /* HomeVC.swift */; };
+		266946A71CC77EE900A68424 /* AddVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266946A61CC77EE900A68424 /* AddVC.swift */; };
+		266946A91CC77F0800A68424 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266946A81CC77F0800A68424 /* SettingsVC.swift */; };
 		26E4E0591937AF690096191A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E4E0581937AF690096191A /* QuartzCore.framework */; };
 		28822B437E5247E3BDE57F66 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F6196FFB0C5B41DEB0DB54BF /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -99,13 +103,6 @@
 		261EB88918DDB631009DDF78 /* SpareTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SpareTests-Info.plist"; sourceTree = "<group>"; };
 		261EB88B18DDB631009DDF78 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		261EB88D18DDB631009DDF78 /* SpareTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpareTests.m; sourceTree = "<group>"; };
-		2666C2B91957CF04003752BF /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
-		2666C2BA1957CF04003752BF /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIDictionaryBuilder.h; sourceTree = "<group>"; };
-		2666C2BB1957CF04003752BF /* GAIFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIFields.h; sourceTree = "<group>"; };
-		2666C2BC1957CF04003752BF /* GAILogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAILogger.h; sourceTree = "<group>"; };
-		2666C2BD1957CF04003752BF /* GAITrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITrackedViewController.h; sourceTree = "<group>"; };
-		2666C2BE1957CF04003752BF /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
-		2666C2BF1957CF04003752BF /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
 		2666C2C11957CF4F003752BF /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalyticsServices.a; path = GoogleAnalytics/libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
 		2666C2C31957CF7A003752BF /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		2666C2C41957CF7A003752BF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -207,6 +204,10 @@
 		266946581CC7711000A68424 /* Spare.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Spare.xcdatamodel; sourceTree = "<group>"; };
 		266946911CC77A1900A68424 /* Spare-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Spare-Bridging-Header.h"; sourceTree = "<group>"; };
 		266946921CC77A1A00A68424 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		2669469A1CC77C5700A68424 /* RootVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootVC.swift; sourceTree = "<group>"; };
+		266946A21CC77E7200A68424 /* HomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		266946A61CC77EE900A68424 /* AddVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddVC.swift; sourceTree = "<group>"; };
+		266946A81CC77F0800A68424 /* SettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		26D4C8F41946E624001B42DC /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		26E4E0581937AF690096191A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F6196FFB0C5B41DEB0DB54BF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -252,7 +253,6 @@
 				266946481CC7711000A68424 /* Supporting Files */,
 				261EB88718DDB631009DDF78 /* SpareTests */,
 				261EB86118DDB630009DDF78 /* Frameworks */,
-				2666C2B81957CF04003752BF /* GoogleAnalytics */,
 				261EB86018DDB630009DDF78 /* Products */,
 				1D78CD279F1A45BD8D86373D /* Pods.xcconfig */,
 			);
@@ -303,20 +303,6 @@
 				261EB88A18DDB631009DDF78 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		2666C2B81957CF04003752BF /* GoogleAnalytics */ = {
-			isa = PBXGroup;
-			children = (
-				2666C2B91957CF04003752BF /* GAI.h */,
-				2666C2BA1957CF04003752BF /* GAIDictionaryBuilder.h */,
-				2666C2BB1957CF04003752BF /* GAIFields.h */,
-				2666C2BC1957CF04003752BF /* GAILogger.h */,
-				2666C2BD1957CF04003752BF /* GAITrackedViewController.h */,
-				2666C2BE1957CF04003752BF /* GAITracker.h */,
-				2666C2BF1957CF04003752BF /* libGoogleAnalyticsServices.a */,
-			);
-			path = GoogleAnalytics;
 			sourceTree = "<group>";
 		};
 		266945ED1CC7711000A68424 /* __old */ = {
@@ -473,6 +459,7 @@
 		266946471CC7711000A68424 /* Spare */ = {
 			isa = PBXGroup;
 			children = (
+				266946941CC77BCF00A68424 /* Screens */,
 			);
 			path = Spare;
 			sourceTree = "<group>";
@@ -497,6 +484,49 @@
 				266946911CC77A1900A68424 /* Spare-Bridging-Header.h */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		266946941CC77BCF00A68424 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				266946A51CC77EDE00A68424 /* Settings */,
+				266946A41CC77ED600A68424 /* Add */,
+				266946A11CC77E6A00A68424 /* Home */,
+				266946971CC77C1F00A68424 /* Root */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		266946971CC77C1F00A68424 /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				2669469A1CC77C5700A68424 /* RootVC.swift */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
+		266946A11CC77E6A00A68424 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				266946A21CC77E7200A68424 /* HomeVC.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		266946A41CC77ED600A68424 /* Add */ = {
+			isa = PBXGroup;
+			children = (
+				266946A61CC77EE900A68424 /* AddVC.swift */,
+			);
+			path = Add;
+			sourceTree = "<group>";
+		};
+		266946A51CC77EDE00A68424 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				266946A81CC77F0800A68424 /* SettingsVC.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -652,6 +682,8 @@
 				266946611CC7711000A68424 /* UIView+SPR.m in Sources */,
 				2669465C1CC7711000A68424 /* NSFetchedResultsController+SPR.m in Sources */,
 				2669467C1CC7711000A68424 /* SPRColorChooserViewController.m in Sources */,
+				266946A71CC77EE900A68424 /* AddVC.swift in Sources */,
+				266946A31CC77E7200A68424 /* HomeVC.swift in Sources */,
 				266946771CC7711000A68424 /* SPRManagedDocument.m in Sources */,
 				2669466A1CC7711000A68424 /* SPRCategoryNameCell.m in Sources */,
 				2669465F1CC7711000A68424 /* NSString+SPR.m in Sources */,
@@ -669,6 +701,7 @@
 				266946631CC7711000A68424 /* SPRCategoryHeaderCell.m in Sources */,
 				266946661CC7711000A68424 /* SPRDatePicker.m in Sources */,
 				2669466F1CC7711000A68424 /* SPRFormCell.m in Sources */,
+				2669469B1CC77C5700A68424 /* RootVC.swift in Sources */,
 				266946801CC7711000A68424 /* SPRNewCategoryViewController.m in Sources */,
 				266946681CC7711000A68424 /* SPRTextField.m in Sources */,
 				266946711CC7711000A68424 /* SPRCategory.m in Sources */,
@@ -683,6 +716,7 @@
 				2669467D1CC7711000A68424 /* SPREditCategoryViewController.m in Sources */,
 				2669467A1CC7711000A68424 /* SPRIconFont.m in Sources */,
 				2669468F1CC7711000A68424 /* Spare.xcdatamodeld in Sources */,
+				266946A91CC77F0800A68424 /* SettingsVC.swift in Sources */,
 				266946761CC7711000A68424 /* SPRField.m in Sources */,
 				266946651CC7711000A68424 /* SPRColorChooserSectionHeader.m in Sources */,
 			);

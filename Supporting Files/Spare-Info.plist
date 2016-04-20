@@ -28,8 +28,6 @@
 	<array>
 		<string>spare-icons.ttf</string>
 	</array>
-	<key>UIMainStoryboardFile</key>
-	<string>iPhone</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
