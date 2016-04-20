@@ -1,13 +1,10 @@
 PODS:
-  - DraggableCollectionView (0.1)
-  - M13OrderedDictionary (1.0.2)
+  - BNRCoreDataStack (1.2.3)
 
 DEPENDENCIES:
-  - DraggableCollectionView
-  - M13OrderedDictionary
+  - BNRCoreDataStack
 
 SPEC CHECKSUMS:
-  DraggableCollectionView: bb1feb9e0c06d89c9de0645e951e6491003a2120
-  M13OrderedDictionary: a3adfce26e271ef03cf0d9cedc7d85a4f1ae5806
+  BNRCoreDataStack: 10abcb19d2a3f397950a06e9b0915f4e695a826b
 
-COCOAPODS: 0.33.1
+COCOAPODS: 0.39.0
