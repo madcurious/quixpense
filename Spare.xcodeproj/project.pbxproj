@@ -17,66 +17,62 @@
 		261EB88418DDB631009DDF78 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86818DDB631009DDF78 /* CoreData.framework */; };
 		261EB88C18DDB631009DDF78 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 261EB88A18DDB631009DDF78 /* InfoPlist.strings */; };
 		261EB88E18DDB631009DDF78 /* SpareTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 261EB88D18DDB631009DDF78 /* SpareTests.m */; };
-		2666C2C21957CF4F003752BF /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2666C2C11957CF4F003752BF /* libGoogleAnalyticsServices.a */; };
-		2666C2C51957CF7A003752BF /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2666C2C31957CF7A003752BF /* AdSupport.framework */; };
 		2666C2C61957CF7A003752BF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2666C2C41957CF7A003752BF /* SystemConfiguration.framework */; };
 		2666C2C81957CF93003752BF /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2666C2C71957CF93003752BF /* libz.dylib */; };
 		2666C2CA1957CFA1003752BF /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2666C2C91957CFA1003752BF /* libsqlite3.dylib */; };
-		266945B51CC76DDC00A68424 /* NSDate+SPR.m in Sources */ = {isa = PBXBuildFile; fileRef = 2669454D1CC76DDC00A68424 /* NSDate+SPR.m */; };
-		266945B61CC76DDC00A68424 /* NSFetchedResultsController+SPR.m in Sources */ = {isa = PBXBuildFile; fileRef = 2669454F1CC76DDC00A68424 /* NSFetchedResultsController+SPR.m */; };
-		266945B71CC76DDC00A68424 /* NSIndexPath+SPR.m in Sources */ = {isa = PBXBuildFile; fileRef = 266945511CC76DDC00A68424 /* NSIndexPath+SPR.m */; };
-		266945B81CC76DDC00A68424 /* NSNumber+SPR.m in Sources */ = {isa = PBXBuildFile; fileRef = 266945531CC76DDC00A68424 /* NSNumber+SPR.m */; };
-		266945B91CC76DDC00A68424 /* NSString+SPR.m in Sources */ = {isa = PBXBuildFile; fileRef = 266945551CC76DDC00A68424 /* NSString+SPR.m */; };
-		266945BA1CC76DDC00A68424 /* UIColor+HexColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 266945571CC76DDC00A68424 /* UIColor+HexColor.m */; };
-		266945BB1CC76DDC00A68424 /* UIView+SPR.m in Sources */ = {isa = PBXBuildFile; fileRef = 266945591CC76DDC00A68424 /* UIView+SPR.m */; };
-		266945BC1CC76DDC00A68424 /* SPRCategoryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2669455E1CC76DDC00A68424 /* SPRCategoryCollectionViewCell.m */; };
-		266945BD1CC76DDC00A68424 /* SPRCategoryHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 266945601CC76DDC00A68424 /* SPRCategoryHeaderCell.m */; };
-		266945BE1CC76DDC00A68424 /* SPRCategoryPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 266945621CC76DDC00A68424 /* SPRCategoryPicker.m */; };
-		266945BF1CC76DDC00A68424 /* SPRColorChooserSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 266945641CC76DDC00A68424 /* SPRColorChooserSectionHeader.m */; };
-		266945C01CC76DDC00A68424 /* SPRDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 266945661CC76DDC00A68424 /* SPRDatePicker.m */; };
-		266945C11CC76DDC00A68424 /* SPRExpenseSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 266945681CC76DDC00A68424 /* SPRExpenseSectionHeaderView.m */; };
-		266945C21CC76DDC00A68424 /* SPRTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 2669456A1CC76DDC00A68424 /* SPRTextField.m */; };
-		266945C31CC76DDC00A68424 /* SPRCategoryColorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2669456D1CC76DDC00A68424 /* SPRCategoryColorCell.m */; };
-		266945C41CC76DDC00A68424 /* SPRCategoryNameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2669456F1CC76DDC00A68424 /* SPRCategoryNameCell.m */; };
-		266945C51CC76DDC00A68424 /* SPRExpenseAmountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 266945711CC76DDC00A68424 /* SPRExpenseAmountCell.m */; };
-		266945C61CC76DDC00A68424 /* SPRExpenseCategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 266945731CC76DDC00A68424 /* SPRExpenseCategoryCell.m */; };
-		266945C71CC76DDC00A68424 /* SPRExpenseDateSpentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 266945751CC76DDC00A68424 /* SPRExpenseDateSpentCell.m */; };
-		266945C81CC76DDC00A68424 /* SPRExpenseDescriptionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 266945771CC76DDC00A68424 /* SPRExpenseDescriptionCell.m */; };
-		266945C91CC76DDC00A68424 /* SPRFormCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 266945791CC76DDC00A68424 /* SPRFormCell.m */; };
-		266945CA1CC76DDC00A68424 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2669457A1CC76DDC00A68424 /* Default-568h@2x.png */; };
-		266945CB1CC76DDC00A68424 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2669457B1CC76DDC00A68424 /* Default@2x.png */; };
-		266945CC1CC76DDC00A68424 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2669457C1CC76DDC00A68424 /* InfoPlist.strings */; };
-		266945CD1CC76DDC00A68424 /* Icon-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2669457E1CC76DDC00A68424 /* Icon-40@2x.png */; };
-		266945CE1CC76DDC00A68424 /* Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2669457F1CC76DDC00A68424 /* Icon-60@2x.png */; };
-		266945CF1CC76DDC00A68424 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 266945801CC76DDC00A68424 /* Icon-Small@2x.png */; };
-		266945D01CC76DDC00A68424 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 266945811CC76DDC00A68424 /* Icon@2x.png */; };
-		266945D11CC76DDC00A68424 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 266945821CC76DDC00A68424 /* Images.xcassets */; };
-		266945D21CC76DDC00A68424 /* iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 266945831CC76DDC00A68424 /* iPhone.storyboard */; };
-		266945D31CC76DDC00A68424 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 266945841CC76DDC00A68424 /* main.m */; };
-		266945D41CC76DDC00A68424 /* SPRCategory+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 266945871CC76DDC00A68424 /* SPRCategory+Extension.m */; };
-		266945D51CC76DDC00A68424 /* SPRCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 266945891CC76DDC00A68424 /* SPRCategory.m */; };
-		266945D61CC76DDC00A68424 /* SPRCategorySummary.m in Sources */ = {isa = PBXBuildFile; fileRef = 2669458B1CC76DDC00A68424 /* SPRCategorySummary.m */; };
-		266945D71CC76DDC00A68424 /* SPRExpense+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2669458D1CC76DDC00A68424 /* SPRExpense+Extension.m */; };
-		266945D81CC76DDC00A68424 /* SPRExpense.m in Sources */ = {isa = PBXBuildFile; fileRef = 2669458F1CC76DDC00A68424 /* SPRExpense.m */; };
-		266945D91CC76DDC00A68424 /* SPRExpenseSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 266945911CC76DDC00A68424 /* SPRExpenseSectionHeader.m */; };
-		266945DA1CC76DDC00A68424 /* SPRField.m in Sources */ = {isa = PBXBuildFile; fileRef = 266945931CC76DDC00A68424 /* SPRField.m */; };
-		266945DB1CC76DDC00A68424 /* SPRManagedDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 266945951CC76DDC00A68424 /* SPRManagedDocument.m */; };
-		266945DC1CC76DDC00A68424 /* SPRNSIndexPathTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 266945971CC76DDC00A68424 /* SPRNSIndexPathTransformer.m */; };
-		266945DD1CC76DDC00A68424 /* spare-icons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 266945981CC76DDC00A68424 /* spare-icons.ttf */; };
-		266945DE1CC76DDC00A68424 /* Spare-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 266945991CC76DDC00A68424 /* Spare-Info.plist */; };
-		266945DF1CC76DDC00A68424 /* Spare.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2669459B1CC76DDC00A68424 /* Spare.xcdatamodeld */; };
-		266945E01CC76DDC00A68424 /* SPRAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2669459E1CC76DDC00A68424 /* SPRAppDelegate.m */; };
-		266945E11CC76DDC00A68424 /* SPRFormComponents.m in Sources */ = {isa = PBXBuildFile; fileRef = 266945A11CC76DDC00A68424 /* SPRFormComponents.m */; };
-		266945E21CC76DDC00A68424 /* SPRIconFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 266945A31CC76DDC00A68424 /* SPRIconFont.m */; };
-		266945E31CC76DDC00A68424 /* SPRCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 266945A61CC76DDC00A68424 /* SPRCategoryViewController.m */; };
-		266945E41CC76DDC00A68424 /* SPRColorChooserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 266945A81CC76DDC00A68424 /* SPRColorChooserViewController.m */; };
-		266945E51CC76DDC00A68424 /* SPREditCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 266945AA1CC76DDC00A68424 /* SPREditCategoryViewController.m */; };
-		266945E61CC76DDC00A68424 /* SPREditExpenseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 266945AC1CC76DDC00A68424 /* SPREditExpenseViewController.m */; };
-		266945E71CC76DDC00A68424 /* SPRHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 266945AE1CC76DDC00A68424 /* SPRHomeViewController.m */; };
-		266945E81CC76DDC00A68424 /* SPRNewCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 266945B01CC76DDC00A68424 /* SPRNewCategoryViewController.m */; };
-		266945E91CC76DDC00A68424 /* SPRNewExpenseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 266945B21CC76DDC00A68424 /* SPRNewExpenseViewController.m */; };
-		266945EA1CC76DDC00A68424 /* SPRSetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 266945B41CC76DDC00A68424 /* SPRSetupViewController.m */; };
-		26D4C8F51946E624001B42DC /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26D4C8F41946E624001B42DC /* Crashlytics.framework */; };
+		2669465B1CC7711000A68424 /* NSDate+SPR.m in Sources */ = {isa = PBXBuildFile; fileRef = 266945F01CC7711000A68424 /* NSDate+SPR.m */; };
+		2669465C1CC7711000A68424 /* NSFetchedResultsController+SPR.m in Sources */ = {isa = PBXBuildFile; fileRef = 266945F21CC7711000A68424 /* NSFetchedResultsController+SPR.m */; };
+		2669465D1CC7711000A68424 /* NSIndexPath+SPR.m in Sources */ = {isa = PBXBuildFile; fileRef = 266945F41CC7711000A68424 /* NSIndexPath+SPR.m */; };
+		2669465E1CC7711000A68424 /* NSNumber+SPR.m in Sources */ = {isa = PBXBuildFile; fileRef = 266945F61CC7711000A68424 /* NSNumber+SPR.m */; };
+		2669465F1CC7711000A68424 /* NSString+SPR.m in Sources */ = {isa = PBXBuildFile; fileRef = 266945F81CC7711000A68424 /* NSString+SPR.m */; };
+		266946601CC7711000A68424 /* UIColor+HexColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 266945FA1CC7711000A68424 /* UIColor+HexColor.m */; };
+		266946611CC7711000A68424 /* UIView+SPR.m in Sources */ = {isa = PBXBuildFile; fileRef = 266945FC1CC7711000A68424 /* UIView+SPR.m */; };
+		266946621CC7711000A68424 /* SPRCategoryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 266946011CC7711000A68424 /* SPRCategoryCollectionViewCell.m */; };
+		266946631CC7711000A68424 /* SPRCategoryHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 266946031CC7711000A68424 /* SPRCategoryHeaderCell.m */; };
+		266946641CC7711000A68424 /* SPRCategoryPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 266946051CC7711000A68424 /* SPRCategoryPicker.m */; };
+		266946651CC7711000A68424 /* SPRColorChooserSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 266946071CC7711000A68424 /* SPRColorChooserSectionHeader.m */; };
+		266946661CC7711000A68424 /* SPRDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 266946091CC7711000A68424 /* SPRDatePicker.m */; };
+		266946671CC7711000A68424 /* SPRExpenseSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2669460B1CC7711000A68424 /* SPRExpenseSectionHeaderView.m */; };
+		266946681CC7711000A68424 /* SPRTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 2669460D1CC7711000A68424 /* SPRTextField.m */; };
+		266946691CC7711000A68424 /* SPRCategoryColorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 266946101CC7711000A68424 /* SPRCategoryColorCell.m */; };
+		2669466A1CC7711000A68424 /* SPRCategoryNameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 266946121CC7711000A68424 /* SPRCategoryNameCell.m */; };
+		2669466B1CC7711000A68424 /* SPRExpenseAmountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 266946141CC7711000A68424 /* SPRExpenseAmountCell.m */; };
+		2669466C1CC7711000A68424 /* SPRExpenseCategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 266946161CC7711000A68424 /* SPRExpenseCategoryCell.m */; };
+		2669466D1CC7711000A68424 /* SPRExpenseDateSpentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 266946181CC7711000A68424 /* SPRExpenseDateSpentCell.m */; };
+		2669466E1CC7711000A68424 /* SPRExpenseDescriptionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2669461A1CC7711000A68424 /* SPRExpenseDescriptionCell.m */; };
+		2669466F1CC7711000A68424 /* SPRFormCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2669461C1CC7711000A68424 /* SPRFormCell.m */; };
+		266946701CC7711000A68424 /* SPRCategory+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2669461F1CC7711000A68424 /* SPRCategory+Extension.m */; };
+		266946711CC7711000A68424 /* SPRCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 266946211CC7711000A68424 /* SPRCategory.m */; };
+		266946721CC7711000A68424 /* SPRCategorySummary.m in Sources */ = {isa = PBXBuildFile; fileRef = 266946231CC7711000A68424 /* SPRCategorySummary.m */; };
+		266946731CC7711000A68424 /* SPRExpense+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 266946251CC7711000A68424 /* SPRExpense+Extension.m */; };
+		266946741CC7711000A68424 /* SPRExpense.m in Sources */ = {isa = PBXBuildFile; fileRef = 266946271CC7711000A68424 /* SPRExpense.m */; };
+		266946751CC7711000A68424 /* SPRExpenseSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 266946291CC7711000A68424 /* SPRExpenseSectionHeader.m */; };
+		266946761CC7711000A68424 /* SPRField.m in Sources */ = {isa = PBXBuildFile; fileRef = 2669462B1CC7711000A68424 /* SPRField.m */; };
+		266946771CC7711000A68424 /* SPRManagedDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 2669462D1CC7711000A68424 /* SPRManagedDocument.m */; };
+		266946781CC7711000A68424 /* SPRNSIndexPathTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2669462F1CC7711000A68424 /* SPRNSIndexPathTransformer.m */; };
+		266946791CC7711000A68424 /* SPRFormComponents.m in Sources */ = {isa = PBXBuildFile; fileRef = 266946321CC7711000A68424 /* SPRFormComponents.m */; };
+		2669467A1CC7711000A68424 /* SPRIconFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 266946341CC7711000A68424 /* SPRIconFont.m */; };
+		2669467B1CC7711000A68424 /* SPRCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 266946371CC7711000A68424 /* SPRCategoryViewController.m */; };
+		2669467C1CC7711000A68424 /* SPRColorChooserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 266946391CC7711000A68424 /* SPRColorChooserViewController.m */; };
+		2669467D1CC7711000A68424 /* SPREditCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2669463B1CC7711000A68424 /* SPREditCategoryViewController.m */; };
+		2669467E1CC7711000A68424 /* SPREditExpenseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2669463D1CC7711000A68424 /* SPREditExpenseViewController.m */; };
+		2669467F1CC7711000A68424 /* SPRHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2669463F1CC7711000A68424 /* SPRHomeViewController.m */; };
+		266946801CC7711000A68424 /* SPRNewCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 266946411CC7711000A68424 /* SPRNewCategoryViewController.m */; };
+		266946811CC7711000A68424 /* SPRNewExpenseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 266946431CC7711000A68424 /* SPRNewExpenseViewController.m */; };
+		266946821CC7711000A68424 /* SPRSetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 266946451CC7711000A68424 /* SPRSetupViewController.m */; };
+		266946831CC7711000A68424 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 266946491CC7711000A68424 /* Default-568h@2x.png */; };
+		266946841CC7711000A68424 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2669464A1CC7711000A68424 /* Default@2x.png */; };
+		266946851CC7711000A68424 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2669464B1CC7711000A68424 /* InfoPlist.strings */; };
+		266946861CC7711000A68424 /* Icon-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2669464D1CC7711000A68424 /* Icon-40@2x.png */; };
+		266946871CC7711000A68424 /* Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2669464E1CC7711000A68424 /* Icon-60@2x.png */; };
+		266946881CC7711000A68424 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2669464F1CC7711000A68424 /* Icon-Small@2x.png */; };
+		266946891CC7711000A68424 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 266946501CC7711000A68424 /* Icon@2x.png */; };
+		2669468A1CC7711000A68424 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 266946511CC7711000A68424 /* Images.xcassets */; };
+		2669468B1CC7711000A68424 /* iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 266946521CC7711000A68424 /* iPhone.storyboard */; };
+		2669468D1CC7711000A68424 /* spare-icons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 266946541CC7711000A68424 /* spare-icons.ttf */; };
+		2669468E1CC7711000A68424 /* Spare-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 266946551CC7711000A68424 /* Spare-Info.plist */; };
+		2669468F1CC7711000A68424 /* Spare.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 266946571CC7711000A68424 /* Spare.xcdatamodeld */; };
+		266946931CC77A1A00A68424 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266946921CC77A1A00A68424 /* AppDelegate.swift */; };
 		26E4E0591937AF690096191A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E4E0581937AF690096191A /* QuartzCore.framework */; };
 		28822B437E5247E3BDE57F66 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F6196FFB0C5B41DEB0DB54BF /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -115,103 +111,102 @@
 		2666C2C41957CF7A003752BF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		2666C2C71957CF93003752BF /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		2666C2C91957CFA1003752BF /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
-		2669454C1CC76DDC00A68424 /* NSDate+SPR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+SPR.h"; sourceTree = "<group>"; };
-		2669454D1CC76DDC00A68424 /* NSDate+SPR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+SPR.m"; sourceTree = "<group>"; };
-		2669454E1CC76DDC00A68424 /* NSFetchedResultsController+SPR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFetchedResultsController+SPR.h"; sourceTree = "<group>"; };
-		2669454F1CC76DDC00A68424 /* NSFetchedResultsController+SPR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFetchedResultsController+SPR.m"; sourceTree = "<group>"; };
-		266945501CC76DDC00A68424 /* NSIndexPath+SPR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSIndexPath+SPR.h"; sourceTree = "<group>"; };
-		266945511CC76DDC00A68424 /* NSIndexPath+SPR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSIndexPath+SPR.m"; sourceTree = "<group>"; };
-		266945521CC76DDC00A68424 /* NSNumber+SPR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber+SPR.h"; sourceTree = "<group>"; };
-		266945531CC76DDC00A68424 /* NSNumber+SPR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+SPR.m"; sourceTree = "<group>"; };
-		266945541CC76DDC00A68424 /* NSString+SPR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SPR.h"; sourceTree = "<group>"; };
-		266945551CC76DDC00A68424 /* NSString+SPR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SPR.m"; sourceTree = "<group>"; };
-		266945561CC76DDC00A68424 /* UIColor+HexColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HexColor.h"; sourceTree = "<group>"; };
-		266945571CC76DDC00A68424 /* UIColor+HexColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HexColor.m"; sourceTree = "<group>"; };
-		266945581CC76DDC00A68424 /* UIView+SPR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SPR.h"; sourceTree = "<group>"; };
-		266945591CC76DDC00A68424 /* UIView+SPR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SPR.m"; sourceTree = "<group>"; };
-		2669455B1CC76DDC00A68424 /* SPRTimeFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRTimeFrame.h; sourceTree = "<group>"; };
-		2669455D1CC76DDC00A68424 /* SPRCategoryCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRCategoryCollectionViewCell.h; sourceTree = "<group>"; };
-		2669455E1CC76DDC00A68424 /* SPRCategoryCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRCategoryCollectionViewCell.m; sourceTree = "<group>"; };
-		2669455F1CC76DDC00A68424 /* SPRCategoryHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRCategoryHeaderCell.h; sourceTree = "<group>"; };
-		266945601CC76DDC00A68424 /* SPRCategoryHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRCategoryHeaderCell.m; sourceTree = "<group>"; };
-		266945611CC76DDC00A68424 /* SPRCategoryPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRCategoryPicker.h; sourceTree = "<group>"; };
-		266945621CC76DDC00A68424 /* SPRCategoryPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRCategoryPicker.m; sourceTree = "<group>"; };
-		266945631CC76DDC00A68424 /* SPRColorChooserSectionHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRColorChooserSectionHeader.h; sourceTree = "<group>"; };
-		266945641CC76DDC00A68424 /* SPRColorChooserSectionHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRColorChooserSectionHeader.m; sourceTree = "<group>"; };
-		266945651CC76DDC00A68424 /* SPRDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRDatePicker.h; sourceTree = "<group>"; };
-		266945661CC76DDC00A68424 /* SPRDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRDatePicker.m; sourceTree = "<group>"; };
-		266945671CC76DDC00A68424 /* SPRExpenseSectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRExpenseSectionHeaderView.h; sourceTree = "<group>"; };
-		266945681CC76DDC00A68424 /* SPRExpenseSectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRExpenseSectionHeaderView.m; sourceTree = "<group>"; };
-		266945691CC76DDC00A68424 /* SPRTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRTextField.h; sourceTree = "<group>"; };
-		2669456A1CC76DDC00A68424 /* SPRTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRTextField.m; sourceTree = "<group>"; };
-		2669456C1CC76DDC00A68424 /* SPRCategoryColorCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRCategoryColorCell.h; sourceTree = "<group>"; };
-		2669456D1CC76DDC00A68424 /* SPRCategoryColorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRCategoryColorCell.m; sourceTree = "<group>"; };
-		2669456E1CC76DDC00A68424 /* SPRCategoryNameCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRCategoryNameCell.h; sourceTree = "<group>"; };
-		2669456F1CC76DDC00A68424 /* SPRCategoryNameCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRCategoryNameCell.m; sourceTree = "<group>"; };
-		266945701CC76DDC00A68424 /* SPRExpenseAmountCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRExpenseAmountCell.h; sourceTree = "<group>"; };
-		266945711CC76DDC00A68424 /* SPRExpenseAmountCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRExpenseAmountCell.m; sourceTree = "<group>"; };
-		266945721CC76DDC00A68424 /* SPRExpenseCategoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRExpenseCategoryCell.h; sourceTree = "<group>"; };
-		266945731CC76DDC00A68424 /* SPRExpenseCategoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRExpenseCategoryCell.m; sourceTree = "<group>"; };
-		266945741CC76DDC00A68424 /* SPRExpenseDateSpentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRExpenseDateSpentCell.h; sourceTree = "<group>"; };
-		266945751CC76DDC00A68424 /* SPRExpenseDateSpentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRExpenseDateSpentCell.m; sourceTree = "<group>"; };
-		266945761CC76DDC00A68424 /* SPRExpenseDescriptionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRExpenseDescriptionCell.h; sourceTree = "<group>"; };
-		266945771CC76DDC00A68424 /* SPRExpenseDescriptionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRExpenseDescriptionCell.m; sourceTree = "<group>"; };
-		266945781CC76DDC00A68424 /* SPRFormCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRFormCell.h; sourceTree = "<group>"; };
-		266945791CC76DDC00A68424 /* SPRFormCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRFormCell.m; sourceTree = "<group>"; };
-		2669457A1CC76DDC00A68424 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		2669457B1CC76DDC00A68424 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		2669457D1CC76DDC00A68424 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		2669457E1CC76DDC00A68424 /* Icon-40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-40@2x.png"; sourceTree = "<group>"; };
-		2669457F1CC76DDC00A68424 /* Icon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60@2x.png"; sourceTree = "<group>"; };
-		266945801CC76DDC00A68424 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
-		266945811CC76DDC00A68424 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
-		266945821CC76DDC00A68424 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		266945831CC76DDC00A68424 /* iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPhone.storyboard; sourceTree = "<group>"; };
-		266945841CC76DDC00A68424 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		266945861CC76DDC00A68424 /* SPRCategory+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SPRCategory+Extension.h"; sourceTree = "<group>"; };
-		266945871CC76DDC00A68424 /* SPRCategory+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SPRCategory+Extension.m"; sourceTree = "<group>"; };
-		266945881CC76DDC00A68424 /* SPRCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRCategory.h; sourceTree = "<group>"; };
-		266945891CC76DDC00A68424 /* SPRCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRCategory.m; sourceTree = "<group>"; };
-		2669458A1CC76DDC00A68424 /* SPRCategorySummary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRCategorySummary.h; sourceTree = "<group>"; };
-		2669458B1CC76DDC00A68424 /* SPRCategorySummary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRCategorySummary.m; sourceTree = "<group>"; };
-		2669458C1CC76DDC00A68424 /* SPRExpense+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SPRExpense+Extension.h"; sourceTree = "<group>"; };
-		2669458D1CC76DDC00A68424 /* SPRExpense+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SPRExpense+Extension.m"; sourceTree = "<group>"; };
-		2669458E1CC76DDC00A68424 /* SPRExpense.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRExpense.h; sourceTree = "<group>"; };
-		2669458F1CC76DDC00A68424 /* SPRExpense.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRExpense.m; sourceTree = "<group>"; };
-		266945901CC76DDC00A68424 /* SPRExpenseSectionHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRExpenseSectionHeader.h; sourceTree = "<group>"; };
-		266945911CC76DDC00A68424 /* SPRExpenseSectionHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRExpenseSectionHeader.m; sourceTree = "<group>"; };
-		266945921CC76DDC00A68424 /* SPRField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRField.h; sourceTree = "<group>"; };
-		266945931CC76DDC00A68424 /* SPRField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRField.m; sourceTree = "<group>"; };
-		266945941CC76DDC00A68424 /* SPRManagedDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRManagedDocument.h; sourceTree = "<group>"; };
-		266945951CC76DDC00A68424 /* SPRManagedDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRManagedDocument.m; sourceTree = "<group>"; };
-		266945961CC76DDC00A68424 /* SPRNSIndexPathTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRNSIndexPathTransformer.h; sourceTree = "<group>"; };
-		266945971CC76DDC00A68424 /* SPRNSIndexPathTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRNSIndexPathTransformer.m; sourceTree = "<group>"; };
-		266945981CC76DDC00A68424 /* spare-icons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "spare-icons.ttf"; sourceTree = "<group>"; };
-		266945991CC76DDC00A68424 /* Spare-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Spare-Info.plist"; sourceTree = "<group>"; };
-		2669459A1CC76DDC00A68424 /* Spare-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Spare-Prefix.pch"; sourceTree = "<group>"; };
-		2669459C1CC76DDC00A68424 /* Spare.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Spare.xcdatamodel; sourceTree = "<group>"; };
-		2669459D1CC76DDC00A68424 /* SPRAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRAppDelegate.h; sourceTree = "<group>"; };
-		2669459E1CC76DDC00A68424 /* SPRAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRAppDelegate.m; sourceTree = "<group>"; };
-		266945A01CC76DDC00A68424 /* SPRFormComponents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRFormComponents.h; sourceTree = "<group>"; };
-		266945A11CC76DDC00A68424 /* SPRFormComponents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRFormComponents.m; sourceTree = "<group>"; };
-		266945A21CC76DDC00A68424 /* SPRIconFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRIconFont.h; sourceTree = "<group>"; };
-		266945A31CC76DDC00A68424 /* SPRIconFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRIconFont.m; sourceTree = "<group>"; };
-		266945A51CC76DDC00A68424 /* SPRCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRCategoryViewController.h; sourceTree = "<group>"; };
-		266945A61CC76DDC00A68424 /* SPRCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRCategoryViewController.m; sourceTree = "<group>"; };
-		266945A71CC76DDC00A68424 /* SPRColorChooserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRColorChooserViewController.h; sourceTree = "<group>"; };
-		266945A81CC76DDC00A68424 /* SPRColorChooserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRColorChooserViewController.m; sourceTree = "<group>"; };
-		266945A91CC76DDC00A68424 /* SPREditCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPREditCategoryViewController.h; sourceTree = "<group>"; };
-		266945AA1CC76DDC00A68424 /* SPREditCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPREditCategoryViewController.m; sourceTree = "<group>"; };
-		266945AB1CC76DDC00A68424 /* SPREditExpenseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPREditExpenseViewController.h; sourceTree = "<group>"; };
-		266945AC1CC76DDC00A68424 /* SPREditExpenseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPREditExpenseViewController.m; sourceTree = "<group>"; };
-		266945AD1CC76DDC00A68424 /* SPRHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRHomeViewController.h; sourceTree = "<group>"; };
-		266945AE1CC76DDC00A68424 /* SPRHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRHomeViewController.m; sourceTree = "<group>"; };
-		266945AF1CC76DDC00A68424 /* SPRNewCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRNewCategoryViewController.h; sourceTree = "<group>"; };
-		266945B01CC76DDC00A68424 /* SPRNewCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRNewCategoryViewController.m; sourceTree = "<group>"; };
-		266945B11CC76DDC00A68424 /* SPRNewExpenseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRNewExpenseViewController.h; sourceTree = "<group>"; };
-		266945B21CC76DDC00A68424 /* SPRNewExpenseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRNewExpenseViewController.m; sourceTree = "<group>"; };
-		266945B31CC76DDC00A68424 /* SPRSetupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRSetupViewController.h; sourceTree = "<group>"; };
-		266945B41CC76DDC00A68424 /* SPRSetupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRSetupViewController.m; sourceTree = "<group>"; };
+		266945EF1CC7711000A68424 /* NSDate+SPR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+SPR.h"; sourceTree = "<group>"; };
+		266945F01CC7711000A68424 /* NSDate+SPR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+SPR.m"; sourceTree = "<group>"; };
+		266945F11CC7711000A68424 /* NSFetchedResultsController+SPR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFetchedResultsController+SPR.h"; sourceTree = "<group>"; };
+		266945F21CC7711000A68424 /* NSFetchedResultsController+SPR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFetchedResultsController+SPR.m"; sourceTree = "<group>"; };
+		266945F31CC7711000A68424 /* NSIndexPath+SPR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSIndexPath+SPR.h"; sourceTree = "<group>"; };
+		266945F41CC7711000A68424 /* NSIndexPath+SPR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSIndexPath+SPR.m"; sourceTree = "<group>"; };
+		266945F51CC7711000A68424 /* NSNumber+SPR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber+SPR.h"; sourceTree = "<group>"; };
+		266945F61CC7711000A68424 /* NSNumber+SPR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+SPR.m"; sourceTree = "<group>"; };
+		266945F71CC7711000A68424 /* NSString+SPR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SPR.h"; sourceTree = "<group>"; };
+		266945F81CC7711000A68424 /* NSString+SPR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SPR.m"; sourceTree = "<group>"; };
+		266945F91CC7711000A68424 /* UIColor+HexColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HexColor.h"; sourceTree = "<group>"; };
+		266945FA1CC7711000A68424 /* UIColor+HexColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HexColor.m"; sourceTree = "<group>"; };
+		266945FB1CC7711000A68424 /* UIView+SPR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SPR.h"; sourceTree = "<group>"; };
+		266945FC1CC7711000A68424 /* UIView+SPR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SPR.m"; sourceTree = "<group>"; };
+		266945FE1CC7711000A68424 /* SPRTimeFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRTimeFrame.h; sourceTree = "<group>"; };
+		266946001CC7711000A68424 /* SPRCategoryCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRCategoryCollectionViewCell.h; sourceTree = "<group>"; };
+		266946011CC7711000A68424 /* SPRCategoryCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRCategoryCollectionViewCell.m; sourceTree = "<group>"; };
+		266946021CC7711000A68424 /* SPRCategoryHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRCategoryHeaderCell.h; sourceTree = "<group>"; };
+		266946031CC7711000A68424 /* SPRCategoryHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRCategoryHeaderCell.m; sourceTree = "<group>"; };
+		266946041CC7711000A68424 /* SPRCategoryPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRCategoryPicker.h; sourceTree = "<group>"; };
+		266946051CC7711000A68424 /* SPRCategoryPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRCategoryPicker.m; sourceTree = "<group>"; };
+		266946061CC7711000A68424 /* SPRColorChooserSectionHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRColorChooserSectionHeader.h; sourceTree = "<group>"; };
+		266946071CC7711000A68424 /* SPRColorChooserSectionHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRColorChooserSectionHeader.m; sourceTree = "<group>"; };
+		266946081CC7711000A68424 /* SPRDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRDatePicker.h; sourceTree = "<group>"; };
+		266946091CC7711000A68424 /* SPRDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRDatePicker.m; sourceTree = "<group>"; };
+		2669460A1CC7711000A68424 /* SPRExpenseSectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRExpenseSectionHeaderView.h; sourceTree = "<group>"; };
+		2669460B1CC7711000A68424 /* SPRExpenseSectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRExpenseSectionHeaderView.m; sourceTree = "<group>"; };
+		2669460C1CC7711000A68424 /* SPRTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRTextField.h; sourceTree = "<group>"; };
+		2669460D1CC7711000A68424 /* SPRTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRTextField.m; sourceTree = "<group>"; };
+		2669460F1CC7711000A68424 /* SPRCategoryColorCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRCategoryColorCell.h; sourceTree = "<group>"; };
+		266946101CC7711000A68424 /* SPRCategoryColorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRCategoryColorCell.m; sourceTree = "<group>"; };
+		266946111CC7711000A68424 /* SPRCategoryNameCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRCategoryNameCell.h; sourceTree = "<group>"; };
+		266946121CC7711000A68424 /* SPRCategoryNameCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRCategoryNameCell.m; sourceTree = "<group>"; };
+		266946131CC7711000A68424 /* SPRExpenseAmountCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRExpenseAmountCell.h; sourceTree = "<group>"; };
+		266946141CC7711000A68424 /* SPRExpenseAmountCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRExpenseAmountCell.m; sourceTree = "<group>"; };
+		266946151CC7711000A68424 /* SPRExpenseCategoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRExpenseCategoryCell.h; sourceTree = "<group>"; };
+		266946161CC7711000A68424 /* SPRExpenseCategoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRExpenseCategoryCell.m; sourceTree = "<group>"; };
+		266946171CC7711000A68424 /* SPRExpenseDateSpentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRExpenseDateSpentCell.h; sourceTree = "<group>"; };
+		266946181CC7711000A68424 /* SPRExpenseDateSpentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRExpenseDateSpentCell.m; sourceTree = "<group>"; };
+		266946191CC7711000A68424 /* SPRExpenseDescriptionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRExpenseDescriptionCell.h; sourceTree = "<group>"; };
+		2669461A1CC7711000A68424 /* SPRExpenseDescriptionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRExpenseDescriptionCell.m; sourceTree = "<group>"; };
+		2669461B1CC7711000A68424 /* SPRFormCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRFormCell.h; sourceTree = "<group>"; };
+		2669461C1CC7711000A68424 /* SPRFormCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRFormCell.m; sourceTree = "<group>"; };
+		2669461E1CC7711000A68424 /* SPRCategory+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SPRCategory+Extension.h"; sourceTree = "<group>"; };
+		2669461F1CC7711000A68424 /* SPRCategory+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SPRCategory+Extension.m"; sourceTree = "<group>"; };
+		266946201CC7711000A68424 /* SPRCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRCategory.h; sourceTree = "<group>"; };
+		266946211CC7711000A68424 /* SPRCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRCategory.m; sourceTree = "<group>"; };
+		266946221CC7711000A68424 /* SPRCategorySummary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRCategorySummary.h; sourceTree = "<group>"; };
+		266946231CC7711000A68424 /* SPRCategorySummary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRCategorySummary.m; sourceTree = "<group>"; };
+		266946241CC7711000A68424 /* SPRExpense+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SPRExpense+Extension.h"; sourceTree = "<group>"; };
+		266946251CC7711000A68424 /* SPRExpense+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SPRExpense+Extension.m"; sourceTree = "<group>"; };
+		266946261CC7711000A68424 /* SPRExpense.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRExpense.h; sourceTree = "<group>"; };
+		266946271CC7711000A68424 /* SPRExpense.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRExpense.m; sourceTree = "<group>"; };
+		266946281CC7711000A68424 /* SPRExpenseSectionHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRExpenseSectionHeader.h; sourceTree = "<group>"; };
+		266946291CC7711000A68424 /* SPRExpenseSectionHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRExpenseSectionHeader.m; sourceTree = "<group>"; };
+		2669462A1CC7711000A68424 /* SPRField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRField.h; sourceTree = "<group>"; };
+		2669462B1CC7711000A68424 /* SPRField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRField.m; sourceTree = "<group>"; };
+		2669462C1CC7711000A68424 /* SPRManagedDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRManagedDocument.h; sourceTree = "<group>"; };
+		2669462D1CC7711000A68424 /* SPRManagedDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRManagedDocument.m; sourceTree = "<group>"; };
+		2669462E1CC7711000A68424 /* SPRNSIndexPathTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRNSIndexPathTransformer.h; sourceTree = "<group>"; };
+		2669462F1CC7711000A68424 /* SPRNSIndexPathTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRNSIndexPathTransformer.m; sourceTree = "<group>"; };
+		266946311CC7711000A68424 /* SPRFormComponents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRFormComponents.h; sourceTree = "<group>"; };
+		266946321CC7711000A68424 /* SPRFormComponents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRFormComponents.m; sourceTree = "<group>"; };
+		266946331CC7711000A68424 /* SPRIconFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRIconFont.h; sourceTree = "<group>"; };
+		266946341CC7711000A68424 /* SPRIconFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRIconFont.m; sourceTree = "<group>"; };
+		266946361CC7711000A68424 /* SPRCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRCategoryViewController.h; sourceTree = "<group>"; };
+		266946371CC7711000A68424 /* SPRCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRCategoryViewController.m; sourceTree = "<group>"; };
+		266946381CC7711000A68424 /* SPRColorChooserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRColorChooserViewController.h; sourceTree = "<group>"; };
+		266946391CC7711000A68424 /* SPRColorChooserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRColorChooserViewController.m; sourceTree = "<group>"; };
+		2669463A1CC7711000A68424 /* SPREditCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPREditCategoryViewController.h; sourceTree = "<group>"; };
+		2669463B1CC7711000A68424 /* SPREditCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPREditCategoryViewController.m; sourceTree = "<group>"; };
+		2669463C1CC7711000A68424 /* SPREditExpenseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPREditExpenseViewController.h; sourceTree = "<group>"; };
+		2669463D1CC7711000A68424 /* SPREditExpenseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPREditExpenseViewController.m; sourceTree = "<group>"; };
+		2669463E1CC7711000A68424 /* SPRHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRHomeViewController.h; sourceTree = "<group>"; };
+		2669463F1CC7711000A68424 /* SPRHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRHomeViewController.m; sourceTree = "<group>"; };
+		266946401CC7711000A68424 /* SPRNewCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRNewCategoryViewController.h; sourceTree = "<group>"; };
+		266946411CC7711000A68424 /* SPRNewCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRNewCategoryViewController.m; sourceTree = "<group>"; };
+		266946421CC7711000A68424 /* SPRNewExpenseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRNewExpenseViewController.h; sourceTree = "<group>"; };
+		266946431CC7711000A68424 /* SPRNewExpenseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRNewExpenseViewController.m; sourceTree = "<group>"; };
+		266946441CC7711000A68424 /* SPRSetupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRSetupViewController.h; sourceTree = "<group>"; };
+		266946451CC7711000A68424 /* SPRSetupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRSetupViewController.m; sourceTree = "<group>"; };
+		266946491CC7711000A68424 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		2669464A1CC7711000A68424 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		2669464C1CC7711000A68424 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2669464D1CC7711000A68424 /* Icon-40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-40@2x.png"; sourceTree = "<group>"; };
+		2669464E1CC7711000A68424 /* Icon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60@2x.png"; sourceTree = "<group>"; };
+		2669464F1CC7711000A68424 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
+		266946501CC7711000A68424 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		266946511CC7711000A68424 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		266946521CC7711000A68424 /* iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPhone.storyboard; sourceTree = "<group>"; };
+		266946541CC7711000A68424 /* spare-icons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "spare-icons.ttf"; sourceTree = "<group>"; };
+		266946551CC7711000A68424 /* Spare-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Spare-Info.plist"; sourceTree = "<group>"; };
+		266946561CC7711000A68424 /* Spare-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Spare-Prefix.pch"; sourceTree = "<group>"; };
+		266946581CC7711000A68424 /* Spare.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Spare.xcdatamodel; sourceTree = "<group>"; };
+		266946911CC77A1900A68424 /* Spare-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Spare-Bridging-Header.h"; sourceTree = "<group>"; };
+		266946921CC77A1A00A68424 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		26D4C8F41946E624001B42DC /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		26E4E0581937AF690096191A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F6196FFB0C5B41DEB0DB54BF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -225,15 +220,12 @@
 				2666C2CA1957CFA1003752BF /* libsqlite3.dylib in Frameworks */,
 				2666C2C81957CF93003752BF /* libz.dylib in Frameworks */,
 				261EB86518DDB630009DDF78 /* CoreGraphics.framework in Frameworks */,
-				2666C2C51957CF7A003752BF /* AdSupport.framework in Frameworks */,
 				261EB86918DDB631009DDF78 /* CoreData.framework in Frameworks */,
-				2666C2C21957CF4F003752BF /* libGoogleAnalyticsServices.a in Frameworks */,
 				26E4E0591937AF690096191A /* QuartzCore.framework in Frameworks */,
 				2666C2C61957CF7A003752BF /* SystemConfiguration.framework in Frameworks */,
 				261EB86718DDB631009DDF78 /* UIKit.framework in Frameworks */,
 				261EB86318DDB630009DDF78 /* Foundation.framework in Frameworks */,
 				28822B437E5247E3BDE57F66 /* libPods.a in Frameworks */,
-				26D4C8F51946E624001B42DC /* Crashlytics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,9 +246,10 @@
 		261EB85618DDB630009DDF78 = {
 			isa = PBXGroup;
 			children = (
-				266945EB1CC76E2000A68424 /* Spare */,
-				266945EC1CC76E3700A68424 /* Libraries */,
-				2669454A1CC76DDC00A68424 /* OLD */,
+				266945ED1CC7711000A68424 /* __old */,
+				266946461CC7711000A68424 /* Libraries */,
+				266946471CC7711000A68424 /* Spare */,
+				266946481CC7711000A68424 /* Supporting Files */,
 				261EB88718DDB631009DDF78 /* SpareTests */,
 				261EB86118DDB630009DDF78 /* Frameworks */,
 				2666C2B81957CF04003752BF /* GoogleAnalytics */,
@@ -326,178 +319,184 @@
 			path = GoogleAnalytics;
 			sourceTree = "<group>";
 		};
-		2669454A1CC76DDC00A68424 /* OLD */ = {
+		266945ED1CC7711000A68424 /* __old */ = {
 			isa = PBXGroup;
 			children = (
-				2669454B1CC76DDC00A68424 /* Categories */,
-				2669455A1CC76DDC00A68424 /* Constants */,
-				2669455C1CC76DDC00A68424 /* Custom Views */,
-				2669457A1CC76DDC00A68424 /* Default-568h@2x.png */,
-				2669457B1CC76DDC00A68424 /* Default@2x.png */,
-				2669457C1CC76DDC00A68424 /* InfoPlist.strings */,
-				2669457E1CC76DDC00A68424 /* Icon-40@2x.png */,
-				2669457F1CC76DDC00A68424 /* Icon-60@2x.png */,
-				266945801CC76DDC00A68424 /* Icon-Small@2x.png */,
-				266945811CC76DDC00A68424 /* Icon@2x.png */,
-				266945821CC76DDC00A68424 /* Images.xcassets */,
-				266945831CC76DDC00A68424 /* iPhone.storyboard */,
-				266945841CC76DDC00A68424 /* main.m */,
-				266945851CC76DDC00A68424 /* Objects */,
-				266945981CC76DDC00A68424 /* spare-icons.ttf */,
-				266945991CC76DDC00A68424 /* Spare-Info.plist */,
-				2669459A1CC76DDC00A68424 /* Spare-Prefix.pch */,
-				2669459B1CC76DDC00A68424 /* Spare.xcdatamodeld */,
-				2669459D1CC76DDC00A68424 /* SPRAppDelegate.h */,
-				2669459E1CC76DDC00A68424 /* SPRAppDelegate.m */,
-				2669459F1CC76DDC00A68424 /* Utilities */,
-				266945A41CC76DDC00A68424 /* View Controllers */,
+				266945EE1CC7711000A68424 /* Categories */,
+				266945FD1CC7711000A68424 /* Constants */,
+				266945FF1CC7711000A68424 /* Custom Views */,
+				2669461D1CC7711000A68424 /* Objects */,
+				266946301CC7711000A68424 /* Utilities */,
+				266946351CC7711000A68424 /* View Controllers */,
 			);
-			path = OLD;
+			path = __old;
 			sourceTree = "<group>";
 		};
-		2669454B1CC76DDC00A68424 /* Categories */ = {
+		266945EE1CC7711000A68424 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				2669454C1CC76DDC00A68424 /* NSDate+SPR.h */,
-				2669454D1CC76DDC00A68424 /* NSDate+SPR.m */,
-				2669454E1CC76DDC00A68424 /* NSFetchedResultsController+SPR.h */,
-				2669454F1CC76DDC00A68424 /* NSFetchedResultsController+SPR.m */,
-				266945501CC76DDC00A68424 /* NSIndexPath+SPR.h */,
-				266945511CC76DDC00A68424 /* NSIndexPath+SPR.m */,
-				266945521CC76DDC00A68424 /* NSNumber+SPR.h */,
-				266945531CC76DDC00A68424 /* NSNumber+SPR.m */,
-				266945541CC76DDC00A68424 /* NSString+SPR.h */,
-				266945551CC76DDC00A68424 /* NSString+SPR.m */,
-				266945561CC76DDC00A68424 /* UIColor+HexColor.h */,
-				266945571CC76DDC00A68424 /* UIColor+HexColor.m */,
-				266945581CC76DDC00A68424 /* UIView+SPR.h */,
-				266945591CC76DDC00A68424 /* UIView+SPR.m */,
+				266945EF1CC7711000A68424 /* NSDate+SPR.h */,
+				266945F01CC7711000A68424 /* NSDate+SPR.m */,
+				266945F11CC7711000A68424 /* NSFetchedResultsController+SPR.h */,
+				266945F21CC7711000A68424 /* NSFetchedResultsController+SPR.m */,
+				266945F31CC7711000A68424 /* NSIndexPath+SPR.h */,
+				266945F41CC7711000A68424 /* NSIndexPath+SPR.m */,
+				266945F51CC7711000A68424 /* NSNumber+SPR.h */,
+				266945F61CC7711000A68424 /* NSNumber+SPR.m */,
+				266945F71CC7711000A68424 /* NSString+SPR.h */,
+				266945F81CC7711000A68424 /* NSString+SPR.m */,
+				266945F91CC7711000A68424 /* UIColor+HexColor.h */,
+				266945FA1CC7711000A68424 /* UIColor+HexColor.m */,
+				266945FB1CC7711000A68424 /* UIView+SPR.h */,
+				266945FC1CC7711000A68424 /* UIView+SPR.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
 		};
-		2669455A1CC76DDC00A68424 /* Constants */ = {
+		266945FD1CC7711000A68424 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
-				2669455B1CC76DDC00A68424 /* SPRTimeFrame.h */,
+				266945FE1CC7711000A68424 /* SPRTimeFrame.h */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
 		};
-		2669455C1CC76DDC00A68424 /* Custom Views */ = {
+		266945FF1CC7711000A68424 /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
-				2669455D1CC76DDC00A68424 /* SPRCategoryCollectionViewCell.h */,
-				2669455E1CC76DDC00A68424 /* SPRCategoryCollectionViewCell.m */,
-				2669455F1CC76DDC00A68424 /* SPRCategoryHeaderCell.h */,
-				266945601CC76DDC00A68424 /* SPRCategoryHeaderCell.m */,
-				266945611CC76DDC00A68424 /* SPRCategoryPicker.h */,
-				266945621CC76DDC00A68424 /* SPRCategoryPicker.m */,
-				266945631CC76DDC00A68424 /* SPRColorChooserSectionHeader.h */,
-				266945641CC76DDC00A68424 /* SPRColorChooserSectionHeader.m */,
-				266945651CC76DDC00A68424 /* SPRDatePicker.h */,
-				266945661CC76DDC00A68424 /* SPRDatePicker.m */,
-				266945671CC76DDC00A68424 /* SPRExpenseSectionHeaderView.h */,
-				266945681CC76DDC00A68424 /* SPRExpenseSectionHeaderView.m */,
-				266945691CC76DDC00A68424 /* SPRTextField.h */,
-				2669456A1CC76DDC00A68424 /* SPRTextField.m */,
-				2669456B1CC76DDC00A68424 /* Table View Cells */,
+				266946001CC7711000A68424 /* SPRCategoryCollectionViewCell.h */,
+				266946011CC7711000A68424 /* SPRCategoryCollectionViewCell.m */,
+				266946021CC7711000A68424 /* SPRCategoryHeaderCell.h */,
+				266946031CC7711000A68424 /* SPRCategoryHeaderCell.m */,
+				266946041CC7711000A68424 /* SPRCategoryPicker.h */,
+				266946051CC7711000A68424 /* SPRCategoryPicker.m */,
+				266946061CC7711000A68424 /* SPRColorChooserSectionHeader.h */,
+				266946071CC7711000A68424 /* SPRColorChooserSectionHeader.m */,
+				266946081CC7711000A68424 /* SPRDatePicker.h */,
+				266946091CC7711000A68424 /* SPRDatePicker.m */,
+				2669460A1CC7711000A68424 /* SPRExpenseSectionHeaderView.h */,
+				2669460B1CC7711000A68424 /* SPRExpenseSectionHeaderView.m */,
+				2669460C1CC7711000A68424 /* SPRTextField.h */,
+				2669460D1CC7711000A68424 /* SPRTextField.m */,
+				2669460E1CC7711000A68424 /* Table View Cells */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
 		};
-		2669456B1CC76DDC00A68424 /* Table View Cells */ = {
+		2669460E1CC7711000A68424 /* Table View Cells */ = {
 			isa = PBXGroup;
 			children = (
-				2669456C1CC76DDC00A68424 /* SPRCategoryColorCell.h */,
-				2669456D1CC76DDC00A68424 /* SPRCategoryColorCell.m */,
-				2669456E1CC76DDC00A68424 /* SPRCategoryNameCell.h */,
-				2669456F1CC76DDC00A68424 /* SPRCategoryNameCell.m */,
-				266945701CC76DDC00A68424 /* SPRExpenseAmountCell.h */,
-				266945711CC76DDC00A68424 /* SPRExpenseAmountCell.m */,
-				266945721CC76DDC00A68424 /* SPRExpenseCategoryCell.h */,
-				266945731CC76DDC00A68424 /* SPRExpenseCategoryCell.m */,
-				266945741CC76DDC00A68424 /* SPRExpenseDateSpentCell.h */,
-				266945751CC76DDC00A68424 /* SPRExpenseDateSpentCell.m */,
-				266945761CC76DDC00A68424 /* SPRExpenseDescriptionCell.h */,
-				266945771CC76DDC00A68424 /* SPRExpenseDescriptionCell.m */,
-				266945781CC76DDC00A68424 /* SPRFormCell.h */,
-				266945791CC76DDC00A68424 /* SPRFormCell.m */,
+				2669460F1CC7711000A68424 /* SPRCategoryColorCell.h */,
+				266946101CC7711000A68424 /* SPRCategoryColorCell.m */,
+				266946111CC7711000A68424 /* SPRCategoryNameCell.h */,
+				266946121CC7711000A68424 /* SPRCategoryNameCell.m */,
+				266946131CC7711000A68424 /* SPRExpenseAmountCell.h */,
+				266946141CC7711000A68424 /* SPRExpenseAmountCell.m */,
+				266946151CC7711000A68424 /* SPRExpenseCategoryCell.h */,
+				266946161CC7711000A68424 /* SPRExpenseCategoryCell.m */,
+				266946171CC7711000A68424 /* SPRExpenseDateSpentCell.h */,
+				266946181CC7711000A68424 /* SPRExpenseDateSpentCell.m */,
+				266946191CC7711000A68424 /* SPRExpenseDescriptionCell.h */,
+				2669461A1CC7711000A68424 /* SPRExpenseDescriptionCell.m */,
+				2669461B1CC7711000A68424 /* SPRFormCell.h */,
+				2669461C1CC7711000A68424 /* SPRFormCell.m */,
 			);
 			path = "Table View Cells";
 			sourceTree = "<group>";
 		};
-		266945851CC76DDC00A68424 /* Objects */ = {
+		2669461D1CC7711000A68424 /* Objects */ = {
 			isa = PBXGroup;
 			children = (
-				266945861CC76DDC00A68424 /* SPRCategory+Extension.h */,
-				266945871CC76DDC00A68424 /* SPRCategory+Extension.m */,
-				266945881CC76DDC00A68424 /* SPRCategory.h */,
-				266945891CC76DDC00A68424 /* SPRCategory.m */,
-				2669458A1CC76DDC00A68424 /* SPRCategorySummary.h */,
-				2669458B1CC76DDC00A68424 /* SPRCategorySummary.m */,
-				2669458C1CC76DDC00A68424 /* SPRExpense+Extension.h */,
-				2669458D1CC76DDC00A68424 /* SPRExpense+Extension.m */,
-				2669458E1CC76DDC00A68424 /* SPRExpense.h */,
-				2669458F1CC76DDC00A68424 /* SPRExpense.m */,
-				266945901CC76DDC00A68424 /* SPRExpenseSectionHeader.h */,
-				266945911CC76DDC00A68424 /* SPRExpenseSectionHeader.m */,
-				266945921CC76DDC00A68424 /* SPRField.h */,
-				266945931CC76DDC00A68424 /* SPRField.m */,
-				266945941CC76DDC00A68424 /* SPRManagedDocument.h */,
-				266945951CC76DDC00A68424 /* SPRManagedDocument.m */,
-				266945961CC76DDC00A68424 /* SPRNSIndexPathTransformer.h */,
-				266945971CC76DDC00A68424 /* SPRNSIndexPathTransformer.m */,
+				2669461E1CC7711000A68424 /* SPRCategory+Extension.h */,
+				2669461F1CC7711000A68424 /* SPRCategory+Extension.m */,
+				266946201CC7711000A68424 /* SPRCategory.h */,
+				266946211CC7711000A68424 /* SPRCategory.m */,
+				266946221CC7711000A68424 /* SPRCategorySummary.h */,
+				266946231CC7711000A68424 /* SPRCategorySummary.m */,
+				266946241CC7711000A68424 /* SPRExpense+Extension.h */,
+				266946251CC7711000A68424 /* SPRExpense+Extension.m */,
+				266946261CC7711000A68424 /* SPRExpense.h */,
+				266946271CC7711000A68424 /* SPRExpense.m */,
+				266946281CC7711000A68424 /* SPRExpenseSectionHeader.h */,
+				266946291CC7711000A68424 /* SPRExpenseSectionHeader.m */,
+				2669462A1CC7711000A68424 /* SPRField.h */,
+				2669462B1CC7711000A68424 /* SPRField.m */,
+				2669462C1CC7711000A68424 /* SPRManagedDocument.h */,
+				2669462D1CC7711000A68424 /* SPRManagedDocument.m */,
+				2669462E1CC7711000A68424 /* SPRNSIndexPathTransformer.h */,
+				2669462F1CC7711000A68424 /* SPRNSIndexPathTransformer.m */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
 		};
-		2669459F1CC76DDC00A68424 /* Utilities */ = {
+		266946301CC7711000A68424 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				266945A01CC76DDC00A68424 /* SPRFormComponents.h */,
-				266945A11CC76DDC00A68424 /* SPRFormComponents.m */,
-				266945A21CC76DDC00A68424 /* SPRIconFont.h */,
-				266945A31CC76DDC00A68424 /* SPRIconFont.m */,
+				266946311CC7711000A68424 /* SPRFormComponents.h */,
+				266946321CC7711000A68424 /* SPRFormComponents.m */,
+				266946331CC7711000A68424 /* SPRIconFont.h */,
+				266946341CC7711000A68424 /* SPRIconFont.m */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
 		};
-		266945A41CC76DDC00A68424 /* View Controllers */ = {
+		266946351CC7711000A68424 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				266945A51CC76DDC00A68424 /* SPRCategoryViewController.h */,
-				266945A61CC76DDC00A68424 /* SPRCategoryViewController.m */,
-				266945A71CC76DDC00A68424 /* SPRColorChooserViewController.h */,
-				266945A81CC76DDC00A68424 /* SPRColorChooserViewController.m */,
-				266945A91CC76DDC00A68424 /* SPREditCategoryViewController.h */,
-				266945AA1CC76DDC00A68424 /* SPREditCategoryViewController.m */,
-				266945AB1CC76DDC00A68424 /* SPREditExpenseViewController.h */,
-				266945AC1CC76DDC00A68424 /* SPREditExpenseViewController.m */,
-				266945AD1CC76DDC00A68424 /* SPRHomeViewController.h */,
-				266945AE1CC76DDC00A68424 /* SPRHomeViewController.m */,
-				266945AF1CC76DDC00A68424 /* SPRNewCategoryViewController.h */,
-				266945B01CC76DDC00A68424 /* SPRNewCategoryViewController.m */,
-				266945B11CC76DDC00A68424 /* SPRNewExpenseViewController.h */,
-				266945B21CC76DDC00A68424 /* SPRNewExpenseViewController.m */,
-				266945B31CC76DDC00A68424 /* SPRSetupViewController.h */,
-				266945B41CC76DDC00A68424 /* SPRSetupViewController.m */,
+				266946361CC7711000A68424 /* SPRCategoryViewController.h */,
+				266946371CC7711000A68424 /* SPRCategoryViewController.m */,
+				266946381CC7711000A68424 /* SPRColorChooserViewController.h */,
+				266946391CC7711000A68424 /* SPRColorChooserViewController.m */,
+				2669463A1CC7711000A68424 /* SPREditCategoryViewController.h */,
+				2669463B1CC7711000A68424 /* SPREditCategoryViewController.m */,
+				2669463C1CC7711000A68424 /* SPREditExpenseViewController.h */,
+				2669463D1CC7711000A68424 /* SPREditExpenseViewController.m */,
+				2669463E1CC7711000A68424 /* SPRHomeViewController.h */,
+				2669463F1CC7711000A68424 /* SPRHomeViewController.m */,
+				266946401CC7711000A68424 /* SPRNewCategoryViewController.h */,
+				266946411CC7711000A68424 /* SPRNewCategoryViewController.m */,
+				266946421CC7711000A68424 /* SPRNewExpenseViewController.h */,
+				266946431CC7711000A68424 /* SPRNewExpenseViewController.m */,
+				266946441CC7711000A68424 /* SPRSetupViewController.h */,
+				266946451CC7711000A68424 /* SPRSetupViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
 		};
-		266945EB1CC76E2000A68424 /* Spare */ = {
+		266946461CC7711000A68424 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Libraries;
+			sourceTree = "<group>";
+		};
+		266946471CC7711000A68424 /* Spare */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = Spare;
 			sourceTree = "<group>";
 		};
-		266945EC1CC76E3700A68424 /* Libraries */ = {
+		266946481CC7711000A68424 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				266946491CC7711000A68424 /* Default-568h@2x.png */,
+				2669464A1CC7711000A68424 /* Default@2x.png */,
+				2669464B1CC7711000A68424 /* InfoPlist.strings */,
+				2669464D1CC7711000A68424 /* Icon-40@2x.png */,
+				2669464E1CC7711000A68424 /* Icon-60@2x.png */,
+				2669464F1CC7711000A68424 /* Icon-Small@2x.png */,
+				266946501CC7711000A68424 /* Icon@2x.png */,
+				266946511CC7711000A68424 /* Images.xcassets */,
+				266946521CC7711000A68424 /* iPhone.storyboard */,
+				266946541CC7711000A68424 /* spare-icons.ttf */,
+				266946551CC7711000A68424 /* Spare-Info.plist */,
+				266946561CC7711000A68424 /* Spare-Prefix.pch */,
+				266946571CC7711000A68424 /* Spare.xcdatamodeld */,
+				266946921CC77A1A00A68424 /* AppDelegate.swift */,
+				266946911CC77A1900A68424 /* Spare-Bridging-Header.h */,
 			);
-			path = Libraries;
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -512,7 +511,6 @@
 				261EB85C18DDB630009DDF78 /* Frameworks */,
 				261EB85D18DDB630009DDF78 /* Resources */,
 				D50A65DD683E419BAE237FE7 /* Copy Pods Resources */,
-				26D4C8F31946E5AF001B42DC /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -548,6 +546,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = SPR;
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Matt Quiros";
 				TargetAttributes = {
@@ -582,17 +581,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				266945CB1CC76DDC00A68424 /* Default@2x.png in Resources */,
-				266945D21CC76DDC00A68424 /* iPhone.storyboard in Resources */,
-				266945D11CC76DDC00A68424 /* Images.xcassets in Resources */,
-				266945CE1CC76DDC00A68424 /* Icon-60@2x.png in Resources */,
-				266945D01CC76DDC00A68424 /* Icon@2x.png in Resources */,
-				266945CD1CC76DDC00A68424 /* Icon-40@2x.png in Resources */,
-				266945CF1CC76DDC00A68424 /* Icon-Small@2x.png in Resources */,
-				266945CC1CC76DDC00A68424 /* InfoPlist.strings in Resources */,
-				266945DE1CC76DDC00A68424 /* Spare-Info.plist in Resources */,
-				266945CA1CC76DDC00A68424 /* Default-568h@2x.png in Resources */,
-				266945DD1CC76DDC00A68424 /* spare-icons.ttf in Resources */,
+				266946841CC7711000A68424 /* Default@2x.png in Resources */,
+				2669468B1CC7711000A68424 /* iPhone.storyboard in Resources */,
+				2669468A1CC7711000A68424 /* Images.xcassets in Resources */,
+				266946871CC7711000A68424 /* Icon-60@2x.png in Resources */,
+				266946891CC7711000A68424 /* Icon@2x.png in Resources */,
+				266946861CC7711000A68424 /* Icon-40@2x.png in Resources */,
+				266946881CC7711000A68424 /* Icon-Small@2x.png in Resources */,
+				266946851CC7711000A68424 /* InfoPlist.strings in Resources */,
+				2669468E1CC7711000A68424 /* Spare-Info.plist in Resources */,
+				266946831CC7711000A68424 /* Default-568h@2x.png in Resources */,
+				2669468D1CC7711000A68424 /* spare-icons.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -607,19 +606,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		26D4C8F31946E5AF001B42DC /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "./Crashlytics.framework/run 5777ab02ad26fe0af3227a87ff1a25c1314bab82 7263d85aaedce46d808fc300c69ac1242cd98890e51763da44fdacd7129eafcc";
-		};
 		99DF9AC0C8D8411EB8E3F8AF /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -657,49 +643,48 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				266945DA1CC76DDC00A68424 /* SPRField.m in Sources */,
-				266945B71CC76DDC00A68424 /* NSIndexPath+SPR.m in Sources */,
-				266945BE1CC76DDC00A68424 /* SPRCategoryPicker.m in Sources */,
-				266945BB1CC76DDC00A68424 /* UIView+SPR.m in Sources */,
-				266945D51CC76DDC00A68424 /* SPRCategory.m in Sources */,
-				266945DF1CC76DDC00A68424 /* Spare.xcdatamodeld in Sources */,
-				266945E81CC76DDC00A68424 /* SPRNewCategoryViewController.m in Sources */,
-				266945B61CC76DDC00A68424 /* NSFetchedResultsController+SPR.m in Sources */,
-				266945C41CC76DDC00A68424 /* SPRCategoryNameCell.m in Sources */,
-				266945E31CC76DDC00A68424 /* SPRCategoryViewController.m in Sources */,
-				266945D41CC76DDC00A68424 /* SPRCategory+Extension.m in Sources */,
-				266945B91CC76DDC00A68424 /* NSString+SPR.m in Sources */,
-				266945C61CC76DDC00A68424 /* SPRExpenseCategoryCell.m in Sources */,
-				266945C11CC76DDC00A68424 /* SPRExpenseSectionHeaderView.m in Sources */,
-				266945D71CC76DDC00A68424 /* SPRExpense+Extension.m in Sources */,
-				266945D81CC76DDC00A68424 /* SPRExpense.m in Sources */,
-				266945BC1CC76DDC00A68424 /* SPRCategoryCollectionViewCell.m in Sources */,
-				266945E51CC76DDC00A68424 /* SPREditCategoryViewController.m in Sources */,
-				266945C31CC76DDC00A68424 /* SPRCategoryColorCell.m in Sources */,
-				266945BD1CC76DDC00A68424 /* SPRCategoryHeaderCell.m in Sources */,
-				266945E01CC76DDC00A68424 /* SPRAppDelegate.m in Sources */,
-				266945D91CC76DDC00A68424 /* SPRExpenseSectionHeader.m in Sources */,
-				266945C01CC76DDC00A68424 /* SPRDatePicker.m in Sources */,
-				266945DB1CC76DDC00A68424 /* SPRManagedDocument.m in Sources */,
-				266945E11CC76DDC00A68424 /* SPRFormComponents.m in Sources */,
-				266945C91CC76DDC00A68424 /* SPRFormCell.m in Sources */,
-				266945C21CC76DDC00A68424 /* SPRTextField.m in Sources */,
-				266945B51CC76DDC00A68424 /* NSDate+SPR.m in Sources */,
-				266945C71CC76DDC00A68424 /* SPRExpenseDateSpentCell.m in Sources */,
-				266945C81CC76DDC00A68424 /* SPRExpenseDescriptionCell.m in Sources */,
-				266945C51CC76DDC00A68424 /* SPRExpenseAmountCell.m in Sources */,
-				266945EA1CC76DDC00A68424 /* SPRSetupViewController.m in Sources */,
-				266945D61CC76DDC00A68424 /* SPRCategorySummary.m in Sources */,
-				266945E91CC76DDC00A68424 /* SPRNewExpenseViewController.m in Sources */,
-				266945E71CC76DDC00A68424 /* SPRHomeViewController.m in Sources */,
-				266945E61CC76DDC00A68424 /* SPREditExpenseViewController.m in Sources */,
-				266945DC1CC76DDC00A68424 /* SPRNSIndexPathTransformer.m in Sources */,
-				266945B81CC76DDC00A68424 /* NSNumber+SPR.m in Sources */,
-				266945BA1CC76DDC00A68424 /* UIColor+HexColor.m in Sources */,
-				266945D31CC76DDC00A68424 /* main.m in Sources */,
-				266945E21CC76DDC00A68424 /* SPRIconFont.m in Sources */,
-				266945E41CC76DDC00A68424 /* SPRColorChooserViewController.m in Sources */,
-				266945BF1CC76DDC00A68424 /* SPRColorChooserSectionHeader.m in Sources */,
+				266946931CC77A1A00A68424 /* AppDelegate.swift in Sources */,
+				266946821CC7711000A68424 /* SPRSetupViewController.m in Sources */,
+				2669465D1CC7711000A68424 /* NSIndexPath+SPR.m in Sources */,
+				266946701CC7711000A68424 /* SPRCategory+Extension.m in Sources */,
+				266946731CC7711000A68424 /* SPRExpense+Extension.m in Sources */,
+				266946641CC7711000A68424 /* SPRCategoryPicker.m in Sources */,
+				266946611CC7711000A68424 /* UIView+SPR.m in Sources */,
+				2669465C1CC7711000A68424 /* NSFetchedResultsController+SPR.m in Sources */,
+				2669467C1CC7711000A68424 /* SPRColorChooserViewController.m in Sources */,
+				266946771CC7711000A68424 /* SPRManagedDocument.m in Sources */,
+				2669466A1CC7711000A68424 /* SPRCategoryNameCell.m in Sources */,
+				2669465F1CC7711000A68424 /* NSString+SPR.m in Sources */,
+				2669466C1CC7711000A68424 /* SPRExpenseCategoryCell.m in Sources */,
+				266946781CC7711000A68424 /* SPRNSIndexPathTransformer.m in Sources */,
+				266946721CC7711000A68424 /* SPRCategorySummary.m in Sources */,
+				266946671CC7711000A68424 /* SPRExpenseSectionHeaderView.m in Sources */,
+				266946621CC7711000A68424 /* SPRCategoryCollectionViewCell.m in Sources */,
+				2669467B1CC7711000A68424 /* SPRCategoryViewController.m in Sources */,
+				266946751CC7711000A68424 /* SPRExpenseSectionHeader.m in Sources */,
+				266946811CC7711000A68424 /* SPRNewExpenseViewController.m in Sources */,
+				266946691CC7711000A68424 /* SPRCategoryColorCell.m in Sources */,
+				266946791CC7711000A68424 /* SPRFormComponents.m in Sources */,
+				2669467E1CC7711000A68424 /* SPREditExpenseViewController.m in Sources */,
+				266946631CC7711000A68424 /* SPRCategoryHeaderCell.m in Sources */,
+				266946661CC7711000A68424 /* SPRDatePicker.m in Sources */,
+				2669466F1CC7711000A68424 /* SPRFormCell.m in Sources */,
+				266946801CC7711000A68424 /* SPRNewCategoryViewController.m in Sources */,
+				266946681CC7711000A68424 /* SPRTextField.m in Sources */,
+				266946711CC7711000A68424 /* SPRCategory.m in Sources */,
+				2669465B1CC7711000A68424 /* NSDate+SPR.m in Sources */,
+				2669466D1CC7711000A68424 /* SPRExpenseDateSpentCell.m in Sources */,
+				2669466E1CC7711000A68424 /* SPRExpenseDescriptionCell.m in Sources */,
+				2669466B1CC7711000A68424 /* SPRExpenseAmountCell.m in Sources */,
+				2669467F1CC7711000A68424 /* SPRHomeViewController.m in Sources */,
+				2669465E1CC7711000A68424 /* NSNumber+SPR.m in Sources */,
+				266946601CC7711000A68424 /* UIColor+HexColor.m in Sources */,
+				266946741CC7711000A68424 /* SPRExpense.m in Sources */,
+				2669467D1CC7711000A68424 /* SPREditCategoryViewController.m in Sources */,
+				2669467A1CC7711000A68424 /* SPRIconFont.m in Sources */,
+				2669468F1CC7711000A68424 /* Spare.xcdatamodeld in Sources */,
+				266946761CC7711000A68424 /* SPRField.m in Sources */,
+				266946651CC7711000A68424 /* SPRColorChooserSectionHeader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -730,10 +715,10 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		2669457C1CC76DDC00A68424 /* InfoPlist.strings */ = {
+		2669464B1CC7711000A68424 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				2669457D1CC76DDC00A68424 /* en */,
+				2669464C1CC7711000A68424 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -773,7 +758,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -805,7 +790,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -817,21 +802,23 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Matthew Quiros (RG26WNB3AF)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Matthew Quiros (RG26WNB3AF)";
+				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Spare/Spare-Prefix.pch";
-				INFOPLIST_FILE = "Spare/Spare-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/GoogleAnalytics",
-				);
+				GCC_PREFIX_HEADER = "Supporting Files/Spare-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/Supporting Files/Spare-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Supporting Files/Spare-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -842,21 +829,22 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Matthew Quiros (RG26WNB3AF)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Matthew Quiros (RG26WNB3AF)";
+				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Spare/Spare-Prefix.pch";
-				INFOPLIST_FILE = "Spare/Spare-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/GoogleAnalytics",
-				);
+				GCC_PREFIX_HEADER = "Supporting Files/Spare-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/Supporting Files/Spare-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Supporting Files/Spare-Bridging-Header.h";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -934,12 +922,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		2669459B1CC76DDC00A68424 /* Spare.xcdatamodeld */ = {
+		266946571CC7711000A68424 /* Spare.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				2669459C1CC76DDC00A68424 /* Spare.xcdatamodel */,
+				266946581CC7711000A68424 /* Spare.xcdatamodel */,
 			);
-			currentVersion = 2669459C1CC76DDC00A68424 /* Spare.xcdatamodel */;
+			currentVersion = 266946581CC7711000A68424 /* Spare.xcdatamodel */;
 			path = Spare.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
