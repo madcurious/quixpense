@@ -37,6 +37,7 @@
 		266946A31CC77E7200A68424 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266946A21CC77E7200A68424 /* HomeVC.swift */; };
 		266946A71CC77EE900A68424 /* AddVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266946A61CC77EE900A68424 /* AddVC.swift */; };
 		266946A91CC77F0800A68424 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266946A81CC77F0800A68424 /* SettingsVC.swift */; };
+		266946AC1CC786EC00A68424 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266946AB1CC786EC00A68424 /* App.swift */; };
 		26E4E0591937AF690096191A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E4E0581937AF690096191A /* QuartzCore.framework */; };
 		C5207A739D770B38693548B5 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59C2B0311ED5D0556A5A2FEF /* Pods.framework */; };
 /* End PBXBuildFile section */
@@ -85,6 +86,7 @@
 		266946A21CC77E7200A68424 /* HomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		266946A61CC77EE900A68424 /* AddVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddVC.swift; sourceTree = "<group>"; };
 		266946A81CC77F0800A68424 /* SettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
+		266946AB1CC786EC00A68424 /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		26D4C8F41946E624001B42DC /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		26E4E0581937AF690096191A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		59C2B0311ED5D0556A5A2FEF /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -193,6 +195,7 @@
 		266946471CC7711000A68424 /* Spare */ = {
 			isa = PBXGroup;
 			children = (
+				266946AA1CC786E300A68424 /* Utils */,
 				266946941CC77BCF00A68424 /* Screens */,
 			);
 			path = Spare;
@@ -260,6 +263,14 @@
 				266946A81CC77F0800A68424 /* SettingsVC.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		266946AA1CC786E300A68424 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				266946AB1CC786EC00A68424 /* App.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		45046EEF584696AF9C6D4354 /* Pods */ = {
@@ -433,6 +444,7 @@
 			files = (
 				266946931CC77A1A00A68424 /* AppDelegate.swift in Sources */,
 				266946A71CC77EE900A68424 /* AddVC.swift in Sources */,
+				266946AC1CC786EC00A68424 /* App.swift in Sources */,
 				266946A31CC77E7200A68424 /* HomeVC.swift in Sources */,
 				2669469B1CC77C5700A68424 /* RootVC.swift in Sources */,
 				2669468F1CC7711000A68424 /* Spare.xcdatamodeld in Sources */,
