@@ -30,7 +30,7 @@ class App {
                 fatalError(error.description)
                 
             default:
-                fatalError()
+                fatalError("Unknown error occurred instantiating the Core Data stack.")
             }
         }
     }

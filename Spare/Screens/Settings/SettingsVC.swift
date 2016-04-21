@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SettingsVC: UIViewController {
+class SettingsVC: BaseVC {
     
     init() {
         super.init(nibName: nil, bundle: nil)

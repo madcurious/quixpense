@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddVC: UIViewController {
+class AddVC: BaseVC {
     
     init() {
         super.init(nibName: nil, bundle: nil)

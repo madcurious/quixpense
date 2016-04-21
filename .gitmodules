@@ -1,0 +1,3 @@
+[submodule "Mold"]
+	path = Mold
+	url = https://github.com/mattquiros/Mold.git

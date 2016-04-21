@@ -7,19 +7,26 @@
 //
 
 import UIKit
+import Mold
 
 class RootVC: UITabBarController {
     
     init() {
         super.init(nibName: nil, bundle: nil)
         
-        self.viewControllers = [HomeVC(),
-                                AddVC(),
-                                SettingsVC()]
+        self.viewControllers = [HomeVC(), AddVC(), SettingsVC()]
+        self.tabBar.translucent = false
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        if let navController = self.navigationController {
+            navController.setNavigationBarHidden(true, animated: true)
+        }
     }
     
 }

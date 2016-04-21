@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		260024021CC7E38C00EB2026 /* Mold.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 260024011CC7E38C00EB2026 /* Mold.framework */; };
+		260024031CC7E38C00EB2026 /* Mold.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 260024011CC7E38C00EB2026 /* Mold.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		260024101CC7E5F300EB2026 /* AddVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260024071CC7E5F300EB2026 /* AddVC.swift */; };
+		260024111CC7E5F300EB2026 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260024091CC7E5F300EB2026 /* HomeVC.swift */; };
+		260024141CC7E5F300EB2026 /* RootVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2600240D1CC7E5F300EB2026 /* RootVC.swift */; };
+		260024151CC7E5F300EB2026 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2600240F1CC7E5F300EB2026 /* SettingsVC.swift */; };
+		2600241D1CC7E6B500EB2026 /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2600241C1CC7E6B500EB2026 /* BaseVC.swift */; };
+		260024221CC882C400EB2026 /* __HVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260024201CC882C400EB2026 /* __HVCView.swift */; };
+		260024231CC882C400EB2026 /* __HVCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 260024211CC882C400EB2026 /* __HVCView.xib */; };
+		260024251CC88D3E00EB2026 /* __HVCCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260024241CC88D3E00EB2026 /* __HVCCardCell.swift */; };
+		260024271CC88DE500EB2026 /* __HVCCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 260024261CC88DE500EB2026 /* __HVCCardCell.xib */; };
 		261EB86318DDB630009DDF78 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86218DDB630009DDF78 /* Foundation.framework */; };
 		261EB86518DDB630009DDF78 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86418DDB630009DDF78 /* CoreGraphics.framework */; };
 		261EB86718DDB631009DDF78 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86618DDB631009DDF78 /* UIKit.framework */; };
@@ -33,10 +44,6 @@
 		2669468E1CC7711000A68424 /* Spare-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 266946551CC7711000A68424 /* Spare-Info.plist */; };
 		2669468F1CC7711000A68424 /* Spare.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 266946571CC7711000A68424 /* Spare.xcdatamodeld */; };
 		266946931CC77A1A00A68424 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266946921CC77A1A00A68424 /* AppDelegate.swift */; };
-		2669469B1CC77C5700A68424 /* RootVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2669469A1CC77C5700A68424 /* RootVC.swift */; };
-		266946A31CC77E7200A68424 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266946A21CC77E7200A68424 /* HomeVC.swift */; };
-		266946A71CC77EE900A68424 /* AddVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266946A61CC77EE900A68424 /* AddVC.swift */; };
-		266946A91CC77F0800A68424 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266946A81CC77F0800A68424 /* SettingsVC.swift */; };
 		266946AC1CC786EC00A68424 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266946AB1CC786EC00A68424 /* App.swift */; };
 		26E4E0591937AF690096191A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E4E0581937AF690096191A /* QuartzCore.framework */; };
 		C5207A739D770B38693548B5 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59C2B0311ED5D0556A5A2FEF /* Pods.framework */; };
@@ -52,7 +59,33 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		260024041CC7E38D00EB2026 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				260024031CC7E38C00EB2026 /* Mold.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		260023B51CC7D9CE00EB2026 /* Mold.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Mold.xcodeproj; path = Mold/Mold.xcodeproj; sourceTree = "<group>"; };
+		260023FD1CC7E0B000EB2026 /* Mold.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mold.framework; path = "Mold/build/Debug-iphoneos/Mold.framework"; sourceTree = "<group>"; };
+		260024011CC7E38C00EB2026 /* Mold.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = Mold.framework; path = "/Users/mattquiros/Library/Developer/Xcode/DerivedData/Spare-haifvnnbruukacfzvxvjuemlrvtq/Build/Products/Debug-iphoneos/Mold.framework"; sourceTree = "<absolute>"; };
+		260024071CC7E5F300EB2026 /* AddVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddVC.swift; sourceTree = "<group>"; };
+		260024091CC7E5F300EB2026 /* HomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		2600240D1CC7E5F300EB2026 /* RootVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootVC.swift; sourceTree = "<group>"; };
+		2600240F1CC7E5F300EB2026 /* SettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
+		2600241C1CC7E6B500EB2026 /* BaseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
+		260024201CC882C400EB2026 /* __HVCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __HVCView.swift; sourceTree = "<group>"; };
+		260024211CC882C400EB2026 /* __HVCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __HVCView.xib; sourceTree = "<group>"; };
+		260024241CC88D3E00EB2026 /* __HVCCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __HVCCardCell.swift; sourceTree = "<group>"; };
+		260024261CC88DE500EB2026 /* __HVCCardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __HVCCardCell.xib; sourceTree = "<group>"; };
 		261EB85F18DDB630009DDF78 /* Spare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		261EB86218DDB630009DDF78 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		261EB86418DDB630009DDF78 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -82,10 +115,6 @@
 		266946581CC7711000A68424 /* Spare.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Spare.xcdatamodel; sourceTree = "<group>"; };
 		266946911CC77A1900A68424 /* Spare-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Spare-Bridging-Header.h"; sourceTree = "<group>"; };
 		266946921CC77A1A00A68424 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2669469A1CC77C5700A68424 /* RootVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootVC.swift; sourceTree = "<group>"; };
-		266946A21CC77E7200A68424 /* HomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
-		266946A61CC77EE900A68424 /* AddVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddVC.swift; sourceTree = "<group>"; };
-		266946A81CC77F0800A68424 /* SettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		266946AB1CC786EC00A68424 /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		26D4C8F41946E624001B42DC /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		26E4E0581937AF690096191A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -103,6 +132,7 @@
 				2666C2C81957CF93003752BF /* libz.dylib in Frameworks */,
 				261EB86518DDB630009DDF78 /* CoreGraphics.framework in Frameworks */,
 				261EB86918DDB631009DDF78 /* CoreData.framework in Frameworks */,
+				260024021CC7E38C00EB2026 /* Mold.framework in Frameworks */,
 				26E4E0591937AF690096191A /* QuartzCore.framework in Frameworks */,
 				2666C2C61957CF7A003752BF /* SystemConfiguration.framework in Frameworks */,
 				261EB86718DDB631009DDF78 /* UIKit.framework in Frameworks */,
@@ -125,10 +155,67 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		260024051CC7E5F300EB2026 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				2600241B1CC7E6AE00EB2026 /* Base */,
+				260024061CC7E5F300EB2026 /* Add */,
+				260024081CC7E5F300EB2026 /* Home */,
+				2600240C1CC7E5F300EB2026 /* Root */,
+				2600240E1CC7E5F300EB2026 /* Settings */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		260024061CC7E5F300EB2026 /* Add */ = {
+			isa = PBXGroup;
+			children = (
+				260024071CC7E5F300EB2026 /* AddVC.swift */,
+			);
+			path = Add;
+			sourceTree = "<group>";
+		};
+		260024081CC7E5F300EB2026 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				260024091CC7E5F300EB2026 /* HomeVC.swift */,
+				260024201CC882C400EB2026 /* __HVCView.swift */,
+				260024211CC882C400EB2026 /* __HVCView.xib */,
+				260024241CC88D3E00EB2026 /* __HVCCardCell.swift */,
+				260024261CC88DE500EB2026 /* __HVCCardCell.xib */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		2600240C1CC7E5F300EB2026 /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				2600240D1CC7E5F300EB2026 /* RootVC.swift */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
+		2600240E1CC7E5F300EB2026 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				2600240F1CC7E5F300EB2026 /* SettingsVC.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		2600241B1CC7E6AE00EB2026 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				2600241C1CC7E6B500EB2026 /* BaseVC.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
 		261EB85618DDB630009DDF78 = {
 			isa = PBXGroup;
 			children = (
-				266946461CC7711000A68424 /* Libraries */,
+				260024011CC7E38C00EB2026 /* Mold.framework */,
+				260023B51CC7D9CE00EB2026 /* Mold.xcodeproj */,
 				266946471CC7711000A68424 /* Spare */,
 				266946481CC7711000A68424 /* Supporting Files */,
 				261EB88718DDB631009DDF78 /* SpareTests */,
@@ -150,6 +237,7 @@
 		261EB86118DDB630009DDF78 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				260023FD1CC7E0B000EB2026 /* Mold.framework */,
 				2666C2C91957CFA1003752BF /* libsqlite3.dylib */,
 				2666C2C71957CF93003752BF /* libz.dylib */,
 				2666C2C31957CF7A003752BF /* AdSupport.framework */,
@@ -185,18 +273,11 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		266946461CC7711000A68424 /* Libraries */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Libraries;
-			sourceTree = "<group>";
-		};
 		266946471CC7711000A68424 /* Spare */ = {
 			isa = PBXGroup;
 			children = (
+				260024051CC7E5F300EB2026 /* Screens */,
 				266946AA1CC786E300A68424 /* Utils */,
-				266946941CC77BCF00A68424 /* Screens */,
 			);
 			path = Spare;
 			sourceTree = "<group>";
@@ -220,49 +301,6 @@
 				266946911CC77A1900A68424 /* Spare-Bridging-Header.h */,
 			);
 			path = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		266946941CC77BCF00A68424 /* Screens */ = {
-			isa = PBXGroup;
-			children = (
-				266946A51CC77EDE00A68424 /* Settings */,
-				266946A41CC77ED600A68424 /* Add */,
-				266946A11CC77E6A00A68424 /* Home */,
-				266946971CC77C1F00A68424 /* Root */,
-			);
-			path = Screens;
-			sourceTree = "<group>";
-		};
-		266946971CC77C1F00A68424 /* Root */ = {
-			isa = PBXGroup;
-			children = (
-				2669469A1CC77C5700A68424 /* RootVC.swift */,
-			);
-			path = Root;
-			sourceTree = "<group>";
-		};
-		266946A11CC77E6A00A68424 /* Home */ = {
-			isa = PBXGroup;
-			children = (
-				266946A21CC77E7200A68424 /* HomeVC.swift */,
-			);
-			path = Home;
-			sourceTree = "<group>";
-		};
-		266946A41CC77ED600A68424 /* Add */ = {
-			isa = PBXGroup;
-			children = (
-				266946A61CC77EE900A68424 /* AddVC.swift */,
-			);
-			path = Add;
-			sourceTree = "<group>";
-		};
-		266946A51CC77EDE00A68424 /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-				266946A81CC77F0800A68424 /* SettingsVC.swift */,
-			);
-			path = Settings;
 			sourceTree = "<group>";
 		};
 		266946AA1CC786E300A68424 /* Utils */ = {
@@ -295,6 +333,7 @@
 				261EB85D18DDB630009DDF78 /* Resources */,
 				D50A65DD683E419BAE237FE7 /* Copy Pods Resources */,
 				89847A8C68ADAAFEF9571999 /* Embed Pods Frameworks */,
+				260024041CC7E38D00EB2026 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -365,6 +404,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				260024231CC882C400EB2026 /* __HVCView.xib in Resources */,
 				266946841CC7711000A68424 /* Default@2x.png in Resources */,
 				2669468B1CC7711000A68424 /* iPhone.storyboard in Resources */,
 				2669468A1CC7711000A68424 /* Images.xcassets in Resources */,
@@ -372,6 +412,7 @@
 				266946891CC7711000A68424 /* Icon@2x.png in Resources */,
 				266946861CC7711000A68424 /* Icon-40@2x.png in Resources */,
 				266946881CC7711000A68424 /* Icon-Small@2x.png in Resources */,
+				260024271CC88DE500EB2026 /* __HVCCardCell.xib in Resources */,
 				266946851CC7711000A68424 /* InfoPlist.strings in Resources */,
 				2669468E1CC7711000A68424 /* Spare-Info.plist in Resources */,
 				266946831CC7711000A68424 /* Default-568h@2x.png in Resources */,
@@ -442,13 +483,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				260024101CC7E5F300EB2026 /* AddVC.swift in Sources */,
+				260024141CC7E5F300EB2026 /* RootVC.swift in Sources */,
+				260024111CC7E5F300EB2026 /* HomeVC.swift in Sources */,
+				2600241D1CC7E6B500EB2026 /* BaseVC.swift in Sources */,
 				266946931CC77A1A00A68424 /* AppDelegate.swift in Sources */,
-				266946A71CC77EE900A68424 /* AddVC.swift in Sources */,
+				260024251CC88D3E00EB2026 /* __HVCCardCell.swift in Sources */,
+				260024151CC7E5F300EB2026 /* SettingsVC.swift in Sources */,
 				266946AC1CC786EC00A68424 /* App.swift in Sources */,
-				266946A31CC77E7200A68424 /* HomeVC.swift in Sources */,
-				2669469B1CC77C5700A68424 /* RootVC.swift in Sources */,
 				2669468F1CC7711000A68424 /* Spare.xcdatamodeld in Sources */,
-				266946A91CC77F0800A68424 /* SettingsVC.swift in Sources */,
+				260024221CC882C400EB2026 /* __HVCView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -573,12 +617,16 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Mold/build/Debug-iphoneos",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = "$(SRCROOT)/Supporting Files/Spare-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_NAME)",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Supporting Files/Spare-Bridging-Header.h";
@@ -600,12 +648,16 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Mold/build/Debug-iphoneos",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = "$(SRCROOT)/Supporting Files/Spare-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_NAME)",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Supporting Files/Spare-Bridging-Header.h";
