@@ -40,11 +40,19 @@ class HomeVC: BaseVC {
         collectionView.registerClass(__HVCCardCell.self, forCellWithReuseIdentifier: kViewID)
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.collectionViewLayout = {
-            let layoutManager = UICollectionViewFlowLayout()
-            layoutManager.scrollDirection = .Horizontal
-            return layoutManager
-        }()
+        collectionView.collectionViewLayout = __HVCLayoutManager()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+//        let collectionView = self.customView.collectionView
+//        var insets = collectionView.contentInset
+//        let value = (self.view.frame.size.width - collectionView.collectionViewLayout.collectionViewContentSize().width) * 0.5
+//        insets.left = value
+//        insets.right = value
+//        collectionView.contentInset = insets
+//        collectionView.decelerationRate = UIScrollViewDecelerationRateFast;
     }
     
 }

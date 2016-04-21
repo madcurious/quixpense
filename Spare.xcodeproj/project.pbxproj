@@ -19,6 +19,7 @@
 		260024291CC8B77C00EB2026 /* __HVCCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260024281CC8B77C00EB2026 /* __HVCCardView.swift */; };
 		260024311CC8C5AE00EB2026 /* Mold.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 260024301CC8C53A00EB2026 /* Mold.framework */; };
 		260024321CC8C5AE00EB2026 /* Mold.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 260024301CC8C53A00EB2026 /* Mold.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		260024361CC8D18100EB2026 /* __HVCLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260024351CC8D18100EB2026 /* __HVCLayoutManager.swift */; };
 		261EB86318DDB630009DDF78 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86218DDB630009DDF78 /* Foundation.framework */; };
 		261EB86518DDB630009DDF78 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86418DDB630009DDF78 /* CoreGraphics.framework */; };
 		261EB86718DDB631009DDF78 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86618DDB631009DDF78 /* UIKit.framework */; };
@@ -101,6 +102,7 @@
 		260024241CC88D3E00EB2026 /* __HVCCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __HVCCardCell.swift; sourceTree = "<group>"; };
 		260024261CC88DE500EB2026 /* __HVCCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __HVCCardView.xib; sourceTree = "<group>"; };
 		260024281CC8B77C00EB2026 /* __HVCCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __HVCCardView.swift; sourceTree = "<group>"; };
+		260024351CC8D18100EB2026 /* __HVCLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __HVCLayoutManager.swift; sourceTree = "<group>"; };
 		261EB85F18DDB630009DDF78 /* Spare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		261EB86218DDB630009DDF78 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		261EB86418DDB630009DDF78 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -199,6 +201,7 @@
 				260024241CC88D3E00EB2026 /* __HVCCardCell.swift */,
 				260024281CC8B77C00EB2026 /* __HVCCardView.swift */,
 				260024261CC88DE500EB2026 /* __HVCCardView.xib */,
+				260024351CC8D18100EB2026 /* __HVCLayoutManager.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -534,6 +537,7 @@
 				266946AC1CC786EC00A68424 /* App.swift in Sources */,
 				2669468F1CC7711000A68424 /* Spare.xcdatamodeld in Sources */,
 				260024221CC882C400EB2026 /* __HVCView.swift in Sources */,
+				260024361CC8D18100EB2026 /* __HVCLayoutManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
