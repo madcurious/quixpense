@@ -8,7 +8,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="__HVCCardCell" customModule="Spare" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="__HVCCardCellContentView" customModule="Spare" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -77,12 +77,12 @@
                 <constraint firstItem="a9T-2s-GHf" firstAttribute="top" secondItem="AYM-hJ-fw2" secondAttribute="bottom" id="wRX-y6-crb"/>
             </constraints>
             <connections>
-                <outlet property="bannerView" destination="AYM-hJ-fw2" id="Rz4-Gh-o0J"/>
-                <outlet property="barContainer" destination="a9T-2s-GHf" id="ZFE-1c-Eim"/>
-                <outlet property="dateLabel" destination="uMM-ry-hvB" id="Ybp-Zc-G6j"/>
-                <outlet property="labelContainer" destination="bKY-zJ-71i" id="T7r-Qc-y4d"/>
-                <outlet property="tableView" destination="hKL-iy-rzh" id="2Pz-nC-GQk"/>
-                <outlet property="totalLabel" destination="09d-3g-Jdi" id="KiZ-Un-gq4"/>
+                <outlet property="bannerView" destination="AYM-hJ-fw2" id="GQn-dX-sfW"/>
+                <outlet property="barContainer" destination="a9T-2s-GHf" id="hwx-de-Hts"/>
+                <outlet property="dateLabel" destination="uMM-ry-hvB" id="DIg-Iu-KkN"/>
+                <outlet property="labelContainer" destination="bKY-zJ-71i" id="D62-8q-33a"/>
+                <outlet property="tableView" destination="hKL-iy-rzh" id="rRX-o5-boD"/>
+                <outlet property="totalLabel" destination="09d-3g-Jdi" id="QaP-2w-5V0"/>
             </connections>
         </view>
     </objects>

@@ -32,8 +32,7 @@ class HomeVC: BaseVC {
         super.viewDidLoad()
         
         let collectionView = self.customView.collectionView
-//        collectionView.pagingEnabled = true
-        collectionView.registerNib(__HVCCardCell.nib(), forCellWithReuseIdentifier: kViewID)
+        collectionView.registerClass(__HVCCardCell.self, forCellWithReuseIdentifier: kViewID)
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.collectionViewLayout = {
@@ -56,12 +55,16 @@ extension HomeVC: UICollectionViewDataSource {
             else {
                 fatalError()
         }
+        print("cell: \(cell.frame)")
+        print("cell.contentView: \(cell.contentView.frame)")
+        print("cell.customContentView: \(cell.customContentView.frame)")
+        print("banner: \(cell.customContentView.bannerView.frame)")
+        print("barView: \(cell.customContentView.barContainer.frame)")
+        print("tableView: \(cell.customContentView.tableView.frame)")
         return cell
     }
     
 }
-
-extension HomeVC: UICollectionViewDelegate {}
 
 extension HomeVC: UICollectionViewDelegateFlowLayout {
     
@@ -79,4 +82,13 @@ extension HomeVC: UICollectionViewDelegateFlowLayout {
         return size
     }
     
+}
+
+extension HomeVC: UICollectionViewDelegate {
+
+    // Needed to prevent collection view cells from highlighting the internal table view.
+    func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return false
+    }
+
 }

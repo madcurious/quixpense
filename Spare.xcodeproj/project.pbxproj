@@ -17,7 +17,8 @@
 		260024221CC882C400EB2026 /* __HVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260024201CC882C400EB2026 /* __HVCView.swift */; };
 		260024231CC882C400EB2026 /* __HVCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 260024211CC882C400EB2026 /* __HVCView.xib */; };
 		260024251CC88D3E00EB2026 /* __HVCCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260024241CC88D3E00EB2026 /* __HVCCardCell.swift */; };
-		260024271CC88DE500EB2026 /* __HVCCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 260024261CC88DE500EB2026 /* __HVCCardCell.xib */; };
+		260024271CC88DE500EB2026 /* __HVCCardCellContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 260024261CC88DE500EB2026 /* __HVCCardCellContentView.xib */; };
+		260024291CC8B77C00EB2026 /* __HVCCardCellContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260024281CC8B77C00EB2026 /* __HVCCardCellContentView.swift */; };
 		261EB86318DDB630009DDF78 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86218DDB630009DDF78 /* Foundation.framework */; };
 		261EB86518DDB630009DDF78 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86418DDB630009DDF78 /* CoreGraphics.framework */; };
 		261EB86718DDB631009DDF78 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86618DDB631009DDF78 /* UIKit.framework */; };
@@ -85,7 +86,8 @@
 		260024201CC882C400EB2026 /* __HVCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __HVCView.swift; sourceTree = "<group>"; };
 		260024211CC882C400EB2026 /* __HVCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __HVCView.xib; sourceTree = "<group>"; };
 		260024241CC88D3E00EB2026 /* __HVCCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __HVCCardCell.swift; sourceTree = "<group>"; };
-		260024261CC88DE500EB2026 /* __HVCCardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __HVCCardCell.xib; sourceTree = "<group>"; };
+		260024261CC88DE500EB2026 /* __HVCCardCellContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __HVCCardCellContentView.xib; sourceTree = "<group>"; };
+		260024281CC8B77C00EB2026 /* __HVCCardCellContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __HVCCardCellContentView.swift; sourceTree = "<group>"; };
 		261EB85F18DDB630009DDF78 /* Spare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		261EB86218DDB630009DDF78 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		261EB86418DDB630009DDF78 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -182,7 +184,8 @@
 				260024201CC882C400EB2026 /* __HVCView.swift */,
 				260024211CC882C400EB2026 /* __HVCView.xib */,
 				260024241CC88D3E00EB2026 /* __HVCCardCell.swift */,
-				260024261CC88DE500EB2026 /* __HVCCardCell.xib */,
+				260024281CC8B77C00EB2026 /* __HVCCardCellContentView.swift */,
+				260024261CC88DE500EB2026 /* __HVCCardCellContentView.xib */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -412,7 +415,7 @@
 				266946891CC7711000A68424 /* Icon@2x.png in Resources */,
 				266946861CC7711000A68424 /* Icon-40@2x.png in Resources */,
 				266946881CC7711000A68424 /* Icon-Small@2x.png in Resources */,
-				260024271CC88DE500EB2026 /* __HVCCardCell.xib in Resources */,
+				260024271CC88DE500EB2026 /* __HVCCardCellContentView.xib in Resources */,
 				266946851CC7711000A68424 /* InfoPlist.strings in Resources */,
 				2669468E1CC7711000A68424 /* Spare-Info.plist in Resources */,
 				266946831CC7711000A68424 /* Default-568h@2x.png in Resources */,
@@ -485,6 +488,7 @@
 			files = (
 				260024101CC7E5F300EB2026 /* AddVC.swift in Sources */,
 				260024141CC7E5F300EB2026 /* RootVC.swift in Sources */,
+				260024291CC8B77C00EB2026 /* __HVCCardCellContentView.swift in Sources */,
 				260024111CC7E5F300EB2026 /* HomeVC.swift in Sources */,
 				2600241D1CC7E6B500EB2026 /* BaseVC.swift in Sources */,
 				266946931CC77A1A00A68424 /* AppDelegate.swift in Sources */,
