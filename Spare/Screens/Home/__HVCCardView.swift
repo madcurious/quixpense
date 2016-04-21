@@ -1,5 +1,5 @@
 //
-//  __HVCCardCellContentView.swift
+//  __HVCCardView.swift
 //  Spare
 //
 //  Created by Matt Quiros on 21/04/2016.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class __HVCCardCellContentView: UIView {
+class __HVCCardView: UIView {
     
     @IBOutlet weak var bannerView: UIView!
     @IBOutlet weak var labelContainer: UIView!
@@ -16,5 +16,18 @@ class __HVCCardCellContentView: UIView {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var barContainer: UIView!
     @IBOutlet weak var tableView: UITableView!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        self.layer.borderWidth = 1
+        self.layer.borderColor = UIColor(hex: 0xcccccc).CGColor
+        self.layer.cornerRadius = 5
+        self.clipsToBounds = true
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+    }
     
 }

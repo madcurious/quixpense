@@ -10,21 +10,16 @@ import UIKit
 
 class __HVCCardCell: UICollectionViewCell {
     
-    var customContentView: __HVCCardCellContentView
+    var cardView: __HVCCardView
     
     override init(frame: CGRect) {
-        self.customContentView = __HVCCardCellContentView.instantiateFromNib()
+        self.cardView = __HVCCardView.instantiateFromNib()
         super.init(frame: frame)
-        self.contentView.addSubviewAndFill(self.customContentView)
+        self.contentView.addSubviewAndFill(self.cardView)
         
-        self.customContentView.tableView.dataSource = self
-        self.customContentView.tableView.delegate = self
-        self.customContentView.tableView.rowHeight = 44
-        
-        self.setNeedsLayout()
-        self.customContentView.setNeedsLayout()
-        self.layoutIfNeeded()
-        self.customContentView.layoutIfNeeded()
+        self.cardView.tableView.dataSource = self
+        self.cardView.tableView.delegate = self
+        self.cardView.tableView.rowHeight = 44
     }
     
     required init?(coder aDecoder: NSCoder) {

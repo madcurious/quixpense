@@ -12,7 +12,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="cQm-k9-wbl">
-                    <rect key="frame" x="0.0" y="32" width="600" height="558"/>
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="kux-9J-wti">
                         <size key="itemSize" width="50" height="50"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -25,8 +25,8 @@
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="cQm-k9-wbl" secondAttribute="trailing" id="PxB-ac-DVl"/>
                 <constraint firstItem="cQm-k9-wbl" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="kSf-Ko-hjx"/>
-                <constraint firstAttribute="bottom" secondItem="cQm-k9-wbl" secondAttribute="bottom" constant="10" id="lBh-QG-usd"/>
-                <constraint firstItem="cQm-k9-wbl" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="32" id="nmJ-ih-gc3"/>
+                <constraint firstAttribute="bottom" secondItem="cQm-k9-wbl" secondAttribute="bottom" id="lBh-QG-usd"/>
+                <constraint firstItem="cQm-k9-wbl" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="nmJ-ih-gc3"/>
             </constraints>
             <connections>
                 <outlet property="collectionView" destination="cQm-k9-wbl" id="E59-4O-iz1"/>

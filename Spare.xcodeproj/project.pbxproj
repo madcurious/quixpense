@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		260024021CC7E38C00EB2026 /* Mold.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 260024011CC7E38C00EB2026 /* Mold.framework */; };
-		260024031CC7E38C00EB2026 /* Mold.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 260024011CC7E38C00EB2026 /* Mold.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		260024101CC7E5F300EB2026 /* AddVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260024071CC7E5F300EB2026 /* AddVC.swift */; };
 		260024111CC7E5F300EB2026 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260024091CC7E5F300EB2026 /* HomeVC.swift */; };
 		260024141CC7E5F300EB2026 /* RootVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2600240D1CC7E5F300EB2026 /* RootVC.swift */; };
@@ -17,8 +15,10 @@
 		260024221CC882C400EB2026 /* __HVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260024201CC882C400EB2026 /* __HVCView.swift */; };
 		260024231CC882C400EB2026 /* __HVCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 260024211CC882C400EB2026 /* __HVCView.xib */; };
 		260024251CC88D3E00EB2026 /* __HVCCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260024241CC88D3E00EB2026 /* __HVCCardCell.swift */; };
-		260024271CC88DE500EB2026 /* __HVCCardCellContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 260024261CC88DE500EB2026 /* __HVCCardCellContentView.xib */; };
-		260024291CC8B77C00EB2026 /* __HVCCardCellContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260024281CC8B77C00EB2026 /* __HVCCardCellContentView.swift */; };
+		260024271CC88DE500EB2026 /* __HVCCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 260024261CC88DE500EB2026 /* __HVCCardView.xib */; };
+		260024291CC8B77C00EB2026 /* __HVCCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260024281CC8B77C00EB2026 /* __HVCCardView.swift */; };
+		260024311CC8C5AE00EB2026 /* Mold.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 260024301CC8C53A00EB2026 /* Mold.framework */; };
+		260024321CC8C5AE00EB2026 /* Mold.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 260024301CC8C53A00EB2026 /* Mold.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		261EB86318DDB630009DDF78 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86218DDB630009DDF78 /* Foundation.framework */; };
 		261EB86518DDB630009DDF78 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86418DDB630009DDF78 /* CoreGraphics.framework */; };
 		261EB86718DDB631009DDF78 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86618DDB631009DDF78 /* UIKit.framework */; };
@@ -51,6 +51,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		2600242F1CC8C53A00EB2026 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 260023B51CC7D9CE00EB2026 /* Mold.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 26904D301C7757540094DA08;
+			remoteInfo = Mold;
+		};
+		260024331CC8C5AE00EB2026 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 260023B51CC7D9CE00EB2026 /* Mold.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 26904D2F1C7757540094DA08;
+			remoteInfo = Mold;
+		};
 		261EB88518DDB631009DDF78 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 261EB85718DDB630009DDF78 /* Project object */;
@@ -67,7 +81,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				260024031CC7E38C00EB2026 /* Mold.framework in Embed Frameworks */,
+				260024321CC8C5AE00EB2026 /* Mold.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -77,7 +91,6 @@
 /* Begin PBXFileReference section */
 		260023B51CC7D9CE00EB2026 /* Mold.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Mold.xcodeproj; path = Mold/Mold.xcodeproj; sourceTree = "<group>"; };
 		260023FD1CC7E0B000EB2026 /* Mold.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mold.framework; path = "Mold/build/Debug-iphoneos/Mold.framework"; sourceTree = "<group>"; };
-		260024011CC7E38C00EB2026 /* Mold.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = Mold.framework; path = "/Users/mattquiros/Library/Developer/Xcode/DerivedData/Spare-haifvnnbruukacfzvxvjuemlrvtq/Build/Products/Debug-iphoneos/Mold.framework"; sourceTree = "<absolute>"; };
 		260024071CC7E5F300EB2026 /* AddVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddVC.swift; sourceTree = "<group>"; };
 		260024091CC7E5F300EB2026 /* HomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		2600240D1CC7E5F300EB2026 /* RootVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootVC.swift; sourceTree = "<group>"; };
@@ -86,8 +99,8 @@
 		260024201CC882C400EB2026 /* __HVCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __HVCView.swift; sourceTree = "<group>"; };
 		260024211CC882C400EB2026 /* __HVCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __HVCView.xib; sourceTree = "<group>"; };
 		260024241CC88D3E00EB2026 /* __HVCCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __HVCCardCell.swift; sourceTree = "<group>"; };
-		260024261CC88DE500EB2026 /* __HVCCardCellContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __HVCCardCellContentView.xib; sourceTree = "<group>"; };
-		260024281CC8B77C00EB2026 /* __HVCCardCellContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __HVCCardCellContentView.swift; sourceTree = "<group>"; };
+		260024261CC88DE500EB2026 /* __HVCCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __HVCCardView.xib; sourceTree = "<group>"; };
+		260024281CC8B77C00EB2026 /* __HVCCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __HVCCardView.swift; sourceTree = "<group>"; };
 		261EB85F18DDB630009DDF78 /* Spare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		261EB86218DDB630009DDF78 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		261EB86418DDB630009DDF78 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -134,7 +147,7 @@
 				2666C2C81957CF93003752BF /* libz.dylib in Frameworks */,
 				261EB86518DDB630009DDF78 /* CoreGraphics.framework in Frameworks */,
 				261EB86918DDB631009DDF78 /* CoreData.framework in Frameworks */,
-				260024021CC7E38C00EB2026 /* Mold.framework in Frameworks */,
+				260024311CC8C5AE00EB2026 /* Mold.framework in Frameworks */,
 				26E4E0591937AF690096191A /* QuartzCore.framework in Frameworks */,
 				2666C2C61957CF7A003752BF /* SystemConfiguration.framework in Frameworks */,
 				261EB86718DDB631009DDF78 /* UIKit.framework in Frameworks */,
@@ -184,8 +197,8 @@
 				260024201CC882C400EB2026 /* __HVCView.swift */,
 				260024211CC882C400EB2026 /* __HVCView.xib */,
 				260024241CC88D3E00EB2026 /* __HVCCardCell.swift */,
-				260024281CC8B77C00EB2026 /* __HVCCardCellContentView.swift */,
-				260024261CC88DE500EB2026 /* __HVCCardCellContentView.xib */,
+				260024281CC8B77C00EB2026 /* __HVCCardView.swift */,
+				260024261CC88DE500EB2026 /* __HVCCardView.xib */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -214,10 +227,17 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
+		2600242C1CC8C53A00EB2026 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				260024301CC8C53A00EB2026 /* Mold.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		261EB85618DDB630009DDF78 = {
 			isa = PBXGroup;
 			children = (
-				260024011CC7E38C00EB2026 /* Mold.framework */,
 				260023B51CC7D9CE00EB2026 /* Mold.xcodeproj */,
 				266946471CC7711000A68424 /* Spare */,
 				266946481CC7711000A68424 /* Supporting Files */,
@@ -341,6 +361,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				260024341CC8C5AE00EB2026 /* PBXTargetDependency */,
 			);
 			name = Spare;
 			productName = Spare;
@@ -394,6 +415,12 @@
 			mainGroup = 261EB85618DDB630009DDF78;
 			productRefGroup = 261EB86018DDB630009DDF78 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 2600242C1CC8C53A00EB2026 /* Products */;
+					ProjectRef = 260023B51CC7D9CE00EB2026 /* Mold.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				261EB85E18DDB630009DDF78 /* Spare */,
@@ -401,6 +428,16 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		260024301CC8C53A00EB2026 /* Mold.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Mold.framework;
+			remoteRef = 2600242F1CC8C53A00EB2026 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		261EB85D18DDB630009DDF78 /* Resources */ = {
@@ -415,7 +452,7 @@
 				266946891CC7711000A68424 /* Icon@2x.png in Resources */,
 				266946861CC7711000A68424 /* Icon-40@2x.png in Resources */,
 				266946881CC7711000A68424 /* Icon-Small@2x.png in Resources */,
-				260024271CC88DE500EB2026 /* __HVCCardCellContentView.xib in Resources */,
+				260024271CC88DE500EB2026 /* __HVCCardView.xib in Resources */,
 				266946851CC7711000A68424 /* InfoPlist.strings in Resources */,
 				2669468E1CC7711000A68424 /* Spare-Info.plist in Resources */,
 				266946831CC7711000A68424 /* Default-568h@2x.png in Resources */,
@@ -488,7 +525,7 @@
 			files = (
 				260024101CC7E5F300EB2026 /* AddVC.swift in Sources */,
 				260024141CC7E5F300EB2026 /* RootVC.swift in Sources */,
-				260024291CC8B77C00EB2026 /* __HVCCardCellContentView.swift in Sources */,
+				260024291CC8B77C00EB2026 /* __HVCCardView.swift in Sources */,
 				260024111CC7E5F300EB2026 /* HomeVC.swift in Sources */,
 				2600241D1CC7E6B500EB2026 /* BaseVC.swift in Sources */,
 				266946931CC77A1A00A68424 /* AppDelegate.swift in Sources */,
@@ -511,6 +548,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		260024341CC8C5AE00EB2026 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Mold;
+			targetProxy = 260024331CC8C5AE00EB2026 /* PBXContainerItemProxy */;
+		};
 		261EB88618DDB631009DDF78 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 261EB85E18DDB630009DDF78 /* Spare */;
@@ -617,6 +659,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Matthew Quiros (RG26WNB3AF)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Matthew Quiros (RG26WNB3AF)";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -648,6 +691,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Matthew Quiros (RG26WNB3AF)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Matthew Quiros (RG26WNB3AF)";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

@@ -15,7 +15,8 @@ class __HVCView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.backgroundColor = UIColor.blackColor()
+//        self.backgroundColor = UIColor(hex: 0xf7f7f7)
+        self.backgroundColor = UIColor.whiteColor()
         
         self.collectionView.backgroundColor = UIColor.clearColor()
         self.collectionView.showsHorizontalScrollIndicator = false

@@ -10,6 +10,11 @@ import UIKit
 
 private let kViewID = "kViewID"
 
+private let kStatusBarHeight = CGFloat(20)
+private let kTopBottomInset = CGFloat(10)
+private let kLeftRightInset = CGFloat(20)
+private let kItemSpacing = CGFloat(10)
+
 class HomeVC: BaseVC {
     
     var customView = __HVCView.instantiateFromNib() as __HVCView
@@ -55,12 +60,6 @@ extension HomeVC: UICollectionViewDataSource {
             else {
                 fatalError()
         }
-        print("cell: \(cell.frame)")
-        print("cell.contentView: \(cell.contentView.frame)")
-        print("cell.customContentView: \(cell.customContentView.frame)")
-        print("banner: \(cell.customContentView.bannerView.frame)")
-        print("barView: \(cell.customContentView.barContainer.frame)")
-        print("tableView: \(cell.customContentView.tableView.frame)")
         return cell
     }
     
@@ -68,17 +67,18 @@ extension HomeVC: UICollectionViewDataSource {
 
 extension HomeVC: UICollectionViewDelegateFlowLayout {
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
-        return 20
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return kItemSpacing
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+        return UIEdgeInsets(top: kTopBottomInset, left: kLeftRightInset, bottom: kTopBottomInset, right: kLeftRightInset)
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        var size = self.view.bounds.size
-        size.width = size.width - 40
+        var size = collectionView.bounds.size
+        size.width = size.width - (kLeftRightInset * 2)
+        size.height = size.height - (kStatusBarHeight + kTopBottomInset * 2)
         return size
     }
     
