@@ -19,6 +19,7 @@ class __HVCView: UIView {
         
         self.collectionView.backgroundColor = UIColor.clearColor()
         self.collectionView.showsHorizontalScrollIndicator = false
+        self.collectionView.decelerationRate = UIScrollViewDecelerationRateFast
     }
     
 }

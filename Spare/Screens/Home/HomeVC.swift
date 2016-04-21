@@ -43,18 +43,6 @@ class HomeVC: BaseVC {
         collectionView.collectionViewLayout = __HVCLayoutManager()
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-//        let collectionView = self.customView.collectionView
-//        var insets = collectionView.contentInset
-//        let value = (self.view.frame.size.width - collectionView.collectionViewLayout.collectionViewContentSize().width) * 0.5
-//        insets.left = value
-//        insets.right = value
-//        collectionView.contentInset = insets
-//        collectionView.decelerationRate = UIScrollViewDecelerationRateFast;
-    }
-    
 }
 
 extension HomeVC: UICollectionViewDataSource {
