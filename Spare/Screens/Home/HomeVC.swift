@@ -18,6 +18,7 @@ private let kItemSpacing = CGFloat(10)
 class HomeVC: BaseVC {
     
     var customView = __HVCView.instantiateFromNib() as __HVCView
+    var viewHasAppeared = false
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -41,6 +42,18 @@ class HomeVC: BaseVC {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.collectionViewLayout = __HVCLayoutManager()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        // Show the last item first.
+        if self.viewHasAppeared == false {
+            let collectionView = self.customView.collectionView
+            let lastItem = collectionView.numberOfItemsInSection(0) - 1
+            collectionView.scrollToItemAtIndexPath(NSIndexPath(forItem: lastItem, inSection: 0), atScrollPosition: .CenteredHorizontally, animated: false)
+            self.viewHasAppeared = true
+        }
     }
     
 }
