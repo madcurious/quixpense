@@ -14,19 +14,48 @@ class RootVC: UITabBarController {
     init() {
         super.init(nibName: nil, bundle: nil)
         
-        self.viewControllers = [HomeVC(), AddVC(), SettingsVC()]
+        self.viewControllers = [
+            HomeVC(),
+            {
+                let placeholder = UIViewController()
+                placeholder.tabBarItem = UITabBarItem(title: "Add", image: nil, selectedImage: nil)
+                return placeholder
+            }(),
+            SettingsVC()]
         self.tabBar.translucent = false
+        self.delegate = self
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
         if let navController = self.navigationController {
             navController.setNavigationBarHidden(true, animated: true)
         }
+    }
+    
+}
+
+extension RootVC: UITabBarControllerDelegate {
+    
+    func tabBarController(tabBarController: UITabBarController, shouldSelectViewController viewController: UIViewController) -> Bool {
+        guard let index = self.viewControllers?.indexOf(viewController)
+            where index == 1
+            else {
+                return true
+        }
+        
+        let modal = BaseNavController(rootViewController: AddVC())
+        self.presentViewController(modal, animated: true, completion: nil)
+        return false
     }
     
 }

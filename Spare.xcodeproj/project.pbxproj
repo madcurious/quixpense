@@ -20,6 +20,10 @@
 		260024311CC8C5AE00EB2026 /* Mold.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 260024301CC8C53A00EB2026 /* Mold.framework */; };
 		260024321CC8C5AE00EB2026 /* Mold.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 260024301CC8C53A00EB2026 /* Mold.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		260024361CC8D18100EB2026 /* __HVCLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260024351CC8D18100EB2026 /* __HVCLayoutManager.swift */; };
+		2603F8BD1CCA3C0A007F311F /* __AVCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2603F8BC1CCA3C0A007F311F /* __AVCView.xib */; };
+		2603F8BF1CCA3C6F007F311F /* __AVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2603F8BE1CCA3C6F007F311F /* __AVCView.swift */; };
+		2603F8C11CCA4367007F311F /* BaseNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2603F8C01CCA4367007F311F /* BaseNavController.swift */; };
+		2603F8C31CCA45FF007F311F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2603F8C21CCA45FF007F311F /* LaunchScreen.storyboard */; };
 		261EB86318DDB630009DDF78 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86218DDB630009DDF78 /* Foundation.framework */; };
 		261EB86518DDB630009DDF78 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86418DDB630009DDF78 /* CoreGraphics.framework */; };
 		261EB86718DDB631009DDF78 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86618DDB631009DDF78 /* UIKit.framework */; };
@@ -103,6 +107,10 @@
 		260024261CC88DE500EB2026 /* __HVCCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __HVCCardView.xib; sourceTree = "<group>"; };
 		260024281CC8B77C00EB2026 /* __HVCCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __HVCCardView.swift; sourceTree = "<group>"; };
 		260024351CC8D18100EB2026 /* __HVCLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __HVCLayoutManager.swift; sourceTree = "<group>"; };
+		2603F8BC1CCA3C0A007F311F /* __AVCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __AVCView.xib; sourceTree = "<group>"; };
+		2603F8BE1CCA3C6F007F311F /* __AVCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __AVCView.swift; sourceTree = "<group>"; };
+		2603F8C01CCA4367007F311F /* BaseNavController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavController.swift; sourceTree = "<group>"; };
+		2603F8C21CCA45FF007F311F /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		261EB85F18DDB630009DDF78 /* Spare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		261EB86218DDB630009DDF78 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		261EB86418DDB630009DDF78 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -188,6 +196,8 @@
 			isa = PBXGroup;
 			children = (
 				260024071CC7E5F300EB2026 /* AddVC.swift */,
+				2603F8BC1CCA3C0A007F311F /* __AVCView.xib */,
+				2603F8BE1CCA3C6F007F311F /* __AVCView.swift */,
 			);
 			path = Add;
 			sourceTree = "<group>";
@@ -226,6 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				2600241C1CC7E6B500EB2026 /* BaseVC.swift */,
+				2603F8C01CCA4367007F311F /* BaseNavController.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -325,6 +336,7 @@
 				266946571CC7711000A68424 /* Spare.xcdatamodeld */,
 				266946921CC77A1A00A68424 /* AppDelegate.swift */,
 				266946911CC77A1900A68424 /* Spare-Bridging-Header.h */,
+				2603F8C21CCA45FF007F311F /* LaunchScreen.storyboard */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -448,7 +460,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				260024231CC882C400EB2026 /* __HVCView.xib in Resources */,
+				2603F8BD1CCA3C0A007F311F /* __AVCView.xib in Resources */,
 				266946841CC7711000A68424 /* Default@2x.png in Resources */,
+				2603F8C31CCA45FF007F311F /* LaunchScreen.storyboard in Resources */,
 				2669468B1CC7711000A68424 /* iPhone.storyboard in Resources */,
 				2669468A1CC7711000A68424 /* Images.xcassets in Resources */,
 				266946871CC7711000A68424 /* Icon-60@2x.png in Resources */,
@@ -530,11 +544,13 @@
 				260024141CC7E5F300EB2026 /* RootVC.swift in Sources */,
 				260024291CC8B77C00EB2026 /* __HVCCardView.swift in Sources */,
 				260024111CC7E5F300EB2026 /* HomeVC.swift in Sources */,
+				2603F8C11CCA4367007F311F /* BaseNavController.swift in Sources */,
 				2600241D1CC7E6B500EB2026 /* BaseVC.swift in Sources */,
 				266946931CC77A1A00A68424 /* AppDelegate.swift in Sources */,
 				260024251CC88D3E00EB2026 /* __HVCCardCell.swift in Sources */,
 				260024151CC7E5F300EB2026 /* SettingsVC.swift in Sources */,
 				266946AC1CC786EC00A68424 /* App.swift in Sources */,
+				2603F8BF1CCA3C6F007F311F /* __AVCView.swift in Sources */,
 				2669468F1CC7711000A68424 /* Spare.xcdatamodeld in Sources */,
 				260024221CC882C400EB2026 /* __HVCView.swift in Sources */,
 				260024361CC8D18100EB2026 /* __HVCLayoutManager.swift in Sources */,
@@ -659,7 +675,6 @@
 			baseConfigurationReference = D96F33C6E81927FC7DC69FEB /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Matthew Quiros (RG26WNB3AF)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Matthew Quiros (RG26WNB3AF)";
@@ -691,7 +706,6 @@
 			baseConfigurationReference = 872D6B22773387201385F5D7 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Matthew Quiros (RG26WNB3AF)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Matthew Quiros (RG26WNB3AF)";
