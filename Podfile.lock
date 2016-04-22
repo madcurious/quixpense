@@ -1,10 +1,13 @@
 PODS:
   - BNRCoreDataStack (1.2.3)
+  - Color-Picker-for-iOS (2.0.2)
 
 DEPENDENCIES:
   - BNRCoreDataStack
+  - Color-Picker-for-iOS
 
 SPEC CHECKSUMS:
   BNRCoreDataStack: 10abcb19d2a3f397950a06e9b0915f4e695a826b
+  Color-Picker-for-iOS: 4980589b3e3cfe7198f227dd50be9adb02d8bc0b
 
 COCOAPODS: 0.39.0

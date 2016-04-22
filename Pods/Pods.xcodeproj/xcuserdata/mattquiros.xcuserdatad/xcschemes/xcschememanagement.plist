@@ -8,25 +8,31 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>1</integer>
+		</dict>
+		<key>Color-Picker-for-iOS.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>2</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>4854BA33143BBC3A84C3350D51FDBE0D</key>
+		<key>14676167643B368627ACB020605C41E1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>698733C4D35F57BFBAEEEF66B2C06C7F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D5C39A384113396D5D6A52DBD43367E5</key>
 		<dict>
 			<key>primary</key>
 			<true/>

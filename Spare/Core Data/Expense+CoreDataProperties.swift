@@ -19,6 +19,5 @@ extension Expense {
     @NSManaged var dateSpent: NSDate?
     @NSManaged var paymentMethod: NSNumber?
     @NSManaged var category: Category?
-    @NSManaged var tags: NSSet?
 
 }
