@@ -10,8 +10,8 @@ import UIKit
 
 class SettingsVC: BaseVC {
     
-    init() {
-        super.init(nibName: nil, bundle: nil)
+    override init() {
+        super.init()
         self.title = "Settings"
         self.tabBarItem.title = self.title
     }

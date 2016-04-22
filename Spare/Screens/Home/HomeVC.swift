@@ -20,8 +20,8 @@ class HomeVC: BaseVC {
     var customView = __HVCView.instantiateFromNib() as __HVCView
     var viewHasAppeared = false
     
-    init() {
-        super.init(nibName: nil, bundle: nil)
+    override init() {
+        super.init()
         self.title = "Home"
         self.tabBarItem.title = self.title
     }

@@ -13,8 +13,8 @@ class AddVC: BaseVC {
     let customView = __AVCView.instantiateFromNib() as __AVCView
     let tabController = UITabBarController(nibName: nil, bundle: nil)
     
-    init() {
-        super.init(nibName: nil, bundle: nil)
+    override init() {
+        super.init()
         self.title = "Add New"
         self.tabBarItem.title = self.title
     }

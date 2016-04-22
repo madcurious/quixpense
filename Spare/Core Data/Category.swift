@@ -8,10 +8,18 @@
 
 import Foundation
 import CoreData
-
+import BNRCoreDataStack
 
 class Category: NSManagedObject {
 
 // Insert code here to add functionality to your managed object subclass
 
+}
+
+extension Category: CoreDataModelable {
+    
+    static var entityName: String {
+        return "Category"
+    }
+    
 }

@@ -9,15 +9,18 @@
 import UIKit
 import BNRCoreDataStack
 
-private let kSharedInstance = App()
+private let kSharedState = App()
 
 class App {
     
-    class var instance: App {
-        return kSharedInstance
+    class var state: App {
+        return kSharedState
     }
     
     var coreDataStack: CoreDataStack!
+    var mainQueueContext: NSManagedObjectContext {
+        return self.coreDataStack.mainQueueContext
+    }
     
     private init() {
         // Initialise CoreData stack.
