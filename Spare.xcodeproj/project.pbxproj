@@ -24,6 +24,12 @@
 		2603F8BF1CCA3C6F007F311F /* __AVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2603F8BE1CCA3C6F007F311F /* __AVCView.swift */; };
 		2603F8C11CCA4367007F311F /* BaseNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2603F8C01CCA4367007F311F /* BaseNavController.swift */; };
 		2603F8C31CCA45FF007F311F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2603F8C21CCA45FF007F311F /* LaunchScreen.storyboard */; };
+		2603F8CE1CCA4C10007F311F /* Expense+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2603F8C81CCA4C10007F311F /* Expense+CoreDataProperties.swift */; };
+		2603F8CF1CCA4C10007F311F /* Expense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2603F8C91CCA4C10007F311F /* Expense.swift */; };
+		2603F8D01CCA4C10007F311F /* Tag+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2603F8CA1CCA4C10007F311F /* Tag+CoreDataProperties.swift */; };
+		2603F8D11CCA4C10007F311F /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2603F8CB1CCA4C10007F311F /* Tag.swift */; };
+		2603F8D21CCA4C10007F311F /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2603F8CC1CCA4C10007F311F /* Category+CoreDataProperties.swift */; };
+		2603F8D31CCA4C10007F311F /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2603F8CD1CCA4C10007F311F /* Category.swift */; };
 		261EB86318DDB630009DDF78 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86218DDB630009DDF78 /* Foundation.framework */; };
 		261EB86518DDB630009DDF78 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86418DDB630009DDF78 /* CoreGraphics.framework */; };
 		261EB86718DDB631009DDF78 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86618DDB631009DDF78 /* UIKit.framework */; };
@@ -111,6 +117,13 @@
 		2603F8BE1CCA3C6F007F311F /* __AVCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __AVCView.swift; sourceTree = "<group>"; };
 		2603F8C01CCA4367007F311F /* BaseNavController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavController.swift; sourceTree = "<group>"; };
 		2603F8C21CCA45FF007F311F /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2603F8C61CCA476E007F311F /* Spare_v2.0.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Spare_v2.0.xcdatamodel; sourceTree = "<group>"; };
+		2603F8C81CCA4C10007F311F /* Expense+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Expense+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		2603F8C91CCA4C10007F311F /* Expense.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Expense.swift; sourceTree = "<group>"; };
+		2603F8CA1CCA4C10007F311F /* Tag+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tag+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		2603F8CB1CCA4C10007F311F /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
+		2603F8CC1CCA4C10007F311F /* Category+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		2603F8CD1CCA4C10007F311F /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		261EB85F18DDB630009DDF78 /* Spare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		261EB86218DDB630009DDF78 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		261EB86418DDB630009DDF78 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -249,6 +262,19 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		2603F8C71CCA4BD1007F311F /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				2603F8C81CCA4C10007F311F /* Expense+CoreDataProperties.swift */,
+				2603F8C91CCA4C10007F311F /* Expense.swift */,
+				2603F8CA1CCA4C10007F311F /* Tag+CoreDataProperties.swift */,
+				2603F8CB1CCA4C10007F311F /* Tag.swift */,
+				2603F8CC1CCA4C10007F311F /* Category+CoreDataProperties.swift */,
+				2603F8CD1CCA4C10007F311F /* Category.swift */,
+			);
+			path = "Core Data";
+			sourceTree = "<group>";
+		};
 		261EB85618DDB630009DDF78 = {
 			isa = PBXGroup;
 			children = (
@@ -314,6 +340,7 @@
 			isa = PBXGroup;
 			children = (
 				260024051CC7E5F300EB2026 /* Screens */,
+				2603F8C71CCA4BD1007F311F /* Core Data */,
 				266946AA1CC786E300A68424 /* Utils */,
 			);
 			path = Spare;
@@ -540,17 +567,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2603F8CF1CCA4C10007F311F /* Expense.swift in Sources */,
+				2603F8D01CCA4C10007F311F /* Tag+CoreDataProperties.swift in Sources */,
 				260024101CC7E5F300EB2026 /* AddVC.swift in Sources */,
 				260024141CC7E5F300EB2026 /* RootVC.swift in Sources */,
 				260024291CC8B77C00EB2026 /* __HVCCardView.swift in Sources */,
 				260024111CC7E5F300EB2026 /* HomeVC.swift in Sources */,
+				2603F8D11CCA4C10007F311F /* Tag.swift in Sources */,
 				2603F8C11CCA4367007F311F /* BaseNavController.swift in Sources */,
 				2600241D1CC7E6B500EB2026 /* BaseVC.swift in Sources */,
 				266946931CC77A1A00A68424 /* AppDelegate.swift in Sources */,
 				260024251CC88D3E00EB2026 /* __HVCCardCell.swift in Sources */,
+				2603F8D31CCA4C10007F311F /* Category.swift in Sources */,
 				260024151CC7E5F300EB2026 /* SettingsVC.swift in Sources */,
 				266946AC1CC786EC00A68424 /* App.swift in Sources */,
 				2603F8BF1CCA3C6F007F311F /* __AVCView.swift in Sources */,
+				2603F8D21CCA4C10007F311F /* Category+CoreDataProperties.swift in Sources */,
+				2603F8CE1CCA4C10007F311F /* Expense+CoreDataProperties.swift in Sources */,
 				2669468F1CC7711000A68424 /* Spare.xcdatamodeld in Sources */,
 				260024221CC882C400EB2026 /* __HVCView.swift in Sources */,
 				260024361CC8D18100EB2026 /* __HVCLayoutManager.swift in Sources */,
@@ -807,6 +840,7 @@
 		266946571CC7711000A68424 /* Spare.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				2603F8C61CCA476E007F311F /* Spare_v2.0.xcdatamodel */,
 				266946581CC7711000A68424 /* Spare.xcdatamodel */,
 			);
 			currentVersion = 266946581CC7711000A68424 /* Spare.xcdatamodel */;
