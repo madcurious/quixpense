@@ -22,8 +22,9 @@ extension HRColorMapView {
     
     class func defaultColorMap(selectedColor: UIColor?) -> HRColorMapView {
         let colorMap = HRColorMapView.colorMapWithFrame(CGRectZero, saturationUpperLimit: 1)
-        colorMap.tileSize = 1
+        colorMap.tileSize = 8
         colorMap.brightness = 1
+        colorMap.saturationUpperLimit = 0.9
         
         if let color = selectedColor {
             colorMap.color = color

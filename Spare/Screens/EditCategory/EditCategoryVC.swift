@@ -33,8 +33,11 @@ class EditCategoryVC: BaseVC {
         }
         
         self.slider = HRBrightnessSlider()
-        self.slider.brightnessLowerLimit = 0
+        self.slider.brightnessLowerLimit = 0.3
         self.slider.color = UIColor.blackColor()
+        
+        self.customView.colorMap = self.colorMap
+        self.customView.slider = self.slider
         
         super.init()
     }
@@ -45,14 +48,14 @@ class EditCategoryVC: BaseVC {
     
     override func loadView() {
         self.view = self.customView
-        self.customView.colorMapContainer.addSubviewAndFill(self.colorMap)
-        self.customView.slider = self.slider
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.colorMap.addTarget(self, action: #selector(handleTapOnColorMap(_:)), forControlEvents: .ValueChanged)
+        self.slider.addTarget(self, action: #selector(handleBrightnessValueChange(_:)), forControlEvents: .ValueChanged)
+        
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapOnView)))
     }
     
@@ -64,6 +67,27 @@ class EditCategoryVC: BaseVC {
         // When the color map is tapped, a color has been selected and the cursor
         // should be displayed.
         self.colorMap.cursor.hidden = false
+        
+        self.slider.color = self.colorMap.color
+        self.updateTextViewColor()
+    }
+    
+    func handleBrightnessValueChange(sender: AnyObject) {
+        self.colorMap.brightness = self.slider.brightness as CGFloat
+        self.colorMap.color = self.getResultingColor()
+        self.updateTextViewColor()
+    }
+    
+    func updateTextViewColor() {
+        self.customView.textField.backgroundColor = self.getResultingColor()
+    }
+    
+    func getResultingColor() -> UIColor {
+        var color = HRHSVColor()
+        HSVColorFromUIColor(self.colorMap.color, &color)
+        let brightness = self.slider.brightness as CGFloat
+        
+        return UIColor(hue: color.h, saturation: color.s, brightness: brightness, alpha: 1)
     }
     
 }
