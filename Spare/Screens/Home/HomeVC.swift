@@ -12,7 +12,7 @@ private let kViewID = "kViewID"
 
 private let kStatusBarHeight = CGFloat(20)
 private let kTopBottomInset = CGFloat(10)
-private let kLeftRightInset = CGFloat(20)
+private let kLeftRightInset = CGFloat(30)
 private let kItemSpacing = CGFloat(10)
 
 class HomeVC: BaseVC {

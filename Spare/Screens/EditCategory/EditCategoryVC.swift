@@ -62,6 +62,13 @@ class EditCategoryVC: BaseVC {
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapOnView)))
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Auto-launch the keyboard when the screen is displayed.
+        self.customView.textField.becomeFirstResponder()
+    }
+    
     func handleTapOnView() {
         self.dismissKeyboard()
     }
