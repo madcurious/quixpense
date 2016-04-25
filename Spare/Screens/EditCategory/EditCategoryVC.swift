@@ -17,11 +17,11 @@ class EditCategoryVC: BaseVC {
     
     let customView = __ECVCView.instantiateFromNib() as __ECVCView
     let colorMap: HRColorMapView
+    let slider: HRBrightnessSlider
     
     init(category: Category?) {
         let context = App.state.coreDataStack.newBackgroundWorkerMOC()
         self.managedObjectContext = context
-        
         
         if let category = category,
             let colorHex = category.color as? Int {
@@ -31,6 +31,10 @@ class EditCategoryVC: BaseVC {
             self.category = Category(managedObjectContext: context)
             self.colorMap = HRColorMapView.defaultColorMap(nil)
         }
+        
+        self.slider = HRBrightnessSlider()
+        self.slider.brightnessLowerLimit = 0
+        self.slider.color = UIColor.blackColor()
         
         super.init()
     }
@@ -42,6 +46,7 @@ class EditCategoryVC: BaseVC {
     override func loadView() {
         self.view = self.customView
         self.customView.colorMapContainer.addSubviewAndFill(self.colorMap)
+        self.customView.slider = self.slider
     }
     
     override func viewDidLoad() {

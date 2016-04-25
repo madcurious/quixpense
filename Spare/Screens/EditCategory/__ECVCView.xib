@@ -24,11 +24,23 @@
                     <rect key="frame" x="20" y="84" width="560" height="432"/>
                     <color key="backgroundColor" red="0.80000001190000003" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mAr-b5-Os4">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mAr-b5-Os4" customClass="__ECVCViewSliderContainer" customModule="Spare" customModuleProvider="target">
                     <rect key="frame" x="20" y="536" width="560" height="44"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eFM-Fw-1kT">
+                            <rect key="frame" x="0.0" y="17" width="560" height="10"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="10" id="kPe-kP-AGc"/>
+                            </constraints>
+                        </view>
+                    </subviews>
                     <color key="backgroundColor" red="1" green="0.40000000600000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
+                        <constraint firstItem="eFM-Fw-1kT" firstAttribute="centerY" secondItem="mAr-b5-Os4" secondAttribute="centerY" id="2mX-Lu-I3l"/>
+                        <constraint firstItem="eFM-Fw-1kT" firstAttribute="leading" secondItem="mAr-b5-Os4" secondAttribute="leading" id="o2f-VJ-aUv"/>
                         <constraint firstAttribute="height" constant="44" id="z7H-GT-ZlA"/>
+                        <constraint firstAttribute="trailing" secondItem="eFM-Fw-1kT" secondAttribute="trailing" id="zUh-MV-3Dr"/>
                     </constraints>
                 </view>
             </subviews>
@@ -46,8 +58,9 @@
                 <constraint firstItem="4zi-QM-6ue" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="zKY-q2-n8e"/>
             </constraints>
             <connections>
-                <outlet property="brightnessSliderContainer" destination="mAr-b5-Os4" id="b9z-8n-afD"/>
                 <outlet property="colorMapContainer" destination="YmL-ID-hxa" id="ABM-bF-f3a"/>
+                <outlet property="sliderContainer" destination="mAr-b5-Os4" id="d4v-db-SkD"/>
+                <outlet property="sliderTrackContainer" destination="eFM-Fw-1kT" id="2x9-8F-K22"/>
                 <outlet property="textField" destination="4zi-QM-6ue" id="Y5e-Xj-5Gg"/>
             </connections>
         </view>
