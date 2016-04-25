@@ -43,6 +43,7 @@
 		262F83951CCE347B00EDDDEE /* __ECVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262F83941CCE347B00EDDDEE /* __ECVCView.swift */; };
 		262F839B1CCE3E5300EDDDEE /* LoadAppVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262F839A1CCE3E5300EDDDEE /* LoadAppVC.swift */; };
 		262F839D1CCE3E6C00EDDDEE /* LoadAppOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262F839C1CCE3E6C00EDDDEE /* LoadAppOperation.swift */; };
+		262F83A11CCE546200EDDDEE /* HRColorMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262F83A01CCE546200EDDDEE /* HRColorMapView.swift */; };
 		2666C2C61957CF7A003752BF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2666C2C41957CF7A003752BF /* SystemConfiguration.framework */; };
 		2666C2C81957CF93003752BF /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2666C2C71957CF93003752BF /* libz.dylib */; };
 		2666C2CA1957CFA1003752BF /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2666C2C91957CFA1003752BF /* libsqlite3.dylib */; };
@@ -140,6 +141,7 @@
 		262F83941CCE347B00EDDDEE /* __ECVCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __ECVCView.swift; sourceTree = "<group>"; };
 		262F839A1CCE3E5300EDDDEE /* LoadAppVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadAppVC.swift; sourceTree = "<group>"; };
 		262F839C1CCE3E6C00EDDDEE /* LoadAppOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadAppOperation.swift; sourceTree = "<group>"; };
+		262F83A01CCE546200EDDDEE /* HRColorMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRColorMapView.swift; sourceTree = "<group>"; };
 		2666C2C11957CF4F003752BF /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalyticsServices.a; path = GoogleAnalytics/libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
 		2666C2C31957CF7A003752BF /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		2666C2C41957CF7A003752BF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -287,6 +289,7 @@
 				2603F8D61CCA5B7D007F311F /* EditCategoryVC.swift */,
 				262F83921CCE345500EDDDEE /* __ECVCView.xib */,
 				262F83941CCE347B00EDDDEE /* __ECVCView.swift */,
+				262F83A01CCE546200EDDDEE /* HRColorMapView.swift */,
 			);
 			path = EditCategory;
 			sourceTree = "<group>";
@@ -610,6 +613,7 @@
 				266946AC1CC786EC00A68424 /* App.swift in Sources */,
 				2603F8BF1CCA3C6F007F311F /* __AVCView.swift in Sources */,
 				2603F8D21CCA4C10007F311F /* Category+CoreDataProperties.swift in Sources */,
+				262F83A11CCE546200EDDDEE /* HRColorMapView.swift in Sources */,
 				2603F8CE1CCA4C10007F311F /* Expense+CoreDataProperties.swift in Sources */,
 				2669468F1CC7711000A68424 /* Spare.xcdatamodeld in Sources */,
 				262F839B1CCE3E5300EDDDEE /* LoadAppVC.swift in Sources */,
