@@ -11,7 +11,7 @@ import Color_Picker_for_iOS
 
 class __ECVCView: UIView {
     
-    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var textField: __ECVCTextField!
     @IBOutlet weak var colorMapContainer: UIView!
     @IBOutlet weak var sliderContainer: __ECVCViewSliderContainer!
     
@@ -54,25 +54,33 @@ class __ECVCView: UIView {
         self.sliderTrackContainer.backgroundColor = UIColor.clearColor()
     }
     
-//    override func hitTest(point: CGPoint, withEvent event: UIEvent?) -> UIView? {
-//        let hitView = super.hitTest(point, withEvent: event)
-//        
-//        if hitView == self {
-//            let y = point.y
-//            let colorMapStartY = self.colorMapContainer.frame.origin.y
-//            let colorMapEndY = colorMapStartY + self.colorMapContainer.bounds.size.height
-//            let sliderStartY = self.sliderContainer.frame.origin.y
-//            let sliderEndY = sliderStartY + self.sliderContainer.bounds.size.height
-//            
-//            if y >= colorMapStartY && y <= colorMapEndY {
-//                return self.colorMap
-//            } else if y >= sliderStartY && y <= sliderEndY {
-//                return self.sliderContainer
-//            }
-//        }
-//        
-//        return hitView
-//    }
+}
+
+class __ECVCTextField: UITextField {
+    
+    let inset = CGFloat(8)
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        self.layer.cornerRadius = 5
+        self.layer.borderWidth = 0.5
+        self.layer.borderColor = UIColor.lightGrayColor().CGColor
+        
+        self.font = UIFont.systemFontOfSize(17)
+        self.autocapitalizationType = .Sentences
+        self.clearButtonMode = .WhileEditing
+        self.placeholder = "Category name"
+        self.textColor = UIColor.whiteColor()
+    }
+    
+    override func textRectForBounds(bounds: CGRect) -> CGRect {
+        return CGRectInset(bounds, self.inset, self.inset)
+    }
+    
+    override func editingRectForBounds(bounds: CGRect) -> CGRect {
+        return CGRectInset(bounds, self.inset, self.inset)
+    }
     
 }
 

@@ -11,7 +11,7 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4zi-QM-6ue">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4zi-QM-6ue" customClass="__ECVCTextField" customModule="Spare" customModuleProvider="target">
                     <rect key="frame" x="20" y="20" width="560" height="44"/>
                     <color key="backgroundColor" red="0.85098039219999999" green="0.94901960780000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
@@ -61,7 +61,7 @@
                 <outlet property="colorMapContainer" destination="YmL-ID-hxa" id="ABM-bF-f3a"/>
                 <outlet property="sliderContainer" destination="mAr-b5-Os4" id="d4v-db-SkD"/>
                 <outlet property="sliderTrackContainer" destination="eFM-Fw-1kT" id="2x9-8F-K22"/>
-                <outlet property="textField" destination="4zi-QM-6ue" id="Y5e-Xj-5Gg"/>
+                <outlet property="textField" destination="4zi-QM-6ue" id="bAE-L1-JFj"/>
             </connections>
         </view>
     </objects>

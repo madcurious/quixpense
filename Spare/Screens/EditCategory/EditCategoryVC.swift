@@ -29,17 +29,20 @@ class EditCategoryVC: BaseVC {
             self.colorMap = HRColorMapView.defaultColorMap(UIColor(hex: colorHex))
         } else {
             self.category = Category(managedObjectContext: context)
-            self.colorMap = HRColorMapView.defaultColorMap(nil)
+            self.colorMap = HRColorMapView.defaultColorMap(UIColor.redColor())
         }
         
         self.slider = HRBrightnessSlider()
+        
+        super.init()
+        
         self.slider.brightnessLowerLimit = 0.3
-        self.slider.color = UIColor.blackColor()
+        self.slider.color = UIColor.redColor()
         
         self.customView.colorMap = self.colorMap
         self.customView.slider = self.slider
         
-        super.init()
+        self.updateTextViewColor()
     }
     
     required init?(coder aDecoder: NSCoder) {
