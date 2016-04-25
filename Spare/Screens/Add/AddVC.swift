@@ -32,9 +32,11 @@ class AddVC: BaseVC {
         
         self.addCancelAndDoneBarButtonItems()
         
-        self.tabController.viewControllers = [UIViewController(), UIViewController()]
+        self.tabController.viewControllers = [UIViewController(), EditCategoryVC(category: nil)]
         self.tabController.tabBar.hidden = true
         self.embedChildViewController(self.tabController, toView: self.customView.tabContainer, fillSuperview: true)
+        
+        self.customView.segmentedControl.addTarget(self, action: #selector(handleTapOnSegmentedControl(_:)), forControlEvents: .ValueChanged)
     }
     
     override func handleTapOnCancelBarButtonItem(sender: AnyObject) {
@@ -43,6 +45,14 @@ class AddVC: BaseVC {
     
     override func handleTapOnDoneBarButtonItem(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func handleTapOnSegmentedControl(sender: AnyObject) {
+        guard let segmentedControl = sender as? UISegmentedControl
+            else {
+                return
+        }
+        self.tabController.selectedIndex = segmentedControl.selectedSegmentIndex
     }
     
 }

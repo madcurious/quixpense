@@ -22,20 +22,6 @@ class App {
         return self.coreDataStack.mainQueueContext
     }
     
-    private init() {
-        // Initialise CoreData stack.
-        CoreDataStack.constructSQLiteStack(withModelName: "Spare") {[unowned self] (result) in
-            switch result {
-            case .Success(let stack):
-                self.coreDataStack = stack
-                
-            case .Failure(let error as NSError):
-                fatalError(error.description)
-                
-            default:
-                fatalError("Unknown error occurred instantiating the Core Data stack.")
-            }
-        }
-    }
+    private init() {}
     
 }

@@ -39,6 +39,10 @@
 		261EB88418DDB631009DDF78 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86818DDB631009DDF78 /* CoreData.framework */; };
 		261EB88C18DDB631009DDF78 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 261EB88A18DDB631009DDF78 /* InfoPlist.strings */; };
 		261EB88E18DDB631009DDF78 /* SpareTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 261EB88D18DDB631009DDF78 /* SpareTests.m */; };
+		262F83931CCE345500EDDDEE /* __ECVCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 262F83921CCE345500EDDDEE /* __ECVCView.xib */; };
+		262F83951CCE347B00EDDDEE /* __ECVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262F83941CCE347B00EDDDEE /* __ECVCView.swift */; };
+		262F839B1CCE3E5300EDDDEE /* LoadAppVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262F839A1CCE3E5300EDDDEE /* LoadAppVC.swift */; };
+		262F839D1CCE3E6C00EDDDEE /* LoadAppOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262F839C1CCE3E6C00EDDDEE /* LoadAppOperation.swift */; };
 		2666C2C61957CF7A003752BF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2666C2C41957CF7A003752BF /* SystemConfiguration.framework */; };
 		2666C2C81957CF93003752BF /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2666C2C71957CF93003752BF /* libz.dylib */; };
 		2666C2CA1957CFA1003752BF /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2666C2C91957CFA1003752BF /* libsqlite3.dylib */; };
@@ -132,6 +136,10 @@
 		261EB88918DDB631009DDF78 /* SpareTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SpareTests-Info.plist"; sourceTree = "<group>"; };
 		261EB88B18DDB631009DDF78 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		261EB88D18DDB631009DDF78 /* SpareTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpareTests.m; sourceTree = "<group>"; };
+		262F83921CCE345500EDDDEE /* __ECVCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __ECVCView.xib; sourceTree = "<group>"; };
+		262F83941CCE347B00EDDDEE /* __ECVCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __ECVCView.swift; sourceTree = "<group>"; };
+		262F839A1CCE3E5300EDDDEE /* LoadAppVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadAppVC.swift; sourceTree = "<group>"; };
+		262F839C1CCE3E6C00EDDDEE /* LoadAppOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadAppOperation.swift; sourceTree = "<group>"; };
 		2666C2C11957CF4F003752BF /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalyticsServices.a; path = GoogleAnalytics/libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
 		2666C2C31957CF7A003752BF /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		2666C2C41957CF7A003752BF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -194,6 +202,7 @@
 		260024051CC7E5F300EB2026 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				262F83991CCE3E4C00EDDDEE /* LoadApp */,
 				2600241B1CC7E6AE00EB2026 /* Base */,
 				260024061CC7E5F300EB2026 /* Add */,
 				2603F8D51CCA5B6E007F311F /* EditCategory */,
@@ -276,6 +285,8 @@
 			isa = PBXGroup;
 			children = (
 				2603F8D61CCA5B7D007F311F /* EditCategoryVC.swift */,
+				262F83921CCE345500EDDDEE /* __ECVCView.xib */,
+				262F83941CCE347B00EDDDEE /* __ECVCView.swift */,
 			);
 			path = EditCategory;
 			sourceTree = "<group>";
@@ -339,6 +350,15 @@
 				261EB88A18DDB631009DDF78 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		262F83991CCE3E4C00EDDDEE /* LoadApp */ = {
+			isa = PBXGroup;
+			children = (
+				262F839A1CCE3E5300EDDDEE /* LoadAppVC.swift */,
+				262F839C1CCE3E6C00EDDDEE /* LoadAppOperation.swift */,
+			);
+			path = LoadApp;
 			sourceTree = "<group>";
 		};
 		266946471CC7711000A68424 /* Spare */ = {
@@ -496,6 +516,7 @@
 				266946841CC7711000A68424 /* Default@2x.png in Resources */,
 				2603F8C31CCA45FF007F311F /* LaunchScreen.storyboard in Resources */,
 				2669468B1CC7711000A68424 /* iPhone.storyboard in Resources */,
+				262F83931CCE345500EDDDEE /* __ECVCView.xib in Resources */,
 				2669468A1CC7711000A68424 /* Images.xcassets in Resources */,
 				266946871CC7711000A68424 /* Icon-60@2x.png in Resources */,
 				266946891CC7711000A68424 /* Icon@2x.png in Resources */,
@@ -573,7 +594,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2603F8CF1CCA4C10007F311F /* Expense.swift in Sources */,
+				262F83951CCE347B00EDDDEE /* __ECVCView.swift in Sources */,
 				260024101CC7E5F300EB2026 /* AddVC.swift in Sources */,
+				262F839D1CCE3E6C00EDDDEE /* LoadAppOperation.swift in Sources */,
 				260024141CC7E5F300EB2026 /* RootVC.swift in Sources */,
 				260024291CC8B77C00EB2026 /* __HVCCardView.swift in Sources */,
 				260024111CC7E5F300EB2026 /* HomeVC.swift in Sources */,
@@ -589,6 +612,7 @@
 				2603F8D21CCA4C10007F311F /* Category+CoreDataProperties.swift in Sources */,
 				2603F8CE1CCA4C10007F311F /* Expense+CoreDataProperties.swift in Sources */,
 				2669468F1CC7711000A68424 /* Spare.xcdatamodeld in Sources */,
+				262F839B1CCE3E5300EDDDEE /* LoadAppVC.swift in Sources */,
 				260024221CC882C400EB2026 /* __HVCView.swift in Sources */,
 				260024361CC8D18100EB2026 /* __HVCLayoutManager.swift in Sources */,
 			);
@@ -847,7 +871,7 @@
 				2603F8C61CCA476E007F311F /* Spare_v2.0.xcdatamodel */,
 				266946581CC7711000A68424 /* Spare.xcdatamodel */,
 			);
-			currentVersion = 266946581CC7711000A68424 /* Spare.xcdatamodel */;
+			currentVersion = 2603F8C61CCA476E007F311F /* Spare_v2.0.xcdatamodel */;
 			path = Spare.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

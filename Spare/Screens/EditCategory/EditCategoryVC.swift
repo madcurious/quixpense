@@ -14,6 +14,8 @@ class EditCategoryVC: BaseVC {
     var managedObjectContext: NSManagedObjectContext
     var category: Category
     
+    let customView = __ECVCView.instantiateFromNib() as __ECVCView
+    
     init(category: Category?) {
         let context = App.state.coreDataStack.newBackgroundWorkerMOC()
         self.managedObjectContext = context
@@ -24,6 +26,10 @@ class EditCategoryVC: BaseVC {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func loadView() {
+        self.view = self.customView
     }
     
 }
