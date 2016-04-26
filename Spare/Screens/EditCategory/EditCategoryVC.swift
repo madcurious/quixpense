@@ -74,17 +74,19 @@ class EditCategoryVC: BaseVC {
     }
     
     func handleTapOnColorMap(sender: AnyObject) {
+        self.dismissKeyboard()
+        
         // When the color map is tapped, a color has been selected and the cursor
         // should be displayed.
         self.colorMap.cursor.hidden = false
         
-        self.slider.color = self.colorMap.color
+        self.slider.color = self.getResultingColor()
         self.updateTextViewColor()
     }
     
     func handleBrightnessValueChange(sender: AnyObject) {
-        self.colorMap.brightness = self.slider.brightness as CGFloat
-        self.colorMap.color = self.getResultingColor()
+//        self.colorMap.brightness = self.slider.brightness as CGFloat
+//        self.colorMap.color = self.getResultingColor()
         self.updateTextViewColor()
     }
     
