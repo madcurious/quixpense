@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import Color_Picker_for_iOS
+import Mold
 
 class EditCategoryVC: BaseVC {
     
@@ -85,8 +86,6 @@ class EditCategoryVC: BaseVC {
     }
     
     func handleBrightnessValueChange(sender: AnyObject) {
-//        self.colorMap.brightness = self.slider.brightness as CGFloat
-//        self.colorMap.color = self.getResultingColor()
         self.updateTextViewColor()
     }
     
@@ -100,6 +99,19 @@ class EditCategoryVC: BaseVC {
         let brightness = self.slider.brightness as CGFloat
         
         return UIColor(hue: color.h, saturation: color.s, brightness: brightness, alpha: 1)
+    }
+    
+    func saveCategory(successBlock: (Void -> Void)?, failBlock: (NSError -> Void)?) {
+        guard let categoryName = nonEmptyString(self.customView.textField.text)
+            else {
+                failBlock?(MDError("You must enter a category name."))
+                return
+        }
+        
+        self.category.name = categoryName
+        self.category.color = self.getResultingColor().hexValue()
+        self.managedObjectContext.saveContext()
+        successBlock?()
     }
     
 }

@@ -22,4 +22,9 @@ class __HVCView: UIView {
         self.collectionView.decelerationRate = UIScrollViewDecelerationRateFast
     }
     
+    override func layoutSubviews() {
+        self.collectionView.collectionViewLayout.invalidateLayout()
+        super.layoutSubviews()
+    }
+    
 }

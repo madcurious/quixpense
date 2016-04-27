@@ -32,6 +32,7 @@ class RootVC: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.edgesForExtendedLayout = .None
     }
     
     override func viewWillAppear(animated: Bool) {

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Mold
 
 class AddVC: BaseVC {
     
@@ -44,7 +45,17 @@ class AddVC: BaseVC {
     }
     
     override func handleTapOnDoneBarButtonItem(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        if let editCategoryTab = self.tabController.selectedViewController as? EditCategoryVC {
+            editCategoryTab.saveCategory(
+                {[unowned self] in
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                },
+                failBlock: {[unowned self] (error) in
+                    MDErrorDialog.showError(error, inPresenter: self)
+            })
+        } else {
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
     }
     
     func handleTapOnSegmentedControl(sender: AnyObject) {
