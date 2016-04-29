@@ -49,7 +49,8 @@ class HomeVC: MDStatefulViewController {
         self.edgesForExtendedLayout = .None
         
         let collectionView = self.customView.collectionView
-        collectionView.registerClass(__HVCCardCell.self, forCellWithReuseIdentifier: kViewID)
+//        collectionView.registerClass(__HVCCardCell.self, forCellWithReuseIdentifier: kViewID)
+        collectionView.registerClass(__HVCCell.self, forCellWithReuseIdentifier: kViewID)
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.collectionViewLayout = __HVCLayoutManager()
@@ -87,7 +88,7 @@ extension HomeVC: UICollectionViewDataSource {
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kViewID, forIndexPath: indexPath) as? __HVCCardCell
+        guard let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kViewID, forIndexPath: indexPath) as? __HVCCell
             else {
                 fatalError()
         }

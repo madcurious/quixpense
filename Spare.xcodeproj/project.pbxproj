@@ -44,6 +44,8 @@
 		262F839B1CCE3E5300EDDDEE /* LoadAppVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262F839A1CCE3E5300EDDDEE /* LoadAppVC.swift */; };
 		262F839D1CCE3E6C00EDDDEE /* LoadAppOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262F839C1CCE3E6C00EDDDEE /* LoadAppOperation.swift */; };
 		262F83A11CCE546200EDDDEE /* HRColorMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262F83A01CCE546200EDDDEE /* HRColorMapView.swift */; };
+		2631F37B1CD3458800E90A61 /* CardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2631F37A1CD3458800E90A61 /* CardVC.swift */; };
+		2631F37D1CD3479D00E90A61 /* __HVCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2631F37C1CD3479D00E90A61 /* __HVCCell.swift */; };
 		2666C2C61957CF7A003752BF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2666C2C41957CF7A003752BF /* SystemConfiguration.framework */; };
 		2666C2C81957CF93003752BF /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2666C2C71957CF93003752BF /* libz.dylib */; };
 		2666C2CA1957CFA1003752BF /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2666C2C91957CFA1003752BF /* libsqlite3.dylib */; };
@@ -142,6 +144,8 @@
 		262F839A1CCE3E5300EDDDEE /* LoadAppVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadAppVC.swift; sourceTree = "<group>"; };
 		262F839C1CCE3E6C00EDDDEE /* LoadAppOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadAppOperation.swift; sourceTree = "<group>"; };
 		262F83A01CCE546200EDDDEE /* HRColorMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRColorMapView.swift; sourceTree = "<group>"; };
+		2631F37A1CD3458800E90A61 /* CardVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardVC.swift; sourceTree = "<group>"; };
+		2631F37C1CD3479D00E90A61 /* __HVCCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __HVCCell.swift; sourceTree = "<group>"; };
 		2666C2C11957CF4F003752BF /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalyticsServices.a; path = GoogleAnalytics/libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
 		2666C2C31957CF7A003752BF /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		2666C2C41957CF7A003752BF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -235,6 +239,8 @@
 				260024281CC8B77C00EB2026 /* __HVCCardView.swift */,
 				260024261CC88DE500EB2026 /* __HVCCardView.xib */,
 				260024351CC8D18100EB2026 /* __HVCLayoutManager.swift */,
+				2631F37A1CD3458800E90A61 /* CardVC.swift */,
+				2631F37C1CD3479D00E90A61 /* __HVCCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -611,9 +617,11 @@
 				2603F8D31CCA4C10007F311F /* Category.swift in Sources */,
 				260024151CC7E5F300EB2026 /* SettingsVC.swift in Sources */,
 				266946AC1CC786EC00A68424 /* App.swift in Sources */,
+				2631F37D1CD3479D00E90A61 /* __HVCCell.swift in Sources */,
 				2603F8BF1CCA3C6F007F311F /* __AVCView.swift in Sources */,
 				2603F8D21CCA4C10007F311F /* Category+CoreDataProperties.swift in Sources */,
 				262F83A11CCE546200EDDDEE /* HRColorMapView.swift in Sources */,
+				2631F37B1CD3458800E90A61 /* CardVC.swift in Sources */,
 				2603F8CE1CCA4C10007F311F /* Expense+CoreDataProperties.swift in Sources */,
 				2669468F1CC7711000A68424 /* Spare.xcdatamodeld in Sources */,
 				262F839B1CCE3E5300EDDDEE /* LoadAppVC.swift in Sources */,
