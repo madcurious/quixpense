@@ -79,6 +79,7 @@ class __ECVCTextField: UITextField {
         self.clearButtonMode = .WhileEditing
         self.placeholder = "Type here"
         self.textColor = Color.White
+        self.adjustsFontSizeToFitWidth = false
     }
     
     override func textRectForBounds(bounds: CGRect) -> CGRect {
