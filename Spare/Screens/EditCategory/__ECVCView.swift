@@ -74,7 +74,7 @@ class __ECVCTextField: UITextField {
         self.backgroundColor = UIColor.clearColor()
         self.borderStyle = .None
         
-        self.font = Font.get(.Regular, size: 18)
+        self.font = Font.get(.Bold, size: 18)
         self.autocapitalizationType = .Sentences
         self.clearButtonMode = .WhileEditing
         self.placeholder = "Type here"

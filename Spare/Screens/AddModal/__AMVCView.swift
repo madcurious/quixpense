@@ -21,10 +21,14 @@ class __AMVCView: UIView {
         self.scrollView.bounces = true
         self.scrollView.showsHorizontalScrollIndicator = false
         self.scrollView.showsVerticalScrollIndicator = false
+        self.scrollView.delegate = self
         
         self.pageControl.numberOfPages = 2
+        self.pageControl.pageIndicatorTintColor = Color.Gray2
+        self.pageControl.currentPageIndicatorTintColor = Color.Gray10
+        self.pageControl.userInteractionEnabled = false
         
-        self.contentView.backgroundColor = UIColor.blueColor()
+        self.contentView.backgroundColor = UIColor.clearColor()
         self.scrollView.backgroundColor = UIColor.clearColor()
         self.backgroundColor = Color.Gray1
     }
@@ -52,6 +56,24 @@ class __AMVCView: UIView {
         // Add the width Autolayout rules to the pages.
         let widthConstraint = NSLayoutConstraint(item: firstPage, attribute: .Width, relatedBy: .Equal, toItem: self.scrollView, attribute: .Width, multiplier: 1, constant: 0)
         self.addConstraint(widthConstraint)
+    }
+    
+}
+
+extension __AMVCView: UIScrollViewDelegate {
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        // Keep track of old page values for event firing.
+        let oldCurrentPage = self.pageControl.currentPage
+        
+        // Compute for the newCurrentPage.
+        let pageWidth = self.scrollView.bounds.size.width
+        let fractionalPage = Double(self.scrollView.contentOffset.x / pageWidth)
+        self.pageControl.currentPage = lround(fractionalPage)
+        
+        if oldCurrentPage != self.pageControl.currentPage {
+            self.pageControl.sendActionsForControlEvents(.ValueChanged)
+        }
     }
     
 }

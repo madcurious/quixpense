@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		260024101CC7E5F300EB2026 /* AddVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260024071CC7E5F300EB2026 /* AddVC.swift */; };
 		260024111CC7E5F300EB2026 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260024091CC7E5F300EB2026 /* HomeVC.swift */; };
-		260024141CC7E5F300EB2026 /* RootVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2600240D1CC7E5F300EB2026 /* RootVC.swift */; };
 		260024151CC7E5F300EB2026 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2600240F1CC7E5F300EB2026 /* SettingsVC.swift */; };
 		2600241D1CC7E6B500EB2026 /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2600241C1CC7E6B500EB2026 /* BaseVC.swift */; };
 		260024221CC882C400EB2026 /* __HVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260024201CC882C400EB2026 /* __HVCView.swift */; };
@@ -22,7 +21,6 @@
 		260024361CC8D18100EB2026 /* __HVCLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260024351CC8D18100EB2026 /* __HVCLayoutManager.swift */; };
 		2603F8BD1CCA3C0A007F311F /* __AVCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2603F8BC1CCA3C0A007F311F /* __AVCView.xib */; };
 		2603F8BF1CCA3C6F007F311F /* __AVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2603F8BE1CCA3C6F007F311F /* __AVCView.swift */; };
-		2603F8C11CCA4367007F311F /* BaseNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2603F8C01CCA4367007F311F /* BaseNavController.swift */; };
 		2603F8C31CCA45FF007F311F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2603F8C21CCA45FF007F311F /* LaunchScreen.storyboard */; };
 		2603F8CE1CCA4C10007F311F /* Expense+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2603F8C81CCA4C10007F311F /* Expense+CoreDataProperties.swift */; };
 		2603F8CF1CCA4C10007F311F /* Expense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2603F8C91CCA4C10007F311F /* Expense.swift */; };
@@ -42,6 +40,8 @@
 		261370B91CD7A120007BAF56 /* Montserrat-UltraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 261370B11CD7A120007BAF56 /* Montserrat-UltraLight.otf */; };
 		261370BD1CD7A9EC007BAF56 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261370BC1CD7A9EC007BAF56 /* Font.swift */; };
 		261370BF1CD7ABD9007BAF56 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261370BE1CD7ABD9007BAF56 /* Color.swift */; };
+		261370C21CD7B060007BAF56 /* RootVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261370C11CD7B060007BAF56 /* RootVC.swift */; };
+		261370C41CD7B082007BAF56 /* ModalNavBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261370C31CD7B082007BAF56 /* ModalNavBarVC.swift */; };
 		261EB86318DDB630009DDF78 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86218DDB630009DDF78 /* Foundation.framework */; };
 		261EB86518DDB630009DDF78 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86418DDB630009DDF78 /* CoreGraphics.framework */; };
 		261EB86718DDB631009DDF78 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86618DDB631009DDF78 /* UIKit.framework */; };
@@ -123,7 +123,6 @@
 		260023FD1CC7E0B000EB2026 /* Mold.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mold.framework; path = "Mold/build/Debug-iphoneos/Mold.framework"; sourceTree = "<group>"; };
 		260024071CC7E5F300EB2026 /* AddVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddVC.swift; sourceTree = "<group>"; };
 		260024091CC7E5F300EB2026 /* HomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
-		2600240D1CC7E5F300EB2026 /* RootVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootVC.swift; sourceTree = "<group>"; };
 		2600240F1CC7E5F300EB2026 /* SettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		2600241C1CC7E6B500EB2026 /* BaseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
 		260024201CC882C400EB2026 /* __HVCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __HVCView.swift; sourceTree = "<group>"; };
@@ -134,7 +133,6 @@
 		260024351CC8D18100EB2026 /* __HVCLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __HVCLayoutManager.swift; sourceTree = "<group>"; };
 		2603F8BC1CCA3C0A007F311F /* __AVCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __AVCView.xib; sourceTree = "<group>"; };
 		2603F8BE1CCA3C6F007F311F /* __AVCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __AVCView.swift; sourceTree = "<group>"; };
-		2603F8C01CCA4367007F311F /* BaseNavController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavController.swift; sourceTree = "<group>"; };
 		2603F8C21CCA45FF007F311F /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2603F8C61CCA476E007F311F /* Spare_v2.0.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Spare_v2.0.xcdatamodel; sourceTree = "<group>"; };
 		2603F8C81CCA4C10007F311F /* Expense+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Expense+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -155,6 +153,8 @@
 		261370B11CD7A120007BAF56 /* Montserrat-UltraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-UltraLight.otf"; path = "../../../../Downloads/montserrat/Montserrat-UltraLight.otf"; sourceTree = "<group>"; };
 		261370BC1CD7A9EC007BAF56 /* Font.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		261370BE1CD7ABD9007BAF56 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		261370C11CD7B060007BAF56 /* RootVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootVC.swift; sourceTree = "<group>"; };
+		261370C31CD7B082007BAF56 /* ModalNavBarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalNavBarVC.swift; sourceTree = "<group>"; };
 		261EB85F18DDB630009DDF78 /* Spare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		261EB86218DDB630009DDF78 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		261EB86418DDB630009DDF78 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -234,13 +234,13 @@
 		260024051CC7E5F300EB2026 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				261370C01CD7B060007BAF56 /* Containers */,
 				262F83991CCE3E4C00EDDDEE /* LoadApp */,
 				2600241B1CC7E6AE00EB2026 /* Base */,
 				260024061CC7E5F300EB2026 /* Add */,
 				261370981CD77B3F007BAF56 /* AddModal */,
 				2603F8D51CCA5B6E007F311F /* EditCategory */,
 				260024081CC7E5F300EB2026 /* Home */,
-				2600240C1CC7E5F300EB2026 /* Root */,
 				2600240E1CC7E5F300EB2026 /* Settings */,
 			);
 			path = Screens;
@@ -272,14 +272,6 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
-		2600240C1CC7E5F300EB2026 /* Root */ = {
-			isa = PBXGroup;
-			children = (
-				2600240D1CC7E5F300EB2026 /* RootVC.swift */,
-			);
-			path = Root;
-			sourceTree = "<group>";
-		};
 		2600240E1CC7E5F300EB2026 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -292,7 +284,6 @@
 			isa = PBXGroup;
 			children = (
 				2600241C1CC7E6B500EB2026 /* BaseVC.swift */,
-				2603F8C01CCA4367007F311F /* BaseNavController.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -350,6 +341,15 @@
 				261370B11CD7A120007BAF56 /* Montserrat-UltraLight.otf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		261370C01CD7B060007BAF56 /* Containers */ = {
+			isa = PBXGroup;
+			children = (
+				261370C11CD7B060007BAF56 /* RootVC.swift */,
+				261370C31CD7B082007BAF56 /* ModalNavBarVC.swift */,
+			);
+			path = Containers;
 			sourceTree = "<group>";
 		};
 		261EB85618DDB630009DDF78 = {
@@ -670,15 +670,14 @@
 				262F83951CCE347B00EDDDEE /* __ECVCView.swift in Sources */,
 				260024101CC7E5F300EB2026 /* AddVC.swift in Sources */,
 				262F839D1CCE3E6C00EDDDEE /* LoadAppOperation.swift in Sources */,
-				260024141CC7E5F300EB2026 /* RootVC.swift in Sources */,
 				260024291CC8B77C00EB2026 /* __HVCCardView.swift in Sources */,
 				260024111CC7E5F300EB2026 /* HomeVC.swift in Sources */,
-				2603F8C11CCA4367007F311F /* BaseNavController.swift in Sources */,
 				2600241D1CC7E6B500EB2026 /* BaseVC.swift in Sources */,
 				266946931CC77A1A00A68424 /* AppDelegate.swift in Sources */,
 				2603F8D71CCA5B7D007F311F /* EditCategoryVC.swift in Sources */,
 				260024251CC88D3E00EB2026 /* __HVCCardCell.swift in Sources */,
 				2603F8D31CCA4C10007F311F /* Category.swift in Sources */,
+				261370C41CD7B082007BAF56 /* ModalNavBarVC.swift in Sources */,
 				260024151CC7E5F300EB2026 /* SettingsVC.swift in Sources */,
 				266946AC1CC786EC00A68424 /* App.swift in Sources */,
 				2631F37D1CD3479D00E90A61 /* __HVCCell.swift in Sources */,
@@ -686,6 +685,7 @@
 				261370BD1CD7A9EC007BAF56 /* Font.swift in Sources */,
 				2603F8D21CCA4C10007F311F /* Category+CoreDataProperties.swift in Sources */,
 				261370A01CD7866F007BAF56 /* __AMVCView.swift in Sources */,
+				261370C21CD7B060007BAF56 /* RootVC.swift in Sources */,
 				262F83A11CCE546200EDDDEE /* HRColorMapView.swift in Sources */,
 				2631F37B1CD3458800E90A61 /* CardVC.swift in Sources */,
 				261370BF1CD7ABD9007BAF56 /* Color.swift in Sources */,
