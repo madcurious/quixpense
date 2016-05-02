@@ -51,11 +51,15 @@ class __ECVCView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        self.backgroundColor = Color.Gray1
+        self.textFieldContainer.backgroundColor = Color.White
         self.colorMapContainer.backgroundColor = UIColor.clearColor()
         self.sliderContainer.backgroundColor = UIColor.clearColor()
         self.sliderTrackContainer.backgroundColor = UIColor.clearColor()
         
         self.fieldLabel.text = "NAME"
+        self.fieldLabel.textColor = Color.Gray10
+        self.fieldLabel.font = Font.get(.Bold, size: 14)
     }
     
 }
@@ -67,17 +71,14 @@ class __ECVCTextField: UITextField {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-//        self.layer.cornerRadius = 5
-//        self.layer.borderWidth = 0.5
-//        self.layer.borderColor = UIColor.lightGrayColor().CGColor
         self.backgroundColor = UIColor.clearColor()
         self.borderStyle = .None
         
-        self.font = UIFont.systemFontOfSize(17)
+        self.font = Font.get(.Regular, size: 18)
         self.autocapitalizationType = .Sentences
         self.clearButtonMode = .WhileEditing
         self.placeholder = "Type here"
-        self.textColor = UIColor.whiteColor()
+        self.textColor = Color.White
     }
     
     override func textRectForBounds(bounds: CGRect) -> CGRect {

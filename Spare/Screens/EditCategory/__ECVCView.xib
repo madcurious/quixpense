@@ -12,19 +12,16 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EbK-hz-HQs">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                    <rect key="frame" x="0.0" y="35" width="600" height="54"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JXI-iZ-dM6">
-                            <rect key="frame" x="10" y="0.0" width="80" height="44"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="80" id="0l8-t1-Mg6"/>
-                            </constraints>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JXI-iZ-dM6">
+                            <rect key="frame" x="10" y="0.0" width="42" height="54"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4zi-QM-6ue" customClass="__ECVCTextField" customModule="Spare" customModuleProvider="target">
-                            <rect key="frame" x="100" y="0.0" width="500" height="44"/>
+                            <rect key="frame" x="62" y="4" width="528" height="46"/>
                             <color key="backgroundColor" red="0.85098039219999999" green="0.94901960780000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
@@ -33,17 +30,17 @@
                     <color key="backgroundColor" red="1" green="0.90588235289999997" blue="0.73333333329999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="JXI-iZ-dM6" firstAttribute="top" secondItem="EbK-hz-HQs" secondAttribute="top" id="AZw-uf-Sj5"/>
-                        <constraint firstAttribute="height" constant="44" id="BB5-Jk-M6u"/>
+                        <constraint firstAttribute="height" constant="54" id="BB5-Jk-M6u"/>
                         <constraint firstAttribute="bottom" secondItem="JXI-iZ-dM6" secondAttribute="bottom" id="ZyT-Uh-P9g"/>
-                        <constraint firstAttribute="trailing" secondItem="4zi-QM-6ue" secondAttribute="trailing" id="h6g-nK-DIf"/>
-                        <constraint firstItem="4zi-QM-6ue" firstAttribute="top" secondItem="EbK-hz-HQs" secondAttribute="top" id="kT5-ni-hBr"/>
+                        <constraint firstAttribute="trailing" secondItem="4zi-QM-6ue" secondAttribute="trailing" constant="10" id="h6g-nK-DIf"/>
+                        <constraint firstItem="4zi-QM-6ue" firstAttribute="top" secondItem="EbK-hz-HQs" secondAttribute="top" constant="4" id="kT5-ni-hBr"/>
                         <constraint firstItem="JXI-iZ-dM6" firstAttribute="leading" secondItem="EbK-hz-HQs" secondAttribute="leading" constant="10" id="nhD-4B-FeY"/>
                         <constraint firstItem="4zi-QM-6ue" firstAttribute="leading" secondItem="JXI-iZ-dM6" secondAttribute="trailing" constant="10" id="o9K-jO-SCo"/>
-                        <constraint firstAttribute="bottom" secondItem="4zi-QM-6ue" secondAttribute="bottom" id="zmb-wF-Z9K"/>
+                        <constraint firstAttribute="bottom" secondItem="4zi-QM-6ue" secondAttribute="bottom" constant="4" id="zmb-wF-Z9K"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YmL-ID-hxa">
-                    <rect key="frame" x="20" y="64" width="560" height="452"/>
+                    <rect key="frame" x="20" y="109" width="560" height="407"/>
                     <color key="backgroundColor" red="0.80000001190000003" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mAr-b5-Os4" customClass="__ECVCViewSliderContainer" customModule="Spare" customModuleProvider="target">
@@ -70,7 +67,7 @@
             <constraints>
                 <constraint firstItem="EbK-hz-HQs" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="3CN-yy-GZa"/>
                 <constraint firstItem="mAr-b5-Os4" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="5IB-du-aas"/>
-                <constraint firstItem="EbK-hz-HQs" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="9jE-bs-6qX"/>
+                <constraint firstItem="EbK-hz-HQs" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="35" id="9jE-bs-6qX"/>
                 <constraint firstItem="YmL-ID-hxa" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="CdW-rx-x3n"/>
                 <constraint firstItem="mAr-b5-Os4" firstAttribute="top" secondItem="YmL-ID-hxa" secondAttribute="bottom" constant="20" id="DME-Pj-Spq"/>
                 <constraint firstAttribute="trailing" secondItem="EbK-hz-HQs" secondAttribute="trailing" id="cy0-i7-60T"/>

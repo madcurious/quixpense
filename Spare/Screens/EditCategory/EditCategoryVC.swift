@@ -61,7 +61,7 @@ class EditCategoryVC: BaseVC {
         self.slider.addTarget(self, action: #selector(handleBrightnessValueChange(_:)), forControlEvents: .ValueChanged)
         
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapOnView)))
-    }\
+    }
     
     func handleTapOnView() {
         self.dismissKeyboard()
@@ -83,7 +83,7 @@ class EditCategoryVC: BaseVC {
     }
     
     func updateTextViewColor() {
-        self.customView.textFieldContainer.backgroundColor = self.getResultingColor()
+        self.customView.textField.backgroundColor = self.getResultingColor()
     }
     
     func getResultingColor() -> UIColor {
