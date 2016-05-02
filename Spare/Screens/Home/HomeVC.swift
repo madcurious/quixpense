@@ -8,10 +8,10 @@
 
 import UIKit
 import Mold
+import BNRCoreDataStack
 
 private let kViewID = "kViewID"
 
-//private let kStatusBarHeight = CGFloat(20)
 private let kTopBottomInset = CGFloat(10)
 private let kLeftRightInset = CGFloat(30)
 private let kItemSpacing = CGFloat(10)
@@ -20,6 +20,26 @@ class HomeVC: MDStatefulViewController {
     
     var customView = __HVCView.instantiateFromNib() as __HVCView
     var viewHasAppeared = false
+    
+    lazy var fetcher: NSFetchedResultsController = {
+        let request = NSFetchRequest(entityName: Expense.entityName)
+        request.propertiesToGroupBy = ["category"]
+        request.resultType = .DictionaryResultType
+        request.propertiesToFetch = [
+            "category",
+            {
+                let totalColumn = NSExpressionDescription()
+                totalColumn.name = "total"
+                totalColumn.expression = NSExpression(format: "@sum.amount")
+                totalColumn.expressionResultType = .DecimalAttributeType
+                return totalColumn
+            }()
+        ]
+        request.sortDescriptors = [NSSortDescriptor(key: "category", ascending: true)]
+        
+        let fetcher = NSFetchedResultsController(fetchRequest: request, managedObjectContext: App.state.mainQueueContext, sectionNameKeyPath: nil, cacheName: "Summaries")
+        return fetcher
+    }()
     
     var topInset: CGFloat {
         let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.height
@@ -62,7 +82,36 @@ class HomeVC: MDStatefulViewController {
     }
     
     override func buildOperation() -> MDOperation? {
-        return nil
+        let op = MDBlockOperation {[unowned self] in
+            try self.fetcher.performFetch()
+            return nil
+            }
+            .onSuccess {[unowned self] (_) in
+                guard let dictionary = self.fetcher.fetchedObjects as? [[String : AnyObject]]
+                    else {
+                        print("--------")
+                        print(self.fetcher.fetchedObjects)
+                        return
+                }
+                
+                
+                prettyPrintJSONObject(dictionary)
+                
+                let collectionView = self.customView.collectionView
+                collectionView.reloadData()
+                
+                if let results = self.fetcher.fetchedObjects
+                    where results.isEmpty == false {
+                    let lastItem = collectionView.numberOfItemsInSection(0) - 1
+                    collectionView.scrollToItemAtIndexPath(NSIndexPath(forItem: lastItem, inSection: 0), atScrollPosition: .CenteredHorizontally, animated: false)
+                    collectionView.collectionViewLayout.invalidateLayout()
+                    
+                    self.showView(.Primary)
+                } else {
+                    self.showView(.NoResults)
+                }
+        }
+        return op
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -70,11 +119,6 @@ class HomeVC: MDStatefulViewController {
         
         // Show the last item first.
         if self.viewHasAppeared == false {
-            let collectionView = self.customView.collectionView
-            let lastItem = collectionView.numberOfItemsInSection(0) - 1
-            collectionView.scrollToItemAtIndexPath(NSIndexPath(forItem: lastItem, inSection: 0), atScrollPosition: .CenteredHorizontally, animated: false)
-            collectionView.collectionViewLayout.invalidateLayout()
-            self.showView(.Primary)
             self.viewHasAppeared = true
         }
     }
@@ -84,7 +128,13 @@ class HomeVC: MDStatefulViewController {
 extension HomeVC: UICollectionViewDataSource {
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        guard let sections = self.fetcher.sections,
+            let objects = sections[section].objects
+            else {
+                return 0
+        }
+        let count = objects.count
+        return count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {

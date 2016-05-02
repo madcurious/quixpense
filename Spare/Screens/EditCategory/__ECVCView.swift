@@ -11,6 +11,8 @@ import Color_Picker_for_iOS
 
 class __ECVCView: UIView {
     
+    @IBOutlet weak var textFieldContainer: UIView!
+    @IBOutlet weak var fieldLabel: UILabel!
     @IBOutlet weak var textField: __ECVCTextField!
     @IBOutlet weak var colorMapContainer: UIView!
     @IBOutlet weak var sliderContainer: __ECVCViewSliderContainer!
@@ -52,6 +54,8 @@ class __ECVCView: UIView {
         self.colorMapContainer.backgroundColor = UIColor.clearColor()
         self.sliderContainer.backgroundColor = UIColor.clearColor()
         self.sliderTrackContainer.backgroundColor = UIColor.clearColor()
+        
+        self.fieldLabel.text = "NAME"
     }
     
 }
@@ -63,14 +67,16 @@ class __ECVCTextField: UITextField {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.layer.cornerRadius = 5
-        self.layer.borderWidth = 0.5
-        self.layer.borderColor = UIColor.lightGrayColor().CGColor
+//        self.layer.cornerRadius = 5
+//        self.layer.borderWidth = 0.5
+//        self.layer.borderColor = UIColor.lightGrayColor().CGColor
+        self.backgroundColor = UIColor.clearColor()
+        self.borderStyle = .None
         
         self.font = UIFont.systemFontOfSize(17)
         self.autocapitalizationType = .Sentences
         self.clearButtonMode = .WhileEditing
-        self.placeholder = "Category name"
+        self.placeholder = "Type here"
         self.textColor = UIColor.whiteColor()
     }
     

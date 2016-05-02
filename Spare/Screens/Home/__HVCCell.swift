@@ -23,6 +23,7 @@ class __HVCCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         self.contentView.addSubviewAndFill(self.cardVC.view)
     }
     

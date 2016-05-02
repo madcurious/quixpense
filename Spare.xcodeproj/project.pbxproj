@@ -29,6 +29,9 @@
 		2603F8D21CCA4C10007F311F /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2603F8CC1CCA4C10007F311F /* Category+CoreDataProperties.swift */; };
 		2603F8D31CCA4C10007F311F /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2603F8CD1CCA4C10007F311F /* Category.swift */; };
 		2603F8D71CCA5B7D007F311F /* EditCategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2603F8D61CCA5B7D007F311F /* EditCategoryVC.swift */; };
+		2613709A1CD77B4A007BAF56 /* AddModalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261370991CD77B4A007BAF56 /* AddModalVC.swift */; };
+		2613709E1CD78618007BAF56 /* __AMVCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2613709D1CD78618007BAF56 /* __AMVCView.xib */; };
+		261370A01CD7866F007BAF56 /* __AMVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2613709F1CD7866F007BAF56 /* __AMVCView.swift */; };
 		261EB86318DDB630009DDF78 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86218DDB630009DDF78 /* Foundation.framework */; };
 		261EB86518DDB630009DDF78 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86418DDB630009DDF78 /* CoreGraphics.framework */; };
 		261EB86718DDB631009DDF78 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86618DDB631009DDF78 /* UIKit.framework */; };
@@ -129,6 +132,9 @@
 		2603F8CC1CCA4C10007F311F /* Category+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		2603F8CD1CCA4C10007F311F /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		2603F8D61CCA5B7D007F311F /* EditCategoryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditCategoryVC.swift; sourceTree = "<group>"; };
+		261370991CD77B4A007BAF56 /* AddModalVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddModalVC.swift; sourceTree = "<group>"; };
+		2613709D1CD78618007BAF56 /* __AMVCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __AMVCView.xib; sourceTree = "<group>"; };
+		2613709F1CD7866F007BAF56 /* __AMVCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __AMVCView.swift; sourceTree = "<group>"; };
 		261EB85F18DDB630009DDF78 /* Spare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		261EB86218DDB630009DDF78 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		261EB86418DDB630009DDF78 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -211,6 +217,7 @@
 				262F83991CCE3E4C00EDDDEE /* LoadApp */,
 				2600241B1CC7E6AE00EB2026 /* Base */,
 				260024061CC7E5F300EB2026 /* Add */,
+				261370981CD77B3F007BAF56 /* AddModal */,
 				2603F8D51CCA5B6E007F311F /* EditCategory */,
 				260024081CC7E5F300EB2026 /* Home */,
 				2600240C1CC7E5F300EB2026 /* Root */,
@@ -239,8 +246,8 @@
 				260024281CC8B77C00EB2026 /* __HVCCardView.swift */,
 				260024261CC88DE500EB2026 /* __HVCCardView.xib */,
 				260024351CC8D18100EB2026 /* __HVCLayoutManager.swift */,
-				2631F37A1CD3458800E90A61 /* CardVC.swift */,
 				2631F37C1CD3479D00E90A61 /* __HVCCell.swift */,
+				2631F37A1CD3458800E90A61 /* CardVC.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -298,6 +305,16 @@
 				262F83A01CCE546200EDDDEE /* HRColorMapView.swift */,
 			);
 			path = EditCategory;
+			sourceTree = "<group>";
+		};
+		261370981CD77B3F007BAF56 /* AddModal */ = {
+			isa = PBXGroup;
+			children = (
+				261370991CD77B4A007BAF56 /* AddModalVC.swift */,
+				2613709D1CD78618007BAF56 /* __AMVCView.xib */,
+				2613709F1CD7866F007BAF56 /* __AMVCView.swift */,
+			);
+			path = AddModal;
 			sourceTree = "<group>";
 		};
 		261EB85618DDB630009DDF78 = {
@@ -528,6 +545,7 @@
 				262F83931CCE345500EDDDEE /* __ECVCView.xib in Resources */,
 				2669468A1CC7711000A68424 /* Images.xcassets in Resources */,
 				266946871CC7711000A68424 /* Icon-60@2x.png in Resources */,
+				2613709E1CD78618007BAF56 /* __AMVCView.xib in Resources */,
 				266946891CC7711000A68424 /* Icon@2x.png in Resources */,
 				266946861CC7711000A68424 /* Icon-40@2x.png in Resources */,
 				266946881CC7711000A68424 /* Icon-Small@2x.png in Resources */,
@@ -620,12 +638,14 @@
 				2631F37D1CD3479D00E90A61 /* __HVCCell.swift in Sources */,
 				2603F8BF1CCA3C6F007F311F /* __AVCView.swift in Sources */,
 				2603F8D21CCA4C10007F311F /* Category+CoreDataProperties.swift in Sources */,
+				261370A01CD7866F007BAF56 /* __AMVCView.swift in Sources */,
 				262F83A11CCE546200EDDDEE /* HRColorMapView.swift in Sources */,
 				2631F37B1CD3458800E90A61 /* CardVC.swift in Sources */,
 				2603F8CE1CCA4C10007F311F /* Expense+CoreDataProperties.swift in Sources */,
 				2669468F1CC7711000A68424 /* Spare.xcdatamodeld in Sources */,
 				262F839B1CCE3E5300EDDDEE /* LoadAppVC.swift in Sources */,
 				260024221CC882C400EB2026 /* __HVCView.swift in Sources */,
+				2613709A1CD77B4A007BAF56 /* AddModalVC.swift in Sources */,
 				260024361CC8D18100EB2026 /* __HVCLayoutManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -767,7 +787,7 @@
 					"$(PROJECT_NAME)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "a6832136-841f-4f2e-a8a1-0743228520a9";
 				SWIFT_OBJC_BRIDGING_HEADER = "Supporting Files/Spare-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
@@ -798,7 +818,7 @@
 					"$(PROJECT_NAME)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "a6832136-841f-4f2e-a8a1-0743228520a9";
 				SWIFT_OBJC_BRIDGING_HEADER = "Supporting Files/Spare-Bridging-Header.h";
 				WRAPPER_EXTENSION = app;
 			};

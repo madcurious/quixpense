@@ -11,17 +11,39 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4zi-QM-6ue" customClass="__ECVCTextField" customModule="Spare" customModuleProvider="target">
-                    <rect key="frame" x="20" y="20" width="560" height="44"/>
-                    <color key="backgroundColor" red="0.85098039219999999" green="0.94901960780000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EbK-hz-HQs">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JXI-iZ-dM6">
+                            <rect key="frame" x="10" y="0.0" width="80" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="80" id="0l8-t1-Mg6"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4zi-QM-6ue" customClass="__ECVCTextField" customModule="Spare" customModuleProvider="target">
+                            <rect key="frame" x="100" y="0.0" width="500" height="44"/>
+                            <color key="backgroundColor" red="0.85098039219999999" green="0.94901960780000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                    </subviews>
+                    <color key="backgroundColor" red="1" green="0.90588235289999997" blue="0.73333333329999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="44" id="0cy-cg-0NN"/>
+                        <constraint firstItem="JXI-iZ-dM6" firstAttribute="top" secondItem="EbK-hz-HQs" secondAttribute="top" id="AZw-uf-Sj5"/>
+                        <constraint firstAttribute="height" constant="44" id="BB5-Jk-M6u"/>
+                        <constraint firstAttribute="bottom" secondItem="JXI-iZ-dM6" secondAttribute="bottom" id="ZyT-Uh-P9g"/>
+                        <constraint firstAttribute="trailing" secondItem="4zi-QM-6ue" secondAttribute="trailing" id="h6g-nK-DIf"/>
+                        <constraint firstItem="4zi-QM-6ue" firstAttribute="top" secondItem="EbK-hz-HQs" secondAttribute="top" id="kT5-ni-hBr"/>
+                        <constraint firstItem="JXI-iZ-dM6" firstAttribute="leading" secondItem="EbK-hz-HQs" secondAttribute="leading" constant="10" id="nhD-4B-FeY"/>
+                        <constraint firstItem="4zi-QM-6ue" firstAttribute="leading" secondItem="JXI-iZ-dM6" secondAttribute="trailing" constant="10" id="o9K-jO-SCo"/>
+                        <constraint firstAttribute="bottom" secondItem="4zi-QM-6ue" secondAttribute="bottom" id="zmb-wF-Z9K"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
-                </textField>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YmL-ID-hxa">
-                    <rect key="frame" x="20" y="84" width="560" height="432"/>
+                    <rect key="frame" x="20" y="64" width="560" height="452"/>
                     <color key="backgroundColor" red="0.80000001190000003" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mAr-b5-Os4" customClass="__ECVCViewSliderContainer" customModule="Spare" customModuleProvider="target">
@@ -46,22 +68,24 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="EbK-hz-HQs" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="3CN-yy-GZa"/>
                 <constraint firstItem="mAr-b5-Os4" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="5IB-du-aas"/>
+                <constraint firstItem="EbK-hz-HQs" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="9jE-bs-6qX"/>
                 <constraint firstItem="YmL-ID-hxa" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="CdW-rx-x3n"/>
                 <constraint firstItem="mAr-b5-Os4" firstAttribute="top" secondItem="YmL-ID-hxa" secondAttribute="bottom" constant="20" id="DME-Pj-Spq"/>
-                <constraint firstItem="YmL-ID-hxa" firstAttribute="top" secondItem="4zi-QM-6ue" secondAttribute="bottom" constant="20" id="HHJ-qV-jjL"/>
-                <constraint firstItem="4zi-QM-6ue" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="cGB-jE-Prw"/>
-                <constraint firstAttribute="trailing" secondItem="4zi-QM-6ue" secondAttribute="trailing" constant="20" id="cMD-8b-gvD"/>
+                <constraint firstAttribute="trailing" secondItem="EbK-hz-HQs" secondAttribute="trailing" id="cy0-i7-60T"/>
+                <constraint firstItem="YmL-ID-hxa" firstAttribute="top" secondItem="EbK-hz-HQs" secondAttribute="bottom" constant="20" id="eEi-u7-rVP"/>
                 <constraint firstAttribute="bottom" secondItem="mAr-b5-Os4" secondAttribute="bottom" constant="20" id="q2i-51-6TC"/>
                 <constraint firstAttribute="trailing" secondItem="YmL-ID-hxa" secondAttribute="trailing" constant="20" id="ygJ-60-cAi"/>
                 <constraint firstAttribute="trailing" secondItem="mAr-b5-Os4" secondAttribute="trailing" constant="20" id="yyc-F1-9hX"/>
-                <constraint firstItem="4zi-QM-6ue" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="zKY-q2-n8e"/>
             </constraints>
             <connections>
                 <outlet property="colorMapContainer" destination="YmL-ID-hxa" id="ABM-bF-f3a"/>
+                <outlet property="fieldLabel" destination="JXI-iZ-dM6" id="Ri2-0y-V8C"/>
                 <outlet property="sliderContainer" destination="mAr-b5-Os4" id="d4v-db-SkD"/>
                 <outlet property="sliderTrackContainer" destination="eFM-Fw-1kT" id="2x9-8F-K22"/>
                 <outlet property="textField" destination="4zi-QM-6ue" id="bAE-L1-JFj"/>
+                <outlet property="textFieldContainer" destination="EbK-hz-HQs" id="fhs-s5-NSD"/>
             </connections>
         </view>
     </objects>

@@ -54,7 +54,7 @@ extension RootVC: UITabBarControllerDelegate {
                 return true
         }
         
-        let modal = BaseNavController(rootViewController: AddVC())
+        let modal = BaseNavController(rootViewController: AddModalVC())
         self.presentViewController(modal, animated: true, completion: nil)
         return false
     }
