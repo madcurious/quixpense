@@ -39,11 +39,35 @@
                         <constraint firstAttribute="bottom" secondItem="4zi-QM-6ue" secondAttribute="bottom" constant="4" id="zmb-wF-Z9K"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YmL-ID-hxa">
-                    <rect key="frame" x="20" y="109" width="560" height="407"/>
-                    <color key="backgroundColor" red="0.80000001190000003" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jYN-iA-FRI" customClass="__ECVCColorMapTouchArea" customModule="Spare" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="109" width="600" height="427"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YmL-ID-hxa" customClass="__ECVCColorMapTouchArea" customModule="Spare" customModuleProvider="target">
+                            <rect key="frame" x="10" y="0.0" width="580" height="407"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T94-0f-UU9" customClass="__ECVCColorMapTouchArea" customModule="Spare" customModuleProvider="target">
+                                    <rect key="frame" x="4" y="4" width="572" height="399"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" red="0.80000001190000003" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="T94-0f-UU9" secondAttribute="trailing" constant="4" id="GYD-Xg-swY"/>
+                                <constraint firstItem="T94-0f-UU9" firstAttribute="leading" secondItem="YmL-ID-hxa" secondAttribute="leading" constant="4" id="Jdb-P7-D0J"/>
+                                <constraint firstItem="T94-0f-UU9" firstAttribute="top" secondItem="YmL-ID-hxa" secondAttribute="top" constant="4" id="PUq-YB-P9X"/>
+                                <constraint firstAttribute="bottom" secondItem="T94-0f-UU9" secondAttribute="bottom" constant="4" id="u8r-JD-Vkm"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="YmL-ID-hxa" firstAttribute="leading" secondItem="jYN-iA-FRI" secondAttribute="leading" constant="10" id="IGC-Q4-1Nd"/>
+                        <constraint firstAttribute="trailing" secondItem="YmL-ID-hxa" secondAttribute="trailing" constant="10" id="SfL-yn-vir"/>
+                        <constraint firstAttribute="bottom" secondItem="YmL-ID-hxa" secondAttribute="bottom" constant="20" id="TuS-zL-a5M"/>
+                        <constraint firstItem="YmL-ID-hxa" firstAttribute="top" secondItem="jYN-iA-FRI" secondAttribute="top" id="dXx-7R-et7"/>
+                    </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mAr-b5-Os4" customClass="__ECVCViewSliderContainer" customModule="Spare" customModuleProvider="target">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mAr-b5-Os4" customClass="__ECVCSliderTouchArea" customModule="Spare" customModuleProvider="target">
                     <rect key="frame" x="20" y="536" width="560" height="44"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eFM-Fw-1kT">
@@ -66,18 +90,20 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="EbK-hz-HQs" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="3CN-yy-GZa"/>
+                <constraint firstItem="jYN-iA-FRI" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="3aX-Gh-zZ9"/>
                 <constraint firstItem="mAr-b5-Os4" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="5IB-du-aas"/>
                 <constraint firstItem="EbK-hz-HQs" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="35" id="9jE-bs-6qX"/>
-                <constraint firstItem="YmL-ID-hxa" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="CdW-rx-x3n"/>
-                <constraint firstItem="mAr-b5-Os4" firstAttribute="top" secondItem="YmL-ID-hxa" secondAttribute="bottom" constant="20" id="DME-Pj-Spq"/>
+                <constraint firstAttribute="trailing" secondItem="jYN-iA-FRI" secondAttribute="trailing" id="Bu9-Nn-sgx"/>
+                <constraint firstItem="jYN-iA-FRI" firstAttribute="top" secondItem="EbK-hz-HQs" secondAttribute="bottom" constant="20" id="XnT-gL-Jfg"/>
                 <constraint firstAttribute="trailing" secondItem="EbK-hz-HQs" secondAttribute="trailing" id="cy0-i7-60T"/>
-                <constraint firstItem="YmL-ID-hxa" firstAttribute="top" secondItem="EbK-hz-HQs" secondAttribute="bottom" constant="20" id="eEi-u7-rVP"/>
+                <constraint firstItem="jYN-iA-FRI" firstAttribute="bottom" secondItem="mAr-b5-Os4" secondAttribute="top" id="mSQ-i1-cPD"/>
                 <constraint firstAttribute="bottom" secondItem="mAr-b5-Os4" secondAttribute="bottom" constant="20" id="q2i-51-6TC"/>
-                <constraint firstAttribute="trailing" secondItem="YmL-ID-hxa" secondAttribute="trailing" constant="20" id="ygJ-60-cAi"/>
                 <constraint firstAttribute="trailing" secondItem="mAr-b5-Os4" secondAttribute="trailing" constant="20" id="yyc-F1-9hX"/>
             </constraints>
             <connections>
-                <outlet property="colorMapContainer" destination="YmL-ID-hxa" id="ABM-bF-f3a"/>
+                <outlet property="colorMapBorderView" destination="YmL-ID-hxa" id="fOK-hc-DXe"/>
+                <outlet property="colorMapContainer" destination="T94-0f-UU9" id="sFw-kp-yoJ"/>
+                <outlet property="colorMapExtendedArea" destination="jYN-iA-FRI" id="UhT-Vq-IM3"/>
                 <outlet property="fieldLabel" destination="JXI-iZ-dM6" id="Ri2-0y-V8C"/>
                 <outlet property="sliderContainer" destination="mAr-b5-Os4" id="d4v-db-SkD"/>
                 <outlet property="sliderTrackContainer" destination="eFM-Fw-1kT" id="2x9-8F-K22"/>

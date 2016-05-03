@@ -14,8 +14,12 @@ class __ECVCView: UIView {
     @IBOutlet weak var textFieldContainer: UIView!
     @IBOutlet weak var fieldLabel: UILabel!
     @IBOutlet weak var textField: __ECVCTextField!
-    @IBOutlet weak var colorMapContainer: UIView!
-    @IBOutlet weak var sliderContainer: __ECVCViewSliderContainer!
+    
+    @IBOutlet weak var colorMapExtendedArea: __ECVCColorMapTouchArea!
+    @IBOutlet weak var colorMapBorderView: __ECVCColorMapTouchArea!
+    @IBOutlet weak var colorMapContainer: __ECVCColorMapTouchArea!
+    
+    @IBOutlet weak var sliderContainer: __ECVCSliderTouchArea!
     
     @IBOutlet weak var sliderTrackContainer: UIView!
     
@@ -28,6 +32,8 @@ class __ECVCView: UIView {
         
         didSet {
             if let colorMap = self.colorMap {
+//                colorMap.layer.borderWidth = 4
+//                colorMap.layer.borderColor = Color.White.CGColor
                 self.colorMapContainer.addSubviewAndFill(colorMap)
             }
         }
@@ -35,13 +41,12 @@ class __ECVCView: UIView {
     
     weak var slider: HRBrightnessSlider? {
         willSet {
-            if let slider = self.sliderContainer.slider {
+            if let slider = self.slider {
                 slider.removeFromSuperview()
             }
         }
         
         didSet {
-            self.sliderContainer.slider = self.slider
             if let slider = self.slider {
                 self.sliderTrackContainer.addSubviewAndFill(slider)
             }
@@ -53,6 +58,8 @@ class __ECVCView: UIView {
         
         self.backgroundColor = Color.Gray1
         self.textFieldContainer.backgroundColor = Color.White
+        self.colorMapExtendedArea.backgroundColor = UIColor.clearColor()
+        self.colorMapBorderView.backgroundColor = Color.White
         self.colorMapContainer.backgroundColor = UIColor.clearColor()
         self.sliderContainer.backgroundColor = UIColor.clearColor()
         self.sliderTrackContainer.backgroundColor = UIColor.clearColor()
@@ -60,6 +67,11 @@ class __ECVCView: UIView {
         self.fieldLabel.text = "NAME"
         self.fieldLabel.textColor = Color.Gray10
         self.fieldLabel.font = Font.get(.Bold, size: 14)
+        
+        // Add parent references for touch passing.
+        self.colorMapExtendedArea.parent = self
+        self.colorMapContainer.parent = self
+        self.sliderContainer.parent = self
     }
     
 }
@@ -92,14 +104,28 @@ class __ECVCTextField: UITextField {
     
 }
 
-class __ECVCViewSliderContainer: UIView {
+class __ECVCColorMapTouchArea: UIView {
     
-    weak var slider: HRBrightnessSlider?
+    weak var parent: __ECVCView?
     
     override func hitTest(point: CGPoint, withEvent event: UIEvent?) -> UIView? {
         let hitView = super.hitTest(point, withEvent: event)
         if hitView == self {
-            return self.slider
+            return self.parent?.colorMap
+        }
+        return hitView
+    }
+    
+}
+
+class __ECVCSliderTouchArea: UIView {
+    
+    weak var parent: __ECVCView?
+    
+    override func hitTest(point: CGPoint, withEvent event: UIEvent?) -> UIView? {
+        let hitView = super.hitTest(point, withEvent: event)
+        if hitView == self {
+            return self.parent?.slider
         }
         return hitView
     }
