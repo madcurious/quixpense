@@ -32,8 +32,6 @@ class __ECVCView: UIView {
         
         didSet {
             if let colorMap = self.colorMap {
-//                colorMap.layer.borderWidth = 4
-//                colorMap.layer.borderColor = Color.White.CGColor
                 self.colorMapContainer.addSubviewAndFill(colorMap)
             }
         }
@@ -65,8 +63,8 @@ class __ECVCView: UIView {
         self.sliderTrackContainer.backgroundColor = UIColor.clearColor()
         
         self.fieldLabel.text = "NAME"
-        self.fieldLabel.textColor = Color.Gray10
-        self.fieldLabel.font = Font.get(.Bold, size: 14)
+        self.fieldLabel.textColor = Color.Gray7
+        self.fieldLabel.font = Font.FieldLabel
         
         // Add parent references for touch passing.
         self.colorMapExtendedArea.parent = self
@@ -89,7 +87,7 @@ class __ECVCTextField: UITextField {
         self.font = Font.get(.Bold, size: 18)
         self.autocapitalizationType = .Sentences
         self.clearButtonMode = .WhileEditing
-        self.placeholder = "Type here"
+        self.placeholder = Strings.FieldPlaceholder
         self.textColor = Color.White
         self.adjustsFontSizeToFitWidth = false
     }

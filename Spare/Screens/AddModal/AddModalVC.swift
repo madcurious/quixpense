@@ -10,7 +10,7 @@ import UIKit
 
 class AddModalVC: BaseVC {
     
-    let addExpenseVC = UIViewController()
+    let addExpenseVC = EditExpenseVC()
     let addCategoryVC = EditCategoryVC(category: nil)
     let customView = __AMVCView.instantiateFromNib() as __AMVCView
     let titleLabel = UILabel()

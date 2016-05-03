@@ -9,13 +9,19 @@
 import UIKit
 
 enum FontWeight {
-    case Regular, Bold, ExtraBold
+    case Light, Regular, Bold, ExtraBold
 }
 
 final class Font {
     
+    static let FieldLabel = Font.get(.Bold, size: 14)
+    static let FieldValue = Font.get(.Light, size: 18)
+    
     class func get(weight: FontWeight, size: CGFloat) -> UIFont {
         switch weight {
+        case .Light:
+            return UIFont(name: "Montserrat-Light", size: size)!
+            
         case .Regular:
             return UIFont(name: "Montserrat-Regular", size: size)!
             
