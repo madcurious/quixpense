@@ -9,31 +9,37 @@
 import UIKit
 import Mold
 
+protocol TabButtonDelegate {
+    
+    func tabButtonShouldBeSelected(tabButton: TabButton) -> Bool
+    func tabButtonDidSelect(tabButton: TabButton)
+    
+}
+
 class TabButton: UIControl {
     
-    enum Icon {
-        case Home, Add, Settings
-        
-        func attributedString(size: CGFloat, color: UIColor) -> NSAttributedString {
-            let attributes = [
-                NSForegroundColorAttributeName : color,
-                NSFontAttributeName : Font.icon(size)
-            ]
-            switch self {
-            case .Home:
-                return NSAttributedString(string: "b", attributes: attributes)
-                
-            case .Add:
-                return NSAttributedString(string: "f", attributes: attributes)
-                
-            case .Settings:
-                return NSAttributedString(string: "j", attributes: attributes)
-            }
-        }
+    enum Icon: String {
+        case Home = "b"
+        case Add = "f"
+        case Settings = "j"
     }
     
     let backgroundView = UIView()
     let iconLabel = UILabel()
+    
+    var delegate: TabButtonDelegate?
+    
+    override var highlighted: Bool {
+        willSet {
+            self.applyHighlight(newValue)
+        }
+    }
+    
+    override var selected: Bool {
+        willSet {
+            self.applySelection(newValue)
+        }
+    }
     
     init(_ icon: Icon) {
         super.init(frame: CGRectZero)
@@ -41,12 +47,69 @@ class TabButton: UIControl {
         UIView.clearBackgroundColors(self, self.backgroundView, self.iconLabel)
         self.addSubviewsAndFill(self.backgroundView, self.iconLabel)
         
-        self.iconLabel.attributedText = icon.attributedString(28, color: Color.Gray7)
+        // Prevent subviews from intercepting events.
+        self.iconLabel.userInteractionEnabled = false
+        self.backgroundView.userInteractionEnabled = false
+        
+        self.iconLabel.text = icon.rawValue
+        self.iconLabel.font = Font.icon(28)
+        self.iconLabel.textColor = Color.Gray7
         self.iconLabel.textAlignment = .Center
+        
+        self.addTarget(self, action: #selector(enableHighlight), forControlEvents: [.TouchDown, .TouchDragEnter, .TouchDragInside])
+        self.addTarget(self, action: #selector(disableHighlight), forControlEvents: [.TouchUpInside, .TouchUpOutside, .TouchDragExit, .TouchDragOutside])
+        self.addTarget(self, action: #selector(enableSelection), forControlEvents: .TouchUpInside)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func applyHighlight(highlighted: Bool) {
+        if highlighted {
+            // You can't highlight if the button is selected.
+            if self.selected == true {
+                return
+            }
+            
+            self.iconLabel.textColor = Color.Gray2
+            self.iconLabel.alpha = 0.7
+        } else {
+            self.iconLabel.textColor = Color.Gray7
+            self.iconLabel.alpha = 1.0
+        }
+    }
+    
+    func enableHighlight() {
+        self.highlighted = true
+    }
+    
+    func disableHighlight() {
+        self.highlighted = false
+    }
+    
+    func applySelection(selected: Bool) {
+        if selected {
+            self.backgroundView.backgroundColor = Color.Gray2
+            
+            if let delegate = self.delegate {
+                delegate.tabButtonDidSelect(self)
+            }
+        } else {
+            self.backgroundView.backgroundColor = UIColor.clearColor()
+        }
+    }
+    
+    func enableSelection() {
+        if let delegate = self.delegate
+            where delegate.tabButtonShouldBeSelected(self) == false {
+            return
+        }
+        self.selected = true
+    }
+    
+    func disableSelection() {
+        self.selected = false
     }
     
 }

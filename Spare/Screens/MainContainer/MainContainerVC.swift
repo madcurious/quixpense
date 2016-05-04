@@ -16,15 +16,17 @@ class MainContainerVC: BaseVC {
     
     override func loadView() {
         self.view = self.customView
-        self.customView.tabBarContainer.addSubviewAndFill(self.tabBar)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tabs.viewControllers = [HomeVC(), UIViewController(), SettingsVC()]
+        self.tabs.viewControllers = [HomeVC(), SettingsVC()]
         self.tabs.tabBar.hidden = true
         self.embedChildViewController(self.tabs, toView: self.customView.tabContainer, fillSuperview: true)
+        
+        self.tabBar.delegate = self
+        self.customView.tabBarContainer.addSubviewAndFill(self.tabBar)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -33,6 +35,14 @@ class MainContainerVC: BaseVC {
         if let navController = self.navigationController {
             navController.setNavigationBarHidden(true, animated: true)
         }
+    }
+    
+}
+
+extension MainContainerVC: MainTabBarDelegate {
+    
+    func mainTabBarDidSelectIndex(index: Int) {
+        self.tabs.selectedIndex = index
     }
     
 }
