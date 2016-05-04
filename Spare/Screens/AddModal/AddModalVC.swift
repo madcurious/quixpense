@@ -29,7 +29,7 @@ class AddModalVC: BaseVC {
         // Setup the bar button items.
         self.addCancelAndDoneBarButtonItems("CLOSE", doneButtonTitle: "SAVE")
         let barButtonAttributes = [
-            NSFontAttributeName: Font.get(.Bold, size: 14),
+            NSFontAttributeName: Font.BarButtonItems,
             NSForegroundColorAttributeName: Color.White
         ]
         if let leftBarButtonItem = self.navigationItem.leftBarButtonItem {
@@ -40,7 +40,7 @@ class AddModalVC: BaseVC {
         }
         
         self.titleLabel.textColor = Color.White
-        self.titleLabel.font = Font.get(.Bold, size: 18)
+        self.titleLabel.font = Font.NavigationBarTitle
         self.titleLabel.text = "NEW EXPENSE"
         self.titleLabel.sizeToFit()
         self.navigationItem.titleView = self.titleLabel

@@ -14,10 +14,13 @@ enum FontWeight {
 
 final class Font {
     
-    static let FieldLabel = Font.get(.Bold, size: 14)
-    static let FieldValue = Font.get(.Light, size: 18)
+    static let BarButtonItems = Font.text(.Bold, size: 14)
+    static let NavigationBarTitle = Font.text(.Bold, size: 18)
     
-    class func get(weight: FontWeight, size: CGFloat) -> UIFont {
+    static let FieldLabel = Font.text(.Bold, size: 14)
+    static let FieldValue = Font.text(.Light, size: 18)
+    
+    class func text(weight: FontWeight, size: CGFloat) -> UIFont {
         switch weight {
         case .Light:
             return UIFont(name: "Montserrat-Light", size: size)!
@@ -31,6 +34,10 @@ final class Font {
         case .ExtraBold:
             return UIFont(name: "Montserrat-ExtraBold", size: size)!
         }
+    }
+    
+    class func icon(size: CGFloat) -> UIFont {
+        return UIFont(name: "spare-v2", size: size)!
     }
     
 }

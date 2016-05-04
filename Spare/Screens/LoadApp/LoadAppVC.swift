@@ -21,7 +21,7 @@ class LoadAppVC: MDStatefulViewController {
             }
             
             App.state.coreDataStack = stack
-            navController.pushViewController(RootVC(), animated: true)
+            navController.pushViewController(MainContainerVC(), animated: true)
         }
         return op
     }

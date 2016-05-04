@@ -79,6 +79,8 @@ class HomeVC: MDStatefulViewController {
         // loading view so that the cards are properly scrolled to the last item before
         // the UI is shown to the user.
         self.showView(.Loading)
+        
+        self.noResultsView.backgroundColor = Color.Gray1
     }
     
     override func buildOperation() -> MDOperation? {

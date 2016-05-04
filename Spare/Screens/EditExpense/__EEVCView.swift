@@ -41,7 +41,7 @@ class __EEVCView: UIView {
         // Setup text fields.
         let textFields = [self.nameTextField, self.amountTextField]
         for textField in textFields {
-            textField.font = Font.get(.Light, size: 18)
+            textField.font = Font.FieldValue
             textField.textColor = Color.Black
             textField.placeholder = Strings.FieldPlaceholder
             textField.adjustsFontSizeToFitWidth = false
@@ -67,7 +67,7 @@ class __EEVCView: UIView {
             let title = paymentMethods[i]
             self.paidWithControl.setTitle(title, forSegmentAtIndex: i)
         }
-        self.paidWithControl.setTitleTextAttributes([NSFontAttributeName: Font.get(.Regular, size: 14)], forState: .Normal)
+        self.paidWithControl.setTitleTextAttributes([NSFontAttributeName: Font.FieldLabel], forState: .Normal)
         self.paidWithControl.tintColor = Color.Black
     }
     

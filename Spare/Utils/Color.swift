@@ -17,9 +17,8 @@ class Color {
     
     static let Black = UIColor.blackColor()
     
-    static let Gray1 = UIColor(hex: 0xf0f2f6)
-    static let Gray2 = UIColor(hex: 0xcdcdcd)
-//    static let Gray10 = UIColor(hex: 0x4d4b4d)
-    static let Gray7 = UIColor(hex: 0x666666)
-    static let Gray10 = UIColor(hex: 0x2a2a2a)
+    static let Gray1 = UIColor(hex: 0xf0f2f6)           // form bg 
+    static let Gray2 = UIColor(hex: 0xcdcdcd)           // NOT USED
+    static let Gray7 = UIColor(hex: 0x666666)           // form field labels
+    static let Gray10 = UIColor(hex: 0x2a2a2a)          // nav bar bg
 }

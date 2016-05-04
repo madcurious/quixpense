@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10116"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MainTabBar" customModule="Spare" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="492" height="78"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Um1-k0-h3K">
+                    <rect key="frame" x="0.0" y="0.0" width="164" height="78"/>
+                    <color key="backgroundColor" red="1" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="heg-vM-kKa">
+                    <rect key="frame" x="164" y="0.0" width="164" height="78"/>
+                    <color key="backgroundColor" red="0.85098039219999999" green="0.94901960780000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xb8-JX-7Jo">
+                    <rect key="frame" x="328" y="0.0" width="164" height="78"/>
+                    <color key="backgroundColor" red="1" green="0.90588235289999997" blue="0.73333333329999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="heg-vM-kKa" firstAttribute="leading" secondItem="Um1-k0-h3K" secondAttribute="trailing" id="27e-07-ijv"/>
+                <constraint firstItem="heg-vM-kKa" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="3rz-CC-M3I"/>
+                <constraint firstItem="Xb8-JX-7Jo" firstAttribute="leading" secondItem="heg-vM-kKa" secondAttribute="trailing" id="4gK-Ez-8q8"/>
+                <constraint firstAttribute="bottom" secondItem="heg-vM-kKa" secondAttribute="bottom" id="4gs-xU-Viq"/>
+                <constraint firstItem="Um1-k0-h3K" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="5vv-tk-oTT"/>
+                <constraint firstItem="Um1-k0-h3K" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="73g-IC-ESN"/>
+                <constraint firstAttribute="bottom" secondItem="Xb8-JX-7Jo" secondAttribute="bottom" id="NTi-yF-QcC"/>
+                <constraint firstItem="Xb8-JX-7Jo" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="euP-dw-kVN"/>
+                <constraint firstAttribute="bottom" secondItem="Um1-k0-h3K" secondAttribute="bottom" id="hDc-l2-oBt"/>
+                <constraint firstItem="heg-vM-kKa" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="m0E-Se-uY0"/>
+                <constraint firstAttribute="trailing" secondItem="Xb8-JX-7Jo" secondAttribute="trailing" id="pyU-4U-EN6"/>
+                <constraint firstItem="heg-vM-kKa" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="1:3" id="sRY-ZV-lZ7"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outletCollection property="buttonContainers" destination="Um1-k0-h3K" id="5aV-5W-DeW"/>
+                <outletCollection property="buttonContainers" destination="heg-vM-kKa" id="eHd-lr-eff"/>
+                <outletCollection property="buttonContainers" destination="Xb8-JX-7Jo" id="8dF-iE-0P5"/>
+            </connections>
+            <point key="canvasLocation" x="424" y="274"/>
+        </view>
+    </objects>
+</document>
