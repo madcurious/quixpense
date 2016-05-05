@@ -1,5 +1,5 @@
 //
-//  NewButton.swift
+//  AddButton.swift
 //  Spare
 //
 //  Created by Matt Quiros on 05/05/2016.
@@ -9,10 +9,10 @@
 import UIKit
 import Mold
 
-class NewButton: BaseTabButton {
+class AddButton: BaseTabButton {
     
     /// The amount of time before a long press is recognized.
-    private let longPressDelay = 0.1
+    private let longPressDelay = 0.5
     
     /// The amount of time that a long press should be held to trigger the New Category action.
     private let longPressRequirement = 0.5
@@ -25,7 +25,7 @@ class NewButton: BaseTabButton {
     /// The point where the touch initially occurred
     var touchPoint: CGPoint?
     
-    var progressView = NewCategoryProgressView()
+    var progressView = AddButtonProgressView()
     
     init() {
         super.init(frame: CGRectZero)
@@ -54,9 +54,12 @@ class NewButton: BaseTabButton {
         
         // Don't allow the finger to move too much during long press.
         let movePoint = first.locationInView(self)
-        guard (movePoint.x - touchPoint.x) <= self.movementThreshold
-            || (movePoint.y - touchPoint.y) <= self.movementThreshold
+        let deltaX = fabs(movePoint.x - touchPoint.x)
+        let deltaY = fabs(movePoint.y - touchPoint.y)
+        guard deltaX <= self.movementThreshold
+            && deltaY <= self.movementThreshold
             else {
+                self.stopTrackingPress()
                 return
         }
     }
@@ -111,10 +114,13 @@ class NewButton: BaseTabButton {
         
         if flag.boolValue == true {
             rootVC.view.addSubviewAndFill(self.progressView)
+            self.progressView.animate()
         }
         
         else {
-            self.progressView.removeFromSuperview()
+            self.progressView.reset {[unowned self] in
+                self.progressView.removeFromSuperview()
+            }
         }
     }
     

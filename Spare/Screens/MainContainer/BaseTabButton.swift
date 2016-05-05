@@ -24,7 +24,7 @@ class BaseTabButton: UIControl {
         self.backgroundView.userInteractionEnabled = false
         
         self.iconLabel.font = Font.icon(28)
-        self.iconLabel.textColor = Color.Gray7
+        self.iconLabel.textColor = Color.Gray700
         self.iconLabel.textAlignment = .Center
     }
     
@@ -39,17 +39,19 @@ class BaseTabButton: UIControl {
                 return
             }
             
-            self.iconLabel.textColor = Color.Gray2
-            self.iconLabel.alpha = 0.7
-        } else {
-            self.iconLabel.textColor = Color.Gray7
+            self.backgroundView.backgroundColor = Color.Gray150
+            self.iconLabel.alpha = 0.5
+        }
+        
+        else {
+            self.backgroundView.backgroundColor = UIColor.clearColor()
             self.iconLabel.alpha = 1.0
         }
     }
     
     func applySelection(selected: Bool) {
         if selected {
-            self.backgroundView.backgroundColor = Color.Gray2
+            self.backgroundView.backgroundColor = Color.Gray200
         } else {
             self.backgroundView.backgroundColor = UIColor.clearColor()
         }

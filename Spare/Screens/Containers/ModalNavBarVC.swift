@@ -13,7 +13,7 @@ class ModalNavBarVC: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationBar.barTintColor = Color.Gray10
+        self.navigationBar.barTintColor = Color.Gray900
         self.navigationBar.tintColor = Color.White
         self.navigationBar.translucent = false
     }

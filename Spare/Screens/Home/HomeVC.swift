@@ -80,7 +80,7 @@ class HomeVC: MDStatefulViewController {
         // the UI is shown to the user.
         self.showView(.Loading)
         
-        self.noResultsView.backgroundColor = Color.Gray1
+        self.noResultsView.backgroundColor = Color.Gray100
     }
     
     override func buildOperation() -> MDOperation? {

@@ -24,13 +24,13 @@ class __AMVCView: UIView {
         self.scrollView.delegate = self
         
         self.pageControl.numberOfPages = 2
-        self.pageControl.pageIndicatorTintColor = Color.Gray2
-        self.pageControl.currentPageIndicatorTintColor = Color.Gray10
+        self.pageControl.pageIndicatorTintColor = Color.Gray200
+        self.pageControl.currentPageIndicatorTintColor = Color.Gray900
         self.pageControl.userInteractionEnabled = false
         
         self.contentView.backgroundColor = UIColor.clearColor()
         self.scrollView.backgroundColor = UIColor.clearColor()
-        self.backgroundColor = Color.Gray1
+        self.backgroundColor = Color.Gray100
     }
     
     func setupLayoutRulesForPages(firstPage: UIView, secondPage: UIView) {

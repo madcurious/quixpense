@@ -21,7 +21,7 @@ class MainTabBar: UIView {
     
     let homeButton = TabButton(.Home)
 //    let addButton = TabButton(.Add)
-    let newButton = NewButton()
+    let addButton = AddButton()
     let settingsButton = TabButton(.Settings)
     
     var selectedIndex = 0
@@ -36,7 +36,7 @@ class MainTabBar: UIView {
         UIView.clearBackgroundColors(self.buttonContainers)
         
         // Setup all the buttons.
-        let buttons = [self.homeButton, self.newButton, self.settingsButton]
+        let buttons = [self.homeButton, self.addButton, self.settingsButton]
         for i in 0..<buttons.count {
             let container = self.buttonContainers[i]
             let button = buttons[i]

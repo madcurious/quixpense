@@ -25,7 +25,7 @@ class __EEVCView: UIView {
         super.awakeFromNib()
         
         // Background colors.
-        self.backgroundColor = Color.Gray1
+        self.backgroundColor = Color.Gray100
         self.scrollView.backgroundColor = UIColor.clearColor()
         self.contentView.backgroundColor = UIColor.clearColor()
         
@@ -33,7 +33,7 @@ class __EEVCView: UIView {
         let texts = ["NAME", "AMOUNT", "CATEGORY", "DATE SPENT", "PAID WITH"]
         for i in 0..<self.fieldLabels.count {
             let label = self.fieldLabels[i]
-            label.textColor = Color.Gray7
+            label.textColor = Color.Gray700
             label.font = Font.FieldLabel
             label.text = texts[i]
         }
