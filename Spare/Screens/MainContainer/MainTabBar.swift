@@ -20,12 +20,9 @@ class MainTabBar: UIView {
     @IBOutlet var buttonContainers: [UIView]!
     
     let homeButton = TabButton(.Home)
-    let addButton = TabButton(.Add)
+//    let addButton = TabButton(.Add)
+    let newButton = NewButton()
     let settingsButton = TabButton(.Settings)
-    
-    var buttons: [TabButton] {
-        return [self.homeButton, self.addButton, self.settingsButton]
-    }
     
     var selectedIndex = 0
     var delegate: MainTabBarDelegate?
@@ -39,12 +36,16 @@ class MainTabBar: UIView {
         UIView.clearBackgroundColors(self.buttonContainers)
         
         // Setup all the buttons.
-        for i in 0..<self.buttons.count {
+        let buttons = [self.homeButton, self.newButton, self.settingsButton]
+        for i in 0..<buttons.count {
             let container = self.buttonContainers[i]
-            let button = self.buttons[i]
+            let button = buttons[i]
             
             container.addSubviewAndFill(button)
-            button.delegate = self
+            
+            if let tabButton = button as? TabButton {
+                tabButton.delegate = self
+            }
         }
         
         // Select the home button by default.
@@ -54,13 +55,6 @@ class MainTabBar: UIView {
 }
 
 extension MainTabBar: TabButtonDelegate {
-    
-    func tabButtonShouldBeSelected(tabButton: TabButton) -> Bool {
-        if tabButton == self.addButton {
-            return false
-        }
-        return true
-    }
     
     func tabButtonDidSelect(tabButton: TabButton) {
         switch tabButton {

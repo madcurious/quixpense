@@ -76,7 +76,11 @@
 		2669468F1CC7711000A68424 /* Spare.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 266946571CC7711000A68424 /* Spare.xcdatamodeld */; };
 		266946931CC77A1A00A68424 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266946921CC77A1A00A68424 /* AppDelegate.swift */; };
 		266946AC1CC786EC00A68424 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266946AB1CC786EC00A68424 /* App.swift */; };
+		26A6CDE11CDB18EA00309A84 /* NewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A6CDE01CDB18EA00309A84 /* NewButton.swift */; };
+		26C2D5C21CDB5E4800BC73FC /* NewCategoryProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C2D5C11CDB5E4800BC73FC /* NewCategoryProgressView.swift */; };
 		26E4E0591937AF690096191A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E4E0581937AF690096191A /* QuartzCore.framework */; };
+		26E7FA7B1CDB332F000E2181 /* BaseTabButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E7FA7A1CDB332F000E2181 /* BaseTabButton.swift */; };
+		26E7FA7D1CDB33F5000E2181 /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E7FA7C1CDB33F5000E2181 /* Icon.swift */; };
 		26EFA0031CD9C8F100714E5D /* MainContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EFA0021CD9C8F100714E5D /* MainContainerVC.swift */; };
 		26EFA0051CD9C91A00714E5D /* __MCVCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26EFA0041CD9C91A00714E5D /* __MCVCView.xib */; };
 		26EFA0071CD9C92F00714E5D /* __MCVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EFA0061CD9C92F00714E5D /* __MCVCView.swift */; };
@@ -199,8 +203,12 @@
 		266946911CC77A1900A68424 /* Spare-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Spare-Bridging-Header.h"; sourceTree = "<group>"; };
 		266946921CC77A1A00A68424 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		266946AB1CC786EC00A68424 /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		26A6CDE01CDB18EA00309A84 /* NewButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewButton.swift; sourceTree = "<group>"; };
+		26C2D5C11CDB5E4800BC73FC /* NewCategoryProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewCategoryProgressView.swift; sourceTree = "<group>"; };
 		26D4C8F41946E624001B42DC /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		26E4E0581937AF690096191A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		26E7FA7A1CDB332F000E2181 /* BaseTabButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTabButton.swift; sourceTree = "<group>"; };
+		26E7FA7C1CDB33F5000E2181 /* Icon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
 		26EFA0021CD9C8F100714E5D /* MainContainerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainContainerVC.swift; sourceTree = "<group>"; };
 		26EFA0041CD9C91A00714E5D /* __MCVCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __MCVCView.xib; sourceTree = "<group>"; };
 		26EFA0061CD9C92F00714E5D /* __MCVCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __MCVCView.swift; sourceTree = "<group>"; };
@@ -477,6 +485,7 @@
 				261370BC1CD7A9EC007BAF56 /* Font.swift */,
 				261370BE1CD7ABD9007BAF56 /* Color.swift */,
 				261370CC1CD87679007BAF56 /* Strings.swift */,
+				26E7FA7C1CDB33F5000E2181 /* Icon.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -490,6 +499,9 @@
 				26EFA0081CD9DB0A00714E5D /* TabButton.swift */,
 				26EFA00C1CD9DFF900714E5D /* MainTabBar.swift */,
 				26EFA00E1CD9E00200714E5D /* MainTabBar.xib */,
+				26A6CDE01CDB18EA00309A84 /* NewButton.swift */,
+				26E7FA7A1CDB332F000E2181 /* BaseTabButton.swift */,
+				26C2D5C11CDB5E4800BC73FC /* NewCategoryProgressView.swift */,
 			);
 			path = MainContainer;
 			sourceTree = "<group>";
@@ -705,9 +717,13 @@
 				260024111CC7E5F300EB2026 /* HomeVC.swift in Sources */,
 				2600241D1CC7E6B500EB2026 /* BaseVC.swift in Sources */,
 				266946931CC77A1A00A68424 /* AppDelegate.swift in Sources */,
+				26E7FA7B1CDB332F000E2181 /* BaseTabButton.swift in Sources */,
+				26A6CDE11CDB18EA00309A84 /* NewButton.swift in Sources */,
 				2603F8D71CCA5B7D007F311F /* EditCategoryVC.swift in Sources */,
 				260024251CC88D3E00EB2026 /* __HVCCardCell.swift in Sources */,
+				26C2D5C21CDB5E4800BC73FC /* NewCategoryProgressView.swift in Sources */,
 				2603F8D31CCA4C10007F311F /* Category.swift in Sources */,
+				26E7FA7D1CDB33F5000E2181 /* Icon.swift in Sources */,
 				261370C41CD7B082007BAF56 /* ModalNavBarVC.swift in Sources */,
 				260024151CC7E5F300EB2026 /* SettingsVC.swift in Sources */,
 				26EFA0071CD9C92F00714E5D /* __MCVCView.swift in Sources */,

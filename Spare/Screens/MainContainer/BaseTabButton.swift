@@ -1,41 +1,20 @@
 //
-//  TabButton.swift
+//  BaseTabButton.swift
 //  Spare
 //
-//  Created by Matt Quiros on 04/05/2016.
+//  Created by Matt Quiros on 05/05/2016.
 //  Copyright © 2016 Matt Quiros. All rights reserved.
 //
 
 import UIKit
-import Mold
 
-protocol TabButtonDelegate {
-    
-    func tabButtonDidSelect(tabButton: TabButton)
-    
-}
-
-class TabButton: UIControl {
+class BaseTabButton: UIControl {
     
     let backgroundView = UIView()
     let iconLabel = UILabel()
     
-    var delegate: TabButtonDelegate?
-    
-    override var highlighted: Bool {
-        willSet {
-            self.applyHighlight(newValue)
-        }
-    }
-    
-    override var selected: Bool {
-        willSet {
-            self.applySelection(newValue)
-        }
-    }
-    
-    init(_ icon: Icon) {
-        super.init(frame: CGRectZero)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         
         UIView.clearBackgroundColors(self, self.backgroundView, self.iconLabel)
         self.addSubviewsAndFill(self.backgroundView, self.iconLabel)
@@ -44,14 +23,9 @@ class TabButton: UIControl {
         self.iconLabel.userInteractionEnabled = false
         self.backgroundView.userInteractionEnabled = false
         
-        self.iconLabel.text = icon.rawValue
         self.iconLabel.font = Font.icon(28)
         self.iconLabel.textColor = Color.Gray7
         self.iconLabel.textAlignment = .Center
-        
-        self.addTarget(self, action: #selector(enableHighlight), forControlEvents: [.TouchDown, .TouchDragEnter, .TouchDragInside])
-        self.addTarget(self, action: #selector(disableHighlight), forControlEvents: [.TouchUpInside, .TouchUpOutside, .TouchDragExit, .TouchDragOutside])
-        self.addTarget(self, action: #selector(enableSelection), forControlEvents: .TouchUpInside)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -73,32 +47,12 @@ class TabButton: UIControl {
         }
     }
     
-    func enableHighlight() {
-        self.highlighted = true
-    }
-    
-    func disableHighlight() {
-        self.highlighted = false
-    }
-    
     func applySelection(selected: Bool) {
         if selected {
             self.backgroundView.backgroundColor = Color.Gray2
-            
-            if let delegate = self.delegate {
-                delegate.tabButtonDidSelect(self)
-            }
         } else {
             self.backgroundView.backgroundColor = UIColor.clearColor()
         }
-    }
-    
-    func enableSelection() {
-        self.selected = true
-    }
-    
-    func disableSelection() {
-        self.selected = false
     }
     
 }
