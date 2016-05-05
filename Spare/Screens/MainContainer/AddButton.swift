@@ -25,7 +25,7 @@ class AddButton: BaseTabButton {
     /// The point where the touch initially occurred
     var touchPoint: CGPoint?
     
-    var progressView = AddButtonProgressView()
+    var progressView = AddButtonProgressView.instantiateFromNib() as AddButtonProgressView
     
     init() {
         super.init(frame: CGRectZero)

@@ -16,41 +16,37 @@ protocol AddButtonProgressViewDelegate {
 
 class AddButtonProgressView: UIView {
     
-//    let backgroundView = UIVisualEffectView(effect: UIBlurEffect())
-    let backgroundView = UIView()
-    let label = UILabel()
-    let circleView = __ABCircleView()
+    @IBOutlet weak var backgroundView: UIView!
+    @IBOutlet weak var actionLabel: UILabel!
+    @IBOutlet weak var circleView: __ABCircleView!
     
-    init() {
-        super.init(frame: UIScreen.mainScreen().bounds)
+    @IBOutlet weak var actionLabelY: NSLayoutConstraint!
+    @IBOutlet weak var circleViewY: NSLayoutConstraint!
+    
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
         
         self.backgroundColor = UIColor.clearColor()
         self.userInteractionEnabled = false
         
         self.backgroundView.backgroundColor = Color.Black
-        self.addSubviewAndFill(self.backgroundView)
         
-        self.label.textColor = Color.White
-        self.label.font = Font.text(.Light, size: 14)
-        self.label.text = "NEW CATEGORY"
-        self.label.sizeToFit()
-        self.addSubview(self.label)
+        self.actionLabel.textColor = Color.White
+        self.actionLabel.font = Font.text(.Light, size: 14)
+        self.actionLabel.text = "NEW CATEGORY"
+        self.actionLabel.sizeToFit()
         
         self.reset(animated: false, completion: nil)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        self.setNeedsLayout()
+        self.layoutIfNeeded()
     }
     
     func reset(animated animated: Bool = true, completion: (Void -> Void)?) {
         self.backgroundView.alpha = 0
-        
-        // Situate at the bottom.
-        self.label.frame.origin = CGPoint(x: self.bounds.width / 2 - self.label.bounds.width / 2,
-                                          y: self.bounds.height)
-        self.circleView.frame.origin = CGPoint(x: self.bounds.width / 2 - self.circleView.bounds.width / 2,
-                                               y: self.bounds.height)
+        self.actionLabelY.constant = 0
+        self.circleViewY.constant = 0
         
         completion?()
     }
@@ -58,20 +54,19 @@ class AddButtonProgressView: UIView {
     func animate() {
         
         print("circleView: \(self.circleView)")
-        print("label: \(self.label)")
+        print("label: \(self.actionLabel)")
         print("------")
         
         UIView.animateWithDuration(
             0.1,
             animations: {[unowned self] in
                 self.backgroundView.alpha = 0.3
-                
-                self.circleView.frame.offsetInPlace(dx: 0, dy: self.circleView.bounds.height * -0.6)
-                self.label.frame.offsetInPlace(dx: 0, dy: (self.circleView.bounds.height * 0.6 + 20 + self.label.bounds.size.height))
+                self.actionLabelY.constant = -(self.circleView.bounds.size.height * 0.5 + 20 + self.actionLabel.bounds.size.height)
+                self.circleViewY.constant = -(self.circleView.bounds.size.height * 0.5)
             },
             completion: {[unowned self] _ in
                 print("circleView: \(self.circleView)")
-                print("label: \(self.label)")
+                print("label: \(self.actionLabel)")
         })
     }
     
@@ -79,24 +74,8 @@ class AddButtonProgressView: UIView {
 
 class __ABCircleView: UIView {
     
-    init() {
-        let side = UIScreen.mainScreen().bounds.size.width * 0.4
-        super.init(frame: CGRectMake(0, 0, side, side))
-        
-        self.backgroundColor = UIColor.blueColor()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func drawRect(rect: CGRect) {
-        guard let context = UIGraphicsGetCurrentContext()
-            else {
-                return
-        }
-        
-        
-    }
+//    override func drawRect(rect: CGRect) {
+//        <#code#>
+//    }
     
 }

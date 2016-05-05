@@ -79,6 +79,7 @@
 		26A6CDE11CDB18EA00309A84 /* AddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A6CDE01CDB18EA00309A84 /* AddButton.swift */; };
 		26C2D5C21CDB5E4800BC73FC /* AddButtonProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C2D5C11CDB5E4800BC73FC /* AddButtonProgressView.swift */; };
 		26E4E0591937AF690096191A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E4E0581937AF690096191A /* QuartzCore.framework */; };
+		26E6EDB41CDBA6C60034EEDE /* AddButtonProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26E6EDB31CDBA6C60034EEDE /* AddButtonProgressView.xib */; };
 		26E7FA7B1CDB332F000E2181 /* BaseTabButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E7FA7A1CDB332F000E2181 /* BaseTabButton.swift */; };
 		26E7FA7D1CDB33F5000E2181 /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E7FA7C1CDB33F5000E2181 /* Icon.swift */; };
 		26EFA0031CD9C8F100714E5D /* MainContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EFA0021CD9C8F100714E5D /* MainContainerVC.swift */; };
@@ -207,6 +208,7 @@
 		26C2D5C11CDB5E4800BC73FC /* AddButtonProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddButtonProgressView.swift; sourceTree = "<group>"; };
 		26D4C8F41946E624001B42DC /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		26E4E0581937AF690096191A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		26E6EDB31CDBA6C60034EEDE /* AddButtonProgressView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddButtonProgressView.xib; sourceTree = "<group>"; };
 		26E7FA7A1CDB332F000E2181 /* BaseTabButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTabButton.swift; sourceTree = "<group>"; };
 		26E7FA7C1CDB33F5000E2181 /* Icon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
 		26EFA0021CD9C8F100714E5D /* MainContainerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainContainerVC.swift; sourceTree = "<group>"; };
@@ -502,6 +504,7 @@
 				26EFA00E1CD9E00200714E5D /* MainTabBar.xib */,
 				26A6CDE01CDB18EA00309A84 /* AddButton.swift */,
 				26C2D5C11CDB5E4800BC73FC /* AddButtonProgressView.swift */,
+				26E6EDB31CDBA6C60034EEDE /* AddButtonProgressView.xib */,
 			);
 			path = MainContainer;
 			sourceTree = "<group>";
@@ -627,6 +630,7 @@
 				261370CB1CD86B23007BAF56 /* __EEVCView.xib in Resources */,
 				261370B91CD7A120007BAF56 /* Montserrat-UltraLight.otf in Resources */,
 				261370B81CD7A120007BAF56 /* Montserrat-SemiBold.otf in Resources */,
+				26E6EDB41CDBA6C60034EEDE /* AddButtonProgressView.xib in Resources */,
 				2669468A1CC7711000A68424 /* Images.xcassets in Resources */,
 				26EFA00F1CD9E00200714E5D /* MainTabBar.xib in Resources */,
 				261370B51CD7A120007BAF56 /* Montserrat-Hairline.otf in Resources */,
