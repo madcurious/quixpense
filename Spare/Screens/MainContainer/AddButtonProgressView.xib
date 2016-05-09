@@ -14,18 +14,22 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NgT-u1-24v">
+                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oa4-Pu-kbs">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                </view>
+                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ZLq-ly-d4n">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    </view>
+                    <blurEffect style="light"/>
+                </visualEffectView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="da1-Cx-uur">
-                    <rect key="frame" x="279" y="379" width="42" height="21"/>
+                    <rect key="frame" x="279" y="359" width="42" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="32V-i3-Og4" customClass="__ABCircleView" customModule="Spare" customModuleProvider="target">
-                    <rect key="frame" x="120" y="420" width="360" height="360"/>
+                    <rect key="frame" x="100" y="400" width="400" height="400"/>
                     <color key="backgroundColor" red="1" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="32V-i3-Og4" secondAttribute="height" id="yqQ-Kf-U3Z"/>
@@ -34,19 +38,19 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="NgT-u1-24v" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="30J-nf-Vwr"/>
+                <constraint firstAttribute="bottom" secondItem="Oa4-Pu-kbs" secondAttribute="bottom" id="5yX-8w-O5I"/>
                 <constraint firstItem="32V-i3-Og4" firstAttribute="top" secondItem="da1-Cx-uur" secondAttribute="bottom" constant="20" id="6h4-SG-KAJ"/>
-                <constraint firstAttribute="trailing" secondItem="NgT-u1-24v" secondAttribute="trailing" id="9P7-Zq-da6"/>
                 <constraint firstItem="32V-i3-Og4" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="E01-3b-KVb"/>
                 <constraint firstItem="32V-i3-Og4" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="bottom" id="MnP-7f-Pke"/>
                 <constraint firstItem="da1-Cx-uur" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="PI7-GY-Mhi"/>
-                <constraint firstAttribute="bottom" secondItem="NgT-u1-24v" secondAttribute="bottom" id="cxF-7M-pUs"/>
-                <constraint firstItem="32V-i3-Og4" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="3:5" id="sVX-PU-4z9"/>
-                <constraint firstItem="NgT-u1-24v" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="zPs-BY-7P5"/>
+                <constraint firstItem="Oa4-Pu-kbs" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="bHQ-aU-59W"/>
+                <constraint firstItem="Oa4-Pu-kbs" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="bPE-7Z-DiM"/>
+                <constraint firstAttribute="trailing" secondItem="Oa4-Pu-kbs" secondAttribute="trailing" id="m2o-MO-N1F"/>
+                <constraint firstItem="32V-i3-Og4" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="2:3" id="sVX-PU-4z9"/>
             </constraints>
             <connections>
                 <outlet property="actionLabel" destination="da1-Cx-uur" id="5BX-ab-Tvb"/>
-                <outlet property="backgroundView" destination="NgT-u1-24v" id="dJC-6a-VmB"/>
+                <outlet property="backgroundView" destination="Oa4-Pu-kbs" id="DNY-CN-oZK"/>
                 <outlet property="circleView" destination="32V-i3-Og4" id="je5-v8-g61"/>
             </connections>
         </view>

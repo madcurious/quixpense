@@ -9,14 +9,20 @@
 import UIKit
 import Mold
 
+protocol AddButtonDelegate {
+    func addButtonDidClick()
+    func addButtonDidCompleteLongPress()
+}
+
 class AddButton: BaseTabButton {
     
     /// The amount of time before a long press is recognized.
     private let longPressDelay = 1.0
     
     /// The amount of time that a long press should be held to trigger the New Category action.
-    private let longPressRequirement = 0.5
+    private let longPressRequirement = 0.7
     
+    /// The points that the finger is allowed to move during long press, otherwise tracking stops.
     private let movementThreshold = CGFloat(40)
     
     /// The time when the touch down occurred.
@@ -31,6 +37,8 @@ class AddButton: BaseTabButton {
     
     /// Timer for animating the long press progress.
     var progressTimer: NSTimer?
+    
+    var delegate: AddButtonDelegate?
     
     init() {
         super.init(frame: CGRectZero)
@@ -100,8 +108,11 @@ class AddButton: BaseTabButton {
             let currentTime = NSDate().timeIntervalSince1970
             switch (currentTime - touchTime) {
             case let x where x < self.longPressDelay:
-                () // It's just a click.
+                // It's just a click.
                 NSObject.cancelPreviousPerformRequestsWithTarget(self, selector: #selector(showProgressView(_:)), object: NSNumber(bool: true))
+                if let delegate = self.delegate {
+                    delegate.addButtonDidClick()
+                }
                 
             default:
                 // The long press was recognized. Invalidate the progress timer and remove the progress view.
@@ -126,6 +137,7 @@ class AddButton: BaseTabButton {
             self.progressTimer = NSTimer.scheduledTimerWithTimeInterval(0, target: self, selector: #selector(updateProgress), userInfo: nil, repeats: true)
         } else {
             self.progressView.removeFromSuperview()
+            self.progressView.reset()
         }
     }
     
@@ -138,6 +150,14 @@ class AddButton: BaseTabButton {
         let currentTime = NSDate().timeIntervalSince1970
         let progress = (currentTime - longPressTime) / self.longPressRequirement
         self.progressView.progress = progress
+        
+        if progress >= 1.0 {
+            self.stopTrackingPress()
+            
+            if let delegate = self.delegate {
+                delegate.addButtonDidCompleteLongPress()
+            }
+        }
     }
     
 }

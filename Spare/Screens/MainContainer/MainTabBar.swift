@@ -20,7 +20,6 @@ class MainTabBar: UIView {
     @IBOutlet var buttonContainers: [UIView]!
     
     let homeButton = TabButton(.Home)
-//    let addButton = TabButton(.Add)
     let addButton = AddButton()
     let settingsButton = TabButton(.Settings)
     

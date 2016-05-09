@@ -78,6 +78,9 @@
 		266946AC1CC786EC00A68424 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266946AB1CC786EC00A68424 /* App.swift */; };
 		26A6CDE11CDB18EA00309A84 /* AddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A6CDE01CDB18EA00309A84 /* AddButton.swift */; };
 		26C2D5C21CDB5E4800BC73FC /* AddButtonProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C2D5C11CDB5E4800BC73FC /* AddButtonProgressView.swift */; };
+		26E2D3781CE0E0D900BA357F /* AddCategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E2D3771CE0E0D900BA357F /* AddCategoryVC.swift */; };
+		26E2D37A1CE0E34200BA357F /* AddExpenseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E2D3791CE0E34200BA357F /* AddExpenseVC.swift */; };
+		26E2D37C1CE0E3BA00BA357F /* BaseFormVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E2D37B1CE0E3BA00BA357F /* BaseFormVC.swift */; };
 		26E4E0591937AF690096191A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E4E0581937AF690096191A /* QuartzCore.framework */; };
 		26E6EDB41CDBA6C60034EEDE /* AddButtonProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26E6EDB31CDBA6C60034EEDE /* AddButtonProgressView.xib */; };
 		26E7FA7B1CDB332F000E2181 /* BaseTabButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E7FA7A1CDB332F000E2181 /* BaseTabButton.swift */; };
@@ -207,6 +210,9 @@
 		26A6CDE01CDB18EA00309A84 /* AddButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddButton.swift; sourceTree = "<group>"; };
 		26C2D5C11CDB5E4800BC73FC /* AddButtonProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddButtonProgressView.swift; sourceTree = "<group>"; };
 		26D4C8F41946E624001B42DC /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		26E2D3771CE0E0D900BA357F /* AddCategoryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCategoryVC.swift; sourceTree = "<group>"; };
+		26E2D3791CE0E34200BA357F /* AddExpenseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddExpenseVC.swift; sourceTree = "<group>"; };
+		26E2D37B1CE0E3BA00BA357F /* BaseFormVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseFormVC.swift; sourceTree = "<group>"; };
 		26E4E0581937AF690096191A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		26E6EDB31CDBA6C60034EEDE /* AddButtonProgressView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddButtonProgressView.xib; sourceTree = "<group>"; };
 		26E7FA7A1CDB332F000E2181 /* BaseTabButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTabButton.swift; sourceTree = "<group>"; };
@@ -258,6 +264,7 @@
 		260024051CC7E5F300EB2026 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				26E2D3761CE0E0B200BA357F /* Add */,
 				26EFA0011CD9C8E800714E5D /* MainContainer */,
 				261370C01CD7B060007BAF56 /* Containers */,
 				262F83991CCE3E4C00EDDDEE /* LoadApp */,
@@ -299,6 +306,7 @@
 			isa = PBXGroup;
 			children = (
 				2600241C1CC7E6B500EB2026 /* BaseVC.swift */,
+				26E2D37B1CE0E3BA00BA357F /* BaseFormVC.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -490,6 +498,15 @@
 				26E7FA7C1CDB33F5000E2181 /* Icon.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		26E2D3761CE0E0B200BA357F /* Add */ = {
+			isa = PBXGroup;
+			children = (
+				26E2D3771CE0E0D900BA357F /* AddCategoryVC.swift */,
+				26E2D3791CE0E34200BA357F /* AddExpenseVC.swift */,
+			);
+			path = Add;
 			sourceTree = "<group>";
 		};
 		26EFA0011CD9C8E800714E5D /* MainContainer */ = {
@@ -720,11 +737,13 @@
 				261370C91CD86B08007BAF56 /* __EEVCView.swift in Sources */,
 				260024111CC7E5F300EB2026 /* HomeVC.swift in Sources */,
 				2600241D1CC7E6B500EB2026 /* BaseVC.swift in Sources */,
+				26E2D37A1CE0E34200BA357F /* AddExpenseVC.swift in Sources */,
 				266946931CC77A1A00A68424 /* AppDelegate.swift in Sources */,
 				26E7FA7B1CDB332F000E2181 /* BaseTabButton.swift in Sources */,
 				26A6CDE11CDB18EA00309A84 /* AddButton.swift in Sources */,
 				2603F8D71CCA5B7D007F311F /* EditCategoryVC.swift in Sources */,
 				260024251CC88D3E00EB2026 /* __HVCCardCell.swift in Sources */,
+				26E2D3781CE0E0D900BA357F /* AddCategoryVC.swift in Sources */,
 				26C2D5C21CDB5E4800BC73FC /* AddButtonProgressView.swift in Sources */,
 				2603F8D31CCA4C10007F311F /* Category.swift in Sources */,
 				26E7FA7D1CDB33F5000E2181 /* Icon.swift in Sources */,
@@ -736,6 +755,7 @@
 				261370BD1CD7A9EC007BAF56 /* Font.swift in Sources */,
 				2603F8D21CCA4C10007F311F /* Category+CoreDataProperties.swift in Sources */,
 				261370A01CD7866F007BAF56 /* __AMVCView.swift in Sources */,
+				26E2D37C1CE0E3BA00BA357F /* BaseFormVC.swift in Sources */,
 				261370C71CD86AF4007BAF56 /* EditExpenseVC.swift in Sources */,
 				261370C21CD7B060007BAF56 /* RootVC.swift in Sources */,
 				262F83A11CCE546200EDDDEE /* HRColorMapView.swift in Sources */,

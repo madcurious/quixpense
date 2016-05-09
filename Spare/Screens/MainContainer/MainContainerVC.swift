@@ -27,6 +27,8 @@ class MainContainerVC: BaseVC {
         
         self.tabBar.delegate = self
         self.customView.tabBarContainer.addSubviewAndFill(self.tabBar)
+        
+        self.tabBar.addButton.delegate = self
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -43,6 +45,18 @@ extension MainContainerVC: MainTabBarDelegate {
     
     func mainTabBarDidSelectIndex(index: Int) {
         self.tabs.selectedIndex = index
+    }
+    
+}
+
+extension MainContainerVC: AddButtonDelegate {
+    
+    func addButtonDidClick() {
+        self.presentViewController(ModalNavBarVC(rootViewController: AddExpenseVC()), animated: true, completion: nil)
+    }
+    
+    func addButtonDidCompleteLongPress() {
+        self.presentViewController(ModalNavBarVC(rootViewController: AddCategoryVC()), animated: true, completion: nil)
     }
     
 }
