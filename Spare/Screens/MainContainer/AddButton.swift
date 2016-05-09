@@ -12,20 +12,25 @@ import Mold
 class AddButton: BaseTabButton {
     
     /// The amount of time before a long press is recognized.
-    private let longPressDelay = 0.5
+    private let longPressDelay = 1.0
     
     /// The amount of time that a long press should be held to trigger the New Category action.
     private let longPressRequirement = 0.5
     
-    private let movementThreshold = CGFloat(10)
+    private let movementThreshold = CGFloat(40)
     
-    /// The time when the touch occurred.
+    /// The time when the touch down occurred.
     var touchTime: NSTimeInterval?
     
-    /// The point where the touch initially occurred
+    var longPressTime: NSTimeInterval?
+    
+    /// The point where the touch down initially occurred.
     var touchPoint: CGPoint?
     
     var progressView = AddButtonProgressView.instantiateFromNib() as AddButtonProgressView
+    
+    /// Timer for animating the long press progress.
+    var progressTimer: NSTimer?
     
     init() {
         super.init(frame: CGRectZero)
@@ -78,7 +83,7 @@ class AddButton: BaseTabButton {
         
         self.applyHighlight(true)
         
-        self.performSelector(#selector(showLongPressProgressView(_:)), withObject: NSNumber(bool: true), afterDelay: self.longPressDelay)
+        self.performSelector(#selector(showProgressView(_:)), withObject: NSNumber(bool: true), afterDelay: self.longPressDelay)
     }
     
     func stopTrackingPress() {
@@ -96,11 +101,15 @@ class AddButton: BaseTabButton {
             switch (currentTime - touchTime) {
             case let x where x < self.longPressDelay:
                 () // It's just a click.
-                NSObject.cancelPreviousPerformRequestsWithTarget(self, selector: #selector(showLongPressProgressView(_:)), object: NSNumber(bool: true))
+                NSObject.cancelPreviousPerformRequestsWithTarget(self, selector: #selector(showProgressView(_:)), object: NSNumber(bool: true))
                 
             default:
-                // It was a long press; dismiss the dialog.
-                self.showLongPressProgressView(NSNumber(bool: false))
+                // The long press was recognized. Invalidate the progress timer and remove the progress view.
+                if let progressTimer = self.progressTimer {
+                    progressTimer.invalidate()
+                }
+                self.progressTimer = nil
+                self.showProgressView(false)
                 
             }
         }
@@ -109,19 +118,26 @@ class AddButton: BaseTabButton {
         self.touchTime = nil
     }
     
-    func showLongPressProgressView(flag: NSNumber) {
+    func showProgressView(show: NSNumber) {
         let rootVC = rootViewController()
-        
-        if flag.boolValue == true {
+        if show.boolValue == true {
             rootVC.view.addSubviewAndFill(self.progressView)
-            self.progressView.animate()
+            self.longPressTime = NSDate().timeIntervalSince1970
+            self.progressTimer = NSTimer.scheduledTimerWithTimeInterval(0, target: self, selector: #selector(updateProgress), userInfo: nil, repeats: true)
+        } else {
+            self.progressView.removeFromSuperview()
+        }
+    }
+    
+    func updateProgress() {
+        guard let longPressTime = self.longPressTime
+            else {
+                return
         }
         
-        else {
-            self.progressView.reset {[unowned self] in
-                self.progressView.removeFromSuperview()
-            }
-        }
+        let currentTime = NSDate().timeIntervalSince1970
+        let progress = (currentTime - longPressTime) / self.longPressRequirement
+        self.progressView.progress = progress
     }
     
 }

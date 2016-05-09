@@ -20,9 +20,14 @@ class AddButtonProgressView: UIView {
     @IBOutlet weak var actionLabel: UILabel!
     @IBOutlet weak var circleView: __ABCircleView!
     
-    @IBOutlet weak var actionLabelY: NSLayoutConstraint!
-    @IBOutlet weak var circleViewY: NSLayoutConstraint!
-    
+    var progress: Double {
+        get {
+            return self.circleView.progress
+        }
+        set {
+            self.circleView.progress = newValue
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -37,45 +42,46 @@ class AddButtonProgressView: UIView {
         self.actionLabel.font = Font.text(.Light, size: 14)
         self.actionLabel.text = "NEW CATEGORY"
         self.actionLabel.sizeToFit()
-        
-        self.reset(animated: false, completion: nil)
-        self.setNeedsLayout()
-        self.layoutIfNeeded()
-    }
-    
-    func reset(animated animated: Bool = true, completion: (Void -> Void)?) {
-        self.backgroundView.alpha = 0
-        self.actionLabelY.constant = 0
-        self.circleViewY.constant = 0
-        
-        completion?()
-    }
-    
-    func animate() {
-        
-        print("circleView: \(self.circleView)")
-        print("label: \(self.actionLabel)")
-        print("------")
-        
-        UIView.animateWithDuration(
-            0.1,
-            animations: {[unowned self] in
-                self.backgroundView.alpha = 0.3
-                self.actionLabelY.constant = -(self.circleView.bounds.size.height * 0.5 + 20 + self.actionLabel.bounds.size.height)
-                self.circleViewY.constant = -(self.circleView.bounds.size.height * 0.5)
-            },
-            completion: {[unowned self] _ in
-                print("circleView: \(self.circleView)")
-                print("label: \(self.actionLabel)")
-        })
     }
     
 }
 
 class __ABCircleView: UIView {
     
-//    override func drawRect(rect: CGRect) {
-//        <#code#>
-//    }
+    var progress = 0.1 {
+        didSet {
+            self.setNeedsDisplay()
+        }
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+//        self.backgroundColor = UIColor.clearColor()
+        self.layer.borderColor = Color.White.CGColor
+        self.layer.borderWidth = 1.0
+        self.layer.masksToBounds = true
+        
+        self.setNeedsDisplay()
+    }
+    
+    override func drawRect(rect: CGRect) {
+        let context = UIGraphicsGetCurrentContext()
+        
+        var components = [CGFloat(0), CGFloat(0), CGFloat(0), CGFloat(0)]
+        Color.White.getRed(&components[0], green: &components[1], blue: &components[2], alpha: &components[3])
+        CGContextSetRGBFillColor(context, components[0], components[1], components[2], components[3])
+        
+        let inset = (rect.width - (rect.width * CGFloat(self.progress))) / 2
+        let fillRect = CGRectInset(rect, inset, inset)
+//        print("PROGRESS = \(self.progress); INSET = \(inset); FILLRECT = \(fillRect)")
+        
+        CGContextFillEllipseInRect(context, fillRect)
+    }
+    
+    override func layoutSubviews() {
+        self.layer.cornerRadius = self.bounds.height / 2
+        super.layoutSubviews()
+    }
     
 }
