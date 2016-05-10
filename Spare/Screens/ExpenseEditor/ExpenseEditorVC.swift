@@ -1,5 +1,5 @@
 //
-//  EditExpenseVC.swift
+//  ExpenseEditorVC.swift
 //  Spare
 //
 //  Created by Matt Quiros on 03/05/2016.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EditExpenseVC: BaseVC {
+class ExpenseEditorVC: BaseVC {
     
     let customView = __EEVCView.instantiateFromNib() as __EEVCView
     

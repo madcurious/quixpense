@@ -24,8 +24,9 @@ class AddCategoryVC: BaseFormVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.embedChildViewController(self.editor)
     }
+    
+    
     
 }

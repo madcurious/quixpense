@@ -33,7 +33,6 @@
 		261370B91CD7A120007BAF56 /* Montserrat-UltraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 261370B11CD7A120007BAF56 /* Montserrat-UltraLight.otf */; };
 		261370BD1CD7A9EC007BAF56 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261370BC1CD7A9EC007BAF56 /* Font.swift */; };
 		261370BF1CD7ABD9007BAF56 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261370BE1CD7ABD9007BAF56 /* Color.swift */; };
-		261370C41CD7B082007BAF56 /* ModalNavBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261370C31CD7B082007BAF56 /* ModalNavBarVC.swift */; };
 		261370CD1CD87679007BAF56 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261370CC1CD87679007BAF56 /* Strings.swift */; };
 		261EB86318DDB630009DDF78 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86218DDB630009DDF78 /* Foundation.framework */; };
 		261EB86518DDB630009DDF78 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86418DDB630009DDF78 /* CoreGraphics.framework */; };
@@ -71,11 +70,12 @@
 		269D49F51CE1610100109990 /* HRColorMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269D49ED1CE1610100109990 /* HRColorMapView.swift */; };
 		269D49F61CE1610100109990 /* __EEVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269D49EF1CE1610100109990 /* __EEVCView.swift */; };
 		269D49F71CE1610100109990 /* __EEVCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 269D49F01CE1610100109990 /* __EEVCView.xib */; };
-		269D49F81CE1610100109990 /* EditExpenseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269D49F11CE1610100109990 /* EditExpenseVC.swift */; };
+		269D49F81CE1610100109990 /* ExpenseEditorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269D49F11CE1610100109990 /* ExpenseEditorVC.swift */; };
+		269D49FA1CE1643400109990 /* AddCategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269D49F91CE1643400109990 /* AddCategoryVC.swift */; };
+		269D49FC1CE1643A00109990 /* AddExpenseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269D49FB1CE1643A00109990 /* AddExpenseVC.swift */; };
+		269D49FE1CE1649500109990 /* ModalNavBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269D49FD1CE1649500109990 /* ModalNavBarVC.swift */; };
 		26A6CDE11CDB18EA00309A84 /* AddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A6CDE01CDB18EA00309A84 /* AddButton.swift */; };
 		26C2D5C21CDB5E4800BC73FC /* AddButtonProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C2D5C11CDB5E4800BC73FC /* AddButtonProgressView.swift */; };
-		26E2D3781CE0E0D900BA357F /* AddCategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E2D3771CE0E0D900BA357F /* AddCategoryVC.swift */; };
-		26E2D37A1CE0E34200BA357F /* AddExpenseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E2D3791CE0E34200BA357F /* AddExpenseVC.swift */; };
 		26E2D37C1CE0E3BA00BA357F /* BaseFormVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E2D37B1CE0E3BA00BA357F /* BaseFormVC.swift */; };
 		26E4E0591937AF690096191A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E4E0581937AF690096191A /* QuartzCore.framework */; };
 		26E6EDB41CDBA6C60034EEDE /* AddButtonProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26E6EDB31CDBA6C60034EEDE /* AddButtonProgressView.xib */; };
@@ -157,7 +157,6 @@
 		261370B11CD7A120007BAF56 /* Montserrat-UltraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-UltraLight.otf"; path = "../../../../Downloads/montserrat/Montserrat-UltraLight.otf"; sourceTree = "<group>"; };
 		261370BC1CD7A9EC007BAF56 /* Font.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		261370BE1CD7ABD9007BAF56 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
-		261370C31CD7B082007BAF56 /* ModalNavBarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalNavBarVC.swift; sourceTree = "<group>"; };
 		261370CC1CD87679007BAF56 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		261EB85F18DDB630009DDF78 /* Spare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		261EB86218DDB630009DDF78 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -198,12 +197,13 @@
 		269D49ED1CE1610100109990 /* HRColorMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRColorMapView.swift; sourceTree = "<group>"; };
 		269D49EF1CE1610100109990 /* __EEVCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __EEVCView.swift; sourceTree = "<group>"; };
 		269D49F01CE1610100109990 /* __EEVCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __EEVCView.xib; sourceTree = "<group>"; };
-		269D49F11CE1610100109990 /* EditExpenseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditExpenseVC.swift; sourceTree = "<group>"; };
+		269D49F11CE1610100109990 /* ExpenseEditorVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseEditorVC.swift; sourceTree = "<group>"; };
+		269D49F91CE1643400109990 /* AddCategoryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCategoryVC.swift; sourceTree = "<group>"; };
+		269D49FB1CE1643A00109990 /* AddExpenseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddExpenseVC.swift; sourceTree = "<group>"; };
+		269D49FD1CE1649500109990 /* ModalNavBarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalNavBarVC.swift; sourceTree = "<group>"; };
 		26A6CDE01CDB18EA00309A84 /* AddButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddButton.swift; sourceTree = "<group>"; };
 		26C2D5C11CDB5E4800BC73FC /* AddButtonProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddButtonProgressView.swift; sourceTree = "<group>"; };
 		26D4C8F41946E624001B42DC /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
-		26E2D3771CE0E0D900BA357F /* AddCategoryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCategoryVC.swift; sourceTree = "<group>"; };
-		26E2D3791CE0E34200BA357F /* AddExpenseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddExpenseVC.swift; sourceTree = "<group>"; };
 		26E2D37B1CE0E3BA00BA357F /* BaseFormVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseFormVC.swift; sourceTree = "<group>"; };
 		26E4E0581937AF690096191A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		26E6EDB31CDBA6C60034EEDE /* AddButtonProgressView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddButtonProgressView.xib; sourceTree = "<group>"; };
@@ -256,12 +256,10 @@
 		260024051CC7E5F300EB2026 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				261370C01CD7B060007BAF56 /* Containers */,
 				2600241B1CC7E6AE00EB2026 /* Base */,
 				262F83991CCE3E4C00EDDDEE /* LoadApp */,
 				26EFA0011CD9C8E800714E5D /* MainContainer */,
 				260024081CC7E5F300EB2026 /* Home */,
-				26E2D3761CE0E0B200BA357F /* Add */,
 				2600240E1CC7E5F300EB2026 /* Settings */,
 				269D49E91CE1610100109990 /* CategoryEditor */,
 				269D49EE1CE1610100109990 /* ExpenseEditor */,
@@ -298,6 +296,7 @@
 			children = (
 				2600241C1CC7E6B500EB2026 /* BaseVC.swift */,
 				26E2D37B1CE0E3BA00BA357F /* BaseFormVC.swift */,
+				269D49FD1CE1649500109990 /* ModalNavBarVC.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -335,14 +334,6 @@
 				261370B11CD7A120007BAF56 /* Montserrat-UltraLight.otf */,
 			);
 			path = Fonts;
-			sourceTree = "<group>";
-		};
-		261370C01CD7B060007BAF56 /* Containers */ = {
-			isa = PBXGroup;
-			children = (
-				261370C31CD7B082007BAF56 /* ModalNavBarVC.swift */,
-			);
-			path = Containers;
 			sourceTree = "<group>";
 		};
 		261EB85618DDB630009DDF78 = {
@@ -462,6 +453,7 @@
 		269D49E91CE1610100109990 /* CategoryEditor */ = {
 			isa = PBXGroup;
 			children = (
+				269D49F91CE1643400109990 /* AddCategoryVC.swift */,
 				269D49EA1CE1610100109990 /* __CEVCView.swift */,
 				269D49EB1CE1610100109990 /* __CEVCView.xib */,
 				269D49EC1CE1610100109990 /* CategoryEditorVC.swift */,
@@ -473,20 +465,12 @@
 		269D49EE1CE1610100109990 /* ExpenseEditor */ = {
 			isa = PBXGroup;
 			children = (
+				269D49FB1CE1643A00109990 /* AddExpenseVC.swift */,
 				269D49EF1CE1610100109990 /* __EEVCView.swift */,
 				269D49F01CE1610100109990 /* __EEVCView.xib */,
-				269D49F11CE1610100109990 /* EditExpenseVC.swift */,
+				269D49F11CE1610100109990 /* ExpenseEditorVC.swift */,
 			);
 			path = ExpenseEditor;
-			sourceTree = "<group>";
-		};
-		26E2D3761CE0E0B200BA357F /* Add */ = {
-			isa = PBXGroup;
-			children = (
-				26E2D3771CE0E0D900BA357F /* AddCategoryVC.swift */,
-				26E2D3791CE0E34200BA357F /* AddExpenseVC.swift */,
-			);
-			path = Add;
 			sourceTree = "<group>";
 		};
 		26EFA0011CD9C8E800714E5D /* MainContainer */ = {
@@ -714,25 +698,25 @@
 				260024291CC8B77C00EB2026 /* __HVCCardView.swift in Sources */,
 				260024111CC7E5F300EB2026 /* HomeVC.swift in Sources */,
 				2600241D1CC7E6B500EB2026 /* BaseVC.swift in Sources */,
-				26E2D37A1CE0E34200BA357F /* AddExpenseVC.swift in Sources */,
 				266946931CC77A1A00A68424 /* AppDelegate.swift in Sources */,
 				26E7FA7B1CDB332F000E2181 /* BaseTabButton.swift in Sources */,
 				269D49F41CE1610100109990 /* CategoryEditorVC.swift in Sources */,
 				26A6CDE11CDB18EA00309A84 /* AddButton.swift in Sources */,
 				260024251CC88D3E00EB2026 /* __HVCCardCell.swift in Sources */,
-				26E2D3781CE0E0D900BA357F /* AddCategoryVC.swift in Sources */,
 				26C2D5C21CDB5E4800BC73FC /* AddButtonProgressView.swift in Sources */,
 				269D49F21CE1610100109990 /* __CEVCView.swift in Sources */,
 				2603F8D31CCA4C10007F311F /* Category.swift in Sources */,
 				26E7FA7D1CDB33F5000E2181 /* Icon.swift in Sources */,
-				261370C41CD7B082007BAF56 /* ModalNavBarVC.swift in Sources */,
+				269D49FA1CE1643400109990 /* AddCategoryVC.swift in Sources */,
 				260024151CC7E5F300EB2026 /* SettingsVC.swift in Sources */,
 				26EFA0071CD9C92F00714E5D /* __MCVCView.swift in Sources */,
 				266946AC1CC786EC00A68424 /* App.swift in Sources */,
 				2631F37D1CD3479D00E90A61 /* __HVCCell.swift in Sources */,
 				261370BD1CD7A9EC007BAF56 /* Font.swift in Sources */,
+				269D49FC1CE1643A00109990 /* AddExpenseVC.swift in Sources */,
 				2603F8D21CCA4C10007F311F /* Category+CoreDataProperties.swift in Sources */,
-				269D49F81CE1610100109990 /* EditExpenseVC.swift in Sources */,
+				269D49FE1CE1649500109990 /* ModalNavBarVC.swift in Sources */,
+				269D49F81CE1610100109990 /* ExpenseEditorVC.swift in Sources */,
 				26E2D37C1CE0E3BA00BA357F /* BaseFormVC.swift in Sources */,
 				269D49F51CE1610100109990 /* HRColorMapView.swift in Sources */,
 				2631F37B1CD3458800E90A61 /* CardVC.swift in Sources */,

@@ -10,7 +10,7 @@ import UIKit
 
 class AddExpenseVC: BaseFormVC {
     
-    let editor = EditExpenseVC()
+    let editor = ExpenseEditorVC()
     
     override init() {
         super.init()
