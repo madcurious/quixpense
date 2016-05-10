@@ -23,9 +23,6 @@
 		2603F8CF1CCA4C10007F311F /* Expense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2603F8C91CCA4C10007F311F /* Expense.swift */; };
 		2603F8D21CCA4C10007F311F /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2603F8CC1CCA4C10007F311F /* Category+CoreDataProperties.swift */; };
 		2603F8D31CCA4C10007F311F /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2603F8CD1CCA4C10007F311F /* Category.swift */; };
-		2613709A1CD77B4A007BAF56 /* AddModalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261370991CD77B4A007BAF56 /* AddModalVC.swift */; };
-		2613709E1CD78618007BAF56 /* __AMVCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2613709D1CD78618007BAF56 /* __AMVCView.xib */; };
-		261370A01CD7866F007BAF56 /* __AMVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2613709F1CD7866F007BAF56 /* __AMVCView.swift */; };
 		261370B21CD7A120007BAF56 /* Montserrat-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 261370AA1CD7A120007BAF56 /* Montserrat-Black.otf */; };
 		261370B31CD7A120007BAF56 /* Montserrat-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 261370AB1CD7A120007BAF56 /* Montserrat-Bold.otf */; };
 		261370B41CD7A120007BAF56 /* Montserrat-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 261370AC1CD7A120007BAF56 /* Montserrat-ExtraBold.otf */; };
@@ -36,7 +33,6 @@
 		261370B91CD7A120007BAF56 /* Montserrat-UltraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 261370B11CD7A120007BAF56 /* Montserrat-UltraLight.otf */; };
 		261370BD1CD7A9EC007BAF56 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261370BC1CD7A9EC007BAF56 /* Font.swift */; };
 		261370BF1CD7ABD9007BAF56 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261370BE1CD7ABD9007BAF56 /* Color.swift */; };
-		261370C21CD7B060007BAF56 /* RootVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261370C11CD7B060007BAF56 /* RootVC.swift */; };
 		261370C41CD7B082007BAF56 /* ModalNavBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261370C31CD7B082007BAF56 /* ModalNavBarVC.swift */; };
 		261370CD1CD87679007BAF56 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261370CC1CD87679007BAF56 /* Strings.swift */; };
 		261EB86318DDB630009DDF78 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86218DDB630009DDF78 /* Foundation.framework */; };
@@ -151,9 +147,6 @@
 		2603F8C91CCA4C10007F311F /* Expense.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Expense.swift; sourceTree = "<group>"; };
 		2603F8CC1CCA4C10007F311F /* Category+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		2603F8CD1CCA4C10007F311F /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
-		261370991CD77B4A007BAF56 /* AddModalVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddModalVC.swift; sourceTree = "<group>"; };
-		2613709D1CD78618007BAF56 /* __AMVCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __AMVCView.xib; sourceTree = "<group>"; };
-		2613709F1CD7866F007BAF56 /* __AMVCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __AMVCView.swift; sourceTree = "<group>"; };
 		261370AA1CD7A120007BAF56 /* Montserrat-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Black.otf"; path = "../../../../Downloads/montserrat/Montserrat-Black.otf"; sourceTree = "<group>"; };
 		261370AB1CD7A120007BAF56 /* Montserrat-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Bold.otf"; path = "../../../../Downloads/montserrat/Montserrat-Bold.otf"; sourceTree = "<group>"; };
 		261370AC1CD7A120007BAF56 /* Montserrat-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-ExtraBold.otf"; path = "../../../../Downloads/montserrat/Montserrat-ExtraBold.otf"; sourceTree = "<group>"; };
@@ -164,7 +157,6 @@
 		261370B11CD7A120007BAF56 /* Montserrat-UltraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-UltraLight.otf"; path = "../../../../Downloads/montserrat/Montserrat-UltraLight.otf"; sourceTree = "<group>"; };
 		261370BC1CD7A9EC007BAF56 /* Font.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		261370BE1CD7ABD9007BAF56 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
-		261370C11CD7B060007BAF56 /* RootVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootVC.swift; sourceTree = "<group>"; };
 		261370C31CD7B082007BAF56 /* ModalNavBarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalNavBarVC.swift; sourceTree = "<group>"; };
 		261370CC1CD87679007BAF56 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		261EB85F18DDB630009DDF78 /* Spare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spare.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -264,16 +256,15 @@
 		260024051CC7E5F300EB2026 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				261370C01CD7B060007BAF56 /* Containers */,
+				2600241B1CC7E6AE00EB2026 /* Base */,
+				262F83991CCE3E4C00EDDDEE /* LoadApp */,
+				26EFA0011CD9C8E800714E5D /* MainContainer */,
+				260024081CC7E5F300EB2026 /* Home */,
+				26E2D3761CE0E0B200BA357F /* Add */,
+				2600240E1CC7E5F300EB2026 /* Settings */,
 				269D49E91CE1610100109990 /* CategoryEditor */,
 				269D49EE1CE1610100109990 /* ExpenseEditor */,
-				26E2D3761CE0E0B200BA357F /* Add */,
-				26EFA0011CD9C8E800714E5D /* MainContainer */,
-				261370C01CD7B060007BAF56 /* Containers */,
-				262F83991CCE3E4C00EDDDEE /* LoadApp */,
-				2600241B1CC7E6AE00EB2026 /* Base */,
-				261370981CD77B3F007BAF56 /* AddModal */,
-				260024081CC7E5F300EB2026 /* Home */,
-				2600240E1CC7E5F300EB2026 /* Settings */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -330,16 +321,6 @@
 			path = "Core Data";
 			sourceTree = "<group>";
 		};
-		261370981CD77B3F007BAF56 /* AddModal */ = {
-			isa = PBXGroup;
-			children = (
-				261370991CD77B4A007BAF56 /* AddModalVC.swift */,
-				2613709D1CD78618007BAF56 /* __AMVCView.xib */,
-				2613709F1CD7866F007BAF56 /* __AMVCView.swift */,
-			);
-			path = AddModal;
-			sourceTree = "<group>";
-		};
 		261370A91CD7A114007BAF56 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -359,7 +340,6 @@
 		261370C01CD7B060007BAF56 /* Containers */ = {
 			isa = PBXGroup;
 			children = (
-				261370C11CD7B060007BAF56 /* RootVC.swift */,
 				261370C31CD7B082007BAF56 /* ModalNavBarVC.swift */,
 			);
 			path = Containers;
@@ -652,7 +632,6 @@
 				261370B51CD7A120007BAF56 /* Montserrat-Hairline.otf in Resources */,
 				266946871CC7711000A68424 /* Icon-60@2x.png in Resources */,
 				261370B61CD7A120007BAF56 /* Montserrat-Light.otf in Resources */,
-				2613709E1CD78618007BAF56 /* __AMVCView.xib in Resources */,
 				266946891CC7711000A68424 /* Icon@2x.png in Resources */,
 				266946861CC7711000A68424 /* Icon-40@2x.png in Resources */,
 				26EFA00B1CD9DE8100714E5D /* spare-v2.ttf in Resources */,
@@ -754,9 +733,7 @@
 				261370BD1CD7A9EC007BAF56 /* Font.swift in Sources */,
 				2603F8D21CCA4C10007F311F /* Category+CoreDataProperties.swift in Sources */,
 				269D49F81CE1610100109990 /* EditExpenseVC.swift in Sources */,
-				261370A01CD7866F007BAF56 /* __AMVCView.swift in Sources */,
 				26E2D37C1CE0E3BA00BA357F /* BaseFormVC.swift in Sources */,
-				261370C21CD7B060007BAF56 /* RootVC.swift in Sources */,
 				269D49F51CE1610100109990 /* HRColorMapView.swift in Sources */,
 				2631F37B1CD3458800E90A61 /* CardVC.swift in Sources */,
 				261370CD1CD87679007BAF56 /* Strings.swift in Sources */,
@@ -765,7 +742,6 @@
 				2669468F1CC7711000A68424 /* Spare.xcdatamodeld in Sources */,
 				262F839B1CCE3E5300EDDDEE /* LoadAppVC.swift in Sources */,
 				260024221CC882C400EB2026 /* __HVCView.swift in Sources */,
-				2613709A1CD77B4A007BAF56 /* AddModalVC.swift in Sources */,
 				26EFA0091CD9DB0A00714E5D /* TabButton.swift in Sources */,
 				26EFA0031CD9C8F100714E5D /* MainContainerVC.swift in Sources */,
 				26EFA00D1CD9DFF900714E5D /* MainTabBar.swift in Sources */,
