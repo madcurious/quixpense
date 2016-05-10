@@ -22,22 +22,30 @@ class HomeVC: MDStatefulViewController {
     var viewHasAppeared = false
     
     lazy var fetcher: NSFetchedResultsController = {
-        let request = NSFetchRequest(entityName: Expense.entityName)
-        request.propertiesToGroupBy = ["category"]
-        request.resultType = .DictionaryResultType
-        request.propertiesToFetch = [
-            "category",
-            {
-                let totalColumn = NSExpressionDescription()
-                totalColumn.name = "total"
-                totalColumn.expression = NSExpression(format: "@sum.amount")
-                totalColumn.expressionResultType = .DecimalAttributeType
-                return totalColumn
-            }()
-        ]
-        request.sortDescriptors = [NSSortDescriptor(key: "category", ascending: true)]
+//        let request = NSFetchRequest(entityName: Expense.entityName)
+//        request.propertiesToGroupBy = ["category"]
+//        request.resultType = .DictionaryResultType
+//        request.propertiesToFetch = [
+//            "category",
+//            {
+//                let totalColumn = NSExpressionDescription()
+//                totalColumn.name = "total"
+//                totalColumn.expression = NSExpression(format: "@sum.amount")
+//                totalColumn.expressionResultType = .DecimalAttributeType
+//                return totalColumn
+//            }()
+//        ]
+//        request.sortDescriptors = [NSSortDescriptor(key: "category", ascending: true)]
+//        
+//        let fetcher = NSFetchedResultsController(fetchRequest: request, managedObjectContext: App.state.mainQueueContext, sectionNameKeyPath: nil, cacheName: "Summaries")
+//        return fetcher
         
-        let fetcher = NSFetchedResultsController(fetchRequest: request, managedObjectContext: App.state.mainQueueContext, sectionNameKeyPath: nil, cacheName: "Summaries")
+        
+        let request = NSFetchRequest(entityName: Category.entityName)
+        request.propertiesToFetch = ["name"]
+        request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+        request.resultType = .DictionaryResultType
+        let fetcher = NSFetchedResultsController(fetchRequest: request, managedObjectContext: App.state.mainQueueContext, sectionNameKeyPath: nil, cacheName: nil)
         return fetcher
     }()
     

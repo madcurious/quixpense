@@ -20,6 +20,8 @@ class CategoryEditorVC: BaseVC {
     let colorMap: HRColorMapView
     let slider: HRBrightnessSlider
     
+    private let defaultColor = UIColor.redColor()
+    
     init(category: Category?) {
         let context = App.state.coreDataStack.newBackgroundWorkerMOC()
         self.managedObjectContext = context
@@ -30,7 +32,8 @@ class CategoryEditorVC: BaseVC {
             self.colorMap = HRColorMapView.defaultColorMap(UIColor(hex: colorHex))
         } else {
             self.category = Category(managedObjectContext: context)
-            self.colorMap = HRColorMapView.defaultColorMap(UIColor.redColor())
+            self.category.color = self.defaultColor.hexValue()
+            self.colorMap = HRColorMapView.defaultColorMap(self.defaultColor)
         }
         
         self.slider = HRBrightnessSlider()
@@ -38,7 +41,7 @@ class CategoryEditorVC: BaseVC {
         super.init()
         
         self.slider.brightnessLowerLimit = 0.3
-        self.slider.color = UIColor.redColor()
+        self.slider.color = self.defaultColor
         
         self.customView.colorMap = self.colorMap
         self.customView.slider = self.slider
@@ -59,6 +62,8 @@ class CategoryEditorVC: BaseVC {
         
         self.colorMap.addTarget(self, action: #selector(handleTapOnColorMap(_:)), forControlEvents: .ValueChanged)
         self.slider.addTarget(self, action: #selector(handleBrightnessValueChange(_:)), forControlEvents: .ValueChanged)
+        
+        self.customView.textField.delegate = self
         
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapOnView)))
     }
@@ -94,17 +99,20 @@ class CategoryEditorVC: BaseVC {
         return UIColor(hue: color.h, saturation: color.s, brightness: brightness, alpha: 1)
     }
     
-    func saveCategory(successBlock: (Void -> Void)?, failBlock: (NSError -> Void)?) {
-        guard let categoryName = nonEmptyString(self.customView.textField.text)
-            else {
-                failBlock?(MDError("You must enter a category name."))
-                return
-        }
-        
-        self.category.name = categoryName
-        self.category.color = self.getResultingColor().hexValue()
-        self.managedObjectContext.saveContext()
-        successBlock?()
+    func clear() {
+        self.customView.textField.text = nil
+        self.category = Category(managedObjectContext: self.managedObjectContext)
     }
     
 }
+
+extension CategoryEditorVC: UITextFieldDelegate {
+    
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        let name = NSString(string: textField.text ?? "").stringByReplacingCharactersInRange(range, withString: string)
+        self.category.name = name
+        return true
+    }
+    
+}
+
