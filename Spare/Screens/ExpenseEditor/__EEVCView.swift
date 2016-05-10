@@ -67,7 +67,7 @@ class __EEVCView: UIView {
             let title = paymentMethods[i]
             self.paidWithControl.setTitle(title, forSegmentAtIndex: i)
         }
-        self.paidWithControl.setTitleTextAttributes([NSFontAttributeName: Font.FieldLabel], forState: .Normal)
+        self.paidWithControl.setTitleTextAttributes([NSFontAttributeName: Font.text(.Regular, size: 14)], forState: .Normal)
         self.paidWithControl.tintColor = Color.Black
     }
     

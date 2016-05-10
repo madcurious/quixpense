@@ -17,7 +17,6 @@ protocol AddButtonProgressViewDelegate {
 class AddButtonProgressView: UIView {
     
     @IBOutlet weak var backgroundView: UIVisualEffectView!
-    
     @IBOutlet weak var actionLabel: UILabel!
     @IBOutlet weak var circleView: __ABCircleView!
     
@@ -43,21 +42,25 @@ class AddButtonProgressView: UIView {
         self.actionLabel.font = Font.text(.Light, size: 14)
         self.actionLabel.text = "NEW CATEGORY"
         self.actionLabel.sizeToFit()
+        
+        self.reset()
     }
     
     func reset() {
-        self.progress = 0
+        self.progress = 0.0
     }
     
 }
 
 class __ABCircleView: UIView {
     
-    var progress = 0.1 {
+    var progress = 0.0 {
         didSet {
             self.setNeedsDisplay()
         }
     }
+    
+    private let startingProgress = 0.2
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -77,7 +80,7 @@ class __ABCircleView: UIView {
         Color.White.getRed(&components[0], green: &components[1], blue: &components[2], alpha: &components[3])
         CGContextSetRGBFillColor(context, components[0], components[1], components[2], components[3])
         
-        let inset = (rect.width - (rect.width * CGFloat(self.progress))) / 2
+        let inset = (rect.width - (rect.width * CGFloat(self.startingProgress + (1 - self.startingProgress) * self.progress))) / 2
         let fillRect = CGRectInset(rect, inset, inset)
         
         CGContextFillEllipseInRect(context, fillRect)

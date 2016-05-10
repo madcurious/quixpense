@@ -11,7 +11,7 @@ import Mold
 
 class AddCategoryVC: BaseFormVC {
     
-    let editor = EditCategoryVC(category: nil)
+    let editor = CategoryEditorVC(category: nil)
     
     override init() {
         super.init()

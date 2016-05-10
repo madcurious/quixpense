@@ -23,7 +23,6 @@
 		2603F8CF1CCA4C10007F311F /* Expense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2603F8C91CCA4C10007F311F /* Expense.swift */; };
 		2603F8D21CCA4C10007F311F /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2603F8CC1CCA4C10007F311F /* Category+CoreDataProperties.swift */; };
 		2603F8D31CCA4C10007F311F /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2603F8CD1CCA4C10007F311F /* Category.swift */; };
-		2603F8D71CCA5B7D007F311F /* EditCategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2603F8D61CCA5B7D007F311F /* EditCategoryVC.swift */; };
 		2613709A1CD77B4A007BAF56 /* AddModalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261370991CD77B4A007BAF56 /* AddModalVC.swift */; };
 		2613709E1CD78618007BAF56 /* __AMVCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2613709D1CD78618007BAF56 /* __AMVCView.xib */; };
 		261370A01CD7866F007BAF56 /* __AMVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2613709F1CD7866F007BAF56 /* __AMVCView.swift */; };
@@ -39,9 +38,6 @@
 		261370BF1CD7ABD9007BAF56 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261370BE1CD7ABD9007BAF56 /* Color.swift */; };
 		261370C21CD7B060007BAF56 /* RootVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261370C11CD7B060007BAF56 /* RootVC.swift */; };
 		261370C41CD7B082007BAF56 /* ModalNavBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261370C31CD7B082007BAF56 /* ModalNavBarVC.swift */; };
-		261370C71CD86AF4007BAF56 /* EditExpenseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261370C61CD86AF4007BAF56 /* EditExpenseVC.swift */; };
-		261370C91CD86B08007BAF56 /* __EEVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261370C81CD86B08007BAF56 /* __EEVCView.swift */; };
-		261370CB1CD86B23007BAF56 /* __EEVCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 261370CA1CD86B23007BAF56 /* __EEVCView.xib */; };
 		261370CD1CD87679007BAF56 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261370CC1CD87679007BAF56 /* Strings.swift */; };
 		261EB86318DDB630009DDF78 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86218DDB630009DDF78 /* Foundation.framework */; };
 		261EB86518DDB630009DDF78 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86418DDB630009DDF78 /* CoreGraphics.framework */; };
@@ -53,11 +49,8 @@
 		261EB88418DDB631009DDF78 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86818DDB631009DDF78 /* CoreData.framework */; };
 		261EB88C18DDB631009DDF78 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 261EB88A18DDB631009DDF78 /* InfoPlist.strings */; };
 		261EB88E18DDB631009DDF78 /* SpareTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 261EB88D18DDB631009DDF78 /* SpareTests.m */; };
-		262F83931CCE345500EDDDEE /* __ECVCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 262F83921CCE345500EDDDEE /* __ECVCView.xib */; };
-		262F83951CCE347B00EDDDEE /* __ECVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262F83941CCE347B00EDDDEE /* __ECVCView.swift */; };
 		262F839B1CCE3E5300EDDDEE /* LoadAppVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262F839A1CCE3E5300EDDDEE /* LoadAppVC.swift */; };
 		262F839D1CCE3E6C00EDDDEE /* LoadAppOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262F839C1CCE3E6C00EDDDEE /* LoadAppOperation.swift */; };
-		262F83A11CCE546200EDDDEE /* HRColorMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262F83A01CCE546200EDDDEE /* HRColorMapView.swift */; };
 		2631F37B1CD3458800E90A61 /* CardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2631F37A1CD3458800E90A61 /* CardVC.swift */; };
 		2631F37D1CD3479D00E90A61 /* __HVCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2631F37C1CD3479D00E90A61 /* __HVCCell.swift */; };
 		2666C2C61957CF7A003752BF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2666C2C41957CF7A003752BF /* SystemConfiguration.framework */; };
@@ -76,6 +69,13 @@
 		2669468F1CC7711000A68424 /* Spare.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 266946571CC7711000A68424 /* Spare.xcdatamodeld */; };
 		266946931CC77A1A00A68424 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266946921CC77A1A00A68424 /* AppDelegate.swift */; };
 		266946AC1CC786EC00A68424 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266946AB1CC786EC00A68424 /* App.swift */; };
+		269D49F21CE1610100109990 /* __CEVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269D49EA1CE1610100109990 /* __CEVCView.swift */; };
+		269D49F31CE1610100109990 /* __CEVCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 269D49EB1CE1610100109990 /* __CEVCView.xib */; };
+		269D49F41CE1610100109990 /* CategoryEditorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269D49EC1CE1610100109990 /* CategoryEditorVC.swift */; };
+		269D49F51CE1610100109990 /* HRColorMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269D49ED1CE1610100109990 /* HRColorMapView.swift */; };
+		269D49F61CE1610100109990 /* __EEVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269D49EF1CE1610100109990 /* __EEVCView.swift */; };
+		269D49F71CE1610100109990 /* __EEVCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 269D49F01CE1610100109990 /* __EEVCView.xib */; };
+		269D49F81CE1610100109990 /* EditExpenseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269D49F11CE1610100109990 /* EditExpenseVC.swift */; };
 		26A6CDE11CDB18EA00309A84 /* AddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A6CDE01CDB18EA00309A84 /* AddButton.swift */; };
 		26C2D5C21CDB5E4800BC73FC /* AddButtonProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C2D5C11CDB5E4800BC73FC /* AddButtonProgressView.swift */; };
 		26E2D3781CE0E0D900BA357F /* AddCategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E2D3771CE0E0D900BA357F /* AddCategoryVC.swift */; };
@@ -151,7 +151,6 @@
 		2603F8C91CCA4C10007F311F /* Expense.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Expense.swift; sourceTree = "<group>"; };
 		2603F8CC1CCA4C10007F311F /* Category+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		2603F8CD1CCA4C10007F311F /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
-		2603F8D61CCA5B7D007F311F /* EditCategoryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditCategoryVC.swift; sourceTree = "<group>"; };
 		261370991CD77B4A007BAF56 /* AddModalVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddModalVC.swift; sourceTree = "<group>"; };
 		2613709D1CD78618007BAF56 /* __AMVCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __AMVCView.xib; sourceTree = "<group>"; };
 		2613709F1CD7866F007BAF56 /* __AMVCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __AMVCView.swift; sourceTree = "<group>"; };
@@ -167,9 +166,6 @@
 		261370BE1CD7ABD9007BAF56 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		261370C11CD7B060007BAF56 /* RootVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootVC.swift; sourceTree = "<group>"; };
 		261370C31CD7B082007BAF56 /* ModalNavBarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalNavBarVC.swift; sourceTree = "<group>"; };
-		261370C61CD86AF4007BAF56 /* EditExpenseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditExpenseVC.swift; sourceTree = "<group>"; };
-		261370C81CD86B08007BAF56 /* __EEVCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __EEVCView.swift; sourceTree = "<group>"; };
-		261370CA1CD86B23007BAF56 /* __EEVCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __EEVCView.xib; sourceTree = "<group>"; };
 		261370CC1CD87679007BAF56 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		261EB85F18DDB630009DDF78 /* Spare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		261EB86218DDB630009DDF78 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -181,11 +177,8 @@
 		261EB88918DDB631009DDF78 /* SpareTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SpareTests-Info.plist"; sourceTree = "<group>"; };
 		261EB88B18DDB631009DDF78 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		261EB88D18DDB631009DDF78 /* SpareTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpareTests.m; sourceTree = "<group>"; };
-		262F83921CCE345500EDDDEE /* __ECVCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __ECVCView.xib; sourceTree = "<group>"; };
-		262F83941CCE347B00EDDDEE /* __ECVCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __ECVCView.swift; sourceTree = "<group>"; };
 		262F839A1CCE3E5300EDDDEE /* LoadAppVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadAppVC.swift; sourceTree = "<group>"; };
 		262F839C1CCE3E6C00EDDDEE /* LoadAppOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadAppOperation.swift; sourceTree = "<group>"; };
-		262F83A01CCE546200EDDDEE /* HRColorMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRColorMapView.swift; sourceTree = "<group>"; };
 		2631F37A1CD3458800E90A61 /* CardVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardVC.swift; sourceTree = "<group>"; };
 		2631F37C1CD3479D00E90A61 /* __HVCCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __HVCCell.swift; sourceTree = "<group>"; };
 		2666C2C11957CF4F003752BF /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalyticsServices.a; path = GoogleAnalytics/libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
@@ -207,6 +200,13 @@
 		266946911CC77A1900A68424 /* Spare-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Spare-Bridging-Header.h"; sourceTree = "<group>"; };
 		266946921CC77A1A00A68424 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		266946AB1CC786EC00A68424 /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		269D49EA1CE1610100109990 /* __CEVCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __CEVCView.swift; sourceTree = "<group>"; };
+		269D49EB1CE1610100109990 /* __CEVCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __CEVCView.xib; sourceTree = "<group>"; };
+		269D49EC1CE1610100109990 /* CategoryEditorVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryEditorVC.swift; sourceTree = "<group>"; };
+		269D49ED1CE1610100109990 /* HRColorMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRColorMapView.swift; sourceTree = "<group>"; };
+		269D49EF1CE1610100109990 /* __EEVCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __EEVCView.swift; sourceTree = "<group>"; };
+		269D49F01CE1610100109990 /* __EEVCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __EEVCView.xib; sourceTree = "<group>"; };
+		269D49F11CE1610100109990 /* EditExpenseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditExpenseVC.swift; sourceTree = "<group>"; };
 		26A6CDE01CDB18EA00309A84 /* AddButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddButton.swift; sourceTree = "<group>"; };
 		26C2D5C11CDB5E4800BC73FC /* AddButtonProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddButtonProgressView.swift; sourceTree = "<group>"; };
 		26D4C8F41946E624001B42DC /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
@@ -264,14 +264,14 @@
 		260024051CC7E5F300EB2026 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				269D49E91CE1610100109990 /* CategoryEditor */,
+				269D49EE1CE1610100109990 /* ExpenseEditor */,
 				26E2D3761CE0E0B200BA357F /* Add */,
 				26EFA0011CD9C8E800714E5D /* MainContainer */,
 				261370C01CD7B060007BAF56 /* Containers */,
 				262F83991CCE3E4C00EDDDEE /* LoadApp */,
 				2600241B1CC7E6AE00EB2026 /* Base */,
 				261370981CD77B3F007BAF56 /* AddModal */,
-				2603F8D51CCA5B6E007F311F /* EditCategory */,
-				261370C51CD86A92007BAF56 /* EditExpense */,
 				260024081CC7E5F300EB2026 /* Home */,
 				2600240E1CC7E5F300EB2026 /* Settings */,
 			);
@@ -330,17 +330,6 @@
 			path = "Core Data";
 			sourceTree = "<group>";
 		};
-		2603F8D51CCA5B6E007F311F /* EditCategory */ = {
-			isa = PBXGroup;
-			children = (
-				2603F8D61CCA5B7D007F311F /* EditCategoryVC.swift */,
-				262F83921CCE345500EDDDEE /* __ECVCView.xib */,
-				262F83941CCE347B00EDDDEE /* __ECVCView.swift */,
-				262F83A01CCE546200EDDDEE /* HRColorMapView.swift */,
-			);
-			path = EditCategory;
-			sourceTree = "<group>";
-		};
 		261370981CD77B3F007BAF56 /* AddModal */ = {
 			isa = PBXGroup;
 			children = (
@@ -374,16 +363,6 @@
 				261370C31CD7B082007BAF56 /* ModalNavBarVC.swift */,
 			);
 			path = Containers;
-			sourceTree = "<group>";
-		};
-		261370C51CD86A92007BAF56 /* EditExpense */ = {
-			isa = PBXGroup;
-			children = (
-				261370C61CD86AF4007BAF56 /* EditExpenseVC.swift */,
-				261370C81CD86B08007BAF56 /* __EEVCView.swift */,
-				261370CA1CD86B23007BAF56 /* __EEVCView.xib */,
-			);
-			path = EditExpense;
 			sourceTree = "<group>";
 		};
 		261EB85618DDB630009DDF78 = {
@@ -498,6 +477,27 @@
 				26E7FA7C1CDB33F5000E2181 /* Icon.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		269D49E91CE1610100109990 /* CategoryEditor */ = {
+			isa = PBXGroup;
+			children = (
+				269D49EA1CE1610100109990 /* __CEVCView.swift */,
+				269D49EB1CE1610100109990 /* __CEVCView.xib */,
+				269D49EC1CE1610100109990 /* CategoryEditorVC.swift */,
+				269D49ED1CE1610100109990 /* HRColorMapView.swift */,
+			);
+			path = CategoryEditor;
+			sourceTree = "<group>";
+		};
+		269D49EE1CE1610100109990 /* ExpenseEditor */ = {
+			isa = PBXGroup;
+			children = (
+				269D49EF1CE1610100109990 /* __EEVCView.swift */,
+				269D49F01CE1610100109990 /* __EEVCView.xib */,
+				269D49F11CE1610100109990 /* EditExpenseVC.swift */,
+			);
+			path = ExpenseEditor;
 			sourceTree = "<group>";
 		};
 		26E2D3761CE0E0B200BA357F /* Add */ = {
@@ -643,8 +643,7 @@
 				2603F8C31CCA45FF007F311F /* LaunchScreen.storyboard in Resources */,
 				261370B21CD7A120007BAF56 /* Montserrat-Black.otf in Resources */,
 				2669468B1CC7711000A68424 /* iPhone.storyboard in Resources */,
-				262F83931CCE345500EDDDEE /* __ECVCView.xib in Resources */,
-				261370CB1CD86B23007BAF56 /* __EEVCView.xib in Resources */,
+				269D49F71CE1610100109990 /* __EEVCView.xib in Resources */,
 				261370B91CD7A120007BAF56 /* Montserrat-UltraLight.otf in Resources */,
 				261370B81CD7A120007BAF56 /* Montserrat-SemiBold.otf in Resources */,
 				26E6EDB41CDBA6C60034EEDE /* AddButtonProgressView.xib in Resources */,
@@ -662,6 +661,7 @@
 				261370B31CD7A120007BAF56 /* Montserrat-Bold.otf in Resources */,
 				26EFA0051CD9C91A00714E5D /* __MCVCView.xib in Resources */,
 				266946851CC7711000A68424 /* InfoPlist.strings in Resources */,
+				269D49F31CE1610100109990 /* __CEVCView.xib in Resources */,
 				2669468E1CC7711000A68424 /* Spare-Info.plist in Resources */,
 				266946831CC7711000A68424 /* Default-568h@2x.png in Resources */,
 			);
@@ -731,20 +731,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				2603F8CF1CCA4C10007F311F /* Expense.swift in Sources */,
-				262F83951CCE347B00EDDDEE /* __ECVCView.swift in Sources */,
 				262F839D1CCE3E6C00EDDDEE /* LoadAppOperation.swift in Sources */,
 				260024291CC8B77C00EB2026 /* __HVCCardView.swift in Sources */,
-				261370C91CD86B08007BAF56 /* __EEVCView.swift in Sources */,
 				260024111CC7E5F300EB2026 /* HomeVC.swift in Sources */,
 				2600241D1CC7E6B500EB2026 /* BaseVC.swift in Sources */,
 				26E2D37A1CE0E34200BA357F /* AddExpenseVC.swift in Sources */,
 				266946931CC77A1A00A68424 /* AppDelegate.swift in Sources */,
 				26E7FA7B1CDB332F000E2181 /* BaseTabButton.swift in Sources */,
+				269D49F41CE1610100109990 /* CategoryEditorVC.swift in Sources */,
 				26A6CDE11CDB18EA00309A84 /* AddButton.swift in Sources */,
-				2603F8D71CCA5B7D007F311F /* EditCategoryVC.swift in Sources */,
 				260024251CC88D3E00EB2026 /* __HVCCardCell.swift in Sources */,
 				26E2D3781CE0E0D900BA357F /* AddCategoryVC.swift in Sources */,
 				26C2D5C21CDB5E4800BC73FC /* AddButtonProgressView.swift in Sources */,
+				269D49F21CE1610100109990 /* __CEVCView.swift in Sources */,
 				2603F8D31CCA4C10007F311F /* Category.swift in Sources */,
 				26E7FA7D1CDB33F5000E2181 /* Icon.swift in Sources */,
 				261370C41CD7B082007BAF56 /* ModalNavBarVC.swift in Sources */,
@@ -754,11 +753,11 @@
 				2631F37D1CD3479D00E90A61 /* __HVCCell.swift in Sources */,
 				261370BD1CD7A9EC007BAF56 /* Font.swift in Sources */,
 				2603F8D21CCA4C10007F311F /* Category+CoreDataProperties.swift in Sources */,
+				269D49F81CE1610100109990 /* EditExpenseVC.swift in Sources */,
 				261370A01CD7866F007BAF56 /* __AMVCView.swift in Sources */,
 				26E2D37C1CE0E3BA00BA357F /* BaseFormVC.swift in Sources */,
-				261370C71CD86AF4007BAF56 /* EditExpenseVC.swift in Sources */,
 				261370C21CD7B060007BAF56 /* RootVC.swift in Sources */,
-				262F83A11CCE546200EDDDEE /* HRColorMapView.swift in Sources */,
+				269D49F51CE1610100109990 /* HRColorMapView.swift in Sources */,
 				2631F37B1CD3458800E90A61 /* CardVC.swift in Sources */,
 				261370CD1CD87679007BAF56 /* Strings.swift in Sources */,
 				261370BF1CD7ABD9007BAF56 /* Color.swift in Sources */,
@@ -771,6 +770,7 @@
 				26EFA0031CD9C8F100714E5D /* MainContainerVC.swift in Sources */,
 				26EFA00D1CD9DFF900714E5D /* MainTabBar.swift in Sources */,
 				260024361CC8D18100EB2026 /* __HVCLayoutManager.swift in Sources */,
+				269D49F61CE1610100109990 /* __EEVCView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

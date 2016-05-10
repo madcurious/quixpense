@@ -1,5 +1,5 @@
 //
-//  __ECVCView.swift
+//  __CEVCView.swift
 //  Spare
 //
 //  Created by Matt Quiros on 25/04/2016.
@@ -9,17 +9,17 @@
 import UIKit
 import Color_Picker_for_iOS
 
-class __ECVCView: UIView {
+class __CEVCView: UIView {
     
     @IBOutlet weak var textFieldContainer: UIView!
     @IBOutlet weak var fieldLabel: UILabel!
-    @IBOutlet weak var textField: __ECVCTextField!
+    @IBOutlet weak var textField: __CEVCTextField!
     
-    @IBOutlet weak var colorMapExtendedArea: __ECVCColorMapTouchArea!
-    @IBOutlet weak var colorMapBorderView: __ECVCColorMapTouchArea!
-    @IBOutlet weak var colorMapContainer: __ECVCColorMapTouchArea!
+    @IBOutlet weak var colorMapExtendedArea: __CEVCColorMapTouchArea!
+    @IBOutlet weak var colorMapBorderView: __CEVCColorMapTouchArea!
+    @IBOutlet weak var colorMapContainer: __CEVCColorMapTouchArea!
     
-    @IBOutlet weak var sliderContainer: __ECVCSliderTouchArea!
+    @IBOutlet weak var sliderContainer: __CEVCSliderTouchArea!
     
     @IBOutlet weak var sliderTrackContainer: UIView!
     
@@ -74,7 +74,7 @@ class __ECVCView: UIView {
     
 }
 
-class __ECVCTextField: UITextField {
+class __CEVCTextField: UITextField {
     
     let inset = CGFloat(8)
     
@@ -102,9 +102,9 @@ class __ECVCTextField: UITextField {
     
 }
 
-class __ECVCColorMapTouchArea: UIView {
+class __CEVCColorMapTouchArea: UIView {
     
-    weak var parent: __ECVCView?
+    weak var parent: __CEVCView?
     
     override func hitTest(point: CGPoint, withEvent event: UIEvent?) -> UIView? {
         let hitView = super.hitTest(point, withEvent: event)
@@ -116,9 +116,9 @@ class __ECVCColorMapTouchArea: UIView {
     
 }
 
-class __ECVCSliderTouchArea: UIView {
+class __CEVCSliderTouchArea: UIView {
     
-    weak var parent: __ECVCView?
+    weak var parent: __CEVCView?
     
     override func hitTest(point: CGPoint, withEvent event: UIEvent?) -> UIView? {
         let hitView = super.hitTest(point, withEvent: event)

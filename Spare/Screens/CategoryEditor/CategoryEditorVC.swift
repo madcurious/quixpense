@@ -1,5 +1,5 @@
 //
-//  EditCategoryVC.swift
+//  CategoryEditorVC.swift
 //  Spare
 //
 //  Created by Matt Quiros on 22/04/2016.
@@ -11,12 +11,12 @@ import CoreData
 import Color_Picker_for_iOS
 import Mold
 
-class EditCategoryVC: BaseVC {
+class CategoryEditorVC: BaseVC {
     
     var managedObjectContext: NSManagedObjectContext
     var category: Category
     
-    let customView = __ECVCView.instantiateFromNib() as __ECVCView
+    let customView = __CEVCView.instantiateFromNib() as __CEVCView
     let colorMap: HRColorMapView
     let slider: HRBrightnessSlider
     
