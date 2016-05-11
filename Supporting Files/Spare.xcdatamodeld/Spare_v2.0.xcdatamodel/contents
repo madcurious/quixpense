@@ -30,8 +30,8 @@
     <entity name="Summary" representedClassName=".Summary" syncable="YES">
         <attribute name="endDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="startDate" optional="YES" attributeType="Date" syncable="YES"/>
-        <fetchedProperty name="categoryTotals" optional="YES" syncable="YES">
-            <fetchRequest name="fetchedPropertyFetchRequest" entity="Expense" predicateString="$FETCHED_PROPERTY.dateSpent &gt;= $FETCH_SOURCE.startDate AND $FETCHED_PROPERTY.dateSpent &lt;= $FETCH_SOURCE.endDate"/>
+        <fetchedProperty name="expenses" optional="YES" syncable="YES">
+            <fetchRequest name="fetchedPropertyFetchRequest" entity="Expense" predicateString="dateSpent &gt;= $FETCH_SOURCE.startDate AND dateSpent &lt;= $FETCH_SOURCE.endDate"/>
         </fetchedProperty>
     </entity>
     <elements>

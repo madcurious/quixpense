@@ -22,43 +22,46 @@ class HomeVC: MDStatefulViewController {
     var viewHasAppeared = false
     
     lazy var fetcher: NSFetchedResultsController = {
-        let request = NSFetchRequest(entityName: Category.entityName)
-        request.resultType = .DictionaryResultType
-        request.propertiesToFetch = [
-            "name", "color",
-            {
-                let totalColumn = NSExpressionDescription()
-                totalColumn.name = "total"
-                totalColumn.expression = NSExpression(format: "@sum.expenses.amount")
-                totalColumn.expressionResultType = .DecimalAttributeType
-                return totalColumn
-            }()
-        ]
-        request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
-        
-        let currentDate = NSDate()
-        request.predicate = NSPredicate(format: "ANY expenses.dateSpent >= %@ AND ANY expenses.dateSpent <= %@", currentDate.firstMoment(), currentDate.lastMoment())
-        
-        let fetcher = NSFetchedResultsController(fetchRequest: request, managedObjectContext: App.state.mainQueueContext, sectionNameKeyPath: nil, cacheName: nil)
-        return fetcher
-        
-        
-        
-//        let request = NSFetchRequest(entityName: Summary.entityName)
+//        let request = NSFetchRequest(entityName: Category.entityName)
 //        request.resultType = .DictionaryResultType
 //        request.propertiesToFetch = [
-//            "startDate", "endDate", "categoryTotals",
+//            "name", "color",
 //            {
 //                let totalColumn = NSExpressionDescription()
 //                totalColumn.name = "total"
-//                totalColumn.expression = NSExpression(format: "@sum.categoryTotals")
+//                totalColumn.expression = NSExpression(format: "@sum.expenses.amount")
 //                totalColumn.expressionResultType = .DecimalAttributeType
 //                return totalColumn
 //            }()
 //        ]
+//        request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+//        
+//        let currentDate = NSDate()
+//        request.predicate = NSPredicate(format: "ANY expenses.dateSpent >= %@ AND ANY expenses.dateSpent <= %@", currentDate.firstMoment(), currentDate.lastMoment())
 //        
 //        let fetcher = NSFetchedResultsController(fetchRequest: request, managedObjectContext: App.state.mainQueueContext, sectionNameKeyPath: nil, cacheName: nil)
 //        return fetcher
+        
+        
+        
+        let request = NSFetchRequest(entityName: Summary.entityName)
+        request.resultType = .ManagedObjectResultType
+//        request.propertiesToFetch = [
+//            "startDate", "endDate"
+//            {
+//                let totalColumn = NSExpressionDescription()
+//                totalColumn.name = "total"
+//                totalColumn.expression = NSExpression(format: "@sum.expenses")
+//                totalColumn.expressionResultType = .DecimalAttributeType
+//                return totalColumn
+//            }()
+//        ]
+        request.sortDescriptors = [NSSortDescriptor(key: "endDate", ascending: true)]
+        
+        // It looks like the managed object context should be the root one.
+        // See: http://stackoverflow.com/questions/23231707/ios-7-coredata-fetchedproperty-returns-faulting-array
+        let fetcher = NSFetchedResultsController(fetchRequest: request, managedObjectContext: App.state.coreDataStack.privateQueueContext, sectionNameKeyPath: nil, cacheName: nil)
+        return fetcher
         
     }()
     
@@ -110,28 +113,47 @@ class HomeVC: MDStatefulViewController {
             return nil
             }
             .onSuccess {[unowned self] (_) in
-                guard let dictionary = self.fetcher.fetchedObjects as? [[String : AnyObject]]
-                    else {
-                        print("--------")
-                        print(self.fetcher.fetchedObjects)
-                        return
-                }
+//                guard let dictionary = self.fetcher.fetchedObjects as? [[String : AnyObject]]
+//                    else {
+//                        print("--------")
+//                        print(self.fetcher.fetchedObjects)
+//                        return
+//                }
                 
                 
-                prettyPrintJSONObject(dictionary)
+//                prettyPrintJSONObject(dictionary)
+//                print(dictionary)
                 
                 let collectionView = self.customView.collectionView
                 collectionView.reloadData()
                 
                 if let results = self.fetcher.fetchedObjects
                     where results.isEmpty == false {
+                    for result in results {
+                        if let summary = result as? Summary,
+                            let expenses = summary.valueForKey("expenses") as? [Expense] {
+                            print("expenses: \(expenses.count)")
+                            print("+++++++")
+                        }
+                    }
+                    
                     let lastItem = collectionView.numberOfItemsInSection(0) - 1
                     collectionView.scrollToItemAtIndexPath(NSIndexPath(forItem: lastItem, inSection: 0), atScrollPosition: .CenteredHorizontally, animated: false)
                     collectionView.collectionViewLayout.invalidateLayout()
                     
                     self.showView(.Primary)
                 } else {
-                    self.showView(.NoResults)
+                    
+                    let currentDate = NSDate()
+                    var date: NSDate
+                    for i in 0..<5 {
+                        date = currentDate.dateByAddingTimeInterval(-(60 * 60 * 24) * Double(i))
+                        let summary = Summary(managedObjectContext: App.state.mainQueueContext)
+                        summary.startDate = date.firstMoment()
+                        summary.endDate = date.lastMoment()
+                    }
+                    App.state.mainQueueContext.saveContext()
+                    self.runOperation()
                 }
         }
         return op
