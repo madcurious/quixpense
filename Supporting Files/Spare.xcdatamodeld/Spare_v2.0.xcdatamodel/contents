@@ -27,10 +27,18 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SPRCategory" inverseName="expenses" inverseEntity="SPRCategory" syncable="YES"/>
     </entity>
+    <entity name="Summary" representedClassName=".Summary" syncable="YES">
+        <attribute name="endDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="startDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <fetchedProperty name="categoryTotals" optional="YES" syncable="YES">
+            <fetchRequest name="fetchedPropertyFetchRequest" entity="Expense" predicateString="$FETCHED_PROPERTY.dateSpent &gt;= $FETCH_SOURCE.startDate AND $FETCHED_PROPERTY.dateSpent &lt;= $FETCH_SOURCE.endDate"/>
+        </fetchedProperty>
+    </entity>
     <elements>
-        <element name="SPRCategory" positionX="160" positionY="192" width="128" height="30"/>
-        <element name="SPRExpense" positionX="385" positionY="126" width="128" height="135"/>
-        <element name="Category" positionX="270" positionY="207" width="128" height="90"/>
-        <element name="Expense" positionX="279" positionY="216" width="128" height="120"/>
+        <element name="Category" positionX="72" positionY="351" width="128" height="90"/>
+        <element name="Expense" positionX="304" positionY="375" width="128" height="120"/>
+        <element name="SPRCategory" positionX="99" positionY="81" width="128" height="30"/>
+        <element name="SPRExpense" positionX="378" positionY="36" width="128" height="135"/>
+        <element name="Summary" positionX="-0" positionY="252" width="128" height="101"/>
     </elements>
 </model>
