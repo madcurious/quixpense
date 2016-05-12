@@ -46,7 +46,7 @@ class TabButton: UIControl {
         
         self.iconLabel.text = icon.rawValue
         self.iconLabel.font = Font.icon(28)
-        self.iconLabel.textColor = Color.Gray700
+        self.iconLabel.textColor = Color.TabButtonIconColor
         self.iconLabel.textAlignment = .Center
         
         self.addTarget(self, action: #selector(enableHighlight), forControlEvents: [.TouchDown, .TouchDragEnter, .TouchDragInside])
@@ -64,11 +64,8 @@ class TabButton: UIControl {
             if self.selected == true {
                 return
             }
-            
-            self.iconLabel.textColor = Color.Gray200
             self.iconLabel.alpha = 0.7
         } else {
-            self.iconLabel.textColor = Color.Gray700
             self.iconLabel.alpha = 1.0
         }
     }
@@ -83,7 +80,7 @@ class TabButton: UIControl {
     
     func applySelection(selected: Bool) {
         if selected {
-            self.backgroundView.backgroundColor = Color.Gray200
+            self.backgroundView.backgroundColor = Color.TabButtonSelectedBackgroundColor
             
             if let delegate = self.delegate {
                 delegate.tabButtonDidSelect(self)

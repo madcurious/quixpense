@@ -15,31 +15,31 @@ class __EEVCView: UIView {
     @IBOutlet var fieldBoxes: [UIView]!
     @IBOutlet var fieldLabels: [UILabel]!
     
-    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var itemDescriptionTextField: UITextField!
     @IBOutlet weak var amountTextField: UITextField!
     @IBOutlet weak var categoryButton: UIButton!
     @IBOutlet weak var dateButton: UIButton!
-    @IBOutlet weak var paidWithControl: UISegmentedControl!
+    @IBOutlet weak var paymentMethodControl: UISegmentedControl!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
         // Background colors.
-        self.backgroundColor = Color.Gray100
+        self.backgroundColor = Color.FormBackgroundColor
         self.scrollView.backgroundColor = UIColor.clearColor()
         self.contentView.backgroundColor = UIColor.clearColor()
         
         // Setup labels.
-        let texts = ["NAME", "AMOUNT", "CATEGORY", "DATE SPENT", "PAID WITH"]
+        let texts = ["DESCRIPTION", "AMOUNT", "CATEGORY", "DATE SPENT", "PAID WITH"]
         for i in 0..<self.fieldLabels.count {
             let label = self.fieldLabels[i]
-            label.textColor = Color.Gray700
+            label.textColor = Color.FormFieldLabelTextColor
             label.font = Font.FieldLabel
             label.text = texts[i]
         }
         
         // Setup text fields.
-        let textFields = [self.nameTextField, self.amountTextField]
+        let textFields = [self.itemDescriptionTextField, self.amountTextField]
         for textField in textFields {
             textField.font = Font.FieldValue
             textField.textColor = Color.Black
@@ -65,10 +65,10 @@ class __EEVCView: UIView {
         let paymentMethods = ["CASH", "CREDIT", "DEBIT"]
         for i in 0..<paymentMethods.count {
             let title = paymentMethods[i]
-            self.paidWithControl.setTitle(title, forSegmentAtIndex: i)
+            self.paymentMethodControl.setTitle(title, forSegmentAtIndex: i)
         }
-        self.paidWithControl.setTitleTextAttributes([NSFontAttributeName: Font.text(.Regular, size: 14)], forState: .Normal)
-        self.paidWithControl.tintColor = Color.Black
+        self.paymentMethodControl.setTitleTextAttributes([NSFontAttributeName: Font.text(.Regular, size: 14)], forState: .Normal)
+        self.paymentMethodControl.tintColor = Color.Black
     }
     
 }

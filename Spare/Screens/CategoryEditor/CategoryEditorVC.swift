@@ -99,9 +99,14 @@ class CategoryEditorVC: BaseVC {
         return UIColor(hue: color.h, saturation: color.s, brightness: brightness, alpha: 1)
     }
     
-    func clear() {
+    /**
+     Clears the form and creates a new `Category` object with form-initial values.
+     */
+    func reset() {
         self.customView.textField.text = nil
         self.category = Category(managedObjectContext: self.managedObjectContext)
+        self.category.name = nil
+        self.category.color = self.getResultingColor().hexValue()
     }
     
 }

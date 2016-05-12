@@ -54,7 +54,7 @@ class __CEVCView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.backgroundColor = Color.Gray100
+        self.backgroundColor = Color.FormBackgroundColor
         self.textFieldContainer.backgroundColor = Color.White
         self.colorMapExtendedArea.backgroundColor = UIColor.clearColor()
         self.colorMapBorderView.backgroundColor = Color.White
@@ -63,7 +63,7 @@ class __CEVCView: UIView {
         self.sliderTrackContainer.backgroundColor = UIColor.clearColor()
         
         self.fieldLabel.text = "NAME"
-        self.fieldLabel.textColor = Color.Gray700
+        self.fieldLabel.textColor = Color.FormFieldLabelTextColor
         self.fieldLabel.font = Font.FieldLabel
         
         // Add parent references for touch passing.

@@ -78,6 +78,9 @@
 		26B7045B1CE22129006C2224 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B7045A1CE22129006C2224 /* Error.swift */; };
 		26BC4F931CE36CD90011BE98 /* Summary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC4F911CE36CD90011BE98 /* Summary.swift */; };
 		26BC4F941CE36CD90011BE98 /* Summary+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC4F921CE36CD90011BE98 /* Summary+CoreDataProperties.swift */; };
+		26BC4F961CE429AE0011BE98 /* ValidateExpenseOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC4F951CE429AE0011BE98 /* ValidateExpenseOperation.swift */; };
+		26BC4F981CE439E40011BE98 /* PaymentMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC4F971CE439E40011BE98 /* PaymentMethod.swift */; };
+		26BC4F9B1CE43BC00011BE98 /* FieldButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC4F9A1CE43BC00011BE98 /* FieldButton.swift */; };
 		26C2D5C21CDB5E4800BC73FC /* AddButtonProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C2D5C11CDB5E4800BC73FC /* AddButtonProgressView.swift */; };
 		26E2D37C1CE0E3BA00BA357F /* BaseFormVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E2D37B1CE0E3BA00BA357F /* BaseFormVC.swift */; };
 		26E4E0591937AF690096191A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E4E0581937AF690096191A /* QuartzCore.framework */; };
@@ -208,6 +211,9 @@
 		26B7045A1CE22129006C2224 /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		26BC4F911CE36CD90011BE98 /* Summary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Summary.swift; sourceTree = "<group>"; };
 		26BC4F921CE36CD90011BE98 /* Summary+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Summary+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		26BC4F951CE429AE0011BE98 /* ValidateExpenseOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidateExpenseOperation.swift; sourceTree = "<group>"; };
+		26BC4F971CE439E40011BE98 /* PaymentMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethod.swift; sourceTree = "<group>"; };
+		26BC4F9A1CE43BC00011BE98 /* FieldButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldButton.swift; sourceTree = "<group>"; };
 		26C2D5C11CDB5E4800BC73FC /* AddButtonProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddButtonProgressView.swift; sourceTree = "<group>"; };
 		26D4C8F41946E624001B42DC /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		26E2D37B1CE0E3BA00BA357F /* BaseFormVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseFormVC.swift; sourceTree = "<group>"; };
@@ -419,6 +425,7 @@
 				260024051CC7E5F300EB2026 /* Screens */,
 				2603F8C71CCA4BD1007F311F /* Core Data */,
 				266946AA1CC786E300A68424 /* Utils */,
+				26BC4F991CE43B8C0011BE98 /* Reusable Views */,
 			);
 			path = Spare;
 			sourceTree = "<group>";
@@ -454,6 +461,7 @@
 				261370CC1CD87679007BAF56 /* Strings.swift */,
 				26E7FA7C1CDB33F5000E2181 /* Icon.swift */,
 				26B7045A1CE22129006C2224 /* Error.swift */,
+				26BC4F971CE439E40011BE98 /* PaymentMethod.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -478,8 +486,17 @@
 				269D49EF1CE1610100109990 /* __EEVCView.swift */,
 				269D49F01CE1610100109990 /* __EEVCView.xib */,
 				269D49F11CE1610100109990 /* ExpenseEditorVC.swift */,
+				26BC4F951CE429AE0011BE98 /* ValidateExpenseOperation.swift */,
 			);
 			path = ExpenseEditor;
+			sourceTree = "<group>";
+		};
+		26BC4F991CE43B8C0011BE98 /* Reusable Views */ = {
+			isa = PBXGroup;
+			children = (
+				26BC4F9A1CE43BC00011BE98 /* FieldButton.swift */,
+			);
+			path = "Reusable Views";
 			sourceTree = "<group>";
 		};
 		26EFA0011CD9C8E800714E5D /* MainContainer */ = {
@@ -728,6 +745,7 @@
 				269D4A021CE16DCA00109990 /* ValidateCategoryOperation.swift in Sources */,
 				269D49FE1CE1649500109990 /* ModalNavBarVC.swift in Sources */,
 				269D49F81CE1610100109990 /* ExpenseEditorVC.swift in Sources */,
+				26BC4F961CE429AE0011BE98 /* ValidateExpenseOperation.swift in Sources */,
 				26E2D37C1CE0E3BA00BA357F /* BaseFormVC.swift in Sources */,
 				269D49F51CE1610100109990 /* HRColorMapView.swift in Sources */,
 				2631F37B1CD3458800E90A61 /* CardVC.swift in Sources */,
@@ -737,8 +755,10 @@
 				2669468F1CC7711000A68424 /* Spare.xcdatamodeld in Sources */,
 				262F839B1CCE3E5300EDDDEE /* LoadAppVC.swift in Sources */,
 				260024221CC882C400EB2026 /* __HVCView.swift in Sources */,
+				26BC4F9B1CE43BC00011BE98 /* FieldButton.swift in Sources */,
 				26EFA0091CD9DB0A00714E5D /* TabButton.swift in Sources */,
 				26EFA0031CD9C8F100714E5D /* MainContainerVC.swift in Sources */,
+				26BC4F981CE439E40011BE98 /* PaymentMethod.swift in Sources */,
 				26BC4F941CE36CD90011BE98 /* Summary+CoreDataProperties.swift in Sources */,
 				26EFA00D1CD9DFF900714E5D /* MainTabBar.swift in Sources */,
 				260024361CC8D18100EB2026 /* __HVCLayoutManager.swift in Sources */,

@@ -10,7 +10,8 @@ import UIKit
 
 class AddExpenseVC: BaseFormVC {
     
-    let editor = ExpenseEditorVC()
+    let editor = ExpenseEditorVC(expense: nil)
+    let queue = NSOperationQueue()
     
     override init() {
         super.init()
@@ -25,6 +26,12 @@ class AddExpenseVC: BaseFormVC {
         super.viewDidLoad()
         
         self.embedChildViewController(self.editor)
+    }
+    
+    override func handleTapOnDoneBarButtonItem(sender: AnyObject) {
+        self.queue.addOperation(
+            ValidateExpenseOperation(expense: self.editor.expense)
+        )
     }
     
 }

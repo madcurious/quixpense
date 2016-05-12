@@ -36,11 +36,11 @@ class AddCategoryVC: BaseFormVC {
                 self.editor.managedObjectContext.saveContext({[unowned self] (result) in
                     switch result {
                     case .Failure(let error as NSError):
-                        MDErrorDialog.showError(error, inPresenter: self)
+                        MDErrorDialog.showError(error, inPresenter: self, dialogTitle: nil)
                         
                     default:
                         MDDispatcher.asyncRunInMainThread({[unowned self] in
-                            self.editor.clear()
+                            self.editor.reset()
                         })
                     }
                 })

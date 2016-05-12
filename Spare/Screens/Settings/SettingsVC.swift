@@ -22,7 +22,7 @@ class SettingsVC: BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = Color.Gray100
+        self.view.backgroundColor = Color.ScreenBackgroundColorLightGray
     }
     
 }

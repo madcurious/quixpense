@@ -24,7 +24,7 @@ class BaseTabButton: UIControl {
         self.backgroundView.userInteractionEnabled = false
         
         self.iconLabel.font = Font.icon(28)
-        self.iconLabel.textColor = Color.Gray700
+        self.iconLabel.textColor = Color.TabButtonIconColor
         self.iconLabel.textAlignment = .Center
     }
     
@@ -39,7 +39,7 @@ class BaseTabButton: UIControl {
                 return
             }
             
-            self.backgroundView.backgroundColor = Color.Gray150
+            self.backgroundView.backgroundColor = Color.TabButtonHighlightBackgroundColor
             self.iconLabel.alpha = 0.5
         }
         
@@ -51,7 +51,7 @@ class BaseTabButton: UIControl {
     
     func applySelection(selected: Bool) {
         if selected {
-            self.backgroundView.backgroundColor = Color.Gray200
+            self.backgroundView.backgroundColor = Color.TabButtonSelectedBackgroundColor
         } else {
             self.backgroundView.backgroundColor = UIColor.clearColor()
         }
