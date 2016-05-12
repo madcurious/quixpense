@@ -22,28 +22,6 @@ class HomeVC: MDStatefulViewController {
     var viewHasAppeared = false
     
     lazy var fetcher: NSFetchedResultsController = {
-//        let request = NSFetchRequest(entityName: Category.entityName)
-//        request.resultType = .DictionaryResultType
-//        request.propertiesToFetch = [
-//            "name", "color",
-//            {
-//                let totalColumn = NSExpressionDescription()
-//                totalColumn.name = "total"
-//                totalColumn.expression = NSExpression(format: "@sum.expenses.amount")
-//                totalColumn.expressionResultType = .DecimalAttributeType
-//                return totalColumn
-//            }()
-//        ]
-//        request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
-//        
-//        let currentDate = NSDate()
-//        request.predicate = NSPredicate(format: "ANY expenses.dateSpent >= %@ AND ANY expenses.dateSpent <= %@", currentDate.firstMoment(), currentDate.lastMoment())
-//        
-//        let fetcher = NSFetchedResultsController(fetchRequest: request, managedObjectContext: App.state.mainQueueContext, sectionNameKeyPath: nil, cacheName: nil)
-//        return fetcher
-        
-        
-        
         let request = NSFetchRequest(entityName: Summary.entityName)
         request.resultType = .ManagedObjectResultType
 //        request.propertiesToFetch = [
@@ -93,7 +71,6 @@ class HomeVC: MDStatefulViewController {
         self.edgesForExtendedLayout = .None
         
         let collectionView = self.customView.collectionView
-//        collectionView.registerClass(__HVCCardCell.self, forCellWithReuseIdentifier: kViewID)
         collectionView.registerClass(__HVCCell.self, forCellWithReuseIdentifier: kViewID)
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -113,17 +90,6 @@ class HomeVC: MDStatefulViewController {
             return nil
             }
             .onSuccess {[unowned self] (_) in
-//                guard let dictionary = self.fetcher.fetchedObjects as? [[String : AnyObject]]
-//                    else {
-//                        print("--------")
-//                        print(self.fetcher.fetchedObjects)
-//                        return
-//                }
-                
-                
-//                prettyPrintJSONObject(dictionary)
-//                print(dictionary)
-                
                 let collectionView = self.customView.collectionView
                 collectionView.reloadData()
                 

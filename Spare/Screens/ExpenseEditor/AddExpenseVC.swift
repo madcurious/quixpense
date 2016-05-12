@@ -25,7 +25,6 @@ class AddExpenseVC: BaseFormVC {
         super.viewDidLoad()
         
         self.embedChildViewController(self.editor)
-        
     }
     
 }
