@@ -44,9 +44,10 @@ class ExpenseEditorVC: MDStatefulViewController {
         
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
         
+        self.customView.categoryTextField.inputView = self.categoryPickerView
+        self.customView.categoryTextField.delegate = self
         self.categoryPickerView.dataSource = self
         self.categoryPickerView.delegate = self
-        self.customView.categoryTextField.inputView = self.categoryPickerView
     }
     
     func reset() {
@@ -62,8 +63,7 @@ class ExpenseEditorVC: MDStatefulViewController {
     override func buildOperation() -> MDOperation? {
         let op = MDBlockOperation {
             let fetchRequest = NSFetchRequest(entityName: Category.entityName)
-            let context = App.state.mainQueueContext
-            guard let categories = try context.executeFetchRequest(fetchRequest) as? [Category]
+            guard let categories = try self.managedObjectContext.executeFetchRequest(fetchRequest) as? [Category]
                 else {
                     throw Error.AppUnknownError
             }
@@ -100,6 +100,51 @@ extension ExpenseEditorVC: UIPickerViewDelegate {
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return self.categories[row].name
+    }
+    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let selectedCategory = self.categories[row]
+        self.customView.categoryTextField.text = selectedCategory.name
+        self.expense.category = selectedCategory
+    }
+    
+}
+
+extension ExpenseEditorVC: UITextFieldDelegate {
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        // Keep the text left-aligned.
+        guard let pickerTextField = textField as? __EEVCPickerTextField
+            else {
+                return
+        }
+        pickerTextField.moveCursorToLeft()
+    }
+    
+    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+        switch textField {
+            
+        case self.customView.categoryTextField:
+            if let firstCategory = self.categories.first
+                where self.expense.category == nil {
+                self.customView.categoryTextField.text = firstCategory.name
+            }
+            
+        default:
+            ()
+        }
+        
+        return true
+    }
+    
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        switch textField {
+        case self.customView.categoryTextField:
+            return false
+            
+        default:
+            return true
+        }
     }
     
 }
