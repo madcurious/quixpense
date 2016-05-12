@@ -80,20 +80,20 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gKy-Xw-JOS">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Tj-Cj-yd9">
                                             <rect key="frame" x="118" y="0.0" width="472" height="54"/>
-                                            <state key="normal" title="Button"/>
-                                        </button>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </view>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstItem="gKy-Xw-JOS" firstAttribute="top" secondItem="4xp-0b-cRZ" secondAttribute="top" id="SH9-g1-OOF"/>
-                                        <constraint firstItem="gKy-Xw-JOS" firstAttribute="leading" secondItem="0PB-84-XOu" secondAttribute="trailing" constant="8" id="Xcj-f5-DxP"/>
+                                        <constraint firstAttribute="bottom" secondItem="3Tj-Cj-yd9" secondAttribute="bottom" id="XCk-GP-tla"/>
+                                        <constraint firstAttribute="trailing" secondItem="3Tj-Cj-yd9" secondAttribute="trailing" constant="10" id="XVG-vk-UQj"/>
+                                        <constraint firstItem="3Tj-Cj-yd9" firstAttribute="leading" secondItem="0PB-84-XOu" secondAttribute="trailing" constant="8" id="bBJ-1c-h6o"/>
                                         <constraint firstItem="0PB-84-XOu" firstAttribute="centerY" secondItem="4xp-0b-cRZ" secondAttribute="centerY" id="bgN-0A-Xny"/>
-                                        <constraint firstAttribute="trailing" secondItem="gKy-Xw-JOS" secondAttribute="trailing" constant="10" id="mBP-gw-BdD"/>
                                         <constraint firstItem="0PB-84-XOu" firstAttribute="leading" secondItem="4xp-0b-cRZ" secondAttribute="leading" constant="10" id="mZa-PE-v5d"/>
-                                        <constraint firstAttribute="bottom" secondItem="gKy-Xw-JOS" secondAttribute="bottom" id="pis-PA-McM"/>
                                         <constraint firstAttribute="height" constant="54" id="pw2-64-66N"/>
+                                        <constraint firstItem="3Tj-Cj-yd9" firstAttribute="top" secondItem="4xp-0b-cRZ" secondAttribute="top" id="wdF-bR-rBx"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o8u-d9-zEL">
@@ -193,7 +193,7 @@
             </constraints>
             <connections>
                 <outlet property="amountTextField" destination="sLB-q0-3AG" id="9v8-xa-Mtu"/>
-                <outlet property="categoryButton" destination="gKy-Xw-JOS" id="9QP-7t-4vU"/>
+                <outlet property="categoryButtonContainer" destination="3Tj-Cj-yd9" id="A0D-65-mKH"/>
                 <outlet property="contentView" destination="qgh-fE-PSz" id="q9b-7u-Lmh"/>
                 <outlet property="dateButton" destination="67e-jb-oTm" id="ekr-Gd-4Tr"/>
                 <outlet property="itemDescriptionTextField" destination="3g7-zI-e0z" id="wc7-XP-Kzj"/>

@@ -15,19 +15,25 @@ class __EEVCView: UIView {
     @IBOutlet var fieldBoxes: [UIView]!
     @IBOutlet var fieldLabels: [UILabel]!
     
+    @IBOutlet weak var categoryButtonContainer: UIView!
+    
     @IBOutlet weak var itemDescriptionTextField: UITextField!
     @IBOutlet weak var amountTextField: UITextField!
-    @IBOutlet weak var categoryButton: UIButton!
     @IBOutlet weak var dateButton: UIButton!
     @IBOutlet weak var paymentMethodControl: UISegmentedControl!
+    
+    let categoryButton = FieldButton()
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
         // Background colors.
         self.backgroundColor = Color.FormBackgroundColor
-        self.scrollView.backgroundColor = UIColor.clearColor()
-        self.contentView.backgroundColor = UIColor.clearColor()
+        UIView.clearBackgroundColors(
+            self.scrollView,
+            self.contentView,
+            self.categoryButtonContainer
+        )
         
         // Setup labels.
         let texts = ["DESCRIPTION", "AMOUNT", "CATEGORY", "DATE SPENT", "PAID WITH"]
@@ -48,7 +54,7 @@ class __EEVCView: UIView {
         }
         
         // Setup buttons.
-        let buttons = [self.categoryButton, self.dateButton]
+        let buttons = [self.dateButton]
         let titles = ["Food and Beverage", "Today, 4 PM"]
         let attributes = [
             NSForegroundColorAttributeName : Color.Black,
@@ -60,6 +66,7 @@ class __EEVCView: UIView {
             button.contentHorizontalAlignment = .Left
             button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 2, bottom: 0, right: 10)
         }
+        self.categoryButtonContainer.addSubviewAndFill(self.categoryButton)
         
         // Setup segmented control.
         let paymentMethods = ["CASH", "CREDIT", "DEBIT"]
