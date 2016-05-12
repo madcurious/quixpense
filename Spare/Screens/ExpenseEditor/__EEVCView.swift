@@ -15,14 +15,11 @@ class __EEVCView: UIView {
     @IBOutlet var fieldBoxes: [UIView]!
     @IBOutlet var fieldLabels: [UILabel]!
     
-    @IBOutlet weak var categoryButtonContainer: UIView!
-    
     @IBOutlet weak var itemDescriptionTextField: UITextField!
     @IBOutlet weak var amountTextField: UITextField!
+    @IBOutlet weak var categoryTextField: __EEVCPickerTextField!
     @IBOutlet weak var dateButton: UIButton!
     @IBOutlet weak var paymentMethodControl: UISegmentedControl!
-    
-    let categoryButton = FieldButton()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,8 +28,7 @@ class __EEVCView: UIView {
         self.backgroundColor = Color.FormBackgroundColor
         UIView.clearBackgroundColors(
             self.scrollView,
-            self.contentView,
-            self.categoryButtonContainer
+            self.contentView
         )
         
         // Setup labels.
@@ -45,7 +41,7 @@ class __EEVCView: UIView {
         }
         
         // Setup text fields.
-        let textFields = [self.itemDescriptionTextField, self.amountTextField]
+        let textFields = [self.itemDescriptionTextField, self.amountTextField, self.categoryTextField]
         for textField in textFields {
             textField.font = Font.FieldValue
             textField.textColor = Color.Black
@@ -66,7 +62,6 @@ class __EEVCView: UIView {
             button.contentHorizontalAlignment = .Left
             button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 2, bottom: 0, right: 10)
         }
-        self.categoryButtonContainer.addSubviewAndFill(self.categoryButton)
         
         // Setup segmented control.
         let paymentMethods = ["CASH", "CREDIT", "DEBIT"]

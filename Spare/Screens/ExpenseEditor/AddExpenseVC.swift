@@ -13,8 +13,8 @@ class AddExpenseVC: BaseFormVC {
     let editor = ExpenseEditorVC(expense: nil)
     let queue = NSOperationQueue()
     
-    override init() {
-        super.init()
+    init() {
+        super.init(nibName: nil, bundle: nil)
         self.title = "NEW EXPENSE"
     }
     

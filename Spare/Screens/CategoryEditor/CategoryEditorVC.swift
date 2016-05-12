@@ -11,7 +11,7 @@ import CoreData
 import Color_Picker_for_iOS
 import Mold
 
-class CategoryEditorVC: BaseVC {
+class CategoryEditorVC: UIViewController {
     
     var managedObjectContext: NSManagedObjectContext
     var category: Category
@@ -38,7 +38,7 @@ class CategoryEditorVC: BaseVC {
         
         self.slider = HRBrightnessSlider()
         
-        super.init()
+        super.init(nibName: nil, bundle: nil)
         
         self.slider.brightnessLowerLimit = 0.3
         self.slider.color = self.defaultColor
@@ -59,6 +59,7 @@ class CategoryEditorVC: BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        applyGlobalVCSettings(self)
         
         self.colorMap.addTarget(self, action: #selector(handleTapOnColorMap(_:)), forControlEvents: .ValueChanged)
         self.slider.addTarget(self, action: #selector(handleBrightnessValueChange(_:)), forControlEvents: .ValueChanged)

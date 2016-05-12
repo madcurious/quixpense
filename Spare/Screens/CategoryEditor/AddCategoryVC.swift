@@ -15,8 +15,8 @@ class AddCategoryVC: BaseFormVC {
     let editor = CategoryEditorVC(category: nil)
     let queue = NSOperationQueue()
     
-    override init() {
-        super.init()
+    init() {
+        super.init(nibName: nil, bundle: nil)
         self.title = "NEW CATEGORY"
     }
     

@@ -8,10 +8,11 @@
 
 import UIKit
 
-class BaseFormVC: BaseVC {
+class BaseFormVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        applyGlobalVCSettings(self)
         
         self.addCancelAndDoneBarButtonItems("CANCEL", doneButtonTitle: "SAVE")
         

@@ -80,20 +80,21 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Tj-Cj-yd9">
-                                            <rect key="frame" x="118" y="0.0" width="472" height="54"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </view>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8QN-fy-2L0" customClass="__EEVCPickerTextField" customModule="Spare" customModuleProvider="target">
+                                            <rect key="frame" x="120" y="0.0" width="470" height="54"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="3Tj-Cj-yd9" secondAttribute="bottom" id="XCk-GP-tla"/>
-                                        <constraint firstAttribute="trailing" secondItem="3Tj-Cj-yd9" secondAttribute="trailing" constant="10" id="XVG-vk-UQj"/>
-                                        <constraint firstItem="3Tj-Cj-yd9" firstAttribute="leading" secondItem="0PB-84-XOu" secondAttribute="trailing" constant="8" id="bBJ-1c-h6o"/>
+                                        <constraint firstItem="8QN-fy-2L0" firstAttribute="leading" secondItem="0PB-84-XOu" secondAttribute="trailing" constant="10" id="Mta-MF-lie"/>
                                         <constraint firstItem="0PB-84-XOu" firstAttribute="centerY" secondItem="4xp-0b-cRZ" secondAttribute="centerY" id="bgN-0A-Xny"/>
+                                        <constraint firstItem="8QN-fy-2L0" firstAttribute="top" secondItem="4xp-0b-cRZ" secondAttribute="top" id="ddU-bK-KvZ"/>
                                         <constraint firstItem="0PB-84-XOu" firstAttribute="leading" secondItem="4xp-0b-cRZ" secondAttribute="leading" constant="10" id="mZa-PE-v5d"/>
+                                        <constraint firstAttribute="bottom" secondItem="8QN-fy-2L0" secondAttribute="bottom" id="naC-7H-wQ5"/>
                                         <constraint firstAttribute="height" constant="54" id="pw2-64-66N"/>
-                                        <constraint firstItem="3Tj-Cj-yd9" firstAttribute="top" secondItem="4xp-0b-cRZ" secondAttribute="top" id="wdF-bR-rBx"/>
+                                        <constraint firstAttribute="trailing" secondItem="8QN-fy-2L0" secondAttribute="trailing" constant="10" id="voD-fL-qFM"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o8u-d9-zEL">
@@ -193,7 +194,7 @@
             </constraints>
             <connections>
                 <outlet property="amountTextField" destination="sLB-q0-3AG" id="9v8-xa-Mtu"/>
-                <outlet property="categoryButtonContainer" destination="3Tj-Cj-yd9" id="A0D-65-mKH"/>
+                <outlet property="categoryTextField" destination="8QN-fy-2L0" id="d29-EC-4BB"/>
                 <outlet property="contentView" destination="qgh-fE-PSz" id="q9b-7u-Lmh"/>
                 <outlet property="dateButton" destination="67e-jb-oTm" id="ekr-Gd-4Tr"/>
                 <outlet property="itemDescriptionTextField" destination="3g7-zI-e0z" id="wc7-XP-Kzj"/>

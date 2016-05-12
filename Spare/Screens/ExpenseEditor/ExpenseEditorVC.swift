@@ -8,13 +8,16 @@
 
 import UIKit
 import BNRCoreDataStack
+import Mold
 
-class ExpenseEditorVC: BaseVC {
+class ExpenseEditorVC: MDStatefulViewController {
     
     let customView = __EEVCView.instantiateFromNib() as __EEVCView
+    let categoryPickerView = UIPickerView()
     
     var managedObjectContext: NSManagedObjectContext
     var expense: Expense
+    var categories = [Category]()
     
     init(expense: Expense?) {
         self.managedObjectContext = App.state.coreDataStack.newBackgroundWorkerMOC()
@@ -37,8 +40,13 @@ class ExpenseEditorVC: BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        applyGlobalVCSettings(self)
         
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
+        
+        self.categoryPickerView.dataSource = self
+        self.categoryPickerView.delegate = self
+        self.customView.categoryTextField.inputView = self.categoryPickerView
     }
     
     func reset() {
@@ -49,6 +57,49 @@ class ExpenseEditorVC: BaseVC {
         expense.category = nil
         expense.paymentMethod = PaymentMethod(self.customView.paymentMethodControl.selectedSegmentIndex).rawValue
         self.expense = expense
+    }
+    
+    override func buildOperation() -> MDOperation? {
+        let op = MDBlockOperation {
+            let fetchRequest = NSFetchRequest(entityName: Category.entityName)
+            let context = App.state.mainQueueContext
+            guard let categories = try context.executeFetchRequest(fetchRequest) as? [Category]
+                else {
+                    throw Error.AppUnknownError
+            }
+            return categories
+        }
+        .onSuccess {[unowned self] (result) in
+            guard let categories = result as? [Category]
+                else {
+                    return
+            }
+            
+            self.categories = categories
+            self.categoryPickerView.reloadAllComponents()
+            self.showView(.Primary)
+        }
+        return op
+    }
+    
+}
+
+extension ExpenseEditorVC: UIPickerViewDataSource {
+    
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return self.categories.count
+    }
+    
+}
+
+extension ExpenseEditorVC: UIPickerViewDelegate {
+    
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return self.categories[row].name
     }
     
 }

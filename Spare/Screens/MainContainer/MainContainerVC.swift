@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainContainerVC: BaseVC {
+class MainContainerVC: UIViewController {
     
     let customView = __MCVCView.instantiateFromNib() as __MCVCView
     let tabs = UITabBarController(nibName: nil, bundle: nil)
@@ -20,6 +20,7 @@ class MainContainerVC: BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        applyGlobalVCSettings(self)
         
         self.tabs.viewControllers = [HomeVC(), SettingsVC()]
         self.tabs.tabBar.hidden = true

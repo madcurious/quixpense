@@ -8,10 +8,10 @@
 
 import UIKit
 
-class SettingsVC: BaseVC {
+class SettingsVC: UIViewController {
     
-    override init() {
-        super.init()
+    init() {
+        super.init(nibName: nil, bundle: nil)
         self.title = "Settings"
         self.tabBarItem.title = self.title
     }
@@ -22,6 +22,8 @@ class SettingsVC: BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        applyGlobalVCSettings(self)
+        
         self.view.backgroundColor = Color.ScreenBackgroundColorLightGray
     }
     
