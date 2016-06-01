@@ -36,7 +36,8 @@ class Color {
     static let FormFieldValueTextColor = Black
     static let FormPlaceholderTextColor = Gray200
     
-    static let ModalNavigationBarBackgroundColor = Gray900
+    static let ModalNavigationBarBackgroundColor = White
+    static let ModalNavigationBarTintColor = Gray700
     
     static let ScreenBackgroundColorLightGray = Gray100
     

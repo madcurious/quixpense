@@ -14,6 +14,8 @@ class ExpenseEditorVC: MDStatefulViewController {
     
     let customView = __EEVCView.instantiateFromNib() as __EEVCView
     let categoryPickerView = UIPickerView()
+    let datePickerView = UIDatePicker()
+    let dateFormatter = NSDateFormatter()
     
     var managedObjectContext: NSManagedObjectContext
     var expense: Expense
@@ -44,10 +46,15 @@ class ExpenseEditorVC: MDStatefulViewController {
         
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
         
+        // Setup the picker views for the category and date fields
         self.customView.categoryTextField.inputView = self.categoryPickerView
         self.customView.categoryTextField.delegate = self
         self.categoryPickerView.dataSource = self
         self.categoryPickerView.delegate = self
+        self.customView.dateTextField.inputView = self.datePickerView
+        self.customView.dateTextField.delegate = self
+        self.datePickerView.datePickerMode = .Date
+        self.datePickerView.addTarget(self, action: #selector(handleDatePickerChanged), forControlEvents: .ValueChanged)
     }
     
     func reset() {
@@ -80,6 +87,20 @@ class ExpenseEditorVC: MDStatefulViewController {
             self.showView(.Primary)
         }
         return op
+    }
+    
+    func handleDatePickerChanged() {
+        self.customView.dateTextField.text = self.stringForDate(self.datePickerView.date)
+    }
+    
+    func stringForDate(date: NSDate) -> String {
+        if date.isSameDayAsDate(NSDate()) {
+            self.dateFormatter.dateStyle = .LongStyle
+            return "Today, \(self.dateFormatter.stringFromDate(date))"
+        }
+        
+        self.dateFormatter.dateStyle = .FullStyle
+        return self.dateFormatter.stringFromDate(date)
     }
     
 }
@@ -131,7 +152,7 @@ extension ExpenseEditorVC: UITextFieldDelegate {
             }
             
         default:
-            ()
+            self.handleDatePickerChanged()
         }
         
         return true

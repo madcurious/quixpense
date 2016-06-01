@@ -18,7 +18,7 @@ class BaseFormVC: UIViewController {
         
         let barButtonAttributes = [
             NSFontAttributeName: Font.BarButtonItems,
-            NSForegroundColorAttributeName: Color.White
+            NSForegroundColorAttributeName: Color.ModalNavigationBarTintColor
         ]
         if let leftBarButtonItem = self.navigationItem.leftBarButtonItem {
             leftBarButtonItem.setTitleTextAttributes(barButtonAttributes, forState: .Normal)
@@ -28,7 +28,7 @@ class BaseFormVC: UIViewController {
         }
         
         let titleLabel = UILabel()
-        titleLabel.textColor = Color.White
+        titleLabel.textColor = Color.ModalNavigationBarTintColor
         titleLabel.font = Font.NavigationBarTitle
         titleLabel.text = self.title
         titleLabel.sizeToFit()

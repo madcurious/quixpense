@@ -18,7 +18,7 @@ class __EEVCView: UIView {
     @IBOutlet weak var itemDescriptionTextField: UITextField!
     @IBOutlet weak var amountTextField: UITextField!
     @IBOutlet weak var categoryTextField: __EEVCPickerTextField!
-    @IBOutlet weak var dateButton: UIButton!
+    @IBOutlet weak var dateTextField: __EEVCPickerTextField!
     @IBOutlet weak var paymentMethodControl: UISegmentedControl!
     
     override func awakeFromNib() {
@@ -41,26 +41,12 @@ class __EEVCView: UIView {
         }
         
         // Setup text fields.
-        let textFields = [self.itemDescriptionTextField, self.amountTextField, self.categoryTextField]
+        let textFields = [self.itemDescriptionTextField, self.amountTextField, self.categoryTextField, self.dateTextField]
         for textField in textFields {
             textField.font = Font.FieldValue
             textField.textColor = Color.Black
             textField.placeholder = Strings.FieldPlaceholder
             textField.adjustsFontSizeToFitWidth = false
-        }
-        
-        // Setup buttons.
-        let buttons = [self.dateButton]
-        let titles = ["Food and Beverage", "Today, 4 PM"]
-        let attributes = [
-            NSForegroundColorAttributeName : Color.Black,
-            NSFontAttributeName: Font.FieldValue
-        ]
-        for i in 0..<buttons.count {
-            let button = buttons[i]
-            button.setAttributedTitle(NSAttributedString(string: titles[i], attributes: attributes), forState: .Normal)
-            button.contentHorizontalAlignment = .Left
-            button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 2, bottom: 0, right: 10)
         }
         
         // Setup segmented control.

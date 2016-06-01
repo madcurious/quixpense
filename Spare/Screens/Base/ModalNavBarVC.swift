@@ -14,7 +14,7 @@ class ModalNavBarVC: UINavigationController {
         super.viewDidLoad()
         
         self.navigationBar.barTintColor = Color.ModalNavigationBarBackgroundColor
-        self.navigationBar.tintColor = Color.White
+        self.navigationBar.tintColor = Color.ModalNavigationBarTintColor
         self.navigationBar.translucent = false
     }
     
