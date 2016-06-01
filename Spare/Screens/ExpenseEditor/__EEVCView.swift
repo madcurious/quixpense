@@ -48,6 +48,7 @@ class __EEVCView: UIView {
             textField.placeholder = Strings.FieldPlaceholder
             textField.adjustsFontSizeToFitWidth = false
         }
+        self.amountTextField.keyboardType = .DecimalPad
         
         // Setup segmented control.
         let paymentMethods = ["CASH", "CREDIT", "DEBIT"]

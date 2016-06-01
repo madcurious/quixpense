@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Mold
 
 class AddExpenseVC: BaseFormVC {
     
@@ -31,6 +32,12 @@ class AddExpenseVC: BaseFormVC {
     override func handleTapOnDoneBarButtonItem(sender: AnyObject) {
         self.queue.addOperation(
             ValidateExpenseOperation(expense: self.editor.expense)
+                .onSuccess({[unowned self] (result) in
+                    self.editor.reset()
+                    })
+                .onFail({[unowned self] (error) in
+                    MDErrorDialog.showError(error, inPresenter: self)
+                    })
         )
     }
     

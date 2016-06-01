@@ -14,17 +14,17 @@ enum PaymentMethod: Int {
     case Credit = 1
     case Debit = 2
     
-    init(_ int: Int) {
+    init?(_ int: Int?) {
         switch int {
-        case 0:
+        case .Some(0):
             self = .Cash
-        case 1:
+        case .Some(1):
             self = .Credit
-        case 2:
+        case .Some(2):
             self = .Debit
             
         default:
-            fatalError()
+            return nil
         }
     }
     

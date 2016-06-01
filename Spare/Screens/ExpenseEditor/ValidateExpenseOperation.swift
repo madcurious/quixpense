@@ -23,21 +23,22 @@ class ValidateExpenseOperation: MDOperation {
     override func buildResult(object: Any?) throws -> Any? {
         let context = NSManagedObjectContext(concurrencyType: .PrivateQueueConcurrencyType)
         context.parentContext = self.parentContext
-        
-        let request = NSFetchRequest(entityName: Expense.entityName)
-        request.predicate = NSPredicate(format: "objectID == \(self.expenseID)")
-        
-        guard let expense = try context.executeFetchRequest(request).first as? Expense
+        guard let expense = context.objectWithID(self.expenseID) as? Expense
             else {
                 throw Error.AppUnknownError
         }
         
-        if nonEmptyString(expense.itemDescription) == nil {
-            throw Error.UserEnteredInvalidValue("You must enter a description.")
-        }
-        
-        if expense.amount == nil {
-            throw Error.UserEnteredInvalidValue("You must enter the amount.")
+        // Put all the labels and values in an array for simplicity, then loop
+        // through it looking for empty values.
+        let fields: [(String, Any?)] = [("Description", nonEmptyString(expense.itemDescription)),
+                      ("Amount", expense.amount),
+                      ("Category", expense.category),
+                      ("Date spent", expense.dateSpent),
+                      ("Payment method", expense.paymentMethod)]
+        for (label, value) in fields {
+            if value == nil {
+                throw Error.UserEnteredInvalidValue("\(label) is required.")
+            }
         }
         
         return nil

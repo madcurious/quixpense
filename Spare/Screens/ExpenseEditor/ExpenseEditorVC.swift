@@ -27,6 +27,8 @@ class ExpenseEditorVC: MDStatefulViewController {
             self.expense = expense
         } else {
             self.expense = Expense(managedObjectContext: self.managedObjectContext)
+            self.expense.dateSpent = NSDate()
+            self.expense.paymentMethod = PaymentMethod.Cash.rawValue
         }
         
         super.init()
@@ -46,6 +48,9 @@ class ExpenseEditorVC: MDStatefulViewController {
         
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
         
+        self.customView.itemDescriptionTextField.delegate = self
+        self.customView.amountTextField.delegate = self
+        
         // Setup the picker views for the category and date fields
         self.customView.categoryTextField.inputView = self.categoryPickerView
         self.customView.categoryTextField.delegate = self
@@ -54,17 +59,9 @@ class ExpenseEditorVC: MDStatefulViewController {
         self.customView.dateTextField.inputView = self.datePickerView
         self.customView.dateTextField.delegate = self
         self.datePickerView.datePickerMode = .Date
-        self.datePickerView.addTarget(self, action: #selector(handleDatePickerChanged), forControlEvents: .ValueChanged)
-    }
-    
-    func reset() {
-        let expense = Expense(managedObjectContext: self.managedObjectContext)
-        expense.itemDescription = nil
-        expense.amount = nil
-        expense.dateSpent = NSDate()
-        expense.category = nil
-        expense.paymentMethod = PaymentMethod(self.customView.paymentMethodControl.selectedSegmentIndex).rawValue
-        self.expense = expense
+        self.datePickerView.addTarget(self, action: #selector(handleChangeOnDatePicker), forControlEvents: .ValueChanged)
+        
+        self.customView.paymentMethodControl.addTarget(self, action: #selector(handleChangeOnPaymentMethod), forControlEvents: .ValueChanged)
     }
     
     override func buildOperation() -> MDOperation? {
@@ -84,13 +81,30 @@ class ExpenseEditorVC: MDStatefulViewController {
             
             self.categories = categories
             self.categoryPickerView.reloadAllComponents()
+            
+            // Make the first category default, if not initially supplied.
+            if self.expense.category == nil {
+                self.expense.category = categories.first
+            }
+            
+            self.refreshViewFromModel()
             self.showView(.Primary)
         }
         return op
     }
     
-    func handleDatePickerChanged() {
-        self.customView.dateTextField.text = self.stringForDate(self.datePickerView.date)
+    func reset() {
+        // Reset the model, but leave the date, category, and payment method the same.
+        let expense = Expense(managedObjectContext: self.managedObjectContext)
+        expense.itemDescription = nil
+        expense.amount = nil
+        expense.dateSpent = self.datePickerView.date
+        expense.category = self.categories[self.categoryPickerView.selectedRowInComponent(0)]
+        expense.paymentMethod = PaymentMethod(self.customView.paymentMethodControl.selectedSegmentIndex)?.rawValue
+        self.expense = expense
+        
+        // Update the view.
+        self.refreshViewFromModel()
     }
     
     func stringForDate(date: NSDate) -> String {
@@ -103,8 +117,57 @@ class ExpenseEditorVC: MDStatefulViewController {
         return self.dateFormatter.stringFromDate(date)
     }
     
+    func updateDateFromDatePicker() {
+        // Update the model.
+        self.expense.dateSpent = self.datePickerView.date
+        
+        // Update the view.
+        self.customView.dateTextField.text = self.stringForDate(self.datePickerView.date)
+    }
+    
+    func updatePaymentMethodFromSegmentedControl() {
+        self.expense.paymentMethod = PaymentMethod(self.customView.paymentMethodControl.selectedSegmentIndex)?.rawValue
+    }
+    
+    func refreshViewFromModel() {
+        self.customView.itemDescriptionTextField.text = nonEmptyString(self.expense.itemDescription)
+        self.customView.amountTextField.text = nonEmptyString(self.expense.amount)
+        
+        self.customView.categoryTextField.text = nonEmptyString(self.expense.category?.name)
+        if let category = self.expense.category,
+            let categoryIndex = self.categories.indexOf(category) {
+            self.categoryPickerView.selectRow(categoryIndex, inComponent: 0, animated: false)
+        }
+        
+        if let dateSpent = self.expense.dateSpent {
+            self.customView.dateTextField.text = self.stringForDate(dateSpent)
+            self.datePickerView.date = dateSpent
+        } else {
+            self.customView.dateTextField.text = nil
+        }
+        
+        self.customView.paymentMethodControl.selectedSegmentIndex = {[unowned self] in
+            if let paymentMethod = PaymentMethod(self.expense.paymentMethod?.integerValue) {
+                return paymentMethod.rawValue
+            }
+            return 0
+        }()
+    }
+    
+    // MARK: Target actions
+    
+    func handleChangeOnDatePicker() {
+        self.updateDateFromDatePicker()
+    }
+    
+    func handleChangeOnPaymentMethod() {
+        self.dismissKeyboard()
+        self.updatePaymentMethodFromSegmentedControl()
+    }
+    
 }
 
+// MARK: - UIPickerViewDataSource
 extension ExpenseEditorVC: UIPickerViewDataSource {
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
@@ -117,6 +180,7 @@ extension ExpenseEditorVC: UIPickerViewDataSource {
     
 }
 
+// MARK: - UIPickerViewDelegate
 extension ExpenseEditorVC: UIPickerViewDelegate {
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
@@ -131,6 +195,7 @@ extension ExpenseEditorVC: UIPickerViewDelegate {
     
 }
 
+// MARK: - UITextFieldDelegate
 extension ExpenseEditorVC: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(textField: UITextField) {
@@ -144,15 +209,17 @@ extension ExpenseEditorVC: UITextFieldDelegate {
     
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
         switch textField {
-            
         case self.customView.categoryTextField:
             if let firstCategory = self.categories.first
                 where self.expense.category == nil {
                 self.customView.categoryTextField.text = firstCategory.name
             }
             
+        case self.customView.dateTextField:
+            self.updateDateFromDatePicker()
+            
         default:
-            self.handleDatePickerChanged()
+            break
         }
         
         return true
@@ -160,11 +227,35 @@ extension ExpenseEditorVC: UITextFieldDelegate {
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         switch textField {
-        case self.customView.categoryTextField:
-            return false
             
-        default:
+            // Description and amount fields.
+        case self.customView.itemDescriptionTextField,
+             self.customView.amountTextField:
+            let text = NSMutableString(string: textField.text ?? "")
+            text.replaceCharactersInRange(range, withString: string)
+            
+            if textField == self.customView.itemDescriptionTextField {
+                self.expense.itemDescription = text as String
+            }
+            
+            else {
+                // If the entered amount has invalid characters, return false.
+                if string.hasCharactersFromSet(NSCharacterSet.decimalNumberCharacterSet().invertedSet) {
+                    return false
+                }
+                
+                if let amountText = nonEmptyString(text) {
+                    self.expense.amount = NSDecimalNumber(string: amountText)
+                } else {
+                    self.expense.amount = nil
+                }
+            }
+            
             return true
+            
+            // Category and date picker text fields.
+        default:
+            return false
         }
     }
     
