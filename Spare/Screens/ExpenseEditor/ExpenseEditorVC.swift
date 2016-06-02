@@ -26,6 +26,8 @@ class ExpenseEditorVC: MDStatefulViewController {
         if let expense = expense {
             self.expense = expense
         } else {
+            // If adding an expense, by default, the date is the current date and
+            // the payment method is cash.
             self.expense = Expense(managedObjectContext: self.managedObjectContext)
             self.expense.dateSpent = NSDate()
             self.expense.paymentMethod = PaymentMethod.Cash.rawValue
@@ -82,7 +84,7 @@ class ExpenseEditorVC: MDStatefulViewController {
             self.categories = categories
             self.categoryPickerView.reloadAllComponents()
             
-            // Make the first category default, if not initially supplied.
+            // Upon getting the categories, select the first category by default.
             if self.expense.category == nil {
                 self.expense.category = categories.first
             }

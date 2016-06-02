@@ -7,16 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		260024111CC7E5F300EB2026 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260024091CC7E5F300EB2026 /* HomeVC.swift */; };
 		260024151CC7E5F300EB2026 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2600240F1CC7E5F300EB2026 /* SettingsVC.swift */; };
 		2600241D1CC7E6B500EB2026 /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2600241C1CC7E6B500EB2026 /* BaseVC.swift */; };
-		260024221CC882C400EB2026 /* __HVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260024201CC882C400EB2026 /* __HVCView.swift */; };
-		260024231CC882C400EB2026 /* __HVCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 260024211CC882C400EB2026 /* __HVCView.xib */; };
-		260024271CC88DE500EB2026 /* __HVCCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 260024261CC88DE500EB2026 /* __HVCCardView.xib */; };
-		260024291CC8B77C00EB2026 /* __HVCCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260024281CC8B77C00EB2026 /* __HVCCardView.swift */; };
 		260024311CC8C5AE00EB2026 /* Mold.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 260024301CC8C53A00EB2026 /* Mold.framework */; };
 		260024321CC8C5AE00EB2026 /* Mold.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 260024301CC8C53A00EB2026 /* Mold.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		260024361CC8D18100EB2026 /* __HVCLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260024351CC8D18100EB2026 /* __HVCLayoutManager.swift */; };
 		2603F8C31CCA45FF007F311F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2603F8C21CCA45FF007F311F /* LaunchScreen.storyboard */; };
 		2603F8CE1CCA4C10007F311F /* Expense+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2603F8C81CCA4C10007F311F /* Expense+CoreDataProperties.swift */; };
 		2603F8CF1CCA4C10007F311F /* Expense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2603F8C91CCA4C10007F311F /* Expense.swift */; };
@@ -45,8 +39,6 @@
 		261EB88E18DDB631009DDF78 /* SpareTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 261EB88D18DDB631009DDF78 /* SpareTests.m */; };
 		262F839B1CCE3E5300EDDDEE /* LoadAppVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262F839A1CCE3E5300EDDDEE /* LoadAppVC.swift */; };
 		262F839D1CCE3E6C00EDDDEE /* LoadAppOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262F839C1CCE3E6C00EDDDEE /* LoadAppOperation.swift */; };
-		2631F37B1CD3458800E90A61 /* CardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2631F37A1CD3458800E90A61 /* CardVC.swift */; };
-		2631F37D1CD3479D00E90A61 /* __HVCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2631F37C1CD3479D00E90A61 /* __HVCCell.swift */; };
 		2666C2C61957CF7A003752BF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2666C2C41957CF7A003752BF /* SystemConfiguration.framework */; };
 		2666C2C81957CF93003752BF /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2666C2C71957CF93003752BF /* libz.dylib */; };
 		2666C2CA1957CFA1003752BF /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2666C2C91957CFA1003752BF /* libsqlite3.dylib */; };
@@ -96,6 +88,15 @@
 		26EFA00B1CD9DE8100714E5D /* spare-v2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26EFA00A1CD9DE8100714E5D /* spare-v2.ttf */; };
 		26EFA00D1CD9DFF900714E5D /* MainTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EFA00C1CD9DFF900714E5D /* MainTabBar.swift */; };
 		26EFA00F1CD9E00200714E5D /* MainTabBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26EFA00E1CD9E00200714E5D /* MainTabBar.xib */; };
+		26F847971D000D8D00DFFE1E /* __HVCCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F8478E1D000D8D00DFFE1E /* __HVCCardView.swift */; };
+		26F847981D000D8D00DFFE1E /* __HVCCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26F8478F1D000D8D00DFFE1E /* __HVCCardView.xib */; };
+		26F847991D000D8D00DFFE1E /* __HVCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F847901D000D8D00DFFE1E /* __HVCCell.swift */; };
+		26F8479A1D000D8D00DFFE1E /* __HVCLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F847911D000D8D00DFFE1E /* __HVCLayoutManager.swift */; };
+		26F8479B1D000D8D00DFFE1E /* __HVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F847921D000D8D00DFFE1E /* __HVCView.swift */; };
+		26F8479C1D000D8D00DFFE1E /* __HVCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26F847931D000D8D00DFFE1E /* __HVCView.xib */; };
+		26F8479D1D000D8D00DFFE1E /* CardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F847941D000D8D00DFFE1E /* CardVC.swift */; };
+		26F8479E1D000D8D00DFFE1E /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F847951D000D8D00DFFE1E /* HomeVC.swift */; };
+		26F8479F1D000D8D00DFFE1E /* HomeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26F847961D000D8D00DFFE1E /* HomeVC.xib */; };
 		C5207A739D770B38693548B5 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59C2B0311ED5D0556A5A2FEF /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -140,14 +141,8 @@
 /* Begin PBXFileReference section */
 		260023B51CC7D9CE00EB2026 /* Mold.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Mold.xcodeproj; path = Mold/Mold.xcodeproj; sourceTree = "<group>"; };
 		260023FD1CC7E0B000EB2026 /* Mold.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mold.framework; path = "Mold/build/Debug-iphoneos/Mold.framework"; sourceTree = "<group>"; };
-		260024091CC7E5F300EB2026 /* HomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		2600240F1CC7E5F300EB2026 /* SettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		2600241C1CC7E6B500EB2026 /* BaseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
-		260024201CC882C400EB2026 /* __HVCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __HVCView.swift; sourceTree = "<group>"; };
-		260024211CC882C400EB2026 /* __HVCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __HVCView.xib; sourceTree = "<group>"; };
-		260024261CC88DE500EB2026 /* __HVCCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __HVCCardView.xib; sourceTree = "<group>"; };
-		260024281CC8B77C00EB2026 /* __HVCCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __HVCCardView.swift; sourceTree = "<group>"; };
-		260024351CC8D18100EB2026 /* __HVCLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __HVCLayoutManager.swift; sourceTree = "<group>"; };
 		2603F8C21CCA45FF007F311F /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2603F8C61CCA476E007F311F /* Spare_v2.0.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Spare_v2.0.xcdatamodel; sourceTree = "<group>"; };
 		2603F8C81CCA4C10007F311F /* Expense+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Expense+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -177,8 +172,6 @@
 		261EB88D18DDB631009DDF78 /* SpareTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpareTests.m; sourceTree = "<group>"; };
 		262F839A1CCE3E5300EDDDEE /* LoadAppVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadAppVC.swift; sourceTree = "<group>"; };
 		262F839C1CCE3E6C00EDDDEE /* LoadAppOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadAppOperation.swift; sourceTree = "<group>"; };
-		2631F37A1CD3458800E90A61 /* CardVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardVC.swift; sourceTree = "<group>"; };
-		2631F37C1CD3479D00E90A61 /* __HVCCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __HVCCell.swift; sourceTree = "<group>"; };
 		2666C2C11957CF4F003752BF /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalyticsServices.a; path = GoogleAnalytics/libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
 		2666C2C31957CF7A003752BF /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		2666C2C41957CF7A003752BF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -232,6 +225,15 @@
 		26EFA00A1CD9DE8100714E5D /* spare-v2.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "spare-v2.ttf"; sourceTree = "<group>"; };
 		26EFA00C1CD9DFF900714E5D /* MainTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBar.swift; sourceTree = "<group>"; };
 		26EFA00E1CD9E00200714E5D /* MainTabBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainTabBar.xib; sourceTree = "<group>"; };
+		26F8478E1D000D8D00DFFE1E /* __HVCCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __HVCCardView.swift; sourceTree = "<group>"; };
+		26F8478F1D000D8D00DFFE1E /* __HVCCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __HVCCardView.xib; sourceTree = "<group>"; };
+		26F847901D000D8D00DFFE1E /* __HVCCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __HVCCell.swift; sourceTree = "<group>"; };
+		26F847911D000D8D00DFFE1E /* __HVCLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __HVCLayoutManager.swift; sourceTree = "<group>"; };
+		26F847921D000D8D00DFFE1E /* __HVCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __HVCView.swift; sourceTree = "<group>"; };
+		26F847931D000D8D00DFFE1E /* __HVCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __HVCView.xib; sourceTree = "<group>"; };
+		26F847941D000D8D00DFFE1E /* CardVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardVC.swift; sourceTree = "<group>"; };
+		26F847951D000D8D00DFFE1E /* HomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		26F847961D000D8D00DFFE1E /* HomeVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeVC.xib; sourceTree = "<group>"; };
 		59C2B0311ED5D0556A5A2FEF /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		872D6B22773387201385F5D7 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		D96F33C6E81927FC7DC69FEB /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -286,14 +288,7 @@
 		260024081CC7E5F300EB2026 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				260024091CC7E5F300EB2026 /* HomeVC.swift */,
-				260024201CC882C400EB2026 /* __HVCView.swift */,
-				260024211CC882C400EB2026 /* __HVCView.xib */,
-				260024281CC8B77C00EB2026 /* __HVCCardView.swift */,
-				260024261CC88DE500EB2026 /* __HVCCardView.xib */,
-				260024351CC8D18100EB2026 /* __HVCLayoutManager.swift */,
-				2631F37C1CD3479D00E90A61 /* __HVCCell.swift */,
-				2631F37A1CD3458800E90A61 /* CardVC.swift */,
+				26F8478D1D000D8D00DFFE1E /* old */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -522,6 +517,22 @@
 			path = MainContainer;
 			sourceTree = "<group>";
 		};
+		26F8478D1D000D8D00DFFE1E /* old */ = {
+			isa = PBXGroup;
+			children = (
+				26F8478E1D000D8D00DFFE1E /* __HVCCardView.swift */,
+				26F8478F1D000D8D00DFFE1E /* __HVCCardView.xib */,
+				26F847901D000D8D00DFFE1E /* __HVCCell.swift */,
+				26F847911D000D8D00DFFE1E /* __HVCLayoutManager.swift */,
+				26F847921D000D8D00DFFE1E /* __HVCView.swift */,
+				26F847931D000D8D00DFFE1E /* __HVCView.xib */,
+				26F847941D000D8D00DFFE1E /* CardVC.swift */,
+				26F847951D000D8D00DFFE1E /* HomeVC.swift */,
+				26F847961D000D8D00DFFE1E /* HomeVC.xib */,
+			);
+			path = old;
+			sourceTree = "<group>";
+		};
 		45046EEF584696AF9C6D4354 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -633,7 +644,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				261370B41CD7A120007BAF56 /* Montserrat-ExtraBold.otf in Resources */,
-				260024231CC882C400EB2026 /* __HVCView.xib in Resources */,
 				261370B71CD7A120007BAF56 /* Montserrat-Regular.otf in Resources */,
 				266946841CC7711000A68424 /* Default@2x.png in Resources */,
 				2603F8C31CCA45FF007F311F /* LaunchScreen.storyboard in Resources */,
@@ -645,6 +655,8 @@
 				26E6EDB41CDBA6C60034EEDE /* AddButtonProgressView.xib in Resources */,
 				2669468A1CC7711000A68424 /* Images.xcassets in Resources */,
 				26EFA00F1CD9E00200714E5D /* MainTabBar.xib in Resources */,
+				26F8479C1D000D8D00DFFE1E /* __HVCView.xib in Resources */,
+				26F8479F1D000D8D00DFFE1E /* HomeVC.xib in Resources */,
 				261370B51CD7A120007BAF56 /* Montserrat-Hairline.otf in Resources */,
 				266946871CC7711000A68424 /* Icon-60@2x.png in Resources */,
 				261370B61CD7A120007BAF56 /* Montserrat-Light.otf in Resources */,
@@ -652,12 +664,12 @@
 				266946861CC7711000A68424 /* Icon-40@2x.png in Resources */,
 				26EFA00B1CD9DE8100714E5D /* spare-v2.ttf in Resources */,
 				266946881CC7711000A68424 /* Icon-Small@2x.png in Resources */,
-				260024271CC88DE500EB2026 /* __HVCCardView.xib in Resources */,
 				261370B31CD7A120007BAF56 /* Montserrat-Bold.otf in Resources */,
 				26EFA0051CD9C91A00714E5D /* __MCVCView.xib in Resources */,
 				266946851CC7711000A68424 /* InfoPlist.strings in Resources */,
 				269D49F31CE1610100109990 /* __CEVCView.xib in Resources */,
 				2669468E1CC7711000A68424 /* Spare-Info.plist in Resources */,
+				26F847981D000D8D00DFFE1E /* __HVCCardView.xib in Resources */,
 				266946831CC7711000A68424 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -727,26 +739,29 @@
 			files = (
 				2603F8CF1CCA4C10007F311F /* Expense.swift in Sources */,
 				262F839D1CCE3E6C00EDDDEE /* LoadAppOperation.swift in Sources */,
-				260024291CC8B77C00EB2026 /* __HVCCardView.swift in Sources */,
-				260024111CC7E5F300EB2026 /* HomeVC.swift in Sources */,
 				2600241D1CC7E6B500EB2026 /* BaseVC.swift in Sources */,
+				26F8479A1D000D8D00DFFE1E /* __HVCLayoutManager.swift in Sources */,
 				266946931CC77A1A00A68424 /* AppDelegate.swift in Sources */,
 				26E7FA7B1CDB332F000E2181 /* BaseTabButton.swift in Sources */,
 				269D49F41CE1610100109990 /* CategoryEditorVC.swift in Sources */,
 				26B7045B1CE22129006C2224 /* Error.swift in Sources */,
 				26A6CDE11CDB18EA00309A84 /* AddButton.swift in Sources */,
+				26F8479D1D000D8D00DFFE1E /* CardVC.swift in Sources */,
 				26C2D5C21CDB5E4800BC73FC /* AddButtonProgressView.swift in Sources */,
 				269D49F21CE1610100109990 /* __CEVCView.swift in Sources */,
 				26BC4F931CE36CD90011BE98 /* Summary.swift in Sources */,
+				26F8479E1D000D8D00DFFE1E /* HomeVC.swift in Sources */,
+				26F8479B1D000D8D00DFFE1E /* __HVCView.swift in Sources */,
 				2603F8D31CCA4C10007F311F /* Category.swift in Sources */,
 				26E7FA7D1CDB33F5000E2181 /* Icon.swift in Sources */,
+				26F847991D000D8D00DFFE1E /* __HVCCell.swift in Sources */,
 				269D49FA1CE1643400109990 /* AddCategoryVC.swift in Sources */,
 				260024151CC7E5F300EB2026 /* SettingsVC.swift in Sources */,
 				26BC4F9F1CE457140011BE98 /* GlobalFunctions.swift in Sources */,
 				26EFA0071CD9C92F00714E5D /* __MCVCView.swift in Sources */,
+				26F847971D000D8D00DFFE1E /* __HVCCardView.swift in Sources */,
 				266946AC1CC786EC00A68424 /* App.swift in Sources */,
 				26BC4FA11CE45D260011BE98 /* __EEVCPickerTextField.swift in Sources */,
-				2631F37D1CD3479D00E90A61 /* __HVCCell.swift in Sources */,
 				261370BD1CD7A9EC007BAF56 /* Font.swift in Sources */,
 				269D49FC1CE1643A00109990 /* AddExpenseVC.swift in Sources */,
 				2603F8D21CCA4C10007F311F /* Category+CoreDataProperties.swift in Sources */,
@@ -756,20 +771,17 @@
 				26BC4F961CE429AE0011BE98 /* ValidateExpenseOperation.swift in Sources */,
 				26E2D37C1CE0E3BA00BA357F /* BaseFormVC.swift in Sources */,
 				269D49F51CE1610100109990 /* HRColorMapView.swift in Sources */,
-				2631F37B1CD3458800E90A61 /* CardVC.swift in Sources */,
 				261370CD1CD87679007BAF56 /* Strings.swift in Sources */,
 				261370BF1CD7ABD9007BAF56 /* Color.swift in Sources */,
 				2603F8CE1CCA4C10007F311F /* Expense+CoreDataProperties.swift in Sources */,
 				2669468F1CC7711000A68424 /* Spare.xcdatamodeld in Sources */,
 				262F839B1CCE3E5300EDDDEE /* LoadAppVC.swift in Sources */,
-				260024221CC882C400EB2026 /* __HVCView.swift in Sources */,
 				26BC4F9B1CE43BC00011BE98 /* FieldButton.swift in Sources */,
 				26EFA0091CD9DB0A00714E5D /* TabButton.swift in Sources */,
 				26EFA0031CD9C8F100714E5D /* MainContainerVC.swift in Sources */,
 				26BC4F981CE439E40011BE98 /* PaymentMethod.swift in Sources */,
 				26BC4F941CE36CD90011BE98 /* Summary+CoreDataProperties.swift in Sources */,
 				26EFA00D1CD9DFF900714E5D /* MainTabBar.swift in Sources */,
-				260024361CC8D18100EB2026 /* __HVCLayoutManager.swift in Sources */,
 				269D49F61CE1610100109990 /* __EEVCView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
