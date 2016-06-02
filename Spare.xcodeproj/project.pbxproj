@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		260024151CC7E5F300EB2026 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2600240F1CC7E5F300EB2026 /* SettingsVC.swift */; };
-		2600241D1CC7E6B500EB2026 /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2600241C1CC7E6B500EB2026 /* BaseVC.swift */; };
 		260024311CC8C5AE00EB2026 /* Mold.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 260024301CC8C53A00EB2026 /* Mold.framework */; };
 		260024321CC8C5AE00EB2026 /* Mold.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 260024301CC8C53A00EB2026 /* Mold.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2603F8C31CCA45FF007F311F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2603F8C21CCA45FF007F311F /* LaunchScreen.storyboard */; };
@@ -64,6 +63,8 @@
 		268D23E61D001022006B8D0B /* CardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268D23DF1D001022006B8D0B /* CardVC.swift */; };
 		268D23EA1D001E0F006B8D0B /* __HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268D23E91D001E0F006B8D0B /* __HomeVC.swift */; };
 		268D23EC1D001E79006B8D0B /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268D23EB1D001E79006B8D0B /* HomeVC.swift */; };
+		268D23EF1D003573006B8D0B /* SummaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268D23EE1D003573006B8D0B /* SummaryVC.swift */; };
+		268D23F11D00370B006B8D0B /* __SVCBannerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 268D23F01D00370B006B8D0B /* __SVCBannerView.xib */; };
 		269D49F21CE1610100109990 /* __CEVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269D49EA1CE1610100109990 /* __CEVCView.swift */; };
 		269D49F31CE1610100109990 /* __CEVCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 269D49EB1CE1610100109990 /* __CEVCView.xib */; };
 		269D49F41CE1610100109990 /* CategoryEditorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269D49EC1CE1610100109990 /* CategoryEditorVC.swift */; };
@@ -142,7 +143,6 @@
 		260023B51CC7D9CE00EB2026 /* Mold.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Mold.xcodeproj; path = Mold/Mold.xcodeproj; sourceTree = "<group>"; };
 		260023FD1CC7E0B000EB2026 /* Mold.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mold.framework; path = "Mold/build/Debug-iphoneos/Mold.framework"; sourceTree = "<group>"; };
 		2600240F1CC7E5F300EB2026 /* SettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
-		2600241C1CC7E6B500EB2026 /* BaseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
 		2603F8C21CCA45FF007F311F /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2603F8C61CCA476E007F311F /* Spare_v2.0.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Spare_v2.0.xcdatamodel; sourceTree = "<group>"; };
 		2603F8C81CCA4C10007F311F /* Expense+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Expense+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -200,6 +200,8 @@
 		268D23DF1D001022006B8D0B /* CardVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardVC.swift; sourceTree = "<group>"; };
 		268D23E91D001E0F006B8D0B /* __HomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __HomeVC.swift; sourceTree = "<group>"; };
 		268D23EB1D001E79006B8D0B /* HomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		268D23EE1D003573006B8D0B /* SummaryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryVC.swift; sourceTree = "<group>"; };
+		268D23F01D00370B006B8D0B /* __SVCBannerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __SVCBannerView.xib; sourceTree = "<group>"; };
 		269D49EA1CE1610100109990 /* __CEVCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __CEVCView.swift; sourceTree = "<group>"; };
 		269D49EB1CE1610100109990 /* __CEVCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __CEVCView.xib; sourceTree = "<group>"; };
 		269D49EC1CE1610100109990 /* CategoryEditorVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryEditorVC.swift; sourceTree = "<group>"; };
@@ -278,6 +280,7 @@
 				262F83991CCE3E4C00EDDDEE /* LoadApp */,
 				26EFA0011CD9C8E800714E5D /* MainContainer */,
 				260024081CC7E5F300EB2026 /* Home */,
+				268D23ED1D003560006B8D0B /* Summary */,
 				2600240E1CC7E5F300EB2026 /* Settings */,
 				269D49E91CE1610100109990 /* CategoryEditor */,
 				269D49EE1CE1610100109990 /* ExpenseEditor */,
@@ -309,7 +312,6 @@
 		2600241B1CC7E6AE00EB2026 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				2600241C1CC7E6B500EB2026 /* BaseVC.swift */,
 				26E2D37B1CE0E3BA00BA357F /* BaseFormVC.swift */,
 				269D49FD1CE1649500109990 /* ModalNavBarVC.swift */,
 			);
@@ -480,6 +482,15 @@
 				268D23DF1D001022006B8D0B /* CardVC.swift */,
 			);
 			path = old;
+			sourceTree = "<group>";
+		};
+		268D23ED1D003560006B8D0B /* Summary */ = {
+			isa = PBXGroup;
+			children = (
+				268D23EE1D003573006B8D0B /* SummaryVC.swift */,
+				268D23F01D00370B006B8D0B /* __SVCBannerView.xib */,
+			);
+			path = Summary;
 			sourceTree = "<group>";
 		};
 		269D49E91CE1610100109990 /* CategoryEditor */ = {
@@ -658,6 +669,7 @@
 				26EFA00F1CD9E00200714E5D /* MainTabBar.xib in Resources */,
 				261370B51CD7A120007BAF56 /* Montserrat-Hairline.otf in Resources */,
 				266946871CC7711000A68424 /* Icon-60@2x.png in Resources */,
+				268D23F11D00370B006B8D0B /* __SVCBannerView.xib in Resources */,
 				261370B61CD7A120007BAF56 /* Montserrat-Light.otf in Resources */,
 				266946891CC7711000A68424 /* Icon@2x.png in Resources */,
 				266946861CC7711000A68424 /* Icon-40@2x.png in Resources */,
@@ -737,8 +749,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2603F8CF1CCA4C10007F311F /* Expense.swift in Sources */,
+				268D23EF1D003573006B8D0B /* SummaryVC.swift in Sources */,
 				262F839D1CCE3E6C00EDDDEE /* LoadAppOperation.swift in Sources */,
-				2600241D1CC7E6B500EB2026 /* BaseVC.swift in Sources */,
 				266946931CC77A1A00A68424 /* AppDelegate.swift in Sources */,
 				26E7FA7B1CDB332F000E2181 /* BaseTabButton.swift in Sources */,
 				269D49F41CE1610100109990 /* CategoryEditorVC.swift in Sources */,
