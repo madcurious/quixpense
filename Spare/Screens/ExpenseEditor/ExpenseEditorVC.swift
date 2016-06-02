@@ -87,8 +87,8 @@ class ExpenseEditorVC: MDStatefulViewController {
                 self.expense.category = categories.first
             }
             
-            self.refreshViewFromModel()
             self.showView(.Primary)
+            self.refreshViewFromModel()
         }
         return op
     }

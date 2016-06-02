@@ -32,8 +32,17 @@ class AddExpenseVC: BaseFormVC {
     override func handleTapOnDoneBarButtonItem(sender: AnyObject) {
         self.queue.addOperation(
             ValidateExpenseOperation(expense: self.editor.expense)
-                .onSuccess({[unowned self] (result) in
-                    self.editor.reset()
+                .onSuccess({[unowned self] (_) in
+                    self.editor.managedObjectContext.saveContext {[unowned self] (result) in
+                        switch result {
+                        case .Failure(let error as NSError):
+                            MDErrorDialog.showError(error, inPresenter: self)
+                        default:
+                            MDDispatcher.asyncRunInMainThread({
+                                self.editor.reset()
+                            })
+                        }
+                    }
                     })
                 .onFail({[unowned self] (error) in
                     MDErrorDialog.showError(error, inPresenter: self)

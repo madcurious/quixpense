@@ -93,12 +93,21 @@ class HomeVC: MDStatefulViewController {
                 let collectionView = self.customView.collectionView
                 collectionView.reloadData()
                 
+                
+                let df = NSDateFormatter()
+                df.timeZone = NSTimeZone.localTimeZone()
+                df.dateStyle = .FullStyle
+                
+                // If there are summaries for the display period, scroll to the last item
+                // and diplay the primary view.
                 if let results = self.fetcher.fetchedObjects
                     where results.isEmpty == false {
                     for result in results {
                         if let summary = result as? Summary,
                             let expenses = summary.valueForKey("expenses") as? [Expense] {
                             print("expenses: \(expenses.count)")
+                            print("startDate: \(df.stringFromDate(summary.startDate!))")
+                            print("endDate: \(df.stringFromDate(summary.endDate!))")
                             print("+++++++")
                         }
                     }
@@ -108,9 +117,13 @@ class HomeVC: MDStatefulViewController {
                     collectionView.collectionViewLayout.invalidateLayout()
                     
                     self.showView(.Primary)
-                } else {
+                }
+                
+                    // Otherwise, create the summaries, then re-run the operation.
+                else {
                     
                     let currentDate = NSDate()
+                    print("currentDate: \(df.stringFromDate(currentDate))")
                     var date: NSDate
                     for i in 0..<5 {
                         date = currentDate.dateByAddingTimeInterval(-(60 * 60 * 24) * Double(i))
