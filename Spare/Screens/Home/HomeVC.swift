@@ -99,7 +99,7 @@ class HomeVC: MDStatefulViewController {
                         }
                     }
                     
-                    self.collectionView.scrollToLastItem()
+//                    self.collectionView.scrollToLastItem()
                     self.showView(.Primary)
                 }
                     
