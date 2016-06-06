@@ -11,7 +11,7 @@ import UIKit
 class MainContainerVC: UIViewController {
     
     let customView = __MCVCView.instantiateFromNib() as __MCVCView
-    let tabs = UITabBarController(nibName: nil, bundle: nil)
+    let tabController = UITabBarController(nibName: nil, bundle: nil)
     let tabBar = MainTabBar.instantiateFromNib() as MainTabBar
     
     override func loadView() {
@@ -22,9 +22,16 @@ class MainContainerVC: UIViewController {
         super.viewDidLoad()
         applyGlobalVCSettings(self)
         
-        self.tabs.viewControllers = [HomeVC(), SettingsVC()]
-        self.tabs.tabBar.hidden = true
-        self.embedChildViewController(self.tabs, toView: self.customView.tabContainer, fillSuperview: true)
+        // Create the tabs and make their bottom edges extend to the space occuppied by the hidden tab bar.
+        let homeScreen = HomeVC()
+        homeScreen.edgesForExtendedLayout = .Bottom
+        let settingsScreen = SettingsVC()
+        settingsScreen.edgesForExtendedLayout = .Bottom
+        
+        // Create the tab bar controller, add the tabs, and hide the tab bar.
+        self.tabController.viewControllers = [UINavigationController(rootViewController: homeScreen), settingsScreen]
+        self.tabController.tabBar.hidden = true
+        self.embedChildViewController(self.tabController, toView: self.customView.tabContainer, fillSuperview: true)
         
         self.tabBar.delegate = self
         self.customView.tabBarContainer.addSubviewAndFill(self.tabBar)
@@ -45,7 +52,7 @@ class MainContainerVC: UIViewController {
 extension MainContainerVC: MainTabBarDelegate {
     
     func mainTabBarDidSelectIndex(index: Int) {
-        self.tabs.selectedIndex = index
+        self.tabController.selectedIndex = index
     }
     
 }

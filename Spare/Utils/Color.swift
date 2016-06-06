@@ -18,6 +18,7 @@ class Color {
     
     private static let Gray100 = UIColor(hex: 0xf0f2f6)
     private static let Gray150 = UIColor(hex: 0xf6f6f6)
+    private static let Gray160 = UIColor(hex: 0xe6e6e6)
     
     /// Form placeholder text color.
     private static let Gray170 = UIColor(hex: 0xc7c7cd)
@@ -30,6 +31,8 @@ class Color {
     
     /// Modal navigation bar background color.
     private static let Gray900 = UIColor(hex: 0x2a2a2a)
+    
+    static let HomeBackgroundColor = Gray100
     
     static let FormBackgroundColor = Gray100
     static let FormFieldLabelTextColor = Gray700

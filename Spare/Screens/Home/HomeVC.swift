@@ -32,16 +32,6 @@ class HomeVC: MDStatefulViewController {
         return fetcher
     }()
     
-    var topInset: CGFloat {
-        // If the status bar is taller than usual (e.g., when blue bar shows during tethering), inset by 10 points.
-        // Otherwise, inset by 10 points + the status bar height so that the cards don't go under the status bar.
-        let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.height
-        if statusBarHeight > 20 {
-            return 10
-        }
-        return statusBarHeight + 10
-    }
-    
     override var primaryView: UIView {
         return self.collectionView
     }
@@ -59,8 +49,13 @@ class HomeVC: MDStatefulViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.edgesForExtendedLayout = .None
+        if let navController = self.navigationController {
+            navController.navigationBar.shadowImage = UIImage()
+            navController.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+            navController.navigationBar.backgroundColor = Color.HomeBackgroundColor
+        }
         
+        self.collectionView.backgroundColor = Color.HomeBackgroundColor
         self.collectionView.registerCellClass(__HVCCell.self, withReuseIdentifier: kViewID)
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
@@ -159,12 +154,11 @@ extension HomeVC: MDPagedCollectionViewDelegate {
     func collectionView(collectionView: MDPagedCollectionView, sizeForItemAtIndex index: Int) -> CGSize {
         var size = collectionView.bounds.size
         size.width = size.width - (kLeftRightInset * 2)
-        size.height = size.height - self.topInset
         return size
     }
     
     func insetsForCollectionView(collectionView: MDPagedCollectionView) -> UIEdgeInsets {
-        return UIEdgeInsets(top: self.topInset, left: kLeftRightInset, bottom: 0, right: kLeftRightInset)
+        return UIEdgeInsets(top: 0, left: kLeftRightInset, bottom: 0, right: kLeftRightInset)
     }
     
     func minimumInterItemSpacingForCollectionView(collectionView: MDPagedCollectionView) -> CGFloat {
