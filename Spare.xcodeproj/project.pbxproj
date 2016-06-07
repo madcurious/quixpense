@@ -55,12 +55,6 @@
 		266946931CC77A1A00A68424 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266946921CC77A1A00A68424 /* AppDelegate.swift */; };
 		266946AC1CC786EC00A68424 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266946AB1CC786EC00A68424 /* App.swift */; };
 		268D23E01D001022006B8D0B /* __HVCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268D23D81D001022006B8D0B /* __HVCCell.swift */; };
-		268D23E11D001022006B8D0B /* __HVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268D23D91D001022006B8D0B /* __HVCView.swift */; };
-		268D23E21D001022006B8D0B /* __HVCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 268D23DA1D001022006B8D0B /* __HVCView.xib */; };
-		268D23E31D001022006B8D0B /* __HVCCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268D23DC1D001022006B8D0B /* __HVCCardView.swift */; };
-		268D23E41D001022006B8D0B /* __HVCCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 268D23DD1D001022006B8D0B /* __HVCCardView.xib */; };
-		268D23E51D001022006B8D0B /* __HVCLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268D23DE1D001022006B8D0B /* __HVCLayoutManager.swift */; };
-		268D23E61D001022006B8D0B /* CardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268D23DF1D001022006B8D0B /* CardVC.swift */; };
 		268D23EC1D001E79006B8D0B /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268D23EB1D001E79006B8D0B /* HomeVC.swift */; };
 		268D23EF1D003573006B8D0B /* SummaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268D23EE1D003573006B8D0B /* SummaryVC.swift */; };
 		268D23F11D00370B006B8D0B /* __SVCBannerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 268D23F01D00370B006B8D0B /* __SVCBannerView.xib */; };
@@ -75,7 +69,6 @@
 		269D49FC1CE1643A00109990 /* AddExpenseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269D49FB1CE1643A00109990 /* AddExpenseVC.swift */; };
 		269D49FE1CE1649500109990 /* ModalNavBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269D49FD1CE1649500109990 /* ModalNavBarVC.swift */; };
 		269D4A021CE16DCA00109990 /* ValidateCategoryOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269D4A011CE16DCA00109990 /* ValidateCategoryOperation.swift */; };
-		26A35F9C1D0194E200F69F24 /* __SVCBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A35F9B1D0194E200F69F24 /* __SVCBannerView.swift */; };
 		26A6CDE11CDB18EA00309A84 /* AddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A6CDE01CDB18EA00309A84 /* AddButton.swift */; };
 		26B7045B1CE22129006C2224 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B7045A1CE22129006C2224 /* Error.swift */; };
 		26BC4F931CE36CD90011BE98 /* Summary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC4F911CE36CD90011BE98 /* Summary.swift */; };
@@ -87,6 +80,7 @@
 		26BC4FA11CE45D260011BE98 /* __EEVCPickerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC4FA01CE45D260011BE98 /* __EEVCPickerTextField.swift */; };
 		26C2D5C21CDB5E4800BC73FC /* AddButtonProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C2D5C11CDB5E4800BC73FC /* AddButtonProgressView.swift */; };
 		26E2D37C1CE0E3BA00BA357F /* BaseFormVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E2D37B1CE0E3BA00BA357F /* BaseFormVC.swift */; };
+		26E34A571D057BE8002CE4E8 /* __SVCBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E34A561D057BE8002CE4E8 /* __SVCBannerView.swift */; };
 		26E4E0591937AF690096191A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E4E0581937AF690096191A /* QuartzCore.framework */; };
 		26E6EDB41CDBA6C60034EEDE /* AddButtonProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26E6EDB31CDBA6C60034EEDE /* AddButtonProgressView.xib */; };
 		26E7FA7B1CDB332F000E2181 /* BaseTabButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E7FA7A1CDB332F000E2181 /* BaseTabButton.swift */; };
@@ -192,12 +186,6 @@
 		266946921CC77A1A00A68424 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		266946AB1CC786EC00A68424 /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		268D23D81D001022006B8D0B /* __HVCCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __HVCCell.swift; sourceTree = "<group>"; };
-		268D23D91D001022006B8D0B /* __HVCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __HVCView.swift; sourceTree = "<group>"; };
-		268D23DA1D001022006B8D0B /* __HVCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __HVCView.xib; sourceTree = "<group>"; };
-		268D23DC1D001022006B8D0B /* __HVCCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __HVCCardView.swift; sourceTree = "<group>"; };
-		268D23DD1D001022006B8D0B /* __HVCCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __HVCCardView.xib; sourceTree = "<group>"; };
-		268D23DE1D001022006B8D0B /* __HVCLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __HVCLayoutManager.swift; sourceTree = "<group>"; };
-		268D23DF1D001022006B8D0B /* CardVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardVC.swift; sourceTree = "<group>"; };
 		268D23EB1D001E79006B8D0B /* HomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		268D23EE1D003573006B8D0B /* SummaryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryVC.swift; sourceTree = "<group>"; };
 		268D23F01D00370B006B8D0B /* __SVCBannerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __SVCBannerView.xib; sourceTree = "<group>"; };
@@ -212,7 +200,6 @@
 		269D49FB1CE1643A00109990 /* AddExpenseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddExpenseVC.swift; sourceTree = "<group>"; };
 		269D49FD1CE1649500109990 /* ModalNavBarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalNavBarVC.swift; sourceTree = "<group>"; };
 		269D4A011CE16DCA00109990 /* ValidateCategoryOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidateCategoryOperation.swift; sourceTree = "<group>"; };
-		26A35F9B1D0194E200F69F24 /* __SVCBannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __SVCBannerView.swift; sourceTree = "<group>"; };
 		26A6CDE01CDB18EA00309A84 /* AddButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddButton.swift; sourceTree = "<group>"; };
 		26B7045A1CE22129006C2224 /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		26BC4F911CE36CD90011BE98 /* Summary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Summary.swift; sourceTree = "<group>"; };
@@ -225,6 +212,7 @@
 		26C2D5C11CDB5E4800BC73FC /* AddButtonProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddButtonProgressView.swift; sourceTree = "<group>"; };
 		26D4C8F41946E624001B42DC /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		26E2D37B1CE0E3BA00BA357F /* BaseFormVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseFormVC.swift; sourceTree = "<group>"; };
+		26E34A561D057BE8002CE4E8 /* __SVCBannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __SVCBannerView.swift; sourceTree = "<group>"; };
 		26E4E0581937AF690096191A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		26E6EDB31CDBA6C60034EEDE /* AddButtonProgressView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddButtonProgressView.xib; sourceTree = "<group>"; };
 		26E7FA7A1CDB332F000E2181 /* BaseTabButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTabButton.swift; sourceTree = "<group>"; };
@@ -293,9 +281,6 @@
 			children = (
 				268D23EB1D001E79006B8D0B /* HomeVC.swift */,
 				268D23D81D001022006B8D0B /* __HVCCell.swift */,
-				268D23D91D001022006B8D0B /* __HVCView.swift */,
-				268D23DA1D001022006B8D0B /* __HVCView.xib */,
-				268D23DB1D001022006B8D0B /* old */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -472,23 +457,12 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		268D23DB1D001022006B8D0B /* old */ = {
-			isa = PBXGroup;
-			children = (
-				268D23DC1D001022006B8D0B /* __HVCCardView.swift */,
-				268D23DD1D001022006B8D0B /* __HVCCardView.xib */,
-				268D23DE1D001022006B8D0B /* __HVCLayoutManager.swift */,
-				268D23DF1D001022006B8D0B /* CardVC.swift */,
-			);
-			path = old;
-			sourceTree = "<group>";
-		};
 		268D23ED1D003560006B8D0B /* Summary */ = {
 			isa = PBXGroup;
 			children = (
 				268D23EE1D003573006B8D0B /* SummaryVC.swift */,
 				268D23F01D00370B006B8D0B /* __SVCBannerView.xib */,
-				26A35F9B1D0194E200F69F24 /* __SVCBannerView.swift */,
+				26E34A561D057BE8002CE4E8 /* __SVCBannerView.swift */,
 			);
 			path = Summary;
 			sourceTree = "<group>";
@@ -654,7 +628,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				268D23E21D001022006B8D0B /* __HVCView.xib in Resources */,
 				261370B41CD7A120007BAF56 /* Montserrat-ExtraBold.otf in Resources */,
 				261370B71CD7A120007BAF56 /* Montserrat-Regular.otf in Resources */,
 				266946841CC7711000A68424 /* Default@2x.png in Resources */,
@@ -673,7 +646,6 @@
 				261370B61CD7A120007BAF56 /* Montserrat-Light.otf in Resources */,
 				266946891CC7711000A68424 /* Icon@2x.png in Resources */,
 				266946861CC7711000A68424 /* Icon-40@2x.png in Resources */,
-				268D23E41D001022006B8D0B /* __HVCCardView.xib in Resources */,
 				26EFA00B1CD9DE8100714E5D /* spare-v2.ttf in Resources */,
 				266946881CC7711000A68424 /* Icon-Small@2x.png in Resources */,
 				261370B31CD7A120007BAF56 /* Montserrat-Bold.otf in Resources */,
@@ -748,17 +720,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26E34A571D057BE8002CE4E8 /* __SVCBannerView.swift in Sources */,
 				2603F8CF1CCA4C10007F311F /* Expense.swift in Sources */,
 				268D23EF1D003573006B8D0B /* SummaryVC.swift in Sources */,
 				262F839D1CCE3E6C00EDDDEE /* LoadAppOperation.swift in Sources */,
 				266946931CC77A1A00A68424 /* AppDelegate.swift in Sources */,
-				26A35F9C1D0194E200F69F24 /* __SVCBannerView.swift in Sources */,
 				26E7FA7B1CDB332F000E2181 /* BaseTabButton.swift in Sources */,
 				269D49F41CE1610100109990 /* CategoryEditorVC.swift in Sources */,
 				26B7045B1CE22129006C2224 /* Error.swift in Sources */,
 				26A6CDE11CDB18EA00309A84 /* AddButton.swift in Sources */,
 				26C2D5C21CDB5E4800BC73FC /* AddButtonProgressView.swift in Sources */,
-				268D23E61D001022006B8D0B /* CardVC.swift in Sources */,
 				269D49F21CE1610100109990 /* __CEVCView.swift in Sources */,
 				268D23E01D001022006B8D0B /* __HVCCell.swift in Sources */,
 				26BC4F931CE36CD90011BE98 /* Summary.swift in Sources */,
@@ -769,9 +740,7 @@
 				26BC4F9F1CE457140011BE98 /* GlobalFunctions.swift in Sources */,
 				26EFA0071CD9C92F00714E5D /* __MCVCView.swift in Sources */,
 				266946AC1CC786EC00A68424 /* App.swift in Sources */,
-				268D23E51D001022006B8D0B /* __HVCLayoutManager.swift in Sources */,
 				26BC4FA11CE45D260011BE98 /* __EEVCPickerTextField.swift in Sources */,
-				268D23E11D001022006B8D0B /* __HVCView.swift in Sources */,
 				261370BD1CD7A9EC007BAF56 /* Font.swift in Sources */,
 				269D49FC1CE1643A00109990 /* AddExpenseVC.swift in Sources */,
 				2603F8D21CCA4C10007F311F /* Category+CoreDataProperties.swift in Sources */,
@@ -783,7 +752,6 @@
 				26E2D37C1CE0E3BA00BA357F /* BaseFormVC.swift in Sources */,
 				269D49F51CE1610100109990 /* HRColorMapView.swift in Sources */,
 				261370CD1CD87679007BAF56 /* Strings.swift in Sources */,
-				268D23E31D001022006B8D0B /* __HVCCardView.swift in Sources */,
 				261370BF1CD7ABD9007BAF56 /* Color.swift in Sources */,
 				2603F8CE1CCA4C10007F311F /* Expense+CoreDataProperties.swift in Sources */,
 				2669468F1CC7711000A68424 /* Spare.xcdatamodeld in Sources */,

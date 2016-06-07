@@ -2,14 +2,57 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="2h2-HK-0DM">
-            <rect key="frame" x="0.0" y="0.0" width="397" height="277"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="2h2-HK-0DM" customClass="__SVCBannerView" customModule="Spare" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="452" height="144"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <point key="canvasLocation" x="298.5" y="246.5"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VE3-Mo-e2O">
+                    <rect key="frame" x="10" y="10" width="432" height="124"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VVu-3N-baC">
+                            <rect key="frame" x="0.0" y="0.0" width="432" height="74.5"/>
+                            <color key="backgroundColor" red="0.85098040100000005" green="0.94901961089999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U9Y-xD-jqz">
+                            <rect key="frame" x="0.0" y="82.5" width="432" height="41.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.80000001190000003" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="U9Y-xD-jqz" secondAttribute="trailing" id="1JP-qm-fBp"/>
+                        <constraint firstItem="U9Y-xD-jqz" firstAttribute="leading" secondItem="VE3-Mo-e2O" secondAttribute="leading" id="H3Q-fq-ful"/>
+                        <constraint firstAttribute="trailing" secondItem="VVu-3N-baC" secondAttribute="trailing" id="Hy2-47-QVI"/>
+                        <constraint firstItem="U9Y-xD-jqz" firstAttribute="top" secondItem="VVu-3N-baC" secondAttribute="bottom" constant="8" id="IKQ-BN-s46"/>
+                        <constraint firstItem="VVu-3N-baC" firstAttribute="height" secondItem="VE3-Mo-e2O" secondAttribute="height" multiplier="3:5" id="Tdd-if-Fvr"/>
+                        <constraint firstAttribute="bottom" secondItem="U9Y-xD-jqz" secondAttribute="bottom" id="dHU-tu-TTo"/>
+                        <constraint firstItem="VVu-3N-baC" firstAttribute="leading" secondItem="VE3-Mo-e2O" secondAttribute="leading" id="dZS-9Q-Ydl"/>
+                        <constraint firstItem="VVu-3N-baC" firstAttribute="top" secondItem="VE3-Mo-e2O" secondAttribute="top" id="dtz-fN-hcf"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstItem="VE3-Mo-e2O" firstAttribute="leading" secondItem="2h2-HK-0DM" secondAttribute="leading" constant="10" id="3xC-r7-xB9"/>
+                <constraint firstAttribute="bottom" secondItem="VE3-Mo-e2O" secondAttribute="bottom" constant="10" id="FgD-CZ-zPQ"/>
+                <constraint firstItem="VE3-Mo-e2O" firstAttribute="top" secondItem="2h2-HK-0DM" secondAttribute="top" constant="10" id="IZV-MH-WEX"/>
+                <constraint firstAttribute="trailing" secondItem="VE3-Mo-e2O" secondAttribute="trailing" constant="10" id="yug-iN-XLY"/>
+            </constraints>
+            <connections>
+                <outlet property="labelContainer" destination="VE3-Mo-e2O" id="LLh-r8-Ly0"/>
+                <outlet property="periodLabel" destination="U9Y-xD-jqz" id="i0y-9W-txg"/>
+                <outlet property="totalLabel" destination="VVu-3N-baC" id="7Mx-Qy-hJ2"/>
+            </connections>
+            <point key="canvasLocation" x="271" y="180"/>
         </collectionReusableView>
     </objects>
 </document>

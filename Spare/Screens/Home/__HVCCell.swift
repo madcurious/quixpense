@@ -10,21 +10,10 @@ import UIKit
 
 class __HVCCell: UICollectionViewCell {
     
-    let cardVC = CardVC()
     
-    var data: [[String : AnyObject]]? {
-        get {
-            return self.cardVC.data
-        }
-        set {
-            self.cardVC.data = newValue
-        }
-    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        self.contentView.addSubviewAndFill(self.cardVC.view)
     }
     
     required init?(coder aDecoder: NSCoder) {

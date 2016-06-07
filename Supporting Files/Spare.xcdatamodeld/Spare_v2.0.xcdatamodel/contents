@@ -39,6 +39,6 @@
         <element name="Expense" positionX="304" positionY="375" width="128" height="120"/>
         <element name="SPRCategory" positionX="99" positionY="81" width="128" height="30"/>
         <element name="SPRExpense" positionX="378" positionY="36" width="128" height="135"/>
-        <element name="Summary" positionX="-0" positionY="252" width="128" height="101"/>
+        <element name="Summary" positionX="-0" positionY="252" width="128" height="104"/>
     </elements>
 </model>

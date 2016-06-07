@@ -33,6 +33,24 @@ class SummaryVC: UIViewController {
         self.view = self.collectionView
     }
     
+}
+
+extension SummaryVC: UICollectionViewDataSource {
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        fatalError()
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        fatalError()
+    }
+    
+}
+
+extension SummaryVC: UICollectionViewDelegate {}
+
+extension SummaryVC: UICollectionViewDelegateFlowLayout {
+    
     
     
 }

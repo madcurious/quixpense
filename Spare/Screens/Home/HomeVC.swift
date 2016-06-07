@@ -85,11 +85,17 @@ class HomeVC: MDStatefulViewController {
                 if let results = self.fetcher.fetchedObjects
                     where results.isEmpty == false {
                     for result in results {
-                        if let summary = result as? Summary,
-                            let expenses = summary.valueForKey("expenses") as? [Expense] {
-                            print("expenses: \(expenses.count)")
+                        if let summary = result as? Summary {
+//                            let expenses = summary.valueForKey("expenses") as? [Expense] {
+//                            print("expenses: \(expenses.count)")
                             print("startDate: \(df.stringFromDate(summary.startDate!))")
                             print("endDate: \(df.stringFromDate(summary.endDate!))")
+                            
+                            let total = try! summary.computeTotals()
+                            for (key, value) in total {
+                                print("\(key.name!) = \(value)")
+                            }
+                            
                             print("+++++++")
                         }
                     }
