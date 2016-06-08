@@ -80,6 +80,7 @@
 		26BC4FA11CE45D260011BE98 /* __EEVCPickerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC4FA01CE45D260011BE98 /* __EEVCPickerTextField.swift */; };
 		26C2D5C21CDB5E4800BC73FC /* AddButtonProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C2D5C11CDB5E4800BC73FC /* AddButtonProgressView.swift */; };
 		26C962101D083088007EBA41 /* __SVCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C9620F1D083088007EBA41 /* __SVCCell.swift */; };
+		26C962121D0839A4007EBA41 /* __SVCCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26C962111D0839A4007EBA41 /* __SVCCell.xib */; };
 		26E2D37C1CE0E3BA00BA357F /* BaseFormVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E2D37B1CE0E3BA00BA357F /* BaseFormVC.swift */; };
 		26E34A571D057BE8002CE4E8 /* __SVCBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E34A561D057BE8002CE4E8 /* __SVCBannerView.swift */; };
 		26E4E0591937AF690096191A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E4E0581937AF690096191A /* QuartzCore.framework */; };
@@ -212,6 +213,7 @@
 		26BC4FA01CE45D260011BE98 /* __EEVCPickerTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __EEVCPickerTextField.swift; sourceTree = "<group>"; };
 		26C2D5C11CDB5E4800BC73FC /* AddButtonProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddButtonProgressView.swift; sourceTree = "<group>"; };
 		26C9620F1D083088007EBA41 /* __SVCCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __SVCCell.swift; sourceTree = "<group>"; };
+		26C962111D0839A4007EBA41 /* __SVCCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __SVCCell.xib; sourceTree = "<group>"; };
 		26D4C8F41946E624001B42DC /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		26E2D37B1CE0E3BA00BA357F /* BaseFormVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseFormVC.swift; sourceTree = "<group>"; };
 		26E34A561D057BE8002CE4E8 /* __SVCBannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __SVCBannerView.swift; sourceTree = "<group>"; };
@@ -466,6 +468,7 @@
 				268D23F01D00370B006B8D0B /* __SVCBannerView.xib */,
 				26E34A561D057BE8002CE4E8 /* __SVCBannerView.swift */,
 				26C9620F1D083088007EBA41 /* __SVCCell.swift */,
+				26C962111D0839A4007EBA41 /* __SVCCell.xib */,
 			);
 			path = Summary;
 			sourceTree = "<group>";
@@ -638,6 +641,7 @@
 				261370B21CD7A120007BAF56 /* Montserrat-Black.otf in Resources */,
 				2669468B1CC7711000A68424 /* iPhone.storyboard in Resources */,
 				269D49F71CE1610100109990 /* __EEVCView.xib in Resources */,
+				26C962121D0839A4007EBA41 /* __SVCCell.xib in Resources */,
 				261370B91CD7A120007BAF56 /* Montserrat-UltraLight.otf in Resources */,
 				261370B81CD7A120007BAF56 /* Montserrat-SemiBold.otf in Resources */,
 				26E6EDB41CDBA6C60034EEDE /* AddButtonProgressView.xib in Resources */,

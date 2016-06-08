@@ -25,7 +25,7 @@ class __HVCCell: UICollectionViewCell {
         super.init(frame: frame)
         self.backgroundColor = UIColor.whiteColor()
         
-        self.summaryVC.collectionView.scrollEnabled = false
+//        self.summaryVC.collectionView.scrollEnabled = false
         self.addSubviewAndFill(self.summaryVC.view)
     }
     

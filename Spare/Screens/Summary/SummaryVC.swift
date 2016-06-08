@@ -51,7 +51,7 @@ class SummaryVC: UIViewController {
         
         self.collectionView.backgroundColor = Color.White
         self.collectionView.registerNib(__SVCBannerView.nib(), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: ViewID.Banner.rawValue)
-        self.collectionView.registerClass(__SVCCell.self, forCellWithReuseIdentifier: ViewID.Cell.rawValue)
+        self.collectionView.registerNib(__SVCCell.nib(), forCellWithReuseIdentifier: ViewID.Cell.rawValue)
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
         
