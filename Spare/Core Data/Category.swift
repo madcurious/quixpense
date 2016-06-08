@@ -13,6 +13,14 @@ import BNRCoreDataStack
 class Category: NSManagedObject {
 
 // Insert code here to add functionality to your managed object subclass
+    
+    var color: UIColor {
+        guard let colorHex = self.colorHex as? Int
+            else {
+                return UIColor.blackColor()
+        }
+        return UIColor(hex: colorHex)
+    }
 
 }
 

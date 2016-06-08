@@ -12,10 +12,20 @@ class __HVCCell: UICollectionViewCell {
     
     let summaryVC = SummaryVC(summary: nil)
     
+    var summary: Summary? {
+        get {
+            return self.summaryVC.summary
+        }
+        set {
+            self.summaryVC.summary = newValue
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor.whiteColor()
         
+        self.summaryVC.collectionView.scrollEnabled = false
         self.addSubviewAndFill(self.summaryVC.view)
     }
     

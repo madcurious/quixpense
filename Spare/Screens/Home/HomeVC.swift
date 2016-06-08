@@ -31,6 +31,10 @@ class HomeVC: MDStatefulViewController {
         return fetcher
     }()
     
+    var summaries: [Summary]? {
+        return self.fetcher.sections?.first?.objects as? [Summary]
+    }
+    
     override var primaryView: UIView {
         return self.collectionView
     }
@@ -134,15 +138,15 @@ class HomeVC: MDStatefulViewController {
     
 }
 
+// MARK: - MDPagedCollectionViewDataSource
 extension HomeVC: MDPagedCollectionViewDataSource {
     
     func numberOfItemsInCollectionView(collectionView: MDPagedCollectionView) -> Int {
-        guard let objects = self.fetcher.sections?.first?.objects
+        guard let summaries = self.summaries
             else {
                 return 0
         }
-        let count = objects.count
-        return count
+        return summaries.count
     }
     
     func collectionView(collectionView: MDPagedCollectionView, cellForItemAtIndex index: Int) -> UICollectionViewCell {
@@ -150,11 +154,13 @@ extension HomeVC: MDPagedCollectionViewDataSource {
             else {
                 fatalError()
         }
+        cell.summary = self.summaries?[index]
         return cell
     }
     
 }
 
+// MARK: - MDPagedCollectionViewDelegate
 extension HomeVC: MDPagedCollectionViewDelegate {
     
     func collectionView(collectionView: MDPagedCollectionView, sizeForItemAtIndex index: Int) -> CGSize {

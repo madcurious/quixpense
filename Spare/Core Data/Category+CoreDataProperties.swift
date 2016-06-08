@@ -1,9 +1,9 @@
 //
 //  Category+CoreDataProperties.swift
-//  Spare
+//  
 //
-//  Created by Matt Quiros on 22/04/2016.
-//  Copyright © 2016 Matt Quiros. All rights reserved.
+//  Created by Matt Quiros on 08/06/2016.
+//
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
 //  to delete and recreate this implementation file for your updated model.
@@ -14,8 +14,8 @@ import CoreData
 
 extension Category {
 
+    @NSManaged var colorHex: NSNumber?
     @NSManaged var name: String?
-    @NSManaged var color: NSNumber?
     @NSManaged var expenses: NSSet?
 
 }

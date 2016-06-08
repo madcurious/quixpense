@@ -79,6 +79,7 @@
 		26BC4F9F1CE457140011BE98 /* GlobalFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC4F9E1CE457140011BE98 /* GlobalFunctions.swift */; };
 		26BC4FA11CE45D260011BE98 /* __EEVCPickerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC4FA01CE45D260011BE98 /* __EEVCPickerTextField.swift */; };
 		26C2D5C21CDB5E4800BC73FC /* AddButtonProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C2D5C11CDB5E4800BC73FC /* AddButtonProgressView.swift */; };
+		26C962101D083088007EBA41 /* __SVCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C9620F1D083088007EBA41 /* __SVCCell.swift */; };
 		26E2D37C1CE0E3BA00BA357F /* BaseFormVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E2D37B1CE0E3BA00BA357F /* BaseFormVC.swift */; };
 		26E34A571D057BE8002CE4E8 /* __SVCBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E34A561D057BE8002CE4E8 /* __SVCBannerView.swift */; };
 		26E4E0591937AF690096191A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E4E0581937AF690096191A /* QuartzCore.framework */; };
@@ -210,6 +211,7 @@
 		26BC4F9E1CE457140011BE98 /* GlobalFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalFunctions.swift; sourceTree = "<group>"; };
 		26BC4FA01CE45D260011BE98 /* __EEVCPickerTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __EEVCPickerTextField.swift; sourceTree = "<group>"; };
 		26C2D5C11CDB5E4800BC73FC /* AddButtonProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddButtonProgressView.swift; sourceTree = "<group>"; };
+		26C9620F1D083088007EBA41 /* __SVCCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __SVCCell.swift; sourceTree = "<group>"; };
 		26D4C8F41946E624001B42DC /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		26E2D37B1CE0E3BA00BA357F /* BaseFormVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseFormVC.swift; sourceTree = "<group>"; };
 		26E34A561D057BE8002CE4E8 /* __SVCBannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __SVCBannerView.swift; sourceTree = "<group>"; };
@@ -463,6 +465,7 @@
 				268D23EE1D003573006B8D0B /* SummaryVC.swift */,
 				268D23F01D00370B006B8D0B /* __SVCBannerView.xib */,
 				26E34A561D057BE8002CE4E8 /* __SVCBannerView.swift */,
+				26C9620F1D083088007EBA41 /* __SVCCell.swift */,
 			);
 			path = Summary;
 			sourceTree = "<group>";
@@ -748,6 +751,7 @@
 				269D49FE1CE1649500109990 /* ModalNavBarVC.swift in Sources */,
 				269D49F81CE1610100109990 /* ExpenseEditorVC.swift in Sources */,
 				26BC4F961CE429AE0011BE98 /* ValidateExpenseOperation.swift in Sources */,
+				26C962101D083088007EBA41 /* __SVCCell.swift in Sources */,
 				268D23EC1D001E79006B8D0B /* HomeVC.swift in Sources */,
 				26E2D37C1CE0E3BA00BA357F /* BaseFormVC.swift in Sources */,
 				269D49F51CE1610100109990 /* HRColorMapView.swift in Sources */,

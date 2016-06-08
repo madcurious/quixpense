@@ -27,12 +27,12 @@ class CategoryEditorVC: UIViewController {
         self.managedObjectContext = context
         
         if let category = category,
-            let colorHex = category.color as? Int {
+            let colorHex = category.colorHex as? Int {
             self.category = category
             self.colorMap = HRColorMapView.defaultColorMap(UIColor(hex: colorHex))
         } else {
             self.category = Category(managedObjectContext: context)
-            self.category.color = self.defaultColor.hexValue()
+            self.category.colorHex = self.defaultColor.hexValue()
             self.colorMap = HRColorMapView.defaultColorMap(self.defaultColor)
         }
         
@@ -107,7 +107,7 @@ class CategoryEditorVC: UIViewController {
         self.customView.textField.text = nil
         self.category = Category(managedObjectContext: self.managedObjectContext)
         self.category.name = nil
-        self.category.color = self.getResultingColor().hexValue()
+        self.category.colorHex = self.getResultingColor().hexValue()
     }
     
 }
