@@ -33,8 +33,11 @@ class Summary: NSManagedObject {
                     continue
             }
             
-            totals[category] = expenses.reduce(NSDecimalNumber(integer: 0), combine: {(runningTotal, expense) in
-                return (runningTotal ?? NSDecimalNumber(integer: 0)).decimalNumberByAdding(expense.amount ?? NSDecimalNumber(integer: 0))
+            totals[category] = expenses.reduce(0, combine: {(total, expense) in
+                var runningTotal = total ?? NSDecimalNumber(integer: 0)
+                let amount = expense.amount ?? NSDecimalNumber(integer: 0)
+                runningTotal = runningTotal.decimalNumberByAdding(amount)
+                return runningTotal
             })
         }
         

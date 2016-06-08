@@ -10,7 +10,6 @@ import UIKit
 import Mold
 import BNRCoreDataStack
 
-
 private let kViewID = "kViewID"
 
 private let kLeftRightInset = CGFloat(30)
