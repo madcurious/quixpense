@@ -90,9 +90,10 @@ class HomeVC: MDStatefulViewController {
                             print("startDate: \(df.stringFromDate(summary.startDate!))")
                             print("endDate: \(df.stringFromDate(summary.endDate!))")
                             
-                            let total = try! summary.computeTotals()
-                            for (key, value) in total {
-                                print("\(key.name!) = \(value)")
+                            if let categoryTotals = summary.categoryTotals {
+                                for (key, value) in categoryTotals {
+                                    print("\(key.name!) = \(value)")
+                                }
                             }
                             
                             print("+++++++")

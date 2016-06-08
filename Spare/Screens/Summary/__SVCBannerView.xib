@@ -14,14 +14,14 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VE3-Mo-e2O">
                     <rect key="frame" x="10" y="10" width="432" height="124"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VVu-3N-baC">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VVu-3N-baC" customClass="MDAspectFitLabel" customModule="Mold">
                             <rect key="frame" x="0.0" y="0.0" width="432" height="74.5"/>
                             <color key="backgroundColor" red="0.85098040100000005" green="0.94901961089999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U9Y-xD-jqz">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U9Y-xD-jqz" customClass="MDAspectFitLabel" customModule="Mold">
                             <rect key="frame" x="0.0" y="82.5" width="432" height="41.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -48,9 +48,9 @@
                 <constraint firstAttribute="trailing" secondItem="VE3-Mo-e2O" secondAttribute="trailing" constant="10" id="yug-iN-XLY"/>
             </constraints>
             <connections>
+                <outlet property="dateLabel" destination="U9Y-xD-jqz" id="zX8-Me-TpA"/>
                 <outlet property="labelContainer" destination="VE3-Mo-e2O" id="LLh-r8-Ly0"/>
-                <outlet property="periodLabel" destination="U9Y-xD-jqz" id="i0y-9W-txg"/>
-                <outlet property="totalLabel" destination="VVu-3N-baC" id="7Mx-Qy-hJ2"/>
+                <outlet property="totalLabel" destination="VVu-3N-baC" id="gMQ-XY-mID"/>
             </connections>
             <point key="canvasLocation" x="271" y="180"/>
         </collectionReusableView>

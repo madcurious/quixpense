@@ -12,12 +12,15 @@ import Mold
 class __SVCBannerView: UICollectionReusableView {
     
     @IBOutlet weak var labelContainer: UIView!
-    @IBOutlet weak var totalLabel: UILabel!
-    @IBOutlet weak var periodLabel: UILabel!
+    @IBOutlet weak var totalLabel: MDAspectFitLabel!
+    @IBOutlet weak var dateLabel: MDAspectFitLabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         UIView.clearBackgroundColors(self, self.labelContainer)
+        
+        self.totalLabel.font = Font.text(.Regular, 30)
+        self.dateLabel.font = Font.text(.Regular, 15)
     }
     
 }
