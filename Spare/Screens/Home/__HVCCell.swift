@@ -10,9 +10,13 @@ import UIKit
 
 class __HVCCell: UICollectionViewCell {
     
+    let summaryVC = SummaryVC(summary: nil)
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor.whiteColor()
+        
+        self.addSubviewAndFill(self.summaryVC.view)
     }
     
     required init?(coder aDecoder: NSCoder) {

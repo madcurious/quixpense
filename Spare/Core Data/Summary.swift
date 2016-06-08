@@ -64,7 +64,7 @@ class Summary: NSManagedObject {
         return totals
     }
     
-    var periodTotal: NSDecimalNumber {
+    var total: NSDecimalNumber {
         guard let expenses = self.expenses
             else {
                 return NSDecimalNumber(integer: 0)

@@ -17,10 +17,13 @@ class __SVCBannerView: UICollectionReusableView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        UIView.clearBackgroundColors(self, self.labelContainer)
+        UIView.clearBackgroundColors(self, self.labelContainer, self.totalLabel, self.dateLabel)
         
         self.totalLabel.font = Font.text(.Regular, 30)
+        self.totalLabel.textAlignment = .Center
+        
         self.dateLabel.font = Font.text(.Regular, 15)
+        self.dateLabel.textAlignment = .Center
     }
     
 }

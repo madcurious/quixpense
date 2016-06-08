@@ -16,8 +16,8 @@ private enum ViewID: String {
 
 class SummaryVC: UIViewController {
     
-    var summary: Summary
-    var totals: [Category : NSDecimalNumber]!
+    var summary: Summary? // Optional because the VC may be in a home screen cell whose initial state is undefined.
+    var totals: [Category : NSDecimalNumber]?
     
     var collectionView: UICollectionView
     var layoutManager: UICollectionViewFlowLayout
@@ -26,7 +26,7 @@ class SummaryVC: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(summary: Summary) {
+    init(summary: Summary?) {
         self.summary = summary
         
         self.layoutManager = UICollectionViewFlowLayout()
@@ -43,11 +43,12 @@ class SummaryVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.collectionView.backgroundColor = Color.White
         self.collectionView.registerNib(__SVCBannerView.nib(), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: ViewID.Banner.rawValue)
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
         
-        self.totals = summary.categoryTotals
+        self.totals = summary?.categoryTotals
     }
     
 }
@@ -68,21 +69,13 @@ extension SummaryVC: UICollectionViewDataSource {
     }
     
     func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
-        guard let bannerView = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: ViewID.Banner.rawValue, forIndexPath: indexPath) as? __SVCBannerView,
-            let expenses = self.summary.expenses
+        guard let bannerView = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: ViewID.Banner.rawValue, forIndexPath: indexPath) as? __SVCBannerView
             else {
                 fatalError()
         }
         
-//        bannerView.totalLabel.text = String(format: "$ %.2f",
-//                                            expenses.map({ $0.amount ?? NSDecimalNumber(integer: 0) })
-//                                                .reduce(NSDecimalNumber(integer: 0), combine: { (runningTotal, next) in
-//                                                    return runningTotal.decimalNumberByAdding(next)
-//                                                }))
-        
-        bannerView.totalLabel.text = String(format: "$ %.2f",
-                                            expenses.map({ $0.amount ?? NSDecimalNumber(integer: 0) })
-                                                .reduce(NSDecimalNumber(integer: 0), combine: +))
+        bannerView.totalLabel.text = String(format: "$ %.2f", self.summary?.total ?? 0)
+        bannerView.dateLabel.text = "Today"
         
         return bannerView
     }
@@ -93,6 +86,8 @@ extension SummaryVC: UICollectionViewDelegate {}
 
 extension SummaryVC: UICollectionViewDelegateFlowLayout {
     
-    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSizeMake(collectionView.bounds.size.width, 150)
+    }
     
 }
