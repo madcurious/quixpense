@@ -110,7 +110,7 @@ extension SummaryVC: UICollectionViewDelegateFlowLayout {
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         
         let width = collectionView.bounds.size.width - inset * 2
-        return CGSize(width: width, height: 70)
+        return CGSize(width: width, height: 60)
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {

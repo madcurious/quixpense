@@ -9,30 +9,37 @@
 import UIKit
 
 enum FontWeight {
-    case Light, Regular, Bold, ExtraBold
+    case UltraLight, Light, Regular, Bold, ExtraBold
 }
 
 final class Font {
     
-    static let BarButtonItems = Font.text(.Bold, 14)
-    static let NavigationBarTitle = Font.text(.Bold, 18)
+    static let BarButtonItems = Font.text(.Bold, 16)
+    static let NavigationBarTitle = Font.text(.ExtraBold, 18)
     
     static let FieldLabel = Font.text(.Bold, 14)
-    static let FieldValue = Font.text(.Light, 18)
+    static let FieldValue = Font.text(.Regular, 18)
+    
+    static let SummaryBannerTotal = Font.text(.Bold, 30)
+    static let SummaryBannerDate = Font.text(.Regular, 15)
+    static let SummaryCellText = Font.text(.Regular, 20)
     
     class func text(weight: FontWeight, _ size: CGFloat) -> UIFont {
         switch weight {
+        case .UltraLight:
+            return UIFont(name: "Lato-Hairline", size: size)!
+            
         case .Light:
-            return UIFont(name: "Montserrat-Light", size: size)!
+            return UIFont(name: "Lato-Light", size: size)!
             
         case .Regular:
-            return UIFont(name: "Montserrat-Regular", size: size)!
+            return UIFont(name: "Lato-Regular", size: size)!
             
         case .Bold:
-            return UIFont(name: "Montserrat-Bold", size: size)!
+            return UIFont(name: "Lato-Bold", size: size)!
             
         case .ExtraBold:
-            return UIFont(name: "Montserrat-ExtraBold", size: size)!
+            return UIFont(name: "Lato-Black", size: size)!
         }
     }
     

@@ -38,8 +38,8 @@ class __SVCCell: UICollectionViewCell {
         
         UIView.clearBackgroundColors(self.labelContainer, self.nameLabel, self.totalLabel)
         
-        self.nameLabel.font = Font.text(.Light, 30)
-        self.totalLabel.font = Font.text(.Regular, 30)
+        self.nameLabel.font = Font.SummaryCellText
+        self.totalLabel.font = Font.SummaryCellText
         
         self.nameLabel.textColor = Color.White
         self.totalLabel.textColor = Color.White

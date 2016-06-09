@@ -15,14 +15,6 @@
 		2603F8CF1CCA4C10007F311F /* Expense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2603F8C91CCA4C10007F311F /* Expense.swift */; };
 		2603F8D21CCA4C10007F311F /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2603F8CC1CCA4C10007F311F /* Category+CoreDataProperties.swift */; };
 		2603F8D31CCA4C10007F311F /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2603F8CD1CCA4C10007F311F /* Category.swift */; };
-		261370B21CD7A120007BAF56 /* Montserrat-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 261370AA1CD7A120007BAF56 /* Montserrat-Black.otf */; };
-		261370B31CD7A120007BAF56 /* Montserrat-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 261370AB1CD7A120007BAF56 /* Montserrat-Bold.otf */; };
-		261370B41CD7A120007BAF56 /* Montserrat-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 261370AC1CD7A120007BAF56 /* Montserrat-ExtraBold.otf */; };
-		261370B51CD7A120007BAF56 /* Montserrat-Hairline.otf in Resources */ = {isa = PBXBuildFile; fileRef = 261370AD1CD7A120007BAF56 /* Montserrat-Hairline.otf */; };
-		261370B61CD7A120007BAF56 /* Montserrat-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 261370AE1CD7A120007BAF56 /* Montserrat-Light.otf */; };
-		261370B71CD7A120007BAF56 /* Montserrat-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 261370AF1CD7A120007BAF56 /* Montserrat-Regular.otf */; };
-		261370B81CD7A120007BAF56 /* Montserrat-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 261370B01CD7A120007BAF56 /* Montserrat-SemiBold.otf */; };
-		261370B91CD7A120007BAF56 /* Montserrat-UltraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 261370B11CD7A120007BAF56 /* Montserrat-UltraLight.otf */; };
 		261370BD1CD7A9EC007BAF56 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261370BC1CD7A9EC007BAF56 /* Font.swift */; };
 		261370BF1CD7ABD9007BAF56 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261370BE1CD7ABD9007BAF56 /* Color.swift */; };
 		261370CD1CD87679007BAF56 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261370CC1CD87679007BAF56 /* Strings.swift */; };
@@ -54,6 +46,16 @@
 		2669468F1CC7711000A68424 /* Spare.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 266946571CC7711000A68424 /* Spare.xcdatamodeld */; };
 		266946931CC77A1A00A68424 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266946921CC77A1A00A68424 /* AppDelegate.swift */; };
 		266946AC1CC786EC00A68424 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266946AB1CC786EC00A68424 /* App.swift */; };
+		268BBDAE1D08E99C005C6BD8 /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 268BBDA41D08E99C005C6BD8 /* Lato-Black.ttf */; };
+		268BBDAF1D08E99C005C6BD8 /* Lato-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 268BBDA51D08E99C005C6BD8 /* Lato-BlackItalic.ttf */; };
+		268BBDB01D08E99C005C6BD8 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 268BBDA61D08E99C005C6BD8 /* Lato-Bold.ttf */; };
+		268BBDB11D08E99C005C6BD8 /* Lato-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 268BBDA71D08E99C005C6BD8 /* Lato-BoldItalic.ttf */; };
+		268BBDB21D08E99C005C6BD8 /* Lato-Hairline.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 268BBDA81D08E99C005C6BD8 /* Lato-Hairline.ttf */; };
+		268BBDB31D08E99C005C6BD8 /* Lato-HairlineItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 268BBDA91D08E99C005C6BD8 /* Lato-HairlineItalic.ttf */; };
+		268BBDB41D08E99C005C6BD8 /* Lato-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 268BBDAA1D08E99C005C6BD8 /* Lato-Italic.ttf */; };
+		268BBDB51D08E99C005C6BD8 /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 268BBDAB1D08E99C005C6BD8 /* Lato-Light.ttf */; };
+		268BBDB61D08E99C005C6BD8 /* Lato-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 268BBDAC1D08E99C005C6BD8 /* Lato-LightItalic.ttf */; };
+		268BBDB71D08E99C005C6BD8 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 268BBDAD1D08E99C005C6BD8 /* Lato-Regular.ttf */; };
 		268D23E01D001022006B8D0B /* __HVCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268D23D81D001022006B8D0B /* __HVCCell.swift */; };
 		268D23EC1D001E79006B8D0B /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268D23EB1D001E79006B8D0B /* HomeVC.swift */; };
 		268D23EF1D003573006B8D0B /* SummaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268D23EE1D003573006B8D0B /* SummaryVC.swift */; };
@@ -145,14 +147,6 @@
 		2603F8C91CCA4C10007F311F /* Expense.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Expense.swift; sourceTree = "<group>"; };
 		2603F8CC1CCA4C10007F311F /* Category+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		2603F8CD1CCA4C10007F311F /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
-		261370AA1CD7A120007BAF56 /* Montserrat-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Black.otf"; path = "../../../../Downloads/montserrat/Montserrat-Black.otf"; sourceTree = "<group>"; };
-		261370AB1CD7A120007BAF56 /* Montserrat-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Bold.otf"; path = "../../../../Downloads/montserrat/Montserrat-Bold.otf"; sourceTree = "<group>"; };
-		261370AC1CD7A120007BAF56 /* Montserrat-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-ExtraBold.otf"; path = "../../../../Downloads/montserrat/Montserrat-ExtraBold.otf"; sourceTree = "<group>"; };
-		261370AD1CD7A120007BAF56 /* Montserrat-Hairline.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Hairline.otf"; path = "../../../../Downloads/montserrat/Montserrat-Hairline.otf"; sourceTree = "<group>"; };
-		261370AE1CD7A120007BAF56 /* Montserrat-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Light.otf"; path = "../../../../Downloads/montserrat/Montserrat-Light.otf"; sourceTree = "<group>"; };
-		261370AF1CD7A120007BAF56 /* Montserrat-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Regular.otf"; path = "../../../../Downloads/montserrat/Montserrat-Regular.otf"; sourceTree = "<group>"; };
-		261370B01CD7A120007BAF56 /* Montserrat-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-SemiBold.otf"; path = "../../../../Downloads/montserrat/Montserrat-SemiBold.otf"; sourceTree = "<group>"; };
-		261370B11CD7A120007BAF56 /* Montserrat-UltraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-UltraLight.otf"; path = "../../../../Downloads/montserrat/Montserrat-UltraLight.otf"; sourceTree = "<group>"; };
 		261370BC1CD7A9EC007BAF56 /* Font.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		261370BE1CD7ABD9007BAF56 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		261370CC1CD87679007BAF56 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
@@ -187,6 +181,16 @@
 		266946911CC77A1900A68424 /* Spare-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Spare-Bridging-Header.h"; sourceTree = "<group>"; };
 		266946921CC77A1A00A68424 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		266946AB1CC786EC00A68424 /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		268BBDA41D08E99C005C6BD8 /* Lato-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Black.ttf"; sourceTree = "<group>"; };
+		268BBDA51D08E99C005C6BD8 /* Lato-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-BlackItalic.ttf"; sourceTree = "<group>"; };
+		268BBDA61D08E99C005C6BD8 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
+		268BBDA71D08E99C005C6BD8 /* Lato-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-BoldItalic.ttf"; sourceTree = "<group>"; };
+		268BBDA81D08E99C005C6BD8 /* Lato-Hairline.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Hairline.ttf"; sourceTree = "<group>"; };
+		268BBDA91D08E99C005C6BD8 /* Lato-HairlineItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-HairlineItalic.ttf"; sourceTree = "<group>"; };
+		268BBDAA1D08E99C005C6BD8 /* Lato-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Italic.ttf"; sourceTree = "<group>"; };
+		268BBDAB1D08E99C005C6BD8 /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Light.ttf"; sourceTree = "<group>"; };
+		268BBDAC1D08E99C005C6BD8 /* Lato-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-LightItalic.ttf"; sourceTree = "<group>"; };
+		268BBDAD1D08E99C005C6BD8 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
 		268D23D81D001022006B8D0B /* __HVCCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __HVCCell.swift; sourceTree = "<group>"; };
 		268D23EB1D001E79006B8D0B /* HomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		268D23EE1D003573006B8D0B /* SummaryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryVC.swift; sourceTree = "<group>"; };
@@ -331,14 +335,16 @@
 			isa = PBXGroup;
 			children = (
 				26EFA00A1CD9DE8100714E5D /* spare-v2.ttf */,
-				261370AA1CD7A120007BAF56 /* Montserrat-Black.otf */,
-				261370AB1CD7A120007BAF56 /* Montserrat-Bold.otf */,
-				261370AC1CD7A120007BAF56 /* Montserrat-ExtraBold.otf */,
-				261370AD1CD7A120007BAF56 /* Montserrat-Hairline.otf */,
-				261370AE1CD7A120007BAF56 /* Montserrat-Light.otf */,
-				261370AF1CD7A120007BAF56 /* Montserrat-Regular.otf */,
-				261370B01CD7A120007BAF56 /* Montserrat-SemiBold.otf */,
-				261370B11CD7A120007BAF56 /* Montserrat-UltraLight.otf */,
+				268BBDA41D08E99C005C6BD8 /* Lato-Black.ttf */,
+				268BBDA51D08E99C005C6BD8 /* Lato-BlackItalic.ttf */,
+				268BBDA61D08E99C005C6BD8 /* Lato-Bold.ttf */,
+				268BBDA71D08E99C005C6BD8 /* Lato-BoldItalic.ttf */,
+				268BBDA81D08E99C005C6BD8 /* Lato-Hairline.ttf */,
+				268BBDA91D08E99C005C6BD8 /* Lato-HairlineItalic.ttf */,
+				268BBDAA1D08E99C005C6BD8 /* Lato-Italic.ttf */,
+				268BBDAB1D08E99C005C6BD8 /* Lato-Light.ttf */,
+				268BBDAC1D08E99C005C6BD8 /* Lato-LightItalic.ttf */,
+				268BBDAD1D08E99C005C6BD8 /* Lato-Regular.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -634,28 +640,30 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				261370B41CD7A120007BAF56 /* Montserrat-ExtraBold.otf in Resources */,
-				261370B71CD7A120007BAF56 /* Montserrat-Regular.otf in Resources */,
+				268BBDAE1D08E99C005C6BD8 /* Lato-Black.ttf in Resources */,
+				268BBDB01D08E99C005C6BD8 /* Lato-Bold.ttf in Resources */,
 				266946841CC7711000A68424 /* Default@2x.png in Resources */,
 				2603F8C31CCA45FF007F311F /* LaunchScreen.storyboard in Resources */,
-				261370B21CD7A120007BAF56 /* Montserrat-Black.otf in Resources */,
+				268BBDB61D08E99C005C6BD8 /* Lato-LightItalic.ttf in Resources */,
 				2669468B1CC7711000A68424 /* iPhone.storyboard in Resources */,
+				268BBDB71D08E99C005C6BD8 /* Lato-Regular.ttf in Resources */,
 				269D49F71CE1610100109990 /* __EEVCView.xib in Resources */,
 				26C962121D0839A4007EBA41 /* __SVCCell.xib in Resources */,
-				261370B91CD7A120007BAF56 /* Montserrat-UltraLight.otf in Resources */,
-				261370B81CD7A120007BAF56 /* Montserrat-SemiBold.otf in Resources */,
 				26E6EDB41CDBA6C60034EEDE /* AddButtonProgressView.xib in Resources */,
 				2669468A1CC7711000A68424 /* Images.xcassets in Resources */,
 				26EFA00F1CD9E00200714E5D /* MainTabBar.xib in Resources */,
-				261370B51CD7A120007BAF56 /* Montserrat-Hairline.otf in Resources */,
 				266946871CC7711000A68424 /* Icon-60@2x.png in Resources */,
+				268BBDB31D08E99C005C6BD8 /* Lato-HairlineItalic.ttf in Resources */,
+				268BBDB41D08E99C005C6BD8 /* Lato-Italic.ttf in Resources */,
 				268D23F11D00370B006B8D0B /* __SVCBannerView.xib in Resources */,
-				261370B61CD7A120007BAF56 /* Montserrat-Light.otf in Resources */,
+				268BBDB51D08E99C005C6BD8 /* Lato-Light.ttf in Resources */,
 				266946891CC7711000A68424 /* Icon@2x.png in Resources */,
 				266946861CC7711000A68424 /* Icon-40@2x.png in Resources */,
+				268BBDB11D08E99C005C6BD8 /* Lato-BoldItalic.ttf in Resources */,
+				268BBDB21D08E99C005C6BD8 /* Lato-Hairline.ttf in Resources */,
+				268BBDAF1D08E99C005C6BD8 /* Lato-BlackItalic.ttf in Resources */,
 				26EFA00B1CD9DE8100714E5D /* spare-v2.ttf in Resources */,
 				266946881CC7711000A68424 /* Icon-Small@2x.png in Resources */,
-				261370B31CD7A120007BAF56 /* Montserrat-Bold.otf in Resources */,
 				26EFA0051CD9C91A00714E5D /* __MCVCView.xib in Resources */,
 				266946851CC7711000A68424 /* InfoPlist.strings in Resources */,
 				269D49F31CE1610100109990 /* __CEVCView.xib in Resources */,
