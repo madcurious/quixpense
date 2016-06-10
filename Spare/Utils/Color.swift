@@ -25,6 +25,7 @@ class Color {
     
     /// Tab bar button selected background color.
     private static let Gray200 = UIColor(hex: 0xcdcdcd)
+    private static let Gray500 = UIColor(hex: 0xc3c3c3)
     
     /// Form field label text color.
     private static let Gray700 = UIColor(hex: 0x666666)
@@ -33,6 +34,7 @@ class Color {
     private static let Gray900 = UIColor(hex: 0x2a2a2a)
     
     static let HomeBackgroundColor = Gray100
+    static let HomeCellBorderColor = Gray500
     
     static let FormBackgroundColor = Gray100
     static let FormFieldLabelTextColor = Gray700

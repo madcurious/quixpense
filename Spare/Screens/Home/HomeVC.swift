@@ -59,7 +59,7 @@ class HomeVC: MDStatefulViewController {
         }
         
         self.collectionView.backgroundColor = Color.HomeBackgroundColor
-        self.collectionView.registerCellClass(__HVCCell.self, withReuseIdentifier: kViewID)
+        self.collectionView.registerCellNib(__HVCCell.nib(), withReuseIdentifier: kViewID)
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
         

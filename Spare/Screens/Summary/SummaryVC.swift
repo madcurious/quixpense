@@ -104,7 +104,7 @@ private let inset = CGFloat(10)
 extension SummaryVC: UICollectionViewDelegateFlowLayout {
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSizeMake(collectionView.bounds.size.width, 130)
+        return CGSizeMake(collectionView.bounds.size.width, 120)
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {

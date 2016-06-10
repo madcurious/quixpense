@@ -10,6 +10,12 @@ import UIKit
 
 class __HVCCell: UICollectionViewCell {
     
+    @IBOutlet weak var borderView: UIView!
+    @IBOutlet weak var summaryVCContainer: UIView!
+    
+    @IBOutlet var borderConstraints: [NSLayoutConstraint]!
+    
+    
     let summaryVC = SummaryVC(summary: nil)
     
     var summary: Summary? {
@@ -21,16 +27,21 @@ class __HVCCell: UICollectionViewCell {
         }
     }
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.backgroundColor = UIColor.whiteColor()
+    override func awakeFromNib() {
+        super.awakeFromNib()
         
-//        self.summaryVC.collectionView.scrollEnabled = false
-        self.addSubviewAndFill(self.summaryVC.view)
+        self.contentView.backgroundColor = UIColor.clearColor()
+        self.borderView.backgroundColor = Color.HomeCellBorderColor
+        
+        self.summaryVCContainer.addSubviewAndFill(self.summaryVC.view)
+        self.setNeedsUpdateConstraints()
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    override func updateConstraints() {
+        for constraint in self.borderConstraints {
+            constraint.constant = 0.5
+        }
+        super.updateConstraints()
     }
     
 }

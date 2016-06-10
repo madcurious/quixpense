@@ -30,6 +30,7 @@
 		261EB88E18DDB631009DDF78 /* SpareTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 261EB88D18DDB631009DDF78 /* SpareTests.m */; };
 		262F839B1CCE3E5300EDDDEE /* LoadAppVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262F839A1CCE3E5300EDDDEE /* LoadAppVC.swift */; };
 		262F839D1CCE3E6C00EDDDEE /* LoadAppOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262F839C1CCE3E6C00EDDDEE /* LoadAppOperation.swift */; };
+		265849021D0AD5C10047BCFA /* __HVCCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 265849011D0AD5C10047BCFA /* __HVCCell.xib */; };
 		2666C2C61957CF7A003752BF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2666C2C41957CF7A003752BF /* SystemConfiguration.framework */; };
 		2666C2C81957CF93003752BF /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2666C2C71957CF93003752BF /* libz.dylib */; };
 		2666C2CA1957CFA1003752BF /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2666C2C91957CFA1003752BF /* libsqlite3.dylib */; };
@@ -162,6 +163,7 @@
 		261EB88D18DDB631009DDF78 /* SpareTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpareTests.m; sourceTree = "<group>"; };
 		262F839A1CCE3E5300EDDDEE /* LoadAppVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadAppVC.swift; sourceTree = "<group>"; };
 		262F839C1CCE3E6C00EDDDEE /* LoadAppOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadAppOperation.swift; sourceTree = "<group>"; };
+		265849011D0AD5C10047BCFA /* __HVCCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __HVCCell.xib; sourceTree = "<group>"; };
 		2666C2C11957CF4F003752BF /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalyticsServices.a; path = GoogleAnalytics/libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
 		2666C2C31957CF7A003752BF /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		2666C2C41957CF7A003752BF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -289,6 +291,7 @@
 			children = (
 				268D23EB1D001E79006B8D0B /* HomeVC.swift */,
 				268D23D81D001022006B8D0B /* __HVCCell.swift */,
+				265849011D0AD5C10047BCFA /* __HVCCell.xib */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -643,6 +646,7 @@
 				268BBDAE1D08E99C005C6BD8 /* Lato-Black.ttf in Resources */,
 				268BBDB01D08E99C005C6BD8 /* Lato-Bold.ttf in Resources */,
 				266946841CC7711000A68424 /* Default@2x.png in Resources */,
+				265849021D0AD5C10047BCFA /* __HVCCell.xib in Resources */,
 				2603F8C31CCA45FF007F311F /* LaunchScreen.storyboard in Resources */,
 				268BBDB61D08E99C005C6BD8 /* Lato-LightItalic.ttf in Resources */,
 				2669468B1CC7711000A68424 /* iPhone.storyboard in Resources */,
