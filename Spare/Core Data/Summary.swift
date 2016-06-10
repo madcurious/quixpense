@@ -64,6 +64,9 @@ class Summary: NSManagedObject {
         return totals
     }
     
+    /**
+     Returns the total of all the categories' totals, or all the expenses.
+     */
     var total: NSDecimalNumber {
         guard let expenses = self.expenses
             else {

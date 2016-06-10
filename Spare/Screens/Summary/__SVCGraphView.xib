@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="SKo-LP-ETi" customClass="__SVCGraphView" customModule="Spare" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="468" height="424"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QuX-fQ-vdV" customClass="__SVCSegmentedCircle" customModule="Spare" customModuleProvider="target">
+                    <rect key="frame" x="52.5" y="30.5" width="363" height="363"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1qg-qh-WsY">
+                            <rect key="frame" x="45.5" y="91" width="272" height="181.5"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m0b-gm-aCc" customClass="MDAspectFitLabel" customModule="Mold">
+                                    <rect key="frame" x="0.0" y="121" width="272" height="60.5"/>
+                                    <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hhI-1F-yen" customClass="MDAspectFitLabel" customModule="Mold">
+                                    <rect key="frame" x="0.0" y="0.0" width="272" height="121"/>
+                                    <color key="backgroundColor" red="1" green="0.98823529409999999" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="m0b-gm-aCc" secondAttribute="bottom" id="2XE-2i-lYz"/>
+                                <constraint firstItem="hhI-1F-yen" firstAttribute="leading" secondItem="1qg-qh-WsY" secondAttribute="leading" id="JUe-Hm-xDJ"/>
+                                <constraint firstItem="m0b-gm-aCc" firstAttribute="top" secondItem="hhI-1F-yen" secondAttribute="bottom" id="Lti-PS-Ke9"/>
+                                <constraint firstItem="hhI-1F-yen" firstAttribute="height" secondItem="1qg-qh-WsY" secondAttribute="height" multiplier="2:3" id="SC9-jC-0q3"/>
+                                <constraint firstItem="hhI-1F-yen" firstAttribute="top" secondItem="1qg-qh-WsY" secondAttribute="top" id="UDO-Ju-x1d"/>
+                                <constraint firstAttribute="trailing" secondItem="hhI-1F-yen" secondAttribute="trailing" id="oCK-TT-n2D"/>
+                                <constraint firstAttribute="trailing" secondItem="m0b-gm-aCc" secondAttribute="trailing" id="oRk-mU-xrj"/>
+                                <constraint firstItem="m0b-gm-aCc" firstAttribute="leading" secondItem="1qg-qh-WsY" secondAttribute="leading" id="tQ3-Zn-sfA"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" red="0.85098040100000005" green="0.94901961089999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="1qg-qh-WsY" firstAttribute="centerX" secondItem="QuX-fQ-vdV" secondAttribute="centerX" id="5Qx-Nz-GZD"/>
+                        <constraint firstAttribute="width" secondItem="QuX-fQ-vdV" secondAttribute="height" id="6qK-dt-jsf"/>
+                        <constraint firstItem="1qg-qh-WsY" firstAttribute="centerY" secondItem="QuX-fQ-vdV" secondAttribute="centerY" id="Fkw-nE-kDd"/>
+                        <constraint firstItem="1qg-qh-WsY" firstAttribute="height" secondItem="QuX-fQ-vdV" secondAttribute="height" multiplier="1:2" id="i3z-ZU-TlM"/>
+                        <constraint firstItem="1qg-qh-WsY" firstAttribute="width" secondItem="QuX-fQ-vdV" secondAttribute="width" multiplier="3:4" id="yKR-WC-4rw"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstItem="QuX-fQ-vdV" firstAttribute="height" secondItem="SKo-LP-ETi" secondAttribute="height" multiplier="6:7" id="Ifx-1o-YHa"/>
+                <constraint firstItem="QuX-fQ-vdV" firstAttribute="centerX" secondItem="SKo-LP-ETi" secondAttribute="centerX" id="gDv-I4-j2Y"/>
+                <constraint firstItem="QuX-fQ-vdV" firstAttribute="centerY" secondItem="SKo-LP-ETi" secondAttribute="centerY" id="niA-EB-uov"/>
+            </constraints>
+            <connections>
+                <outlet property="dateLabel" destination="m0b-gm-aCc" id="ax5-UQ-0gc"/>
+                <outlet property="labelContainer" destination="1qg-qh-WsY" id="g6B-me-tH4"/>
+                <outlet property="segmentedCircle" destination="QuX-fQ-vdV" id="Il7-fd-HpK"/>
+                <outlet property="totalLabel" destination="hhI-1F-yen" id="0Wn-Vr-JnD"/>
+            </connections>
+            <point key="canvasLocation" x="569" y="317"/>
+        </collectionReusableView>
+    </objects>
+</document>

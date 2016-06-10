@@ -10,7 +10,7 @@ import UIKit
 import Mold
 
 private enum ViewID: String {
-    case Banner = "Banner"
+    case Graph = "Graph"
     case Cell = "Cell"
 }
 
@@ -50,7 +50,7 @@ class SummaryVC: UIViewController {
         super.viewDidLoad()
         
         self.collectionView.backgroundColor = Color.White
-        self.collectionView.registerNib(__SVCBannerView.nib(), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: ViewID.Banner.rawValue)
+        self.collectionView.registerNib(__SVCGraphView.nib(), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: ViewID.Graph.rawValue)
         self.collectionView.registerNib(__SVCCell.nib(), forCellWithReuseIdentifier: ViewID.Cell.rawValue)
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
@@ -83,15 +83,15 @@ extension SummaryVC: UICollectionViewDataSource {
     }
     
     func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
-        guard let bannerView = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: ViewID.Banner.rawValue, forIndexPath: indexPath) as? __SVCBannerView
+        guard let graphView = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: ViewID.Graph.rawValue, forIndexPath: indexPath) as? __SVCGraphView
             else {
                 fatalError()
         }
         
-        bannerView.totalLabel.text = String(format: "$ %.2f", self.summary?.total ?? 0)
-        bannerView.dateLabel.text = "Today"
+        graphView.totalLabel.text = String(format: "$ %.2f", self.summary?.total ?? 0)
+        graphView.dateLabel.text = "Today"
         
-        return bannerView
+        return graphView
     }
     
 }
@@ -104,7 +104,7 @@ private let inset = CGFloat(10)
 extension SummaryVC: UICollectionViewDelegateFlowLayout {
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSizeMake(collectionView.bounds.size.width, 120)
+        return CGSizeMake(collectionView.bounds.size.width, collectionView.bounds.size.width)
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
