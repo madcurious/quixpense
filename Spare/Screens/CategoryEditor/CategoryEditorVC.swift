@@ -46,7 +46,7 @@ class CategoryEditorVC: UIViewController {
         self.customView.colorMap = self.colorMap
         self.customView.slider = self.slider
         
-        self.updateTextViewColor()
+        self.customView.textField.backgroundColor = self.getResultingColor()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -80,16 +80,16 @@ class CategoryEditorVC: UIViewController {
         // should be displayed.
         self.colorMap.cursor.hidden = false
         
-        self.slider.color = self.getResultingColor()
-        self.updateTextViewColor()
+        // Reset the brightness to 100%.
+        self.slider.color = self.colorMap.color
+        
+        self.customView.textField.backgroundColor = self.getResultingColor()
+        self.category.colorHex = self.getResultingColor().hexValue()
     }
     
     func handleBrightnessValueChange(sender: AnyObject) {
-        self.updateTextViewColor()
-    }
-    
-    func updateTextViewColor() {
         self.customView.textField.backgroundColor = self.getResultingColor()
+        self.category.colorHex = self.getResultingColor().hexValue()
     }
     
     func getResultingColor() -> UIColor {
