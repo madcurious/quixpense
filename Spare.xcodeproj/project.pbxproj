@@ -54,6 +54,8 @@
 		2687FA341D0EC2E900D544F5 /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2687FA2C1D0EC2E900D544F5 /* Icon.swift */; };
 		2687FA351D0EC2E900D544F5 /* PaymentMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2687FA2D1D0EC2E900D544F5 /* PaymentMethod.swift */; };
 		2687FA361D0EC2E900D544F5 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2687FA2E1D0EC2E900D544F5 /* Strings.swift */; };
+		2687FA3A1D0EC40D00D544F5 /* Summarization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2687FA391D0EC40D00D544F5 /* Summarization.swift */; };
+		2687FA3C1D0EC46F00D544F5 /* CreateSummariesOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2687FA3B1D0EC46F00D544F5 /* CreateSummariesOperation.swift */; };
 		268BBDAE1D08E99C005C6BD8 /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 268BBDA41D08E99C005C6BD8 /* Lato-Black.ttf */; };
 		268BBDAF1D08E99C005C6BD8 /* Lato-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 268BBDA51D08E99C005C6BD8 /* Lato-BlackItalic.ttf */; };
 		268BBDB01D08E99C005C6BD8 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 268BBDA61D08E99C005C6BD8 /* Lato-Bold.ttf */; };
@@ -192,6 +194,8 @@
 		2687FA2C1D0EC2E900D544F5 /* Icon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
 		2687FA2D1D0EC2E900D544F5 /* PaymentMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethod.swift; sourceTree = "<group>"; };
 		2687FA2E1D0EC2E900D544F5 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		2687FA391D0EC40D00D544F5 /* Summarization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Summarization.swift; sourceTree = "<group>"; };
+		2687FA3B1D0EC46F00D544F5 /* CreateSummariesOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateSummariesOperation.swift; sourceTree = "<group>"; };
 		268BBDA41D08E99C005C6BD8 /* Lato-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Black.ttf"; sourceTree = "<group>"; };
 		268BBDA51D08E99C005C6BD8 /* Lato-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-BlackItalic.ttf"; sourceTree = "<group>"; };
 		268BBDA61D08E99C005C6BD8 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
@@ -296,6 +300,7 @@
 				268D23EB1D001E79006B8D0B /* HomeVC.swift */,
 				268D23D81D001022006B8D0B /* __HVCCell.swift */,
 				265849011D0AD5C10047BCFA /* __HVCCell.xib */,
+				2687FA3B1D0EC46F00D544F5 /* CreateSummariesOperation.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -469,6 +474,7 @@
 				2687FA2C1D0EC2E900D544F5 /* Icon.swift */,
 				2687FA2D1D0EC2E900D544F5 /* PaymentMethod.swift */,
 				2687FA2E1D0EC2E900D544F5 /* Strings.swift */,
+				2687FA391D0EC40D00D544F5 /* Summarization.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -746,7 +752,9 @@
 				268D23EF1D003573006B8D0B /* SummaryVC.swift in Sources */,
 				262F839D1CCE3E6C00EDDDEE /* LoadAppOperation.swift in Sources */,
 				266946931CC77A1A00A68424 /* AppDelegate.swift in Sources */,
+				2687FA3C1D0EC46F00D544F5 /* CreateSummariesOperation.swift in Sources */,
 				26E7FA7B1CDB332F000E2181 /* BaseTabButton.swift in Sources */,
+				2687FA3A1D0EC40D00D544F5 /* Summarization.swift in Sources */,
 				269D49F41CE1610100109990 /* CategoryEditorVC.swift in Sources */,
 				2687FA341D0EC2E900D544F5 /* Icon.swift in Sources */,
 				265849061D0ADDF60047BCFA /* __SVCGraphView.swift in Sources */,
