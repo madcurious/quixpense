@@ -1,33 +1,43 @@
 //
 //  Summary.swift
-//  
+//  Spare
 //
-//  Created by Matt Quiros on 11/05/2016.
-//
+//  Created by Matt Quiros on 14/06/2016.
+//  Copyright © 2016 Matt Quiros. All rights reserved.
 //
 
 import Foundation
-import CoreData
 import BNRCoreDataStack
 import Mold
 
-class Summary: NSManagedObject {
-
-// Insert code here to add functionality to your managed object subclass
+struct Summary {
     
-    /**
-     Returns all the expenses within the summary's period. This invokes the fetched property `expenses`
-     defined in the managed object model.
-     */
-    @NSManaged var expenses: [Expense]?
+    var startDate: NSDate
+    var endDate: NSDate
+    var periodization: Periodization
     
-    /**
-     Returns all the categories in the same MOC as the summary.
-     */
+    static let dateFormatter: NSDateFormatter = {
+        let formatter = NSDateFormatter()
+        formatter.timeZone = NSTimeZone.localTimeZone()
+        formatter.dateStyle = .FullStyle
+        return formatter
+    }()
+    
+    var expenses: [Expense]? {
+        do {
+            let request = NSFetchRequest(entityName: Expense.entityName)
+            request.predicate = NSPredicate(format: "dateSpent >= %@ AND dateSpent <= %@", self.startDate, self.endDate)
+            if let expenses = try App.state.mainQueueContext.executeFetchRequest(request) as? [Expense] {
+                return expenses
+            }
+        } catch {}
+        return nil
+    }
+    
     var categories: [Category]? {
         do {
             let request = NSFetchRequest(entityName: Category.entityName)
-            if let categories = try self.managedObjectContext?.executeFetchRequest(request) as? [Category] {
+            if let categories = try App.state.mainQueueContext.executeFetchRequest(request) as? [Category] {
                 return categories
             }
         } catch {
@@ -65,7 +75,7 @@ class Summary: NSManagedObject {
     }
     
     /**
-     Returns the total of all the categories' totals, or all the expenses.
+     Returns the total of all the expenses in this date range.
      */
     var total: NSDecimalNumber {
         guard let expenses = self.expenses
@@ -75,14 +85,19 @@ class Summary: NSManagedObject {
         
         return expenses.map({ $0.amount ?? NSDecimalNumber(integer: 0)}).reduce(0, combine: +)
     }
-
-}
-
-
-extension Summary: CoreDataModelable {
     
-    static var entityName: String {
-        return "Summary"
+    var dateRangeDisplayText: String {
+        switch self.periodization {
+        case .Day:
+            if self.startDate.isSameDayAsDate(NSDate()) {
+                return "Today"
+            } else {
+                return Summary.dateFormatter.stringFromDate(self.startDate)
+            }
+            
+        default:
+            fatalError("Unimplemented")
+        }
     }
     
 }

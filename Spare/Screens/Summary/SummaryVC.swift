@@ -89,7 +89,7 @@ extension SummaryVC: UICollectionViewDataSource {
         }
         
         graphView.totalLabel.text = String(format: "$ %.2f", self.summary?.total ?? 0)
-        graphView.dateLabel.text = "Today"
+        graphView.summary = self.summary
         
         return graphView
     }

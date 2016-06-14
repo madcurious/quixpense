@@ -10,7 +10,7 @@ import UIKit
 
 class __SVCSegmentedCircle: UIView {
     
-    weak var summary: Summary? {
+    var summary: Summary? {
         didSet {
             self.setNeedsDisplay()
         }

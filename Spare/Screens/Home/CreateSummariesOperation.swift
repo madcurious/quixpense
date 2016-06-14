@@ -8,44 +8,40 @@
 
 import Foundation
 import Mold
-import CoreData
 
 class CreateSummariesOperation: MDOperation {
     
-    var parentContext: NSManagedObjectContext
     var baseDate: NSDate
-    var summarization: Summarization
+    var periodization: Periodization
     var count: Int
     var precount: Int
     
-    init(context: NSManagedObjectContext, baseDate: NSDate, summarization: Summarization, count: Int, precount: Int) {
-        self.parentContext = context
+    init(baseDate: NSDate, periodization: Periodization, count: Int, precount: Int) {
         self.baseDate = baseDate
-        self.summarization = summarization
+        self.periodization = periodization
         self.count = count
         self.precount = precount
     }
     
     override func buildResult(object: Any?) throws -> Any? {
-        let context = NSManagedObjectContext(concurrencyType: .PrivateQueueConcurrencyType)
-        context.parentContext = self.parentContext
-        
+        var summaries = [Summary]()
         for i in 0 ..< self.count {
             let (startDate, endDate) = self.dateRangeForPage(self.precount + i)
-            let summary = Summary(managedObjectContext: context)
-            summary.startDate = startDate
-            summary.endDate = endDate
+            let summary = Summary(startDate: startDate, endDate: endDate, periodization: self.periodization)
+            summaries.insert(summary, atIndex: 0)
+            
+            if self.cancelled {
+                return nil
+            }
         }
-        
-        try context.save()
-        return nil
+        return summaries
     }
     
     func dateRangeForPage(page: Int) -> (NSDate, NSDate) {
         let calendar = NSCalendar.currentCalendar()
-        switch self.summarization {
+        switch self.periodization {
         case .Day:
-            let date = calendar.dateByAddingUnit(.Day, value: page, toDate: self.baseDate, options: [])!
+            let date = calendar.dateByAddingUnit(.Day, value: page * -1, toDate: self.baseDate, options: [])!
             return (date.firstMoment(), date.lastMoment())
             
         default:

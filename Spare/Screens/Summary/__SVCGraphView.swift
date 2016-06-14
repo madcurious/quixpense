@@ -16,9 +16,17 @@ class __SVCGraphView: UICollectionReusableView {
     @IBOutlet weak var totalLabel: MDAspectFitLabel!
     @IBOutlet weak var dateLabel: MDAspectFitLabel!
     
-    weak var summary: Summary? {
+    let dateFormatter: NSDateFormatter = {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.timeZone = NSTimeZone.localTimeZone()
+        dateFormatter.dateStyle = .FullStyle
+        return dateFormatter
+    }()
+    
+    var summary: Summary? {
         didSet {
             self.segmentedCircle.summary = self.summary
+            self.dateLabel.text = self.summary?.dateRangeDisplayText
         }
     }
     
