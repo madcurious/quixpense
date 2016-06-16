@@ -51,9 +51,12 @@ class SummaryVC: UIViewController {
         super.viewDidLoad()
         
         self.collectionView.backgroundColor = Color.White
+        self.collectionView.showsVerticalScrollIndicator = false
+        
         self.collectionView.registerNib(__SVCGraphView.nib(), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: ViewID.Graph.rawValue)
         self.collectionView.registerNib(__SVCCell.nib(), forCellWithReuseIdentifier: ViewID.Cell.rawValue)
         self.collectionView.registerNib(__SVCFooterView.nib(), forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: ViewID.Footer.rawValue)
+        
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
         
