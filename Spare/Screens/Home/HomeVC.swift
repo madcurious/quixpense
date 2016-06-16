@@ -43,10 +43,10 @@ class HomeVC: MDStatefulViewController {
         if let navController = self.navigationController {
             navController.navigationBar.shadowImage = UIImage()
             navController.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
-            navController.navigationBar.backgroundColor = Color.HomeBackgroundColor
+            navController.navigationBar.backgroundColor = Color.ScreenBackgroundColorLightGray
         }
         
-        self.collectionView.backgroundColor = Color.HomeBackgroundColor
+        self.collectionView.backgroundColor = Color.ScreenBackgroundColorLightGray
         self.collectionView.registerCellNib(__HVCCell.nib(), withReuseIdentifier: kViewID)
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
@@ -137,7 +137,7 @@ extension HomeVC: MDPagedCollectionViewDelegate {
     
     func collectionView(collectionView: MDPagedCollectionView, didScrollToPage page: CGFloat) {
         if let operation = self.buildOperation()
-            where page == 5 && self.isCreatingSummaries == false {
+            where page <= 5 && self.isCreatingSummaries == false {
             self.operationQueue.addOperation(operation)
         }
     }

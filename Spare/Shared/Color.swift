@@ -11,44 +11,37 @@ import Mold
 
 class Color {
     
+    // MARK: - Palette
+    
     static let White = UIColor.whiteColor()
     static let Black = UIColor.blackColor()
     
     // Numbers indicate brightness; smaller = brighter.
     
+    private static let Gray50 = UIColor(hex: 0xf6f6f6)
     private static let Gray100 = UIColor(hex: 0xf0f2f6)
-    private static let Gray150 = UIColor(hex: 0xf6f6f6)
-    private static let Gray160 = UIColor(hex: 0xe6e6e6)
-    
-    /// Form placeholder text color.
-    private static let Gray170 = UIColor(hex: 0xc7c7cd)
-    
-    /// Tab bar button selected background color.
-    private static let Gray200 = UIColor(hex: 0xcdcdcd)
-    private static let Gray500 = UIColor(hex: 0xc3c3c3)
-    
-    /// Form field label text color.
+    private static let Gray200 = UIColor(hex: 0xe6e6e6)
+    private static let Gray400 = UIColor(hex: 0xcdcdcd)
     private static let Gray700 = UIColor(hex: 0x666666)
     
-    /// Modal navigation bar background color.
-    private static let Gray900 = UIColor(hex: 0x2a2a2a)
+    // MARK: - UI Colors
     
-    static let HomeBackgroundColor = Gray100
-    static let HomeCellBorderColor = Gray500
+    static let HomeCellBorderColor = Gray400
     
-    static let FormBackgroundColor = Gray100
     static let FormFieldLabelTextColor = Gray700
     static let FormFieldValueTextColor = Black
-    static let FormPlaceholderTextColor = Gray200
+    static let FormPlaceholderTextColor = Gray400
     
     static let ModalNavigationBarBackgroundColor = White
     static let ModalNavigationBarTintColor = Gray700
     
     static let ScreenBackgroundColorLightGray = Gray100
     
-    static let TabButtonHighlightBackgroundColor = Gray150
+    static let SegmentedCircleEmptyColor = Gray200
+    
+    static let TabButtonHighlightBackgroundColor = Gray50
     static let TabButtonIconColor = Gray700
-    static let TabButtonSelectedBackgroundColor = Gray200
+    static let TabButtonSelectedBackgroundColor = Gray400
     
     
 }

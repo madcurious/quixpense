@@ -54,7 +54,7 @@ class __CEVCView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.backgroundColor = Color.FormBackgroundColor
+        self.backgroundColor = Color.ScreenBackgroundColorLightGray
         self.textFieldContainer.backgroundColor = Color.White
         self.colorMapExtendedArea.backgroundColor = UIColor.clearColor()
         self.colorMapBorderView.backgroundColor = Color.White

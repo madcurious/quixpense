@@ -23,11 +23,15 @@ struct Summary {
         return formatter
     }()
     
+    /**
+     Returns an array of all the expenses in the date range, or nil if none were found.
+     */
     var expenses: [Expense]? {
         do {
             let request = NSFetchRequest(entityName: Expense.entityName)
             request.predicate = NSPredicate(format: "dateSpent >= %@ AND dateSpent <= %@", self.startDate, self.endDate)
-            if let expenses = try App.state.mainQueueContext.executeFetchRequest(request) as? [Expense] {
+            if let expenses = try App.state.mainQueueContext.executeFetchRequest(request) as? [Expense]
+                where expenses.isEmpty == false {
                 return expenses
             }
         } catch {}
@@ -51,18 +55,17 @@ struct Summary {
      Potentially an expensive computed property, so call conscientiously.
      */
     var categoryTotals: [Category : NSDecimalNumber]? {
-        guard let categories = self.categories,
-            let expenses = self.expenses
+        guard let categories = self.categories
             else {
                 return nil
         }
         
-        let groups = expenses.group({ $0.category })
+        let groups = self.expenses?.groupBy({ $0.category })
         var totals: [Category : NSDecimalNumber] = [:]
         for category in categories {
             // If the category isn't in the grouping dictionary, then it doesn't have any expenses
             // and its total should be set to 0.
-            guard let expenses = groups[category]
+            guard let expenses = groups?[category]
                 else {
                     totals[category] = 0
                     continue

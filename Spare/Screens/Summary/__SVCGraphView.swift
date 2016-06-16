@@ -13,8 +13,8 @@ class __SVCGraphView: UICollectionReusableView {
     
     @IBOutlet weak var segmentedCircle: __SVCSegmentedCircle!
     @IBOutlet weak var labelContainer: UIView!
-    @IBOutlet weak var totalLabel: MDAspectFitLabel!
-    @IBOutlet weak var dateLabel: MDAspectFitLabel!
+    @IBOutlet weak var totalLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
     
     let dateFormatter: NSDateFormatter = {
         let dateFormatter = NSDateFormatter()
@@ -33,7 +33,13 @@ class __SVCGraphView: UICollectionReusableView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.backgroundColor = UIColor.lightGrayColor()
+        UIView.clearBackgroundColors(self, self.labelContainer, self.totalLabel, self.dateLabel)
+        
+        self.totalLabel.textAlignment = .Center
+        self.totalLabel.font = Font.SummaryCellText
+        
+        self.dateLabel.textAlignment = .Center
+        self.dateLabel.font = Font.SummaryCellText
     }
     
 }
