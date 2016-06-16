@@ -37,7 +37,8 @@ class Color {
     
     static let ScreenBackgroundColorLightGray = Gray100
     
-    static let SegmentedCircleEmptyColor = Gray200
+    static let SummarySegmentedCircleEmptyColor = Gray200
+    static let SummaryFooterViewTextColor = Gray700
     
     static let TabButtonHighlightBackgroundColor = Gray50
     static let TabButtonIconColor = Gray700

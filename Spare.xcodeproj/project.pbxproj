@@ -46,6 +46,8 @@
 		2669468E1CC7711000A68424 /* Spare-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 266946551CC7711000A68424 /* Spare-Info.plist */; };
 		2669468F1CC7711000A68424 /* Spare.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 266946571CC7711000A68424 /* Spare.xcdatamodeld */; };
 		266946931CC77A1A00A68424 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266946921CC77A1A00A68424 /* AppDelegate.swift */; };
+		267679251D12CAD5004CF70A /* __SVCFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267679241D12CAD5004CF70A /* __SVCFooterView.swift */; };
+		267679271D12CAF6004CF70A /* __SVCFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 267679261D12CAF6004CF70A /* __SVCFooterView.xib */; };
 		2687FA2F1D0EC2E900D544F5 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2687FA271D0EC2E900D544F5 /* App.swift */; };
 		2687FA301D0EC2E900D544F5 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2687FA281D0EC2E900D544F5 /* Color.swift */; };
 		2687FA311D0EC2E900D544F5 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2687FA291D0EC2E900D544F5 /* Error.swift */; };
@@ -70,7 +72,6 @@
 		268D23E01D001022006B8D0B /* __HVCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268D23D81D001022006B8D0B /* __HVCCell.swift */; };
 		268D23EC1D001E79006B8D0B /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268D23EB1D001E79006B8D0B /* HomeVC.swift */; };
 		268D23EF1D003573006B8D0B /* SummaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268D23EE1D003573006B8D0B /* SummaryVC.swift */; };
-		268D23F11D00370B006B8D0B /* __SVCBannerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 268D23F01D00370B006B8D0B /* __SVCBannerView.xib */; };
 		269D49F21CE1610100109990 /* __CEVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269D49EA1CE1610100109990 /* __CEVCView.swift */; };
 		269D49F31CE1610100109990 /* __CEVCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 269D49EB1CE1610100109990 /* __CEVCView.xib */; };
 		269D49F41CE1610100109990 /* CategoryEditorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269D49EC1CE1610100109990 /* CategoryEditorVC.swift */; };
@@ -89,7 +90,6 @@
 		26C962101D083088007EBA41 /* __SVCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C9620F1D083088007EBA41 /* __SVCCell.swift */; };
 		26C962121D0839A4007EBA41 /* __SVCCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26C962111D0839A4007EBA41 /* __SVCCell.xib */; };
 		26E2D37C1CE0E3BA00BA357F /* BaseFormVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E2D37B1CE0E3BA00BA357F /* BaseFormVC.swift */; };
-		26E34A571D057BE8002CE4E8 /* __SVCBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E34A561D057BE8002CE4E8 /* __SVCBannerView.swift */; };
 		26E4E0591937AF690096191A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E4E0581937AF690096191A /* QuartzCore.framework */; };
 		26E6EDB41CDBA6C60034EEDE /* AddButtonProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26E6EDB31CDBA6C60034EEDE /* AddButtonProgressView.xib */; };
 		26E7FA7B1CDB332F000E2181 /* BaseTabButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E7FA7A1CDB332F000E2181 /* BaseTabButton.swift */; };
@@ -185,6 +185,8 @@
 		266946581CC7711000A68424 /* Spare.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Spare.xcdatamodel; sourceTree = "<group>"; };
 		266946911CC77A1900A68424 /* Spare-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Spare-Bridging-Header.h"; sourceTree = "<group>"; };
 		266946921CC77A1A00A68424 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		267679241D12CAD5004CF70A /* __SVCFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __SVCFooterView.swift; sourceTree = "<group>"; };
+		267679261D12CAF6004CF70A /* __SVCFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __SVCFooterView.xib; sourceTree = "<group>"; };
 		2687FA271D0EC2E900D544F5 /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		2687FA281D0EC2E900D544F5 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		2687FA291D0EC2E900D544F5 /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
@@ -209,7 +211,6 @@
 		268D23D81D001022006B8D0B /* __HVCCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __HVCCell.swift; sourceTree = "<group>"; };
 		268D23EB1D001E79006B8D0B /* HomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		268D23EE1D003573006B8D0B /* SummaryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryVC.swift; sourceTree = "<group>"; };
-		268D23F01D00370B006B8D0B /* __SVCBannerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __SVCBannerView.xib; sourceTree = "<group>"; };
 		269D49EA1CE1610100109990 /* __CEVCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __CEVCView.swift; sourceTree = "<group>"; };
 		269D49EB1CE1610100109990 /* __CEVCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __CEVCView.xib; sourceTree = "<group>"; };
 		269D49EC1CE1610100109990 /* CategoryEditorVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryEditorVC.swift; sourceTree = "<group>"; };
@@ -229,7 +230,6 @@
 		26C962111D0839A4007EBA41 /* __SVCCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __SVCCell.xib; sourceTree = "<group>"; };
 		26D4C8F41946E624001B42DC /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		26E2D37B1CE0E3BA00BA357F /* BaseFormVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseFormVC.swift; sourceTree = "<group>"; };
-		26E34A561D057BE8002CE4E8 /* __SVCBannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __SVCBannerView.swift; sourceTree = "<group>"; };
 		26E4E0581937AF690096191A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		26E6EDB31CDBA6C60034EEDE /* AddButtonProgressView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddButtonProgressView.xib; sourceTree = "<group>"; };
 		26E7FA7A1CDB332F000E2181 /* BaseTabButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTabButton.swift; sourceTree = "<group>"; };
@@ -480,13 +480,13 @@
 			isa = PBXGroup;
 			children = (
 				268D23EE1D003573006B8D0B /* SummaryVC.swift */,
-				268D23F01D00370B006B8D0B /* __SVCBannerView.xib */,
-				26E34A561D057BE8002CE4E8 /* __SVCBannerView.swift */,
 				26C9620F1D083088007EBA41 /* __SVCCell.swift */,
 				26C962111D0839A4007EBA41 /* __SVCCell.xib */,
 				265849031D0ADD0D0047BCFA /* __SVCGraphView.xib */,
 				265849051D0ADDF60047BCFA /* __SVCGraphView.swift */,
 				265849071D0ADF370047BCFA /* __SVCSegmentedCircle.swift */,
+				267679241D12CAD5004CF70A /* __SVCFooterView.swift */,
+				267679261D12CAF6004CF70A /* __SVCFooterView.xib */,
 			);
 			path = Summary;
 			sourceTree = "<group>";
@@ -661,10 +661,10 @@
 				266946871CC7711000A68424 /* Icon-60@2x.png in Resources */,
 				268BBDB31D08E99C005C6BD8 /* Lato-HairlineItalic.ttf in Resources */,
 				268BBDB41D08E99C005C6BD8 /* Lato-Italic.ttf in Resources */,
-				268D23F11D00370B006B8D0B /* __SVCBannerView.xib in Resources */,
 				268BBDB51D08E99C005C6BD8 /* Lato-Light.ttf in Resources */,
 				266946891CC7711000A68424 /* Icon@2x.png in Resources */,
 				266946861CC7711000A68424 /* Icon-40@2x.png in Resources */,
+				267679271D12CAF6004CF70A /* __SVCFooterView.xib in Resources */,
 				268BBDB11D08E99C005C6BD8 /* Lato-BoldItalic.ttf in Resources */,
 				268BBDB21D08E99C005C6BD8 /* Lato-Hairline.ttf in Resources */,
 				268BBDAF1D08E99C005C6BD8 /* Lato-BlackItalic.ttf in Resources */,
@@ -742,7 +742,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2687FA2F1D0EC2E900D544F5 /* App.swift in Sources */,
-				26E34A571D057BE8002CE4E8 /* __SVCBannerView.swift in Sources */,
 				2687FA331D0EC2E900D544F5 /* GlobalFunctions.swift in Sources */,
 				2687FA321D0EC2E900D544F5 /* Font.swift in Sources */,
 				2603F8CF1CCA4C10007F311F /* Expense.swift in Sources */,
@@ -754,6 +753,7 @@
 				269D49F41CE1610100109990 /* CategoryEditorVC.swift in Sources */,
 				2687FA341D0EC2E900D544F5 /* Icon.swift in Sources */,
 				265849061D0ADDF60047BCFA /* __SVCGraphView.swift in Sources */,
+				267679251D12CAD5004CF70A /* __SVCFooterView.swift in Sources */,
 				26A6CDE11CDB18EA00309A84 /* AddButton.swift in Sources */,
 				26C2D5C21CDB5E4800BC73FC /* AddButtonProgressView.swift in Sources */,
 				265849081D0ADF370047BCFA /* __SVCSegmentedCircle.swift in Sources */,

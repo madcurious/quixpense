@@ -36,7 +36,7 @@ class __SVCSegmentedCircle: UIView {
                 let path = UIBezierPath(ovalInRect: insetRect)
                 path.lineWidth = self.strokeWidth
                 
-                CGContextSetStrokeColorWithColor(context, Color.SegmentedCircleEmptyColor.CGColor)
+                CGContextSetStrokeColorWithColor(context, Color.SummarySegmentedCircleEmptyColor.CGColor)
                 path.stroke()
                 
                 return

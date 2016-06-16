@@ -12,6 +12,7 @@ import Mold
 private enum ViewID: String {
     case Graph = "Graph"
     case Cell = "Cell"
+    case Footer = "Footer"
 }
 
 class SummaryVC: UIViewController {
@@ -52,6 +53,7 @@ class SummaryVC: UIViewController {
         self.collectionView.backgroundColor = Color.White
         self.collectionView.registerNib(__SVCGraphView.nib(), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: ViewID.Graph.rawValue)
         self.collectionView.registerNib(__SVCCell.nib(), forCellWithReuseIdentifier: ViewID.Cell.rawValue)
+        self.collectionView.registerNib(__SVCFooterView.nib(), forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: ViewID.Footer.rawValue)
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
         
@@ -83,15 +85,28 @@ extension SummaryVC: UICollectionViewDataSource {
     }
     
     func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
-        guard let graphView = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: ViewID.Graph.rawValue, forIndexPath: indexPath) as? __SVCGraphView
-            else {
-                fatalError()
+        switch kind {
+        case UICollectionElementKindSectionHeader:
+            guard let graphView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: ViewID.Graph.rawValue, forIndexPath: indexPath) as? __SVCGraphView
+                else {
+                    fatalError()
+            }
+            
+            graphView.totalLabel.text = String(format: "$ %.2f", self.summary?.total ?? 0)
+            graphView.summary = self.summary
+            
+            return graphView
+            
+        case UICollectionElementKindSectionFooter:
+            guard let footerView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: ViewID.Footer.rawValue, forIndexPath: indexPath) as? __SVCFooterView
+                else {
+                    fatalError()
+            }
+            return footerView
+            
+        default:
+            fatalError()
         }
-        
-        graphView.totalLabel.text = String(format: "$ %.2f", self.summary?.total ?? 0)
-        graphView.summary = self.summary
-        
-        return graphView
     }
     
 }
@@ -115,6 +130,10 @@ extension SummaryVC: UICollectionViewDelegateFlowLayout {
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
         return UIEdgeInsetsMake(inset, inset, inset, inset)
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        return CGSizeMake(collectionView.bounds.size.width, 60)
     }
     
 }
