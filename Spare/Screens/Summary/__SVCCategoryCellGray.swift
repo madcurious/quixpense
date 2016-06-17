@@ -11,6 +11,7 @@ import Mold
 
 class __SVCCategoryCellGray: __SVCCategoryCell {
     
+    @IBOutlet weak var colorBox: UIView!
     @IBOutlet weak var labelContainer: UIView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
@@ -25,6 +26,7 @@ class __SVCCategoryCellGray: __SVCCategoryCell {
         didSet {
             if let category = self.category {
 //                self.contentView.backgroundColor = category.color
+                self.colorBox.backgroundColor = category.color
                 self.nameLabel.text = category.name
             }
             self.setNeedsLayout()
@@ -38,10 +40,10 @@ class __SVCCategoryCellGray: __SVCCategoryCell {
         
         self.contentView.backgroundColor = Color.SummaryCellBackgroundColor
         
-        self.nameLabel.font = Font.SummaryCellText
+        self.nameLabel.font = Font.SummaryCellNameLabel
         self.nameLabel.textColor = Color.SummaryCellTextColor
         
-        self.totalLabel.font = Font.SummaryCellText
+        self.totalLabel.font = Font.SummaryCellTotalLabel
         self.totalLabel.textColor = Color.SummaryCellTextColor
         
         self.totalLabel.text = "$ 0.00"

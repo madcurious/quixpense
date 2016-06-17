@@ -22,7 +22,8 @@ final class Font {
     
     static let SummaryBannerTotal = Font.text(.Bold, 30)
     static let SummaryBannerDate = Font.text(.Regular, 20)
-    static let SummaryCellText = Font.text(.Regular, 18)
+    static let SummaryCellNameLabel = Font.text(.Bold, 18)
+    static let SummaryCellTotalLabel = Font.text(.Regular, 16)
     static let SummaryFooterViewText = Font.text(.Regular, 16)
     
     class func text(weight: FontWeight, _ size: CGFloat) -> UIFont {
