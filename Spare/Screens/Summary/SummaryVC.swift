@@ -121,7 +121,7 @@ extension SummaryVC: UICollectionViewDelegate {}
 extension SummaryVC: UICollectionViewDelegateFlowLayout {
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSizeMake(collectionView.bounds.size.width, collectionView.bounds.size.width * 0.8)
+        return CGSizeMake(collectionView.bounds.size.width, collectionView.bounds.size.width * 0.9)
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {

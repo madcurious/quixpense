@@ -16,13 +16,6 @@ class __SVCGraphView: UICollectionReusableView {
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     
-    let dateFormatter: NSDateFormatter = {
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.timeZone = NSTimeZone.localTimeZone()
-        dateFormatter.dateStyle = .FullStyle
-        return dateFormatter
-    }()
-    
     var summary: Summary? {
         didSet {
             self.segmentedCircle.summary = self.summary
@@ -38,9 +31,11 @@ class __SVCGraphView: UICollectionReusableView {
         
         self.totalLabel.textAlignment = .Center
         self.totalLabel.font = Font.SummaryBannerTotal
+        self.totalLabel.textColor = Color.SummaryGraphTotalTextColor
         
         self.dateLabel.textAlignment = .Center
         self.dateLabel.font = Font.SummaryBannerDate
+        self.dateLabel.textColor = Color.SummaryGraphDateTextColor
     }
     
 }

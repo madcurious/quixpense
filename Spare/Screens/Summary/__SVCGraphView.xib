@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
@@ -17,17 +16,17 @@
                     <rect key="frame" x="52" y="30" width="363" height="363"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1qg-qh-WsY">
-                            <rect key="frame" x="45" y="91" width="272" height="181.5"/>
+                            <rect key="frame" x="45" y="159.5" width="272" height="45"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hhI-1F-yen">
-                                    <rect key="frame" x="0.0" y="70.5" width="272" height="20.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="272" height="20.5"/>
                                     <color key="backgroundColor" red="1" green="0.98823529409999999" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m0b-gm-aCc">
-                                    <rect key="frame" x="0.0" y="91" width="272" height="20.5"/>
+                                    <rect key="frame" x="0.0" y="24.5" width="272" height="20.5"/>
                                     <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -36,12 +35,13 @@
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
+                                <constraint firstItem="m0b-gm-aCc" firstAttribute="top" secondItem="hhI-1F-yen" secondAttribute="bottom" constant="4" id="92N-IU-2x2"/>
+                                <constraint firstAttribute="bottom" secondItem="m0b-gm-aCc" secondAttribute="bottom" id="DzX-A5-KXC"/>
                                 <constraint firstAttribute="trailing" secondItem="m0b-gm-aCc" secondAttribute="trailing" id="FoV-nT-C0b"/>
-                                <constraint firstAttribute="centerY" secondItem="hhI-1F-yen" secondAttribute="bottom" id="THj-sF-8Xk"/>
+                                <constraint firstItem="hhI-1F-yen" firstAttribute="top" secondItem="1qg-qh-WsY" secondAttribute="top" id="UgM-hV-fdj"/>
                                 <constraint firstItem="hhI-1F-yen" firstAttribute="leading" secondItem="1qg-qh-WsY" secondAttribute="leading" id="iG5-En-wRL"/>
                                 <constraint firstAttribute="trailing" secondItem="hhI-1F-yen" secondAttribute="trailing" id="ipG-wp-v8f"/>
                                 <constraint firstItem="m0b-gm-aCc" firstAttribute="leading" secondItem="1qg-qh-WsY" secondAttribute="leading" id="p2J-jr-HCx"/>
-                                <constraint firstItem="m0b-gm-aCc" firstAttribute="top" secondItem="1qg-qh-WsY" secondAttribute="centerY" id="p47-Yt-bJx"/>
                             </constraints>
                         </view>
                     </subviews>
@@ -50,7 +50,6 @@
                         <constraint firstItem="1qg-qh-WsY" firstAttribute="centerX" secondItem="QuX-fQ-vdV" secondAttribute="centerX" id="5Qx-Nz-GZD"/>
                         <constraint firstAttribute="width" secondItem="QuX-fQ-vdV" secondAttribute="height" id="6qK-dt-jsf"/>
                         <constraint firstItem="1qg-qh-WsY" firstAttribute="centerY" secondItem="QuX-fQ-vdV" secondAttribute="centerY" id="Fkw-nE-kDd"/>
-                        <constraint firstItem="1qg-qh-WsY" firstAttribute="height" secondItem="QuX-fQ-vdV" secondAttribute="height" multiplier="1:2" id="i3z-ZU-TlM"/>
                         <constraint firstItem="1qg-qh-WsY" firstAttribute="width" secondItem="QuX-fQ-vdV" secondAttribute="width" multiplier="3:4" id="yKR-WC-4rw"/>
                     </constraints>
                 </view>

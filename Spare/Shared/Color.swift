@@ -22,11 +22,13 @@ class Color {
     private static let Gray100 = UIColor(hex: 0xf0f2f6)
     private static let Gray200 = UIColor(hex: 0xe6e6e6)
     private static let Gray400 = UIColor(hex: 0xcdcdcd)
+    private static let Gray420 = UIColor(hex: 0xc6c6c6)
+    private static let Gray500 = UIColor(hex: 0x898989)
     private static let Gray700 = UIColor(hex: 0x666666)
     
     // MARK: - UI Colors
     
-    static let HomeCellBorderColor = Gray400
+    static let HomeCellBorderColor = Gray420
     
     static let FormFieldLabelTextColor = Gray700
     static let FormFieldValueTextColor = Black
@@ -37,6 +39,8 @@ class Color {
     
     static let ScreenBackgroundColorLightGray = Gray100
     
+    static let SummaryGraphTotalTextColor = Black
+    static let SummaryGraphDateTextColor = Gray500
     static let SummaryCellBackgroundColor = Gray50
     static let SummaryCellTextColor = Gray700
     static let SummarySegmentedCircleEmptyColor = Gray200

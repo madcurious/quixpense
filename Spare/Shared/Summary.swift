@@ -19,7 +19,7 @@ struct Summary {
     static let dateFormatter: NSDateFormatter = {
         let formatter = NSDateFormatter()
         formatter.timeZone = NSTimeZone.localTimeZone()
-        formatter.dateStyle = .FullStyle
+        formatter.dateFormat = "EEE, MMM d"
         return formatter
     }()
     

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Mold
 
 enum FontWeight {
     case UltraLight, Light, Regular, Bold, ExtraBold
@@ -20,8 +21,8 @@ final class Font {
     static let FieldLabel = Font.text(.Bold, 14)
     static let FieldValue = Font.text(.Regular, 18)
     
-    static let SummaryBannerTotal = Font.text(.Bold, 30)
-    static let SummaryBannerDate = Font.text(.Regular, 20)
+    static let SummaryBannerTotal = Font.text(.Bold, MDScreen.currentScreenIs(.iPhone4S, .iPhone5) ? 26 : 40)
+    static let SummaryBannerDate = Font.text(.Regular, MDScreen.currentScreenIs(.iPhone4S, .iPhone5) ? 14 : 16)
     static let SummaryCellNameLabel = Font.text(.Bold, 18)
     static let SummaryCellTotalLabel = Font.text(.Regular, 16)
     static let SummaryFooterViewText = Font.text(.Regular, 16)
