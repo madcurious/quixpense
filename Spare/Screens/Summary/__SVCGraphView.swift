@@ -37,10 +37,10 @@ class __SVCGraphView: UICollectionReusableView {
 //        self.backgroundColor = UIColor.redColor()
         
         self.totalLabel.textAlignment = .Center
-        self.totalLabel.font = Font.SummaryCellText
+        self.totalLabel.font = Font.SummaryBannerTotal
         
         self.dateLabel.textAlignment = .Center
-        self.dateLabel.font = Font.SummaryCellText
+        self.dateLabel.font = Font.SummaryBannerDate
     }
     
 }

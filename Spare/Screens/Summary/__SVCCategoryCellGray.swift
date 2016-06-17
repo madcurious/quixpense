@@ -1,5 +1,5 @@
 //
-//  __SVCCell.swift
+//  __SVCCategoryCellGray.swift
 //  Spare
 //
 //  Created by Matt Quiros on 08/06/2016.
@@ -9,24 +9,22 @@
 import UIKit
 import Mold
 
-class __SVCCell: UICollectionViewCell {
+class __SVCCategoryCellGray: __SVCCategoryCell {
     
     @IBOutlet weak var labelContainer: UIView!
-    @IBOutlet weak var nameLabel: MDAspectFitLabel!
-    @IBOutlet weak var totalLabel: MDAspectFitLabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var totalLabel: UILabel!
     
-    var total = NSDecimalNumber(integer: 0) {
+    override var total: NSDecimalNumber {
         didSet {
             self.totalLabel.text = String(format: "$ %.2f", self.total)
         }
     }
     
-    var percent = 0
-    
-    weak var category: Category? {
+    override weak var category: Category? {
         didSet {
             if let category = self.category {
-                self.contentView.backgroundColor = category.color
+//                self.contentView.backgroundColor = category.color
                 self.nameLabel.text = category.name
             }
             self.setNeedsLayout()
@@ -38,11 +36,13 @@ class __SVCCell: UICollectionViewCell {
         
         UIView.clearBackgroundColors(self.labelContainer, self.nameLabel, self.totalLabel)
         
-        self.nameLabel.font = Font.SummaryCellText
-        self.totalLabel.font = Font.SummaryCellText
+        self.contentView.backgroundColor = Color.SummaryCellBackgroundColor
         
-        self.nameLabel.textColor = Color.White
-        self.totalLabel.textColor = Color.White
+        self.nameLabel.font = Font.SummaryCellText
+        self.nameLabel.textColor = Color.SummaryCellTextColor
+        
+        self.totalLabel.font = Font.SummaryCellText
+        self.totalLabel.textColor = Color.SummaryCellTextColor
         
         self.totalLabel.text = "$ 0.00"
     }

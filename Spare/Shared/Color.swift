@@ -37,6 +37,8 @@ class Color {
     
     static let ScreenBackgroundColorLightGray = Gray100
     
+    static let SummaryCellBackgroundColor = Gray50
+    static let SummaryCellTextColor = Gray700
     static let SummarySegmentedCircleEmptyColor = Gray200
     static let SummaryFooterViewTextColor = Gray700
     

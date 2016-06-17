@@ -54,7 +54,7 @@ class SummaryVC: UIViewController {
         self.collectionView.showsVerticalScrollIndicator = false
         
         self.collectionView.registerNib(__SVCGraphView.nib(), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: ViewID.Graph.rawValue)
-        self.collectionView.registerNib(__SVCCell.nib(), forCellWithReuseIdentifier: ViewID.Cell.rawValue)
+        self.collectionView.registerNib(__SVCCategoryCellGray.nib(), forCellWithReuseIdentifier: ViewID.Cell.rawValue)
         self.collectionView.registerNib(__SVCFooterView.nib(), forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: ViewID.Footer.rawValue)
         
         self.collectionView.dataSource = self
@@ -77,7 +77,7 @@ extension SummaryVC: UICollectionViewDataSource {
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCellWithReuseIdentifier(ViewID.Cell.rawValue, forIndexPath: indexPath) as? __SVCCell
+        guard let cell = collectionView.dequeueReusableCellWithReuseIdentifier(ViewID.Cell.rawValue, forIndexPath: indexPath) as? __SVCCategoryCell
             else {
                 fatalError()
         }
@@ -118,7 +118,6 @@ extension SummaryVC: UICollectionViewDataSource {
 extension SummaryVC: UICollectionViewDelegate {}
 
 // MARK: - UICollectionViewDelegateFlowLayout
-private let inset = CGFloat(10)
 extension SummaryVC: UICollectionViewDelegateFlowLayout {
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
@@ -126,17 +125,25 @@ extension SummaryVC: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        
-        let width = collectionView.bounds.size.width - inset * 2
-        return CGSize(width: width, height: 60)
+        return CGSize(width: collectionView.bounds.size.width, height: 60)
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-        return UIEdgeInsetsMake(inset, inset, inset, inset)
+        return UIEdgeInsetsZero
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return 1
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-        return CGSizeMake(collectionView.bounds.size.width, 60)
+        guard let categories = self.summary?.categories
+            where categories.isEmpty == false
+            else {
+                return CGSizeMake(collectionView.bounds.size.width, 60)
+        }
+        
+        return CGSizeZero
     }
     
 }
