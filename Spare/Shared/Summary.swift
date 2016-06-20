@@ -73,7 +73,7 @@ struct Summary {
             info.append((category, categoryTotal, categoryPercent))
         }
         
-        info.sortInPlace({ $0.1.compare($1.1) == .OrderedAscending })
+        info.sortInPlace({ $0.2 > $1.2 })
         
         return info
     }
