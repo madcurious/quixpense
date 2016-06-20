@@ -20,7 +20,7 @@ class MainContainerVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        applyGlobalVCSettings(self)
+        glb_applyGlobalVCSettings(self)
         
         // Create the tabs and make their bottom edges extend to the space occuppied by the hidden tab bar.
         let homeScreen = HomeVC()

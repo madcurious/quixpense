@@ -16,20 +16,21 @@ class __SVCCategoryCellGray: __SVCCategoryCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
     
-    override var total: NSDecimalNumber {
+    override var info: (Category, NSDecimalNumber, Double)? {
         didSet {
-            self.totalLabel.text = String(format: "$ %.2f", self.total)
-        }
-    }
-    
-    override weak var category: Category? {
-        didSet {
-            if let category = self.category {
-//                self.contentView.backgroundColor = category.color
-                self.colorBox.backgroundColor = category.color
-                self.nameLabel.text = category.name
+            defer {
+                self.setNeedsLayout()
             }
-            self.setNeedsLayout()
+            
+            guard let (category, total, _) = self.info
+                else {
+                    return
+            }
+            
+            self.colorBox.backgroundColor = category.color
+            self.nameLabel.text = category.name
+            
+            self.totalLabel.text = glb_textForTotal(total)
         }
     }
     
@@ -46,7 +47,7 @@ class __SVCCategoryCellGray: __SVCCategoryCell {
         self.totalLabel.font = Font.SummaryCellTotalLabel
         self.totalLabel.textColor = Color.SummaryCellTextColor
         
-        self.totalLabel.text = "$ 0.00"
+//        self.totalLabel.text = "$ 0.00"
     }
     
 }

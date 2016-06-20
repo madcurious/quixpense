@@ -22,7 +22,7 @@ class SettingsVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        applyGlobalVCSettings(self)
+        glb_applyGlobalVCSettings(self)
         
         self.view.backgroundColor = Color.ScreenBackgroundColorLightGray
     }

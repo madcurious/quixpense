@@ -12,7 +12,7 @@ class BaseFormVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        applyGlobalVCSettings(self)
+        glb_applyGlobalVCSettings(self)
         
         self.addCancelAndDoneBarButtonItems("CANCEL", doneButtonTitle: "SAVE")
         

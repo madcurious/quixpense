@@ -59,7 +59,7 @@ class CategoryEditorVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        applyGlobalVCSettings(self)
+        glb_applyGlobalVCSettings(self)
         
         self.colorMap.addTarget(self, action: #selector(handleTapOnColorMap(_:)), forControlEvents: .ValueChanged)
         self.slider.addTarget(self, action: #selector(handleBrightnessValueChange(_:)), forControlEvents: .ValueChanged)

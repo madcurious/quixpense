@@ -43,7 +43,6 @@
 		266946891CC7711000A68424 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 266946501CC7711000A68424 /* Icon@2x.png */; };
 		2669468A1CC7711000A68424 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 266946511CC7711000A68424 /* Images.xcassets */; };
 		2669468B1CC7711000A68424 /* iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 266946521CC7711000A68424 /* iPhone.storyboard */; };
-		2669468E1CC7711000A68424 /* Spare-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 266946551CC7711000A68424 /* Spare-Info.plist */; };
 		2669468F1CC7711000A68424 /* Spare.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 266946571CC7711000A68424 /* Spare.xcdatamodeld */; };
 		266946931CC77A1A00A68424 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266946921CC77A1A00A68424 /* AppDelegate.swift */; };
 		267679251D12CAD5004CF70A /* __SVCFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267679241D12CAD5004CF70A /* __SVCFooterView.swift */; };
@@ -676,7 +675,6 @@
 				26EFA0051CD9C91A00714E5D /* __MCVCView.xib in Resources */,
 				266946851CC7711000A68424 /* InfoPlist.strings in Resources */,
 				269D49F31CE1610100109990 /* __CEVCView.xib in Resources */,
-				2669468E1CC7711000A68424 /* Spare-Info.plist in Resources */,
 				266946831CC7711000A68424 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

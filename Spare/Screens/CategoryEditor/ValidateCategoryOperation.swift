@@ -17,7 +17,7 @@ class ValidateCategoryOperation: MDOperation {
     }
     
     override func buildResult(object: Any?) throws -> Any? {
-        guard let _ = nonEmptyString(self.categoryName)
+        guard let _ = md_nonEmptyString(self.categoryName)
             else {
                 throw Error.UserEnteredInvalidValue("You must enter a category name.")
         }

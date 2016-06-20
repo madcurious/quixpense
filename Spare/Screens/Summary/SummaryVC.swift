@@ -24,8 +24,6 @@ class SummaryVC: UIViewController {
         }
     }
     
-    var totals: [Category : NSDecimalNumber]?
-    
     var collectionView: UICollectionView
     var layoutManager: UICollectionViewFlowLayout
     
@@ -60,7 +58,6 @@ class SummaryVC: UIViewController {
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
         
-        self.totals = summary?.categoryTotals
     }
     
 }
@@ -69,7 +66,7 @@ class SummaryVC: UIViewController {
 extension SummaryVC: UICollectionViewDataSource {
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let categories = self.summary?.categories
+        guard let categories = glb_allCategories()
             else {
                 return 0
         }
@@ -82,7 +79,8 @@ extension SummaryVC: UICollectionViewDataSource {
                 fatalError()
         }
         
-        cell.category = self.summary?.categories?[indexPath.item]
+        cell.info = self.summary?.info?[indexPath.item]
+        
         
         return cell
     }
@@ -95,7 +93,7 @@ extension SummaryVC: UICollectionViewDataSource {
                     fatalError()
             }
             
-            graphView.totalLabel.text = String(format: "$ %.2f", self.summary?.total ?? 0)
+            graphView.totalLabel.text = glb_textForTotal(self.summary?.total ?? 0)
             graphView.summary = self.summary
             
             return graphView
@@ -137,8 +135,7 @@ extension SummaryVC: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-        guard let categories = self.summary?.categories
-            where categories.isEmpty == false
+        guard let categories = glb_allCategories()
             else {
                 return CGSizeMake(collectionView.bounds.size.width, 60)
         }

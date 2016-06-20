@@ -130,7 +130,7 @@ class AddButton: BaseTabButton {
     }
     
     func showProgressView(show: NSNumber) {
-        let rootVC = rootViewController()
+        let rootVC = md_rootViewController()
         if show.boolValue == true {
             rootVC.view.addSubviewAndFill(self.progressView)
             self.longPressTime = NSDate().timeIntervalSince1970

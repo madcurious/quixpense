@@ -30,7 +30,7 @@ class ValidateExpenseOperation: MDOperation {
         
         // Put all the labels and values in an array for simplicity, then loop
         // through it looking for empty values.
-        let fields: [(String, Any?)] = [("Description", nonEmptyString(expense.itemDescription)),
+        let fields: [(String, Any?)] = [("Description", md_nonEmptyString(expense.itemDescription)),
                       ("Amount", expense.amount),
                       ("Category", expense.category),
                       ("Date spent", expense.dateSpent),

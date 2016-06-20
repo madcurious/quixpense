@@ -38,45 +38,6 @@ struct Summary {
         return nil
     }
     
-    var categories: [Category]? {
-        do {
-            let request = NSFetchRequest(entityName: Category.entityName)
-            if let categories = try App.state.mainQueueContext.executeFetchRequest(request) as? [Category] {
-                return categories
-            }
-        } catch {
-            // throw Error.AppUnknownError
-        }
-        return nil
-    }
-    
-    /**
-     Returns a dictionary of all categories and their totals based on the expenses in the summary's period.
-     Potentially an expensive computed property, so call conscientiously.
-     */
-    var categoryTotals: [Category : NSDecimalNumber]? {
-        guard let categories = self.categories
-            else {
-                return nil
-        }
-        
-        let groups = self.expenses?.groupBy({ $0.category })
-        var totals: [Category : NSDecimalNumber] = [:]
-        for category in categories {
-            // If the category isn't in the grouping dictionary, then it doesn't have any expenses
-            // and its total should be set to 0.
-            guard let expenses = groups?[category]
-                else {
-                    totals[category] = 0
-                    continue
-            }
-            
-            totals[category] = expenses.map({ $0.amount ?? NSDecimalNumber(integer: 0) }).reduce(0, combine: +)
-        }
-        
-        return totals
-    }
-    
     /**
      Returns the total of all the expenses in this date range.
      */
@@ -87,6 +48,34 @@ struct Summary {
         }
         
         return expenses.map({ $0.amount ?? NSDecimalNumber(integer: 0)}).reduce(0, combine: +)
+    }
+    
+    var info: [(Category, NSDecimalNumber, Double)]? {
+        guard let categories = glb_allCategories()
+            else {
+                return nil
+        }
+        
+        let overallTotal = self.total
+        let groups = self.expenses?.groupBy({ $0.category })
+        var info = [(Category, NSDecimalNumber, Double)]()
+        for category in categories {
+            // If the category isn't in the grouping dictionary, then it doesn't have any expenses
+            // and its total should be set to 0.
+            guard let expenses = groups?[category]
+                else {
+                    info.append((category, NSDecimalNumber(integer: 0), 0.0))
+                    continue
+            }
+            
+            let categoryTotal = expenses.map({ $0.amount ?? NSDecimalNumber(integer: 0) }).reduce(0, combine: +)
+            let categoryPercent = categoryTotal.decimalNumberByDividingBy(overallTotal).doubleValue
+            info.append((category, categoryTotal, categoryPercent))
+        }
+        
+        info.sortInPlace({ $0.1.compare($1.1) == .OrderedAscending })
+        
+        return info
     }
     
     var dateRangeDisplayText: String {

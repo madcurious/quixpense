@@ -46,7 +46,7 @@ class ExpenseEditorVC: MDStatefulViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        applyGlobalVCSettings(self)
+        glb_applyGlobalVCSettings(self)
         
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
         
@@ -132,10 +132,10 @@ class ExpenseEditorVC: MDStatefulViewController {
     }
     
     func refreshViewFromModel() {
-        self.customView.itemDescriptionTextField.text = nonEmptyString(self.expense.itemDescription)
-        self.customView.amountTextField.text = nonEmptyString(self.expense.amount)
+        self.customView.itemDescriptionTextField.text = md_nonEmptyString(self.expense.itemDescription)
+        self.customView.amountTextField.text = md_nonEmptyString(self.expense.amount)
         
-        self.customView.categoryTextField.text = nonEmptyString(self.expense.category?.name)
+        self.customView.categoryTextField.text = md_nonEmptyString(self.expense.category?.name)
         if let category = self.expense.category,
             let categoryIndex = self.categories.indexOf(category) {
             self.categoryPickerView.selectRow(categoryIndex, inComponent: 0, animated: false)
@@ -246,7 +246,7 @@ extension ExpenseEditorVC: UITextFieldDelegate {
                     return false
                 }
                 
-                if let amountText = nonEmptyString(text) {
+                if let amountText = md_nonEmptyString(text) {
                     self.expense.amount = NSDecimalNumber(string: amountText)
                 } else {
                     self.expense.amount = nil
