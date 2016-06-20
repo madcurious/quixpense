@@ -55,6 +55,8 @@ class HomeVC: MDStatefulViewController {
         self.showView(.Loading)
         
         self.noResultsView.backgroundColor = Color.ScreenBackgroundColorLightGray
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(handleUpdatesOnDataStore), name: NSManagedObjectContextDidSaveNotification, object: App.state.mainQueueContext)
     }
     
     override func buildOperation() -> MDOperation? {
@@ -92,6 +94,10 @@ class HomeVC: MDStatefulViewController {
                     }
                     
                     })
+    }
+    
+    func handleUpdatesOnDataStore() {
+        self.collectionView.reloadData()
     }
     
 }
