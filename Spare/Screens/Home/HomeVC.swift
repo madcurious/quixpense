@@ -44,10 +44,10 @@ class HomeVC: MDStatefulViewController {
         if let navController = self.navigationController {
             navController.navigationBar.shadowImage = UIImage()
             navController.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
-            navController.navigationBar.backgroundColor = Color.ScreenBackgroundColorLightGray
+            navController.navigationBar.backgroundColor = Color.HomeScreenBackgroundColor
         }
         
-        self.collectionView.backgroundColor = Color.ScreenBackgroundColorLightGray
+        self.collectionView.backgroundColor = Color.HomeScreenBackgroundColor
         self.collectionView.registerCellNib(__HVCCell.nib(), withReuseIdentifier: kViewID)
         self.collectionView.dataSource = self
         self.collectionView.delegate = self

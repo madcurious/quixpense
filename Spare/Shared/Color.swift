@@ -25,14 +25,17 @@ class Color {
     private static let Gray420 = UIColor(hex: 0xc6c6c6)
     private static let Gray500 = UIColor(hex: 0x898989)
     private static let Gray700 = UIColor(hex: 0x666666)
+    private static let Gray800 = UIColor(hex: 0x444444)
+    private static let Gray900 = UIColor(hex: 0x222222)
     
     // MARK: - UI Colors
-    
-    static let HomeCellBorderColor = Gray420
     
     static let FormFieldLabelTextColor = Gray700
     static let FormFieldValueTextColor = Black
     static let FormPlaceholderTextColor = Gray400
+    
+    static let HomeCellBorderColor = Gray420
+    static let HomeScreenBackgroundColor = Gray200
     
     static let ModalNavigationBarBackgroundColor = White
     static let ModalNavigationBarTintColor = Gray700
@@ -46,9 +49,10 @@ class Color {
     static let SummarySegmentedCircleEmptyColor = Gray200
     static let SummaryFooterViewTextColor = Gray700
     
+    static let TabBarBackgroundColor = Gray900
     static let TabButtonHighlightBackgroundColor = Gray50
-    static let TabButtonIconColor = Gray700
-    static let TabButtonSelectedBackgroundColor = Gray400
+    static let TabButtonIconColor = White
+    static let TabButtonSelectedBackgroundColor = Gray800
     
     
 }

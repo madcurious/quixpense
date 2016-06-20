@@ -31,7 +31,7 @@ class MainTabBar: UIView {
         
         self.multipleTouchEnabled = false
         
-        self.backgroundColor = Color.White
+        self.backgroundColor = Color.TabBarBackgroundColor
         UIView.clearBackgroundColors(self.buttonContainers)
         
         // Setup all the buttons.
