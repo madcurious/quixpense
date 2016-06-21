@@ -46,4 +46,11 @@ class __HVCCell: UICollectionViewCell {
         super.updateConstraints()
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        // Reset the scroll position to the start of the card.
+        self.summaryVC.collectionView.contentOffset.y = 0
+    }
+    
 }

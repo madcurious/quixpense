@@ -35,17 +35,38 @@ class __ELVCCell: UICollectionViewCell {
         }
     }
     
+    override var highlighted: Bool {
+        didSet {
+            self.applyHighlight(self.highlighted)
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        UIView.clearBackgroundColors(self, self.labelContainer)
-//        self.backgroundColor = UIColor.yellowColor()
+        UIView.clearBackgroundColors(self, self.contentView, self.labelContainer)
         
         self.itemDescriptionLabel.font = Font.ExpenseListCellItemDescriptionLabel
         self.detailLabel.font = Font.ExpenseListCellDetailLabel
         
         self.disclosureIndicatorLabel.text = Icon.DisclosureIndicator.rawValue
         self.disclosureIndicatorLabel.font = Font.icon(22)
+        
+        self.applyHighlight(false)
+    }
+    
+    func applyHighlight(apply: Bool) {
+        if apply {
+            self.contentView.backgroundColor = Color.ExpenseListCellHighlightedColor
+            self.itemDescriptionLabel.textColor = Color.ExpenseListCellTextColorHighlighted
+            self.detailLabel.textColor = Color.ExpenseListCellTextColorHighlighted
+            self.disclosureIndicatorLabel.textColor = Color.ExpenseListCellTextColorHighlighted
+        } else {
+            self.contentView.backgroundColor = UIColor.clearColor()
+            self.itemDescriptionLabel.textColor = Color.ExpenseListCellTextColor
+            self.detailLabel.textColor = Color.ExpenseListCellTextColor
+            self.disclosureIndicatorLabel.textColor = Color.ExpenseListCellTextColor
+        }
     }
     
 }

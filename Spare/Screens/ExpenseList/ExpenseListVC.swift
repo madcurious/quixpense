@@ -136,6 +136,10 @@ extension ExpenseListVC: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegate
 extension ExpenseListVC: UICollectionViewDelegate {
     
+    func collectionView(collectionView: UICollectionView, shouldHighlightItemAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
