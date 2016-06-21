@@ -32,7 +32,7 @@ class Color {
     // MARK: - UI Colors
     
     static let ExpenseListCellHighlightedColor = Gray400
-    static let ExpenseListCellTextColor = Gray900
+    static let ExpenseListCellTextColor = Black
     static let ExpenseListCellTextColorHighlighted = White
     static let ExpenseListHeaderViewTextColor = White
     static let ExpenseListScreenBackgroundColor = White
@@ -56,7 +56,7 @@ class Color {
     static let SummaryCellTextColor = Gray700
     static let SummaryCellTextColorLight = White
     static let SummarySegmentedCircleEmptyColor = Gray200
-    static let SummaryFooterViewTextColor = Gray700
+    static let SummaryFooterViewTextColor = Gray500
     
     static let TabBarBackgroundColor = Gray900
     static let TabButtonHighlightBackgroundColor = Gray50

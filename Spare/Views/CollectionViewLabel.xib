@@ -6,7 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="hBJ-gH-yGd" customClass="__SVCFooterView" customModule="Spare" customModuleProvider="target">
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="hBJ-gH-yGd" customClass="CollectionViewLabel" customModule="Spare" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
@@ -24,7 +24,7 @@
                 <constraint firstAttribute="trailing" secondItem="OHD-cc-ch1" secondAttribute="trailing" id="sb6-RC-aUo"/>
             </constraints>
             <connections>
-                <outlet property="promptLabel" destination="OHD-cc-ch1" id="702-PF-f7M"/>
+                <outlet property="label" destination="OHD-cc-ch1" id="Q3D-in-6tJ"/>
             </connections>
             <point key="canvasLocation" x="284" y="211.5"/>
         </collectionReusableView>

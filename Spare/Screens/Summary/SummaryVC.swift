@@ -53,7 +53,7 @@ class SummaryVC: UIViewController {
         
         self.collectionView.registerNib(__SVCGraphView.nib(), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: ViewID.Graph.rawValue)
         self.collectionView.registerNib(__SVCCategoryCellStub.nib(), forCellWithReuseIdentifier: ViewID.Cell.rawValue)
-        self.collectionView.registerNib(__SVCFooterView.nib(), forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: ViewID.Footer.rawValue)
+        self.collectionView.registerNib(CollectionViewLabel.nib(), forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: ViewID.Footer.rawValue)
         
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
@@ -99,10 +99,26 @@ extension SummaryVC: UICollectionViewDataSource {
             return graphView
             
         case UICollectionElementKindSectionFooter:
-            guard let footerView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: ViewID.Footer.rawValue, forIndexPath: indexPath) as? __SVCFooterView
+            guard let footerView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: ViewID.Footer.rawValue, forIndexPath: indexPath) as? CollectionViewLabel
                 else {
                     fatalError()
             }
+            
+            let textAttributes = [
+                NSForegroundColorAttributeName : Color.SummaryFooterViewTextColor,
+                NSFontAttributeName : Font.SummaryFooterViewText
+            ]
+            let text = NSMutableAttributedString(string: "Press and hold ", attributes: textAttributes)
+            text.appendAttributedString(NSAttributedString(string: Icon.Add.rawValue, attributes: [
+                NSForegroundColorAttributeName : Color.SummaryFooterViewTextColor,
+                NSFontAttributeName : Font.icon(14)
+                ]))
+            text.appendAttributedString(NSAttributedString(string: " to add a\nnew category.", attributes: textAttributes))
+            
+            footerView.label.attributedText = text
+            footerView.label.numberOfLines = 2
+            footerView.label.lineBreakMode = .ByWordWrapping
+            
             return footerView
             
         default:

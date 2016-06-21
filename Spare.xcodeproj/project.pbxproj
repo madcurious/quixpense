@@ -17,6 +17,8 @@
 		2603F8D31CCA4C10007F311F /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2603F8CD1CCA4C10007F311F /* Category.swift */; };
 		26170E031D19BEA50003BC71 /* __ELVCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26170E021D19BEA50003BC71 /* __ELVCView.xib */; };
 		26170E051D19BEEB0003BC71 /* __ELVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26170E041D19BEEB0003BC71 /* __ELVCView.swift */; };
+		26170E091D19C9E30003BC71 /* CollectionViewLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26170E071D19C9E30003BC71 /* CollectionViewLabel.swift */; };
+		26170E0A1D19C9E30003BC71 /* CollectionViewLabel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26170E081D19C9E30003BC71 /* CollectionViewLabel.xib */; };
 		261EB86318DDB630009DDF78 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86218DDB630009DDF78 /* Foundation.framework */; };
 		261EB86518DDB630009DDF78 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86418DDB630009DDF78 /* CoreGraphics.framework */; };
 		261EB86718DDB631009DDF78 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86618DDB631009DDF78 /* UIKit.framework */; };
@@ -44,8 +46,6 @@
 		2669468B1CC7711000A68424 /* iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 266946521CC7711000A68424 /* iPhone.storyboard */; };
 		2669468F1CC7711000A68424 /* Spare.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 266946571CC7711000A68424 /* Spare.xcdatamodeld */; };
 		266946931CC77A1A00A68424 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266946921CC77A1A00A68424 /* AppDelegate.swift */; };
-		267679251D12CAD5004CF70A /* __SVCFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267679241D12CAD5004CF70A /* __SVCFooterView.swift */; };
-		267679271D12CAF6004CF70A /* __SVCFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 267679261D12CAF6004CF70A /* __SVCFooterView.xib */; };
 		2676792A1D13FE8F004CF70A /* __SVCCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267679291D13FE8F004CF70A /* __SVCCategoryCell.swift */; };
 		2687FA2F1D0EC2E900D544F5 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2687FA271D0EC2E900D544F5 /* App.swift */; };
 		2687FA301D0EC2E900D544F5 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2687FA281D0EC2E900D544F5 /* Color.swift */; };
@@ -165,6 +165,8 @@
 		2603F8CD1CCA4C10007F311F /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		26170E021D19BEA50003BC71 /* __ELVCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __ELVCView.xib; sourceTree = "<group>"; };
 		26170E041D19BEEB0003BC71 /* __ELVCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __ELVCView.swift; sourceTree = "<group>"; };
+		26170E071D19C9E30003BC71 /* CollectionViewLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewLabel.swift; sourceTree = "<group>"; };
+		26170E081D19C9E30003BC71 /* CollectionViewLabel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionViewLabel.xib; sourceTree = "<group>"; };
 		261EB85F18DDB630009DDF78 /* Spare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		261EB86218DDB630009DDF78 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		261EB86418DDB630009DDF78 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -196,8 +198,6 @@
 		266946581CC7711000A68424 /* Spare.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Spare.xcdatamodel; sourceTree = "<group>"; };
 		266946911CC77A1900A68424 /* Spare-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Spare-Bridging-Header.h"; sourceTree = "<group>"; };
 		266946921CC77A1A00A68424 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		267679241D12CAD5004CF70A /* __SVCFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __SVCFooterView.swift; sourceTree = "<group>"; };
-		267679261D12CAF6004CF70A /* __SVCFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __SVCFooterView.xib; sourceTree = "<group>"; };
 		267679291D13FE8F004CF70A /* __SVCCategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __SVCCategoryCell.swift; sourceTree = "<group>"; };
 		2687FA271D0EC2E900D544F5 /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		2687FA281D0EC2E900D544F5 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
@@ -383,6 +383,15 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		26170E061D19C95B0003BC71 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				26170E071D19C9E30003BC71 /* CollectionViewLabel.swift */,
+				26170E081D19C9E30003BC71 /* CollectionViewLabel.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		261EB85618DDB630009DDF78 = {
 			isa = PBXGroup;
 			children = (
@@ -457,6 +466,7 @@
 			isa = PBXGroup;
 			children = (
 				260024051CC7E5F300EB2026 /* Screens */,
+				26170E061D19C95B0003BC71 /* Views */,
 				2603F8C71CCA4BD1007F311F /* Core Data */,
 				2687FA261D0EC2E900D544F5 /* Shared */,
 			);
@@ -507,8 +517,6 @@
 			isa = PBXGroup;
 			children = (
 				268D23EE1D003573006B8D0B /* SummaryVC.swift */,
-				267679241D12CAD5004CF70A /* __SVCFooterView.swift */,
-				267679261D12CAF6004CF70A /* __SVCFooterView.xib */,
 				267679291D13FE8F004CF70A /* __SVCCategoryCell.swift */,
 				26CAD3721D193C980039DFD2 /* Graph */,
 				26CAD3861D194CE40039DFD2 /* CategoryCellStub */,
@@ -723,6 +731,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				268BBDAE1D08E99C005C6BD8 /* Lato-Black.ttf in Resources */,
+				26170E0A1D19C9E30003BC71 /* CollectionViewLabel.xib in Resources */,
 				268BBDB01D08E99C005C6BD8 /* Lato-Bold.ttf in Resources */,
 				266946841CC7711000A68424 /* Default@2x.png in Resources */,
 				265849021D0AD5C10047BCFA /* __HVCCell.xib in Resources */,
@@ -745,7 +754,6 @@
 				268BBDB51D08E99C005C6BD8 /* Lato-Light.ttf in Resources */,
 				266946891CC7711000A68424 /* Icon@2x.png in Resources */,
 				266946861CC7711000A68424 /* Icon-40@2x.png in Resources */,
-				267679271D12CAF6004CF70A /* __SVCFooterView.xib in Resources */,
 				268BBDB11D08E99C005C6BD8 /* Lato-BoldItalic.ttf in Resources */,
 				268BBDB21D08E99C005C6BD8 /* Lato-Hairline.ttf in Resources */,
 				268BBDAF1D08E99C005C6BD8 /* Lato-BlackItalic.ttf in Resources */,
@@ -840,7 +848,6 @@
 				26CAD3781D193C980039DFD2 /* __SVCCategoryCellGray.swift in Sources */,
 				26CAD37C1D193C980039DFD2 /* __SVCSegmentedCircle.swift in Sources */,
 				2687FA341D0EC2E900D544F5 /* Icon.swift in Sources */,
-				267679251D12CAD5004CF70A /* __SVCFooterView.swift in Sources */,
 				26A6CDE11CDB18EA00309A84 /* AddButton.swift in Sources */,
 				26C2D5C21CDB5E4800BC73FC /* AddButtonProgressView.swift in Sources */,
 				26CAD3831D1946E80039DFD2 /* __SVCCategoryCellPieChart.swift in Sources */,
@@ -849,6 +856,7 @@
 				2687FA301D0EC2E900D544F5 /* Color.swift in Sources */,
 				268D23E01D001022006B8D0B /* __HVCCell.swift in Sources */,
 				2687FA3E1D0F900600D544F5 /* Summary.swift in Sources */,
+				26170E091D19C9E30003BC71 /* CollectionViewLabel.swift in Sources */,
 				2603F8D31CCA4C10007F311F /* Category.swift in Sources */,
 				269D49FA1CE1643400109990 /* AddCategoryVC.swift in Sources */,
 				2687FA361D0EC2E900D544F5 /* Strings.swift in Sources */,

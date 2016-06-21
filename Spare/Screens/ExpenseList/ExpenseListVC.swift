@@ -13,6 +13,7 @@ import Mold
 private enum ViewID: String {
     case Header = "Header"
     case Cell = "Cell"
+    case Footer = "Footer"
 }
 
 class ExpenseListVC: UIViewController {
@@ -21,8 +22,6 @@ class ExpenseListVC: UIViewController {
     let startDate: NSDate
     let endDate: NSDate
     
-//    let layoutManager: UICollectionViewFlowLayout
-//    let collectionView: UICollectionView
     let customView = __ELVCView.instantiateFromNib() as __ELVCView
     
     var expenses: [Expense]? {
@@ -42,9 +41,6 @@ class ExpenseListVC: UIViewController {
         self.startDate = startDate
         self.endDate = endDate
         
-//        self.layoutManager = UICollectionViewFlowLayout()
-//        self.collectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: self.layoutManager)
-        
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -58,11 +54,11 @@ class ExpenseListVC: UIViewController {
         
         let collectionView = self.customView.collectionView
         collectionView.alwaysBounceVertical = true
-//        collectionView.backgroundColor = Color.ExpenseListScreenBackgroundColor
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.registerClass(__ELVCHeaderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: ViewID.Header.rawValue)
         collectionView.registerNib(__ELVCCell.nib(), forCellWithReuseIdentifier: ViewID.Cell.rawValue)
+        collectionView.registerNib(CollectionViewLabel.nib(), forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: ViewID.Footer.rawValue)
         
         self.customView.headerBackgroundView.backgroundColor = self.category.color
     }
@@ -127,7 +123,17 @@ extension ExpenseListVC: UICollectionViewDataSource {
             return headerView
             
         default:
-            fatalError()
+            guard let footerView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: ViewID.Footer.rawValue, forIndexPath: indexPath) as? CollectionViewLabel
+                else {
+                    fatalError()
+            }
+            
+            footerView.label.text = "You have no expenses here\nduring this period."
+            footerView.label.font = Font.ExpenseListFooterViewLabel
+            footerView.label.numberOfLines = 2
+            footerView.label.lineBreakMode = .ByWordWrapping
+            
+            return footerView
         }
     }
     
@@ -160,6 +166,13 @@ extension ExpenseListVC: UICollectionViewDelegateFlowLayout {
         return CGSizeMake(collectionView.bounds.size.width, __ELVCHeaderView.heightForCategoryName(self.category.name!, detailText: "\(dateRangeText): \(totalText)"))
     }
     
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        if let _ = self.expenses {
+            return CGSizeZero
+        }
+        return CGSizeMake(collectionView.bounds.size.width, 100)
+    }
+    
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
         return 0
     }
@@ -170,7 +183,7 @@ extension ExpenseListVC: UICollectionViewDelegateFlowLayout {
     
 }
 
-//
+// MARK: - UIScrollViewDelegate
 extension ExpenseListVC: UIScrollViewDelegate {
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
