@@ -28,22 +28,32 @@ class __SVCSegmentedCircle: UIView {
         let insetRect = CGRectInset(rect, inset, inset)
         let context = UIGraphicsGetCurrentContext()
         
+        // If there isn't a summary or there are no expenses in it,
+        // draw the default gray circle.
         guard let summary = self.summary,
-            let expenses = summary.expenses
+            let info = summary.info
+            where summary.expenses?.isEmpty == false
             else {
-                // If there isn't a summary or there are no expenses in it,
-                // draw the default gray circle.
                 let path = UIBezierPath(ovalInRect: insetRect)
                 path.lineWidth = self.strokeWidth
-                
                 CGContextSetStrokeColorWithColor(context, Color.SummarySegmentedCircleEmptyColor.CGColor)
                 path.stroke()
                 
                 return
         }
         
-        
-    
+        let arcCenter = CGPointMake(rect.size.width / 2, rect.size.height / 2)
+        let radius = insetRect.size.width / 2
+        var lastAngle = CGFloat(-1 * M_PI_2)
+        for (category, _, percent) in info {
+            let path = UIBezierPath(arcCenter: arcCenter, radius: radius,
+                                    startAngle: lastAngle, endAngle: lastAngle + CGFloat(2 * M_PI * percent), clockwise: true)
+            path.lineWidth = self.strokeWidth
+            CGContextSetStrokeColorWithColor(context, category.color.CGColor)
+            path.stroke()
+            
+            lastAngle = lastAngle + CGFloat(2 * M_PI * percent)
+        }
     }
     
 }

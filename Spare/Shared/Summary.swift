@@ -27,15 +27,15 @@ struct Summary {
      Returns an array of all the expenses in the date range, or nil if none were found.
      */
     var expenses: [Expense]? {
-        do {
+        return glb_protect({
             let request = NSFetchRequest(entityName: Expense.entityName)
             request.predicate = NSPredicate(format: "dateSpent >= %@ AND dateSpent <= %@", self.startDate, self.endDate)
             if let expenses = try App.state.mainQueueContext.executeFetchRequest(request) as? [Expense]
                 where expenses.isEmpty == false {
                 return expenses
             }
-        } catch {}
-        return nil
+            return nil
+        })
     }
     
     /**
@@ -50,6 +50,10 @@ struct Summary {
         return expenses.map({ $0.amount ?? NSDecimalNumber(integer: 0)}).reduce(0, combine: +)
     }
     
+    /**
+     Returns an array of the category, their totals, and their percent of the total.
+     The array is ordered by biggest total first.
+     */
     var info: [(Category, NSDecimalNumber, Double)]? {
         guard let categories = glb_allCategories()
             else {

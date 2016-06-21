@@ -28,11 +28,11 @@ class __SVCGraphView: UICollectionReusableView {
         super.awakeFromNib()
         
         UIView.clearBackgroundColors(self, self.labelContainer, self.totalLabel, self.dateLabel)
-//        self.backgroundColor = UIColor.redColor()
         
         self.totalLabel.textAlignment = .Center
         self.totalLabel.font = Font.SummaryBannerTotal
         self.totalLabel.textColor = Color.SummaryGraphTotalTextColor
+        self.totalLabel.adjustsFontSizeToFitWidth = true
         
         self.dateLabel.textAlignment = .Center
         self.dateLabel.font = Font.SummaryBannerDate
