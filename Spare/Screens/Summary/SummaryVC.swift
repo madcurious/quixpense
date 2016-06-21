@@ -47,6 +47,7 @@ class SummaryVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.collectionView.alwaysBounceVertical = true
         self.collectionView.backgroundColor = Color.White
         self.collectionView.showsVerticalScrollIndicator = false
         

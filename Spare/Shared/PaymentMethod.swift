@@ -14,6 +14,17 @@ enum PaymentMethod: Int {
     case Credit = 1
     case Debit = 2
     
+    var text: String {
+        switch self {
+        case .Cash:
+            return "Cash"
+        case .Credit:
+            return "Credit"
+        case .Debit:
+            return "Debit"
+        }
+    }
+    
     init?(_ int: Int?) {
         switch int {
         case .Some(0):

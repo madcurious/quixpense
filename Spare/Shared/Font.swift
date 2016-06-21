@@ -20,6 +20,8 @@ final class Font {
     
     static let ExpenseListHeaderViewNameLabel = Font.text(.Bold, 30)
     static let ExpenseListHeaderViewDetailLabel = Font.text(.Regular, 18)
+    static let ExpenseListCellItemDescriptionLabel = Font.text(.Regular, 20)
+    static let ExpenseListCellDetailLabel = Font.text(.Regular, 16)
     
     static let FieldLabel = Font.text(.Bold, 14)
     static let FieldValue = Font.text(.Regular, 18)

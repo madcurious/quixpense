@@ -54,6 +54,7 @@ class ExpenseListVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.collectionView.alwaysBounceVertical = true
         self.collectionView.backgroundColor = Color.ExpenseListScreenBackgroundColor
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
@@ -96,6 +97,7 @@ extension ExpenseListVC: UICollectionViewDataSource {
             else {
                 fatalError()
         }
+        cell.expense = self.expenses?[indexPath.item]
         return cell
     }
     
@@ -134,13 +136,9 @@ extension ExpenseListVC: UICollectionViewDelegate {
 // MARK: - UICollectionViewDelegateFlowLayout
 extension ExpenseListVC: UICollectionViewDelegateFlowLayout {
     
-//    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-//        guard let headerView = collectionView.dataSource?.collectionView?(collectionView, viewForSupplementaryElementOfKind: UICollectionElementKindSectionHeader, atIndexPath: NSIndexPath(forItem: 0, inSection: 0)) as? __ELVCHeaderView
-//            else {
-//                return CGSizeZero
-//        }
-//        return CGSizeMake(collectionView.bounds.size.width, headerView.projectedHeight())
-//    }
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        return CGSizeMake(collectionView.bounds.size.width, 64)
+    }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         let dateRangeText = glb_displayTextForDateRange(self.startDate, endDate: self.endDate, periodization: .Day)
@@ -151,6 +149,14 @@ extension ExpenseListVC: UICollectionViewDelegateFlowLayout {
             return 0
             }())
         return CGSizeMake(collectionView.bounds.size.width, __ELVCHeaderView.heightForCategoryName(self.category.name!, detailText: "\(dateRangeText): \(totalText)"))
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return 0
     }
     
 }
