@@ -22,14 +22,14 @@ class MainContainerVC: UIViewController {
         super.viewDidLoad()
         glb_applyGlobalVCSettings(self)
         
-        // Create the tabs and make their bottom edges extend to the space occuppied by the hidden tab bar.
-        let homeScreen = HomeVC()
-        homeScreen.edgesForExtendedLayout = .Bottom
-        let settingsScreen = SettingsVC()
-        settingsScreen.edgesForExtendedLayout = .Bottom
+//        // Create the tabs and make their bottom edges extend to the space occuppied by the hidden tab bar.
+//        let homeScreen = HomeVC()
+//        homeScreen.edgesForExtendedLayout = .Bottom
+//        let settingsScreen = SettingsVC()
+//        settingsScreen.edgesForExtendedLayout = .Bottom
         
         // Create the tab bar controller, add the tabs, and hide the tab bar.
-        self.tabController.viewControllers = [UINavigationController(rootViewController: homeScreen), settingsScreen]
+        self.tabController.viewControllers = [UINavigationController(rootViewController: HomeVC()), SettingsVC()]
         self.tabController.tabBar.hidden = true
         self.embedChildViewController(self.tabController, toView: self.customView.tabContainer, fillSuperview: true)
         
@@ -37,9 +37,10 @@ class MainContainerVC: UIViewController {
         self.customView.tabBarContainer.addSubviewAndFill(self.tabBar)
         
         self.tabBar.addButton.delegate = self
-        
+                
         // Listen for taps on category cells in summary cards.
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(handleTapOnSummaryCell(_:)), name: Event.CategoryTappedInSummaryVC.rawValue, object: nil)
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        notificationCenter.addObserver(self, selector: #selector(handleTapOnSummaryCell(_:)), name: Event.CategoryTappedInSummaryVC.rawValue, object: nil)
     }
     
     override func viewWillAppear(animated: Bool) {

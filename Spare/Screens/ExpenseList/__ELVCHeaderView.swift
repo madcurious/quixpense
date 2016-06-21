@@ -10,9 +10,9 @@ import UIKit
 import Mold
 
 private let kTopPadding = CGFloat(10)
-private let kBottomPadding = CGFloat(30)
+private let kBottomPadding = CGFloat(40)
 private let kLeftRightPadding = CGFloat(10)
-private let kLabelVerticalSpacing = CGFloat(6)
+private let kLabelVerticalSpacing = CGFloat(0)
 
 // Defined programatically because self-sizing reusable collection views are shit.
 class __ELVCHeaderView: UICollectionReusableView {
@@ -65,13 +65,6 @@ class __ELVCHeaderView: UICollectionReusableView {
                                 self.bounds.size.width,
                                 kTopPadding + self.nameLabel.bounds.size.height + kLabelVerticalSpacing + self.detailLabel.bounds.size.height + kBottomPadding)
     }
-    
-//    func projectedHeight() -> CGFloat {
-//        var height = self.top.constant + self.bottom.constant
-//        height += self.nameLabel.intrinsicContentSize().height
-//        height += self.detailLabel.intrinsicContentSize().height
-//        return height
-//    }
     
     class func heightForCategoryName(categoryName: String, detailText: String) -> CGFloat {
         let dummyView = __ELVCHeaderView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, CGFloat.max))

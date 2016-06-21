@@ -12,6 +12,18 @@ import Mold
 
 func glb_applyGlobalVCSettings(viewController: UIViewController) {
     viewController.edgesForExtendedLayout = .None
+    
+    if let navigationBar = viewController.navigationController?.navigationBar {
+        let backLabel = UILabel()
+        backLabel.text = Icon.Back.rawValue
+        backLabel.font = Font.icon(24)
+        backLabel.sizeToFit()
+        if let backImage = UIImage.imageFromView(backLabel) {
+            navigationBar.backIndicatorImage = backImage
+            navigationBar.backIndicatorTransitionMaskImage = backImage
+        }
+    }
+    viewController.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
 }
 
 /**

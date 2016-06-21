@@ -18,13 +18,13 @@ final class Font {
     static let BarButtonItems = Font.text(.Bold, 16)
     static let NavigationBarTitle = Font.text(.ExtraBold, 18)
     
-    static let ExpenseListHeaderViewNameLabel = Font.text(.Regular, 30)
+    static let ExpenseListHeaderViewNameLabel = Font.text(.Bold, 30)
     static let ExpenseListHeaderViewDetailLabel = Font.text(.Regular, 18)
     
     static let FieldLabel = Font.text(.Bold, 14)
     static let FieldValue = Font.text(.Regular, 18)
     
-    static let SummaryBannerTotal = Font.text(.Bold, MDScreen.currentScreenIs(.iPhone4S, .iPhone5) ? 26 : 40)
+    static let SummaryBannerTotal = Font.text(.Bold, MDScreen.currentScreenIs(.iPhone4S, .iPhone5) ? 26 : 34)
     static let SummaryBannerDate = Font.text(.Regular, MDScreen.currentScreenIs(.iPhone4S, .iPhone5) ? 14 : 16)
     static let SummaryCellNameLabel = Font.text(.Bold, 18)
     static let SummaryCellPercentLabel = Font.text(.Regular, 12)

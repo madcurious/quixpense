@@ -28,24 +28,11 @@ class HomeVC: MDStatefulViewController {
         return self.collectionView
     }
     
-    override init() {
-        super.init()
-        self.title = "Home"
-        self.tabBarItem.title = self.title
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let navController = self.navigationController {
-            navController.navigationBar.shadowImage = UIImage()
-            navController.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
-            navController.navigationBar.backgroundColor = Color.HomeScreenBackgroundColor
-        }
+        glb_applyGlobalVCSettings(self)
+        self.edgesForExtendedLayout = .Bottom
         
         self.collectionView.backgroundColor = Color.HomeScreenBackgroundColor
         self.collectionView.registerCellNib(__HVCCell.nib(), withReuseIdentifier: kViewID)
@@ -56,7 +43,22 @@ class HomeVC: MDStatefulViewController {
         
         self.noResultsView.backgroundColor = Color.ScreenBackgroundColorLightGray
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(handleUpdatesOnDataStore), name: NSManagedObjectContextDidSaveNotification, object: App.state.mainQueueContext)
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        notificationCenter.addObserver(self, selector: #selector(handleUpdatesOnDataStore), name: NSManagedObjectContextDidSaveNotification, object: App.state.mainQueueContext)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let navigationBar = self.navigationController?.navigationBar {
+            let colorImage = UIImage.imageFromColor(Color.HomeScreenBackgroundColor)
+            navigationBar.shadowImage = colorImage
+            navigationBar.setBackgroundImage(colorImage, forBarMetrics: .Default)
+        }
+    }
+    
+    func handleUpdatesOnDataStore() {
+        self.collectionView.reloadData()
     }
     
     override func buildOperation() -> MDOperation? {
@@ -94,10 +96,6 @@ class HomeVC: MDStatefulViewController {
                     }
                     
                     })
-    }
-    
-    func handleUpdatesOnDataStore() {
-        self.collectionView.reloadData()
     }
     
 }

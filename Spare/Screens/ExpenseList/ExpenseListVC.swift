@@ -42,7 +42,6 @@ class ExpenseListVC: UIViewController {
         self.endDate = endDate
         
         self.layoutManager = UICollectionViewFlowLayout()
-//        self.layoutManager.estimatedItemSize = CGSizeMake(100, 100)
         self.collectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: self.layoutManager)
         
         super.init(nibName: nil, bundle: nil)
@@ -54,7 +53,6 @@ class ExpenseListVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        glb_applyGlobalVCSettings(self)
         
         self.collectionView.backgroundColor = Color.ExpenseListScreenBackgroundColor
         self.collectionView.dataSource = self
@@ -69,9 +67,9 @@ class ExpenseListVC: UIViewController {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         
         if let navigationBar = self.navigationController?.navigationBar {
-            navigationBar.shadowImage = UIImage()
-            navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
-            navigationBar.backgroundColor = self.category.color
+            let colorImage = UIImage.imageFromColor(self.category.color)
+            navigationBar.shadowImage = colorImage
+            navigationBar.setBackgroundImage(colorImage, forBarMetrics: .Default)
             navigationBar.tintColor = UIColor.whiteColor()
         }
     }
