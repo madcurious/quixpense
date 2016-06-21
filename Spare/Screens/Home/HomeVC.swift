@@ -13,8 +13,8 @@ import BNRCoreDataStack
 private let kViewID = "kViewID"
 
 private let kTopBottomInset = CGFloat(0)
-private let kLeftRightInset = CGFloat(30)
-private let kItemSpacing = CGFloat(10)
+private let kLeftRightInset = CGFloat(20)
+private let kItemSpacing = CGFloat(8)
 
 class HomeVC: MDStatefulViewController {
     
