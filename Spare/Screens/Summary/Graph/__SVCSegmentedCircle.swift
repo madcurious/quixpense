@@ -10,7 +10,14 @@ import UIKit
 
 class __SVCSegmentedCircle: UIView {
     
-    let strokeWidth = CGFloat(14)
+    lazy var strokeWidth: CGFloat = {
+        switch UIScreen.mainScreen().bounds.size.width {
+        case 320:
+            return 14
+        default:
+            return 26
+        }
+    }()
     
     var summary: Summary? {
         didSet {

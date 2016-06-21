@@ -135,12 +135,7 @@ extension SummaryVC: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-        guard let categories = glb_allCategories()
-            else {
-                return CGSizeMake(collectionView.bounds.size.width, 60)
-        }
-        
-        return CGSizeZero
+        return CGSizeMake(collectionView.bounds.size.width, 60)
     }
     
 }
