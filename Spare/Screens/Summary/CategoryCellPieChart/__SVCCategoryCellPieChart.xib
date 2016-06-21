@@ -7,7 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="MQ4-TT-R3o" customClass="__SVCCategoryCellColored" customModule="Spare" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="MQ4-TT-R3o" customClass="__SVCCategoryCellPieChart" customModule="Spare" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="352" height="151"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -15,18 +15,18 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="azR-BS-jTD">
-                        <rect key="frame" x="10" y="52.5" width="25" height="46"/>
+                        <rect key="frame" x="10" y="53" width="22" height="45"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mkA-dO-qxg" customClass="__SVCPieChart" customModule="Spare" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                                <rect key="frame" x="0.0" y="0.0" width="22" height="22"/>
                                 <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="25" id="CKy-39-49A"/>
+                                    <constraint firstAttribute="width" constant="22" id="CKy-39-49A"/>
                                     <constraint firstAttribute="width" secondItem="mkA-dO-qxg" secondAttribute="height" id="PC4-Rk-gRy"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TuX-vS-vd1">
-                                <rect key="frame" x="-8" y="25" width="42" height="21"/>
+                                <rect key="frame" x="-9.5" y="24" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -34,7 +34,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="TuX-vS-vd1" firstAttribute="top" secondItem="mkA-dO-qxg" secondAttribute="bottom" id="0Dd-fp-0tb"/>
+                            <constraint firstItem="TuX-vS-vd1" firstAttribute="top" secondItem="mkA-dO-qxg" secondAttribute="bottom" constant="2" id="0Dd-fp-0tb"/>
                             <constraint firstItem="TuX-vS-vd1" firstAttribute="centerX" secondItem="mkA-dO-qxg" secondAttribute="centerX" id="DZC-hI-n9C"/>
                             <constraint firstItem="mkA-dO-qxg" firstAttribute="leading" secondItem="azR-BS-jTD" secondAttribute="leading" id="ReI-Ky-CD5"/>
                             <constraint firstAttribute="trailing" secondItem="mkA-dO-qxg" secondAttribute="trailing" id="T0G-w1-niI"/>
@@ -43,16 +43,16 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x63-Xz-hsT">
-                        <rect key="frame" x="45" y="55" width="299" height="42"/>
+                        <rect key="frame" x="42" y="55" width="302" height="42"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FgI-T6-pCA">
-                                <rect key="frame" x="0.0" y="0.0" width="299" height="21"/>
+                                <rect key="frame" x="0.0" y="0.0" width="302" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HC4-bq-2ry">
-                                <rect key="frame" x="0.0" y="21" width="299" height="21"/>
+                                <rect key="frame" x="0.0" y="21" width="302" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>

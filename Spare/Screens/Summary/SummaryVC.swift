@@ -52,7 +52,7 @@ class SummaryVC: UIViewController {
         self.collectionView.showsVerticalScrollIndicator = false
         
         self.collectionView.registerNib(__SVCGraphView.nib(), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: ViewID.Graph.rawValue)
-        self.collectionView.registerNib(__SVCCategoryCellColored.nib(), forCellWithReuseIdentifier: ViewID.Cell.rawValue)
+        self.collectionView.registerNib(__SVCCategoryCellPieChart.nib(), forCellWithReuseIdentifier: ViewID.Cell.rawValue)
         self.collectionView.registerNib(__SVCFooterView.nib(), forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: ViewID.Footer.rawValue)
         
         self.collectionView.dataSource = self

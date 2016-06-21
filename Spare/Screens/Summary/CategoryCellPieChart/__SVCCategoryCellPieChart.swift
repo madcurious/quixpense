@@ -1,5 +1,5 @@
 //
-//  __SVCCategoryCellColored.swift
+//  __SVCCategoryCellPieChart.swift
 //  Spare
 //
 //  Created by Matt Quiros on 21/06/2016.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class __SVCCategoryCellColored: __SVCCategoryCell {
+class __SVCCategoryCellPieChart: __SVCCategoryCell {
     
     @IBOutlet weak var pieChartContainer: UIView!
     @IBOutlet weak var pieChart: __SVCPieChart!

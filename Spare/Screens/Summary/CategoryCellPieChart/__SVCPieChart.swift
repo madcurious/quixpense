@@ -33,7 +33,7 @@ class __SVCPieChart: UIView {
         
         let arcCenter = CGPointMake(rect.width / 2, rect.height / 2)
         let startAngle = CGFloat(-1 * M_PI_2)
-        let endAngle = startAngle + CGFloat(2 * M_PI_2 * self.percent)
+        let endAngle = startAngle + CGFloat(2 * M_PI * self.percent)
         let pieArc = UIBezierPath(arcCenter: arcCenter, radius: insetRect.width / 2,
                                   startAngle: startAngle, endAngle: endAngle, clockwise: true)
         pieArc.addLineToPoint(arcCenter)
