@@ -44,10 +44,10 @@ struct Summary {
     var total: NSDecimalNumber {
         guard let expenses = self.expenses
             else {
-                return NSDecimalNumber(integer: 0)
+                return 0
         }
         
-        return expenses.map({ $0.amount ?? NSDecimalNumber(integer: 0)}).reduce(0, combine: +)
+        return glb_totalOfExpenses(expenses)
     }
     
     /**
@@ -72,7 +72,7 @@ struct Summary {
                     continue
             }
             
-            let categoryTotal = expenses.map({ $0.amount ?? NSDecimalNumber(integer: 0) }).reduce(0, combine: +)
+            let categoryTotal = glb_totalOfExpenses(expenses)
             let categoryPercent = categoryTotal.decimalNumberByDividingBy(overallTotal).doubleValue
             info.append((category, categoryTotal, categoryPercent))
         }
@@ -80,20 +80,6 @@ struct Summary {
         info.sortInPlace({ $0.2 > $1.2 })
         
         return info
-    }
-    
-    var dateRangeDisplayText: String {
-        switch self.periodization {
-        case .Day:
-            if self.startDate.isSameDayAsDate(NSDate()) {
-                return "Today"
-            } else {
-                return Summary.dateFormatter.stringFromDate(self.startDate)
-            }
-            
-        default:
-            fatalError("Unimplemented")
-        }
     }
     
 }

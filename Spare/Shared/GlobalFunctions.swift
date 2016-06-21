@@ -8,6 +8,7 @@
 
 import UIKit
 import BNRCoreDataStack
+import Mold
 
 func glb_applyGlobalVCSettings(viewController: UIViewController) {
     viewController.edgesForExtendedLayout = .None
@@ -40,8 +41,30 @@ func glb_protect<T>(closure: Void throws -> T?) -> T? {
     }
 }
 
-func glb_textForTotal(total: NSDecimalNumber) -> String {
+func glb_displayTextForTotal(total: NSDecimalNumber) -> String {
     let formatter = NSNumberFormatter()
     formatter.numberStyle = .CurrencyStyle
     return formatter.stringFromNumber(total) ?? "$ 0.00"
+}
+
+func glb_displayTextForDateRange(startDate: NSDate, endDate: NSDate, periodization: Periodization) -> String {
+    switch periodization {
+    case .Day:
+        if startDate.isSameDayAsDate(NSDate()) {
+            return "Today"
+        } else {
+            return Summary.dateFormatter.stringFromDate(startDate)
+        }
+        
+    default:
+        fatalError("Unimplemented")
+    }
+}
+
+func glb_displayTextForDateRange(summary: Summary) -> String {
+    return glb_displayTextForDateRange(summary.startDate, endDate: summary.endDate, periodization: summary.periodization)
+}
+
+func glb_totalOfExpenses(expenses: [Expense]) -> NSDecimalNumber {
+    return expenses.map({ $0.amount ?? 0}).reduce(0, combine: +)
 }

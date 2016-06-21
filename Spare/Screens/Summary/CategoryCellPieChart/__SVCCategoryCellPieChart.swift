@@ -33,7 +33,7 @@ class __SVCCategoryCellPieChart: __SVCCategoryCell {
             self.pieChart.percent = percent
             
             self.nameLabel.text = category.name
-            self.totalLabel.text = glb_textForTotal(total)
+            self.totalLabel.text = glb_displayTextForTotal(total)
             self.percentLabel.text = "\(Int(percent * 100))%"
         }
     }

@@ -32,6 +32,7 @@ class Color {
     // MARK: - UI Colors
     
     static let ExpenseListScreenBackgroundColor = White
+    static let ExpenseListHeaderViewTextColor = White
     
     static let FormFieldLabelTextColor = Gray700
     static let FormFieldValueTextColor = Black

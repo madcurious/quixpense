@@ -92,7 +92,7 @@ extension SummaryVC: UICollectionViewDataSource {
                     fatalError()
             }
             
-            graphView.totalLabel.text = glb_textForTotal(self.summary.total)
+            graphView.totalLabel.text = glb_displayTextForTotal(self.summary.total)
             graphView.summary = self.summary
             
             return graphView

@@ -30,7 +30,7 @@ class __SVCCategoryCellGray: __SVCCategoryCell {
             self.colorBox.backgroundColor = category.color
             self.nameLabel.text = category.name
             
-            self.totalLabel.text = glb_textForTotal(total)
+            self.totalLabel.text = glb_displayTextForTotal(total)
         }
     }
     

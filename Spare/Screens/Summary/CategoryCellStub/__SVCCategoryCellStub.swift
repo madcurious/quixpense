@@ -30,7 +30,7 @@ class __SVCCategoryCellStub: __SVCCategoryCell {
             
             self.stubView.backgroundColor = category.color
             self.nameLabel.text = category.name
-            self.totalLabel.text = glb_textForTotal(total)
+            self.totalLabel.text = glb_displayTextForTotal(total)
             self.percentLabel.text = "\(Int(percent * 100))%"
         }
     }

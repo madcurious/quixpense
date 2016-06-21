@@ -19,8 +19,13 @@ class __SVCGraphView: UICollectionReusableView {
     var summary: Summary? {
         didSet {
             self.segmentedCircle.summary = self.summary
-            self.totalLabel.text = glb_textForTotal(self.summary?.total ?? 0)
-            self.dateLabel.text = self.summary?.dateRangeDisplayText
+            self.totalLabel.text = glb_displayTextForTotal(self.summary?.total ?? 0)
+            
+            if let summary = self.summary {
+                self.dateLabel.text = glb_displayTextForDateRange(summary)
+            } else {
+                self.dateLabel.text = nil
+            }
         }
     }
     
