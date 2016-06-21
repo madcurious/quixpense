@@ -39,7 +39,7 @@ class BaseTabButton: UIControl {
                 return
             }
             
-            self.backgroundView.backgroundColor = Color.TabButtonHighlightBackgroundColor
+//            self.backgroundView.backgroundColor = Color.TabButtonHighlightBackgroundColor
             self.iconLabel.alpha = 0.5
         }
         

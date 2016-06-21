@@ -47,6 +47,7 @@ class Color {
     static let SummaryGraphDateTextColor = Gray500
     static let SummaryCellBackgroundColor = Gray50
     static let SummaryCellTextColor = Gray700
+    static let SummaryCellTextColorLight = White
     static let SummarySegmentedCircleEmptyColor = Gray200
     static let SummaryFooterViewTextColor = Gray700
     
