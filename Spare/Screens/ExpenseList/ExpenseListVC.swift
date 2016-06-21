@@ -21,8 +21,9 @@ class ExpenseListVC: UIViewController {
     let startDate: NSDate
     let endDate: NSDate
     
-    let layoutManager: UICollectionViewFlowLayout
-    let collectionView: UICollectionView
+//    let layoutManager: UICollectionViewFlowLayout
+//    let collectionView: UICollectionView
+    let customView = __ELVCView.instantiateFromNib() as __ELVCView
     
     var expenses: [Expense]? {
         return glb_protect({[unowned self] in
@@ -41,25 +42,29 @@ class ExpenseListVC: UIViewController {
         self.startDate = startDate
         self.endDate = endDate
         
-        self.layoutManager = UICollectionViewFlowLayout()
-        self.collectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: self.layoutManager)
+//        self.layoutManager = UICollectionViewFlowLayout()
+//        self.collectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: self.layoutManager)
         
         super.init(nibName: nil, bundle: nil)
     }
     
     override func loadView() {
-        self.view = self.collectionView
+        self.view = self.customView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        glb_applyGlobalVCSettings(self)
         
-        self.collectionView.alwaysBounceVertical = true
-        self.collectionView.backgroundColor = Color.ExpenseListScreenBackgroundColor
-        self.collectionView.dataSource = self
-        self.collectionView.delegate = self
-        self.collectionView.registerClass(__ELVCHeaderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: ViewID.Header.rawValue)
-        self.collectionView.registerNib(__ELVCCell.nib(), forCellWithReuseIdentifier: ViewID.Cell.rawValue)
+        let collectionView = self.customView.collectionView
+        collectionView.alwaysBounceVertical = true
+//        collectionView.backgroundColor = Color.ExpenseListScreenBackgroundColor
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.registerClass(__ELVCHeaderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: ViewID.Header.rawValue)
+        collectionView.registerNib(__ELVCCell.nib(), forCellWithReuseIdentifier: ViewID.Cell.rawValue)
+        
+        self.customView.headerBackgroundView.backgroundColor = self.category.color
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -157,6 +162,21 @@ extension ExpenseListVC: UICollectionViewDelegateFlowLayout {
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
         return 0
+    }
+    
+}
+
+//
+extension ExpenseListVC: UIScrollViewDelegate {
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        let headerBackgroundViewHeight: CGFloat = {
+            if self.customView.collectionView.contentOffset.y > 0 {
+                return 0
+            }
+            return abs(self.customView.collectionView.contentOffset.y)
+        }()
+        self.customView.headerBackgroundViewHeight.constant = headerBackgroundViewHeight
     }
     
 }
