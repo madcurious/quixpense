@@ -35,6 +35,12 @@ class __SVCCategoryCellStub: __SVCCategoryCell {
         }
     }
     
+    override var highlighted: Bool {
+        didSet {
+            self.applyHighlight(self.highlighted)
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -42,12 +48,26 @@ class __SVCCategoryCellStub: __SVCCategoryCell {
         self.contentView.backgroundColor = Color.SummaryCellBackgroundColor
         
         self.nameLabel.font = Font.SummaryCellNameLabel
-        self.nameLabel.textColor = Color.SummaryCellTextColor
-        
         self.totalLabel.font = Font.SummaryCellTotalLabel
-        self.totalLabel.textColor = Color.SummaryCellTextColor
-        
         self.percentLabel.font = Font.SummaryCellPercentLabel
-        self.percentLabel.textColor = Color.SummaryCellTextColor
+        
+        self.applyHighlight(false)
     }
+    
+    func applyHighlight(apply: Bool) {
+        if apply {
+            self.stubView.backgroundColor = UIColor.clearColor()
+            self.nameLabel.textColor = UIColor.whiteColor()
+            self.totalLabel.textColor = UIColor.whiteColor()
+            self.percentLabel.textColor = UIColor.whiteColor()
+            self.contentView.backgroundColor = Color.SummaryCellHighlightedColor
+        } else {
+            self.stubView.backgroundColor = self.info?.0.color ?? UIColor.blackColor()
+            self.nameLabel.textColor = Color.SummaryCellTextColor
+            self.totalLabel.textColor = Color.SummaryCellTextColor
+            self.percentLabel.textColor = Color.SummaryCellTextColor
+            self.contentView.backgroundColor = Color.SummaryCellBackgroundColor
+        }
+    }
+    
 }

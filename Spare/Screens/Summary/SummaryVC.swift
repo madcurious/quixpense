@@ -17,8 +17,7 @@ private enum ViewID: String {
 
 class SummaryVC: UIViewController {
     
-    // Optional because the VC may be in a home screen cell whose initial state is undefined.
-    var summary: Summary? {
+    var summary: Summary {
         didSet {
             self.collectionView.reloadData()
         }
@@ -31,7 +30,7 @@ class SummaryVC: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(summary: Summary?) {
+    init(summary: Summary) {
         self.summary = summary
         
         self.layoutManager = UICollectionViewFlowLayout()
@@ -79,7 +78,7 @@ extension SummaryVC: UICollectionViewDataSource {
                 fatalError()
         }
         
-        cell.info = self.summary?.info?[indexPath.item]
+        cell.info = self.summary.info?[indexPath.item]
         
         
         return cell
@@ -93,7 +92,7 @@ extension SummaryVC: UICollectionViewDataSource {
                     fatalError()
             }
             
-            graphView.totalLabel.text = glb_textForTotal(self.summary?.total ?? 0)
+            graphView.totalLabel.text = glb_textForTotal(self.summary.total)
             graphView.summary = self.summary
             
             return graphView
@@ -113,7 +112,31 @@ extension SummaryVC: UICollectionViewDataSource {
 }
 
 // MARK: - UICollectionViewDelegate
-extension SummaryVC: UICollectionViewDelegate {}
+extension SummaryVC: UICollectionViewDelegate {
+
+    func collectionView(collectionView: UICollectionView, shouldHighlightItemAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        guard let category = self.summary.info?[indexPath.item].0
+            else {
+                return
+        }
+        
+        // Notify the container that a category cell has been tapped.
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        notificationCenter.postNotificationName(
+            Event.CategoryTappedInSummaryVC.rawValue,
+            object: nil,
+            userInfo: [
+                "category" : category,
+                "startDate" : self.summary.startDate,
+                "endDate" : self.summary.endDate
+            ])
+    }
+
+}
 
 // MARK: - UICollectionViewDelegateFlowLayout
 extension SummaryVC: UICollectionViewDelegateFlowLayout {

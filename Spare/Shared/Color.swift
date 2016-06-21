@@ -31,6 +31,8 @@ class Color {
     
     // MARK: - UI Colors
     
+    static let ExpenseListScreenBackgroundColor = White
+    
     static let FormFieldLabelTextColor = Gray700
     static let FormFieldValueTextColor = Black
     static let FormPlaceholderTextColor = Gray400
@@ -46,6 +48,7 @@ class Color {
     static let SummaryGraphTotalTextColor = Black
     static let SummaryGraphDateTextColor = Gray500
     static let SummaryCellBackgroundColor = Gray50
+    static let SummaryCellHighlightedColor = Gray800
     static let SummaryCellTextColor = Gray700
     static let SummaryCellTextColorLight = White
     static let SummarySegmentedCircleEmptyColor = Gray200

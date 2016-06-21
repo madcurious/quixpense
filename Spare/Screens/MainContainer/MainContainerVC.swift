@@ -37,6 +37,9 @@ class MainContainerVC: UIViewController {
         self.customView.tabBarContainer.addSubviewAndFill(self.tabBar)
         
         self.tabBar.addButton.delegate = self
+        
+        // Listen for taps on category cells in summary cards.
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(handleTapOnSummaryCell(_:)), name: Event.CategoryTappedInSummaryVC.rawValue, object: nil)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -45,6 +48,19 @@ class MainContainerVC: UIViewController {
         if let navController = self.navigationController {
             navController.setNavigationBarHidden(true, animated: true)
         }
+    }
+    
+    func handleTapOnSummaryCell(notification: NSNotification) {
+        guard let userInfo = notification.userInfo,
+            let category = userInfo["category"] as? Category,
+            let startDate = userInfo["startDate"] as? NSDate,
+            let endDate = userInfo["endDate"] as? NSDate
+            else {
+                return
+        }
+        
+        let expenseListVC = ExpenseListVC(category: category, startDate: startDate, endDate: endDate)
+        self.navigationController?.pushViewController(expenseListVC, animated: true)
     }
     
 }

@@ -10,20 +10,22 @@ import UIKit
 
 class __HVCCell: UICollectionViewCell {
     
+    static let garbageSummaryValue: Summary = {
+        let currentDate = NSDate()
+        return Summary(startDate: currentDate.firstMoment(), endDate: currentDate.lastMoment(), periodization: .Day)
+    }()
+    
     @IBOutlet weak var borderView: UIView!
     @IBOutlet weak var summaryVCContainer: UIView!
-    
     @IBOutlet var borderConstraints: [NSLayoutConstraint]!
     
-    
-    let summaryVC = SummaryVC(summary: nil)
-    
+    let summaryVC = SummaryVC(summary: __HVCCell.garbageSummaryValue)
     var summary: Summary? {
         get {
             return self.summaryVC.summary
         }
         set {
-            self.summaryVC.summary = newValue
+            self.summaryVC.summary = newValue ?? __HVCCell.garbageSummaryValue
         }
     }
     

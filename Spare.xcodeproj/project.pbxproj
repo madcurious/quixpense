@@ -94,6 +94,8 @@
 		26CAD3851D1946E80039DFD2 /* __SVCPieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CAD3821D1946E80039DFD2 /* __SVCPieChart.swift */; };
 		26CAD3881D194CF20039DFD2 /* __SVCCategoryCellStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CAD3871D194CF20039DFD2 /* __SVCCategoryCellStub.swift */; };
 		26CAD38A1D194D1B0039DFD2 /* __SVCCategoryCellStub.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26CAD3891D194D1B0039DFD2 /* __SVCCategoryCellStub.xib */; };
+		26CAD38D1D195F970039DFD2 /* ExpenseListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CAD38C1D195F970039DFD2 /* ExpenseListVC.swift */; };
+		26CAD3911D1966B70039DFD2 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CAD3901D1966B70039DFD2 /* Event.swift */; };
 		26E2D37C1CE0E3BA00BA357F /* BaseFormVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E2D37B1CE0E3BA00BA357F /* BaseFormVC.swift */; };
 		26E4E0591937AF690096191A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E4E0581937AF690096191A /* QuartzCore.framework */; };
 		26E6EDB41CDBA6C60034EEDE /* AddButtonProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26E6EDB31CDBA6C60034EEDE /* AddButtonProgressView.xib */; };
@@ -239,6 +241,8 @@
 		26CAD3821D1946E80039DFD2 /* __SVCPieChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __SVCPieChart.swift; sourceTree = "<group>"; };
 		26CAD3871D194CF20039DFD2 /* __SVCCategoryCellStub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __SVCCategoryCellStub.swift; sourceTree = "<group>"; };
 		26CAD3891D194D1B0039DFD2 /* __SVCCategoryCellStub.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __SVCCategoryCellStub.xib; sourceTree = "<group>"; };
+		26CAD38C1D195F970039DFD2 /* ExpenseListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseListVC.swift; sourceTree = "<group>"; };
+		26CAD3901D1966B70039DFD2 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		26D4C8F41946E624001B42DC /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		26E2D37B1CE0E3BA00BA357F /* BaseFormVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseFormVC.swift; sourceTree = "<group>"; };
 		26E4E0581937AF690096191A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -295,6 +299,7 @@
 				262F83991CCE3E4C00EDDDEE /* LoadApp */,
 				26EFA0011CD9C8E800714E5D /* MainContainer */,
 				260024081CC7E5F300EB2026 /* Home */,
+				26CAD38B1D195F7E0039DFD2 /* ExpenseList */,
 				268D23ED1D003560006B8D0B /* Summary */,
 				2600240E1CC7E5F300EB2026 /* Settings */,
 				269D49E91CE1610100109990 /* CategoryEditor */,
@@ -483,6 +488,7 @@
 				2687FA2E1D0EC2E900D544F5 /* Strings.swift */,
 				2687FA3D1D0F900600D544F5 /* Summary.swift */,
 				2687FA3F1D0F96D100D544F5 /* Periodization.swift */,
+				26CAD3901D1966B70039DFD2 /* Event.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -564,6 +570,14 @@
 				26CAD3891D194D1B0039DFD2 /* __SVCCategoryCellStub.xib */,
 			);
 			path = CategoryCellStub;
+			sourceTree = "<group>";
+		};
+		26CAD38B1D195F7E0039DFD2 /* ExpenseList */ = {
+			isa = PBXGroup;
+			children = (
+				26CAD38C1D195F970039DFD2 /* ExpenseListVC.swift */,
+			);
+			path = ExpenseList;
 			sourceTree = "<group>";
 		};
 		26EFA0011CD9C8E800714E5D /* MainContainer */ = {
@@ -803,6 +817,7 @@
 				26E7FA7B1CDB332F000E2181 /* BaseTabButton.swift in Sources */,
 				26CAD3851D1946E80039DFD2 /* __SVCPieChart.swift in Sources */,
 				2676792A1D13FE8F004CF70A /* __SVCCategoryCell.swift in Sources */,
+				26CAD3911D1966B70039DFD2 /* Event.swift in Sources */,
 				269D49F41CE1610100109990 /* CategoryEditorVC.swift in Sources */,
 				26CAD3781D193C980039DFD2 /* __SVCCategoryCellGray.swift in Sources */,
 				26CAD37C1D193C980039DFD2 /* __SVCSegmentedCircle.swift in Sources */,
@@ -833,6 +848,7 @@
 				268D23EC1D001E79006B8D0B /* HomeVC.swift in Sources */,
 				26CAD3881D194CF20039DFD2 /* __SVCCategoryCellStub.swift in Sources */,
 				26E2D37C1CE0E3BA00BA357F /* BaseFormVC.swift in Sources */,
+				26CAD38D1D195F970039DFD2 /* ExpenseListVC.swift in Sources */,
 				269D49F51CE1610100109990 /* HRColorMapView.swift in Sources */,
 				2603F8CE1CCA4C10007F311F /* Expense+CoreDataProperties.swift in Sources */,
 				2669468F1CC7711000A68424 /* Spare.xcdatamodeld in Sources */,
