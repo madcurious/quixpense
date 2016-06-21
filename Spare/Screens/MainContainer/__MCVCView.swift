@@ -17,7 +17,7 @@ class __MCVCView: UIView {
         super.awakeFromNib()
         
         UIView.clearBackgroundColors(self.tabContainer, self.tabBarContainer)
-        self.backgroundColor = Color.ScreenBackgroundColorLightGray
+        self.backgroundColor = Color.HomeScreenBackgroundColor
     }
     
 }
