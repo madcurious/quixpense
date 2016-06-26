@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import Mold
 
 class BaseFormVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         glb_applyGlobalVCSettings(self)
+        
+        self.applyCommonFormBehaviors()
         
         self.addCancelAndDoneBarButtonItems("CANCEL", doneButtonTitle: "SAVE")
         

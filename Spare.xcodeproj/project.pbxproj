@@ -85,6 +85,7 @@
 		26A253C01D196DED003CDF5E /* __ELVCHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A253BF1D196DED003CDF5E /* __ELVCHeaderView.swift */; };
 		26A253C21D1975EA003CDF5E /* __ELVCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A253C11D1975EA003CDF5E /* __ELVCCell.swift */; };
 		26A253C41D197606003CDF5E /* __ELVCCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26A253C31D197606003CDF5E /* __ELVCCell.xib */; };
+		26A43A081D1F9FD300E0A820 /* EditCategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A43A071D1F9FD300E0A820 /* EditCategoryVC.swift */; };
 		26A6CDE11CDB18EA00309A84 /* AddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A6CDE01CDB18EA00309A84 /* AddButton.swift */; };
 		26BC4F961CE429AE0011BE98 /* ValidateExpenseOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC4F951CE429AE0011BE98 /* ValidateExpenseOperation.swift */; };
 		26BC4FA11CE45D260011BE98 /* __EEVCPickerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC4FA01CE45D260011BE98 /* __EEVCPickerTextField.swift */; };
@@ -237,6 +238,7 @@
 		26A253BF1D196DED003CDF5E /* __ELVCHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __ELVCHeaderView.swift; sourceTree = "<group>"; };
 		26A253C11D1975EA003CDF5E /* __ELVCCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __ELVCCell.swift; sourceTree = "<group>"; };
 		26A253C31D197606003CDF5E /* __ELVCCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __ELVCCell.xib; sourceTree = "<group>"; };
+		26A43A071D1F9FD300E0A820 /* EditCategoryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditCategoryVC.swift; sourceTree = "<group>"; };
 		26A6CDE01CDB18EA00309A84 /* AddButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddButton.swift; sourceTree = "<group>"; };
 		26BC4F951CE429AE0011BE98 /* ValidateExpenseOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidateExpenseOperation.swift; sourceTree = "<group>"; };
 		26BC4FA01CE45D260011BE98 /* __EEVCPickerTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __EEVCPickerTextField.swift; sourceTree = "<group>"; };
@@ -535,6 +537,7 @@
 				269D49EC1CE1610100109990 /* CategoryEditorVC.swift */,
 				269D49ED1CE1610100109990 /* HRColorMapView.swift */,
 				269D4A011CE16DCA00109990 /* ValidateCategoryOperation.swift */,
+				26A43A071D1F9FD300E0A820 /* EditCategoryVC.swift */,
 			);
 			path = CategoryEditor;
 			sourceTree = "<group>";
@@ -866,6 +869,7 @@
 				26BC4FA11CE45D260011BE98 /* __EEVCPickerTextField.swift in Sources */,
 				269D49FC1CE1643A00109990 /* AddExpenseVC.swift in Sources */,
 				2603F8D21CCA4C10007F311F /* Category+CoreDataProperties.swift in Sources */,
+				26A43A081D1F9FD300E0A820 /* EditCategoryVC.swift in Sources */,
 				269D4A021CE16DCA00109990 /* ValidateCategoryOperation.swift in Sources */,
 				269D49FE1CE1649500109990 /* ModalNavBarVC.swift in Sources */,
 				269D49F81CE1610100109990 /* ExpenseEditorVC.swift in Sources */,

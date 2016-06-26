@@ -25,7 +25,7 @@ class ExpenseListVC: UIViewController {
     let customView = __ELVCView.instantiateFromNib() as __ELVCView
     
     var expenses: [Expense]? {
-        return glb_protect({[unowned self] in
+        return glb_autoreport({[unowned self] in
             let request = NSFetchRequest(entityName: Expense.entityName)
             request.predicate = NSPredicate(format: "category == %@ && dateSpent >= %@ && dateSpent <= %@", self.category, self.startDate, self.endDate)
             if let expenses = try App.state.mainQueueContext.executeFetchRequest(request) as? [Expense]
@@ -61,6 +61,17 @@ class ExpenseListVC: UIViewController {
         collectionView.registerNib(CollectionViewLabel.nib(), forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: ViewID.Footer.rawValue)
         
         self.customView.headerBackgroundView.backgroundColor = self.category.color
+        
+        let editButton = UIButton(type: .Custom)
+        editButton.setAttributedTitle(
+            NSAttributedString(string: Icon.EditCategory.rawValue,
+                attributes: [
+                    NSForegroundColorAttributeName : Color.ExpenseListEditCategoryButton,
+                    NSFontAttributeName : Font.ExpenseListEditCategoryButton
+                ]), forState: .Normal)
+        editButton.sizeToFit()
+        editButton.addTarget(self, action: #selector(handleTapOnEditCategoryButton), forControlEvents: .TouchUpInside)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: editButton)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -74,6 +85,11 @@ class ExpenseListVC: UIViewController {
             navigationBar.setBackgroundImage(colorImage, forBarMetrics: .Default)
             navigationBar.tintColor = UIColor.whiteColor()
         }
+    }
+    
+    func handleTapOnEditCategoryButton() {
+        self.presentViewController(ModalNavBarVC(rootViewController: EditCategoryVC(category: self.category)),
+                                   animated: true, completion: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -119,7 +135,7 @@ extension ExpenseListVC: UICollectionViewDataSource {
                 }
                 return 0
                 }())
-            headerView.detailLabel.text = "\(dateRangeText): \(totalText)"
+            headerView.detailLabel.text = "\(totalText) \(dateRangeText)"
             return headerView
             
         default:

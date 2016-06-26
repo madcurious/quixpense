@@ -11,6 +11,9 @@ import Color_Picker_for_iOS
 
 class __CEVCView: UIView {
     
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var contentView: UIView!
+    
     @IBOutlet weak var textFieldContainer: UIView!
     @IBOutlet weak var fieldLabel: UILabel!
     @IBOutlet weak var textField: __CEVCTextField!
@@ -54,13 +57,10 @@ class __CEVCView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        UIView.clearBackgroundColors(self.scrollView, self.contentView, self.colorMapExtendedArea, self.colorMapContainer, self.sliderContainer, self.sliderTrackContainer)
         self.backgroundColor = Color.ScreenBackgroundColorLightGray
         self.textFieldContainer.backgroundColor = Color.White
-        self.colorMapExtendedArea.backgroundColor = UIColor.clearColor()
         self.colorMapBorderView.backgroundColor = Color.White
-        self.colorMapContainer.backgroundColor = UIColor.clearColor()
-        self.sliderContainer.backgroundColor = UIColor.clearColor()
-        self.sliderTrackContainer.backgroundColor = UIColor.clearColor()
         
         self.fieldLabel.text = "NAME"
         self.fieldLabel.textColor = Color.FormFieldLabelTextColor

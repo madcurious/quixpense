@@ -22,30 +22,41 @@ class CategoryEditorVC: UIViewController {
     
     private let defaultColor = UIColor.redColor()
     
+    override var formScrollView: UIScrollView {
+        return self.customView.scrollView
+    }
+    
     init(category: Category?) {
         let context = App.state.coreDataStack.newBackgroundWorkerMOC()
         self.managedObjectContext = context
         
+        self.slider = HRBrightnessSlider()
+        self.slider.brightnessLowerLimit = 0.3
+        
         if let category = category,
             let colorHex = category.colorHex as? Int {
-            self.category = category
+            self.category = {
+                return glb_autoreport({
+                    // The category has to be refetched to make undoing of cancelled changes easier.
+                    if let category = context.objectWithID(category.objectID) as? Category {
+                        return category
+                    }
+                    throw Error.AppUnknownError
+                    }, defaultValue: Category(managedObjectContext: context))
+            }()
             self.colorMap = HRColorMapView.defaultColorMap(UIColor(hex: colorHex))
+            self.slider.color = UIColor(hex: colorHex)
         } else {
             self.category = Category(managedObjectContext: context)
             self.category.colorHex = self.defaultColor.hexValue()
             self.colorMap = HRColorMapView.defaultColorMap(self.defaultColor)
+            self.slider.color = self.defaultColor
         }
-        
-        self.slider = HRBrightnessSlider()
         
         super.init(nibName: nil, bundle: nil)
         
-        self.slider.brightnessLowerLimit = 0.3
-        self.slider.color = self.defaultColor
-        
         self.customView.colorMap = self.colorMap
         self.customView.slider = self.slider
-        
         self.customView.textField.backgroundColor = self.getResultingColor()
     }
     
@@ -65,6 +76,7 @@ class CategoryEditorVC: UIViewController {
         self.slider.addTarget(self, action: #selector(handleBrightnessValueChange(_:)), forControlEvents: .ValueChanged)
         
         self.customView.textField.delegate = self
+        self.customView.textField.text = self.category.name
         
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapOnView)))
     }

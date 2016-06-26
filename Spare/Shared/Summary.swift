@@ -27,7 +27,7 @@ struct Summary {
      Returns an array of all the expenses in the date range, or nil if none were found.
      */
     var expenses: [Expense]? {
-        return glb_protect({
+        return glb_autoreport({
             let request = NSFetchRequest(entityName: Expense.entityName)
             request.predicate = NSPredicate(format: "dateSpent >= %@ AND dateSpent <= %@", self.startDate, self.endDate)
             if let expenses = try App.state.mainQueueContext.executeFetchRequest(request) as? [Expense]

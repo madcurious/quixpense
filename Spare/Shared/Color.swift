@@ -34,6 +34,7 @@ class Color {
     static let ExpenseListCellHighlightedColor = Gray400
     static let ExpenseListCellTextColor = Black
     static let ExpenseListCellTextColorHighlighted = White
+    static let ExpenseListEditCategoryButton = White
     static let ExpenseListHeaderViewTextColor = White
     static let ExpenseListScreenBackgroundColor = White
     

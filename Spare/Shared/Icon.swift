@@ -9,9 +9,12 @@
 import Foundation
 
 enum Icon: String {
+    
     case Add = "f"
     case Back = "w"
     case DisclosureIndicator = "v"
+    case EditCategory = "n"
     case Home = "b"
     case Settings = "j"
+    
 }

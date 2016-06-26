@@ -18,6 +18,7 @@ final class Font {
     static let BarButtonItems = Font.text(.Bold, 16)
     static let NavigationBarTitle = Font.text(.ExtraBold, 18)
     
+    static let ExpenseListEditCategoryButton = Font.icon(28)
     static let ExpenseListHeaderViewNameLabel = Font.text(.Bold, 30)
     static let ExpenseListHeaderViewDetailLabel = Font.text(.Regular, 18)
     static let ExpenseListCellItemDescriptionLabel = Font.text(.Regular, 20)
