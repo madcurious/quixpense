@@ -83,6 +83,7 @@
 		269D49FE1CE1649500109990 /* ModalNavBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269D49FD1CE1649500109990 /* ModalNavBarVC.swift */; };
 		269D4A021CE16DCA00109990 /* ValidateCategoryOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269D4A011CE16DCA00109990 /* ValidateCategoryOperation.swift */; };
 		26A063F21D2128FE0034D04F /* IconBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A063F11D2128FE0034D04F /* IconBarButton.swift */; };
+		26A063F41D2130BF0034D04F /* spare-v2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26A063F31D2130BF0034D04F /* spare-v2.ttf */; };
 		26A253C01D196DED003CDF5E /* __ELVCHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A253BF1D196DED003CDF5E /* __ELVCHeaderView.swift */; };
 		26A253C21D1975EA003CDF5E /* __ELVCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A253C11D1975EA003CDF5E /* __ELVCCell.swift */; };
 		26A253C41D197606003CDF5E /* __ELVCCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26A253C31D197606003CDF5E /* __ELVCCell.xib */; };
@@ -111,7 +112,6 @@
 		26EFA0051CD9C91A00714E5D /* __MCVCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26EFA0041CD9C91A00714E5D /* __MCVCView.xib */; };
 		26EFA0071CD9C92F00714E5D /* __MCVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EFA0061CD9C92F00714E5D /* __MCVCView.swift */; };
 		26EFA0091CD9DB0A00714E5D /* TabButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EFA0081CD9DB0A00714E5D /* TabButton.swift */; };
-		26EFA00B1CD9DE8100714E5D /* spare-v2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26EFA00A1CD9DE8100714E5D /* spare-v2.ttf */; };
 		26EFA00D1CD9DFF900714E5D /* MainTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EFA00C1CD9DFF900714E5D /* MainTabBar.swift */; };
 		26EFA00F1CD9E00200714E5D /* MainTabBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26EFA00E1CD9E00200714E5D /* MainTabBar.xib */; };
 		C5207A739D770B38693548B5 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59C2B0311ED5D0556A5A2FEF /* Pods.framework */; };
@@ -237,6 +237,7 @@
 		269D49FD1CE1649500109990 /* ModalNavBarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalNavBarVC.swift; sourceTree = "<group>"; };
 		269D4A011CE16DCA00109990 /* ValidateCategoryOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidateCategoryOperation.swift; sourceTree = "<group>"; };
 		26A063F11D2128FE0034D04F /* IconBarButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconBarButton.swift; sourceTree = "<group>"; };
+		26A063F31D2130BF0034D04F /* spare-v2.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "spare-v2.ttf"; sourceTree = "<group>"; };
 		26A253BF1D196DED003CDF5E /* __ELVCHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __ELVCHeaderView.swift; sourceTree = "<group>"; };
 		26A253C11D1975EA003CDF5E /* __ELVCCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __ELVCCell.swift; sourceTree = "<group>"; };
 		26A253C31D197606003CDF5E /* __ELVCCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __ELVCCell.xib; sourceTree = "<group>"; };
@@ -266,7 +267,6 @@
 		26EFA0041CD9C91A00714E5D /* __MCVCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __MCVCView.xib; sourceTree = "<group>"; };
 		26EFA0061CD9C92F00714E5D /* __MCVCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __MCVCView.swift; sourceTree = "<group>"; };
 		26EFA0081CD9DB0A00714E5D /* TabButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabButton.swift; sourceTree = "<group>"; };
-		26EFA00A1CD9DE8100714E5D /* spare-v2.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "spare-v2.ttf"; sourceTree = "<group>"; };
 		26EFA00C1CD9DFF900714E5D /* MainTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBar.swift; sourceTree = "<group>"; };
 		26EFA00E1CD9E00200714E5D /* MainTabBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainTabBar.xib; sourceTree = "<group>"; };
 		59C2B0311ED5D0556A5A2FEF /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -372,7 +372,7 @@
 		261370A91CD7A114007BAF56 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				26EFA00A1CD9DE8100714E5D /* spare-v2.ttf */,
+				26A063F31D2130BF0034D04F /* spare-v2.ttf */,
 				268BBDA41D08E99C005C6BD8 /* Lato-Black.ttf */,
 				268BBDA51D08E99C005C6BD8 /* Lato-BlackItalic.ttf */,
 				268BBDA61D08E99C005C6BD8 /* Lato-Bold.ttf */,
@@ -758,12 +758,12 @@
 				268BBDB31D08E99C005C6BD8 /* Lato-HairlineItalic.ttf in Resources */,
 				268BBDB41D08E99C005C6BD8 /* Lato-Italic.ttf in Resources */,
 				268BBDB51D08E99C005C6BD8 /* Lato-Light.ttf in Resources */,
+				26A063F41D2130BF0034D04F /* spare-v2.ttf in Resources */,
 				266946891CC7711000A68424 /* Icon@2x.png in Resources */,
 				266946861CC7711000A68424 /* Icon-40@2x.png in Resources */,
 				268BBDB11D08E99C005C6BD8 /* Lato-BoldItalic.ttf in Resources */,
 				268BBDB21D08E99C005C6BD8 /* Lato-Hairline.ttf in Resources */,
 				268BBDAF1D08E99C005C6BD8 /* Lato-BlackItalic.ttf in Resources */,
-				26EFA00B1CD9DE8100714E5D /* spare-v2.ttf in Resources */,
 				266946881CC7711000A68424 /* Icon-Small@2x.png in Resources */,
 				26EFA0051CD9C91A00714E5D /* __MCVCView.xib in Resources */,
 				266946851CC7711000A68424 /* InfoPlist.strings in Resources */,

@@ -51,8 +51,10 @@ class IconBarButton: UIControl {
         self.addObserver(self, forKeyPath: "highlighted", options: [.New], context: nil)
     }
     
-    convenience init() {
-        self.init(size: CGSizeMake(30, 30))
+    convenience init(icon: Icon, fontSize: CGFloat) {
+        self.init(size: CGSizeMake(32, 32))
+        self.iconLabel.text = icon.rawValue
+        self.iconLabel.font = Font.icon(fontSize)
     }
     
     override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {

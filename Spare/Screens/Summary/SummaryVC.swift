@@ -109,7 +109,7 @@ extension SummaryVC: UICollectionViewDataSource {
                 NSFontAttributeName : Font.SummaryFooterViewText
             ]
             let text = NSMutableAttributedString(string: "Press and hold ", attributes: textAttributes)
-            text.appendAttributedString(NSAttributedString(string: Icon.Add.rawValue, attributes: [
+            text.appendAttributedString(NSAttributedString(string: Icon.MainTabBarAdd.rawValue, attributes: [
                 NSForegroundColorAttributeName : Color.SummaryFooterViewTextColor,
                 NSFontAttributeName : Font.icon(14)
                 ]))

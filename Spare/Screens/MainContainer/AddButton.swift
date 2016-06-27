@@ -43,7 +43,7 @@ class AddButton: BaseTabButton {
     init() {
         super.init(frame: CGRectZero)
         
-        self.iconLabel.text = Icon.Add.rawValue
+        self.iconLabel.text = Icon.MainTabBarAdd.rawValue
     }
     
     required init?(coder aDecoder: NSCoder) {

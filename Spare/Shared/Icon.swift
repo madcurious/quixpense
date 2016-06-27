@@ -10,11 +10,12 @@ import Foundation
 
 enum Icon: String {
     
-    case Add = "f"
     case Back = "w"
     case DisclosureIndicator = "v"
-    case EditCategory = "n"
+    case EditCategory = "C"
     case Home = "b"
+    case MainTabBarAdd = "f"
+    case NewExpense = "d"
     case Settings = "j"
     
 }
