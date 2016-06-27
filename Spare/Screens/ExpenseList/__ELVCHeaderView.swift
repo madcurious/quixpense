@@ -23,6 +23,8 @@ class __ELVCHeaderView: UICollectionReusableView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.addSubviews(self.nameLabel, self.detailLabel)
+        self.addObserver(self, forKeyPath: "nameLabel.text", options: [.New], context: nil)
+        self.addObserver(self, forKeyPath: "detailLabel.text", options: [.New], context: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -50,20 +52,26 @@ class __ELVCHeaderView: UICollectionReusableView {
     }
     
     override func layoutSubviews() {
-        let maxWidth = self.bounds.size.width - kLeftRightPadding * 2
-        
-        self.nameLabel.frame = CGRectMake(kLeftRightPadding,
-                                          kTopPadding,
-                                          maxWidth,
-                                          self.nameLabel.sizeThatFits(CGSizeMax).height)
-        self.detailLabel.frame = CGRectMake(kLeftRightPadding,
-                                            self.nameLabel.frame.origin.y + self.nameLabel.bounds.size.height + kLabelVerticalSpacing,
-                                            maxWidth,
-                                            self.detailLabel.sizeThatFits(CGSizeMax).height)
         self.frame = CGRectMake(self.frame.origin.x,
                                 self.frame.origin.y,
                                 self.bounds.size.width,
                                 kTopPadding + self.nameLabel.bounds.size.height + kLabelVerticalSpacing + self.detailLabel.bounds.size.height + kBottomPadding)
+    }
+    
+    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+        let maxWidth = self.bounds.size.width - kLeftRightPadding * 2
+        
+        switch keyPath {
+        case .Some("nameLabel.text"):
+            self.nameLabel.frame = CGRectMake(kLeftRightPadding, kTopPadding, maxWidth, self.nameLabel.sizeThatFits(CGSizeMake(maxWidth, CGFloat.max)).height)
+            
+        case .Some("detailLabel.text"):
+            let y = self.nameLabel.frame.origin.y + self.nameLabel.bounds.size.height + kLabelVerticalSpacing
+            self.detailLabel.frame = CGRectMake(kLeftRightPadding, y, maxWidth, self.detailLabel.sizeThatFits(CGSizeMake(maxWidth, CGFloat.max)).height)
+            
+        default:
+            return
+        }
     }
     
     class func heightForCategoryName(categoryName: String, detailText: String) -> CGFloat {
@@ -73,6 +81,22 @@ class __ELVCHeaderView: UICollectionReusableView {
         dummyView.setNeedsLayout()
         dummyView.layoutIfNeeded()
         return dummyView.bounds.size.height
+        
+//        let labelWidth = UIScreen.mainScreen().bounds.size.width - kLeftRightPadding * 2
+//        
+//        let nameLabel = __ELVCHeaderView.newNameLabel()
+//        nameLabel.text = categoryName
+//        
+//        let detailLabel = __ELVCHeaderView.newDetailLabel()
+//        detailLabel.text = detailText
+//        detailLabel.sizeToFit()
+//        
+//        return kTopPadding + nameLabel.sizeThatFits(CGSizeMake(labelWidth, CGFloat.max)).height + kLabelVerticalSpacing + detailLabel.sizeThatFits(CGSizeMake(labelWidth, CGFloat.max)).height + kBottomPadding
+    }
+    
+    deinit {
+        self.removeObserver(self, forKeyPath: "nameLabel.text")
+        self.removeObserver(self, forKeyPath: "detailLabel.text")
     }
     
 }

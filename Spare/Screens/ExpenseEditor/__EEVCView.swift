@@ -48,6 +48,7 @@ class __EEVCView: UIView {
             textField.placeholder = Strings.FieldPlaceholder
             textField.adjustsFontSizeToFitWidth = false
         }
+        self.itemDescriptionTextField.autocapitalizationType = .Sentences
         self.amountTextField.keyboardType = .DecimalPad
         
         // Setup segmented control.

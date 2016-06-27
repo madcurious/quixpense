@@ -169,6 +169,8 @@ extension ExpenseListVC: UICollectionViewDataSource {
                 return 0
                 }())
             headerView.detailLabel.text = "\(totalText) \(dateRangeText)"
+            headerView.setNeedsLayout()
+            headerView.layoutIfNeeded()
             return headerView
             
         default:
