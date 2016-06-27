@@ -69,26 +69,13 @@ class ExpenseListVC: UIViewController {
     }
     
     func setupBarButtonItems() {
-        let editButton = UIButton(type: .Custom)
-        editButton.setAttributedTitle(
-            NSAttributedString(string: Icon.EditCategory.rawValue,
-                attributes: [
-                    NSForegroundColorAttributeName : Color.ExpenseListBarButtonItemColor,
-                    NSFontAttributeName : Font.ExpenseListEditCategoryButton
-                ]), forState: .Normal)
-        editButton.sizeToFit()
+        let editButton = IconBarButton()
+        editButton.icon = Icon.EditCategory
+        editButton.fontSize = 28
         editButton.addTarget(self, action: #selector(handleTapOnEditCategoryButton), forControlEvents: .TouchUpInside)
         
-        
-        let newExpenseButton = UIButton(type: .Custom)
-        newExpenseButton.setAttributedTitle(
-            NSAttributedString(string: Icon.Add.rawValue,
-            attributes: [
-                NSForegroundColorAttributeName : Color.ExpenseListBarButtonItemColor,
-                NSFontAttributeName : Font.ExpenseListNewExpenseButton
-                ]),
-            forState: .Normal)
-        newExpenseButton.sizeToFit()
+        let newExpenseButton = IconBarButton()
+        newExpenseButton.icon = Icon.Add
         newExpenseButton.addTarget(self, action: #selector(handleTapOnNewExpenseButton), forControlEvents: .TouchUpInside)
         
         self.navigationItem.rightBarButtonItems = [
