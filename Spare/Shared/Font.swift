@@ -15,7 +15,7 @@ enum FontWeight {
 
 final class Font {
     
-    static let BarButtonItems = Font.text(.Bold, 16)
+    static let BarButtonItems = Font.text(.Bold, 14)
     static let NavigationBarTitle = Font.text(.ExtraBold, 18)
     
     static let ExpenseListEditCategoryButton = Font.icon(28)

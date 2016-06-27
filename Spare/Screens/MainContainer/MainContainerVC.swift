@@ -22,12 +22,6 @@ class MainContainerVC: UIViewController {
         super.viewDidLoad()
         glb_applyGlobalVCSettings(self)
         
-//        // Create the tabs and make their bottom edges extend to the space occuppied by the hidden tab bar.
-//        let homeScreen = HomeVC()
-//        homeScreen.edgesForExtendedLayout = .Bottom
-//        let settingsScreen = SettingsVC()
-//        settingsScreen.edgesForExtendedLayout = .Bottom
-        
         // Create the tab bar controller, add the tabs, and hide the tab bar.
         self.tabController.viewControllers = [UINavigationController(rootViewController: HomeVC()), SettingsVC()]
         self.tabController.tabBar.hidden = true

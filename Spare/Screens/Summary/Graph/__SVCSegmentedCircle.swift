@@ -15,7 +15,7 @@ class __SVCSegmentedCircle: UIView {
         case 320:
             return 14
         default:
-            return 26
+            return 22
         }
     }()
     
