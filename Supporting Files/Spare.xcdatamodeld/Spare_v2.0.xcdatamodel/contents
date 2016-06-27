@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15F34" minimumToolsVersion="Automatic">
     <entity name="Category" representedClassName=".Category" syncable="YES">
-        <attribute name="colorHex" attributeType="Integer 32" syncable="YES"/>
-        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="colorHex" optional="YES" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="expenses" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Expense" inverseName="category" inverseEntity="Expense" syncable="YES"/>
     </entity>
     <entity name="Expense" representedClassName=".Expense" syncable="YES">
@@ -27,18 +27,10 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SPRCategory" inverseName="expenses" inverseEntity="SPRCategory" syncable="YES"/>
     </entity>
-    <entity name="Summary" representedClassName=".Summary" syncable="YES">
-        <attribute name="endDate" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="startDate" optional="YES" attributeType="Date" syncable="YES"/>
-        <fetchedProperty name="expenses" optional="YES" syncable="YES">
-            <fetchRequest name="fetchedPropertyFetchRequest" entity="Expense" predicateString="dateSpent &gt;= $FETCH_SOURCE.startDate AND dateSpent &lt;= $FETCH_SOURCE.endDate"/>
-        </fetchedProperty>
-    </entity>
     <elements>
         <element name="Category" positionX="72" positionY="351" width="128" height="90"/>
         <element name="Expense" positionX="304" positionY="375" width="128" height="120"/>
         <element name="SPRCategory" positionX="99" positionY="81" width="128" height="30"/>
         <element name="SPRExpense" positionX="378" positionY="36" width="128" height="135"/>
-        <element name="Summary" positionX="-0" positionY="252" width="128" height="104"/>
     </elements>
 </model>

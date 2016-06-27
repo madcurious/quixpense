@@ -11,16 +11,22 @@ import Mold
 class ValidateCategoryOperation: MDOperation {
     
     var categoryName: String?
+    var colorHex: NSNumber?
     
     init(category: Category) {
         self.categoryName = category.name
+        self.colorHex = category.colorHex
     }
     
     override func buildResult(object: Any?) throws -> Any? {
-        guard let _ = md_nonEmptyString(self.categoryName)
-            else {
-                throw Error.UserEnteredInvalidValue("You must enter a category name.")
+        if md_nonEmptyString(self.categoryName) == nil {
+            throw Error.UserEnteredInvalidValue("You must enter a category name.")
         }
+        
+        if self.colorHex == nil {
+            throw Error.UserEnteredInvalidValue("You must select a color.")
+        }
+        
         return nil
     }
     

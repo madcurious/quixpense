@@ -18,7 +18,7 @@ private enum ViewID: String {
 
 class ExpenseListVC: UIViewController {
     
-    let category: Category
+    var category: Category
     let startDate: NSDate
     let endDate: NSDate
     
@@ -72,6 +72,10 @@ class ExpenseListVC: UIViewController {
         editButton.sizeToFit()
         editButton.addTarget(self, action: #selector(handleTapOnEditCategoryButton), forControlEvents: .TouchUpInside)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: editButton)
+        
+        // Listen for updates on categories or expenses.
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        notificationCenter.addObserver(self, selector: #selector(handleSaveOnManagedObjectContext), name: NSManagedObjectContextDidSaveNotification, object: App.state.mainQueueContext)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -92,8 +96,21 @@ class ExpenseListVC: UIViewController {
                                    animated: true, completion: nil)
     }
     
+    func handleSaveOnManagedObjectContext() {
+        // Refetch category.
+        if let category = App.state.mainQueueContext.objectWithID(self.category.objectID) as? Category {
+            self.category = category
+            self.customView.headerBackgroundView.backgroundColor = category.color
+        }
+        self.customView.collectionView.reloadData()
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
 }

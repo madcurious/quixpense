@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import Mold
 
 class EditCategoryVC: BaseFormVC {
     
     var editor: CategoryEditorVC
+    let queue = NSOperationQueue()
     
     override var formScrollView: UIScrollView {
         return self.editor.customView.scrollView
@@ -32,8 +34,28 @@ class EditCategoryVC: BaseFormVC {
         fatalError("init(coder:) has not been implemented")
     }
     
-    deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+    override func handleTapOnDoneBarButtonItem(sender: AnyObject) {
+        self.queue.addOperation(
+            ValidateCategoryOperation(category: self.editor.category)
+                .onSuccess({[unowned self] (_) in
+                    self.editor.managedObjectContext.saveContext({[unowned self] (result) in
+                        switch result {
+                        case .Failure(let error as NSError):
+                            print("\(error.userInfo)")
+                            MDErrorDialog.showError(error, inPresenter: self)
+                            
+                        default:
+                            MDDispatcher.asyncRunInMainThread({[unowned self] in
+                                self.dismissViewControllerAnimated(true, completion: nil)
+                                })
+                        }
+                        })
+                    })
+                
+                .onFail({[unowned self] (error) in
+                    MDErrorDialog.showError(error, inPresenter: self)
+                    })
+        )
     }
     
 }

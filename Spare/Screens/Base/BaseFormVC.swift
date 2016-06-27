@@ -38,4 +38,8 @@ class BaseFormVC: UIViewController {
         self.navigationItem.titleView = titleLabel
     }
     
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
 }

@@ -15,6 +15,10 @@ class AddCategoryVC: BaseFormVC {
     let editor = CategoryEditorVC(category: nil)
     let queue = NSOperationQueue()
     
+    override var formScrollView: UIScrollView {
+        return self.editor.customView.scrollView
+    }
+    
     init() {
         super.init(nibName: nil, bundle: nil)
         self.title = "NEW CATEGORY"
