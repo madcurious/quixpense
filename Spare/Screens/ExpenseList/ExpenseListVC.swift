@@ -51,6 +51,7 @@ class ExpenseListVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         glb_applyGlobalVCSettings(self)
+        self.setupBarButtonItems()
         
         let collectionView = self.customView.collectionView
         collectionView.alwaysBounceVertical = true
@@ -62,20 +63,38 @@ class ExpenseListVC: UIViewController {
         
         self.customView.headerBackgroundView.backgroundColor = self.category.color
         
+        // Listen for updates on categories or expenses.
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        notificationCenter.addObserver(self, selector: #selector(handleSaveOnManagedObjectContext), name: NSManagedObjectContextDidSaveNotification, object: App.state.mainQueueContext)
+    }
+    
+    func setupBarButtonItems() {
         let editButton = UIButton(type: .Custom)
         editButton.setAttributedTitle(
             NSAttributedString(string: Icon.EditCategory.rawValue,
                 attributes: [
-                    NSForegroundColorAttributeName : Color.ExpenseListEditCategoryButton,
+                    NSForegroundColorAttributeName : Color.ExpenseListBarButtonItemColor,
                     NSFontAttributeName : Font.ExpenseListEditCategoryButton
                 ]), forState: .Normal)
         editButton.sizeToFit()
         editButton.addTarget(self, action: #selector(handleTapOnEditCategoryButton), forControlEvents: .TouchUpInside)
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: editButton)
         
-        // Listen for updates on categories or expenses.
-        let notificationCenter = NSNotificationCenter.defaultCenter()
-        notificationCenter.addObserver(self, selector: #selector(handleSaveOnManagedObjectContext), name: NSManagedObjectContextDidSaveNotification, object: App.state.mainQueueContext)
+        
+        let newExpenseButton = UIButton(type: .Custom)
+        newExpenseButton.setAttributedTitle(
+            NSAttributedString(string: Icon.Add.rawValue,
+            attributes: [
+                NSForegroundColorAttributeName : Color.ExpenseListBarButtonItemColor,
+                NSFontAttributeName : Font.ExpenseListNewExpenseButton
+                ]),
+            forState: .Normal)
+        newExpenseButton.sizeToFit()
+        newExpenseButton.addTarget(self, action: #selector(handleTapOnNewExpenseButton), forControlEvents: .TouchUpInside)
+        
+        self.navigationItem.rightBarButtonItems = [
+            UIBarButtonItem(customView: newExpenseButton),
+            UIBarButtonItem(customView: editButton)
+        ]
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -94,6 +113,10 @@ class ExpenseListVC: UIViewController {
     func handleTapOnEditCategoryButton() {
         self.presentViewController(ModalNavBarVC(rootViewController: EditCategoryVC(category: self.category)),
                                    animated: true, completion: nil)
+    }
+    
+    func handleTapOnNewExpenseButton() {
+        
     }
     
     func handleSaveOnManagedObjectContext() {
