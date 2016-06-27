@@ -20,7 +20,7 @@ class AddExpenseVC: BaseFormVC {
     
     init() {
         super.init(nibName: nil, bundle: nil)
-        self.title = "NEW EXPENSE"
+        self.title = "ADD EXPENSE"
     }
     
     required init?(coder aDecoder: NSCoder) {

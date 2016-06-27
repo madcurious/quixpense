@@ -21,7 +21,7 @@ class AddCategoryVC: BaseFormVC {
     
     init() {
         super.init(nibName: nil, bundle: nil)
-        self.title = "NEW CATEGORY"
+        self.title = "ADD CATEGORY"
     }
     
     required init?(coder aDecoder: NSCoder) {

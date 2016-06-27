@@ -82,8 +82,8 @@
 		269D49FC1CE1643A00109990 /* AddExpenseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269D49FB1CE1643A00109990 /* AddExpenseVC.swift */; };
 		269D49FE1CE1649500109990 /* ModalNavBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269D49FD1CE1649500109990 /* ModalNavBarVC.swift */; };
 		269D4A021CE16DCA00109990 /* ValidateCategoryOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269D4A011CE16DCA00109990 /* ValidateCategoryOperation.swift */; };
-		26A063F21D2128FE0034D04F /* IconBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A063F11D2128FE0034D04F /* IconBarButton.swift */; };
 		26A063F41D2130BF0034D04F /* spare-v2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26A063F31D2130BF0034D04F /* spare-v2.ttf */; };
+		26A063F61D2134040034D04F /* CustomBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A063F51D2134040034D04F /* CustomBarButton.swift */; };
 		26A253C01D196DED003CDF5E /* __ELVCHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A253BF1D196DED003CDF5E /* __ELVCHeaderView.swift */; };
 		26A253C21D1975EA003CDF5E /* __ELVCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A253C11D1975EA003CDF5E /* __ELVCCell.swift */; };
 		26A253C41D197606003CDF5E /* __ELVCCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26A253C31D197606003CDF5E /* __ELVCCell.xib */; };
@@ -236,8 +236,8 @@
 		269D49FB1CE1643A00109990 /* AddExpenseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddExpenseVC.swift; sourceTree = "<group>"; };
 		269D49FD1CE1649500109990 /* ModalNavBarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalNavBarVC.swift; sourceTree = "<group>"; };
 		269D4A011CE16DCA00109990 /* ValidateCategoryOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidateCategoryOperation.swift; sourceTree = "<group>"; };
-		26A063F11D2128FE0034D04F /* IconBarButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconBarButton.swift; sourceTree = "<group>"; };
 		26A063F31D2130BF0034D04F /* spare-v2.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "spare-v2.ttf"; sourceTree = "<group>"; };
+		26A063F51D2134040034D04F /* CustomBarButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomBarButton.swift; sourceTree = "<group>"; };
 		26A253BF1D196DED003CDF5E /* __ELVCHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __ELVCHeaderView.swift; sourceTree = "<group>"; };
 		26A253C11D1975EA003CDF5E /* __ELVCCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __ELVCCell.swift; sourceTree = "<group>"; };
 		26A253C31D197606003CDF5E /* __ELVCCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __ELVCCell.xib; sourceTree = "<group>"; };
@@ -392,7 +392,7 @@
 			children = (
 				26170E071D19C9E30003BC71 /* CollectionViewLabel.swift */,
 				26170E081D19C9E30003BC71 /* CollectionViewLabel.xib */,
-				26A063F11D2128FE0034D04F /* IconBarButton.swift */,
+				26A063F51D2134040034D04F /* CustomBarButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -862,7 +862,6 @@
 				2687FA301D0EC2E900D544F5 /* Color.swift in Sources */,
 				268D23E01D001022006B8D0B /* __HVCCell.swift in Sources */,
 				2687FA3E1D0F900600D544F5 /* Summary.swift in Sources */,
-				26A063F21D2128FE0034D04F /* IconBarButton.swift in Sources */,
 				26170E091D19C9E30003BC71 /* CollectionViewLabel.swift in Sources */,
 				2603F8D31CCA4C10007F311F /* Category.swift in Sources */,
 				269D49FA1CE1643400109990 /* AddCategoryVC.swift in Sources */,
@@ -892,6 +891,7 @@
 				26EFA0091CD9DB0A00714E5D /* TabButton.swift in Sources */,
 				26EFA0031CD9C8F100714E5D /* MainContainerVC.swift in Sources */,
 				26EFA00D1CD9DFF900714E5D /* MainTabBar.swift in Sources */,
+				26A063F61D2134040034D04F /* CustomBarButton.swift in Sources */,
 				269D49F61CE1610100109990 /* __EEVCView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
