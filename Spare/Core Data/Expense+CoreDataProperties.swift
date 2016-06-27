@@ -1,9 +1,9 @@
 //
 //  Expense+CoreDataProperties.swift
-//  Spare
+//  
 //
-//  Created by Matt Quiros on 12/05/2016.
-//  Copyright © 2016 Matt Quiros. All rights reserved.
+//  Created by Matt Quiros on 27/06/2016.
+//
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
 //  to delete and recreate this implementation file for your updated model.

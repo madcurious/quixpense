@@ -77,15 +77,14 @@ class HomeVC: MDStatefulViewController {
                             return
                     }
                     
-                    // DEBUG
-                    let df = NSDateFormatter()
-                    df.timeZone = NSTimeZone.localTimeZone()
-                    df.dateStyle = .FullStyle
-                    for summary in newSummaries {
-                        print("startDate: \(df.stringFromDate(summary.startDate)), endDate: \(df.stringFromDate(summary.endDate))")
-                    }
-                    print("++++++")
-                    
+//                    // DEBUG
+//                    let df = NSDateFormatter()
+//                    df.timeZone = NSTimeZone.localTimeZone()
+//                    df.dateStyle = .FullStyle
+//                    for summary in newSummaries {
+//                        print("startDate: \(df.stringFromDate(summary.startDate)), endDate: \(df.stringFromDate(summary.endDate))")
+//                    }
+//                    print("++++++")
                     
                     self.summaries.insertContentsOf(newSummaries, at: 0)
                     self.collectionView.reloadData()

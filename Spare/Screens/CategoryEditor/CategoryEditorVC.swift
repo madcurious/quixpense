@@ -33,17 +33,10 @@ class CategoryEditorVC: UIViewController {
         self.slider = HRBrightnessSlider()
         self.slider.brightnessLowerLimit = 0.3
         
-        if let category = category,
+        if let objectID = category?.objectID,
+            let category = context.objectWithID(objectID) as? Category,
             let colorHex = category.colorHex as? Int {
-            self.category = {
-                return glb_autoreport({
-                    // The category has to be refetched to make undoing of cancelled changes easier.
-                    if let category = context.objectWithID(category.objectID) as? Category {
-                        return category
-                    }
-                    throw Error.AppUnknownError
-                    }, defaultValue: Category(managedObjectContext: context))
-            }()
+            self.category = category
             self.colorMap = HRColorMapView.defaultColorMap(UIColor(hex: colorHex))
             self.slider.color = UIColor(hex: colorHex)
         } else {
@@ -58,6 +51,11 @@ class CategoryEditorVC: UIViewController {
         self.customView.colorMap = self.colorMap
         self.customView.slider = self.slider
         self.customView.textField.backgroundColor = self.getResultingColor()
+        
+        let request = NSFetchRequest(entityName: Category.entityName)
+        if let categories = try! self.managedObjectContext.executeFetchRequest(request) as? [Category] {
+            print(categories)
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {

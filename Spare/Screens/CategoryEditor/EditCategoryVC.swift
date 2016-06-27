@@ -8,6 +8,7 @@
 
 import UIKit
 import Mold
+import BNRCoreDataStack
 
 class EditCategoryVC: BaseFormVC {
     
@@ -41,7 +42,6 @@ class EditCategoryVC: BaseFormVC {
                     self.editor.managedObjectContext.saveContext({[unowned self] (result) in
                         switch result {
                         case .Failure(let error as NSError):
-                            print("\(error.userInfo)")
                             MDErrorDialog.showError(error, inPresenter: self)
                             
                         default:
