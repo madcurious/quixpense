@@ -69,7 +69,6 @@ class ExpenseListVC: UIViewController {
     }
     
     func setupBarButtonItems() {
-//        let editButton = IconBarButton(icon: .EditCategory, fontSize: 22)
         let editButton = CustomBarButton(attributedText: NSAttributedString(string: "EDIT",
             attributes: [
                 NSForegroundColorAttributeName : Color.ExpenseListBarButtonItemColor,
@@ -109,7 +108,8 @@ class ExpenseListVC: UIViewController {
     }
     
     func handleTapOnAddExpenseButton() {
-        
+        self.presentViewController(ModalNavBarVC(rootViewController: AddExpenseVC(preselectedCategory: self.category)),
+                                   animated: true, completion: nil)
     }
     
     func handleSaveOnManagedObjectContext() {

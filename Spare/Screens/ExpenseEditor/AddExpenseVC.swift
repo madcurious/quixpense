@@ -23,6 +23,14 @@ class AddExpenseVC: BaseFormVC {
         self.title = "ADD EXPENSE"
     }
     
+    convenience init(preselectedCategory: Category) {
+        self.init()
+        
+        if let category = self.editor.managedObjectContext.objectWithID(preselectedCategory.objectID) as? Category {
+            self.editor.expense.category = category
+        }
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
