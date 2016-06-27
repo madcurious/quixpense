@@ -59,13 +59,18 @@ class __ELVCHeaderView: UICollectionReusableView {
     }
     
     override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+        guard let keyPath = keyPath
+            else {
+                return
+        }
+        
         let maxWidth = self.bounds.size.width - kLeftRightPadding * 2
         
         switch keyPath {
-        case .Some("nameLabel.text"):
+        case "nameLabel.text":
             self.nameLabel.frame = CGRectMake(kLeftRightPadding, kTopPadding, maxWidth, self.nameLabel.sizeThatFits(CGSizeMake(maxWidth, CGFloat.max)).height)
             
-        case .Some("detailLabel.text"):
+        case "detailLabel.text":
             let y = self.nameLabel.frame.origin.y + self.nameLabel.bounds.size.height + kLabelVerticalSpacing
             self.detailLabel.frame = CGRectMake(kLeftRightPadding, y, maxWidth, self.detailLabel.sizeThatFits(CGSizeMake(maxWidth, CGFloat.max)).height)
             
