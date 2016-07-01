@@ -33,7 +33,7 @@ class ExpenseListVC: UIViewController {
                 return expenses
             }
             return nil
-        })
+            })
     }
     
     init(category: Category, startDate: NSDate, endDate: NSDate) {
@@ -195,6 +195,15 @@ extension ExpenseListVC: UICollectionViewDelegate {
     
     func collectionView(collectionView: UICollectionView, shouldHighlightItemAtIndexPath indexPath: NSIndexPath) -> Bool {
         return true
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        guard let expense = self.expenses?[indexPath.item]
+            else {
+                return
+        }
+        self.presentViewController(ModalNavBarVC(rootViewController: EditExpenseVC(expense: expense)),
+            animated: true, completion: nil)
     }
     
 }

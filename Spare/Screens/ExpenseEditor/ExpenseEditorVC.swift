@@ -23,7 +23,9 @@ class ExpenseEditorVC: MDStatefulViewController {
     
     init(expense: Expense?) {
         self.managedObjectContext = App.state.coreDataStack.newBackgroundWorkerMOC()
-        if let expense = expense {
+        
+        if let objectID = expense?.objectID,
+            let expense = self.managedObjectContext.objectWithID(objectID) as? Expense {
             self.expense = expense
         } else {
             // If adding an expense, by default, the date is the current date and
@@ -133,7 +135,7 @@ class ExpenseEditorVC: MDStatefulViewController {
     
     func refreshViewFromModel() {
         self.customView.itemDescriptionTextField.text = md_nonEmptyString(self.expense.itemDescription)
-        self.customView.amountTextField.text = md_nonEmptyString(self.expense.amount)
+        self.customView.amountTextField.text = self.expense.amount?.stringValue
         
         self.customView.categoryTextField.text = md_nonEmptyString(self.expense.category?.name)
         if let category = self.expense.category,
