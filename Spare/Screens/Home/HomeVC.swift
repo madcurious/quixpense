@@ -151,6 +151,7 @@ class HomeVC: MDStatefulViewController {
         
         self.periodizationButton.setStringForAttributedText(periodization.descriptiveText)
         
+        self.summaries = []
         self.runOperation()
     }
     

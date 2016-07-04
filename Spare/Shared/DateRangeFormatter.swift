@@ -76,9 +76,9 @@ struct DateRangeFormatter {
                 formatter.dateFormat = "MMM d"
                 
             default:
-                formatter.dateFormat = "MMM d \'yy"
+                formatter.dateFormat = "MMM d ''yy"
             }
-            return "From \(formatter.stringFromDate(self.startDate)) to \(formatter.stringFromDate(self.endDate))"
+            return "\(formatter.stringFromDate(self.startDate)) to \(formatter.stringFromDate(self.endDate))"
         }
     }
     
