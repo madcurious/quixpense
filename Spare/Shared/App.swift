@@ -17,11 +17,12 @@ class App {
         return kSharedState
     }
     
+    private init() {}
+    
     var coreDataStack: CoreDataStack!
+    
     var mainQueueContext: NSManagedObjectContext {
         return self.coreDataStack.mainQueueContext
     }
-    
-    private init() {}
     
 }

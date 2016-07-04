@@ -11,27 +11,40 @@ import UIKit
 class CustomBarButton: UIControl {
     
     let label = UILabel()
+    var texts = [UIControlState : AnyObject]()
+    
+    override var highlighted: Bool {
+        didSet {
+            self.applyHighlight(self.highlighted)
+        }
+    }
+    
+    override var enabled: Bool {
+        didSet {
+            self.applyEnabled(self.enabled)
+        }
+    }
     
     init() {
         super.init(frame: CGRectZero)
         self.addSubviewsAndFill(self.label)
-        
-        self.addObserver(self, forKeyPath: "highlighted", options: [.New], context: nil)
     }
     
     convenience init(attributedText: NSAttributedString) {
         self.init()
+        
+        self.texts[.Normal] = attributedText
+        
+        let disabledText = NSMutableAttributedString(attributedString: attributedText)
+        disabledText.removeAttribute(NSForegroundColorAttributeName, range: NSMakeRange(0, disabledText.length))
+        disabledText.addAttributes([
+            NSForegroundColorAttributeName : Color.CustomBarButtonDisabled
+            ], range: NSMakeRange(0, disabledText.length))
+        self.texts[.Disabled] = disabledText
+        
         self.label.attributedText = attributedText
         self.label.sizeToFit()
         self.frame = CGRectMake(0, 0, self.label.bounds.size.width, self.label.bounds.size.height)
-    }
-    
-    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
-        guard keyPath == "highlighted"
-            else {
-                return
-        }
-        self.applyHighlight(self.highlighted)
     }
     
     func applyHighlight(highlighted: Bool) {
@@ -42,17 +55,28 @@ class CustomBarButton: UIControl {
         }
     }
     
-    func handleHighlightChangeOnButton(button: CustomBarButton) {
-        self.applyHighlight(button.highlighted)
+    func applyEnabled(enabled: Bool) {
+        if enabled == false {
+            if let disabledText = self.texts[.Disabled] as? NSAttributedString {
+                self.label.attributedText = disabledText
+            }
+            self.label.alpha = 0.4
+        } else {
+            self.label.attributedText = self.texts[.Normal] as? NSAttributedString
+            self.label.alpha = 1.0
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    deinit {
-        self.removeObserver(self, forKeyPath: "highlighted")
-    }
+}
 
+extension UIControlState: Hashable {
+    
+    public var hashValue: Int {
+        return Int(self.rawValue)
+    }
     
 }

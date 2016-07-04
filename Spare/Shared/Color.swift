@@ -31,6 +31,8 @@ class Color {
     
     // MARK: - UI Colors
     
+    static let CustomBarButtonDisabled = Black
+    
     static let ExpenseListBarButtonItemColor = White
     static let ExpenseListCellHighlightedColor = Gray400
     static let ExpenseListCellTextColor = Black

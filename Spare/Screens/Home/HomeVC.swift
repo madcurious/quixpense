@@ -24,19 +24,12 @@ class HomeVC: MDStatefulViewController {
     
     var summaries = [Summary]()
     
-    let forwardButton: UIButton = {
-        let forwardButton = UIButton(type: .Custom)
-        forwardButton.setAttributedTitle(NSAttributedString(string: Icon.Forward.rawValue,
+    let forwardButton: CustomBarButton = {
+        let forwardButton = CustomBarButton(attributedText: NSAttributedString(string: Icon.Forward.rawValue,
             attributes: [
                 NSForegroundColorAttributeName : Color.HomeBarButtonItemDefault,
                 NSFontAttributeName : Font.icon(26)
-            ]), forState: .Normal)
-        forwardButton.setAttributedTitle(NSAttributedString(string: Icon.Forward.rawValue,
-            attributes: [
-                NSForegroundColorAttributeName : Color.HomeBarButtonItemDisabled,
-                NSFontAttributeName : Font.icon(26)
-            ]), forStates: .Disabled, .Highlighted)
-        forwardButton.sizeToFit()
+            ]))
         return forwardButton
     }()
     
