@@ -100,15 +100,23 @@ class HomeVC: MDStatefulViewController {
                     self.collectionView.reloadData()
                     
                     if self.currentView != .Primary {
-                        self.collectionView.scrollToLastItem(animated: false)
+                        self.scrollToLastItem()
                         self.showView(.Primary)
                     }
                     
                     })
     }
     
+    
+    
     func handleTapOnForwardButton() {
-        self.collectionView.scrollToLastItem(animated: true)
+        self.scrollToLastItem()
+    }
+    
+    func scrollToLastItem() {
+        self.collectionView.scrollToLastItem(animated: true, completion: {[unowned self] in
+            self.forwardButton.enabled = false
+            })
     }
     
     deinit {
