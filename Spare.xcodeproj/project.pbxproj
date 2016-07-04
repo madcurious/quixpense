@@ -11,6 +11,8 @@
 		260024311CC8C5AE00EB2026 /* Mold.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 260024301CC8C53A00EB2026 /* Mold.framework */; };
 		260024321CC8C5AE00EB2026 /* Mold.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 260024301CC8C53A00EB2026 /* Mold.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2603082F1D2A27850094B4D2 /* spare-v2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2603082E1D2A27850094B4D2 /* spare-v2.ttf */; };
+		260308371D2A7B0C0094B4D2 /* StartOfWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260308361D2A7B0C0094B4D2 /* StartOfWeek.swift */; };
+		260308391D2A990A0094B4D2 /* DateRangeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260308381D2A990A0094B4D2 /* DateRangeFormatter.swift */; };
 		2603F8C31CCA45FF007F311F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2603F8C21CCA45FF007F311F /* LaunchScreen.storyboard */; };
 		2603F8CE1CCA4C10007F311F /* Expense+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2603F8C81CCA4C10007F311F /* Expense+CoreDataProperties.swift */; };
 		2603F8CF1CCA4C10007F311F /* Expense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2603F8C91CCA4C10007F311F /* Expense.swift */; };
@@ -161,6 +163,8 @@
 		260023FD1CC7E0B000EB2026 /* Mold.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mold.framework; path = "Mold/build/Debug-iphoneos/Mold.framework"; sourceTree = "<group>"; };
 		2600240F1CC7E5F300EB2026 /* SettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		2603082E1D2A27850094B4D2 /* spare-v2.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "spare-v2.ttf"; sourceTree = "<group>"; };
+		260308361D2A7B0C0094B4D2 /* StartOfWeek.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartOfWeek.swift; sourceTree = "<group>"; };
+		260308381D2A990A0094B4D2 /* DateRangeFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateRangeFormatter.swift; sourceTree = "<group>"; };
 		2603F8C21CCA45FF007F311F /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2603F8C61CCA476E007F311F /* Spare_v2.0.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Spare_v2.0.xcdatamodel; sourceTree = "<group>"; };
 		2603F8C81CCA4C10007F311F /* Expense+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Expense+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -516,6 +520,8 @@
 				2687FA3D1D0F900600D544F5 /* Summary.swift */,
 				2687FA3F1D0F96D100D544F5 /* Periodization.swift */,
 				26CAD3901D1966B70039DFD2 /* Event.swift */,
+				260308361D2A7B0C0094B4D2 /* StartOfWeek.swift */,
+				260308381D2A990A0094B4D2 /* DateRangeFormatter.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -873,6 +879,7 @@
 				260024151CC7E5F300EB2026 /* SettingsVC.swift in Sources */,
 				26EFA0071CD9C92F00714E5D /* __MCVCView.swift in Sources */,
 				2687FA351D0EC2E900D544F5 /* PaymentMethod.swift in Sources */,
+				260308391D2A990A0094B4D2 /* DateRangeFormatter.swift in Sources */,
 				26BC4FA11CE45D260011BE98 /* __EEVCPickerTextField.swift in Sources */,
 				269D49FC1CE1643A00109990 /* AddExpenseVC.swift in Sources */,
 				2603F8D21CCA4C10007F311F /* Category+CoreDataProperties.swift in Sources */,
@@ -897,6 +904,7 @@
 				26EFA00D1CD9DFF900714E5D /* MainTabBar.swift in Sources */,
 				26A063F61D2134040034D04F /* CustomBarButton.swift in Sources */,
 				269D49F61CE1610100109990 /* __EEVCView.swift in Sources */,
+				260308371D2A7B0C0094B4D2 /* StartOfWeek.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -32,7 +32,10 @@ class CustomBarButton: UIControl {
     
     convenience init(attributedText: NSAttributedString) {
         self.init()
-        
+        self.configureAttributedText(attributedText)
+    }
+    
+    func configureAttributedText(attributedText: NSAttributedString) {
         self.texts[.Normal] = attributedText
         
         let disabledText = NSMutableAttributedString(attributedString: attributedText)
@@ -45,6 +48,16 @@ class CustomBarButton: UIControl {
         self.label.attributedText = attributedText
         self.label.sizeToFit()
         self.frame = CGRectMake(0, 0, self.label.bounds.size.width, self.label.bounds.size.height)
+    }
+    
+    func setStringForAttributedText(string: String) {
+        guard let normalText = self.texts[.Normal] as? NSAttributedString
+            else {
+                return
+        }
+        let mutableText = NSMutableAttributedString(attributedString: normalText)
+        mutableText.replaceCharactersInRange(NSMakeRange(0, normalText.length), withString: string)
+        self.configureAttributedText(mutableText)
     }
     
     func applyHighlight(highlighted: Bool) {

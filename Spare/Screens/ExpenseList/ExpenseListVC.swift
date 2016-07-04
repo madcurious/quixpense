@@ -161,7 +161,7 @@ extension ExpenseListVC: UICollectionViewDataSource {
             headerView.backgroundColor = self.category.color
             headerView.nameLabel.text = self.category.name
             
-            let dateRangeText = glb_displayTextForDateRange(self.startDate, endDate: self.endDate, periodization: .Day)
+            let dateRangeText = DateRangeFormatter.displayTextForStartDate(self.startDate, endDate: self.endDate)
             let totalText = glb_displayTextForTotal({[unowned self] in
                 if let expenses = self.expenses {
                     return glb_totalOfExpenses(expenses)
@@ -216,7 +216,7 @@ extension ExpenseListVC: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        let dateRangeText = glb_displayTextForDateRange(self.startDate, endDate: self.endDate, periodization: .Day)
+        let dateRangeText = DateRangeFormatter.displayTextForStartDate(self.startDate, endDate: self.endDate)
         let totalText = glb_displayTextForTotal({[unowned self] in
             if let expenses = self.expenses {
                 return glb_totalOfExpenses(expenses)

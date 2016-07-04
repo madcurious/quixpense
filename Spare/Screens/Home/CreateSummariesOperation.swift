@@ -13,20 +13,22 @@ class CreateSummariesOperation: MDOperation {
     
     var baseDate: NSDate
     var periodization: Periodization
+    var startOfWeek: StartOfWeek
     var count: Int
-    var precount: Int
+    var startingPage: Int
     
-    init(baseDate: NSDate, periodization: Periodization, count: Int, precount: Int) {
+    init(baseDate: NSDate, periodization: Periodization, startOfWeek: StartOfWeek, count: Int, startingPage: Int) {
         self.baseDate = baseDate
         self.periodization = periodization
+        self.startOfWeek = startOfWeek
         self.count = count
-        self.precount = precount
+        self.startingPage = startingPage
     }
     
     override func buildResult(object: Any?) throws -> Any? {
         var summaries = [Summary]()
         for i in 0 ..< self.count {
-            let (startDate, endDate) = self.dateRangeForPage(self.precount + i)
+            let (startDate, endDate) = self.dateRangeForPage(self.startingPage + i)
             let summary = Summary(startDate: startDate, endDate: endDate, periodization: self.periodization)
             summaries.insert(summary, atIndex: 0)
             
@@ -38,15 +40,27 @@ class CreateSummariesOperation: MDOperation {
     }
     
     func dateRangeForPage(page: Int) -> (NSDate, NSDate) {
-        let calendar = NSCalendar.currentCalendar()
+        let calendar = NSCalendar.currentCalendar().copy() as! NSCalendar
+        
         switch self.periodization {
         case .Day:
             let date = calendar.dateByAddingUnit(.Day, value: page * -1, toDate: self.baseDate, options: [])!
             return (date.firstMoment(), date.lastMoment())
             
+        case .Week:
+            calendar.firstWeekday = self.startOfWeek.rawValue
+            let referenceDate = calendar.dateByAddingUnit(.WeekOfYear, value: page * -1, toDate: self.baseDate, options: [])!
+            var startDate: NSDate?
+            var interval = NSTimeInterval(0)
+            calendar.rangeOfUnit(.WeekOfYear, startDate: &startDate, interval: &interval, forDate: referenceDate)
+            let endDate = startDate!.dateByAddingTimeInterval(interval - 1)
+            return (startDate!, endDate)
+            
         default:
-            fatalError()
+            break
         }
+        
+        fatalError()
     }
     
 }

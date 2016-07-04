@@ -22,7 +22,7 @@ class __SVCGraphView: UICollectionReusableView {
             self.totalLabel.text = glb_displayTextForTotal(self.summary?.total ?? 0)
             
             if let summary = self.summary {
-                self.dateLabel.text = glb_displayTextForDateRange(summary)
+                self.dateLabel.text = DateRangeFormatter.displayTextForSummary(summary)
             } else {
                 self.dateLabel.text = nil
             }

@@ -8,8 +8,21 @@
 
 import Foundation
 
-enum Periodization {
+enum Periodization: Int {
     
-    case Day, Week, Month, Year
+    case Day = 0, Week, Month, Year
+    
+    var descriptiveText: String {
+        switch self {
+        case .Day:
+            return "By Day"
+        case .Week:
+            return "By Week"
+        case .Month:
+            return "By Month"
+        case .Year:
+            return "By Year"
+        }
+    }
     
 }

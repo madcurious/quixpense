@@ -21,7 +21,6 @@ class HomeVC: MDStatefulViewController {
     var collectionView = MDPagedCollectionView()
     let currentDate = NSDate()
     var isCreatingSummaries = false
-    
     var summaries = [Summary]()
     
     let forwardButton: CustomBarButton = {
@@ -31,6 +30,16 @@ class HomeVC: MDStatefulViewController {
                 NSFontAttributeName : Font.icon(26)
             ]))
         return forwardButton
+    }()
+    
+    let periodizationButton: CustomBarButton = {
+        let periodizationButton = CustomBarButton(attributedText:
+            NSAttributedString(string: App.state.selectedPeriodization.descriptiveText,
+            attributes: [
+                NSForegroundColorAttributeName : Color.HomeBarButtonItemDefault,
+                NSFontAttributeName : Font.HomeBarButtonItem
+                ]))
+        return periodizationButton
     }()
     
     override var primaryView: UIView {
@@ -52,6 +61,8 @@ class HomeVC: MDStatefulViewController {
         
         self.noResultsView.backgroundColor = Color.ScreenBackgroundColorLightGray
         
+        self.periodizationButton.addTarget(self, action: #selector(handleTapOnPeriodizationButton), forControlEvents: .TouchUpInside)
+        self.navigationItem.titleView = self.periodizationButton
         self.forwardButton.addTarget(self, action: #selector(handleTapOnForwardButton), forControlEvents: .TouchUpInside)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: self.forwardButton)
         
@@ -69,47 +80,78 @@ class HomeVC: MDStatefulViewController {
         }
     }
     
-    func handleUpdatesOnDataStore() {
-        self.collectionView.reloadData()
-    }
-    
     override func buildOperation() -> MDOperation? {
-        return
-            CreateSummariesOperation(baseDate: self.currentDate, periodization: .Day, count: 10, precount: self.numberOfItemsInCollectionView(self.collectionView))
-                .onStart({[unowned self] in
-                    self.isCreatingSummaries = true
-                    })
-                .onReturn({[unowned self] in
-                    self.isCreatingSummaries = false
-                    })
+        return CreateSummariesOperation(baseDate: self.currentDate,
+            periodization: App.state.selectedPeriodization,
+            startOfWeek: App.state.selectedStartOfWeek,
+            count: 10,
+            startingPage: self.numberOfItemsInCollectionView(self.collectionView))
+            
+            .onStart({[unowned self] in
+                self.isCreatingSummaries = true
+                })
+            .onReturn({[unowned self] in
+                self.isCreatingSummaries = false
+                })
+            
+            .onSuccess({[unowned self] result in
+                guard let newSummaries = result as? [Summary]
+                    else {
+                        return
+                }
                 
-                .onSuccess({[unowned self] result in
-                    guard let newSummaries = result as? [Summary]
-                        else {
-                            return
-                    }
-                    
-                    self.summaries.insertContentsOf(newSummaries, at: 0)
-                    self.collectionView.reloadData()
-                    
-                    if self.currentView != .Primary {
-                        self.scrollToLastItem()
-                        self.showView(.Primary)
-                    }
-                    
-                    })
-    }
-    
-    
-    
-    func handleTapOnForwardButton() {
-        self.scrollToLastItem()
+                self.summaries.insertContentsOf(newSummaries, at: 0)
+                self.collectionView.reloadData()
+                
+                if self.currentView != .Primary {
+                    self.scrollToLastItem()
+                    self.showView(.Primary)
+                }
+            })
     }
     
     func scrollToLastItem() {
         self.collectionView.scrollToLastItem(animated: true, completion: {[unowned self] in
             self.forwardButton.enabled = false
             })
+    }
+    
+    func handleUpdatesOnDataStore() {
+        self.collectionView.reloadData()
+    }
+    
+    func handleTapOnForwardButton() {
+        self.scrollToLastItem()
+    }
+    
+    func handleTapOnPeriodizationButton() {
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
+        
+        let options: [Periodization] = [.Day, .Week, .Month, .Year]
+        for i in 0 ..< options.count {
+            let option = options[i]
+            let action = UIAlertAction(title: option.descriptiveText, style: .Default, handler: {[unowned self] _ in
+                self.handleSelectionOnPeriodization(option)
+            })
+            actionSheet.addAction(action)
+        }
+        actionSheet.addCancelAction()
+        
+        self.presentViewController(actionSheet, animated: true, completion: nil)
+    }
+    
+    func handleSelectionOnPeriodization(periodization: Periodization) {
+        guard App.state.selectedPeriodization != periodization
+            else {
+                return
+        }
+        
+        // Update the system-wide periodisation.
+        App.state.selectedPeriodization = periodization
+        
+        self.periodizationButton.setStringForAttributedText(periodization.descriptiveText)
+        
+        self.runOperation()
     }
     
     deinit {
