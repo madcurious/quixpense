@@ -42,6 +42,8 @@ class Color {
     static let FormFieldValueTextColor = Black
     static let FormPlaceholderTextColor = Gray400
     
+    static let HomeBarButtonItemDefault = Gray900
+    static let HomeBarButtonItemDisabled = Gray500
     static let HomeCellBorderColor = Gray420
     static let HomeScreenBackgroundColor = Gray300
     

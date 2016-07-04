@@ -24,6 +24,22 @@ class HomeVC: MDStatefulViewController {
     
     var summaries = [Summary]()
     
+    let forwardButton: UIButton = {
+        let forwardButton = UIButton(type: .Custom)
+        forwardButton.setAttributedTitle(NSAttributedString(string: Icon.Forward.rawValue,
+            attributes: [
+                NSForegroundColorAttributeName : Color.HomeBarButtonItemDefault,
+                NSFontAttributeName : Font.icon(26)
+            ]), forState: .Normal)
+        forwardButton.setAttributedTitle(NSAttributedString(string: Icon.Forward.rawValue,
+            attributes: [
+                NSForegroundColorAttributeName : Color.HomeBarButtonItemDisabled,
+                NSFontAttributeName : Font.icon(26)
+            ]), forStates: .Disabled, .Highlighted)
+        forwardButton.sizeToFit()
+        return forwardButton
+    }()
+    
     override var primaryView: UIView {
         return self.collectionView
     }
@@ -42,6 +58,9 @@ class HomeVC: MDStatefulViewController {
         self.showView(.Loading)
         
         self.noResultsView.backgroundColor = Color.ScreenBackgroundColorLightGray
+        
+        self.forwardButton.addTarget(self, action: #selector(handleTapOnForwardButton), forControlEvents: .TouchUpInside)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: self.forwardButton)
         
         let notificationCenter = NSNotificationCenter.defaultCenter()
         notificationCenter.addObserver(self, selector: #selector(handleUpdatesOnDataStore), name: NSManagedObjectContextDidSaveNotification, object: App.state.mainQueueContext)
@@ -88,6 +107,14 @@ class HomeVC: MDStatefulViewController {
                     })
     }
     
+    func handleTapOnForwardButton() {
+        self.collectionView.scrollToLastItem(animated: true)
+    }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
 }
 
 // MARK: - MDPagedCollectionViewDataSource
@@ -131,11 +158,17 @@ extension HomeVC: MDPagedCollectionViewDelegate {
     
     // MARK: Events
     
-    func collectionView(collectionView: MDPagedCollectionView, didScrollToPage page: CGFloat) {
+    func collectionViewDidScroll(collectionView: MDPagedCollectionView, page: CGFloat) {
+        // Create summary objects if scrolling near the end.
         if let operation = self.buildOperation()
             where page <= 5 && self.isCreatingSummaries == false {
             self.operationQueue.addOperation(operation)
         }
+    }
+    
+    func collectionViewDidEndDecelerating(collectionView: MDPagedCollectionView, page: CGFloat) {
+        // Enable/disable the forward button depending on the scroll offset.
+        self.forwardButton.enabled = page < CGFloat(self.summaries.count - 1)
     }
     
 }
