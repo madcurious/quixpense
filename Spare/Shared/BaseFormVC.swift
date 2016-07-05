@@ -14,7 +14,6 @@ class BaseFormVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         glb_applyGlobalVCSettings(self)
-        
         self.applyCommonFormBehaviors()
         
         self.addCancelAndDoneBarButtonItems("CANCEL", doneButtonTitle: "SAVE")
@@ -30,12 +29,7 @@ class BaseFormVC: UIViewController {
             rightBarButtonItem.setTitleTextAttributes(barButtonAttributes, forState: .Normal)
         }
         
-        let titleLabel = UILabel()
-        titleLabel.textColor = Color.ModalNavigationBarTextColor
-        titleLabel.font = Font.NavigationBarTitle
-        titleLabel.text = self.title
-        titleLabel.sizeToFit()
-        self.navigationItem.titleView = titleLabel
+        
     }
     
     deinit {

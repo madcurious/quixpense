@@ -103,12 +103,12 @@ class ExpenseListVC: UIViewController {
     }
     
     func handleTapOnEditCategoryButton() {
-        self.presentViewController(ModalNavBarVC(rootViewController: EditCategoryVC(category: self.category)),
+        self.presentViewController(BaseNavBarVC(rootViewController: EditCategoryVC(category: self.category)),
                                    animated: true, completion: nil)
     }
     
     func handleTapOnAddExpenseButton() {
-        self.presentViewController(ModalNavBarVC(rootViewController: AddExpenseVC(preselectedCategory: self.category, preselectedDate: self.startDate)),
+        self.presentViewController(BaseNavBarVC(rootViewController: AddExpenseVC(preselectedCategory: self.category, preselectedDate: self.startDate)),
                                    animated: true, completion: nil)
     }
     
@@ -202,7 +202,7 @@ extension ExpenseListVC: UICollectionViewDelegate {
             else {
                 return
         }
-        self.presentViewController(ModalNavBarVC(rootViewController: EditExpenseVC(expense: expense)),
+        self.presentViewController(BaseNavBarVC(rootViewController: EditExpenseVC(expense: expense)),
             animated: true, completion: nil)
     }
     

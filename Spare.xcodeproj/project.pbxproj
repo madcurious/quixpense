@@ -116,7 +116,7 @@
 		26EFA00D1CD9DFF900714E5D /* MainTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EFA00C1CD9DFF900714E5D /* MainTabBar.swift */; };
 		26EFA00F1CD9E00200714E5D /* MainTabBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26EFA00E1CD9E00200714E5D /* MainTabBar.xib */; };
 		26FF03191D2BBB8D00BA74FD /* BaseFormVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FF03171D2BBB8D00BA74FD /* BaseFormVC.swift */; };
-		26FF031A1D2BBB8D00BA74FD /* ModalNavBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FF03181D2BBB8D00BA74FD /* ModalNavBarVC.swift */; };
+		26FF031A1D2BBB8D00BA74FD /* BaseNavBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FF03181D2BBB8D00BA74FD /* BaseNavBarVC.swift */; };
 		C5207A739D770B38693548B5 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59C2B0311ED5D0556A5A2FEF /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -274,7 +274,7 @@
 		26EFA00C1CD9DFF900714E5D /* MainTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBar.swift; sourceTree = "<group>"; };
 		26EFA00E1CD9E00200714E5D /* MainTabBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainTabBar.xib; sourceTree = "<group>"; };
 		26FF03171D2BBB8D00BA74FD /* BaseFormVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseFormVC.swift; sourceTree = "<group>"; };
-		26FF03181D2BBB8D00BA74FD /* ModalNavBarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalNavBarVC.swift; sourceTree = "<group>"; };
+		26FF03181D2BBB8D00BA74FD /* BaseNavBarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavBarVC.swift; sourceTree = "<group>"; };
 		59C2B0311ED5D0556A5A2FEF /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		872D6B22773387201385F5D7 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		D96F33C6E81927FC7DC69FEB /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -500,7 +500,7 @@
 			isa = PBXGroup;
 			children = (
 				26FF03171D2BBB8D00BA74FD /* BaseFormVC.swift */,
-				26FF03181D2BBB8D00BA74FD /* ModalNavBarVC.swift */,
+				26FF03181D2BBB8D00BA74FD /* BaseNavBarVC.swift */,
 				2687FA271D0EC2E900D544F5 /* App.swift */,
 				2687FA281D0EC2E900D544F5 /* Color.swift */,
 				2687FA291D0EC2E900D544F5 /* Error.swift */,
@@ -879,7 +879,7 @@
 				26A43A081D1F9FD300E0A820 /* EditCategoryVC.swift in Sources */,
 				269D4A021CE16DCA00109990 /* ValidateCategoryOperation.swift in Sources */,
 				269D49F81CE1610100109990 /* ExpenseEditorVC.swift in Sources */,
-				26FF031A1D2BBB8D00BA74FD /* ModalNavBarVC.swift in Sources */,
+				26FF031A1D2BBB8D00BA74FD /* BaseNavBarVC.swift in Sources */,
 				26A253C01D196DED003CDF5E /* __ELVCHeaderView.swift in Sources */,
 				26A253C21D1975EA003CDF5E /* __ELVCCell.swift in Sources */,
 				2687FA401D0F96D100D544F5 /* Periodization.swift in Sources */,

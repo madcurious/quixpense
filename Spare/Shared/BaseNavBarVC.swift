@@ -1,5 +1,5 @@
 //
-//  ModalNavBarVC.swift
+//  BaseNavBarVC.swift
 //  Spare
 //
 //  Created by Matt Quiros on 02/05/2016.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ModalNavBarVC: UINavigationController {
+class BaseNavBarVC: UINavigationController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)

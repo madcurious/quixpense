@@ -25,6 +25,13 @@ func glb_applyGlobalVCSettings(viewController: UIViewController) {
         }
     }
     viewController.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+    
+    let titleLabel = UILabel()
+    titleLabel.textColor = Color.ModalNavigationBarTextColor
+    titleLabel.font = Font.NavigationBarTitle
+    titleLabel.text = viewController.title?.uppercaseString
+    titleLabel.sizeToFit()
+    viewController.navigationItem.titleView = titleLabel
 }
 
 /**
@@ -68,24 +75,6 @@ func glb_displayTextForTotal(total: NSDecimalNumber) -> String {
     formatter.numberStyle = .CurrencyStyle
     return formatter.stringFromNumber(total) ?? "$ 0.00"
 }
-
-//func glb_displayTextForDateRange(startDate: NSDate, endDate: NSDate, periodization: Periodization) -> String {
-//    switch periodization {
-//    case .Day:
-//        if startDate.isSameDayAsDate(NSDate()) {
-//            return "Today"
-//        } else {
-//            return Summary.dateFormatter.stringFromDate(startDate)
-//        }
-//        
-//    default:
-//        fatalError("Unimplemented")
-//    }
-//}
-
-//func glb_displayTextForDateRange(summary: Summary) -> String {
-//    return glb_displayTextForDateRange(summary.startDate, endDate: summary.endDate, periodization: summary.periodization)
-//}
 
 func glb_totalOfExpenses(expenses: [Expense]) -> NSDecimalNumber {
     return expenses.map({ $0.amount ?? 0}).reduce(0, combine: +)

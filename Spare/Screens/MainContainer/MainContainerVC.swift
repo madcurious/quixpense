@@ -23,7 +23,10 @@ class MainContainerVC: UIViewController {
         glb_applyGlobalVCSettings(self)
         
         // Create the tab bar controller, add the tabs, and hide the tab bar.
-        self.tabController.viewControllers = [UINavigationController(rootViewController: HomeVC()), SettingsVC()]
+        self.tabController.viewControllers = [
+            UINavigationController(rootViewController: HomeVC()),
+            BaseNavBarVC(rootViewController: SettingsVC())
+        ]
         self.tabController.tabBar.hidden = true
         self.embedChildViewController(self.tabController, toView: self.customView.tabContainer, fillSuperview: true)
         
@@ -71,11 +74,11 @@ extension MainContainerVC: MainTabBarDelegate {
 extension MainContainerVC: AddButtonDelegate {
     
     func addButtonDidClick() {
-        self.presentViewController(ModalNavBarVC(rootViewController: AddExpenseVC()), animated: true, completion: nil)
+        self.presentViewController(BaseNavBarVC(rootViewController: AddExpenseVC()), animated: true, completion: nil)
     }
     
     func addButtonDidCompleteLongPress() {
-        self.presentViewController(ModalNavBarVC(rootViewController: AddCategoryVC()), animated: true, completion: nil)
+        self.presentViewController(BaseNavBarVC(rootViewController: AddCategoryVC()), animated: true, completion: nil)
     }
     
 }
