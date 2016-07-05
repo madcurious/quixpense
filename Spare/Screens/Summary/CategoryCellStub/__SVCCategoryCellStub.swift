@@ -28,7 +28,6 @@ class __SVCCategoryCellStub: __SVCCategoryCell {
                     return
             }
             
-//            self.stubView.backgroundColor = category.color
             self.contentView.backgroundColor = category.color
             self.nameLabel.text = category.name
             self.totalLabel.text = glb_displayTextForTotal(total)
@@ -60,14 +59,9 @@ class __SVCCategoryCellStub: __SVCCategoryCell {
     
     func applyHighlight(apply: Bool) {
         if apply {
-//            self.stubView.backgroundColor = UIColor.clearColor()
-//            self.nameLabel.textColor = UIColor.whiteColor()
-//            self.totalLabel.textColor = UIColor.whiteColor()
-//            self.percentLabel.textColor = UIColor.whiteColor()
             self.contentView.backgroundColor = Color.SummaryCellHighlightedColor
         } else {
             let categoryColor = self.info?.0.color ?? UIColor.blackColor()
-//            self.stubView.backgroundColor = categoryColor
             self.contentView.backgroundColor = categoryColor
         }
     }
