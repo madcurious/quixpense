@@ -23,12 +23,13 @@ class AddExpenseVC: BaseFormVC {
         self.title = "ADD EXPENSE"
     }
     
-    convenience init(preselectedCategory: Category) {
+    convenience init(preselectedCategory: Category, preselectedDate: NSDate) {
         self.init()
         
         if let category = self.editor.managedObjectContext.objectWithID(preselectedCategory.objectID) as? Category {
             self.editor.expense.category = category
         }
+        self.editor.expense.dateSpent = preselectedDate
     }
     
     required init?(coder aDecoder: NSCoder) {

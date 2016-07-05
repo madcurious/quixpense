@@ -108,7 +108,7 @@ class ExpenseListVC: UIViewController {
     }
     
     func handleTapOnAddExpenseButton() {
-        self.presentViewController(ModalNavBarVC(rootViewController: AddExpenseVC(preselectedCategory: self.category)),
+        self.presentViewController(ModalNavBarVC(rootViewController: AddExpenseVC(preselectedCategory: self.category, preselectedDate: self.startDate)),
                                    animated: true, completion: nil)
     }
     

@@ -83,7 +83,14 @@ struct DateRangeFormatter {
     }
     
     private func displayTextForMonth() -> String {
-        fatalError()
+        let currentDate = NSDate()
+        if self.startDate.isSameMonthAsDate(currentDate) {
+            return "This month"
+        }
+        
+        let formatter = DateRangeFormatter.formatter
+        formatter.dateFormat = "MMM yyyy"
+        return formatter.stringFromDate(self.startDate)
     }
     
     private func displayTextForYear() -> String {

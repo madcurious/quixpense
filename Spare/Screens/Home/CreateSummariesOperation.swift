@@ -56,6 +56,20 @@ class CreateSummariesOperation: MDOperation {
             let endDate = startDate!.dateByAddingTimeInterval(interval - 1)
             return (startDate!, endDate)
             
+        case .Month:
+            let referenceDate = calendar.dateByAddingUnit(.Month, value: page * -1, toDate: self.baseDate, options: [])!
+            
+            let components = calendar.components([.Month, .Day, .Year], fromDate: referenceDate)
+            components.day = 1
+            let startDate = calendar.dateFromComponents(components)!
+            
+            let dateRange = calendar.rangeOfUnit(.Day, inUnit: .Month, forDate: referenceDate)
+            components.day = dateRange.length
+            let endDate = calendar.dateFromComponents(components)!
+            
+            return (startDate, endDate)
+            
+            
         default:
             break
         }
