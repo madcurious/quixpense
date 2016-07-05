@@ -12,9 +12,10 @@ import BNRCoreDataStack
 
 private let kViewID = "kViewID"
 
-private let kTopBottomInset = CGFloat(0)
-private let kLeftRightInset = CGFloat(20)
-private let kItemSpacing = CGFloat(8)
+private let kTopInset = CGFloat(0)
+private let kBottomInset = CGFloat(0)
+private let kLeftRightInset = CGFloat(14)
+private let kItemSpacing = CGFloat(4)
 
 class HomeVC: MDStatefulViewController {
     
@@ -188,12 +189,12 @@ extension HomeVC: MDPagedCollectionViewDelegate {
     func collectionView(collectionView: MDPagedCollectionView, sizeForItemAtIndex index: Int) -> CGSize {
         var size = collectionView.bounds.size
         size.width = size.width - (kLeftRightInset * 2)
-        size.height = size.height - (kTopBottomInset * 2)
+        size.height = size.height - (kTopInset + kBottomInset)
         return size
     }
     
     func insetsForCollectionView(collectionView: MDPagedCollectionView) -> UIEdgeInsets {
-        return UIEdgeInsets(top: kTopBottomInset, left: kLeftRightInset, bottom: kTopBottomInset, right: kLeftRightInset)
+        return UIEdgeInsets(top: kTopInset, left: kLeftRightInset, bottom: kBottomInset, right: kLeftRightInset)
     }
     
     func minimumInterItemSpacingForCollectionView(collectionView: MDPagedCollectionView) -> CGFloat {
