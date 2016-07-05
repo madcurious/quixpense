@@ -63,18 +63,29 @@ class CreateSummariesOperation: MDOperation {
             components.day = 1
             let startDate = calendar.dateFromComponents(components)!
             
-            let dateRange = calendar.rangeOfUnit(.Day, inUnit: .Month, forDate: referenceDate)
-            components.day = dateRange.length
+            let dayRange = calendar.rangeOfUnit(.Day, inUnit: .Month, forDate: referenceDate)
+            components.day = dayRange.length
             let endDate = calendar.dateFromComponents(components)!
             
             return (startDate, endDate)
             
+        case .Year:
+            let referenceDate = calendar.dateByAddingUnit(.Year, value: page * -1, toDate: self.baseDate, options: [])!
             
-        default:
-            break
+            let components = calendar.components([.Month, .Day, .Year], fromDate: referenceDate)
+            components.month = 1
+            components.day = 1
+            let startDate = calendar.dateFromComponents(components)!
+            
+            let monthRange = calendar.rangeOfUnit(.Month, inUnit: .Year, forDate: referenceDate)
+            components.month = monthRange.length
+            let lastMonthInYear = calendar.dateFromComponents(components)!
+            let dayRange = calendar.rangeOfUnit(.Day, inUnit: .Month, forDate: lastMonthInYear)
+            components.day = dayRange.length
+            let endDate = calendar.dateFromComponents(components)!
+            
+            return (startDate, endDate)
         }
-        
-        fatalError()
     }
     
 }

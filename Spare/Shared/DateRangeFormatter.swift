@@ -94,7 +94,14 @@ struct DateRangeFormatter {
     }
     
     private func displayTextForYear() -> String {
-        fatalError()
+        let currentDate = NSDate()
+        if self.startDate.isSameYearAsDate(currentDate) {
+            return "This year"
+        }
+        
+        let formatter = DateRangeFormatter.formatter
+        formatter.dateFormat = "yyyy"
+        return formatter.stringFromDate(self.startDate)
     }
     
 }
