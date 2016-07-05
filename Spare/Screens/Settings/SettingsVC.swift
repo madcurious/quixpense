@@ -20,14 +20,14 @@ class SettingsVC: UIViewController {
     
     let fields = [
         [
-            MDField(name: "Currency"),
-            MDField(name: "Start of week")
+            MDField(name: "Currency".uppercaseString),
+            MDField(name: "Start of week".uppercaseString)
         ],
         [
-            MDField(name: "First screen on launch")
+            MDField(name: "Screen on launch".uppercaseString)
         ],
         [
-            MDField(name: "Manage categories")
+            MDField(name: "Manage categories".uppercaseString)
         ]
     ]
     
@@ -84,6 +84,10 @@ extension SettingsVC: UITableViewDataSource {
             } else {
                 cell = UITableViewCell(style: .Value1, reuseIdentifier: ViewID.FieldValueCell.rawValue)
                 cell.accessoryType = .DisclosureIndicator
+//                cell.textLabel?.font = Font.FieldLabel
+//                cell.textLabel?.textColor = Color.FormFieldLabelTextColor
+//                cell.detailTextLabel?.font = Font.FieldValue
+//                cell.detailTextLabel?.textColor = Color.FormFieldValueTextColor
             }
             
         case ViewID.PlainCell.rawValue:
@@ -92,6 +96,8 @@ extension SettingsVC: UITableViewDataSource {
             } else {
                 cell = UITableViewCell(style: .Default, reuseIdentifier: ViewID.PlainCell.rawValue)
                 cell.accessoryType = .DisclosureIndicator
+//                cell.textLabel?.font = Font.FieldLabel
+//                cell.textLabel?.textColor = Color.FormFieldLabelTextColor
             }
             
         default:
@@ -111,6 +117,10 @@ extension SettingsVC: UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 54
     }
     
 }
