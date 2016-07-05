@@ -17,7 +17,7 @@ protocol AddButtonDelegate {
 class AddButton: BaseTabButton {
     
     /// The amount of time before a long press is recognized.
-    private let longPressDelay = 1.0
+    private let longPressDelay = 0.5
     
     /// The amount of time that a long press should be held to trigger the New Category action.
     private let longPressRequirement = 0.7

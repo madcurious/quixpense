@@ -28,7 +28,8 @@ class __SVCCategoryCellStub: __SVCCategoryCell {
                     return
             }
             
-            self.stubView.backgroundColor = category.color
+//            self.stubView.backgroundColor = category.color
+            self.contentView.backgroundColor = category.color
             self.nameLabel.text = category.name
             self.totalLabel.text = glb_displayTextForTotal(total)
             self.percentLabel.text = "\(Int(percent * 100))%"
@@ -44,29 +45,30 @@ class __SVCCategoryCellStub: __SVCCategoryCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        UIView.clearBackgroundColors(self.labelContainer)
-        self.contentView.backgroundColor = Color.SummaryCellBackgroundColor
+        UIView.clearBackgroundColors(self.labelContainer, self.stubView)
         
         self.nameLabel.font = Font.SummaryCellNameLabel
         self.totalLabel.font = Font.SummaryCellTotalLabel
         self.percentLabel.font = Font.SummaryCellPercentLabel
+        
+        self.nameLabel.textColor = Color.SummaryCellTextColorLight
+        self.totalLabel.textColor = Color.SummaryCellTextColorLight
+        self.percentLabel.textColor = Color.SummaryCellTextColorLight
         
         self.applyHighlight(false)
     }
     
     func applyHighlight(apply: Bool) {
         if apply {
-            self.stubView.backgroundColor = UIColor.clearColor()
-            self.nameLabel.textColor = UIColor.whiteColor()
-            self.totalLabel.textColor = UIColor.whiteColor()
-            self.percentLabel.textColor = UIColor.whiteColor()
+//            self.stubView.backgroundColor = UIColor.clearColor()
+//            self.nameLabel.textColor = UIColor.whiteColor()
+//            self.totalLabel.textColor = UIColor.whiteColor()
+//            self.percentLabel.textColor = UIColor.whiteColor()
             self.contentView.backgroundColor = Color.SummaryCellHighlightedColor
         } else {
-            self.stubView.backgroundColor = self.info?.0.color ?? UIColor.blackColor()
-            self.nameLabel.textColor = Color.SummaryCellTextColor
-            self.totalLabel.textColor = Color.SummaryCellTextColor
-            self.percentLabel.textColor = Color.SummaryCellTextColor
-            self.contentView.backgroundColor = Color.SummaryCellBackgroundColor
+            let categoryColor = self.info?.0.color ?? UIColor.blackColor()
+//            self.stubView.backgroundColor = categoryColor
+            self.contentView.backgroundColor = categoryColor
         }
     }
     

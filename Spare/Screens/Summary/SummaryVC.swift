@@ -15,6 +15,8 @@ private enum ViewID: String {
     case Footer = "Footer"
 }
 
+private let kLeftRightInset = CGFloat(4)
+
 class SummaryVC: UIViewController {
     
     var summary: Summary {
@@ -163,15 +165,15 @@ extension SummaryVC: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.size.width, height: 60)
+        return CGSize(width: collectionView.bounds.size.width - kLeftRightInset * 2, height: 60)
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-        return UIEdgeInsetsZero
+        return UIEdgeInsetsMake(0, kLeftRightInset, 0, kLeftRightInset)
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
-        return 2
+        return 1
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {

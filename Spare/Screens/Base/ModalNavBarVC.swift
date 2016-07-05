@@ -20,6 +20,10 @@ class ModalNavBarVC: UINavigationController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        self.navigationBar.barTintColor = Color.ModalNavigationBarBackgroundColor
+        self.navigationBar.translucent = false
+        
         self.setNeedsStatusBarAppearanceUpdate()
     }
     

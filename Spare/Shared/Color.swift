@@ -49,10 +49,10 @@ class Color {
     static let HomeCellBorderColor = Gray420
     static let HomeScreenBackgroundColor = Gray300
     
-    static let ModalNavigationBarBackgroundColor = Gray900
-    static let ModalNavigationBarTextColor = White
+    static let ModalNavigationBarBackgroundColor = White
+    static let ModalNavigationBarTextColor = Gray900
     
-    static let ScreenBackgroundColorLightGray = Gray100
+    static let ScreenBackgroundColorLightGray = Gray300
     
     static let SummaryGraphTotalTextColor = Black
     static let SummaryGraphDateTextColor = Gray500

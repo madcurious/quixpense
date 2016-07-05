@@ -40,7 +40,7 @@ class AddButtonProgressView: UIView {
         
         self.actionLabel.textColor = Color.White
         self.actionLabel.font = Font.text(.Light, 14)
-        self.actionLabel.text = "NEW CATEGORY"
+        self.actionLabel.text = "ADD CATEGORY"
         self.actionLabel.sizeToFit()
         
         self.reset()
