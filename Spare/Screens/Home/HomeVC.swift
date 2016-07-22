@@ -24,8 +24,8 @@ class HomeVC: MDStatefulViewController {
     var isCreatingSummaries = false
     var summaries = [Summary]()
     
-    let forwardButton: CustomBarButton = {
-        let forwardButton = CustomBarButton(attributedText: NSAttributedString(string: Icon.Forward.rawValue,
+    let forwardButton: CustomButton = {
+        let forwardButton = CustomButton(attributedText: NSAttributedString(string: Icon.Forward.rawValue,
             attributes: [
                 NSForegroundColorAttributeName : Color.HomeBarButtonItemDefault,
                 NSFontAttributeName : Font.icon(26)
@@ -33,8 +33,8 @@ class HomeVC: MDStatefulViewController {
         return forwardButton
     }()
     
-    let periodizationButton: CustomBarButton = {
-        let periodizationButton = CustomBarButton(attributedText:
+    let periodizationButton: CustomButton = {
+        let periodizationButton = CustomButton(attributedText:
             NSAttributedString(string: App.state.selectedPeriodization.descriptiveText,
             attributes: [
                 NSForegroundColorAttributeName : Color.HomeBarButtonItemDefault,

@@ -31,7 +31,7 @@ class Color {
     
     // MARK: - UI Colors
     
-    static let CustomBarButtonDisabled = Black
+    static let CustomButtonDisabled = Black
     
     static let ExpenseListBarButtonItemColor = White
     static let ExpenseListCellHighlightedColor = Gray400
@@ -57,11 +57,14 @@ class Color {
     static let SummaryGraphTotalTextColor = Black
     static let SummaryGraphDateTextColor = Gray500
     static let SummaryCellBackgroundColor = Gray50
+    static let SummaryCellBadgeText = White
     static let SummaryCellHighlightedColor = Gray400
     static let SummaryCellTextColor = Gray700
     static let SummaryCellTextColorLight = White
     static let SummarySegmentedCircleEmptyColor = Gray200
     static let SummaryFooterViewTextColor = Gray500
+    static let SummarySectionHeaderSectionLabel = Gray700
+    static let SummarySectionHeaderRightButton = Gray400
     
     static let TabBarBackgroundColor = Gray900
     static let TabButtonHighlightBackgroundColor = Gray50

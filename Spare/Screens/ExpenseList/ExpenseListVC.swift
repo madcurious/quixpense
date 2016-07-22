@@ -69,14 +69,14 @@ class ExpenseListVC: UIViewController {
     }
     
     func setupBarButtonItems() {
-        let editButton = CustomBarButton(attributedText: NSAttributedString(string: "EDIT",
+        let editButton = CustomButton(attributedText: NSAttributedString(string: "EDIT",
             attributes: [
                 NSForegroundColorAttributeName : Color.ExpenseListBarButtonItemColor,
                 NSFontAttributeName : Font.BarButtonItems
             ]))
         editButton.addTarget(self, action: #selector(handleTapOnEditCategoryButton), forControlEvents: .TouchUpInside)
         
-        let addExpenseButton = CustomBarButton(attributedText: NSAttributedString(string: "ADD",
+        let addExpenseButton = CustomButton(attributedText: NSAttributedString(string: "ADD",
             attributes: [
                 NSForegroundColorAttributeName : Color.ExpenseListBarButtonItemColor,
                 NSFontAttributeName : Font.BarButtonItems
