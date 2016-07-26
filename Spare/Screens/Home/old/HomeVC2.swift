@@ -10,19 +10,14 @@ import UIKit
 import Mold
 import BNRCoreDataStack
 
-private enum ViewID: String {
-    case Cell = "Cell"
-}
-
 class HomeVC2: MDStatefulViewController {
     
-    var collectionView: UICollectionView = {
-        let layoutManager = UICollectionViewFlowLayout()
-        layoutManager.scrollDirection = .Horizontal
-        
-        let collectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: layoutManager)
-        collectionView.pagingEnabled = true
-        return collectionView
+    let pageViewController: UIPageViewController = {
+        let pager = UIPageViewController(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: [
+            UIPageViewControllerOptionInterPageSpacingKey : 20
+            ])
+        pager.setViewControllers([UIViewController()], direction: .Forward, animated: false, completion: nil)
+        return pager
     }()
     
     let currentDate = NSDate()
@@ -49,7 +44,7 @@ class HomeVC2: MDStatefulViewController {
     }()
     
     override var primaryView: UIView {
-        return self.collectionView
+        return self.pageViewController.view
     }
     
     override func viewDidLoad() {
@@ -58,10 +53,8 @@ class HomeVC2: MDStatefulViewController {
         glb_applyGlobalVCSettings(self)
         self.edgesForExtendedLayout = .Bottom
         
-        self.collectionView.backgroundColor = Color.HomeScreenBackgroundColor
-        self.collectionView.registerClass(__HVC2Cell.self, forCellWithReuseIdentifier: ViewID.Cell.rawValue)
-        self.collectionView.dataSource = self
-        self.collectionView.delegate = self
+        self.pageViewController.dataSource = self
+        self.pageViewController.delegate = self
         
         self.showView(.Loading)
         
@@ -106,50 +99,40 @@ class HomeVC2: MDStatefulViewController {
                         return
                 }
                 
-//                let currentIndexPath = self.collectionView.indexPathsForVisibleItems().first
                 self.summaries.insertContentsOf(newSummaries, at: 0)
-                self.collectionView.reloadData()
                 
                 if self.currentView != .Primary {
-                    self.scrollToLastItem()
+                    self.scrollToLastSummary(animated: false)
                     self.showView(.Primary)
-                } else {
-                    // Doesn't work :(
-                    let count = newSummaries.count
-                    let contentWidth = self.collectionView.contentSize.width
-                    let offsetX = self.collectionView.contentOffset.x
-                    let offsetFromRight = contentWidth - offsetX
-                    
-                    CATransaction.begin()
-                    CATransaction.setDisableActions(true)
-                    
-                    self.collectionView.performBatchUpdates({[unowned self] in
-                        var indexPaths = [NSIndexPath]()
-                        for i in 0..<count {
-                            indexPaths.append(NSIndexPath(forItem: i, inSection: 0))
-                        }
-                        self.collectionView.insertItemsAtIndexPaths(indexPaths)
-                        }, completion: {[unowned self] (_) in
-                            self.collectionView.contentOffset = CGPointMake(self.collectionView.contentSize.width - offsetFromRight, 0)
-                            CATransaction.commit()
-                    })
                 }
+                
                 })
     }
     
-    func scrollToLastItem() {
-//        self.collectionView.scrollToLastItem(animated: true, completion: {[unowned self] in
-//            self.forwardButton.enabled = false
-//            })
-        self.collectionView.scrollToItemAtIndexPath(NSIndexPath(forItem: self.summaries.count - 1, inSection: 0), atScrollPosition: .CenteredHorizontally, animated: true)
+    func scrollToLastSummary(animated animated: Bool) {
+        guard let lastSummary = self.summaries.last
+            else {
+                return
+        }
+        self.pageViewController.setViewControllers([SummaryVC2(summary: lastSummary)], direction: .Forward, animated: animated, completion: nil)
     }
     
     func handleUpdatesOnDataStore() {
-        self.collectionView.reloadData()
+        guard let summaryVC = self.pageViewController.viewControllers?.first as? SummaryVC2
+            else {
+                return
+        }
+        summaryVC.reloadData()
     }
     
     func handleTapOnForwardButton() {
-        self.scrollToLastItem()
+        if let currentPage = self.pageViewController.viewControllers?.first as? SummaryVC2,
+            let currentIndex = self.summaries.indexOf(currentPage.summary)
+            where currentIndex == self.summaries.count - 1 {
+            return
+        }
+        
+        self.scrollToLastSummary(animated: true)
     }
     
     func handleTapOnPeriodizationButton() {
@@ -189,50 +172,50 @@ class HomeVC2: MDStatefulViewController {
     
 }
 
-extension HomeVC2: UICollectionViewDataSource {
+extension HomeVC2: UIPageViewControllerDataSource {
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.summaries.count
-    }
-    
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCellWithReuseIdentifier(ViewID.Cell.rawValue, forIndexPath: indexPath) as? __HVC2Cell
+    func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
+        guard let currentPage = self.pageViewController.viewControllers?.first as? SummaryVC2,
+            let currentIndex = self.summaries.indexOf(currentPage.summary)
             else {
-                fatalError()
-        }
-        cell.summary = self.summaries[indexPath.item]
-        
-        // Generate new summaries when near the left end.
-        if let operation = self.buildOperation()
-            where indexPath.item == 5 && self.isCreatingSummaries == false {
-            self.operationQueue.addOperation(operation)
+                return nil
         }
         
-        return cell
+        let previousIndex = currentIndex - 1
+        if previousIndex > 0 {
+            // Start another create operation if nearing the end.
+            if let op = self.buildOperation()
+                where previousIndex == 5 {
+                self.operationQueue.addOperation(op)
+            }
+            
+            let previousPage = SummaryVC2(summary: self.summaries[previousIndex])
+            return previousPage
+        }
+        
+        return nil
+    }
+    
+    func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
+        guard let currentPage = self.pageViewController.viewControllers?.first as? SummaryVC2,
+            let currentIndex = self.summaries.indexOf(currentPage.summary)
+            else {
+                return nil
+        }
+        
+        let nextIndex = currentIndex + 1
+        if nextIndex < self.summaries.count {
+            let previousPage = SummaryVC2(summary: self.summaries[nextIndex])
+            return previousPage
+        }
+        return nil
     }
     
 }
 
-extension HomeVC2: UICollectionViewDelegate {
+extension HomeVC2: UIPageViewControllerDelegate {
+    
+    
     
 }
 
-extension HomeVC2: UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return collectionView.bounds.size
-    }
-    
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-        return UIEdgeInsetsZero
-    }
-    
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
-        return 0
-    }
-    
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
-        return 0
-    }
-    
-}

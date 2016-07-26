@@ -10,7 +10,7 @@ import Foundation
 import BNRCoreDataStack
 import Mold
 
-struct Summary {
+struct Summary: Equatable {
     
     var startDate: NSDate
     var endDate: NSDate
@@ -82,4 +82,10 @@ struct Summary {
         return info
     }
     
+}
+
+func ==(lhs: Summary, rhs: Summary) -> Bool {
+    return lhs.startDate == rhs.startDate &&
+        lhs.endDate == rhs.endDate &&
+        lhs.periodization == rhs.periodization
 }

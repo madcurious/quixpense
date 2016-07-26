@@ -58,6 +58,10 @@ class SummaryVC2: UIViewController {
         self.collectionView.delegate = self
     }
     
+    func reloadData() {
+        self.collectionView.reloadData()
+    }
+    
 }
 
 extension SummaryVC2: UICollectionViewDataSource {
