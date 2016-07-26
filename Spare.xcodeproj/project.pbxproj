@@ -39,6 +39,8 @@
 		265146711D420C33000847F5 /* __SVCCategoryCellBadge.xib in Resources */ = {isa = PBXBuildFile; fileRef = 265146701D420C33000847F5 /* __SVCCategoryCellBadge.xib */; };
 		265146741D4210A4000847F5 /* __SVCSectionHeaderWithRightButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 265146731D4210A4000847F5 /* __SVCSectionHeaderWithRightButton.xib */; };
 		265146761D421194000847F5 /* __SVCSectionHeaderWithRightButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265146751D421194000847F5 /* __SVCSectionHeaderWithRightButton.swift */; };
+		2651467A1D4218B3000847F5 /* HomeVC2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265146791D4218B3000847F5 /* HomeVC2.swift */; };
+		2651467C1D4219D9000847F5 /* __HVC2Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2651467B1D4219D9000847F5 /* __HVC2Cell.swift */; };
 		265849021D0AD5C10047BCFA /* __HVCCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 265849011D0AD5C10047BCFA /* __HVCCell.xib */; };
 		2666C2C61957CF7A003752BF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2666C2C41957CF7A003752BF /* SystemConfiguration.framework */; };
 		2666C2C81957CF93003752BF /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2666C2C71957CF93003752BF /* libz.dylib */; };
@@ -197,6 +199,8 @@
 		265146701D420C33000847F5 /* __SVCCategoryCellBadge.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __SVCCategoryCellBadge.xib; sourceTree = "<group>"; };
 		265146731D4210A4000847F5 /* __SVCSectionHeaderWithRightButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __SVCSectionHeaderWithRightButton.xib; sourceTree = "<group>"; };
 		265146751D421194000847F5 /* __SVCSectionHeaderWithRightButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __SVCSectionHeaderWithRightButton.swift; sourceTree = "<group>"; };
+		265146791D4218B3000847F5 /* HomeVC2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeVC2.swift; path = old/HomeVC2.swift; sourceTree = "<group>"; };
+		2651467B1D4219D9000847F5 /* __HVC2Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __HVC2Cell.swift; sourceTree = "<group>"; };
 		265849011D0AD5C10047BCFA /* __HVCCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __HVCCell.xib; sourceTree = "<group>"; };
 		2666C2C11957CF4F003752BF /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalyticsServices.a; path = GoogleAnalytics/libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
 		2666C2C31957CF7A003752BF /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
@@ -341,9 +345,11 @@
 			isa = PBXGroup;
 			children = (
 				268D23EB1D001E79006B8D0B /* HomeVC.swift */,
+				265146791D4218B3000847F5 /* HomeVC2.swift */,
 				268D23D81D001022006B8D0B /* __HVCCell.swift */,
 				265849011D0AD5C10047BCFA /* __HVCCell.xib */,
 				2687FA3B1D0EC46F00D544F5 /* CreateSummariesOperation.swift */,
+				2651467B1D4219D9000847F5 /* __HVC2Cell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -884,6 +890,7 @@
 				2687FA3C1D0EC46F00D544F5 /* CreateSummariesOperation.swift in Sources */,
 				26E7FA7B1CDB332F000E2181 /* BaseTabButton.swift in Sources */,
 				26CAD3851D1946E80039DFD2 /* __SVCPieChart.swift in Sources */,
+				2651467C1D4219D9000847F5 /* __HVC2Cell.swift in Sources */,
 				2676792A1D13FE8F004CF70A /* __SVCCategoryCell.swift in Sources */,
 				26CAD3911D1966B70039DFD2 /* Event.swift in Sources */,
 				269D49F41CE1610100109990 /* CategoryEditorVC.swift in Sources */,
@@ -930,6 +937,7 @@
 				26EFA0091CD9DB0A00714E5D /* TabButton.swift in Sources */,
 				26EFA0031CD9C8F100714E5D /* MainContainerVC.swift in Sources */,
 				26EFA00D1CD9DFF900714E5D /* MainTabBar.swift in Sources */,
+				2651467A1D4218B3000847F5 /* HomeVC2.swift in Sources */,
 				26A063F61D2134040034D04F /* CustomButton.swift in Sources */,
 				269D49F61CE1610100109990 /* __EEVCView.swift in Sources */,
 				260308371D2A7B0C0094B4D2 /* StartOfWeek.swift in Sources */,

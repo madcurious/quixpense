@@ -81,7 +81,7 @@ extension SummaryVC2: UICollectionViewDataSource {
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         switch indexPath.section {
-        case 0:
+        case 1:
             guard let cell = collectionView.dequeueReusableCellWithReuseIdentifier(ViewID.CategoryCell.rawValue, forIndexPath: indexPath) as? __SVCCategoryCellBadge
                 else {
                     fatalError()
@@ -97,6 +97,16 @@ extension SummaryVC2: UICollectionViewDataSource {
     func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         switch kind {
         case UICollectionElementKindSectionHeader:
+            if indexPath.section == 0 {
+                guard let graphView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: ViewID.Graph.rawValue, forIndexPath: indexPath) as? __SVCGraphView
+                    else {
+                        fatalError()
+                }
+                graphView.totalLabel.text = glb_displayTextForTotal(self.summary.total)
+                graphView.summary = self.summary
+                return graphView
+            }
+            
             guard let sectionHeader = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: ViewID.SectionHeader.rawValue, forIndexPath: indexPath) as? __SVCSectionHeaderWithRightButton
                 else {
                     fatalError()
@@ -119,7 +129,16 @@ extension SummaryVC2: UICollectionViewDelegate {
 extension SummaryVC2: UICollectionViewDelegateFlowLayout {
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSizeMake(collectionView.bounds.size.width, 20)
+        switch section {
+        case 0:
+            return CGSizeMake(collectionView.bounds.size.width, collectionView.bounds.size.width * 0.9)
+            
+        case 1:
+            return CGSizeMake(collectionView.bounds.size.width, 20)
+            
+        default:
+            return CGSizeZero
+        }
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
