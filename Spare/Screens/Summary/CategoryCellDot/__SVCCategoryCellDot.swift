@@ -23,7 +23,7 @@ class __SVCCategoryCellDot: __SVCCategoryCell {
                 categoryName = category.name {
                 self.dotView.backgroundColor = category.color
                 self.categoryLabel.text = "\(categoryName)"
-                self.valueLabel.text = "\(glb_displayTextForTotal(total)) (\(Int(percent * 100))%)"
+                self.valueLabel.text = String(format: "%@ (%.0f%%)", glb_displayTextForTotal(total), (percent * 100))
             } else {
                 self.dotView.backgroundColor = UIColor.clearColor()
                 self.categoryLabel.text = nil
