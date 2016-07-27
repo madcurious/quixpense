@@ -22,8 +22,8 @@ class __SVCCategoryCellDot: __SVCCategoryCell {
             if let (category, total, percent) = self.info,
                 categoryName = category.name {
                 self.dotView.backgroundColor = category.color
-                self.categoryLabel.text = "\(categoryName) - \(Int(percent * 100))%"
-                self.valueLabel.text = "\(glb_displayTextForTotal(total) )"
+                self.categoryLabel.text = "\(categoryName)"
+                self.valueLabel.text = "\(glb_displayTextForTotal(total)) (\(Int(percent * 100))%)"
             } else {
                 self.dotView.backgroundColor = UIColor.clearColor()
                 self.categoryLabel.text = nil
@@ -52,6 +52,8 @@ class __SVCCategoryCellDot: __SVCCategoryCell {
         self.valueLabel.textAlignment = .Right
         self.valueLabel.numberOfLines = 1
         self.valueLabel.lineBreakMode = .ByClipping
+        
+        self.applyHighlight(false)
     }
     
     override func layoutSubviews() {

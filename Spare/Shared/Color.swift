@@ -18,7 +18,7 @@ class Color {
     
     // Numbers indicate brightness; smaller = brighter.
     
-    private static let Gray50 = UIColor(hex: 0xf6f6f6)
+    private static let Gray50 = UIColor(hex: 0xf5f5f5)
     private static let Gray100 = UIColor(hex: 0xf0f2f6)
     private static let Gray200 = UIColor(hex: 0xe6e6e6)
     private static let Gray300 = UIColor(hex: 0xe0e0e0)
@@ -58,7 +58,7 @@ class Color {
     
     static let SummaryGraphTotalTextColor = Black
     static let SummaryGraphDateTextColor = Gray500
-    static let SummaryCellBackgroundColor = White
+    static let SummaryCellBackgroundColor = Gray50
     static let SummaryCellBadgeBackgroundColorDefault = Gray50
     static let SummaryCellBadgeText = White
     static let SummaryCellHighlightedColor = Gray400

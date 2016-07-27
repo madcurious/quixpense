@@ -29,7 +29,7 @@ final class Font {
     
     static let HomeBarButtonItem = Font.text(.Bold, 18)
     
-    static let SummaryBannerTotal = Font.text(.Bold, MDScreen.currentScreenIs(.iPhone4S, .iPhone5) ? 26 : 34)
+    static let SummaryBannerTotal = Font.text(.Bold, MDScreen.currentScreenIs(.iPhone4S, .iPhone5) ? 26 : 32)
     static let SummaryBannerDate = Font.text(.Regular, MDScreen.currentScreenIs(.iPhone4S, .iPhone5) ? 14 : 16)
     static let SummaryCellBadge = Font.text(.Bold, 10)
     static let SummaryCellCategoryLabel = Font.text(.Regular, 18)

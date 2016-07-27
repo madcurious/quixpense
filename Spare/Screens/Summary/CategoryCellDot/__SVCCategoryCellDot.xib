@@ -23,7 +23,7 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GgJ-5E-Cyo">
-                        <rect key="frame" x="24" y="14" width="223" height="21"/>
+                        <rect key="frame" x="28" y="14" width="219" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
@@ -40,7 +40,7 @@
             <constraints>
                 <constraint firstItem="IFE-ig-o7Q" firstAttribute="leading" secondItem="tdb-rT-a5G" secondAttribute="leading" constant="8" id="1kf-9A-5C9"/>
                 <constraint firstItem="5Bx-Av-Tsd" firstAttribute="leading" secondItem="GgJ-5E-Cyo" secondAttribute="trailing" constant="8" id="IEc-qS-UG3"/>
-                <constraint firstItem="GgJ-5E-Cyo" firstAttribute="leading" secondItem="IFE-ig-o7Q" secondAttribute="trailing" constant="4" id="Mc3-7w-FXl"/>
+                <constraint firstItem="GgJ-5E-Cyo" firstAttribute="leading" secondItem="IFE-ig-o7Q" secondAttribute="trailing" constant="8" id="Mc3-7w-FXl"/>
                 <constraint firstAttribute="trailing" secondItem="5Bx-Av-Tsd" secondAttribute="trailing" constant="8" id="TRP-g7-Hjb"/>
                 <constraint firstItem="IFE-ig-o7Q" firstAttribute="centerY" secondItem="tdb-rT-a5G" secondAttribute="centerY" id="dwT-nf-ziL"/>
                 <constraint firstItem="5Bx-Av-Tsd" firstAttribute="centerY" secondItem="tdb-rT-a5G" secondAttribute="centerY" id="jWm-ZN-6Pf"/>
