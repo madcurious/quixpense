@@ -1,8 +1,8 @@
 //
-//  HomeVC.swift
+//  HomeVC2.swift
 //  Spare
 //
-//  Created by Matt Quiros on 02/06/2016.
+//  Created by Matt Quiros on 22/07/2016.
 //  Copyright © 2016 Matt Quiros. All rights reserved.
 //
 
@@ -10,16 +10,16 @@ import UIKit
 import Mold
 import BNRCoreDataStack
 
-private let kViewID = "kViewID"
-
-private let kTopInset = CGFloat(0)
-private let kBottomInset = CGFloat(0)
-private let kLeftRightInset = CGFloat(14)
-private let kItemSpacing = CGFloat(4)
-
-class HomeVC: MDStatefulViewController {
+class HomeVC2: MDStatefulViewController {
     
-    var collectionView = MDPagedCollectionView()
+    let pageViewController: UIPageViewController = {
+        let pager = UIPageViewController(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: [
+            UIPageViewControllerOptionInterPageSpacingKey : 20
+            ])
+        pager.setViewControllers([UIViewController()], direction: .Forward, animated: false, completion: nil)
+        return pager
+    }()
+    
     let currentDate = NSDate()
     var isCreatingSummaries = false
     var summaries = [Summary]()
@@ -36,15 +36,15 @@ class HomeVC: MDStatefulViewController {
     let periodizationButton: CustomButton = {
         let periodizationButton = CustomButton(attributedText:
             NSAttributedString(string: App.state.selectedPeriodization.descriptiveText,
-            attributes: [
-                NSForegroundColorAttributeName : Color.HomeBarButtonItemDefault,
-                NSFontAttributeName : Font.HomeBarButtonItem
+                attributes: [
+                    NSForegroundColorAttributeName : Color.HomeBarButtonItemDefault,
+                    NSFontAttributeName : Font.HomeBarButtonItem
                 ]))
         return periodizationButton
     }()
     
     override var primaryView: UIView {
-        return self.collectionView
+        return self.pageViewController.view
     }
     
     override func viewDidLoad() {
@@ -53,10 +53,8 @@ class HomeVC: MDStatefulViewController {
         glb_applyGlobalVCSettings(self)
         self.edgesForExtendedLayout = .Bottom
         
-        self.collectionView.backgroundColor = Color.HomeScreenBackgroundColor
-        self.collectionView.registerCellNib(__HVCCell.nib(), withReuseIdentifier: kViewID)
-        self.collectionView.dataSource = self
-        self.collectionView.delegate = self
+        self.pageViewController.dataSource = self
+        self.pageViewController.delegate = self
         
         self.showView(.Loading)
         
@@ -75,9 +73,10 @@ class HomeVC: MDStatefulViewController {
         super.viewWillAppear(animated)
         
         if let navigationBar = self.navigationController?.navigationBar {
-            let colorImage = UIImage.imageFromColor(Color.HomeScreenBackgroundColor)
-            navigationBar.shadowImage = colorImage
-            navigationBar.setBackgroundImage(colorImage, forBarMetrics: .Default)
+//            let colorImage = UIImage.imageFromColor(Color.NavigationBarBackgroundColor)
+//            navigationBar.shadowImage = colorImage
+//            navigationBar.setBackgroundImage(colorImage, forBarMetrics: .Default)
+            navigationBar.barTintColor = Color.NavigationBarBackgroundColor
         }
     }
     
@@ -86,7 +85,7 @@ class HomeVC: MDStatefulViewController {
             periodization: App.state.selectedPeriodization,
             startOfWeek: App.state.selectedStartOfWeek,
             count: 10,
-            startingPage: self.numberOfItemsInCollectionView(self.collectionView))
+            startingPage: self.summaries.count)
             
             .onStart({[unowned self] in
                 self.isCreatingSummaries = true
@@ -102,27 +101,39 @@ class HomeVC: MDStatefulViewController {
                 }
                 
                 self.summaries.insertContentsOf(newSummaries, at: 0)
-                self.collectionView.reloadData()
                 
                 if self.currentView != .Primary {
-                    self.scrollToLastItem()
+                    self.scrollToLastSummary(animated: false)
                     self.showView(.Primary)
                 }
-            })
+                
+                })
     }
     
-    func scrollToLastItem() {
-        self.collectionView.scrollToLastItem(animated: true, completion: {[unowned self] in
-            self.forwardButton.enabled = false
-            })
+    func scrollToLastSummary(animated animated: Bool) {
+        guard let lastSummary = self.summaries.last
+            else {
+                return
+        }
+        self.pageViewController.setViewControllers([TiledSummaryVC(summary: lastSummary)], direction: .Forward, animated: animated, completion: nil)
     }
     
     func handleUpdatesOnDataStore() {
-        self.collectionView.reloadData()
+        guard let summaryVC = self.pageViewController.viewControllers?.first as? TiledSummaryVC
+            else {
+                return
+        }
+        summaryVC.collectionView.reloadData()
     }
     
     func handleTapOnForwardButton() {
-        self.scrollToLastItem()
+        if let currentPage = self.pageViewController.viewControllers?.first as? TiledSummaryVC,
+            let currentIndex = self.summaries.indexOf(currentPage.summary)
+            where currentIndex == self.summaries.count - 1 {
+            return
+        }
+        
+        self.scrollToLastSummary(animated: true)
     }
     
     func handleTapOnPeriodizationButton() {
@@ -133,7 +144,7 @@ class HomeVC: MDStatefulViewController {
             let option = options[i]
             let action = UIAlertAction(title: option.descriptiveText, style: .Default, handler: {[unowned self] _ in
                 self.handleSelectionOnPeriodization(option)
-            })
+                })
             actionSheet.addAction(action)
         }
         actionSheet.addCancelAction()
@@ -162,58 +173,50 @@ class HomeVC: MDStatefulViewController {
     
 }
 
-// MARK: - MDPagedCollectionViewDataSource
-extension HomeVC: MDPagedCollectionViewDataSource {
+extension HomeVC2: UIPageViewControllerDataSource {
     
-    func numberOfItemsInCollectionView(collectionView: MDPagedCollectionView) -> Int {
-        return self.summaries.count
+    func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
+        guard let currentPage = self.pageViewController.viewControllers?.first as? TiledSummaryVC,
+            let currentIndex = self.summaries.indexOf(currentPage.summary)
+            else {
+                return nil
+        }
+        
+        let previousIndex = currentIndex - 1
+        if previousIndex > 0 {
+            // Start another create operation if nearing the end.
+            if let op = self.buildOperation()
+                where previousIndex == 5 {
+                self.operationQueue.addOperation(op)
+            }
+            
+            let previousPage = TiledSummaryVC(summary: self.summaries[previousIndex])
+            return previousPage
+        }
+        
+        return nil
     }
     
-    func collectionView(collectionView: MDPagedCollectionView, cellForItemAtIndex index: Int) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kViewID, forIndex: index) as? __HVCCell
+    func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
+        guard let currentPage = self.pageViewController.viewControllers?.first as? TiledSummaryVC,
+            let currentIndex = self.summaries.indexOf(currentPage.summary)
             else {
-                fatalError()
+                return nil
         }
-        cell.summary = self.summaries[index]
         
-        return cell
+        let nextIndex = currentIndex + 1
+        if nextIndex < self.summaries.count {
+            let previousPage = TiledSummaryVC(summary: self.summaries[nextIndex])
+            return previousPage
+        }
+        return nil
     }
     
 }
 
-// MARK: - MDPagedCollectionViewDelegate
-extension HomeVC: MDPagedCollectionViewDelegate {
+extension HomeVC2: UIPageViewControllerDelegate {
     
-    // MARK: Layout
     
-    func collectionView(collectionView: MDPagedCollectionView, sizeForItemAtIndex index: Int) -> CGSize {
-        var size = collectionView.bounds.size
-        size.width = size.width - (kLeftRightInset * 2)
-        size.height = size.height - (kTopInset + kBottomInset)
-        return size
-    }
-    
-    func insetsForCollectionView(collectionView: MDPagedCollectionView) -> UIEdgeInsets {
-        return UIEdgeInsets(top: kTopInset, left: kLeftRightInset, bottom: kBottomInset, right: kLeftRightInset)
-    }
-    
-    func minimumInterItemSpacingForCollectionView(collectionView: MDPagedCollectionView) -> CGFloat {
-        return kItemSpacing
-    }
-    
-    // MARK: Events
-    
-    func collectionViewDidScroll(collectionView: MDPagedCollectionView, page: CGFloat) {
-        // Create summary objects if scrolling near the end.
-        if let operation = self.buildOperation()
-            where page <= 5 && self.isCreatingSummaries == false {
-            self.operationQueue.addOperation(operation)
-        }
-    }
-    
-    func collectionViewDidEndDecelerating(collectionView: MDPagedCollectionView, page: CGFloat) {
-        // Enable/disable the forward button depending on the scroll offset.
-        self.forwardButton.enabled = page < CGFloat(self.summaries.count - 1)
-    }
     
 }
+

@@ -20,8 +20,4 @@ class BaseNavBarVC: UINavigationController {
         self.setNeedsStatusBarAppearanceUpdate()
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
-    }
-    
 }

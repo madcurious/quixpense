@@ -10,18 +10,11 @@ import Foundation
 import BNRCoreDataStack
 import Mold
 
-struct Summary {
+struct Summary: Equatable {
     
     var startDate: NSDate
     var endDate: NSDate
     var periodization: Periodization
-    
-//    static let dateFormatter: NSDateFormatter = {
-//        let formatter = NSDateFormatter()
-//        formatter.timeZone = NSTimeZone.localTimeZone()
-//        formatter.dateFormat = "EEE, MMM d"
-//        return formatter
-//    }()
     
     /**
      Returns an array of all the expenses in the date range, or nil if none were found.
@@ -82,4 +75,10 @@ struct Summary {
         return info
     }
     
+}
+
+func ==(lhs: Summary, rhs: Summary) -> Bool {
+    return lhs.startDate == rhs.startDate &&
+        lhs.endDate == rhs.endDate &&
+        lhs.periodization == rhs.periodization
 }

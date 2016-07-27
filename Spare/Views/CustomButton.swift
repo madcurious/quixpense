@@ -1,5 +1,5 @@
 //
-//  CustomBarButton.swift
+//  CustomButton.swift
 //  Spare
 //
 //  Created by Matt Quiros on 27/06/2016.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CustomBarButton: UIControl {
+class CustomButton: UIControl {
     
     let label = UILabel()
     var texts = [UIControlState : AnyObject]()
@@ -41,7 +41,7 @@ class CustomBarButton: UIControl {
         let disabledText = NSMutableAttributedString(attributedString: attributedText)
         disabledText.removeAttribute(NSForegroundColorAttributeName, range: NSMakeRange(0, disabledText.length))
         disabledText.addAttributes([
-            NSForegroundColorAttributeName : Color.CustomBarButtonDisabled
+            NSForegroundColorAttributeName : Color.CustomButtonDisabled
             ], range: NSMakeRange(0, disabledText.length))
         self.texts[.Disabled] = disabledText
         
