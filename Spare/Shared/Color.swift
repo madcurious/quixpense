@@ -47,23 +47,26 @@ class Color {
     static let HomeBarButtonItemDefault = Gray900
     static let HomeBarButtonItemDisabled = Gray500
     static let HomeCellBorderColor = Gray420
-    static let HomeScreenBackgroundColor = Gray300
+    static let HomeScreenBackgroundColor = White
     
     static let ModalNavigationBarBackgroundColor = White
     static let ModalNavigationBarTextColor = Gray900
+    
+    static let NavigationBarBackgroundColor = White
     
     static let ScreenBackgroundColorLightGray = Gray300
     
     static let SummaryGraphTotalTextColor = Black
     static let SummaryGraphDateTextColor = Gray500
-    static let SummaryCellBackgroundColor = Gray50
+    static let SummaryCellBackgroundColor = White
+    static let SummaryCellBadgeBackgroundColorDefault = Gray50
     static let SummaryCellBadgeText = White
     static let SummaryCellHighlightedColor = Gray400
-    static let SummaryCellTextColor = Gray700
+    static let SummaryCellTextColor = Black
     static let SummaryCellTextColorLight = White
     static let SummarySegmentedCircleEmptyColor = Gray200
     static let SummaryFooterViewTextColor = Gray500
-    static let SummarySectionHeaderSectionLabel = Gray700
+    static let SummarySectionHeaderSectionLabel = Gray800
     static let SummarySectionHeaderRightButton = Gray400
     
     static let TabBarBackgroundColor = Gray900

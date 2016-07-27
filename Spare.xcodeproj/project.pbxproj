@@ -18,6 +18,8 @@
 		2603F8CF1CCA4C10007F311F /* Expense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2603F8C91CCA4C10007F311F /* Expense.swift */; };
 		2603F8D21CCA4C10007F311F /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2603F8CC1CCA4C10007F311F /* Category+CoreDataProperties.swift */; };
 		2603F8D31CCA4C10007F311F /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2603F8CD1CCA4C10007F311F /* Category.swift */; };
+		260A06511D489A9100A960DB /* __SVCCategoryCellDot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260A06501D489A9100A960DB /* __SVCCategoryCellDot.swift */; };
+		260A06531D489AAA00A960DB /* __SVCCategoryCellDot.xib in Resources */ = {isa = PBXBuildFile; fileRef = 260A06521D489AAA00A960DB /* __SVCCategoryCellDot.xib */; };
 		26170E031D19BEA50003BC71 /* __ELVCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26170E021D19BEA50003BC71 /* __ELVCView.xib */; };
 		26170E051D19BEEB0003BC71 /* __ELVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26170E041D19BEEB0003BC71 /* __ELVCView.swift */; };
 		26170E091D19C9E30003BC71 /* CollectionViewLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26170E071D19C9E30003BC71 /* CollectionViewLabel.swift */; };
@@ -177,6 +179,8 @@
 		2603F8C91CCA4C10007F311F /* Expense.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Expense.swift; sourceTree = "<group>"; };
 		2603F8CC1CCA4C10007F311F /* Category+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		2603F8CD1CCA4C10007F311F /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		260A06501D489A9100A960DB /* __SVCCategoryCellDot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __SVCCategoryCellDot.swift; sourceTree = "<group>"; };
+		260A06521D489AAA00A960DB /* __SVCCategoryCellDot.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __SVCCategoryCellDot.xib; sourceTree = "<group>"; };
 		26170E021D19BEA50003BC71 /* __ELVCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __ELVCView.xib; sourceTree = "<group>"; };
 		26170E041D19BEEB0003BC71 /* __ELVCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __ELVCView.swift; sourceTree = "<group>"; };
 		26170E071D19C9E30003BC71 /* CollectionViewLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewLabel.swift; sourceTree = "<group>"; };
@@ -378,6 +382,15 @@
 			path = "Core Data";
 			sourceTree = "<group>";
 		};
+		260A064F1D489A8300A960DB /* CategoryCellDot */ = {
+			isa = PBXGroup;
+			children = (
+				260A06501D489A9100A960DB /* __SVCCategoryCellDot.swift */,
+				260A06521D489AAA00A960DB /* __SVCCategoryCellDot.xib */,
+			);
+			path = CategoryCellDot;
+			sourceTree = "<group>";
+		};
 		261370A91CD7A114007BAF56 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -556,6 +569,7 @@
 				2628DF7C1D3F8D2300FB40C5 /* SummaryVC2.swift */,
 				267679291D13FE8F004CF70A /* __SVCCategoryCell.swift */,
 				26CAD3721D193C980039DFD2 /* Graph */,
+				260A064F1D489A8300A960DB /* CategoryCellDot */,
 				2651466D1D420C0B000847F5 /* CategoryCellBadge */,
 				265146721D421089000847F5 /* SectionHeaderWithRightButton */,
 				26CAD3861D194CE40039DFD2 /* CategoryCellStub */,
@@ -771,6 +785,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				260A06531D489AAA00A960DB /* __SVCCategoryCellDot.xib in Resources */,
 				268BBDAE1D08E99C005C6BD8 /* Lato-Black.ttf in Resources */,
 				26170E0A1D19C9E30003BC71 /* CollectionViewLabel.xib in Resources */,
 				268BBDB01D08E99C005C6BD8 /* Lato-Bold.ttf in Resources */,
@@ -879,6 +894,7 @@
 				2628DF7D1D3F8D2300FB40C5 /* SummaryVC2.swift in Sources */,
 				2687FA321D0EC2E900D544F5 /* Font.swift in Sources */,
 				26170E051D19BEEB0003BC71 /* __ELVCView.swift in Sources */,
+				260A06511D489A9100A960DB /* __SVCCategoryCellDot.swift in Sources */,
 				2603F8CF1CCA4C10007F311F /* Expense.swift in Sources */,
 				268D23EF1D003573006B8D0B /* SummaryVC.swift in Sources */,
 				2651466F1D420C23000847F5 /* __SVCCategoryCellBadge.swift in Sources */,

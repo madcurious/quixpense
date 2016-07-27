@@ -73,9 +73,10 @@ class HomeVC2: MDStatefulViewController {
         super.viewWillAppear(animated)
         
         if let navigationBar = self.navigationController?.navigationBar {
-            let colorImage = UIImage.imageFromColor(Color.HomeScreenBackgroundColor)
-            navigationBar.shadowImage = colorImage
-            navigationBar.setBackgroundImage(colorImage, forBarMetrics: .Default)
+//            let colorImage = UIImage.imageFromColor(Color.NavigationBarBackgroundColor)
+//            navigationBar.shadowImage = colorImage
+//            navigationBar.setBackgroundImage(colorImage, forBarMetrics: .Default)
+            navigationBar.barTintColor = Color.NavigationBarBackgroundColor
         }
     }
     

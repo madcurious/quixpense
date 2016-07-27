@@ -11,21 +11,21 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KC3-mQ-xjV">
-                    <rect key="frame" x="8" y="14" width="42" height="21"/>
+                    <rect key="frame" x="10" y="14" width="244" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Auu-yu-kdf">
-                    <rect key="frame" x="266" y="10" width="46" height="30"/>
+                    <rect key="frame" x="264" y="10" width="46" height="30"/>
                     <state key="normal" title="Button"/>
                 </button>
             </subviews>
             <constraints>
-                <constraint firstItem="Auu-yu-kdf" firstAttribute="leading" secondItem="KC3-mQ-xjV" secondAttribute="trailing" constant="216" id="bbh-58-T9T"/>
-                <constraint firstAttribute="trailing" secondItem="Auu-yu-kdf" secondAttribute="trailing" constant="8" id="crG-fa-aCR"/>
+                <constraint firstItem="Auu-yu-kdf" firstAttribute="leading" secondItem="KC3-mQ-xjV" secondAttribute="trailing" constant="10" id="bbh-58-T9T"/>
+                <constraint firstAttribute="trailing" secondItem="Auu-yu-kdf" secondAttribute="trailing" constant="10" id="crG-fa-aCR"/>
                 <constraint firstItem="Auu-yu-kdf" firstAttribute="centerY" secondItem="gdy-yR-XmA" secondAttribute="centerY" id="eYp-Lw-Cqa"/>
-                <constraint firstItem="KC3-mQ-xjV" firstAttribute="leading" secondItem="gdy-yR-XmA" secondAttribute="leading" constant="8" id="rfu-YW-OUd"/>
+                <constraint firstItem="KC3-mQ-xjV" firstAttribute="leading" secondItem="gdy-yR-XmA" secondAttribute="leading" constant="10" id="rfu-YW-OUd"/>
                 <constraint firstItem="KC3-mQ-xjV" firstAttribute="centerY" secondItem="gdy-yR-XmA" secondAttribute="centerY" id="tTe-Bv-HgV"/>
             </constraints>
             <connections>
