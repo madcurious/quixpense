@@ -16,13 +16,6 @@ struct Summary: Equatable {
     var endDate: NSDate
     var periodization: Periodization
     
-//    static let dateFormatter: NSDateFormatter = {
-//        let formatter = NSDateFormatter()
-//        formatter.timeZone = NSTimeZone.localTimeZone()
-//        formatter.dateFormat = "EEE, MMM d"
-//        return formatter
-//    }()
-    
     /**
      Returns an array of all the expenses in the date range, or nil if none were found.
      */

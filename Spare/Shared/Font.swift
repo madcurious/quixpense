@@ -40,6 +40,10 @@ final class Font {
     static let SummarySectionHeaderSectionLabel = Font.text(.Bold, 14)
     static let SummarySectionHeaderRightButton = Font.text(.Bold, 12)
     
+    static let TiledSummaryCellNameLabel = Font.text(.Bold, 24)
+    static let TiledSummaryCellTotalLabel = Font.text(.Regular, 20)
+    static let TiledSummaryCellPercentLabel = Font.text(.Regular, 20)
+    
     class func text(weight: FontWeight, _ size: CGFloat) -> UIFont {
         switch weight {
         case .UltraLight:

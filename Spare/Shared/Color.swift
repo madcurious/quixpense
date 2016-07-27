@@ -74,5 +74,9 @@ class Color {
     static let TabButtonIconColor = White
     static let TabButtonSelectedBackgroundColor = Gray800
     
+    static let TiledSummaryCellTextColor = White
+    static let TiledSummaryCellTextColorHighlighted = White
+    static let TiledSummaryCellBackgroundColorHighlighted = Gray400
+    
     
 }
