@@ -13,9 +13,10 @@ enum Icon: String {
     case AddExpense = "d"
     case Back = "w"
     case DisclosureIndicator = "v"
-    case Forward = "i"
+    case Forward = "g"
     case Home = "b"
     case MainTabBarAdd = "f"
+    case PeriodizationButtonArrow = "a"
     case Settings = "j"
     
 }

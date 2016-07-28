@@ -28,20 +28,12 @@ class HomeVC2: MDStatefulViewController {
         let forwardButton = CustomButton(attributedText: NSAttributedString(string: Icon.Forward.rawValue,
             attributes: [
                 NSForegroundColorAttributeName : Color.UniversalTextColor,
-                NSFontAttributeName : Font.icon(26)
+                NSFontAttributeName : Font.icon(18)
             ]))
         return forwardButton
     }()
     
-    let periodizationButton: CustomButton = {
-        let periodizationButton = CustomButton(attributedText:
-            NSAttributedString(string: App.state.selectedPeriodization.descriptiveText,
-                attributes: [
-                    NSForegroundColorAttributeName : Color.UniversalTextColor,
-                    NSFontAttributeName : Font.NavBarTitle
-                ]))
-        return periodizationButton
-    }()
+    let periodizationButton = PeriodizationButton()
     
     override var primaryView: UIView {
         return self.pageViewController.view
@@ -61,7 +53,7 @@ class HomeVC2: MDStatefulViewController {
         
         self.noResultsView.backgroundColor = Color.ScreenBackgroundColorLightGray
         
-        self.periodizationButton.addTarget(self, action: #selector(handleTapOnPeriodizationButton), forControlEvents: .TouchUpInside)
+        self.periodizationButton.addTarget(self, action: #selector(handleSelectionOfPeriodization), forControlEvents: .ValueChanged)
         self.navigationItem.titleView = self.periodizationButton
         self.forwardButton.addTarget(self, action: #selector(handleTapOnForwardButton), forControlEvents: .TouchUpInside)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: self.forwardButton)
@@ -126,33 +118,8 @@ class HomeVC2: MDStatefulViewController {
         self.scrollToLastSummary(animated: true)
     }
     
-    func handleTapOnPeriodizationButton() {
-        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
-        
-        let options: [Periodization] = [.Day, .Week, .Month, .Year]
-        for i in 0 ..< options.count {
-            let option = options[i]
-            let action = UIAlertAction(title: option.descriptiveText, style: .Default, handler: {[unowned self] _ in
-                self.handleSelectionOnPeriodization(option)
-                })
-            actionSheet.addAction(action)
-        }
-        actionSheet.addCancelAction()
-        
-        self.presentViewController(actionSheet, animated: true, completion: nil)
-    }
-    
-    func handleSelectionOnPeriodization(periodization: Periodization) {
-        guard App.state.selectedPeriodization != periodization
-            else {
-                return
-        }
-        
-        // Update the system-wide periodisation.
-        App.state.selectedPeriodization = periodization
-        
-        self.periodizationButton.setStringForAttributedText(periodization.descriptiveText)
-        
+    func handleSelectionOfPeriodization() {
+        App.state.selectedPeriodization = self.periodizationButton.selectedPeriodization
         self.summaries = []
         self.runOperation()
     }

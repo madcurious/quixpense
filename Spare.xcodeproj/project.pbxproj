@@ -10,7 +10,6 @@
 		260024151CC7E5F300EB2026 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2600240F1CC7E5F300EB2026 /* SettingsVC.swift */; };
 		260024311CC8C5AE00EB2026 /* Mold.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 260024301CC8C53A00EB2026 /* Mold.framework */; };
 		260024321CC8C5AE00EB2026 /* Mold.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 260024301CC8C53A00EB2026 /* Mold.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		2603082F1D2A27850094B4D2 /* spare-v2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2603082E1D2A27850094B4D2 /* spare-v2.ttf */; };
 		260308371D2A7B0C0094B4D2 /* StartOfWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260308361D2A7B0C0094B4D2 /* StartOfWeek.swift */; };
 		260308391D2A990A0094B4D2 /* DateRangeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260308381D2A990A0094B4D2 /* DateRangeFormatter.swift */; };
 		2603F8C31CCA45FF007F311F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2603F8C21CCA45FF007F311F /* LaunchScreen.storyboard */; };
@@ -38,6 +37,9 @@
 		262F839D1CCE3E6C00EDDDEE /* LoadAppOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262F839C1CCE3E6C00EDDDEE /* LoadAppOperation.swift */; };
 		2651467A1D4218B3000847F5 /* HomeVC2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265146791D4218B3000847F5 /* HomeVC2.swift */; };
 		265849021D0AD5C10047BCFA /* __HVCCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 265849011D0AD5C10047BCFA /* __HVCCell.xib */; };
+		266408B41D4A571400609580 /* PeriodizationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266408B31D4A571400609580 /* PeriodizationButton.swift */; };
+		266408C21D4A630E00609580 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266408C11D4A630E00609580 /* Button.swift */; };
+		266408C61D4A651C00609580 /* spare-v2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 266408C51D4A651C00609580 /* spare-v2.ttf */; };
 		2666C2C61957CF7A003752BF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2666C2C41957CF7A003752BF /* SystemConfiguration.framework */; };
 		2666C2C81957CF93003752BF /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2666C2C71957CF93003752BF /* libz.dylib */; };
 		2666C2CA1957CFA1003752BF /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2666C2C91957CFA1003752BF /* libsqlite3.dylib */; };
@@ -161,7 +163,6 @@
 		260023B51CC7D9CE00EB2026 /* Mold.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Mold.xcodeproj; path = Mold/Mold.xcodeproj; sourceTree = "<group>"; };
 		260023FD1CC7E0B000EB2026 /* Mold.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mold.framework; path = "Mold/build/Debug-iphoneos/Mold.framework"; sourceTree = "<group>"; };
 		2600240F1CC7E5F300EB2026 /* SettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
-		2603082E1D2A27850094B4D2 /* spare-v2.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "spare-v2.ttf"; sourceTree = "<group>"; };
 		260308361D2A7B0C0094B4D2 /* StartOfWeek.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartOfWeek.swift; sourceTree = "<group>"; };
 		260308381D2A990A0094B4D2 /* DateRangeFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateRangeFormatter.swift; sourceTree = "<group>"; };
 		2603F8C21CCA45FF007F311F /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -190,6 +191,9 @@
 		262F839C1CCE3E6C00EDDDEE /* LoadAppOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadAppOperation.swift; sourceTree = "<group>"; };
 		265146791D4218B3000847F5 /* HomeVC2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeVC2.swift; path = old/HomeVC2.swift; sourceTree = "<group>"; };
 		265849011D0AD5C10047BCFA /* __HVCCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __HVCCell.xib; sourceTree = "<group>"; };
+		266408B31D4A571400609580 /* PeriodizationButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeriodizationButton.swift; sourceTree = "<group>"; };
+		266408C11D4A630E00609580 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		266408C51D4A651C00609580 /* spare-v2.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "spare-v2.ttf"; sourceTree = "<group>"; };
 		2666C2C11957CF4F003752BF /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalyticsServices.a; path = GoogleAnalytics/libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
 		2666C2C31957CF7A003752BF /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		2666C2C41957CF7A003752BF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -367,7 +371,7 @@
 		261370A91CD7A114007BAF56 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				2603082E1D2A27850094B4D2 /* spare-v2.ttf */,
+				266408C51D4A651C00609580 /* spare-v2.ttf */,
 				268BBDA41D08E99C005C6BD8 /* Lato-Black.ttf */,
 				268BBDA51D08E99C005C6BD8 /* Lato-BlackItalic.ttf */,
 				268BBDA61D08E99C005C6BD8 /* Lato-Bold.ttf */,
@@ -391,6 +395,8 @@
 				268212511D4A18220041078F /* SegmentedCircle.swift */,
 				268212591D4A242B0041078F /* GraphView.swift */,
 				2682125B1D4A243F0041078F /* GraphView.xib */,
+				266408B31D4A571400609580 /* PeriodizationButton.swift */,
+				266408C11D4A630E00609580 /* Button.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -705,6 +711,7 @@
 				268BBDAE1D08E99C005C6BD8 /* Lato-Black.ttf in Resources */,
 				26170E0A1D19C9E30003BC71 /* CollectionViewLabel.xib in Resources */,
 				268BBDB01D08E99C005C6BD8 /* Lato-Bold.ttf in Resources */,
+				266408C61D4A651C00609580 /* spare-v2.ttf in Resources */,
 				266946841CC7711000A68424 /* Default@2x.png in Resources */,
 				265849021D0AD5C10047BCFA /* __HVCCell.xib in Resources */,
 				2603F8C31CCA45FF007F311F /* LaunchScreen.storyboard in Resources */,
@@ -720,7 +727,6 @@
 				268BBDB31D08E99C005C6BD8 /* Lato-HairlineItalic.ttf in Resources */,
 				268BBDB41D08E99C005C6BD8 /* Lato-Italic.ttf in Resources */,
 				268BBDB51D08E99C005C6BD8 /* Lato-Light.ttf in Resources */,
-				2603082F1D2A27850094B4D2 /* spare-v2.ttf in Resources */,
 				266946891CC7711000A68424 /* Icon@2x.png in Resources */,
 				266946861CC7711000A68424 /* Icon-40@2x.png in Resources */,
 				268BBDB11D08E99C005C6BD8 /* Lato-BoldItalic.ttf in Resources */,
@@ -806,6 +812,7 @@
 				2628DF7D1D3F8D2300FB40C5 /* SummaryVC2.swift in Sources */,
 				2687FA321D0EC2E900D544F5 /* Font.swift in Sources */,
 				26170E051D19BEEB0003BC71 /* __ELVCView.swift in Sources */,
+				266408C21D4A630E00609580 /* Button.swift in Sources */,
 				2603F8CF1CCA4C10007F311F /* Expense.swift in Sources */,
 				262F839D1CCE3E6C00EDDDEE /* LoadAppOperation.swift in Sources */,
 				266946931CC77A1A00A68424 /* AppDelegate.swift in Sources */,
@@ -830,6 +837,7 @@
 				2603F8D31CCA4C10007F311F /* Category.swift in Sources */,
 				269D49FA1CE1643400109990 /* AddCategoryVC.swift in Sources */,
 				2687FA361D0EC2E900D544F5 /* Strings.swift in Sources */,
+				266408B41D4A571400609580 /* PeriodizationButton.swift in Sources */,
 				260024151CC7E5F300EB2026 /* SettingsVC.swift in Sources */,
 				26EFA0071CD9C92F00714E5D /* __MCVCView.swift in Sources */,
 				2687FA351D0EC2E900D544F5 /* PaymentMethod.swift in Sources */,
