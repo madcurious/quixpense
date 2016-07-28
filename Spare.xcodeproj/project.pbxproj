@@ -22,6 +22,7 @@
 		26170E051D19BEEB0003BC71 /* __ELVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26170E041D19BEEB0003BC71 /* __ELVCView.swift */; };
 		26170E091D19C9E30003BC71 /* CollectionViewLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26170E071D19C9E30003BC71 /* CollectionViewLabel.swift */; };
 		26170E0A1D19C9E30003BC71 /* CollectionViewLabel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26170E081D19C9E30003BC71 /* CollectionViewLabel.xib */; };
+		261D54A41D4A978C00F4FCC6 /* spare-v2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 261D54A31D4A978C00F4FCC6 /* spare-v2.ttf */; };
 		261EB86318DDB630009DDF78 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86218DDB630009DDF78 /* Foundation.framework */; };
 		261EB86518DDB630009DDF78 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86418DDB630009DDF78 /* CoreGraphics.framework */; };
 		261EB86718DDB631009DDF78 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86618DDB631009DDF78 /* UIKit.framework */; };
@@ -39,7 +40,8 @@
 		265849021D0AD5C10047BCFA /* __HVCCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 265849011D0AD5C10047BCFA /* __HVCCell.xib */; };
 		266408B41D4A571400609580 /* PeriodizationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266408B31D4A571400609580 /* PeriodizationButton.swift */; };
 		266408C21D4A630E00609580 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266408C11D4A630E00609580 /* Button.swift */; };
-		266408C81D4A840200609580 /* spare-v2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 266408C71D4A840200609580 /* spare-v2.ttf */; };
+		266408CC1D4A924400609580 /* __ELVCEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266408CB1D4A924400609580 /* __ELVCEmptyView.swift */; };
+		266408CE1D4A925F00609580 /* __ELVCEmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 266408CD1D4A925F00609580 /* __ELVCEmptyView.xib */; };
 		2666C2C61957CF7A003752BF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2666C2C41957CF7A003752BF /* SystemConfiguration.framework */; };
 		2666C2C81957CF93003752BF /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2666C2C71957CF93003752BF /* libz.dylib */; };
 		2666C2CA1957CFA1003752BF /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2666C2C91957CFA1003752BF /* libsqlite3.dylib */; };
@@ -175,6 +177,7 @@
 		26170E041D19BEEB0003BC71 /* __ELVCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __ELVCView.swift; sourceTree = "<group>"; };
 		26170E071D19C9E30003BC71 /* CollectionViewLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewLabel.swift; sourceTree = "<group>"; };
 		26170E081D19C9E30003BC71 /* CollectionViewLabel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionViewLabel.xib; sourceTree = "<group>"; };
+		261D54A31D4A978C00F4FCC6 /* spare-v2.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "spare-v2.ttf"; sourceTree = "<group>"; };
 		261EB85F18DDB630009DDF78 /* Spare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		261EB86218DDB630009DDF78 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		261EB86418DDB630009DDF78 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -192,7 +195,8 @@
 		265849011D0AD5C10047BCFA /* __HVCCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __HVCCell.xib; sourceTree = "<group>"; };
 		266408B31D4A571400609580 /* PeriodizationButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeriodizationButton.swift; sourceTree = "<group>"; };
 		266408C11D4A630E00609580 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
-		266408C71D4A840200609580 /* spare-v2.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "spare-v2.ttf"; sourceTree = "<group>"; };
+		266408CB1D4A924400609580 /* __ELVCEmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __ELVCEmptyView.swift; sourceTree = "<group>"; };
+		266408CD1D4A925F00609580 /* __ELVCEmptyView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __ELVCEmptyView.xib; sourceTree = "<group>"; };
 		2666C2C11957CF4F003752BF /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalyticsServices.a; path = GoogleAnalytics/libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
 		2666C2C31957CF7A003752BF /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		2666C2C41957CF7A003752BF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -368,7 +372,7 @@
 		261370A91CD7A114007BAF56 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				266408C71D4A840200609580 /* spare-v2.ttf */,
+				261D54A31D4A978C00F4FCC6 /* spare-v2.ttf */,
 				268BBDA41D08E99C005C6BD8 /* Lato-Black.ttf */,
 				268BBDA51D08E99C005C6BD8 /* Lato-BlackItalic.ttf */,
 				268BBDA61D08E99C005C6BD8 /* Lato-Bold.ttf */,
@@ -574,6 +578,8 @@
 				26A253C31D197606003CDF5E /* __ELVCCell.xib */,
 				26170E021D19BEA50003BC71 /* __ELVCView.xib */,
 				26170E041D19BEEB0003BC71 /* __ELVCView.swift */,
+				266408CB1D4A924400609580 /* __ELVCEmptyView.swift */,
+				266408CD1D4A925F00609580 /* __ELVCEmptyView.xib */,
 			);
 			path = ExpenseList;
 			sourceTree = "<group>";
@@ -705,10 +711,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				266408CE1D4A925F00609580 /* __ELVCEmptyView.xib in Resources */,
 				268BBDAE1D08E99C005C6BD8 /* Lato-Black.ttf in Resources */,
 				26170E0A1D19C9E30003BC71 /* CollectionViewLabel.xib in Resources */,
 				268BBDB01D08E99C005C6BD8 /* Lato-Bold.ttf in Resources */,
-				266408C81D4A840200609580 /* spare-v2.ttf in Resources */,
 				266946841CC7711000A68424 /* Default@2x.png in Resources */,
 				265849021D0AD5C10047BCFA /* __HVCCell.xib in Resources */,
 				2603F8C31CCA45FF007F311F /* LaunchScreen.storyboard in Resources */,
@@ -727,6 +733,7 @@
 				266946891CC7711000A68424 /* Icon@2x.png in Resources */,
 				266946861CC7711000A68424 /* Icon-40@2x.png in Resources */,
 				268BBDB11D08E99C005C6BD8 /* Lato-BoldItalic.ttf in Resources */,
+				261D54A41D4A978C00F4FCC6 /* spare-v2.ttf in Resources */,
 				268BBDB21D08E99C005C6BD8 /* Lato-Hairline.ttf in Resources */,
 				268BBDAF1D08E99C005C6BD8 /* Lato-BlackItalic.ttf in Resources */,
 				268212581D4A1CEF0041078F /* __SVCCategoryCellStub.xib in Resources */,
@@ -862,6 +869,7 @@
 				26EFA0031CD9C8F100714E5D /* MainContainerVC.swift in Sources */,
 				26EFA00D1CD9DFF900714E5D /* MainTabBar.swift in Sources */,
 				2651467A1D4218B3000847F5 /* HomeVC.swift in Sources */,
+				266408CC1D4A924400609580 /* __ELVCEmptyView.swift in Sources */,
 				26A063F61D2134040034D04F /* CustomButton.swift in Sources */,
 				269D49F61CE1610100109990 /* __EEVCView.swift in Sources */,
 				260308371D2A7B0C0094B4D2 /* StartOfWeek.swift in Sources */,

@@ -12,7 +12,8 @@ enum Icon: String {
     
     case Back = "w"
     case DisclosureIndicator = "v"
-    case Forward = "g"
+    case Empty = "h"
+    case Forward = "k"
     case Home = "b"
     case MainTabBarAdd = "f"
     case PeriodizationButtonArrow = "a"

@@ -22,7 +22,7 @@ class __ELVCView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.backgroundColor = Color.ExpenseListScreenBackgroundColor
+        self.backgroundColor = Color.UniversalBackgroundColor
         self.collectionView.backgroundColor = UIColor.clearColor()
     }
     

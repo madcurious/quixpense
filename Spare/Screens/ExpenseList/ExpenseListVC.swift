@@ -62,19 +62,13 @@ class ExpenseListVC: UIViewController {
         collectionView.delegate = self
         collectionView.registerClass(__ELVCHeaderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: ViewID.Header.rawValue)
         collectionView.registerNib(__ELVCCell.nib(), forCellWithReuseIdentifier: ViewID.Cell.rawValue)
-        collectionView.registerNib(CollectionViewLabel.nib(), forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: ViewID.Footer.rawValue)
+        collectionView.registerNib(__ELVCEmptyView.nib(), forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: ViewID.Footer.rawValue)
         
         self.customView.headerBackgroundView.backgroundColor = self.category.color
         
         // Listen for updates on categories or expenses.
         let notificationCenter = NSNotificationCenter.defaultCenter()
         notificationCenter.addObserver(self, selector: #selector(handleSaveOnManagedObjectContext), name: NSManagedObjectContextDidSaveNotification, object: App.state.mainQueueContext)
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
         
         if let navigationBar = self.navigationController?.navigationBar {
             let colorImage = UIImage.imageFromColor(self.category.color)
@@ -82,6 +76,11 @@ class ExpenseListVC: UIViewController {
             navigationBar.setBackgroundImage(colorImage, forBarMetrics: .Default)
             navigationBar.tintColor = UIColor.whiteColor()
         }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     override func viewWillLayoutSubviews() {
@@ -159,15 +158,10 @@ extension ExpenseListVC: UICollectionViewDataSource {
             return headerView
             
         default:
-            guard let footerView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: ViewID.Footer.rawValue, forIndexPath: indexPath) as? CollectionViewLabel
+            guard let footerView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: ViewID.Footer.rawValue, forIndexPath: indexPath) as? __ELVCEmptyView
                 else {
                     fatalError()
             }
-            
-            footerView.label.text = "You have no expenses here\nduring this period."
-            footerView.label.font = Font.ExpenseListFooterViewLabel
-            footerView.label.numberOfLines = 2
-            footerView.label.lineBreakMode = .ByWordWrapping
             
             return footerView
         }
@@ -215,7 +209,8 @@ extension ExpenseListVC: UICollectionViewDelegateFlowLayout {
         if let _ = self.expenses {
             return CGSizeZero
         }
-        return CGSizeMake(collectionView.bounds.size.width, 100)
+        let headerSize = self.collectionView(collectionView, layout: collectionViewLayout, referenceSizeForHeaderInSection: section)
+        return CGSizeMake(collectionView.bounds.size.width, collectionView.bounds.size.height - headerSize.height)
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
