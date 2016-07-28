@@ -24,14 +24,7 @@ class HomeVC: MDStatefulViewController {
     var isCreatingSummaries = false
     var summaries = [Summary]()
     
-    let forwardButton: CustomButton = {
-        let forwardButton = CustomButton(attributedText: NSAttributedString(string: Icon.Forward.rawValue,
-            attributes: [
-                NSForegroundColorAttributeName : Color.UniversalTextColor,
-                NSFontAttributeName : Font.icon(18)
-            ]))
-        return forwardButton
-    }()
+    let forwardButton = Button(string: Icon.Forward.rawValue, font: Font.icon(18), textColor: Color.UniversalTextColor)
     
     let periodizationButton = PeriodizationButton()
     

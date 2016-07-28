@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Mold
 
 class Button: UIControl {
     
@@ -23,6 +24,12 @@ class Button: UIControl {
     init() {
         super.init(frame: CGRectZero)
         self.addSubviewAndFill(self.label)
+    }
+    
+    convenience init(string: String, font: UIFont, textColor: UIColor) {
+        self.init()
+        self.label.attributedText = NSAttributedString(string: string, font: font, textColor: textColor)
+        self.sizeToFit()
     }
     
     override func sizeToFit() {
