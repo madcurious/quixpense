@@ -6,6 +6,7 @@
 //  Copyright © 2016 Matt Quiros. All rights reserved.
 //
 
+/*
 import UIKit
 
 private enum ViewID: String {
@@ -106,7 +107,6 @@ extension SummaryVC2: UICollectionViewDataSource {
                     else {
                         fatalError()
                 }
-                graphView.totalLabel.text = glb_displayTextForTotal(self.summary.total)
                 graphView.summary = self.summary
                 return graphView
             }
@@ -181,3 +181,4 @@ extension SummaryVC2: UICollectionViewDelegateFlowLayout {
     }
     
 }
+*/

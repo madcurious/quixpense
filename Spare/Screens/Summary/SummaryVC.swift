@@ -89,7 +89,6 @@ extension SummaryVC: UICollectionViewDataSource {
             else {
                 fatalError()
         }
-        graphView.totalLabel.text = glb_displayTextForTotal(self.summary.total)
         graphView.summary = self.summary
         return graphView
     }
@@ -121,7 +120,7 @@ extension SummaryVC: UICollectionViewDelegate {
 extension SummaryVC: UICollectionViewDelegateFlowLayout {
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSizeMake(collectionView.bounds.size.width, collectionView.bounds.size.width * 0.8)
+        return CGSizeMake(collectionView.bounds.size.width, collectionView.bounds.size.width * 0.75)
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {

@@ -15,6 +15,8 @@ enum FontWeight {
 
 final class Font {
     
+    static let GraphViewTotalLabel = UIFont.boldSystemFontOfSize(26)
+    static let GraphViewDetailLabel = UIFont.systemFontOfSize(16)
     static let SummaryCellCategoryLabel = UIFont.boldSystemFontOfSize(18)
     static let SummaryCellDetailLabel = UIFont.systemFontOfSize(18)
     

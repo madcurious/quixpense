@@ -10,9 +10,9 @@ import UIKit
 
 class SegmentedCircle: UIView {
     
-    let strokeWidth = CGFloat(8)
+    let strokeWidth = CGFloat(6)
     
-    var segments: [(Category, Double)]? {
+    var segments: [(Category, NSDecimalNumber, Double)]? {
         didSet {
             self.setNeedsDisplay()
         }
@@ -24,7 +24,7 @@ class SegmentedCircle: UIView {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
     }
     
     override func drawRect(rect: CGRect) {
@@ -46,7 +46,7 @@ class SegmentedCircle: UIView {
         let arcCenter = CGPointMake(rect.size.width / 2, rect.size.height / 2)
         let radius = insetRect.size.width / 2
         var lastAngle = CGFloat(-1 * M_PI_2)
-        for (category, percent) in segments {
+        for (category, _, percent) in segments {
             let path = UIBezierPath(arcCenter: arcCenter, radius: radius,
                                     startAngle: lastAngle, endAngle: lastAngle + CGFloat(2 * M_PI * percent), clockwise: true)
             path.lineWidth = self.strokeWidth

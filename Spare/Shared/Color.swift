@@ -27,7 +27,7 @@ class Color {
     private static let Gray500 = UIColor(hex: 0x898989)
     private static let Gray700 = UIColor(hex: 0x666666)
     private static let Gray800 = UIColor(hex: 0x444444)
-    private static let Gray900 = UIColor(hex: 0x222222)
+    private static let Gray900 = UIColor(hex: 0x191919)
     
     // MARK: - New colors
     
@@ -35,6 +35,10 @@ class Color {
     
     static let UniversalTextColor = White
     static let UniversalBackgroundColor = Gray900
+    
+    static let TabBarBackgroundColor = Gray900
+    static let TabButtonIconColor = White
+    static let TabButtonSelectedBackgroundColor = Gray800
     
     // MARK: - Old UI Colors
     
@@ -75,11 +79,6 @@ class Color {
     static let SummaryFooterViewTextColor = Gray500
     static let SummarySectionHeaderSectionLabel = Gray800
     static let SummarySectionHeaderRightButton = Gray400
-    
-    static let TabBarBackgroundColor = Gray900
-    static let TabButtonHighlightBackgroundColor = Gray50
-    static let TabButtonIconColor = White
-    static let TabButtonSelectedBackgroundColor = Gray800
     
     static let TiledSummaryCellTextColor = White
     static let TiledSummaryCellTextColorHighlighted = White
