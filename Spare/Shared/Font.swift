@@ -20,7 +20,7 @@ final class Font {
     
     static let NavBarTitle = UIFont.boldSystemFontOfSize(18)
     
-    static let SummaryCellCategoryLabel = UIFont.boldSystemFontOfSize(18)
+    static let SummaryCellCategoryLabel = UIFont.systemFontOfSize(18)
     static let SummaryCellDetailLabel = UIFont.systemFontOfSize(18)
     
     // MARK: - Old fonts

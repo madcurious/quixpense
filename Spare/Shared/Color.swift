@@ -27,18 +27,21 @@ class Color {
     private static let Gray500 = UIColor(hex: 0x898989)
     private static let Gray700 = UIColor(hex: 0x666666)
     private static let Gray800 = UIColor(hex: 0x444444)
+    private static let Gray850 = UIColor(hex: 0x303030)
     private static let Gray900 = UIColor(hex: 0x191919)
     
     // MARK: - New colors
     
-    static let SegmentedCircleEmptyColor = Gray800
+    static let SeparatorColor = Gray850
     
-    static let UniversalTextColor = White
-    static let UniversalBackgroundColor = Gray900
+    static let SegmentedCircleEmptyColor = Gray800
     
     static let TabBarBackgroundColor = Gray900
     static let TabButtonIconColor = White
     static let TabButtonSelectedBackgroundColor = Gray800
+    
+    static let UniversalTextColor = White
+    static let UniversalBackgroundColor = Gray900
     
     // MARK: - Old UI Colors
     

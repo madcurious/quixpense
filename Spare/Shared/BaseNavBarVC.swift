@@ -10,6 +10,17 @@ import UIKit
 
 class BaseNavBarVC: UINavigationController {
     
+    let borderView: UIView = {
+        let view = UIView()
+        view.backgroundColor = Color.SeparatorColor
+        return view
+    }()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.navigationBar.addSubview(self.borderView)
+    }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -18,6 +29,8 @@ class BaseNavBarVC: UINavigationController {
         self.navigationBar.translucent = false
         
         self.setNeedsStatusBarAppearanceUpdate()
+        
+        self.borderView.frame = CGRectMake(0, self.navigationBar.bounds.size.height - 0.5, self.navigationBar.bounds.size.width, 0.5)
     }
     
 }

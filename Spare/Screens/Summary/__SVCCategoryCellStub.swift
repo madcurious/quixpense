@@ -25,8 +25,8 @@ class __SVCCategoryCellStub: __SVCCategoryCell {
                     return
             }
             self.stubView.backgroundColor = category.color
-            self.categoryLabel.text = categoryName
-            self.detailLabel.text = String.init(format: "%@ (%.0f%%)", glb_displayTextForTotal(total), percent * 100)
+            self.categoryLabel.text = String(format: "%@ (%.0f%%)", categoryName, percent * 100)
+            self.detailLabel.text = glb_displayTextForTotal(total)
         }
     }
     
