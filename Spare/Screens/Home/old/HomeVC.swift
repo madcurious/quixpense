@@ -1,5 +1,5 @@
 //
-//  HomeVC2.swift
+//  HomeVC.swift
 //  Spare
 //
 //  Created by Matt Quiros on 22/07/2016.
@@ -10,7 +10,7 @@ import UIKit
 import Mold
 import BNRCoreDataStack
 
-class HomeVC2: MDStatefulViewController {
+class HomeVC: MDStatefulViewController {
     
     let pageViewController: UIPageViewController = {
         let pager = UIPageViewController(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: [
@@ -130,7 +130,7 @@ class HomeVC2: MDStatefulViewController {
     
 }
 
-extension HomeVC2: UIPageViewControllerDataSource {
+extension HomeVC: UIPageViewControllerDataSource {
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
         guard let currentPage = self.pageViewController.viewControllers?.first as? SummaryVC,
@@ -171,7 +171,7 @@ extension HomeVC2: UIPageViewControllerDataSource {
     
 }
 
-extension HomeVC2: UIPageViewControllerDelegate {
+extension HomeVC: UIPageViewControllerDelegate {
     
     
     

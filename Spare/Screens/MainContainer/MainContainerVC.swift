@@ -24,7 +24,7 @@ class MainContainerVC: UIViewController {
         
         // Create the tab bar controller, add the tabs, and hide the tab bar.
         self.tabController.viewControllers = [
-            BaseNavBarVC(rootViewController: HomeVC2()),
+            BaseNavBarVC(rootViewController: HomeVC()),
             BaseNavBarVC(rootViewController: SettingsVC())
         ]
         self.tabController.tabBar.hidden = true

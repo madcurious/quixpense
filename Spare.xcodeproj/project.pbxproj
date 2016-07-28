@@ -35,7 +35,7 @@
 		2628DF7D1D3F8D2300FB40C5 /* SummaryVC2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2628DF7C1D3F8D2300FB40C5 /* SummaryVC2.swift */; };
 		262F839B1CCE3E5300EDDDEE /* LoadAppVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262F839A1CCE3E5300EDDDEE /* LoadAppVC.swift */; };
 		262F839D1CCE3E6C00EDDDEE /* LoadAppOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262F839C1CCE3E6C00EDDDEE /* LoadAppOperation.swift */; };
-		2651467A1D4218B3000847F5 /* HomeVC2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265146791D4218B3000847F5 /* HomeVC2.swift */; };
+		2651467A1D4218B3000847F5 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265146791D4218B3000847F5 /* HomeVC.swift */; };
 		265849021D0AD5C10047BCFA /* __HVCCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 265849011D0AD5C10047BCFA /* __HVCCell.xib */; };
 		266408B41D4A571400609580 /* PeriodizationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266408B31D4A571400609580 /* PeriodizationButton.swift */; };
 		266408C21D4A630E00609580 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266408C11D4A630E00609580 /* Button.swift */; };
@@ -85,7 +85,6 @@
 		268BBDB61D08E99C005C6BD8 /* Lato-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 268BBDAC1D08E99C005C6BD8 /* Lato-LightItalic.ttf */; };
 		268BBDB71D08E99C005C6BD8 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 268BBDAD1D08E99C005C6BD8 /* Lato-Regular.ttf */; };
 		268D23E01D001022006B8D0B /* __HVCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268D23D81D001022006B8D0B /* __HVCCell.swift */; };
-		268D23EC1D001E79006B8D0B /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268D23EB1D001E79006B8D0B /* HomeVC.swift */; };
 		269D49F21CE1610100109990 /* __CEVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269D49EA1CE1610100109990 /* __CEVCView.swift */; };
 		269D49F31CE1610100109990 /* __CEVCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 269D49EB1CE1610100109990 /* __CEVCView.xib */; };
 		269D49F41CE1610100109990 /* CategoryEditorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269D49EC1CE1610100109990 /* CategoryEditorVC.swift */; };
@@ -189,7 +188,7 @@
 		2628DF7C1D3F8D2300FB40C5 /* SummaryVC2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryVC2.swift; sourceTree = "<group>"; };
 		262F839A1CCE3E5300EDDDEE /* LoadAppVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadAppVC.swift; sourceTree = "<group>"; };
 		262F839C1CCE3E6C00EDDDEE /* LoadAppOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadAppOperation.swift; sourceTree = "<group>"; };
-		265146791D4218B3000847F5 /* HomeVC2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeVC2.swift; path = old/HomeVC2.swift; sourceTree = "<group>"; };
+		265146791D4218B3000847F5 /* HomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeVC.swift; path = old/HomeVC.swift; sourceTree = "<group>"; };
 		265849011D0AD5C10047BCFA /* __HVCCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __HVCCell.xib; sourceTree = "<group>"; };
 		266408B31D4A571400609580 /* PeriodizationButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeriodizationButton.swift; sourceTree = "<group>"; };
 		266408C11D4A630E00609580 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
@@ -243,7 +242,6 @@
 		268BBDAC1D08E99C005C6BD8 /* Lato-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-LightItalic.ttf"; sourceTree = "<group>"; };
 		268BBDAD1D08E99C005C6BD8 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
 		268D23D81D001022006B8D0B /* __HVCCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __HVCCell.swift; sourceTree = "<group>"; };
-		268D23EB1D001E79006B8D0B /* HomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		269D49EA1CE1610100109990 /* __CEVCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __CEVCView.swift; sourceTree = "<group>"; };
 		269D49EB1CE1610100109990 /* __CEVCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __CEVCView.xib; sourceTree = "<group>"; };
 		269D49EC1CE1610100109990 /* CategoryEditorVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryEditorVC.swift; sourceTree = "<group>"; };
@@ -332,8 +330,7 @@
 		260024081CC7E5F300EB2026 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				268D23EB1D001E79006B8D0B /* HomeVC.swift */,
-				265146791D4218B3000847F5 /* HomeVC2.swift */,
+				265146791D4218B3000847F5 /* HomeVC.swift */,
 				268D23D81D001022006B8D0B /* __HVCCell.swift */,
 				265849011D0AD5C10047BCFA /* __HVCCell.xib */,
 				2687FA3B1D0EC46F00D544F5 /* CreateSummariesOperation.swift */,
@@ -855,7 +852,6 @@
 				26A253C21D1975EA003CDF5E /* __ELVCCell.swift in Sources */,
 				2687FA401D0F96D100D544F5 /* Periodization.swift in Sources */,
 				26BC4F961CE429AE0011BE98 /* ValidateExpenseOperation.swift in Sources */,
-				268D23EC1D001E79006B8D0B /* HomeVC.swift in Sources */,
 				26CAD38D1D195F970039DFD2 /* ExpenseListVC.swift in Sources */,
 				269D49F51CE1610100109990 /* HRColorMapView.swift in Sources */,
 				2603F8CE1CCA4C10007F311F /* Expense+CoreDataProperties.swift in Sources */,
@@ -865,7 +861,7 @@
 				26EFA0091CD9DB0A00714E5D /* TabButton.swift in Sources */,
 				26EFA0031CD9C8F100714E5D /* MainContainerVC.swift in Sources */,
 				26EFA00D1CD9DFF900714E5D /* MainTabBar.swift in Sources */,
-				2651467A1D4218B3000847F5 /* HomeVC2.swift in Sources */,
+				2651467A1D4218B3000847F5 /* HomeVC.swift in Sources */,
 				26A063F61D2134040034D04F /* CustomButton.swift in Sources */,
 				269D49F61CE1610100109990 /* __EEVCView.swift in Sources */,
 				260308371D2A7B0C0094B4D2 /* StartOfWeek.swift in Sources */,
