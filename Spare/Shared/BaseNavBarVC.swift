@@ -30,7 +30,7 @@ class BaseNavBarVC: UINavigationController {
         
         self.setNeedsStatusBarAppearanceUpdate()
         
-        self.borderView.frame = CGRectMake(0, self.navigationBar.bounds.size.height - 0.5, self.navigationBar.bounds.size.width, 0.5)
+        self.borderView.frame = CGRectMake(0, self.navigationBar.bounds.size.height - 1, self.navigationBar.bounds.size.width, 1)
     }
     
 }

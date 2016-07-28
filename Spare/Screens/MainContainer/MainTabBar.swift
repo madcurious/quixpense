@@ -17,6 +17,7 @@ protocol MainTabBarDelegate {
 
 class MainTabBar: UIView {
     
+    @IBOutlet var separatorView: UIView!
     @IBOutlet var buttonContainers: [UIView]!
     
     let homeButton = TabButton(.Home)
@@ -32,6 +33,7 @@ class MainTabBar: UIView {
         self.multipleTouchEnabled = false
         
         self.backgroundColor = Color.TabBarBackgroundColor
+        self.separatorView.backgroundColor = Color.SeparatorColor
         UIView.clearBackgroundColors(self.buttonContainers)
         
         // Setup all the buttons.

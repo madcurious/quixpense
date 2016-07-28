@@ -41,6 +41,7 @@ class Color {
     static let TabButtonSelectedBackgroundColor = Gray800
     
     static let UniversalTextColor = White
+    static let UniversalSecondaryTextColor = Gray700
     static let UniversalBackgroundColor = Gray900
     
     // MARK: - Old UI Colors

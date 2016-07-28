@@ -12,7 +12,8 @@ class __SVCCategoryCellStub: __SVCCategoryCell {
     
     @IBOutlet weak var stubView: UIView!
     @IBOutlet weak var categoryLabel: UILabel!
-    @IBOutlet weak var detailLabel: UILabel!
+    @IBOutlet weak var totalLabel: UILabel!
+    @IBOutlet weak var percentLabel: UILabel!
     
     override var info: (Category, NSDecimalNumber, Double)? {
         didSet {
@@ -25,8 +26,9 @@ class __SVCCategoryCellStub: __SVCCategoryCell {
                     return
             }
             self.stubView.backgroundColor = category.color
-            self.categoryLabel.text = String(format: "%@ (%.0f%%)", categoryName, percent * 100)
-            self.detailLabel.text = glb_displayTextForTotal(total)
+            self.categoryLabel.text = categoryName
+            self.totalLabel.text = glb_displayTextForTotal(total)
+            self.percentLabel.text = String(format: "(%.0f%%)", percent * 100)
         }
     }
     
@@ -36,16 +38,22 @@ class __SVCCategoryCellStub: __SVCCategoryCell {
         self.backgroundColor = UIColor.clearColor()
         
         self.categoryLabel.textColor = Color.UniversalTextColor
-        self.categoryLabel.font = Font.SummaryCellCategoryLabel
+        self.categoryLabel.font = Font.SummaryCellTextLabel
+        self.categoryLabel.numberOfLines = 2
+        self.categoryLabel.lineBreakMode = .ByTruncatingTail
         
-        self.detailLabel.textColor = Color.UniversalTextColor
-        self.detailLabel.font = Font.SummaryCellDetailLabel
+        self.totalLabel.textColor = Color.UniversalTextColor
+        self.totalLabel.font = Font.SummaryCellTextLabel
+        
+        self.percentLabel.textColor = Color.UniversalSecondaryTextColor
+        self.percentLabel.font = Font.SummaryCellTextLabel
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
         self.categoryLabel.text = nil
-        self.detailLabel.text = nil
+        self.totalLabel.text = nil
+        self.percentLabel.text = nil
         self.stubView.backgroundColor = Color.UniversalBackgroundColor
     }
     

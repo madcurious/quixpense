@@ -20,8 +20,14 @@
                             <constraint firstAttribute="width" constant="4" id="Xde-A0-laN"/>
                         </constraints>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="flP-0t-mNK">
-                        <rect key="frame" x="12" y="14" width="371" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="flP-0t-mNK">
+                        <rect key="frame" x="12" y="14" width="42" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YLk-FE-kaQ">
+                        <rect key="frame" x="60" y="14" width="325" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
@@ -39,17 +45,20 @@
                 <constraint firstAttribute="bottom" secondItem="zpy-d5-GZG" secondAttribute="bottom" id="F4P-dx-O1G"/>
                 <constraint firstItem="zpy-d5-GZG" firstAttribute="top" secondItem="69c-lK-GNM" secondAttribute="top" id="Ibf-Lq-RLH"/>
                 <constraint firstItem="flP-0t-mNK" firstAttribute="centerY" secondItem="69c-lK-GNM" secondAttribute="centerY" id="V7a-hv-wtM"/>
-                <constraint firstItem="k3G-oL-13c" firstAttribute="leading" secondItem="flP-0t-mNK" secondAttribute="trailing" constant="8" id="aK2-kz-f2f"/>
                 <constraint firstItem="flP-0t-mNK" firstAttribute="leading" secondItem="zpy-d5-GZG" secondAttribute="trailing" constant="8" id="faC-Ks-OVS"/>
-                <constraint firstAttribute="trailing" secondItem="k3G-oL-13c" secondAttribute="trailing" id="iud-Vs-ZgV"/>
                 <constraint firstItem="k3G-oL-13c" firstAttribute="centerY" secondItem="69c-lK-GNM" secondAttribute="centerY" id="j45-cR-DIG"/>
+                <constraint firstItem="YLk-FE-kaQ" firstAttribute="leading" secondItem="flP-0t-mNK" secondAttribute="trailing" constant="6" id="jHo-zQ-mj4"/>
                 <constraint firstItem="zpy-d5-GZG" firstAttribute="leading" secondItem="69c-lK-GNM" secondAttribute="leading" id="ovi-bC-qxB"/>
+                <constraint firstItem="YLk-FE-kaQ" firstAttribute="baseline" secondItem="flP-0t-mNK" secondAttribute="baseline" id="pmN-9W-U59"/>
+                <constraint firstItem="k3G-oL-13c" firstAttribute="leading" secondItem="YLk-FE-kaQ" secondAttribute="trailing" constant="6" id="tGI-B3-7be"/>
+                <constraint firstAttribute="trailing" secondItem="k3G-oL-13c" secondAttribute="trailing" id="yXT-em-WA6"/>
             </constraints>
             <size key="customSize" width="433" height="50"/>
             <connections>
                 <outlet property="categoryLabel" destination="flP-0t-mNK" id="2bd-Fg-6ne"/>
-                <outlet property="detailLabel" destination="k3G-oL-13c" id="Wzs-9r-oK2"/>
+                <outlet property="percentLabel" destination="YLk-FE-kaQ" id="n3K-lN-k3z"/>
                 <outlet property="stubView" destination="zpy-d5-GZG" id="HTb-ec-vcn"/>
+                <outlet property="totalLabel" destination="k3G-oL-13c" id="o3O-Ev-Z7i"/>
             </connections>
             <point key="canvasLocation" x="522.5" y="235"/>
         </collectionViewCell>
