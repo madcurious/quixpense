@@ -29,7 +29,14 @@ class Color {
     private static let Gray800 = UIColor(hex: 0x444444)
     private static let Gray900 = UIColor(hex: 0x222222)
     
-    // MARK: - UI Colors
+    // MARK: - New colors
+    
+    static let SegmentedCircleEmptyColor = Gray800
+    
+    static let UniversalTextColor = White
+    static let UniversalBackgroundColor = Gray900
+    
+    // MARK: - Old UI Colors
     
     static let CustomButtonDisabled = Black
     

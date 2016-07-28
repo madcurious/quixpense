@@ -53,6 +53,7 @@ class HomeVC2: MDStatefulViewController {
         glb_applyGlobalVCSettings(self)
         self.edgesForExtendedLayout = .Bottom
         
+        self.pageViewController.view.backgroundColor = Color.UniversalBackgroundColor
         self.pageViewController.dataSource = self
         self.pageViewController.delegate = self
         
@@ -69,16 +70,13 @@ class HomeVC2: MDStatefulViewController {
         notificationCenter.addObserver(self, selector: #selector(handleUpdatesOnDataStore), name: NSManagedObjectContextDidSaveNotification, object: App.state.mainQueueContext)
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        if let navigationBar = self.navigationController?.navigationBar {
-//            let colorImage = UIImage.imageFromColor(Color.NavigationBarBackgroundColor)
-//            navigationBar.shadowImage = colorImage
-//            navigationBar.setBackgroundImage(colorImage, forBarMetrics: .Default)
-            navigationBar.barTintColor = Color.NavigationBarBackgroundColor
-        }
-    }
+//    override func viewWillAppear(animated: Bool) {
+//        super.viewWillAppear(animated)
+//        
+//        if let navigationBar = self.navigationController?.navigationBar {
+//            navigationBar.barTintColor = Color.NavigationBarBackgroundColor
+//        }
+//    }
     
     override func buildOperation() -> MDOperation? {
         return CreateSummariesOperation(baseDate: self.currentDate,
@@ -115,11 +113,11 @@ class HomeVC2: MDStatefulViewController {
             else {
                 return
         }
-        self.pageViewController.setViewControllers([TiledSummaryVC(summary: lastSummary)], direction: .Forward, animated: animated, completion: nil)
+        self.pageViewController.setViewControllers([SummaryVC(summary: lastSummary)], direction: .Forward, animated: animated, completion: nil)
     }
     
     func handleUpdatesOnDataStore() {
-        guard let summaryVC = self.pageViewController.viewControllers?.first as? TiledSummaryVC
+        guard let summaryVC = self.pageViewController.viewControllers?.first as? SummaryVC
             else {
                 return
         }
@@ -127,7 +125,7 @@ class HomeVC2: MDStatefulViewController {
     }
     
     func handleTapOnForwardButton() {
-        if let currentPage = self.pageViewController.viewControllers?.first as? TiledSummaryVC,
+        if let currentPage = self.pageViewController.viewControllers?.first as? SummaryVC,
             let currentIndex = self.summaries.indexOf(currentPage.summary)
             where currentIndex == self.summaries.count - 1 {
             return
@@ -176,7 +174,7 @@ class HomeVC2: MDStatefulViewController {
 extension HomeVC2: UIPageViewControllerDataSource {
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
-        guard let currentPage = self.pageViewController.viewControllers?.first as? TiledSummaryVC,
+        guard let currentPage = self.pageViewController.viewControllers?.first as? SummaryVC,
             let currentIndex = self.summaries.indexOf(currentPage.summary)
             else {
                 return nil
@@ -190,7 +188,7 @@ extension HomeVC2: UIPageViewControllerDataSource {
                 self.operationQueue.addOperation(op)
             }
             
-            let previousPage = TiledSummaryVC(summary: self.summaries[previousIndex])
+            let previousPage = SummaryVC(summary: self.summaries[previousIndex])
             return previousPage
         }
         
@@ -198,7 +196,7 @@ extension HomeVC2: UIPageViewControllerDataSource {
     }
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
-        guard let currentPage = self.pageViewController.viewControllers?.first as? TiledSummaryVC,
+        guard let currentPage = self.pageViewController.viewControllers?.first as? SummaryVC,
             let currentIndex = self.summaries.indexOf(currentPage.summary)
             else {
                 return nil
@@ -206,7 +204,7 @@ extension HomeVC2: UIPageViewControllerDataSource {
         
         let nextIndex = currentIndex + 1
         if nextIndex < self.summaries.count {
-            let previousPage = TiledSummaryVC(summary: self.summaries[nextIndex])
+            let previousPage = SummaryVC(summary: self.summaries[nextIndex])
             return previousPage
         }
         return nil

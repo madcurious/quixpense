@@ -20,7 +20,7 @@
 		2603F8D31CCA4C10007F311F /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2603F8CD1CCA4C10007F311F /* Category.swift */; };
 		260A06511D489A9100A960DB /* __SVCCategoryCellDot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260A06501D489A9100A960DB /* __SVCCategoryCellDot.swift */; };
 		260A06531D489AAA00A960DB /* __SVCCategoryCellDot.xib in Resources */ = {isa = PBXBuildFile; fileRef = 260A06521D489AAA00A960DB /* __SVCCategoryCellDot.xib */; };
-		260A06571D48D1D500A960DB /* TiledSummaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260A06561D48D1D500A960DB /* TiledSummaryVC.swift */; };
+		260A06571D48D1D500A960DB /* SummaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260A06561D48D1D500A960DB /* SummaryVC.swift */; };
 		260A06591D48D31200A960DB /* __TSVCCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260A06581D48D31200A960DB /* __TSVCCategoryCell.swift */; };
 		260A065B1D48D33500A960DB /* __TSVCCategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 260A065A1D48D33500A960DB /* __TSVCCategoryCell.xib */; };
 		26170E031D19BEA50003BC71 /* __ELVCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26170E021D19BEA50003BC71 /* __ELVCView.xib */; };
@@ -62,6 +62,11 @@
 		266946931CC77A1A00A68424 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266946921CC77A1A00A68424 /* AppDelegate.swift */; };
 		266CBDB41D2676D900F5D5D1 /* EditExpenseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266CBDB31D2676D900F5D5D1 /* EditExpenseVC.swift */; };
 		2676792A1D13FE8F004CF70A /* __SVCCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267679291D13FE8F004CF70A /* __SVCCategoryCell.swift */; };
+		268212521D4A18220041078F /* SegmentedCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268212511D4A18220041078F /* SegmentedCircle.swift */; };
+		268212561D4A1CDB0041078F /* __SVCCategoryCellStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268212551D4A1CDB0041078F /* __SVCCategoryCellStub.swift */; };
+		268212581D4A1CEF0041078F /* __SVCCategoryCellStub.xib in Resources */ = {isa = PBXBuildFile; fileRef = 268212571D4A1CEF0041078F /* __SVCCategoryCellStub.xib */; };
+		2682125A1D4A242B0041078F /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268212591D4A242B0041078F /* GraphView.swift */; };
+		2682125C1D4A243F0041078F /* GraphView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2682125B1D4A243F0041078F /* GraphView.xib */; };
 		2687FA2F1D0EC2E900D544F5 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2687FA271D0EC2E900D544F5 /* App.swift */; };
 		2687FA301D0EC2E900D544F5 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2687FA281D0EC2E900D544F5 /* Color.swift */; };
 		2687FA311D0EC2E900D544F5 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2687FA291D0EC2E900D544F5 /* Error.swift */; };
@@ -85,7 +90,6 @@
 		268BBDB71D08E99C005C6BD8 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 268BBDAD1D08E99C005C6BD8 /* Lato-Regular.ttf */; };
 		268D23E01D001022006B8D0B /* __HVCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268D23D81D001022006B8D0B /* __HVCCell.swift */; };
 		268D23EC1D001E79006B8D0B /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268D23EB1D001E79006B8D0B /* HomeVC.swift */; };
-		268D23EF1D003573006B8D0B /* SummaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268D23EE1D003573006B8D0B /* SummaryVC.swift */; };
 		269D49F21CE1610100109990 /* __CEVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269D49EA1CE1610100109990 /* __CEVCView.swift */; };
 		269D49F31CE1610100109990 /* __CEVCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 269D49EB1CE1610100109990 /* __CEVCView.xib */; };
 		269D49F41CE1610100109990 /* CategoryEditorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269D49EC1CE1610100109990 /* CategoryEditorVC.swift */; };
@@ -113,8 +117,6 @@
 		26CAD3831D1946E80039DFD2 /* __SVCCategoryCellPieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CAD3801D1946E80039DFD2 /* __SVCCategoryCellPieChart.swift */; };
 		26CAD3841D1946E80039DFD2 /* __SVCCategoryCellPieChart.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26CAD3811D1946E80039DFD2 /* __SVCCategoryCellPieChart.xib */; };
 		26CAD3851D1946E80039DFD2 /* __SVCPieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CAD3821D1946E80039DFD2 /* __SVCPieChart.swift */; };
-		26CAD3881D194CF20039DFD2 /* __SVCCategoryCellStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CAD3871D194CF20039DFD2 /* __SVCCategoryCellStub.swift */; };
-		26CAD38A1D194D1B0039DFD2 /* __SVCCategoryCellStub.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26CAD3891D194D1B0039DFD2 /* __SVCCategoryCellStub.xib */; };
 		26CAD38D1D195F970039DFD2 /* ExpenseListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CAD38C1D195F970039DFD2 /* ExpenseListVC.swift */; };
 		26CAD3911D1966B70039DFD2 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CAD3901D1966B70039DFD2 /* Event.swift */; };
 		26E4E0591937AF690096191A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E4E0581937AF690096191A /* QuartzCore.framework */; };
@@ -184,7 +186,7 @@
 		2603F8CD1CCA4C10007F311F /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		260A06501D489A9100A960DB /* __SVCCategoryCellDot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __SVCCategoryCellDot.swift; sourceTree = "<group>"; };
 		260A06521D489AAA00A960DB /* __SVCCategoryCellDot.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __SVCCategoryCellDot.xib; sourceTree = "<group>"; };
-		260A06561D48D1D500A960DB /* TiledSummaryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TiledSummaryVC.swift; sourceTree = "<group>"; };
+		260A06561D48D1D500A960DB /* SummaryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryVC.swift; sourceTree = "<group>"; };
 		260A06581D48D31200A960DB /* __TSVCCategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __TSVCCategoryCell.swift; sourceTree = "<group>"; };
 		260A065A1D48D33500A960DB /* __TSVCCategoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __TSVCCategoryCell.xib; sourceTree = "<group>"; };
 		26170E021D19BEA50003BC71 /* __ELVCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __ELVCView.xib; sourceTree = "<group>"; };
@@ -230,6 +232,11 @@
 		266946921CC77A1A00A68424 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		266CBDB31D2676D900F5D5D1 /* EditExpenseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditExpenseVC.swift; sourceTree = "<group>"; };
 		267679291D13FE8F004CF70A /* __SVCCategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __SVCCategoryCell.swift; sourceTree = "<group>"; };
+		268212511D4A18220041078F /* SegmentedCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedCircle.swift; sourceTree = "<group>"; };
+		268212551D4A1CDB0041078F /* __SVCCategoryCellStub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __SVCCategoryCellStub.swift; sourceTree = "<group>"; };
+		268212571D4A1CEF0041078F /* __SVCCategoryCellStub.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __SVCCategoryCellStub.xib; sourceTree = "<group>"; };
+		268212591D4A242B0041078F /* GraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
+		2682125B1D4A243F0041078F /* GraphView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GraphView.xib; sourceTree = "<group>"; };
 		2687FA271D0EC2E900D544F5 /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		2687FA281D0EC2E900D544F5 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		2687FA291D0EC2E900D544F5 /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
@@ -253,7 +260,6 @@
 		268BBDAD1D08E99C005C6BD8 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
 		268D23D81D001022006B8D0B /* __HVCCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __HVCCell.swift; sourceTree = "<group>"; };
 		268D23EB1D001E79006B8D0B /* HomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
-		268D23EE1D003573006B8D0B /* SummaryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryVC.swift; sourceTree = "<group>"; };
 		269D49EA1CE1610100109990 /* __CEVCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __CEVCView.swift; sourceTree = "<group>"; };
 		269D49EB1CE1610100109990 /* __CEVCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __CEVCView.xib; sourceTree = "<group>"; };
 		269D49EC1CE1610100109990 /* CategoryEditorVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryEditorVC.swift; sourceTree = "<group>"; };
@@ -281,8 +287,6 @@
 		26CAD3801D1946E80039DFD2 /* __SVCCategoryCellPieChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __SVCCategoryCellPieChart.swift; sourceTree = "<group>"; };
 		26CAD3811D1946E80039DFD2 /* __SVCCategoryCellPieChart.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __SVCCategoryCellPieChart.xib; sourceTree = "<group>"; };
 		26CAD3821D1946E80039DFD2 /* __SVCPieChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __SVCPieChart.swift; sourceTree = "<group>"; };
-		26CAD3871D194CF20039DFD2 /* __SVCCategoryCellStub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __SVCCategoryCellStub.swift; sourceTree = "<group>"; };
-		26CAD3891D194D1B0039DFD2 /* __SVCCategoryCellStub.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __SVCCategoryCellStub.xib; sourceTree = "<group>"; };
 		26CAD38C1D195F970039DFD2 /* ExpenseListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseListVC.swift; sourceTree = "<group>"; };
 		26CAD3901D1966B70039DFD2 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		26D4C8F41946E624001B42DC /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
@@ -421,6 +425,9 @@
 				26170E071D19C9E30003BC71 /* CollectionViewLabel.swift */,
 				26170E081D19C9E30003BC71 /* CollectionViewLabel.xib */,
 				26A063F51D2134040034D04F /* CustomButton.swift */,
+				268212511D4A18220041078F /* SegmentedCircle.swift */,
+				268212591D4A242B0041078F /* GraphView.swift */,
+				2682125B1D4A243F0041078F /* GraphView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -571,17 +578,17 @@
 		268D23ED1D003560006B8D0B /* Summary */ = {
 			isa = PBXGroup;
 			children = (
-				260A06561D48D1D500A960DB /* TiledSummaryVC.swift */,
+				260A06561D48D1D500A960DB /* SummaryVC.swift */,
+				267679291D13FE8F004CF70A /* __SVCCategoryCell.swift */,
+				268212551D4A1CDB0041078F /* __SVCCategoryCellStub.swift */,
+				268212571D4A1CEF0041078F /* __SVCCategoryCellStub.xib */,
 				260A06581D48D31200A960DB /* __TSVCCategoryCell.swift */,
 				260A065A1D48D33500A960DB /* __TSVCCategoryCell.xib */,
-				268D23EE1D003573006B8D0B /* SummaryVC.swift */,
 				2628DF7C1D3F8D2300FB40C5 /* SummaryVC2.swift */,
-				267679291D13FE8F004CF70A /* __SVCCategoryCell.swift */,
 				26CAD3721D193C980039DFD2 /* Graph */,
 				260A064F1D489A8300A960DB /* CategoryCellDot */,
 				2651466D1D420C0B000847F5 /* CategoryCellBadge */,
 				265146721D421089000847F5 /* SectionHeaderWithRightButton */,
-				26CAD3861D194CE40039DFD2 /* CategoryCellStub */,
 				26CAD37F1D1946E80039DFD2 /* CategoryCellPieChart */,
 				26CAD36F1D193C980039DFD2 /* CategoryCellGray */,
 			);
@@ -643,15 +650,6 @@
 				26CAD3821D1946E80039DFD2 /* __SVCPieChart.swift */,
 			);
 			path = CategoryCellPieChart;
-			sourceTree = "<group>";
-		};
-		26CAD3861D194CE40039DFD2 /* CategoryCellStub */ = {
-			isa = PBXGroup;
-			children = (
-				26CAD3871D194CF20039DFD2 /* __SVCCategoryCellStub.swift */,
-				26CAD3891D194D1B0039DFD2 /* __SVCCategoryCellStub.xib */,
-			);
-			path = CategoryCellStub;
 			sourceTree = "<group>";
 		};
 		26CAD38B1D195F7E0039DFD2 /* ExpenseList */ = {
@@ -815,7 +813,6 @@
 				26CAD37B1D193C980039DFD2 /* __SVCGraphView.xib in Resources */,
 				260A065B1D48D33500A960DB /* __TSVCCategoryCell.xib in Resources */,
 				266946871CC7711000A68424 /* Icon-60@2x.png in Resources */,
-				26CAD38A1D194D1B0039DFD2 /* __SVCCategoryCellStub.xib in Resources */,
 				268BBDB31D08E99C005C6BD8 /* Lato-HairlineItalic.ttf in Resources */,
 				268BBDB41D08E99C005C6BD8 /* Lato-Italic.ttf in Resources */,
 				268BBDB51D08E99C005C6BD8 /* Lato-Light.ttf in Resources */,
@@ -825,9 +822,11 @@
 				268BBDB11D08E99C005C6BD8 /* Lato-BoldItalic.ttf in Resources */,
 				268BBDB21D08E99C005C6BD8 /* Lato-Hairline.ttf in Resources */,
 				268BBDAF1D08E99C005C6BD8 /* Lato-BlackItalic.ttf in Resources */,
+				268212581D4A1CEF0041078F /* __SVCCategoryCellStub.xib in Resources */,
 				266946881CC7711000A68424 /* Icon-Small@2x.png in Resources */,
 				265146711D420C33000847F5 /* __SVCCategoryCellBadge.xib in Resources */,
 				26EFA0051CD9C91A00714E5D /* __MCVCView.xib in Resources */,
+				2682125C1D4A243F0041078F /* GraphView.xib in Resources */,
 				266946851CC7711000A68424 /* InfoPlist.strings in Resources */,
 				26A253C41D197606003CDF5E /* __ELVCCell.xib in Resources */,
 				269D49F31CE1610100109990 /* __CEVCView.xib in Resources */,
@@ -906,7 +905,6 @@
 				26170E051D19BEEB0003BC71 /* __ELVCView.swift in Sources */,
 				260A06511D489A9100A960DB /* __SVCCategoryCellDot.swift in Sources */,
 				2603F8CF1CCA4C10007F311F /* Expense.swift in Sources */,
-				268D23EF1D003573006B8D0B /* SummaryVC.swift in Sources */,
 				2651466F1D420C23000847F5 /* __SVCCategoryCellBadge.swift in Sources */,
 				262F839D1CCE3E6C00EDDDEE /* LoadAppOperation.swift in Sources */,
 				266946931CC77A1A00A68424 /* AppDelegate.swift in Sources */,
@@ -920,8 +918,10 @@
 				26CAD37C1D193C980039DFD2 /* __SVCSegmentedCircle.swift in Sources */,
 				2687FA341D0EC2E900D544F5 /* Icon.swift in Sources */,
 				26A6CDE11CDB18EA00309A84 /* AddButton.swift in Sources */,
+				268212521D4A18220041078F /* SegmentedCircle.swift in Sources */,
 				26C2D5C21CDB5E4800BC73FC /* AddButtonProgressView.swift in Sources */,
 				26CAD3831D1946E80039DFD2 /* __SVCCategoryCellPieChart.swift in Sources */,
+				268212561D4A1CDB0041078F /* __SVCCategoryCellStub.swift in Sources */,
 				2687FA311D0EC2E900D544F5 /* Error.swift in Sources */,
 				269D49F21CE1610100109990 /* __CEVCView.swift in Sources */,
 				2687FA301D0EC2E900D544F5 /* Color.swift in Sources */,
@@ -944,6 +944,7 @@
 				2603F8D21CCA4C10007F311F /* Category+CoreDataProperties.swift in Sources */,
 				26A43A081D1F9FD300E0A820 /* EditCategoryVC.swift in Sources */,
 				269D4A021CE16DCA00109990 /* ValidateCategoryOperation.swift in Sources */,
+				2682125A1D4A242B0041078F /* GraphView.swift in Sources */,
 				269D49F81CE1610100109990 /* ExpenseEditorVC.swift in Sources */,
 				26FF031A1D2BBB8D00BA74FD /* BaseNavBarVC.swift in Sources */,
 				26A253C01D196DED003CDF5E /* __ELVCHeaderView.swift in Sources */,
@@ -951,13 +952,12 @@
 				2687FA401D0F96D100D544F5 /* Periodization.swift in Sources */,
 				26BC4F961CE429AE0011BE98 /* ValidateExpenseOperation.swift in Sources */,
 				268D23EC1D001E79006B8D0B /* HomeVC.swift in Sources */,
-				26CAD3881D194CF20039DFD2 /* __SVCCategoryCellStub.swift in Sources */,
 				26CAD38D1D195F970039DFD2 /* ExpenseListVC.swift in Sources */,
 				269D49F51CE1610100109990 /* HRColorMapView.swift in Sources */,
 				2603F8CE1CCA4C10007F311F /* Expense+CoreDataProperties.swift in Sources */,
 				2669468F1CC7711000A68424 /* Spare.xcdatamodeld in Sources */,
 				262F839B1CCE3E5300EDDDEE /* LoadAppVC.swift in Sources */,
-				260A06571D48D1D500A960DB /* TiledSummaryVC.swift in Sources */,
+				260A06571D48D1D500A960DB /* SummaryVC.swift in Sources */,
 				26EFA0091CD9DB0A00714E5D /* TabButton.swift in Sources */,
 				26EFA0031CD9C8F100714E5D /* MainContainerVC.swift in Sources */,
 				26EFA00D1CD9DFF900714E5D /* MainTabBar.swift in Sources */,
