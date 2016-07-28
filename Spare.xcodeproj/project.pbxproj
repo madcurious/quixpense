@@ -39,7 +39,7 @@
 		265849021D0AD5C10047BCFA /* __HVCCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 265849011D0AD5C10047BCFA /* __HVCCell.xib */; };
 		266408B41D4A571400609580 /* PeriodizationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266408B31D4A571400609580 /* PeriodizationButton.swift */; };
 		266408C21D4A630E00609580 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266408C11D4A630E00609580 /* Button.swift */; };
-		266408C61D4A651C00609580 /* spare-v2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 266408C51D4A651C00609580 /* spare-v2.ttf */; };
+		266408C81D4A840200609580 /* spare-v2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 266408C71D4A840200609580 /* spare-v2.ttf */; };
 		2666C2C61957CF7A003752BF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2666C2C41957CF7A003752BF /* SystemConfiguration.framework */; };
 		2666C2C81957CF93003752BF /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2666C2C71957CF93003752BF /* libz.dylib */; };
 		2666C2CA1957CFA1003752BF /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2666C2C91957CFA1003752BF /* libsqlite3.dylib */; };
@@ -192,7 +192,7 @@
 		265849011D0AD5C10047BCFA /* __HVCCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __HVCCell.xib; sourceTree = "<group>"; };
 		266408B31D4A571400609580 /* PeriodizationButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeriodizationButton.swift; sourceTree = "<group>"; };
 		266408C11D4A630E00609580 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
-		266408C51D4A651C00609580 /* spare-v2.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "spare-v2.ttf"; sourceTree = "<group>"; };
+		266408C71D4A840200609580 /* spare-v2.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "spare-v2.ttf"; sourceTree = "<group>"; };
 		2666C2C11957CF4F003752BF /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalyticsServices.a; path = GoogleAnalytics/libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
 		2666C2C31957CF7A003752BF /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		2666C2C41957CF7A003752BF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -368,7 +368,7 @@
 		261370A91CD7A114007BAF56 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				266408C51D4A651C00609580 /* spare-v2.ttf */,
+				266408C71D4A840200609580 /* spare-v2.ttf */,
 				268BBDA41D08E99C005C6BD8 /* Lato-Black.ttf */,
 				268BBDA51D08E99C005C6BD8 /* Lato-BlackItalic.ttf */,
 				268BBDA61D08E99C005C6BD8 /* Lato-Bold.ttf */,
@@ -708,7 +708,7 @@
 				268BBDAE1D08E99C005C6BD8 /* Lato-Black.ttf in Resources */,
 				26170E0A1D19C9E30003BC71 /* CollectionViewLabel.xib in Resources */,
 				268BBDB01D08E99C005C6BD8 /* Lato-Bold.ttf in Resources */,
-				266408C61D4A651C00609580 /* spare-v2.ttf in Resources */,
+				266408C81D4A840200609580 /* spare-v2.ttf in Resources */,
 				266946841CC7711000A68424 /* Default@2x.png in Resources */,
 				265849021D0AD5C10047BCFA /* __HVCCell.xib in Resources */,
 				2603F8C31CCA45FF007F311F /* LaunchScreen.storyboard in Resources */,

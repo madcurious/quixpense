@@ -51,7 +51,10 @@ class ExpenseListVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         glb_applyGlobalVCSettings(self)
-        self.setupBarButtonItems()
+        
+        let addExpenseButton = Button(string: Icon.ThinAddSign.rawValue, font: Font.icon(30), textColor: Color.UniversalTextColor)
+        addExpenseButton.addTarget(self, action: #selector(handleTapOnAddExpenseButton), forControlEvents: .TouchUpInside)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: addExpenseButton)
         
         let collectionView = self.customView.collectionView
         collectionView.alwaysBounceVertical = true
@@ -68,27 +71,6 @@ class ExpenseListVC: UIViewController {
         notificationCenter.addObserver(self, selector: #selector(handleSaveOnManagedObjectContext), name: NSManagedObjectContextDidSaveNotification, object: App.state.mainQueueContext)
     }
     
-    func setupBarButtonItems() {
-        let editButton = CustomButton(attributedText: NSAttributedString(string: "EDIT",
-            attributes: [
-                NSForegroundColorAttributeName : Color.ExpenseListBarButtonItemColor,
-                NSFontAttributeName : Font.BarButtonItems
-            ]))
-        editButton.addTarget(self, action: #selector(handleTapOnEditCategoryButton), forControlEvents: .TouchUpInside)
-        
-        let addExpenseButton = CustomButton(attributedText: NSAttributedString(string: "ADD",
-            attributes: [
-                NSForegroundColorAttributeName : Color.ExpenseListBarButtonItemColor,
-                NSFontAttributeName : Font.BarButtonItems
-            ]))
-        addExpenseButton.addTarget(self, action: #selector(handleTapOnAddExpenseButton), forControlEvents: .TouchUpInside)
-        
-        self.navigationItem.rightBarButtonItems = [
-            UIBarButtonItem(customView: addExpenseButton),
-            UIBarButtonItem(customView: editButton)
-        ]
-    }
-    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -102,9 +84,12 @@ class ExpenseListVC: UIViewController {
         }
     }
     
-    func handleTapOnEditCategoryButton() {
-        self.presentViewController(BaseNavBarVC(rootViewController: EditCategoryVC(category: self.category)),
-                                   animated: true, completion: nil)
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        // Fixes that crappy iOS bug where partially dragging from the left side
+        // hides the navigation bar.
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
     func handleTapOnAddExpenseButton() {

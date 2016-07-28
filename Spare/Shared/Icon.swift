@@ -10,7 +10,6 @@ import Foundation
 
 enum Icon: String {
     
-    case AddExpense = "d"
     case Back = "w"
     case DisclosureIndicator = "v"
     case Forward = "g"
@@ -18,5 +17,6 @@ enum Icon: String {
     case MainTabBarAdd = "f"
     case PeriodizationButtonArrow = "a"
     case Settings = "j"
+    case ThinAddSign = "c"
     
 }
