@@ -27,7 +27,7 @@ class HomeVC2: MDStatefulViewController {
     let forwardButton: CustomButton = {
         let forwardButton = CustomButton(attributedText: NSAttributedString(string: Icon.Forward.rawValue,
             attributes: [
-                NSForegroundColorAttributeName : Color.HomeBarButtonItemDefault,
+                NSForegroundColorAttributeName : Color.UniversalTextColor,
                 NSFontAttributeName : Font.icon(26)
             ]))
         return forwardButton
@@ -37,8 +37,8 @@ class HomeVC2: MDStatefulViewController {
         let periodizationButton = CustomButton(attributedText:
             NSAttributedString(string: App.state.selectedPeriodization.descriptiveText,
                 attributes: [
-                    NSForegroundColorAttributeName : Color.HomeBarButtonItemDefault,
-                    NSFontAttributeName : Font.HomeBarButtonItem
+                    NSForegroundColorAttributeName : Color.UniversalTextColor,
+                    NSFontAttributeName : Font.NavBarTitle
                 ]))
         return periodizationButton
     }()
@@ -69,14 +69,6 @@ class HomeVC2: MDStatefulViewController {
         let notificationCenter = NSNotificationCenter.defaultCenter()
         notificationCenter.addObserver(self, selector: #selector(handleUpdatesOnDataStore), name: NSManagedObjectContextDidSaveNotification, object: App.state.mainQueueContext)
     }
-    
-//    override func viewWillAppear(animated: Bool) {
-//        super.viewWillAppear(animated)
-//        
-//        if let navigationBar = self.navigationController?.navigationBar {
-//            navigationBar.barTintColor = Color.NavigationBarBackgroundColor
-//        }
-//    }
     
     override func buildOperation() -> MDOperation? {
         return CreateSummariesOperation(baseDate: self.currentDate,

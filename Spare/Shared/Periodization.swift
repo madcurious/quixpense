@@ -15,13 +15,13 @@ enum Periodization: Int {
     var descriptiveText: String {
         switch self {
         case .Day:
-            return "By Day"
+            return "Daily"
         case .Week:
-            return "By Week"
+            return "Weekly"
         case .Month:
-            return "By Month"
+            return "Monthly"
         case .Year:
-            return "By Year"
+            return "Yearly"
         }
     }
     
