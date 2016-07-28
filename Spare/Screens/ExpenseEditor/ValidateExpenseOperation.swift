@@ -41,6 +41,11 @@ class ValidateExpenseOperation: MDOperation {
             }
         }
         
+        if let amount = expense.amount
+            where amount == 0 {
+            throw Error.UserEnteredInvalidValue("Zero amount not allowed.")
+        }
+        
         return nil
     }
     

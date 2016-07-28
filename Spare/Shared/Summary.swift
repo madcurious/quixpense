@@ -66,7 +66,7 @@ struct Summary: Equatable {
             }
             
             let categoryTotal = glb_totalOfExpenses(expenses)
-            let categoryPercent = categoryTotal.decimalNumberByDividingBy(overallTotal).doubleValue
+            let categoryPercent = overallTotal == 0 ? 0 : categoryTotal.decimalNumberByDividingBy(overallTotal).doubleValue
             info.append((category, categoryTotal, categoryPercent))
         }
         
