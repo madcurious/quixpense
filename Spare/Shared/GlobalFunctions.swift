@@ -16,7 +16,7 @@ func glb_applyGlobalVCSettings(viewController: UIViewController) {
     if let navigationBar = viewController.navigationController?.navigationBar {
         let backLabel = UILabel()
         backLabel.text = Icon.Back.rawValue
-        backLabel.font = Font.icon(24)
+        backLabel.font = Font.icon(20)
         backLabel.opaque = false
         backLabel.sizeToFit()
         if let backImage = UIImage.imageFromView(backLabel) {

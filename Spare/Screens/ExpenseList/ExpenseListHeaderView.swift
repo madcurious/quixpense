@@ -8,7 +8,7 @@
 
 import UIKit
 
-private let kTopPadding = CGFloat(20)
+private let kTopPadding = CGFloat(30)
 private let kBottomPadding = CGFloat(50)
 private let kLeftRightPadding = CGFloat(10)
 private let kLabelVerticalSpacing = CGFloat(0)

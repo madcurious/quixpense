@@ -63,6 +63,10 @@ class ExpenseListVCBordered: UIViewController {
             navigationBar.setBackgroundImage(colorImage, forBarMetrics: .Default)
             navigationBar.tintColor = UIColor.whiteColor()
         }
+        
+        let addButton = Button(string: Icon.ThinAddSign.rawValue, font: Font.icon(30), textColor: Color.UniversalTextColor)
+        addButton.addTarget(self, action: #selector(handleTapOnAddExpenseButton), forControlEvents: .TouchUpInside)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: addButton)
     }
     
     func setupHeaderView() {
