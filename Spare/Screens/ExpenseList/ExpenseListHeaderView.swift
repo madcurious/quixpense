@@ -1,24 +1,22 @@
 //
-//  __ELVCHeaderView.swift
+//  ExpenseListHeaderView.swift
 //  Spare
 //
-//  Created by Matt Quiros on 21/06/2016.
+//  Created by Matt Quiros on 29/07/2016.
 //  Copyright © 2016 Matt Quiros. All rights reserved.
 //
 
 import UIKit
-import Mold
 
-private let kTopPadding = CGFloat(30)
+private let kTopPadding = CGFloat(20)
 private let kBottomPadding = CGFloat(50)
 private let kLeftRightPadding = CGFloat(10)
 private let kLabelVerticalSpacing = CGFloat(0)
 
-// Defined programatically because self-sizing reusable collection views are shit.
-class __ELVCHeaderView: UICollectionReusableView {
-    
-    var nameLabel = __ELVCHeaderView.newNameLabel()
-    var detailLabel = __ELVCHeaderView.newDetailLabel()
+class ExpenseListHeaderView: UIView {
+
+    var nameLabel = ExpenseListHeaderView.newNameLabel()
+    var detailLabel = ExpenseListHeaderView.newDetailLabel()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -33,8 +31,8 @@ class __ELVCHeaderView: UICollectionReusableView {
     
     class func newNameLabel() -> UILabel {
         let label = UILabel()
-        label.font = Font.ExpenseListHeaderViewNameLabel
-        label.textColor = Color.ExpenseListHeaderViewTextColor
+        label.font = Font.ExpenseListHeaderNameLabel
+        label.textColor = Color.UniversalTextColor
         label.textAlignment = .Center
         label.numberOfLines = 0
         label.lineBreakMode = .ByWordWrapping
@@ -43,8 +41,8 @@ class __ELVCHeaderView: UICollectionReusableView {
     
     class func newDetailLabel() -> UILabel {
         let label = UILabel()
-        label.font = Font.ExpenseListHeaderViewDetailLabel
-        label.textColor = Color.ExpenseListHeaderViewTextColor
+        label.font = Font.ExpenseListHeaderDetailLabel
+        label.textColor = Color.UniversalTextColor
         label.textAlignment = .Center
         label.numberOfLines = 0
         label.lineBreakMode = .ByWordWrapping
@@ -52,6 +50,21 @@ class __ELVCHeaderView: UICollectionReusableView {
     }
     
     override func layoutSubviews() {
+        let widthForText = self.bounds.size.width - kLeftRightPadding * 2
+        let maxTextSize = CGSizeMake(widthForText, CGFloat.max)
+        
+        let nameLabelSize = self.nameLabel.sizeThatFits(maxTextSize)
+        self.nameLabel.frame = CGRectMake(self.bounds.size.width / 2 - nameLabelSize.width / 2,
+                                          kTopPadding,
+                                          nameLabelSize.width,
+                                          nameLabelSize.height)
+        
+        let detailLabelSize = self.detailLabel.sizeThatFits(maxTextSize)
+        self.detailLabel.frame = CGRectMake(self.bounds.size.width / 2 - detailLabelSize.width / 2,
+                                            self.nameLabel.frame.origin.y + self.nameLabel.bounds.size.height + kLabelVerticalSpacing,
+                                            detailLabelSize.width,
+                                            detailLabelSize.height)
+        
         self.frame = CGRectMake(self.frame.origin.x,
                                 self.frame.origin.y,
                                 self.bounds.size.width,
@@ -80,17 +93,24 @@ class __ELVCHeaderView: UICollectionReusableView {
     }
     
     class func heightForCategoryName(categoryName: String, detailText: String) -> CGFloat {
-        let dummyView = __ELVCHeaderView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, CGFloat.max))
-        dummyView.nameLabel.text = categoryName
-        dummyView.detailLabel.text = detailText
-        dummyView.setNeedsLayout()
-        dummyView.layoutIfNeeded()
-        return dummyView.bounds.size.height
+        let widthForText = UIScreen.mainScreen().bounds.size.width - kLeftRightPadding * 2
+        let maxTextSize = CGSizeMake(widthForText, CGFloat.max)
+        
+        let nameLabel = self.newNameLabel()
+        nameLabel.text = categoryName
+        let nameLabelSize = nameLabel.sizeThatFits(maxTextSize)
+        
+        let detailLabel = self.newDetailLabel()
+        detailLabel.text = detailText
+        let detailLabelSize = detailLabel.sizeThatFits(maxTextSize)
+        
+        let height = kTopPadding + nameLabelSize.height + kLabelVerticalSpacing + detailLabelSize.height + kBottomPadding
+        return height
     }
     
     deinit {
         self.removeObserver(self, forKeyPath: "nameLabel.text")
         self.removeObserver(self, forKeyPath: "detailLabel.text")
     }
-    
+
 }
