@@ -27,12 +27,11 @@ class Color {
     private static let Gray500 = UIColor(hex: 0x898989)
     private static let Gray700 = UIColor(hex: 0x666666)
     private static let Gray800 = UIColor(hex: 0x444444)
-    private static let Gray850 = UIColor(hex: 0x303030)
     private static let Gray900 = UIColor(hex: 0x191919)
     
     // MARK: - New colors
     
-    static let SeparatorColor = Gray850
+    static let SeparatorColor = Gray800
     
     static let SegmentedCircleEmptyColor = Gray800
     
