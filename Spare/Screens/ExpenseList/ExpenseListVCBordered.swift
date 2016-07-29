@@ -11,6 +11,7 @@ import BNRCoreDataStack
 
 private enum ViewID: String {
     case Cell = "Cell"
+    case EmptyCell = "EmptyCell"
 }
 
 class ExpenseListVCBordered: UIViewController {
@@ -52,9 +53,9 @@ class ExpenseListVCBordered: UIViewController {
         
         self.customView.tableView.dataSource = self
         self.customView.tableView.delegate = self
-        self.customView.tableView.rowHeight = 50
         self.setupHeaderView()
         self.customView.tableView.registerNib(__ELVCBCell.nib(), forCellReuseIdentifier: ViewID.Cell.rawValue)
+        self.customView.tableView.registerClass(__ELVCBEmptyCell.self, forCellReuseIdentifier: ViewID.EmptyCell.rawValue)
         
         if let navigationBar = self.navigationController?.navigationBar {
             let colorImage = UIImage.imageFromColor(self.category.color)
@@ -125,44 +126,26 @@ extension ExpenseListVCBordered: UITableViewDataSource {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let expenses = self.expenses
             else {
-                return 0
+                // Make way for the empty view.
+                self.customView.tableView.separatorStyle = .None
+                return 1
         }
+        self.customView.tableView.separatorStyle = .SingleLine
         return expenses.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-//        var cell: UITableViewCell
-//        if let reusableCell = tableView.dequeueReusableCellWithIdentifier(ViewID.Cell.rawValue) {
-//            cell = reusableCell
-//        } else {
-//            cell = UITableViewCell(style: .Value1, reuseIdentifier: ViewID.Cell.rawValue)
-//            cell.contentView.backgroundColor = UIColor.clearColor()
-//            cell.backgroundColor = UIColor.clearColor()
-//            cell.textLabel?.textColor = Color.UniversalTextColor
-//            cell.textLabel?.font = Font.ExpenseListCellText
-//            cell.textLabel?.numberOfLines = 1
-//            cell.textLabel?.lineBreakMode = .ByTruncatingTail
-//            cell.detailTextLabel?.textColor = Color.UniversalSecondaryTextColor
-//            cell.detailTextLabel?.font = Font.ExpenseListCellText
-//            cell.detailTextLabel?.numberOfLines = 1
-//            cell.detailTextLabel?.lineBreakMode = .ByTruncatingTail
-//            cell.accessoryType = .DisclosureIndicator
-//        }
-//        
-//        cell.textLabel?.text = self.expenses?[indexPath.row].itemDescription
-//        cell.detailTextLabel?.text = "Description"
-//        
-//        return cell
-        guard let cell = tableView.dequeueReusableCellWithIdentifier(ViewID.Cell.rawValue) as? __ELVCBCell
-            else {
-                fatalError()
+        if let expenses = self.expenses {
+            guard let cell = tableView.dequeueReusableCellWithIdentifier(ViewID.Cell.rawValue) as? __ELVCBCell
+                else {
+                    fatalError()
+            }
+            cell.data = (expenses[indexPath.row], App.state.selectedPeriodization)
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCellWithIdentifier(ViewID.EmptyCell.rawValue, forIndexPath: indexPath)
+            return cell
         }
-        
-        if let expense = self.expenses?[indexPath.row] {
-            cell.data = (expense, App.state.selectedPeriodization)
-        }
-        
-        return cell
     }
     
 }
@@ -171,6 +154,14 @@ extension ExpenseListVCBordered: UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if self.expenses == nil {
+            // Return height for empty view.
+            return tableView.bounds.size.height - self.headerView.bounds.size.height
+        }
+        return 50
     }
     
 }

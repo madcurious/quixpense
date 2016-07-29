@@ -18,8 +18,6 @@
 		2603F8D21CCA4C10007F311F /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2603F8CC1CCA4C10007F311F /* Category+CoreDataProperties.swift */; };
 		2603F8D31CCA4C10007F311F /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2603F8CD1CCA4C10007F311F /* Category.swift */; };
 		260A06571D48D1D500A960DB /* SummaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260A06561D48D1D500A960DB /* SummaryVC.swift */; };
-		26170E031D19BEA50003BC71 /* __ELVCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26170E021D19BEA50003BC71 /* __ELVCView.xib */; };
-		26170E051D19BEEB0003BC71 /* __ELVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26170E041D19BEEB0003BC71 /* __ELVCView.swift */; };
 		261D54A41D4A978C00F4FCC6 /* spare-v2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 261D54A31D4A978C00F4FCC6 /* spare-v2.ttf */; };
 		261D54A61D4AFB5700F4FCC6 /* ExpenseListVCBordered.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261D54A51D4AFB5700F4FCC6 /* ExpenseListVCBordered.swift */; };
 		261D54A81D4AFBA700F4FCC6 /* __ELVCBView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261D54A71D4AFBA700F4FCC6 /* __ELVCBView.swift */; };
@@ -42,8 +40,8 @@
 		265849021D0AD5C10047BCFA /* __HVCCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 265849011D0AD5C10047BCFA /* __HVCCell.xib */; };
 		266408B41D4A571400609580 /* PeriodizationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266408B31D4A571400609580 /* PeriodizationButton.swift */; };
 		266408C21D4A630E00609580 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266408C11D4A630E00609580 /* Button.swift */; };
-		266408CC1D4A924400609580 /* __ELVCEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266408CB1D4A924400609580 /* __ELVCEmptyView.swift */; };
-		266408CE1D4A925F00609580 /* __ELVCEmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 266408CD1D4A925F00609580 /* __ELVCEmptyView.xib */; };
+		266408CC1D4A924400609580 /* __ELVCBEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266408CB1D4A924400609580 /* __ELVCBEmptyView.swift */; };
+		266408CE1D4A925F00609580 /* __ELVCBEmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 266408CD1D4A925F00609580 /* __ELVCBEmptyView.xib */; };
 		2666C2C61957CF7A003752BF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2666C2C41957CF7A003752BF /* SystemConfiguration.framework */; };
 		2666C2C81957CF93003752BF /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2666C2C71957CF93003752BF /* libz.dylib */; };
 		2666C2CA1957CFA1003752BF /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2666C2C91957CFA1003752BF /* libsqlite3.dylib */; };
@@ -100,17 +98,14 @@
 		269D49FC1CE1643A00109990 /* AddExpenseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269D49FB1CE1643A00109990 /* AddExpenseVC.swift */; };
 		269D4A021CE16DCA00109990 /* ValidateCategoryOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269D4A011CE16DCA00109990 /* ValidateCategoryOperation.swift */; };
 		26A063F61D2134040034D04F /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A063F51D2134040034D04F /* CustomButton.swift */; };
-		26A253C01D196DED003CDF5E /* __ELVCHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A253BF1D196DED003CDF5E /* __ELVCHeaderView.swift */; };
-		26A253C21D1975EA003CDF5E /* __ELVCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A253C11D1975EA003CDF5E /* __ELVCCell.swift */; };
-		26A253C41D197606003CDF5E /* __ELVCCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26A253C31D197606003CDF5E /* __ELVCCell.xib */; };
 		26A43A081D1F9FD300E0A820 /* EditCategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A43A071D1F9FD300E0A820 /* EditCategoryVC.swift */; };
 		26A6CDE11CDB18EA00309A84 /* AddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A6CDE01CDB18EA00309A84 /* AddButton.swift */; };
 		26BC4F961CE429AE0011BE98 /* ValidateExpenseOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC4F951CE429AE0011BE98 /* ValidateExpenseOperation.swift */; };
 		26BC4FA11CE45D260011BE98 /* __EEVCPickerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC4FA01CE45D260011BE98 /* __EEVCPickerTextField.swift */; };
 		26C034E41D4B0FE10064187F /* __ELVCBCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C034E31D4B0FE10064187F /* __ELVCBCell.swift */; };
 		26C034E61D4B11410064187F /* __ELVCBCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26C034E51D4B11410064187F /* __ELVCBCell.xib */; };
+		26C034EA1D4B24600064187F /* __ELVCBEmptyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C034E91D4B24600064187F /* __ELVCBEmptyCell.swift */; };
 		26C2D5C21CDB5E4800BC73FC /* AddButtonProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C2D5C11CDB5E4800BC73FC /* AddButtonProgressView.swift */; };
-		26CAD38D1D195F970039DFD2 /* ExpenseListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CAD38C1D195F970039DFD2 /* ExpenseListVC.swift */; };
 		26CAD3911D1966B70039DFD2 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CAD3901D1966B70039DFD2 /* Event.swift */; };
 		26E4E0591937AF690096191A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E4E0581937AF690096191A /* QuartzCore.framework */; };
 		26E6EDB41CDBA6C60034EEDE /* AddButtonProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26E6EDB31CDBA6C60034EEDE /* AddButtonProgressView.xib */; };
@@ -177,8 +172,6 @@
 		2603F8CC1CCA4C10007F311F /* Category+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		2603F8CD1CCA4C10007F311F /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		260A06561D48D1D500A960DB /* SummaryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryVC.swift; sourceTree = "<group>"; };
-		26170E021D19BEA50003BC71 /* __ELVCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __ELVCView.xib; sourceTree = "<group>"; };
-		26170E041D19BEEB0003BC71 /* __ELVCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __ELVCView.swift; sourceTree = "<group>"; };
 		261D54A31D4A978C00F4FCC6 /* spare-v2.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "spare-v2.ttf"; sourceTree = "<group>"; };
 		261D54A51D4AFB5700F4FCC6 /* ExpenseListVCBordered.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseListVCBordered.swift; sourceTree = "<group>"; };
 		261D54A71D4AFBA700F4FCC6 /* __ELVCBView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __ELVCBView.swift; sourceTree = "<group>"; };
@@ -201,8 +194,8 @@
 		265849011D0AD5C10047BCFA /* __HVCCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __HVCCell.xib; sourceTree = "<group>"; };
 		266408B31D4A571400609580 /* PeriodizationButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeriodizationButton.swift; sourceTree = "<group>"; };
 		266408C11D4A630E00609580 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
-		266408CB1D4A924400609580 /* __ELVCEmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __ELVCEmptyView.swift; sourceTree = "<group>"; };
-		266408CD1D4A925F00609580 /* __ELVCEmptyView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __ELVCEmptyView.xib; sourceTree = "<group>"; };
+		266408CB1D4A924400609580 /* __ELVCBEmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __ELVCBEmptyView.swift; sourceTree = "<group>"; };
+		266408CD1D4A925F00609580 /* __ELVCBEmptyView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __ELVCBEmptyView.xib; sourceTree = "<group>"; };
 		2666C2C11957CF4F003752BF /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalyticsServices.a; path = GoogleAnalytics/libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
 		2666C2C31957CF7A003752BF /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		2666C2C41957CF7A003752BF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -263,17 +256,14 @@
 		269D49FB1CE1643A00109990 /* AddExpenseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddExpenseVC.swift; sourceTree = "<group>"; };
 		269D4A011CE16DCA00109990 /* ValidateCategoryOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidateCategoryOperation.swift; sourceTree = "<group>"; };
 		26A063F51D2134040034D04F /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
-		26A253BF1D196DED003CDF5E /* __ELVCHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __ELVCHeaderView.swift; sourceTree = "<group>"; };
-		26A253C11D1975EA003CDF5E /* __ELVCCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __ELVCCell.swift; sourceTree = "<group>"; };
-		26A253C31D197606003CDF5E /* __ELVCCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __ELVCCell.xib; sourceTree = "<group>"; };
 		26A43A071D1F9FD300E0A820 /* EditCategoryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditCategoryVC.swift; sourceTree = "<group>"; };
 		26A6CDE01CDB18EA00309A84 /* AddButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddButton.swift; sourceTree = "<group>"; };
 		26BC4F951CE429AE0011BE98 /* ValidateExpenseOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidateExpenseOperation.swift; sourceTree = "<group>"; };
 		26BC4FA01CE45D260011BE98 /* __EEVCPickerTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __EEVCPickerTextField.swift; sourceTree = "<group>"; };
 		26C034E31D4B0FE10064187F /* __ELVCBCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __ELVCBCell.swift; sourceTree = "<group>"; };
 		26C034E51D4B11410064187F /* __ELVCBCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __ELVCBCell.xib; sourceTree = "<group>"; };
+		26C034E91D4B24600064187F /* __ELVCBEmptyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __ELVCBEmptyCell.swift; sourceTree = "<group>"; };
 		26C2D5C11CDB5E4800BC73FC /* AddButtonProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddButtonProgressView.swift; sourceTree = "<group>"; };
-		26CAD38C1D195F970039DFD2 /* ExpenseListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseListVC.swift; sourceTree = "<group>"; };
 		26CAD3901D1966B70039DFD2 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		26D4C8F41946E624001B42DC /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		26E4E0581937AF690096191A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -578,20 +568,15 @@
 		26CAD38B1D195F7E0039DFD2 /* ExpenseList */ = {
 			isa = PBXGroup;
 			children = (
-				26CAD38C1D195F970039DFD2 /* ExpenseListVC.swift */,
-				26A253BF1D196DED003CDF5E /* __ELVCHeaderView.swift */,
-				26A253C11D1975EA003CDF5E /* __ELVCCell.swift */,
-				26A253C31D197606003CDF5E /* __ELVCCell.xib */,
-				26170E021D19BEA50003BC71 /* __ELVCView.xib */,
-				26170E041D19BEEB0003BC71 /* __ELVCView.swift */,
-				266408CB1D4A924400609580 /* __ELVCEmptyView.swift */,
-				266408CD1D4A925F00609580 /* __ELVCEmptyView.xib */,
 				261D54A51D4AFB5700F4FCC6 /* ExpenseListVCBordered.swift */,
 				261D54A71D4AFBA700F4FCC6 /* __ELVCBView.swift */,
 				261D54A91D4AFC1800F4FCC6 /* __ELVCBView.xib */,
 				261D54AB1D4AFDC000F4FCC6 /* ExpenseListHeaderView.swift */,
 				26C034E31D4B0FE10064187F /* __ELVCBCell.swift */,
 				26C034E51D4B11410064187F /* __ELVCBCell.xib */,
+				266408CB1D4A924400609580 /* __ELVCBEmptyView.swift */,
+				266408CD1D4A925F00609580 /* __ELVCBEmptyView.xib */,
+				26C034E91D4B24600064187F /* __ELVCBEmptyCell.swift */,
 			);
 			path = ExpenseList;
 			sourceTree = "<group>";
@@ -723,14 +708,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				266408CE1D4A925F00609580 /* __ELVCEmptyView.xib in Resources */,
+				266408CE1D4A925F00609580 /* __ELVCBEmptyView.xib in Resources */,
 				268BBDAE1D08E99C005C6BD8 /* Lato-Black.ttf in Resources */,
 				268BBDB01D08E99C005C6BD8 /* Lato-Bold.ttf in Resources */,
 				266946841CC7711000A68424 /* Default@2x.png in Resources */,
 				265849021D0AD5C10047BCFA /* __HVCCell.xib in Resources */,
 				2603F8C31CCA45FF007F311F /* LaunchScreen.storyboard in Resources */,
 				268BBDB61D08E99C005C6BD8 /* Lato-LightItalic.ttf in Resources */,
-				26170E031D19BEA50003BC71 /* __ELVCView.xib in Resources */,
 				2669468B1CC7711000A68424 /* iPhone.storyboard in Resources */,
 				268BBDB71D08E99C005C6BD8 /* Lato-Regular.ttf in Resources */,
 				269D49F71CE1610100109990 /* __EEVCView.xib in Resources */,
@@ -755,7 +739,6 @@
 				2682125C1D4A243F0041078F /* GraphView.xib in Resources */,
 				268212601D4A2DEF0041078F /* __SVCGraphView.xib in Resources */,
 				266946851CC7711000A68424 /* InfoPlist.strings in Resources */,
-				26A253C41D197606003CDF5E /* __ELVCCell.xib in Resources */,
 				269D49F31CE1610100109990 /* __CEVCView.xib in Resources */,
 				266946831CC7711000A68424 /* Default-568h@2x.png in Resources */,
 			);
@@ -828,7 +811,7 @@
 				2687FA331D0EC2E900D544F5 /* GlobalFunctions.swift in Sources */,
 				2628DF7D1D3F8D2300FB40C5 /* SummaryVC2.swift in Sources */,
 				2687FA321D0EC2E900D544F5 /* Font.swift in Sources */,
-				26170E051D19BEEB0003BC71 /* __ELVCView.swift in Sources */,
+				26C034EA1D4B24600064187F /* __ELVCBEmptyCell.swift in Sources */,
 				266408C21D4A630E00609580 /* Button.swift in Sources */,
 				2603F8CF1CCA4C10007F311F /* Expense.swift in Sources */,
 				262F839D1CCE3E6C00EDDDEE /* LoadAppOperation.swift in Sources */,
@@ -871,11 +854,8 @@
 				269D49F81CE1610100109990 /* ExpenseEditorVC.swift in Sources */,
 				26C034E41D4B0FE10064187F /* __ELVCBCell.swift in Sources */,
 				26FF031A1D2BBB8D00BA74FD /* BaseNavBarVC.swift in Sources */,
-				26A253C01D196DED003CDF5E /* __ELVCHeaderView.swift in Sources */,
-				26A253C21D1975EA003CDF5E /* __ELVCCell.swift in Sources */,
 				2687FA401D0F96D100D544F5 /* Periodization.swift in Sources */,
 				26BC4F961CE429AE0011BE98 /* ValidateExpenseOperation.swift in Sources */,
-				26CAD38D1D195F970039DFD2 /* ExpenseListVC.swift in Sources */,
 				269D49F51CE1610100109990 /* HRColorMapView.swift in Sources */,
 				2603F8CE1CCA4C10007F311F /* Expense+CoreDataProperties.swift in Sources */,
 				2669468F1CC7711000A68424 /* Spare.xcdatamodeld in Sources */,
@@ -885,7 +865,7 @@
 				26EFA0031CD9C8F100714E5D /* MainContainerVC.swift in Sources */,
 				26EFA00D1CD9DFF900714E5D /* MainTabBar.swift in Sources */,
 				2651467A1D4218B3000847F5 /* HomeVC.swift in Sources */,
-				266408CC1D4A924400609580 /* __ELVCEmptyView.swift in Sources */,
+				266408CC1D4A924400609580 /* __ELVCBEmptyView.swift in Sources */,
 				26A063F61D2134040034D04F /* CustomButton.swift in Sources */,
 				269D49F61CE1610100109990 /* __EEVCView.swift in Sources */,
 				260308371D2A7B0C0094B4D2 /* StartOfWeek.swift in Sources */,

@@ -1,5 +1,5 @@
 //
-//  __ELVCEmptyView.swift
+//  __ELVCBEmptyView.swift
 //  Spare
 //
 //  Created by Matt Quiros on 29/07/2016.
@@ -9,7 +9,7 @@
 import UIKit
 import Mold
 
-class __ELVCEmptyView: UICollectionReusableView {
+class __ELVCBEmptyView: UIView {
     
     @IBOutlet weak var labelContainer: UIView!
     @IBOutlet weak var iconLabel: UILabel!
@@ -18,10 +18,6 @@ class __ELVCEmptyView: UICollectionReusableView {
     override func awakeFromNib() {
         super.awakeFromNib()
         UIView.clearBackgroundColors(self, self.labelContainer)
-//        self.backgroundColor = UIColor.yellowColor()
-//        self.labelContainer.backgroundColor = UIColor.blueColor()
-//        self.iconLabel.backgroundColor = UIColor.redColor()
-//        self.promptLabel.backgroundColor = UIColor.greenColor()
         
         self.iconLabel.font = Font.icon(100)
         self.iconLabel.textColor = Color.UniversalSecondaryTextColor
