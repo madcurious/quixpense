@@ -25,7 +25,7 @@ class __EEVCView: UIView {
         super.awakeFromNib()
         
         // Background colors.
-        self.backgroundColor = Color.ScreenBackgroundColorLightGray
+        self.backgroundColor = Color.UniversalBackgroundColor
         UIView.clearBackgroundColors(
             self.scrollView,
             self.contentView

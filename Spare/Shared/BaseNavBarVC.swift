@@ -16,6 +16,8 @@ class BaseNavBarVC: UINavigationController {
         return view
     }()
     
+    var statusBarStyle: UIStatusBarStyle?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationBar.addSubview(self.borderView)
@@ -28,9 +30,16 @@ class BaseNavBarVC: UINavigationController {
         self.navigationBar.tintColor = Color.UniversalTextColor
         self.navigationBar.translucent = false
         
-        self.setNeedsStatusBarAppearanceUpdate()
-        
         self.borderView.frame = CGRectMake(0, self.navigationBar.bounds.size.height - 1, self.navigationBar.bounds.size.width, 1)
+        
+        self.setNeedsStatusBarAppearanceUpdate()
+    }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        if let statusBarStyle = self.statusBarStyle {
+            return statusBarStyle
+        }
+        return .Default
     }
     
 }

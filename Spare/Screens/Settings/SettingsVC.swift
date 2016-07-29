@@ -44,6 +44,7 @@ class SettingsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         glb_applyGlobalVCSettings(self)
+        self.edgesForExtendedLayout = .Bottom
         
         self.tableView.backgroundColor = Color.ScreenBackgroundColorLightGray
         self.view.addSubviewAndFill(self.tableView)
@@ -84,10 +85,6 @@ extension SettingsVC: UITableViewDataSource {
             } else {
                 cell = UITableViewCell(style: .Value1, reuseIdentifier: ViewID.FieldValueCell.rawValue)
                 cell.accessoryType = .DisclosureIndicator
-//                cell.textLabel?.font = Font.FieldLabel
-//                cell.textLabel?.textColor = Color.FormFieldLabelTextColor
-//                cell.detailTextLabel?.font = Font.FieldValue
-//                cell.detailTextLabel?.textColor = Color.FormFieldValueTextColor
             }
             
         case ViewID.PlainCell.rawValue:
@@ -96,8 +93,6 @@ extension SettingsVC: UITableViewDataSource {
             } else {
                 cell = UITableViewCell(style: .Default, reuseIdentifier: ViewID.PlainCell.rawValue)
                 cell.accessoryType = .DisclosureIndicator
-//                cell.textLabel?.font = Font.FieldLabel
-//                cell.textLabel?.textColor = Color.FormFieldLabelTextColor
             }
             
         default:

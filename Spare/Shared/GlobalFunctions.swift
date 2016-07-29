@@ -27,9 +27,9 @@ func glb_applyGlobalVCSettings(viewController: UIViewController) {
     viewController.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
     
     let titleLabel = UILabel()
-    titleLabel.textColor = Color.ModalNavigationBarTextColor
-    titleLabel.font = Font.NavigationBarTitle
-    titleLabel.text = viewController.title?.uppercaseString
+    titleLabel.textColor = Color.UniversalTextColor
+    titleLabel.font = Font.NavBarTitle
+    titleLabel.text = viewController.title
     titleLabel.sizeToFit()
     viewController.navigationItem.titleView = titleLabel
 }

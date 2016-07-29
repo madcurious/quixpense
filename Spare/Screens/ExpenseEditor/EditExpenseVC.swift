@@ -21,7 +21,7 @@ class EditExpenseVC: BaseFormVC {
     init(expense: Expense) {
         self.editor = ExpenseEditorVC(expense: expense)
         super.init(nibName: nil, bundle: nil)
-        self.title = "EDIT EXPENSE"
+        self.title = "Edit Expense"
     }
     
     override func viewDidLoad() {

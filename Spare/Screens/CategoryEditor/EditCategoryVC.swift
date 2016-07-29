@@ -23,7 +23,7 @@ class EditCategoryVC: BaseFormVC {
         self.editor = CategoryEditorVC(category: category)
         super.init(nibName: nil, bundle: nil)
         
-        self.title = "EDIT CATEGORY"
+        self.title = "Edit Category"
     }
     
     override func viewDidLoad() {

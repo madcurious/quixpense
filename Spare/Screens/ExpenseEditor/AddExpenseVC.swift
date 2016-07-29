@@ -20,7 +20,7 @@ class AddExpenseVC: BaseFormVC {
     
     init() {
         super.init(nibName: nil, bundle: nil)
-        self.title = "ADD EXPENSE"
+        self.title = "Add Expense"
     }
     
     convenience init(preselectedCategory: Category, preselectedDate: NSDate) {

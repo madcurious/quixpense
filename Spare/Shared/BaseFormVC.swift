@@ -16,11 +16,11 @@ class BaseFormVC: UIViewController {
         glb_applyGlobalVCSettings(self)
         self.applyCommonFormBehaviors()
         
-        self.addCancelAndDoneBarButtonItems("CANCEL", doneButtonTitle: "SAVE")
+        self.addCancelAndDoneBarButtonItems("Cancel", doneButtonTitle: "Save")
         
         let barButtonAttributes = [
-            NSFontAttributeName: Font.BarButtonItems,
-            NSForegroundColorAttributeName: Color.ModalNavigationBarTextColor
+            NSFontAttributeName: Font.ModalBarButtonText,
+            NSForegroundColorAttributeName: Color.UniversalTextColor
         ]
         if let leftBarButtonItem = self.navigationItem.leftBarButtonItem {
             leftBarButtonItem.setTitleTextAttributes(barButtonAttributes, forState: .Normal)
@@ -29,7 +29,9 @@ class BaseFormVC: UIViewController {
             rightBarButtonItem.setTitleTextAttributes(barButtonAttributes, forState: .Normal)
         }
         
-        
+        if let navController = self.navigationController as? BaseNavBarVC {
+            navController.statusBarStyle = .LightContent
+        }
     }
     
     deinit {
