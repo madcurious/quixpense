@@ -16,7 +16,7 @@ enum FontWeight {
 final class Font {
     
     static let ExpenseListCellText = UIFont.systemFontOfSize(18)
-    static let ExpenseListEmptyViewPromptLabel = UIFont.systemFontOfSize(16)
+    static let ExpenseListEmptyViewPromptLabel = UIFont.systemFontOfSize(18)
     static let ExpenseListHeaderNameLabel = UIFont.boldSystemFontOfSize(30)
     static let ExpenseListHeaderDetailLabel = UIFont.systemFontOfSize(18)
     

@@ -11,7 +11,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NpC-18-qFR">
-                    <rect key="frame" x="0.0" y="275" width="600" height="51"/>
+                    <rect key="frame" x="0.0" y="270" width="600" height="61"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bTo-Va-loH">
                             <rect key="frame" x="0.0" y="-0.5" width="600" height="20.5"/>
@@ -20,7 +20,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S23-HE-SSX">
-                            <rect key="frame" x="0.0" y="30" width="600" height="20.5"/>
+                            <rect key="frame" x="0.0" y="40" width="600" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -33,7 +33,7 @@
                         <constraint firstAttribute="trailing" secondItem="bTo-Va-loH" secondAttribute="trailing" id="WbN-3z-Jec"/>
                         <constraint firstItem="bTo-Va-loH" firstAttribute="leading" secondItem="NpC-18-qFR" secondAttribute="leading" id="jcz-bo-RgL"/>
                         <constraint firstItem="S23-HE-SSX" firstAttribute="leading" secondItem="NpC-18-qFR" secondAttribute="leading" id="pzO-hx-dFk"/>
-                        <constraint firstItem="S23-HE-SSX" firstAttribute="top" secondItem="bTo-Va-loH" secondAttribute="bottom" constant="10" id="qB0-ns-0k3"/>
+                        <constraint firstItem="S23-HE-SSX" firstAttribute="top" secondItem="bTo-Va-loH" secondAttribute="bottom" constant="20" id="qB0-ns-0k3"/>
                         <constraint firstAttribute="trailing" secondItem="S23-HE-SSX" secondAttribute="trailing" id="yr7-38-qcR"/>
                     </constraints>
                 </view>

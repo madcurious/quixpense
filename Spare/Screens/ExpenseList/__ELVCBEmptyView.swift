@@ -19,7 +19,7 @@ class __ELVCBEmptyView: UIView {
         super.awakeFromNib()
         UIView.clearBackgroundColors(self, self.labelContainer)
         
-        self.iconLabel.font = Font.icon(100)
+        self.iconLabel.font = Font.icon(160)
         self.iconLabel.textColor = Color.UniversalSecondaryTextColor
         self.iconLabel.text = Icon.Empty.rawValue
         self.iconLabel.textAlignment = .Center
