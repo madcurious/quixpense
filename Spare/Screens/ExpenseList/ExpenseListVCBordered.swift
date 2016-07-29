@@ -52,8 +52,9 @@ class ExpenseListVCBordered: UIViewController {
         
         self.customView.tableView.dataSource = self
         self.customView.tableView.delegate = self
-        self.customView.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: ViewID.Cell.rawValue)
+        self.customView.tableView.rowHeight = 50
         self.setupHeaderView()
+        self.customView.tableView.registerNib(__ELVCBCell.nib(), forCellReuseIdentifier: ViewID.Cell.rawValue)
         
         if let navigationBar = self.navigationController?.navigationBar {
             let colorImage = UIImage.imageFromColor(self.category.color)
@@ -130,9 +131,37 @@ extension ExpenseListVCBordered: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(ViewID.Cell.rawValue, forIndexPath: indexPath)
-        cell.contentView.backgroundColor = UIColor.clearColor()
-        cell.textLabel?.text = self.expenses?[indexPath.row].itemDescription
+//        var cell: UITableViewCell
+//        if let reusableCell = tableView.dequeueReusableCellWithIdentifier(ViewID.Cell.rawValue) {
+//            cell = reusableCell
+//        } else {
+//            cell = UITableViewCell(style: .Value1, reuseIdentifier: ViewID.Cell.rawValue)
+//            cell.contentView.backgroundColor = UIColor.clearColor()
+//            cell.backgroundColor = UIColor.clearColor()
+//            cell.textLabel?.textColor = Color.UniversalTextColor
+//            cell.textLabel?.font = Font.ExpenseListCellText
+//            cell.textLabel?.numberOfLines = 1
+//            cell.textLabel?.lineBreakMode = .ByTruncatingTail
+//            cell.detailTextLabel?.textColor = Color.UniversalSecondaryTextColor
+//            cell.detailTextLabel?.font = Font.ExpenseListCellText
+//            cell.detailTextLabel?.numberOfLines = 1
+//            cell.detailTextLabel?.lineBreakMode = .ByTruncatingTail
+//            cell.accessoryType = .DisclosureIndicator
+//        }
+//        
+//        cell.textLabel?.text = self.expenses?[indexPath.row].itemDescription
+//        cell.detailTextLabel?.text = "Description"
+//        
+//        return cell
+        guard let cell = tableView.dequeueReusableCellWithIdentifier(ViewID.Cell.rawValue) as? __ELVCBCell
+            else {
+                fatalError()
+        }
+        
+        if let expense = self.expenses?[indexPath.row] {
+            cell.data = (expense, App.state.selectedPeriodization)
+        }
+        
         return cell
     }
     

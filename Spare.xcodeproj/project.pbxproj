@@ -107,6 +107,8 @@
 		26A6CDE11CDB18EA00309A84 /* AddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A6CDE01CDB18EA00309A84 /* AddButton.swift */; };
 		26BC4F961CE429AE0011BE98 /* ValidateExpenseOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC4F951CE429AE0011BE98 /* ValidateExpenseOperation.swift */; };
 		26BC4FA11CE45D260011BE98 /* __EEVCPickerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC4FA01CE45D260011BE98 /* __EEVCPickerTextField.swift */; };
+		26C034E41D4B0FE10064187F /* __ELVCBCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C034E31D4B0FE10064187F /* __ELVCBCell.swift */; };
+		26C034E61D4B11410064187F /* __ELVCBCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26C034E51D4B11410064187F /* __ELVCBCell.xib */; };
 		26C2D5C21CDB5E4800BC73FC /* AddButtonProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C2D5C11CDB5E4800BC73FC /* AddButtonProgressView.swift */; };
 		26CAD38D1D195F970039DFD2 /* ExpenseListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CAD38C1D195F970039DFD2 /* ExpenseListVC.swift */; };
 		26CAD3911D1966B70039DFD2 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CAD3901D1966B70039DFD2 /* Event.swift */; };
@@ -268,6 +270,8 @@
 		26A6CDE01CDB18EA00309A84 /* AddButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddButton.swift; sourceTree = "<group>"; };
 		26BC4F951CE429AE0011BE98 /* ValidateExpenseOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidateExpenseOperation.swift; sourceTree = "<group>"; };
 		26BC4FA01CE45D260011BE98 /* __EEVCPickerTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __EEVCPickerTextField.swift; sourceTree = "<group>"; };
+		26C034E31D4B0FE10064187F /* __ELVCBCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __ELVCBCell.swift; sourceTree = "<group>"; };
+		26C034E51D4B11410064187F /* __ELVCBCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __ELVCBCell.xib; sourceTree = "<group>"; };
 		26C2D5C11CDB5E4800BC73FC /* AddButtonProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddButtonProgressView.swift; sourceTree = "<group>"; };
 		26CAD38C1D195F970039DFD2 /* ExpenseListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseListVC.swift; sourceTree = "<group>"; };
 		26CAD3901D1966B70039DFD2 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
@@ -586,6 +590,8 @@
 				261D54A71D4AFBA700F4FCC6 /* __ELVCBView.swift */,
 				261D54A91D4AFC1800F4FCC6 /* __ELVCBView.xib */,
 				261D54AB1D4AFDC000F4FCC6 /* ExpenseListHeaderView.swift */,
+				26C034E31D4B0FE10064187F /* __ELVCBCell.swift */,
+				26C034E51D4B11410064187F /* __ELVCBCell.xib */,
 			);
 			path = ExpenseList;
 			sourceTree = "<group>";
@@ -738,6 +744,7 @@
 				266946891CC7711000A68424 /* Icon@2x.png in Resources */,
 				266946861CC7711000A68424 /* Icon-40@2x.png in Resources */,
 				268BBDB11D08E99C005C6BD8 /* Lato-BoldItalic.ttf in Resources */,
+				26C034E61D4B11410064187F /* __ELVCBCell.xib in Resources */,
 				261D54A41D4A978C00F4FCC6 /* spare-v2.ttf in Resources */,
 				268BBDB21D08E99C005C6BD8 /* Lato-Hairline.ttf in Resources */,
 				261D54AA1D4AFC1800F4FCC6 /* __ELVCBView.xib in Resources */,
@@ -862,6 +869,7 @@
 				2682125F1D4A2DEF0041078F /* __SVCGraphView.swift in Sources */,
 				2682125A1D4A242B0041078F /* GraphView.swift in Sources */,
 				269D49F81CE1610100109990 /* ExpenseEditorVC.swift in Sources */,
+				26C034E41D4B0FE10064187F /* __ELVCBCell.swift in Sources */,
 				26FF031A1D2BBB8D00BA74FD /* BaseNavBarVC.swift in Sources */,
 				26A253C01D196DED003CDF5E /* __ELVCHeaderView.swift in Sources */,
 				26A253C21D1975EA003CDF5E /* __ELVCCell.swift in Sources */,
