@@ -53,11 +53,12 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="separatorView" destination="CUd-Fl-Rhf" id="Uzs-kw-fiC"/>
+                <outlet property="separatorViewHeight" destination="hYz-Vl-P6u" id="qMb-ba-bgg"/>
                 <outletCollection property="buttonContainers" destination="Um1-k0-h3K" collectionClass="NSMutableArray" id="5aV-5W-DeW"/>
                 <outletCollection property="buttonContainers" destination="heg-vM-kKa" collectionClass="NSMutableArray" id="eHd-lr-eff"/>
                 <outletCollection property="buttonContainers" destination="Xb8-JX-7Jo" collectionClass="NSMutableArray" id="8dF-iE-0P5"/>
             </connections>
-            <point key="canvasLocation" x="424" y="274"/>
+            <point key="canvasLocation" x="-17" y="101"/>
         </view>
     </objects>
 </document>

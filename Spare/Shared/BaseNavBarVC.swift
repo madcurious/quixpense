@@ -30,7 +30,8 @@ class BaseNavBarVC: UINavigationController {
         self.navigationBar.tintColor = Color.UniversalTextColor
         self.navigationBar.translucent = false
         
-        self.borderView.frame = CGRectMake(0, self.navigationBar.bounds.size.height - 1, self.navigationBar.bounds.size.width, 1)
+        let borderHeight = CGFloat(0.5)
+        self.borderView.frame = CGRectMake(0, self.navigationBar.bounds.size.height - borderHeight, self.navigationBar.bounds.size.width, borderHeight)
         
         self.setNeedsStatusBarAppearanceUpdate()
     }
