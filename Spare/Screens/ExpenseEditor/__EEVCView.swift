@@ -12,6 +12,10 @@ class __EEVCView: UIView {
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
+    
+    @IBOutlet var separatorViews: [UIView]!
+    @IBOutlet weak var separatorViewHeight: NSLayoutConstraint!
+    
     @IBOutlet var fieldBoxes: [UIView]!
     @IBOutlet var fieldLabels: [UILabel]!
     
@@ -30,9 +34,17 @@ class __EEVCView: UIView {
             self.scrollView,
             self.contentView
         )
+        for separatorView in self.separatorViews {
+            separatorView.backgroundColor = Color.SeparatorColor
+        }
+        for box in self.fieldBoxes {
+            box.backgroundColor = UIColor.clearColor()
+        }
+        
+        self.separatorViewHeight.constant = 0.5
         
         // Setup labels.
-        let texts = ["DESCRIPTION", "AMOUNT", "CATEGORY", "DATE SPENT", "PAID WITH"]
+        let texts = ["AMOUNT", "CATEGORY", "DATE SPENT", "PAID WITH", "NOTES"]
         for i in 0..<self.fieldLabels.count {
             let label = self.fieldLabels[i]
             label.textColor = Color.FormFieldLabelTextColor
@@ -43,10 +55,16 @@ class __EEVCView: UIView {
         // Setup text fields.
         let textFields = [self.itemDescriptionTextField, self.amountTextField, self.categoryTextField, self.dateTextField]
         for textField in textFields {
-            textField.font = Font.FieldValue
-            textField.textColor = Color.Black
-            textField.placeholder = Strings.FieldPlaceholder
+            textField.font = Font.FormValue
+            textField.textColor = Color.UniversalTextColor
             textField.adjustsFontSizeToFitWidth = false
+            textField.textAlignment = .Right
+            textField.attributedPlaceholder = {
+                if textField == self.itemDescriptionTextField {
+                    return NSAttributedString(string: Strings.FieldPlaceholderOptional, font: Font.FieldValue, textColor: Color.FormFieldPlaceholderColor)
+                }
+                return NSAttributedString(string: Strings.FieldPlaceholderRequired, font: Font.FieldValue, textColor: Color.FormFieldPlaceholderColor)
+            }()
         }
         self.itemDescriptionTextField.autocapitalizationType = .Sentences
         self.amountTextField.keyboardType = .DecimalPad
@@ -58,7 +76,7 @@ class __EEVCView: UIView {
             self.paymentMethodControl.setTitle(title, forSegmentAtIndex: i)
         }
         self.paymentMethodControl.setTitleTextAttributes([NSFontAttributeName: Font.text(.Regular, 14)], forState: .Normal)
-        self.paymentMethodControl.tintColor = Color.Black
+        self.paymentMethodControl.tintColor = Color.UniversalTextColor
     }
     
 }

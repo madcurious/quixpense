@@ -10,6 +10,7 @@ import Foundation
 
 final class Strings {
     
-    static let FieldPlaceholder = "Tap to edit"
+    static let FieldPlaceholderRequired = "Tap to edit"
+    static let FieldPlaceholderOptional = "(Optional)"
     
 }

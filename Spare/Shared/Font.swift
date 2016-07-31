@@ -20,6 +20,8 @@ final class Font {
     static let ExpenseListHeaderNameLabel = UIFont.boldSystemFontOfSize(30)
     static let ExpenseListHeaderDetailLabel = UIFont.systemFontOfSize(18)
     
+    static let FormValue = UIFont.systemFontOfSize(18)
+    
     static let GraphViewTotalLabel = UIFont.boldSystemFontOfSize(26)
     static let GraphViewDetailLabel = UIFont.systemFontOfSize(16)
     

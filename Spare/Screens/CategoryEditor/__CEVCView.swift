@@ -87,7 +87,7 @@ class __CEVCTextField: UITextField {
         self.font = Font.text(.Bold, 18)
         self.autocapitalizationType = .Sentences
         self.clearButtonMode = .WhileEditing
-        self.placeholder = Strings.FieldPlaceholder
+        self.placeholder = Strings.FieldPlaceholderRequired
         self.textColor = Color.White
         self.adjustsFontSizeToFitWidth = false
     }

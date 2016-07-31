@@ -31,9 +31,12 @@ class Color {
     
     // MARK: - New colors
     
-    static let SeparatorColor = Gray800
+    static let FormFieldLabelTextColor = Gray700
+    static let FormFieldPlaceholderColor = Gray800
     
     static let SegmentedCircleEmptyColor = Gray800
+    
+    static let SeparatorColor = Gray800
     
     static let TabBarBackgroundColor = Gray900
     static let TabButtonIconColor = White
@@ -54,7 +57,6 @@ class Color {
     static let ExpenseListHeaderViewTextColor = White
     static let ExpenseListScreenBackgroundColor = White
     
-    static let FormFieldLabelTextColor = Gray700
     static let FormFieldValueTextColor = Black
     static let FormPlaceholderTextColor = Gray400
     
