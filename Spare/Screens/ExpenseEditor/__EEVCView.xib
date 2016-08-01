@@ -243,7 +243,7 @@
                 <outlet property="categoryTextField" destination="8QN-fy-2L0" id="d29-EC-4BB"/>
                 <outlet property="contentView" destination="qgh-fE-PSz" id="q9b-7u-Lmh"/>
                 <outlet property="dateTextField" destination="gmP-OG-ZTQ" id="Ged-t2-3nw"/>
-                <outlet property="itemDescriptionTextField" destination="3g7-zI-e0z" id="wc7-XP-Kzj"/>
+                <outlet property="noteTextField" destination="3g7-zI-e0z" id="DC3-ae-Pwh"/>
                 <outlet property="paymentMethodControl" destination="7PN-jz-t3B" id="hGi-RQ-tcj"/>
                 <outlet property="scrollView" destination="Was-83-FHR" id="Z8a-gU-MFs"/>
                 <outlet property="separatorViewHeight" destination="5Gz-EL-OQh" id="uEp-1c-kGC"/>

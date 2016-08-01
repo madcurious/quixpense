@@ -30,12 +30,13 @@ class ValidateExpenseOperation: MDOperation {
         
         // Put all the labels and values in an array for simplicity, then loop
         // through it looking for empty values.
-        let fields: [(String, Any?)] = [("Description", md_nonEmptyString(expense.itemDescription)),
+        let requiredFields: [(String, Any?)] = [
                       ("Amount", expense.amount),
                       ("Category", expense.category),
                       ("Date spent", expense.dateSpent),
-                      ("Payment method", expense.paymentMethod)]
-        for (label, value) in fields {
+                      ("Payment method", expense.paymentMethod)
+        ]
+        for (label, value) in requiredFields {
             if value == nil {
                 throw Error.UserEnteredInvalidValue("\(label) is required.")
             }

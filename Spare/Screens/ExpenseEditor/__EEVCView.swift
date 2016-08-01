@@ -19,7 +19,7 @@ class __EEVCView: UIView {
     @IBOutlet var fieldBoxes: [UIView]!
     @IBOutlet var fieldLabels: [UILabel]!
     
-    @IBOutlet weak var itemDescriptionTextField: UITextField!
+    @IBOutlet weak var noteTextField: UITextField!
     @IBOutlet weak var amountTextField: UITextField!
     @IBOutlet weak var categoryTextField: __EEVCPickerTextField!
     @IBOutlet weak var dateTextField: __EEVCPickerTextField!
@@ -53,20 +53,20 @@ class __EEVCView: UIView {
         }
         
         // Setup text fields.
-        let textFields = [self.itemDescriptionTextField, self.amountTextField, self.categoryTextField, self.dateTextField]
+        let textFields = [self.noteTextField, self.amountTextField, self.categoryTextField, self.dateTextField]
         for textField in textFields {
             textField.font = Font.FormValue
             textField.textColor = Color.UniversalTextColor
             textField.adjustsFontSizeToFitWidth = false
             textField.textAlignment = .Right
             textField.attributedPlaceholder = {
-                if textField == self.itemDescriptionTextField {
+                if textField == self.noteTextField {
                     return NSAttributedString(string: Strings.FieldPlaceholderOptional, font: Font.FieldValue, textColor: Color.FormFieldPlaceholderColor)
                 }
                 return NSAttributedString(string: Strings.FieldPlaceholderRequired, font: Font.FieldValue, textColor: Color.FormFieldPlaceholderColor)
             }()
         }
-        self.itemDescriptionTextField.autocapitalizationType = .Sentences
+        self.noteTextField.autocapitalizationType = .Sentences
         self.amountTextField.keyboardType = .DecimalPad
         
         // Setup segmented control.

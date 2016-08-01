@@ -31,7 +31,7 @@ class __ELVCBCell: UITableViewCell {
             }
             
             var rightText = ""
-            if let note = expense.itemDescription {
+            if let note = expense.note {
                 rightText += note
             }
             if let paymentMethodNumber = expense.paymentMethod,

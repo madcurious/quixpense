@@ -51,8 +51,6 @@ class ExpenseEditorVC: MDStatefulViewController {
         glb_applyGlobalVCSettings(self)
         
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
-        
-        self.customView.itemDescriptionTextField.delegate = self
         self.customView.amountTextField.delegate = self
         
         // Setup the picker views for the category and date fields
@@ -66,6 +64,8 @@ class ExpenseEditorVC: MDStatefulViewController {
         self.datePickerView.addTarget(self, action: #selector(handleChangeOnDatePicker), forControlEvents: .ValueChanged)
         
         self.customView.paymentMethodControl.addTarget(self, action: #selector(handleChangeOnPaymentMethod), forControlEvents: .ValueChanged)
+        
+        self.customView.noteTextField.delegate = self
     }
     
     override func buildOperation() -> MDOperation? {
@@ -100,11 +100,11 @@ class ExpenseEditorVC: MDStatefulViewController {
     func reset() {
         // Reset the model, but leave the date, category, and payment method the same.
         let expense = Expense(managedObjectContext: self.managedObjectContext)
-        expense.itemDescription = nil
         expense.amount = nil
         expense.dateSpent = self.datePickerView.date
         expense.category = self.categories[self.categoryPickerView.selectedRowInComponent(0)]
         expense.paymentMethod = PaymentMethod(self.customView.paymentMethodControl.selectedSegmentIndex)?.rawValue
+        expense.note = nil
         self.expense = expense
         
         // Update the view.
@@ -134,7 +134,6 @@ class ExpenseEditorVC: MDStatefulViewController {
     }
     
     func refreshViewFromModel() {
-        self.customView.itemDescriptionTextField.text = md_nonEmptyString(self.expense.itemDescription)
         self.customView.amountTextField.text = self.expense.amount?.stringValue
         
         self.customView.categoryTextField.text = md_nonEmptyString(self.expense.category?.name)
@@ -155,7 +154,9 @@ class ExpenseEditorVC: MDStatefulViewController {
                 return paymentMethod.rawValue
             }
             return 0
-        }()
+            }()
+        
+        self.customView.noteTextField.text = md_nonEmptyString(self.expense.note)
     }
     
     // MARK: Target actions
@@ -233,13 +234,13 @@ extension ExpenseEditorVC: UITextFieldDelegate {
         switch textField {
             
             // Description and amount fields.
-        case self.customView.itemDescriptionTextField,
+        case self.customView.noteTextField,
              self.customView.amountTextField:
             let text = NSMutableString(string: textField.text ?? "")
             text.replaceCharactersInRange(range, withString: string)
             
-            if textField == self.customView.itemDescriptionTextField {
-                self.expense.itemDescription = text as String
+            if textField == self.customView.noteTextField {
+                self.expense.note = text as String
             }
             
             else {
