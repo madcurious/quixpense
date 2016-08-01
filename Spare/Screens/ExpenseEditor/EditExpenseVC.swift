@@ -44,7 +44,7 @@ class EditExpenseVC: BaseFormVC {
                         }
                     }
                     })
-                .onFail({[unowned self] (error) in
+                .onFail({[unowned self] error in
                     MDErrorDialog.showError(error, inPresenter: self)
                     })
 

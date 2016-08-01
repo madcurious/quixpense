@@ -28,6 +28,8 @@ final class Font {
     static let ModalBarButtonText = UIFont.systemFontOfSize(17)
     static let NavBarTitle = UIFont.boldSystemFontOfSize(18)
     
+    static let StatefulVCRetryViewMessageLabel = UIFont.systemFontOfSize(18)
+    
     static let SummaryCellTextLabel = UIFont.systemFontOfSize(18)
     
     // MARK: - Old fonts

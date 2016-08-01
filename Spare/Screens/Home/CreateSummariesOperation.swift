@@ -26,6 +26,11 @@ class CreateSummariesOperation: MDOperation {
     }
     
     override func buildResult(object: Any?) throws -> Any? {
+        guard let _ = glb_allCategories()
+            else {
+                throw Error.NoCategoriesYet
+        }
+        
         var summaries = [Summary]()
         for i in 0 ..< self.count {
             let (startDate, endDate) = self.dateRangeForPage(self.startingPage + i)

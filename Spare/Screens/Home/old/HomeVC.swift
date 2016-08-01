@@ -28,8 +28,14 @@ class HomeVC: MDStatefulViewController {
     
     let periodizationButton = PeriodizationButton()
     
+    let customRetryView = StatefulVCRetryView.instantiateFromNib() as StatefulVCRetryView
+    
     override var primaryView: UIView {
         return self.pageViewController.view
+    }
+    
+    override var retryView: MDRetryView {
+        return self.customRetryView
     }
     
     override func viewDidLoad() {
@@ -83,6 +89,26 @@ class HomeVC: MDStatefulViewController {
                 }
                 
                 })
+    }
+    
+    override func buildFailBlock() -> (ErrorType -> Void) {
+        return {[unowned self] error in
+            guard let customError = error as? Error
+                else {
+                    fatalError("Got an error not customised: \(error as NSError)")
+            }
+            
+            switch customError {
+            case .NoCategoriesYet:
+                self.customRetryView.retryButton.hidden = true
+                
+            default:
+                self.customRetryView.retryButton.hidden = false
+            }
+            
+            self.customRetryView.error = customError
+            self.showView(.Retry)
+        }
     }
     
     func scrollToLastSummary(animated animated: Bool) {
