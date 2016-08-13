@@ -24,9 +24,13 @@ class __EEVCView: UIView {
     @IBOutlet weak var paymentMethodButton: UIButton!
     @IBOutlet weak var noteTextField: UITextField!
     
-    @IBOutlet weak var currencyLabel: UILabel!
-    @IBOutlet weak var amountTextField: UITextField!
+    @IBOutlet weak var currencyLabel: MDResponsiveLabel!
+    @IBOutlet weak var amountTextField: MDResponsiveTextField!
+    
     @IBOutlet weak var keypadCollectionView: UICollectionView!
+    
+    @IBOutlet weak var fieldContainerHeight: NSLayoutConstraint!
+    @IBOutlet weak var currencyLabelHeight: NSLayoutConstraint!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -57,6 +61,7 @@ class __EEVCView: UIView {
             button.tintColor = Color.FieldValueTextColor
             button.titleLabel?.font = Font.FieldValue
             button.contentHorizontalAlignment = .Left
+            button.titleLabel?.adjustsFontSizeToFitWidth = true
         }
         
         self.noteTextField.font = Font.FieldValue
@@ -67,14 +72,36 @@ class __EEVCView: UIView {
         self.currencyLabel.textColor = Color.FieldLabelTextColor
         self.currencyLabel.text = "PHP"
         self.currencyLabel.font = Font.ExpenseEditorCurrencyLabel
+        self.currencyLabel.fontSize = .VHeight(0.8)
         
         self.amountTextField.userInteractionEnabled = false
         self.amountTextField.textColor = Color.FieldValueTextColor
         self.amountTextField.font = Font.ExpenseEditorAmountValue
         self.amountTextField.textAlignment = .Right
         self.amountTextField.attributedPlaceholder = NSAttributedString(string: "0", font: Font.ExpenseEditorAmountValue, textColor: Color.FieldValueTextColor)
+        self.amountTextField.fontSize = .VHeight(0.8)
         
         self.keypadCollectionView.scrollEnabled = false
+        
+        self.setNeedsUpdateConstraints()
+    }
+    
+    override func updateConstraints() {
+        self.fieldContainerHeight.constant = {
+            if MDScreen.currentScreenIs(.iPhone4S) {
+                return self.topContainer.bounds.size.height / 4
+            }
+            return 50
+        }()
+        
+        self.currencyLabelHeight.constant = {
+            if MDScreen.currentScreenIs(.iPhone4S) {
+                return 38
+            }
+            return 50
+        }()
+        
+        super.updateConstraints()
     }
     
 }

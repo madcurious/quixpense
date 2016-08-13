@@ -11,16 +11,17 @@ import Mold
 
 class __EEVCKeypadCell: UICollectionViewCell {
     
-    let keyLabel = UILabel()
+    let keyLabel = MDResponsiveLabel()
     
     var text: String? {
         didSet {
             if let text = self.text
                 where text == Icon.ExpenseEditorBackspace.rawValue {
-                self.keyLabel.attributedText = NSAttributedString(string: text, font: Font.icon(36), textColor: Color.UniversalTextColor)
+                self.keyLabel.font = Font.icon(Font.AnySize)
             } else {
-                self.keyLabel.text = self.text
+                self.keyLabel.font = Font.ExpenseEditorKeypadText
             }
+            self.keyLabel.text = self.text
             self.setNeedsLayout()
         }
     }
@@ -30,7 +31,7 @@ class __EEVCKeypadCell: UICollectionViewCell {
         
         self.addSubviewAndFill(self.keyLabel)
         
-        self.keyLabel.font = Font.ExpenseEditorKeypadText
+        self.keyLabel.fontSize = .VHeight(0.5)
         self.keyLabel.textColor = Color.UniversalTextColor
         self.keyLabel.textAlignment = .Center
     }

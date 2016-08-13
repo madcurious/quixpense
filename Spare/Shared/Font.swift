@@ -18,12 +18,18 @@ enum Weight: String {
 
 final class Font {
     
-    static let ExpenseEditorCurrencyLabel = Font.make(.Heavy, 40)
-    static let ExpenseEditorAmountValue = Font.make(.Heavy, 40)
-    static let ExpenseEditorKeypadText = Font.make(.Heavy, 36)
+    static let AnySize = CGFloat(18)
+    
+    static let ExpenseEditorCurrencyLabel = Font.make(.Heavy, AnySize)
+    static let ExpenseEditorAmountValue = Font.make(.Heavy, AnySize)
+    static let ExpenseEditorKeypadText = Font.make(.Heavy, AnySize)
     
     static let FieldLabel = Font.make(.Heavy, 14)
     static let FieldValue = Font.make(.Medium, 20)
+    
+//    class func responsive(weight: Weight, _ size: MDResponsiveLabel.FontSize) -> (String, MDResponsiveLabel.FontSize) {
+//        return ("Avenir-\(weight.rawValue)", size)
+//    }
     
     class func make(weight: Weight, _ size: CGFloat) -> UIFont {
         return UIFont(name: "Avenir-\(weight.rawValue)", size: size)!
