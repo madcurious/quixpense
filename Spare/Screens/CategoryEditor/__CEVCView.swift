@@ -63,7 +63,7 @@ class __CEVCView: UIView {
         self.colorMapBorderView.backgroundColor = Color.White
         
         self.fieldLabel.text = "NAME"
-        self.fieldLabel.textColor = Color.FormFieldLabelTextColor
+        self.fieldLabel.textColor = Color.FieldLabelTextColor
         self.fieldLabel.font = Font.FieldLabel
         
         // Add parent references for touch passing.

@@ -17,17 +17,15 @@ class Color {
     static let Black = UIColor.blackColor()
     static let Hex222222 = UIColor(hex: 0x222222)
     static let Hex333333 = UIColor(hex: 0x333333)
+    static let Hex666666 = UIColor(hex: 0x666666)
     
     // MARK: - New colors
     
-    static let FormFieldLabelTextColor = Gray700
-    static let FormFieldPlaceholderColor = Gray800
+    static let FieldLabelTextColor = Hex666666
+    static let FieldValueTextColor = White
+    static let FieldPlaceholderTextColor = Hex333333
     
     static let KeypadBackgroundColor = Hex333333
-    
-    
-    static let SegmentedCircleEmptyColor = Gray800
-    static let SeparatorColor = Gray800
     
     static let TabBarBackgroundColor = Gray900
     static let TabButtonIconColor = White
@@ -38,6 +36,9 @@ class Color {
     static let UniversalBackgroundColor = Hex222222
     
     // MARK: - Old UI Colors
+    
+    static let SegmentedCircleEmptyColor = Gray800
+    static let SeparatorColor = Gray800
     
     private static let Gray50 = UIColor(hex: 0xf5f5f5)
     private static let Gray100 = UIColor(hex: 0xf0f2f6)
@@ -58,9 +59,6 @@ class Color {
     static let ExpenseListCellTextColorHighlighted = White
     static let ExpenseListHeaderViewTextColor = White
     static let ExpenseListScreenBackgroundColor = White
-    
-    static let FormFieldValueTextColor = Black
-    static let FormPlaceholderTextColor = Gray400
     
     static let HomeBarButtonItemDefault = Gray900
     static let HomeBarButtonItemDisabled = Gray500

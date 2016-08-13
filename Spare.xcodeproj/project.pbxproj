@@ -20,6 +20,18 @@
 		260A06571D48D1D500A960DB /* SummaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260A06561D48D1D500A960DB /* SummaryVC.swift */; };
 		261AF61C1D5F255000E03A48 /* __EEVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261AF61B1D5F255000E03A48 /* __EEVCView.swift */; };
 		261AF61E1D5F257900E03A48 /* __EEVCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 261AF61D1D5F257900E03A48 /* __EEVCView.xib */; };
+		261AF62B1D5F395200E03A48 /* Avenir-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 261AF61F1D5F395200E03A48 /* Avenir-Black.ttf */; };
+		261AF62C1D5F395200E03A48 /* Avenir-BlackOblique.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 261AF6201D5F395200E03A48 /* Avenir-BlackOblique.ttf */; };
+		261AF62D1D5F395200E03A48 /* Avenir-Book.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 261AF6211D5F395200E03A48 /* Avenir-Book.ttf */; };
+		261AF62E1D5F395200E03A48 /* Avenir-BookOblique.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 261AF6221D5F395200E03A48 /* Avenir-BookOblique.ttf */; };
+		261AF62F1D5F395200E03A48 /* Avenir-Heavy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 261AF6231D5F395200E03A48 /* Avenir-Heavy.ttf */; };
+		261AF6301D5F395200E03A48 /* Avenir-HeavyOblique.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 261AF6241D5F395200E03A48 /* Avenir-HeavyOblique.ttf */; };
+		261AF6311D5F395200E03A48 /* Avenir-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 261AF6251D5F395200E03A48 /* Avenir-Light.ttf */; };
+		261AF6321D5F395200E03A48 /* Avenir-LightOblique.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 261AF6261D5F395200E03A48 /* Avenir-LightOblique.ttf */; };
+		261AF6331D5F395200E03A48 /* Avenir-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 261AF6271D5F395200E03A48 /* Avenir-Medium.ttf */; };
+		261AF6341D5F395200E03A48 /* Avenir-MediumOblique.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 261AF6281D5F395200E03A48 /* Avenir-MediumOblique.ttf */; };
+		261AF6351D5F395200E03A48 /* Avenir-Oblique.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 261AF6291D5F395200E03A48 /* Avenir-Oblique.ttf */; };
+		261AF6361D5F395200E03A48 /* Avenir-Roman.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 261AF62A1D5F395200E03A48 /* Avenir-Roman.ttf */; };
 		261D54A61D4AFB5700F4FCC6 /* ExpenseListVCBordered.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261D54A51D4AFB5700F4FCC6 /* ExpenseListVCBordered.swift */; };
 		261D54A81D4AFBA700F4FCC6 /* __ELVCBView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261D54A71D4AFBA700F4FCC6 /* __ELVCBView.swift */; };
 		261D54AA1D4AFC1800F4FCC6 /* __ELVCBView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 261D54A91D4AFC1800F4FCC6 /* __ELVCBView.xib */; };
@@ -176,6 +188,18 @@
 		260A06561D48D1D500A960DB /* SummaryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryVC.swift; sourceTree = "<group>"; };
 		261AF61B1D5F255000E03A48 /* __EEVCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __EEVCView.swift; sourceTree = "<group>"; };
 		261AF61D1D5F257900E03A48 /* __EEVCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __EEVCView.xib; sourceTree = "<group>"; };
+		261AF61F1D5F395200E03A48 /* Avenir-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Avenir-Black.ttf"; sourceTree = "<group>"; };
+		261AF6201D5F395200E03A48 /* Avenir-BlackOblique.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Avenir-BlackOblique.ttf"; sourceTree = "<group>"; };
+		261AF6211D5F395200E03A48 /* Avenir-Book.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Avenir-Book.ttf"; sourceTree = "<group>"; };
+		261AF6221D5F395200E03A48 /* Avenir-BookOblique.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Avenir-BookOblique.ttf"; sourceTree = "<group>"; };
+		261AF6231D5F395200E03A48 /* Avenir-Heavy.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Avenir-Heavy.ttf"; sourceTree = "<group>"; };
+		261AF6241D5F395200E03A48 /* Avenir-HeavyOblique.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Avenir-HeavyOblique.ttf"; sourceTree = "<group>"; };
+		261AF6251D5F395200E03A48 /* Avenir-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Avenir-Light.ttf"; sourceTree = "<group>"; };
+		261AF6261D5F395200E03A48 /* Avenir-LightOblique.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Avenir-LightOblique.ttf"; sourceTree = "<group>"; };
+		261AF6271D5F395200E03A48 /* Avenir-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Avenir-Medium.ttf"; sourceTree = "<group>"; };
+		261AF6281D5F395200E03A48 /* Avenir-MediumOblique.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Avenir-MediumOblique.ttf"; sourceTree = "<group>"; };
+		261AF6291D5F395200E03A48 /* Avenir-Oblique.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Avenir-Oblique.ttf"; sourceTree = "<group>"; };
+		261AF62A1D5F395200E03A48 /* Avenir-Roman.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Avenir-Roman.ttf"; sourceTree = "<group>"; };
 		261D54A51D4AFB5700F4FCC6 /* ExpenseListVCBordered.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseListVCBordered.swift; sourceTree = "<group>"; };
 		261D54A71D4AFBA700F4FCC6 /* __ELVCBView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __ELVCBView.swift; sourceTree = "<group>"; };
 		261D54A91D4AFC1800F4FCC6 /* __ELVCBView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __ELVCBView.xib; sourceTree = "<group>"; };
@@ -376,6 +400,18 @@
 		261370A91CD7A114007BAF56 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				261AF61F1D5F395200E03A48 /* Avenir-Black.ttf */,
+				261AF6201D5F395200E03A48 /* Avenir-BlackOblique.ttf */,
+				261AF6211D5F395200E03A48 /* Avenir-Book.ttf */,
+				261AF6221D5F395200E03A48 /* Avenir-BookOblique.ttf */,
+				261AF6231D5F395200E03A48 /* Avenir-Heavy.ttf */,
+				261AF6241D5F395200E03A48 /* Avenir-HeavyOblique.ttf */,
+				261AF6251D5F395200E03A48 /* Avenir-Light.ttf */,
+				261AF6261D5F395200E03A48 /* Avenir-LightOblique.ttf */,
+				261AF6271D5F395200E03A48 /* Avenir-Medium.ttf */,
+				261AF6281D5F395200E03A48 /* Avenir-MediumOblique.ttf */,
+				261AF6291D5F395200E03A48 /* Avenir-Oblique.ttf */,
+				261AF62A1D5F395200E03A48 /* Avenir-Roman.ttf */,
 				263005601D4F5BAE00AC3060 /* spare-v2.ttf */,
 				268BBDA41D08E99C005C6BD8 /* Lato-Black.ttf */,
 				268BBDA51D08E99C005C6BD8 /* Lato-BlackItalic.ttf */,
@@ -715,32 +751,44 @@
 			buildActionMask = 2147483647;
 			files = (
 				266408CE1D4A925F00609580 /* __ELVCBEmptyView.xib in Resources */,
+				261AF6331D5F395200E03A48 /* Avenir-Medium.ttf in Resources */,
 				268BBDAE1D08E99C005C6BD8 /* Lato-Black.ttf in Resources */,
 				268BBDB01D08E99C005C6BD8 /* Lato-Bold.ttf in Resources */,
 				266946841CC7711000A68424 /* Default@2x.png in Resources */,
 				265849021D0AD5C10047BCFA /* __HVCCell.xib in Resources */,
 				2603F8C31CCA45FF007F311F /* LaunchScreen.storyboard in Resources */,
 				268BBDB61D08E99C005C6BD8 /* Lato-LightItalic.ttf in Resources */,
+				261AF62B1D5F395200E03A48 /* Avenir-Black.ttf in Resources */,
 				261AF61E1D5F257900E03A48 /* __EEVCView.xib in Resources */,
+				261AF62D1D5F395200E03A48 /* Avenir-Book.ttf in Resources */,
+				261AF6361D5F395200E03A48 /* Avenir-Roman.ttf in Resources */,
 				2669468B1CC7711000A68424 /* iPhone.storyboard in Resources */,
+				261AF6351D5F395200E03A48 /* Avenir-Oblique.ttf in Resources */,
 				268BBDB71D08E99C005C6BD8 /* Lato-Regular.ttf in Resources */,
 				26E6EDB41CDBA6C60034EEDE /* AddButtonProgressView.xib in Resources */,
 				2669468A1CC7711000A68424 /* Images.xcassets in Resources */,
+				261AF62F1D5F395200E03A48 /* Avenir-Heavy.ttf in Resources */,
 				26EFA00F1CD9E00200714E5D /* MainTabBar.xib in Resources */,
 				266946871CC7711000A68424 /* Icon-60@2x.png in Resources */,
 				268BBDB31D08E99C005C6BD8 /* Lato-HairlineItalic.ttf in Resources */,
+				261AF6311D5F395200E03A48 /* Avenir-Light.ttf in Resources */,
 				268BBDB41D08E99C005C6BD8 /* Lato-Italic.ttf in Resources */,
+				261AF6301D5F395200E03A48 /* Avenir-HeavyOblique.ttf in Resources */,
 				268BBDB51D08E99C005C6BD8 /* Lato-Light.ttf in Resources */,
+				261AF6321D5F395200E03A48 /* Avenir-LightOblique.ttf in Resources */,
 				263005651D4F8E9000AC3060 /* StatefulVCRetryView.xib in Resources */,
 				266946891CC7711000A68424 /* Icon@2x.png in Resources */,
 				266946861CC7711000A68424 /* Icon-40@2x.png in Resources */,
 				268BBDB11D08E99C005C6BD8 /* Lato-BoldItalic.ttf in Resources */,
 				26C034E61D4B11410064187F /* __ELVCBCell.xib in Resources */,
+				261AF62E1D5F395200E03A48 /* Avenir-BookOblique.ttf in Resources */,
+				261AF62C1D5F395200E03A48 /* Avenir-BlackOblique.ttf in Resources */,
 				263005611D4F5BAE00AC3060 /* spare-v2.ttf in Resources */,
 				268BBDB21D08E99C005C6BD8 /* Lato-Hairline.ttf in Resources */,
 				261D54AA1D4AFC1800F4FCC6 /* __ELVCBView.xib in Resources */,
 				268BBDAF1D08E99C005C6BD8 /* Lato-BlackItalic.ttf in Resources */,
 				268212581D4A1CEF0041078F /* __SVCCategoryCellStub.xib in Resources */,
+				261AF6341D5F395200E03A48 /* Avenir-MediumOblique.ttf in Resources */,
 				266946881CC7711000A68424 /* Icon-Small@2x.png in Resources */,
 				26EFA0051CD9C91A00714E5D /* __MCVCView.xib in Resources */,
 				2682125C1D4A243F0041078F /* GraphView.xib in Resources */,

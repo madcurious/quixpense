@@ -9,11 +9,30 @@
 import UIKit
 import Mold
 
-enum FontWeight {
-    case UltraLight, Light, Regular, Bold, ExtraBold
+enum Weight: String {
+    
+    case Medium = "Medium"
+    case Heavy = "Heavy"
+    
 }
 
 final class Font {
+    
+    static let ExpenseEditorCurrencyLabel = Font.make(.Heavy, 40)
+    static let ExpenseEditorAmountValue = Font.make(.Heavy, 40)
+    
+    static let FieldLabel = Font.make(.Heavy, 14)
+    static let FieldValue = Font.make(.Medium, 20)
+    
+    class func make(weight: Weight, _ size: CGFloat) -> UIFont {
+        return UIFont(name: "Avenir-\(weight.rawValue)", size: size)!
+    }
+    
+    class func icon(size: CGFloat) -> UIFont {
+        return UIFont(name: "spare-v2", size: size)!
+    }
+    
+    // MARK: - Old fonts
     
     static let ExpenseListCellText = UIFont.systemFontOfSize(18)
     static let ExpenseListEmptyViewPromptLabel = UIFont.systemFontOfSize(18)
@@ -32,8 +51,6 @@ final class Font {
     
     static let SummaryCellTextLabel = UIFont.systemFontOfSize(18)
     
-    // MARK: - Old fonts
-    
     static let BarButtonItems = Font.text(.Bold, 14)
     static let NavigationBarTitle = Font.text(.ExtraBold, 18)
     
@@ -42,9 +59,6 @@ final class Font {
     static let ExpenseListFooterViewLabel = Font.text(.Regular, 16)
     static let ExpenseListHeaderViewDetailLabel = Font.text(.Regular, 18)
     static let ExpenseListHeaderViewNameLabel = Font.text(.Bold, 30)
-    
-    static let FieldLabel = Font.text(.Bold, 14)
-    static let FieldValue = Font.text(.Regular, 18)
     
     static let HomeBarButtonItem = Font.text(.Bold, 18)
     
@@ -81,8 +95,10 @@ final class Font {
         }
     }
     
-    class func icon(size: CGFloat) -> UIFont {
-        return UIFont(name: "spare-v2", size: size)!
-    }
-    
+}
+
+// Delete
+
+enum FontWeight {
+    case UltraLight, Light, Regular, Bold, ExtraBold
 }

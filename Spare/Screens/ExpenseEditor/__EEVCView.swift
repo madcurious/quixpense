@@ -37,10 +37,41 @@ class __EEVCView: UIView {
             self.categoryContainer,
             self.dateContainer,
             self.paymentMethodContainer,
-            self.noteContainer
+            self.noteContainer,
+            self.amountTextField
         )
         self.backgroundColor = Color.UniversalBackgroundColor
         self.keypadCollectionView.backgroundColor = Color.KeypadBackgroundColor
+        
+        let labels = ["CATEGORY", "DATE SPENT", "PAID WITH", "NOTES"]
+        for i in 0..<self.fieldLabels.count {
+            let label = self.fieldLabels[i]
+            label.textAlignment = .Right
+            label.textColor = Color.FieldLabelTextColor
+            label.font = Font.FieldLabel
+            label.text = labels[i]
+        }
+        
+        let buttons = [self.categoryButton, self.dateButton, self.paymentMethodButton]
+        for button in buttons {
+            button.tintColor = Color.FieldValueTextColor
+            button.titleLabel?.font = Font.FieldValue
+            button.contentHorizontalAlignment = .Left
+        }
+        
+        self.noteTextField.font = Font.FieldValue
+        self.noteTextField.textColor = Color.FieldValueTextColor
+        self.noteTextField.attributedPlaceholder = NSAttributedString(string: "(Optional)", font: Font.FieldValue, textColor: Color.FieldPlaceholderTextColor)
+        
+        self.currencyLabel.textColor = Color.FieldLabelTextColor
+        self.currencyLabel.text = "PHP"
+        self.currencyLabel.font = Font.ExpenseEditorCurrencyLabel
+        
+        self.amountTextField.userInteractionEnabled = false
+        self.amountTextField.textColor = Color.FieldValueTextColor
+        self.amountTextField.font = Font.ExpenseEditorAmountValue
+        self.amountTextField.textAlignment = .Right
+        self.amountTextField.attributedPlaceholder = NSAttributedString(string: "0", font: Font.ExpenseEditorAmountValue, textColor: Color.FieldValueTextColor)
     }
     
 }
