@@ -193,11 +193,25 @@
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="amountField" destination="DQM-r6-Dnl" id="zVF-Nv-UEg"/>
+                <outlet property="amountTextField" destination="DQM-r6-Dnl" id="KgV-6p-tmN"/>
+                <outlet property="categoryButton" destination="f7M-Ty-ni9" id="3XN-NG-Sqc"/>
+                <outlet property="categoryContainer" destination="cUf-7B-ar0" id="5Vh-Yu-7am"/>
                 <outlet property="currencyLabel" destination="ueT-23-awb" id="muM-gc-iJo"/>
-                <outlet property="keypad" destination="GBg-yG-E0O" id="Msn-xB-yZX"/>
+                <outlet property="dateButton" destination="mb5-TV-w6R" id="5im-R4-SaX"/>
+                <outlet property="dateContainer" destination="eWe-ql-uZD" id="Vo4-4P-JEv"/>
+                <outlet property="fieldContainer" destination="Wry-l6-ah3" id="laR-ix-A0e"/>
+                <outlet property="keypadCollectionView" destination="GBg-yG-E0O" id="ZGi-D6-xFG"/>
+                <outlet property="noteContainer" destination="RYq-6D-lIc" id="Uvx-ew-lXz"/>
+                <outlet property="noteTextField" destination="ine-as-OPi" id="xko-EX-ijB"/>
+                <outlet property="paymentMethodButton" destination="B1Q-Ig-Amc" id="SWD-UV-euN"/>
+                <outlet property="paymentMethodContainer" destination="XdT-RF-pev" id="bBO-YQ-Opv"/>
+                <outlet property="topContainer" destination="n08-Gi-isV" id="pj7-Ea-324"/>
+                <outletCollection property="fieldLabels" destination="b6t-pV-Ou1" collectionClass="NSMutableArray" id="BYe-3R-drM"/>
+                <outletCollection property="fieldLabels" destination="TZb-ZS-yGB" collectionClass="NSMutableArray" id="hDN-5M-Zvw"/>
+                <outletCollection property="fieldLabels" destination="byA-8N-4gb" collectionClass="NSMutableArray" id="my3-dL-aSd"/>
+                <outletCollection property="fieldLabels" destination="ivC-D7-HTD" collectionClass="NSMutableArray" id="IjL-we-n0o"/>
             </connections>
-            <point key="canvasLocation" x="202.5" y="398.5"/>
+            <point key="canvasLocation" x="142.5" y="367.5"/>
         </view>
     </objects>
 </document>

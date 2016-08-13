@@ -1,5 +1,5 @@
 //
-//  DateRangeFormatter.swift
+//  DateFormatter.swift
 //  Spare
 //
 //  Created by Matt Quiros on 04/07/2016.
@@ -9,36 +9,53 @@
 import Foundation
 import Mold
 
-struct DateRangeFormatter {
+private let kSharedFormatter: NSDateFormatter = {
+    let formatter = NSDateFormatter()
+    formatter.timeZone = NSTimeZone.localTimeZone()
+    return formatter
+}()
+
+class DateFormatter {
+    
+    class func displayTextForStartDate(startDate: NSDate, endDate: NSDate, periodization: Periodization = App.state.selectedPeriodization, startOfWeek: StartOfWeek = App.state.selectedStartOfWeek) -> String {
+        let dateRange = DateRange(startDate: startDate,
+                                           endDate: endDate,
+                                           periodization: periodization,
+                                           startOfWeek: startOfWeek)
+        return dateRange.displayText()
+    }
+    
+    class func displayTextForSummary(summary: Summary) -> String {
+        let dateRange = DateRange(startDate: summary.startDate,
+                                           endDate: summary.endDate,
+                                           periodization: summary.periodization,
+                                           startOfWeek: App.state.selectedStartOfWeek)
+        return dateRange.displayText()
+    }
+    
+    class func displayTextForExpenseEditorDate(date: NSDate?) -> String {
+        guard let date = date
+            else {
+                return ""
+        }
+        
+        kSharedFormatter.dateFormat = "MMM d, yyyy"
+        
+        let currentDate = NSDate()
+        if date.isSameDayAsDate(currentDate) {
+            return "Today, " + kSharedFormatter.stringFromDate(date)
+        }
+        return kSharedFormatter.stringFromDate(date)
+    }
+    
+}
+
+private struct DateRange {
     
     var startDate: NSDate
     var endDate: NSDate
     var periodization: Periodization
     var startOfWeek: StartOfWeek
-    
-    private static let formatter: NSDateFormatter = {
-        let formatter = NSDateFormatter()
-        formatter.timeZone = NSTimeZone.localTimeZone()
-        return formatter
-    }()
-    
-    static func displayTextForStartDate(startDate: NSDate, endDate: NSDate, periodization: Periodization = App.state.selectedPeriodization, startOfWeek: StartOfWeek = App.state.selectedStartOfWeek) -> String {
-        let formatter = DateRangeFormatter(startDate: startDate,
-                                           endDate: endDate,
-                                           periodization: periodization,
-                                           startOfWeek: startOfWeek)
-        return formatter.displayText()
-    }
-    
-    static func displayTextForSummary(summary: Summary) -> String {
-        let formatter = DateRangeFormatter(startDate: summary.startDate,
-                                           endDate: summary.endDate,
-                                           periodization: summary.periodization,
-                                           startOfWeek: App.state.selectedStartOfWeek)
-        return formatter.displayText()
-    }
-    
-    
     
     func displayText() -> String {
         switch self.periodization {
@@ -60,8 +77,8 @@ struct DateRangeFormatter {
         if self.startDate.isSameDayAsDate(NSDate()) {
             return "Today"
         } else {
-            DateRangeFormatter.formatter.dateFormat = "EEE, MMM d"
-            return DateRangeFormatter.formatter.stringFromDate(self.startDate)
+            kSharedFormatter.dateFormat = "EEE, MMM d"
+            return kSharedFormatter.stringFromDate(self.startDate)
         }
     }
     
@@ -70,7 +87,7 @@ struct DateRangeFormatter {
         if self.startDate.isSameWeekAsDate(currentDate, whenFirstWeekdayIs: self.startOfWeek.rawValue) {
             return "This week"
         } else {
-            let formatter = DateRangeFormatter.formatter
+            let formatter = kSharedFormatter
             switch (self.startDate.isSameYearAsDate(currentDate), self.endDate.isSameYearAsDate(currentDate)) {
             case (true, true):
                 formatter.dateFormat = "MMM d"
@@ -88,7 +105,7 @@ struct DateRangeFormatter {
             return "This month"
         }
         
-        let formatter = DateRangeFormatter.formatter
+        let formatter = kSharedFormatter
         formatter.dateFormat = "MMM yyyy"
         return formatter.stringFromDate(self.startDate)
     }
@@ -99,7 +116,7 @@ struct DateRangeFormatter {
             return "This year"
         }
         
-        let formatter = DateRangeFormatter.formatter
+        let formatter = kSharedFormatter
         formatter.dateFormat = "yyyy"
         return formatter.stringFromDate(self.startDate)
     }

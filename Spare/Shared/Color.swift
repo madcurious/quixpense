@@ -15,8 +15,29 @@ class Color {
     
     static let White = UIColor.whiteColor()
     static let Black = UIColor.blackColor()
+    static let Hex222222 = UIColor(hex: 0x222222)
+    static let Hex333333 = UIColor(hex: 0x333333)
     
-    // Numbers indicate brightness; smaller = brighter.
+    // MARK: - New colors
+    
+    static let FormFieldLabelTextColor = Gray700
+    static let FormFieldPlaceholderColor = Gray800
+    
+    static let KeypadBackgroundColor = Hex333333
+    
+    
+    static let SegmentedCircleEmptyColor = Gray800
+    static let SeparatorColor = Gray800
+    
+    static let TabBarBackgroundColor = Gray900
+    static let TabButtonIconColor = White
+    static let TabButtonSelectedBackgroundColor = Gray800
+    
+    static let UniversalTextColor = White
+    static let UniversalSecondaryTextColor = Gray700
+    static let UniversalBackgroundColor = Hex222222
+    
+    // MARK: - Old UI Colors
     
     private static let Gray50 = UIColor(hex: 0xf5f5f5)
     private static let Gray100 = UIColor(hex: 0xf0f2f6)
@@ -28,25 +49,6 @@ class Color {
     private static let Gray700 = UIColor(hex: 0x666666)
     private static let Gray800 = UIColor(hex: 0x444444)
     private static let Gray900 = UIColor(hex: 0x191919)
-    
-    // MARK: - New colors
-    
-    static let FormFieldLabelTextColor = Gray700
-    static let FormFieldPlaceholderColor = Gray800
-    
-    static let SegmentedCircleEmptyColor = Gray800
-    
-    static let SeparatorColor = Gray800
-    
-    static let TabBarBackgroundColor = Gray900
-    static let TabButtonIconColor = White
-    static let TabButtonSelectedBackgroundColor = Gray800
-    
-    static let UniversalTextColor = White
-    static let UniversalSecondaryTextColor = Gray700
-    static let UniversalBackgroundColor = Gray900
-    
-    // MARK: - Old UI Colors
     
     static let CustomButtonDisabled = Black
     

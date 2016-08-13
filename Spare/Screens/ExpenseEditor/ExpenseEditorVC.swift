@@ -48,6 +48,129 @@ class ExpenseEditorVC: MDStatefulViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.refreshViewFromModel()
+        
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
+    }
+    
+    override func buildOperation() -> MDOperation? {
+        let op = MDBlockOperation {
+            let fetchRequest = NSFetchRequest(entityName: Category.entityName)
+            guard let categories = try self.managedObjectContext.executeFetchRequest(fetchRequest) as? [Category]
+                else {
+                    throw Error.AppUnknownError
+            }
+            return categories
+            }
+            .onSuccess {[unowned self] (result) in
+                guard let categories = result as? [Category]
+                    else {
+                        return
+                }
+                
+                self.categories = categories
+                self.categoryPickerView.reloadAllComponents()
+                
+                // Upon getting the categories, select the first category by default.
+                if self.expense.category == nil {
+                    self.expense.category = categories.first
+                }
+                
+                self.showView(.Primary)
+                self.refreshViewFromModel()
+        }
+        return op
+    }
+    
+    func reset() {
+        // Reset the model, but leave the date, category, and payment method the same.
+        let previousPaymentMethod = self.expense.paymentMethod
+        
+        let expense = Expense(managedObjectContext: self.managedObjectContext)
+        expense.amount = nil
+        expense.dateSpent = self.datePickerView.date
+        expense.category = self.categories[self.categoryPickerView.selectedRowInComponent(0)]
+        expense.paymentMethod = previousPaymentMethod
+        expense.note = nil
+        self.expense = expense
+        
+        // Update the view.
+        self.refreshViewFromModel()
+    }
+    
+    func refreshViewFromModel() {
+        self.customView.categoryButton.setTitle(md_nonEmptyString(self.expense.category?.name), forState: .Normal)
+        
+        self.customView.dateButton.setTitle(DateFormatter.displayTextForExpenseEditorDate(self.expense.dateSpent), forState: .Normal)
+        
+        self.customView.paymentMethodButton.setTitle(PaymentMethod(self.expense.paymentMethod?.integerValue)?.text, forState: .Normal)
+        
+        self.customView.noteTextField.text = md_nonEmptyString(self.expense.note)
+        
+        self.customView.amountTextField.text = self.expense.amount?.stringValue
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+import UIKit
+import BNRCoreDataStack
+import Mold
+
+class ExpenseEditorVC: MDStatefulViewController {
+    
+    let customView = __EEVCView.instantiateFromNib() as __EEVCView
+    let categoryPickerView = UIPickerView()
+    let datePickerView = UIDatePicker()
+    let dateFormatter = NSDateFormatter()
+    
+    var managedObjectContext: NSManagedObjectContext
+    var expense: Expense
+    var categories = [Category]()
+    
+    init(expense: Expense?) {
+        self.managedObjectContext = App.state.coreDataStack.newBackgroundWorkerMOC()
+        
+        if let objectID = expense?.objectID,
+            let expense = self.managedObjectContext.objectWithID(objectID) as? Expense {
+            self.expense = expense
+        } else {
+            // If adding an expense, by default, the date is the current date and
+            // the payment method is cash.
+            self.expense = Expense(managedObjectContext: self.managedObjectContext)
+            self.expense.dateSpent = NSDate()
+            self.expense.paymentMethod = PaymentMethod.Cash.rawValue
+        }
+        
+        super.init()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func loadView() {
+        self.view = self.customView
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         glb_applyGlobalVCSettings(self)
         
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
@@ -265,3 +388,4 @@ extension ExpenseEditorVC: UITextFieldDelegate {
     }
     
 }
+*/

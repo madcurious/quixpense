@@ -23,7 +23,7 @@ class __SVCGraphView: UICollectionReusableView {
             self.graphView.segmentedCircle.segments = self.summary?.info
             self.graphView.totalLabel.text = glb_displayTextForTotal(self.summary?.total ?? 0)
             if let summary = self.summary {
-                self.graphView.detailLabel.text = DateRangeFormatter.displayTextForSummary(summary)
+                self.graphView.detailLabel.text = DateFormatter.displayTextForSummary(summary)
             }
         }
     }

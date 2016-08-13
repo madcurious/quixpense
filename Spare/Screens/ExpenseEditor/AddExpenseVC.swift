@@ -14,10 +14,6 @@ class AddExpenseVC: BaseFormVC {
     let editor = ExpenseEditorVC(expense: nil)
     let queue = NSOperationQueue()
     
-    override var formScrollView: UIScrollView {
-        return self.editor.customView.scrollView
-    }
-    
     init() {
         super.init(nibName: nil, bundle: nil)
         self.title = "Add Expense"

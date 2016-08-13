@@ -78,7 +78,7 @@ class ExpenseListVCBordered: UIViewController {
         self.customView.colorExtender.backgroundColor = category.color
         self.headerView.backgroundColor = category.color
         self.headerView.nameLabel.text = categoryName
-        let dateRangeText = DateRangeFormatter.displayTextForStartDate(self.startDate, endDate: self.endDate)
+        let dateRangeText = DateFormatter.displayTextForStartDate(self.startDate, endDate: self.endDate)
         let totalText = glb_displayTextForTotal({[unowned self] in
             if let expenses = self.expenses {
                 return glb_totalOfExpenses(expenses)
