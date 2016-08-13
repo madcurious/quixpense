@@ -10,6 +10,10 @@ import UIKit
 import BNRCoreDataStack
 import Mold
 
+private enum ViewID: String {
+    case KeypadCell = "KeypadCell"
+}
+
 class ExpenseEditorVC: MDStatefulViewController {
     
     let customView = __EEVCView.instantiateFromNib() as __EEVCView
@@ -20,6 +24,8 @@ class ExpenseEditorVC: MDStatefulViewController {
     var managedObjectContext: NSManagedObjectContext
     var expense: Expense
     var categories = [Category]()
+    
+    let keys = ["1", "2", "3", "4", "5", "6", "7", "8", "9", ".", "0", Icon.ExpenseEditorBackspace.rawValue]
     
     init(expense: Expense?) {
         self.managedObjectContext = App.state.coreDataStack.newBackgroundWorkerMOC()
@@ -52,6 +58,10 @@ class ExpenseEditorVC: MDStatefulViewController {
         self.refreshViewFromModel()
         
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
+        
+        self.customView.keypadCollectionView.dataSource = self
+        self.customView.keypadCollectionView.delegate = self
+        self.customView.keypadCollectionView.registerClass(__EEVCKeypadCell.self, forCellWithReuseIdentifier: ViewID.KeypadCell.rawValue)
     }
     
     override func buildOperation() -> MDOperation? {
@@ -113,8 +123,45 @@ class ExpenseEditorVC: MDStatefulViewController {
     
 }
 
+extension ExpenseEditorVC: UICollectionViewDataSource {
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.keys.count
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(ViewID.KeypadCell.rawValue, forIndexPath: indexPath) as! __EEVCKeypadCell
+        cell.text = self.keys[indexPath.item]
+        return cell
+    }
+    
+}
 
+extension ExpenseEditorVC: UICollectionViewDelegate {
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        
+    }
+    
+}
 
+extension ExpenseEditorVC: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        let width = collectionView.bounds.size.width / 3
+        let height = collectionView.bounds.size.height / 4
+        return CGSizeMake(width, height)
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return 0
+    }
+    
+}
 
 
 

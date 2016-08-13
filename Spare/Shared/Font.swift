@@ -20,6 +20,7 @@ final class Font {
     
     static let ExpenseEditorCurrencyLabel = Font.make(.Heavy, 40)
     static let ExpenseEditorAmountValue = Font.make(.Heavy, 40)
+    static let ExpenseEditorKeypadText = Font.make(.Heavy, 36)
     
     static let FieldLabel = Font.make(.Heavy, 14)
     static let FieldValue = Font.make(.Medium, 20)

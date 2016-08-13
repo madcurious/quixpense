@@ -62,6 +62,7 @@ class __EEVCView: UIView {
         self.noteTextField.font = Font.FieldValue
         self.noteTextField.textColor = Color.FieldValueTextColor
         self.noteTextField.attributedPlaceholder = NSAttributedString(string: "(Optional)", font: Font.FieldValue, textColor: Color.FieldPlaceholderTextColor)
+        self.noteTextField.adjustsFontSizeToFitWidth = false
         
         self.currencyLabel.textColor = Color.FieldLabelTextColor
         self.currencyLabel.text = "PHP"
@@ -72,6 +73,8 @@ class __EEVCView: UIView {
         self.amountTextField.font = Font.ExpenseEditorAmountValue
         self.amountTextField.textAlignment = .Right
         self.amountTextField.attributedPlaceholder = NSAttributedString(string: "0", font: Font.ExpenseEditorAmountValue, textColor: Color.FieldValueTextColor)
+        
+        self.keypadCollectionView.scrollEnabled = false
     }
     
 }

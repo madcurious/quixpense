@@ -32,6 +32,8 @@
 		261AF6341D5F395200E03A48 /* Avenir-MediumOblique.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 261AF6281D5F395200E03A48 /* Avenir-MediumOblique.ttf */; };
 		261AF6351D5F395200E03A48 /* Avenir-Oblique.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 261AF6291D5F395200E03A48 /* Avenir-Oblique.ttf */; };
 		261AF6361D5F395200E03A48 /* Avenir-Roman.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 261AF62A1D5F395200E03A48 /* Avenir-Roman.ttf */; };
+		261AF6381D5F409D00E03A48 /* spare-v2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 261AF6371D5F409D00E03A48 /* spare-v2.ttf */; };
+		261AF63C1D5F41F500E03A48 /* __EEVCKeypadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261AF63B1D5F41F500E03A48 /* __EEVCKeypadCell.swift */; };
 		261D54A61D4AFB5700F4FCC6 /* ExpenseListVCBordered.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261D54A51D4AFB5700F4FCC6 /* ExpenseListVCBordered.swift */; };
 		261D54A81D4AFBA700F4FCC6 /* __ELVCBView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261D54A71D4AFBA700F4FCC6 /* __ELVCBView.swift */; };
 		261D54AA1D4AFC1800F4FCC6 /* __ELVCBView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 261D54A91D4AFC1800F4FCC6 /* __ELVCBView.xib */; };
@@ -49,7 +51,6 @@
 		2628DF7D1D3F8D2300FB40C5 /* SummaryVC2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2628DF7C1D3F8D2300FB40C5 /* SummaryVC2.swift */; };
 		262F839B1CCE3E5300EDDDEE /* LoadAppVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262F839A1CCE3E5300EDDDEE /* LoadAppVC.swift */; };
 		262F839D1CCE3E6C00EDDDEE /* LoadAppOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262F839C1CCE3E6C00EDDDEE /* LoadAppOperation.swift */; };
-		263005611D4F5BAE00AC3060 /* spare-v2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 263005601D4F5BAE00AC3060 /* spare-v2.ttf */; };
 		263005641D4F8E9000AC3060 /* StatefulVCRetryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263005621D4F8E9000AC3060 /* StatefulVCRetryView.swift */; };
 		263005651D4F8E9000AC3060 /* StatefulVCRetryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 263005631D4F8E9000AC3060 /* StatefulVCRetryView.xib */; };
 		2651467A1D4218B3000847F5 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265146791D4218B3000847F5 /* HomeVC.swift */; };
@@ -200,6 +201,8 @@
 		261AF6281D5F395200E03A48 /* Avenir-MediumOblique.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Avenir-MediumOblique.ttf"; sourceTree = "<group>"; };
 		261AF6291D5F395200E03A48 /* Avenir-Oblique.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Avenir-Oblique.ttf"; sourceTree = "<group>"; };
 		261AF62A1D5F395200E03A48 /* Avenir-Roman.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Avenir-Roman.ttf"; sourceTree = "<group>"; };
+		261AF6371D5F409D00E03A48 /* spare-v2.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "spare-v2.ttf"; sourceTree = "<group>"; };
+		261AF63B1D5F41F500E03A48 /* __EEVCKeypadCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __EEVCKeypadCell.swift; sourceTree = "<group>"; };
 		261D54A51D4AFB5700F4FCC6 /* ExpenseListVCBordered.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseListVCBordered.swift; sourceTree = "<group>"; };
 		261D54A71D4AFBA700F4FCC6 /* __ELVCBView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __ELVCBView.swift; sourceTree = "<group>"; };
 		261D54A91D4AFC1800F4FCC6 /* __ELVCBView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __ELVCBView.xib; sourceTree = "<group>"; };
@@ -217,7 +220,6 @@
 		2628DF7C1D3F8D2300FB40C5 /* SummaryVC2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryVC2.swift; sourceTree = "<group>"; };
 		262F839A1CCE3E5300EDDDEE /* LoadAppVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadAppVC.swift; sourceTree = "<group>"; };
 		262F839C1CCE3E6C00EDDDEE /* LoadAppOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadAppOperation.swift; sourceTree = "<group>"; };
-		263005601D4F5BAE00AC3060 /* spare-v2.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "spare-v2.ttf"; sourceTree = "<group>"; };
 		263005621D4F8E9000AC3060 /* StatefulVCRetryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatefulVCRetryView.swift; sourceTree = "<group>"; };
 		263005631D4F8E9000AC3060 /* StatefulVCRetryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatefulVCRetryView.xib; sourceTree = "<group>"; };
 		265146791D4218B3000847F5 /* HomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeVC.swift; path = old/HomeVC.swift; sourceTree = "<group>"; };
@@ -400,6 +402,7 @@
 		261370A91CD7A114007BAF56 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				261AF6371D5F409D00E03A48 /* spare-v2.ttf */,
 				261AF61F1D5F395200E03A48 /* Avenir-Black.ttf */,
 				261AF6201D5F395200E03A48 /* Avenir-BlackOblique.ttf */,
 				261AF6211D5F395200E03A48 /* Avenir-Book.ttf */,
@@ -412,7 +415,6 @@
 				261AF6281D5F395200E03A48 /* Avenir-MediumOblique.ttf */,
 				261AF6291D5F395200E03A48 /* Avenir-Oblique.ttf */,
 				261AF62A1D5F395200E03A48 /* Avenir-Roman.ttf */,
-				263005601D4F5BAE00AC3060 /* spare-v2.ttf */,
 				268BBDA41D08E99C005C6BD8 /* Lato-Black.ttf */,
 				268BBDA51D08E99C005C6BD8 /* Lato-BlackItalic.ttf */,
 				268BBDA61D08E99C005C6BD8 /* Lato-Bold.ttf */,
@@ -603,6 +605,7 @@
 				266CBDB31D2676D900F5D5D1 /* EditExpenseVC.swift */,
 				261AF61B1D5F255000E03A48 /* __EEVCView.swift */,
 				261AF61D1D5F257900E03A48 /* __EEVCView.xib */,
+				261AF63B1D5F41F500E03A48 /* __EEVCKeypadCell.swift */,
 			);
 			path = ExpenseEditor;
 			sourceTree = "<group>";
@@ -766,6 +769,7 @@
 				261AF6351D5F395200E03A48 /* Avenir-Oblique.ttf in Resources */,
 				268BBDB71D08E99C005C6BD8 /* Lato-Regular.ttf in Resources */,
 				26E6EDB41CDBA6C60034EEDE /* AddButtonProgressView.xib in Resources */,
+				261AF6381D5F409D00E03A48 /* spare-v2.ttf in Resources */,
 				2669468A1CC7711000A68424 /* Images.xcassets in Resources */,
 				261AF62F1D5F395200E03A48 /* Avenir-Heavy.ttf in Resources */,
 				26EFA00F1CD9E00200714E5D /* MainTabBar.xib in Resources */,
@@ -783,7 +787,6 @@
 				26C034E61D4B11410064187F /* __ELVCBCell.xib in Resources */,
 				261AF62E1D5F395200E03A48 /* Avenir-BookOblique.ttf in Resources */,
 				261AF62C1D5F395200E03A48 /* Avenir-BlackOblique.ttf in Resources */,
-				263005611D4F5BAE00AC3060 /* spare-v2.ttf in Resources */,
 				268BBDB21D08E99C005C6BD8 /* Lato-Hairline.ttf in Resources */,
 				261D54AA1D4AFC1800F4FCC6 /* __ELVCBView.xib in Resources */,
 				268BBDAF1D08E99C005C6BD8 /* Lato-BlackItalic.ttf in Resources */,
@@ -910,6 +913,7 @@
 				2682125A1D4A242B0041078F /* GraphView.swift in Sources */,
 				269D49F81CE1610100109990 /* ExpenseEditorVC.swift in Sources */,
 				26C034E41D4B0FE10064187F /* __ELVCBCell.swift in Sources */,
+				261AF63C1D5F41F500E03A48 /* __EEVCKeypadCell.swift in Sources */,
 				26FF031A1D2BBB8D00BA74FD /* BaseNavBarVC.swift in Sources */,
 				2687FA401D0F96D100D544F5 /* Periodization.swift in Sources */,
 				26BC4F961CE429AE0011BE98 /* ValidateExpenseOperation.swift in Sources */,
