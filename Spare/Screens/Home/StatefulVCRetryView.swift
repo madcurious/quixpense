@@ -33,7 +33,7 @@ class StatefulVCRetryView: MDRetryView {
         super.awakeFromNib()
         UIView.clearBackgroundColors(self, self.labelContainer)
         
-        self.iconLabel.font = Font.icon(160)
+        self.iconLabel.font = Font.icon(150)
         self.iconLabel.text = Icon.NoCategories.rawValue
         self.iconLabel.textColor = Color.UniversalSecondaryTextColor
         self.iconLabel.textAlignment = .Center
