@@ -17,9 +17,6 @@ private enum ViewID: String {
 class ExpenseEditorVC: MDStatefulViewController {
     
     let customView = __EEVCView.instantiateFromNib() as __EEVCView
-    let categoryPickerView = UIPickerView()
-    let datePickerView = UIDatePicker()
-    let dateFormatter = NSDateFormatter()
     
     var managedObjectContext: NSManagedObjectContext
     var expense: Expense
@@ -80,11 +77,11 @@ class ExpenseEditorVC: MDStatefulViewController {
                 }
                 
                 self.categories = categories
-                self.categoryPickerView.reloadAllComponents()
                 
                 // Upon getting the categories, select the first category by default.
                 if self.expense.category == nil {
-                    self.expense.category = categories.first
+//                    self.expense.category = categories.first
+                    self.expense.category = categories[1]
                 }
                 
                 self.showView(.Primary)
@@ -95,12 +92,14 @@ class ExpenseEditorVC: MDStatefulViewController {
     
     func reset() {
         // Reset the model, but leave the date, category, and payment method the same.
+        let previousDate = self.expense.dateSpent
+        let previousCategory = self.expense.category
         let previousPaymentMethod = self.expense.paymentMethod
         
         let expense = Expense(managedObjectContext: self.managedObjectContext)
         expense.amount = nil
-        expense.dateSpent = self.datePickerView.date
-        expense.category = self.categories[self.categoryPickerView.selectedRowInComponent(0)]
+        expense.dateSpent = previousDate
+        expense.category = previousCategory
         expense.paymentMethod = previousPaymentMethod
         expense.note = nil
         self.expense = expense

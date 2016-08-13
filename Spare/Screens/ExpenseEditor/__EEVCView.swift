@@ -29,7 +29,7 @@ class __EEVCView: UIView {
     
     @IBOutlet weak var keypadCollectionView: UICollectionView!
     
-    @IBOutlet weak var fieldContainerHeight: NSLayoutConstraint!
+    @IBOutlet weak var singleFieldBoxHeight: NSLayoutConstraint!
     @IBOutlet weak var currencyLabelHeight: NSLayoutConstraint!
     
     override func awakeFromNib() {
@@ -52,16 +52,27 @@ class __EEVCView: UIView {
             let label = self.fieldLabels[i]
             label.textAlignment = .Right
             label.textColor = Color.FieldLabelTextColor
-            label.font = Font.FieldLabel
+            label.font = {
+                if MDScreen.currentScreenIs(.iPhone4S) {
+                    return Font.FieldLabel.fontWithSize(12)
+                }
+                return Font.FieldLabel
+            }()
             label.text = labels[i]
         }
         
         let buttons = [self.categoryButton, self.dateButton, self.paymentMethodButton]
         for button in buttons {
             button.tintColor = Color.FieldValueTextColor
-            button.titleLabel?.font = Font.FieldValue
+            button.titleLabel?.font = {
+                if MDScreen.currentScreenIs(.iPhone4S) {
+                    return Font.FieldValue.fontWithSize(17)
+                }
+                return Font.FieldValue
+            }()
             button.contentHorizontalAlignment = .Left
-            button.titleLabel?.adjustsFontSizeToFitWidth = true
+            button.titleLabel?.numberOfLines = 1
+            button.titleLabel?.lineBreakMode = .ByTruncatingTail
         }
         
         self.noteTextField.font = Font.FieldValue
@@ -87,9 +98,9 @@ class __EEVCView: UIView {
     }
     
     override func updateConstraints() {
-        self.fieldContainerHeight.constant = {
+        self.singleFieldBoxHeight.constant = {
             if MDScreen.currentScreenIs(.iPhone4S) {
-                return self.topContainer.bounds.size.height / 4
+                return 40
             }
             return 50
         }()
