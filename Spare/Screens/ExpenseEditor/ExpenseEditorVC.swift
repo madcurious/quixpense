@@ -71,6 +71,8 @@ class ExpenseEditorVC: MDStatefulViewController {
         self.customView.keypadCollectionView.dataSource = self
         self.customView.keypadCollectionView.delegate = self
         self.customView.keypadCollectionView.registerClass(__EEVCKeypadCell.self, forCellWithReuseIdentifier: ViewID.KeypadCell.rawValue)
+        
+        self.customView.categoryButton.addTarget(self, action: #selector(handleTapOnCategoryButton), forControlEvents: .TouchUpInside)
     }
     
     override func buildOperation() -> MDOperation? {
@@ -182,6 +184,18 @@ class ExpenseEditorVC: MDStatefulViewController {
         
         self.unformattedAmount += key
         self.refreshAmountDisplay()
+    }
+    
+}
+
+// MARK: - Target actions
+
+extension ExpenseEditorVC {
+    
+    func handleTapOnCategoryButton() {
+        let customPicker = CustomPickerVC()
+        customPicker.modalPresentationStyle = .Custom
+        self.presentViewController(customPicker, animated: true, completion: nil)
     }
     
 }
