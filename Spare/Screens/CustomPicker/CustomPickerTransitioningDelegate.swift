@@ -15,7 +15,7 @@ class CustomPickerTransitioningDelegate: NSObject, UIViewControllerTransitioning
     }
     
     func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return nil
+        return CustomPickerDismissalAnimator()
     }
     
 }

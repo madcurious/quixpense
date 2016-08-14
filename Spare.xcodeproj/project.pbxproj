@@ -116,6 +116,7 @@
 		268F48161D60D3490088AC6B /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F480B1D60D3490088AC6B /* Strings.swift */; };
 		268F48171D60D3490088AC6B /* Summary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F480C1D60D3490088AC6B /* Summary.swift */; };
 		268F48191D60D3DE0088AC6B /* CustomPickerTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F48181D60D3DE0088AC6B /* CustomPickerTransitioningDelegate.swift */; };
+		268F481E1D60DE020088AC6B /* CustomPickerDismissalAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F481D1D60DE020088AC6B /* CustomPickerDismissalAnimator.swift */; };
 		269D49F21CE1610100109990 /* __CEVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269D49EA1CE1610100109990 /* __CEVCView.swift */; };
 		269D49F31CE1610100109990 /* __CEVCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 269D49EB1CE1610100109990 /* __CEVCView.xib */; };
 		269D49F41CE1610100109990 /* CategoryEditorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269D49EC1CE1610100109990 /* CategoryEditorVC.swift */; };
@@ -299,6 +300,7 @@
 		268F480B1D60D3490088AC6B /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		268F480C1D60D3490088AC6B /* Summary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Summary.swift; sourceTree = "<group>"; };
 		268F48181D60D3DE0088AC6B /* CustomPickerTransitioningDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPickerTransitioningDelegate.swift; sourceTree = "<group>"; };
+		268F481D1D60DE020088AC6B /* CustomPickerDismissalAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPickerDismissalAnimator.swift; sourceTree = "<group>"; };
 		269D49EA1CE1610100109990 /* __CEVCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __CEVCView.swift; sourceTree = "<group>"; };
 		269D49EB1CE1610100109990 /* __CEVCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __CEVCView.xib; sourceTree = "<group>"; };
 		269D49EC1CE1610100109990 /* CategoryEditorVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryEditorVC.swift; sourceTree = "<group>"; };
@@ -605,6 +607,7 @@
 				268F47F31D60D24D0088AC6B /* CustomPickerVC.swift */,
 				268F47FD1D60D2900088AC6B /* CustomPickerPresentationAnimator.swift */,
 				268F48181D60D3DE0088AC6B /* CustomPickerTransitioningDelegate.swift */,
+				268F481D1D60DE020088AC6B /* CustomPickerDismissalAnimator.swift */,
 			);
 			path = CustomPicker;
 			sourceTree = "<group>";
@@ -981,6 +984,7 @@
 				26EFA0031CD9C8F100714E5D /* MainContainerVC.swift in Sources */,
 				26EFA00D1CD9DFF900714E5D /* MainTabBar.swift in Sources */,
 				268F48111D60D3490088AC6B /* Font.swift in Sources */,
+				268F481E1D60DE020088AC6B /* CustomPickerDismissalAnimator.swift in Sources */,
 				2651467A1D4218B3000847F5 /* HomeVC.swift in Sources */,
 				268F48191D60D3DE0088AC6B /* CustomPickerTransitioningDelegate.swift in Sources */,
 				266408CC1D4A924400609580 /* __ELVCBEmptyView.swift in Sources */,
