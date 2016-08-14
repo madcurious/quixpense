@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import Mold
 
 class __CPVCView: UIView {
     
     @IBOutlet weak var dimView: UIView!
     @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -21,6 +24,14 @@ class __CPVCView: UIView {
         self.tableView.backgroundColor = UIColor.whiteColor()
         
         self.dimView.alpha = 0.7
+        
+        self.tableView.separatorStyle = .None
+    }
+    
+    override func updateConstraints() {
+        self.tableView.layoutIfNeeded()
+        self.tableViewHeight.constant = min(300, self.tableView.contentSize.height)
+        super.updateConstraints()
     }
     
 }

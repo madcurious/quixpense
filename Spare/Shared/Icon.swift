@@ -11,6 +11,7 @@ import Foundation
 enum Icon: String {
     
     case Back = "w"
+    case Check = "g"
     case DisclosureIndicator = "v"
     case Empty = "h"
     case ExpenseEditorBackspace = "e"

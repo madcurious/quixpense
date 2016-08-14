@@ -189,17 +189,20 @@ class ExpenseEditorVC: MDStatefulViewController {
 }
 
 // MARK: - Target actions
-
 extension ExpenseEditorVC {
     
     func handleTapOnCategoryButton() {
         let customPicker = CustomPickerVC()
+        let delegate = CategoryPickerDelegate(categories: self.categories)
+        customPicker.dataSource = delegate
+        customPicker.delegate = delegate
         customPicker.modalPresentationStyle = .Custom
         self.presentViewController(customPicker, animated: true, completion: nil)
     }
     
 }
 
+// MARK: - UICollectionViewDataSource
 extension ExpenseEditorVC: UICollectionViewDataSource {
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -214,6 +217,7 @@ extension ExpenseEditorVC: UICollectionViewDataSource {
     
 }
 
+// MARK: - UICollectionViewDelegate
 extension ExpenseEditorVC: UICollectionViewDelegate {
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
@@ -240,6 +244,7 @@ extension ExpenseEditorVC: UICollectionViewDelegate {
     
 }
 
+// MARK: - UICollectionViewDelegateFlowLayout
 extension ExpenseEditorVC: UICollectionViewDelegateFlowLayout {
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {

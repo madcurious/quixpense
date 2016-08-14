@@ -14,11 +14,11 @@
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OfN-TK-3sL">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OfN-TK-3sL" customClass="__CPVCTableView" customModule="Spare" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="300" width="600" height="300"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="300" id="j3t-Vn-6ex"/>
+                        <constraint firstAttribute="height" constant="300" id="5yf-mM-MyS"/>
                     </constraints>
                 </tableView>
             </subviews>
@@ -35,6 +35,7 @@
             <connections>
                 <outlet property="dimView" destination="Unp-80-Vez" id="fnt-ig-8mo"/>
                 <outlet property="tableView" destination="OfN-TK-3sL" id="j1l-iN-onA"/>
+                <outlet property="tableViewHeight" destination="5yf-mM-MyS" id="mCC-wv-sP2"/>
             </connections>
         </view>
     </objects>

@@ -32,7 +32,6 @@
 		261AF6341D5F395200E03A48 /* Avenir-MediumOblique.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 261AF6281D5F395200E03A48 /* Avenir-MediumOblique.ttf */; };
 		261AF6351D5F395200E03A48 /* Avenir-Oblique.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 261AF6291D5F395200E03A48 /* Avenir-Oblique.ttf */; };
 		261AF6361D5F395200E03A48 /* Avenir-Roman.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 261AF62A1D5F395200E03A48 /* Avenir-Roman.ttf */; };
-		261AF6381D5F409D00E03A48 /* spare-v2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 261AF6371D5F409D00E03A48 /* spare-v2.ttf */; };
 		261AF63C1D5F41F500E03A48 /* __EEVCKeypadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261AF63B1D5F41F500E03A48 /* __EEVCKeypadCell.swift */; };
 		261D54A61D4AFB5700F4FCC6 /* ExpenseListVCBordered.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261D54A51D4AFB5700F4FCC6 /* ExpenseListVCBordered.swift */; };
 		261D54A81D4AFBA700F4FCC6 /* __ELVCBView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261D54A71D4AFBA700F4FCC6 /* __ELVCBView.swift */; };
@@ -107,6 +106,10 @@
 		268F47DD1D6095DD0088AC6B /* CustomPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F47DC1D6095DD0088AC6B /* CustomPickerVC.swift */; };
 		268F47DF1D6095F00088AC6B /* __CPVCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 268F47DE1D6095F00088AC6B /* __CPVCView.xib */; };
 		268F47E11D6096780088AC6B /* __CPVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F47E01D6096780088AC6B /* __CPVCView.swift */; };
+		268F47E31D609A440088AC6B /* CategoryPickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F47E21D609A440088AC6B /* CategoryPickerDelegate.swift */; };
+		268F47E51D609AA40088AC6B /* CustomPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F47E41D609AA40088AC6B /* CustomPickerCell.swift */; };
+		268F47E71D609AC00088AC6B /* CustomPickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 268F47E61D609AC00088AC6B /* CustomPickerCell.xib */; };
+		268F47E91D609C820088AC6B /* spare-v2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 268F47E81D609C820088AC6B /* spare-v2.ttf */; };
 		269D49F21CE1610100109990 /* __CEVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269D49EA1CE1610100109990 /* __CEVCView.swift */; };
 		269D49F31CE1610100109990 /* __CEVCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 269D49EB1CE1610100109990 /* __CEVCView.xib */; };
 		269D49F41CE1610100109990 /* CategoryEditorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269D49EC1CE1610100109990 /* CategoryEditorVC.swift */; };
@@ -203,7 +206,6 @@
 		261AF6281D5F395200E03A48 /* Avenir-MediumOblique.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Avenir-MediumOblique.ttf"; sourceTree = "<group>"; };
 		261AF6291D5F395200E03A48 /* Avenir-Oblique.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Avenir-Oblique.ttf"; sourceTree = "<group>"; };
 		261AF62A1D5F395200E03A48 /* Avenir-Roman.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Avenir-Roman.ttf"; sourceTree = "<group>"; };
-		261AF6371D5F409D00E03A48 /* spare-v2.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "spare-v2.ttf"; sourceTree = "<group>"; };
 		261AF63B1D5F41F500E03A48 /* __EEVCKeypadCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __EEVCKeypadCell.swift; sourceTree = "<group>"; };
 		261D54A51D4AFB5700F4FCC6 /* ExpenseListVCBordered.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseListVCBordered.swift; sourceTree = "<group>"; };
 		261D54A71D4AFBA700F4FCC6 /* __ELVCBView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __ELVCBView.swift; sourceTree = "<group>"; };
@@ -282,6 +284,10 @@
 		268F47DC1D6095DD0088AC6B /* CustomPickerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPickerVC.swift; sourceTree = "<group>"; };
 		268F47DE1D6095F00088AC6B /* __CPVCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __CPVCView.xib; sourceTree = "<group>"; };
 		268F47E01D6096780088AC6B /* __CPVCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __CPVCView.swift; sourceTree = "<group>"; };
+		268F47E21D609A440088AC6B /* CategoryPickerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerDelegate.swift; sourceTree = "<group>"; };
+		268F47E41D609AA40088AC6B /* CustomPickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPickerCell.swift; sourceTree = "<group>"; };
+		268F47E61D609AC00088AC6B /* CustomPickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomPickerCell.xib; sourceTree = "<group>"; };
+		268F47E81D609C820088AC6B /* spare-v2.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "spare-v2.ttf"; sourceTree = "<group>"; };
 		269D49EA1CE1610100109990 /* __CEVCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __CEVCView.swift; sourceTree = "<group>"; };
 		269D49EB1CE1610100109990 /* __CEVCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __CEVCView.xib; sourceTree = "<group>"; };
 		269D49EC1CE1610100109990 /* CategoryEditorVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryEditorVC.swift; sourceTree = "<group>"; };
@@ -406,7 +412,7 @@
 		261370A91CD7A114007BAF56 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				261AF6371D5F409D00E03A48 /* spare-v2.ttf */,
+				268F47E81D609C820088AC6B /* spare-v2.ttf */,
 				261AF61F1D5F395200E03A48 /* Avenir-Black.ttf */,
 				261AF6201D5F395200E03A48 /* Avenir-BlackOblique.ttf */,
 				261AF6211D5F395200E03A48 /* Avenir-Book.ttf */,
@@ -612,6 +618,9 @@
 				268F47DC1D6095DD0088AC6B /* CustomPickerVC.swift */,
 				268F47DE1D6095F00088AC6B /* __CPVCView.xib */,
 				268F47E01D6096780088AC6B /* __CPVCView.swift */,
+				268F47E21D609A440088AC6B /* CategoryPickerDelegate.swift */,
+				268F47E41D609AA40088AC6B /* CustomPickerCell.swift */,
+				268F47E61D609AC00088AC6B /* CustomPickerCell.xib */,
 			);
 			path = ExpenseEditor;
 			sourceTree = "<group>";
@@ -776,7 +785,6 @@
 				261AF6351D5F395200E03A48 /* Avenir-Oblique.ttf in Resources */,
 				268BBDB71D08E99C005C6BD8 /* Lato-Regular.ttf in Resources */,
 				26E6EDB41CDBA6C60034EEDE /* AddButtonProgressView.xib in Resources */,
-				261AF6381D5F409D00E03A48 /* spare-v2.ttf in Resources */,
 				2669468A1CC7711000A68424 /* Images.xcassets in Resources */,
 				261AF62F1D5F395200E03A48 /* Avenir-Heavy.ttf in Resources */,
 				26EFA00F1CD9E00200714E5D /* MainTabBar.xib in Resources */,
@@ -784,6 +792,7 @@
 				268BBDB31D08E99C005C6BD8 /* Lato-HairlineItalic.ttf in Resources */,
 				261AF6311D5F395200E03A48 /* Avenir-Light.ttf in Resources */,
 				268BBDB41D08E99C005C6BD8 /* Lato-Italic.ttf in Resources */,
+				268F47E91D609C820088AC6B /* spare-v2.ttf in Resources */,
 				261AF6301D5F395200E03A48 /* Avenir-HeavyOblique.ttf in Resources */,
 				268BBDB51D08E99C005C6BD8 /* Lato-Light.ttf in Resources */,
 				261AF6321D5F395200E03A48 /* Avenir-LightOblique.ttf in Resources */,
@@ -805,6 +814,7 @@
 				268212601D4A2DEF0041078F /* __SVCGraphView.xib in Resources */,
 				266946851CC7711000A68424 /* InfoPlist.strings in Resources */,
 				269D49F31CE1610100109990 /* __CEVCView.xib in Resources */,
+				268F47E71D609AC00088AC6B /* CustomPickerCell.xib in Resources */,
 				266946831CC7711000A68424 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -908,6 +918,7 @@
 				268F47DD1D6095DD0088AC6B /* CustomPickerVC.swift in Sources */,
 				266408B41D4A571400609580 /* PeriodizationButton.swift in Sources */,
 				260024151CC7E5F300EB2026 /* SettingsVC.swift in Sources */,
+				268F47E31D609A440088AC6B /* CategoryPickerDelegate.swift in Sources */,
 				26EFA0071CD9C92F00714E5D /* __MCVCView.swift in Sources */,
 				2687FA351D0EC2E900D544F5 /* PaymentMethod.swift in Sources */,
 				260308391D2A990A0094B4D2 /* DateFormatter.swift in Sources */,
@@ -925,6 +936,7 @@
 				26FF031A1D2BBB8D00BA74FD /* BaseNavBarVC.swift in Sources */,
 				2687FA401D0F96D100D544F5 /* Periodization.swift in Sources */,
 				26BC4F961CE429AE0011BE98 /* ValidateExpenseOperation.swift in Sources */,
+				268F47E51D609AA40088AC6B /* CustomPickerCell.swift in Sources */,
 				269D49F51CE1610100109990 /* HRColorMapView.swift in Sources */,
 				2603F8CE1CCA4C10007F311F /* Expense+CoreDataProperties.swift in Sources */,
 				2669468F1CC7711000A68424 /* Spare.xcdatamodeld in Sources */,

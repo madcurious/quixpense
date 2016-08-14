@@ -10,6 +10,11 @@ import UIKit
 
 class CustomPickerVC: UIViewController {
     
+    enum ViewID: String {
+        case Header = "Header"
+        case ItemCell = "ItemCell"
+    }
+    
     let customView = __CPVCView.instantiateFromNib() as __CPVCView
     
     var dataSource: UITableViewDataSource? {
@@ -34,6 +39,9 @@ class CustomPickerVC: UIViewController {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapOnDimView))
         tapGesture.cancelsTouchesInView = false
         self.customView.dimView.addGestureRecognizer(tapGesture)
+        
+        self.customView.tableView.estimatedRowHeight = 50
+        self.customView.tableView.registerNib(CustomPickerCell.nib(), forCellReuseIdentifier: ViewID.ItemCell.rawValue)
     }
     
     func handleTapOnDimView() {

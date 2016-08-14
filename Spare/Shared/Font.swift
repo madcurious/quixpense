@@ -20,6 +20,8 @@ final class Font {
     
     static let AnySize = CGFloat(18)
     
+    static let CustomPickerText = Font.make(.Medium, 20)
+    
     static let ExpenseEditorCurrencyLabel = Font.make(.Heavy, AnySize)
     static let ExpenseEditorAmountValue = Font.make(.Heavy, AnySize)
     static let ExpenseEditorKeypadText = Font.make(.Heavy, AnySize)
