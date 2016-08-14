@@ -29,6 +29,8 @@ class ExpenseEditorVC: MDStatefulViewController {
     let amountFormatter = NSNumberFormatter()
     var unformattedAmount = ""
     
+    let customPickerAnimator = CustomPickerTransitioningDelegate()
+    
     init(expense: Expense?) {
         self.managedObjectContext = App.state.coreDataStack.newBackgroundWorkerMOC()
         
@@ -197,6 +199,7 @@ extension ExpenseEditorVC {
         customPicker.dataSource = delegate
         customPicker.delegate = delegate
         customPicker.modalPresentationStyle = .Custom
+        customPicker.transitioningDelegate = self.customPickerAnimator
         self.presentViewController(customPicker, animated: true, completion: nil)
     }
     

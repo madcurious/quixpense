@@ -20,11 +20,12 @@ class Color {
     static let Hex333333 = UIColor(hex: 0x333333)
     static let Hex4e4e4e = UIColor(hex: 0x4e4e4e)
     static let Hex666666 = UIColor(hex: 0x666666)
+    static let Hexaaaaaa = UIColor(hex: 0xaaaaaa)
     static let White = UIColor.whiteColor()
     
     // MARK: - New colors
     
-    static let CustomPickerHeaderTextColor = Hex666666
+    static let CustomPickerHeaderTextColor = Hexaaaaaa
     static let CustomPickerItemTextColor = Hex111111
     
     static let FieldLabelTextColor = Hex666666

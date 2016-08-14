@@ -14,6 +14,7 @@ class __CPVCView: UIView {
     @IBOutlet weak var dimView: UIView!
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var tableViewBottom: NSLayoutConstraint!
     @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
     
     override func awakeFromNib() {
