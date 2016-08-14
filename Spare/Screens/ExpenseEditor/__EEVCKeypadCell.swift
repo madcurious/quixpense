@@ -26,6 +26,12 @@ class __EEVCKeypadCell: UICollectionViewCell {
         }
     }
     
+    override var highlighted: Bool {
+        didSet {
+            self.backgroundColor = self.highlighted ? Color.KeypadHighlightedBackgroundColor : Color.KeypadBackgroundColor
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
