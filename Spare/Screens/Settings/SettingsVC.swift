@@ -46,7 +46,7 @@ class SettingsVC: UIViewController {
         glb_applyGlobalVCSettings(self)
         self.edgesForExtendedLayout = .Bottom
         
-        self.tableView.backgroundColor = Color.ScreenBackgroundColorLightGray
+        self.tableView.backgroundColor = Color.UniversalBackgroundColor
         self.view.addSubviewAndFill(self.tableView)
         self.tableView.dataSource = self
         self.tableView.delegate = self

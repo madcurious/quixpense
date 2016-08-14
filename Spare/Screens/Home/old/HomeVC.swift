@@ -50,7 +50,7 @@ class HomeVC: MDStatefulViewController {
         
         self.showView(.Loading)
         
-        self.noResultsView.backgroundColor = Color.ScreenBackgroundColorLightGray
+        self.noResultsView.backgroundColor = Color.UniversalBackgroundColor
         
         self.periodizationButton.addTarget(self, action: #selector(handleSelectionOfPeriodization), forControlEvents: .ValueChanged)
         self.navigationItem.titleView = self.periodizationButton

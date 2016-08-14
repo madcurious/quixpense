@@ -58,7 +58,7 @@ class __CEVCView: UIView {
         super.awakeFromNib()
         
         UIView.clearBackgroundColors(self.scrollView, self.contentView, self.colorMapExtendedArea, self.colorMapContainer, self.sliderContainer, self.sliderTrackContainer)
-        self.backgroundColor = Color.ScreenBackgroundColorLightGray
+        self.backgroundColor = Color.UniversalBackgroundColor
         self.textFieldContainer.backgroundColor = Color.White
         self.colorMapBorderView.backgroundColor = Color.White
         

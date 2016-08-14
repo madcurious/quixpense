@@ -17,6 +17,8 @@ class Color {
     static let Black = UIColor.blackColor()
     static let Hex222222 = UIColor(hex: 0x222222)
     static let Hex333333 = UIColor(hex: 0x333333)
+    static let Hex4e4e4e = UIColor(hex: 0x4e4e4e)
+    static let Hex444444 = UIColor(hex: 0x444444)
     static let Hex666666 = UIColor(hex: 0x666666)
     
     // MARK: - New colors
@@ -27,9 +29,9 @@ class Color {
     
     static let KeypadBackgroundColor = Hex333333
     
-    static let TabBarBackgroundColor = Gray900
-    static let TabButtonIconColor = White
-    static let TabButtonSelectedBackgroundColor = Gray800
+    static let BarBackgroundColor = Hex4e4e4e
+    
+    static let TabButtonSelectedBackgroundColor = Hex444444
     
     static let UniversalTextColor = White
     static let UniversalSecondaryTextColor = Gray700
@@ -53,41 +55,7 @@ class Color {
     
     static let CustomButtonDisabled = Black
     
-    static let ExpenseListBarButtonItemColor = White
-    static let ExpenseListCellHighlightedColor = Gray400
-    static let ExpenseListCellTextColor = Black
-    static let ExpenseListCellTextColorHighlighted = White
-    static let ExpenseListHeaderViewTextColor = White
-    static let ExpenseListScreenBackgroundColor = White
-    
-    static let HomeBarButtonItemDefault = Gray900
-    static let HomeBarButtonItemDisabled = Gray500
     static let HomeCellBorderColor = Gray420
-    static let HomeScreenBackgroundColor = White
-    
-    static let ModalNavigationBarBackgroundColor = White
-    static let ModalNavigationBarTextColor = Gray900
-    
-    static let NavigationBarBackgroundColor = White
-    
-    static let ScreenBackgroundColorLightGray = Gray300
-    
-    static let SummaryGraphTotalTextColor = Black
-    static let SummaryGraphDateTextColor = Gray500
-    static let SummaryCellBackgroundColor = Gray50
-    static let SummaryCellBadgeBackgroundColorDefault = Gray50
-    static let SummaryCellBadgeText = White
-    static let SummaryCellHighlightedColor = Gray400
-    static let SummaryCellTextColor = Black
-    static let SummaryCellTextColorLight = White
-    static let SummarySegmentedCircleEmptyColor = Gray200
-    static let SummaryFooterViewTextColor = Gray500
-    static let SummarySectionHeaderSectionLabel = Gray800
-    static let SummarySectionHeaderRightButton = Gray400
-    
-    static let TiledSummaryCellTextColor = White
-    static let TiledSummaryCellTextColorHighlighted = White
-    static let TiledSummaryCellBackgroundColorHighlighted = Gray400
     
     
 }

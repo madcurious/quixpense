@@ -24,7 +24,7 @@ class BaseTabButton: UIControl {
         self.backgroundView.userInteractionEnabled = false
         
         self.iconLabel.font = Font.icon(28)
-        self.iconLabel.textColor = Color.TabButtonIconColor
+        self.iconLabel.textColor = Color.UniversalTextColor
         self.iconLabel.textAlignment = .Center
     }
     

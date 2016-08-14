@@ -163,7 +163,7 @@ extension ExpenseListVCBordered: UITableViewDelegate {
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if self.expenses == nil {
             // Return height for empty view.
-            return tableView.bounds.size.height - self.headerView.bounds.size.height
+            return max(0, tableView.bounds.size.height - self.headerView.bounds.size.height)
         }
         return 50
     }

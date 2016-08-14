@@ -142,6 +142,10 @@ extension ExpenseEditorVC: UICollectionViewDelegate {
         
     }
     
+    func collectionView(collectionView: UICollectionView, shouldHighlightItemAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
 }
 
 extension ExpenseEditorVC: UICollectionViewDelegateFlowLayout {

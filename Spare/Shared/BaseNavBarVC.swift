@@ -26,7 +26,7 @@ class BaseNavBarVC: UINavigationController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.navigationBar.barTintColor = Color.UniversalBackgroundColor
+        self.navigationBar.barTintColor = Color.BarBackgroundColor
         self.navigationBar.tintColor = Color.UniversalTextColor
         self.navigationBar.translucent = false
         

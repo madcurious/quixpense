@@ -28,7 +28,7 @@ final class Font {
     static let FieldValue = Font.make(.Medium, 20)
     
     static let ModalBarButtonText = Font.make(.Medium, 17)
-    static let NavBarTitle = Font.make(.Heavy, 20)
+    static let NavBarTitle = Font.make(.Heavy, 19)
     
     class func make(weight: Weight, _ size: CGFloat) -> UIFont {
         return UIFont(name: "Avenir-\(weight.rawValue)", size: size)!
