@@ -133,10 +133,12 @@ class ExpenseEditorVC: MDStatefulViewController {
     
     func refreshAmountDisplay() {
         if self.unformattedAmount.isEmpty {
+            self.expense.amount = nil
             self.customView.amountTextField.text = nil
         } else {
-            let number = NSDecimalNumber(string: self.unformattedAmount)
-            self.customView.amountTextField.text = self.amountFormatter.stringFromNumber(number)
+            let amountDecimalNumber = NSDecimalNumber(string: self.unformattedAmount)
+            self.expense.amount = amountDecimalNumber
+            self.customView.amountTextField.text = self.amountFormatter.stringFromNumber(amountDecimalNumber)
         }
     }
     
@@ -146,21 +148,21 @@ class ExpenseEditorVC: MDStatefulViewController {
                 return
         }
         
-        // Lessen decimal places.
-        if self.unformattedAmount.containsString(kSpecialKeyPeriod) {
-            self.amountFormatter.minimumFractionDigits -= 1
-        }
-        
         // Remove period in formatter.
         let lastCharacter = self.unformattedAmount.characters.last
         if lastCharacter == Character(kSpecialKeyPeriod) {
             self.amountFormatter.alwaysShowsDecimalSeparator = false
+        }
+        else if self.unformattedAmount.containsString(kSpecialKeyPeriod) {
+            // Lessen decimal places.
+            self.amountFormatter.minimumFractionDigits -= 1
         }
         
         // Actually remove the last character.
         self.unformattedAmount.removeAtIndex(self.unformattedAmount.endIndex.advancedBy(-1))
         
         self.refreshAmountDisplay()
+        print("unformattedAmount: \(self.unformattedAmount), decimalPlaces: \(self.amountFormatter.minimumFractionDigits)")
     }
     
     func appendPeriod() {
@@ -172,6 +174,7 @@ class ExpenseEditorVC: MDStatefulViewController {
         self.amountFormatter.alwaysShowsDecimalSeparator = true
         self.unformattedAmount += kSpecialKeyPeriod
         self.refreshAmountDisplay()
+        print("unformattedAmount: \(self.unformattedAmount), decimalPlaces: \(self.amountFormatter.minimumFractionDigits)")
     }
     
     func appendNumericKey(key: String) {
@@ -181,6 +184,7 @@ class ExpenseEditorVC: MDStatefulViewController {
         
         self.unformattedAmount += key
         self.refreshAmountDisplay()
+        print("unformattedAmount: \(self.unformattedAmount), decimalPlaces: \(self.amountFormatter.minimumFractionDigits)")
     }
     
 }
