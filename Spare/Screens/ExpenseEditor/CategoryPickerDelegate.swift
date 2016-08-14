@@ -35,6 +35,12 @@ extension CategoryPickerDelegate: UITableViewDataSource {
         return cell
     }
     
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = tableView.dequeueReusableHeaderFooterViewWithIdentifier(CustomPickerVC.ViewID.Header.rawValue) as! CustomPickerHeader
+        header.label.text = "CATEGORY"
+        return header
+    }
+    
 }
 
 extension CategoryPickerDelegate: UITableViewDelegate {
@@ -45,6 +51,10 @@ extension CategoryPickerDelegate: UITableViewDelegate {
         
         tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: previousIndex, inSection: 0), NSIndexPath(forRow: indexPath.row, inSection: 0)], withRowAnimation: .None)
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
     }
     
 }

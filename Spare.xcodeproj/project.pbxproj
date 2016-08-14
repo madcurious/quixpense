@@ -110,6 +110,8 @@
 		268F47E51D609AA40088AC6B /* CustomPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F47E41D609AA40088AC6B /* CustomPickerCell.swift */; };
 		268F47E71D609AC00088AC6B /* CustomPickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 268F47E61D609AC00088AC6B /* CustomPickerCell.xib */; };
 		268F47E91D609C820088AC6B /* spare-v2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 268F47E81D609C820088AC6B /* spare-v2.ttf */; };
+		268F47EB1D60C1F00088AC6B /* CustomPickerHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 268F47EA1D60C1F00088AC6B /* CustomPickerHeader.xib */; };
+		268F47ED1D60C24B0088AC6B /* CustomPickerHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F47EC1D60C24B0088AC6B /* CustomPickerHeader.swift */; };
 		269D49F21CE1610100109990 /* __CEVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269D49EA1CE1610100109990 /* __CEVCView.swift */; };
 		269D49F31CE1610100109990 /* __CEVCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 269D49EB1CE1610100109990 /* __CEVCView.xib */; };
 		269D49F41CE1610100109990 /* CategoryEditorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269D49EC1CE1610100109990 /* CategoryEditorVC.swift */; };
@@ -288,6 +290,8 @@
 		268F47E41D609AA40088AC6B /* CustomPickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPickerCell.swift; sourceTree = "<group>"; };
 		268F47E61D609AC00088AC6B /* CustomPickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomPickerCell.xib; sourceTree = "<group>"; };
 		268F47E81D609C820088AC6B /* spare-v2.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "spare-v2.ttf"; sourceTree = "<group>"; };
+		268F47EA1D60C1F00088AC6B /* CustomPickerHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomPickerHeader.xib; sourceTree = "<group>"; };
+		268F47EC1D60C24B0088AC6B /* CustomPickerHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPickerHeader.swift; sourceTree = "<group>"; };
 		269D49EA1CE1610100109990 /* __CEVCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __CEVCView.swift; sourceTree = "<group>"; };
 		269D49EB1CE1610100109990 /* __CEVCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __CEVCView.xib; sourceTree = "<group>"; };
 		269D49EC1CE1610100109990 /* CategoryEditorVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryEditorVC.swift; sourceTree = "<group>"; };
@@ -621,6 +625,8 @@
 				268F47E21D609A440088AC6B /* CategoryPickerDelegate.swift */,
 				268F47E41D609AA40088AC6B /* CustomPickerCell.swift */,
 				268F47E61D609AC00088AC6B /* CustomPickerCell.xib */,
+				268F47EA1D60C1F00088AC6B /* CustomPickerHeader.xib */,
+				268F47EC1D60C24B0088AC6B /* CustomPickerHeader.swift */,
 			);
 			path = ExpenseEditor;
 			sourceTree = "<group>";
@@ -782,6 +788,7 @@
 				261AF6361D5F395200E03A48 /* Avenir-Roman.ttf in Resources */,
 				2669468B1CC7711000A68424 /* iPhone.storyboard in Resources */,
 				268F47DF1D6095F00088AC6B /* __CPVCView.xib in Resources */,
+				268F47EB1D60C1F00088AC6B /* CustomPickerHeader.xib in Resources */,
 				261AF6351D5F395200E03A48 /* Avenir-Oblique.ttf in Resources */,
 				268BBDB71D08E99C005C6BD8 /* Lato-Regular.ttf in Resources */,
 				26E6EDB41CDBA6C60034EEDE /* AddButtonProgressView.xib in Resources */,
@@ -915,6 +922,7 @@
 				2603F8D31CCA4C10007F311F /* Category.swift in Sources */,
 				269D49FA1CE1643400109990 /* AddCategoryVC.swift in Sources */,
 				2687FA361D0EC2E900D544F5 /* Strings.swift in Sources */,
+				268F47ED1D60C24B0088AC6B /* CustomPickerHeader.swift in Sources */,
 				268F47DD1D6095DD0088AC6B /* CustomPickerVC.swift in Sources */,
 				266408B41D4A571400609580 /* PeriodizationButton.swift in Sources */,
 				260024151CC7E5F300EB2026 /* SettingsVC.swift in Sources */,

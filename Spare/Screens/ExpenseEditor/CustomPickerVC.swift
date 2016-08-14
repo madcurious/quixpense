@@ -41,6 +41,7 @@ class CustomPickerVC: UIViewController {
         self.customView.dimView.addGestureRecognizer(tapGesture)
         
         self.customView.tableView.estimatedRowHeight = 50
+        self.customView.tableView.registerNib(CustomPickerHeader.nib(), forHeaderFooterViewReuseIdentifier: CustomPickerVC.ViewID.Header.rawValue)
         self.customView.tableView.registerNib(CustomPickerCell.nib(), forCellReuseIdentifier: ViewID.ItemCell.rawValue)
     }
     
