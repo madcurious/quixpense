@@ -162,7 +162,6 @@ class ExpenseEditorVC: MDStatefulViewController {
         self.unformattedAmount.removeAtIndex(self.unformattedAmount.endIndex.advancedBy(-1))
         
         self.refreshAmountDisplay()
-        print("unformattedAmount: \(self.unformattedAmount), decimalPlaces: \(self.amountFormatter.minimumFractionDigits)")
     }
     
     func appendPeriod() {
@@ -174,7 +173,6 @@ class ExpenseEditorVC: MDStatefulViewController {
         self.amountFormatter.alwaysShowsDecimalSeparator = true
         self.unformattedAmount += kSpecialKeyPeriod
         self.refreshAmountDisplay()
-        print("unformattedAmount: \(self.unformattedAmount), decimalPlaces: \(self.amountFormatter.minimumFractionDigits)")
     }
     
     func appendNumericKey(key: String) {
@@ -184,7 +182,6 @@ class ExpenseEditorVC: MDStatefulViewController {
         
         self.unformattedAmount += key
         self.refreshAmountDisplay()
-        print("unformattedAmount: \(self.unformattedAmount), decimalPlaces: \(self.amountFormatter.minimumFractionDigits)")
     }
     
 }

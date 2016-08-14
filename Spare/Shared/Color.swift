@@ -14,6 +14,7 @@ class Color {
     // MARK: - Palette
     
     static let Black = UIColor.blackColor()
+    static let Hex111111 = UIColor(hex: 0x111111)
     static let Hex222222 = UIColor(hex: 0x222222)
     static let Hex282828 = UIColor(hex: 0x282828)
     static let Hex333333 = UIColor(hex: 0x333333)
@@ -27,21 +28,22 @@ class Color {
     static let FieldValueTextColor = White
     static let FieldPlaceholderTextColor = Hex333333
     
-    static let KeypadBackgroundColor = Hex333333
-    static let KeypadHighlightedBackgroundColor = Hex282828
+    static let KeypadBackgroundColor = Hex222222
+    static let KeypadHighlightedBackgroundColor = Hex333333
     
-    static let BarBackgroundColor = Hex4e4e4e
+    static let BarBackgroundColor = Hex222222
     
-    static let TabButtonSelectedBackgroundColor = Hex282828
+    static let SeparatorColor = Hex282828
+    
+    static let TabButtonSelectedBackgroundColor = Hex333333
     
     static let UniversalTextColor = White
     static let UniversalSecondaryTextColor = Gray700
-    static let UniversalBackgroundColor = Hex222222
+    static let UniversalBackgroundColor = Hex111111
     
     // MARK: - Old UI Colors
     
     static let SegmentedCircleEmptyColor = Gray800
-    static let SeparatorColor = Gray800
     
     private static let Gray50 = UIColor(hex: 0xf5f5f5)
     private static let Gray100 = UIColor(hex: 0xf0f2f6)
