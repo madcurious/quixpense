@@ -14,6 +14,9 @@ private enum ViewID: String {
     case KeypadCell = "KeypadCell"
 }
 
+private let kSpecialKeyPeriod = "."
+private let kSpecialKeyBackspace = Icon.ExpenseEditorBackspace.rawValue
+
 class ExpenseEditorVC: MDStatefulViewController {
     
     let customView = __EEVCView.instantiateFromNib() as __EEVCView
@@ -22,7 +25,9 @@ class ExpenseEditorVC: MDStatefulViewController {
     var expense: Expense
     var categories = [Category]()
     
-    let keys = ["1", "2", "3", "4", "5", "6", "7", "8", "9", ".", "0", Icon.ExpenseEditorBackspace.rawValue]
+    let keys = ["1", "2", "3", "4", "5", "6", "7", "8", "9", kSpecialKeyPeriod, "0", kSpecialKeyBackspace]
+    let amountFormatter = NSNumberFormatter()
+    var unformattedAmount = ""
     
     init(expense: Expense?) {
         self.managedObjectContext = App.state.coreDataStack.newBackgroundWorkerMOC()
@@ -52,9 +57,16 @@ class ExpenseEditorVC: MDStatefulViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.amountFormatter.numberStyle = .CurrencyStyle
+        self.amountFormatter.currencySymbol = ""
+        self.amountFormatter.usesGroupingSeparator = true
+        self.amountFormatter.minimumFractionDigits = 0
+        
         self.refreshViewFromModel()
         
-        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        tapGesture.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tapGesture)
         
         self.customView.keypadCollectionView.dataSource = self
         self.customView.keypadCollectionView.delegate = self
@@ -81,7 +93,6 @@ class ExpenseEditorVC: MDStatefulViewController {
                 // Upon getting the categories, select the first category by default.
                 if self.expense.category == nil {
                     self.expense.category = categories.first
-//                    self.expense.category = categories[1]
                 }
                 
                 self.showView(.Primary)
@@ -120,6 +131,58 @@ class ExpenseEditorVC: MDStatefulViewController {
         self.customView.amountTextField.text = self.expense.amount?.stringValue
     }
     
+    func refreshAmountDisplay() {
+        if self.unformattedAmount.isEmpty {
+            self.customView.amountTextField.text = nil
+        } else {
+            let number = NSDecimalNumber(string: self.unformattedAmount)
+            self.customView.amountTextField.text = self.amountFormatter.stringFromNumber(number)
+        }
+    }
+    
+    func appendBackspace() {
+        guard self.unformattedAmount.isEmpty == false
+            else {
+                return
+        }
+        
+        // Lessen decimal places.
+        if self.unformattedAmount.containsString(kSpecialKeyPeriod) {
+            self.amountFormatter.minimumFractionDigits -= 1
+        }
+        
+        // Remove period in formatter.
+        let lastCharacter = self.unformattedAmount.characters.last
+        if lastCharacter == Character(kSpecialKeyPeriod) {
+            self.amountFormatter.alwaysShowsDecimalSeparator = false
+        }
+        
+        // Actually remove the last character.
+        self.unformattedAmount.removeAtIndex(self.unformattedAmount.endIndex.advancedBy(-1))
+        
+        self.refreshAmountDisplay()
+    }
+    
+    func appendPeriod() {
+        guard self.unformattedAmount.containsString(kSpecialKeyPeriod) == false
+            else {
+                return
+        }
+        
+        self.amountFormatter.alwaysShowsDecimalSeparator = true
+        self.unformattedAmount += kSpecialKeyPeriod
+        self.refreshAmountDisplay()
+    }
+    
+    func appendNumericKey(key: String) {
+        if self.unformattedAmount.containsString(kSpecialKeyPeriod) == true {
+            self.amountFormatter.minimumFractionDigits += 1
+        }
+        
+        self.unformattedAmount += key
+        self.refreshAmountDisplay()
+    }
+    
 }
 
 extension ExpenseEditorVC: UICollectionViewDataSource {
@@ -139,10 +202,24 @@ extension ExpenseEditorVC: UICollectionViewDataSource {
 extension ExpenseEditorVC: UICollectionViewDelegate {
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        
+        let key = self.keys[indexPath.item]
+        switch key {
+        case kSpecialKeyPeriod:
+            self.appendPeriod()
+            
+        case kSpecialKeyBackspace:
+            self.appendBackspace()
+            
+        default:
+            self.appendNumericKey(key)
+        }
     }
     
     func collectionView(collectionView: UICollectionView, shouldHighlightItemAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
         return true
     }
     

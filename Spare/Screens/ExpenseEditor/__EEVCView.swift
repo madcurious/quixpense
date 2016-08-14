@@ -87,12 +87,13 @@ class __EEVCView: UIView {
         
         self.amountTextField.userInteractionEnabled = false
         self.amountTextField.textColor = Color.FieldValueTextColor
-        self.amountTextField.font = Font.ExpenseEditorAmountValue
-        self.amountTextField.textAlignment = .Right
         self.amountTextField.attributedPlaceholder = NSAttributedString(string: "0", font: Font.ExpenseEditorAmountValue, textColor: Color.FieldValueTextColor)
+        self.amountTextField.font = Font.ExpenseEditorAmountValue
         self.amountTextField.fontSize = .VHeight(0.8)
+        self.amountTextField.textAlignment = .Right
         
         self.keypadCollectionView.scrollEnabled = false
+        self.keypadCollectionView.allowsSelection = true
         
         self.setNeedsUpdateConstraints()
     }
