@@ -27,9 +27,8 @@ final class Font {
     static let FieldLabel = Font.make(.Heavy, 14)
     static let FieldValue = Font.make(.Medium, 20)
     
-//    class func responsive(weight: Weight, _ size: MDResponsiveLabel.FontSize) -> (String, MDResponsiveLabel.FontSize) {
-//        return ("Avenir-\(weight.rawValue)", size)
-//    }
+    static let ModalBarButtonText = Font.make(.Medium, 17)
+    static let NavBarTitle = Font.make(.Heavy, 20)
     
     class func make(weight: Weight, _ size: CGFloat) -> UIFont {
         return UIFont(name: "Avenir-\(weight.rawValue)", size: size)!
@@ -50,9 +49,6 @@ final class Font {
     
     static let GraphViewTotalLabel = UIFont.boldSystemFontOfSize(26)
     static let GraphViewDetailLabel = UIFont.systemFontOfSize(16)
-    
-    static let ModalBarButtonText = UIFont.systemFontOfSize(17)
-    static let NavBarTitle = UIFont.boldSystemFontOfSize(18)
     
     static let StatefulVCRetryViewMessageLabel = UIFont.systemFontOfSize(18)
     

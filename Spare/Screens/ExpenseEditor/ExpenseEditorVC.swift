@@ -80,8 +80,8 @@ class ExpenseEditorVC: MDStatefulViewController {
                 
                 // Upon getting the categories, select the first category by default.
                 if self.expense.category == nil {
-//                    self.expense.category = categories.first
-                    self.expense.category = categories[1]
+                    self.expense.category = categories.first
+//                    self.expense.category = categories[1]
                 }
                 
                 self.showView(.Primary)
