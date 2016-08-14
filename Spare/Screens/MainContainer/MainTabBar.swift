@@ -17,7 +17,10 @@ protocol MainTabBarDelegate {
 
 class MainTabBar: UIView {
     
+    @IBOutlet var separatorView: UIView!
     @IBOutlet var buttonContainers: [UIView]!
+    
+    @IBOutlet weak var separatorViewHeight: NSLayoutConstraint!
     
     let homeButton = TabButton(.Home)
     let addButton = AddButton()
@@ -31,8 +34,11 @@ class MainTabBar: UIView {
         
         self.multipleTouchEnabled = false
         
-        self.backgroundColor = Color.TabBarBackgroundColor
+        self.backgroundColor = Color.BarBackgroundColor
+        self.separatorView.backgroundColor = Color.SeparatorColor
         UIView.clearBackgroundColors(self.buttonContainers)
+        
+        self.separatorViewHeight.constant = 0.5
         
         // Setup all the buttons.
         let buttons = [self.homeButton, self.addButton, self.settingsButton]

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="StatefulVCRetryView" customModule="Spare" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YwF-Xv-nP2">
+                    <rect key="frame" x="20" y="264" width="560" height="72"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wJl-Ox-CCg">
+                            <rect key="frame" x="0.0" y="0.0" width="560" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UjK-Mf-crS">
+                            <rect key="frame" x="0.0" y="21" width="560" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1R3-98-GAM">
+                            <rect key="frame" x="257" y="42" width="46" height="30"/>
+                            <state key="normal" title="Button"/>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.85098040100000005" green="0.94901961089999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="UjK-Mf-crS" secondAttribute="trailing" id="20p-zu-zcy"/>
+                        <constraint firstItem="wJl-Ox-CCg" firstAttribute="top" secondItem="YwF-Xv-nP2" secondAttribute="top" id="26s-f9-nI0"/>
+                        <constraint firstAttribute="bottom" secondItem="1R3-98-GAM" secondAttribute="bottom" id="7RC-lD-5oX"/>
+                        <constraint firstItem="wJl-Ox-CCg" firstAttribute="leading" secondItem="YwF-Xv-nP2" secondAttribute="leading" id="8te-UW-15S"/>
+                        <constraint firstItem="UjK-Mf-crS" firstAttribute="leading" secondItem="YwF-Xv-nP2" secondAttribute="leading" id="Fup-VU-lNL"/>
+                        <constraint firstItem="UjK-Mf-crS" firstAttribute="top" secondItem="wJl-Ox-CCg" secondAttribute="bottom" id="HRk-mZ-li4"/>
+                        <constraint firstItem="1R3-98-GAM" firstAttribute="top" secondItem="UjK-Mf-crS" secondAttribute="bottom" id="QJi-Zm-wsP"/>
+                        <constraint firstAttribute="trailing" secondItem="wJl-Ox-CCg" secondAttribute="trailing" id="UAI-qh-wnD"/>
+                        <constraint firstItem="1R3-98-GAM" firstAttribute="centerX" secondItem="YwF-Xv-nP2" secondAttribute="centerX" id="rjY-dr-p1D"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="YwF-Xv-nP2" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Fzl-d0-VIX"/>
+                <constraint firstAttribute="trailing" secondItem="YwF-Xv-nP2" secondAttribute="trailing" constant="20" id="GjS-qJ-tIn"/>
+                <constraint firstItem="YwF-Xv-nP2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="hdf-cc-zab"/>
+            </constraints>
+            <connections>
+                <outlet property="iconLabel" destination="wJl-Ox-CCg" id="la0-e1-t66"/>
+                <outlet property="labelContainer" destination="YwF-Xv-nP2" id="EBX-Se-k6j"/>
+                <outlet property="messageLabel" destination="UjK-Mf-crS" id="6Tb-Lw-Zu7"/>
+                <outlet property="retryButton" destination="1R3-98-GAM" id="vGK-EU-yDB"/>
+            </connections>
+        </view>
+    </objects>
+</document>

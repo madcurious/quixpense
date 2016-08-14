@@ -16,7 +16,7 @@ func glb_applyGlobalVCSettings(viewController: UIViewController) {
     if let navigationBar = viewController.navigationController?.navigationBar {
         let backLabel = UILabel()
         backLabel.text = Icon.Back.rawValue
-        backLabel.font = Font.icon(24)
+        backLabel.font = Font.icon(20)
         backLabel.opaque = false
         backLabel.sizeToFit()
         if let backImage = UIImage.imageFromView(backLabel) {
@@ -27,9 +27,9 @@ func glb_applyGlobalVCSettings(viewController: UIViewController) {
     viewController.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
     
     let titleLabel = UILabel()
-    titleLabel.textColor = Color.ModalNavigationBarTextColor
-    titleLabel.font = Font.NavigationBarTitle
-    titleLabel.text = viewController.title?.uppercaseString
+    titleLabel.textColor = Color.UniversalTextColor
+    titleLabel.font = Font.NavBarTitle
+    titleLabel.text = viewController.title
     titleLabel.sizeToFit()
     viewController.navigationItem.titleView = titleLabel
 }

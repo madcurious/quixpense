@@ -24,7 +24,7 @@ class MainContainerVC: UIViewController {
         
         // Create the tab bar controller, add the tabs, and hide the tab bar.
         self.tabController.viewControllers = [
-            UINavigationController(rootViewController: HomeVC2()),
+            BaseNavBarVC(rootViewController: HomeVC()),
             BaseNavBarVC(rootViewController: SettingsVC())
         ]
         self.tabController.tabBar.hidden = true
@@ -57,8 +57,12 @@ class MainContainerVC: UIViewController {
                 return
         }
         
-        let expenseListVC = ExpenseListVC(category: category, startDate: startDate, endDate: endDate)
+        let expenseListVC = ExpenseListVCBordered(category: category, startDate: startDate, endDate: endDate)
         self.navigationController?.pushViewController(expenseListVC, animated: true)
+    }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
     }
     
 }

@@ -2,63 +2,118 @@
 //  __EEVCView.swift
 //  Spare
 //
-//  Created by Matt Quiros on 03/05/2016.
+//  Created by Matt Quiros on 13/08/2016.
 //  Copyright © 2016 Matt Quiros. All rights reserved.
 //
 
 import UIKit
+import Mold
 
 class __EEVCView: UIView {
     
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var contentView: UIView!
-    @IBOutlet var fieldBoxes: [UIView]!
-    @IBOutlet var fieldLabels: [UILabel]!
+    @IBOutlet weak var topContainer: UIView!
+    @IBOutlet weak var fieldContainer: UIView!
+    @IBOutlet weak var categoryContainer: UIView!
+    @IBOutlet weak var dateContainer: UIView!
+    @IBOutlet weak var paymentMethodContainer: UIView!
+    @IBOutlet weak var noteContainer: UIView!
     
-    @IBOutlet weak var itemDescriptionTextField: UITextField!
-    @IBOutlet weak var amountTextField: UITextField!
-    @IBOutlet weak var categoryTextField: __EEVCPickerTextField!
-    @IBOutlet weak var dateTextField: __EEVCPickerTextField!
-    @IBOutlet weak var paymentMethodControl: UISegmentedControl!
+    @IBOutlet var fieldLabels: [UILabel]!
+    @IBOutlet weak var categoryButton: UIButton!
+    @IBOutlet weak var dateButton: UIButton!
+    @IBOutlet weak var paymentMethodButton: UIButton!
+    @IBOutlet weak var noteTextField: UITextField!
+    
+    @IBOutlet weak var currencyLabel: MDResponsiveLabel!
+    @IBOutlet weak var amountTextField: MDResponsiveTextField!
+    
+    @IBOutlet weak var keypadCollectionView: UICollectionView!
+    
+    @IBOutlet weak var singleFieldBoxHeight: NSLayoutConstraint!
+    @IBOutlet weak var currencyLabelHeight: NSLayoutConstraint!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        // Background colors.
-        self.backgroundColor = Color.ScreenBackgroundColorLightGray
         UIView.clearBackgroundColors(
-            self.scrollView,
-            self.contentView
+            self.topContainer,
+            self.fieldContainer,
+            self.categoryContainer,
+            self.dateContainer,
+            self.paymentMethodContainer,
+            self.noteContainer,
+            self.amountTextField
         )
+        self.backgroundColor = Color.UniversalBackgroundColor
+        self.keypadCollectionView.backgroundColor = Color.KeypadBackgroundColor
         
-        // Setup labels.
-        let texts = ["DESCRIPTION", "AMOUNT", "CATEGORY", "DATE SPENT", "PAID WITH"]
+        let labels = ["CATEGORY", "DATE SPENT", "PAID WITH", "NOTES"]
         for i in 0..<self.fieldLabels.count {
             let label = self.fieldLabels[i]
-            label.textColor = Color.FormFieldLabelTextColor
-            label.font = Font.FieldLabel
-            label.text = texts[i]
+            label.textAlignment = .Right
+            label.textColor = Color.FieldLabelTextColor
+            label.font = {
+                if MDScreen.currentScreenIs(.iPhone4S) {
+                    return Font.FieldLabel.fontWithSize(12)
+                }
+                return Font.FieldLabel
+            }()
+            label.text = labels[i]
         }
         
-        // Setup text fields.
-        let textFields = [self.itemDescriptionTextField, self.amountTextField, self.categoryTextField, self.dateTextField]
-        for textField in textFields {
-            textField.font = Font.FieldValue
-            textField.textColor = Color.Black
-            textField.placeholder = Strings.FieldPlaceholder
-            textField.adjustsFontSizeToFitWidth = false
+        let buttons = [self.categoryButton, self.dateButton, self.paymentMethodButton]
+        for button in buttons {
+            button.tintColor = Color.FieldValueTextColor
+            button.titleLabel?.font = {
+                if MDScreen.currentScreenIs(.iPhone4S) {
+                    return Font.FieldValue.fontWithSize(17)
+                }
+                return Font.FieldValue
+            }()
+            button.contentHorizontalAlignment = .Left
+            button.titleLabel?.numberOfLines = 1
+            button.titleLabel?.lineBreakMode = .ByTruncatingTail
         }
-        self.itemDescriptionTextField.autocapitalizationType = .Sentences
-        self.amountTextField.keyboardType = .DecimalPad
         
-        // Setup segmented control.
-        let paymentMethods = ["CASH", "CREDIT", "DEBIT"]
-        for i in 0..<paymentMethods.count {
-            let title = paymentMethods[i]
-            self.paymentMethodControl.setTitle(title, forSegmentAtIndex: i)
-        }
-        self.paymentMethodControl.setTitleTextAttributes([NSFontAttributeName: Font.text(.Regular, 14)], forState: .Normal)
-        self.paymentMethodControl.tintColor = Color.Black
+        self.noteTextField.font = Font.FieldValue
+        self.noteTextField.textColor = Color.FieldValueTextColor
+        self.noteTextField.attributedPlaceholder = NSAttributedString(string: "(Optional)", font: Font.FieldValue, textColor: Color.FieldPlaceholderTextColor)
+        self.noteTextField.adjustsFontSizeToFitWidth = false
+        
+        self.currencyLabel.textColor = Color.FieldLabelTextColor
+        self.currencyLabel.text = "PHP"
+        self.currencyLabel.font = Font.ExpenseEditorCurrencyLabel
+        self.currencyLabel.fontSize = .VHeight(0.8)
+        
+        self.amountTextField.userInteractionEnabled = false
+        self.amountTextField.textColor = Color.FieldValueTextColor
+        self.amountTextField.attributedPlaceholder = NSAttributedString(string: "0", font: Font.ExpenseEditorAmountValue, textColor: Color.FieldValueTextColor)
+        self.amountTextField.font = Font.ExpenseEditorAmountValue
+        self.amountTextField.fontSize = .VHeight(0.8)
+        self.amountTextField.textAlignment = .Right
+        
+        self.keypadCollectionView.scrollEnabled = false
+        self.keypadCollectionView.allowsSelection = true
+        
+        self.setNeedsUpdateConstraints()
+    }
+    
+    override func updateConstraints() {
+        self.singleFieldBoxHeight.constant = {
+            if MDScreen.currentScreenIs(.iPhone4S) {
+                return 40
+            }
+            return 50
+        }()
+        
+        self.currencyLabelHeight.constant = {
+            if MDScreen.currentScreenIs(.iPhone4S) {
+                return 38
+            }
+            return 50
+        }()
+        
+        super.updateConstraints()
     }
     
 }

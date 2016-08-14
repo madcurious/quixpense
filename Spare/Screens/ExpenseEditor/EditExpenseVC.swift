@@ -14,14 +14,10 @@ class EditExpenseVC: BaseFormVC {
     let editor: ExpenseEditorVC
     let queue = NSOperationQueue()
     
-    override var formScrollView: UIScrollView {
-        return self.editor.customView.scrollView
-    }
-    
     init(expense: Expense) {
         self.editor = ExpenseEditorVC(expense: expense)
         super.init(nibName: nil, bundle: nil)
-        self.title = "EDIT EXPENSE"
+        self.title = "Edit Expense"
     }
     
     override func viewDidLoad() {
@@ -44,7 +40,7 @@ class EditExpenseVC: BaseFormVC {
                         }
                     }
                     })
-                .onFail({[unowned self] (error) in
+                .onFail({[unowned self] error in
                     MDErrorDialog.showError(error, inPresenter: self)
                     })
 

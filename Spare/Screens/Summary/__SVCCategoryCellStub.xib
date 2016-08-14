@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="69c-lK-GNM" customClass="__SVCCategoryCellStub" customModule="Spare" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="433" height="50"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="433" height="50"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zpy-d5-GZG">
+                        <rect key="frame" x="0.0" y="0.0" width="4" height="50"/>
+                        <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="4" id="Xde-A0-laN"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="flP-0t-mNK">
+                        <rect key="frame" x="12" y="14" width="42" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YLk-FE-kaQ">
+                        <rect key="frame" x="60" y="14" width="325" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k3G-oL-13c">
+                        <rect key="frame" x="391" y="14" width="42" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="zpy-d5-GZG" secondAttribute="bottom" id="F4P-dx-O1G"/>
+                <constraint firstItem="zpy-d5-GZG" firstAttribute="top" secondItem="69c-lK-GNM" secondAttribute="top" id="Ibf-Lq-RLH"/>
+                <constraint firstItem="flP-0t-mNK" firstAttribute="centerY" secondItem="69c-lK-GNM" secondAttribute="centerY" id="V7a-hv-wtM"/>
+                <constraint firstItem="flP-0t-mNK" firstAttribute="leading" secondItem="zpy-d5-GZG" secondAttribute="trailing" constant="8" id="faC-Ks-OVS"/>
+                <constraint firstItem="k3G-oL-13c" firstAttribute="centerY" secondItem="69c-lK-GNM" secondAttribute="centerY" id="j45-cR-DIG"/>
+                <constraint firstItem="YLk-FE-kaQ" firstAttribute="leading" secondItem="flP-0t-mNK" secondAttribute="trailing" constant="6" id="jHo-zQ-mj4"/>
+                <constraint firstItem="zpy-d5-GZG" firstAttribute="leading" secondItem="69c-lK-GNM" secondAttribute="leading" id="ovi-bC-qxB"/>
+                <constraint firstItem="YLk-FE-kaQ" firstAttribute="baseline" secondItem="flP-0t-mNK" secondAttribute="baseline" id="pmN-9W-U59"/>
+                <constraint firstItem="k3G-oL-13c" firstAttribute="leading" secondItem="YLk-FE-kaQ" secondAttribute="trailing" constant="6" id="tGI-B3-7be"/>
+                <constraint firstAttribute="trailing" secondItem="k3G-oL-13c" secondAttribute="trailing" id="yXT-em-WA6"/>
+            </constraints>
+            <size key="customSize" width="433" height="50"/>
+            <connections>
+                <outlet property="categoryLabel" destination="flP-0t-mNK" id="2bd-Fg-6ne"/>
+                <outlet property="percentLabel" destination="YLk-FE-kaQ" id="n3K-lN-k3z"/>
+                <outlet property="stubView" destination="zpy-d5-GZG" id="HTb-ec-vcn"/>
+                <outlet property="totalLabel" destination="k3G-oL-13c" id="o3O-Ev-Z7i"/>
+            </connections>
+            <point key="canvasLocation" x="522.5" y="235"/>
+        </collectionViewCell>
+    </objects>
+</document>

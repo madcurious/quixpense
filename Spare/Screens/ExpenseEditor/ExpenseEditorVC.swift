@@ -10,6 +10,279 @@ import UIKit
 import BNRCoreDataStack
 import Mold
 
+private enum ViewID: String {
+    case KeypadCell = "KeypadCell"
+}
+
+private let kSpecialKeyPeriod = "."
+private let kSpecialKeyBackspace = Icon.ExpenseEditorBackspace.rawValue
+
+class ExpenseEditorVC: MDStatefulViewController {
+    
+    let customView = __EEVCView.instantiateFromNib() as __EEVCView
+    
+    var managedObjectContext: NSManagedObjectContext
+    var expense: Expense
+    var categories = [Category]()
+    
+    let keys = ["1", "2", "3", "4", "5", "6", "7", "8", "9", kSpecialKeyPeriod, "0", kSpecialKeyBackspace]
+    let amountFormatter = NSNumberFormatter()
+    var unformattedAmount = ""
+    
+    let customPickerAnimator = CustomPickerTransitioningDelegate()
+    
+    init(expense: Expense?) {
+        self.managedObjectContext = App.state.coreDataStack.newBackgroundWorkerMOC()
+        
+        if let objectID = expense?.objectID,
+            let expense = self.managedObjectContext.objectWithID(objectID) as? Expense {
+            self.expense = expense
+        } else {
+            // If adding an expense, by default, the date is the current date and
+            // the payment method is cash.
+            self.expense = Expense(managedObjectContext: self.managedObjectContext)
+            self.expense.dateSpent = NSDate()
+            self.expense.paymentMethod = PaymentMethod.Cash.rawValue
+        }
+        
+        super.init()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func loadView() {
+        self.view = self.customView
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.amountFormatter.numberStyle = .CurrencyStyle
+        self.amountFormatter.currencySymbol = ""
+        self.amountFormatter.usesGroupingSeparator = true
+        self.amountFormatter.minimumFractionDigits = 0
+        
+        self.refreshViewFromModel()
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        tapGesture.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tapGesture)
+        
+        self.customView.keypadCollectionView.dataSource = self
+        self.customView.keypadCollectionView.delegate = self
+        self.customView.keypadCollectionView.registerClass(__EEVCKeypadCell.self, forCellWithReuseIdentifier: ViewID.KeypadCell.rawValue)
+        
+        self.customView.categoryButton.addTarget(self, action: #selector(handleTapOnCategoryButton), forControlEvents: .TouchUpInside)
+    }
+    
+    override func buildOperation() -> MDOperation? {
+        let op = MDBlockOperation {
+            let fetchRequest = NSFetchRequest(entityName: Category.entityName)
+            guard let categories = try self.managedObjectContext.executeFetchRequest(fetchRequest) as? [Category]
+                else {
+                    throw Error.AppUnknownError
+            }
+            return categories
+            }
+            .onSuccess {[unowned self] (result) in
+                guard let categories = result as? [Category]
+                    else {
+                        return
+                }
+                
+                self.categories = categories
+                
+                // Upon getting the categories, select the first category by default.
+                if self.expense.category == nil {
+                    self.expense.category = categories.first
+                }
+                
+                self.showView(.Primary)
+                self.refreshViewFromModel()
+        }
+        return op
+    }
+    
+    func reset() {
+        // Reset the model, but leave the date, category, and payment method the same.
+        let previousDate = self.expense.dateSpent
+        let previousCategory = self.expense.category
+        let previousPaymentMethod = self.expense.paymentMethod
+        
+        let expense = Expense(managedObjectContext: self.managedObjectContext)
+        expense.amount = nil
+        expense.dateSpent = previousDate
+        expense.category = previousCategory
+        expense.paymentMethod = previousPaymentMethod
+        expense.note = nil
+        self.expense = expense
+        
+        // Update the view.
+        self.refreshViewFromModel()
+    }
+    
+    func refreshViewFromModel() {
+        self.customView.categoryButton.setTitle(md_nonEmptyString(self.expense.category?.name), forState: .Normal)
+        
+        self.customView.dateButton.setTitle(DateFormatter.displayTextForExpenseEditorDate(self.expense.dateSpent), forState: .Normal)
+        
+        self.customView.paymentMethodButton.setTitle(PaymentMethod(self.expense.paymentMethod?.integerValue)?.text, forState: .Normal)
+        
+        self.customView.noteTextField.text = md_nonEmptyString(self.expense.note)
+        
+        self.customView.amountTextField.text = self.expense.amount?.stringValue
+    }
+    
+    func refreshAmountDisplay() {
+        if self.unformattedAmount.isEmpty {
+            self.expense.amount = nil
+            self.customView.amountTextField.text = nil
+        } else {
+            let amountDecimalNumber = NSDecimalNumber(string: self.unformattedAmount)
+            self.expense.amount = amountDecimalNumber
+            self.customView.amountTextField.text = self.amountFormatter.stringFromNumber(amountDecimalNumber)
+        }
+    }
+    
+    func appendBackspace() {
+        guard self.unformattedAmount.isEmpty == false
+            else {
+                return
+        }
+        
+        // Remove period in formatter.
+        let lastCharacter = self.unformattedAmount.characters.last
+        if lastCharacter == Character(kSpecialKeyPeriod) {
+            self.amountFormatter.alwaysShowsDecimalSeparator = false
+        }
+        else if self.unformattedAmount.containsString(kSpecialKeyPeriod) {
+            // Lessen decimal places.
+            self.amountFormatter.minimumFractionDigits -= 1
+        }
+        
+        // Actually remove the last character.
+        self.unformattedAmount.removeAtIndex(self.unformattedAmount.endIndex.advancedBy(-1))
+        
+        self.refreshAmountDisplay()
+    }
+    
+    func appendPeriod() {
+        guard self.unformattedAmount.containsString(kSpecialKeyPeriod) == false
+            else {
+                return
+        }
+        
+        self.amountFormatter.alwaysShowsDecimalSeparator = true
+        self.unformattedAmount += kSpecialKeyPeriod
+        self.refreshAmountDisplay()
+    }
+    
+    func appendNumericKey(key: String) {
+        if self.unformattedAmount.containsString(kSpecialKeyPeriod) == true {
+            self.amountFormatter.minimumFractionDigits += 1
+        }
+        
+        self.unformattedAmount += key
+        self.refreshAmountDisplay()
+    }
+    
+}
+
+// MARK: - Target actions
+extension ExpenseEditorVC {
+    
+    func handleTapOnCategoryButton() {
+        let customPicker = CustomPickerVC()
+        let delegate = CategoryPickerDelegate(categories: self.categories)
+        customPicker.dataSource = delegate
+        customPicker.delegate = delegate
+        customPicker.modalPresentationStyle = .Custom
+        customPicker.transitioningDelegate = self.customPickerAnimator
+        self.presentViewController(customPicker, animated: true, completion: nil)
+    }
+    
+}
+
+// MARK: - UICollectionViewDataSource
+extension ExpenseEditorVC: UICollectionViewDataSource {
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.keys.count
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(ViewID.KeypadCell.rawValue, forIndexPath: indexPath) as! __EEVCKeypadCell
+        cell.text = self.keys[indexPath.item]
+        return cell
+    }
+    
+}
+
+// MARK: - UICollectionViewDelegate
+extension ExpenseEditorVC: UICollectionViewDelegate {
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let key = self.keys[indexPath.item]
+        switch key {
+        case kSpecialKeyPeriod:
+            self.appendPeriod()
+            
+        case kSpecialKeyBackspace:
+            self.appendBackspace()
+            
+        default:
+            self.appendNumericKey(key)
+        }
+    }
+    
+    func collectionView(collectionView: UICollectionView, shouldHighlightItemAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+}
+
+// MARK: - UICollectionViewDelegateFlowLayout
+extension ExpenseEditorVC: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        let width = collectionView.bounds.size.width / 3
+        let height = collectionView.bounds.size.height / 4
+        return CGSizeMake(width, height)
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return 0
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+import UIKit
+import BNRCoreDataStack
+import Mold
+
 class ExpenseEditorVC: MDStatefulViewController {
     
     let customView = __EEVCView.instantiateFromNib() as __EEVCView
@@ -51,8 +324,6 @@ class ExpenseEditorVC: MDStatefulViewController {
         glb_applyGlobalVCSettings(self)
         
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
-        
-        self.customView.itemDescriptionTextField.delegate = self
         self.customView.amountTextField.delegate = self
         
         // Setup the picker views for the category and date fields
@@ -66,6 +337,8 @@ class ExpenseEditorVC: MDStatefulViewController {
         self.datePickerView.addTarget(self, action: #selector(handleChangeOnDatePicker), forControlEvents: .ValueChanged)
         
         self.customView.paymentMethodControl.addTarget(self, action: #selector(handleChangeOnPaymentMethod), forControlEvents: .ValueChanged)
+        
+        self.customView.noteTextField.delegate = self
     }
     
     override func buildOperation() -> MDOperation? {
@@ -100,11 +373,11 @@ class ExpenseEditorVC: MDStatefulViewController {
     func reset() {
         // Reset the model, but leave the date, category, and payment method the same.
         let expense = Expense(managedObjectContext: self.managedObjectContext)
-        expense.itemDescription = nil
         expense.amount = nil
         expense.dateSpent = self.datePickerView.date
         expense.category = self.categories[self.categoryPickerView.selectedRowInComponent(0)]
         expense.paymentMethod = PaymentMethod(self.customView.paymentMethodControl.selectedSegmentIndex)?.rawValue
+        expense.note = nil
         self.expense = expense
         
         // Update the view.
@@ -134,7 +407,6 @@ class ExpenseEditorVC: MDStatefulViewController {
     }
     
     func refreshViewFromModel() {
-        self.customView.itemDescriptionTextField.text = md_nonEmptyString(self.expense.itemDescription)
         self.customView.amountTextField.text = self.expense.amount?.stringValue
         
         self.customView.categoryTextField.text = md_nonEmptyString(self.expense.category?.name)
@@ -155,7 +427,9 @@ class ExpenseEditorVC: MDStatefulViewController {
                 return paymentMethod.rawValue
             }
             return 0
-        }()
+            }()
+        
+        self.customView.noteTextField.text = md_nonEmptyString(self.expense.note)
     }
     
     // MARK: Target actions
@@ -233,13 +507,13 @@ extension ExpenseEditorVC: UITextFieldDelegate {
         switch textField {
             
             // Description and amount fields.
-        case self.customView.itemDescriptionTextField,
+        case self.customView.noteTextField,
              self.customView.amountTextField:
             let text = NSMutableString(string: textField.text ?? "")
             text.replaceCharactersInRange(range, withString: string)
             
-            if textField == self.customView.itemDescriptionTextField {
-                self.expense.itemDescription = text as String
+            if textField == self.customView.noteTextField {
+                self.expense.note = text as String
             }
             
             else {
@@ -264,3 +538,4 @@ extension ExpenseEditorVC: UITextFieldDelegate {
     }
     
 }
+*/
