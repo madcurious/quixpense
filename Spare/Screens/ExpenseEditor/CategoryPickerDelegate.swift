@@ -8,52 +8,21 @@
 
 import UIKit
 
-class CategoryPickerDelegate: NSObject {
+class CategoryPickerDelegate: CustomPickerDelegate {
 
     var categories: [Category]
-    var selectedIndex: Int
     
-    init(categories: [Category]) {
+    override var dataSource: [Any] {
+        return self.categories.map({ $0 as Any })
+    }
+    
+    init(categories: [Category], selectedIndex: Int = 0) {
         self.categories = categories
-        self.selectedIndex = 0
-    }
-
-}
-
-extension CategoryPickerDelegate: UITableViewDataSource {
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.categories.count
+        super.init(selectedIndex: selectedIndex)
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(CustomPickerVC.ViewID.ItemCell.rawValue) as! CustomPickerCell
-        
-        cell.checkLabel.hidden = indexPath.row != self.selectedIndex
-        cell.itemLabel.text = self.categories[indexPath.row].name
-        
-        return cell
-    }
-    
-}
-
-extension CategoryPickerDelegate: UITableViewDelegate {
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let previousIndex = self.selectedIndex
-        self.selectedIndex = indexPath.row
-        
-        tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: previousIndex, inSection: 0), NSIndexPath(forRow: indexPath.row, inSection: 0)], withRowAnimation: .None)
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-    }
-    
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        let maxWidth = UIScreen.mainScreen().bounds.size.width - (CustomPickerCell.ItemLabelLeading + CustomPickerCell.ItemLabelTrailing)
-        let sizerLabel = CustomPickerCell.sizerLabel
-        sizerLabel.text = self.categories[indexPath.row].name
-        let labelSize = sizerLabel.sizeThatFits(CGSizeMake(maxWidth, CGFloat.max))
-        let height = CustomPickerCell.ItemLabelTop + labelSize.height + CustomPickerCell.ItemLabelBottom
-        return height
+    override func textForItemAtIndexPath(indexPath: NSIndexPath) -> String? {
+        return self.categories[indexPath.row].name
     }
     
 }

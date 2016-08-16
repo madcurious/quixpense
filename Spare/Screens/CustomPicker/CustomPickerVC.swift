@@ -17,14 +17,9 @@ class CustomPickerVC: UIViewController {
     
     let customView = __CPVCView.instantiateFromNib() as __CPVCView
     
-    var dataSource: UITableViewDataSource? {
+    var delegate: protocol<UITableViewDataSource, UITableViewDelegate>? {
         didSet {
-            self.customView.tableView.dataSource = self.dataSource
-        }
-    }
-    
-    var delegate: UITableViewDelegate? {
-        didSet {
+            self.customView.tableView.dataSource = self.delegate
             self.customView.tableView.delegate = self.delegate
         }
     }

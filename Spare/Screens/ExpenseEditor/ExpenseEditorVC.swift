@@ -30,6 +30,7 @@ class ExpenseEditorVC: MDStatefulViewController {
     var unformattedAmount = ""
     
     let customPickerAnimator = CustomPickerTransitioningDelegate()
+    let customPicker = CustomPickerVC()
     
     init(expense: Expense?) {
         self.managedObjectContext = App.state.coreDataStack.newBackgroundWorkerMOC()
@@ -75,6 +76,10 @@ class ExpenseEditorVC: MDStatefulViewController {
         self.customView.keypadCollectionView.registerClass(__EEVCKeypadCell.self, forCellWithReuseIdentifier: ViewID.KeypadCell.rawValue)
         
         self.customView.categoryButton.addTarget(self, action: #selector(handleTapOnCategoryButton), forControlEvents: .TouchUpInside)
+        self.customView.paymentMethodButton.addTarget(self, action: #selector(handleTapOnPaymentMethodButton), forControlEvents: .TouchUpInside)
+        
+        self.customPicker.modalPresentationStyle = .Custom
+        self.customPicker.transitioningDelegate = self.customPickerAnimator
     }
     
     override func buildOperation() -> MDOperation? {
@@ -194,13 +199,16 @@ class ExpenseEditorVC: MDStatefulViewController {
 extension ExpenseEditorVC {
     
     func handleTapOnCategoryButton() {
-        let customPicker = CustomPickerVC()
         let delegate = CategoryPickerDelegate(categories: self.categories)
-        customPicker.dataSource = delegate
-        customPicker.delegate = delegate
-        customPicker.customView.headerLabel.text = "CATEGORY"
-        customPicker.modalPresentationStyle = .Custom
-        customPicker.transitioningDelegate = self.customPickerAnimator
+        self.customPicker.delegate = delegate
+        self.customPicker.customView.headerLabel.text = "CATEGORY"
+        self.presentViewController(customPicker, animated: true, completion: nil)
+    }
+    
+    func handleTapOnPaymentMethodButton() {
+        let delegate = PaymentMethodPickerDelegate(selectedIndex: 0)
+        self.customPicker.delegate = delegate
+        self.customPicker.customView.headerLabel.text = "PAYMENT METHOD"
         self.presentViewController(customPicker, animated: true, completion: nil)
     }
     
