@@ -24,7 +24,7 @@ class CustomPickerDismissalAnimator: NSObject, UIViewControllerAnimatedTransitio
             self.transitionDuration(transitionContext),
             animations: {
                 fromView.dimView.alpha = 0
-                fromView.tableViewBottom.constant = -(fromView.tableViewHeight.constant)
+                fromView.mainContainerBottom.constant = -(fromView.mainContainer.bounds.size.height)
                 fromView.setNeedsLayout()
                 fromView.layoutIfNeeded()
             },

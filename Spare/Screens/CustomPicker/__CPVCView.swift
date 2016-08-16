@@ -12,26 +12,38 @@ import Mold
 class __CPVCView: UIView {
     
     @IBOutlet weak var dimView: UIView!
+    @IBOutlet weak var mainContainer: UIView!
+    @IBOutlet weak var mainContainerBottom: NSLayoutConstraint!
+    @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
-    
-    @IBOutlet weak var tableViewBottom: NSLayoutConstraint!
     @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.backgroundColor = UIColor.clearColor()
-        self.dimView.backgroundColor = UIColor.blackColor()
-        self.tableView.backgroundColor = UIColor.whiteColor()
+        UIView.clearBackgroundColors(
+            self,
+            self.tableView
+        )
         
-        self.dimView.alpha = 0.7
+        self.dimView.backgroundColor = UIColor.blackColor()
+        self.mainContainer.backgroundColor = UIColor.whiteColor()
+        
+        self.dimView.alpha = 0
+        
+        self.headerLabel.font = Font.CustomPickerHeaderText
+        self.headerLabel.textColor = Color.CustomPickerHeaderTextColor
         
         self.tableView.separatorStyle = .None
+        self.tableView.showsVerticalScrollIndicator = false
     }
     
     override func updateConstraints() {
         self.tableView.layoutIfNeeded()
-        self.tableViewHeight.constant = min(300, self.tableView.contentSize.height)
+        
+        let maximumHeight = CGFloat(MDScreen.currentScreenIs(.iPhone4S) ? 220 : 300)
+        self.tableViewHeight.constant = min(maximumHeight, self.tableView.contentSize.height)
+        
         super.updateConstraints()
     }
     

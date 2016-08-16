@@ -36,13 +36,11 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="I0o-LH-E5s" firstAttribute="leading" secondItem="BGI-2U-xGL" secondAttribute="leading" constant="10" id="8pB-Oi-LdU"/>
-                    <constraint firstItem="aB7-hD-jOL" firstAttribute="top" relation="greaterThanOrEqual" secondItem="BGI-2U-xGL" secondAttribute="top" constant="10" id="Mud-0Y-TmJ"/>
                     <constraint firstItem="iYE-5C-adv" firstAttribute="leading" secondItem="BGI-2U-xGL" secondAttribute="leading" id="Qb3-sH-IRJ"/>
                     <constraint firstItem="aB7-hD-jOL" firstAttribute="leading" secondItem="BGI-2U-xGL" secondAttribute="leading" constant="36" id="RRC-X7-aqe"/>
                     <constraint firstAttribute="trailing" secondItem="aB7-hD-jOL" secondAttribute="trailing" constant="10" id="ZAC-KK-OAr"/>
                     <constraint firstItem="aB7-hD-jOL" firstAttribute="centerY" secondItem="BGI-2U-xGL" secondAttribute="centerY" id="ds7-Md-yYF"/>
                     <constraint firstAttribute="trailing" secondItem="iYE-5C-adv" secondAttribute="trailing" id="jlq-na-UnQ"/>
-                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="aB7-hD-jOL" secondAttribute="bottom" constant="10" id="lHh-60-t8f"/>
                     <constraint firstItem="I0o-LH-E5s" firstAttribute="firstBaseline" secondItem="aB7-hD-jOL" secondAttribute="firstBaseline" id="nkf-cs-WVX"/>
                     <constraint firstAttribute="bottom" secondItem="iYE-5C-adv" secondAttribute="bottom" id="qMi-oO-nwl"/>
                     <constraint firstItem="iYE-5C-adv" firstAttribute="top" secondItem="BGI-2U-xGL" secondAttribute="top" id="yMN-9G-YxN"/>
@@ -52,6 +50,8 @@
                 <outlet property="checkLabel" destination="I0o-LH-E5s" id="9gM-lu-w7Y"/>
                 <outlet property="emptyView" destination="iYE-5C-adv" id="JXH-UA-Yfd"/>
                 <outlet property="itemLabel" destination="aB7-hD-jOL" id="6IQ-kH-H6D"/>
+                <outlet property="itemLabelLeading" destination="RRC-X7-aqe" id="FBw-CU-UmK"/>
+                <outlet property="itemLabelTrailing" destination="ZAC-KK-OAr" id="wFz-wh-w7B"/>
             </connections>
             <point key="canvasLocation" x="257" y="250"/>
         </tableViewCell>

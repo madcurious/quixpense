@@ -27,7 +27,7 @@ class CustomPickerPresentationAnimator: NSObject, UIViewControllerAnimatedTransi
         toView.layoutIfNeeded()
         toView.frame = transitionContext.finalFrameForViewController(toVC)
         toView.dimView.alpha = 0
-        toView.tableViewBottom.constant = -(toView.tableViewHeight.constant)
+        toView.mainContainerBottom.constant = -(toView.mainContainer.bounds.size.height)
         toView.setNeedsLayout()
         toView.layoutIfNeeded()
         containerView.addSubview(toView)
@@ -36,7 +36,7 @@ class CustomPickerPresentationAnimator: NSObject, UIViewControllerAnimatedTransi
             self.transitionDuration(transitionContext),
             animations: {
                 toView.dimView.alpha = 0.7
-                toView.tableViewBottom.constant = 0
+                toView.mainContainerBottom.constant = 0
                 toView.setNeedsLayout()
                 toView.layoutIfNeeded()
             },

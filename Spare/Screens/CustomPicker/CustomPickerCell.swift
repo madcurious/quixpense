@@ -14,6 +14,20 @@ class CustomPickerCell: UITableViewCell {
     @IBOutlet weak var checkLabel: UILabel!
     @IBOutlet weak var itemLabel: UILabel!
     
+    @IBOutlet weak var itemLabelLeading: NSLayoutConstraint!
+    @IBOutlet weak var itemLabelTrailing: NSLayoutConstraint!
+    
+    static let ItemLabelLeading = CGFloat(36)
+    static let ItemLabelTrailing = CGFloat(10)
+    static let ItemLabelTop = CGFloat(10)
+    static let ItemLabelBottom = CGFloat(10)
+    
+    static let sizerLabel: UILabel = {
+        let label = UILabel()
+        CustomPickerCell.applyItemLabelAttributes(label)
+        return label
+    }()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -23,10 +37,21 @@ class CustomPickerCell: UITableViewCell {
         self.checkLabel.textColor = Color.CustomPickerItemTextColor
         self.checkLabel.font = Font.icon(20)
         
-        self.itemLabel.textColor = Color.CustomPickerItemTextColor
-        self.itemLabel.font = Font.CustomPickerText
-        self.itemLabel.numberOfLines = 3
-        self.itemLabel.lineBreakMode = .ByTruncatingTail
+        CustomPickerCell.applyItemLabelAttributes(self.itemLabel)
+    }
+    
+    override func updateConstraints() {
+        self.itemLabelLeading.constant = CustomPickerCell.ItemLabelLeading
+        self.itemLabelTrailing.constant = CustomPickerCell.ItemLabelTrailing
+        
+        super.updateConstraints()
+    }
+    
+    class func applyItemLabelAttributes(label: UILabel) {
+        label.textColor = Color.CustomPickerItemTextColor
+        label.font = Font.CustomPickerText
+        label.numberOfLines = 3
+        label.lineBreakMode = .ByTruncatingTail
     }
     
 }

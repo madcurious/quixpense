@@ -198,6 +198,7 @@ extension ExpenseEditorVC {
         let delegate = CategoryPickerDelegate(categories: self.categories)
         customPicker.dataSource = delegate
         customPicker.delegate = delegate
+        customPicker.customView.headerLabel.text = "CATEGORY"
         customPicker.modalPresentationStyle = .Custom
         customPicker.transitioningDelegate = self.customPickerAnimator
         self.presentViewController(customPicker, animated: true, completion: nil)

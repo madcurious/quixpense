@@ -35,12 +35,6 @@ extension CategoryPickerDelegate: UITableViewDataSource {
         return cell
     }
     
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = tableView.dequeueReusableHeaderFooterViewWithIdentifier(CustomPickerVC.ViewID.Header.rawValue) as! CustomPickerHeader
-        header.label.text = "CATEGORY"
-        return header
-    }
-    
 }
 
 extension CategoryPickerDelegate: UITableViewDelegate {
@@ -53,8 +47,13 @@ extension CategoryPickerDelegate: UITableViewDelegate {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 40
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        let maxWidth = UIScreen.mainScreen().bounds.size.width - (CustomPickerCell.ItemLabelLeading + CustomPickerCell.ItemLabelTrailing)
+        let sizerLabel = CustomPickerCell.sizerLabel
+        sizerLabel.text = self.categories[indexPath.row].name
+        let labelSize = sizerLabel.sizeThatFits(CGSizeMake(maxWidth, CGFloat.max))
+        let height = CustomPickerCell.ItemLabelTop + labelSize.height + CustomPickerCell.ItemLabelBottom
+        return height
     }
     
 }
