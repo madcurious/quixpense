@@ -129,15 +129,21 @@ class ExpenseEditorVC: MDStatefulViewController {
     }
     
     func refreshViewFromModel() {
-        self.customView.categoryButton.setTitle(md_nonEmptyString(self.expense.category?.name), forState: .Normal)
-        
+        self.refreshCategoryDisplay()
         self.customView.dateButton.setTitle(DateFormatter.displayTextForExpenseEditorDate(self.expense.dateSpent), forState: .Normal)
-        
-        self.customView.paymentMethodButton.setTitle(PaymentMethod(self.expense.paymentMethod?.integerValue)?.text, forState: .Normal)
-        
+        self.refreshPaymentMethodDisplay()
         self.customView.noteTextField.text = md_nonEmptyString(self.expense.note)
         
-        self.customView.amountTextField.text = self.expense.amount?.stringValue
+        self.refreshAmountDisplay()
+//        self.customView.amountTextField.text = self.expense.amount?.stringValue
+    }
+    
+    func refreshCategoryDisplay() {
+        self.customView.categoryButton.setTitle(md_nonEmptyString(self.expense.category?.name), forState: .Normal)
+    }
+    
+    func refreshPaymentMethodDisplay() {
+        self.customView.paymentMethodButton.setTitle(PaymentMethod(self.expense.paymentMethod?.integerValue)?.text, forState: .Normal)
     }
     
     func refreshAmountDisplay() {
@@ -199,14 +205,43 @@ class ExpenseEditorVC: MDStatefulViewController {
 extension ExpenseEditorVC {
     
     func handleTapOnCategoryButton() {
-        let delegate = CategoryPickerDelegate(categories: self.categories)
+        let selectedIndex: Int = {
+            guard let currentCategory = self.expense.category,
+                let index = self.categories.indexOf(currentCategory)
+                else {
+                    return 0
+            }
+            return index
+        }()
+        
+        let delegate = CategoryPickerDelegate(categories: self.categories, selectedIndex: selectedIndex)
+        delegate.selectionAction = {[unowned self] selectedIndex in
+            self.expense.category = self.categories[selectedIndex]
+            self.refreshCategoryDisplay()
+        }
+        
         self.customPicker.delegate = delegate
         self.customPicker.customView.headerLabel.text = "CATEGORY"
         self.presentViewController(customPicker, animated: true, completion: nil)
     }
     
     func handleTapOnPaymentMethodButton() {
-        let delegate = PaymentMethodPickerDelegate(selectedIndex: 0)
+        let selectedIndex: Int = {
+            guard let currentPaymentMethod = PaymentMethod(self.expense.paymentMethod?.integerValue),
+                let index = PaymentMethod.allValues.indexOf(currentPaymentMethod)
+                else {
+                    return 0
+            }
+            return index
+        }()
+        
+        let delegate = PaymentMethodPickerDelegate(selectedIndex: selectedIndex)
+        delegate.selectionAction = {[unowned self] selectedIndex in
+            let paymentMethods = PaymentMethod.allValues
+            self.expense.paymentMethod = paymentMethods[selectedIndex].rawValue
+            self.refreshPaymentMethodDisplay()
+        }
+        
         self.customPicker.delegate = delegate
         self.customPicker.customView.headerLabel.text = "PAYMENT METHOD"
         self.presentViewController(customPicker, animated: true, completion: nil)

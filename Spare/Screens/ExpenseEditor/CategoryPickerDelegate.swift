@@ -16,7 +16,7 @@ class CategoryPickerDelegate: CustomPickerDelegate {
         return self.categories.map({ $0 as Any })
     }
     
-    init(categories: [Category], selectedIndex: Int = 0) {
+    init(categories: [Category], selectedIndex: Int) {
         self.categories = categories
         super.init(selectedIndex: selectedIndex)
     }

@@ -14,6 +14,8 @@ enum PaymentMethod: Int {
     case Credit = 1
     case Debit = 2
     
+    static let allValues = [PaymentMethod.Cash, .Credit, .Debit]
+    
     var text: String {
         switch self {
         case .Cash:

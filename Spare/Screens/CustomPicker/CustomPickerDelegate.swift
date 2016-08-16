@@ -11,6 +11,7 @@ import UIKit
 class CustomPickerDelegate: NSObject {
     
     var selectedIndex: Int
+    var selectionAction: ((selectedIndex: Int) -> ())?
     
     var dataSource: [Any] {
         fatalError("Unimplemented \(#function)")
@@ -50,6 +51,8 @@ extension CustomPickerDelegate: UITableViewDelegate {
         self.selectedIndex = indexPath.row
         tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: previousIndex, inSection: 0), NSIndexPath(forRow: indexPath.row, inSection: 0)], withRowAnimation: .None)
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        self.selectionAction?(selectedIndex: self.selectedIndex)
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
