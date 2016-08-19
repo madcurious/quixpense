@@ -9,7 +9,6 @@
 import UIKit
 
 private enum ViewID: String {
-    case Header = "Header"
     case Cell = "Cell"
 }
 
@@ -32,10 +31,8 @@ class DatePickerVC: UIViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.registerNib(__DPVCCell.nib(), forCellWithReuseIdentifier: ViewID.Cell.rawValue)
-        collectionView.registerNib(__DPVCHeaderView.nib(), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: ViewID.Header.rawValue)
         let layoutManager = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layoutManager.scrollDirection = .Horizontal
-        layoutManager.sectionHeadersPinToVisibleBounds = true
         
         let months = self.generateMonthsBeforeDate(self.months[0])
         self.months.insertContentsOf(months, at: 0)
@@ -94,10 +91,6 @@ extension DatePickerVC: UICollectionViewDataSource {
         return cell
     }
     
-    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
-        return collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: ViewID.Header.rawValue, forIndexPath: indexPath)
-    }
-    
 }
 
 extension DatePickerVC: UICollectionViewDelegate {
@@ -106,18 +99,8 @@ extension DatePickerVC: UICollectionViewDelegate {
 
 extension DatePickerVC: UICollectionViewDelegateFlowLayout {
     
-    
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        let insets = self.collectionView(collectionView, layout: collectionViewLayout, insetForSectionAtIndex: section)
-        let headerWidth = collectionView.bounds.size.width - insets.left - insets.right
-        let size = CGSizeMake(headerWidth, 30)
-        return size
-    }
-    
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        let headerSize = self.collectionView(collectionView, layout: collectionViewLayout, referenceSizeForHeaderInSection: indexPath.section)
-        let remainingHeight = collectionView.bounds.size.height - headerSize.height
-        let tileHeight = remainingHeight / 5
+        let tileHeight = collectionView.bounds.size.height / 5
         
         let insets = self.collectionView(collectionView, layout: collectionViewLayout, insetForSectionAtIndex: indexPath.section)
         let tileWidth = (collectionView.bounds.size.width - insets.left - insets.right) / 7

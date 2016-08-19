@@ -143,8 +143,7 @@
 		26E7FA7B1CDB332F000E2181 /* BaseTabButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E7FA7A1CDB332F000E2181 /* BaseTabButton.swift */; };
 		26E9CEAC1D66D59A0005E087 /* __DPVCCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26E9CEAB1D66D59A0005E087 /* __DPVCCell.xib */; };
 		26E9CEAE1D66D5AA0005E087 /* __DPVCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E9CEAD1D66D5AA0005E087 /* __DPVCCell.swift */; };
-		26E9CEB01D66DD680005E087 /* __DPVCHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26E9CEAF1D66DD680005E087 /* __DPVCHeaderView.xib */; };
-		26E9CEB21D66DE710005E087 /* __DPVCHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E9CEB11D66DE710005E087 /* __DPVCHeaderView.swift */; };
+		26E9CEB41D66EDD70005E087 /* DatePickerFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E9CEB31D66EDD70005E087 /* DatePickerFlowLayout.swift */; };
 		26EFA0031CD9C8F100714E5D /* MainContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EFA0021CD9C8F100714E5D /* MainContainerVC.swift */; };
 		26EFA0051CD9C91A00714E5D /* __MCVCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26EFA0041CD9C91A00714E5D /* __MCVCView.xib */; };
 		26EFA0071CD9C92F00714E5D /* __MCVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EFA0061CD9C92F00714E5D /* __MCVCView.swift */; };
@@ -337,8 +336,7 @@
 		26E7FA7A1CDB332F000E2181 /* BaseTabButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTabButton.swift; sourceTree = "<group>"; };
 		26E9CEAB1D66D59A0005E087 /* __DPVCCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __DPVCCell.xib; sourceTree = "<group>"; };
 		26E9CEAD1D66D5AA0005E087 /* __DPVCCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __DPVCCell.swift; sourceTree = "<group>"; };
-		26E9CEAF1D66DD680005E087 /* __DPVCHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __DPVCHeaderView.xib; sourceTree = "<group>"; };
-		26E9CEB11D66DE710005E087 /* __DPVCHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __DPVCHeaderView.swift; sourceTree = "<group>"; };
+		26E9CEB31D66EDD70005E087 /* DatePickerFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerFlowLayout.swift; sourceTree = "<group>"; };
 		26EFA0021CD9C8F100714E5D /* MainContainerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainContainerVC.swift; sourceTree = "<group>"; };
 		26EFA0041CD9C91A00714E5D /* __MCVCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __MCVCView.xib; sourceTree = "<group>"; };
 		26EFA0061CD9C92F00714E5D /* __MCVCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __MCVCView.swift; sourceTree = "<group>"; };
@@ -561,8 +559,7 @@
 				265222A51D66D00A007FED96 /* __DPVCView.xib */,
 				26E9CEAB1D66D59A0005E087 /* __DPVCCell.xib */,
 				26E9CEAD1D66D5AA0005E087 /* __DPVCCell.swift */,
-				26E9CEAF1D66DD680005E087 /* __DPVCHeaderView.xib */,
-				26E9CEB11D66DE710005E087 /* __DPVCHeaderView.swift */,
+				26E9CEB31D66EDD70005E087 /* DatePickerFlowLayout.swift */,
 			);
 			path = DatePicker;
 			sourceTree = "<group>";
@@ -841,7 +838,6 @@
 				261AF6331D5F395200E03A48 /* Avenir-Medium.ttf in Resources */,
 				268BBDAE1D08E99C005C6BD8 /* Lato-Black.ttf in Resources */,
 				268BBDB01D08E99C005C6BD8 /* Lato-Bold.ttf in Resources */,
-				26E9CEB01D66DD680005E087 /* __DPVCHeaderView.xib in Resources */,
 				266946841CC7711000A68424 /* Default@2x.png in Resources */,
 				265849021D0AD5C10047BCFA /* __HVCCell.xib in Resources */,
 				2603F8C31CCA45FF007F311F /* LaunchScreen.storyboard in Resources */,
@@ -1005,7 +1001,6 @@
 				269D4A021CE16DCA00109990 /* ValidateCategoryOperation.swift in Sources */,
 				2682125F1D4A2DEF0041078F /* __SVCGraphView.swift in Sources */,
 				2682125A1D4A242B0041078F /* GraphView.swift in Sources */,
-				26E9CEB21D66DE710005E087 /* __DPVCHeaderView.swift in Sources */,
 				269D49F81CE1610100109990 /* ExpenseEditorVC.swift in Sources */,
 				268F47F81D60D24E0088AC6B /* CustomPickerVC.swift in Sources */,
 				26C034E41D4B0FE10064187F /* __ELVCBCell.swift in Sources */,
@@ -1033,6 +1028,7 @@
 				268F48191D60D3DE0088AC6B /* CustomPickerTransitioningDelegate.swift in Sources */,
 				266408CC1D4A924400609580 /* __ELVCBEmptyView.swift in Sources */,
 				26A063F61D2134040034D04F /* CustomButton.swift in Sources */,
+				26E9CEB41D66EDD70005E087 /* DatePickerFlowLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
