@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="y7T-Fm-5C2" customClass="__DPVCCell" customModule="Spare" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="73" height="73"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="73" height="73"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kmP-KL-WFo">
+                        <rect key="frame" x="0.0" y="0.0" width="73" height="73"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="kmP-KL-WFo" secondAttribute="trailing" id="B02-BA-FVQ"/>
+                <constraint firstItem="kmP-KL-WFo" firstAttribute="top" secondItem="y7T-Fm-5C2" secondAttribute="top" id="DsG-LY-c5M"/>
+                <constraint firstItem="kmP-KL-WFo" firstAttribute="leading" secondItem="y7T-Fm-5C2" secondAttribute="leading" id="Lh5-1A-82f"/>
+                <constraint firstAttribute="bottom" secondItem="kmP-KL-WFo" secondAttribute="bottom" id="xLW-Ba-d4x"/>
+            </constraints>
+            <size key="customSize" width="73" height="73"/>
+            <connections>
+                <outlet property="dateLabel" destination="kmP-KL-WFo" id="bm8-SD-KeG"/>
+            </connections>
+            <point key="canvasLocation" x="273.5" y="323.5"/>
+        </collectionViewCell>
+    </objects>
+</document>

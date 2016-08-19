@@ -76,6 +76,7 @@ class ExpenseEditorVC: MDStatefulViewController {
         self.customView.keypadCollectionView.registerClass(__EEVCKeypadCell.self, forCellWithReuseIdentifier: ViewID.KeypadCell.rawValue)
         
         self.customView.categoryButton.addTarget(self, action: #selector(handleTapOnCategoryButton), forControlEvents: .TouchUpInside)
+        self.customView.dateButton.addTarget(self, action: #selector(handleTapOnDateButton), forControlEvents: .TouchUpInside)
         self.customView.paymentMethodButton.addTarget(self, action: #selector(handleTapOnPaymentMethodButton), forControlEvents: .TouchUpInside)
         
         self.customPicker.modalPresentationStyle = .Custom
@@ -223,6 +224,10 @@ extension ExpenseEditorVC {
         self.customPicker.delegate = delegate
         self.customPicker.customView.headerLabel.text = "CATEGORY"
         self.presentViewController(customPicker, animated: true, completion: nil)
+    }
+    
+    func handleTapOnDateButton() {
+        self.presentViewController(DatePickerVC(), animated: true, completion: nil)
     }
     
     func handleTapOnPaymentMethodButton() {
