@@ -20,7 +20,6 @@ class __DPVCView: UIView {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -37,6 +36,8 @@ class __DPVCView: UIView {
             label.textAlignment = .Center
             label.text = texts[i]
         }
+        
+        self.collectionView.pagingEnabled = true
     }
     
 }

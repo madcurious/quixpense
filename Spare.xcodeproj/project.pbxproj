@@ -128,6 +128,9 @@
 		269D49FA1CE1643400109990 /* AddCategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269D49F91CE1643400109990 /* AddCategoryVC.swift */; };
 		269D49FC1CE1643A00109990 /* AddExpenseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269D49FB1CE1643A00109990 /* AddExpenseVC.swift */; };
 		269D4A021CE16DCA00109990 /* ValidateCategoryOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269D4A011CE16DCA00109990 /* ValidateCategoryOperation.swift */; };
+		269E7E0C1D68C7D000476870 /* __DPVCPageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 269E7E0B1D68C7D000476870 /* __DPVCPageCell.xib */; };
+		269E7E0E1D68C7D900476870 /* __DPVCPageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269E7E0D1D68C7D900476870 /* __DPVCPageCell.swift */; };
+		269E7E101D68C96000476870 /* MonthPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269E7E0F1D68C96000476870 /* MonthPageVC.swift */; };
 		26A063F61D2134040034D04F /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A063F51D2134040034D04F /* CustomButton.swift */; };
 		26A2C6F11D63053100743F7D /* PaymentMethodPickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A2C6F01D63053100743F7D /* PaymentMethodPickerDelegate.swift */; };
 		26A2C6F31D6305DF00743F7D /* CustomPickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A2C6F21D6305DF00743F7D /* CustomPickerDelegate.swift */; };
@@ -141,9 +144,8 @@
 		26E4E0591937AF690096191A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E4E0581937AF690096191A /* QuartzCore.framework */; };
 		26E6EDB41CDBA6C60034EEDE /* AddButtonProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26E6EDB31CDBA6C60034EEDE /* AddButtonProgressView.xib */; };
 		26E7FA7B1CDB332F000E2181 /* BaseTabButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E7FA7A1CDB332F000E2181 /* BaseTabButton.swift */; };
-		26E9CEAC1D66D59A0005E087 /* __DPVCCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26E9CEAB1D66D59A0005E087 /* __DPVCCell.xib */; };
-		26E9CEAE1D66D5AA0005E087 /* __DPVCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E9CEAD1D66D5AA0005E087 /* __DPVCCell.swift */; };
-		26E9CEB41D66EDD70005E087 /* DatePickerFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E9CEB31D66EDD70005E087 /* DatePickerFlowLayout.swift */; };
+		26E9CEAC1D66D59A0005E087 /* __DPVCDayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26E9CEAB1D66D59A0005E087 /* __DPVCDayCell.xib */; };
+		26E9CEAE1D66D5AA0005E087 /* __DPVCDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E9CEAD1D66D5AA0005E087 /* __DPVCDayCell.swift */; };
 		26EFA0031CD9C8F100714E5D /* MainContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EFA0021CD9C8F100714E5D /* MainContainerVC.swift */; };
 		26EFA0051CD9C91A00714E5D /* __MCVCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26EFA0041CD9C91A00714E5D /* __MCVCView.xib */; };
 		26EFA0071CD9C92F00714E5D /* __MCVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EFA0061CD9C92F00714E5D /* __MCVCView.swift */; };
@@ -320,6 +322,9 @@
 		269D49F91CE1643400109990 /* AddCategoryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCategoryVC.swift; sourceTree = "<group>"; };
 		269D49FB1CE1643A00109990 /* AddExpenseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddExpenseVC.swift; sourceTree = "<group>"; };
 		269D4A011CE16DCA00109990 /* ValidateCategoryOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidateCategoryOperation.swift; sourceTree = "<group>"; };
+		269E7E0B1D68C7D000476870 /* __DPVCPageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __DPVCPageCell.xib; sourceTree = "<group>"; };
+		269E7E0D1D68C7D900476870 /* __DPVCPageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __DPVCPageCell.swift; sourceTree = "<group>"; };
+		269E7E0F1D68C96000476870 /* MonthPageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthPageVC.swift; sourceTree = "<group>"; };
 		26A063F51D2134040034D04F /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		26A2C6F01D63053100743F7D /* PaymentMethodPickerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethodPickerDelegate.swift; sourceTree = "<group>"; };
 		26A2C6F21D6305DF00743F7D /* CustomPickerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPickerDelegate.swift; sourceTree = "<group>"; };
@@ -334,9 +339,8 @@
 		26E4E0581937AF690096191A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		26E6EDB31CDBA6C60034EEDE /* AddButtonProgressView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddButtonProgressView.xib; sourceTree = "<group>"; };
 		26E7FA7A1CDB332F000E2181 /* BaseTabButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTabButton.swift; sourceTree = "<group>"; };
-		26E9CEAB1D66D59A0005E087 /* __DPVCCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __DPVCCell.xib; sourceTree = "<group>"; };
-		26E9CEAD1D66D5AA0005E087 /* __DPVCCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __DPVCCell.swift; sourceTree = "<group>"; };
-		26E9CEB31D66EDD70005E087 /* DatePickerFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerFlowLayout.swift; sourceTree = "<group>"; };
+		26E9CEAB1D66D59A0005E087 /* __DPVCDayCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __DPVCDayCell.xib; sourceTree = "<group>"; };
+		26E9CEAD1D66D5AA0005E087 /* __DPVCDayCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __DPVCDayCell.swift; sourceTree = "<group>"; };
 		26EFA0021CD9C8F100714E5D /* MainContainerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainContainerVC.swift; sourceTree = "<group>"; };
 		26EFA0041CD9C91A00714E5D /* __MCVCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __MCVCView.xib; sourceTree = "<group>"; };
 		26EFA0061CD9C92F00714E5D /* __MCVCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __MCVCView.swift; sourceTree = "<group>"; };
@@ -557,9 +561,11 @@
 				2652229F1D66CFCE007FED96 /* DatePickerVC.swift */,
 				265222A31D66CFF3007FED96 /* __DPVCView.swift */,
 				265222A51D66D00A007FED96 /* __DPVCView.xib */,
-				26E9CEAB1D66D59A0005E087 /* __DPVCCell.xib */,
-				26E9CEAD1D66D5AA0005E087 /* __DPVCCell.swift */,
-				26E9CEB31D66EDD70005E087 /* DatePickerFlowLayout.swift */,
+				26E9CEAB1D66D59A0005E087 /* __DPVCDayCell.xib */,
+				26E9CEAD1D66D5AA0005E087 /* __DPVCDayCell.swift */,
+				269E7E0B1D68C7D000476870 /* __DPVCPageCell.xib */,
+				269E7E0D1D68C7D900476870 /* __DPVCPageCell.swift */,
+				269E7E0F1D68C96000476870 /* MonthPageVC.swift */,
 			);
 			path = DatePicker;
 			sourceTree = "<group>";
@@ -873,8 +879,9 @@
 				261AF62C1D5F395200E03A48 /* Avenir-BlackOblique.ttf in Resources */,
 				268BBDB21D08E99C005C6BD8 /* Lato-Hairline.ttf in Resources */,
 				261D54AA1D4AFC1800F4FCC6 /* __ELVCBView.xib in Resources */,
+				269E7E0C1D68C7D000476870 /* __DPVCPageCell.xib in Resources */,
 				268BBDAF1D08E99C005C6BD8 /* Lato-BlackItalic.ttf in Resources */,
-				26E9CEAC1D66D59A0005E087 /* __DPVCCell.xib in Resources */,
+				26E9CEAC1D66D59A0005E087 /* __DPVCDayCell.xib in Resources */,
 				268212581D4A1CEF0041078F /* __SVCCategoryCellStub.xib in Resources */,
 				261AF6341D5F395200E03A48 /* Avenir-MediumOblique.ttf in Resources */,
 				266946881CC7711000A68424 /* Icon-Small@2x.png in Resources */,
@@ -974,6 +981,7 @@
 				26A6CDE11CDB18EA00309A84 /* AddButton.swift in Sources */,
 				268F48101D60D3490088AC6B /* Event.swift in Sources */,
 				268212521D4A18220041078F /* SegmentedCircle.swift in Sources */,
+				269E7E0E1D68C7D900476870 /* __DPVCPageCell.swift in Sources */,
 				26C2D5C21CDB5E4800BC73FC /* AddButtonProgressView.swift in Sources */,
 				268F48161D60D3490088AC6B /* Strings.swift in Sources */,
 				268212561D4A1CDB0041078F /* __SVCCategoryCellStub.swift in Sources */,
@@ -981,7 +989,7 @@
 				268F47F41D60D24D0088AC6B /* CustomPickerCell.swift in Sources */,
 				269D49F21CE1610100109990 /* __CEVCView.swift in Sources */,
 				268F47F61D60D24D0088AC6B /* CustomPickerHeader.swift in Sources */,
-				26E9CEAE1D66D5AA0005E087 /* __DPVCCell.swift in Sources */,
+				26E9CEAE1D66D5AA0005E087 /* __DPVCDayCell.swift in Sources */,
 				268D23E01D001022006B8D0B /* __HVCCell.swift in Sources */,
 				266CBDB41D2676D900F5D5D1 /* EditExpenseVC.swift in Sources */,
 				26FF03191D2BBB8D00BA74FD /* BaseFormVC.swift in Sources */,
@@ -1006,6 +1014,7 @@
 				26C034E41D4B0FE10064187F /* __ELVCBCell.swift in Sources */,
 				261AF63C1D5F41F500E03A48 /* __EEVCKeypadCell.swift in Sources */,
 				268F48121D60D3490088AC6B /* Icon.swift in Sources */,
+				269E7E101D68C96000476870 /* MonthPageVC.swift in Sources */,
 				26FF031A1D2BBB8D00BA74FD /* BaseNavBarVC.swift in Sources */,
 				268F48151D60D3490088AC6B /* StartOfWeek.swift in Sources */,
 				26BC4F961CE429AE0011BE98 /* ValidateExpenseOperation.swift in Sources */,
@@ -1028,7 +1037,6 @@
 				268F48191D60D3DE0088AC6B /* CustomPickerTransitioningDelegate.swift in Sources */,
 				266408CC1D4A924400609580 /* __ELVCBEmptyView.swift in Sources */,
 				26A063F61D2134040034D04F /* CustomButton.swift in Sources */,
-				26E9CEB41D66EDD70005E087 /* DatePickerFlowLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

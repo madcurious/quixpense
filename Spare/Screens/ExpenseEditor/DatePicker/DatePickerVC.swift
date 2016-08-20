@@ -9,7 +9,7 @@
 import UIKit
 
 private enum ViewID: String {
-    case Cell = "Cell"
+    case PageCell = "PageCell"
 }
 
 class DatePickerVC: UIViewController {
@@ -30,7 +30,7 @@ class DatePickerVC: UIViewController {
         let collectionView = self.customView.collectionView
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.registerNib(__DPVCCell.nib(), forCellWithReuseIdentifier: ViewID.Cell.rawValue)
+        collectionView.registerNib(__DPVCPageCell.nib(), forCellWithReuseIdentifier: ViewID.PageCell.rawValue)
         let layoutManager = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layoutManager.scrollDirection = .Horizontal
         
@@ -40,6 +40,14 @@ class DatePickerVC: UIViewController {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapOnDimView))
         tapGesture.cancelsTouchesInView = false
         self.customView.dimView.addGestureRecognizer(tapGesture)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+//        self.customView.collectionView.layoutIfNeeded()
+//        let lastIndexPath = NSIndexPath(forItem: self.months.count - 1, inSection: 0)
+//        self.customView.collectionView.scrollToItemAtIndexPath(lastIndexPath, atScrollPosition: .Right, animated: false)
     }
     
     func generateMonthsBeforeDate(date: NSDate) -> [NSDate] {
@@ -65,29 +73,13 @@ class DatePickerVC: UIViewController {
 
 extension DatePickerVC: UICollectionViewDataSource {
     
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.months.count
     }
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // Return the number of days in that month.
-        // Check the cache first.
-        let month = self.months[section]
-        if let dayCount = self.dayCountCache.objectForKey(month) as? Int {
-            return dayCount
-        }
-        
-        // If the count isn't in the cache, count it, then cache the number.
-        let calendar = NSCalendar.currentCalendar()
-        let dayCount = calendar.rangeOfUnit(.Day, inUnit: .Month, forDate: month).length
-        self.dayCountCache.setObject(dayCount, forKey: month)
-        return dayCount
-    }
-    
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(ViewID.Cell
-            .rawValue, forIndexPath: indexPath) as! __DPVCCell
-        cell.dateLabel.text = "\(indexPath.item)"
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(ViewID.PageCell.rawValue, forIndexPath: indexPath) as! __DPVCPageCell
+        cell.month = self.months[indexPath.item]
         return cell
     }
     
@@ -100,12 +92,7 @@ extension DatePickerVC: UICollectionViewDelegate {
 extension DatePickerVC: UICollectionViewDelegateFlowLayout {
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        let tileHeight = collectionView.bounds.size.height / 5
-        
-        let insets = self.collectionView(collectionView, layout: collectionViewLayout, insetForSectionAtIndex: indexPath.section)
-        let tileWidth = (collectionView.bounds.size.width - insets.left - insets.right) / 7
-        
-        return CGSizeMake(tileWidth, tileHeight)
+        return collectionView.bounds.size
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
@@ -114,10 +101,6 @@ extension DatePickerVC: UICollectionViewDelegateFlowLayout {
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
         return 0
-    }
-    
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-        return UIEdgeInsetsMake(0, 10, 0, 10)
     }
     
 }

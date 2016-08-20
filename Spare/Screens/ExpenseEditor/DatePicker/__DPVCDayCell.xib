@@ -6,7 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="y7T-Fm-5C2" customClass="__DPVCCell" customModule="Spare" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="y7T-Fm-5C2" customClass="__DPVCDayCell" customModule="Spare" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="73" height="73"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -32,7 +32,7 @@
             <connections>
                 <outlet property="dateLabel" destination="kmP-KL-WFo" id="bm8-SD-KeG"/>
             </connections>
-            <point key="canvasLocation" x="273.5" y="323.5"/>
+            <point key="canvasLocation" x="-74.5" y="131.5"/>
         </collectionViewCell>
     </objects>
 </document>

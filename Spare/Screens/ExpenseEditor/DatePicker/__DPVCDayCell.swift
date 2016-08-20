@@ -1,5 +1,5 @@
 //
-//  __DPVCCell.swift
+//  __DPVCDayCell.swift
 //  Spare
 //
 //  Created by Matt Quiros on 19/08/2016.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class __DPVCCell: UICollectionViewCell {
+class __DPVCDayCell: UICollectionViewCell {
     
     @IBOutlet weak var dateLabel: UILabel!
     
