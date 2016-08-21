@@ -20,7 +20,7 @@ class DatePickerVC: UIViewController {
     let dayCountCache = NSCache()
     let fillerCountCache = NSCache()
     
-    var selectedDate: NSDate? {
+    var selectedDate = NSDate() {
         didSet {
         }
     }
@@ -49,7 +49,12 @@ class DatePickerVC: UIViewController {
         let components = calendar.components([.Month, .Day, .Year], fromDate: NSDate())
         components.day = 1
         let currentMonth = calendar.dateFromComponents(components)!
+        
+        let previousMonths = self.generateMonthsFromDate(self.selectedDate, forPageDirection: .Previous)
+        self.months.appendContentsOf(previousMonths)
         self.months.append(currentMonth)
+        let nextMonths = self.generateMonthsFromDate(self.selectedDate, forPageDirection: .Next)
+        self.months.appendContentsOf(nextMonths)
         self.customView.collectionView.reloadData()
         
         self.selectedDate = currentMonth
@@ -62,36 +67,39 @@ class DatePickerVC: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-//        // Initially display the selected date.
-//        guard let selectedDate = self.selectedDate,
-//        let index = self.months.indexOf(selectedDate)
-//            else {
-//                return
-//        }
-//        self.view.setNeedsLayout()
-//        self.view.layoutIfNeeded()
-//        self.customView.collectionView.scrollToItemAtIndexPath(NSIndexPath(forItem: index, inSection: 0), atScrollPosition: .CenteredHorizontally, animated: false)
+        // Initially display the selected date.
+        guard let index = self.months.indexOf(self.selectedDate)
+            else {
+                return
+        }
+        self.view.setNeedsLayout()
+        self.view.layoutIfNeeded()
+        self.customView.collectionView.scrollToItemAtIndexPath(NSIndexPath(forItem: index, inSection: 0), atScrollPosition: .CenteredHorizontally, animated: false)
         
         
         
-        let previousMonths = self.generateMonthsFromDate(self.selectedDate!, forPageDirection: .Previous)
-        let nextMonths = self.generateMonthsFromDate(self.selectedDate!, forPageDirection: .Next)
-        self.customView.collectionView.performBatchUpdates({[unowned self] in
-            self.months.insertContentsOf(previousMonths, at: 0)
-            var previousIndexPaths = [NSIndexPath]()
-            for i in 0 ..< previousMonths.count {
-                previousIndexPaths.append(NSIndexPath(forItem: i, inSection: 0))
-            }
-            self.customView.collectionView.insertItemsAtIndexPaths(previousIndexPaths)
-            
-            let insertionPoint = self.months.count
-            self.months.appendContentsOf(nextMonths)
-            var nextIndexPaths = [NSIndexPath]()
-            for i in 0 ..< nextMonths.count {
-                nextIndexPaths.append(NSIndexPath(forItem: insertionPoint + i, inSection: 0))
-            }
-            self.customView.collectionView.insertItemsAtIndexPaths(nextIndexPaths)
-            }, completion: nil)
+//        let previousMonths = self.generateMonthsFromDate(self.selectedDate!, forPageDirection: .Previous)
+//        let nextMonths = self.generateMonthsFromDate(self.selectedDate!, forPageDirection: .Next)
+//        self.customView.collectionView.performBatchUpdates(
+//            {[unowned self] in
+//                self.months.insertContentsOf(previousMonths, at: 0)
+//                var previousIndexPaths = [NSIndexPath]()
+//                for i in 0 ..< previousMonths.count {
+//                    previousIndexPaths.append(NSIndexPath(forItem: i, inSection: 0))
+//                }
+//                self.customView.collectionView.insertItemsAtIndexPaths(previousIndexPaths)
+//                
+//                let insertionPoint = self.months.count
+//                self.months.appendContentsOf(nextMonths)
+//                var nextIndexPaths = [NSIndexPath]()
+//                for i in 0 ..< nextMonths.count {
+//                    nextIndexPaths.append(NSIndexPath(forItem: insertionPoint + i, inSection: 0))
+//                }
+//                self.customView.collectionView.insertItemsAtIndexPaths(nextIndexPaths)
+//            },
+//            completion: {[unowned self] _ in
+//                self.customView.collectionView.layoutIfNeeded()
+//        })
     }
     
     func generateMonthsFromDate(date: NSDate, forPageDirection pageDirection: PageDirection) -> [NSDate] {
@@ -151,6 +159,25 @@ extension DatePickerVC: UICollectionViewDelegateFlowLayout {
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
         return 0
+    }
+    
+}
+
+extension DatePickerVC: UIScrollViewDelegate {
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        let currentPage = self.customView.collectionView.contentOffset.x / self.customView.collectionView.bounds.size.width
+        
+        // Add more months to the left or right if the user reaches the end.
+        if currentPage < 2 {
+            let previousMonths = self.generateMonthsFromDate(self.months[0], forPageDirection: .Previous)
+            self.months.insertContentsOf(previousMonths, at: 0)
+            self.customView.collectionView.reloadData()
+        } else if currentPage > CGFloat(self.months.count - 2) {
+            let nextMonths = self.generateMonthsFromDate(self.months[self.months.count - 1], forPageDirection: .Next)
+            self.months.appendContentsOf(nextMonths)
+            self.customView.collectionView.reloadData()
+        }
     }
     
 }

@@ -24,6 +24,8 @@ class __DPVCPageCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.contentView.addSubviewAndFill(self.monthPageVC.view)
+        self.backgroundColor = UIColor.redColor()
+
     }
     
 }
