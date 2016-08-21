@@ -20,6 +20,15 @@ class DatePickerVC: UIViewController {
     let dayCountCache = NSCache()
     let fillerCountCache = NSCache()
     
+    var selectedDate: NSDate? {
+        didSet {
+        }
+    }
+    
+    enum PageDirection {
+        case Previous, Next
+    }
+    
     override func loadView() {
         self.view = self.customView
     }
@@ -27,6 +36,7 @@ class DatePickerVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Setup collection view.
         let collectionView = self.customView.collectionView
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -34,15 +44,15 @@ class DatePickerVC: UIViewController {
         let layoutManager = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layoutManager.scrollDirection = .Horizontal
         
+        // Add the current month to the data source.
         let calendar = NSCalendar.currentCalendar()
         let components = calendar.components([.Month, .Day, .Year], fromDate: NSDate())
         components.day = 1
         let currentMonth = calendar.dateFromComponents(components)!
-        self.months = [currentMonth]
-        
-        let months = self.generateMonthsBeforeDate(self.months[0])
-        self.months.insertContentsOf(months, at: 0)
+        self.months.append(currentMonth)
         self.customView.collectionView.reloadData()
+        
+        self.selectedDate = currentMonth
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapOnDimView))
         tapGesture.cancelsTouchesInView = false
@@ -52,13 +62,39 @@ class DatePickerVC: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.view.setNeedsLayout()
-        self.view.layoutIfNeeded()
-        let lastPageX = self.customView.collectionView.contentSize.width - UIScreen.mainScreen().bounds.width
-        self.customView.collectionView.setContentOffset(CGPointMake(lastPageX, 0), animated: false)
+//        // Initially display the selected date.
+//        guard let selectedDate = self.selectedDate,
+//        let index = self.months.indexOf(selectedDate)
+//            else {
+//                return
+//        }
+//        self.view.setNeedsLayout()
+//        self.view.layoutIfNeeded()
+//        self.customView.collectionView.scrollToItemAtIndexPath(NSIndexPath(forItem: index, inSection: 0), atScrollPosition: .CenteredHorizontally, animated: false)
+        
+        
+        
+        let previousMonths = self.generateMonthsFromDate(self.selectedDate!, forPageDirection: .Previous)
+        let nextMonths = self.generateMonthsFromDate(self.selectedDate!, forPageDirection: .Next)
+        self.customView.collectionView.performBatchUpdates({[unowned self] in
+            self.months.insertContentsOf(previousMonths, at: 0)
+            var previousIndexPaths = [NSIndexPath]()
+            for i in 0 ..< previousMonths.count {
+                previousIndexPaths.append(NSIndexPath(forItem: i, inSection: 0))
+            }
+            self.customView.collectionView.insertItemsAtIndexPaths(previousIndexPaths)
+            
+            let insertionPoint = self.months.count
+            self.months.appendContentsOf(nextMonths)
+            var nextIndexPaths = [NSIndexPath]()
+            for i in 0 ..< nextMonths.count {
+                nextIndexPaths.append(NSIndexPath(forItem: insertionPoint + i, inSection: 0))
+            }
+            self.customView.collectionView.insertItemsAtIndexPaths(nextIndexPaths)
+            }, completion: nil)
     }
     
-    func generateMonthsBeforeDate(date: NSDate) -> [NSDate] {
+    func generateMonthsFromDate(date: NSDate, forPageDirection pageDirection: PageDirection) -> [NSDate] {
         // Use the first day of the month as the base date.
         let calendar = NSCalendar.currentCalendar()
         let components = calendar.components([.Month, .Day, .Year], fromDate: date)
@@ -66,10 +102,13 @@ class DatePickerVC: UIViewController {
         let baseMonth = calendar.dateFromComponents(components)!
         
         var months = [NSDate]()
-        for i in 1 ... 12 {
-            let newMonth = calendar.dateByAddingUnit(.Month, value: -(i), toDate: baseMonth, options: [])!
-            months.insert(newMonth, atIndex: 0)
+        for i in 1 ... 6 {
+            let increment = pageDirection == .Previous ? -(i) : i
+            let newMonth = calendar.dateByAddingUnit(.Month, value: increment, toDate: baseMonth, options: [])!
+            let insertionIndex = pageDirection == .Previous ? 0 : months.count
+            months.insert(newMonth, atIndex: insertionIndex)
         }
+        
         return months
     }
     
