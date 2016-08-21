@@ -36,6 +36,7 @@ class DatePickerVC: UIViewController {
         
         let months = self.generateMonthsBeforeDate(self.months[0])
         self.months.insertContentsOf(months, at: 0)
+        self.customView.collectionView.reloadData()
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapOnDimView))
         tapGesture.cancelsTouchesInView = false
@@ -45,9 +46,10 @@ class DatePickerVC: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-//        self.customView.collectionView.layoutIfNeeded()
-//        let lastIndexPath = NSIndexPath(forItem: self.months.count - 1, inSection: 0)
-//        self.customView.collectionView.scrollToItemAtIndexPath(lastIndexPath, atScrollPosition: .Right, animated: false)
+        self.view.setNeedsLayout()
+        self.view.layoutIfNeeded()
+        let lastPageX = self.customView.collectionView.contentSize.width - UIScreen.mainScreen().bounds.width
+        self.customView.collectionView.setContentOffset(CGPointMake(lastPageX, 0), animated: false)
     }
     
     func generateMonthsBeforeDate(date: NSDate) -> [NSDate] {
@@ -80,6 +82,7 @@ extension DatePickerVC: UICollectionViewDataSource {
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(ViewID.PageCell.rawValue, forIndexPath: indexPath) as! __DPVCPageCell
         cell.month = self.months[indexPath.item]
+        
         return cell
     }
     
@@ -92,7 +95,9 @@ extension DatePickerVC: UICollectionViewDelegate {
 extension DatePickerVC: UICollectionViewDelegateFlowLayout {
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return collectionView.bounds.size
+        let size = CGSizeMake(UIScreen.mainScreen().bounds.width, self.customView.collectionViewHeight.constant
+        )
+        return size
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {

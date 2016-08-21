@@ -19,6 +19,7 @@ class __DPVCView: UIView {
     @IBOutlet var headerLabels: [UILabel]!
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
     
     override func awakeFromNib() {
         super.awakeFromNib()

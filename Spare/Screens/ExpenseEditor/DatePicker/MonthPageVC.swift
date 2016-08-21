@@ -24,7 +24,11 @@ class MonthPageVC: UIViewController {
         return collectionView
     }()
     
-    var month: NSDate?
+    var month: NSDate? {
+        didSet {
+            self.collectionView.reloadData()
+        }
+    }
     
     static let dayCountCache = NSCache()
     static let fillerCountCache = NSCache()
