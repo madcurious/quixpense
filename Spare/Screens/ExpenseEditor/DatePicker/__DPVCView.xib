@@ -16,16 +16,16 @@
                     <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p2s-qf-YyZ">
-                    <rect key="frame" x="0.0" y="168" width="320" height="400"/>
+                    <rect key="frame" x="0.0" y="129" width="320" height="439"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0wx-Xf-yJF">
-                            <rect key="frame" x="10" y="10" width="300" height="21"/>
+                            <rect key="frame" x="10" y="10" width="300" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SF2-Lc-AtX">
-                            <rect key="frame" x="10" y="41" width="300" height="44"/>
+                            <rect key="frame" x="10" y="40.5" width="300" height="44"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ex4-XW-h4s">
                                     <rect key="frame" x="0.0" y="0.0" width="46" height="44"/>
@@ -57,7 +57,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4ep-f1-q7d">
-                            <rect key="frame" x="10" y="85" width="300" height="20.5"/>
+                            <rect key="frame" x="10" y="84.5" width="300" height="20.5"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lQv-zB-sCQ">
                                     <rect key="frame" x="0.0" y="0.0" width="42.5" height="20.5"/>
@@ -135,9 +135,9 @@
                             </constraints>
                         </view>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="d0H-K8-i2u">
-                            <rect key="frame" x="0.0" y="105.5" width="320" height="290.5"/>
+                            <rect key="frame" x="0.0" y="105" width="320" height="330"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="290" id="xgq-w6-zlT"/>
+                                <constraint firstAttribute="height" constant="330" id="xgq-w6-zlT"/>
                             </constraints>
                             <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="5QW-70-0hh">
                                 <size key="itemSize" width="50" height="50"/>
@@ -151,7 +151,6 @@
                     <constraints>
                         <constraint firstItem="SF2-Lc-AtX" firstAttribute="leading" secondItem="p2s-qf-YyZ" secondAttribute="leading" constant="10" id="14u-tL-Lgz"/>
                         <constraint firstAttribute="trailing" secondItem="d0H-K8-i2u" secondAttribute="trailing" id="1bb-8M-v2q"/>
-                        <constraint firstAttribute="height" constant="400" id="3Nq-HC-yEh"/>
                         <constraint firstItem="0wx-Xf-yJF" firstAttribute="leading" secondItem="p2s-qf-YyZ" secondAttribute="leading" constant="10" id="4Wf-O3-aS1"/>
                         <constraint firstItem="4ep-f1-q7d" firstAttribute="leading" secondItem="p2s-qf-YyZ" secondAttribute="leading" constant="10" id="FT9-HJ-5Ge"/>
                         <constraint firstAttribute="trailing" secondItem="SF2-Lc-AtX" secondAttribute="trailing" constant="10" id="H6L-pb-NzI"/>

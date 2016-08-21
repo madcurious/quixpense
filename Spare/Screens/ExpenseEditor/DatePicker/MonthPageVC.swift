@@ -64,6 +64,10 @@ extension MonthPageVC: UICollectionViewDataSource {
         // Check the cache first.
         if let fillerCount = MonthPageVC.fillerCountCache.objectForKey(month) as? Int,
             let dayCount = MonthPageVC.dayCountCache.objectForKey(month) as? Int {
+            
+            let formatter = NSDateFormatter()
+            formatter.dateStyle = .ShortStyle
+            print("\(formatter.stringFromDate(month)) - filler: \(fillerCount), dayCount: \(dayCount)")
             return fillerCount + dayCount
         }
         
@@ -73,8 +77,12 @@ extension MonthPageVC: UICollectionViewDataSource {
         MonthPageVC.dayCountCache.setObject(dayCount, forKey: month)
         
         let weekday = calendar.component(.Weekday, fromDate: month)
-        let fillerCount = 7 - (7 - weekday + 1)
+        let fillerCount = weekday - 1
         MonthPageVC.fillerCountCache.setObject(fillerCount, forKey: month)
+        
+        let formatter = NSDateFormatter()
+        formatter.dateStyle = .ShortStyle
+        print("\(formatter.stringFromDate(month)) - filler: \(fillerCount), dayCount: \(dayCount)")
         
         return fillerCount + dayCount
     }
@@ -101,7 +109,7 @@ extension MonthPageVC: UICollectionViewDelegateFlowLayout {
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         let width = collectionView.bounds.size.width / 7
-        let height = collectionView.bounds.size.height / 5
+        let height = collectionView.bounds.size.height / 6
         return CGSizeMake(width, height)
     }
     

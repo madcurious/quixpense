@@ -16,7 +16,7 @@ class DatePickerVC: UIViewController {
     
     let customView = __DPVCView.instantiateFromNib() as __DPVCView
     
-    var months = [NSDate()]
+    var months = [NSDate]()
     let dayCountCache = NSCache()
     let fillerCountCache = NSCache()
     
@@ -33,6 +33,12 @@ class DatePickerVC: UIViewController {
         collectionView.registerNib(__DPVCPageCell.nib(), forCellWithReuseIdentifier: ViewID.PageCell.rawValue)
         let layoutManager = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layoutManager.scrollDirection = .Horizontal
+        
+        let calendar = NSCalendar.currentCalendar()
+        let components = calendar.components([.Month, .Day, .Year], fromDate: NSDate())
+        components.day = 1
+        let currentMonth = calendar.dateFromComponents(components)!
+        self.months = [currentMonth]
         
         let months = self.generateMonthsBeforeDate(self.months[0])
         self.months.insertContentsOf(months, at: 0)
