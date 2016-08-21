@@ -41,7 +41,7 @@ class MonthPageVC: UIViewController {
         super.viewDidLoad()
         
         self.collectionView.scrollEnabled = false
-        self.collectionView.backgroundColor = UIColor.randomColor()
+        self.collectionView.backgroundColor = UIColor.clearColor()
         
         self.collectionView.dataSource = self
         self.collectionView.delegate = self

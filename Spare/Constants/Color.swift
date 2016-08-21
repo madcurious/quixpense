@@ -26,7 +26,7 @@ class Color {
     // MARK: - New colors
     
     static let CustomPickerHeaderTextColor = Hexaaaaaa
-    static let CustomPickerItemTextColor = Hex111111
+    static let CustomPickerTextColor = Hex111111
     
     static let FieldLabelTextColor = Hex666666
     static let FieldValueTextColor = White

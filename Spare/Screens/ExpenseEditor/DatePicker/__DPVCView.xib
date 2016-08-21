@@ -16,7 +16,7 @@
                     <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p2s-qf-YyZ">
-                    <rect key="frame" x="0.0" y="129" width="320" height="439"/>
+                    <rect key="frame" x="0.0" y="181" width="320" height="387"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0wx-Xf-yJF">
                             <rect key="frame" x="10" y="10" width="300" height="20.5"/>
@@ -25,7 +25,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SF2-Lc-AtX">
-                            <rect key="frame" x="10" y="40.5" width="300" height="44"/>
+                            <rect key="frame" x="10" y="30.5" width="300" height="44"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ex4-XW-h4s">
                                     <rect key="frame" x="0.0" y="0.0" width="46" height="44"/>
@@ -57,7 +57,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4ep-f1-q7d">
-                            <rect key="frame" x="10" y="84.5" width="300" height="20.5"/>
+                            <rect key="frame" x="10" y="78.5" width="300" height="20.5"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lQv-zB-sCQ">
                                     <rect key="frame" x="0.0" y="0.0" width="42.5" height="20.5"/>
@@ -135,9 +135,9 @@
                             </constraints>
                         </view>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="d0H-K8-i2u">
-                            <rect key="frame" x="0.0" y="105" width="320" height="330"/>
+                            <rect key="frame" x="0.0" y="103" width="320" height="280"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="330" id="xgq-w6-zlT"/>
+                                <constraint firstAttribute="height" constant="280" id="xgq-w6-zlT"/>
                             </constraints>
                             <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="5QW-70-0hh">
                                 <size key="itemSize" width="50" height="50"/>
@@ -156,10 +156,10 @@
                         <constraint firstAttribute="trailing" secondItem="SF2-Lc-AtX" secondAttribute="trailing" constant="10" id="H6L-pb-NzI"/>
                         <constraint firstItem="0wx-Xf-yJF" firstAttribute="top" secondItem="p2s-qf-YyZ" secondAttribute="top" constant="10" id="HTe-oy-nem"/>
                         <constraint firstAttribute="trailing" secondItem="4ep-f1-q7d" secondAttribute="trailing" constant="10" id="IEr-Bx-Tch"/>
-                        <constraint firstItem="d0H-K8-i2u" firstAttribute="top" secondItem="4ep-f1-q7d" secondAttribute="bottom" id="h7i-Vg-ZC7"/>
-                        <constraint firstItem="4ep-f1-q7d" firstAttribute="top" secondItem="SF2-Lc-AtX" secondAttribute="bottom" id="hc2-tC-9aD"/>
+                        <constraint firstItem="d0H-K8-i2u" firstAttribute="top" secondItem="4ep-f1-q7d" secondAttribute="bottom" constant="4" id="h7i-Vg-ZC7"/>
+                        <constraint firstItem="4ep-f1-q7d" firstAttribute="top" secondItem="SF2-Lc-AtX" secondAttribute="bottom" constant="4" id="hc2-tC-9aD"/>
                         <constraint firstItem="d0H-K8-i2u" firstAttribute="leading" secondItem="p2s-qf-YyZ" secondAttribute="leading" id="jiQ-CU-qIy"/>
-                        <constraint firstItem="SF2-Lc-AtX" firstAttribute="top" secondItem="0wx-Xf-yJF" secondAttribute="bottom" constant="10" id="pIK-Zx-AGZ"/>
+                        <constraint firstItem="SF2-Lc-AtX" firstAttribute="top" secondItem="0wx-Xf-yJF" secondAttribute="bottom" id="pIK-Zx-AGZ"/>
                         <constraint firstAttribute="bottom" secondItem="d0H-K8-i2u" secondAttribute="bottom" constant="4" id="qSG-Bq-BD2"/>
                         <constraint firstAttribute="trailing" secondItem="0wx-Xf-yJF" secondAttribute="trailing" constant="10" id="yMj-dD-2sx"/>
                     </constraints>
@@ -185,6 +185,9 @@
                 <outlet property="headerContainer" destination="4ep-f1-q7d" id="cLF-gI-uba"/>
                 <outlet property="mainContainer" destination="p2s-qf-YyZ" id="NNp-Ry-Ttn"/>
                 <outlet property="mainContainerBottom" destination="RNf-OP-d6Y" id="fOQ-SE-0A3"/>
+                <outlet property="monthLabel" destination="NHR-pc-5Br" id="jFs-MI-fKb"/>
+                <outlet property="nextButton" destination="0BM-E5-4Td" id="CuY-Jj-UIb"/>
+                <outlet property="previousButton" destination="Ex4-XW-h4s" id="bE4-hd-Xma"/>
                 <outlet property="selectedDateLabel" destination="0wx-Xf-yJF" id="ErJ-M3-EAT"/>
                 <outletCollection property="headerLabels" destination="lQv-zB-sCQ" collectionClass="NSMutableArray" id="31I-Qj-L2V"/>
                 <outletCollection property="headerLabels" destination="WB7-us-5K6" collectionClass="NSMutableArray" id="LSl-I8-dUP"/>

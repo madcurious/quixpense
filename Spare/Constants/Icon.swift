@@ -18,6 +18,7 @@ enum Icon: String {
     case Forward = "k"
     case Home = "b"
     case MainTabBarAdd = "f"
+    case Next = "i"
     case NoCategories = "d"
     case PeriodizationButtonArrow = "a"
     case Settings = "j"

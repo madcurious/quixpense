@@ -34,7 +34,7 @@ class CustomPickerCell: UITableViewCell {
         self.emptyView.backgroundColor = UIColor.clearColor()
         
         self.checkLabel.text = Icon.Check.rawValue
-        self.checkLabel.textColor = Color.CustomPickerItemTextColor
+        self.checkLabel.textColor = Color.CustomPickerTextColor
         self.checkLabel.font = Font.icon(20)
         
         CustomPickerCell.applyItemLabelAttributes(self.itemLabel)
@@ -48,7 +48,7 @@ class CustomPickerCell: UITableViewCell {
     }
     
     class func applyItemLabelAttributes(label: UILabel) {
-        label.textColor = Color.CustomPickerItemTextColor
+        label.textColor = Color.CustomPickerTextColor
         label.font = Font.CustomPickerText
         label.numberOfLines = 3
         label.lineBreakMode = .ByTruncatingTail

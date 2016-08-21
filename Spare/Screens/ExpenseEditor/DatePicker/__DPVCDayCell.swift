@@ -15,8 +15,14 @@ class __DPVCDayCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.layer.borderColor = UIColor.blackColor().CGColor
-        self.layer.borderWidth = 1
+        UIView.clearBackgroundColors(self, self.contentView)
+        
+        self.dateLabel.layer.borderColor = UIColor.blackColor().CGColor
+        self.dateLabel.layer.borderWidth = 1
+        
+        self.dateLabel.textAlignment = .Center
+        self.dateLabel.textColor = Color.CustomPickerTextColor
+        self.dateLabel.font = Font.make(.Medium, 20)
     }
     
 }
