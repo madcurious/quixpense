@@ -181,9 +181,10 @@
                 <outlet property="arrowContainer" destination="SF2-Lc-AtX" id="8Bf-yP-Vf4"/>
                 <outlet property="collectionView" destination="d0H-K8-i2u" id="eNY-Ri-Gt6"/>
                 <outlet property="collectionViewHeight" destination="xgq-w6-zlT" id="RsW-M3-FVd"/>
-                <outlet property="dimView" destination="OUI-K3-WE5" id="aee-Ce-TlA"/>
+                <outlet property="dimView" destination="OUI-K3-WE5" id="pSh-Kg-CaI"/>
                 <outlet property="headerContainer" destination="4ep-f1-q7d" id="cLF-gI-uba"/>
-                <outlet property="mainContainer" destination="p2s-qf-YyZ" id="JQ4-Ob-7hW"/>
+                <outlet property="mainContainer" destination="p2s-qf-YyZ" id="NNp-Ry-Ttn"/>
+                <outlet property="mainContainerBottom" destination="RNf-OP-d6Y" id="fOQ-SE-0A3"/>
                 <outlet property="selectedDateLabel" destination="0wx-Xf-yJF" id="ErJ-M3-EAT"/>
                 <outletCollection property="headerLabels" destination="lQv-zB-sCQ" collectionClass="NSMutableArray" id="31I-Qj-L2V"/>
                 <outletCollection property="headerLabels" destination="WB7-us-5K6" collectionClass="NSMutableArray" id="LSl-I8-dUP"/>

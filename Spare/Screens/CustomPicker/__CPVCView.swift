@@ -9,11 +9,8 @@
 import UIKit
 import Mold
 
-class __CPVCView: UIView {
+class __CPVCView: CustomPickerView {
     
-    @IBOutlet weak var dimView: UIView!
-    @IBOutlet weak var mainContainer: UIView!
-    @IBOutlet weak var mainContainerBottom: NSLayoutConstraint!
     @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
@@ -25,11 +22,6 @@ class __CPVCView: UIView {
             self,
             self.tableView
         )
-        
-        self.dimView.backgroundColor = UIColor.blackColor()
-        self.mainContainer.backgroundColor = UIColor.whiteColor()
-        
-        self.dimView.alpha = 0
         
         self.headerLabel.font = Font.CustomPickerHeaderText
         self.headerLabel.textColor = Color.CustomPickerHeaderTextColor

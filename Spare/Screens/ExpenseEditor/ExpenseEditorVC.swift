@@ -227,7 +227,10 @@ extension ExpenseEditorVC {
     }
     
     func handleTapOnDateButton() {
-        self.presentViewController(DatePickerVC(), animated: true, completion: nil)
+        let datePicker = DatePickerVC()
+        datePicker.modalPresentationStyle = .Custom
+        datePicker.transitioningDelegate = self.customPickerAnimator
+        self.presentViewController(datePicker, animated: true, completion: nil)
     }
     
     func handleTapOnPaymentMethodButton() {

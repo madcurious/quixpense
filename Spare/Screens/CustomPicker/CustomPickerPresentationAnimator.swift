@@ -12,13 +12,12 @@ class CustomPickerPresentationAnimator: NSObject, UIViewControllerAnimatedTransi
     
     func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
         return Duration.Animation
-//        return 5
     }
     
     func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
         guard let containerView = transitionContext.containerView(),
             let toVC = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey),
-            let toView = transitionContext.viewForKey(UITransitionContextToViewKey) as? __CPVCView
+            let toView = transitionContext.viewForKey(UITransitionContextToViewKey) as? CustomPickerView
             else {
                 return
         }

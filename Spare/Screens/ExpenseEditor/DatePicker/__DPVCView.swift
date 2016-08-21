@@ -8,10 +8,8 @@
 
 import UIKit
 
-class __DPVCView: UIView {
+class __DPVCView: CustomPickerView {
     
-    @IBOutlet weak var dimView: UIView!
-    @IBOutlet weak var mainContainer: UIView!
     @IBOutlet weak var selectedDateLabel: UILabel!
     @IBOutlet weak var arrowContainer: UIView!
     
@@ -25,7 +23,6 @@ class __DPVCView: UIView {
         super.awakeFromNib()
         
         UIView.clearBackgroundColors(
-            self,
             self.arrowContainer,
             self.headerContainer,
             self.collectionView

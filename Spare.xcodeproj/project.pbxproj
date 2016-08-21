@@ -131,6 +131,7 @@
 		269E7E0C1D68C7D000476870 /* __DPVCPageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 269E7E0B1D68C7D000476870 /* __DPVCPageCell.xib */; };
 		269E7E0E1D68C7D900476870 /* __DPVCPageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269E7E0D1D68C7D900476870 /* __DPVCPageCell.swift */; };
 		269E7E101D68C96000476870 /* MonthPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269E7E0F1D68C96000476870 /* MonthPageVC.swift */; };
+		269E7E121D69985D00476870 /* CustomPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269E7E111D69985D00476870 /* CustomPickerView.swift */; };
 		26A063F61D2134040034D04F /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A063F51D2134040034D04F /* CustomButton.swift */; };
 		26A2C6F11D63053100743F7D /* PaymentMethodPickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A2C6F01D63053100743F7D /* PaymentMethodPickerDelegate.swift */; };
 		26A2C6F31D6305DF00743F7D /* CustomPickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A2C6F21D6305DF00743F7D /* CustomPickerDelegate.swift */; };
@@ -325,6 +326,7 @@
 		269E7E0B1D68C7D000476870 /* __DPVCPageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __DPVCPageCell.xib; sourceTree = "<group>"; };
 		269E7E0D1D68C7D900476870 /* __DPVCPageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __DPVCPageCell.swift; sourceTree = "<group>"; };
 		269E7E0F1D68C96000476870 /* MonthPageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthPageVC.swift; sourceTree = "<group>"; };
+		269E7E111D69985D00476870 /* CustomPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPickerView.swift; sourceTree = "<group>"; };
 		26A063F51D2134040034D04F /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		26A2C6F01D63053100743F7D /* PaymentMethodPickerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethodPickerDelegate.swift; sourceTree = "<group>"; };
 		26A2C6F21D6305DF00743F7D /* CustomPickerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPickerDelegate.swift; sourceTree = "<group>"; };
@@ -644,6 +646,7 @@
 				268F48181D60D3DE0088AC6B /* CustomPickerTransitioningDelegate.swift */,
 				268F481D1D60DE020088AC6B /* CustomPickerDismissalAnimator.swift */,
 				26A2C6F21D6305DF00743F7D /* CustomPickerDelegate.swift */,
+				269E7E111D69985D00476870 /* CustomPickerView.swift */,
 			);
 			path = CustomPicker;
 			sourceTree = "<group>";
@@ -979,6 +982,7 @@
 				261D54AC1D4AFDC000F4FCC6 /* ExpenseListHeaderView.swift in Sources */,
 				269D49F41CE1610100109990 /* CategoryEditorVC.swift in Sources */,
 				26A6CDE11CDB18EA00309A84 /* AddButton.swift in Sources */,
+				269E7E121D69985D00476870 /* CustomPickerView.swift in Sources */,
 				268F48101D60D3490088AC6B /* Event.swift in Sources */,
 				268212521D4A18220041078F /* SegmentedCircle.swift in Sources */,
 				269E7E0E1D68C7D900476870 /* __DPVCPageCell.swift in Sources */,

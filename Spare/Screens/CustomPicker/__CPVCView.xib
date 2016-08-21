@@ -58,10 +58,10 @@
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
             <connections>
-                <outlet property="dimView" destination="Unp-80-Vez" id="fnt-ig-8mo"/>
+                <outlet property="dimView" destination="Unp-80-Vez" id="5Cl-Ge-vje"/>
                 <outlet property="headerLabel" destination="qvd-hy-hin" id="xpf-Nc-TjT"/>
-                <outlet property="mainContainer" destination="gVC-YI-nsE" id="gKi-ge-Wns"/>
-                <outlet property="mainContainerBottom" destination="SN8-R0-EM2" id="un8-1D-hfk"/>
+                <outlet property="mainContainer" destination="gVC-YI-nsE" id="c7g-bl-EI8"/>
+                <outlet property="mainContainerBottom" destination="SN8-R0-EM2" id="6pA-zt-Khr"/>
                 <outlet property="tableView" destination="Fc4-3v-fqX" id="bOk-4z-EpE"/>
                 <outlet property="tableViewHeight" destination="eVr-rY-cjb" id="mxo-dx-RZF"/>
             </connections>

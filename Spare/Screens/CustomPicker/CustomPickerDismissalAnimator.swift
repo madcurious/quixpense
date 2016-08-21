@@ -15,7 +15,7 @@ class CustomPickerDismissalAnimator: NSObject, UIViewControllerAnimatedTransitio
     }
     
     func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
-        guard let fromView = transitionContext.viewForKey(UITransitionContextFromViewKey) as? __CPVCView
+        guard let fromView = transitionContext.viewForKey(UITransitionContextFromViewKey) as? CustomPickerView
             else {
                 return
         }
