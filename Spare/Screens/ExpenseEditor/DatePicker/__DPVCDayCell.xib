@@ -13,6 +13,10 @@
                 <rect key="frame" x="0.0" y="0.0" width="73" height="73"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6On-kG-qOe" customClass="__DPVCDayCellSelectionView" customModule="Spare" customModuleProvider="target">
+                        <rect key="frame" x="-0.5" y="0.5" width="73" height="73"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kmP-KL-WFo">
                         <rect key="frame" x="0.0" y="0.0" width="73" height="73"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -22,15 +26,21 @@
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
+            <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="kmP-KL-WFo" secondAttribute="trailing" id="B02-BA-FVQ"/>
-                <constraint firstItem="kmP-KL-WFo" firstAttribute="top" secondItem="y7T-Fm-5C2" secondAttribute="top" id="DsG-LY-c5M"/>
-                <constraint firstItem="kmP-KL-WFo" firstAttribute="leading" secondItem="y7T-Fm-5C2" secondAttribute="leading" id="Lh5-1A-82f"/>
-                <constraint firstAttribute="bottom" secondItem="kmP-KL-WFo" secondAttribute="bottom" id="xLW-Ba-d4x"/>
+                <constraint firstItem="6On-kG-qOe" firstAttribute="top" secondItem="y7T-Fm-5C2" secondAttribute="top" id="9xR-cx-z1p"/>
+                <constraint firstItem="6On-kG-qOe" firstAttribute="leading" secondItem="y7T-Fm-5C2" secondAttribute="leading" id="CDk-up-Swd"/>
+                <constraint firstAttribute="trailing" secondItem="6On-kG-qOe" secondAttribute="trailing" id="NdL-Jj-zBb"/>
+                <constraint firstAttribute="bottom" secondItem="kmP-KL-WFo" secondAttribute="bottom" id="Xkq-B4-2lW"/>
+                <constraint firstItem="kmP-KL-WFo" firstAttribute="top" secondItem="y7T-Fm-5C2" secondAttribute="top" id="hNs-Tf-TEk"/>
+                <constraint firstAttribute="trailing" secondItem="kmP-KL-WFo" secondAttribute="trailing" id="m3x-R2-599"/>
+                <constraint firstAttribute="bottom" secondItem="6On-kG-qOe" secondAttribute="bottom" id="qHy-cc-Sz9"/>
+                <constraint firstItem="kmP-KL-WFo" firstAttribute="leading" secondItem="y7T-Fm-5C2" secondAttribute="leading" id="v6A-t6-HV5"/>
             </constraints>
             <size key="customSize" width="73" height="73"/>
             <connections>
                 <outlet property="dateLabel" destination="kmP-KL-WFo" id="bm8-SD-KeG"/>
+                <outlet property="selectionView" destination="6On-kG-qOe" id="sZg-aM-GSc"/>
             </connections>
             <point key="canvasLocation" x="-74.5" y="131.5"/>
         </collectionViewCell>

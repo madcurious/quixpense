@@ -16,7 +16,7 @@
                     <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p2s-qf-YyZ">
-                    <rect key="frame" x="0.0" y="181" width="320" height="387"/>
+                    <rect key="frame" x="0.0" y="161" width="320" height="407"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0wx-Xf-yJF">
                             <rect key="frame" x="10" y="10" width="300" height="20.5"/>
@@ -135,9 +135,9 @@
                             </constraints>
                         </view>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="d0H-K8-i2u">
-                            <rect key="frame" x="0.0" y="103" width="320" height="280"/>
+                            <rect key="frame" x="0.0" y="103" width="320" height="300"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="280" id="xgq-w6-zlT"/>
+                                <constraint firstAttribute="height" constant="300" id="xgq-w6-zlT"/>
                             </constraints>
                             <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="5QW-70-0hh">
                                 <size key="itemSize" width="50" height="50"/>
