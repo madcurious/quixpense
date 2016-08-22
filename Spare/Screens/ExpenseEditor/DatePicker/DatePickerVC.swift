@@ -12,6 +12,10 @@ private enum ViewID: String {
     case PageCell = "PageCell"
 }
 
+private enum PageDirection {
+    case Previous, Next
+}
+
 class DatePickerVC: UIViewController {
     
     let customView = __DPVCView.instantiateFromNib() as __DPVCView
@@ -25,9 +29,11 @@ class DatePickerVC: UIViewController {
         }
     }
     
-    enum PageDirection {
-        case Previous, Next
-    }
+    let monthLabelFormatter: NSDateFormatter = {
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "MMM yyyy"
+        return formatter
+    }()
     
     override func loadView() {
         self.view = self.customView
@@ -72,9 +78,11 @@ class DatePickerVC: UIViewController {
             else {
                 return
         }
+        
         self.view.setNeedsLayout()
         self.view.layoutIfNeeded()
         self.customView.collectionView.scrollToItemAtIndexPath(NSIndexPath(forItem: index, inSection: 0), atScrollPosition: .CenteredHorizontally, animated: false)
+        self.monthLabelFormatter.stringFromDate(self.months[index])
         
         
         
@@ -102,7 +110,7 @@ class DatePickerVC: UIViewController {
 //        })
     }
     
-    func generateMonthsFromDate(date: NSDate, forPageDirection pageDirection: PageDirection) -> [NSDate] {
+    private func generateMonthsFromDate(date: NSDate, forPageDirection pageDirection: PageDirection) -> [NSDate] {
         // Use the first day of the month as the base date.
         let calendar = NSCalendar.currentCalendar()
         let components = calendar.components([.Month, .Day, .Year], fromDate: date)
@@ -170,14 +178,40 @@ extension DatePickerVC: UIScrollViewDelegate {
         
         // Add more months to the left or right if the user reaches the end.
         if currentPage < 2 {
+            var currentOffset = self.customView.collectionView.contentOffset
+            
             let previousMonths = self.generateMonthsFromDate(self.months[0], forPageDirection: .Previous)
             self.months.insertContentsOf(previousMonths, at: 0)
             self.customView.collectionView.reloadData()
+            currentOffset.x += CGFloat(previousMonths.count) * self.customView.collectionView.bounds.size.width
+            self.customView.collectionView.setContentOffset(currentOffset, animated: false)
+            
+//            self.customView.collectionView.performBatchUpdates({[unowned self] in
+//                self.months.insertContentsOf(previousMonths, at: 0)
+//                var indexPaths = [NSIndexPath]()
+//                for i in 0 ..< previousMonths.count {
+//                    indexPaths.append(NSIndexPath(forItem: i, inSection: 0))
+//                }
+//                self.customView.collectionView.insertItemsAtIndexPaths(indexPaths)
+//                }, completion: nil)
+            
+//            self.months.insertContentsOf(previousMonths, at: 0)
+//            var indexPaths = [NSIndexPath]()
+//            for i in 0 ..< previousMonths.count {
+//                indexPaths.append(NSIndexPath(forItem: i, inSection: 0))
+//            }
+//            self.customView.collectionView.insertItemsAtIndexPaths(indexPaths)
+            
+            
         } else if currentPage > CGFloat(self.months.count - 2) {
             let nextMonths = self.generateMonthsFromDate(self.months[self.months.count - 1], forPageDirection: .Next)
             self.months.appendContentsOf(nextMonths)
             self.customView.collectionView.reloadData()
         }
+        
+        // Update the label that displays the month of the current page.
+        let index = Int(floor(currentPage))
+        self.customView.monthLabel.text = self.monthLabelFormatter.stringFromDate(self.months[index])
     }
     
 }
