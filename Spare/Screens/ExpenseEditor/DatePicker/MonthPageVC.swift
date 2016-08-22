@@ -33,6 +33,11 @@ class MonthPageVC: UIViewController {
     static let dayCountCache = NSCache()
     static let fillerCountCache = NSCache()
     
+    convenience init(month: NSDate) {
+        self.init(nibName: nil, bundle: nil)
+        self.month = month
+    }
+    
     override func loadView() {
         self.view = self.collectionView
     }

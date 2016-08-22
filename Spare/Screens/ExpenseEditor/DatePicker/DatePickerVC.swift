@@ -64,12 +64,14 @@ class DatePickerVC: UIViewController {
         
         // Initially select the current month.
         self.selectedDate = currentMonth
-        
         self.customView.monthLabel.text = self.monthLabelFormatter.stringFromDate(currentMonth)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapOnDimView))
         tapGesture.cancelsTouchesInView = false
         self.customView.dimView.addGestureRecognizer(tapGesture)
+        
+        self.customView.previousButton.addTarget(self, action: #selector(handleTapOnPreviousButton), forControlEvents: .TouchUpInside)
+        self.customView.nextButton.addTarget(self, action: #selector(handleTapOnNextButton), forControlEvents: .TouchUpInside)
     }
     
     private func generateMonthsFromDate(date: NSDate, forPageDirection pageDirection: PageDirection) -> [NSDate] {
@@ -90,10 +92,6 @@ class DatePickerVC: UIViewController {
         return months
     }
     
-    func handleTapOnDimView() {
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
     func firstDayOfMonthInDate(date: NSDate) -> NSDate {
         let calendar = NSCalendar.currentCalendar()
         let components = calendar.components([.Month, .Day, .Year], fromDate: date)
@@ -101,8 +99,38 @@ class DatePickerVC: UIViewController {
         return calendar.dateFromComponents(components)!
     }
     
+    func updateMonthLabelForDate(date: NSDate) {
+        self.customView.monthLabel.text = self.monthLabelFormatter.stringFromDate(date)
+    }
+    
 }
 
+// MARK: - Target actions
+extension DatePickerVC {
+    
+    func handleTapOnDimView() {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func handleTapOnPreviousButton() {
+        let currentPage = self.pageVC.viewControllers!.first as! MonthPageVC
+        let indexOfMonth = self.months.indexOf(currentPage.month!)!
+        let previousPage = MonthPageVC(month: self.months[indexOfMonth - 1])
+        self.pageVC.setViewControllers([previousPage], direction: .Reverse, animated: false, completion: nil)
+        self.updateMonthLabelForDate(previousPage.month!)
+    }
+    
+    func handleTapOnNextButton() {
+        let currentPage = self.pageVC.viewControllers!.first as! MonthPageVC
+        let indexOfMonth = self.months.indexOf(currentPage.month!)!
+        let nextPage = MonthPageVC(month: self.months[indexOfMonth + 1])
+        self.pageVC.setViewControllers([nextPage], direction: .Forward, animated: false, completion: nil)
+        self.updateMonthLabelForDate(nextPage.month!)
+    }
+    
+}
+
+// MARK: - UIPageViewControllerDataSource
 extension DatePickerVC: UIPageViewControllerDataSource {
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
@@ -141,17 +169,18 @@ extension DatePickerVC: UIPageViewControllerDataSource {
     
 }
 
+// MARK: - UIPageViewControllerDelegate
 extension DatePickerVC: UIPageViewControllerDelegate {
     
     func pageViewController(pageViewController: UIPageViewController, willTransitionToViewControllers pendingViewControllers: [UIViewController]) {
-        if let next = pendingViewControllers.first as? MonthPageVC {
-            self.customView.monthLabel.text = self.monthLabelFormatter.stringFromDate(next.month!)
+        if let nextPage = pendingViewControllers.first as? MonthPageVC {
+            self.updateMonthLabelForDate(nextPage.month!)
         }
     }
     
     func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-        if let current = self.pageVC.viewControllers?.first as? MonthPageVC {
-            self.customView.monthLabel.text = self.monthLabelFormatter.stringFromDate(current.month!)
+        if let currentPage = self.pageVC.viewControllers?.first as? MonthPageVC {
+            self.updateMonthLabelForDate(currentPage.month!)
         }
     }
     
