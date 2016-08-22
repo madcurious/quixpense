@@ -18,10 +18,9 @@ class __DPVCView: CustomPickerView {
     @IBOutlet weak var nextButton: UIButton!
     
     @IBOutlet weak var headerContainer: UIView!
-    @IBOutlet var headerLabels: [UILabel]!
+    @IBOutlet weak var pageVCContainer: UIView!
     
-    @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
+    @IBOutlet var headerLabels: [UILabel]!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,7 +28,7 @@ class __DPVCView: CustomPickerView {
         UIView.clearBackgroundColors(
             self.arrowContainer,
             self.headerContainer,
-            self.collectionView
+            self.pageVCContainer
         )
         
         self.selectedDateLabel.textColor = Color.CustomPickerTextColor
@@ -58,8 +57,6 @@ class __DPVCView: CustomPickerView {
             label.font = Font.make(.Medium, 14)
             label.textColor = Color.CustomPickerHeaderTextColor
         }
-        
-        self.collectionView.pagingEnabled = true
     }
     
 }

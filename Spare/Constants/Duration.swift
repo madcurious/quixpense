@@ -10,6 +10,6 @@ import Foundation
 
 class Duration {
     
-    static let Animation = 0.1
+    static let Animation = 0.2
     
 }
