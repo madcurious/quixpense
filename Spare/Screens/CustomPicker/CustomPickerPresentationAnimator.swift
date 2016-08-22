@@ -26,18 +26,21 @@ class CustomPickerPresentationAnimator: NSObject, UIViewControllerAnimatedTransi
         toView.layoutIfNeeded()
         toView.frame = transitionContext.finalFrameForViewController(toVC)
         toView.dimView.alpha = 0
-        toView.mainContainerBottom.constant = -(toView.mainContainer.bounds.size.height)
-        toView.setNeedsLayout()
-        toView.layoutIfNeeded()
+        
+        // Apparently, frame-based animations are more reliable than Autolayout.
+        let destinationY = toView.bounds.size.height - toView.mainContainer.bounds.size.height
+        let initialMainContainerFrame = CGRectMake(0, toView.bounds.size.height, toView.bounds.size.width, toView.mainContainer.bounds.size.height)
+        toView.mainContainer.frame = initialMainContainerFrame
+        var destinationFrame = initialMainContainerFrame
+        destinationFrame.origin.y = destinationY
+        
         containerView.addSubview(toView)
         
         UIView.animateWithDuration(
             self.transitionDuration(transitionContext),
             animations: {
                 toView.dimView.alpha = 0.7
-                toView.mainContainerBottom.constant = 0
-                toView.setNeedsLayout()
-                toView.layoutIfNeeded()
+                toView.mainContainer.frame = destinationFrame
             },
             completion: { _ in
                 let successful = transitionContext.transitionWasCancelled() == false

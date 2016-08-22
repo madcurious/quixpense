@@ -12,7 +12,6 @@ class CustomPickerView: UIView {
     
     @IBOutlet weak var dimView: UIView!
     @IBOutlet weak var mainContainer: UIView!
-    @IBOutlet weak var mainContainerBottom: NSLayoutConstraint!
     
     override func awakeFromNib() {
         super.awakeFromNib()

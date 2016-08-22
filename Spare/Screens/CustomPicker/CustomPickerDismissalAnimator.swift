@@ -20,13 +20,14 @@ class CustomPickerDismissalAnimator: NSObject, UIViewControllerAnimatedTransitio
                 return
         }
         
+        var finalMainContainerFrame = fromView.mainContainer.frame
+        finalMainContainerFrame.origin.y = fromView.bounds.size.height
+        
         UIView.animateWithDuration(
             self.transitionDuration(transitionContext),
             animations: {
                 fromView.dimView.alpha = 0
-                fromView.mainContainerBottom.constant = -(fromView.mainContainer.bounds.size.height)
-                fromView.setNeedsLayout()
-                fromView.layoutIfNeeded()
+                fromView.mainContainer.frame = finalMainContainerFrame
             },
             completion: { _ in
                 let successful = transitionContext.transitionWasCancelled() == false

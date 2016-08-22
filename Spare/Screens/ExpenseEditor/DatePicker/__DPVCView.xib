@@ -177,7 +177,6 @@
                 <outlet property="dimView" destination="OUI-K3-WE5" id="pSh-Kg-CaI"/>
                 <outlet property="headerContainer" destination="4ep-f1-q7d" id="cLF-gI-uba"/>
                 <outlet property="mainContainer" destination="p2s-qf-YyZ" id="NNp-Ry-Ttn"/>
-                <outlet property="mainContainerBottom" destination="RNf-OP-d6Y" id="fOQ-SE-0A3"/>
                 <outlet property="monthLabel" destination="NHR-pc-5Br" id="jFs-MI-fKb"/>
                 <outlet property="nextButton" destination="0BM-E5-4Td" id="CuY-Jj-UIb"/>
                 <outlet property="pageVCContainer" destination="U5a-tN-dTu" id="xs3-Tb-g23"/>

@@ -39,13 +39,13 @@ class DatePickerVC: UIViewController {
     
     override func loadView() {
         self.view = self.customView
-        self.embedChildViewController(self.pageVC, toView: self.customView.pageVCContainer)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.pageVC.dataSource = self
+        self.embedChildViewController(self.pageVC, toView: self.customView.pageVCContainer)
         
         // Add the current month to the data source.
         let currentMonth = self.firstDayOfMonthInDate(NSDate())
