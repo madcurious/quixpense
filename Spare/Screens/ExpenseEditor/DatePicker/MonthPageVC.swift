@@ -108,7 +108,8 @@ extension MonthPageVC: UICollectionViewDelegate {}
 extension MonthPageVC: UICollectionViewDelegateFlowLayout {
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        let width = collectionView.bounds.size.width / 7
+        // Need to set hard value on screen width because of layout problems.
+        let width = UIScreen.mainScreen().bounds.size.width / 7
         let height = collectionView.bounds.size.height / 6
         return CGSizeMake(width, height)
     }

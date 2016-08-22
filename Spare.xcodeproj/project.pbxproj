@@ -128,8 +128,6 @@
 		269D49FA1CE1643400109990 /* AddCategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269D49F91CE1643400109990 /* AddCategoryVC.swift */; };
 		269D49FC1CE1643A00109990 /* AddExpenseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269D49FB1CE1643A00109990 /* AddExpenseVC.swift */; };
 		269D4A021CE16DCA00109990 /* ValidateCategoryOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269D4A011CE16DCA00109990 /* ValidateCategoryOperation.swift */; };
-		269E7E0C1D68C7D000476870 /* __DPVCPageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 269E7E0B1D68C7D000476870 /* __DPVCPageCell.xib */; };
-		269E7E0E1D68C7D900476870 /* __DPVCPageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269E7E0D1D68C7D900476870 /* __DPVCPageCell.swift */; };
 		269E7E101D68C96000476870 /* MonthPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269E7E0F1D68C96000476870 /* MonthPageVC.swift */; };
 		269E7E121D69985D00476870 /* CustomPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269E7E111D69985D00476870 /* CustomPickerView.swift */; };
 		26A063F61D2134040034D04F /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A063F51D2134040034D04F /* CustomButton.swift */; };
@@ -323,8 +321,6 @@
 		269D49F91CE1643400109990 /* AddCategoryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCategoryVC.swift; sourceTree = "<group>"; };
 		269D49FB1CE1643A00109990 /* AddExpenseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddExpenseVC.swift; sourceTree = "<group>"; };
 		269D4A011CE16DCA00109990 /* ValidateCategoryOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidateCategoryOperation.swift; sourceTree = "<group>"; };
-		269E7E0B1D68C7D000476870 /* __DPVCPageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __DPVCPageCell.xib; sourceTree = "<group>"; };
-		269E7E0D1D68C7D900476870 /* __DPVCPageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __DPVCPageCell.swift; sourceTree = "<group>"; };
 		269E7E0F1D68C96000476870 /* MonthPageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthPageVC.swift; sourceTree = "<group>"; };
 		269E7E111D69985D00476870 /* CustomPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPickerView.swift; sourceTree = "<group>"; };
 		26A063F51D2134040034D04F /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
@@ -565,8 +561,6 @@
 				265222A51D66D00A007FED96 /* __DPVCView.xib */,
 				26E9CEAB1D66D59A0005E087 /* __DPVCDayCell.xib */,
 				26E9CEAD1D66D5AA0005E087 /* __DPVCDayCell.swift */,
-				269E7E0B1D68C7D000476870 /* __DPVCPageCell.xib */,
-				269E7E0D1D68C7D900476870 /* __DPVCPageCell.swift */,
 				269E7E0F1D68C96000476870 /* MonthPageVC.swift */,
 			);
 			path = DatePicker;
@@ -882,7 +876,6 @@
 				261AF62C1D5F395200E03A48 /* Avenir-BlackOblique.ttf in Resources */,
 				268BBDB21D08E99C005C6BD8 /* Lato-Hairline.ttf in Resources */,
 				261D54AA1D4AFC1800F4FCC6 /* __ELVCBView.xib in Resources */,
-				269E7E0C1D68C7D000476870 /* __DPVCPageCell.xib in Resources */,
 				268BBDAF1D08E99C005C6BD8 /* Lato-BlackItalic.ttf in Resources */,
 				26E9CEAC1D66D59A0005E087 /* __DPVCDayCell.xib in Resources */,
 				268212581D4A1CEF0041078F /* __SVCCategoryCellStub.xib in Resources */,
@@ -985,7 +978,6 @@
 				269E7E121D69985D00476870 /* CustomPickerView.swift in Sources */,
 				268F48101D60D3490088AC6B /* Event.swift in Sources */,
 				268212521D4A18220041078F /* SegmentedCircle.swift in Sources */,
-				269E7E0E1D68C7D900476870 /* __DPVCPageCell.swift in Sources */,
 				26C2D5C21CDB5E4800BC73FC /* AddButtonProgressView.swift in Sources */,
 				268F48161D60D3490088AC6B /* Strings.swift in Sources */,
 				268212561D4A1CDB0041078F /* __SVCCategoryCellStub.swift in Sources */,

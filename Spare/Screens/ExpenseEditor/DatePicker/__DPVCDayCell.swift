@@ -24,7 +24,7 @@ class __DPVCDayCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        UIView.clearBackgroundColors(self, self.contentView)
+        UIView.clearBackgroundColors(self, self.contentView, self.dateLabel)
         
         self.dateLabel.textAlignment = .Center
         self.dateLabel.textColor = Color.CustomPickerTextColor

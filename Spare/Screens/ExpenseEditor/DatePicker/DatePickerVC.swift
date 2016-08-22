@@ -45,6 +45,7 @@ class DatePickerVC: UIViewController {
         super.viewDidLoad()
         
         self.pageVC.dataSource = self
+        self.pageVC.delegate = self
         self.embedChildViewController(self.pageVC, toView: self.customView.pageVCContainer)
         
         // Add the current month to the data source.
@@ -63,6 +64,8 @@ class DatePickerVC: UIViewController {
         
         // Initially select the current month.
         self.selectedDate = currentMonth
+        
+        self.customView.monthLabel.text = self.monthLabelFormatter.stringFromDate(currentMonth)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapOnDimView))
         tapGesture.cancelsTouchesInView = false
@@ -134,6 +137,22 @@ extension DatePickerVC: UIPageViewControllerDataSource {
         let nextPage = MonthPageVC()
         nextPage.month = self.months[currentIndex + 1]
         return nextPage
+    }
+    
+}
+
+extension DatePickerVC: UIPageViewControllerDelegate {
+    
+    func pageViewController(pageViewController: UIPageViewController, willTransitionToViewControllers pendingViewControllers: [UIViewController]) {
+        if let next = pendingViewControllers.first as? MonthPageVC {
+            self.customView.monthLabel.text = self.monthLabelFormatter.stringFromDate(next.month!)
+        }
+    }
+    
+    func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        if let current = self.pageVC.viewControllers?.first as? MonthPageVC {
+            self.customView.monthLabel.text = self.monthLabelFormatter.stringFromDate(current.month!)
+        }
     }
     
 }
