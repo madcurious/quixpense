@@ -63,8 +63,7 @@ class ExpenseEditorVC: MDStatefulViewController {
         self.amountFormatter.numberStyle = .CurrencyStyle
         self.amountFormatter.currencySymbol = ""
         self.amountFormatter.usesGroupingSeparator = true
-        self.amountFormatter.minimumFractionDigits = 0
-        
+        self.resetAmount()
         self.refreshViewFromModel()
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
@@ -118,15 +117,23 @@ class ExpenseEditorVC: MDStatefulViewController {
         let previousPaymentMethod = self.expense.paymentMethod
         
         let expense = Expense(managedObjectContext: self.managedObjectContext)
-        expense.amount = nil
         expense.dateSpent = previousDate
         expense.category = previousCategory
         expense.paymentMethod = previousPaymentMethod
         expense.note = nil
         self.expense = expense
+        self.resetAmount()
         
         // Update the view.
         self.refreshViewFromModel()
+    }
+    
+    /// Resets the model's amount and all other properties related to formatting.
+    func resetAmount() {
+        self.expense.amount = nil
+        self.unformattedAmount = ""
+        self.amountFormatter.alwaysShowsDecimalSeparator = false
+        self.amountFormatter.minimumFractionDigits = 0
     }
     
     func refreshViewFromModel() {

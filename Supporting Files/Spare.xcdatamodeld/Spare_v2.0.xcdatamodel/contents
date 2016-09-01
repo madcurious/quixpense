@@ -8,7 +8,7 @@
     <entity name="Expense" representedClassName=".Expense" syncable="YES">
         <attribute name="amount" attributeType="Decimal" minValueString="0" syncable="YES"/>
         <attribute name="dateSpent" attributeType="Date" syncable="YES"/>
-        <attribute name="note" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="note" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="paymentMethod" attributeType="Integer 32" syncable="YES"/>
         <relationship name="category" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="expenses" inverseEntity="Category" syncable="YES"/>
     </entity>
