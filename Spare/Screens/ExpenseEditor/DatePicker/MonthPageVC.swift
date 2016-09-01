@@ -190,6 +190,20 @@ extension MonthPageVC: UICollectionViewDelegate {
                 "selectedDate" : selectedDate
             ])
     }
+    
+    func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
+        if indexPath.item < self.numberOfFillers {
+            return false
+        }
+        return true
+    }
+    
+    func collectionView(collectionView: UICollectionView, shouldHighlightItemAtIndexPath indexPath: NSIndexPath) -> Bool {
+        if indexPath.item < self.numberOfFillers {
+            return false
+        }
+        return true
+    }
 
 }
 

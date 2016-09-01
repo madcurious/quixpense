@@ -21,6 +21,13 @@ class __DPVCDayCell: UICollectionViewCell {
         }
     }
     
+    override var highlighted: Bool {
+        didSet {
+            self.selectionView.fillColor = self.highlighted ? UIColor(hex: 0xcccccc) : UIColor.clearColor()
+            self.selectionView.setNeedsDisplay()
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         

@@ -31,10 +31,11 @@ class __DPVCView: CustomPickerView {
             self.pageVCContainer
         )
         
-        self.selectedDateLabel.textColor = Color.CustomPickerTextColor
+        self.selectedDateLabel.textColor = UIColor.whiteColor()
+        self.selectedDateLabel.backgroundColor = UIColor.blackColor()
         self.selectedDateLabel.textAlignment = .Center
         self.selectedDateLabel.numberOfLines = 1
-        self.selectedDateLabel.font = Font.make(.Heavy, 30)
+        self.selectedDateLabel.font = Font.make(.Heavy, 22)
         
         self.monthLabel.textColor = Color.CustomPickerTextColor
         self.monthLabel.textAlignment = .Center

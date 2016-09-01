@@ -39,10 +39,11 @@ class DateFormatter {
                 return ""
         }
         
-        kSharedFormatter.dateFormat = "MMM d, yyyy"
+        kSharedFormatter.dateFormat = "EEE, d MMM yyyy"
         
         let currentDate = NSDate()
         if date.isSameDayAsDate(currentDate) {
+            kSharedFormatter.dateFormat = "d MMM yyyy"
             return "Today, " + kSharedFormatter.stringFromDate(date)
         }
         return kSharedFormatter.stringFromDate(date)

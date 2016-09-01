@@ -46,7 +46,6 @@
 		261EB88418DDB631009DDF78 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86818DDB631009DDF78 /* CoreData.framework */; };
 		261EB88C18DDB631009DDF78 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 261EB88A18DDB631009DDF78 /* InfoPlist.strings */; };
 		261EB88E18DDB631009DDF78 /* SpareTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 261EB88D18DDB631009DDF78 /* SpareTests.m */; };
-		2628DF7D1D3F8D2300FB40C5 /* SummaryVC2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2628DF7C1D3F8D2300FB40C5 /* SummaryVC2.swift */; };
 		262F839B1CCE3E5300EDDDEE /* LoadAppVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262F839A1CCE3E5300EDDDEE /* LoadAppVC.swift */; };
 		262F839D1CCE3E6C00EDDDEE /* LoadAppOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262F839C1CCE3E6C00EDDDEE /* LoadAppOperation.swift */; };
 		263005641D4F8E9000AC3060 /* StatefulVCRetryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263005621D4F8E9000AC3060 /* StatefulVCRetryView.swift */; };
@@ -236,7 +235,6 @@
 		261EB88918DDB631009DDF78 /* SpareTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SpareTests-Info.plist"; sourceTree = "<group>"; };
 		261EB88B18DDB631009DDF78 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		261EB88D18DDB631009DDF78 /* SpareTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpareTests.m; sourceTree = "<group>"; };
-		2628DF7C1D3F8D2300FB40C5 /* SummaryVC2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryVC2.swift; sourceTree = "<group>"; };
 		262F839A1CCE3E5300EDDDEE /* LoadAppVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadAppVC.swift; sourceTree = "<group>"; };
 		262F839C1CCE3E6C00EDDDEE /* LoadAppOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadAppOperation.swift; sourceTree = "<group>"; };
 		263005621D4F8E9000AC3060 /* StatefulVCRetryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatefulVCRetryView.swift; sourceTree = "<group>"; };
@@ -623,7 +621,6 @@
 				267679291D13FE8F004CF70A /* __SVCCategoryCell.swift */,
 				268212551D4A1CDB0041078F /* __SVCCategoryCellStub.swift */,
 				268212571D4A1CEF0041078F /* __SVCCategoryCellStub.xib */,
-				2628DF7C1D3F8D2300FB40C5 /* SummaryVC2.swift */,
 			);
 			path = Summary;
 			sourceTree = "<group>";
@@ -960,7 +957,6 @@
 				2687FA2F1D0EC2E900D544F5 /* App.swift in Sources */,
 				265222A01D66CFCE007FED96 /* DatePickerVC.swift in Sources */,
 				2687FA331D0EC2E900D544F5 /* GlobalFunctions.swift in Sources */,
-				2628DF7D1D3F8D2300FB40C5 /* SummaryVC2.swift in Sources */,
 				26C034EA1D4B24600064187F /* __ELVCBEmptyCell.swift in Sources */,
 				266408C21D4A630E00609580 /* Button.swift in Sources */,
 				2603F8CF1CCA4C10007F311F /* Expense.swift in Sources */,
