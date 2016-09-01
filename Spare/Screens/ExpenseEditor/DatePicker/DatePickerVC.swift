@@ -17,6 +17,10 @@ private enum PageDirection {
     case Previous, Next
 }
 
+protocol DatePickerVCDelegate {
+    func datePickerDidSelectDate(date: NSDate)
+}
+
 class DatePickerVC: UIViewController {
     
     static let selectedDateFormatter: NSDateFormatter = {
@@ -38,7 +42,19 @@ class DatePickerVC: UIViewController {
     let dayCountCache = NSCache()
     let fillerCountCache = NSCache()
     
-    var selectedDate = NSDate()
+    var selectedDate: NSDate
+    var delegate: DatePickerVCDelegate?
+    var shouldUpdateDelegate = false
+    
+    init(selectedDate: NSDate, delegate: DatePickerVCDelegate?) {
+        self.selectedDate = selectedDate
+        self.delegate = delegate
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func loadView() {
         self.view = self.customView
@@ -52,8 +68,7 @@ class DatePickerVC: UIViewController {
         self.embedChildViewController(self.pageVC, toView: self.customView.pageVCContainer)
         
         // Add the current month to the data source.
-        let currentMonth = self.firstDayOfMonthInDate(NSDate())
-        
+        let currentMonth = self.firstDayOfMonthInDate(self.selectedDate)
         let previousMonths = self.generateMonthsFromDate(self.selectedDate, forPageDirection: .Previous)
         self.months.appendContentsOf(previousMonths)
         self.months.append(currentMonth)
@@ -61,12 +76,11 @@ class DatePickerVC: UIViewController {
         self.months.appendContentsOf(nextMonths)
         
         // Add the current month to the page VC.
-        let currentPage = MonthPageVC(month: currentMonth, globallySelectedDate: self.selectedDate)
-        self.pageVC.setViewControllers([currentPage], direction: .Forward, animated: false, completion: nil)
+        let initialPage = MonthPageVC(month: currentMonth, globallySelectedDate: self.selectedDate)
+        self.pageVC.setViewControllers([initialPage], direction: .Forward, animated: false, completion: nil)
         
         // Initially select the current month.
-        self.selectedDate = currentMonth
-        self.customView.selectedDateLabel.text = DatePickerVC.selectedDateFormatter.stringFromDate(currentMonth)
+        self.customView.selectedDateLabel.text = DatePickerVC.selectedDateFormatter.stringFromDate(self.selectedDate)
         self.customView.monthLabel.text = DatePickerVC.monthLabelFormatter.stringFromDate(currentMonth)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapOnDimView))
@@ -119,6 +133,10 @@ class DatePickerVC: UIViewController {
 extension DatePickerVC {
     
     func handleTapOnDimView() {
+        if let delegate = self.delegate
+            where self.shouldUpdateDelegate == true {
+            delegate.datePickerDidSelectDate(self.selectedDate)
+        }
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -147,6 +165,7 @@ extension DatePickerVC {
         
         self.selectedDate = selectedDate
         self.customView.selectedDateLabel.text = DatePickerVC.selectedDateFormatter.stringFromDate(selectedDate)
+        self.shouldUpdateDelegate = true
     }
     
 }

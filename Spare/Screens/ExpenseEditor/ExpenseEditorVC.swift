@@ -131,16 +131,19 @@ class ExpenseEditorVC: MDStatefulViewController {
     
     func refreshViewFromModel() {
         self.refreshCategoryDisplay()
-        self.customView.dateButton.setTitle(DateFormatter.displayTextForExpenseEditorDate(self.expense.dateSpent), forState: .Normal)
+        self.refreshDateSpentDisplay()
         self.refreshPaymentMethodDisplay()
         self.customView.noteTextField.text = md_nonEmptyString(self.expense.note)
         
         self.refreshAmountDisplay()
-//        self.customView.amountTextField.text = self.expense.amount?.stringValue
     }
     
     func refreshCategoryDisplay() {
         self.customView.categoryButton.setTitle(md_nonEmptyString(self.expense.category?.name), forState: .Normal)
+    }
+    
+    func refreshDateSpentDisplay() {
+        self.customView.dateButton.setTitle(DateFormatter.displayTextForExpenseEditorDate(self.expense.dateSpent), forState: .Normal)
     }
     
     func refreshPaymentMethodDisplay() {
@@ -227,7 +230,7 @@ extension ExpenseEditorVC {
     }
     
     func handleTapOnDateButton() {
-        let datePicker = DatePickerVC()
+        let datePicker = DatePickerVC(selectedDate: self.expense.dateSpent!, delegate: self)
         datePicker.modalPresentationStyle = .Custom
         datePicker.transitioningDelegate = self.customPickerAnimator
         self.presentViewController(datePicker, animated: true, completion: nil)
@@ -318,7 +321,15 @@ extension ExpenseEditorVC: UICollectionViewDelegateFlowLayout {
     
 }
 
-
+// MARK: - DatePickerVCDelegate
+extension ExpenseEditorVC: DatePickerVCDelegate {
+    
+    func datePickerDidSelectDate(date: NSDate) {
+        self.expense.dateSpent = date
+        self.refreshDateSpentDisplay()
+    }
+    
+}
 
 
 
