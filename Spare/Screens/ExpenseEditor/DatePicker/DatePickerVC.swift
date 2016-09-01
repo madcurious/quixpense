@@ -19,6 +19,18 @@ private enum PageDirection {
 
 class DatePickerVC: UIViewController {
     
+    static let selectedDateFormatter: NSDateFormatter = {
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "MMM dd yyyy"
+        return formatter
+    }()
+    
+    static let monthLabelFormatter: NSDateFormatter = {
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "MMM yyyy"
+        return formatter
+    }()
+    
     let customView = __DPVCView.instantiateFromNib() as __DPVCView
     let pageVC = UIPageViewController(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: [UIPageViewControllerOptionInterPageSpacingKey : 10])
     
@@ -26,16 +38,7 @@ class DatePickerVC: UIViewController {
     let dayCountCache = NSCache()
     let fillerCountCache = NSCache()
     
-    var selectedDate = NSDate() {
-        didSet {
-        }
-    }
-    
-    let monthLabelFormatter: NSDateFormatter = {
-        let formatter = NSDateFormatter()
-        formatter.dateFormat = "MMM yyyy"
-        return formatter
-    }()
+    var selectedDate = NSDate()
     
     override func loadView() {
         self.view = self.customView
@@ -58,13 +61,13 @@ class DatePickerVC: UIViewController {
         self.months.appendContentsOf(nextMonths)
         
         // Add the current month to the page VC.
-        let currentPage = MonthPageVC()
-        currentPage.month = currentMonth
+        let currentPage = MonthPageVC(month: currentMonth, globallySelectedDate: self.selectedDate)
         self.pageVC.setViewControllers([currentPage], direction: .Forward, animated: false, completion: nil)
         
         // Initially select the current month.
         self.selectedDate = currentMonth
-        self.customView.monthLabel.text = self.monthLabelFormatter.stringFromDate(currentMonth)
+        self.customView.selectedDateLabel.text = DatePickerVC.selectedDateFormatter.stringFromDate(currentMonth)
+        self.customView.monthLabel.text = DatePickerVC.monthLabelFormatter.stringFromDate(currentMonth)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapOnDimView))
         tapGesture.cancelsTouchesInView = false
@@ -72,6 +75,9 @@ class DatePickerVC: UIViewController {
         
         self.customView.previousButton.addTarget(self, action: #selector(handleTapOnPreviousButton), forControlEvents: .TouchUpInside)
         self.customView.nextButton.addTarget(self, action: #selector(handleTapOnNextButton), forControlEvents: .TouchUpInside)
+        
+        // Listen to date selections in month pages.
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(handleDateSelectionNotification(_:)), name: NSNotificationName.MonthPageVCDidSelectDate.string(), object: nil)
     }
     
     private func generateMonthsFromDate(date: NSDate, forPageDirection pageDirection: PageDirection) -> [NSDate] {
@@ -100,7 +106,11 @@ class DatePickerVC: UIViewController {
     }
     
     func updateMonthLabelForDate(date: NSDate) {
-        self.customView.monthLabel.text = self.monthLabelFormatter.stringFromDate(date)
+        self.customView.monthLabel.text = DatePickerVC.monthLabelFormatter.stringFromDate(date)
+    }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
 }
@@ -114,18 +124,29 @@ extension DatePickerVC {
     
     func handleTapOnPreviousButton() {
         let currentPage = self.pageVC.viewControllers!.first as! MonthPageVC
-        let indexOfMonth = self.months.indexOf(currentPage.month!)!
-        let previousPage = MonthPageVC(month: self.months[indexOfMonth - 1])
+        let indexOfMonth = self.months.indexOf(currentPage.month)!
+        let previousPage = MonthPageVC(month: self.months[indexOfMonth - 1], globallySelectedDate: self.selectedDate)
         self.pageVC.setViewControllers([previousPage], direction: .Reverse, animated: false, completion: nil)
-        self.updateMonthLabelForDate(previousPage.month!)
+        self.updateMonthLabelForDate(previousPage.month)
     }
     
     func handleTapOnNextButton() {
         let currentPage = self.pageVC.viewControllers!.first as! MonthPageVC
-        let indexOfMonth = self.months.indexOf(currentPage.month!)!
-        let nextPage = MonthPageVC(month: self.months[indexOfMonth + 1])
+        let indexOfMonth = self.months.indexOf(currentPage.month)!
+        let nextPage = MonthPageVC(month: self.months[indexOfMonth + 1], globallySelectedDate: self.selectedDate)
         self.pageVC.setViewControllers([nextPage], direction: .Forward, animated: false, completion: nil)
-        self.updateMonthLabelForDate(nextPage.month!)
+        self.updateMonthLabelForDate(nextPage.month)
+    }
+    
+    func handleDateSelectionNotification(notification: NSNotification) {
+        guard let selectedDate = notification.userInfo?["selectedDate"] as? NSDate
+            where notification.name == NSNotificationName.MonthPageVCDidSelectDate.string()
+            else {
+                return
+        }
+        
+        self.selectedDate = selectedDate
+        self.customView.selectedDateLabel.text = DatePickerVC.selectedDateFormatter.stringFromDate(selectedDate)
     }
     
 }
@@ -135,7 +156,7 @@ extension DatePickerVC: UIPageViewControllerDataSource {
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
         let page = viewController as! MonthPageVC
-        let index = self.months.indexOf(page.month!)!
+        let index = self.months.indexOf(page.month)!
         
         var previousIndex: Int
         if index == 0 {
@@ -148,22 +169,20 @@ extension DatePickerVC: UIPageViewControllerDataSource {
             previousIndex = index - 1
         }
         
-        let previousPage = MonthPageVC()
-        previousPage.month = self.months[previousIndex]
+        let previousPage = MonthPageVC(month: self.months[previousIndex], globallySelectedDate: self.selectedDate)
         return previousPage
     }
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
         let page = viewController as! MonthPageVC
-        let currentIndex = self.months.indexOf(page.month!)!
+        let currentIndex = self.months.indexOf(page.month)!
         
         if currentIndex == self.months.count - 1 {
             let moreMonths = self.generateMonthsFromDate(self.months[currentIndex], forPageDirection: .Next)
             self.months.appendContentsOf(moreMonths)
         }
         
-        let nextPage = MonthPageVC()
-        nextPage.month = self.months[currentIndex + 1]
+        let nextPage = MonthPageVC(month: self.months[currentIndex + 1], globallySelectedDate: self.selectedDate)
         return nextPage
     }
     
@@ -174,13 +193,13 @@ extension DatePickerVC: UIPageViewControllerDelegate {
     
     func pageViewController(pageViewController: UIPageViewController, willTransitionToViewControllers pendingViewControllers: [UIViewController]) {
         if let nextPage = pendingViewControllers.first as? MonthPageVC {
-            self.updateMonthLabelForDate(nextPage.month!)
+            self.updateMonthLabelForDate(nextPage.month)
         }
     }
     
     func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         if let currentPage = self.pageVC.viewControllers?.first as? MonthPageVC {
-            self.updateMonthLabelForDate(currentPage.month!)
+            self.updateMonthLabelForDate(currentPage.month)
         }
     }
     

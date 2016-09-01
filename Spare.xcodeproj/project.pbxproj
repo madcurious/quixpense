@@ -140,6 +140,7 @@
 		26C034E61D4B11410064187F /* __ELVCBCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26C034E51D4B11410064187F /* __ELVCBCell.xib */; };
 		26C034EA1D4B24600064187F /* __ELVCBEmptyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C034E91D4B24600064187F /* __ELVCBEmptyCell.swift */; };
 		26C2D5C21CDB5E4800BC73FC /* AddButtonProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C2D5C11CDB5E4800BC73FC /* AddButtonProgressView.swift */; };
+		26D5DA961D77F86B000BFFA8 /* NSNotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D5DA951D77F86B000BFFA8 /* NSNotificationName.swift */; };
 		26E4E0591937AF690096191A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E4E0581937AF690096191A /* QuartzCore.framework */; };
 		26E6EDB41CDBA6C60034EEDE /* AddButtonProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26E6EDB31CDBA6C60034EEDE /* AddButtonProgressView.xib */; };
 		26E7FA7B1CDB332F000E2181 /* BaseTabButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E7FA7A1CDB332F000E2181 /* BaseTabButton.swift */; };
@@ -334,6 +335,7 @@
 		26C034E91D4B24600064187F /* __ELVCBEmptyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __ELVCBEmptyCell.swift; sourceTree = "<group>"; };
 		26C2D5C11CDB5E4800BC73FC /* AddButtonProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddButtonProgressView.swift; sourceTree = "<group>"; };
 		26D4C8F41946E624001B42DC /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		26D5DA951D77F86B000BFFA8 /* NSNotificationName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSNotificationName.swift; sourceTree = "<group>"; };
 		26E4E0581937AF690096191A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		26E6EDB31CDBA6C60034EEDE /* AddButtonProgressView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddButtonProgressView.xib; sourceTree = "<group>"; };
 		26E7FA7A1CDB332F000E2181 /* BaseTabButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTabButton.swift; sourceTree = "<group>"; };
@@ -659,6 +661,7 @@
 				268F480A1D60D3490088AC6B /* StartOfWeek.swift */,
 				268F480B1D60D3490088AC6B /* Strings.swift */,
 				268F480C1D60D3490088AC6B /* Summary.swift */,
+				26D5DA951D77F86B000BFFA8 /* NSNotificationName.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -966,6 +969,7 @@
 				263005641D4F8E9000AC3060 /* StatefulVCRetryView.swift in Sources */,
 				268F47FE1D60D2900088AC6B /* CustomPickerPresentationAnimator.swift in Sources */,
 				266946931CC77A1A00A68424 /* AppDelegate.swift in Sources */,
+				26D5DA961D77F86B000BFFA8 /* NSNotificationName.swift in Sources */,
 				2687FA3C1D0EC46F00D544F5 /* CreateSummariesOperation.swift in Sources */,
 				26E7FA7B1CDB332F000E2181 /* BaseTabButton.swift in Sources */,
 				268F480F1D60D3490088AC6B /* Error.swift in Sources */,

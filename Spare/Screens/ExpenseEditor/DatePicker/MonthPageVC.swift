@@ -15,6 +15,9 @@ private enum ViewID: String {
 
 class MonthPageVC: UIViewController {
     
+    static let dayCountCache = NSCache()
+    static let fillerCountCache = NSCache()
+    
     let collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.minimumLineSpacing = 0
@@ -24,18 +27,46 @@ class MonthPageVC: UIViewController {
         return collectionView
     }()
     
-    var month: NSDate? {
+    /// The month that this page displays.
+    var month = NSDate.distantFuture() {
         didSet {
             self.collectionView.reloadData()
         }
     }
     
-    static let dayCountCache = NSCache()
-    static let fillerCountCache = NSCache()
+    var selectedIndexPath: NSIndexPath?
     
-    convenience init(month: NSDate) {
-        self.init(nibName: nil, bundle: nil)
+    var numberOfDays: Int {
+        if let count = MonthPageVC.dayCountCache.objectForKey(self.month) as? Int {
+            return count
+        }
+        
+        let calendar = NSCalendar.currentCalendar()
+        let count = calendar.rangeOfUnit(.Day, inUnit: .Month, forDate: self.month).length
+        MonthPageVC.dayCountCache.setObject(count, forKey: self.month)
+        return count
+    }
+    
+    var numberOfFillers: Int {
+        if let count = MonthPageVC.fillerCountCache.objectForKey(self.month) as? Int {
+            return count
+        }
+        
+        let calendar = NSCalendar.currentCalendar()
+        let weekday = calendar.component(.Weekday, fromDate: month)
+        let count = weekday - 1
+        MonthPageVC.fillerCountCache.setObject(count, forKey: month)
+        return count
+    }
+    
+    init(month: NSDate, globallySelectedDate: NSDate) {
+        super.init(nibName: nil, bundle: nil)
         self.month = month
+        self.updateSelectedIndexPathFromGloballySelectedDate(globallySelectedDate)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func loadView() {
@@ -53,6 +84,56 @@ class MonthPageVC: UIViewController {
         
         self.collectionView.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: ViewID.FillerCell.rawValue)
         self.collectionView.registerNib(__DPVCDayCell.nib(), forCellWithReuseIdentifier: ViewID.DayCell.rawValue)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(handleDateSelectionNotification(_:)), name: NSNotificationName.MonthPageVCDidSelectDate.string(), object: nil)
+    }
+    
+    func dayForIndexPath(indexPath: NSIndexPath) -> Int {
+        let day = indexPath.item - self.numberOfFillers + 1
+        return day
+    }
+    
+    func dateForIndexPath(indexPath: NSIndexPath) -> NSDate {
+        let day = self.dayForIndexPath(indexPath)
+        let date = NSCalendar.currentCalendar().dateBySettingUnit(.Day, value: day, ofDate: self.month, options: [])!
+        return date
+    }
+    
+    func updateSelectedIndexPathFromGloballySelectedDate(date: NSDate) {
+        let calendar = NSCalendar.currentCalendar()
+        let selectedDateComponents = calendar.components([.Month, .Day, .Year], fromDate: date)
+        let monthComponents = calendar.components([.Month, .Day, .Year], fromDate: self.month)
+        
+        // If the globally selected date doesn't fall within this month and year,
+        // keep the selected index path nil.
+        guard selectedDateComponents.month == monthComponents.month &&
+            selectedDateComponents.year == monthComponents.year
+            else {
+                self.selectedIndexPath = nil
+                return
+        }
+        
+        let index = (self.numberOfFillers + selectedDateComponents.day) - 1 // minus 1 because days start from 1
+        let indexPath = NSIndexPath(forItem: index, inSection: 0)
+        self.selectedIndexPath = indexPath
+    }
+    
+    func handleDateSelectionNotification(notification: NSNotification) {
+        guard let selectedDate = notification.userInfo?["selectedDate"] as? NSDate,
+            let sender = notification.object as? MonthPageVC
+            where notification.name == NSNotificationName.MonthPageVCDidSelectDate.string() &&
+                sender != self
+            else {
+                // Avoid reacting to the global notification if the sender is this
+                // exact same page.
+                return
+        }
+        
+        self.updateSelectedIndexPathFromGloballySelectedDate(selectedDate)
+    }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
 }
@@ -60,55 +141,57 @@ class MonthPageVC: UIViewController {
 extension MonthPageVC: UICollectionViewDataSource {
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let month = self.month
-            else {
-                return 0
-        }
-        
-        // Return the number of days in that month.
-        // Check the cache first.
-        if let fillerCount = MonthPageVC.fillerCountCache.objectForKey(month) as? Int,
-            let dayCount = MonthPageVC.dayCountCache.objectForKey(month) as? Int {
-            
-            let formatter = NSDateFormatter()
-            formatter.dateStyle = .ShortStyle
-            print("\(formatter.stringFromDate(month)) - filler: \(fillerCount), dayCount: \(dayCount)")
-            return fillerCount + dayCount
-        }
-        
-        // If the count isn't in the cache, count it, then cache the number.
-        let calendar = NSCalendar.currentCalendar()
-        let dayCount = calendar.rangeOfUnit(.Day, inUnit: .Month, forDate: month).length
-        MonthPageVC.dayCountCache.setObject(dayCount, forKey: month)
-        
-        let weekday = calendar.component(.Weekday, fromDate: month)
-        let fillerCount = weekday - 1
-        MonthPageVC.fillerCountCache.setObject(fillerCount, forKey: month)
-        
-        let formatter = NSDateFormatter()
-        formatter.dateStyle = .ShortStyle
-        print("\(formatter.stringFromDate(month)) - filler: \(fillerCount), dayCount: \(dayCount)")
-        
-        return fillerCount + dayCount
+        return self.numberOfFillers + self.numberOfDays
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let index = indexPath.item
-        let fillerCount = MonthPageVC.fillerCountCache.objectForKey(self.month!) as! Int
         
-        if index < fillerCount {
+        if index < self.numberOfFillers {
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier(ViewID.FillerCell.rawValue, forIndexPath: indexPath)
             return cell
         }
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(ViewID.DayCell.rawValue, forIndexPath: indexPath) as! __DPVCDayCell
-        cell.dateLabel.text = "\(index - fillerCount + 1)"
+        cell.dateLabel.text = "\(self.dayForIndexPath(indexPath))"
+        
+        if let selectedIndexPath = self.selectedIndexPath
+            where selectedIndexPath == indexPath {
+            cell.selected = true
+        } else {
+            cell.selected = false
+        }
+        
         return cell
     }
     
 }
 
-extension MonthPageVC: UICollectionViewDelegate {}
+extension MonthPageVC: UICollectionViewDelegate {
+
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        if let selectedIndexPath = self.selectedIndexPath {
+            // Do nothing if the same date is selected.
+            if indexPath == selectedIndexPath {
+                return
+            }
+            
+            let oldSelectedIndexPath = selectedIndexPath
+            self.selectedIndexPath = indexPath
+            self.collectionView.reloadItemsAtIndexPaths([oldSelectedIndexPath, indexPath])
+        } else {
+            self.selectedIndexPath = indexPath
+            self.collectionView.reloadItemsAtIndexPaths([indexPath])
+        }
+        
+        let selectedDate = self.dateForIndexPath(indexPath)
+        NSNotificationCenter.defaultCenter().postNotificationName(
+            NSNotificationName.MonthPageVCDidSelectDate.string(), object: self, userInfo: [
+                "selectedDate" : selectedDate
+            ])
+    }
+
+}
 
 extension MonthPageVC: UICollectionViewDelegateFlowLayout {
     
