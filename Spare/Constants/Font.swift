@@ -54,8 +54,6 @@ final class Font {
     static let GraphViewTotalLabel = UIFont.boldSystemFontOfSize(26)
     static let GraphViewDetailLabel = UIFont.systemFontOfSize(16)
     
-    static let StatefulVCRetryViewMessageLabel = UIFont.systemFontOfSize(18)
-    
     static let SummaryCellTextLabel = UIFont.systemFontOfSize(18)
     
 }

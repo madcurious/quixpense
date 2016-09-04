@@ -1,5 +1,5 @@
 //
-//  StatefulVCRetryView.swift
+//  NoCategoriesView.swift
 //  Spare
 //
 //  Created by Matt Quiros on 01/08/2016.
@@ -9,12 +9,11 @@
 import UIKit
 import Mold
 
-class StatefulVCRetryView: MDRetryView {
+class NoCategoriesView: MDRetryView {
     
     @IBOutlet weak var labelContainer: UIView!
     @IBOutlet weak var iconLabel: UILabel!
     @IBOutlet weak var messageLabel: UILabel!
-    @IBOutlet weak var retryButton: UIButton!
     
     override var error: ErrorType? {
         didSet {
@@ -40,11 +39,9 @@ class StatefulVCRetryView: MDRetryView {
         
         self.messageLabel.numberOfLines = 0
         self.messageLabel.lineBreakMode = .ByWordWrapping
-        self.messageLabel.font = Font.StatefulVCRetryViewMessageLabel
+        self.messageLabel.font = Font.make(.Medium, 18)
         self.messageLabel.textColor = Color.UniversalSecondaryTextColor
         self.messageLabel.textAlignment = .Center
-        
-        self.retryButton.setTitle("Retry", forState: .Normal)
     }
 
 }

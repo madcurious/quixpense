@@ -26,7 +26,7 @@ class CreateSummariesOperation: MDOperation {
     }
     
     override func buildResult(object: Any?) throws -> Any? {
-        guard let _ = glb_allCategories()
+        guard let _ = App.allCategories()
             else {
                 throw Error.NoCategoriesYet
         }

@@ -128,7 +128,7 @@ extension SummaryVC: UICollectionViewDataSource {
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let categories = glb_allCategories()
+        guard let categories = App.allCategories()
             else {
                 return 0
         }

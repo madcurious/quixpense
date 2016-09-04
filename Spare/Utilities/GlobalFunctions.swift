@@ -35,29 +35,24 @@ func glb_applyGlobalVCSettings(viewController: UIViewController) {
 }
 
 /**
- Returns all the categories in the store, or nil if the fetch returned an empty array or threw an exception.
- */
-func glb_allCategories() -> [Category]? {
-    return glb_autoreport {
-        let request = NSFetchRequest(entityName: Category.entityName)
-        if let categories = try App.mainQueueContext.executeFetchRequest(request) as? [Category]
-            where categories.isEmpty == false {
-            return categories
-        }
-        return nil
-    }
-}
-
-/**
  A wrapper for any closure that may throw an exception for unexpected reasons. When an exception is thrown,
  an error is automatically reported to the bug tracking tool.
  */
+
+func glb_autoreport(closure: () throws -> ()) {
+    do {
+        try closure()
+    } catch {
+        fatalError("Found error but no auto-reporting logic yet. Error: \(error as NSError)")
+    }
+}
+
 func glb_autoreport<T>(closure: Void throws -> T?) -> T? {
     do {
         return try closure()
     } catch {
         // Report here.
-        return nil
+        fatalError("Found error but no auto-reporting logic yet. Error: \(error as NSError)")
     }
 }
 

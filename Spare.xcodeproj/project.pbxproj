@@ -47,8 +47,8 @@
 		261EB88E18DDB631009DDF78 /* SpareTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 261EB88D18DDB631009DDF78 /* SpareTests.m */; };
 		262F839B1CCE3E5300EDDDEE /* LoadAppVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262F839A1CCE3E5300EDDDEE /* LoadAppVC.swift */; };
 		262F839D1CCE3E6C00EDDDEE /* LoadAppOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262F839C1CCE3E6C00EDDDEE /* LoadAppOperation.swift */; };
-		263005641D4F8E9000AC3060 /* StatefulVCRetryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263005621D4F8E9000AC3060 /* StatefulVCRetryView.swift */; };
-		263005651D4F8E9000AC3060 /* StatefulVCRetryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 263005631D4F8E9000AC3060 /* StatefulVCRetryView.xib */; };
+		263005641D4F8E9000AC3060 /* NoCategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263005621D4F8E9000AC3060 /* NoCategoriesView.swift */; };
+		263005651D4F8E9000AC3060 /* NoCategoriesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 263005631D4F8E9000AC3060 /* NoCategoriesView.xib */; };
 		2651467A1D4218B3000847F5 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265146791D4218B3000847F5 /* HomeVC.swift */; };
 		265222A01D66CFCE007FED96 /* DatePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2652229F1D66CFCE007FED96 /* DatePickerVC.swift */; };
 		265222A41D66CFF3007FED96 /* __DPVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265222A31D66CFF3007FED96 /* __DPVCView.swift */; };
@@ -227,8 +227,8 @@
 		261EB88D18DDB631009DDF78 /* SpareTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpareTests.m; sourceTree = "<group>"; };
 		262F839A1CCE3E5300EDDDEE /* LoadAppVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadAppVC.swift; sourceTree = "<group>"; };
 		262F839C1CCE3E6C00EDDDEE /* LoadAppOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadAppOperation.swift; sourceTree = "<group>"; };
-		263005621D4F8E9000AC3060 /* StatefulVCRetryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatefulVCRetryView.swift; sourceTree = "<group>"; };
-		263005631D4F8E9000AC3060 /* StatefulVCRetryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatefulVCRetryView.xib; sourceTree = "<group>"; };
+		263005621D4F8E9000AC3060 /* NoCategoriesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoCategoriesView.swift; sourceTree = "<group>"; };
+		263005631D4F8E9000AC3060 /* NoCategoriesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoCategoriesView.xib; sourceTree = "<group>"; };
 		265146791D4218B3000847F5 /* HomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeVC.swift; path = old/HomeVC.swift; sourceTree = "<group>"; };
 		2652229F1D66CFCE007FED96 /* DatePickerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerVC.swift; sourceTree = "<group>"; };
 		265222A31D66CFF3007FED96 /* __DPVCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __DPVCView.swift; sourceTree = "<group>"; };
@@ -387,8 +387,8 @@
 			children = (
 				265146791D4218B3000847F5 /* HomeVC.swift */,
 				2687FA3B1D0EC46F00D544F5 /* CreateSummariesOperation.swift */,
-				263005621D4F8E9000AC3060 /* StatefulVCRetryView.swift */,
-				263005631D4F8E9000AC3060 /* StatefulVCRetryView.xib */,
+				263005621D4F8E9000AC3060 /* NoCategoriesView.swift */,
+				263005631D4F8E9000AC3060 /* NoCategoriesView.xib */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -849,7 +849,7 @@
 				261AF6311D5F395200E03A48 /* Avenir-Light.ttf in Resources */,
 				261AF6301D5F395200E03A48 /* Avenir-HeavyOblique.ttf in Resources */,
 				261AF6321D5F395200E03A48 /* Avenir-LightOblique.ttf in Resources */,
-				263005651D4F8E9000AC3060 /* StatefulVCRetryView.xib in Resources */,
+				263005651D4F8E9000AC3060 /* NoCategoriesView.xib in Resources */,
 				266946891CC7711000A68424 /* Icon@2x.png in Resources */,
 				266946861CC7711000A68424 /* Icon-40@2x.png in Resources */,
 				26C034E61D4B11410064187F /* __ELVCBCell.xib in Resources */,
@@ -938,7 +938,7 @@
 				266408C21D4A630E00609580 /* Button.swift in Sources */,
 				2603F8CF1CCA4C10007F311F /* Expense.swift in Sources */,
 				262F839D1CCE3E6C00EDDDEE /* LoadAppOperation.swift in Sources */,
-				263005641D4F8E9000AC3060 /* StatefulVCRetryView.swift in Sources */,
+				263005641D4F8E9000AC3060 /* NoCategoriesView.swift in Sources */,
 				26EB76FF1D7C5B060001723D /* Summary.swift in Sources */,
 				268F47FE1D60D2900088AC6B /* CustomPickerPresentationAnimator.swift in Sources */,
 				266946931CC77A1A00A68424 /* AppDelegate.swift in Sources */,

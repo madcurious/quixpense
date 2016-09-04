@@ -68,4 +68,13 @@ class App {
         }
     }
     
+    class func allCategories() -> [Category]? {
+        let request = NSFetchRequest(entityName: Category.entityName)
+        if let categories = try! App.mainQueueContext.executeFetchRequest(request) as? [Category]
+            where categories.isEmpty == false {
+            return categories
+        }
+        return nil
+    }
+    
 }

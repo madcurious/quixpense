@@ -48,7 +48,7 @@ struct Summary: Equatable {
      The array is ordered by biggest total first.
      */
     var data: [(Category, NSDecimalNumber, Double)]? {
-        guard let categories = glb_allCategories()
+        guard let categories = App.allCategories()
             else {
                 return nil
         }

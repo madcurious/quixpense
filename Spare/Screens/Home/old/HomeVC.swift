@@ -26,7 +26,7 @@ class HomeVC: MDStatefulViewController {
     
     let forwardButton = Button(string: "Now", font: Font.ModalBarButtonText, textColor: Color.UniversalTextColor)
     let periodizationButton = PeriodizationButton()
-    let customRetryView = StatefulVCRetryView.instantiateFromNib() as StatefulVCRetryView
+    let customRetryView = NoCategoriesView.instantiateFromNib()
     
     override init() {
         super.init()
@@ -104,15 +104,6 @@ class HomeVC: MDStatefulViewController {
                 else {
                     fatalError("Got an error not customised: \(error as NSError)")
             }
-            
-            switch customError {
-            case .NoCategoriesYet:
-                self.customRetryView.retryButton.hidden = true
-                
-            default:
-                self.customRetryView.retryButton.hidden = false
-            }
-            
             self.customRetryView.error = customError
             self.showView(.Retry)
         }
