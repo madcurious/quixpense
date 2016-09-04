@@ -23,38 +23,47 @@ class SummaryVC: UIViewController {
         }
     }
     
-    var collectionView: UICollectionView
-    var layoutManager: UICollectionViewFlowLayout
+    lazy var collectionView: UICollectionView = {
+        let layoutManager = UICollectionViewFlowLayout()
+        layoutManager.scrollDirection = .Vertical
+        return UICollectionView(frame: CGRectZero, collectionViewLayout: layoutManager)
+    }()
+    
+    lazy var zeroView = __SVCZeroView.instantiateFromNib()
     
     init(summary: Summary) {
         self.summary = summary
-        
-        let layoutManager = UICollectionViewFlowLayout()
-        layoutManager.scrollDirection = .Vertical
-//        layoutManager.estimatedItemSize = CGSizeMake(320, 50)
-        self.layoutManager = layoutManager
-        self.collectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: layoutManager)
-        
         super.init(nibName: nil, bundle: nil)
     }
     
     override func loadView() {
-        self.view = self.collectionView
+        self.view = {[unowned self] in
+            if self.summary.total == NSDecimalNumber(integer: 0) {
+                return self.zeroView
+            }
+            return self.collectionView
+        }()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.collectionView.backgroundView = UIImageView(image: UIImage.imageFromColor(Color.UniversalBackgroundColor))
-        self.collectionView.alwaysBounceVertical = true
-        self.collectionView.backgroundColor = Color.White
-        self.collectionView.showsVerticalScrollIndicator = false
-        
-        self.collectionView.registerNib(__SVCGraphView.nib(), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: ViewID.Graph.rawValue)
-        self.collectionView.registerNib(__SVCCategoryCellBox.nib(), forCellWithReuseIdentifier: ViewID.Cell.rawValue)
-        
-        self.collectionView.dataSource = self
-        self.collectionView.delegate = self
+        switch self.view {
+        case self.collectionView:
+            self.collectionView.backgroundView = UIImageView(image: UIImage.imageFromColor(Color.UniversalBackgroundColor))
+            self.collectionView.alwaysBounceVertical = true
+            self.collectionView.backgroundColor = Color.White
+            self.collectionView.showsVerticalScrollIndicator = false
+            
+            self.collectionView.registerNib(__SVCGraphView.nib(), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: ViewID.Graph.rawValue)
+            self.collectionView.registerNib(__SVCCategoryCellBox.nib(), forCellWithReuseIdentifier: ViewID.Cell.rawValue)
+            
+            self.collectionView.dataSource = self
+            self.collectionView.delegate = self
+            
+        default:
+            self.zeroView.dateLabel.text = DateFormatter.displayTextForSummary(self.summary)
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
