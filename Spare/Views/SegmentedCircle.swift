@@ -10,7 +10,7 @@ import UIKit
 
 class SegmentedCircle: UIView {
     
-    let strokeWidth = CGFloat(6)
+    let strokeWidth = CGFloat(10)
     
     var segments: [(Category, NSDecimalNumber, Double)]? {
         didSet {

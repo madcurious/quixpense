@@ -21,14 +21,14 @@ class GraphView: UIView {
         UIView.clearBackgroundColors(self.segmentedCircle, self.labelContainer)
         
         self.totalLabel.textColor = Color.UniversalTextColor
-        self.totalLabel.font = Font.GraphViewTotalLabel
+        self.totalLabel.font = Font.make(.Medium, 32)
         self.totalLabel.adjustsFontSizeToFitWidth = true
         self.totalLabel.numberOfLines = 1
         self.totalLabel.lineBreakMode = .ByClipping
         self.totalLabel.textAlignment = .Center
         
         self.detailLabel.textColor = Color.UniversalTextColor
-        self.detailLabel.font = Font.GraphViewDetailLabel
+        self.detailLabel.font = Font.make(.Medium, 18)
         self.detailLabel.numberOfLines = 0
         self.detailLabel.lineBreakMode = .ByWordWrapping
         self.detailLabel.textAlignment = .Center

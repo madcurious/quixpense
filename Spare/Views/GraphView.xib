@@ -16,7 +16,7 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="utO-Mo-P7S">
-                    <rect key="frame" x="56" y="202" width="337.5" height="46"/>
+                    <rect key="frame" x="56" y="204" width="337.5" height="42"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rBk-Ax-ZeS">
                             <rect key="frame" x="0.0" y="0.0" width="337.5" height="21"/>
@@ -25,7 +25,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jYJ-14-E90">
-                            <rect key="frame" x="0.0" y="25" width="337.5" height="21"/>
+                            <rect key="frame" x="0.0" y="21" width="337.5" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
@@ -38,7 +38,7 @@
                         <constraint firstAttribute="bottom" secondItem="jYJ-14-E90" secondAttribute="bottom" id="6uy-yP-3UI"/>
                         <constraint firstAttribute="trailing" secondItem="rBk-Ax-ZeS" secondAttribute="trailing" id="EVE-Ka-NrW"/>
                         <constraint firstItem="rBk-Ax-ZeS" firstAttribute="top" secondItem="utO-Mo-P7S" secondAttribute="top" id="Pb0-wj-PKW"/>
-                        <constraint firstItem="jYJ-14-E90" firstAttribute="top" secondItem="rBk-Ax-ZeS" secondAttribute="bottom" constant="4" id="PsR-Nx-cla"/>
+                        <constraint firstItem="jYJ-14-E90" firstAttribute="top" secondItem="rBk-Ax-ZeS" secondAttribute="bottom" id="PsR-Nx-cla"/>
                         <constraint firstItem="jYJ-14-E90" firstAttribute="leading" secondItem="utO-Mo-P7S" secondAttribute="leading" id="j4x-mq-Yxx"/>
                     </constraints>
                 </view>
