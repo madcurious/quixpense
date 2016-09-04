@@ -24,11 +24,18 @@ class HomeVC: MDStatefulViewController {
     var isCreatingSummaries = false
     var summaries = [Summary]()
     
-    let forwardButton = Button(string: Icon.Forward.rawValue, font: Font.icon(20), textColor: Color.UniversalTextColor)
-    
+    let forwardButton = Button(string: "Now", font: Font.ModalBarButtonText, textColor: Color.UniversalTextColor)
     let periodizationButton = PeriodizationButton()
-    
     let customRetryView = StatefulVCRetryView.instantiateFromNib() as StatefulVCRetryView
+    
+    override init() {
+        super.init()
+        self.title = "Spare"
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override var primaryView: UIView {
         return self.pageViewController.view

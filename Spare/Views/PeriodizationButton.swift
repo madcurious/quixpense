@@ -12,8 +12,6 @@ import Mold
 class PeriodizationButton: Button {
     
     var selectedPeriodization = App.state.selectedPeriodization
-    let arrowText = NSAttributedString(string: Icon.PeriodizationButtonArrow.rawValue, font: Font.icon(20), textColor: Color.UniversalTextColor)
-    let textFont = Font.make(.Medium, 17)
     
     override init() {
         super.init()
@@ -46,10 +44,9 @@ class PeriodizationButton: Button {
     }
     
     func updateText() {
-        self.label.attributedText = NSAttributedString(attributedStrings:
-            NSAttributedString(string: self.selectedPeriodization.descriptiveText,
-                font: self.textFont,
-                textColor: Color.UniversalTextColor), self.arrowText)
+        self.label.attributedText = NSAttributedString(string: self.selectedPeriodization.descriptiveText,
+                                                       font: Font.ModalBarButtonText,
+                                                       textColor: Color.UniversalTextColor)
         self.sizeToFit()
     }
     

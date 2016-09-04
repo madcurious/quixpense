@@ -15,12 +15,10 @@ enum Icon: String {
     case DisclosureIndicator = "v"
     case Empty = "h"
     case ExpenseEditorBackspace = "e"
-    case Forward = "k"
     case Home = "b"
     case MainTabBarAdd = "f"
     case Next = "i"
     case NoCategories = "d"
-    case PeriodizationButtonArrow = "a"
     case Settings = "j"
     case ThinAddSign = "c"
     
