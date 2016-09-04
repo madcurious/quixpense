@@ -15,6 +15,10 @@ private enum ViewID: String {
 
 private let kCellInset = CGFloat(10)
 
+private enum View {
+    case Chart, Zero
+}
+
 class SummaryVC: UIViewController {
     
     var summary: Summary {
@@ -37,37 +41,82 @@ class SummaryVC: UIViewController {
     }
     
     override func loadView() {
-        self.view = {[unowned self] in
-            if self.summary.total == NSDecimalNumber(integer: 0) {
-                return self.zeroView
-            }
-            return self.collectionView
-        }()
+        let mainView = UIView()
+        mainView.addSubviewsAndFill(self.zeroView, self.collectionView)
+        self.view = mainView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        switch self.view {
-        case self.collectionView:
-            self.collectionView.backgroundView = UIImageView(image: UIImage.imageFromColor(Color.UniversalBackgroundColor))
-            self.collectionView.alwaysBounceVertical = true
-            self.collectionView.backgroundColor = Color.White
-            self.collectionView.showsVerticalScrollIndicator = false
-            
-            self.collectionView.registerNib(__SVCGraphView.nib(), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: ViewID.Graph.rawValue)
-            self.collectionView.registerNib(__SVCCategoryCellBox.nib(), forCellWithReuseIdentifier: ViewID.Cell.rawValue)
-            
-            self.collectionView.dataSource = self
-            self.collectionView.delegate = self
-            
-        default:
-            self.zeroView.dateLabel.text = DateFormatter.displayTextForSummary(self.summary)
+        self.reloadView()
+        
+        let system = NSNotificationCenter.defaultCenter()
+        system.addObserver(self, selector: #selector(handlePerformedExpenseOperation(_:)),
+                           name: NSNotificationName.PerformedExpenseOperation.string(), object: nil)
+    }
+    
+    func reloadView() {
+        if self.summary.total == NSDecimalNumber(integer: 0) {
+            self.showView(.Zero)
+        } else {
+            self.showView(.Chart)
         }
+    }
+    
+    func setupCollectionView() {
+        self.collectionView.backgroundView = UIImageView(image: UIImage.imageFromColor(Color.UniversalBackgroundColor))
+        self.collectionView.alwaysBounceVertical = true
+        self.collectionView.backgroundColor = Color.White
+        self.collectionView.showsVerticalScrollIndicator = false
+        
+        self.collectionView.registerNib(__SVCGraphView.nib(), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: ViewID.Graph.rawValue)
+        self.collectionView.registerNib(__SVCCategoryCellBox.nib(), forCellWithReuseIdentifier: ViewID.Cell.rawValue)
+        
+        self.collectionView.dataSource = self
+        self.collectionView.delegate = self
+    }
+    
+    func setupZeroView() {
+        self.zeroView.dateLabel.text = DateFormatter.displayTextForSummary(self.summary)
+    }
+    
+    private func showView(view: View) {
+        self.zeroView.hidden = view != .Zero
+        self.collectionView.hidden = view != .Chart
+        
+        switch view {
+        case .Chart:
+            self.setupCollectionView()
+            
+        case .Zero:
+            self.setupZeroView()
+        }
+    }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+}
+
+// MARK: - Target actions
+extension SummaryVC {
+    
+    func handlePerformedExpenseOperation(notification: NSNotification) {
+        guard let expenseObject = notification.object as? Expense,
+            let expense = App.mainQueueContext.objectWithID(expenseObject.objectID) as? Expense
+            else {
+                return
+        }
+        
+        if self.summary.containsDate(expense.dateSpent!) {
+            self.reloadView()
+        }
     }
     
 }

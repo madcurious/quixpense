@@ -40,7 +40,7 @@ func glb_applyGlobalVCSettings(viewController: UIViewController) {
 func glb_allCategories() -> [Category]? {
     return glb_autoreport {
         let request = NSFetchRequest(entityName: Category.entityName)
-        if let categories = try App.state.mainQueueContext.executeFetchRequest(request) as? [Category]
+        if let categories = try App.mainQueueContext.executeFetchRequest(request) as? [Category]
             where categories.isEmpty == false {
             return categories
         }

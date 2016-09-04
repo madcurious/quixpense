@@ -26,8 +26,8 @@ class App {
     
     var coreDataStack: CoreDataStack!
     
-    var mainQueueContext: NSManagedObjectContext {
-        return self.coreDataStack.mainQueueContext
+    static var mainQueueContext: NSManagedObjectContext {
+        return kSharedState.coreDataStack.mainQueueContext
     }
     
     var selectedPeriodization: Periodization {

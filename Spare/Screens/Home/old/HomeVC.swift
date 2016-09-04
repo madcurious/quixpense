@@ -65,7 +65,7 @@ class HomeVC: MDStatefulViewController {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: self.forwardButton)
         
         let notificationCenter = NSNotificationCenter.defaultCenter()
-        notificationCenter.addObserver(self, selector: #selector(handleUpdatesOnDataStore), name: NSManagedObjectContextDidSaveNotification, object: App.state.mainQueueContext)
+        notificationCenter.addObserver(self, selector: #selector(handleUpdatesOnDataStore), name: NSManagedObjectContextDidSaveNotification, object: App.mainQueueContext)
     }
     
     override func buildOperation() -> MDOperation? {

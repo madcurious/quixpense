@@ -107,7 +107,6 @@
 		268F48141D60D3490088AC6B /* Periodization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F48091D60D3490088AC6B /* Periodization.swift */; };
 		268F48151D60D3490088AC6B /* StartOfWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F480A1D60D3490088AC6B /* StartOfWeek.swift */; };
 		268F48161D60D3490088AC6B /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F480B1D60D3490088AC6B /* Strings.swift */; };
-		268F48171D60D3490088AC6B /* Summary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F480C1D60D3490088AC6B /* Summary.swift */; };
 		268F48191D60D3DE0088AC6B /* CustomPickerTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F48181D60D3DE0088AC6B /* CustomPickerTransitioningDelegate.swift */; };
 		268F481E1D60DE020088AC6B /* CustomPickerDismissalAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F481D1D60DE020088AC6B /* CustomPickerDismissalAnimator.swift */; };
 		269C11B81D69C74C00D4EED4 /* spare-v2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 269C11B71D69C74C00D4EED4 /* spare-v2.ttf */; };
@@ -136,6 +135,7 @@
 		26E7FA7B1CDB332F000E2181 /* BaseTabButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E7FA7A1CDB332F000E2181 /* BaseTabButton.swift */; };
 		26E9CEAC1D66D59A0005E087 /* __DPVCDayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26E9CEAB1D66D59A0005E087 /* __DPVCDayCell.xib */; };
 		26E9CEAE1D66D5AA0005E087 /* __DPVCDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E9CEAD1D66D5AA0005E087 /* __DPVCDayCell.swift */; };
+		26EB76FF1D7C5B060001723D /* Summary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EB76FE1D7C5B060001723D /* Summary.swift */; };
 		26EFA0031CD9C8F100714E5D /* MainContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EFA0021CD9C8F100714E5D /* MainContainerVC.swift */; };
 		26EFA0051CD9C91A00714E5D /* __MCVCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26EFA0041CD9C91A00714E5D /* __MCVCView.xib */; };
 		26EFA0071CD9C92F00714E5D /* __MCVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EFA0061CD9C92F00714E5D /* __MCVCView.swift */; };
@@ -291,7 +291,6 @@
 		268F48091D60D3490088AC6B /* Periodization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Periodization.swift; sourceTree = "<group>"; };
 		268F480A1D60D3490088AC6B /* StartOfWeek.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartOfWeek.swift; sourceTree = "<group>"; };
 		268F480B1D60D3490088AC6B /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
-		268F480C1D60D3490088AC6B /* Summary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Summary.swift; sourceTree = "<group>"; };
 		268F48181D60D3DE0088AC6B /* CustomPickerTransitioningDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPickerTransitioningDelegate.swift; sourceTree = "<group>"; };
 		268F481D1D60DE020088AC6B /* CustomPickerDismissalAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPickerDismissalAnimator.swift; sourceTree = "<group>"; };
 		269C11B71D69C74C00D4EED4 /* spare-v2.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "spare-v2.ttf"; sourceTree = "<group>"; };
@@ -321,6 +320,7 @@
 		26E7FA7A1CDB332F000E2181 /* BaseTabButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTabButton.swift; sourceTree = "<group>"; };
 		26E9CEAB1D66D59A0005E087 /* __DPVCDayCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __DPVCDayCell.xib; sourceTree = "<group>"; };
 		26E9CEAD1D66D5AA0005E087 /* __DPVCDayCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __DPVCDayCell.swift; sourceTree = "<group>"; };
+		26EB76FE1D7C5B060001723D /* Summary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Summary.swift; sourceTree = "<group>"; };
 		26EFA0021CD9C8F100714E5D /* MainContainerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainContainerVC.swift; sourceTree = "<group>"; };
 		26EFA0041CD9C91A00714E5D /* __MCVCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __MCVCView.xib; sourceTree = "<group>"; };
 		26EFA0061CD9C92F00714E5D /* __MCVCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __MCVCView.swift; sourceTree = "<group>"; };
@@ -538,6 +538,7 @@
 		266946471CC7711000A68424 /* Spare */ = {
 			isa = PBXGroup;
 			children = (
+				26EB76FD1D7C5B060001723D /* Models */,
 				260024051CC7E5F300EB2026 /* Screens */,
 				268F48011D60D3490088AC6B /* Constants */,
 				26170E061D19C95B0003BC71 /* Views */,
@@ -638,7 +639,6 @@
 				268F48091D60D3490088AC6B /* Periodization.swift */,
 				268F480A1D60D3490088AC6B /* StartOfWeek.swift */,
 				268F480B1D60D3490088AC6B /* Strings.swift */,
-				268F480C1D60D3490088AC6B /* Summary.swift */,
 				26D5DA951D77F86B000BFFA8 /* NSNotificationName.swift */,
 			);
 			path = Constants;
@@ -689,6 +689,14 @@
 				26C034E91D4B24600064187F /* __ELVCBEmptyCell.swift */,
 			);
 			path = ExpenseList;
+			sourceTree = "<group>";
+		};
+		26EB76FD1D7C5B060001723D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				26EB76FE1D7C5B060001723D /* Summary.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		26EFA0011CD9C8E800714E5D /* MainContainer */ = {
@@ -929,9 +937,9 @@
 				26C034EA1D4B24600064187F /* __ELVCBEmptyCell.swift in Sources */,
 				266408C21D4A630E00609580 /* Button.swift in Sources */,
 				2603F8CF1CCA4C10007F311F /* Expense.swift in Sources */,
-				268F48171D60D3490088AC6B /* Summary.swift in Sources */,
 				262F839D1CCE3E6C00EDDDEE /* LoadAppOperation.swift in Sources */,
 				263005641D4F8E9000AC3060 /* StatefulVCRetryView.swift in Sources */,
+				26EB76FF1D7C5B060001723D /* Summary.swift in Sources */,
 				268F47FE1D60D2900088AC6B /* CustomPickerPresentationAnimator.swift in Sources */,
 				266946931CC77A1A00A68424 /* AppDelegate.swift in Sources */,
 				26D5DA961D77F86B000BFFA8 /* NSNotificationName.swift in Sources */,

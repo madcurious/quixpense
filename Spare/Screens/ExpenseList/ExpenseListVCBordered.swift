@@ -27,7 +27,7 @@ class ExpenseListVCBordered: UIViewController {
         return glb_autoreport({[unowned self] in
             let request = NSFetchRequest(entityName: Expense.entityName)
             request.predicate = NSPredicate(format: "category == %@ && dateSpent >= %@ && dateSpent <= %@", self.category, self.startDate, self.endDate)
-            if let expenses = try App.state.mainQueueContext.executeFetchRequest(request) as? [Expense]
+            if let expenses = try App.mainQueueContext.executeFetchRequest(request) as? [Expense]
                 where expenses.count > 0 {
                 return expenses
             }
@@ -99,7 +99,7 @@ class ExpenseListVCBordered: UIViewController {
     
     func handleSaveOnManagedObjectContext() {
         // Refetch category.
-        if let category = App.state.mainQueueContext.objectWithID(self.category.objectID) as? Category {
+        if let category = App.mainQueueContext.objectWithID(self.category.objectID) as? Category {
             self.category = category
         }
         self.setupHeaderView()

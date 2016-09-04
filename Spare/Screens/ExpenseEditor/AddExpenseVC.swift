@@ -48,6 +48,10 @@ class AddExpenseVC: BaseFormVC {
                             MDErrorDialog.showError(error, inPresenter: self)
                         default:
                             MDDispatcher.asyncRunInMainThread({
+                                // Throw a notification to notify summary views.
+                                let system = NSNotificationCenter.defaultCenter()
+                                system.postNotificationName(NSNotificationName.PerformedExpenseOperation.string(), object: self.editor.expense)
+                                
                                 self.editor.reset()
                             })
                         }

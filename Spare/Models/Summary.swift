@@ -23,7 +23,7 @@ struct Summary: Equatable {
         return glb_autoreport({
             let request = NSFetchRequest(entityName: Expense.entityName)
             request.predicate = NSPredicate(format: "dateSpent >= %@ AND dateSpent <= %@", self.startDate, self.endDate)
-            if let expenses = try App.state.mainQueueContext.executeFetchRequest(request) as? [Expense]
+            if let expenses = try App.mainQueueContext.executeFetchRequest(request) as? [Expense]
                 where expenses.isEmpty == false {
                 return expenses
             }
@@ -73,6 +73,27 @@ struct Summary: Equatable {
         data.sortInPlace({ $0.2 > $1.2 })
         
         return data
+    }
+    
+    func containsDate(date: NSDate) -> Bool {
+        // Get the date components.
+        let calendar = NSCalendar.currentCalendar()
+        let significantUnits: NSCalendarUnit = [.Month, .Day, .Year]
+        let startDateComponents = calendar.components(significantUnits, fromDate: self.startDate)
+        let endDateComponents = calendar.components(significantUnits, fromDate: self.endDate)
+        let dateComponents = calendar.components(significantUnits, fromDate: date)
+        
+        if (dateComponents.month >= startDateComponents.month &&
+            dateComponents.day >= startDateComponents.day &&
+            dateComponents.year >= startDateComponents.year) &&
+            
+            (dateComponents.month <= endDateComponents.month &&
+                dateComponents.day <= endDateComponents.day &&
+                dateComponents.year <= endDateComponents.year) {
+            return true
+        }
+        
+        return false
     }
     
 }
