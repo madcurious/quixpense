@@ -53,8 +53,8 @@ class HomeVC: MDStatefulViewController {
         self.noResultsView.backgroundColor = Color.UniversalBackgroundColor
         
         self.periodizationButton.addTarget(self, action: #selector(handleSelectionOfPeriodization), forControlEvents: .ValueChanged)
-        self.navigationItem.titleView = self.periodizationButton
         self.forwardButton.addTarget(self, action: #selector(handleTapOnForwardButton), forControlEvents: .TouchUpInside)
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: self.periodizationButton)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: self.forwardButton)
         
         let notificationCenter = NSNotificationCenter.defaultCenter()
