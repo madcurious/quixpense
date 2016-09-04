@@ -2,25 +2,27 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="NoCategoriesView" customModule="Spare" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YwF-Xv-nP2">
-                    <rect key="frame" x="20" y="279" width="560" height="42"/>
+                    <rect key="frame" x="20" y="195.5" width="280" height="177"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wJl-Ox-CCg">
-                            <rect key="frame" x="0.0" y="0.0" width="560" height="21"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="A7w-Uz-1h6">
+                            <rect key="frame" x="35" y="0.0" width="210" height="126"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="A7w-Uz-1h6" secondAttribute="height" multiplier="311:186" id="o9m-4b-jyV"/>
+                            </constraints>
+                        </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UjK-Mf-crS">
-                            <rect key="frame" x="0.0" y="21" width="560" height="21"/>
+                            <rect key="frame" x="0.0" y="156" width="280" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
@@ -29,12 +31,12 @@
                     <color key="backgroundColor" red="0.85098040100000005" green="0.94901961089999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="UjK-Mf-crS" secondAttribute="trailing" id="20p-zu-zcy"/>
-                        <constraint firstItem="wJl-Ox-CCg" firstAttribute="top" secondItem="YwF-Xv-nP2" secondAttribute="top" id="26s-f9-nI0"/>
-                        <constraint firstItem="wJl-Ox-CCg" firstAttribute="leading" secondItem="YwF-Xv-nP2" secondAttribute="leading" id="8te-UW-15S"/>
+                        <constraint firstItem="A7w-Uz-1h6" firstAttribute="centerX" secondItem="YwF-Xv-nP2" secondAttribute="centerX" id="AQy-fn-GU3"/>
                         <constraint firstItem="UjK-Mf-crS" firstAttribute="leading" secondItem="YwF-Xv-nP2" secondAttribute="leading" id="Fup-VU-lNL"/>
-                        <constraint firstItem="UjK-Mf-crS" firstAttribute="top" secondItem="wJl-Ox-CCg" secondAttribute="bottom" id="HRk-mZ-li4"/>
-                        <constraint firstAttribute="trailing" secondItem="wJl-Ox-CCg" secondAttribute="trailing" id="UAI-qh-wnD"/>
+                        <constraint firstItem="A7w-Uz-1h6" firstAttribute="top" secondItem="YwF-Xv-nP2" secondAttribute="top" id="I7h-mf-f88"/>
+                        <constraint firstItem="UjK-Mf-crS" firstAttribute="top" secondItem="A7w-Uz-1h6" secondAttribute="bottom" constant="30" id="oMT-79-oAb"/>
                         <constraint firstAttribute="bottom" secondItem="UjK-Mf-crS" secondAttribute="bottom" id="qj6-NC-7TM"/>
+                        <constraint firstItem="A7w-Uz-1h6" firstAttribute="width" secondItem="YwF-Xv-nP2" secondAttribute="width" multiplier="3:4" id="tEn-uK-5iq"/>
                     </constraints>
                 </view>
             </subviews>
@@ -44,8 +46,9 @@
                 <constraint firstAttribute="trailing" secondItem="YwF-Xv-nP2" secondAttribute="trailing" constant="20" id="GjS-qJ-tIn"/>
                 <constraint firstItem="YwF-Xv-nP2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="hdf-cc-zab"/>
             </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
             <connections>
-                <outlet property="iconLabel" destination="wJl-Ox-CCg" id="la0-e1-t66"/>
+                <outlet property="imageView" destination="A7w-Uz-1h6" id="gR3-83-dRn"/>
                 <outlet property="labelContainer" destination="YwF-Xv-nP2" id="EBX-Se-k6j"/>
                 <outlet property="messageLabel" destination="UjK-Mf-crS" id="6Tb-Lw-Zu7"/>
             </connections>

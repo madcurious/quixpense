@@ -12,7 +12,7 @@ import Mold
 class NoCategoriesView: MDRetryView {
     
     @IBOutlet weak var labelContainer: UIView!
-    @IBOutlet weak var iconLabel: UILabel!
+    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var messageLabel: UILabel!
     
     override var error: ErrorType? {
@@ -32,10 +32,9 @@ class NoCategoriesView: MDRetryView {
         super.awakeFromNib()
         UIView.clearBackgroundColors(self, self.labelContainer)
         
-        self.iconLabel.font = Font.icon(150)
-        self.iconLabel.text = Icon.NoCategories.rawValue
-        self.iconLabel.textColor = Color.UniversalSecondaryTextColor
-        self.iconLabel.textAlignment = .Center
+        self.imageView.contentMode = .ScaleAspectFit
+        self.imageView.image = UIImage(named: "noCategoryIcon")?.imageWithRenderingMode(.AlwaysTemplate)
+        self.imageView.tintColor = Color.UniversalSecondaryTextColor
         
         self.messageLabel.numberOfLines = 0
         self.messageLabel.lineBreakMode = .ByWordWrapping

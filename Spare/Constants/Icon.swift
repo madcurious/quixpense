@@ -18,7 +18,6 @@ enum Icon: String {
     case Home = "b"
     case MainTabBarAdd = "f"
     case Next = "i"
-    case NoCategories = "d"
     case Settings = "j"
     case ThinAddSign = "c"
     
