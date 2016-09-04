@@ -10,6 +10,10 @@ import UIKit
 
 class __SVCCategoryCell: UICollectionViewCell {
     
-    var data: (category: Category, total: NSDecimalNumber, percent: Double)?
+    var data: (Category, NSDecimalNumber, Double)?
+    
+    class func cellHeightForData(data: (Category, NSDecimalNumber, Double), cellWidth: CGFloat) -> CGFloat {
+        fatalError("Unimplemented")
+    }
     
 }

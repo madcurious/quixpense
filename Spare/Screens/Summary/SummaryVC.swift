@@ -13,6 +13,8 @@ private enum ViewID: String {
     case Cell = "Cell"
 }
 
+private let kCellInset = CGFloat(10)
+
 class SummaryVC: UIViewController {
     
     var summary: Summary {
@@ -29,6 +31,7 @@ class SummaryVC: UIViewController {
         
         let layoutManager = UICollectionViewFlowLayout()
         layoutManager.scrollDirection = .Vertical
+//        layoutManager.estimatedItemSize = CGSizeMake(320, 50)
         self.layoutManager = layoutManager
         self.collectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: layoutManager)
         
@@ -48,7 +51,7 @@ class SummaryVC: UIViewController {
         self.collectionView.showsVerticalScrollIndicator = false
         
         self.collectionView.registerNib(__SVCGraphView.nib(), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: ViewID.Graph.rawValue)
-        self.collectionView.registerNib(__SVCCategoryCellStub.nib(), forCellWithReuseIdentifier: ViewID.Cell.rawValue)
+        self.collectionView.registerNib(__SVCCategoryCellBox.nib(), forCellWithReuseIdentifier: ViewID.Cell.rawValue)
         
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
@@ -75,7 +78,7 @@ extension SummaryVC: UICollectionViewDataSource {
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        guard let cell = self.collectionView.dequeueReusableCellWithReuseIdentifier(ViewID.Cell.rawValue, forIndexPath: indexPath) as? __SVCCategoryCellStub
+        guard let cell = self.collectionView.dequeueReusableCellWithReuseIdentifier(ViewID.Cell.rawValue, forIndexPath: indexPath) as? __SVCCategoryCell
             else {
                 fatalError()
         }
@@ -117,8 +120,6 @@ extension SummaryVC: UICollectionViewDelegate {
     
 }
 
-private let kCellInset = CGFloat(10)
-
 extension SummaryVC: UICollectionViewDelegateFlowLayout {
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
@@ -126,8 +127,9 @@ extension SummaryVC: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        
-        return CGSizeMake(collectionView.bounds.size.width - (kCellInset * 2), 50)
+        let cellWidth = collectionView.bounds.size.width - kCellInset * 2
+        let dynamicHeight = __SVCCategoryCellBox.cellHeightForData(self.summary.data![indexPath.item], cellWidth: cellWidth)
+        return CGSizeMake(cellWidth, dynamicHeight)
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {

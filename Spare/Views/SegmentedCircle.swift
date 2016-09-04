@@ -12,7 +12,7 @@ class SegmentedCircle: UIView {
     
     let strokeWidth = CGFloat(10)
     
-    var segments: [(category: Category, total: NSDecimalNumber, percent: Double)]? {
+    var segments: [(Category, NSDecimalNumber, Double)]? {
         didSet {
             self.setNeedsDisplay()
         }

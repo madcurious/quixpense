@@ -8,45 +8,113 @@
 
 import UIKit
 
+private let kNameLabelFont = Font.make(.Book, 20)
+
 private let kCategoryNameAttributes: [String : AnyObject] =  [
     NSForegroundColorAttributeName : Color.UniversalTextColor.CGColor,
-    NSFontAttributeName : Font.make(.Book, 20)
+    NSFontAttributeName : kNameLabelFont
 ]
 
 private let kPercentAttributes: [String : AnyObject] = [
     NSForegroundColorAttributeName : Color.UniversalSecondaryTextColor.CGColor,
-    NSFontAttributeName : Font.make(.Book, 20)
+    NSFontAttributeName : kNameLabelFont
 ]
 
 class __SVCCategoryCellBox: __SVCCategoryCell {
     
-    @IBOutlet weak var wrapperView: UIView!
+    static let nameLabelTopBottom = CGFloat(8)
+    static let boxViewWidth = CGFloat(12)
+    static let boxViewTrailing = CGFloat(10)
+    static let totalLabelLeading = CGFloat(4)
     
     @IBOutlet weak var boxView: UIView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
     
-    override var data: (category: Category, total: NSDecimalNumber, percent: Double)? {
+    @IBOutlet weak var boxViewWidth: NSLayoutConstraint!
+    @IBOutlet weak var boxViewTrailing: NSLayoutConstraint!
+    @IBOutlet weak var nameLabelTop: NSLayoutConstraint!
+    @IBOutlet weak var nameLabelBottom: NSLayoutConstraint!
+    @IBOutlet weak var totalLabelLeading: NSLayoutConstraint!
+    
+    override var data: (Category, NSDecimalNumber, Double)? {
         didSet {
-            guard let data = self.data
+            defer {
+                self.setNeedsLayout()
+            }
+            
+            guard let (category, total, percent) = self.data
                 else {
                     return
             }
             
-            self.boxView.backgroundColor = data.category.color
-            
-            let nameLabelText = NSMutableAttributedString(string: "\(data.category.name!) ", attributes: kCategoryNameAttributes)
-            nameLabelText.appendAttributedString(NSAttributedString(string: String(format: "(%.0f%%)", data.percent * 100), attributes: kPercentAttributes))
-            self.nameLabel.attributedText =  nameLabelText
-            
-            self.totalLabel.text = AmountFormatter.displayTextForAmount(data.total)
+            self.boxView.backgroundColor = category.color
+            self.nameLabel.attributedText = __SVCCategoryCellBox.attributedTextForCategoryName(category.name!, percent: percent)
+            self.totalLabel.text = AmountFormatter.displayTextForAmount(total)
         }
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        UIView.clearBackgroundColors(self.wrapperView)
+        UIView.clearBackgroundColors(
+            self.nameLabel,
+            self.totalLabel
+        )
+//        self.backgroundColor = UIColor(hex: 0xcccccc)
+        
+        self.boxView.layer.cornerRadius = 2
+        
+        __SVCCategoryCellBox.applyNameLabelAttributesToLabel(self.nameLabel)
+        __SVCCategoryCellBox.applyTotalLabelAttributesToLabel(self.totalLabel)
+        
+        // Update constraints.
+        self.boxViewWidth.constant = __SVCCategoryCellBox.boxViewWidth
+        self.boxViewTrailing.constant = __SVCCategoryCellBox.boxViewTrailing
+        self.nameLabelTop.constant = __SVCCategoryCellBox.nameLabelTopBottom
+        self.nameLabelBottom.constant = __SVCCategoryCellBox.nameLabelTopBottom
+        self.totalLabelLeading.constant = __SVCCategoryCellBox.totalLabelLeading
+    }
+    
+    class func applyNameLabelAttributesToLabel(label: UILabel) {
+        label.numberOfLines = 0
+        label.lineBreakMode = .ByWordWrapping
+    }
+    
+    class func applyTotalLabelAttributesToLabel(label: UILabel) {
+        label.textColor = Color.UniversalTextColor
+        label.font = Font.make(.Heavy, 20)
+        label.textAlignment = .Right
+    }
+    
+    class func attributedTextForCategoryName(categoryName: String, percent: Double) -> NSAttributedString {
+        let text = NSMutableAttributedString(string: "\(categoryName) ", attributes: kCategoryNameAttributes)
+        text.appendAttributedString(NSAttributedString(string: "(\(PercentFormatter.displayTextForPercent(percent)))", attributes: kPercentAttributes))
+        return text
+    }
+    
+    override class func cellHeightForData(data: (Category, NSDecimalNumber, Double), cellWidth: CGFloat) -> CGFloat {
+        // Set the text for the total label.
+        let totalLabel = UILabel()
+        self.applyTotalLabelAttributesToLabel(totalLabel)
+        totalLabel.text = AmountFormatter.displayTextForAmount(data.1)
+        totalLabel.sizeToFit()
+        
+        let maxNameLabelWidth = cellWidth - (
+            __SVCCategoryCellBox.boxViewWidth +
+            __SVCCategoryCellBox.boxViewTrailing +
+            __SVCCategoryCellBox.totalLabelLeading +
+            totalLabel.bounds.size.width
+        )
+        
+        let nameLabel = UILabel()
+        self.applyNameLabelAttributesToLabel(nameLabel)
+        
+        nameLabel.attributedText = self.attributedTextForCategoryName(data.0.name!, percent: data.2)
+        let nameLabelSize = nameLabel.sizeThatFits(CGSizeMake(maxNameLabelWidth, CGFloat.max))
+        
+        let height = __SVCCategoryCellBox.nameLabelTopBottom * 2 + nameLabelSize.height
+        return height
     }
     
 }
