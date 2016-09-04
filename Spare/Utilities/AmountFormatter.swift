@@ -11,7 +11,7 @@ import Foundation
 private let kSharedFormatter: NSNumberFormatter = {
     let formatter = NSNumberFormatter()
     formatter.numberStyle = .CurrencyStyle
-    formatter.locale = NSLocale(localeIdentifier: NSLocale.availableLocaleIdentifiers()[20])
+//    formatter.locale = NSLocale(localeIdentifier: NSLocale.availableLocaleIdentifiers()[20])
     formatter.alwaysShowsDecimalSeparator = true
     formatter.minimumFractionDigits = 2
     return formatter
