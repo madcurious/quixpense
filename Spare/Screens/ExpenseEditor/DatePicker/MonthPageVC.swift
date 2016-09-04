@@ -199,7 +199,8 @@ extension MonthPageVC: UICollectionViewDelegate {
     }
     
     func collectionView(collectionView: UICollectionView, shouldHighlightItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        if indexPath.item < self.numberOfFillers {
+        if indexPath.item < self.numberOfFillers ||
+            indexPath == self.selectedIndexPath {
             return false
         }
         return true

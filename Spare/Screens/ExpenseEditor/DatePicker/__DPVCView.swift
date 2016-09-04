@@ -31,15 +31,15 @@ class __DPVCView: CustomPickerView {
             self.pageVCContainer
         )
         
-        self.selectedDateLabel.textColor = UIColor.whiteColor()
-        self.selectedDateLabel.backgroundColor = UIColor.blackColor()
+        self.selectedDateLabel.textColor = Color.CustomPickerTextColor
+//        self.selectedDateLabel.backgroundColor = UIColor(hex: 0xcccccc)
         self.selectedDateLabel.textAlignment = .Center
         self.selectedDateLabel.numberOfLines = 1
-        self.selectedDateLabel.font = Font.make(.Heavy, 22)
+        self.selectedDateLabel.font = Font.make(.Heavy, 26)
         
         self.monthLabel.textColor = Color.CustomPickerTextColor
         self.monthLabel.textAlignment = .Center
-        self.monthLabel.font = Font.make(.Medium, 18)
+        self.monthLabel.font = Font.make(.Medium, 16)
         
         let arrowButtons = [self.previousButton, self.nextButton]
         for button in arrowButtons {
