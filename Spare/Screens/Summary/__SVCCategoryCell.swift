@@ -10,6 +10,6 @@ import UIKit
 
 class __SVCCategoryCell: UICollectionViewCell {
     
-    var info: (Category, NSDecimalNumber, Double)?
+    var data: (category: Category, total: NSDecimalNumber, percent: Double)?
     
 }

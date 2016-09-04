@@ -27,7 +27,7 @@ class __ELVCBCell: UITableViewCell {
             }
             
             if let amount = expense.amount {
-                self.leftLabel.text = glb_displayTextForTotal(amount)
+                self.leftLabel.text = AmountFormatter.displayTextForAmount(amount)
             }
             
             var rightText = ""

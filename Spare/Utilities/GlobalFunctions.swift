@@ -70,12 +70,6 @@ func glb_autoreport<T>(closure: Void throws -> T, defaultValue: T) -> T {
     }
 }
 
-func glb_displayTextForTotal(total: NSDecimalNumber) -> String {
-    let formatter = NSNumberFormatter()
-    formatter.numberStyle = .CurrencyStyle
-    return formatter.stringFromNumber(total) ?? "$0.00"
-}
-
 func glb_totalOfExpenses(expenses: [Expense]) -> NSDecimalNumber {
     return expenses.map({ $0.amount ?? 0}).reduce(0, combine: +)
 }

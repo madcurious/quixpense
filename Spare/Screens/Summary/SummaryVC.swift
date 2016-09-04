@@ -79,7 +79,7 @@ extension SummaryVC: UICollectionViewDataSource {
             else {
                 fatalError()
         }
-        cell.info = self.summary.info?[indexPath.item]
+        cell.data = self.summary.data?[indexPath.item]
         return cell
     }
     
@@ -98,7 +98,7 @@ extension SummaryVC: UICollectionViewDataSource {
 extension SummaryVC: UICollectionViewDelegate {
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        guard let category = self.summary.info?[indexPath.item].0
+        guard let category = self.summary.data?[indexPath.item].0
             else {
                 return
         }

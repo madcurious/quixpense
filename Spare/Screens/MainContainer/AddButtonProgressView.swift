@@ -39,7 +39,7 @@ class AddButtonProgressView: UIView {
         self.backgroundView.effect = UIBlurEffect(style: .Dark)
         
         self.actionLabel.textColor = Color.White
-        self.actionLabel.font = Font.text(.Light, 14)
+        self.actionLabel.font = Font.make(.Book, 14)
         self.actionLabel.text = "ADD CATEGORY"
         self.actionLabel.sizeToFit()
         

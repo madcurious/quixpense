@@ -15,19 +15,19 @@ class __SVCCategoryCellStub: __SVCCategoryCell {
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var percentLabel: UILabel!
     
-    override var info: (Category, NSDecimalNumber, Double)? {
+    override var data: (Category, NSDecimalNumber, Double)? {
         didSet {
             defer {
                 self.setNeedsLayout()
             }
-            guard let (category, total, percent) = self.info,
+            guard let (category, total, percent) = self.data,
                 let categoryName = category.name
                 else {
                     return
             }
             self.stubView.backgroundColor = category.color
             self.categoryLabel.text = categoryName
-            self.totalLabel.text = glb_displayTextForTotal(total)
+            self.totalLabel.text = AmountFormatter.displayTextForAmount(total)
             self.percentLabel.text = String(format: "(%.0f%%)", percent * 100)
         }
     }

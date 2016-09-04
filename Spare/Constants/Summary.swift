@@ -47,7 +47,7 @@ struct Summary: Equatable {
      Returns an array of the category, their totals, and their percent of the total.
      The array is ordered by biggest total first.
      */
-    var info: [(Category, NSDecimalNumber, Double)]? {
+    var data: [(category: Category, total: NSDecimalNumber, percent: Double)]? {
         guard let categories = glb_allCategories()
             else {
                 return nil
@@ -55,7 +55,7 @@ struct Summary: Equatable {
         
         let overallTotal = self.total
         let groups = self.expenses?.groupBy({ $0.category })
-        var info = [(Category, NSDecimalNumber, Double)]()
+        var info = [(category: Category, total: NSDecimalNumber, percent: Double)]()
         for category in categories {
             // If the category isn't in the grouping dictionary, then it doesn't have any expenses
             // and its total should be set to 0.
