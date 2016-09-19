@@ -10,7 +10,7 @@ import UIKit
 import Mold
 import BNRCoreDataStack
 
-class HomeVC: MDStatefulViewController {
+class HomeVC: MDOperationViewController {
     
     let pageViewController: UIPageViewController = {
         let pager = UIPageViewController(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: [
@@ -26,7 +26,8 @@ class HomeVC: MDStatefulViewController {
     
     let forwardButton = Button(string: "Now", font: Font.ModalBarButtonText, textColor: Color.UniversalTextColor)
     let periodizationButton = PeriodizationButton()
-    let customRetryView = NoCategoriesView.instantiateFromNib()
+    let noCategoriesView = NoCategoriesView.instantiateFromNib()
+    
     
     override init() {
         super.init()
@@ -42,7 +43,7 @@ class HomeVC: MDStatefulViewController {
     }
     
     override var retryView: MDRetryView {
-        return self.customRetryView
+        return self.noCategoriesView
     }
     
     override func viewDidLoad() {
@@ -104,7 +105,7 @@ class HomeVC: MDStatefulViewController {
                 else {
                     fatalError("Got an error not customised: \(error as NSError)")
             }
-            self.customRetryView.error = customError
+            self.noCategoriesView.error = customError
             self.showView(.Retry)
         }
     }

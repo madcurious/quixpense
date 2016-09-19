@@ -10,7 +10,7 @@ import UIKit
 import Mold
 import BNRCoreDataStack
 
-class LoadAppVC: MDStatefulViewController {
+class LoadAppVC: MDOperationViewController {
     
     override func buildOperation() -> MDOperation? {
         let op = LoadAppOperation().onSuccess {[unowned self] (result) in

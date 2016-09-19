@@ -17,7 +17,7 @@ private enum ViewID: String {
 private let kSpecialKeyPeriod = "."
 private let kSpecialKeyBackspace = Icon.ExpenseEditorBackspace.rawValue
 
-class ExpenseEditorVC: MDStatefulViewController {
+class ExpenseEditorVC: MDOperationViewController {
     
     let customView = __EEVCView.instantiateFromNib() as __EEVCView
     
