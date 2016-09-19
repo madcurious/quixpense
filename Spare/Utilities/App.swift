@@ -22,13 +22,22 @@ class App {
         return kSharedState
     }
     
-    private init() {}
-    
-    var coreDataStack: CoreDataStack!
+    static var coreDataStack: CoreDataStack! {
+        get {
+            return kSharedState.coreDataStack
+        }
+        set {
+            kSharedState.coreDataStack = newValue
+        }
+    }
     
     static var mainQueueContext: NSManagedObjectContext {
         return kSharedState.coreDataStack.mainQueueContext
     }
+    
+    private init() {}
+    
+    private var coreDataStack: CoreDataStack!
     
     var selectedPeriodization: Periodization {
         get {

@@ -20,7 +20,7 @@ class LoadAppVC: MDOperationViewController {
                     return
             }
             
-            App.state.coreDataStack = stack
+            App.coreDataStack = stack
             navController.pushViewController(MainContainerVC(), animated: true)
         }
         return op

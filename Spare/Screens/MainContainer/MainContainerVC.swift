@@ -57,7 +57,7 @@ class MainContainerVC: UIViewController {
                 return
         }
         
-        let expenseListVC = ExpenseListVCBordered(category: category, startDate: startDate, endDate: endDate)
+        let expenseListVC = ExpenseListVC(category: category, startDate: startDate, endDate: endDate)
         self.navigationController?.pushViewController(expenseListVC, animated: true)
     }
     
