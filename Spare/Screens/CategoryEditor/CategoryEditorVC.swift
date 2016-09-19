@@ -27,7 +27,7 @@ class CategoryEditorVC: UIViewController {
     }
     
     init(category: Category?) {
-        let context = App.state.coreDataStack.newBackgroundWorkerMOC()
+        let context = App.coreDataStack.newBackgroundWorkerMOC()
         self.managedObjectContext = context
         
         self.slider = HRBrightnessSlider()

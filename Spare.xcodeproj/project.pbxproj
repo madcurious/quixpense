@@ -133,6 +133,8 @@
 		26B076091D9008940026692E /* __ELVCHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26B076081D9008940026692E /* __ELVCHeaderView.xib */; };
 		26B0760C1D901DC60026692E /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B0760B1D901DC60026692E /* Array.swift */; };
 		26B0760E1D9024640026692E /* GetExpensesOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B0760D1D9024640026692E /* GetExpensesOperation.swift */; };
+		26B076101D905E2A0026692E /* __ELVCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B0760F1D905E2A0026692E /* __ELVCCell.swift */; };
+		26B076121D905E6E0026692E /* __ELVCCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26B076111D905E6E0026692E /* __ELVCCell.xib */; };
 		26BC4F961CE429AE0011BE98 /* ValidateExpenseOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC4F951CE429AE0011BE98 /* ValidateExpenseOperation.swift */; };
 		26C2D5C21CDB5E4800BC73FC /* AddButtonProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C2D5C11CDB5E4800BC73FC /* AddButtonProgressView.swift */; };
 		26D5DA961D77F86B000BFFA8 /* NSNotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D5DA951D77F86B000BFFA8 /* NSNotificationName.swift */; };
@@ -323,6 +325,8 @@
 		26B076081D9008940026692E /* __ELVCHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __ELVCHeaderView.xib; sourceTree = "<group>"; };
 		26B0760B1D901DC60026692E /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		26B0760D1D9024640026692E /* GetExpensesOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetExpensesOperation.swift; sourceTree = "<group>"; };
+		26B0760F1D905E2A0026692E /* __ELVCCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __ELVCCell.swift; sourceTree = "<group>"; };
+		26B076111D905E6E0026692E /* __ELVCCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __ELVCCell.xib; sourceTree = "<group>"; };
 		26BC4F951CE429AE0011BE98 /* ValidateExpenseOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidateExpenseOperation.swift; sourceTree = "<group>"; };
 		26C2D5C11CDB5E4800BC73FC /* AddButtonProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddButtonProgressView.swift; sourceTree = "<group>"; };
 		26D4C8F41946E624001B42DC /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
@@ -721,6 +725,8 @@
 				26B076061D9008800026692E /* __ELVCHeaderView.swift */,
 				26B076081D9008940026692E /* __ELVCHeaderView.xib */,
 				26B0760D1D9024640026692E /* GetExpensesOperation.swift */,
+				26B0760F1D905E2A0026692E /* __ELVCCell.swift */,
+				26B076111D905E6E0026692E /* __ELVCCell.xib */,
 			);
 			path = ExpenseList;
 			sourceTree = "<group>";
@@ -867,6 +873,7 @@
 				266946841CC7711000A68424 /* Default@2x.png in Resources */,
 				26B075FE1D9008730026692E /* __ELVCBCell.xib in Resources */,
 				2603F8C31CCA45FF007F311F /* LaunchScreen.storyboard in Resources */,
+				26B076121D905E6E0026692E /* __ELVCCell.xib in Resources */,
 				261AF62B1D5F395200E03A48 /* Avenir-Black.ttf in Resources */,
 				265222A61D66D00A007FED96 /* __DPVCView.xib in Resources */,
 				261AF61E1D5F257900E03A48 /* __EEVCView.xib in Resources */,
@@ -985,6 +992,7 @@
 				268F480F1D60D3490088AC6B /* Error.swift in Sources */,
 				2676792A1D13FE8F004CF70A /* __SVCCategoryCell.swift in Sources */,
 				261AF61C1D5F255000E03A48 /* __EEVCView.swift in Sources */,
+				26B076101D905E2A0026692E /* __ELVCCell.swift in Sources */,
 				269D49F41CE1610100109990 /* CategoryEditorVC.swift in Sources */,
 				26A6CDE11CDB18EA00309A84 /* AddButton.swift in Sources */,
 				2685D6D91D7C4E4A00ED778E /* __SVCZeroView.swift in Sources */,

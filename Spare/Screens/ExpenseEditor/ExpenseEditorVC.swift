@@ -33,7 +33,7 @@ class ExpenseEditorVC: MDOperationViewController {
     let customPicker = CustomPickerVC()
     
     init(expense: Expense?) {
-        self.managedObjectContext = App.state.coreDataStack.newBackgroundWorkerMOC()
+        self.managedObjectContext = App.coreDataStack.newBackgroundWorkerMOC()
         
         if let objectID = expense?.objectID,
             let expense = self.managedObjectContext.objectWithID(objectID) as? Expense {

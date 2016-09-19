@@ -9,6 +9,10 @@
 import UIKit
 import Mold
 
+private enum ViewID: String {
+    case Cell = "Cell"
+}
+
 class ExpenseListVC: MDOperationViewController {
     
     var category: Category
@@ -44,6 +48,11 @@ class ExpenseListVC: MDOperationViewController {
         
         self.tableView.backgroundColor = Color.UniversalBackgroundColor
         self.tableView.separatorStyle = .None
+        self.tableView.estimatedRowHeight = 44
+        
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
+        self.tableView.registerNib(__ELVCCell.nib(), forCellReuseIdentifier: ViewID.Cell.rawValue)
     }
     
     func setupHeaderView() {
@@ -68,9 +77,13 @@ class ExpenseListVC: MDOperationViewController {
                 self.total = total
                 self.percent = percent
                 
-                self.setupHeaderView()
-                
-                self.showView(.Primary)
+                if expenses.count > 0 {
+                    self.setupHeaderView()
+                    self.tableView.reloadData()
+                    self.showView(.Primary)
+                } else {
+                    self.showView(.NoResults)
+                }
             })
     }
     
@@ -89,6 +102,32 @@ class ExpenseListVC: MDOperationViewController {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+}
+
+extension ExpenseListVC: UITableViewDataSource {
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard let expenses = self.expenses
+            else {
+                return 0
+        }
+        return expenses.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier(ViewID.Cell.rawValue) as! __ELVCCell
+        cell.expense = self.expenses?[indexPath.row]
+        return cell
+    }
+    
+}
+
+extension ExpenseListVC: UITableViewDelegate {
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
 }
