@@ -17,6 +17,12 @@ private enum ViewID: String {
 private let kSpecialKeyPeriod = "."
 private let kSpecialKeyBackspace = Icon.ExpenseEditorBackspace.rawValue
 
+/**
+ Editor used for adding or editing an expense.
+ 
+ The amount is derived from the property `unformattedAmount`, which is simply the sequence of keys that
+ were pressed in the custom keypad.
+ */
 class ExpenseEditorVC: MDOperationViewController {
     
     let customView = __EEVCView.instantiateFromNib() as __EEVCView
@@ -63,7 +69,26 @@ class ExpenseEditorVC: MDOperationViewController {
         self.amountFormatter.numberStyle = .CurrencyStyle
         self.amountFormatter.currencySymbol = ""
         self.amountFormatter.usesGroupingSeparator = true
-        self.resetAmount()
+        
+        // Because the expense model's amount is dependent on the unformattedAmount property,
+        // update the unformattedAmount and the amountFormatter depending on whether the form
+        // is being used for editing (expense.amount is non-nil), or for adding a new expense (amount is nil).
+        if let amount = self.expense.amount {
+            let amountString = amount.stringValue as NSString
+            self.unformattedAmount = amountString as String
+            
+            let rangeOfDecimalPoint = amountString.rangeOfString(".")
+            if rangeOfDecimalPoint.location == NSNotFound {
+                self.amountFormatter.alwaysShowsDecimalSeparator = false
+                self.amountFormatter.minimumFractionDigits = 0
+            } else {
+                self.amountFormatter.alwaysShowsDecimalSeparator = true
+                self.amountFormatter.minimumFractionDigits = amountString.length - (rangeOfDecimalPoint.location + rangeOfDecimalPoint.length)
+            }
+        } else {
+            self.resetAmountAndFormatter()
+        }
+        
         self.refreshViewFromModel()
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
@@ -77,6 +102,8 @@ class ExpenseEditorVC: MDOperationViewController {
         self.customView.categoryButton.addTarget(self, action: #selector(handleTapOnCategoryButton), forControlEvents: .TouchUpInside)
         self.customView.dateButton.addTarget(self, action: #selector(handleTapOnDateButton), forControlEvents: .TouchUpInside)
         self.customView.paymentMethodButton.addTarget(self, action: #selector(handleTapOnPaymentMethodButton), forControlEvents: .TouchUpInside)
+        
+        self.customView.noteTextField.delegate = self
         
         self.customPicker.modalPresentationStyle = .Custom
         self.customPicker.transitioningDelegate = self.customPickerAnimator
@@ -122,14 +149,14 @@ class ExpenseEditorVC: MDOperationViewController {
         expense.paymentMethod = previousPaymentMethod
         expense.note = nil
         self.expense = expense
-        self.resetAmount()
+        self.resetAmountAndFormatter()
         
         // Update the view.
         self.refreshViewFromModel()
     }
     
-    /// Resets the model's amount and all other properties related to formatting.
-    func resetAmount() {
+    /// Resets the model's amount and the amount formatter's configurations.
+    func resetAmountAndFormatter() {
         self.expense.amount = nil
         self.unformattedAmount = ""
         self.amountFormatter.alwaysShowsDecimalSeparator = false
@@ -334,6 +361,23 @@ extension ExpenseEditorVC: DatePickerVCDelegate {
     func datePickerDidSelectDate(date: NSDate) {
         self.expense.dateSpent = date
         self.refreshDateSpentDisplay()
+    }
+    
+}
+
+// MARK: - UITextFieldDelegate
+extension ExpenseEditorVC: UITextFieldDelegate {
+    
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        guard textField == self.customView.noteTextField
+            else {
+                return false
+        }
+        
+        let newText = ((self.customView.noteTextField.text ?? "") as NSString).stringByReplacingCharactersInRange(range, withString: string)
+        self.expense.note = newText
+        
+        return true
     }
     
 }

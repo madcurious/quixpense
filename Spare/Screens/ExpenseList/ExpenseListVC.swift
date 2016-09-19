@@ -128,6 +128,11 @@ extension ExpenseListVC: UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        if let expense = self.expenses?[indexPath.row] {
+            let modal = BaseNavBarVC(rootViewController: EditExpenseVC(expense: expense))
+            self.navigationController?.presentViewController(modal, animated: true, completion: nil)
+        }
     }
     
     func tableView(tableView: UITableView, shouldHighlightRowAtIndexPath indexPath: NSIndexPath) -> Bool {
