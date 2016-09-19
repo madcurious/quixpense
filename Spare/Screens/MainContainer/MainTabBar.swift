@@ -34,7 +34,7 @@ class MainTabBar: UIView {
         
         self.multipleTouchEnabled = false
         
-        self.backgroundColor = Color.BarBackgroundColor
+        self.backgroundColor = Color.TabBarBackgroundColor
         self.separatorView.backgroundColor = Color.SeparatorColor
         UIView.clearBackgroundColors(self.buttonContainers)
         

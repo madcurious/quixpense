@@ -14,10 +14,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        let root = BaseNavBarVC(rootViewController: LoadAppVC())
+        
         let window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        window.rootViewController = UINavigationController(rootViewController: LoadAppVC())
+        window.rootViewController = root
         window.makeKeyAndVisible()
         self.window = window
+        
         return true
     }
     

@@ -27,10 +27,6 @@ class BaseFormVC: UIViewController {
         if let rightBarButtonItem = self.navigationItem.rightBarButtonItem {
             rightBarButtonItem.setTitleTextAttributes(barButtonAttributes, forState: .Normal)
         }
-        
-        if let navController = self.navigationController as? BaseNavBarVC {
-            navController.statusBarStyle = .LightContent
-        }
     }
     
     deinit {

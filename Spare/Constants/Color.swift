@@ -35,7 +35,9 @@ class Color {
     static let KeypadBackgroundColor = Hex222222
     static let KeypadHighlightedBackgroundColor = Hex333333
     
-    static let BarBackgroundColor = Hex222222
+//    static let BarBackgroundColor = Hex222222
+    static let NavigationBarBackgroundColor = Hex4e4e4e
+    static let TabBarBackgroundColor = Hex222222
     
     static let SeparatorColor = Hex282828
     

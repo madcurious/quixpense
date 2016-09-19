@@ -16,8 +16,6 @@ class BaseNavBarVC: UINavigationController {
         return view
     }()
     
-    var statusBarStyle: UIStatusBarStyle?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationBar.addSubview(self.borderView)
@@ -26,7 +24,7 @@ class BaseNavBarVC: UINavigationController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.navigationBar.barTintColor = Color.BarBackgroundColor
+        self.navigationBar.barTintColor = Color.NavigationBarBackgroundColor
         self.navigationBar.tintColor = Color.UniversalTextColor
         self.navigationBar.translucent = false
         
@@ -36,11 +34,8 @@ class BaseNavBarVC: UINavigationController {
         self.setNeedsStatusBarAppearanceUpdate()
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        if let statusBarStyle = self.statusBarStyle {
-            return statusBarStyle
-        }
-        return .Default
-    }
+//    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+//        return .LightContent
+//    }
     
 }
