@@ -30,13 +30,13 @@ class __SVCZeroView: UIView {
         self.totalLabel.font = Font.make(.Heavy, 100)
         self.totalLabel.numberOfLines = 1
         self.totalLabel.textAlignment = .Center
-        self.totalLabel.textColor = Color.UniversalTextColor
+        self.totalLabel.textColor = Color.UniversalSecondaryTextColor
         self.totalLabel.text = AmountFormatter.displayTextForAmount(NSDecimalNumber(integer: 0))
         
         self.dateLabel.numberOfLines = 1
         self.dateLabel.font = Font.make(.Book, 40)
         self.dateLabel.adjustsFontSizeToFitWidth = true
-        self.dateLabel.textColor = Color.UniversalTextColor
+        self.dateLabel.textColor = Color.UniversalSecondaryTextColor
         self.dateLabel.textAlignment = .Center
         
         self.promptLabel.textColor = Color.UniversalSecondaryTextColor

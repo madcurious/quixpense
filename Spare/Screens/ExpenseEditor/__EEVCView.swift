@@ -81,7 +81,7 @@ class __EEVCView: UIView {
         self.noteTextField.adjustsFontSizeToFitWidth = false
         
         self.currencyLabel.textColor = Color.FieldLabelTextColor
-        self.currencyLabel.text = "PHP"
+        self.currencyLabel.text = AmountFormatter.currencyCode()
         self.currencyLabel.font = Font.ExpenseEditorCurrencyLabel
         self.currencyLabel.fontSize = .VHeight(0.8)
         

@@ -27,7 +27,19 @@ class HomeVC: MDOperationViewController {
     let forwardButton = Button(string: "Now", font: Font.ModalBarButtonText, textColor: Color.UniversalTextColor)
     let periodizationButton = PeriodizationButton()
     let noCategoriesView = NoCategoriesView.instantiateFromNib()
+    let customLoadingView = OperationVCLoadingView()
     
+    override var primaryView: UIView {
+        return self.pageViewController.view
+    }
+    
+    override var retryView: MDRetryView {
+        return self.noCategoriesView
+    }
+    
+    override var loadingView: UIView {
+        return self.customLoadingView
+    }
     
     override init() {
         super.init()
@@ -36,14 +48,6 @@ class HomeVC: MDOperationViewController {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    override var primaryView: UIView {
-        return self.pageViewController.view
-    }
-    
-    override var retryView: MDRetryView {
-        return self.noCategoriesView
     }
     
     override func viewDidLoad() {

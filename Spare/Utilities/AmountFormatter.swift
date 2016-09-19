@@ -12,6 +12,7 @@ private let kSharedFormatter: NSNumberFormatter = {
     let formatter = NSNumberFormatter()
     formatter.numberStyle = .CurrencyStyle
 //    formatter.locale = NSLocale(localeIdentifier: NSLocale.availableLocaleIdentifiers()[20])
+    formatter.locale = NSLocale.currentLocale()
     formatter.alwaysShowsDecimalSeparator = true
     formatter.minimumFractionDigits = 2
     return formatter
@@ -29,6 +30,10 @@ final class AmountFormatter {
         
         let zeroAmount = NSDecimalNumber(integer: 0)
         return kSharedFormatter.stringFromNumber(zeroAmount)!
+    }
+    
+    class func currencyCode() -> String {
+        return kSharedFormatter.currencyCode
     }
     
 }
