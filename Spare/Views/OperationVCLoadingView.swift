@@ -39,6 +39,7 @@ class OperationVCLoadingView: UIView {
     func setup() {
         self.backgroundColor = Color.UniversalBackgroundColor
         self.addSubview(self.activityIndicator)
+        self.activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         
         let constraints = [
             NSLayoutConstraint(item: self.activityIndicator,

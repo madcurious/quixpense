@@ -43,14 +43,14 @@ class __ELVCCell: UITableViewCell {
             )
         
         self.amountLabel.font = Font.make(.Book, 18)
-        self.amountLabel.textColor = Color.UniversalTextColor
         self.amountLabel.numberOfLines = 1
+        self.amountLabel.textColor = Color.UniversalTextColor
         
         self.descriptionLabel.font = Font.make(.Book, 18)
-        self.descriptionLabel.textColor = Color.UniversalSecondaryTextColor
         self.descriptionLabel.numberOfLines = 0
         self.descriptionLabel.lineBreakMode = .ByWordWrapping
         self.descriptionLabel.textAlignment = .Right
+        self.descriptionLabel.textColor = Color.UniversalSecondaryTextColor
         
         self.disclosureImageView.image = UIImage.templateNamed("disclosureIcon")
         self.disclosureImageView.tintColor = UIColor(hex: 0xD8D8D8)

@@ -130,4 +130,8 @@ extension ExpenseListVC: UITableViewDelegate {
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
+    func tableView(tableView: UITableView, shouldHighlightRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
 }
