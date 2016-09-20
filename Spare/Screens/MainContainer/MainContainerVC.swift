@@ -78,6 +78,10 @@ extension MainContainerVC: MainTabBarDelegate {
 extension MainContainerVC: AddButtonDelegate {
     
     func addButtonDidClick() {
+        guard App.allCategories() != nil
+            else {
+                return
+        }
         self.presentViewController(BaseNavBarVC(rootViewController: AddExpenseVC()), animated: true, completion: nil)
     }
     
