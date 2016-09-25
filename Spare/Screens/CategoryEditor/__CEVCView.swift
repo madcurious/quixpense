@@ -14,16 +14,19 @@ class __CEVCView: UIView {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
     
-    @IBOutlet weak var textFieldContainer: UIView!
-    @IBOutlet weak var fieldLabel: UILabel!
-    @IBOutlet weak var textField: __CEVCTextField!
+    @IBOutlet weak var nameFieldContainer: UIView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var nameTextField: UITextField!
     
-    @IBOutlet weak var colorMapExtendedArea: __CEVCColorMapTouchArea!
-    @IBOutlet weak var colorMapBorderView: __CEVCColorMapTouchArea!
-    @IBOutlet weak var colorMapContainer: __CEVCColorMapTouchArea!
+    @IBOutlet weak var colorFieldContainer: UIView!
+    @IBOutlet weak var colorLabel: UILabel!
+    @IBOutlet weak var colorTextField: UITextField!
+    @IBOutlet weak var colorBoxView: UIView!
+    
+    @IBOutlet weak var colorMapContainer: UIView!
+    @IBOutlet weak var colorMapExtendedTouchArea: __CEVCColorMapTouchArea!
     
     @IBOutlet weak var sliderContainer: __CEVCSliderTouchArea!
-    
     @IBOutlet weak var sliderTrackContainer: UIView!
     
     weak var colorMap: HRColorMapView? {
@@ -57,19 +60,41 @@ class __CEVCView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        UIView.clearBackgroundColors(self.scrollView, self.contentView, self.colorMapExtendedArea, self.colorMapContainer, self.sliderContainer, self.sliderTrackContainer)
+        UIView.clearBackgroundColors(
+            self.scrollView,
+            self.contentView,
+            self.nameFieldContainer,
+            self.colorFieldContainer,
+            self.colorMapExtendedTouchArea,
+            self.colorMapContainer,
+            self.sliderContainer,
+            self.sliderTrackContainer)
         self.backgroundColor = Color.UniversalBackgroundColor
-        self.textFieldContainer.backgroundColor = Color.White
-        self.colorMapBorderView.backgroundColor = Color.White
+//        self.textFieldContainer.backgroundColor = Color.White
+//        self.colorMapBorderView.backgroundColor = Color.White
         
-        self.fieldLabel.text = "NAME"
-        self.fieldLabel.textColor = Color.FieldLabelTextColor
-        self.fieldLabel.font = Font.FieldLabel
+//        self.fieldLabel.text = "NAME"
+//        self.fieldLabel.textColor = Color.FieldLabelTextColor
+//        self.fieldLabel.font = Font.FieldLabel
+        
+        self.nameLabel.text = "NAME"
+        self.nameLabel.font = Font.FieldLabel
+        self.nameLabel.textColor = Color.FieldLabelTextColor
+        self.nameLabel.textAlignment = .Right
+        
+        self.colorLabel.text = "COLOR"
+        self.colorLabel.font = Font.FieldLabel
+        self.colorLabel.textColor = Color.FieldLabelTextColor
+        self.colorLabel.textAlignment = .Right
         
         // Add parent references for touch passing.
-        self.colorMapExtendedArea.parent = self
-        self.colorMapContainer.parent = self
+        self.colorMapExtendedTouchArea.parent = self
         self.sliderContainer.parent = self
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.colorBoxView.layer.cornerRadius = 2.0
     }
     
 }

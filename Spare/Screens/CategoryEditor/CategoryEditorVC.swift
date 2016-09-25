@@ -50,7 +50,7 @@ class CategoryEditorVC: UIViewController {
         
         self.customView.colorMap = self.colorMap
         self.customView.slider = self.slider
-        self.customView.textField.backgroundColor = self.getResultingColor()
+        self.customView.colorBoxView.backgroundColor = self.getResultingColor()
         
         let request = NSFetchRequest(entityName: Category.entityName)
         if let categories = try! self.managedObjectContext.executeFetchRequest(request) as? [Category] {
@@ -73,8 +73,8 @@ class CategoryEditorVC: UIViewController {
         self.colorMap.addTarget(self, action: #selector(handleTapOnColorMap(_:)), forControlEvents: .ValueChanged)
         self.slider.addTarget(self, action: #selector(handleBrightnessValueChange(_:)), forControlEvents: .ValueChanged)
         
-        self.customView.textField.delegate = self
-        self.customView.textField.text = self.category.name
+        self.customView.nameTextField.delegate = self
+        self.customView.nameTextField.text = self.category.name
         
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapOnView)))
     }
@@ -93,12 +93,12 @@ class CategoryEditorVC: UIViewController {
         // Reset the brightness to 100%.
         self.slider.color = self.colorMap.color
         
-        self.customView.textField.backgroundColor = self.getResultingColor()
+        self.customView.colorBoxView.backgroundColor = self.getResultingColor()
         self.category.colorHex = self.getResultingColor().hexValue()
     }
     
     func handleBrightnessValueChange(sender: AnyObject) {
-        self.customView.textField.backgroundColor = self.getResultingColor()
+        self.customView.colorBoxView.backgroundColor = self.getResultingColor()
         self.category.colorHex = self.getResultingColor().hexValue()
     }
     
@@ -114,7 +114,7 @@ class CategoryEditorVC: UIViewController {
      Clears the form and creates a new `Category` object with form-initial values.
      */
     func reset() {
-        self.customView.textField.text = nil
+        self.customView.nameTextField.text = nil
         self.category = Category(managedObjectContext: self.managedObjectContext)
         self.category.name = nil
         self.category.colorHex = self.getResultingColor().hexValue()
