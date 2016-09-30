@@ -72,6 +72,7 @@
 		2669AB041D7C302700DDA321 /* AmountFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2669AB031D7C302700DDA321 /* AmountFormatter.swift */; };
 		266CBDB41D2676D900F5D5D1 /* EditExpenseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266CBDB31D2676D900F5D5D1 /* EditExpenseVC.swift */; };
 		2676792A1D13FE8F004CF70A /* __SVCCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267679291D13FE8F004CF70A /* __SVCCategoryCell.swift */; };
+		267E0A7B1D9E728D009B5612 /* ColorPickerControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267E0A7A1D9E728D009B5612 /* ColorPickerControl.swift */; };
 		268212521D4A18220041078F /* SegmentedCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268212511D4A18220041078F /* SegmentedCircle.swift */; };
 		2682125A1D4A242B0041078F /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268212591D4A242B0041078F /* GraphView.swift */; };
 		2682125C1D4A243F0041078F /* GraphView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2682125B1D4A243F0041078F /* GraphView.xib */; };
@@ -264,6 +265,7 @@
 		2669AB031D7C302700DDA321 /* AmountFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmountFormatter.swift; sourceTree = "<group>"; };
 		266CBDB31D2676D900F5D5D1 /* EditExpenseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditExpenseVC.swift; sourceTree = "<group>"; };
 		267679291D13FE8F004CF70A /* __SVCCategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __SVCCategoryCell.swift; sourceTree = "<group>"; };
+		267E0A7A1D9E728D009B5612 /* ColorPickerControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPickerControl.swift; sourceTree = "<group>"; };
 		268212511D4A18220041078F /* SegmentedCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedCircle.swift; sourceTree = "<group>"; };
 		268212591D4A242B0041078F /* GraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		2682125B1D4A243F0041078F /* GraphView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GraphView.xib; sourceTree = "<group>"; };
@@ -672,6 +674,7 @@
 				269D49ED1CE1610100109990 /* HRColorMapView.swift */,
 				269D4A011CE16DCA00109990 /* ValidateCategoryOperation.swift */,
 				26A43A071D1F9FD300E0A820 /* EditCategoryVC.swift */,
+				267E0A7A1D9E728D009B5612 /* ColorPickerControl.swift */,
 			);
 			path = CategoryEditor;
 			sourceTree = "<group>";
@@ -979,6 +982,7 @@
 				265222A01D66CFCE007FED96 /* DatePickerVC.swift in Sources */,
 				266408C21D4A630E00609580 /* Button.swift in Sources */,
 				2603F8CF1CCA4C10007F311F /* Expense.swift in Sources */,
+				267E0A7B1D9E728D009B5612 /* ColorPickerControl.swift in Sources */,
 				262F839D1CCE3E6C00EDDDEE /* LoadAppOperation.swift in Sources */,
 				263005641D4F8E9000AC3060 /* NoCategoriesView.swift in Sources */,
 				26B076001D9008730026692E /* __ELVCBEmptyView.swift in Sources */,

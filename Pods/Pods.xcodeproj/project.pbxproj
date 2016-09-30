@@ -10,6 +10,19 @@
 	<string>46</string>
 	<key>objects</key>
 	<dict>
+		<key>014A47CC34130F30EF7B87E53C7B5707</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>Color-Picker-for-iOS-umbrella.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>01EE91548A7AEE722B225D0242E9754F</key>
 		<dict>
 			<key>buildActionMask</key>
@@ -27,7 +40,7 @@
 		<key>049234E79644050BD82B3C42DA42ADCD</key>
 		<dict>
 			<key>fileRef</key>
-			<string>EF740FB37A44FFA92F846B6D6A8A7B02</string>
+			<string>F6447F2CF52B5F341FBF1D8923FB5D4E</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -41,7 +54,7 @@
 		<key>059F68CB6D902844ADD22699A3FD293E</key>
 		<dict>
 			<key>baseConfigurationReference</key>
-			<string>7A8D4B667D98708909C39F41D505F79E</string>
+			<string>1F18D21A407279E44B65E9321EF35BD4</string>
 			<key>buildSettings</key>
 			<dict>
 				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
@@ -99,7 +112,7 @@
 		<key>06F9D5B0A08F646898261BB65A217B1F</key>
 		<dict>
 			<key>fileRef</key>
-			<string>9368A73D2952660BFC0D1F9E50F2AA14</string>
+			<string>BBB1066C835D3E442BDB19C940A115E0</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -110,10 +123,21 @@
 				</array>
 			</dict>
 		</dict>
+		<key>0880D9EAFFABFBEAFF6F3549D3A2D3B3</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>nko_brightness_guide@2x.png</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>0A0510761C3868B867F99F4D72207360</key>
 		<dict>
 			<key>baseConfigurationReference</key>
-			<string>363CE7E5BE88AE179FD15EF0FDE8ED64</string>
+			<string>BCE8612D9B2ED125C494A4361AEB7E10</string>
 			<key>buildSettings</key>
 			<dict>
 				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
@@ -166,25 +190,10 @@
 			<key>name</key>
 			<string>Release</string>
 		</dict>
-		<key>0AE75ED4817B87672F245B7574EBA6A2</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>HRColorCursor.h</string>
-			<key>path</key>
-			<string>ColorPicker/HRColorCursor.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>0B18CAADB622465AD9F3B339B93439D7</key>
 		<dict>
 			<key>baseConfigurationReference</key>
-			<string>22670CF9367EBDBE2513EED3F89BA2F0</string>
+			<string>52598AAB39EADB3AF0115D391F222785</string>
 			<key>buildSettings</key>
 			<dict>
 				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
@@ -304,7 +313,7 @@
 		<key>0BDA2BD412EE1D951665B090E656A51C</key>
 		<dict>
 			<key>baseConfigurationReference</key>
-			<string>7A8D4B667D98708909C39F41D505F79E</string>
+			<string>1F18D21A407279E44B65E9321EF35BD4</string>
 			<key>buildSettings</key>
 			<dict>
 				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
@@ -372,12 +381,38 @@
 			<key>sourceTree</key>
 			<string>BUILT_PRODUCTS_DIR</string>
 		</dict>
+		<key>0F31C8D450DC80D1CD4BA995AC6F36AC</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>NKOColorPickerView.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>1065B735AA54FD15C640A71C089A405D</key>
 		<dict>
 			<key>fileRef</key>
 			<string>D750A59146F45D4158856090361200A1</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
+		</dict>
+		<key>10CBC89FBC7AFF68A131FF23B3885ECF</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>Color-Picker-for-iOS-prefix.pch</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>118B24973C2509374296F9EE90975553</key>
 		<dict>
@@ -395,7 +430,7 @@
 		<key>13D5F2F5EE87B9173C53DAC4AF5CFCF7</key>
 		<dict>
 			<key>fileRef</key>
-			<string>0AE75ED4817B87672F245B7574EBA6A2</string>
+			<string>DB791C4A372F75FAB0DCBF4259E56582</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -406,34 +441,18 @@
 				</array>
 			</dict>
 		</dict>
-		<key>1494FCD67F8145A5DFF962E30BBB5865</key>
+		<key>1690B9C4517C39E86957BBE720B6E3EA</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>Color-Picker-for-iOS.modulemap</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>14A61F05319A357F649C94920E4963D4</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>35C75CD5B77D5F9D2D2A5D70B5DEBC53</string>
-				<string>7A8D4B667D98708909C39F41D505F79E</string>
-				<string>82A595BC500888D9C3F699533A2CBB08</string>
-				<string>5995222C6B45147E6A9D0A90FE7AC8DB</string>
-				<string>2B4321BCA3BBF35A69DD3185772C0A9A</string>
-				<string>5ACCB648F920BC7E57A229BF90788124</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
 			<key>name</key>
-			<string>Support Files</string>
+			<string>HRColorMapView.m</string>
 			<key>path</key>
-			<string>../Target Support Files/BNRCoreDataStack</string>
+			<string>ColorPicker/HRColorMapView.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -448,46 +467,57 @@
 			<key>targetProxy</key>
 			<string>EC2C002C1F3556B4F12C7E881264FECA</string>
 		</dict>
-		<key>1B414BBBBFB19EB6C1093B8A6B2E4287</key>
+		<key>19A709E551D98A4B0B8949F0B8583126</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>name</key>
-			<string>FetchedResultsController.swift</string>
+			<string>sourcecode.c.h</string>
 			<key>path</key>
-			<string>Sources/FetchedResultsController.swift</string>
+			<string>BNRCoreDataStack-umbrella.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>1DE6AFC7AF26ED20A3F181C5F5ED33AF</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>nko_brightness_guide.png</string>
-			<key>path</key>
-			<string>Assets/nko_brightness_guide.png</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>1F31D6DAB2DE3632AB235B9A103492DE</key>
+		<key>1C66EF154E71E3F132209470CF754DA9</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
+			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>NSManagedObjectContext+SaveHelpers.swift</string>
+			<string>HRColorMapView.h</string>
 			<key>path</key>
-			<string>Sources/NSManagedObjectContext+SaveHelpers.swift</string>
+			<string>ColorPicker/HRColorMapView.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1E3ED18C44322458BC32F49E3E548F34</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>NKOColorPickerView-umbrella.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1F18D21A407279E44B65E9321EF35BD4</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>path</key>
+			<string>BNRCoreDataStack.xcconfig</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -507,7 +537,7 @@
 		<key>2138D3C94379D4DC30306462F85E7841</key>
 		<dict>
 			<key>baseConfigurationReference</key>
-			<string>363CE7E5BE88AE179FD15EF0FDE8ED64</string>
+			<string>BCE8612D9B2ED125C494A4361AEB7E10</string>
 			<key>buildSettings</key>
 			<dict>
 				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
@@ -563,42 +593,27 @@
 		<key>21C6C243493DDC45B6EBB5205AE74643</key>
 		<dict>
 			<key>fileRef</key>
-			<string>4012000E930C72CE71D629807CC00351</string>
+			<string>E08C46F173AC1E76476892D2FB243051</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>22670CF9367EBDBE2513EED3F89BA2F0</key>
+		<key>21CDE270D07489889A5C5E58E293E0EC</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
+			<string>sourcecode.c.objc</string>
 			<key>path</key>
-			<string>Color-Picker-for-iOS.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>24C442B18416A0392D7A26E0D799897C</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>name</key>
-			<string>CoreDataStack.swift</string>
-			<key>path</key>
-			<string>Sources/CoreDataStack.swift</string>
+			<string>Color-Picker-for-iOS-dummy.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
 		<key>253365ED746B376833EE612310217FB8</key>
 		<dict>
 			<key>fileRef</key>
-			<string>63FB6DEBD39E94BE2621B5DF2A561955</string>
+			<string>E30E723C596D1677542609DBF4B3441C</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -609,32 +624,30 @@
 				</array>
 			</dict>
 		</dict>
-		<key>29AB211B9BBC794A201AF32834D14EB3</key>
-		<dict>
-			<key>fileRef</key>
-			<string>83992914843F8D648A1F29571214E8F5</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>2B4321BCA3BBF35A69DD3185772C0A9A</key>
+		<key>271CFA991ABEF848C0AC771C4D87D019</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
 			<key>path</key>
-			<string>BNRCoreDataStack-umbrella.h</string>
+			<string>nko_colormap.png</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
+		</dict>
+		<key>29AB211B9BBC794A201AF32834D14EB3</key>
+		<dict>
+			<key>fileRef</key>
+			<string>1C66EF154E71E3F132209470CF754DA9</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
 		</dict>
 		<key>2BCC458FDD5F692BBB2BFC64BB5701FC</key>
 		<dict>
@@ -690,58 +703,25 @@
 			<key>remoteInfo</key>
 			<string>Color-Picker-for-iOS</string>
 		</dict>
-		<key>35C75CD5B77D5F9D2D2A5D70B5DEBC53</key>
+		<key>36B3672FE3DDE580F38A3BE798568A83</key>
 		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
+			<key>fileRef</key>
+			<string>0880D9EAFFABFBEAFF6F3549D3A2D3B3</string>
 			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>BNRCoreDataStack.modulemap</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
+			<string>PBXBuildFile</string>
 		</dict>
-		<key>363CE7E5BE88AE179FD15EF0FDE8ED64</key>
+		<key>37C0ED0DA95A647415DBC8579A7EB078</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>path</key>
-			<string>NKOColorPickerView.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>37A67210541E937E326A74EB23FB325E</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>FC5CAD7BA83482006E3073ABBCDC0159</string>
-				<string>B79BF101A6E3FDCA036ED6EBBAA42937</string>
-				<string>C30D4FA46CBA5CFE6239BF23F8E5AAEB</string>
-				<string>4012000E930C72CE71D629807CC00351</string>
-				<string>0AE75ED4817B87672F245B7574EBA6A2</string>
-				<string>F49218AD55C3AEF8C92F0A97138DB736</string>
-				<string>9368A73D2952660BFC0D1F9E50F2AA14</string>
-				<string>EBF8E7BF77FC05B1BA923AB798476FD0</string>
-				<string>83992914843F8D648A1F29571214E8F5</string>
-				<string>FE9B6F067C0958213FC0C0E0336A8064</string>
-				<string>63FB6DEBD39E94BE2621B5DF2A561955</string>
-				<string>F1B2BF5A0433B4E37C02E06B24AD6334</string>
-				<string>CC7648A9EEE839D50B805785C5231876</string>
-				<string>A42A2B1575F6FC5DB20A3DA895365E31</string>
-				<string>EF740FB37A44FFA92F846B6D6A8A7B02</string>
-				<string>AA74476545C73D9D711BE35C025587F2</string>
-				<string>8201A2757719E470683DFF9E3D2BE1F1</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
+			<string>sourcecode.c.objc</string>
 			<key>name</key>
-			<string>Color-Picker-for-iOS</string>
+			<string>HRHSVColorUtil.m</string>
 			<key>path</key>
-			<string>Color-Picker-for-iOS</string>
+			<string>ColorPicker/HRHSVColorUtil.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -758,77 +738,63 @@
 			<key>remoteInfo</key>
 			<string>NKOColorPickerView</string>
 		</dict>
-		<key>3D8C61F5F66656FA4A527B9C0B05225F</key>
+		<key>3C186E4AB88630ECFBEA6C9C5C2A909A</key>
 		<dict>
 			<key>children</key>
 			<array>
-				<string>1DE6AFC7AF26ED20A3F181C5F5ED33AF</string>
-				<string>8CBB556A53875806A0FDAA5D39503F0B</string>
-				<string>90B7B73AE44D0FB19A171941DED209DD</string>
+				<string>3F85C4F16791C1D1B6E0557B38E757BC</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
 			<key>name</key>
-			<string>Resources</string>
+			<string>Development Pods</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>3DBC5C19FE0FDB5DC10EEC0F8EA9B39A</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>CoreDataStack.h</string>
-			<key>path</key>
-			<string>Sources/CoreDataStack.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>3F414C107273AD9CF89B0F8D35077A0D</key>
-		<dict>
-			<key>fileRef</key>
-			<string>1B414BBBBFB19EB6C1093B8A6B2E4287</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>3F68F69ACBF5714E62C8966115322D91</key>
+		<key>3C1C010232B368538E2B0C90720019F0</key>
 		<dict>
 			<key>children</key>
 			<array>
-				<string>8F07EE5722D5551B64021BF3D07B2A5C</string>
-				<string>57D06636FA9442DD812A6769A578F0B1</string>
-				<string>363CE7E5BE88AE179FD15EF0FDE8ED64</string>
-				<string>C2081034A2C01B685BF6DACF501AEE35</string>
-				<string>88E663C506B708C63F823B6C7E252DCD</string>
-				<string>C447A9866C338DBDF0F96B67C3D8A7A9</string>
+				<string>730BA6BE305BB3A2E57B2B51B333881E</string>
+				<string>1F18D21A407279E44B65E9321EF35BD4</string>
+				<string>B2434E4465102615421EAB5001AFCEE5</string>
+				<string>E4173CEC95EE120B46AD3EF75F71DCC4</string>
+				<string>19A709E551D98A4B0B8949F0B8583126</string>
+				<string>9E829269C904D65725D6CF9156E1F122</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
 			<key>name</key>
 			<string>Support Files</string>
 			<key>path</key>
-			<string>../Target Support Files/NKOColorPickerView</string>
+			<string>../Target Support Files/BNRCoreDataStack</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>4012000E930C72CE71D629807CC00351</key>
+		<key>3F414C107273AD9CF89B0F8D35077A0D</key>
 		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
+			<key>fileRef</key>
+			<string>72E4195196E44E8ECB38C3179E15545C</string>
 			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>3F85C4F16791C1D1B6E0557B38E757BC</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>56848EE2581C0A39FC7D9C27DD506C60</string>
+				<string>0F31C8D450DC80D1CD4BA995AC6F36AC</string>
+				<string>97BED6A946B14D0D8E8D6FB3356AF837</string>
+				<string>FA130DA38CEEC3E642FE93058873A4A5</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
 			<key>name</key>
-			<string>HRBrightnessSlider.m</string>
+			<string>NKOColorPickerView</string>
 			<key>path</key>
-			<string>ColorPicker/HRBrightnessSlider.m</string>
+			<string>/Users/mattquiros/Developer/NKOColorPickerView</string>
 			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
+			<string>&lt;absolute&gt;</string>
 		</dict>
 		<key>40A2A5119FD81DA069D5177A2A14915B</key>
 		<dict>
@@ -836,19 +802,6 @@
 			<string>A426DC7FD2C75B1896EB2D8B042A9E50</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
-		</dict>
-		<key>44AED82DF6A5EF87854A00DAE8B693FD</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.xml</string>
-			<key>path</key>
-			<string>Info.plist</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
 		</dict>
 		<key>48EC366F99D3B7358FE694E18A0CDEB1</key>
 		<dict>
@@ -863,10 +816,21 @@
 			<key>sourceTree</key>
 			<string>DEVELOPER_DIR</string>
 		</dict>
+		<key>4A9B00D4B58EBC74FD941664F1F3BE5B</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>Color-Picker-for-iOS.modulemap</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>4CD4E8EB0E77F18BA2C333151790F585</key>
 		<dict>
 			<key>fileRef</key>
-			<string>2B4321BCA3BBF35A69DD3185772C0A9A</string>
+			<string>19A709E551D98A4B0B8949F0B8583126</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -877,26 +841,34 @@
 				</array>
 			</dict>
 		</dict>
-		<key>4CE243253337E2B36D0A20E3FB8FAD0E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>1DE6AFC7AF26ED20A3F181C5F5ED33AF</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
 		<key>4CE641433C1E1EC5AEF783E38FA16F42</key>
 		<dict>
 			<key>fileRef</key>
-			<string>9DF7BB7324F5EDEC7740D1CAFBF014B1</string>
+			<string>21CDE270D07489889A5C5E58E293E0EC</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
 		<key>4D8CDD78D5F0266C4E6DECAD324878E9</key>
 		<dict>
 			<key>fileRef</key>
-			<string>B79BF101A6E3FDCA036ED6EBBAA42937</string>
+			<string>E648128168D507AAD107BDEF51F64F7B</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
+		</dict>
+		<key>4FC349EFE7F5977232D122B7CF94632C</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>HRColorPickerView.m</string>
+			<key>path</key>
+			<string>ColorPicker/HRColorPickerView.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>50011436BDA20FD5C366FA069DADEE96</key>
 		<dict>
@@ -905,32 +877,7 @@
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>563AE4C208F246E5CF42D2F83037BC2B</key>
-		<dict>
-			<key>fileRef</key>
-			<string>EBF8E7BF77FC05B1BA923AB798476FD0</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>56BCAEB8EA9A1BD1CE3E0CE1CE7BAD88</key>
-		<dict>
-			<key>fileRef</key>
-			<string>7BF052C27DAE32F2A6F2F66A33C2D993</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>57D06636FA9442DD812A6769A578F0B1</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>NKOColorPickerView.modulemap</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>58228171005D9F5057D8D021B617C9DD</key>
+		<key>51D3E7531B318B42F62CEED7626AD83B</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -939,11 +886,81 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.swift</string>
 			<key>name</key>
-			<string>NSManagedObjectContext+AsyncHelpers.swift</string>
+			<string>CoreDataModelable.swift</string>
 			<key>path</key>
-			<string>Sources/NSManagedObjectContext+AsyncHelpers.swift</string>
+			<string>Sources/CoreDataModelable.swift</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
+		</dict>
+		<key>52598AAB39EADB3AF0115D391F222785</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>path</key>
+			<string>Color-Picker-for-iOS.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>5634FE289B165EA8CF9C6B71DA7D18FB</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>name</key>
+			<string>CoreDataStack.swift</string>
+			<key>path</key>
+			<string>Sources/CoreDataStack.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>563AE4C208F246E5CF42D2F83037BC2B</key>
+		<dict>
+			<key>fileRef</key>
+			<string>5E344477F738CB445F1984A626EC1AA6</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>563F5BDA415C6456FA19641CCD142F6B</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>name</key>
+			<string>EntityMonitor.swift</string>
+			<key>path</key>
+			<string>Sources/EntityMonitor.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>56848EE2581C0A39FC7D9C27DD506C60</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>NKOColorPickerView.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>56BCAEB8EA9A1BD1CE3E0CE1CE7BAD88</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8F7AA80B4E4B9DCA7BD2C37A0DA690FC</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
 		</dict>
 		<key>58AF74CB6F797846C6E0E2D44DB37F27</key>
 		<dict>
@@ -958,45 +975,6 @@
 			<string>Release</string>
 			<key>isa</key>
 			<string>XCConfigurationList</string>
-		</dict>
-		<key>5995222C6B45147E6A9D0A90FE7AC8DB</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>BNRCoreDataStack-prefix.pch</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>5ACCB648F920BC7E57A229BF90788124</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.xml</string>
-			<key>path</key>
-			<string>Info.plist</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>5BE31592F5EAD1FF17A1E58AB68F2AC7</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>NKOColorPickerView.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
 		</dict>
 		<key>5CE30ADCA839B129E2EB83881A32B390</key>
 		<dict>
@@ -1078,10 +1056,25 @@
 			<key>name</key>
 			<string>Debug</string>
 		</dict>
+		<key>5E344477F738CB445F1984A626EC1AA6</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>HRColorInfoView.m</string>
+			<key>path</key>
+			<string>ColorPicker/HRColorInfoView.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>5E8BE0D6CDAC94F1F96D19102887CD10</key>
 		<dict>
 			<key>fileRef</key>
-			<string>9EF5F933C903B49C2FB1B69637CFDBAF</string>
+			<string>014A47CC34130F30EF7B87E53C7B5707</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -1114,41 +1107,6 @@
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>6297B5F214910EF87A605E55C8120D83</key>
-		<dict>
-			<key>fileRef</key>
-			<string>8CBB556A53875806A0FDAA5D39503F0B</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>63DB2282C257E075CC0062235BD027CA</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>NKOColorPickerView.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>63FB6DEBD39E94BE2621B5DF2A561955</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>HRColorPickerView.h</string>
-			<key>path</key>
-			<string>ColorPicker/HRColorPickerView.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>6832C07EC55486656969F1FD40FC1B6D</key>
 		<dict>
 			<key>buildActionMask</key>
@@ -1178,6 +1136,21 @@
 			<key>runOnlyForDeploymentPostprocessing</key>
 			<string>0</string>
 		</dict>
+		<key>696A3F8D46036EB3EF4F47A651129868</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>HRBrightnessCursor.h</string>
+			<key>path</key>
+			<string>ColorPicker/HRBrightnessCursor.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>698733C4D35F57BFBAEEEF66B2C06C7F</key>
 		<dict>
 			<key>buildConfigurationList</key>
@@ -1206,25 +1179,73 @@
 		<key>6C9DCE196A033C2E7921AEF2BC3DE3CA</key>
 		<dict>
 			<key>fileRef</key>
-			<string>1F31D6DAB2DE3632AB235B9A103492DE</string>
+			<string>B2E5B5D9F9E9040CCEAABDE1BCF3EABF</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>711479917B29CC4F375683D635CABDE2</key>
+		<key>6F6D32D4BD3F0313BC40AAF60F35EABE</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>NKOColorPickerView.modulemap</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>70827B0EE0E3231083CF64CBD0B7C6C4</key>
 		<dict>
 			<key>children</key>
 			<array>
-				<string>5BE31592F5EAD1FF17A1E58AB68F2AC7</string>
-				<string>63DB2282C257E075CC0062235BD027CA</string>
-				<string>3D8C61F5F66656FA4A527B9C0B05225F</string>
-				<string>3F68F69ACBF5714E62C8966115322D91</string>
+				<string>CBA8239CB79E7C08B9D5212E5349CDFF</string>
+				<string>DCE338AF55833391D6C1119D2898C3F3</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
 			<key>name</key>
-			<string>NKOColorPickerView</string>
+			<string>Pods</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>72E4195196E44E8ECB38C3179E15545C</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>name</key>
+			<string>FetchedResultsController.swift</string>
 			<key>path</key>
-			<string>NKOColorPickerView</string>
+			<string>Sources/FetchedResultsController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>730BA6BE305BB3A2E57B2B51B333881E</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>BNRCoreDataStack.modulemap</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>74403CD72045B77A9A65C70D49C6C336</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>HRHSVColorUtil.h</string>
+			<key>path</key>
+			<string>ColorPicker/HRHSVColorUtil.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -1323,7 +1344,7 @@
 		<key>786D660F8ADBE96EA2C9298FB2B228BD</key>
 		<dict>
 			<key>fileRef</key>
-			<string>CC7648A9EEE839D50B805785C5231876</string>
+			<string>74403CD72045B77A9A65C70D49C6C336</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -1342,19 +1363,6 @@
 			<string>PBXFileReference</string>
 			<key>path</key>
 			<string>Pods.modulemap</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>7A8D4B667D98708909C39F41D505F79E</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>path</key>
-			<string>BNRCoreDataStack.xcconfig</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -1387,7 +1395,22 @@
 			<key>productType</key>
 			<string>com.apple.product-type.framework</string>
 		</dict>
-		<key>7BF052C27DAE32F2A6F2F66A33C2D993</key>
+		<key>7BB0FB07F3FA66EF481939A2E4760BB9</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>CoreDataStack.h</string>
+			<key>path</key>
+			<string>Sources/CoreDataStack.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>7BE68EAB00196FC2BDDCC70BF96B5D4E</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -1396,9 +1419,9 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.swift</string>
 			<key>name</key>
-			<string>NSPersistentStoreCoordinator+AsyncHelpers.swift</string>
+			<string>NSPersistentStoreCoordinator+SQLiteHelpers.swift</string>
 			<key>path</key>
-			<string>Sources/NSPersistentStoreCoordinator+AsyncHelpers.swift</string>
+			<string>Sources/NSPersistentStoreCoordinator+SQLiteHelpers.swift</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -1421,8 +1444,9 @@
 			<key>children</key>
 			<array>
 				<string>BA6428E9F66FD5A23C0A2E06ED26CD2F</string>
+				<string>3C186E4AB88630ECFBEA6C9C5C2A909A</string>
 				<string>20B56609144CE204DFA8221F742B2D76</string>
-				<string>CBBC416AEC7459C97033F935E0250E13</string>
+				<string>70827B0EE0E3231083CF64CBD0B7C6C4</string>
 				<string>DAC28284517DB9F9572762815729D013</string>
 				<string>B7B80995527643776607AFFA75B91E24</string>
 			</array>
@@ -1434,55 +1458,31 @@
 		<key>807B0CC19A0E821868C74030E7498D5D</key>
 		<dict>
 			<key>fileRef</key>
-			<string>24C442B18416A0392D7A26E0D799897C</string>
+			<string>5634FE289B165EA8CF9C6B71DA7D18FB</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>8201A2757719E470683DFF9E3D2BE1F1</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>1494FCD67F8145A5DFF962E30BBB5865</string>
-				<string>22670CF9367EBDBE2513EED3F89BA2F0</string>
-				<string>9DF7BB7324F5EDEC7740D1CAFBF014B1</string>
-				<string>92C4B0E8F6A570B3A02EAE5E297A9F11</string>
-				<string>9EF5F933C903B49C2FB1B69637CFDBAF</string>
-				<string>44AED82DF6A5EF87854A00DAE8B693FD</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Support Files</string>
-			<key>path</key>
-			<string>../Target Support Files/Color-Picker-for-iOS</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>82A595BC500888D9C3F699533A2CBB08</key>
+		<key>849119606692A70C85B616D41D840B2D</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
+			<string>text.plist.xml</string>
 			<key>path</key>
-			<string>BNRCoreDataStack-dummy.m</string>
+			<string>Info.plist</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>83992914843F8D648A1F29571214E8F5</key>
+		<key>8565489705E13C91ACF9A8E7E7879A2E</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>HRColorMapView.h</string>
 			<key>path</key>
-			<string>ColorPicker/HRColorMapView.h</string>
+			<string>nko_brightness_guide.png</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -1509,19 +1509,6 @@
 			<string>text.plist.xml</string>
 			<key>path</key>
 			<string>Pods-acknowledgements.plist</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>88E663C506B708C63F823B6C7E252DCD</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>NKOColorPickerView-prefix.pch</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -1600,25 +1587,25 @@
 			<key>name</key>
 			<string>Release</string>
 		</dict>
-		<key>8B954962B07E798A5CB71E14A29129C7</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B5A84DD7D9FF4F935C3AC2B71F1B36D8</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>8CBB556A53875806A0FDAA5D39503F0B</key>
+		<key>8B806E5B3B72A5A9F2CE9F296F55C4D8</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>nko_brightness_guide@2x.png</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
 			<key>path</key>
-			<string>Assets/nko_brightness_guide@2x.png</string>
+			<string>Info.plist</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8B954962B07E798A5CB71E14A29129C7</key>
+		<dict>
+			<key>fileRef</key>
+			<string>7BE68EAB00196FC2BDDCC70BF96B5D4E</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
 		</dict>
 		<key>8EFE2F9017009ACAB0DD3853C8B1C498</key>
 		<dict>
@@ -1633,29 +1620,18 @@
 			<key>runOnlyForDeploymentPostprocessing</key>
 			<string>0</string>
 		</dict>
-		<key>8F07EE5722D5551B64021BF3D07B2A5C</key>
+		<key>8F7AA80B4E4B9DCA7BD2C37A0DA690FC</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>text.plist.xml</string>
-			<key>path</key>
-			<string>Info.plist</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>90B7B73AE44D0FB19A171941DED209DD</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
+			<string>sourcecode.swift</string>
 			<key>name</key>
-			<string>nko_colormap.png</string>
+			<string>NSPersistentStoreCoordinator+AsyncHelpers.swift</string>
 			<key>path</key>
-			<string>Assets/nko_colormap.png</string>
+			<string>Sources/NSPersistentStoreCoordinator+AsyncHelpers.swift</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -1680,38 +1656,32 @@
 			<key>runOnlyForDeploymentPostprocessing</key>
 			<string>0</string>
 		</dict>
-		<key>92C4B0E8F6A570B3A02EAE5E297A9F11</key>
+		<key>952E693FF155B6153DC46FE8313A5EC4</key>
 		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
+			<key>fileRef</key>
+			<string>8565489705E13C91ACF9A8E7E7879A2E</string>
 			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>Color-Picker-for-iOS-prefix.pch</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
+			<string>PBXBuildFile</string>
 		</dict>
-		<key>9368A73D2952660BFC0D1F9E50F2AA14</key>
+		<key>961CC1AFAA69994E2863088BD51D09A3</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
+			<string>sourcecode.swift</string>
 			<key>name</key>
-			<string>HRColorInfoView.h</string>
+			<string>NSManagedObjectContext+AsyncHelpers.swift</string>
 			<key>path</key>
-			<string>ColorPicker/HRColorInfoView.h</string>
+			<string>Sources/NSManagedObjectContext+AsyncHelpers.swift</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
 		<key>96929100F95990DB5F4FC2732FF46B28</key>
 		<dict>
 			<key>fileRef</key>
-			<string>63DB2282C257E075CC0062235BD027CA</string>
+			<string>0F31C8D450DC80D1CD4BA995AC6F36AC</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -1736,9 +1706,22 @@
 		<key>979979057E77525A3108142C327633BB</key>
 		<dict>
 			<key>fileRef</key>
-			<string>AA74476545C73D9D711BE35C025587F2</string>
+			<string>EA9127CA13D925F1BE993DE62D427DF8</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
+		</dict>
+		<key>97BED6A946B14D0D8E8D6FB3356AF837</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>B33BCE3E84659B3935A44D048204F0CD</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Resources</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>991542D30A0AB091369829BBF70F2E30</key>
 		<dict>
@@ -1771,36 +1754,23 @@
 			<key>isa</key>
 			<string>XCConfigurationList</string>
 		</dict>
-		<key>9DF7BB7324F5EDEC7740D1CAFBF014B1</key>
+		<key>9E829269C904D65725D6CF9156E1F122</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
+			<string>text.plist.xml</string>
 			<key>path</key>
-			<string>Color-Picker-for-iOS-dummy.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>9EF5F933C903B49C2FB1B69637CFDBAF</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>Color-Picker-for-iOS-umbrella.h</string>
+			<string>Info.plist</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
 		<key>A18632479F59E1C4B3241E9368AE1BA6</key>
 		<dict>
 			<key>fileRef</key>
-			<string>FC5CAD7BA83482006E3073ABBCDC0159</string>
+			<string>696A3F8D46036EB3EF4F47A651129868</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -1824,6 +1794,19 @@
 			<key>sourceTree</key>
 			<string>DEVELOPER_DIR</string>
 		</dict>
+		<key>A271B7AF22FD5DB54CBF4E1E8258131C</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>NKOColorPickerView-prefix.pch</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>A426DC7FD2C75B1896EB2D8B042A9E50</key>
 		<dict>
 			<key>isa</key>
@@ -1836,21 +1819,6 @@
 			<string>Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/CoreData.framework</string>
 			<key>sourceTree</key>
 			<string>DEVELOPER_DIR</string>
-		</dict>
-		<key>A42A2B1575F6FC5DB20A3DA895365E31</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>HRHSVColorUtil.m</string>
-			<key>path</key>
-			<string>ColorPicker/HRHSVColorUtil.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
 		</dict>
 		<key>A5F196E57BA07944849D08735FE1D777</key>
 		<dict>
@@ -1869,24 +1837,9 @@
 		<key>A7D60414929E0535E5F3D5FDF6F85789</key>
 		<dict>
 			<key>fileRef</key>
-			<string>F572A3F693341B66285B94F65C36CED5</string>
+			<string>563F5BDA415C6456FA19641CCD142F6B</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
-		</dict>
-		<key>AA74476545C73D9D711BE35C025587F2</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>UIImage+CoreGraphics.m</string>
-			<key>path</key>
-			<string>ColorPicker/UIImage+CoreGraphics.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
 		</dict>
 		<key>AE69E7D7370F44CA43E3DB5021936BDB</key>
 		<dict>
@@ -1919,7 +1872,7 @@
 		<key>B1F209F1B36DFD46F1CA5361E56A60CE</key>
 		<dict>
 			<key>fileRef</key>
-			<string>C30D4FA46CBA5CFE6239BF23F8E5AAEB</string>
+			<string>C808517507FE8B7938ACCD30A17F3406</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -1930,7 +1883,20 @@
 				</array>
 			</dict>
 		</dict>
-		<key>B5A84DD7D9FF4F935C3AC2B71F1B36D8</key>
+		<key>B2434E4465102615421EAB5001AFCEE5</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>BNRCoreDataStack-dummy.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>B2E5B5D9F9E9040CCEAABDE1BCF3EABF</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -1939,9 +1905,26 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.swift</string>
 			<key>name</key>
-			<string>NSPersistentStoreCoordinator+SQLiteHelpers.swift</string>
+			<string>NSManagedObjectContext+SaveHelpers.swift</string>
 			<key>path</key>
-			<string>Sources/NSPersistentStoreCoordinator+SQLiteHelpers.swift</string>
+			<string>Sources/NSManagedObjectContext+SaveHelpers.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>B33BCE3E84659B3935A44D048204F0CD</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>8565489705E13C91ACF9A8E7E7879A2E</string>
+				<string>0880D9EAFFABFBEAFF6F3549D3A2D3B3</string>
+				<string>271CFA991ABEF848C0AC771C4D87D019</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Assets</string>
+			<key>path</key>
+			<string>Assets</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -1963,21 +1946,6 @@
 			<key>targetProxy</key>
 			<string>2E97A8D6FCE7CD1E7E7CA0980CB4D890</string>
 		</dict>
-		<key>B79BF101A6E3FDCA036ED6EBBAA42937</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>HRBrightnessCursor.m</string>
-			<key>path</key>
-			<string>ColorPicker/HRBrightnessCursor.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>B7B80995527643776607AFFA75B91E24</key>
 		<dict>
 			<key>children</key>
@@ -1990,6 +1958,13 @@
 			<string>Targets Support Files</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BA2CFD99589D7E50FC0A9E319E1FDC09</key>
+		<dict>
+			<key>fileRef</key>
+			<string>271CFA991ABEF848C0AC771C4D87D019</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
 		</dict>
 		<key>BA54B696B3A33BEC7C1571FDDA49C1ED</key>
 		<dict>
@@ -2022,10 +1997,25 @@
 			<key>xcLanguageSpecificationIdentifier</key>
 			<string>xcode.lang.ruby</string>
 		</dict>
+		<key>BBB1066C835D3E442BDB19C940A115E0</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>HRColorInfoView.h</string>
+			<key>path</key>
+			<string>ColorPicker/HRColorInfoView.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>BCA8895C7CA8F3D3A1E01BD1D983BA9D</key>
 		<dict>
 			<key>fileRef</key>
-			<string>3DBC5C19FE0FDB5DC10EEC0F8EA9B39A</string>
+			<string>7BB0FB07F3FA66EF481939A2E4760BB9</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -2036,17 +2026,30 @@
 				</array>
 			</dict>
 		</dict>
+		<key>BCE8612D9B2ED125C494A4361AEB7E10</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>path</key>
+			<string>NKOColorPickerView.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>BDF8B7D3136117AE711240B418C3FBCB</key>
 		<dict>
 			<key>fileRef</key>
-			<string>C2081034A2C01B685BF6DACF501AEE35</string>
+			<string>F0E36D6080E5C6E038650A8B7E07A808</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
 		<key>C0271C33FE3B15172E01119CA620703D</key>
 		<dict>
 			<key>fileRef</key>
-			<string>F1B2BF5A0433B4E37C02E06B24AD6334</string>
+			<string>4FC349EFE7F5977232D122B7CF94632C</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
@@ -2059,7 +2062,7 @@
 				<string>01EE91548A7AEE722B225D0242E9754F</string>
 				<string>6832C07EC55486656969F1FD40FC1B6D</string>
 				<string>2C9A36AD717882024F0419411ECD8CBD</string>
-				<string>C76A50831986DA1F84DA73A897E74874</string>
+				<string>F8AC1991E5E128FEFB3F898CDF7B9FDB</string>
 			</array>
 			<key>buildRules</key>
 			<array/>
@@ -2075,34 +2078,6 @@
 			<string>5EFBC64554B92E062E4073044A5A0D1D</string>
 			<key>productType</key>
 			<string>com.apple.product-type.framework</string>
-		</dict>
-		<key>C2081034A2C01B685BF6DACF501AEE35</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>NKOColorPickerView-dummy.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>C30D4FA46CBA5CFE6239BF23F8E5AAEB</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>HRBrightnessSlider.h</string>
-			<key>path</key>
-			<string>ColorPicker/HRBrightnessSlider.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
 		</dict>
 		<key>C43A22DF1001CC1BD583552347A49DCC</key>
 		<dict>
@@ -2124,19 +2099,6 @@
 			<string>PBXSourcesBuildPhase</string>
 			<key>runOnlyForDeploymentPostprocessing</key>
 			<string>0</string>
-		</dict>
-		<key>C447A9866C338DBDF0F96B67C3D8A7A9</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>NKOColorPickerView-umbrella.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
 		</dict>
 		<key>C44E239753D04DAB0845FF485914A348</key>
 		<dict>
@@ -2166,32 +2128,32 @@
 			<key>sourceTree</key>
 			<string>BUILT_PRODUCTS_DIR</string>
 		</dict>
-		<key>C76A50831986DA1F84DA73A897E74874</key>
+		<key>C808517507FE8B7938ACCD30A17F3406</key>
 		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>4CE243253337E2B36D0A20E3FB8FAD0E</string>
-				<string>6297B5F214910EF87A605E55C8120D83</string>
-				<string>F2D2DBDDB37847866FE61B35D1D6C095</string>
-			</array>
+			<key>includeInIndex</key>
+			<string>1</string>
 			<key>isa</key>
-			<string>PBXResourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>HRBrightnessSlider.h</string>
+			<key>path</key>
+			<string>ColorPicker/HRBrightnessSlider.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>C9ED838DBDF07B56482212342D844739</key>
 		<dict>
 			<key>fileRef</key>
-			<string>F49218AD55C3AEF8C92F0A97138DB736</string>
+			<string>DA4573CE89FE14A532D0A64B566C922F</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
 		<key>CBA07FE88CF9BD3EE7AB0FA235CCC137</key>
 		<dict>
 			<key>fileRef</key>
-			<string>C447A9866C338DBDF0F96B67C3D8A7A9</string>
+			<string>1E3ED18C44322458BC32F49E3E548F34</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -2202,18 +2164,27 @@
 				</array>
 			</dict>
 		</dict>
-		<key>CBBC416AEC7459C97033F935E0250E13</key>
+		<key>CBA8239CB79E7C08B9D5212E5349CDFF</key>
 		<dict>
 			<key>children</key>
 			<array>
-				<string>EE0DC3A26ECF672B6FB1525D598804C6</string>
-				<string>37A67210541E937E326A74EB23FB325E</string>
-				<string>711479917B29CC4F375683D635CABDE2</string>
+				<string>51D3E7531B318B42F62CEED7626AD83B</string>
+				<string>7BB0FB07F3FA66EF481939A2E4760BB9</string>
+				<string>5634FE289B165EA8CF9C6B71DA7D18FB</string>
+				<string>563F5BDA415C6456FA19641CCD142F6B</string>
+				<string>72E4195196E44E8ECB38C3179E15545C</string>
+				<string>961CC1AFAA69994E2863088BD51D09A3</string>
+				<string>B2E5B5D9F9E9040CCEAABDE1BCF3EABF</string>
+				<string>8F7AA80B4E4B9DCA7BD2C37A0DA690FC</string>
+				<string>7BE68EAB00196FC2BDDCC70BF96B5D4E</string>
+				<string>3C1C010232B368538E2B0C90720019F0</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
 			<key>name</key>
-			<string>Pods</string>
+			<string>BNRCoreDataStack</string>
+			<key>path</key>
+			<string>BNRCoreDataStack</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -2230,25 +2201,10 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>CC7648A9EEE839D50B805785C5231876</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>HRHSVColorUtil.h</string>
-			<key>path</key>
-			<string>ColorPicker/HRHSVColorUtil.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>CCBF2E7F349EBC460AEC8239A916E01F</key>
 		<dict>
 			<key>fileRef</key>
-			<string>5BE31592F5EAD1FF17A1E58AB68F2AC7</string>
+			<string>56848EE2581C0A39FC7D9C27DD506C60</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 			<key>settings</key>
@@ -2371,6 +2327,26 @@
 			<key>productType</key>
 			<string>com.apple.product-type.framework</string>
 		</dict>
+		<key>D64527E979AB63CA6B3551BCD877B308</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>4A9B00D4B58EBC74FD941664F1F3BE5B</string>
+				<string>52598AAB39EADB3AF0115D391F222785</string>
+				<string>21CDE270D07489889A5C5E58E293E0EC</string>
+				<string>10CBC89FBC7AFF68A131FF23B3885ECF</string>
+				<string>014A47CC34130F30EF7B87E53C7B5707</string>
+				<string>849119606692A70C85B616D41D840B2D</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Support Files</string>
+			<key>path</key>
+			<string>../Target Support Files/Color-Picker-for-iOS</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>D750A59146F45D4158856090361200A1</key>
 		<dict>
 			<key>isa</key>
@@ -2384,21 +2360,6 @@
 			<key>sourceTree</key>
 			<string>DEVELOPER_DIR</string>
 		</dict>
-		<key>D99B246A2F2C77FF52AE730CFDCCA602</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>name</key>
-			<string>CoreDataModelable.swift</string>
-			<key>path</key>
-			<string>Sources/CoreDataModelable.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>DA312349A49333542E6F4B36B329960E</key>
 		<dict>
 			<key>includeInIndex</key>
@@ -2409,6 +2370,21 @@
 			<string>text.xcconfig</string>
 			<key>path</key>
 			<string>Pods.release.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DA4573CE89FE14A532D0A64B566C922F</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>HRColorCursor.m</string>
+			<key>path</key>
+			<string>ColorPicker/HRColorCursor.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -2428,17 +2404,78 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
+		<key>DB791C4A372F75FAB0DCBF4259E56582</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>HRColorCursor.h</string>
+			<key>path</key>
+			<string>ColorPicker/HRColorCursor.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>DCE338AF55833391D6C1119D2898C3F3</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>696A3F8D46036EB3EF4F47A651129868</string>
+				<string>E648128168D507AAD107BDEF51F64F7B</string>
+				<string>C808517507FE8B7938ACCD30A17F3406</string>
+				<string>E08C46F173AC1E76476892D2FB243051</string>
+				<string>DB791C4A372F75FAB0DCBF4259E56582</string>
+				<string>DA4573CE89FE14A532D0A64B566C922F</string>
+				<string>BBB1066C835D3E442BDB19C940A115E0</string>
+				<string>5E344477F738CB445F1984A626EC1AA6</string>
+				<string>1C66EF154E71E3F132209470CF754DA9</string>
+				<string>1690B9C4517C39E86957BBE720B6E3EA</string>
+				<string>E30E723C596D1677542609DBF4B3441C</string>
+				<string>4FC349EFE7F5977232D122B7CF94632C</string>
+				<string>74403CD72045B77A9A65C70D49C6C336</string>
+				<string>37C0ED0DA95A647415DBC8579A7EB078</string>
+				<string>F6447F2CF52B5F341FBF1D8923FB5D4E</string>
+				<string>EA9127CA13D925F1BE993DE62D427DF8</string>
+				<string>D64527E979AB63CA6B3551BCD877B308</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Color-Picker-for-iOS</string>
+			<key>path</key>
+			<string>Color-Picker-for-iOS</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>E007D509CE8470E8D043A503B736C6FE</key>
 		<dict>
 			<key>fileRef</key>
-			<string>FE9B6F067C0958213FC0C0E0336A8064</string>
+			<string>1690B9C4517C39E86957BBE720B6E3EA</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
+		</dict>
+		<key>E08C46F173AC1E76476892D2FB243051</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>HRBrightnessSlider.m</string>
+			<key>path</key>
+			<string>ColorPicker/HRBrightnessSlider.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>E18F0BA19FB98C6BCACA124C34DC2B1A</key>
 		<dict>
 			<key>fileRef</key>
-			<string>58228171005D9F5057D8D021B617C9DD</string>
+			<string>961CC1AFAA69994E2863088BD51D09A3</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
@@ -2449,12 +2486,55 @@
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
+		<key>E30E723C596D1677542609DBF4B3441C</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>HRColorPickerView.h</string>
+			<key>path</key>
+			<string>ColorPicker/HRColorPickerView.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E4173CEC95EE120B46AD3EF75F71DCC4</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>BNRCoreDataStack-prefix.pch</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>E4596A1CB982440C7DF42D05DDE6FB5C</key>
 		<dict>
 			<key>fileRef</key>
-			<string>D99B246A2F2C77FF52AE730CFDCCA602</string>
+			<string>51D3E7531B318B42F62CEED7626AD83B</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
+		</dict>
+		<key>E648128168D507AAD107BDEF51F64F7B</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>HRBrightnessCursor.m</string>
+			<key>path</key>
+			<string>ColorPicker/HRBrightnessCursor.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>E7F21354943D9F42A70697D5A5EF72E9</key>
 		<dict>
@@ -2482,7 +2562,7 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>EBF8E7BF77FC05B1BA923AB798476FD0</key>
+		<key>EA9127CA13D925F1BE993DE62D427DF8</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -2491,9 +2571,9 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.objc</string>
 			<key>name</key>
-			<string>HRColorInfoView.m</string>
+			<string>UIImage+CoreGraphics.m</string>
 			<key>path</key>
-			<string>ColorPicker/HRColorInfoView.m</string>
+			<string>ColorPicker/UIImage+CoreGraphics.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -2510,31 +2590,20 @@
 			<key>remoteInfo</key>
 			<string>BNRCoreDataStack</string>
 		</dict>
-		<key>EE0DC3A26ECF672B6FB1525D598804C6</key>
+		<key>F0E36D6080E5C6E038650A8B7E07A808</key>
 		<dict>
-			<key>children</key>
-			<array>
-				<string>D99B246A2F2C77FF52AE730CFDCCA602</string>
-				<string>3DBC5C19FE0FDB5DC10EEC0F8EA9B39A</string>
-				<string>24C442B18416A0392D7A26E0D799897C</string>
-				<string>F572A3F693341B66285B94F65C36CED5</string>
-				<string>1B414BBBBFB19EB6C1093B8A6B2E4287</string>
-				<string>58228171005D9F5057D8D021B617C9DD</string>
-				<string>1F31D6DAB2DE3632AB235B9A103492DE</string>
-				<string>7BF052C27DAE32F2A6F2F66A33C2D993</string>
-				<string>B5A84DD7D9FF4F935C3AC2B71F1B36D8</string>
-				<string>14A61F05319A357F649C94920E4963D4</string>
-			</array>
+			<key>includeInIndex</key>
+			<string>1</string>
 			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>BNRCoreDataStack</string>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
 			<key>path</key>
-			<string>BNRCoreDataStack</string>
+			<string>NKOColorPickerView-dummy.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>EF740FB37A44FFA92F846B6D6A8A7B02</key>
+		<key>F6447F2CF52B5F341FBF1D8923FB5D4E</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -2549,69 +2618,32 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>F1B2BF5A0433B4E37C02E06B24AD6334</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>HRColorPickerView.m</string>
-			<key>path</key>
-			<string>ColorPicker/HRColorPickerView.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F2D2DBDDB37847866FE61B35D1D6C095</key>
-		<dict>
-			<key>fileRef</key>
-			<string>90B7B73AE44D0FB19A171941DED209DD</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F49218AD55C3AEF8C92F0A97138DB736</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>HRColorCursor.m</string>
-			<key>path</key>
-			<string>ColorPicker/HRColorCursor.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F572A3F693341B66285B94F65C36CED5</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>name</key>
-			<string>EntityMonitor.swift</string>
-			<key>path</key>
-			<string>Sources/EntityMonitor.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>F8863E62C9179AD71C5695B45002A7ED</key>
 		<dict>
 			<key>fileRef</key>
-			<string>A42A2B1575F6FC5DB20A3DA895365E31</string>
+			<string>37C0ED0DA95A647415DBC8579A7EB078</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
+		</dict>
+		<key>F8AC1991E5E128FEFB3F898CDF7B9FDB</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>952E693FF155B6153DC46FE8313A5EC4</string>
+				<string>36B3672FE3DDE580F38A3BE798568A83</string>
+				<string>BA2CFD99589D7E50FC0A9E319E1FDC09</string>
+			</array>
+			<key>isa</key>
+			<string>PBXResourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
 		</dict>
 		<key>F8FFEDA5A602981EC4B86E755C058F35</key>
 		<dict>
 			<key>baseConfigurationReference</key>
-			<string>22670CF9367EBDBE2513EED3F89BA2F0</string>
+			<string>52598AAB39EADB3AF0115D391F222785</string>
 			<key>buildSettings</key>
 			<dict>
 				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
@@ -2664,6 +2696,26 @@
 			<key>name</key>
 			<string>Release</string>
 		</dict>
+		<key>FA130DA38CEEC3E642FE93058873A4A5</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>8B806E5B3B72A5A9F2CE9F296F55C4D8</string>
+				<string>6F6D32D4BD3F0313BC40AAF60F35EABE</string>
+				<string>BCE8612D9B2ED125C494A4361AEB7E10</string>
+				<string>F0E36D6080E5C6E038650A8B7E07A808</string>
+				<string>A271B7AF22FD5DB54CBF4E1E8258131C</string>
+				<string>1E3ED18C44322458BC32F49E3E548F34</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Support Files</string>
+			<key>path</key>
+			<string>../spare-ios/Pods/Target Support Files/NKOColorPickerView</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>FA5373D154796FC172FFA6C66982C356</key>
 		<dict>
 			<key>fileRef</key>
@@ -2681,39 +2733,9 @@
 		<key>FB78AEF315DFA4758A89F60E1F95ADCF</key>
 		<dict>
 			<key>fileRef</key>
-			<string>82A595BC500888D9C3F699533A2CBB08</string>
+			<string>B2434E4465102615421EAB5001AFCEE5</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
-		</dict>
-		<key>FC5CAD7BA83482006E3073ABBCDC0159</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>HRBrightnessCursor.h</string>
-			<key>path</key>
-			<string>ColorPicker/HRBrightnessCursor.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>FE9B6F067C0958213FC0C0E0336A8064</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>HRColorMapView.m</string>
-			<key>path</key>
-			<string>ColorPicker/HRColorMapView.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
 		</dict>
 		<key>FED73F2CE0139417F25F017ADC926BB9</key>
 		<dict>

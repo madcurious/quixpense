@@ -6,7 +6,11 @@ PODS:
 DEPENDENCIES:
   - BNRCoreDataStack
   - Color-Picker-for-iOS
-  - NKOColorPickerView
+  - NKOColorPickerView (from `/Users/mattquiros/Developer/NKOColorPickerView`)
+
+EXTERNAL SOURCES:
+  NKOColorPickerView:
+    :path: /Users/mattquiros/Developer/NKOColorPickerView
 
 SPEC CHECKSUMS:
   BNRCoreDataStack: 10abcb19d2a3f397950a06e9b0915f4e695a826b

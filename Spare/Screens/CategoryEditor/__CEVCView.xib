@@ -79,57 +79,23 @@
                                         <constraint firstItem="Gu8-3A-LkQ" firstAttribute="leading" secondItem="wgC-l6-Lpt" secondAttribute="trailing" constant="10" id="oci-eD-LKP"/>
                                     </constraints>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J2t-9R-Qve" customClass="__CEVCColorMapTouchArea" customModule="Spare" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="100" width="320" height="414"/>
-                                    <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jYN-iA-FRI">
-                                            <rect key="frame" x="0.0" y="10" width="320" height="394"/>
-                                            <color key="backgroundColor" red="0.85098040100000005" green="0.94901961089999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </view>
-                                    </subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x4s-Nj-F0r" customClass="ColorPickerControl" customModule="Spare" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="100" width="320" height="468"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <constraints>
-                                        <constraint firstItem="jYN-iA-FRI" firstAttribute="leading" secondItem="J2t-9R-Qve" secondAttribute="leading" id="9Ik-Pw-fQx"/>
-                                        <constraint firstAttribute="trailing" secondItem="jYN-iA-FRI" secondAttribute="trailing" id="hwD-V3-PYj"/>
-                                        <constraint firstAttribute="bottom" secondItem="jYN-iA-FRI" secondAttribute="bottom" constant="10" id="pQe-4I-XzI"/>
-                                        <constraint firstItem="jYN-iA-FRI" firstAttribute="top" secondItem="J2t-9R-Qve" secondAttribute="top" constant="10" id="yMI-cW-B2n"/>
-                                    </constraints>
-                                </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mAr-b5-Os4" customClass="__CEVCSliderTouchArea" customModule="Spare" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="514" width="320" height="44"/>
-                                    <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eFM-Fw-1kT">
-                                            <rect key="frame" x="10" y="17" width="300" height="10"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="10" id="kPe-kP-AGc"/>
-                                            </constraints>
-                                        </view>
-                                    </subviews>
-                                    <color key="backgroundColor" red="1" green="0.40000000600000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <constraints>
-                                        <constraint firstItem="eFM-Fw-1kT" firstAttribute="centerY" secondItem="mAr-b5-Os4" secondAttribute="centerY" id="2mX-Lu-I3l"/>
-                                        <constraint firstItem="eFM-Fw-1kT" firstAttribute="leading" secondItem="mAr-b5-Os4" secondAttribute="leading" constant="10" id="o2f-VJ-aUv"/>
-                                        <constraint firstAttribute="height" constant="44" id="z7H-GT-ZlA"/>
-                                        <constraint firstAttribute="trailing" secondItem="eFM-Fw-1kT" secondAttribute="trailing" constant="10" id="zUh-MV-3Dr"/>
-                                    </constraints>
                                 </view>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstItem="mAr-b5-Os4" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="5IB-du-aas"/>
                                 <constraint firstAttribute="trailing" secondItem="37p-h9-Sty" secondAttribute="trailing" id="AKf-h2-zWG"/>
-                                <constraint firstItem="J2t-9R-Qve" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Fdc-yF-bAM"/>
-                                <constraint firstItem="mAr-b5-Os4" firstAttribute="top" secondItem="J2t-9R-Qve" secondAttribute="bottom" id="JmX-ZO-jC6"/>
-                                <constraint firstAttribute="trailing" secondItem="J2t-9R-Qve" secondAttribute="trailing" id="Nfz-xo-x0B"/>
+                                <constraint firstItem="x4s-Nj-F0r" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="B5L-Km-eKb"/>
+                                <constraint firstAttribute="trailing" secondItem="x4s-Nj-F0r" secondAttribute="trailing" id="TL0-Xy-Q4v"/>
                                 <constraint firstItem="kLc-VG-T2D" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="YKL-L0-IkK"/>
                                 <constraint firstAttribute="trailing" secondItem="kLc-VG-T2D" secondAttribute="trailing" id="i0I-dR-Jo5"/>
                                 <constraint firstItem="37p-h9-Sty" firstAttribute="top" secondItem="kLc-VG-T2D" secondAttribute="bottom" id="la1-g3-sCd"/>
-                                <constraint firstItem="J2t-9R-Qve" firstAttribute="top" secondItem="37p-h9-Sty" secondAttribute="bottom" id="pcx-9V-mro"/>
-                                <constraint firstAttribute="bottom" secondItem="mAr-b5-Os4" secondAttribute="bottom" constant="10" id="q2i-51-6TC"/>
+                                <constraint firstAttribute="bottom" secondItem="x4s-Nj-F0r" secondAttribute="bottom" id="m1Q-Yh-NPU"/>
                                 <constraint firstItem="wgC-l6-Lpt" firstAttribute="width" secondItem="cJ9-T7-ePa" secondAttribute="width" id="q5a-Gu-rmh"/>
                                 <constraint firstItem="kLc-VG-T2D" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="qFF-96-EHq"/>
-                                <constraint firstAttribute="trailing" secondItem="mAr-b5-Os4" secondAttribute="trailing" id="yyc-F1-9hX"/>
+                                <constraint firstItem="x4s-Nj-F0r" firstAttribute="top" secondItem="37p-h9-Sty" secondAttribute="bottom" id="y81-Nb-kbe"/>
                                 <constraint firstItem="37p-h9-Sty" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="zEc-Ye-VBm"/>
                             </constraints>
                         </view>
@@ -157,16 +123,13 @@
                 <outlet property="colorBoxView" destination="sTS-g1-MS3" id="Awi-Hm-70x"/>
                 <outlet property="colorFieldContainer" destination="37p-h9-Sty" id="aYC-oA-zEK"/>
                 <outlet property="colorLabel" destination="wgC-l6-Lpt" id="Pzx-Zf-cn8"/>
-                <outlet property="colorMapContainer" destination="jYN-iA-FRI" id="GZ0-pA-uHJ"/>
-                <outlet property="colorMapExtendedTouchArea" destination="J2t-9R-Qve" id="Kq2-TG-nsj"/>
+                <outlet property="colorPickerControl" destination="x4s-Nj-F0r" id="tTr-NS-h0Y"/>
                 <outlet property="colorTextField" destination="Gu8-3A-LkQ" id="pfO-fX-KkD"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="04w-Qn-ha2"/>
                 <outlet property="nameFieldContainer" destination="kLc-VG-T2D" id="8ad-fZ-9ZW"/>
                 <outlet property="nameLabel" destination="cJ9-T7-ePa" id="EuK-Jr-0i3"/>
                 <outlet property="nameTextField" destination="Zxs-w9-U3J" id="jdu-p4-2uq"/>
                 <outlet property="scrollView" destination="ehP-iw-EJv" id="jQV-TB-bgf"/>
-                <outlet property="sliderContainer" destination="mAr-b5-Os4" id="ELc-wi-uyt"/>
-                <outlet property="sliderTrackContainer" destination="eFM-Fw-1kT" id="6L8-aN-kpk"/>
             </connections>
         </view>
     </objects>

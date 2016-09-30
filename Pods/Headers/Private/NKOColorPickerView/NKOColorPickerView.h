@@ -1,1 +1,1 @@
-../../../NKOColorPickerView/NKOColorPickerView.h
+../../../../../NKOColorPickerView/NKOColorPickerView.h

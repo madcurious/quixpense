@@ -8,7 +8,6 @@
 
 import UIKit
 import CoreData
-import Color_Picker_for_iOS
 import Mold
 
 class CategoryEditorVC: UIViewController {
@@ -17,8 +16,6 @@ class CategoryEditorVC: UIViewController {
     var category: Category
     
     let customView = __CEVCView.instantiateFromNib() as __CEVCView
-    let colorMap: HRColorMapView
-    let slider: HRBrightnessSlider
     
     private let defaultColor = UIColor.redColor()
     
@@ -30,28 +27,20 @@ class CategoryEditorVC: UIViewController {
         let context = App.coreDataStack.newBackgroundWorkerMOC()
         self.managedObjectContext = context
         
-        self.slider = HRBrightnessSlider()
-        self.slider.brightnessLowerLimit = 0.3
-        
         if let objectID = category?.objectID,
             let category = context.objectWithID(objectID) as? Category,
             let colorHex = category.colorHex as? Int {
             self.category = category
-            self.colorMap = HRColorMapView.defaultColorMap(UIColor(hex: colorHex))
-            self.slider.color = UIColor(hex: colorHex)
+            self.customView.colorPickerControl.selectedColor = UIColor(hex: colorHex)
         } else {
             self.category = Category(managedObjectContext: context)
             self.category.colorHex = self.defaultColor.hexValue()
-            self.colorMap = HRColorMapView.defaultColorMap(self.defaultColor)
-            self.slider.color = self.defaultColor
+            self.customView.colorPickerControl.selectedColor = self.defaultColor
         }
         
         super.init(nibName: nil, bundle: nil)
         
-        self.colorMap.clipsToBounds = true
-        self.customView.colorMap = self.colorMap
-        self.customView.slider = self.slider
-        self.customView.colorBoxView.backgroundColor = self.getResultingColor()
+        self.customView.colorBoxView.backgroundColor = self.customView.colorPickerControl.selectedColor
         
         let request = NSFetchRequest(entityName: Category.entityName)
         if let categories = try! self.managedObjectContext.executeFetchRequest(request) as? [Category] {
@@ -71,11 +60,10 @@ class CategoryEditorVC: UIViewController {
         super.viewDidLoad()
         glb_applyGlobalVCSettings(self)
         
-        self.colorMap.addTarget(self, action: #selector(handleTapOnColorMap(_:)), forControlEvents: .ValueChanged)
-        self.slider.addTarget(self, action: #selector(handleBrightnessValueChange(_:)), forControlEvents: .ValueChanged)
-        
         self.customView.nameTextField.delegate = self
         self.customView.nameTextField.text = self.category.name
+        
+        self.customView.colorPickerControl.addTarget(self, action: #selector(handleColorPickerChanged), forControlEvents: .ValueChanged)
         
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapOnView)))
     }
@@ -84,31 +72,8 @@ class CategoryEditorVC: UIViewController {
         self.dismissKeyboard()
     }
     
-    func handleTapOnColorMap(sender: AnyObject) {
-        self.dismissKeyboard()
-        
-        // When the color map is tapped, a color has been selected and the cursor
-        // should be displayed.
-        self.colorMap.cursor.hidden = false
-        
-        // Reset the brightness to 100%.
-        self.slider.color = self.colorMap.color
-        
-        self.customView.colorBoxView.backgroundColor = self.getResultingColor()
-        self.category.colorHex = self.getResultingColor().hexValue()
-    }
-    
-    func handleBrightnessValueChange(sender: AnyObject) {
-        self.customView.colorBoxView.backgroundColor = self.getResultingColor()
-        self.category.colorHex = self.getResultingColor().hexValue()
-    }
-    
-    func getResultingColor() -> UIColor {
-        var color = HRHSVColor()
-        HSVColorFromUIColor(self.colorMap.color, &color)
-        let brightness = self.slider.brightness as CGFloat
-        
-        return UIColor(hue: color.h, saturation: color.s, brightness: brightness, alpha: 1)
+    func handleColorPickerChanged() {
+        self.customView.colorBoxView.backgroundColor = self.customView.colorPickerControl.selectedColor
     }
     
     /**
@@ -118,7 +83,7 @@ class CategoryEditorVC: UIViewController {
         self.customView.nameTextField.text = nil
         self.category = Category(managedObjectContext: self.managedObjectContext)
         self.category.name = nil
-        self.category.colorHex = self.getResultingColor().hexValue()
+        self.category.colorHex = self.customView.colorPickerControl.selectedColor.hexValue()
     }
     
 }

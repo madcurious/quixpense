@@ -7,7 +7,8 @@
 //
 
 import UIKit
-import Color_Picker_for_iOS
+//import Color_Picker_for_iOS
+import NKOColorPickerView
 
 class __CEVCView: UIView {
     
@@ -23,39 +24,7 @@ class __CEVCView: UIView {
     @IBOutlet weak var colorTextField: UITextField!
     @IBOutlet weak var colorBoxView: UIView!
     
-    @IBOutlet weak var colorMapContainer: UIView!
-    @IBOutlet weak var colorMapExtendedTouchArea: __CEVCColorMapTouchArea!
-    
-    @IBOutlet weak var sliderContainer: __CEVCSliderTouchArea!
-    @IBOutlet weak var sliderTrackContainer: UIView!
-    
-    weak var colorMap: HRColorMapView? {
-        willSet {
-            if let colorMap = self.colorMap {
-                colorMap.removeFromSuperview()
-            }
-        }
-        
-        didSet {
-            if let colorMap = self.colorMap {
-                self.colorMapContainer.addSubviewAndFill(colorMap)
-            }
-        }
-    }
-    
-    weak var slider: HRBrightnessSlider? {
-        willSet {
-            if let slider = self.slider {
-                slider.removeFromSuperview()
-            }
-        }
-        
-        didSet {
-            if let slider = self.slider {
-                self.sliderTrackContainer.addSubviewAndFill(slider)
-            }
-        }
-    }
+    @IBOutlet weak var colorPickerControl: ColorPickerControl!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -65,17 +34,9 @@ class __CEVCView: UIView {
             self.contentView,
             self.nameFieldContainer,
             self.colorFieldContainer,
-            self.colorMapExtendedTouchArea,
-            self.colorMapContainer,
-            self.sliderContainer,
-            self.sliderTrackContainer)
+            self.colorPickerControl
+            )
         self.backgroundColor = Color.UniversalBackgroundColor
-//        self.textFieldContainer.backgroundColor = Color.White
-//        self.colorMapBorderView.backgroundColor = Color.White
-        
-//        self.fieldLabel.text = "NAME"
-//        self.fieldLabel.textColor = Color.FieldLabelTextColor
-//        self.fieldLabel.font = Font.FieldLabel
         
         self.nameLabel.text = "NAME"
         self.nameLabel.font = Font.FieldLabel
@@ -96,71 +57,11 @@ class __CEVCView: UIView {
         self.colorTextField.textColor = Color.UniversalTextColor
         self.colorTextField.font = Font.FieldValue
         self.colorTextField.adjustsFontSizeToFitWidth = false
-        
-        // Add parent references for touch passing.
-        self.colorMapExtendedTouchArea.parent = self
-        self.sliderContainer.parent = self
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         self.colorBoxView.layer.cornerRadius = 2.0
-    }
-    
-}
-
-class __CEVCTextField: UITextField {
-    
-    let inset = CGFloat(8)
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-        self.backgroundColor = UIColor.clearColor()
-        self.borderStyle = .None
-        
-        self.font = Font.make(.Heavy, 18)
-        self.autocapitalizationType = .Sentences
-        self.clearButtonMode = .WhileEditing
-        self.placeholder = Strings.FieldPlaceholderRequired
-        self.textColor = Color.White
-        self.adjustsFontSizeToFitWidth = false
-    }
-    
-    override func textRectForBounds(bounds: CGRect) -> CGRect {
-        return CGRectInset(bounds, self.inset, self.inset)
-    }
-    
-    override func editingRectForBounds(bounds: CGRect) -> CGRect {
-        return CGRectInset(bounds, self.inset, self.inset)
-    }
-    
-}
-
-class __CEVCColorMapTouchArea: UIView {
-    
-    weak var parent: __CEVCView?
-    
-    override func hitTest(point: CGPoint, withEvent event: UIEvent?) -> UIView? {
-        let hitView = super.hitTest(point, withEvent: event)
-        if hitView == self {
-            return self.parent?.colorMap
-        }
-        return hitView
-    }
-    
-}
-
-class __CEVCSliderTouchArea: UIView {
-    
-    weak var parent: __CEVCView?
-    
-    override func hitTest(point: CGPoint, withEvent event: UIEvent?) -> UIView? {
-        let hitView = super.hitTest(point, withEvent: event)
-        if hitView == self {
-            return self.parent?.slider
-        }
-        return hitView
     }
     
 }

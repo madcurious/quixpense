@@ -3,5 +3,5 @@ use_frameworks!
 
 pod 'BNRCoreDataStack'
 pod 'Color-Picker-for-iOS'
-pod 'NKOColorPickerView'
+pod 'NKOColorPickerView', :path => '/Users/mattquiros/Developer/NKOColorPickerView'
 
