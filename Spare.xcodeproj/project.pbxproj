@@ -107,7 +107,6 @@
 		269D49F21CE1610100109990 /* __CEVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269D49EA1CE1610100109990 /* __CEVCView.swift */; };
 		269D49F31CE1610100109990 /* __CEVCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 269D49EB1CE1610100109990 /* __CEVCView.xib */; };
 		269D49F41CE1610100109990 /* CategoryEditorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269D49EC1CE1610100109990 /* CategoryEditorVC.swift */; };
-		269D49F51CE1610100109990 /* HRColorMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269D49ED1CE1610100109990 /* HRColorMapView.swift */; };
 		269D49F81CE1610100109990 /* ExpenseEditorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269D49F11CE1610100109990 /* ExpenseEditorVC.swift */; };
 		269D49FA1CE1643400109990 /* AddCategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269D49F91CE1643400109990 /* AddCategoryVC.swift */; };
 		269D49FC1CE1643A00109990 /* AddExpenseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269D49FB1CE1643A00109990 /* AddExpenseVC.swift */; };
@@ -300,7 +299,6 @@
 		269D49EA1CE1610100109990 /* __CEVCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __CEVCView.swift; sourceTree = "<group>"; };
 		269D49EB1CE1610100109990 /* __CEVCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __CEVCView.xib; sourceTree = "<group>"; };
 		269D49EC1CE1610100109990 /* CategoryEditorVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryEditorVC.swift; sourceTree = "<group>"; };
-		269D49ED1CE1610100109990 /* HRColorMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRColorMapView.swift; sourceTree = "<group>"; };
 		269D49F11CE1610100109990 /* ExpenseEditorVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseEditorVC.swift; sourceTree = "<group>"; };
 		269D49F91CE1643400109990 /* AddCategoryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCategoryVC.swift; sourceTree = "<group>"; };
 		269D49FB1CE1643A00109990 /* AddExpenseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddExpenseVC.swift; sourceTree = "<group>"; };
@@ -671,7 +669,6 @@
 				269D49EA1CE1610100109990 /* __CEVCView.swift */,
 				269D49EB1CE1610100109990 /* __CEVCView.xib */,
 				269D49EC1CE1610100109990 /* CategoryEditorVC.swift */,
-				269D49ED1CE1610100109990 /* HRColorMapView.swift */,
 				269D4A011CE16DCA00109990 /* ValidateCategoryOperation.swift */,
 				26A43A071D1F9FD300E0A820 /* EditCategoryVC.swift */,
 				267E0A7A1D9E728D009B5612 /* ColorPickerControl.swift */,
@@ -1044,7 +1041,6 @@
 				26FF031A1D2BBB8D00BA74FD /* BaseNavBarVC.swift in Sources */,
 				268F48151D60D3490088AC6B /* StartOfWeek.swift in Sources */,
 				26BC4F961CE429AE0011BE98 /* ValidateExpenseOperation.swift in Sources */,
-				269D49F51CE1610100109990 /* HRColorMapView.swift in Sources */,
 				2669AAF91D7C29D700DDA321 /* __SVCCategoryCellBox.swift in Sources */,
 				2603F8CE1CCA4C10007F311F /* Expense+CoreDataProperties.swift in Sources */,
 				2669468F1CC7711000A68424 /* Spare.xcdatamodeld in Sources */,

@@ -53,15 +53,15 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gu8-3A-LkQ">
-                                            <rect key="frame" x="67" y="0.0" width="205" height="50"/>
+                                            <rect key="frame" x="67" y="0.0" width="193" height="50"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sTS-g1-MS3">
-                                            <rect key="frame" x="282" y="10" width="30" height="30"/>
+                                            <rect key="frame" x="270" y="5" width="40" height="40"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="30" id="BiG-38-qik"/>
+                                                <constraint firstAttribute="width" constant="40" id="BiG-38-qik"/>
                                                 <constraint firstAttribute="width" secondItem="sTS-g1-MS3" secondAttribute="height" id="LQV-Fh-dYS"/>
                                             </constraints>
                                         </view>
@@ -69,7 +69,7 @@
                                     <color key="backgroundColor" red="0.80000001190000003" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstItem="sTS-g1-MS3" firstAttribute="centerY" secondItem="37p-h9-Sty" secondAttribute="centerY" id="8K6-NL-4bn"/>
-                                        <constraint firstAttribute="trailing" secondItem="sTS-g1-MS3" secondAttribute="trailing" constant="8" id="DAD-m7-T5a"/>
+                                        <constraint firstAttribute="trailing" secondItem="sTS-g1-MS3" secondAttribute="trailing" constant="10" id="DAD-m7-T5a"/>
                                         <constraint firstItem="sTS-g1-MS3" firstAttribute="leading" secondItem="Gu8-3A-LkQ" secondAttribute="trailing" constant="10" id="QeC-O0-7ft"/>
                                         <constraint firstItem="wgC-l6-Lpt" firstAttribute="leading" secondItem="37p-h9-Sty" secondAttribute="leading" constant="15" id="RT3-JN-aWQ"/>
                                         <constraint firstAttribute="bottom" secondItem="Gu8-3A-LkQ" secondAttribute="bottom" id="Y7a-uJ-Y2e"/>

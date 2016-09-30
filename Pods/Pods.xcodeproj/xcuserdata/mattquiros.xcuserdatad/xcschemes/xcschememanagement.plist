@@ -9,11 +9,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Color-Picker-for-iOS.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>NKOColorPickerView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -27,22 +22,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>0F8EFCD4598622EB84D9BD1928DC474F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>698733C4D35F57BFBAEEEF66B2C06C7F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7B481EB68FCD3D67F975470D765E6628</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>C1CD1F1DE0F273D90638723EA7A09124</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>D5C39A384113396D5D6A52DBD43367E5</key>
 		<dict>
 			<key>primary</key>
 			<true/>

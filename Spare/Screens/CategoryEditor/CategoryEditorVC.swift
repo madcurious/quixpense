@@ -17,7 +17,7 @@ class CategoryEditorVC: UIViewController {
     
     let customView = __CEVCView.instantiateFromNib() as __CEVCView
     
-    private let defaultColor = UIColor.redColor()
+    private let defaultColor = UIColor(hex: 0xff1500)
     
     override var formScrollView: UIScrollView {
         return self.customView.scrollView
@@ -28,24 +28,14 @@ class CategoryEditorVC: UIViewController {
         self.managedObjectContext = context
         
         if let objectID = category?.objectID,
-            let category = context.objectWithID(objectID) as? Category,
-            let colorHex = category.colorHex as? Int {
+            let category = context.objectWithID(objectID) as? Category {
             self.category = category
-            self.customView.colorPickerControl.selectedColor = UIColor(hex: colorHex)
         } else {
             self.category = Category(managedObjectContext: context)
             self.category.colorHex = self.defaultColor.hexValue()
-            self.customView.colorPickerControl.selectedColor = self.defaultColor
         }
         
         super.init(nibName: nil, bundle: nil)
-        
-        self.customView.colorBoxView.backgroundColor = self.customView.colorPickerControl.selectedColor
-        
-        let request = NSFetchRequest(entityName: Category.entityName)
-        if let categories = try! self.managedObjectContext.executeFetchRequest(request) as? [Category] {
-            print(categories)
-        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -64,6 +54,7 @@ class CategoryEditorVC: UIViewController {
         self.customView.nameTextField.text = self.category.name
         
         self.customView.colorPickerControl.addTarget(self, action: #selector(handleColorPickerChanged), forControlEvents: .ValueChanged)
+        self.customView.colorPickerControl.selectedColor = self.category.color
         
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapOnView)))
     }
@@ -73,7 +64,12 @@ class CategoryEditorVC: UIViewController {
     }
     
     func handleColorPickerChanged() {
-        self.customView.colorBoxView.backgroundColor = self.customView.colorPickerControl.selectedColor
+        let selectedColor = self.customView.colorPickerControl.selectedColor
+        self.customView.colorBoxView.backgroundColor = selectedColor
+        self.customView.colorTextField.text = "#" + String(selectedColor.hexValue(), radix: 16, uppercase: true)
+        
+        // Update the model.
+        self.category.colorHex = selectedColor.hexValue()
     }
     
     /**
