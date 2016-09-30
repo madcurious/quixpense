@@ -86,8 +86,10 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods/BNRCoreDataStack.framework"
   install_framework "Pods/Color_Picker_for_iOS.framework"
+  install_framework "Pods/NKOColorPickerView.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods/BNRCoreDataStack.framework"
   install_framework "Pods/Color_Picker_for_iOS.framework"
+  install_framework "Pods/NKOColorPickerView.framework"
 fi

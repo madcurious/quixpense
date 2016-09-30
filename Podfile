@@ -3,4 +3,5 @@ use_frameworks!
 
 pod 'BNRCoreDataStack'
 pod 'Color-Picker-for-iOS'
+pod 'NKOColorPickerView'
 

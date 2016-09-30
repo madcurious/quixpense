@@ -48,6 +48,7 @@ class CategoryEditorVC: UIViewController {
         
         super.init(nibName: nil, bundle: nil)
         
+        self.colorMap.clipsToBounds = true
         self.customView.colorMap = self.colorMap
         self.customView.slider = self.slider
         self.customView.colorBoxView.backgroundColor = self.getResultingColor()

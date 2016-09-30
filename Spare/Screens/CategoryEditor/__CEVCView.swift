@@ -82,10 +82,20 @@ class __CEVCView: UIView {
         self.nameLabel.textColor = Color.FieldLabelTextColor
         self.nameLabel.textAlignment = .Right
         
+        self.nameTextField.textColor = Color.UniversalTextColor
+        self.nameTextField.font = Font.FieldValue
+        self.nameTextField.autocapitalizationType = .Sentences
+        self.nameTextField.adjustsFontSizeToFitWidth = false
+        
         self.colorLabel.text = "COLOR"
         self.colorLabel.font = Font.FieldLabel
         self.colorLabel.textColor = Color.FieldLabelTextColor
         self.colorLabel.textAlignment = .Right
+        
+        self.colorTextField.userInteractionEnabled = false
+        self.colorTextField.textColor = Color.UniversalTextColor
+        self.colorTextField.font = Font.FieldValue
+        self.colorTextField.adjustsFontSizeToFitWidth = false
         
         // Add parent references for touch passing.
         self.colorMapExtendedTouchArea.parent = self
