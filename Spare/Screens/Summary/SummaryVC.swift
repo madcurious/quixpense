@@ -53,7 +53,7 @@ class SummaryVC: UIViewController {
         
         let system = NotificationCenter.default
         system.addObserver(self, selector: #selector(handlePerformedExpenseOperation(_:)),
-                           name: NSNotificationName.performedExpenseOperation.string(), object: nil)
+                           name: Notifications.PerformedExpenseOperation, object: nil)
     }
     
     func reloadView() {
@@ -82,7 +82,7 @@ class SummaryVC: UIViewController {
     }
     
     fileprivate func showView(_ view: View) {
-        self.zeroView.hidden = view != .Zero
+        self.zeroView.isHidden = view != .zero
         self.collectionView.isHidden = view != .chart
         
         switch view {

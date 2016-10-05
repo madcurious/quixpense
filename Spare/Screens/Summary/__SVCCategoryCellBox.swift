@@ -16,7 +16,7 @@ private let kCategoryNameAttributes: [String : AnyObject] =  [
 ]
 
 private let kPercentAttributes: [String : AnyObject] = [
-    NSForegroundColorAttributeName : Color.UniversalSecondaryTextColor.CGColor,
+    NSForegroundColorAttributeName : Color.UniversalSecondaryTextColor.cgColor,
     NSFontAttributeName : kNameLabelFont
 ]
 

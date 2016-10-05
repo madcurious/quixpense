@@ -57,7 +57,7 @@ class CreateSummariesOperation: MDOperation {
     }
     
     func dateRangeForPage(_ page: Int) -> (Date, Date) {
-        var calendar = (Calendar.current as NSCalendar).copy() as! Calendar
+        var calendar = Calendar.current
         
         switch self.periodization {
         case .day:

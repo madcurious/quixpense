@@ -37,7 +37,7 @@ class __EEVCKeypadCell: UICollectionViewCell {
         
         self.addSubviewAndFill(self.keyLabel)
         
-        self.keyLabel.fontSize = .VHeight(0.5)
+        self.keyLabel.fontSize = .vHeight(0.5)
         self.keyLabel.textColor = Color.UniversalTextColor
         self.keyLabel.textAlignment = .center
     }

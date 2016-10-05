@@ -83,13 +83,13 @@ class __EEVCView: UIView {
         self.currencyLabel.textColor = Color.FieldLabelTextColor
         self.currencyLabel.text = AmountFormatter.currencyCode()
         self.currencyLabel.font = Font.ExpenseEditorCurrencyLabel
-        self.currencyLabel.fontSize = .VHeight(0.8)
+        self.currencyLabel.fontSize = .vHeight(0.8)
         
         self.amountTextField.isUserInteractionEnabled = false
         self.amountTextField.textColor = Color.FieldValueTextColor
         self.amountTextField.attributedPlaceholder = NSAttributedString(string: "0", font: Font.ExpenseEditorAmountValue, textColor: Color.FieldValueTextColor)
         self.amountTextField.font = Font.ExpenseEditorAmountValue
-        self.amountTextField.fontSize = .VHeight(0.8)
+        self.amountTextField.fontSize = .vHeight(0.8)
         self.amountTextField.textAlignment = .right
         
         self.keypadCollectionView.isScrollEnabled = false

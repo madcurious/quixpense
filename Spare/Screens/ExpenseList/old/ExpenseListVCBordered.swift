@@ -24,15 +24,13 @@ class ExpenseListVCBordered: UIViewController {
     let customView = __ELVCBView.instantiateFromNib() as __ELVCBView
     
     var expenses: [Expense]? {
-        return glb_autoreport({[unowned self] in
-            let request = NSFetchRequest(entityName: Expense.entityName)
-            request.predicate = NSPredicate(format: "category == %@ && dateSpent >= %@ && dateSpent <= %@", self.category, self.startDate, self.endDate)
-            if let expenses = try App.mainQueueContext.executeFetchRequest(request) as? [Expense]
-                , expenses.count > 0 {
-                return expenses
-            }
-            return nil
-            })
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: Expense.entityName)
+        request.predicate = NSPredicate(format: "category == %@ && dateSpent >= %@ && dateSpent <= %@", [self.category, self.startDate, self.endDate])
+        if let expenses = (try? App.mainQueueContext.fetch(request)) as? [Expense]
+            , expenses.count > 0 {
+            return expenses
+        }
+        return nil
     }
     
     init(category: Category, startDate: Date, endDate: Date) {

@@ -15,8 +15,7 @@ class CustomPickerPresentationAnimator: NSObject, UIViewControllerAnimatedTransi
     }
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-        guard let containerView = transitionContext.containerView,
-            let toVC = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to),
+        guard let toVC = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to),
             let toView = transitionContext.view(forKey: UITransitionContextViewKey.to) as? CustomPickerView
             else {
                 return
@@ -34,6 +33,7 @@ class CustomPickerPresentationAnimator: NSObject, UIViewControllerAnimatedTransi
         var destinationFrame = initialMainContainerFrame
         destinationFrame.origin.y = destinationY
         
+        let containerView = transitionContext.containerView
         containerView.addSubview(toView)
         
         UIView.animate(

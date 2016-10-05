@@ -39,7 +39,7 @@ class ExpenseEditorVC: MDOperationViewController {
     let customPicker = CustomPickerVC()
     
     init(expense: Expense?) {
-        self.managedObjectContext = App.coreDataStack.newBackgroundWorkerMOC()
+        self.managedObjectContext = App.coreDataStack.newChildContext()
         
         if let objectID = expense?.objectID,
             let expense = self.managedObjectContext.object(with: objectID) as? Expense {
@@ -49,7 +49,7 @@ class ExpenseEditorVC: MDOperationViewController {
             // the payment method is cash.
             self.expense = Expense(managedObjectContext: self.managedObjectContext)
             self.expense.dateSpent = Date()
-            self.expense.paymentMethod = PaymentMethod.cash.rawValue
+            self.expense.paymentMethod = PaymentMethod.cash.rawValue as NSNumber
         }
         
         super.init()
@@ -111,8 +111,8 @@ class ExpenseEditorVC: MDOperationViewController {
     
     override func buildOperation() -> MDOperation? {
         let op = MDBlockOperation {
-            let fetchRequest = NSFetchRequest(entityName: Category.entityName)
-            let categories = try self.managedObjectContext.executeFetchRequest(fetchRequest) as! [Category]
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: Category.entityName)
+            let categories = try self.managedObjectContext.fetch(fetchRequest) as! [Category]
             return categories
             }
             .onSuccess {[unowned self] (result) in
@@ -174,7 +174,7 @@ class ExpenseEditorVC: MDOperationViewController {
     }
     
     func refreshDateSpentDisplay() {
-        self.customView.dateButton.setTitle(DateFormatter.displayTextForExpenseEditorDate(self.expense.dateSpent), for: .Normal)
+        self.customView.dateButton.setTitle(DateFormatter.displayTextForExpenseEditorDate(self.expense.dateSpent), for: .normal)
     }
     
     func refreshPaymentMethodDisplay() {

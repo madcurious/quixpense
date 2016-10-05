@@ -20,15 +20,13 @@ struct Summary: Equatable {
      Returns an array of all the expenses in the date range, or nil if none were found.
      */
     var expenses: [Expense]? {
-        return glb_autoreport({
-            let request = NSFetchRequest(entityName: Expense.entityName)
-            request.predicate = NSPredicate(format: "dateSpent >= %@ AND dateSpent <= %@", self.startDate, self.endDate)
-            if let expenses = try App.mainQueueContext.executeFetchRequest(request) as? [Expense]
-                , expenses.isEmpty == false {
-                return expenses
-            }
-            return nil
-        })
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: Expense.entityName)
+        request.predicate = NSPredicate(format: "dateSpent >= %@ AND dateSpent <= %@", [self.startDate, self.endDate])
+        if let expenses = (try? App.mainQueueContext.fetch(request)) as? [Expense],
+            expenses.isEmpty == false {
+            return expenses
+        }
+        return nil
     }
     
     /**
@@ -66,7 +64,7 @@ struct Summary: Equatable {
             }
             
             let categoryTotal = glb_totalOfExpenses(expenses)
-            let categoryPercent = overallTotal == 0 ? 0 : categoryTotal.decimalNumberByDividingBy(overallTotal).doubleValue
+            let categoryPercent = overallTotal == 0 ? 0 : categoryTotal.dividing(by: overallTotal).doubleValue
             data.append((category, categoryTotal, categoryPercent))
         }
         

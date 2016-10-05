@@ -80,9 +80,9 @@ class ExpenseListVC: MDOperationViewController {
                 if expenses.count > 0 {
                     self.setupHeaderView()
                     self.tableView.reloadData()
-                    self.showView(.Primary)
+                    self.showView(.primary)
                 } else {
-                    self.showView(.NoResults)
+                    self.showView(.noResults)
                 }
             })
     }

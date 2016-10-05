@@ -33,7 +33,7 @@ class HomeVC: MDOperationViewController {
         return self.pageViewController.view
     }
     
-    override var retryView: MDRetryView {
+    override var retryView: UIView {
         return self.noCategoriesView
     }
     
@@ -60,7 +60,7 @@ class HomeVC: MDOperationViewController {
         self.pageViewController.dataSource = self
         self.pageViewController.delegate = self
         
-        self.showView(.Loading)
+        self.showView(.loading)
         
         self.noResultsView.backgroundColor = Color.UniversalBackgroundColor
         
@@ -93,11 +93,11 @@ class HomeVC: MDOperationViewController {
                         return
                 }
                 
-                self.summaries.insertContentsOf(newSummaries, at: 0)
+                self.summaries.insert(contentsOf: newSummaries, at: 0)
                 
-                if self.currentView != .Primary {
+                if self.currentView != .primary {
                     self.scrollToLastSummary(animated: false)
-                    self.showView(.Primary)
+                    self.showView(.primary)
                 }
                 
                 })
@@ -105,12 +105,8 @@ class HomeVC: MDOperationViewController {
     
     override func buildFailBlock() -> ((Error) -> Void) {
         return {[unowned self] error in
-            guard let customError = error as? Error
-                else {
-                    fatalError("Got an error not customised: \(error as NSError)")
-            }
-            self.noCategoriesView.error = customError
-            self.showView(.Retry)
+            self.noCategoriesView.error = error
+            self.showView(.retry)
         }
     }
     

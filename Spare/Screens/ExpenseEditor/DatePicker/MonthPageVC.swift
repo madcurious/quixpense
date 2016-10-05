@@ -57,7 +57,7 @@ class MonthPageVC: UIViewController {
         let calendar = Calendar.current
         let weekday = (calendar as NSCalendar).component(.weekday, from: month)
         let count = weekday - 1
-        MonthPageVC.fillerCountCache.setObject(NSNumber(value: count), forKey: month)
+        MonthPageVC.fillerCountCache.setObject(NSNumber(value: count), forKey: month as NSDate)
         return count
     }
     
@@ -188,7 +188,7 @@ extension MonthPageVC: UICollectionViewDelegate {
         
         let selectedDate = self.dateForIndexPath(indexPath)
         NotificationCenter.default.post(
-            name: Notification.Name(rawValue: Notifications.MonthPageVCDidSelectDate), object: self, userInfo: [
+            name: Notifications.MonthPageVCDidSelectDate, object: self, userInfo: [
                 "selectedDate" : selectedDate
             ])
     }

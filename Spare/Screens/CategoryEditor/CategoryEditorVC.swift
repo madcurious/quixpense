@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import CoreData
+import BNRCoreDataStack
 import Mold
 
 class CategoryEditorVC: UIViewController {
@@ -24,11 +24,11 @@ class CategoryEditorVC: UIViewController {
     }
     
     init(category: Category?) {
-        let context = App.coreDataStack.newBackgroundWorkerMOC()
+        let context = App.coreDataStack.newChildContext()
         self.managedObjectContext = context
         
         if let objectID = category?.objectID,
-            let category = context.objectWithID(objectID) as? Category {
+            let category = context.object(with: objectID) as? Category {
             self.category = category
         } else {
             self.category = Category(managedObjectContext: context)

@@ -44,13 +44,13 @@ class AddExpenseVC: BaseFormVC {
                 .onSuccess({[unowned self] (_) in
                     self.editor.managedObjectContext.saveContext {[unowned self] (result) in
                         switch result {
-                        case .Failure(let error as NSError):
+                        case .failure(let error):
                             MDErrorDialog.showError(error, inPresenter: self)
                         default:
                             MDDispatcher.asyncRunInMainThread({
                                 // Throw a notification to notify summary views.
                                 let system = NotificationCenter.default
-                                system.post(name: NSNotification.Name(rawValue: NSNotificationName.PerformedExpenseOperation.string()), object: self.editor.expense)
+                                system.post(name: Notifications.PerformedExpenseOperation, object: self.editor.expense)
                                 
                                 self.editor.reset()
                             })

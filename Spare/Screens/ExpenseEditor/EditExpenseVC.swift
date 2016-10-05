@@ -31,7 +31,7 @@ class EditExpenseVC: BaseFormVC {
                 .onSuccess({[unowned self] (_) in
                     self.editor.managedObjectContext.saveContext {[unowned self] (result) in
                         switch result {
-                        case .Failure(let error as NSError):
+                        case .failure(let error):
                             MDErrorDialog.showError(error, inPresenter: self)
                         default:
                             MDDispatcher.asyncRunInMainThread({[unowned self] in
