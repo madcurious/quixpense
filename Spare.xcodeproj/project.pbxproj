@@ -41,6 +41,7 @@
 		261EB88418DDB631009DDF78 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86818DDB631009DDF78 /* CoreData.framework */; };
 		261EB88C18DDB631009DDF78 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 261EB88A18DDB631009DDF78 /* InfoPlist.strings */; };
 		261EB88E18DDB631009DDF78 /* SpareTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 261EB88D18DDB631009DDF78 /* SpareTests.m */; };
+		261F147A1DA4D5E40072FAE7 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261F14791DA4D5E40072FAE7 /* Notifications.swift */; };
 		262F839B1CCE3E5300EDDDEE /* LoadAppVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262F839A1CCE3E5300EDDDEE /* LoadAppVC.swift */; };
 		262F839D1CCE3E6C00EDDDEE /* LoadAppOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262F839C1CCE3E6C00EDDDEE /* LoadAppOperation.swift */; };
 		263005641D4F8E9000AC3060 /* NoCategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263005621D4F8E9000AC3060 /* NoCategoriesView.swift */; };
@@ -136,7 +137,6 @@
 		26B076121D905E6E0026692E /* __ELVCCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26B076111D905E6E0026692E /* __ELVCCell.xib */; };
 		26BC4F961CE429AE0011BE98 /* ValidateExpenseOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC4F951CE429AE0011BE98 /* ValidateExpenseOperation.swift */; };
 		26C2D5C21CDB5E4800BC73FC /* AddButtonProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C2D5C11CDB5E4800BC73FC /* AddButtonProgressView.swift */; };
-		26D5DA961D77F86B000BFFA8 /* NSNotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D5DA951D77F86B000BFFA8 /* NSNotificationName.swift */; };
 		26E4E0591937AF690096191A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E4E0581937AF690096191A /* QuartzCore.framework */; };
 		26E6EDB41CDBA6C60034EEDE /* AddButtonProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26E6EDB31CDBA6C60034EEDE /* AddButtonProgressView.xib */; };
 		26E7FA7B1CDB332F000E2181 /* BaseTabButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E7FA7A1CDB332F000E2181 /* BaseTabButton.swift */; };
@@ -228,6 +228,7 @@
 		261EB88918DDB631009DDF78 /* SpareTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SpareTests-Info.plist"; sourceTree = "<group>"; };
 		261EB88B18DDB631009DDF78 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		261EB88D18DDB631009DDF78 /* SpareTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpareTests.m; sourceTree = "<group>"; };
+		261F14791DA4D5E40072FAE7 /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		262F839A1CCE3E5300EDDDEE /* LoadAppVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadAppVC.swift; sourceTree = "<group>"; };
 		262F839C1CCE3E6C00EDDDEE /* LoadAppOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadAppOperation.swift; sourceTree = "<group>"; };
 		263005621D4F8E9000AC3060 /* NoCategoriesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoCategoriesView.swift; sourceTree = "<group>"; };
@@ -328,7 +329,6 @@
 		26BC4F951CE429AE0011BE98 /* ValidateExpenseOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidateExpenseOperation.swift; sourceTree = "<group>"; };
 		26C2D5C11CDB5E4800BC73FC /* AddButtonProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddButtonProgressView.swift; sourceTree = "<group>"; };
 		26D4C8F41946E624001B42DC /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
-		26D5DA951D77F86B000BFFA8 /* NSNotificationName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSNotificationName.swift; sourceTree = "<group>"; };
 		26E4E0581937AF690096191A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		26E6EDB31CDBA6C60034EEDE /* AddButtonProgressView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddButtonProgressView.xib; sourceTree = "<group>"; };
 		26E7FA7A1CDB332F000E2181 /* BaseTabButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTabButton.swift; sourceTree = "<group>"; };
@@ -656,7 +656,7 @@
 				268F48091D60D3490088AC6B /* Periodization.swift */,
 				268F480A1D60D3490088AC6B /* StartOfWeek.swift */,
 				268F480B1D60D3490088AC6B /* Strings.swift */,
-				26D5DA951D77F86B000BFFA8 /* NSNotificationName.swift */,
+				261F14791DA4D5E40072FAE7 /* Notifications.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -977,6 +977,7 @@
 			files = (
 				26B075F21D8FFE250026692E /* OperationVCLoadingView.swift in Sources */,
 				265222A01D66CFCE007FED96 /* DatePickerVC.swift in Sources */,
+				261F147A1DA4D5E40072FAE7 /* Notifications.swift in Sources */,
 				266408C21D4A630E00609580 /* Button.swift in Sources */,
 				2603F8CF1CCA4C10007F311F /* Expense.swift in Sources */,
 				267E0A7B1D9E728D009B5612 /* ColorPickerControl.swift in Sources */,
@@ -987,7 +988,6 @@
 				268F47FE1D60D2900088AC6B /* CustomPickerPresentationAnimator.swift in Sources */,
 				26B0760C1D901DC60026692E /* Array.swift in Sources */,
 				266946931CC77A1A00A68424 /* AppDelegate.swift in Sources */,
-				26D5DA961D77F86B000BFFA8 /* NSNotificationName.swift in Sources */,
 				2687FA3C1D0EC46F00D544F5 /* CreateSummariesOperation.swift in Sources */,
 				26E7FA7B1CDB332F000E2181 /* BaseTabButton.swift in Sources */,
 				2676792A1D13FE8F004CF70A /* __SVCCategoryCell.swift in Sources */,

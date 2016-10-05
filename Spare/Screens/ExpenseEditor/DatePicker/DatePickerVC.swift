@@ -39,8 +39,6 @@ class DatePickerVC: UIViewController {
     let pageVC = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: [UIPageViewControllerOptionInterPageSpacingKey : 10])
     
     var months = [Date]()
-    let dayCountCache = NSCache()
-    let fillerCountCache = NSCache()
     
     var selectedDate: Date
     var delegate: DatePickerVCDelegate?
@@ -91,26 +89,8 @@ class DatePickerVC: UIViewController {
         self.customView.nextButton.addTarget(self, action: #selector(handleTapOnNextButton), for: .touchUpInside)
         
         // Listen to date selections in month pages.
-        NotificationCenter.default.addObserver(self, selector: #selector(handleDateSelectionNotification(_:)), name: NSNotificationName.monthPageVCDidSelectDate.string(), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleDateSelectionNotification(_:)), name: Notifications.MonthPageVCDidSelectDate, object: nil)
     }
-    
-//    private func generateMonthsFromDate(date: NSDate, forPageDirection pageDirection: PageDirection) -> [NSDate] {
-//        // Use the first day of the month as the base date.
-//        let calendar = NSCalendar.currentCalendar()
-//        let components = calendar.components([.Month, .Day, .Year], fromDate: date)
-//        components.day = 1
-//        let baseMonth = calendar.dateFromComponents(components)!
-//        
-//        var months = [NSDate]()
-//        for i in 1 ... 6 {
-//            let increment = pageDirection == .Previous ? -(i) : i
-//            let newMonth = calendar.dateByAddingUnit(.Month, value: increment, toDate: baseMonth, options: [])!
-//            let insertionIndex = pageDirection == .Previous ? 0 : months.count
-//            months.insert(newMonth, atIndex: insertionIndex)
-//        }
-//        
-//        return months
-//    }
     
     fileprivate func generateMoreMonths(_ direction: PageDirection, baseDate: Date? = nil) -> [Date] {
         var baseDate: Date = {
@@ -193,7 +173,7 @@ extension DatePickerVC {
     
     func handleDateSelectionNotification(_ notification: Notification) {
         guard let selectedDate = (notification as NSNotification).userInfo?["selectedDate"] as? Date
-            , notification.name == NSNotificationName.monthPageVCDidSelectDate.string()
+            , notification.name == Notifications.MonthPageVCDidSelectDate
             else {
                 return
         }

@@ -15,8 +15,8 @@ private enum ViewID: String {
 
 class MonthPageVC: UIViewController {
     
-    static let dayCountCache = NSCache()
-    static let fillerCountCache = NSCache()
+    static let dayCountCache = NSCache<NSDate, NSNumber>()
+    static let fillerCountCache = NSCache<NSDate, NSNumber>()
     
     let collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
@@ -37,25 +37,27 @@ class MonthPageVC: UIViewController {
     var selectedIndexPath: IndexPath?
     
     var numberOfDays: Int {
-        if let count = MonthPageVC.dayCountCache.object(forKey: self.month) as? Int {
+        let monthNSDate = self.month as NSDate
+        if let count = MonthPageVC.dayCountCache.object(forKey: monthNSDate) as? Int {
             return count
         }
         
         let calendar = Calendar.current
         let count = (calendar as NSCalendar).range(of: .day, in: .month, for: self.month).length
-        MonthPageVC.dayCountCache.setObject(count, forKey: self.month)
+        MonthPageVC.dayCountCache.setObject(NSNumber(value: count), forKey: monthNSDate)
         return count
     }
     
     var numberOfFillers: Int {
-        if let count = MonthPageVC.fillerCountCache.object(forKey: self.month) as? Int {
+        let monthNSDate = self.month as NSDate
+        if let count = MonthPageVC.fillerCountCache.object(forKey: monthNSDate) as? Int {
             return count
         }
         
         let calendar = Calendar.current
         let weekday = (calendar as NSCalendar).component(.weekday, from: month)
         let count = weekday - 1
-        MonthPageVC.fillerCountCache.setObject(count, forKey: month)
+        MonthPageVC.fillerCountCache.setObject(NSNumber(value: count), forKey: month)
         return count
     }
     
