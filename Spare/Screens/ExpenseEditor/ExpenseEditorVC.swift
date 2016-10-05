@@ -128,7 +128,7 @@ class ExpenseEditorVC: MDOperationViewController {
                     self.expense.category = categories.first
                 }
                 
-                self.showView(.Primary)
+                self.showView(.primary)
                 self.refreshViewFromModel()
         }
         return op

@@ -20,14 +20,14 @@ class SettingsVC: UIViewController {
     
     let fields = [
         [
-            MDField(name: "Currency".uppercaseString),
-            MDField(name: "Start of week".uppercaseString)
+            "Currency",
+            "Start of week"
         ],
         [
-            MDField(name: "Screen on launch".uppercaseString)
+            "Screen on launch"
         ],
         [
-            MDField(name: "Manage categories".uppercaseString)
+            "Manage categories"
         ]
     ]
     
@@ -100,8 +100,7 @@ extension SettingsVC: UITableViewDataSource {
         }
         
         let field = self.fields[indexPath.section][indexPath.row]
-        cell.textLabel?.text = field.label
-        cell.detailTextLabel?.text = field.value as? String
+        cell.textLabel?.text = field
         
         return cell
     }

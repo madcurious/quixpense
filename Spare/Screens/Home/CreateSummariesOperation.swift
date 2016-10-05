@@ -9,15 +9,16 @@
 import Foundation
 import Mold
 
-enum CreateSummariesOperationError: MDErrorType {
+enum CreateSummariesOperationError: Error {
     case noCategoriesYet
     
-    func object() -> MDError {
+    var localizedDescription: String {
         switch self {
         case .noCategoriesYet:
-            return MDError("You have no categories yet! Press and hold the ＋ button to add one.")
+            return "You have no categories yet! Press and hold the ＋ button to add one."
         }
     }
+    
 }
 
 class CreateSummariesOperation: MDOperation {

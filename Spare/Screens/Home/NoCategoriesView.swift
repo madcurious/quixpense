@@ -20,11 +20,8 @@ class NoCategoriesView: UIView {
             defer {
                 self.setNeedsLayout()
             }
-            if let error = self.error as? MDErrorType {
-                self.messageLabel.text = error.object().message
-            } else if let error = self.error as? NSError {
-                self.messageLabel.text = error.description
-            }
+            
+            self.messageLabel.text = error?.localizedDescription
         }
     }
     

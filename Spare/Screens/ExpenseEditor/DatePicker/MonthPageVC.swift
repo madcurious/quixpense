@@ -87,7 +87,7 @@ class MonthPageVC: UIViewController {
         self.collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: ViewID.FillerCell.rawValue)
         self.collectionView.register(__DPVCDayCell.nib(), forCellWithReuseIdentifier: ViewID.DayCell.rawValue)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(handleDateSelectionNotification(_:)), name: NSNotificationName.monthPageVCDidSelectDate.string(), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleDateSelectionNotification(_:)), name: Notifications.MonthPageVCDidSelectDate, object: nil)
     }
     
     func dayForIndexPath(_ indexPath: IndexPath) -> Int {
@@ -123,7 +123,7 @@ class MonthPageVC: UIViewController {
     func handleDateSelectionNotification(_ notification: Notification) {
         guard let selectedDate = (notification as NSNotification).userInfo?["selectedDate"] as? Date,
             let sender = notification.object as? MonthPageVC
-            , notification.name == NSNotificationName.monthPageVCDidSelectDate.string() &&
+            , notification.name == Notifications.MonthPageVCDidSelectDate &&
                 sender != self
             else {
                 // Avoid reacting to the global notification if the sender is this
@@ -188,7 +188,7 @@ extension MonthPageVC: UICollectionViewDelegate {
         
         let selectedDate = self.dateForIndexPath(indexPath)
         NotificationCenter.default.post(
-            name: Notification.Name(rawValue: NSNotificationName.monthPageVCDidSelectDate.string()), object: self, userInfo: [
+            name: Notification.Name(rawValue: Notifications.MonthPageVCDidSelectDate), object: self, userInfo: [
                 "selectedDate" : selectedDate
             ])
     }

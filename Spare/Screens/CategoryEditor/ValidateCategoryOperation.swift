@@ -8,16 +8,16 @@
 
 import Mold
 
-enum ValidateCategoryOperationError: MDErrorType {
+enum ValidateCategoryOperationError: Error {
     case missingName, missingColor
     
-    func object() -> MDError {
+    var localizedDescription: String {
         switch self {
         case .missingName:
-            return MDError("You must enter a category name.")
+            return "You must enter a category name."
             
         case .missingColor:
-            return MDError("You must select a color.")
+            return "You must select a color."
         }
     }
 }
@@ -32,7 +32,7 @@ class ValidateCategoryOperation: MDOperation {
         self.colorHex = category.colorHex
     }
     
-    override func makeResult(_ object: Any?) throws -> Any? {
+    override func makeResult(fromSource object: Any?) throws -> Any? {
         if md_nonEmptyString(self.categoryName) == nil {
             throw ValidateCategoryOperationError.missingName
         }

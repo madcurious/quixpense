@@ -10,6 +10,20 @@ import UIKit
 import Mold
 import BNRCoreDataStack
 
+enum ValidateExpenseOperationError: Error {
+    case missingValue(String), zeroAmount
+    
+    var localizedDescription: String {
+        switch self {
+        case .missingValue(let valueName):
+            return "\(valueName.capitalized) is required."
+            
+        case .zeroAmount:
+            return "You can't add zero-amount expenses."
+        }
+    }
+}
+
 class ValidateExpenseOperation: MDOperation {
     
     var expenseID: NSManagedObjectID
@@ -35,13 +49,13 @@ class ValidateExpenseOperation: MDOperation {
         ]
         for (label, value) in requiredFields {
             if value == nil {
-                throw Error.userEnteredInvalidValue("\(label) is required.")
+                throw ValidateExpenseOperationError.missingValue(label)
             }
         }
         
         if let amount = expense.amount
             , amount == 0 {
-            throw Error.userEnteredInvalidValue("You can't add zero-amount expenses.")
+            throw ValidateExpenseOperationError.zeroAmount
         }
         
         return nil
