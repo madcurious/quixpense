@@ -22,15 +22,15 @@ class BaseFormVC: UIViewController {
             NSForegroundColorAttributeName: Color.UniversalTextColor
         ]
         if let leftBarButtonItem = self.navigationItem.leftBarButtonItem {
-            leftBarButtonItem.setTitleTextAttributes(barButtonAttributes, forState: .Normal)
+            leftBarButtonItem.setTitleTextAttributes(barButtonAttributes, for: UIControlState())
         }
         if let rightBarButtonItem = self.navigationItem.rightBarButtonItem {
-            rightBarButtonItem.setTitleTextAttributes(barButtonAttributes, forState: .Normal)
+            rightBarButtonItem.setTitleTextAttributes(barButtonAttributes, for: UIControlState())
         }
     }
     
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
     
 }

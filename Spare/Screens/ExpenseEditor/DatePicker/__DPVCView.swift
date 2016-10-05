@@ -33,27 +33,27 @@ class __DPVCView: CustomPickerView {
         
         self.selectedDateLabel.textColor = Color.CustomPickerTextColor
 //        self.selectedDateLabel.backgroundColor = UIColor(hex: 0xcccccc)
-        self.selectedDateLabel.textAlignment = .Center
+        self.selectedDateLabel.textAlignment = .center
         self.selectedDateLabel.numberOfLines = 1
         self.selectedDateLabel.font = Font.make(.Heavy, 26)
         
         self.monthLabel.textColor = Color.CustomPickerTextColor
-        self.monthLabel.textAlignment = .Center
+        self.monthLabel.textAlignment = .center
         self.monthLabel.font = Font.make(.Medium, 16)
         
         let arrowButtons = [self.previousButton, self.nextButton]
         for button in arrowButtons {
-            button.titleLabel?.font = Font.icon(20)
-            button.contentHorizontalAlignment = .Center
-            button.tintColor = UIColor.blackColor()
+            button?.titleLabel?.font = Font.icon(20)
+            button?.contentHorizontalAlignment = .center
+            button?.tintColor = UIColor.black
         }
-        self.previousButton.setTitle(Icon.Back.rawValue, forState: .Normal)
-        self.nextButton.setTitle(Icon.Next.rawValue, forState: .Normal)
+        self.previousButton.setTitle(Icon.Back.rawValue, for: UIControlState())
+        self.nextButton.setTitle(Icon.Next.rawValue, for: UIControlState())
         
         let texts = ["S", "M", "T", "W", "T", "F", "S"]
         for i in 0 ..< self.headerLabels.count {
             let label = self.headerLabels[i]
-            label.textAlignment = .Center
+            label.textAlignment = .center
             label.text = texts[i]
             label.font = Font.make(.Medium, 14)
             label.textColor = Color.CustomPickerHeaderTextColor

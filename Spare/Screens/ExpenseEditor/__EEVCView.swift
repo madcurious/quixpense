@@ -50,11 +50,11 @@ class __EEVCView: UIView {
         let labels = ["CATEGORY", "DATE SPENT", "PAID WITH", "NOTES"]
         for i in 0..<self.fieldLabels.count {
             let label = self.fieldLabels[i]
-            label.textAlignment = .Right
+            label.textAlignment = .right
             label.textColor = Color.FieldLabelTextColor
             label.font = {
                 if MDScreen.currentScreenIs(.iPhone4S) {
-                    return Font.FieldLabel.fontWithSize(12)
+                    return Font.FieldLabel.withSize(12)
                 }
                 return Font.FieldLabel
             }()
@@ -63,16 +63,16 @@ class __EEVCView: UIView {
         
         let buttons = [self.categoryButton, self.dateButton, self.paymentMethodButton]
         for button in buttons {
-            button.tintColor = Color.FieldValueTextColor
-            button.titleLabel?.font = {
+            button?.tintColor = Color.FieldValueTextColor
+            button?.titleLabel?.font = {
                 if MDScreen.currentScreenIs(.iPhone4S) {
-                    return Font.FieldValue.fontWithSize(17)
+                    return Font.FieldValue.withSize(17)
                 }
                 return Font.FieldValue
             }()
-            button.contentHorizontalAlignment = .Left
-            button.titleLabel?.numberOfLines = 1
-            button.titleLabel?.lineBreakMode = .ByTruncatingTail
+            button?.contentHorizontalAlignment = .left
+            button?.titleLabel?.numberOfLines = 1
+            button?.titleLabel?.lineBreakMode = .byTruncatingTail
         }
         
         self.noteTextField.font = Font.FieldValue
@@ -85,14 +85,14 @@ class __EEVCView: UIView {
         self.currencyLabel.font = Font.ExpenseEditorCurrencyLabel
         self.currencyLabel.fontSize = .VHeight(0.8)
         
-        self.amountTextField.userInteractionEnabled = false
+        self.amountTextField.isUserInteractionEnabled = false
         self.amountTextField.textColor = Color.FieldValueTextColor
         self.amountTextField.attributedPlaceholder = NSAttributedString(string: "0", font: Font.ExpenseEditorAmountValue, textColor: Color.FieldValueTextColor)
         self.amountTextField.font = Font.ExpenseEditorAmountValue
         self.amountTextField.fontSize = .VHeight(0.8)
-        self.amountTextField.textAlignment = .Right
+        self.amountTextField.textAlignment = .right
         
-        self.keypadCollectionView.scrollEnabled = false
+        self.keypadCollectionView.isScrollEnabled = false
         self.keypadCollectionView.allowsSelection = true
         
         self.setNeedsUpdateConstraints()

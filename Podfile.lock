@@ -1,17 +1,21 @@
 PODS:
-  - BNRCoreDataStack (1.2.3)
+  - BNRCoreDataStack (2.0.0)
   - NKOColorPickerView (0.5)
 
 DEPENDENCIES:
-  - BNRCoreDataStack
+  - BNRCoreDataStack (from `/Users/mattquiros/Developer/CoreDataStack`)
   - NKOColorPickerView (from `/Users/mattquiros/Developer/NKOColorPickerView`)
 
 EXTERNAL SOURCES:
+  BNRCoreDataStack:
+    :path: /Users/mattquiros/Developer/CoreDataStack
   NKOColorPickerView:
     :path: /Users/mattquiros/Developer/NKOColorPickerView
 
 SPEC CHECKSUMS:
-  BNRCoreDataStack: 10abcb19d2a3f397950a06e9b0915f4e695a826b
+  BNRCoreDataStack: b3b9aa9fe42c31d9880b91b70f688fbdf7b054ad
   NKOColorPickerView: 895ca86fe5bd16f27c311ce8f5888907efee29ad
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: 2cf9e980c9aaf91194e04dae7faae17acf1af095
+
+COCOAPODS: 1.0.1

@@ -5,14 +5,16 @@
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
     "295F2F8E35081E5EE4E52331E08374CF79594006" : 0,
-    "B2C538A9CDBDEAFD5E299ED7264E4EAC7DBE2471" : 0,
-    "B4D140610DFF03FBFA0DB5DDE860E8C31BFA2243" : 0
+    "B4D140610DFF03FBFA0DB5DDE860E8C31BFA2243" : 0,
+    "5915E2385F582E547E630042A6983CF4332EB22D" : 9223372036854775807,
+    "B2C538A9CDBDEAFD5E299ED7264E4EAC7DBE2471" : 0
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "BB83D66A-7E18-40C2-A706-7ADB46A4CC67",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
     "295F2F8E35081E5EE4E52331E08374CF79594006" : "spare-ios\/Mold\/",
-    "B2C538A9CDBDEAFD5E299ED7264E4EAC7DBE2471" : "spare-ios",
-    "B4D140610DFF03FBFA0DB5DDE860E8C31BFA2243" : "NKOColorPickerView\/"
+    "B4D140610DFF03FBFA0DB5DDE860E8C31BFA2243" : "NKOColorPickerView\/",
+    "5915E2385F582E547E630042A6983CF4332EB22D" : "CoreDataStack\/",
+    "B2C538A9CDBDEAFD5E299ED7264E4EAC7DBE2471" : "spare-ios\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "Spare",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
@@ -22,6 +24,11 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/mattquiros\/Mold.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "295F2F8E35081E5EE4E52331E08374CF79594006"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/bignerdranch\/CoreDataStack.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "5915E2385F582E547E630042A6983CF4332EB22D"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/mattquiros\/spare-ios.git",

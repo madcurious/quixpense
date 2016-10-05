@@ -10,17 +10,17 @@ import Foundation
 
 enum Periodization: Int {
     
-    case Day = 0, Week, Month, Year
+    case day = 0, week, month, year
     
     var descriptiveText: String {
         switch self {
-        case .Day:
+        case .day:
             return "Daily"
-        case .Week:
+        case .week:
             return "Weekly"
-        case .Month:
+        case .month:
             return "Monthly"
-        case .Year:
+        case .year:
             return "Yearly"
         }
     }

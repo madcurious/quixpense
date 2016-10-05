@@ -22,14 +22,14 @@ class __ELVCBEmptyView: UIView {
         self.iconLabel.font = Font.icon(160)
         self.iconLabel.textColor = Color.UniversalSecondaryTextColor
         self.iconLabel.text = Icon.Empty.rawValue
-        self.iconLabel.textAlignment = .Center
+        self.iconLabel.textAlignment = .center
         
         self.promptLabel.font = Font.ExpenseListEmptyViewPromptLabel
         self.promptLabel.textColor = Color.UniversalSecondaryTextColor
         self.promptLabel.numberOfLines = 0
-        self.promptLabel.lineBreakMode = .ByWordWrapping
+        self.promptLabel.lineBreakMode = .byWordWrapping
         self.promptLabel.text = "You have no expenses in this period."
-        self.promptLabel.textAlignment = .Center
+        self.promptLabel.textAlignment = .center
     }
     
 }

@@ -16,31 +16,31 @@ class PeriodizationButton: Button {
     override init() {
         super.init()
         self.updateText()
-        self.addTarget(self, action: #selector(handleTap), forControlEvents: .TouchUpInside)
+        self.addTarget(self, action: #selector(handleTap), for: .touchUpInside)
     }
     
     func handleTap() {
-        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
-        let options: [Periodization] = [.Day, .Week, .Month, .Year]
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let options: [Periodization] = [.day, .week, .month, .year]
         for i in 0 ..< options.count {
             let option = options[i]
-            let action = UIAlertAction(title: option.descriptiveText, style: .Default, handler: {[unowned self] _ in
+            let action = UIAlertAction(title: option.descriptiveText, style: .default, handler: {[unowned self] _ in
                 self.selectPeriodization(option)
                 })
             actionSheet.addAction(action)
         }
         actionSheet.addCancelAction()
         
-        md_rootViewController().presentViewController(actionSheet, animated: true, completion: nil)
+        md_rootViewController().present(actionSheet, animated: true, completion: nil)
     }
     
-    func selectPeriodization(periodization: Periodization) {
+    func selectPeriodization(_ periodization: Periodization) {
         if periodization == self.selectedPeriodization {
             return
         }
         self.selectedPeriodization = periodization
         self.updateText()
-        self.sendActionsForControlEvents(.ValueChanged)
+        self.sendActions(for: .valueChanged)
     }
     
     func updateText() {

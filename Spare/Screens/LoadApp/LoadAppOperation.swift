@@ -15,26 +15,26 @@ class LoadAppOperation: MDOperation {
     override func main() {
         self.runStartBlock()
         
-        if self.cancelled {
+        if self.isCancelled {
             self.closeOperation()
             return
         }
         
         // Initialise CoreData stack.
-        CoreDataStack.constructSQLiteStack(withModelName: "Spare") {[unowned self] (result) in
+        CoreDataStack.constructSQLiteStack(modelName: "Spare") {[unowned self] (result) in
             defer {
                 self.closeOperation()
             }
             
-            if self.cancelled {
+            if self.isCancelled {
                 return
             }
             
             switch result {
-            case .Success(let stack):
+            case .success(let stack):
                 self.runSuccessBlock(stack)
                 
-            case .Failure(let error):
+            case .failure(let error):
                 self.runFailBlock(error)
             }
         }

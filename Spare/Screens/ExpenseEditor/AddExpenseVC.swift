@@ -12,17 +12,17 @@ import Mold
 class AddExpenseVC: BaseFormVC {
     
     let editor = ExpenseEditorVC(expense: nil)
-    let queue = NSOperationQueue()
+    let queue = OperationQueue()
     
     init() {
         super.init(nibName: nil, bundle: nil)
         self.title = "New Expense"
     }
     
-    convenience init(preselectedCategory: Category, preselectedDate: NSDate) {
+    convenience init(preselectedCategory: Category, preselectedDate: Date) {
         self.init()
         
-        if let category = self.editor.managedObjectContext.objectWithID(preselectedCategory.objectID) as? Category {
+        if let category = self.editor.managedObjectContext.object(with: preselectedCategory.objectID) as? Category {
             self.editor.expense.category = category
         }
         self.editor.expense.dateSpent = preselectedDate
@@ -38,7 +38,7 @@ class AddExpenseVC: BaseFormVC {
         self.embedChildViewController(self.editor)
     }
     
-    override func handleTapOnDoneBarButtonItem(sender: AnyObject) {
+    override func handleTapOnDoneBarButtonItem(_ sender: AnyObject) {
         self.queue.addOperation(
             ValidateExpenseOperation(expense: self.editor.expense)
                 .onSuccess({[unowned self] (_) in
@@ -49,8 +49,8 @@ class AddExpenseVC: BaseFormVC {
                         default:
                             MDDispatcher.asyncRunInMainThread({
                                 // Throw a notification to notify summary views.
-                                let system = NSNotificationCenter.defaultCenter()
-                                system.postNotificationName(NSNotificationName.PerformedExpenseOperation.string(), object: self.editor.expense)
+                                let system = NotificationCenter.default
+                                system.post(name: NSNotification.Name(rawValue: NSNotificationName.PerformedExpenseOperation.string()), object: self.editor.expense)
                                 
                                 self.editor.reset()
                             })

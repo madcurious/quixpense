@@ -8,19 +8,19 @@
 
 import Foundation
 
-private let prefix = NSBundle.mainBundle().bundleIdentifier!
+private let prefix = Bundle.main.bundleIdentifier!
 
 enum NSNotificationName {
     
-    case MonthPageVCDidSelectDate
-    case PerformedExpenseOperation
+    case monthPageVCDidSelectDate
+    case performedExpenseOperation
     
     func string() -> String {
         switch self {
-        case .MonthPageVCDidSelectDate:
+        case .monthPageVCDidSelectDate:
             return prefix + ".MonthPageVCDidSelectDate"
             
-        case .PerformedExpenseOperation:
+        case .performedExpenseOperation:
             return prefix + ".PerformedExpenseOperation"
         }
     }

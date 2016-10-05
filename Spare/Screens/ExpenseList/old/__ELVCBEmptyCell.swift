@@ -18,7 +18,7 @@ class __ELVCBEmptyCell: UITableViewCell {
         UIView.clearBackgroundColors(self, self.contentView, self.emptyView)
         self.contentView.addSubviewAndFill(self.emptyView)
         
-        self.selectionStyle = .None
+        self.selectionStyle = .none
     }
     
     required init?(coder aDecoder: NSCoder) {

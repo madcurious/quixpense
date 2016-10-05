@@ -12,7 +12,7 @@ import Mold
 class EditExpenseVC: BaseFormVC {
     
     let editor: ExpenseEditorVC
-    let queue = NSOperationQueue()
+    let queue = OperationQueue()
     
     init(expense: Expense) {
         self.editor = ExpenseEditorVC(expense: expense)
@@ -25,7 +25,7 @@ class EditExpenseVC: BaseFormVC {
         self.embedChildViewController(self.editor)
     }
     
-    override func handleTapOnDoneBarButtonItem(sender: AnyObject) {
+    override func handleTapOnDoneBarButtonItem(_ sender: AnyObject) {
         self.queue.addOperation(
             ValidateExpenseOperation(expense: self.editor.expense)
                 .onSuccess({[unowned self] (_) in
@@ -35,7 +35,7 @@ class EditExpenseVC: BaseFormVC {
                             MDErrorDialog.showError(error, inPresenter: self)
                         default:
                             MDDispatcher.asyncRunInMainThread({[unowned self] in
-                                self.dismissViewControllerAnimated(true, completion: nil)
+                                self.dismiss(animated: true, completion: nil)
                             })
                         }
                     }

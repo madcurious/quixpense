@@ -26,7 +26,7 @@ class LoadAppVC: MDOperationViewController {
         return op
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         if let navController = self.navigationController {

@@ -1,6 +1,7 @@
 platform :ios, '9.0'
 use_frameworks!
 
-pod 'BNRCoreDataStack'
-pod 'NKOColorPickerView', :path => '/Users/mattquiros/Developer/NKOColorPickerView'
-
+target 'Spare' do
+  pod 'BNRCoreDataStack', :path => '/Users/mattquiros/Developer/CoreDataStack'
+  pod 'NKOColorPickerView', :path => '/Users/mattquiros/Developer/NKOColorPickerView'
+end

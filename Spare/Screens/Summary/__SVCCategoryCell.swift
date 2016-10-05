@@ -12,7 +12,7 @@ class __SVCCategoryCell: UICollectionViewCell {
     
     var data: (Category, NSDecimalNumber, Double)?
     
-    class func cellHeightForData(data: (Category, NSDecimalNumber, Double), cellWidth: CGFloat) -> CGFloat {
+    class func cellHeightForData(_ data: (Category, NSDecimalNumber, Double), cellWidth: CGFloat) -> CGFloat {
         fatalError("Unimplemented")
     }
     

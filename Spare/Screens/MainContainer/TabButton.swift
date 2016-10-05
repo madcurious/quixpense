@@ -11,7 +11,7 @@ import Mold
 
 protocol TabButtonDelegate {
     
-    func tabButtonDidSelect(tabButton: TabButton)
+    func tabButtonDidSelect(_ tabButton: TabButton)
     
 }
 
@@ -19,26 +19,26 @@ class TabButton: BaseTabButton {
     
     var delegate: TabButtonDelegate?
     
-    override var highlighted: Bool {
+    override var isHighlighted: Bool {
         willSet {
             self.applyHighlight(newValue)
         }
     }
     
-    override var selected: Bool {
+    override var isSelected: Bool {
         willSet {
             self.applySelection(newValue)
         }
     }
     
     init(_ icon: Icon) {
-        super.init(frame: CGRectZero)
+        super.init(frame: CGRect.zero)
         
         self.iconLabel.text = icon.rawValue
         
-        self.addTarget(self, action: #selector(enableHighlight), forControlEvents: [.TouchDown, .TouchDragEnter, .TouchDragInside])
-        self.addTarget(self, action: #selector(disableHighlight), forControlEvents: [.TouchUpInside, .TouchUpOutside, .TouchDragExit, .TouchDragOutside])
-        self.addTarget(self, action: #selector(enableSelection), forControlEvents: .TouchUpInside)
+        self.addTarget(self, action: #selector(enableHighlight), for: [.touchDown, .touchDragEnter, .touchDragInside])
+        self.addTarget(self, action: #selector(disableHighlight), for: [.touchUpInside, .touchUpOutside, .touchDragExit, .touchDragOutside])
+        self.addTarget(self, action: #selector(enableSelection), for: .touchUpInside)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -46,24 +46,24 @@ class TabButton: BaseTabButton {
     }
     
     func enableHighlight() {
-        self.highlighted = true
+        self.isHighlighted = true
     }
     
     func disableHighlight() {
-        self.highlighted = false
+        self.isHighlighted = false
     }
     
-    override func applySelection(selected: Bool) {
+    override func applySelection(_ selected: Bool) {
         super.applySelection(selected)
         
         if let delegate = self.delegate
-            where selected == true {
+            , selected == true {
             delegate.tabButtonDidSelect(self)
         }
     }
     
     func enableSelection() {
-        self.selected = true
+        self.isSelected = true
     }
     
 }

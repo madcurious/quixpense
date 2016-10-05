@@ -18,7 +18,7 @@ class __ELVCBView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.backgroundColor = Color.UniversalBackgroundColor
-        self.tableView.backgroundColor = UIColor.clearColor()
+        self.tableView.backgroundColor = UIColor.clear
         self.tableView.separatorColor  = Color.SeparatorColor
     }
     

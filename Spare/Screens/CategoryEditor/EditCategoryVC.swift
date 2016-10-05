@@ -13,7 +13,7 @@ import BNRCoreDataStack
 class EditCategoryVC: BaseFormVC {
     
     var editor: CategoryEditorVC
-    let queue = NSOperationQueue()
+    let queue = OperationQueue()
     
     override var formScrollView: UIScrollView {
         return self.editor.customView.scrollView
@@ -35,7 +35,7 @@ class EditCategoryVC: BaseFormVC {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func handleTapOnDoneBarButtonItem(sender: AnyObject) {
+    override func handleTapOnDoneBarButtonItem(_ sender: AnyObject) {
         self.queue.addOperation(
             ValidateCategoryOperation(category: self.editor.category)
                 .onSuccess({[unowned self] (_) in
@@ -46,7 +46,7 @@ class EditCategoryVC: BaseFormVC {
                             
                         default:
                             MDDispatcher.asyncRunInMainThread({[unowned self] in
-                                self.dismissViewControllerAnimated(true, completion: nil)
+                                self.dismiss(animated: true, completion: nil)
                                 })
                         }
                         })

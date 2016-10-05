@@ -21,8 +21,8 @@ class CategoryPickerDelegate: CustomPickerDelegate {
         super.init(selectedIndex: selectedIndex)
     }
     
-    override func textForItemAtIndexPath(indexPath: NSIndexPath) -> String? {
-        return self.categories[indexPath.row].name
+    override func textForItemAtIndexPath(_ indexPath: IndexPath) -> String? {
+        return self.categories[(indexPath as NSIndexPath).row].name
     }
     
 }

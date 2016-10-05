@@ -12,8 +12,8 @@ import Mold
 
 struct Summary: Equatable {
     
-    var startDate: NSDate
-    var endDate: NSDate
+    var startDate: Date
+    var endDate: Date
     var periodization: Periodization
     
     /**
@@ -24,7 +24,7 @@ struct Summary: Equatable {
             let request = NSFetchRequest(entityName: Expense.entityName)
             request.predicate = NSPredicate(format: "dateSpent >= %@ AND dateSpent <= %@", self.startDate, self.endDate)
             if let expenses = try App.mainQueueContext.executeFetchRequest(request) as? [Expense]
-                where expenses.isEmpty == false {
+                , expenses.isEmpty == false {
                 return expenses
             }
             return nil
@@ -61,7 +61,7 @@ struct Summary: Equatable {
             // and its total should be set to 0.
             guard let expenses = groups?[category]
                 else {
-                    data.append((category, NSDecimalNumber(integer: 0), 0.0))
+                    data.append((category, NSDecimalNumber(value: 0 as Int), 0.0))
                     continue
             }
             
@@ -70,26 +70,26 @@ struct Summary: Equatable {
             data.append((category, categoryTotal, categoryPercent))
         }
         
-        data.sortInPlace({ $0.2 > $1.2 })
+        data.sort(by: { $0.2 > $1.2 })
         
         return data
     }
     
-    func containsDate(date: NSDate) -> Bool {
+    func containsDate(_ date: Date) -> Bool {
         // Get the date components.
-        let calendar = NSCalendar.currentCalendar()
-        let significantUnits: NSCalendarUnit = [.Month, .Day, .Year]
-        let startDateComponents = calendar.components(significantUnits, fromDate: self.startDate)
-        let endDateComponents = calendar.components(significantUnits, fromDate: self.endDate)
-        let dateComponents = calendar.components(significantUnits, fromDate: date)
+        let calendar = Calendar.current
+        let significantUnits: NSCalendar.Unit = [.month, .day, .year]
+        let startDateComponents = (calendar as NSCalendar).components(significantUnits, from: self.startDate)
+        let endDateComponents = (calendar as NSCalendar).components(significantUnits, from: self.endDate)
+        let dateComponents = (calendar as NSCalendar).components(significantUnits, from: date)
         
-        if (dateComponents.month >= startDateComponents.month &&
-            dateComponents.day >= startDateComponents.day &&
-            dateComponents.year >= startDateComponents.year) &&
+        if (dateComponents.month! >= startDateComponents.month! &&
+            dateComponents.day! >= startDateComponents.day! &&
+            dateComponents.year! >= startDateComponents.year!) &&
             
-            (dateComponents.month <= endDateComponents.month &&
-                dateComponents.day <= endDateComponents.day &&
-                dateComponents.year <= endDateComponents.year) {
+            (dateComponents.month! <= endDateComponents.month! &&
+                dateComponents.day! <= endDateComponents.day! &&
+                dateComponents.year! <= endDateComponents.year!) {
             return true
         }
         

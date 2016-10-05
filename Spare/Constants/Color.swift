@@ -13,7 +13,7 @@ class Color {
     
     // MARK: - Palette
     
-    static let Black = UIColor.blackColor()
+    static let Black = UIColor.black
     static let Hex111111 = UIColor(hex: 0x111111)
     static let Hex222222 = UIColor(hex: 0x222222)
     static let Hex282828 = UIColor(hex: 0x282828)
@@ -21,7 +21,7 @@ class Color {
     static let Hex4e4e4e = UIColor(hex: 0x4e4e4e)
     static let Hex666666 = UIColor(hex: 0x666666)
     static let Hexaaaaaa = UIColor(hex: 0xaaaaaa)
-    static let White = UIColor.whiteColor()
+    static let White = UIColor.white
     
     // MARK: - New colors
     
@@ -51,16 +51,16 @@ class Color {
     
     static let SegmentedCircleEmptyColor = Gray800
     
-    private static let Gray50 = UIColor(hex: 0xf5f5f5)
-    private static let Gray100 = UIColor(hex: 0xf0f2f6)
-    private static let Gray200 = UIColor(hex: 0xe6e6e6)
-    private static let Gray300 = UIColor(hex: 0xe0e0e0)
-    private static let Gray400 = UIColor(hex: 0xcdcdcd)
-    private static let Gray420 = UIColor(hex: 0xc6c6c6)
-    private static let Gray500 = UIColor(hex: 0x898989)
-    private static let Gray700 = UIColor(hex: 0x666666)
-    private static let Gray800 = UIColor(hex: 0x444444)
-    private static let Gray900 = UIColor(hex: 0x191919)
+    fileprivate static let Gray50 = UIColor(hex: 0xf5f5f5)
+    fileprivate static let Gray100 = UIColor(hex: 0xf0f2f6)
+    fileprivate static let Gray200 = UIColor(hex: 0xe6e6e6)
+    fileprivate static let Gray300 = UIColor(hex: 0xe0e0e0)
+    fileprivate static let Gray400 = UIColor(hex: 0xcdcdcd)
+    fileprivate static let Gray420 = UIColor(hex: 0xc6c6c6)
+    fileprivate static let Gray500 = UIColor(hex: 0x898989)
+    fileprivate static let Gray700 = UIColor(hex: 0x666666)
+    fileprivate static let Gray800 = UIColor(hex: 0x444444)
+    fileprivate static let Gray900 = UIColor(hex: 0x191919)
     
     static let CustomButtonDisabled = Black
     

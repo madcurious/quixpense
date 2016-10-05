@@ -13,16 +13,16 @@ import BNRCoreDataStack
 class GetExpensesOperation: MDOperation {
     
     var category: Category
-    var startDate: NSDate
-    var endDate: NSDate
+    var startDate: Date
+    var endDate: Date
     
-    init(category: Category, startDate: NSDate, endDate: NSDate) {
+    init(category: Category, startDate: Date, endDate: Date) {
         self.category = category
         self.startDate = startDate
         self.endDate = endDate
     }
     
-    override func buildResult(object: Any?) throws -> Any? {
+    override func buildResult(_ object: Any?) throws -> Any? {
         // Experimenting here. Notice how I use the main queue context for fetching the expenses.
         // I'm assuming that if you're just reading data and you're sure you won't have simultaneous operations writing to the store,
         // using the main context is OK; that a private queue is only necessary if writing changes at all.

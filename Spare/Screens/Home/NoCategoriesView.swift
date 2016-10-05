@@ -9,18 +9,18 @@
 import UIKit
 import Mold
 
-class NoCategoriesView: MDRetryView {
+class NoCategoriesView: UIView {
     
     @IBOutlet weak var labelContainer: UIView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var messageLabel: UILabel!
     
-    override var error: ErrorType? {
+    var error: Error? {
         didSet {
             defer {
                 self.setNeedsLayout()
             }
-            if let error = self.error as? Error {
+            if let error = self.error as? MDErrorType {
                 self.messageLabel.text = error.object().message
             } else if let error = self.error as? NSError {
                 self.messageLabel.text = error.description
@@ -32,15 +32,15 @@ class NoCategoriesView: MDRetryView {
         super.awakeFromNib()
         UIView.clearBackgroundColors(self, self.labelContainer)
         
-        self.imageView.contentMode = .ScaleAspectFit
-        self.imageView.image = UIImage(named: "noCategoryIcon")?.imageWithRenderingMode(.AlwaysTemplate)
+        self.imageView.contentMode = .scaleAspectFit
+        self.imageView.image = UIImage(named: "noCategoryIcon")?.withRenderingMode(.alwaysTemplate)
         self.imageView.tintColor = Color.UniversalSecondaryTextColor
         
         self.messageLabel.numberOfLines = 0
-        self.messageLabel.lineBreakMode = .ByWordWrapping
+        self.messageLabel.lineBreakMode = .byWordWrapping
         self.messageLabel.font = Font.make(.Medium, 18)
         self.messageLabel.textColor = Color.UniversalSecondaryTextColor
-        self.messageLabel.textAlignment = .Center
+        self.messageLabel.textAlignment = .center
     }
 
 }

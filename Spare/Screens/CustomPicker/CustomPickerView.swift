@@ -16,9 +16,9 @@ class CustomPickerView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.backgroundColor = UIColor.clearColor()
-        self.dimView.backgroundColor = UIColor.blackColor()
-        self.mainContainer.backgroundColor = UIColor.whiteColor()
+        self.backgroundColor = UIColor.clear
+        self.dimView.backgroundColor = UIColor.black
+        self.mainContainer.backgroundColor = UIColor.white
     }
     
 }

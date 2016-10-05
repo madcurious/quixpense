@@ -16,7 +16,7 @@ private enum ViewID: String {
 
 class SettingsVC: UIViewController {
     
-    let tableView = UITableView(frame: CGRectZero, style: .Grouped)
+    let tableView = UITableView(frame: CGRect.zero, style: .grouped)
     
     let fields = [
         [
@@ -44,7 +44,7 @@ class SettingsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         glb_applyGlobalVCSettings(self)
-        self.edgesForExtendedLayout = .Bottom
+        self.edgesForExtendedLayout = .bottom
         
         self.tableView.backgroundColor = Color.UniversalBackgroundColor
         self.view.addSubviewAndFill(self.tableView)
@@ -56,18 +56,18 @@ class SettingsVC: UIViewController {
 
 extension SettingsVC: UITableViewDataSource {
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return self.fields.count
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let section = self.fields[section]
         return section.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let identifier: String = {
-            switch (indexPath.section, indexPath.row) {
+            switch ((indexPath as NSIndexPath).section, (indexPath as NSIndexPath).row) {
             case (2, 0):
                 return ViewID.PlainCell.rawValue
                 
@@ -80,19 +80,19 @@ extension SettingsVC: UITableViewDataSource {
         
         switch identifier {
         case ViewID.FieldValueCell.rawValue:
-            if let reusableCell = tableView.dequeueReusableCellWithIdentifier(ViewID.FieldValueCell.rawValue) {
+            if let reusableCell = tableView.dequeueReusableCell(withIdentifier: ViewID.FieldValueCell.rawValue) {
                 cell = reusableCell
             } else {
-                cell = UITableViewCell(style: .Value1, reuseIdentifier: ViewID.FieldValueCell.rawValue)
-                cell.accessoryType = .DisclosureIndicator
+                cell = UITableViewCell(style: .value1, reuseIdentifier: ViewID.FieldValueCell.rawValue)
+                cell.accessoryType = .disclosureIndicator
             }
             
         case ViewID.PlainCell.rawValue:
-            if let reusableCell = tableView.dequeueReusableCellWithIdentifier(ViewID.PlainCell.rawValue) {
+            if let reusableCell = tableView.dequeueReusableCell(withIdentifier: ViewID.PlainCell.rawValue) {
                 cell = reusableCell
             } else {
-                cell = UITableViewCell(style: .Default, reuseIdentifier: ViewID.PlainCell.rawValue)
-                cell.accessoryType = .DisclosureIndicator
+                cell = UITableViewCell(style: .default, reuseIdentifier: ViewID.PlainCell.rawValue)
+                cell.accessoryType = .disclosureIndicator
             }
             
         default:
@@ -110,11 +110,11 @@ extension SettingsVC: UITableViewDataSource {
 
 extension SettingsVC: UITableViewDelegate {
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 54
     }
     

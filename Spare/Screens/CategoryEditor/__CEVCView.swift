@@ -41,19 +41,19 @@ class __CEVCView: UIView {
         self.nameLabel.text = "NAME"
         self.nameLabel.font = Font.FieldLabel
         self.nameLabel.textColor = Color.FieldLabelTextColor
-        self.nameLabel.textAlignment = .Right
+        self.nameLabel.textAlignment = .right
         
         self.nameTextField.textColor = Color.UniversalTextColor
         self.nameTextField.font = Font.FieldValue
-        self.nameTextField.autocapitalizationType = .Sentences
+        self.nameTextField.autocapitalizationType = .sentences
         self.nameTextField.adjustsFontSizeToFitWidth = false
         
         self.colorLabel.text = "COLOR"
         self.colorLabel.font = Font.FieldLabel
         self.colorLabel.textColor = Color.FieldLabelTextColor
-        self.colorLabel.textAlignment = .Right
+        self.colorLabel.textAlignment = .right
         
-        self.colorTextField.userInteractionEnabled = false
+        self.colorTextField.isUserInteractionEnabled = false
         self.colorTextField.textColor = Color.UniversalTextColor
         self.colorTextField.font = Font.FieldValue
         self.colorTextField.adjustsFontSizeToFitWidth = false

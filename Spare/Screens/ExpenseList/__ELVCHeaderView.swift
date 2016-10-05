@@ -26,26 +26,26 @@ class __ELVCHeaderView: UIView {
         self.nameLabel.font = Font.make(.Heavy, 36)
         self.nameLabel.textColor = Color.UniversalTextColor
         self.nameLabel.numberOfLines = 0
-        self.nameLabel.lineBreakMode = .ByWordWrapping
-        self.nameLabel.textAlignment = .Center
+        self.nameLabel.lineBreakMode = .byWordWrapping
+        self.nameLabel.textAlignment = .center
         
         self.totalLabel.font = Font.make(.Heavy, 22)
         self.totalLabel.textColor = Color.UniversalTextColor
         self.totalLabel.numberOfLines = 1
-        self.totalLabel.lineBreakMode = .ByClipping
-        self.totalLabel.textAlignment = .Center
+        self.totalLabel.lineBreakMode = .byClipping
+        self.totalLabel.textAlignment = .center
         
         self.detailLabel.font = Font.make(.Heavy, 22)
         self.detailLabel.textColor = Color.UniversalTextColor
         self.detailLabel.numberOfLines = 0
-        self.detailLabel.lineBreakMode = .ByWordWrapping
-        self.detailLabel.textAlignment = .Center
+        self.detailLabel.lineBreakMode = .byWordWrapping
+        self.detailLabel.textAlignment = .center
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        self.frame = CGRectMake(0, 0, self.bounds.size.width, self.contentView.bounds.size.height)
+        self.frame = CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.contentView.bounds.size.height)
     }
     
 }

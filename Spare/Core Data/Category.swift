@@ -17,7 +17,7 @@ class Category: NSManagedObject {
     var color: UIColor {
         guard let colorHex = self.colorHex as? Int
             else {
-                return UIColor.blackColor()
+                return UIColor.black
         }
         return UIColor(hex: colorHex)
     }

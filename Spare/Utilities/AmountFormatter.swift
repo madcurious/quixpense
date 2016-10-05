@@ -8,11 +8,11 @@
 
 import Foundation
 
-private let kSharedFormatter: NSNumberFormatter = {
-    let formatter = NSNumberFormatter()
-    formatter.numberStyle = .CurrencyStyle
+private let kSharedFormatter: NumberFormatter = {
+    let formatter = NumberFormatter()
+    formatter.numberStyle = .currency
 //    formatter.locale = NSLocale(localeIdentifier: NSLocale.availableLocaleIdentifiers()[20])
-    formatter.locale = NSLocale.currentLocale()
+    formatter.locale = Locale.current
     formatter.alwaysShowsDecimalSeparator = true
     formatter.minimumFractionDigits = 2
     return formatter
@@ -21,16 +21,16 @@ private let kSharedFormatter: NSNumberFormatter = {
 final class AmountFormatter {
     
     // Nope, can't initialize it.
-    private init() {}
+    fileprivate init() {}
     
-    class func displayTextForAmount(amount: NSDecimalNumber?) -> String {
+    class func displayTextForAmount(_ amount: NSDecimalNumber?) -> String {
         if let amount = amount,
-            let text = kSharedFormatter.stringFromNumber(amount) {
+            let text = kSharedFormatter.string(from: amount) {
             return text
         }
         
-        let zeroAmount = NSDecimalNumber(integer: 0)
-        return kSharedFormatter.stringFromNumber(zeroAmount)!
+        let zeroAmount = NSDecimalNumber(value: 0 as Int)
+        return kSharedFormatter.string(from: zeroAmount)!
     }
     
     class func currencyCode() -> String {

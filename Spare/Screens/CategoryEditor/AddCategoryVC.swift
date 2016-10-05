@@ -13,7 +13,7 @@ import BNRCoreDataStack
 class AddCategoryVC: BaseFormVC {
     
     let editor = CategoryEditorVC(category: nil)
-    let queue = NSOperationQueue()
+    let queue = OperationQueue()
     
     override var formScrollView: UIScrollView {
         return self.editor.customView.scrollView
@@ -33,7 +33,7 @@ class AddCategoryVC: BaseFormVC {
         self.embedChildViewController(self.editor)
     }
     
-    override func handleTapOnDoneBarButtonItem(sender: AnyObject) {
+    override func handleTapOnDoneBarButtonItem(_ sender: AnyObject) {
         self.queue.addOperation(
             ValidateCategoryOperation(category: self.editor.category)
             .onSuccess({[unowned self] (_) in

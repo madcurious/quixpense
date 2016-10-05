@@ -31,7 +31,7 @@ class CustomPickerCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.emptyView.backgroundColor = UIColor.clearColor()
+        self.emptyView.backgroundColor = UIColor.clear
         
         self.checkLabel.text = Icon.Check.rawValue
         self.checkLabel.textColor = Color.CustomPickerTextColor
@@ -47,11 +47,11 @@ class CustomPickerCell: UITableViewCell {
         super.updateConstraints()
     }
     
-    class func applyItemLabelAttributes(label: UILabel) {
+    class func applyItemLabelAttributes(_ label: UILabel) {
         label.textColor = Color.CustomPickerTextColor
         label.font = Font.CustomPickerText
         label.numberOfLines = 3
-        label.lineBreakMode = .ByTruncatingTail
+        label.lineBreakMode = .byTruncatingTail
     }
     
 }

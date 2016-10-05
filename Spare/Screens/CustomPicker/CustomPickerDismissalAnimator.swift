@@ -10,12 +10,12 @@ import UIKit
 
 class CustomPickerDismissalAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     
-    func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
+    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return Duration.Animation
     }
     
-    func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
-        guard let fromView = transitionContext.viewForKey(UITransitionContextFromViewKey) as? CustomPickerView
+    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+        guard let fromView = transitionContext.view(forKey: UITransitionContextViewKey.from) as? CustomPickerView
             else {
                 return
         }
@@ -23,14 +23,14 @@ class CustomPickerDismissalAnimator: NSObject, UIViewControllerAnimatedTransitio
         var finalMainContainerFrame = fromView.mainContainer.frame
         finalMainContainerFrame.origin.y = fromView.bounds.size.height
         
-        UIView.animateWithDuration(
-            self.transitionDuration(transitionContext),
+        UIView.animate(
+            withDuration: self.transitionDuration(using: transitionContext),
             animations: {
                 fromView.dimView.alpha = 0
                 fromView.mainContainer.frame = finalMainContainerFrame
             },
             completion: { _ in
-                let successful = transitionContext.transitionWasCancelled() == false
+                let successful = transitionContext.transitionWasCancelled == false
                 transitionContext.completeTransition(successful)
         })
     }

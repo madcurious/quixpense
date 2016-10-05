@@ -10,9 +10,9 @@ import Foundation
 
 final class PercentFormatter {
     
-    private init() {}
+    fileprivate init() {}
     
-    class func displayTextForPercent(percent: Double) -> String {
+    class func displayTextForPercent(_ percent: Double) -> String {
         return String(format: "%.0f%%", percent * 100)
     }
     

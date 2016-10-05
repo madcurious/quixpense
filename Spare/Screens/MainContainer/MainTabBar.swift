@@ -11,7 +11,7 @@ import Mold
 
 protocol MainTabBarDelegate {
     
-    func mainTabBarDidSelectIndex(index: Int)
+    func mainTabBarDidSelectIndex(_ index: Int)
     
 }
 
@@ -32,7 +32,7 @@ class MainTabBar: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.multipleTouchEnabled = false
+        self.isMultipleTouchEnabled = false
         
         self.backgroundColor = Color.TabBarBackgroundColor
         self.separatorView.backgroundColor = Color.SeparatorColor
@@ -54,21 +54,21 @@ class MainTabBar: UIView {
         }
         
         // Select the home button by default.
-        self.homeButton.selected = true
+        self.homeButton.isSelected = true
     }
     
 }
 
 extension MainTabBar: TabButtonDelegate {
     
-    func tabButtonDidSelect(tabButton: TabButton) {
+    func tabButtonDidSelect(_ tabButton: TabButton) {
         switch tabButton {
         case self.homeButton:
-            self.settingsButton.selected = false
+            self.settingsButton.isSelected = false
             self.selectedIndex = 0
             
         case self.settingsButton:
-            self.homeButton.selected = false
+            self.homeButton.isSelected = false
             self.selectedIndex = 1
             
         default:

@@ -27,7 +27,7 @@ class MainContainerVC: UIViewController {
             BaseNavBarVC(rootViewController: HomeVC()),
             BaseNavBarVC(rootViewController: SettingsVC())
         ]
-        self.tabController.tabBar.hidden = true
+        self.tabController.tabBar.isHidden = true
         self.embedChildViewController(self.tabController, toView: self.customView.tabContainer, fillSuperview: true)
         
         self.tabBar.delegate = self
@@ -36,11 +36,11 @@ class MainContainerVC: UIViewController {
         self.tabBar.addButton.delegate = self
                 
         // Listen for taps on category cells in summary cards.
-        let notificationCenter = NSNotificationCenter.defaultCenter()
-        notificationCenter.addObserver(self, selector: #selector(handleTapOnSummaryCell(_:)), name: Event.CategoryTappedInSummaryVC.rawValue, object: nil)
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(handleTapOnSummaryCell(_:)), name: NSNotification.Name(rawValue: Event.CategoryTappedInSummaryVC.rawValue), object: nil)
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         if let navController = self.navigationController {
@@ -48,11 +48,11 @@ class MainContainerVC: UIViewController {
         }
     }
     
-    func handleTapOnSummaryCell(notification: NSNotification) {
-        guard let userInfo = notification.userInfo,
+    func handleTapOnSummaryCell(_ notification: Notification) {
+        guard let userInfo = (notification as NSNotification).userInfo,
             let category = userInfo["category"] as? Category,
-            let startDate = userInfo["startDate"] as? NSDate,
-            let endDate = userInfo["endDate"] as? NSDate
+            let startDate = userInfo["startDate"] as? Date,
+            let endDate = userInfo["endDate"] as? Date
             else {
                 return
         }
@@ -69,7 +69,7 @@ class MainContainerVC: UIViewController {
 
 extension MainContainerVC: MainTabBarDelegate {
     
-    func mainTabBarDidSelectIndex(index: Int) {
+    func mainTabBarDidSelectIndex(_ index: Int) {
         self.tabController.selectedIndex = index
     }
     
@@ -82,11 +82,11 @@ extension MainContainerVC: AddButtonDelegate {
             else {
                 return
         }
-        self.presentViewController(BaseNavBarVC(rootViewController: AddExpenseVC()), animated: true, completion: nil)
+        self.present(BaseNavBarVC(rootViewController: AddExpenseVC()), animated: true, completion: nil)
     }
     
     func addButtonDidCompleteLongPress() {
-        self.presentViewController(BaseNavBarVC(rootViewController: AddCategoryVC()), animated: true, completion: nil)
+        self.present(BaseNavBarVC(rootViewController: AddCategoryVC()), animated: true, completion: nil)
     }
     
 }

@@ -11,7 +11,7 @@ import UIKit
 private let kNameLabelFont = Font.make(.Book, 20)
 
 private let kCategoryNameAttributes: [String : AnyObject] =  [
-    NSForegroundColorAttributeName : Color.UniversalTextColor.CGColor,
+    NSForegroundColorAttributeName : Color.UniversalTextColor.cgColor,
     NSFontAttributeName : kNameLabelFont
 ]
 
@@ -76,24 +76,24 @@ class __SVCCategoryCellBox: __SVCCategoryCell {
         self.totalLabelLeading.constant = __SVCCategoryCellBox.totalLabelLeading
     }
     
-    class func applyNameLabelAttributesToLabel(label: UILabel) {
+    class func applyNameLabelAttributesToLabel(_ label: UILabel) {
         label.numberOfLines = 0
-        label.lineBreakMode = .ByWordWrapping
+        label.lineBreakMode = .byWordWrapping
     }
     
-    class func applyTotalLabelAttributesToLabel(label: UILabel) {
+    class func applyTotalLabelAttributesToLabel(_ label: UILabel) {
         label.textColor = Color.UniversalTextColor
         label.font = Font.make(.Heavy, 20)
-        label.textAlignment = .Right
+        label.textAlignment = .right
     }
     
-    class func attributedTextForCategoryName(categoryName: String, percent: Double) -> NSAttributedString {
+    class func attributedTextForCategoryName(_ categoryName: String, percent: Double) -> NSAttributedString {
         let text = NSMutableAttributedString(string: "\(categoryName) ", attributes: kCategoryNameAttributes)
-        text.appendAttributedString(NSAttributedString(string: "(\(PercentFormatter.displayTextForPercent(percent)))", attributes: kPercentAttributes))
+        text.append(NSAttributedString(string: "(\(PercentFormatter.displayTextForPercent(percent)))", attributes: kPercentAttributes))
         return text
     }
     
-    override class func cellHeightForData(data: (Category, NSDecimalNumber, Double), cellWidth: CGFloat) -> CGFloat {
+    override class func cellHeightForData(_ data: (Category, NSDecimalNumber, Double), cellWidth: CGFloat) -> CGFloat {
         // Set the text for the total label.
         let totalLabel = UILabel()
         self.applyTotalLabelAttributesToLabel(totalLabel)
@@ -111,7 +111,7 @@ class __SVCCategoryCellBox: __SVCCategoryCell {
         self.applyNameLabelAttributesToLabel(nameLabel)
         
         nameLabel.attributedText = self.attributedTextForCategoryName(data.0.name!, percent: data.2)
-        let nameLabelSize = nameLabel.sizeThatFits(CGSizeMake(maxNameLabelWidth, CGFloat.max))
+        let nameLabelSize = nameLabel.sizeThatFits(CGSize(width: maxNameLabelWidth, height: CGFloat.greatestFiniteMagnitude))
         
         let height = __SVCCategoryCellBox.nameLabelTopBottom * 2 + nameLabelSize.height
         return height

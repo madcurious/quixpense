@@ -15,7 +15,7 @@ import CoreData
 extension Expense {
 
     @NSManaged var amount: NSDecimalNumber?
-    @NSManaged var dateSpent: NSDate?
+    @NSManaged var dateSpent: Date?
     @NSManaged var note: String?
     @NSManaged var paymentMethod: NSNumber?
     @NSManaged var category: Category?
