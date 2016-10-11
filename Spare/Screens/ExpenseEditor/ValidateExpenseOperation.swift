@@ -10,10 +10,10 @@ import UIKit
 import Mold
 import BNRCoreDataStack
 
-enum ValidateExpenseOperationError: Error {
+enum ValidateExpenseOperationError: LocalizedError {
     case missingValue(String), zeroAmount
     
-    var localizedDescription: String {
+    var errorDescription: String? {
         switch self {
         case .missingValue(let valueName):
             return "\(valueName.capitalized) is required."

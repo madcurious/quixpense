@@ -9,10 +9,10 @@
 import Foundation
 import Mold
 
-enum CreateSummariesOperationError: Error {
+enum CreateSummariesOperationError: LocalizedError {
     case noCategoriesYet
     
-    var localizedDescription: String {
+    var errorDescription: String? {
         switch self {
         case .noCategoriesYet:
             return "You have no categories yet! Press and hold the ＋ button to add one."
@@ -29,6 +29,14 @@ class CreateSummariesOperation: MDOperation {
     var count: Int
     var startingPage: Int
     
+    /**
+     - parameters:
+        - baseDate: The date from which summaries will be computed, usually the current date.
+        - periodization: Defines whether summaries will be daily, weekly, monthly, or yearly.
+        - startOfWeek: The user's definition of when a week starts (Saturday, Sunday, or Monday).
+        - count: The number of summaries to be generated.
+        - startingPage: The page offset, also uses the `count` parameter to compute the offset.
+     */
     init(baseDate: Date, periodization: Periodization, startOfWeek: StartOfWeek, count: Int, startingPage: Int) {
         self.baseDate = baseDate
         self.periodization = periodization
@@ -61,44 +69,68 @@ class CreateSummariesOperation: MDOperation {
         
         switch self.periodization {
         case .day:
-            let date = (calendar as NSCalendar).date(byAdding: .day, value: page * -1, to: self.baseDate, options: [])!
-            return (date.startOfDay(), date.endOfDay())
+            // Offset the baseDate by page, then return the start and end of day.
+            let offsetDate = calendar.date(byAdding: .day, value: page * -1, to: self.baseDate)!
+            return (offsetDate.startOfDay(), offsetDate.endOfDay())
             
         case .week:
             calendar.firstWeekday = self.startOfWeek.rawValue
-            let referenceDate = (calendar as NSCalendar).date(byAdding: .weekOfYear, value: page * -1, to: self.baseDate, options: [])!
-            var startDate: Date?
+            
+            let offsetDate = calendar.date(byAdding: .weekOfYear, value: page * -1, to: self.baseDate)!
+            var startDate = Date.distantPast
             var interval = TimeInterval(0)
-            (calendar as NSCalendar).range(of: .weekOfYear, start: &startDate, interval: &interval, for: referenceDate)
-            let endDate = startDate!.addingTimeInterval(interval - 1)
-            return (startDate!, endDate)
+            let _ = calendar.dateInterval(of: .weekOfYear, start: &startDate, interval: &interval, for: offsetDate)
+            let endDate = startDate.addingTimeInterval(interval - 1)
+            return (startDate, endDate)
             
         case .month:
-            let referenceDate = (calendar as NSCalendar).date(byAdding: .month, value: page * -1, to: self.baseDate, options: [])!
+//            let referenceDate = (calendar as NSCalendar).date(byAdding: .month, value: page * -1, to: self.baseDate, options: [])!
+//            
+//            var components = (calendar as NSCalendar).components([.month, .day, .year], from: referenceDate)
+//            components.day = 1
+//            let startDate = calendar.date(from: components)!
+//            
+//            let dayRange = (calendar as NSCalendar).range(of: .day, in: .month, for: referenceDate)
+//            components.day = dayRange.length
+//            let endDate = calendar.date(from: components)!
+//            
+//            return (startDate, endDate)
+            let offsetDate = calendar.date(byAdding: .month, value: page * -1, to: self.baseDate)!
+            let startDate = calendar.date(bySetting: .day, value: 1, of: offsetDate)!
             
-            var components = (calendar as NSCalendar).components([.month, .day, .year], from: referenceDate)
-            components.day = 1
-            let startDate = calendar.date(from: components)!
-            
-            let dayRange = (calendar as NSCalendar).range(of: .day, in: .month, for: referenceDate)
-            components.day = dayRange.length
-            let endDate = calendar.date(from: components)!
+            let dayRange = calendar.range(of: .day, in: .month, for: offsetDate)!
+            let endDate = calendar.date(bySetting: .day, value: dayRange.upperBound, of: offsetDate)!
             
             return (startDate, endDate)
             
         case .year:
-            let referenceDate = (calendar as NSCalendar).date(byAdding: .year, value: page * -1, to: self.baseDate, options: [])!
+//            let referenceDate = (calendar as NSCalendar).date(byAdding: .year, value: page * -1, to: self.baseDate, options: [])!
+//            
+//            var components = (calendar as NSCalendar).components([.month, .day, .year], from: referenceDate)
+//            components.month = 1
+//            components.day = 1
+//            let startDate = calendar.date(from: components)!
+//            
+//            let monthRange = (calendar as NSCalendar).range(of: .month, in: .year, for: referenceDate)
+//            components.month = monthRange.length
+//            let lastMonthInYear = calendar.date(from: components)!
+//            let dayRange = (calendar as NSCalendar).range(of: .day, in: .month, for: lastMonthInYear)
+//            components.day = dayRange.length
+//            let endDate = calendar.date(from: components)!
+//            
+//            return (startDate, endDate)
             
-            var components = (calendar as NSCalendar).components([.month, .day, .year], from: referenceDate)
+            let offsetDate = calendar.date(byAdding: .year, value: page * -1, to: self.baseDate)!
+            var components = calendar.dateComponents([.month, .day, .year], from: offsetDate)
+            
             components.month = 1
             components.day = 1
             let startDate = calendar.date(from: components)!
             
-            let monthRange = (calendar as NSCalendar).range(of: .month, in: .year, for: referenceDate)
-            components.month = monthRange.length
+            components.month = calendar.range(of: .month, in: .year, for: offsetDate)!.upperBound
             let lastMonthInYear = calendar.date(from: components)!
-            let dayRange = (calendar as NSCalendar).range(of: .day, in: .month, for: lastMonthInYear)
-            components.day = dayRange.length
+            let dayRange = calendar.range(of: .day, in: .month, for: lastMonthInYear)!
+            components.day = dayRange.upperBound
             let endDate = calendar.date(from: components)!
             
             return (startDate, endDate)

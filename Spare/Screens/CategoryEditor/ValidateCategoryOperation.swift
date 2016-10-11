@@ -8,10 +8,10 @@
 
 import Mold
 
-enum ValidateCategoryOperationError: Error {
+enum ValidateCategoryOperationError: LocalizedError {
     case missingName, missingColor
     
-    var localizedDescription: String {
+    var errorDescription: String? {
         switch self {
         case .missingName:
             return "You must enter a category name."

@@ -21,7 +21,7 @@ class NoCategoriesView: UIView {
                 self.setNeedsLayout()
             }
             
-            self.messageLabel.text = error?.localizedDescription
+            self.messageLabel.text = self.error?.localizedDescription
         }
     }
     
