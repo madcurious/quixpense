@@ -25,7 +25,7 @@ class AddExpenseVC: BaseFormVC {
         if let category = self.editor.managedObjectContext.object(with: preselectedCategory.objectID) as? Category {
             self.editor.expense.category = category
         }
-        self.editor.expense.dateSpent = preselectedDate as? NSDate
+        self.editor.expense.dateSpent = preselectedDate as NSDate
     }
     
     required init?(coder aDecoder: NSCoder) {
