@@ -40,8 +40,6 @@
 		261EB88E18DDB631009DDF78 /* SpareTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 261EB88D18DDB631009DDF78 /* SpareTests.m */; };
 		261F147A1DA4D5E40072FAE7 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261F14791DA4D5E40072FAE7 /* Notifications.swift */; };
 		262731831DB23EEF00119F76 /* FetchRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262731821DB23EEF00119F76 /* FetchRequestBuilder.swift */; };
-		262F839B1CCE3E5300EDDDEE /* LoadAppVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262F839A1CCE3E5300EDDDEE /* LoadAppVC.swift */; };
-		262F839D1CCE3E6C00EDDDEE /* LoadAppOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262F839C1CCE3E6C00EDDDEE /* LoadAppOperation.swift */; };
 		26440F951DB2299900BD8F1C /* Category+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26440F931DB2299900BD8F1C /* Category+CoreDataClass.swift */; };
 		26440F991DB229C300BD8F1C /* Expense+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26440F971DB229C300BD8F1C /* Expense+CoreDataClass.swift */; };
 		26440F9A1DB229C300BD8F1C /* Expense+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26440F981DB229C300BD8F1C /* Expense+CoreDataProperties.swift */; };
@@ -52,6 +50,7 @@
 		266408B41D4A571400609580 /* PeriodizationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266408B31D4A571400609580 /* PeriodizationButton.swift */; };
 		266408C21D4A630E00609580 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266408C11D4A630E00609580 /* Button.swift */; };
 		266632AE1DB24AA7007B992D /* TabbedRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266632AD1DB24AA7007B992D /* TabbedRootViewController.swift */; };
+		266632B01DB24FFF007B992D /* LoadAppOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266632AF1DB24FFF007B992D /* LoadAppOperation.swift */; };
 		2666C2C61957CF7A003752BF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2666C2C41957CF7A003752BF /* SystemConfiguration.framework */; };
 		2666C2C81957CF93003752BF /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2666C2C71957CF93003752BF /* libz.dylib */; };
 		2666C2CA1957CFA1003752BF /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2666C2C91957CFA1003752BF /* libsqlite3.dylib */; };
@@ -220,8 +219,6 @@
 		261EB88D18DDB631009DDF78 /* SpareTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpareTests.m; sourceTree = "<group>"; };
 		261F14791DA4D5E40072FAE7 /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		262731821DB23EEF00119F76 /* FetchRequestBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchRequestBuilder.swift; sourceTree = "<group>"; };
-		262F839A1CCE3E5300EDDDEE /* LoadAppVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadAppVC.swift; sourceTree = "<group>"; };
-		262F839C1CCE3E6C00EDDDEE /* LoadAppOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadAppOperation.swift; sourceTree = "<group>"; };
 		26440F931DB2299900BD8F1C /* Category+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataClass.swift"; sourceTree = "<group>"; };
 		26440F971DB229C300BD8F1C /* Expense+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Expense+CoreDataClass.swift"; sourceTree = "<group>"; };
 		26440F981DB229C300BD8F1C /* Expense+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Expense+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -232,6 +229,7 @@
 		266408B31D4A571400609580 /* PeriodizationButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeriodizationButton.swift; sourceTree = "<group>"; };
 		266408C11D4A630E00609580 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		266632AD1DB24AA7007B992D /* TabbedRootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabbedRootViewController.swift; sourceTree = "<group>"; };
+		266632AF1DB24FFF007B992D /* LoadAppOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadAppOperation.swift; sourceTree = "<group>"; };
 		2666C2C11957CF4F003752BF /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalyticsServices.a; path = GoogleAnalytics/libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
 		2666C2C31957CF7A003752BF /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		2666C2C41957CF7A003752BF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -368,7 +366,6 @@
 			isa = PBXGroup;
 			children = (
 				266632AC1DB24A96007B992D /* Root */,
-				262F83991CCE3E4C00EDDDEE /* LoadApp */,
 				26EFA0011CD9C8E800714E5D /* MainContainer */,
 				260024081CC7E5F300EB2026 /* Home */,
 				26CAD38B1D195F7E0039DFD2 /* ExpenseList */,
@@ -510,15 +507,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		262F83991CCE3E4C00EDDDEE /* LoadApp */ = {
-			isa = PBXGroup;
-			children = (
-				262F839A1CCE3E5300EDDDEE /* LoadAppVC.swift */,
-				262F839C1CCE3E6C00EDDDEE /* LoadAppOperation.swift */,
-			);
-			path = LoadApp;
-			sourceTree = "<group>";
-		};
 		2652229E1D66CFC2007FED96 /* DatePicker */ = {
 			isa = PBXGroup;
 			children = (
@@ -535,6 +523,7 @@
 		266632AC1DB24A96007B992D /* Root */ = {
 			isa = PBXGroup;
 			children = (
+				266632AF1DB24FFF007B992D /* LoadAppOperation.swift */,
 				266632AD1DB24AA7007B992D /* TabbedRootViewController.swift */,
 			);
 			path = Root;
@@ -893,10 +882,10 @@
 				26440F991DB229C300BD8F1C /* Expense+CoreDataClass.swift in Sources */,
 				261F147A1DA4D5E40072FAE7 /* Notifications.swift in Sources */,
 				266408C21D4A630E00609580 /* Button.swift in Sources */,
-				262F839D1CCE3E6C00EDDDEE /* LoadAppOperation.swift in Sources */,
 				26B076001D9008730026692E /* __ELVCBEmptyView.swift in Sources */,
 				26EB76FF1D7C5B060001723D /* Summary.swift in Sources */,
 				268F47FE1D60D2900088AC6B /* CustomPickerPresentationAnimator.swift in Sources */,
+				266632B01DB24FFF007B992D /* LoadAppOperation.swift in Sources */,
 				26B0760C1D901DC60026692E /* Array.swift in Sources */,
 				266946931CC77A1A00A68424 /* AppDelegate.swift in Sources */,
 				2687FA3C1D0EC46F00D544F5 /* CreateSummariesOperation.swift in Sources */,
@@ -951,7 +940,6 @@
 				2669AAF91D7C29D700DDA321 /* __SVCCategoryCellBox.swift in Sources */,
 				2669468F1CC7711000A68424 /* Spare.xcdatamodeld in Sources */,
 				26440F9A1DB229C300BD8F1C /* Expense+CoreDataProperties.swift in Sources */,
-				262F839B1CCE3E5300EDDDEE /* LoadAppVC.swift in Sources */,
 				265222A41D66CFF3007FED96 /* __DPVCView.swift in Sources */,
 				260A06571D48D1D500A960DB /* SummaryVC.swift in Sources */,
 				268F480D1D60D3490088AC6B /* Color.swift in Sources */,

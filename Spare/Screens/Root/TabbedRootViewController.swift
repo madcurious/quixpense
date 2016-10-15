@@ -11,8 +11,6 @@ import CoreData
 
 class TabbedRootViewController: UITabBarController {
     
-//    var hasBeenSetup = false
-    
     var operationQueue = OperationQueue()
     
     override func viewDidLoad() {
@@ -27,9 +25,8 @@ class TabbedRootViewController: UITabBarController {
         self.delegate = self
         
         self.operationQueue.addOperation(
-            LoadAppOperation().onSuccess {[unowned self] (result) in
+            LoadAppOperation().onSuccess { result in
                 App.coreDataStack = result as! NSPersistentContainer
-                
                 NotificationCenter.default.post(name: Notifications.LoadAppVCFinishedLoadingCoreDataStack, object: nil)
             }
         )
