@@ -21,7 +21,7 @@ struct Summary: Equatable {
      */
     var expenses: [Expense]? {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: Expense.entityName)
-        request.predicate = NSPredicate(format: "dateSpent >= %@ AND dateSpent <= %@", [self.startDate, self.endDate])
+        request.predicate = NSPredicate(format: "dateSpent >= %@ AND dateSpent <= %@", self.startDate as NSDate, self.endDate as NSDate)
         if let expenses = (try? App.mainQueueContext.fetch(request)) as? [Expense],
             expenses.isEmpty == false {
             return expenses

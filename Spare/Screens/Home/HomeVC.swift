@@ -26,15 +26,10 @@ class HomeVC: MDOperationViewController {
     
     let forwardButton = Button(string: "Now", font: Font.ModalBarButtonText, textColor: Color.UniversalTextColor)
     let periodizationButton = PeriodizationButton()
-    let noCategoriesView = NoCategoriesView.instantiateFromNib()
     let customLoadingView = OperationVCLoadingView()
     
     override var primaryView: UIView {
         return self.pageViewController.view
-    }
-    
-    override var retryView: UIView {
-        return self.noCategoriesView
     }
     
     override var loadingView: UIView {
@@ -101,13 +96,6 @@ class HomeVC: MDOperationViewController {
                 }
                 
                 })
-    }
-    
-    override func buildFailBlock() -> ((Error) -> Void) {
-        return {[unowned self] error in
-            self.noCategoriesView.error = error
-            self.showView(.retry)
-        }
     }
     
     func scrollToLastSummary(animated: Bool) {

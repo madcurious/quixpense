@@ -9,18 +9,6 @@
 import Foundation
 import Mold
 
-enum CreateSummariesOperationError: LocalizedError {
-    case noCategoriesYet
-    
-    var errorDescription: String? {
-        switch self {
-        case .noCategoriesYet:
-            return "You have no categories yet! Press and hold the ＋ button to add one."
-        }
-    }
-    
-}
-
 class CreateSummariesOperation: MDOperation {
     
     var baseDate: Date
@@ -46,11 +34,6 @@ class CreateSummariesOperation: MDOperation {
     }
     
     override func makeResult(fromSource source: Any?) throws -> Any? {
-        guard let _ = App.allCategories()
-            else {
-                throw CreateSummariesOperationError.noCategoriesYet
-        }
-        
         var summaries = [Summary]()
         for i in 0 ..< self.count {
             let (startDate, endDate) = self.dateRangeForPage(self.startingPage + i)

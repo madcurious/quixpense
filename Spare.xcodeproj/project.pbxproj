@@ -44,8 +44,6 @@
 		261F147A1DA4D5E40072FAE7 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261F14791DA4D5E40072FAE7 /* Notifications.swift */; };
 		262F839B1CCE3E5300EDDDEE /* LoadAppVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262F839A1CCE3E5300EDDDEE /* LoadAppVC.swift */; };
 		262F839D1CCE3E6C00EDDDEE /* LoadAppOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262F839C1CCE3E6C00EDDDEE /* LoadAppOperation.swift */; };
-		263005641D4F8E9000AC3060 /* NoCategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263005621D4F8E9000AC3060 /* NoCategoriesView.swift */; };
-		263005651D4F8E9000AC3060 /* NoCategoriesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 263005631D4F8E9000AC3060 /* NoCategoriesView.xib */; };
 		265222A01D66CFCE007FED96 /* DatePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2652229F1D66CFCE007FED96 /* DatePickerVC.swift */; };
 		265222A41D66CFF3007FED96 /* __DPVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265222A31D66CFF3007FED96 /* __DPVCView.swift */; };
 		265222A61D66D00A007FED96 /* __DPVCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 265222A51D66D00A007FED96 /* __DPVCView.xib */; };
@@ -231,8 +229,6 @@
 		261F14791DA4D5E40072FAE7 /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		262F839A1CCE3E5300EDDDEE /* LoadAppVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadAppVC.swift; sourceTree = "<group>"; };
 		262F839C1CCE3E6C00EDDDEE /* LoadAppOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadAppOperation.swift; sourceTree = "<group>"; };
-		263005621D4F8E9000AC3060 /* NoCategoriesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoCategoriesView.swift; sourceTree = "<group>"; };
-		263005631D4F8E9000AC3060 /* NoCategoriesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoCategoriesView.xib; sourceTree = "<group>"; };
 		2652229F1D66CFCE007FED96 /* DatePickerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerVC.swift; sourceTree = "<group>"; };
 		265222A31D66CFF3007FED96 /* __DPVCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __DPVCView.swift; sourceTree = "<group>"; };
 		265222A51D66D00A007FED96 /* __DPVCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __DPVCView.xib; sourceTree = "<group>"; };
@@ -402,8 +398,6 @@
 			children = (
 				26B075E91D8FE26B0026692E /* HomeVC.swift */,
 				2687FA3B1D0EC46F00D544F5 /* CreateSummariesOperation.swift */,
-				263005621D4F8E9000AC3060 /* NoCategoriesView.swift */,
-				263005631D4F8E9000AC3060 /* NoCategoriesView.xib */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -893,7 +887,6 @@
 				261AF6301D5F395200E03A48 /* Avenir-HeavyOblique.ttf in Resources */,
 				261AF6321D5F395200E03A48 /* Avenir-LightOblique.ttf in Resources */,
 				26B076091D9008940026692E /* __ELVCHeaderView.xib in Resources */,
-				263005651D4F8E9000AC3060 /* NoCategoriesView.xib in Resources */,
 				266946891CC7711000A68424 /* Icon@2x.png in Resources */,
 				266946861CC7711000A68424 /* Icon-40@2x.png in Resources */,
 				261AF62E1D5F395200E03A48 /* Avenir-BookOblique.ttf in Resources */,
@@ -982,7 +975,6 @@
 				2603F8CF1CCA4C10007F311F /* Expense.swift in Sources */,
 				267E0A7B1D9E728D009B5612 /* ColorPickerControl.swift in Sources */,
 				262F839D1CCE3E6C00EDDDEE /* LoadAppOperation.swift in Sources */,
-				263005641D4F8E9000AC3060 /* NoCategoriesView.swift in Sources */,
 				26B076001D9008730026692E /* __ELVCBEmptyView.swift in Sources */,
 				26EB76FF1D7C5B060001723D /* Summary.swift in Sources */,
 				268F47FE1D60D2900088AC6B /* CustomPickerPresentationAnimator.swift in Sources */,
@@ -1125,6 +1117,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1169,7 +1162,8 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1195,8 +1189,8 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Matthew Quiros (RG26WNB3AF)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Matthew Quiros (RG26WNB3AF)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Matthew Quiros (HC8ZR6AR9A)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Matthew Quiros (HC8ZR6AR9A)";
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1206,6 +1200,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = "$(SRCROOT)/Supporting Files/Spare-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1228,8 +1223,8 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Matthew Quiros (RG26WNB3AF)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Matthew Quiros (RG26WNB3AF)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Matthew Quiros (HC8ZR6AR9A)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Matthew Quiros (HC8ZR6AR9A)";
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1239,6 +1234,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = "$(SRCROOT)/Supporting Files/Spare-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
