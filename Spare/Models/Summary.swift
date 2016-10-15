@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import BNRCoreDataStack
+import CoreData
 import Mold
 
 struct Summary: Equatable {
@@ -20,9 +20,9 @@ struct Summary: Equatable {
      Returns an array of all the expenses in the date range, or nil if none were found.
      */
     var expenses: [Expense]? {
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: Expense.entityName)
+        let request = FetchRequestBuilder<Expense>.makeFetchRequest()
         request.predicate = NSPredicate(format: "dateSpent >= %@ AND dateSpent <= %@", self.startDate as NSDate, self.endDate as NSDate)
-        if let expenses = (try? App.mainQueueContext.fetch(request)) as? [Expense],
+        if let expenses = try? App.mainQueueContext.fetch(request),
             expenses.isEmpty == false {
             return expenses
         }
@@ -46,15 +46,11 @@ struct Summary: Equatable {
      The array is ordered by biggest total first.
      */
     var data: [(Category, NSDecimalNumber, Double)]? {
-        guard let categories = App.allCategories()
-            else {
-                return nil
-        }
-        
         let overallTotal = self.total
         let groups = self.expenses?.groupBy({ $0.category })
         var data = [(Category, NSDecimalNumber, Double)]()
-        for category in categories {
+        
+        for category in App.allCategories() {
             // If the category isn't in the grouping dictionary, then it doesn't have any expenses
             // and its total should be set to 0.
             guard let expenses = groups?[category]

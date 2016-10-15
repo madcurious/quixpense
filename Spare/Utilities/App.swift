@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import BNRCoreDataStack
+import CoreData
 
 private let kSharedState = App()
 
@@ -22,22 +22,27 @@ class App {
         return kSharedState
     }
     
-    static var coreDataStack: CoreDataStack! {
-        get {
-            return kSharedState.coreDataStack
-        }
-        set {
-            kSharedState.coreDataStack = newValue
-        }
-    }
-    
-    static var mainQueueContext: NSManagedObjectContext {
-        return kSharedState.coreDataStack.mainQueueContext
-    }
+//    static var coreDataStack: CoreDataStack! {
+//        get {
+//            return kSharedState.coreDataStack
+//        }
+//        set {
+//            kSharedState.coreDataStack = newValue
+//        }
+//    }
+//    
+//    static var mainQueueContext: NSManagedObjectContext {
+//        return kSharedState.coreDataStack.mainQueueContext
+//    }
     
     fileprivate init() {}
     
-    fileprivate var coreDataStack: CoreDataStack!
+//    fileprivate var coreDataStack: CoreDataStack!
+    
+    static var coreDataStack: NSPersistentContainer!
+    static var mainQueueContext: NSManagedObjectContext {
+        return self.coreDataStack.viewContext
+    }
     
     var selectedPeriodization: Periodization {
         get {
@@ -77,13 +82,19 @@ class App {
         }
     }
     
-    class func allCategories() -> [Category]? {
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: Category.entityName)
-        if let categories = (try? App.mainQueueContext.fetch(request)) as? [Category]
-            , categories.isEmpty == false {
-            return categories
-        }
-        return nil
+//    class func allCategories() -> [Category]? {
+//        let request = NSFetchRequest<NSFetchRequestResult>(entityName: Category.entityName)
+//        if let categories = (try? App.mainQueueContext.fetch(request)) as? [Category]
+//            , categories.isEmpty == false {
+//            return categories
+//        }
+//        return nil
+//    }
+    
+    class func allCategories() -> [Category] {
+        let request = FetchRequestBuilder<Category>.makeFetchRequest()
+        let categories = try! App.mainQueueContext.fetch(request) as! [Category]
+        return categories
     }
     
 }

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import BNRCoreDataStack
+import CoreData
 import Mold
 
 class CategoryEditorVC: UIViewController {

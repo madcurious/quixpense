@@ -8,7 +8,7 @@
 
 import UIKit
 import Mold
-import BNRCoreDataStack
+import CoreData
 
 enum ValidateExpenseOperationError: LocalizedError {
     case missingValue(String), zeroAmount

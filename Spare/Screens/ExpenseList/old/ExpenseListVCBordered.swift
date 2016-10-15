@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import BNRCoreDataStack
+import CoreData
 
 private enum ViewID: String {
     case Cell = "Cell"
@@ -24,9 +24,9 @@ class ExpenseListVCBordered: UIViewController {
     let customView = __ELVCBView.instantiateFromNib() as __ELVCBView
     
     var expenses: [Expense]? {
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: Expense.entityName)
-        request.predicate = NSPredicate(format: "category == %@ && dateSpent >= %@ && dateSpent <= %@", [self.category, self.startDate, self.endDate])
-        if let expenses = (try? App.mainQueueContext.fetch(request)) as? [Expense]
+        let request = FetchRequestBuilder<Expense>.makeFetchRequest()
+        request.predicate = NSPredicate(format: "category == %@ && dateSpent >= %@ && dateSpent <= %@", self.category, self.startDate as NSDate, self.endDate as NSDate)
+        if let expenses = try? App.mainQueueContext.fetch(request)
             , expenses.count > 0 {
             return expenses
         }

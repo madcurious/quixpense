@@ -25,7 +25,7 @@ class AddExpenseVC: BaseFormVC {
         if let category = self.editor.managedObjectContext.object(with: preselectedCategory.objectID) as? Category {
             self.editor.expense.category = category
         }
-        self.editor.expense.dateSpent = preselectedDate
+        self.editor.expense.dateSpent = preselectedDate as? NSDate
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -42,20 +42,21 @@ class AddExpenseVC: BaseFormVC {
         self.queue.addOperation(
             ValidateExpenseOperation(expense: self.editor.expense)
                 .onSuccess({[unowned self] (_) in
-                    self.editor.managedObjectContext.saveContext {[unowned self] (result) in
-                        switch result {
-                        case .failure(let error):
+                    self.editor.managedObjectContext.saveRecursively({[unowned self] (error) in
+                        if let error = error {
                             MDErrorDialog.showError(error, inPresenter: self)
-                        default:
-                            MDDispatcher.asyncRunInMainThread({
-                                // Throw a notification to notify summary views.
-                                let system = NotificationCenter.default
-                                system.post(name: Notifications.PerformedExpenseOperation, object: self.editor.expense)
-                                
-                                self.editor.reset()
-                            })
+                            return
                         }
-                    }
+                        
+                        MDDispatcher.asyncRunInMainThread({
+                            // Throw a notification to notify summary views.
+                            let system = NotificationCenter.default
+                            system.post(name: Notifications.PerformedExpenseOperation, object: self.editor.expense)
+                            
+                            self.editor.reset()
+                        })
+                    })
+                    
                     })
                 .onFail({[unowned self] (error) in
                     MDErrorDialog.showError(error, inPresenter: self)

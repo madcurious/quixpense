@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import BNRCoreDataStack
+import CoreData
 import Mold
 
 func glb_applyGlobalVCSettings(_ viewController: UIViewController) {

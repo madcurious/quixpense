@@ -78,7 +78,7 @@ extension MainContainerVC: MainTabBarDelegate {
 extension MainContainerVC: AddButtonDelegate {
     
     func addButtonDidClick() {
-        guard App.allCategories() != nil
+        guard App.allCategories().isEmpty == false
             else {
                 return
         }
@@ -86,7 +86,7 @@ extension MainContainerVC: AddButtonDelegate {
     }
     
     func addButtonDidCompleteLongPress() {
-        self.present(BaseNavBarVC(rootViewController: AddCategoryVC()), animated: true, completion: nil)
+//        self.present(BaseNavBarVC(rootViewController: AddCategoryVC()), animated: true, completion: nil)
     }
     
 }

@@ -8,7 +8,7 @@
 
 import Foundation
 import Mold
-import BNRCoreDataStack
+import CoreData
 
 class GetExpensesOperation: MDOperation {
     
@@ -27,14 +27,14 @@ class GetExpensesOperation: MDOperation {
         // I'm assuming that if you're just reading data and you're sure you won't have simultaneous operations writing to the store,
         // using the main context is OK; that a private queue is only necessary if writing changes at all.
         
-        let request1 = NSFetchRequest<NSFetchRequestResult>(entityName: Expense.entityName)
-        request1.predicate = NSPredicate(format: "category == %@ AND dateSpent >= %@ AND dateSpent <= %@", [self.category, self.startDate, self.endDate])
+        let request1 = FetchRequestBuilder<Expense>.makeFetchRequest()
+        request1.predicate = NSPredicate(format: "category == %@ AND dateSpent >= %@ AND dateSpent <= %@", self.category, self.startDate as NSDate, self.endDate as NSDate)
         
-        let request2 = NSFetchRequest<NSFetchRequestResult>(entityName: Expense.entityName)
+        let request2 = FetchRequestBuilder<Expense>.makeFetchRequest()
         request2.predicate = NSPredicate(format: "dateSpent >= %@ AND dateSpent <= %@", [self.startDate, self.endDate])
         
-        guard let allExpensesInCategory = (try? App.mainQueueContext.fetch(request1)) as? [Expense],
-            let allExpensesInDateRange = (try? App.mainQueueContext.fetch(request2)) as? [Expense]
+        guard let allExpensesInCategory = try? App.mainQueueContext.fetch(request1),
+            let allExpensesInDateRange = try? App.mainQueueContext.fetch(request2)
             else {
                 return nil
         }

@@ -114,7 +114,7 @@ extension SummaryVC {
                 return
         }
         
-        if self.summary.containsDate(expense.dateSpent!) {
+        if self.summary.containsDate(expense.dateSpent! as Date) {
             self.reloadView()
         }
     }
@@ -128,11 +128,7 @@ extension SummaryVC: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let categories = App.allCategories()
-            else {
-                return 0
-        }
-        return categories.count
+        return App.allCategories().count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

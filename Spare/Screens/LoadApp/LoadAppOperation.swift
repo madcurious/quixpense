@@ -8,7 +8,7 @@
 
 import Foundation
 import Mold
-import BNRCoreDataStack
+import CoreData
 
 class LoadAppOperation: MDOperation {
     
@@ -20,24 +20,37 @@ class LoadAppOperation: MDOperation {
             return
         }
         
-        // Initialise CoreData stack.
-        CoreDataStack.constructSQLiteStack(modelName: "Spare") {[unowned self] (result) in
+//        // Initialise CoreData stack.
+//        CoreDataStack.constructSQLiteStack(modelName: "Spare") {[unowned self] (result) in
+//            defer {
+//                self.closeOperation()
+//            }
+//            
+//            if self.isCancelled {
+//                return
+//            }
+//            
+//            switch result {
+//            case .success(let stack):
+//                self.runSuccessBlock(stack)
+//                
+//            case .failure(let error):
+//                self.runFailBlock(error)
+//            }
+//        }
+        
+        let stack = NSPersistentContainer(name: "Spare")
+        stack.loadPersistentStores(completionHandler: {[unowned self] (_, error) in
             defer {
                 self.closeOperation()
             }
             
-            if self.isCancelled {
+            if let error = error {
+                self.runFailBlock(error)
                 return
             }
-            
-            switch result {
-            case .success(let stack):
-                self.runSuccessBlock(stack)
-                
-            case .failure(let error):
-                self.runFailBlock(error)
-            }
-        }
+            self.runSuccessBlock(stack)
+        })
     }
     
 }
