@@ -16,7 +16,7 @@ class CustomPickerHeader: UITableViewHeaderFooterView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.backgroundView = UIImageView(image: UIImage.imageFromColor(UIColor.whiteColor()))
+        self.backgroundView = UIImageView(image: UIImage.imageFromColor(UIColor.white))
         self.label.font = Font.CustomPickerHeaderText
         self.label.textColor = Color.CustomPickerHeaderTextColor
         

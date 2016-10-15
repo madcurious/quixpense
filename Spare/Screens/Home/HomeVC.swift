@@ -8,33 +8,28 @@
 
 import UIKit
 import Mold
-import BNRCoreDataStack
+import CoreData
 
 class HomeVC: MDOperationViewController {
     
     let pageViewController: UIPageViewController = {
-        let pager = UIPageViewController(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: [
+        let pager = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: [
             UIPageViewControllerOptionInterPageSpacingKey : 20
             ])
-        pager.setViewControllers([UIViewController()], direction: .Forward, animated: false, completion: nil)
+        pager.setViewControllers([UIViewController()], direction: .forward, animated: false, completion: nil)
         return pager
     }()
     
-    let currentDate = NSDate()
+    let currentDate = Date()
     var isCreatingSummaries = false
     var summaries = [Summary]()
     
     let forwardButton = Button(string: "Now", font: Font.ModalBarButtonText, textColor: Color.UniversalTextColor)
     let periodizationButton = PeriodizationButton()
-    let noCategoriesView = NoCategoriesView.instantiateFromNib()
     let customLoadingView = OperationVCLoadingView()
     
     override var primaryView: UIView {
         return self.pageViewController.view
-    }
-    
-    override var retryView: MDRetryView {
-        return self.noCategoriesView
     }
     
     override var loadingView: UIView {
@@ -54,23 +49,23 @@ class HomeVC: MDOperationViewController {
         super.viewDidLoad()
         
         glb_applyGlobalVCSettings(self)
-        self.edgesForExtendedLayout = .Bottom
+        self.edgesForExtendedLayout = .bottom
         
         self.pageViewController.view.backgroundColor = Color.UniversalBackgroundColor
         self.pageViewController.dataSource = self
         self.pageViewController.delegate = self
         
-        self.showView(.Loading)
+        self.showView(.loading)
         
         self.noResultsView.backgroundColor = Color.UniversalBackgroundColor
         
-        self.periodizationButton.addTarget(self, action: #selector(handleSelectionOfPeriodization), forControlEvents: .ValueChanged)
-        self.forwardButton.addTarget(self, action: #selector(handleTapOnForwardButton), forControlEvents: .TouchUpInside)
+        self.periodizationButton.addTarget(self, action: #selector(handleSelectionOfPeriodization), for: .valueChanged)
+        self.forwardButton.addTarget(self, action: #selector(handleTapOnForwardButton), for: .touchUpInside)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: self.periodizationButton)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: self.forwardButton)
         
-        let notificationCenter = NSNotificationCenter.defaultCenter()
-        notificationCenter.addObserver(self, selector: #selector(handleUpdatesOnDataStore), name: NSManagedObjectContextDidSaveNotification, object: App.mainQueueContext)
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(handleUpdatesOnDataStore), name: NSNotification.Name.NSManagedObjectContextDidSave, object: App.mainQueueContext)
     }
     
     override func buildOperation() -> MDOperation? {
@@ -93,33 +88,22 @@ class HomeVC: MDOperationViewController {
                         return
                 }
                 
-                self.summaries.insertContentsOf(newSummaries, at: 0)
+                self.summaries.insert(contentsOf: newSummaries, at: 0)
                 
-                if self.currentView != .Primary {
+                if self.currentView != .primary {
                     self.scrollToLastSummary(animated: false)
-                    self.showView(.Primary)
+                    self.showView(.primary)
                 }
                 
                 })
     }
     
-    override func buildFailBlock() -> (ErrorType -> Void) {
-        return {[unowned self] error in
-            guard let customError = error as? Error
-                else {
-                    fatalError("Got an error not customised: \(error as NSError)")
-            }
-            self.noCategoriesView.error = customError
-            self.showView(.Retry)
-        }
-    }
-    
-    func scrollToLastSummary(animated animated: Bool) {
+    func scrollToLastSummary(animated: Bool) {
         guard let lastSummary = self.summaries.last
             else {
                 return
         }
-        self.pageViewController.setViewControllers([SummaryVC(summary: lastSummary)], direction: .Forward, animated: animated, completion: nil)
+        self.pageViewController.setViewControllers([SummaryVC(summary: lastSummary)], direction: .forward, animated: animated, completion: nil)
     }
     
     func handleUpdatesOnDataStore() {
@@ -132,8 +116,8 @@ class HomeVC: MDOperationViewController {
     
     func handleTapOnForwardButton() {
         if let currentPage = self.pageViewController.viewControllers?.first as? SummaryVC,
-            let currentIndex = self.summaries.indexOf(currentPage.summary)
-            where currentIndex == self.summaries.count - 1 {
+            let currentIndex = self.summaries.index(of: currentPage.summary)
+            , currentIndex == self.summaries.count - 1 {
             return
         }
         
@@ -147,16 +131,16 @@ class HomeVC: MDOperationViewController {
     }
     
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
     
 }
 
 extension HomeVC: UIPageViewControllerDataSource {
     
-    func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let currentPage = self.pageViewController.viewControllers?.first as? SummaryVC,
-            let currentIndex = self.summaries.indexOf(currentPage.summary)
+            let currentIndex = self.summaries.index(of: currentPage.summary)
             else {
                 return nil
         }
@@ -165,7 +149,7 @@ extension HomeVC: UIPageViewControllerDataSource {
         if previousIndex > 0 {
             // Start another create operation if nearing the end.
             if let op = self.buildOperation()
-                where previousIndex == 5 {
+                , previousIndex == 5 {
                 self.operationQueue.addOperation(op)
             }
             
@@ -176,9 +160,9 @@ extension HomeVC: UIPageViewControllerDataSource {
         return nil
     }
     
-    func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         guard let currentPage = self.pageViewController.viewControllers?.first as? SummaryVC,
-            let currentIndex = self.summaries.indexOf(currentPage.summary)
+            let currentIndex = self.summaries.index(of: currentPage.summary)
             else {
                 return nil
         }

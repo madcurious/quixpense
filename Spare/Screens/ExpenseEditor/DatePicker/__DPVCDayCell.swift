@@ -13,17 +13,17 @@ class __DPVCDayCell: UICollectionViewCell {
     @IBOutlet weak var selectionView: __DPVCDayCellSelectionView!
     @IBOutlet weak var dateLabel: UILabel!
     
-    override var selected: Bool {
+    override var isSelected: Bool {
         didSet {
-            self.selectionView.fillColor = self.selected ? UIColor.blackColor() : UIColor.clearColor()
-            self.dateLabel.textColor = self.selected ? UIColor.whiteColor() : UIColor.blackColor()
+            self.selectionView.fillColor = self.isSelected ? UIColor.black : UIColor.clear
+            self.dateLabel.textColor = self.isSelected ? UIColor.white : UIColor.black
             self.selectionView.setNeedsDisplay()
         }
     }
     
-    override var highlighted: Bool {
+    override var isHighlighted: Bool {
         didSet {
-            self.selectionView.fillColor = self.highlighted ? UIColor(hex: 0xcccccc) : UIColor.clearColor()
+            self.selectionView.fillColor = self.isHighlighted ? UIColor(hex: 0xcccccc) : UIColor.clear
             self.selectionView.setNeedsDisplay()
         }
     }
@@ -33,7 +33,7 @@ class __DPVCDayCell: UICollectionViewCell {
         
         UIView.clearBackgroundColors(self, self.contentView, self.dateLabel)
         
-        self.dateLabel.textAlignment = .Center
+        self.dateLabel.textAlignment = .center
         self.dateLabel.textColor = Color.CustomPickerTextColor
         self.dateLabel.font = Font.make(.Medium, 16)
         
@@ -49,16 +49,16 @@ class __DPVCDayCell: UICollectionViewCell {
 
 class __DPVCDayCellSelectionView: UIView {
     
-    var fillColor = UIColor.clearColor()
+    var fillColor = UIColor.clear
     
-    override func drawRect(rect: CGRect) {
-        let insetRect = CGRectInset(rect, 1, 1)
+    override func draw(_ rect: CGRect) {
+        let insetRect = rect.insetBy(dx: 1, dy: 1)
         let smallerSide = min(insetRect.width, insetRect.height)
         let x = rect.width / 2 - smallerSide / 2
         let y = rect.height / 2 - smallerSide / 2
-        let squareRect = CGRectMake(x, y, smallerSide, smallerSide)
+        let squareRect = CGRect(x: x, y: y, width: smallerSide, height: smallerSide)
         
-        let path = UIBezierPath(ovalInRect: squareRect)
+        let path = UIBezierPath(ovalIn: squareRect)
         self.fillColor.setFill()
         path.fill()
     }

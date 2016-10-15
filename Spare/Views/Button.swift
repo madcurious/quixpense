@@ -11,18 +11,18 @@ import Mold
 
 class Button: UIControl {
     
-    override var highlighted: Bool {
+    override var isHighlighted: Bool {
         didSet {
-            UIView.animateWithDuration(0.2) {[unowned self] in
-                self.alpha = self.highlighted ? 0.1 : 1.0
-            }
+            UIView.animate(withDuration: 0.2, animations: {[unowned self] in
+                self.alpha = self.isHighlighted ? 0.1 : 1.0
+            }) 
         }
     }
     
     let label = UILabel()
     
     init() {
-        super.init(frame: CGRectZero)
+        super.init(frame: CGRect.zero)
         self.addSubviewAndFill(self.label)
     }
     

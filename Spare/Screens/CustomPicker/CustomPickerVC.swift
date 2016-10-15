@@ -17,7 +17,7 @@ class CustomPickerVC: UIViewController {
     
     let customView = __CPVCView.instantiateFromNib() as __CPVCView
     
-    var delegate: protocol<UITableViewDataSource, UITableViewDelegate>? {
+    var delegate: (UITableViewDataSource & UITableViewDelegate)? {
         didSet {
             self.customView.tableView.dataSource = self.delegate
             self.customView.tableView.delegate = self.delegate
@@ -35,11 +35,11 @@ class CustomPickerVC: UIViewController {
         tapGesture.cancelsTouchesInView = false
         
         self.customView.dimView.addGestureRecognizer(tapGesture)
-        self.customView.tableView.registerNib(CustomPickerCell.nib(), forCellReuseIdentifier: ViewID.ItemCell.rawValue)
+        self.customView.tableView.register(CustomPickerCell.nib(), forCellReuseIdentifier: ViewID.ItemCell.rawValue)
     }
     
     func handleTapOnDimView() {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
 }

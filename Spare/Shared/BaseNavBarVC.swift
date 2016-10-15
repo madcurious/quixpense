@@ -21,15 +21,15 @@ class BaseNavBarVC: UINavigationController {
         self.navigationBar.addSubview(self.borderView)
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         self.navigationBar.barTintColor = Color.NavigationBarBackgroundColor
         self.navigationBar.tintColor = Color.UniversalTextColor
-        self.navigationBar.translucent = false
+        self.navigationBar.isTranslucent = false
         
         let borderHeight = CGFloat(0.5)
-        self.borderView.frame = CGRectMake(0, self.navigationBar.bounds.size.height - borderHeight, self.navigationBar.bounds.size.width, borderHeight)
+        self.borderView.frame = CGRect(x: 0, y: self.navigationBar.bounds.size.height - borderHeight, width: self.navigationBar.bounds.size.width, height: borderHeight)
         
         self.setNeedsStatusBarAppearanceUpdate()
     }

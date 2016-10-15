@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import BNRCoreDataStack
+import CoreData
 import Mold
 
 private enum ViewID: String {
@@ -32,24 +32,24 @@ class ExpenseEditorVC: MDOperationViewController {
     var categories = [Category]()
     
     let keys = ["1", "2", "3", "4", "5", "6", "7", "8", "9", kSpecialKeyPeriod, "0", kSpecialKeyBackspace]
-    let amountFormatter = NSNumberFormatter()
+    let amountFormatter = NumberFormatter()
     var unformattedAmount = ""
     
     let customPickerAnimator = CustomPickerTransitioningDelegate()
     let customPicker = CustomPickerVC()
     
     init(expense: Expense?) {
-        self.managedObjectContext = App.coreDataStack.newBackgroundWorkerMOC()
+        self.managedObjectContext = App.coreDataStack.newBackgroundContext()
         
         if let objectID = expense?.objectID,
-            let expense = self.managedObjectContext.objectWithID(objectID) as? Expense {
+            let expense = self.managedObjectContext.object(with: objectID) as? Expense {
             self.expense = expense
         } else {
             // If adding an expense, by default, the date is the current date and
             // the payment method is cash.
-            self.expense = Expense(managedObjectContext: self.managedObjectContext)
-            self.expense.dateSpent = NSDate()
-            self.expense.paymentMethod = PaymentMethod.Cash.rawValue
+            self.expense = Expense(context: self.managedObjectContext)
+            self.expense.dateSpent = Date() as NSDate
+            self.expense.paymentMethod = PaymentMethod.cash.rawValue as NSNumber
         }
         
         super.init()
@@ -66,7 +66,7 @@ class ExpenseEditorVC: MDOperationViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.amountFormatter.numberStyle = .CurrencyStyle
+        self.amountFormatter.numberStyle = .currency
         self.amountFormatter.currencySymbol = ""
         self.amountFormatter.usesGroupingSeparator = true
         
@@ -77,7 +77,7 @@ class ExpenseEditorVC: MDOperationViewController {
             let amountString = amount.stringValue as NSString
             self.unformattedAmount = amountString as String
             
-            let rangeOfDecimalPoint = amountString.rangeOfString(".")
+            let rangeOfDecimalPoint = amountString.range(of: ".")
             if rangeOfDecimalPoint.location == NSNotFound {
                 self.amountFormatter.alwaysShowsDecimalSeparator = false
                 self.amountFormatter.minimumFractionDigits = 0
@@ -97,25 +97,22 @@ class ExpenseEditorVC: MDOperationViewController {
         
         self.customView.keypadCollectionView.dataSource = self
         self.customView.keypadCollectionView.delegate = self
-        self.customView.keypadCollectionView.registerClass(__EEVCKeypadCell.self, forCellWithReuseIdentifier: ViewID.KeypadCell.rawValue)
+        self.customView.keypadCollectionView.register(__EEVCKeypadCell.self, forCellWithReuseIdentifier: ViewID.KeypadCell.rawValue)
         
-        self.customView.categoryButton.addTarget(self, action: #selector(handleTapOnCategoryButton), forControlEvents: .TouchUpInside)
-        self.customView.dateButton.addTarget(self, action: #selector(handleTapOnDateButton), forControlEvents: .TouchUpInside)
-        self.customView.paymentMethodButton.addTarget(self, action: #selector(handleTapOnPaymentMethodButton), forControlEvents: .TouchUpInside)
+        self.customView.categoryButton.addTarget(self, action: #selector(handleTapOnCategoryButton), for: .touchUpInside)
+        self.customView.dateButton.addTarget(self, action: #selector(handleTapOnDateButton), for: .touchUpInside)
+        self.customView.paymentMethodButton.addTarget(self, action: #selector(handleTapOnPaymentMethodButton), for: .touchUpInside)
         
         self.customView.noteTextField.delegate = self
         
-        self.customPicker.modalPresentationStyle = .Custom
+        self.customPicker.modalPresentationStyle = .custom
         self.customPicker.transitioningDelegate = self.customPickerAnimator
     }
     
     override func buildOperation() -> MDOperation? {
         let op = MDBlockOperation {
-            let fetchRequest = NSFetchRequest(entityName: Category.entityName)
-            guard let categories = try self.managedObjectContext.executeFetchRequest(fetchRequest) as? [Category]
-                else {
-                    throw Error.AppUnknownError
-            }
+            let fetchRequest = FetchRequestBuilder<Category>.makeFetchRequest()
+            let categories = try self.managedObjectContext.fetch(fetchRequest)
             return categories
             }
             .onSuccess {[unowned self] (result) in
@@ -131,7 +128,7 @@ class ExpenseEditorVC: MDOperationViewController {
                     self.expense.category = categories.first
                 }
                 
-                self.showView(.Primary)
+                self.showView(.primary)
                 self.refreshViewFromModel()
         }
         return op
@@ -143,7 +140,7 @@ class ExpenseEditorVC: MDOperationViewController {
         let previousCategory = self.expense.category
         let previousPaymentMethod = self.expense.paymentMethod
         
-        let expense = Expense(managedObjectContext: self.managedObjectContext)
+        let expense = Expense(context: self.managedObjectContext)
         expense.dateSpent = previousDate
         expense.category = previousCategory
         expense.paymentMethod = previousPaymentMethod
@@ -173,15 +170,15 @@ class ExpenseEditorVC: MDOperationViewController {
     }
     
     func refreshCategoryDisplay() {
-        self.customView.categoryButton.setTitle(md_nonEmptyString(self.expense.category?.name), forState: .Normal)
+        self.customView.categoryButton.setTitle(md_nonEmptyString(self.expense.category?.name), for: .normal)
     }
     
     func refreshDateSpentDisplay() {
-        self.customView.dateButton.setTitle(DateFormatter.displayTextForExpenseEditorDate(self.expense.dateSpent), forState: .Normal)
+        self.customView.dateButton.setTitle(DateFormatter.displayTextForExpenseEditorDate(self.expense.dateSpent as? Date), for: .normal)
     }
     
     func refreshPaymentMethodDisplay() {
-        self.customView.paymentMethodButton.setTitle(PaymentMethod(self.expense.paymentMethod?.integerValue)?.text, forState: .Normal)
+        self.customView.paymentMethodButton.setTitle(PaymentMethod(self.expense.paymentMethod?.intValue)?.text, for: .normal)
     }
     
     func refreshAmountDisplay() {
@@ -191,7 +188,7 @@ class ExpenseEditorVC: MDOperationViewController {
         } else {
             let amountDecimalNumber = NSDecimalNumber(string: self.unformattedAmount)
             self.expense.amount = amountDecimalNumber
-            self.customView.amountTextField.text = self.amountFormatter.stringFromNumber(amountDecimalNumber)
+            self.customView.amountTextField.text = self.amountFormatter.string(from: amountDecimalNumber)
         }
     }
     
@@ -206,19 +203,19 @@ class ExpenseEditorVC: MDOperationViewController {
         if lastCharacter == Character(kSpecialKeyPeriod) {
             self.amountFormatter.alwaysShowsDecimalSeparator = false
         }
-        else if self.unformattedAmount.containsString(kSpecialKeyPeriod) {
+        else if self.unformattedAmount.contains(kSpecialKeyPeriod) {
             // Lessen decimal places.
             self.amountFormatter.minimumFractionDigits -= 1
         }
         
         // Actually remove the last character.
-        self.unformattedAmount.removeAtIndex(self.unformattedAmount.endIndex.advancedBy(-1))
+        self.unformattedAmount.remove(at: self.unformattedAmount.characters.index(self.unformattedAmount.endIndex, offsetBy: -1))
         
         self.refreshAmountDisplay()
     }
     
     func appendPeriod() {
-        guard self.unformattedAmount.containsString(kSpecialKeyPeriod) == false
+        guard self.unformattedAmount.contains(kSpecialKeyPeriod) == false
             else {
                 return
         }
@@ -228,8 +225,8 @@ class ExpenseEditorVC: MDOperationViewController {
         self.refreshAmountDisplay()
     }
     
-    func appendNumericKey(key: String) {
-        if self.unformattedAmount.containsString(kSpecialKeyPeriod) == true {
+    func appendNumericKey(_ key: String) {
+        if self.unformattedAmount.contains(kSpecialKeyPeriod) == true {
             self.amountFormatter.minimumFractionDigits += 1
         }
         
@@ -245,7 +242,7 @@ extension ExpenseEditorVC {
     func handleTapOnCategoryButton() {
         let selectedIndex: Int = {
             guard let currentCategory = self.expense.category,
-                let index = self.categories.indexOf(currentCategory)
+                let index = self.categories.index(of: currentCategory)
                 else {
                     return 0
             }
@@ -260,20 +257,20 @@ extension ExpenseEditorVC {
         
         self.customPicker.delegate = delegate
         self.customPicker.customView.headerLabel.text = "CATEGORY"
-        self.presentViewController(customPicker, animated: true, completion: nil)
+        self.present(customPicker, animated: true, completion: nil)
     }
     
     func handleTapOnDateButton() {
-        let datePicker = DatePickerVC(selectedDate: self.expense.dateSpent!, delegate: self)
-        datePicker.modalPresentationStyle = .Custom
+        let datePicker = DatePickerVC(selectedDate: self.expense.dateSpent! as Date, delegate: self)
+        datePicker.modalPresentationStyle = .custom
         datePicker.transitioningDelegate = self.customPickerAnimator
-        self.presentViewController(datePicker, animated: true, completion: nil)
+        self.present(datePicker, animated: true, completion: nil)
     }
     
     func handleTapOnPaymentMethodButton() {
         let selectedIndex: Int = {
-            guard let currentPaymentMethod = PaymentMethod(self.expense.paymentMethod?.integerValue),
-                let index = PaymentMethod.allValues.indexOf(currentPaymentMethod)
+            guard let currentPaymentMethod = PaymentMethod(self.expense.paymentMethod?.intValue),
+                let index = PaymentMethod.allValues.index(of: currentPaymentMethod)
                 else {
                     return 0
             }
@@ -283,13 +280,13 @@ extension ExpenseEditorVC {
         let delegate = PaymentMethodPickerDelegate(selectedIndex: selectedIndex)
         delegate.selectionAction = {[unowned self] selectedIndex in
             let paymentMethods = PaymentMethod.allValues
-            self.expense.paymentMethod = paymentMethods[selectedIndex].rawValue
+            self.expense.paymentMethod = paymentMethods[selectedIndex].rawValue as NSNumber?
             self.refreshPaymentMethodDisplay()
         }
         
         self.customPicker.delegate = delegate
         self.customPicker.customView.headerLabel.text = "PAYMENT METHOD"
-        self.presentViewController(customPicker, animated: true, completion: nil)
+        self.present(customPicker, animated: true, completion: nil)
     }
     
 }
@@ -297,13 +294,13 @@ extension ExpenseEditorVC {
 // MARK: - UICollectionViewDataSource
 extension ExpenseEditorVC: UICollectionViewDataSource {
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.keys.count
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(ViewID.KeypadCell.rawValue, forIndexPath: indexPath) as! __EEVCKeypadCell
-        cell.text = self.keys[indexPath.item]
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ViewID.KeypadCell.rawValue, for: indexPath) as! __EEVCKeypadCell
+        cell.text = self.keys[(indexPath as NSIndexPath).item]
         return cell
     }
     
@@ -312,8 +309,8 @@ extension ExpenseEditorVC: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegate
 extension ExpenseEditorVC: UICollectionViewDelegate {
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let key = self.keys[indexPath.item]
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let key = self.keys[(indexPath as NSIndexPath).item]
         switch key {
         case kSpecialKeyPeriod:
             self.appendPeriod()
@@ -326,11 +323,11 @@ extension ExpenseEditorVC: UICollectionViewDelegate {
         }
     }
     
-    func collectionView(collectionView: UICollectionView, shouldHighlightItemAtIndexPath indexPath: NSIndexPath) -> Bool {
+    func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
         return true
     }
     
-    func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
+    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         return true
     }
     
@@ -339,17 +336,17 @@ extension ExpenseEditorVC: UICollectionViewDelegate {
 // MARK: - UICollectionViewDelegateFlowLayout
 extension ExpenseEditorVC: UICollectionViewDelegateFlowLayout {
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = collectionView.bounds.size.width / 3
         let height = collectionView.bounds.size.height / 4
-        return CGSizeMake(width, height)
+        return CGSize(width: width, height: height)
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
     
@@ -358,8 +355,8 @@ extension ExpenseEditorVC: UICollectionViewDelegateFlowLayout {
 // MARK: - DatePickerVCDelegate
 extension ExpenseEditorVC: DatePickerVCDelegate {
     
-    func datePickerDidSelectDate(date: NSDate) {
-        self.expense.dateSpent = date
+    func datePickerDidSelectDate(_ date: Date) {
+        self.expense.dateSpent = date as NSDate
         self.refreshDateSpentDisplay()
     }
     
@@ -368,13 +365,13 @@ extension ExpenseEditorVC: DatePickerVCDelegate {
 // MARK: - UITextFieldDelegate
 extension ExpenseEditorVC: UITextFieldDelegate {
     
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard textField == self.customView.noteTextField
             else {
                 return false
         }
         
-        let newText = ((self.customView.noteTextField.text ?? "") as NSString).stringByReplacingCharactersInRange(range, withString: string)
+        let newText = ((self.customView.noteTextField.text ?? "") as NSString).replacingCharacters(in: range, with: string)
         self.expense.note = newText
         
         return true

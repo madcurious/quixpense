@@ -10,31 +10,31 @@ import Foundation
 
 enum PaymentMethod: Int {
     
-    case Cash = 0
-    case Credit = 1
-    case Debit = 2
+    case cash = 0
+    case credit = 1
+    case debit = 2
     
-    static let allValues = [PaymentMethod.Cash, .Credit, .Debit]
+    static let allValues = [PaymentMethod.cash, .credit, .debit]
     
     var text: String {
         switch self {
-        case .Cash:
+        case .cash:
             return "Cash"
-        case .Credit:
+        case .credit:
             return "Credit"
-        case .Debit:
+        case .debit:
             return "Debit"
         }
     }
     
     init?(_ int: Int?) {
         switch int {
-        case .Some(0):
-            self = .Cash
-        case .Some(1):
-            self = .Credit
-        case .Some(2):
-            self = .Debit
+        case .some(0):
+            self = .cash
+        case .some(1):
+            self = .credit
+        case .some(2):
+            self = .debit
             
         default:
             return nil

@@ -34,32 +34,32 @@ final class Font {
     static let ModalBarButtonText = Font.make(.Medium, 17)
     static let NavBarTitle = Font.make(.Heavy, 19)
     
-    class func make(weight: Weight, _ size: CGFloat) -> UIFont {
+    class func make(_ weight: Weight, _ size: CGFloat) -> UIFont {
         return UIFont(name: "Avenir-\(weight.rawValue)", size: size)!
     }
     
-    class func icon(size: CGFloat) -> UIFont {
+    class func icon(_ size: CGFloat) -> UIFont {
         return UIFont(name: "spare-v2", size: size)!
     }
     
     // MARK: - Old fonts
     
-    static let ExpenseListCellText = UIFont.systemFontOfSize(18)
-    static let ExpenseListEmptyViewPromptLabel = UIFont.systemFontOfSize(18)
-    static let ExpenseListHeaderNameLabel = UIFont.boldSystemFontOfSize(30)
-    static let ExpenseListHeaderDetailLabel = UIFont.systemFontOfSize(18)
+    static let ExpenseListCellText = UIFont.systemFont(ofSize: 18)
+    static let ExpenseListEmptyViewPromptLabel = UIFont.systemFont(ofSize: 18)
+    static let ExpenseListHeaderNameLabel = UIFont.boldSystemFont(ofSize: 30)
+    static let ExpenseListHeaderDetailLabel = UIFont.systemFont(ofSize: 18)
     
-    static let FormValue = UIFont.systemFontOfSize(18)
+    static let FormValue = UIFont.systemFont(ofSize: 18)
     
-    static let GraphViewTotalLabel = UIFont.boldSystemFontOfSize(26)
-    static let GraphViewDetailLabel = UIFont.systemFontOfSize(16)
+    static let GraphViewTotalLabel = UIFont.boldSystemFont(ofSize: 26)
+    static let GraphViewDetailLabel = UIFont.systemFont(ofSize: 16)
     
-    static let SummaryCellTextLabel = UIFont.systemFontOfSize(18)
+    static let SummaryCellTextLabel = UIFont.systemFont(ofSize: 18)
     
 }
 
 // Delete
 
 enum FontWeight {
-    case UltraLight, Light, Regular, Bold, ExtraBold
+    case ultraLight, light, regular, bold, extraBold
 }

@@ -10,8 +10,8 @@ import Foundation
 
 enum StartOfWeek: Int {
     
-    case Sunday = 1
-    case Monday = 2
-    case Saturday = 7
+    case sunday = 1
+    case monday = 2
+    case saturday = 7
     
 }

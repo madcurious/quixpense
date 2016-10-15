@@ -17,18 +17,18 @@ protocol AddButtonDelegate {
 class AddButton: BaseTabButton {
     
     /// The amount of time before a long press is recognized.
-    private let longPressDelay = 0.5
+    fileprivate let longPressDelay = 0.5
     
     /// The amount of time that a long press should be held to trigger the New Category action.
-    private let longPressRequirement = 0.7
+    fileprivate let longPressRequirement = 0.7
     
     /// The points that the finger is allowed to move during long press, otherwise tracking stops.
-    private let movementThreshold = CGFloat(40)
+    fileprivate let movementThreshold = CGFloat(40)
     
     /// The time when the touch down occurred.
-    var touchTime: NSTimeInterval?
+    var touchTime: TimeInterval?
     
-    var longPressTime: NSTimeInterval?
+    var longPressTime: TimeInterval?
     
     /// The point where the touch down initially occurred.
     var touchPoint: CGPoint?
@@ -36,12 +36,12 @@ class AddButton: BaseTabButton {
     var progressView = AddButtonProgressView.instantiateFromNib() as AddButtonProgressView
     
     /// Timer for animating the long press progress.
-    var progressTimer: NSTimer?
+    var progressTimer: Timer?
     
     var delegate: AddButtonDelegate?
     
     init() {
-        super.init(frame: CGRectZero)
+        super.init(frame: CGRect.zero)
         
         self.iconLabel.text = Icon.MainTabBarAdd.rawValue
     }
@@ -50,7 +50,7 @@ class AddButton: BaseTabButton {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let first = touches.first
             else {
                 return
@@ -58,7 +58,7 @@ class AddButton: BaseTabButton {
         self.startTrackingPress(first)
     }
     
-    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let first = touches.first,
             let touchPoint = self.touchPoint
             else {
@@ -66,7 +66,7 @@ class AddButton: BaseTabButton {
         }
         
         // Don't allow the finger to move too much during long press.
-        let movePoint = first.locationInView(self)
+        let movePoint = first.location(in: self)
         let deltaX = fabs(movePoint.x - touchPoint.x)
         let deltaY = fabs(movePoint.y - touchPoint.y)
         guard deltaX <= self.movementThreshold
@@ -77,21 +77,21 @@ class AddButton: BaseTabButton {
         }
     }
     
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.stopTrackingPress()
     }
     
-    override func touchesCancelled(touches: Set<UITouch>?, withEvent event: UIEvent?) {
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         // Call stopTrackingPress() but do not invoke UIControl actions.
     }
     
-    func startTrackingPress(touch: UITouch) {
-        self.touchTime = NSDate().timeIntervalSince1970
-        self.touchPoint = touch.locationInView(self)
+    func startTrackingPress(_ touch: UITouch) {
+        self.touchTime = Date().timeIntervalSince1970
+        self.touchPoint = touch.location(in: self)
         
         self.applyHighlight(true)
         
-        self.performSelector(#selector(showProgressView(_:)), withObject: NSNumber(bool: true), afterDelay: self.longPressDelay)
+        self.perform(#selector(showProgressView(_:)), with: NSNumber(value: true as Bool), afterDelay: self.longPressDelay)
     }
     
     func stopTrackingPress() {
@@ -105,11 +105,11 @@ class AddButton: BaseTabButton {
         self.applyHighlight(false)
         
         if let touchTime = self.touchTime {
-            let currentTime = NSDate().timeIntervalSince1970
+            let currentTime = Date().timeIntervalSince1970
             switch (currentTime - touchTime) {
             case let x where x < self.longPressDelay:
                 // It's just a click.
-                NSObject.cancelPreviousPerformRequestsWithTarget(self, selector: #selector(showProgressView(_:)), object: NSNumber(bool: true))
+                NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(showProgressView(_:)), object: NSNumber(value: true as Bool))
                 if let delegate = self.delegate {
                     delegate.addButtonDidClick()
                 }
@@ -129,12 +129,12 @@ class AddButton: BaseTabButton {
         self.touchTime = nil
     }
     
-    func showProgressView(show: NSNumber) {
+    func showProgressView(_ show: NSNumber) {
         let rootVC = md_rootViewController()
         if show.boolValue == true {
             rootVC.view.addSubviewAndFill(self.progressView)
-            self.longPressTime = NSDate().timeIntervalSince1970
-            self.progressTimer = NSTimer.scheduledTimerWithTimeInterval(0, target: self, selector: #selector(updateProgress), userInfo: nil, repeats: true)
+            self.longPressTime = Date().timeIntervalSince1970
+            self.progressTimer = Timer.scheduledTimer(timeInterval: 0, target: self, selector: #selector(updateProgress), userInfo: nil, repeats: true)
         } else {
             self.progressView.removeFromSuperview()
             self.progressView.reset()
@@ -147,7 +147,7 @@ class AddButton: BaseTabButton {
                 return
         }
         
-        let currentTime = NSDate().timeIntervalSince1970
+        let currentTime = Date().timeIntervalSince1970
         let progress = (currentTime - longPressTime) / self.longPressRequirement
         self.progressView.progress = progress
         

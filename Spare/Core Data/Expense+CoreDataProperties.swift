@@ -2,11 +2,8 @@
 //  Expense+CoreDataProperties.swift
 //  Spare
 //
-//  Created by Matt Quiros on 01/09/2016.
+//  Created by Matt Quiros on 15/10/2016.
 //  Copyright © 2016 Matt Quiros. All rights reserved.
-//
-//  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
-//  to delete and recreate this implementation file for your updated model.
 //
 
 import Foundation
@@ -14,10 +11,14 @@ import CoreData
 
 extension Expense {
 
-    @NSManaged var amount: NSDecimalNumber?
-    @NSManaged var dateSpent: NSDate?
-    @NSManaged var note: String?
-    @NSManaged var paymentMethod: NSNumber?
-    @NSManaged var category: Category?
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<Expense> {
+        return NSFetchRequest<Expense>(entityName: "Expense");
+    }
+
+    @NSManaged public var amount: NSDecimalNumber?
+    @NSManaged public var dateSpent: NSDate?
+    @NSManaged public var note: String?
+    @NSManaged public var paymentMethod: NSNumber?
+    @NSManaged public var category: Category?
 
 }

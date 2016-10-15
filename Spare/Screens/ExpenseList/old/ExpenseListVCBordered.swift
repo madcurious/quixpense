@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import BNRCoreDataStack
+import CoreData
 
 private enum ViewID: String {
     case Cell = "Cell"
@@ -17,25 +17,23 @@ private enum ViewID: String {
 class ExpenseListVCBordered: UIViewController {
     
     var category: Category
-    let startDate: NSDate
-    let endDate: NSDate
+    let startDate: Date
+    let endDate: Date
     
-    let headerView = ExpenseListHeaderView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, 0))
+    let headerView = ExpenseListHeaderView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 0))
     let customView = __ELVCBView.instantiateFromNib() as __ELVCBView
     
     var expenses: [Expense]? {
-        return glb_autoreport({[unowned self] in
-            let request = NSFetchRequest(entityName: Expense.entityName)
-            request.predicate = NSPredicate(format: "category == %@ && dateSpent >= %@ && dateSpent <= %@", self.category, self.startDate, self.endDate)
-            if let expenses = try App.mainQueueContext.executeFetchRequest(request) as? [Expense]
-                where expenses.count > 0 {
-                return expenses
-            }
-            return nil
-            })
+        let request = FetchRequestBuilder<Expense>.makeFetchRequest()
+        request.predicate = NSPredicate(format: "category == %@ && dateSpent >= %@ && dateSpent <= %@", self.category, self.startDate as NSDate, self.endDate as NSDate)
+        if let expenses = try? App.mainQueueContext.fetch(request)
+            , expenses.count > 0 {
+            return expenses
+        }
+        return nil
     }
     
-    init(category: Category, startDate: NSDate, endDate: NSDate) {
+    init(category: Category, startDate: Date, endDate: Date) {
         self.category = category
         self.startDate = startDate
         self.endDate = endDate
@@ -54,18 +52,18 @@ class ExpenseListVCBordered: UIViewController {
         self.customView.tableView.dataSource = self
         self.customView.tableView.delegate = self
         self.setupHeaderView()
-        self.customView.tableView.registerNib(__ELVCBCell.nib(), forCellReuseIdentifier: ViewID.Cell.rawValue)
-        self.customView.tableView.registerClass(__ELVCBEmptyCell.self, forCellReuseIdentifier: ViewID.EmptyCell.rawValue)
+        self.customView.tableView.register(__ELVCBCell.nib(), forCellReuseIdentifier: ViewID.Cell.rawValue)
+        self.customView.tableView.register(__ELVCBEmptyCell.self, forCellReuseIdentifier: ViewID.EmptyCell.rawValue)
         
         if let navigationBar = self.navigationController?.navigationBar {
             let colorImage = UIImage.imageFromColor(self.category.color)
             navigationBar.shadowImage = colorImage
-            navigationBar.setBackgroundImage(colorImage, forBarMetrics: .Default)
-            navigationBar.tintColor = UIColor.whiteColor()
+            navigationBar.setBackgroundImage(colorImage, for: .default)
+            navigationBar.tintColor = UIColor.white
         }
         
         let addButton = Button(string: Icon.ThinAddSign.rawValue, font: Font.icon(30), textColor: Color.UniversalTextColor)
-        addButton.addTarget(self, action: #selector(handleTapOnAddExpenseButton), forControlEvents: .TouchUpInside)
+        addButton.addTarget(self, action: #selector(handleTapOnAddExpenseButton), for: .touchUpInside)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: addButton)
     }
     
@@ -93,13 +91,13 @@ class ExpenseListVCBordered: UIViewController {
     }
     
     func handleTapOnAddExpenseButton() {
-        self.presentViewController(BaseNavBarVC(rootViewController: AddExpenseVC(preselectedCategory: self.category, preselectedDate: self.startDate)),
+        self.present(BaseNavBarVC(rootViewController: AddExpenseVC(preselectedCategory: self.category, preselectedDate: self.startDate)),
                                    animated: true, completion: nil)
     }
     
     func handleSaveOnManagedObjectContext() {
         // Refetch category.
-        if let category = App.mainQueueContext.objectWithID(self.category.objectID) as? Category {
+        if let category = App.mainQueueContext.object(with: self.category.objectID) as? Category {
             self.category = category
         }
         self.setupHeaderView()
@@ -110,7 +108,7 @@ class ExpenseListVCBordered: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
@@ -127,27 +125,27 @@ class ExpenseListVCBordered: UIViewController {
 
 extension ExpenseListVCBordered: UITableViewDataSource {
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let expenses = self.expenses
             else {
                 // Make way for the empty view.
-                self.customView.tableView.separatorStyle = .None
+                self.customView.tableView.separatorStyle = .none
                 return 1
         }
-        self.customView.tableView.separatorStyle = .SingleLine
+        self.customView.tableView.separatorStyle = .singleLine
         return expenses.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let expenses = self.expenses {
-            guard let cell = tableView.dequeueReusableCellWithIdentifier(ViewID.Cell.rawValue) as? __ELVCBCell
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: ViewID.Cell.rawValue) as? __ELVCBCell
                 else {
                     fatalError()
             }
-            cell.data = (expenses[indexPath.row], App.state.selectedPeriodization)
+            cell.data = (expenses[(indexPath as NSIndexPath).row], App.state.selectedPeriodization)
             return cell
         } else {
-            let cell = tableView.dequeueReusableCellWithIdentifier(ViewID.EmptyCell.rawValue, forIndexPath: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: ViewID.EmptyCell.rawValue, for: indexPath)
             return cell
         }
     }
@@ -156,11 +154,11 @@ extension ExpenseListVCBordered: UITableViewDataSource {
 
 extension ExpenseListVCBordered: UITableViewDelegate {
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if self.expenses == nil {
             // Return height for empty view.
             return max(0, tableView.bounds.size.height - self.headerView.bounds.size.height)
@@ -173,7 +171,7 @@ extension ExpenseListVCBordered: UITableViewDelegate {
 // MARK: - UIScrollViewDelegate
 extension ExpenseListVCBordered: UIScrollViewDelegate {
     
-    func scrollViewDidScroll(scrollView: UIScrollView) {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let colorExtenderHeight: CGFloat = {
             if self.customView.tableView.contentOffset.y > 0 {
                 return 0

@@ -35,8 +35,8 @@ class __ELVCBCell: UITableViewCell {
                 rightText += note
             }
             if let paymentMethodNumber = expense.paymentMethod,
-                let paymentMethod = PaymentMethod(paymentMethodNumber.integerValue)
-                where periodization == .Day && rightText.isEmpty == true {
+                let paymentMethod = PaymentMethod(paymentMethodNumber.intValue)
+                , periodization == .day && rightText.isEmpty == true {
                 rightText += paymentMethod.text
             }
             self.rightLabel.text = rightText
@@ -48,15 +48,15 @@ class __ELVCBCell: UITableViewCell {
         UIView.clearBackgroundColors(self, self.contentView)
         
         self.leftLabel.numberOfLines = 1
-        self.leftLabel.lineBreakMode = .ByClipping
+        self.leftLabel.lineBreakMode = .byClipping
         self.leftLabel.textColor = Color.UniversalTextColor
         self.leftLabel.font = Font.ExpenseListCellText
         
         self.rightLabel.numberOfLines = 1
-        self.rightLabel.lineBreakMode = .ByTruncatingTail
+        self.rightLabel.lineBreakMode = .byTruncatingTail
         self.rightLabel.textColor = Color.UniversalSecondaryTextColor
         self.rightLabel.font = Font.ExpenseListCellText
-        self.rightLabel.textAlignment = .Right
+        self.rightLabel.textAlignment = .right
         
         self.arrowLabel.attributedText = NSAttributedString(string: Icon.DisclosureIndicator.rawValue, font: Font.icon(20), textColor: Color.UniversalSecondaryTextColor)
     }

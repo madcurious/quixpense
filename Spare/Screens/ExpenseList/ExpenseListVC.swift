@@ -16,15 +16,15 @@ private enum ViewID: String {
 class ExpenseListVC: MDOperationViewController {
     
     var category: Category
-    let startDate: NSDate
-    let endDate: NSDate
+    let startDate: Date
+    let endDate: Date
     
     var expenses: [Expense]?
-    var total = NSDecimalNumber(integer: 0)
+    var total = NSDecimalNumber(value: 0 as Int)
     var percent = Double(0)
     
     let headerView = __ELVCHeaderView.instantiateFromNib()
-    let tableView = UITableView(frame: CGRectZero, style: .Plain)
+    let tableView = UITableView(frame: CGRect.zero, style: .plain)
     
     override var loadingView: UIView {
         return OperationVCLoadingView()
@@ -34,7 +34,7 @@ class ExpenseListVC: MDOperationViewController {
         return self.tableView
     }
     
-    init(category: Category, startDate: NSDate, endDate: NSDate) {
+    init(category: Category, startDate: Date, endDate: Date) {
         self.category = category
         self.startDate = startDate
         self.endDate = endDate
@@ -47,12 +47,12 @@ class ExpenseListVC: MDOperationViewController {
         glb_applyGlobalVCSettings(self)
         
         self.tableView.backgroundColor = Color.UniversalBackgroundColor
-        self.tableView.separatorStyle = .None
+        self.tableView.separatorStyle = .none
         self.tableView.estimatedRowHeight = 44
         
         self.tableView.dataSource = self
         self.tableView.delegate = self
-        self.tableView.registerNib(__ELVCCell.nib(), forCellReuseIdentifier: ViewID.Cell.rawValue)
+        self.tableView.register(__ELVCCell.nib(), forCellReuseIdentifier: ViewID.Cell.rawValue)
     }
     
     func setupHeaderView() {
@@ -80,14 +80,14 @@ class ExpenseListVC: MDOperationViewController {
                 if expenses.count > 0 {
                     self.setupHeaderView()
                     self.tableView.reloadData()
-                    self.showView(.Primary)
+                    self.showView(.primary)
                 } else {
-                    self.showView(.NoResults)
+                    self.showView(.noResults)
                 }
             })
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
@@ -108,7 +108,7 @@ class ExpenseListVC: MDOperationViewController {
 
 extension ExpenseListVC: UITableViewDataSource {
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let expenses = self.expenses
             else {
                 return 0
@@ -116,9 +116,9 @@ extension ExpenseListVC: UITableViewDataSource {
         return expenses.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(ViewID.Cell.rawValue) as! __ELVCCell
-        cell.expense = self.expenses?[indexPath.row]
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: ViewID.Cell.rawValue) as! __ELVCCell
+        cell.expense = self.expenses?[(indexPath as NSIndexPath).row]
         return cell
     }
     
@@ -126,16 +126,16 @@ extension ExpenseListVC: UITableViewDataSource {
 
 extension ExpenseListVC: UITableViewDelegate {
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.tableView.deselectRow(at: indexPath, animated: true)
         
-        if let expense = self.expenses?[indexPath.row] {
+        if let expense = self.expenses?[(indexPath as NSIndexPath).row] {
             let modal = BaseNavBarVC(rootViewController: EditExpenseVC(expense: expense))
-            self.navigationController?.presentViewController(modal, animated: true, completion: nil)
+            self.navigationController?.present(modal, animated: true, completion: nil)
         }
     }
     
-    func tableView(tableView: UITableView, shouldHighlightRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     

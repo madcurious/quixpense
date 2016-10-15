@@ -24,7 +24,7 @@ class __ELVCCell: UITableViewCell {
                 if let note = expense.note {
                     description += note + ", "
                 }
-                if let paymentMethod = PaymentMethod(expense.paymentMethod?.integerValue) {
+                if let paymentMethod = PaymentMethod(expense.paymentMethod?.intValue) {
                     description += paymentMethod.text
                 }
                 self.descriptionLabel.text = description
@@ -48,8 +48,8 @@ class __ELVCCell: UITableViewCell {
         
         self.descriptionLabel.font = Font.make(.Book, 18)
         self.descriptionLabel.numberOfLines = 0
-        self.descriptionLabel.lineBreakMode = .ByWordWrapping
-        self.descriptionLabel.textAlignment = .Right
+        self.descriptionLabel.lineBreakMode = .byWordWrapping
+        self.descriptionLabel.textAlignment = .right
         self.descriptionLabel.textColor = Color.UniversalSecondaryTextColor
         
         self.disclosureImageView.image = UIImage.templateNamed("disclosureIcon")

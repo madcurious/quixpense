@@ -17,22 +17,22 @@ class CategoryEditorVC: UIViewController {
     
     let customView = __CEVCView.instantiateFromNib() as __CEVCView
     
-    private let defaultColor = UIColor(hex: 0xff1500)
+    fileprivate let defaultColor = UIColor(hex: 0xff1500)
     
     override var formScrollView: UIScrollView {
         return self.customView.scrollView
     }
     
     init(category: Category?) {
-        let context = App.coreDataStack.newBackgroundWorkerMOC()
+        let context = App.coreDataStack.newChildContext()
         self.managedObjectContext = context
         
         if let objectID = category?.objectID,
-            let category = context.objectWithID(objectID) as? Category {
+            let category = context.object(with: objectID) as? Category {
             self.category = category
         } else {
             self.category = Category(managedObjectContext: context)
-            self.category.colorHex = self.defaultColor.hexValue()
+            self.category.colorHex = self.defaultColor.hexValue() as NSNumber?
         }
         
         super.init(nibName: nil, bundle: nil)
@@ -53,7 +53,7 @@ class CategoryEditorVC: UIViewController {
         self.customView.nameTextField.delegate = self
         self.customView.nameTextField.text = self.category.name
         
-        self.customView.colorPickerControl.addTarget(self, action: #selector(handleColorPickerChanged), forControlEvents: .ValueChanged)
+        self.customView.colorPickerControl.addTarget(self, action: #selector(handleColorPickerChanged), for: .valueChanged)
         self.customView.colorPickerControl.selectedColor = self.category.color
         
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapOnView)))
@@ -69,7 +69,7 @@ class CategoryEditorVC: UIViewController {
         self.customView.colorTextField.text = "#" + String(selectedColor.hexValue(), radix: 16, uppercase: true)
         
         // Update the model.
-        self.category.colorHex = selectedColor.hexValue()
+        self.category.colorHex = selectedColor.hexValue() as NSNumber?
     }
     
     /**
@@ -79,15 +79,15 @@ class CategoryEditorVC: UIViewController {
         self.customView.nameTextField.text = nil
         self.category = Category(managedObjectContext: self.managedObjectContext)
         self.category.name = nil
-        self.category.colorHex = self.customView.colorPickerControl.selectedColor.hexValue()
+        self.category.colorHex = self.customView.colorPickerControl.selectedColor.hexValue() as NSNumber?
     }
     
 }
 
 extension CategoryEditorVC: UITextFieldDelegate {
     
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        let name = NSString(string: textField.text ?? "").stringByReplacingCharactersInRange(range, withString: string)
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let name = NSString(string: textField.text ?? "").replacingCharacters(in: range, with: string)
         self.category.name = name
         return true
     }

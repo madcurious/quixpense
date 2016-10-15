@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import BNRCoreDataStack
+import CoreData
 
 private let kSharedState = App()
 
@@ -22,37 +22,42 @@ class App {
         return kSharedState
     }
     
-    static var coreDataStack: CoreDataStack! {
-        get {
-            return kSharedState.coreDataStack
-        }
-        set {
-            kSharedState.coreDataStack = newValue
-        }
-    }
+//    static var coreDataStack: CoreDataStack! {
+//        get {
+//            return kSharedState.coreDataStack
+//        }
+//        set {
+//            kSharedState.coreDataStack = newValue
+//        }
+//    }
+//    
+//    static var mainQueueContext: NSManagedObjectContext {
+//        return kSharedState.coreDataStack.mainQueueContext
+//    }
     
+    fileprivate init() {}
+    
+//    fileprivate var coreDataStack: CoreDataStack!
+    
+    static var coreDataStack: NSPersistentContainer!
     static var mainQueueContext: NSManagedObjectContext {
-        return kSharedState.coreDataStack.mainQueueContext
+        return self.coreDataStack.viewContext
     }
-    
-    private init() {}
-    
-    private var coreDataStack: CoreDataStack!
     
     var selectedPeriodization: Periodization {
         get {
-            let defaults = NSUserDefaults.standardUserDefaults()
-            if let rawValue = defaults.valueForKey(SettingKey.SelectedPeriodization.rawValue) as? Int,
+            let defaults = UserDefaults.standard
+            if let rawValue = defaults.value(forKey: SettingKey.SelectedPeriodization.rawValue) as? Int,
                 let periodization = Periodization(rawValue: rawValue) {
                 return periodization
             } else {
-                defaults.setValue(Periodization.Day.rawValue, forKey: SettingKey.SelectedPeriodization.rawValue)
+                defaults.setValue(Periodization.day.rawValue, forKey: SettingKey.SelectedPeriodization.rawValue)
                 defaults.synchronize()
-                return .Day
+                return .day
             }
         }
         set {
-            let defaults = NSUserDefaults.standardUserDefaults()
+            let defaults = UserDefaults.standard
             defaults.setValue(newValue.rawValue, forKey: SettingKey.SelectedPeriodization.rawValue)
             defaults.synchronize()
         }
@@ -60,30 +65,36 @@ class App {
     
     var selectedStartOfWeek: StartOfWeek {
         get {
-            let defaults = NSUserDefaults.standardUserDefaults()
-            if let rawValue = defaults.valueForKey(SettingKey.SelectedPeriodization.rawValue) as? Int,
+            let defaults = UserDefaults.standard
+            if let rawValue = defaults.value(forKey: SettingKey.SelectedPeriodization.rawValue) as? Int,
                 let startOfWeek = StartOfWeek(rawValue: rawValue) {
                 return startOfWeek
             } else {
-                defaults.setValue(StartOfWeek.Sunday.rawValue, forKey: SettingKey.SelectedStartOfWeek.rawValue)
+                defaults.setValue(StartOfWeek.sunday.rawValue, forKey: SettingKey.SelectedStartOfWeek.rawValue)
                 defaults.synchronize()
-                return .Sunday
+                return .sunday
             }
         }
         set {
-            let defaults = NSUserDefaults.standardUserDefaults()
+            let defaults = UserDefaults.standard
             defaults.setValue(newValue.rawValue, forKey: SettingKey.SelectedStartOfWeek.rawValue)
             defaults.synchronize()
         }
     }
     
-    class func allCategories() -> [Category]? {
-        let request = NSFetchRequest(entityName: Category.entityName)
-        if let categories = try! App.mainQueueContext.executeFetchRequest(request) as? [Category]
-            where categories.isEmpty == false {
-            return categories
-        }
-        return nil
+//    class func allCategories() -> [Category]? {
+//        let request = NSFetchRequest<NSFetchRequestResult>(entityName: Category.entityName)
+//        if let categories = (try? App.mainQueueContext.fetch(request)) as? [Category]
+//            , categories.isEmpty == false {
+//            return categories
+//        }
+//        return nil
+//    }
+    
+    class func allCategories() -> [Category] {
+        let request = FetchRequestBuilder<Category>.makeFetchRequest()
+        let categories = try! App.mainQueueContext.fetch(request) as! [Category]
+        return categories
     }
     
 }

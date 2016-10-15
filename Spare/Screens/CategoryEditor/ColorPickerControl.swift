@@ -11,7 +11,7 @@ import NKOColorPickerView
 
 class ColorPickerControl: UIControl {
     
-    let colorPicker = NKOColorPickerView(frame: CGRectZero)
+    let colorPicker = NKOColorPickerView(frame: CGRect.zero)
     
     var selectedColor: UIColor {
         get {
@@ -36,10 +36,10 @@ class ColorPickerControl: UIControl {
         self.addSubviewAndFill(self.colorPicker)
         
         // Set a default color.
-        self.colorPicker.color = UIColor.redColor()
+        self.colorPicker.color = UIColor.red
         
         self.colorPicker.didChangeColorBlock = {[unowned self] _ in
-            self.sendActionsForControlEvents(.ValueChanged)
+            self.sendActions(for: .valueChanged)
         }
     }
     

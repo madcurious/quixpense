@@ -10,11 +10,11 @@ import UIKit
 
 class OperationVCLoadingView: UIView {
     
-    let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
+    let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
     
-    override var hidden: Bool {
+    override var isHidden: Bool {
         didSet {
-            if self.hidden == true {
+            if self.isHidden == true {
                 self.activityIndicator.stopAnimating()
             } else {
                 self.activityIndicator.startAnimating()
@@ -23,7 +23,7 @@ class OperationVCLoadingView: UIView {
     }
     
     convenience init() {
-        self.init(frame: CGRectZero)
+        self.init(frame: CGRect.zero)
     }
     
     override init(frame: CGRect) {
@@ -43,17 +43,17 @@ class OperationVCLoadingView: UIView {
         
         let constraints = [
             NSLayoutConstraint(item: self.activityIndicator,
-                attribute: .CenterX,
-                relatedBy: .Equal,
+                attribute: .centerX,
+                relatedBy: .equal,
                 toItem: self,
-                attribute: .CenterX,
+                attribute: .centerX,
                 multiplier: 1,
                 constant: 0),
             NSLayoutConstraint(item: self.activityIndicator,
-                attribute: .CenterY,
-                relatedBy: .Equal,
+                attribute: .centerY,
+                relatedBy: .equal,
                 toItem: self,
-                attribute: .CenterY,
+                attribute: .centerY,
                 multiplier: 1,
                 constant: 0)
         ]

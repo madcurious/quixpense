@@ -8,7 +8,21 @@
 
 import UIKit
 import Mold
-import BNRCoreDataStack
+import CoreData
+
+enum ValidateExpenseOperationError: LocalizedError {
+    case missingValue(String), zeroAmount
+    
+    var errorDescription: String? {
+        switch self {
+        case .missingValue(let valueName):
+            return "\(valueName.capitalized) is required."
+            
+        case .zeroAmount:
+            return "You can't add zero-amount expenses."
+        }
+    }
+}
 
 class ValidateExpenseOperation: MDOperation {
     
@@ -20,31 +34,28 @@ class ValidateExpenseOperation: MDOperation {
         self.parentContext = expense.managedObjectContext
     }
     
-    override func buildResult(object: Any?) throws -> Any? {
-        let context = NSManagedObjectContext(concurrencyType: .PrivateQueueConcurrencyType)
-        context.parentContext = self.parentContext
-        guard let expense = context.objectWithID(self.expenseID) as? Expense
-            else {
-                throw Error.AppUnknownError
-        }
+    override func makeResult(fromSource source: Any?) throws -> Any? {
+        let context = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+        context.parent = self.parentContext
+        let expense = context.object(with: self.expenseID) as! Expense
         
         // Put all the labels and values in an array for simplicity, then loop
         // through it looking for empty values.
         let requiredFields: [(String, Any?)] = [
-                      ("Amount", expense.amount),
-                      ("Category", expense.category),
-                      ("Date spent", expense.dateSpent),
-                      ("Payment method", expense.paymentMethod)
+            ("Amount", expense.amount),
+            ("Category", expense.category),
+            ("Date spent", expense.dateSpent),
+            ("Payment method", expense.paymentMethod)
         ]
         for (label, value) in requiredFields {
             if value == nil {
-                throw Error.UserEnteredInvalidValue("\(label) is required.")
+                throw ValidateExpenseOperationError.missingValue(label)
             }
         }
         
         if let amount = expense.amount
-            where amount == 0 {
-            throw Error.UserEnteredInvalidValue("You can't add zero-amount expenses.")
+            , amount == 0 {
+            throw ValidateExpenseOperationError.zeroAmount
         }
         
         return nil

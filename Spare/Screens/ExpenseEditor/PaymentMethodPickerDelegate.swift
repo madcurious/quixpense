@@ -10,14 +10,14 @@ import UIKit
 
 class PaymentMethodPickerDelegate: CustomPickerDelegate {
     
-    let allMethods = [PaymentMethod.Cash, PaymentMethod.Credit, PaymentMethod.Debit]
+    let allMethods = [PaymentMethod.cash, PaymentMethod.credit, PaymentMethod.debit]
     
     override var dataSource: [Any] {
         return self.allMethods.map({ $0 as Any })
     }
     
-    override func textForItemAtIndexPath(indexPath: NSIndexPath) -> String? {
-        return self.allMethods[indexPath.row].text
+    override func textForItemAtIndexPath(_ indexPath: IndexPath) -> String? {
+        return self.allMethods[(indexPath as NSIndexPath).row].text
     }
     
 }

@@ -11,7 +11,7 @@ import UIKit
 class CustomPickerDelegate: NSObject {
     
     var selectedIndex: Int
-    var selectionAction: ((selectedIndex: Int) -> ())?
+    var selectionAction: ((_ selectedIndex: Int) -> ())?
     
     var dataSource: [Any] {
         fatalError("Unimplemented \(#function)")
@@ -21,7 +21,7 @@ class CustomPickerDelegate: NSObject {
         self.selectedIndex = selectedIndex
     }
     
-    func textForItemAtIndexPath(indexPath: NSIndexPath) -> String? {
+    func textForItemAtIndexPath(_ indexPath: IndexPath) -> String? {
         fatalError("Unimplemented \(#function)")
     }
     
@@ -29,14 +29,14 @@ class CustomPickerDelegate: NSObject {
 
 extension CustomPickerDelegate: UITableViewDataSource {
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.dataSource.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(CustomPickerVC.ViewID.ItemCell.rawValue) as! CustomPickerCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: CustomPickerVC.ViewID.ItemCell.rawValue) as! CustomPickerCell
         
-        cell.checkLabel.hidden = indexPath.row != self.selectedIndex
+        cell.checkLabel.isHidden = (indexPath as NSIndexPath).row != self.selectedIndex
         cell.itemLabel.text = self.textForItemAtIndexPath(indexPath)
         
         return cell
@@ -46,20 +46,20 @@ extension CustomPickerDelegate: UITableViewDataSource {
 
 extension CustomPickerDelegate: UITableViewDelegate {
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let previousIndex = self.selectedIndex
-        self.selectedIndex = indexPath.row
-        tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: previousIndex, inSection: 0), NSIndexPath(forRow: indexPath.row, inSection: 0)], withRowAnimation: .None)
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        self.selectedIndex = (indexPath as NSIndexPath).row
+        tableView.reloadRows(at: [IndexPath(row: previousIndex, section: 0), IndexPath(row: (indexPath as NSIndexPath).row, section: 0)], with: .none)
+        tableView.deselectRow(at: indexPath, animated: true)
         
-        self.selectionAction?(selectedIndex: self.selectedIndex)
+        self.selectionAction?(self.selectedIndex)
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let maxWidth = tableView.bounds.size.width - (CustomPickerCell.ItemLabelLeading + CustomPickerCell.ItemLabelTrailing)
         let sizerLabel = CustomPickerCell.sizerLabel
         sizerLabel.text = self.textForItemAtIndexPath(indexPath)
-        let labelSize = sizerLabel.sizeThatFits(CGSizeMake(maxWidth, CGFloat.max))
+        let labelSize = sizerLabel.sizeThatFits(CGSize(width: maxWidth, height: CGFloat.greatestFiniteMagnitude))
         let height = CustomPickerCell.ItemLabelTop + labelSize.height + CustomPickerCell.ItemLabelBottom
         return height
     }

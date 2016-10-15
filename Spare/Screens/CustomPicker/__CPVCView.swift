@@ -26,7 +26,7 @@ class __CPVCView: CustomPickerView {
         self.headerLabel.font = Font.CustomPickerHeaderText
         self.headerLabel.textColor = Color.CustomPickerHeaderTextColor
         
-        self.tableView.separatorStyle = .None
+        self.tableView.separatorStyle = .none
         self.tableView.showsVerticalScrollIndicator = false
     }
     

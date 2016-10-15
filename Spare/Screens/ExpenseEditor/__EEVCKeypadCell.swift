@@ -16,7 +16,7 @@ class __EEVCKeypadCell: UICollectionViewCell {
     var text: String? {
         didSet {
             if let text = self.text
-                where text == Icon.ExpenseEditorBackspace.rawValue {
+                , text == Icon.ExpenseEditorBackspace.rawValue {
                 self.keyLabel.font = Font.icon(Font.AnySize)
             } else {
                 self.keyLabel.font = Font.ExpenseEditorKeypadText
@@ -26,9 +26,9 @@ class __EEVCKeypadCell: UICollectionViewCell {
         }
     }
     
-    override var highlighted: Bool {
+    override var isHighlighted: Bool {
         didSet {
-            self.contentView.backgroundColor = self.highlighted ? Color.KeypadHighlightedBackgroundColor : UIColor.clearColor()
+            self.contentView.backgroundColor = self.isHighlighted ? Color.KeypadHighlightedBackgroundColor : UIColor.clear
         }
     }
     
@@ -37,9 +37,9 @@ class __EEVCKeypadCell: UICollectionViewCell {
         
         self.addSubviewAndFill(self.keyLabel)
         
-        self.keyLabel.fontSize = .VHeight(0.5)
+        self.keyLabel.fontSize = .vHeight(0.5)
         self.keyLabel.textColor = Color.UniversalTextColor
-        self.keyLabel.textAlignment = .Center
+        self.keyLabel.textAlignment = .center
     }
     
     required init?(coder aDecoder: NSCoder) {

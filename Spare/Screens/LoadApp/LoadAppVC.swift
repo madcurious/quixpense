@@ -8,13 +8,13 @@
 
 import UIKit
 import Mold
-import BNRCoreDataStack
+import CoreData
 
 class LoadAppVC: MDOperationViewController {
     
     override func buildOperation() -> MDOperation? {
         let op = LoadAppOperation().onSuccess {[unowned self] (result) in
-            guard let stack = result as? CoreDataStack,
+            guard let stack = result as? NSPersistentContainer,
                 let navController = self.navigationController
                 else {
                     return
@@ -26,7 +26,7 @@ class LoadAppVC: MDOperationViewController {
         return op
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         if let navController = self.navigationController {

@@ -8,12 +8,12 @@
 
 import UIKit
 import Mold
-import BNRCoreDataStack
+import CoreData
 
 class AddCategoryVC: BaseFormVC {
     
     let editor = CategoryEditorVC(category: nil)
-    let queue = NSOperationQueue()
+    let queue = OperationQueue()
     
     override var formScrollView: UIScrollView {
         return self.editor.customView.scrollView
@@ -33,13 +33,13 @@ class AddCategoryVC: BaseFormVC {
         self.embedChildViewController(self.editor)
     }
     
-    override func handleTapOnDoneBarButtonItem(sender: AnyObject) {
+    override func handleTapOnDoneBarButtonItem(_ sender: AnyObject) {
         self.queue.addOperation(
             ValidateCategoryOperation(category: self.editor.category)
             .onSuccess({[unowned self] (_) in
                 self.editor.managedObjectContext.saveContext({[unowned self] (result) in
                     switch result {
-                    case .Failure(let error as NSError):
+                    case .failure(let error):
                         MDErrorDialog.showError(error, inPresenter: self)
                         
                     default:

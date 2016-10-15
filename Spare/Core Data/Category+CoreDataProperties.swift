@@ -1,12 +1,9 @@
 //
 //  Category+CoreDataProperties.swift
-//  
+//  Spare
 //
-//  Created by Matt Quiros on 27/06/2016.
-//
-//
-//  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
-//  to delete and recreate this implementation file for your updated model.
+//  Created by Matt Quiros on 15/10/2016.
+//  Copyright © 2016 Matt Quiros. All rights reserved.
 //
 
 import Foundation
@@ -14,8 +11,29 @@ import CoreData
 
 extension Category {
 
-    @NSManaged var colorHex: NSNumber?
-    @NSManaged var name: String?
-    @NSManaged var expenses: NSSet?
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<Category> {
+        return NSFetchRequest<Category>(entityName: "Category");
+    }
+
+    @NSManaged public var colorHex: NSNumber?
+    @NSManaged public var name: String?
+    @NSManaged public var expenses: NSSet?
+
+}
+
+// MARK: Generated accessors for expenses
+extension Category {
+
+    @objc(addExpensesObject:)
+    @NSManaged public func addToExpenses(_ value: Expense)
+
+    @objc(removeExpensesObject:)
+    @NSManaged public func removeFromExpenses(_ value: Expense)
+
+    @objc(addExpenses:)
+    @NSManaged public func addToExpenses(_ values: NSSet)
+
+    @objc(removeExpenses:)
+    @NSManaged public func removeFromExpenses(_ values: NSSet)
 
 }
