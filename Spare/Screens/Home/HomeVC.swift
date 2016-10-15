@@ -65,10 +65,15 @@ class HomeVC: MDOperationViewController {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: self.forwardButton)
         
         let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(handleUpdatesOnDataStore), name: NSNotification.Name.NSManagedObjectContextDidSave, object: App.mainQueueContext)
+        notificationCenter.addObserver(self, selector: #selector(handleFinishedInitializingCoreDataStack), name: Notifications.LoadAppVCFinishedLoadingCoreDataStack, object: nil)
     }
     
     override func buildOperation() -> MDOperation? {
+        guard let coreDataStack = App.coreDataStack
+            else {
+                return nil
+        }
+        
         return CreateSummariesOperation(baseDate: self.currentDate,
             periodization: App.state.selectedPeriodization,
             startOfWeek: App.state.selectedStartOfWeek,
@@ -104,6 +109,12 @@ class HomeVC: MDOperationViewController {
                 return
         }
         self.pageViewController.setViewControllers([SummaryVC(summary: lastSummary)], direction: .forward, animated: animated, completion: nil)
+    }
+    
+    func handleFinishedInitializingCoreDataStack() {
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(handleUpdatesOnDataStore), name: NSNotification.Name.NSManagedObjectContextDidSave, object: App.mainQueueContext)
+        self.runOperation()
     }
     
     func handleUpdatesOnDataStore() {

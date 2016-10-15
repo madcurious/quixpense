@@ -34,37 +34,6 @@ func glb_applyGlobalVCSettings(_ viewController: UIViewController) {
     viewController.navigationItem.titleView = titleLabel
 }
 
-///**
-// A wrapper for any closure that may throw an exception for unexpected reasons. When an exception is thrown,
-// an error is automatically reported to the bug tracking tool.
-// */
-//
-//func glb_autoreport(_ closure: () throws -> ()) {
-//    do {
-//        try closure()
-//    } catch {
-//        fatalError("Found error but no auto-reporting logic yet. Error: \(error as NSError)")
-//    }
-//}
-//
-//func glb_autoreport<T>(_ closure: (Void) throws -> T?) -> T? {
-//    do {
-//        return try closure()
-//    } catch {
-//        // Report here.
-//        fatalError("Found error but no auto-reporting logic yet. Error: \(error as NSError)")
-//    }
-//}
-//
-//func glb_autoreport<T>(_ closure: (Void) throws -> T, defaultValue: T) -> T {
-//    do {
-//        return try closure()
-//    } catch {
-//        // Report here.
-//        return defaultValue
-//    }
-//}
-
 func glb_totalOfExpenses(_ expenses: [Expense]) -> NSDecimalNumber {
     return expenses.map({ $0.amount ?? 0}).reduce(0, +)
 }

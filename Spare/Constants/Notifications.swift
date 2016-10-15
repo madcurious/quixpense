@@ -12,6 +12,8 @@ private let prefix = Bundle.main.bundleIdentifier! + "."
 
 class Notifications {
     
+    static let LoadAppVCFinishedLoadingCoreDataStack = Notification.Name("\(prefix)LoadAppVCFinishedLoadingCoreDataStack")
+    
     static let MonthPageVCDidSelectDate = Notification.Name("\(prefix)MonthPageVCDidSelectDate")
     
     static let PerformedExpenseOperation = Notification.Name("\(prefix)PerformedExpenseOperation")

@@ -61,10 +61,6 @@ class MainContainerVC: UIViewController {
         self.navigationController?.pushViewController(expenseListVC, animated: true)
     }
     
-//    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-//        return .LightContent
-//    }
-    
 }
 
 extension MainContainerVC: MainTabBarDelegate {

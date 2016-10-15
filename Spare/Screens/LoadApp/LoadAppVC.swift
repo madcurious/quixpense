@@ -14,14 +14,10 @@ class LoadAppVC: MDOperationViewController {
     
     override func buildOperation() -> MDOperation? {
         let op = LoadAppOperation().onSuccess {[unowned self] (result) in
-            guard let stack = result as? NSPersistentContainer,
-                let navController = self.navigationController
-                else {
-                    return
-            }
+            App.coreDataStack = result as! NSPersistentContainer
             
-            App.coreDataStack = stack
-            navController.pushViewController(MainContainerVC(), animated: true)
+            NotificationCenter.default.post(name: Notifications.LoadAppVCFinishedLoadingCoreDataStack, object: nil)
+            self.dismiss(animated: true, completion: nil)
         }
         return op
     }
