@@ -44,6 +44,7 @@ class __EEVCView: UIView {
             self.amountContainer,
             self.amountTextField
         )
+        
         self.backgroundColor = Color.UniversalBackgroundColor
         self.keypadCollectionView.backgroundColor = Color.KeypadBackgroundColor
         
