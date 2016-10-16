@@ -67,7 +67,7 @@ class SummaryVC: UIViewController {
     func setupCollectionView() {
         self.collectionView.backgroundView = UIImageView(image: UIImage.imageFromColor(Color.UniversalBackgroundColor))
         self.collectionView.alwaysBounceVertical = true
-        self.collectionView.backgroundColor = Color.White
+        self.collectionView.backgroundColor = UIColor.white
         self.collectionView.showsVerticalScrollIndicator = false
         
         self.collectionView.register(__SVCGraphView.nib(), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: ViewID.Graph.rawValue)

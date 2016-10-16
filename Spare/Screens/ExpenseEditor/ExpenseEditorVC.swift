@@ -99,7 +99,7 @@ class ExpenseEditorVC: MDOperationViewController {
         self.customView.keypadCollectionView.delegate = self
         self.customView.keypadCollectionView.register(__EEVCKeypadCell.self, forCellWithReuseIdentifier: ViewID.KeypadCell.rawValue)
         
-        self.customView.categoryButton.addTarget(self, action: #selector(handleTapOnCategoryButton), for: .touchUpInside)
+//        self.customView.categoryButton.addTarget(self, action: #selector(handleTapOnCategoryButton), for: .touchUpInside)
         self.customView.dateButton.addTarget(self, action: #selector(handleTapOnDateButton), for: .touchUpInside)
         self.customView.paymentMethodButton.addTarget(self, action: #selector(handleTapOnPaymentMethodButton), for: .touchUpInside)
         
@@ -161,7 +161,7 @@ class ExpenseEditorVC: MDOperationViewController {
     }
     
     func refreshViewFromModel() {
-        self.refreshCategoryDisplay()
+//        self.refreshCategoryDisplay()
         self.refreshDateSpentDisplay()
         self.refreshPaymentMethodDisplay()
         self.customView.noteTextField.text = md_nonEmptyString(self.expense.note)
@@ -169,9 +169,9 @@ class ExpenseEditorVC: MDOperationViewController {
         self.refreshAmountDisplay()
     }
     
-    func refreshCategoryDisplay() {
-        self.customView.categoryButton.setTitle(md_nonEmptyString(self.expense.category?.name), for: .normal)
-    }
+//    func refreshCategoryDisplay() {
+//        self.customView.categoryButton.setTitle(md_nonEmptyString(self.expense.category?.name), for: .normal)
+//    }
     
     func refreshDateSpentDisplay() {
         self.customView.dateButton.setTitle(DateFormatter.displayTextForExpenseEditorDate(self.expense.dateSpent as? Date), for: .normal)
@@ -191,6 +191,15 @@ class ExpenseEditorVC: MDOperationViewController {
             self.customView.amountTextField.text = self.amountFormatter.string(from: amountDecimalNumber)
         }
     }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+}
+
+// MARK: - Keypad functions
+extension ExpenseEditorVC {
     
     func appendBackspace() {
         guard self.unformattedAmount.isEmpty == false
@@ -252,7 +261,7 @@ extension ExpenseEditorVC {
         let delegate = CategoryPickerDelegate(categories: self.categories, selectedIndex: selectedIndex)
         delegate.selectionAction = {[unowned self] selectedIndex in
             self.expense.category = self.categories[selectedIndex]
-            self.refreshCategoryDisplay()
+//            self.refreshCategoryDisplay()
         }
         
         self.customPicker.delegate = delegate

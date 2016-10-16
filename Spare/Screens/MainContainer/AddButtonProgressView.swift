@@ -38,7 +38,7 @@ class AddButtonProgressView: UIView {
         
         self.backgroundView.effect = UIBlurEffect(style: .dark)
         
-        self.actionLabel.textColor = Color.White
+        self.actionLabel.textColor = UIColor.white
         self.actionLabel.font = Font.make(.Book, 14)
         self.actionLabel.text = "ADD CATEGORY"
         self.actionLabel.sizeToFit()
@@ -66,7 +66,7 @@ class __ABCircleView: UIView {
         super.awakeFromNib()
         
         self.backgroundColor = UIColor.clear
-        self.layer.borderColor = Color.White.cgColor
+        self.layer.borderColor = UIColor.white.cgColor
         self.layer.borderWidth = 1.0
         self.layer.masksToBounds = true
         
@@ -77,7 +77,7 @@ class __ABCircleView: UIView {
         let context = UIGraphicsGetCurrentContext()
         
         var components = [CGFloat(0), CGFloat(0), CGFloat(0), CGFloat(0)]
-        Color.White.getRed(&components[0], green: &components[1], blue: &components[2], alpha: &components[3])
+        UIColor.white.getRed(&components[0], green: &components[1], blue: &components[2], alpha: &components[3])
         context?.setFillColor(red: components[0], green: components[1], blue: components[2], alpha: components[3])
         
         let inset = (rect.width - (rect.width * CGFloat(self.startingProgress + (1 - self.startingProgress) * self.progress))) / 2

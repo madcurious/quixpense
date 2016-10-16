@@ -21,8 +21,10 @@ class TabbedRootViewController: UITabBarController {
             DummyAddViewController(),
             BaseNavBarVC(rootViewController: SettingsVC())
         ]
-        
         self.delegate = self
+        
+        self.tabBar.barTintColor = Color.TabBarBackgroundColor
+        self.tabBar.isTranslucent = false
         
         self.operationQueue.addOperation(
             LoadAppOperation().onSuccess { result in

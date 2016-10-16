@@ -35,7 +35,7 @@ class SegmentedCircle: UIView {
         // Draw the empty gray path.
         let path = UIBezierPath(ovalIn: insetRect)
         path.lineWidth = self.strokeWidth
-        context?.setStrokeColor(Color.SegmentedCircleEmptyColor.cgColor)
+        context?.setStrokeColor(UIColor(hex: 0x444444).cgColor)
         path.stroke()
         
         // Draw the segments.

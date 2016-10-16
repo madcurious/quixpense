@@ -11,60 +11,25 @@ import Mold
 
 class Color {
     
-    // MARK: - Palette
+    static let CustomPickerHeaderTextColor = UIColor(hex: 0xaaaaaa)
+    static let CustomPickerTextColor = UIColor(hex: 0x111111)
     
-    static let Black = UIColor.black
-    static let Hex111111 = UIColor(hex: 0x111111)
-    static let Hex222222 = UIColor(hex: 0x222222)
-    static let Hex282828 = UIColor(hex: 0x282828)
-    static let Hex333333 = UIColor(hex: 0x333333)
-    static let Hex4e4e4e = UIColor(hex: 0x4e4e4e)
-    static let Hex666666 = UIColor(hex: 0x666666)
-    static let Hexaaaaaa = UIColor(hex: 0xaaaaaa)
-    static let White = UIColor.white
+    static let FieldLabelTextColor = UIColor(hex: 0x666666)
+    static let FieldValueTextColor = UIColor.white
+    static let FieldPlaceholderTextColor = UIColor(hex: 0x333333)
     
-    // MARK: - New colors
+    static let KeypadBackgroundColor = UIColor(hex: 0x222222)
+    static let KeypadHighlightedBackgroundColor = UIColor(hex: 0x333333)
     
-    static let CustomPickerHeaderTextColor = Hexaaaaaa
-    static let CustomPickerTextColor = Hex111111
+    static let NavigationBarBackgroundColor = UIColor(hex: 0x333333)
+    static let TabBarBackgroundColor = UIColor(hex: 0x333333)
     
-    static let FieldLabelTextColor = Hex666666
-    static let FieldValueTextColor = White
-    static let FieldPlaceholderTextColor = Hex333333
+    static let SeparatorColor = UIColor(hex: 0x282828)
     
-    static let KeypadBackgroundColor = Hex222222
-    static let KeypadHighlightedBackgroundColor = Hex333333
+    static let TabButtonSelectedBackgroundColor = UIColor(hex: 0x333333)
     
-//    static let BarBackgroundColor = Hex222222
-    static let NavigationBarBackgroundColor = Hex4e4e4e
-    static let TabBarBackgroundColor = Hex222222
-    
-    static let SeparatorColor = Hex282828
-    
-    static let TabButtonSelectedBackgroundColor = Hex333333
-    
-    static let UniversalTextColor = White
-    static let UniversalSecondaryTextColor = Gray700
-    static let UniversalBackgroundColor = Hex111111
-    
-    // MARK: - Old UI Colors
-    
-    static let SegmentedCircleEmptyColor = Gray800
-    
-    fileprivate static let Gray50 = UIColor(hex: 0xf5f5f5)
-    fileprivate static let Gray100 = UIColor(hex: 0xf0f2f6)
-    fileprivate static let Gray200 = UIColor(hex: 0xe6e6e6)
-    fileprivate static let Gray300 = UIColor(hex: 0xe0e0e0)
-    fileprivate static let Gray400 = UIColor(hex: 0xcdcdcd)
-    fileprivate static let Gray420 = UIColor(hex: 0xc6c6c6)
-    fileprivate static let Gray500 = UIColor(hex: 0x898989)
-    fileprivate static let Gray700 = UIColor(hex: 0x666666)
-    fileprivate static let Gray800 = UIColor(hex: 0x444444)
-    fileprivate static let Gray900 = UIColor(hex: 0x191919)
-    
-    static let CustomButtonDisabled = Black
-    
-    static let HomeCellBorderColor = Gray420
-    
+    static let UniversalTextColor = UIColor.white
+    static let UniversalSecondaryTextColor = UIColor(hex: 0x666666)
+    static let UniversalBackgroundColor = UIColor(hex: 0x111111)
     
 }

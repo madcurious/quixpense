@@ -17,9 +17,11 @@ class __EEVCView: UIView {
     @IBOutlet weak var dateContainer: UIView!
     @IBOutlet weak var paymentMethodContainer: UIView!
     @IBOutlet weak var noteContainer: UIView!
+    @IBOutlet weak var amountContainer: UIView!
     
     @IBOutlet var fieldLabels: [UILabel]!
-    @IBOutlet weak var categoryButton: UIButton!
+    
+    @IBOutlet weak var categoryTextField: UITextField!
     @IBOutlet weak var dateButton: UIButton!
     @IBOutlet weak var paymentMethodButton: UIButton!
     @IBOutlet weak var noteTextField: UITextField!
@@ -28,9 +30,6 @@ class __EEVCView: UIView {
     @IBOutlet weak var amountTextField: MDResponsiveTextField!
     
     @IBOutlet weak var keypadCollectionView: UICollectionView!
-    
-    @IBOutlet weak var singleFieldBoxHeight: NSLayoutConstraint!
-    @IBOutlet weak var currencyLabelHeight: NSLayoutConstraint!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -42,6 +41,7 @@ class __EEVCView: UIView {
             self.dateContainer,
             self.paymentMethodContainer,
             self.noteContainer,
+            self.amountContainer,
             self.amountTextField
         )
         self.backgroundColor = Color.UniversalBackgroundColor
@@ -61,7 +61,18 @@ class __EEVCView: UIView {
             label.text = labels[i]
         }
         
-        let buttons = [self.categoryButton, self.dateButton, self.paymentMethodButton]
+        let textFields = [self.categoryTextField, self.noteTextField] as [UITextField]
+        let placeholders = ["Type and select...", "(Optional)"]
+        for i in 0 ..< textFields.count {
+            let textField = textFields[i]
+            textField.font = Font.FieldValue
+            textField.textColor = Color.FieldValueTextColor
+            textField.attributedPlaceholder = NSAttributedString(string: placeholders[i], font: Font.FieldValue, textColor: Color.FieldPlaceholderTextColor)
+            textField.adjustsFontSizeToFitWidth = false
+        }
+        
+        
+        let buttons = [self.dateButton, self.paymentMethodButton]
         for button in buttons {
             button?.tintColor = Color.FieldValueTextColor
             button?.titleLabel?.font = {
@@ -74,11 +85,6 @@ class __EEVCView: UIView {
             button?.titleLabel?.numberOfLines = 1
             button?.titleLabel?.lineBreakMode = .byTruncatingTail
         }
-        
-        self.noteTextField.font = Font.FieldValue
-        self.noteTextField.textColor = Color.FieldValueTextColor
-        self.noteTextField.attributedPlaceholder = NSAttributedString(string: "(Optional)", font: Font.FieldValue, textColor: Color.FieldPlaceholderTextColor)
-        self.noteTextField.adjustsFontSizeToFitWidth = false
         
         self.currencyLabel.textColor = Color.FieldLabelTextColor
         self.currencyLabel.text = AmountFormatter.currencyCode()
@@ -96,24 +102,6 @@ class __EEVCView: UIView {
         self.keypadCollectionView.allowsSelection = true
         
         self.setNeedsUpdateConstraints()
-    }
-    
-    override func updateConstraints() {
-        self.singleFieldBoxHeight.constant = {
-            if MDScreen.currentScreenIs(.iPhone4S) {
-                return 40
-            }
-            return 50
-        }()
-        
-        self.currencyLabelHeight.constant = {
-            if MDScreen.currentScreenIs(.iPhone4S) {
-                return 38
-            }
-            return 50
-        }()
-        
-        super.updateConstraints()
     }
     
 }

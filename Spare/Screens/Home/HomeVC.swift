@@ -69,7 +69,7 @@ class HomeVC: MDOperationViewController {
     }
     
     override func buildOperation() -> MDOperation? {
-        guard let coreDataStack = App.coreDataStack
+        guard App.coreDataStack != nil
             else {
                 return nil
         }
