@@ -230,6 +230,11 @@ extension ExpenseEditorVC {
 extension ExpenseEditorVC {
     
     func handleTapOnCategoryButton() {
+        if App.allCategories().isEmpty {
+            MDAlertDialog.showInPresenter(self, title: "Yay")
+            return
+        }
+        
         let selectedIndex: Int = {
             guard let currentCategory = self.expense.category,
                 let index = self.categories.index(of: currentCategory)
