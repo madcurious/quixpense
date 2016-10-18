@@ -143,27 +143,27 @@
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yAU-ax-UOr">
                     <subviews>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DQM-r6-Dnl" customClass="MDResponsiveTextField" customModule="Mold">
-                            <color key="backgroundColor" red="1" green="0.22098938129661183" blue="0.20376318844657326" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
-                        </textField>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ueT-23-awb" customClass="MDResponsiveLabel" customModule="Mold">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ueT-23-awb" customClass="MDResponsiveLabel" customModule="Mold">
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="227-mz-xb5">
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="ueT-23-awb" firstAttribute="top" secondItem="yAU-ax-UOr" secondAttribute="top" id="0Rg-rn-dlj"/>
-                        <constraint firstItem="DQM-r6-Dnl" firstAttribute="leading" secondItem="ueT-23-awb" secondAttribute="trailing" constant="10" id="73T-Ki-B7x"/>
-                        <constraint firstItem="DQM-r6-Dnl" firstAttribute="top" secondItem="yAU-ax-UOr" secondAttribute="top" id="Ch3-4f-g0j"/>
-                        <constraint firstAttribute="bottom" secondItem="DQM-r6-Dnl" secondAttribute="bottom" id="ENA-Pn-fDh"/>
-                        <constraint firstAttribute="trailing" secondItem="DQM-r6-Dnl" secondAttribute="trailing" constant="10" id="Pw0-D7-jgE"/>
+                        <constraint firstItem="227-mz-xb5" firstAttribute="leading" secondItem="ueT-23-awb" secondAttribute="trailing" constant="10" id="GEl-DS-pHD"/>
                         <constraint firstItem="ueT-23-awb" firstAttribute="leading" secondItem="yAU-ax-UOr" secondAttribute="leading" constant="10" id="bRs-Se-1DK"/>
+                        <constraint firstItem="227-mz-xb5" firstAttribute="top" secondItem="yAU-ax-UOr" secondAttribute="top" id="eNM-vO-Njd"/>
+                        <constraint firstAttribute="trailing" secondItem="227-mz-xb5" secondAttribute="trailing" constant="10" id="nPB-Dm-DVj"/>
                         <constraint firstAttribute="bottom" secondItem="ueT-23-awb" secondAttribute="bottom" id="ocw-Ke-C10"/>
                         <constraint firstAttribute="height" constant="50" id="shW-nK-vaJ"/>
+                        <constraint firstAttribute="bottom" secondItem="227-mz-xb5" secondAttribute="bottom" id="spx-4g-m9W"/>
                     </constraints>
                 </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="GBg-yG-E0O">
@@ -193,7 +193,7 @@
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO"/>
             <connections>
                 <outlet property="amountContainer" destination="yAU-ax-UOr" id="8PS-wl-mk9"/>
-                <outlet property="amountTextField" destination="DQM-r6-Dnl" id="g6U-1L-mhj"/>
+                <outlet property="amountLabel" destination="227-mz-xb5" id="BeY-NH-h1L"/>
                 <outlet property="categoryContainer" destination="cUf-7B-ar0" id="5Vh-Yu-7am"/>
                 <outlet property="categoryTextField" destination="bwc-g5-neU" id="CQI-Hc-zBj"/>
                 <outlet property="currencyLabel" destination="ueT-23-awb" id="qAY-lh-6m8"/>

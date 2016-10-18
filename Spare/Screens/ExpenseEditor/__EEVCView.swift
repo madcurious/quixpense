@@ -27,9 +27,23 @@ class __EEVCView: UIView {
     @IBOutlet weak var noteTextField: UITextField!
     
     @IBOutlet weak var currencyLabel: MDResponsiveLabel!
-    @IBOutlet weak var amountTextField: MDResponsiveTextField!
+    @IBOutlet private weak var amountLabel: UILabel!
     
     @IBOutlet weak var keypadCollectionView: UICollectionView!
+    
+    var amountText: String? {
+        didSet {
+            defer {
+                self.setNeedsLayout()
+                
+                if let amountText = self.amountText {
+                    self.amountLabel.text = amountText
+                } else {
+                    self.amountLabel.text = "0"
+                }
+            }
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -41,8 +55,7 @@ class __EEVCView: UIView {
             self.dateContainer,
             self.paymentMethodContainer,
             self.noteContainer,
-            self.amountContainer,
-            self.amountTextField
+            self.amountContainer
         )
         
         self.backgroundColor = Color.UniversalBackgroundColor
@@ -54,7 +67,7 @@ class __EEVCView: UIView {
             label.textAlignment = .right
             label.textColor = Color.FieldLabelTextColor
             label.font = {
-                if MDScreen.currentScreenIs(.iPhone4S) {
+                if MDScreen.currentScreenIs(.iPhone4) {
                     return Font.FieldLabel.withSize(12)
                 }
                 return Font.FieldLabel
@@ -77,7 +90,7 @@ class __EEVCView: UIView {
         for button in buttons {
             button?.tintColor = Color.FieldValueTextColor
             button?.titleLabel?.font = {
-                if MDScreen.currentScreenIs(.iPhone4S) {
+                if MDScreen.currentScreenIs(.iPhone4) {
                     return Font.FieldValue.withSize(17)
                 }
                 return Font.FieldValue
@@ -92,12 +105,21 @@ class __EEVCView: UIView {
         self.currencyLabel.font = Font.ExpenseEditorCurrencyLabel
         self.currencyLabel.fontSize = .vHeight(0.8)
         
-        self.amountTextField.isUserInteractionEnabled = false
-        self.amountTextField.textColor = Color.FieldValueTextColor
-        self.amountTextField.attributedPlaceholder = NSAttributedString(string: "0", font: Font.ExpenseEditorAmountValue, textColor: Color.FieldValueTextColor)
-        self.amountTextField.font = Font.ExpenseEditorAmountValue
-        self.amountTextField.fontSize = .vHeight(0.8)
-        self.amountTextField.textAlignment = .right
+        let amountTextFieldFont: UIFont = {
+            switch MDScreen.currentScreen() {
+            case .iPhone4, .iPhone5:
+                return Font.make(.Heavy, 20)
+            case .iPhone6, .iPhone6p:
+                return Font.make(.Heavy, 30)
+            }
+        }()
+        
+        self.amountLabel.textColor = Color.FieldValueTextColor
+        self.amountLabel.font = amountTextFieldFont
+        self.amountLabel.adjustsFontSizeToFitWidth = true
+        self.amountLabel.textAlignment = .right
+        self.amountLabel.numberOfLines = 1
+        self.amountLabel.lineBreakMode = .byClipping
         
         self.keypadCollectionView.isScrollEnabled = false
         self.keypadCollectionView.allowsSelection = true

@@ -14,8 +14,7 @@ private enum ViewID: String {
     case KeypadCell = "KeypadCell"
 }
 
-private let kSpecialKeyPeriod = "."
-private let kSpecialKeyBackspace = Icon.ExpenseEditorBackspace.rawValue
+private let kPeriod = "."
 
 /**
  Editor used for adding or editing an expense.
@@ -31,7 +30,7 @@ class ExpenseEditorVC: MDOperationViewController {
     var expense: Expense
     var categories = [Category]()
     
-    let keys = ["1", "2", "3", "4", "5", "6", "7", "8", "9", kSpecialKeyPeriod, "0", kSpecialKeyBackspace]
+    let keys = ["1", "2", "3", "4", "5", "6", "7", "8", "9", kPeriod, "0", Icon.ExpenseEditorBackspace.rawValue]
     let amountFormatter = NumberFormatter()
     dynamic var unformattedAmount = ""
     
@@ -77,7 +76,7 @@ class ExpenseEditorVC: MDOperationViewController {
             let amountString = amount.stringValue as NSString
             self.unformattedAmount = amountString as String
             
-            let rangeOfDecimalPoint = amountString.range(of: ".")
+            let rangeOfDecimalPoint = amountString.range(of: kPeriod)
             if rangeOfDecimalPoint.location == NSNotFound {
                 self.amountFormatter.alwaysShowsDecimalSeparator = false
                 self.amountFormatter.minimumFractionDigits = 0
@@ -167,8 +166,6 @@ class ExpenseEditorVC: MDOperationViewController {
         self.refreshDateSpentDisplay()
         self.refreshPaymentMethodDisplay()
         self.customView.noteTextField.text = md_nonEmptyString(self.expense.note)
-        
-//        self.refreshAmountDisplay()
     }
     
 //    func refreshCategoryDisplay() {
@@ -181,17 +178,6 @@ class ExpenseEditorVC: MDOperationViewController {
     
     func refreshPaymentMethodDisplay() {
         self.customView.paymentMethodButton.setTitle(PaymentMethod(self.expense.paymentMethod?.intValue)?.text, for: .normal)
-    }
-    
-    func refreshAmountDisplay() {
-        if self.unformattedAmount.isEmpty {
-            self.expense.amount = nil
-            self.customView.amountTextField.text = nil
-        } else {
-            let amountDecimalNumber = NSDecimalNumber(string: self.unformattedAmount)
-            self.expense.amount = amountDecimalNumber
-            self.customView.amountTextField.text = self.amountFormatter.string(from: amountDecimalNumber)
-        }
     }
     
     deinit {
@@ -239,14 +225,14 @@ extension ExpenseEditorVC {
         guard self.unformattedAmount.isEmpty == false
             else {
                 self.expense.amount = nil
-                self.customView.amountTextField.text = nil
+                self.customView.amountText = nil
                 self.amountFormatter.alwaysShowsDecimalSeparator = false
                 self.amountFormatter.minimumFractionDigits = 0
                 return
         }
         
         let characters = self.unformattedAmount.characters
-        if let indexOfPeriod = characters.index(of: ".") {
+        if let indexOfPeriod = characters.index(of: Character(kPeriod)) {
             self.amountFormatter.alwaysShowsDecimalSeparator = true
             self.amountFormatter.minimumFractionDigits = characters.distance(from: indexOfPeriod, to: characters.endIndex) - 1
         } else {
@@ -256,7 +242,7 @@ extension ExpenseEditorVC {
         
         let amountDecimalNumber = NSDecimalNumber(string: self.unformattedAmount)
         self.expense.amount = amountDecimalNumber
-        self.customView.amountTextField.text = self.amountFormatter.string(from: amountDecimalNumber)
+        self.customView.amountText = self.amountFormatter.string(from: amountDecimalNumber)
     }
     
     func removeKVO() {
@@ -264,53 +250,6 @@ extension ExpenseEditorVC {
         self.expense.removeObserver(self, forKeyPath: #keyPath(Expense.category))
         self.expense.removeObserver(self, forKeyPath: #keyPath(Expense.dateSpent))
         self.expense.removeObserver(self, forKeyPath: #keyPath(Expense.paymentMethod))
-    }
-    
-}
-
-// MARK: - Keypad functions
-extension ExpenseEditorVC {
-    
-    func appendBackspace() {
-        guard self.unformattedAmount.isEmpty == false
-            else {
-                return
-        }
-        
-//        // Remove period in formatter.
-//        let lastCharacter = self.unformattedAmount.characters.last
-//        if lastCharacter == Character(kSpecialKeyPeriod) {
-//            self.amountFormatter.alwaysShowsDecimalSeparator = false
-//        }
-//        else if self.unformattedAmount.contains(kSpecialKeyPeriod) {
-//            // Lessen decimal places.
-//            self.amountFormatter.minimumFractionDigits -= 1
-//        }
-//        
-        // Actually remove the last character.
-        self.unformattedAmount.remove(at: self.unformattedAmount.characters.index(self.unformattedAmount.endIndex, offsetBy: -1))
-//
-//        self.refreshAmountDisplay()
-    }
-    
-    func appendPeriod() {
-        guard self.unformattedAmount.contains(kSpecialKeyPeriod) == false
-            else {
-                return
-        }
-        
-//        self.amountFormatter.alwaysShowsDecimalSeparator = true
-        self.unformattedAmount += kSpecialKeyPeriod
-//        self.refreshAmountDisplay()
-    }
-    
-    func appendNumericKey(_ key: String) {
-//        if self.unformattedAmount.contains(kSpecialKeyPeriod) == true {
-//            self.amountFormatter.minimumFractionDigits += 1
-//        }
-        
-        self.unformattedAmount += key
-//        self.refreshAmountDisplay()
     }
     
 }
@@ -391,14 +330,26 @@ extension ExpenseEditorVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let key = self.keys[(indexPath as NSIndexPath).item]
         switch key {
-        case kSpecialKeyPeriod:
-            self.appendPeriod()
             
-        case kSpecialKeyBackspace:
-            self.appendBackspace()
+        case Icon.ExpenseEditorBackspace.rawValue:
+            guard self.unformattedAmount.isEmpty == false
+                else {
+                    return
+            }
+            
+            // Actually remove the last character.
+            self.unformattedAmount.remove(at: self.unformattedAmount.characters.index(self.unformattedAmount.endIndex, offsetBy: -1))
+            return
+            
+        case kPeriod:
+            guard self.unformattedAmount.contains(kPeriod) == false
+                else {
+                    return
+            }
+            fallthrough
             
         default:
-            self.appendNumericKey(key)
+            self.unformattedAmount += key
         }
     }
     
