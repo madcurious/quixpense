@@ -69,26 +69,12 @@ class ExpenseEditorVC: MDOperationViewController {
         self.amountFormatter.currencySymbol = ""
         self.amountFormatter.usesGroupingSeparator = true
         
-        // Because the expense model's amount is dependent on the unformattedAmount property,
-        // update the unformattedAmount and the amountFormatter depending on whether the form
-        // is being used for editing (expense.amount is non-nil), or for adding a new expense (amount is nil).
-        if let amount = self.expense.amount {
-            let amountString = amount.stringValue as NSString
-            self.unformattedAmount = amountString as String
-            
-            let rangeOfDecimalPoint = amountString.range(of: kPeriod)
-            if rangeOfDecimalPoint.location == NSNotFound {
-                self.amountFormatter.alwaysShowsDecimalSeparator = false
-                self.amountFormatter.minimumFractionDigits = 0
-            } else {
-                self.amountFormatter.alwaysShowsDecimalSeparator = true
-                self.amountFormatter.minimumFractionDigits = amountString.length - (rangeOfDecimalPoint.location + rangeOfDecimalPoint.length)
-            }
-        } else {
-            self.resetAmountAndFormatter()
-        }
+        self.setupKVO()
         
-        self.refreshViewFromModel()
+        // Expense.note is the only field without KVO so set the text field.
+        if let note = md_nonEmptyString(self.expense.note) {
+            self.customView.noteTextField.text = note
+        }
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tapGesture.cancelsTouchesInView = false
@@ -106,8 +92,6 @@ class ExpenseEditorVC: MDOperationViewController {
         
         self.customPicker.modalPresentationStyle = .custom
         self.customPicker.transitioningDelegate = self.customPickerAnimator
-        
-        self.setupKVO()
     }
     
     override func buildOperation() -> MDOperation? {
@@ -163,7 +147,6 @@ class ExpenseEditorVC: MDOperationViewController {
     
     func refreshViewFromModel() {
 //        self.refreshCategoryDisplay()
-        self.refreshDateSpentDisplay()
         self.refreshPaymentMethodDisplay()
         self.customView.noteTextField.text = md_nonEmptyString(self.expense.note)
     }
@@ -171,10 +154,6 @@ class ExpenseEditorVC: MDOperationViewController {
 //    func refreshCategoryDisplay() {
 //        self.customView.categoryButton.setTitle(md_nonEmptyString(self.expense.category?.name), for: .normal)
 //    }
-    
-    func refreshDateSpentDisplay() {
-        self.customView.dateButton.setTitle(DateFormatter.displayTextForExpenseEditorDate(self.expense.dateSpent as? Date), for: .normal)
-    }
     
     func refreshPaymentMethodDisplay() {
         self.customView.paymentMethodButton.setTitle(PaymentMethod(self.expense.paymentMethod?.intValue)?.text, for: .normal)
@@ -185,7 +164,6 @@ class ExpenseEditorVC: MDOperationViewController {
     }
     
 }
-
 
 // MARK: - KVO
 extension ExpenseEditorVC {
@@ -211,7 +189,7 @@ extension ExpenseEditorVC {
             ()
             
         case "dateSpent":
-            ()
+            self.handleUpdateOnDateSpent(newValue: change?[.newKey] as? Date)
             
         case "paymentMethod":
             ()
@@ -243,6 +221,10 @@ extension ExpenseEditorVC {
         let amountDecimalNumber = NSDecimalNumber(string: self.unformattedAmount)
         self.expense.amount = amountDecimalNumber
         self.customView.amountText = self.amountFormatter.string(from: amountDecimalNumber)
+    }
+    
+    func handleUpdateOnDateSpent(newValue: Date?) {
+        self.customView.dateButton.setTitle(DateFormatter.displayTextForExpenseEditorDate(newValue), for: .normal)
     }
     
     func removeKVO() {
@@ -387,7 +369,6 @@ extension ExpenseEditorVC: DatePickerVCDelegate {
     
     func datePickerDidSelectDate(_ date: Date) {
         self.expense.dateSpent = date as NSDate
-        self.refreshDateSpentDisplay()
     }
     
 }
