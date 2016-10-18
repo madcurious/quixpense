@@ -33,7 +33,7 @@ class ExpenseEditorVC: MDOperationViewController {
     
     let keys = ["1", "2", "3", "4", "5", "6", "7", "8", "9", kSpecialKeyPeriod, "0", kSpecialKeyBackspace]
     let amountFormatter = NumberFormatter()
-    var unformattedAmount = ""
+    dynamic var unformattedAmount = ""
     
     let customPickerAnimator = CustomPickerTransitioningDelegate()
     let customPicker = CustomPickerVC()
@@ -107,6 +107,8 @@ class ExpenseEditorVC: MDOperationViewController {
         
         self.customPicker.modalPresentationStyle = .custom
         self.customPicker.transitioningDelegate = self.customPickerAnimator
+        
+        self.setupKVO()
     }
     
     override func buildOperation() -> MDOperation? {
@@ -166,7 +168,7 @@ class ExpenseEditorVC: MDOperationViewController {
         self.refreshPaymentMethodDisplay()
         self.customView.noteTextField.text = md_nonEmptyString(self.expense.note)
         
-        self.refreshAmountDisplay()
+//        self.refreshAmountDisplay()
     }
     
 //    func refreshCategoryDisplay() {
@@ -193,7 +195,75 @@ class ExpenseEditorVC: MDOperationViewController {
     }
     
     deinit {
-        NotificationCenter.default.removeObserver(self)
+        self.removeKVO()
+    }
+    
+}
+
+
+// MARK: - KVO
+extension ExpenseEditorVC {
+    
+    func setupKVO() {
+        self.addObserver(self, forKeyPath: #keyPath(ExpenseEditorVC.unformattedAmount), options: [.initial, .new], context: nil)
+        self.expense.addObserver(self, forKeyPath: #keyPath(Expense.category), options: [.initial, .new], context: nil)
+        self.expense.addObserver(self, forKeyPath: #keyPath(Expense.dateSpent), options: [.initial, .new], context: nil)
+        self.expense.addObserver(self, forKeyPath: #keyPath(Expense.paymentMethod), options: [.initial, .new], context: nil)
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        guard let keyPath = keyPath
+            else {
+                return
+        }
+        
+        switch keyPath {
+        case "unformattedAmount":
+            self.handleUpdateOnUnformattedAmount()
+            
+        case "category":
+            ()
+            
+        case "dateSpent":
+            ()
+            
+        case "paymentMethod":
+            ()
+            
+        default:
+            return
+        }
+    }
+    
+    func handleUpdateOnUnformattedAmount() {
+        guard self.unformattedAmount.isEmpty == false
+            else {
+                self.expense.amount = nil
+                self.customView.amountTextField.text = nil
+                self.amountFormatter.alwaysShowsDecimalSeparator = false
+                self.amountFormatter.minimumFractionDigits = 0
+                return
+        }
+        
+        let characters = self.unformattedAmount.characters
+        if let indexOfPeriod = characters.index(of: ".") {
+            self.amountFormatter.alwaysShowsDecimalSeparator = true
+            self.amountFormatter.minimumFractionDigits = characters.distance(from: indexOfPeriod, to: characters.endIndex) - 1
+        } else {
+            self.amountFormatter.alwaysShowsDecimalSeparator = false
+            self.amountFormatter.minimumFractionDigits = 0
+        }
+        
+        let amountDecimalNumber = NSDecimalNumber(string: self.unformattedAmount)
+        self.expense.amount = amountDecimalNumber
+        self.customView.amountTextField.text = self.amountFormatter.string(from: amountDecimalNumber)
+    }
+    
+    func removeKVO() {
+        self.removeObserver(self, forKeyPath: #keyPath(ExpenseEditorVC.unformattedAmount))
+        self.expense.removeObserver(self, forKeyPath: #keyPath(Expense.category))
+        self.expense.removeObserver(self, forKeyPath: #keyPath(Expense.dateSpent))
+        self.expense.removeObserver(self, forKeyPath: #keyPath(Expense.paymentMethod))
     }
     
 }
@@ -207,20 +277,20 @@ extension ExpenseEditorVC {
                 return
         }
         
-        // Remove period in formatter.
-        let lastCharacter = self.unformattedAmount.characters.last
-        if lastCharacter == Character(kSpecialKeyPeriod) {
-            self.amountFormatter.alwaysShowsDecimalSeparator = false
-        }
-        else if self.unformattedAmount.contains(kSpecialKeyPeriod) {
-            // Lessen decimal places.
-            self.amountFormatter.minimumFractionDigits -= 1
-        }
-        
+//        // Remove period in formatter.
+//        let lastCharacter = self.unformattedAmount.characters.last
+//        if lastCharacter == Character(kSpecialKeyPeriod) {
+//            self.amountFormatter.alwaysShowsDecimalSeparator = false
+//        }
+//        else if self.unformattedAmount.contains(kSpecialKeyPeriod) {
+//            // Lessen decimal places.
+//            self.amountFormatter.minimumFractionDigits -= 1
+//        }
+//        
         // Actually remove the last character.
         self.unformattedAmount.remove(at: self.unformattedAmount.characters.index(self.unformattedAmount.endIndex, offsetBy: -1))
-        
-        self.refreshAmountDisplay()
+//
+//        self.refreshAmountDisplay()
     }
     
     func appendPeriod() {
@@ -229,18 +299,18 @@ extension ExpenseEditorVC {
                 return
         }
         
-        self.amountFormatter.alwaysShowsDecimalSeparator = true
+//        self.amountFormatter.alwaysShowsDecimalSeparator = true
         self.unformattedAmount += kSpecialKeyPeriod
-        self.refreshAmountDisplay()
+//        self.refreshAmountDisplay()
     }
     
     func appendNumericKey(_ key: String) {
-        if self.unformattedAmount.contains(kSpecialKeyPeriod) == true {
-            self.amountFormatter.minimumFractionDigits += 1
-        }
+//        if self.unformattedAmount.contains(kSpecialKeyPeriod) == true {
+//            self.amountFormatter.minimumFractionDigits += 1
+//        }
         
         self.unformattedAmount += key
-        self.refreshAmountDisplay()
+//        self.refreshAmountDisplay()
     }
     
 }
@@ -375,13 +445,14 @@ extension ExpenseEditorVC: DatePickerVCDelegate {
 extension ExpenseEditorVC: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        guard textField == self.customView.noteTextField
-            else {
-                return false
+        switch textField {
+        case self.customView.noteTextField:
+            let newText = ((self.customView.noteTextField.text ?? "") as NSString).replacingCharacters(in: range, with: string)
+            self.expense.note = newText
+            
+        default:
+            return false
         }
-        
-        let newText = ((self.customView.noteTextField.text ?? "") as NSString).replacingCharacters(in: range, with: string)
-        self.expense.note = newText
         
         return true
     }
