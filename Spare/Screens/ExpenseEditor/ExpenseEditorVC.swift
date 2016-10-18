@@ -84,7 +84,7 @@ class ExpenseEditorVC: MDOperationViewController {
         self.customView.keypadCollectionView.delegate = self
         self.customView.keypadCollectionView.register(__EEVCKeypadCell.self, forCellWithReuseIdentifier: ViewID.KeypadCell.rawValue)
         
-//        self.customView.categoryButton.addTarget(self, action: #selector(handleTapOnCategoryButton), for: .touchUpInside)
+        self.customView.categoryButton.addTarget(self, action: #selector(handleTapOnCategoryButton), for: .touchUpInside)
         self.customView.dateButton.addTarget(self, action: #selector(handleTapOnDateButton), for: .touchUpInside)
         self.customView.paymentMethodButton.addTarget(self, action: #selector(handleTapOnPaymentMethodButton), for: .touchUpInside)
         
@@ -101,11 +101,7 @@ class ExpenseEditorVC: MDOperationViewController {
             return categories
             }
             .onSuccess {[unowned self] (result) in
-                guard let categories = result as? [Category]
-                    else {
-                        return
-                }
-                
+                let categories = result as! [Category]
                 self.categories = categories
                 
                 // Upon getting the categories, select the first category by default.
@@ -114,7 +110,6 @@ class ExpenseEditorVC: MDOperationViewController {
                 }
                 
                 self.showView(.primary)
-                self.refreshViewFromModel()
         }
         return op
     }
@@ -130,33 +125,13 @@ class ExpenseEditorVC: MDOperationViewController {
         expense.category = previousCategory
         expense.paymentMethod = previousPaymentMethod
         expense.note = nil
-        self.expense = expense
-        self.resetAmountAndFormatter()
-        
-        // Update the view.
-        self.refreshViewFromModel()
-    }
-    
-    /// Resets the model's amount and the amount formatter's configurations.
-    func resetAmountAndFormatter() {
         self.expense.amount = nil
+        self.expense = expense
+        
         self.unformattedAmount = ""
+        
         self.amountFormatter.alwaysShowsDecimalSeparator = false
         self.amountFormatter.minimumFractionDigits = 0
-    }
-    
-    func refreshViewFromModel() {
-//        self.refreshCategoryDisplay()
-        self.refreshPaymentMethodDisplay()
-        self.customView.noteTextField.text = md_nonEmptyString(self.expense.note)
-    }
-    
-//    func refreshCategoryDisplay() {
-//        self.customView.categoryButton.setTitle(md_nonEmptyString(self.expense.category?.name), for: .normal)
-//    }
-    
-    func refreshPaymentMethodDisplay() {
-        self.customView.paymentMethodButton.setTitle(PaymentMethod(self.expense.paymentMethod?.intValue)?.text, for: .normal)
     }
     
     deinit {
@@ -186,16 +161,27 @@ extension ExpenseEditorVC {
             self.handleUpdateOnUnformattedAmount()
             
         case "category":
-            ()
+            self.handleUpdateOnCategory(newValue: change?[.newKey] as? Category)
             
         case "dateSpent":
             self.handleUpdateOnDateSpent(newValue: change?[.newKey] as? Date)
             
         case "paymentMethod":
-            ()
+            self.handleUpdateOnPaymentMethod()
             
         default:
             return
+        }
+    }
+    
+    func handleUpdateOnCategory(newValue: Category?) {
+        if let category = newValue,
+            let categoryName = category.name {
+            self.customView.categoryButton.setTitle(categoryName, for: .normal)
+            self.customView.categoryButton.setTitleColor(Color.FieldValueTextColor, for: .normal)
+        } else {
+            self.customView.categoryButton.setTitle("Tap to edit", for: .normal)
+            self.customView.categoryButton.setTitleColor(Color.FieldPlaceholderTextColor, for: .normal)
         }
     }
     
@@ -227,6 +213,10 @@ extension ExpenseEditorVC {
         self.customView.dateButton.setTitle(DateFormatter.displayTextForExpenseEditorDate(newValue), for: .normal)
     }
     
+    func handleUpdateOnPaymentMethod() {
+        self.customView.paymentMethodButton.setTitle(PaymentMethod(self.expense.paymentMethod?.intValue)?.text, for: .normal)
+    }
+    
     func removeKVO() {
         self.removeObserver(self, forKeyPath: #keyPath(ExpenseEditorVC.unformattedAmount))
         self.expense.removeObserver(self, forKeyPath: #keyPath(Expense.category))
@@ -250,9 +240,13 @@ extension ExpenseEditorVC {
         }()
         
         let delegate = CategoryPickerDelegate(categories: self.categories, selectedIndex: selectedIndex)
-        delegate.selectionAction = {[unowned self] selectedIndex in
-            self.expense.category = self.categories[selectedIndex]
-//            self.refreshCategoryDisplay()
+        delegate.categorySelectionAction = {[unowned self] index in
+            self.expense.category = self.categories[index]
+            self.customPicker.dismiss(animated: true, completion: nil)
+        }
+        delegate.addCategoryAction = {[unowned self] in
+            self.customPicker.dismiss(animated: true, completion: nil)
+            MDAlertDialog.showInPresenter(self, title: "Yay")
         }
         
         self.customPicker.delegate = delegate
@@ -278,10 +272,9 @@ extension ExpenseEditorVC {
         }()
         
         let delegate = PaymentMethodPickerDelegate(selectedIndex: selectedIndex)
-        delegate.selectionAction = {[unowned self] selectedIndex in
+        delegate.tapAction = {[unowned self] tappedIndex in
             let paymentMethods = PaymentMethod.allValues
             self.expense.paymentMethod = paymentMethods[selectedIndex].rawValue as NSNumber?
-            self.refreshPaymentMethodDisplay()
         }
         
         self.customPicker.delegate = delegate

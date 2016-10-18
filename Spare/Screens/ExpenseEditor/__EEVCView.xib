@@ -24,22 +24,20 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bwc-g5-neU">
-                                            <nil key="textColor"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                        </textField>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ir-U9-bFU">
+                                            <state key="normal" title="Button"/>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" red="0.81927943229675293" green="0.93609863519668579" blue="0.99960780143737793" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
-                                        <constraint firstItem="bwc-g5-neU" firstAttribute="top" secondItem="cUf-7B-ar0" secondAttribute="top" id="ALr-ig-CsU"/>
+                                        <constraint firstAttribute="bottom" secondItem="3ir-U9-bFU" secondAttribute="bottom" id="3mZ-Em-SDV"/>
                                         <constraint firstItem="b6t-pV-Ou1" firstAttribute="top" secondItem="cUf-7B-ar0" secondAttribute="top" id="LK5-ic-tep"/>
-                                        <constraint firstItem="bwc-g5-neU" firstAttribute="leading" secondItem="b6t-pV-Ou1" secondAttribute="trailing" constant="15" id="RFq-ek-gXJ"/>
+                                        <constraint firstAttribute="trailing" secondItem="3ir-U9-bFU" secondAttribute="trailing" constant="10" id="PWQ-92-pCq"/>
+                                        <constraint firstItem="3ir-U9-bFU" firstAttribute="leading" secondItem="b6t-pV-Ou1" secondAttribute="trailing" constant="15" id="Xrg-K7-h6Q"/>
                                         <constraint firstAttribute="height" constant="50" id="k2i-ai-RYX"/>
-                                        <constraint firstAttribute="bottom" secondItem="bwc-g5-neU" secondAttribute="bottom" id="lmF-YM-Eyl"/>
                                         <constraint firstAttribute="bottom" secondItem="b6t-pV-Ou1" secondAttribute="bottom" id="s0L-hS-AXQ"/>
-                                        <constraint firstAttribute="trailing" secondItem="bwc-g5-neU" secondAttribute="trailing" constant="10" id="spm-0d-GgQ"/>
                                         <constraint firstItem="b6t-pV-Ou1" firstAttribute="leading" secondItem="cUf-7B-ar0" secondAttribute="leading" constant="15" id="uq8-73-VVO"/>
+                                        <constraint firstItem="3ir-U9-bFU" firstAttribute="top" secondItem="cUf-7B-ar0" secondAttribute="top" id="zOf-aE-WN5"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eWe-ql-uZD">
@@ -194,8 +192,8 @@
             <connections>
                 <outlet property="amountContainer" destination="yAU-ax-UOr" id="8PS-wl-mk9"/>
                 <outlet property="amountLabel" destination="227-mz-xb5" id="BeY-NH-h1L"/>
+                <outlet property="categoryButton" destination="3ir-U9-bFU" id="3g6-bf-xKA"/>
                 <outlet property="categoryContainer" destination="cUf-7B-ar0" id="5Vh-Yu-7am"/>
-                <outlet property="categoryTextField" destination="bwc-g5-neU" id="CQI-Hc-zBj"/>
                 <outlet property="currencyLabel" destination="ueT-23-awb" id="qAY-lh-6m8"/>
                 <outlet property="dateButton" destination="mb5-TV-w6R" id="5im-R4-SaX"/>
                 <outlet property="dateContainer" destination="eWe-ql-uZD" id="Vo4-4P-JEv"/>

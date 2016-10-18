@@ -13,7 +13,27 @@ class CategoryPickerDelegate: CustomPickerDelegate {
     var categories: [Category]
     
     override var dataSource: [Any] {
-        return self.categories.map({ $0 as Any })
+        var categories = self.categories.map({ $0 as Any })
+        categories.append("Or, add a new category...")
+        return categories
+    }
+    
+    var categorySelectionAction: ((Int) -> ())?
+    var addCategoryAction: (() -> ())?
+    
+    override var tapAction: ((Int) -> ())? {
+        get {
+            return {[unowned self] index in
+                if index == self.dataSource.count - 1 {
+                    self.addCategoryAction?()
+                } else {
+                    self.categorySelectionAction?(index)
+                }
+            }
+        }
+        set {
+            fatalError("Can't set tapAction for \(self.classForCoder.description())")
+        }
     }
     
     init(categories: [Category], selectedIndex: Int) {
@@ -21,8 +41,21 @@ class CategoryPickerDelegate: CustomPickerDelegate {
         super.init(selectedIndex: selectedIndex)
     }
     
-    override func textForItemAtIndexPath(_ indexPath: IndexPath) -> String? {
-        return self.categories[(indexPath as NSIndexPath).row].name
+    override func text(forIndexPath indexPath: IndexPath) -> String? {
+        guard indexPath.row < self.dataSource.count - 1
+            else {
+                return nil
+        }
+        return self.categories[indexPath.row].name
+    }
+    
+    override func attributedString(forIndexPath indexPath: IndexPath) -> NSAttributedString? {
+        guard indexPath.row == self.dataSource.count - 1
+            else {
+                return nil
+        }
+        
+        return NSAttributedString(string: "Or, add a new category...", font: Font.CustomPickerText, textColor: Color.CustomPickerHeaderTextColor)
     }
     
 }

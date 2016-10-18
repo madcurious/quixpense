@@ -16,7 +16,7 @@ class PaymentMethodPickerDelegate: CustomPickerDelegate {
         return self.allMethods.map({ $0 as Any })
     }
     
-    override func textForItemAtIndexPath(_ indexPath: IndexPath) -> String? {
+    override func text(forIndexPath indexPath: IndexPath) -> String? {
         return self.allMethods[(indexPath as NSIndexPath).row].text
     }
     

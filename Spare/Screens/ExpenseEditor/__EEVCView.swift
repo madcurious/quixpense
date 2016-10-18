@@ -21,7 +21,7 @@ class __EEVCView: UIView {
     
     @IBOutlet var fieldLabels: [UILabel]!
     
-    @IBOutlet weak var categoryTextField: UITextField!
+    @IBOutlet weak var categoryButton: UIButton!
     @IBOutlet weak var dateButton: UIButton!
     @IBOutlet weak var paymentMethodButton: UIButton!
     @IBOutlet weak var noteTextField: UITextField!
@@ -75,8 +75,8 @@ class __EEVCView: UIView {
             label.text = labels[i]
         }
         
-        let textFields = [self.categoryTextField, self.noteTextField] as [UITextField]
-        let placeholders = ["Type and select...", "(Optional)"]
+        let textFields = [self.noteTextField!]
+        let placeholders = ["(Optional)"]
         for i in 0 ..< textFields.count {
             let textField = textFields[i]
             textField.font = Font.FieldValue
@@ -86,7 +86,7 @@ class __EEVCView: UIView {
         }
         
         
-        let buttons = [self.dateButton, self.paymentMethodButton]
+        let buttons = [self.categoryButton, self.dateButton, self.paymentMethodButton]
         for button in buttons {
             button?.tintColor = Color.FieldValueTextColor
             button?.titleLabel?.font = {
