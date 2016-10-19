@@ -35,7 +35,6 @@ class ExpenseEditorVC: MDOperationViewController {
     dynamic var unformattedAmount = ""
     
     let customPickerAnimator = CustomPickerTransitioningDelegate()
-    let customPicker = CustomPickerVC()
     
     init(expense: Expense?) {
         self.managedObjectContext = App.coreDataStack.newBackgroundContext()
@@ -89,9 +88,6 @@ class ExpenseEditorVC: MDOperationViewController {
         self.customView.paymentMethodButton.addTarget(self, action: #selector(handleTapOnPaymentMethodButton), for: .touchUpInside)
         
         self.customView.noteTextField.delegate = self
-        
-        self.customPicker.modalPresentationStyle = .custom
-        self.customPicker.transitioningDelegate = self.customPickerAnimator
     }
     
     override func buildOperation() -> MDOperation? {
@@ -230,33 +226,37 @@ extension ExpenseEditorVC {
 extension ExpenseEditorVC {
     
     func handleTapOnCategoryButton() {
-        if App.allCategories().isEmpty {
-            MDAlertDialog.showInPresenter(self, title: "Yay")
-            return
-        }
+//        if App.allCategories().isEmpty {
+//            MDAlertDialog.showInPresenter(self, title: "Yay")
+//            return
+//        }
+//        
+//        let selectedIndex: Int = {
+//            guard let currentCategory = self.expense.category,
+//                let index = self.categories.index(of: currentCategory)
+//                else {
+//                    return 0
+//            }
+//            return index
+//        }()
+//        
+//        let delegate = CategoryPickerDelegate(categories: self.categories, selectedIndex: selectedIndex)
+//        delegate.categorySelectionAction = {[unowned self] index in
+//            self.expense.category = self.categories[index]
+//            self.customPicker.dismiss(animated: true, completion: nil)
+//        }
+//        delegate.addCategoryAction = {[unowned self] in
+//            self.customPicker.dismiss(animated: true, completion: nil)
+//            MDAlertDialog.showInPresenter(self, title: "Yay")
+//        }
+//        
+//        self.customPicker.delegate = delegate
+//        self.customPicker.customView.headerLabel.text = "CATEGORY"
+//        self.present(customPicker, animated: true, completion: nil)
         
-        let selectedIndex: Int = {
-            guard let currentCategory = self.expense.category,
-                let index = self.categories.index(of: currentCategory)
-                else {
-                    return 0
-            }
-            return index
-        }()
-        
-        let delegate = CategoryPickerDelegate(categories: self.categories, selectedIndex: selectedIndex)
-        delegate.categorySelectionAction = {[unowned self] index in
-            self.expense.category = self.categories[index]
-            self.customPicker.dismiss(animated: true, completion: nil)
-        }
-        delegate.addCategoryAction = {[unowned self] in
-            self.customPicker.dismiss(animated: true, completion: nil)
-            MDAlertDialog.showInPresenter(self, title: "Yay")
-        }
-        
-        self.customPicker.delegate = delegate
-        self.customPicker.customView.headerLabel.text = "CATEGORY"
-        self.present(customPicker, animated: true, completion: nil)
+        let picker = CategoryPickerVC()
+        picker.setCustomTransitioningDelegate(self.customPickerAnimator)
+        self.present(picker, animated: true, completion: nil)
     }
     
     func handleTapOnDateButton() {
@@ -276,14 +276,19 @@ extension ExpenseEditorVC {
             return index
         }()
         
+        
+        let customPicker = CustomPickerVC()
+        customPicker.modalPresentationStyle = .custom
+        customPicker.transitioningDelegate = self.customPickerAnimator
+        customPicker.customView.headerLabel.text = "PAYMENT METHOD"
+        
         let delegate = PaymentMethodPickerDelegate(selectedIndex: selectedIndex)
         delegate.tapAction = {[unowned self] tappedIndex in
             let paymentMethods = PaymentMethod.allValues
             self.expense.paymentMethod = paymentMethods[selectedIndex].rawValue as NSNumber?
         }
+        customPicker.delegate = delegate
         
-        self.customPicker.delegate = delegate
-        self.customPicker.customView.headerLabel.text = "PAYMENT METHOD"
         self.present(customPicker, animated: true, completion: nil)
     }
     

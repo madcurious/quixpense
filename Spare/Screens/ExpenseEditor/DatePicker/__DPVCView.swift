@@ -32,7 +32,6 @@ class __DPVCView: CustomPickerView {
         )
         
         self.selectedDateLabel.textColor = Color.CustomPickerTextColor
-//        self.selectedDateLabel.backgroundColor = UIColor(hex: 0xcccccc)
         self.selectedDateLabel.textAlignment = .center
         self.selectedDateLabel.numberOfLines = 1
         self.selectedDateLabel.font = Font.make(.Heavy, 26)

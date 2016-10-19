@@ -73,6 +73,9 @@
 		2669AB041D7C302700DDA321 /* AmountFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2669AB031D7C302700DDA321 /* AmountFormatter.swift */; };
 		266CBDB41D2676D900F5D5D1 /* EditExpenseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266CBDB31D2676D900F5D5D1 /* EditExpenseVC.swift */; };
 		2676792A1D13FE8F004CF70A /* __SVCCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267679291D13FE8F004CF70A /* __SVCCategoryCell.swift */; };
+		267804131DB72AB200B29873 /* CategoryPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267804121DB72AB200B29873 /* CategoryPickerVC.swift */; };
+		267804151DB72BF000B29873 /* __CategoryPickerVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267804141DB72BF000B29873 /* __CategoryPickerVCView.swift */; };
+		267804171DB72C0100B29873 /* __CategoryPickerVCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 267804161DB72C0100B29873 /* __CategoryPickerVCView.xib */; };
 		268212521D4A18220041078F /* SegmentedCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268212511D4A18220041078F /* SegmentedCircle.swift */; };
 		2682125A1D4A242B0041078F /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268212591D4A242B0041078F /* GraphView.swift */; };
 		2682125C1D4A243F0041078F /* GraphView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2682125B1D4A243F0041078F /* GraphView.xib */; };
@@ -256,6 +259,9 @@
 		2669AB031D7C302700DDA321 /* AmountFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmountFormatter.swift; sourceTree = "<group>"; };
 		266CBDB31D2676D900F5D5D1 /* EditExpenseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditExpenseVC.swift; sourceTree = "<group>"; };
 		267679291D13FE8F004CF70A /* __SVCCategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __SVCCategoryCell.swift; sourceTree = "<group>"; };
+		267804121DB72AB200B29873 /* CategoryPickerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerVC.swift; sourceTree = "<group>"; };
+		267804141DB72BF000B29873 /* __CategoryPickerVCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __CategoryPickerVCView.swift; sourceTree = "<group>"; };
+		267804161DB72C0100B29873 /* __CategoryPickerVCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __CategoryPickerVCView.xib; sourceTree = "<group>"; };
 		268212511D4A18220041078F /* SegmentedCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedCircle.swift; sourceTree = "<group>"; };
 		268212591D4A242B0041078F /* GraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		2682125B1D4A243F0041078F /* GraphView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GraphView.xib; sourceTree = "<group>"; };
@@ -579,6 +585,16 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
+		267804111DB72AA900B29873 /* CategoryPicker */ = {
+			isa = PBXGroup;
+			children = (
+				267804121DB72AB200B29873 /* CategoryPickerVC.swift */,
+				267804141DB72BF000B29873 /* __CategoryPickerVCView.swift */,
+				267804161DB72C0100B29873 /* __CategoryPickerVCView.xib */,
+			);
+			path = CategoryPicker;
+			sourceTree = "<group>";
+		};
 		2687FA261D0EC2E900D544F5 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
@@ -642,6 +658,7 @@
 		269D49EE1CE1610100109990 /* ExpenseEditor */ = {
 			isa = PBXGroup;
 			children = (
+				267804111DB72AA900B29873 /* CategoryPicker */,
 				2652229E1D66CFC2007FED96 /* DatePicker */,
 				269D49FB1CE1643A00109990 /* AddExpenseVC.swift */,
 				269D49F11CE1610100109990 /* ExpenseEditorVC.swift */,
@@ -827,6 +844,7 @@
 				2603F8C31CCA45FF007F311F /* LaunchScreen.storyboard in Resources */,
 				26B076121D905E6E0026692E /* __ELVCCell.xib in Resources */,
 				261AF62B1D5F395200E03A48 /* Avenir-Black.ttf in Resources */,
+				267804171DB72C0100B29873 /* __CategoryPickerVCView.xib in Resources */,
 				265222A61D66D00A007FED96 /* __DPVCView.xib in Resources */,
 				261AF61E1D5F257900E03A48 /* __EEVCView.xib in Resources */,
 				26B076011D9008730026692E /* __ELVCBEmptyView.xib in Resources */,
@@ -890,6 +908,7 @@
 				266946931CC77A1A00A68424 /* AppDelegate.swift in Sources */,
 				2687FA3C1D0EC46F00D544F5 /* CreateSummariesOperation.swift in Sources */,
 				26E7FA7B1CDB332F000E2181 /* BaseTabButton.swift in Sources */,
+				267804131DB72AB200B29873 /* CategoryPickerVC.swift in Sources */,
 				266632AE1DB24AA7007B992D /* TabbedRootViewController.swift in Sources */,
 				2676792A1D13FE8F004CF70A /* __SVCCategoryCell.swift in Sources */,
 				261AF61C1D5F255000E03A48 /* __EEVCView.swift in Sources */,
@@ -943,6 +962,7 @@
 				265222A41D66CFF3007FED96 /* __DPVCView.swift in Sources */,
 				260A06571D48D1D500A960DB /* SummaryVC.swift in Sources */,
 				268F480D1D60D3490088AC6B /* Color.swift in Sources */,
+				267804151DB72BF000B29873 /* __CategoryPickerVCView.swift in Sources */,
 				26B076051D9008730026692E /* ExpenseListVCBordered.swift in Sources */,
 				26A2C6F11D63053100743F7D /* PaymentMethodPickerDelegate.swift in Sources */,
 				26B075F01D8FFC9D0026692E /* ExpenseListVC.swift in Sources */,
