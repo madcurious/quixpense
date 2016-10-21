@@ -14,4 +14,14 @@ extension Category {
         return UIColor(hex: self.colorHex!.intValue)
     }
     
+    class func all() -> [Category] {
+        let request = FetchRequestBuilder<Category>.makeFetchRequest()
+        
+        // Sort by most number of expenses.
+        request.sortDescriptors = [NSSortDescriptor(key: "expenses.count", ascending: false)]
+        
+        let categories = try! App.mainQueueContext.fetch(request)
+        return categories
+    }
+    
 }

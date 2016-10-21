@@ -76,6 +76,7 @@
 		267804131DB72AB200B29873 /* CategoryPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267804121DB72AB200B29873 /* CategoryPickerVC.swift */; };
 		267804151DB72BF000B29873 /* __CategoryPickerVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267804141DB72BF000B29873 /* __CategoryPickerVCView.swift */; };
 		267804171DB72C0100B29873 /* __CategoryPickerVCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 267804161DB72C0100B29873 /* __CategoryPickerVCView.xib */; };
+		267804191DB78E1D00B29873 /* CategoryPickerAddCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267804181DB78E1D00B29873 /* CategoryPickerAddCategoryCell.swift */; };
 		268212521D4A18220041078F /* SegmentedCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268212511D4A18220041078F /* SegmentedCircle.swift */; };
 		2682125A1D4A242B0041078F /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268212591D4A242B0041078F /* GraphView.swift */; };
 		2682125C1D4A243F0041078F /* GraphView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2682125B1D4A243F0041078F /* GraphView.xib */; };
@@ -138,6 +139,7 @@
 		26E7FA7B1CDB332F000E2181 /* BaseTabButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E7FA7A1CDB332F000E2181 /* BaseTabButton.swift */; };
 		26E9CEAC1D66D59A0005E087 /* __DPVCDayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26E9CEAB1D66D59A0005E087 /* __DPVCDayCell.xib */; };
 		26E9CEAE1D66D5AA0005E087 /* __DPVCDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E9CEAD1D66D5AA0005E087 /* __DPVCDayCell.swift */; };
+		26EAED2D1DBA2ABC00191041 /* SearchCategoryOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EAED2C1DBA2ABC00191041 /* SearchCategoryOperation.swift */; };
 		26EB76FF1D7C5B060001723D /* Summary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EB76FE1D7C5B060001723D /* Summary.swift */; };
 		26EFA0031CD9C8F100714E5D /* MainContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EFA0021CD9C8F100714E5D /* MainContainerVC.swift */; };
 		26EFA0051CD9C91A00714E5D /* __MCVCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26EFA0041CD9C91A00714E5D /* __MCVCView.xib */; };
@@ -262,6 +264,7 @@
 		267804121DB72AB200B29873 /* CategoryPickerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerVC.swift; sourceTree = "<group>"; };
 		267804141DB72BF000B29873 /* __CategoryPickerVCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __CategoryPickerVCView.swift; sourceTree = "<group>"; };
 		267804161DB72C0100B29873 /* __CategoryPickerVCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __CategoryPickerVCView.xib; sourceTree = "<group>"; };
+		267804181DB78E1D00B29873 /* CategoryPickerAddCategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerAddCategoryCell.swift; sourceTree = "<group>"; };
 		268212511D4A18220041078F /* SegmentedCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedCircle.swift; sourceTree = "<group>"; };
 		268212591D4A242B0041078F /* GraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		2682125B1D4A243F0041078F /* GraphView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GraphView.xib; sourceTree = "<group>"; };
@@ -325,6 +328,7 @@
 		26E7FA7A1CDB332F000E2181 /* BaseTabButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTabButton.swift; sourceTree = "<group>"; };
 		26E9CEAB1D66D59A0005E087 /* __DPVCDayCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __DPVCDayCell.xib; sourceTree = "<group>"; };
 		26E9CEAD1D66D5AA0005E087 /* __DPVCDayCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __DPVCDayCell.swift; sourceTree = "<group>"; };
+		26EAED2C1DBA2ABC00191041 /* SearchCategoryOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCategoryOperation.swift; sourceTree = "<group>"; };
 		26EB76FE1D7C5B060001723D /* Summary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Summary.swift; sourceTree = "<group>"; };
 		26EFA0021CD9C8F100714E5D /* MainContainerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainContainerVC.swift; sourceTree = "<group>"; };
 		26EFA0041CD9C91A00714E5D /* __MCVCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __MCVCView.xib; sourceTree = "<group>"; };
@@ -591,6 +595,8 @@
 				267804121DB72AB200B29873 /* CategoryPickerVC.swift */,
 				267804141DB72BF000B29873 /* __CategoryPickerVCView.swift */,
 				267804161DB72C0100B29873 /* __CategoryPickerVCView.xib */,
+				267804181DB78E1D00B29873 /* CategoryPickerAddCategoryCell.swift */,
+				26EAED2C1DBA2ABC00191041 /* SearchCategoryOperation.swift */,
 			);
 			path = CategoryPicker;
 			sourceTree = "<group>";
@@ -912,6 +918,7 @@
 				266632AE1DB24AA7007B992D /* TabbedRootViewController.swift in Sources */,
 				2676792A1D13FE8F004CF70A /* __SVCCategoryCell.swift in Sources */,
 				261AF61C1D5F255000E03A48 /* __EEVCView.swift in Sources */,
+				26EAED2D1DBA2ABC00191041 /* SearchCategoryOperation.swift in Sources */,
 				26B076101D905E2A0026692E /* __ELVCCell.swift in Sources */,
 				26A6CDE11CDB18EA00309A84 /* AddButton.swift in Sources */,
 				2685D6D91D7C4E4A00ED778E /* __SVCZeroView.swift in Sources */,
@@ -933,6 +940,7 @@
 				268F47FB1D60D26D0088AC6B /* __CPVCView.swift in Sources */,
 				26440F9C1DB22A0300BD8F1C /* Category+Custom.swift in Sources */,
 				266408B41D4A571400609580 /* PeriodizationButton.swift in Sources */,
+				267804191DB78E1D00B29873 /* CategoryPickerAddCategoryCell.swift in Sources */,
 				260024151CC7E5F300EB2026 /* SettingsVC.swift in Sources */,
 				268F47E31D609A440088AC6B /* CategoryPickerDelegate.swift in Sources */,
 				2669AB021D7C300F00DDA321 /* GlobalFunctions.swift in Sources */,
