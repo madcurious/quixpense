@@ -26,7 +26,7 @@ class ExpenseEditorVC: MDOperationViewController {
     
     let customView = __EEVCView.instantiateFromNib() as __EEVCView
     
-    var managedObjectContext: NSManagedObjectContext
+    var managedObjectContext = App.coreDataStack.newBackgroundContext()
     var expense: Expense
     var categories = [Category]()
     
@@ -37,8 +37,6 @@ class ExpenseEditorVC: MDOperationViewController {
     let customPickerAnimator = CustomPickerTransitioningDelegate()
     
     init(expense: Expense?) {
-        self.managedObjectContext = App.coreDataStack.newBackgroundContext()
-        
         if let objectID = expense?.objectID,
             let expense = self.managedObjectContext.object(with: objectID) as? Expense {
             self.expense = expense
@@ -255,6 +253,7 @@ extension ExpenseEditorVC {
 //        self.present(customPicker, animated: true, completion: nil)
         
         let picker = CategoryPickerVC()
+        picker.delegate = self
         picker.setCustomTransitioningDelegate(self.customPickerAnimator)
         self.present(picker, animated: true, completion: nil)
     }
@@ -290,6 +289,35 @@ extension ExpenseEditorVC {
         customPicker.delegate = delegate
         
         self.present(customPicker, animated: true, completion: nil)
+    }
+    
+}
+
+// MARK: - CategoryPickerVCDelegate
+extension ExpenseEditorVC: CategoryPickerVCDelegate {
+    
+    func categoryPickerDidTapAddCategory(categoryName: String) {
+        /*
+         New categories are only saved if the expense itself was saved. Otherwise, they
+         should be deleted.
+         
+         A category that does not exist in the main queue's MOC is a category that
+         was added but not saved, so it should be deleted.
+         */
+        if let category = self.expense.category,
+            App.allCategories().contains(category) == false {
+            self.managedObjectContext.delete(category)
+        }
+        
+        let category = Category(entity: Category.entity(), insertInto: self.managedObjectContext)
+        category.name = categoryName
+        self.expense.category = category
+        
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func categoryPickerDidSelectCategory(category: Category) {
+        
     }
     
 }

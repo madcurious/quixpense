@@ -9,6 +9,11 @@
 import UIKit
 import Mold
 
+protocol CategoryPickerVCDelegate {
+    func categoryPickerDidTapAddCategory(categoryName: String)
+    func categoryPickerDidSelectCategory(category: Category)
+}
+
 fileprivate enum ViewID: String {
     case categoryCell = "CategoryCell"
     case addCategoryCell = "AddCategoryCell"
@@ -22,6 +27,8 @@ class CategoryPickerVC: UIViewController {
     var isTypingACategory = false
     
     let operationQueue = OperationQueue()
+    
+    var delegate: CategoryPickerVCDelegate?
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -61,6 +68,14 @@ class CategoryPickerVC: UIViewController {
         system.addObserver(self, selector: #selector(handleTextFieldFinishedEditing), name: NSNotification.Name.UITextFieldTextDidEndEditing, object: nil)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if self.categories.count == 0 {
+            self.customView.textField.becomeFirstResponder()
+        }
+    }
+    
     func runSearchOperation(searchText: String) {
         self.operationQueue.cancelAllOperations()
         self.operationQueue.addOperation(
@@ -94,7 +109,7 @@ extension CategoryPickerVC {
     func handleKeyboardWillShow(_ notification: Notification) {
         guard
             let userInfo = notification.userInfo,
-            let keyboardFrame = (userInfo[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue,
+            let keyboardFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
             let animationDuration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? TimeInterval
             else {
                 return
@@ -206,6 +221,17 @@ extension CategoryPickerVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        switch self.isTypingACategory {
+        case true where indexPath.section == 0:
+            if let delegate = self.delegate,
+                let categoryName = md_nonEmptyString(self.customView.textField.text) {
+                delegate.categoryPickerDidTapAddCategory(categoryName: categoryName)
+            }
+            
+        default:
+            self.delegate?.categoryPickerDidSelectCategory(category: self.categories[indexPath.row])
+        }
     }
     
 }

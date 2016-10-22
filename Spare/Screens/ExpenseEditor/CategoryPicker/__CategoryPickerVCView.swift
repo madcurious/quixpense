@@ -33,6 +33,7 @@ class __CategoryPickerVCView: CustomPickerView {
         
         self.tableView.showsVerticalScrollIndicator = true
         self.tableView.separatorStyle = .none
+        self.tableView.backgroundColor = UIColor.red
     }
     
 }
