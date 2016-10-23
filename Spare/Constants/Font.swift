@@ -24,8 +24,6 @@ final class Font {
     static let CustomPickerText = Font.make(.Medium, 18)
     static let CustomPickerHeaderText = Font.make(.Heavy, 15)
     
-    static let ExpenseEditorCurrencyLabel = Font.make(.Heavy, AnySize)
-//    static let ExpenseEditorAmountValue = Font.make(.Heavy, AnySize)
     static let ExpenseEditorKeypadText = Font.make(.Heavy, AnySize)
     
     static let FieldLabel = Font.make(.Heavy, 14)

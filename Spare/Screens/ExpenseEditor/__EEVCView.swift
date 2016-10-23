@@ -26,7 +26,7 @@ class __EEVCView: UIView {
     @IBOutlet weak var paymentMethodButton: UIButton!
     @IBOutlet weak var noteTextField: UITextField!
     
-    @IBOutlet weak var currencyLabel: MDResponsiveLabel!
+    @IBOutlet weak var currencyLabel: UILabel!
     @IBOutlet private weak var amountLabel: UILabel!
     
     @IBOutlet weak var keypadCollectionView: UICollectionView!
@@ -67,7 +67,7 @@ class __EEVCView: UIView {
             label.textAlignment = .right
             label.textColor = Color.FieldLabelTextColor
             label.font = {
-                if MDScreen.currentScreenIs(.iPhone4) {
+                if MDScreen.sizeIs(.iPhone4) {
                     return Font.FieldLabel.withSize(12)
                 }
                 return Font.FieldLabel
@@ -90,7 +90,7 @@ class __EEVCView: UIView {
         for button in buttons {
             button?.tintColor = Color.FieldValueTextColor
             button?.titleLabel?.font = {
-                if MDScreen.currentScreenIs(.iPhone4) {
+                if MDScreen.sizeIs(.iPhone4) {
                     return Font.FieldValue.withSize(17)
                 }
                 return Font.FieldValue
@@ -100,22 +100,19 @@ class __EEVCView: UIView {
             button?.titleLabel?.lineBreakMode = .byTruncatingTail
         }
         
-        self.currencyLabel.textColor = Color.FieldLabelTextColor
-        self.currencyLabel.text = AmountFormatter.currencyCode()
-        self.currencyLabel.font = Font.ExpenseEditorCurrencyLabel
-        self.currencyLabel.fontSize = .vHeight(0.8)
-        
-        let amountTextFieldFont: UIFont = {
-            switch MDScreen.currentScreen() {
-            case .iPhone4, .iPhone5:
-                return Font.make(.Heavy, 20)
-            case .iPhone6, .iPhone6p:
+        let amountFont: UIFont = {
+            if MDScreen.sizeIsAtLeast(.iPhone5) {
                 return Font.make(.Heavy, 30)
             }
+            return Font.make(.Heavy, 36)
         }()
         
+        self.currencyLabel.textColor = Color.FieldLabelTextColor
+        self.currencyLabel.text = AmountFormatter.currencyCode()
+        self.currencyLabel.font = amountFont
+        
         self.amountLabel.textColor = Color.FieldValueTextColor
-        self.amountLabel.font = amountTextFieldFont
+        self.amountLabel.font = amountFont
         self.amountLabel.adjustsFontSizeToFitWidth = true
         self.amountLabel.textAlignment = .right
         self.amountLabel.numberOfLines = 1

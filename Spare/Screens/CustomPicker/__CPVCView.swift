@@ -33,7 +33,7 @@ class __CPVCView: CustomPickerView {
     override func updateConstraints() {
         self.tableView.layoutIfNeeded()
         
-        let maximumHeight = CGFloat(MDScreen.currentScreenIs(.iPhone4) ? 220 : 300)
+        let maximumHeight = CGFloat(MDScreen.sizeIs(.iPhone4) ? 220 : 300)
         self.tableViewHeight.constant = min(maximumHeight, self.tableView.contentSize.height)
         
         super.updateConstraints()
