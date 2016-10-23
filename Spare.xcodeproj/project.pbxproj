@@ -86,7 +86,6 @@
 		2685D6D91D7C4E4A00ED778E /* __SVCZeroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2685D6D81D7C4E4A00ED778E /* __SVCZeroView.swift */; };
 		2685D6DB1D7C4E6200ED778E /* __SVCZeroView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2685D6DA1D7C4E6200ED778E /* __SVCZeroView.xib */; };
 		2687FA3C1D0EC46F00D544F5 /* CreateSummariesOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2687FA3B1D0EC46F00D544F5 /* CreateSummariesOperation.swift */; };
-		268F47E31D609A440088AC6B /* CategoryPickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F47E21D609A440088AC6B /* CategoryPickerDelegate.swift */; };
 		268F47F41D60D24D0088AC6B /* CustomPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F47EF1D60D24D0088AC6B /* CustomPickerCell.swift */; };
 		268F47F51D60D24D0088AC6B /* CustomPickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 268F47F01D60D24D0088AC6B /* CustomPickerCell.xib */; };
 		268F47F61D60D24D0088AC6B /* CustomPickerHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F47F11D60D24D0088AC6B /* CustomPickerHeader.swift */; };
@@ -111,8 +110,6 @@
 		269D49FC1CE1643A00109990 /* AddExpenseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269D49FB1CE1643A00109990 /* AddExpenseVC.swift */; };
 		269E7E101D68C96000476870 /* MonthPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269E7E0F1D68C96000476870 /* MonthPageVC.swift */; };
 		269E7E121D69985D00476870 /* CustomPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269E7E111D69985D00476870 /* CustomPickerView.swift */; };
-		26A2C6F11D63053100743F7D /* PaymentMethodPickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A2C6F01D63053100743F7D /* PaymentMethodPickerDelegate.swift */; };
-		26A2C6F31D6305DF00743F7D /* CustomPickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A2C6F21D6305DF00743F7D /* CustomPickerDelegate.swift */; };
 		26A6CDE11CDB18EA00309A84 /* AddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A6CDE01CDB18EA00309A84 /* AddButton.swift */; };
 		26B075EA1D8FE26B0026692E /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B075E91D8FE26B0026692E /* HomeVC.swift */; };
 		26B075F01D8FFC9D0026692E /* ExpenseListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B075EF1D8FFC9D0026692E /* ExpenseListVC.swift */; };
@@ -274,7 +271,6 @@
 		2685D6D81D7C4E4A00ED778E /* __SVCZeroView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __SVCZeroView.swift; sourceTree = "<group>"; };
 		2685D6DA1D7C4E6200ED778E /* __SVCZeroView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __SVCZeroView.xib; sourceTree = "<group>"; };
 		2687FA3B1D0EC46F00D544F5 /* CreateSummariesOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateSummariesOperation.swift; sourceTree = "<group>"; };
-		268F47E21D609A440088AC6B /* CategoryPickerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerDelegate.swift; sourceTree = "<group>"; };
 		268F47EF1D60D24D0088AC6B /* CustomPickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPickerCell.swift; sourceTree = "<group>"; };
 		268F47F01D60D24D0088AC6B /* CustomPickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomPickerCell.xib; sourceTree = "<group>"; };
 		268F47F11D60D24D0088AC6B /* CustomPickerHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPickerHeader.swift; sourceTree = "<group>"; };
@@ -299,8 +295,6 @@
 		269D49FB1CE1643A00109990 /* AddExpenseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddExpenseVC.swift; sourceTree = "<group>"; };
 		269E7E0F1D68C96000476870 /* MonthPageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthPageVC.swift; sourceTree = "<group>"; };
 		269E7E111D69985D00476870 /* CustomPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPickerView.swift; sourceTree = "<group>"; };
-		26A2C6F01D63053100743F7D /* PaymentMethodPickerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethodPickerDelegate.swift; sourceTree = "<group>"; };
-		26A2C6F21D6305DF00743F7D /* CustomPickerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPickerDelegate.swift; sourceTree = "<group>"; };
 		26A6CDE01CDB18EA00309A84 /* AddButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddButton.swift; sourceTree = "<group>"; };
 		26B075E91D8FE26B0026692E /* HomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		26B075EF1D8FFC9D0026692E /* ExpenseListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseListVC.swift; sourceTree = "<group>"; };
@@ -638,7 +632,6 @@
 				268F47FD1D60D2900088AC6B /* CustomPickerPresentationAnimator.swift */,
 				268F48181D60D3DE0088AC6B /* CustomPickerTransitioningDelegate.swift */,
 				268F481D1D60DE020088AC6B /* CustomPickerDismissalAnimator.swift */,
-				26A2C6F21D6305DF00743F7D /* CustomPickerDelegate.swift */,
 				269E7E111D69985D00476870 /* CustomPickerView.swift */,
 			);
 			path = CustomPicker;
@@ -673,8 +666,6 @@
 				261AF61B1D5F255000E03A48 /* __EEVCView.swift */,
 				261AF61D1D5F257900E03A48 /* __EEVCView.xib */,
 				261AF63B1D5F41F500E03A48 /* __EEVCKeypadCell.swift */,
-				268F47E21D609A440088AC6B /* CategoryPickerDelegate.swift */,
-				26A2C6F01D63053100743F7D /* PaymentMethodPickerDelegate.swift */,
 			);
 			path = ExpenseEditor;
 			sourceTree = "<group>";
@@ -929,7 +920,6 @@
 				26C2D5C21CDB5E4800BC73FC /* AddButtonProgressView.swift in Sources */,
 				268F48161D60D3490088AC6B /* Strings.swift in Sources */,
 				26B075FF1D9008730026692E /* __ELVCBEmptyCell.swift in Sources */,
-				26A2C6F31D6305DF00743F7D /* CustomPickerDelegate.swift in Sources */,
 				268F47F41D60D24D0088AC6B /* CustomPickerCell.swift in Sources */,
 				268F47F61D60D24D0088AC6B /* CustomPickerHeader.swift in Sources */,
 				26E9CEAE1D66D5AA0005E087 /* __DPVCDayCell.swift in Sources */,
@@ -942,7 +932,6 @@
 				266408B41D4A571400609580 /* PeriodizationButton.swift in Sources */,
 				267804191DB78E1D00B29873 /* CategoryPickerAddCategoryCell.swift in Sources */,
 				260024151CC7E5F300EB2026 /* SettingsVC.swift in Sources */,
-				268F47E31D609A440088AC6B /* CategoryPickerDelegate.swift in Sources */,
 				2669AB021D7C300F00DDA321 /* GlobalFunctions.swift in Sources */,
 				2669AB011D7C300F00DDA321 /* DateFormatter.swift in Sources */,
 				26B075EA1D8FE26B0026692E /* HomeVC.swift in Sources */,
@@ -972,7 +961,6 @@
 				268F480D1D60D3490088AC6B /* Color.swift in Sources */,
 				267804151DB72BF000B29873 /* __CategoryPickerVCView.swift in Sources */,
 				26B076051D9008730026692E /* ExpenseListVCBordered.swift in Sources */,
-				26A2C6F11D63053100743F7D /* PaymentMethodPickerDelegate.swift in Sources */,
 				26B075F01D8FFC9D0026692E /* ExpenseListVC.swift in Sources */,
 				26B076071D9008800026692E /* __ELVCHeaderView.swift in Sources */,
 				268F48131D60D3490088AC6B /* PaymentMethod.swift in Sources */,

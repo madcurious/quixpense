@@ -18,7 +18,7 @@ class CustomPickerView: UIView {
         
         self.backgroundColor = UIColor.clear
         self.dimView.backgroundColor = UIColor.black
-        self.mainContainer.backgroundColor = UIColor.white
+//        self.mainContainer.backgroundColor = UIColor.white
     }
     
 }

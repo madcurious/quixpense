@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -36,14 +37,13 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </tableView>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.85098040100000005" green="0.94901961089999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="idk-sg-dBl" firstAttribute="leading" secondItem="aTO-UX-0Dw" secondAttribute="leading" constant="10" id="1U4-1W-dqs"/>
                         <constraint firstAttribute="trailing" secondItem="luv-mj-DG6" secondAttribute="trailing" id="2Zx-py-x7H"/>
                         <constraint firstItem="idk-sg-dBl" firstAttribute="top" secondItem="Klq-D0-DFa" secondAttribute="bottom" id="MZu-6H-wP9"/>
                         <constraint firstItem="luv-mj-DG6" firstAttribute="leading" secondItem="aTO-UX-0Dw" secondAttribute="leading" id="Pix-Tj-B5b"/>
                         <constraint firstAttribute="trailing" secondItem="idk-sg-dBl" secondAttribute="trailing" constant="10" id="dlx-5w-vAL"/>
-                        <constraint firstAttribute="bottom" secondItem="luv-mj-DG6" secondAttribute="bottom" id="kJx-pL-dDK"/>
                         <constraint firstItem="luv-mj-DG6" firstAttribute="top" secondItem="idk-sg-dBl" secondAttribute="bottom" id="maw-Ls-PD6"/>
                         <constraint firstItem="Klq-D0-DFa" firstAttribute="top" secondItem="aTO-UX-0Dw" secondAttribute="top" id="q2q-Ga-vwh"/>
                         <constraint firstAttribute="trailing" secondItem="Klq-D0-DFa" secondAttribute="trailing" constant="10" id="tXV-qH-cww"/>
@@ -56,8 +56,9 @@
                 <constraint firstAttribute="trailing" secondItem="5Dy-SR-Ag5" secondAttribute="trailing" id="5df-cs-wMB"/>
                 <constraint firstAttribute="bottom" secondItem="aTO-UX-0Dw" secondAttribute="bottom" id="8vF-Dw-tu5"/>
                 <constraint firstAttribute="bottom" secondItem="5Dy-SR-Ag5" secondAttribute="bottom" id="9ZG-By-fQ2"/>
-                <constraint firstItem="aTO-UX-0Dw" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="120" id="AKB-RI-6NT"/>
+                <constraint firstAttribute="bottom" secondItem="luv-mj-DG6" secondAttribute="bottom" id="Ken-a6-uOS"/>
                 <constraint firstItem="5Dy-SR-Ag5" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Oou-Tn-ySU"/>
+                <constraint firstItem="aTO-UX-0Dw" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="3:4" id="ayO-H2-gFF"/>
                 <constraint firstItem="aTO-UX-0Dw" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="j7V-D7-OZj"/>
                 <constraint firstAttribute="trailing" secondItem="aTO-UX-0Dw" secondAttribute="trailing" id="jaO-fI-9GM"/>
                 <constraint firstItem="5Dy-SR-Ag5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="xwV-Z1-Mh2"/>
@@ -70,7 +71,7 @@
                 <outlet property="dimView" destination="5Dy-SR-Ag5" id="G6W-PN-s19"/>
                 <outlet property="mainContainer" destination="aTO-UX-0Dw" id="UQU-lV-zd3"/>
                 <outlet property="tableView" destination="luv-mj-DG6" id="3L2-zf-G9U"/>
-                <outlet property="tableViewBottom" destination="kJx-pL-dDK" id="9z6-BH-xgV"/>
+                <outlet property="tableViewBottom" destination="Ken-a6-uOS" id="wKb-CV-B3y"/>
                 <outlet property="textField" destination="Klq-D0-DFa" id="pHT-7f-UDy"/>
             </connections>
             <point key="canvasLocation" x="-132" y="23"/>

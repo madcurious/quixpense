@@ -13,7 +13,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qGy-M9-qR9" id="BGI-2U-xGL">
-                <frame key="frameInset" width="320" height="119"/>
+                <frame key="frameInset" width="320" height="119.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iYE-5C-adv">
@@ -34,11 +34,12 @@
                     </label>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="bottom" secondItem="aB7-hD-jOL" secondAttribute="bottom" constant="10" id="7Py-yc-bSI"/>
                     <constraint firstItem="I0o-LH-E5s" firstAttribute="leading" secondItem="BGI-2U-xGL" secondAttribute="leading" constant="10" id="8pB-Oi-LdU"/>
+                    <constraint firstItem="aB7-hD-jOL" firstAttribute="top" secondItem="BGI-2U-xGL" secondAttribute="top" constant="10" id="CDW-Rr-BdG"/>
                     <constraint firstItem="iYE-5C-adv" firstAttribute="leading" secondItem="BGI-2U-xGL" secondAttribute="leading" id="Qb3-sH-IRJ"/>
                     <constraint firstItem="aB7-hD-jOL" firstAttribute="leading" secondItem="BGI-2U-xGL" secondAttribute="leading" constant="36" id="RRC-X7-aqe"/>
                     <constraint firstAttribute="trailing" secondItem="aB7-hD-jOL" secondAttribute="trailing" constant="10" id="ZAC-KK-OAr"/>
-                    <constraint firstItem="aB7-hD-jOL" firstAttribute="centerY" secondItem="BGI-2U-xGL" secondAttribute="centerY" id="ds7-Md-yYF"/>
                     <constraint firstAttribute="trailing" secondItem="iYE-5C-adv" secondAttribute="trailing" id="jlq-na-UnQ"/>
                     <constraint firstItem="I0o-LH-E5s" firstAttribute="firstBaseline" secondItem="aB7-hD-jOL" secondAttribute="firstBaseline" id="nkf-cs-WVX"/>
                     <constraint firstAttribute="bottom" secondItem="iYE-5C-adv" secondAttribute="bottom" id="qMi-oO-nwl"/>

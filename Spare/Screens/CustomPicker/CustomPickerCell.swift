@@ -50,8 +50,8 @@ class CustomPickerCell: UITableViewCell {
     class func applyItemLabelAttributes(_ label: UILabel) {
         label.textColor = Color.CustomPickerTextColor
         label.font = Font.CustomPickerText
-        label.numberOfLines = 3
-        label.lineBreakMode = .byTruncatingTail
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
     }
     
 }
