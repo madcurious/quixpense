@@ -88,7 +88,7 @@ class ExpenseEditorVC: MDOperationViewController {
         self.customView.noteTextField.delegate = self
     }
     
-    override func buildOperation() -> MDOperation? {
+    override func makeOperation() -> MDOperation? {
         let op = MDBlockOperation {
             let fetchRequest = FetchRequestBuilder<Category>.makeFetchRequest()
             let categories = try self.managedObjectContext.fetch(fetchRequest)

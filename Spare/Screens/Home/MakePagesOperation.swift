@@ -34,18 +34,6 @@ class MakePagesOperation: MDOperation {
     }
     
     override func makeResult(fromSource source: Any?) throws -> Any? {
-//        var summaries = [Summary]()
-//        for i in 0 ..< self.count {
-//            let (startDate, endDate) = self.dateRangeForPage(self.pageOffset + i)
-//            let summary = Summary(startDate: startDate, endDate: endDate, periodization: self.periodization)
-//            summaries.insert(summary, at: 0)
-//            
-//            if self.isCancelled {
-//                return nil
-//            }
-//        }
-//        return summaries
-        
         var ranges = [DateRange]()
         for i in 0 ..< self.count {
             let range = self.dateRangeForPage(self.pageOffset + i)

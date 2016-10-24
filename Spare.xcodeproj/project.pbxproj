@@ -45,8 +45,8 @@
 		26440F9C1DB22A0300BD8F1C /* Category+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26440F9B1DB22A0300BD8F1C /* Category+Custom.swift */; };
 		264C0CAA1DBE408C00EA89D3 /* HomePageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264C0CA91DBE408C00EA89D3 /* HomePageVC.swift */; };
 		264C0CAC1DBE409D00EA89D3 /* DateRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264C0CAB1DBE409D00EA89D3 /* DateRange.swift */; };
-		264C0CAF1DBE504300EA89D3 /* __SVCZeroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264C0CAD1DBE504300EA89D3 /* __SVCZeroView.swift */; };
-		264C0CB01DBE504300EA89D3 /* __SVCZeroView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 264C0CAE1DBE504300EA89D3 /* __SVCZeroView.xib */; };
+		264C0CAF1DBE504300EA89D3 /* __HPVCZeroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264C0CAD1DBE504300EA89D3 /* __HPVCZeroView.swift */; };
+		264C0CB01DBE504300EA89D3 /* __HPVCZeroView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 264C0CAE1DBE504300EA89D3 /* __HPVCZeroView.xib */; };
 		265222A01D66CFCE007FED96 /* DatePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2652229F1D66CFCE007FED96 /* DatePickerVC.swift */; };
 		265222A41D66CFF3007FED96 /* __DPVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265222A31D66CFF3007FED96 /* __DPVCView.swift */; };
 		265222A61D66D00A007FED96 /* __DPVCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 265222A51D66D00A007FED96 /* __DPVCView.xib */; };
@@ -193,8 +193,8 @@
 		26440F9B1DB22A0300BD8F1C /* Category+Custom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Category+Custom.swift"; sourceTree = "<group>"; };
 		264C0CA91DBE408C00EA89D3 /* HomePageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePageVC.swift; sourceTree = "<group>"; };
 		264C0CAB1DBE409D00EA89D3 /* DateRange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateRange.swift; sourceTree = "<group>"; };
-		264C0CAD1DBE504300EA89D3 /* __SVCZeroView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __SVCZeroView.swift; sourceTree = "<group>"; };
-		264C0CAE1DBE504300EA89D3 /* __SVCZeroView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __SVCZeroView.xib; sourceTree = "<group>"; };
+		264C0CAD1DBE504300EA89D3 /* __HPVCZeroView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __HPVCZeroView.swift; sourceTree = "<group>"; };
+		264C0CAE1DBE504300EA89D3 /* __HPVCZeroView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __HPVCZeroView.xib; sourceTree = "<group>"; };
 		2652229F1D66CFCE007FED96 /* DatePickerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerVC.swift; sourceTree = "<group>"; };
 		265222A31D66CFF3007FED96 /* __DPVCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __DPVCView.swift; sourceTree = "<group>"; };
 		265222A51D66D00A007FED96 /* __DPVCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __DPVCView.xib; sourceTree = "<group>"; };
@@ -315,11 +315,11 @@
 		260024081CC7E5F300EB2026 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				264C0CAD1DBE504300EA89D3 /* __SVCZeroView.swift */,
-				264C0CAE1DBE504300EA89D3 /* __SVCZeroView.xib */,
 				26B075E91D8FE26B0026692E /* HomeVC.swift */,
 				2687FA3B1D0EC46F00D544F5 /* MakePagesOperation.swift */,
 				264C0CA91DBE408C00EA89D3 /* HomePageVC.swift */,
+				264C0CAD1DBE504300EA89D3 /* __HPVCZeroView.swift */,
+				264C0CAE1DBE504300EA89D3 /* __HPVCZeroView.xib */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -715,7 +715,7 @@
 				268F47F71D60D24D0088AC6B /* CustomPickerHeader.xib in Resources */,
 				261AF6351D5F395200E03A48 /* Avenir-Oblique.ttf in Resources */,
 				2669468A1CC7711000A68424 /* Images.xcassets in Resources */,
-				264C0CB01DBE504300EA89D3 /* __SVCZeroView.xib in Resources */,
+				264C0CB01DBE504300EA89D3 /* __HPVCZeroView.xib in Resources */,
 				261AF62F1D5F395200E03A48 /* Avenir-Heavy.ttf in Resources */,
 				266946871CC7711000A68424 /* Icon-60@2x.png in Resources */,
 				268F47FC1D60D26D0088AC6B /* __CPVCView.xib in Resources */,
@@ -768,7 +768,7 @@
 				26EAED2D1DBA2ABC00191041 /* SearchCategoryOperation.swift in Sources */,
 				269E7E121D69985D00476870 /* CustomPickerView.swift in Sources */,
 				2685D6D71D7C397200ED778E /* PercentFormatter.swift in Sources */,
-				264C0CAF1DBE504300EA89D3 /* __SVCZeroView.swift in Sources */,
+				264C0CAF1DBE504300EA89D3 /* __HPVCZeroView.swift in Sources */,
 				268F48161D60D3490088AC6B /* Strings.swift in Sources */,
 				268F47F41D60D24D0088AC6B /* CustomPickerCell.swift in Sources */,
 				268F47F61D60D24D0088AC6B /* CustomPickerHeader.swift in Sources */,

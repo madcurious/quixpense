@@ -11,10 +11,20 @@ import Mold
 
 class HomePageVC: MDOperationViewController {
     
+    let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout())
     let customLoadingView = OperationVCLoadingView()
+    let zeroView = __HPVCZeroView.instantiateFromNib()
     
     override var loadingView: UIView {
         return self.customLoadingView
+    }
+    
+    override var noResultsView: UIView {
+        return self.zeroView
+    }
+    
+    override var primaryView: UIView {
+        return self.collectionView
     }
     
     var dateRange: DateRange
@@ -28,7 +38,20 @@ class HomePageVC: MDOperationViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.collectionView.alwaysBounceVertical = true
+        
+        let flowLayout = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        flowLayout.scrollDirection = .vertical
+        
+        self.showView(.noResults)
+    }
     
+    override func makeOperation() -> MDOperation? {
+        return nil
+    }
     
 }
 

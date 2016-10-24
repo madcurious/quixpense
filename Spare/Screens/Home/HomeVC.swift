@@ -38,6 +38,7 @@ class HomeVC: MDOperationViewController {
     override init() {
         super.init()
         self.title = "Spare"
+        self.navigationItem.title = "Home"
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -54,6 +55,9 @@ class HomeVC: MDOperationViewController {
         self.pageViewController.dataSource = self
         self.pageViewController.delegate = self
         
+        // Populate the pageVC with a junk DateRange so that programatically scrolling to the last page works.
+        self.pageViewController.setViewControllers([HomePageVC(dateRange: DateRange(start: Date(), end: Date()))], direction: .forward, animated: false, completion: nil)
+        
         self.showView(.loading)
         
         self.noResultsView.backgroundColor = Color.UniversalBackgroundColor
@@ -67,7 +71,7 @@ class HomeVC: MDOperationViewController {
         notificationCenter.addObserver(self, selector: #selector(handleFinishedInitializingCoreDataStack), name: Notifications.LoadAppVCFinishedLoadingCoreDataStack, object: nil)
     }
     
-    override func buildOperation() -> MDOperation? {
+    override func makeOperation() -> MDOperation? {
         guard App.coreDataStack != nil
             else {
                 return nil
@@ -78,6 +82,7 @@ class HomeVC: MDOperationViewController {
             startOfWeek: App.selectedStartOfWeek,
             count: 10,
             pageOffset: self.dateRanges.count)
+            
             .onSuccess({[unowned self] result in
                 self.dateRanges.insert(contentsOf: result as! [DateRange], at: 0)
                 
@@ -85,7 +90,6 @@ class HomeVC: MDOperationViewController {
                     self.scrollToLastPage(animated: false)
                     self.showView(.primary)
                 }
-                
                 })
     }
     
@@ -132,7 +136,7 @@ extension HomeVC: UIPageViewControllerDataSource {
         let previousIndex = currentIndex - 1
         if previousIndex > 0 {
             // Start another create operation if nearing the end.
-            if let op = self.buildOperation(),
+            if let op = self.makeOperation(),
                 previousIndex == 5 {
                 self.operationQueue.addOperation(op)
             }

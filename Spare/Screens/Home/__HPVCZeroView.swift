@@ -1,5 +1,5 @@
 //
-//  __SVCZeroView.swift
+//  __HPVCZeroView.swift
 //  Spare
 //
 //  Created by Matt Quiros on 04/09/2016.
@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import Mold
 
-class __SVCZeroView: UIView {
+class __HPVCZeroView: UIView {
     
     @IBOutlet weak var labelContainer: UIView!
     @IBOutlet weak var totalLabel: UILabel!
@@ -27,7 +28,13 @@ class __SVCZeroView: UIView {
             self.dateLabel
         )
         
-        self.totalLabel.font = Font.make(.Heavy, 100)
+        self.totalLabel.font = {
+            if MDScreen.sizeIsAtLeast(.iPhone5) {
+                return Font.make(.Heavy, 80)
+            }
+            return Font.make(.Heavy, 100)
+        }()
+        
         self.totalLabel.numberOfLines = 1
         self.totalLabel.textAlignment = .center
         self.totalLabel.textColor = Color.UniversalSecondaryTextColor
