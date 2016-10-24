@@ -21,10 +21,9 @@ class HomeVC: MDOperationViewController {
     }()
     
     let currentDate = Date()
-    var isCreatingSummaries = false
-    var summaries = [Summary]()
+    var dateRanges = [DateRange]()
     
-    let forwardButton = Button(string: "Now", font: Font.ModalBarButtonText, textColor: Color.UniversalTextColor)
+    let nowButton = Button(string: "Now", font: Font.ModalBarButtonText, textColor: Color.UniversalTextColor)
     let periodizationButton = PeriodizationButton()
     let customLoadingView = OperationVCLoadingView()
     
@@ -60,9 +59,9 @@ class HomeVC: MDOperationViewController {
         self.noResultsView.backgroundColor = Color.UniversalBackgroundColor
         
         self.periodizationButton.addTarget(self, action: #selector(handleSelectionOfPeriodization), for: .valueChanged)
-        self.forwardButton.addTarget(self, action: #selector(handleTapOnForwardButton), for: .touchUpInside)
+        self.nowButton.addTarget(self, action: #selector(handleTapOnNowButton), for: .touchUpInside)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: self.periodizationButton)
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: self.forwardButton)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: self.nowButton)
         
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(handleFinishedInitializingCoreDataStack), name: Notifications.LoadAppVCFinishedLoadingCoreDataStack, object: nil)
@@ -74,70 +73,44 @@ class HomeVC: MDOperationViewController {
                 return nil
         }
         
-        return CreateSummariesOperation(baseDate: self.currentDate,
-            periodization: App.state.selectedPeriodization,
-            startOfWeek: App.state.selectedStartOfWeek,
+        return MakePagesOperation(currentDate: self.currentDate,
+            periodization: App.selectedPeriodization,
+            startOfWeek: App.selectedStartOfWeek,
             count: 10,
-            startingPage: self.summaries.count)
-            
-            .onStart({[unowned self] in
-                self.isCreatingSummaries = true
-                })
-            .onReturn({[unowned self] in
-                self.isCreatingSummaries = false
-                })
-            
+            pageOffset: self.dateRanges.count)
             .onSuccess({[unowned self] result in
-                guard let newSummaries = result as? [Summary]
-                    else {
-                        return
-                }
-                
-                self.summaries.insert(contentsOf: newSummaries, at: 0)
+                self.dateRanges.insert(contentsOf: result as! [DateRange], at: 0)
                 
                 if self.currentView != .primary {
-                    self.scrollToLastSummary(animated: false)
+                    self.scrollToLastPage(animated: false)
                     self.showView(.primary)
                 }
                 
                 })
     }
     
-    func scrollToLastSummary(animated: Bool) {
-        guard let lastSummary = self.summaries.last
+    func scrollToLastPage(animated: Bool) {
+        guard let lastRange = self.dateRanges.last,
+            let currentPage = self.pageViewController.viewControllers?.first as? HomePageVC,
+            currentPage.dateRange != lastRange
             else {
                 return
         }
-        self.pageViewController.setViewControllers([SummaryVC(summary: lastSummary)], direction: .forward, animated: animated, completion: nil)
+        
+        self.pageViewController.setViewControllers([HomePageVC(dateRange: lastRange)], direction: .forward, animated: animated, completion: nil)
     }
     
     func handleFinishedInitializingCoreDataStack() {
-        let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(handleUpdatesOnDataStore), name: NSNotification.Name.NSManagedObjectContextDidSave, object: App.mainQueueContext)
         self.runOperation()
     }
     
-    func handleUpdatesOnDataStore() {
-        guard let summaryVC = self.pageViewController.viewControllers?.first as? SummaryVC
-            else {
-                return
-        }
-        summaryVC.collectionView.reloadData()
-    }
-    
-    func handleTapOnForwardButton() {
-        if let currentPage = self.pageViewController.viewControllers?.first as? SummaryVC,
-            let currentIndex = self.summaries.index(of: currentPage.summary)
-            , currentIndex == self.summaries.count - 1 {
-            return
-        }
-        
-        self.scrollToLastSummary(animated: true)
+    func handleTapOnNowButton() {
+        self.scrollToLastPage(animated: true)
     }
     
     func handleSelectionOfPeriodization() {
-        App.state.selectedPeriodization = self.periodizationButton.selectedPeriodization
-        self.summaries = []
+        App.selectedPeriodization = self.periodizationButton.selectedPeriodization
+        self.dateRanges = []
         self.runOperation()
     }
     
@@ -150,8 +123,8 @@ class HomeVC: MDOperationViewController {
 extension HomeVC: UIPageViewControllerDataSource {
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        guard let currentPage = self.pageViewController.viewControllers?.first as? SummaryVC,
-            let currentIndex = self.summaries.index(of: currentPage.summary)
+        guard let currentPage = self.pageViewController.viewControllers?.first as? HomePageVC,
+            let currentIndex = self.dateRanges.index(of: currentPage.dateRange)
             else {
                 return nil
         }
@@ -159,12 +132,12 @@ extension HomeVC: UIPageViewControllerDataSource {
         let previousIndex = currentIndex - 1
         if previousIndex > 0 {
             // Start another create operation if nearing the end.
-            if let op = self.buildOperation()
-                , previousIndex == 5 {
+            if let op = self.buildOperation(),
+                previousIndex == 5 {
                 self.operationQueue.addOperation(op)
             }
             
-            let previousPage = SummaryVC(summary: self.summaries[previousIndex])
+            let previousPage = HomePageVC(dateRange: self.dateRanges[previousIndex])
             return previousPage
         }
         
@@ -172,15 +145,15 @@ extension HomeVC: UIPageViewControllerDataSource {
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        guard let currentPage = self.pageViewController.viewControllers?.first as? SummaryVC,
-            let currentIndex = self.summaries.index(of: currentPage.summary)
+        guard let currentPage = self.pageViewController.viewControllers?.first as? HomePageVC,
+            let currentIndex = self.dateRanges.index(of: currentPage.dateRange)
             else {
                 return nil
         }
         
         let nextIndex = currentIndex + 1
-        if nextIndex < self.summaries.count {
-            let previousPage = SummaryVC(summary: self.summaries[nextIndex])
+        if nextIndex < self.dateRanges.count {
+            let previousPage = HomePageVC(dateRange: self.dateRanges[nextIndex])
             return previousPage
         }
         return nil

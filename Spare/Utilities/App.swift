@@ -16,11 +16,11 @@ private enum SettingKey: String {
     case SelectedStartOfWeek = "Settings-SelectedStartOfWeek"
 }
 
-class App {
+struct App {
     
-    class var state: App {
-        return kSharedState
-    }
+//    class var state: App {
+//        return kSharedState
+//    }
     
 //    static var coreDataStack: CoreDataStack! {
 //        get {
@@ -44,7 +44,7 @@ class App {
         return self.coreDataStack.viewContext
     }
     
-    var selectedPeriodization: Periodization {
+    static var selectedPeriodization: Periodization {
         get {
             let defaults = UserDefaults.standard
             if let rawValue = defaults.value(forKey: SettingKey.SelectedPeriodization.rawValue) as? Int,
@@ -63,7 +63,7 @@ class App {
         }
     }
     
-    var selectedStartOfWeek: StartOfWeek {
+    static var selectedStartOfWeek: StartOfWeek {
         get {
             let defaults = UserDefaults.standard
             if let rawValue = defaults.value(forKey: SettingKey.SelectedPeriodization.rawValue) as? Int,
@@ -82,7 +82,7 @@ class App {
         }
     }
     
-    class func allCategories() -> [Category] {
+    static func allCategories() -> [Category] {
         let request = FetchRequestBuilder<Category>.makeFetchRequest()
         let categories = try! App.mainQueueContext.fetch(request)
         return categories

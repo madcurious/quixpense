@@ -11,7 +11,7 @@ import Mold
 
 class PeriodizationButton: Button {
     
-    var selectedPeriodization = App.state.selectedPeriodization
+    var selectedPeriodization = App.selectedPeriodization
     
     override init() {
         super.init()

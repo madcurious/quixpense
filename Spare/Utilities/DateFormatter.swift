@@ -17,21 +17,21 @@ private let kSharedFormatter: Foundation.DateFormatter = {
 
 class DateFormatter {
     
-    class func displayTextForStartDate(_ startDate: Date, endDate: Date, periodization: Periodization = App.state.selectedPeriodization, startOfWeek: StartOfWeek = App.state.selectedStartOfWeek) -> String {
-        let dateRange = DateRange(startDate: startDate,
-                                           endDate: endDate,
-                                           periodization: periodization,
-                                           startOfWeek: startOfWeek)
-        return dateRange.displayText()
-    }
-    
-    class func displayTextForSummary(_ summary: Summary) -> String {
-        let dateRange = DateRange(startDate: summary.startDate as Date,
-                                           endDate: summary.endDate as Date,
-                                           periodization: summary.periodization,
-                                           startOfWeek: App.state.selectedStartOfWeek)
-        return dateRange.displayText()
-    }
+//    class func displayTextForStartDate(_ startDate: Date, endDate: Date, periodization: Periodization = App.state.selectedPeriodization, startOfWeek: StartOfWeek = App.state.selectedStartOfWeek) -> String {
+//        let dateRange = DateRange(startDate: startDate,
+//                                           endDate: endDate,
+//                                           periodization: periodization,
+//                                           startOfWeek: startOfWeek)
+//        return dateRange.displayText()
+//    }
+//    
+//    class func displayTextForSummary(_ summary: Summary) -> String {
+//        let dateRange = DateRange(startDate: summary.startDate as Date,
+//                                           endDate: summary.endDate as Date,
+//                                           periodization: summary.periodization,
+//                                           startOfWeek: App.state.selectedStartOfWeek)
+//        return dateRange.displayText()
+//    }
     
     class func displayTextForExpenseEditorDate(_ date: Date?) -> String {
         guard let date = date
@@ -49,77 +49,51 @@ class DateFormatter {
         return kSharedFormatter.string(from: date)
     }
     
-}
-
-private struct DateRange {
-    
-    var startDate: Date
-    var endDate: Date
-    var periodization: Periodization
-    var startOfWeek: StartOfWeek
-    
-    func displayText() -> String {
-        switch self.periodization {
+    class func displayText(for dateRange: DateRange) -> String {
+        let currentDate = Date()
+        
+        switch App.selectedPeriodization {
         case .day:
-            return self.displayTextForDay()
+            if dateRange.start.isSameDayAsDate(currentDate) {
+                return "Today"
+            } else {
+                kSharedFormatter.dateFormat = "EEE, MMM d"
+                return kSharedFormatter.string(from: dateRange.start)
+            }
             
         case .week:
-            return self.displayTextForWeek()
+            if dateRange.start.isSameWeekAsDate(Date(), whenFirstWeekdayIs: App.selectedStartOfWeek.rawValue) {
+                return "This week"
+            } else {
+                let formatter = kSharedFormatter
+                switch (dateRange.start.isSameYearAsDate(currentDate), dateRange.end.isSameYearAsDate(currentDate)) {
+                case (true, true):
+                    formatter.dateFormat = "MMM d"
+                    
+                default:
+                    formatter.dateFormat = "MMM d ''yy"
+                }
+                return "\(formatter.string(from: dateRange.start)) to \(formatter.string(from: dateRange.end))"
+            }
             
         case .month:
-            return self.displayTextForMonth()
+            if dateRange.start.isSameMonthAsDate(currentDate) {
+                return "This month"
+            }
+            
+            let formatter = kSharedFormatter
+            formatter.dateFormat = "MMM yyyy"
+            return formatter.string(from: dateRange.start)
             
         case .year:
-            return self.displayTextForYear()
-        }
-    }
-    
-    fileprivate func displayTextForDay() -> String {
-        if self.startDate.isSameDayAsDate(Date()) {
-            return "Today"
-        } else {
-            kSharedFormatter.dateFormat = "EEE, MMM d"
-            return kSharedFormatter.string(from: self.startDate)
-        }
-    }
-    
-    fileprivate func displayTextForWeek() -> String {
-        let currentDate = Date()
-        if self.startDate.isSameWeekAsDate(currentDate, whenFirstWeekdayIs: self.startOfWeek.rawValue) {
-            return "This week"
-        } else {
-            let formatter = kSharedFormatter
-            switch (self.startDate.isSameYearAsDate(currentDate), self.endDate.isSameYearAsDate(currentDate)) {
-            case (true, true):
-                formatter.dateFormat = "MMM d"
-                
-            default:
-                formatter.dateFormat = "MMM d ''yy"
+            if dateRange.start.isSameYearAsDate(currentDate) {
+                return "This year"
             }
-            return "\(formatter.string(from: self.startDate)) to \(formatter.string(from: self.endDate))"
+            
+            let formatter = kSharedFormatter
+            formatter.dateFormat = "yyyy"
+            return formatter.string(from: dateRange.start)
         }
-    }
-    
-    fileprivate func displayTextForMonth() -> String {
-        let currentDate = Date()
-        if self.startDate.isSameMonthAsDate(currentDate) {
-            return "This month"
-        }
-        
-        let formatter = kSharedFormatter
-        formatter.dateFormat = "MMM yyyy"
-        return formatter.string(from: self.startDate)
-    }
-    
-    fileprivate func displayTextForYear() -> String {
-        let currentDate = Date()
-        if self.startDate.isSameYearAsDate(currentDate) {
-            return "This year"
-        }
-        
-        let formatter = kSharedFormatter
-        formatter.dateFormat = "yyyy"
-        return formatter.string(from: self.startDate)
     }
     
 }
