@@ -42,11 +42,12 @@ class ValidateExpenseOperation: MDOperation {
         // Put all the labels and values in an array for simplicity, then loop
         // through it looking for empty values.
         let requiredFields: [(String, Any?)] = [
-            ("Amount", expense.amount),
             ("Category", expense.category),
             ("Date spent", expense.dateSpent),
-            ("Payment method", expense.paymentMethod)
+            ("Payment method", expense.paymentMethod),
+            ("Amount", expense.amount)
         ]
+        
         for (label, value) in requiredFields {
             if value == nil {
                 throw ValidateExpenseOperationError.missingValue(label)

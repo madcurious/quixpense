@@ -2,7 +2,7 @@
 //  Category+CoreDataProperties.swift
 //  Spare
 //
-//  Created by Matt Quiros on 15/10/2016.
+//  Created by Matt Quiros on 24/10/2016.
 //  Copyright © 2016 Matt Quiros. All rights reserved.
 //
 
@@ -15,7 +15,6 @@ extension Category {
         return NSFetchRequest<Category>(entityName: "Category");
     }
 
-    @NSManaged public var colorHex: NSNumber?
     @NSManaged public var name: String?
     @NSManaged public var expenses: NSSet?
 

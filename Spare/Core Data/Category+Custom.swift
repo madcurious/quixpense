@@ -10,10 +10,6 @@ import UIKit
 
 extension Category {
     
-    var color: UIColor {
-        return UIColor(hex: self.colorHex!.intValue)
-    }
-    
     class func all() -> [Category] {
         let request = FetchRequestBuilder<Category>.makeFetchRequest()
         

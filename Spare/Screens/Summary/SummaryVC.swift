@@ -70,11 +70,11 @@ class SummaryVC: UIViewController {
         self.collectionView.backgroundColor = UIColor.white
         self.collectionView.showsVerticalScrollIndicator = false
         
-        self.collectionView.register(__SVCGraphView.nib(), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: ViewID.Graph.rawValue)
-        self.collectionView.register(__SVCCategoryCellBox.nib(), forCellWithReuseIdentifier: ViewID.Cell.rawValue)
+//        self.collectionView.register(__SVCGraphView.nib(), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: ViewID.Graph.rawValue)
+//        self.collectionView.register(__SVCCategoryCellBox.nib(), forCellWithReuseIdentifier: ViewID.Cell.rawValue)
         
-        self.collectionView.dataSource = self
-        self.collectionView.delegate = self
+//        self.collectionView.dataSource = self
+//        self.collectionView.delegate = self
     }
     
     func setupZeroView() {
@@ -121,82 +121,82 @@ extension SummaryVC {
     
 }
 
-extension SummaryVC: UICollectionViewDataSource {
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return App.allCategories().count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: ViewID.Cell.rawValue, for: indexPath) as? __SVCCategoryCell
-            else {
-                fatalError()
-        }
-        cell.data = self.summary.data?[(indexPath as NSIndexPath).item]
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        guard let graphView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: ViewID.Graph.rawValue, for: indexPath) as? __SVCGraphView
-            , kind == UICollectionElementKindSectionHeader
-            else {
-                fatalError()
-        }
-        graphView.summary = self.summary
-        return graphView
-    }
-    
-}
-
-extension SummaryVC: UICollectionViewDelegate {
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let category = self.summary.data?[(indexPath as NSIndexPath).item].0
-            else {
-                return
-        }
-        
-        // Notify the container that a category cell has been tapped.
-        let notificationCenter = NotificationCenter.default
-        notificationCenter.post(
-            name: Notification.Name(rawValue: Event.CategoryTappedInSummaryVC.rawValue),
-            object: nil,
-            userInfo: [
-                "category" : category,
-                "startDate" : self.summary.startDate,
-                "endDate" : self.summary.endDate
-            ])
-    }
-    
-}
-
-extension SummaryVC: UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: collectionView.bounds.size.width, height: collectionView.bounds.size.width * 0.75)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cellWidth = collectionView.bounds.size.width - kCellInset * 2
-        let dynamicHeight = __SVCCategoryCellBox.cellHeightForData(self.summary.data![(indexPath as NSIndexPath).item], cellWidth: cellWidth)
-        return CGSize(width: cellWidth, height: dynamicHeight)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 8
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsetsMake(0, kCellInset, kCellInset, kCellInset)
-    }
-    
-}
+//extension SummaryVC: UICollectionViewDataSource {
+//    
+//    func numberOfSections(in collectionView: UICollectionView) -> Int {
+//        return 1
+//    }
+//    
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        return App.allCategories().count
+//    }
+//    
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        guard let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: ViewID.Cell.rawValue, for: indexPath) as? __SVCCategoryCell
+//            else {
+//                fatalError()
+//        }
+//        cell.data = self.summary.data?[(indexPath as NSIndexPath).item]
+//        return cell
+//    }
+//    
+//    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+//        guard let graphView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: ViewID.Graph.rawValue, for: indexPath) as? __SVCGraphView
+//            , kind == UICollectionElementKindSectionHeader
+//            else {
+//                fatalError()
+//        }
+//        graphView.summary = self.summary
+//        return graphView
+//    }
+//    
+//}
+//
+//extension SummaryVC: UICollectionViewDelegate {
+//    
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        guard let category = self.summary.data?[(indexPath as NSIndexPath).item].0
+//            else {
+//                return
+//        }
+//        
+//        // Notify the container that a category cell has been tapped.
+//        let notificationCenter = NotificationCenter.default
+//        notificationCenter.post(
+//            name: Notification.Name(rawValue: Event.CategoryTappedInSummaryVC.rawValue),
+//            object: nil,
+//            userInfo: [
+//                "category" : category,
+//                "startDate" : self.summary.startDate,
+//                "endDate" : self.summary.endDate
+//            ])
+//    }
+//    
+//}
+//
+//extension SummaryVC: UICollectionViewDelegateFlowLayout {
+//    
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+//        return CGSize(width: collectionView.bounds.size.width, height: collectionView.bounds.size.width * 0.75)
+//    }
+//    
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        let cellWidth = collectionView.bounds.size.width - kCellInset * 2
+//        let dynamicHeight = __SVCCategoryCellBox.cellHeightForData(self.summary.data![(indexPath as NSIndexPath).item], cellWidth: cellWidth)
+//        return CGSize(width: cellWidth, height: dynamicHeight)
+//    }
+//    
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+//        return 8
+//    }
+//    
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+//        return 0
+//    }
+//    
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+//        return UIEdgeInsetsMake(0, kCellInset, kCellInset, kCellInset)
+//    }
+//    
+//}
 
