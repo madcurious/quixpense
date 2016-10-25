@@ -9,11 +9,16 @@
 import Foundation
 import Mold
 
-struct Summary: Equatable {
+struct Summary {
     
-    var startDate: Date
-    var endDate: Date
-    var periodization: Periodization
+//    var startDate: Date
+//    var endDate: Date
+//    var periodization: Periodization
+    
+    var category: Category
+    var dateRange: DateRange
+    var total: NSDecimalNumber
+    var percentage: Double
     
 //    /**
 //     Returns an array of all the expenses in the date range, or nil if none were found.
@@ -68,31 +73,10 @@ struct Summary: Equatable {
 //        return data
 //    }
     
-    func containsDate(_ date: Date) -> Bool {
-        // Get the date components.
-        let calendar = Calendar.current
-        let significantUnits: NSCalendar.Unit = [.month, .day, .year]
-        let startDateComponents = (calendar as NSCalendar).components(significantUnits, from: self.startDate)
-        let endDateComponents = (calendar as NSCalendar).components(significantUnits, from: self.endDate)
-        let dateComponents = (calendar as NSCalendar).components(significantUnits, from: date)
-        
-        if (dateComponents.month! >= startDateComponents.month! &&
-            dateComponents.day! >= startDateComponents.day! &&
-            dateComponents.year! >= startDateComponents.year!) &&
-            
-            (dateComponents.month! <= endDateComponents.month! &&
-                dateComponents.day! <= endDateComponents.day! &&
-                dateComponents.year! <= endDateComponents.year!) {
-            return true
-        }
-        
-        return false
-    }
-    
 }
 
-func ==(lhs: Summary, rhs: Summary) -> Bool {
-    return lhs.startDate == rhs.startDate &&
-        lhs.endDate == rhs.endDate &&
-        lhs.periodization == rhs.periodization
-}
+//func ==(lhs: Summary, rhs: Summary) -> Bool {
+//    return lhs.startDate == rhs.startDate &&
+//        lhs.endDate == rhs.endDate &&
+//        lhs.periodization == rhs.periodization
+//}

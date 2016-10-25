@@ -34,6 +34,6 @@ func glb_applyGlobalVCSettings(_ viewController: UIViewController) {
     viewController.navigationItem.titleView = titleLabel
 }
 
-func glb_totalOfExpenses(_ expenses: [Expense]) -> NSDecimalNumber {
-    return expenses.map({ $0.amount ?? 0}).reduce(0, +)
-}
+//func glb_totalOfExpenses(_ expenses: [Expense]) -> NSDecimalNumber {
+//    return expenses.map({ $0.amount ?? 0}).reduce(0, +)
+//}
