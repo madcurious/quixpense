@@ -55,9 +55,6 @@ class HomeVC: MDOperationViewController {
         self.pageViewController.dataSource = self
         self.pageViewController.delegate = self
         
-        // Populate the pageVC with a junk DateRange so that programatically scrolling to the last page works.
-        self.pageViewController.setViewControllers([HomePageVC(dateRange: DateRange(start: Date(), end: Date()))], direction: .forward, animated: false, completion: nil)
-        
         self.showView(.loading)
         
         self.noResultsView.backgroundColor = Color.UniversalBackgroundColor
@@ -87,6 +84,9 @@ class HomeVC: MDOperationViewController {
                 self.dateRanges.insert(contentsOf: result as! [DateRange], at: 0)
                 
                 if self.currentView != .primary {
+                    // Populate the pageVC with a junk DateRange so that programatically scrolling to the last page works.
+                    self.pageViewController.setViewControllers([HomePageVC(dateRange: DateRange(start: Date(), end: Date()))], direction: .forward, animated: false, completion: nil)
+                    
                     self.scrollToLastPage(animated: false)
                     self.showView(.primary)
                 }

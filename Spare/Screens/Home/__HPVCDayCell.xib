@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Ua7-A6-1MG" customClass="__HPVCDayCell" customModule="Spare" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="258" height="220"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="258" height="220"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cce-40-VVg">
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y54-nR-2VX">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tCv-Wv-hBa">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zSc-ll-G7p">
+                                <color key="backgroundColor" red="0.85098040100000005" green="0.94901961089999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="hTt-dx-tjK"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="zSc-ll-G7p" firstAttribute="leading" secondItem="cce-40-VVg" secondAttribute="leading" constant="10" id="86v-ew-J4d"/>
+                            <constraint firstAttribute="trailing" secondItem="tCv-Wv-hBa" secondAttribute="trailing" constant="10" id="BI5-kw-mRk"/>
+                            <constraint firstItem="tCv-Wv-hBa" firstAttribute="leading" secondItem="Y54-nR-2VX" secondAttribute="trailing" constant="6" id="Ejm-4q-01c"/>
+                            <constraint firstItem="zSc-ll-G7p" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Y54-nR-2VX" secondAttribute="bottom" constant="10" id="MBY-Vb-46y"/>
+                            <constraint firstAttribute="bottom" secondItem="zSc-ll-G7p" secondAttribute="bottom" constant="10" id="To2-hB-TTh"/>
+                            <constraint firstItem="Y54-nR-2VX" firstAttribute="leading" secondItem="cce-40-VVg" secondAttribute="leading" constant="10" id="dcS-AW-lOT"/>
+                            <constraint firstAttribute="trailing" secondItem="zSc-ll-G7p" secondAttribute="trailing" constant="10" id="kPg-yR-t6u"/>
+                            <constraint firstItem="tCv-Wv-hBa" firstAttribute="top" secondItem="cce-40-VVg" secondAttribute="top" constant="10" id="nDU-w4-aAO"/>
+                            <constraint firstItem="Y54-nR-2VX" firstAttribute="top" secondItem="cce-40-VVg" secondAttribute="top" constant="10" id="rqJ-qO-sRy"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="cce-40-VVg" secondAttribute="bottom" id="2CB-hm-4ms"/>
+                <constraint firstItem="cce-40-VVg" firstAttribute="top" secondItem="Ua7-A6-1MG" secondAttribute="top" id="PZy-MF-64o"/>
+                <constraint firstItem="cce-40-VVg" firstAttribute="leading" secondItem="Ua7-A6-1MG" secondAttribute="leading" id="X5f-IK-pMr"/>
+                <constraint firstAttribute="trailing" secondItem="cce-40-VVg" secondAttribute="trailing" id="oGI-8T-DXv"/>
+            </constraints>
+            <size key="customSize" width="258" height="220"/>
+            <connections>
+                <outlet property="graphContainer" destination="zSc-ll-G7p" id="mWP-qj-gmq"/>
+                <outlet property="graphContainerHeight" destination="hTt-dx-tjK" id="XAD-Mk-Cgn"/>
+                <outlet property="labelSpacing" destination="Ejm-4q-01c" id="x70-Fe-1ia"/>
+                <outlet property="nameLabel" destination="Y54-nR-2VX" id="pbO-wA-MdV"/>
+                <outlet property="totalLabel" destination="tCv-Wv-hBa" id="nBd-eY-bUv"/>
+                <outlet property="wrapperView" destination="cce-40-VVg" id="aKb-c8-TkW"/>
+                <outletCollection property="paddings" destination="dcS-AW-lOT" collectionClass="NSMutableArray" id="tUS-Eg-GSz"/>
+                <outletCollection property="paddings" destination="rqJ-qO-sRy" collectionClass="NSMutableArray" id="JZW-pF-fCI"/>
+                <outletCollection property="paddings" destination="nDU-w4-aAO" collectionClass="NSMutableArray" id="y4Z-xn-hb5"/>
+                <outletCollection property="paddings" destination="BI5-kw-mRk" collectionClass="NSMutableArray" id="cDG-Pu-i7L"/>
+                <outletCollection property="paddings" destination="MBY-Vb-46y" collectionClass="NSMutableArray" id="U6d-V0-5nV"/>
+                <outletCollection property="paddings" destination="86v-ew-J4d" collectionClass="NSMutableArray" id="h1S-Fy-BTC"/>
+                <outletCollection property="paddings" destination="kPg-yR-t6u" collectionClass="NSMutableArray" id="lC2-Nl-uC2"/>
+                <outletCollection property="paddings" destination="To2-hB-TTh" collectionClass="NSMutableArray" id="v6L-1g-ByJ"/>
+            </connections>
+            <point key="canvasLocation" x="17" y="276"/>
+        </collectionViewCell>
+    </objects>
+</document>

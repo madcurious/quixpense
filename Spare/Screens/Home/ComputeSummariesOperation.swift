@@ -18,7 +18,7 @@ class ComputeSummariesOperation: MDOperation {
     }
     
     override func makeResult(fromSource source: Any?) throws -> Any? {
-        let context = App.coreDataStack.newBackgroundContext()
+        let context = App.mainQueueContext
         let categories = try context.fetch(FetchRequestBuilder<Category>.makeFetchRequest())
         
         if self.isCancelled {

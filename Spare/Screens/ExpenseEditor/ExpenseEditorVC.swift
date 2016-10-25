@@ -216,10 +216,10 @@ extension ExpenseEditorVC {
     }
     
     func removeKVO() {
-        self.removeObserver(self, forKeyPath: #keyPath(ExpenseEditorVC.unformattedAmount))
         self.expense.removeObserver(self, forKeyPath: #keyPath(Expense.category))
         self.expense.removeObserver(self, forKeyPath: #keyPath(Expense.dateSpent))
         self.expense.removeObserver(self, forKeyPath: #keyPath(Expense.paymentMethod))
+        self.removeObserver(self, forKeyPath: #keyPath(ExpenseEditorVC.unformattedAmount))
     }
     
 }
