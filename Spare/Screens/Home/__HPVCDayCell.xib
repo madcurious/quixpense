@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -28,8 +29,44 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zSc-ll-G7p">
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rs1-ss-dH9">
+                                        <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iuU-fJ-w69">
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="khh-dL-SPk" customClass="__HPVCPieChart" customModule="Spare" customModuleProvider="target">
+                                                <color key="backgroundColor" red="1" green="0.90588235289999997" blue="0.73333333329999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="100" id="lgj-sA-uXf"/>
+                                                    <constraint firstAttribute="width" secondItem="khh-dL-SPk" secondAttribute="height" id="sLD-iS-nWY"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.85098040100000005" green="0.94901961089999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="khh-dL-SPk" firstAttribute="leading" secondItem="iuU-fJ-w69" secondAttribute="leading" id="3LY-EK-Fi6"/>
+                                            <constraint firstItem="khh-dL-SPk" firstAttribute="top" secondItem="iuU-fJ-w69" secondAttribute="top" id="57A-ud-cDa"/>
+                                            <constraint firstAttribute="bottom" secondItem="khh-dL-SPk" secondAttribute="bottom" id="Plw-ON-KzV"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vFq-mW-okh">
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" red="0.85098040100000005" green="0.94901961089999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstItem="vFq-mW-okh" firstAttribute="centerY" secondItem="iuU-fJ-w69" secondAttribute="centerY" id="7lU-7f-Wb1"/>
+                                    <constraint firstItem="vFq-mW-okh" firstAttribute="trailing" secondItem="iuU-fJ-w69" secondAttribute="trailing" id="9Sh-a5-mJl"/>
+                                    <constraint firstAttribute="trailing" secondItem="rs1-ss-dH9" secondAttribute="trailing" id="9ze-3j-qeD"/>
+                                    <constraint firstItem="rs1-ss-dH9" firstAttribute="leading" secondItem="zSc-ll-G7p" secondAttribute="leading" id="Ezp-Ui-9aO"/>
+                                    <constraint firstItem="rs1-ss-dH9" firstAttribute="top" secondItem="zSc-ll-G7p" secondAttribute="top" id="INI-BT-AJz"/>
+                                    <constraint firstAttribute="bottom" secondItem="rs1-ss-dH9" secondAttribute="bottom" id="Qwt-Bg-Vhd"/>
+                                    <constraint firstItem="iuU-fJ-w69" firstAttribute="centerX" secondItem="zSc-ll-G7p" secondAttribute="centerX" id="b5d-Gf-LyJ"/>
+                                    <constraint firstItem="vFq-mW-okh" firstAttribute="leading" secondItem="khh-dL-SPk" secondAttribute="trailing" constant="10" id="cvG-AY-9VE"/>
+                                    <constraint firstItem="iuU-fJ-w69" firstAttribute="centerY" secondItem="zSc-ll-G7p" secondAttribute="centerY" id="gAW-5k-rhI"/>
                                     <constraint firstAttribute="height" constant="150" id="hTt-dx-tjK"/>
                                 </constraints>
                             </view>
@@ -57,10 +94,14 @@
             </constraints>
             <size key="customSize" width="258" height="220"/>
             <connections>
+                <outlet property="graphBackgroundContainer" destination="rs1-ss-dH9" id="7BK-dh-cZt"/>
                 <outlet property="graphContainer" destination="zSc-ll-G7p" id="mWP-qj-gmq"/>
                 <outlet property="graphContainerHeight" destination="hTt-dx-tjK" id="XAD-Mk-Cgn"/>
                 <outlet property="labelSpacing" destination="Ejm-4q-01c" id="x70-Fe-1ia"/>
                 <outlet property="nameLabel" destination="Y54-nR-2VX" id="pbO-wA-MdV"/>
+                <outlet property="percentageLabel" destination="vFq-mW-okh" id="aar-57-Rfq"/>
+                <outlet property="pieChartContainer" destination="iuU-fJ-w69" id="rZ6-OM-r1j"/>
+                <outlet property="pieChartView" destination="khh-dL-SPk" id="e7Q-zZ-O90"/>
                 <outlet property="totalLabel" destination="tCv-Wv-hBa" id="nBd-eY-bUv"/>
                 <outlet property="wrapperView" destination="cce-40-VVg" id="aKb-c8-TkW"/>
                 <outletCollection property="paddings" destination="dcS-AW-lOT" collectionClass="NSMutableArray" id="tUS-Eg-GSz"/>

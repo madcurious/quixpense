@@ -575,8 +575,8 @@
 			isa = PBXGroup;
 			children = (
 				268F48021D60D3490088AC6B /* Color.swift */,
-				268F48031D60D3490088AC6B /* Duration.swift */,
 				268F48061D60D3490088AC6B /* Font.swift */,
+				268F48031D60D3490088AC6B /* Duration.swift */,
 				268F48071D60D3490088AC6B /* Icon.swift */,
 				268F48081D60D3490088AC6B /* PaymentMethod.swift */,
 				268F48091D60D3490088AC6B /* Periodization.swift */,

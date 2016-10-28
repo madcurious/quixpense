@@ -66,7 +66,8 @@ class ExpenseEditorVC: MDOperationViewController {
         self.amountFormatter.currencySymbol = ""
         self.amountFormatter.usesGroupingSeparator = true
         
-        self.setupKVO()
+        self.addObserver(self, forKeyPath: #keyPath(ExpenseEditorVC.unformattedAmount), options: [.initial, .new], context: nil)
+        self.setupKVO(for: self.expense)
         
         // Expense.note is the only field without KVO so set the text field.
         if let note = md_nonEmptyString(self.expense.note) {
@@ -109,6 +110,8 @@ class ExpenseEditorVC: MDOperationViewController {
     }
     
     func reset() {
+        self.removeKVO(for: self.expense)
+        
         // Reset the model, but leave the date, category, and payment method the same.
         let previousDate = self.expense.dateSpent
         let previousCategory = self.expense.category
@@ -121,6 +124,7 @@ class ExpenseEditorVC: MDOperationViewController {
         expense.note = nil
         self.expense.amount = nil
         self.expense = expense
+        self.setupKVO(for: self.expense)
         
         self.unformattedAmount = ""
         
@@ -129,7 +133,8 @@ class ExpenseEditorVC: MDOperationViewController {
     }
     
     deinit {
-        self.removeKVO()
+        self.removeObserver(self, forKeyPath: #keyPath(ExpenseEditorVC.unformattedAmount))
+        self.removeKVO(for: self.expense)
     }
     
 }
@@ -137,11 +142,16 @@ class ExpenseEditorVC: MDOperationViewController {
 // MARK: - KVO
 extension ExpenseEditorVC {
     
-    func setupKVO() {
-        self.addObserver(self, forKeyPath: #keyPath(ExpenseEditorVC.unformattedAmount), options: [.initial, .new], context: nil)
-        self.expense.addObserver(self, forKeyPath: #keyPath(Expense.category), options: [.initial, .new], context: nil)
-        self.expense.addObserver(self, forKeyPath: #keyPath(Expense.dateSpent), options: [.initial, .new], context: nil)
-        self.expense.addObserver(self, forKeyPath: #keyPath(Expense.paymentMethod), options: [.initial, .new], context: nil)
+    func setupKVO(for expense: Expense) {
+        expense.addObserver(self, forKeyPath: #keyPath(Expense.category), options: [.initial, .new], context: nil)
+        expense.addObserver(self, forKeyPath: #keyPath(Expense.dateSpent), options: [.initial, .new], context: nil)
+        expense.addObserver(self, forKeyPath: #keyPath(Expense.paymentMethod), options: [.initial, .new], context: nil)
+    }
+    
+    func removeKVO(for expense: Expense) {
+        expense.removeObserver(self, forKeyPath: #keyPath(Expense.category))
+        expense.removeObserver(self, forKeyPath: #keyPath(Expense.dateSpent))
+        expense.removeObserver(self, forKeyPath: #keyPath(Expense.paymentMethod))
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -213,13 +223,6 @@ extension ExpenseEditorVC {
                 return
         }
         self.customView.paymentMethodButton.setTitle(paymentMethod.text, for: .normal)
-    }
-    
-    func removeKVO() {
-        self.expense.removeObserver(self, forKeyPath: #keyPath(Expense.category))
-        self.expense.removeObserver(self, forKeyPath: #keyPath(Expense.dateSpent))
-        self.expense.removeObserver(self, forKeyPath: #keyPath(Expense.paymentMethod))
-        self.removeObserver(self, forKeyPath: #keyPath(ExpenseEditorVC.unformattedAmount))
     }
     
 }
