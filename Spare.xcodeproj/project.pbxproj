@@ -47,7 +47,7 @@
 		264C0CAC1DBE409D00EA89D3 /* DateRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264C0CAB1DBE409D00EA89D3 /* DateRange.swift */; };
 		264C0CAF1DBE504300EA89D3 /* __HPVCZeroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264C0CAD1DBE504300EA89D3 /* __HPVCZeroView.swift */; };
 		264C0CB01DBE504300EA89D3 /* __HPVCZeroView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 264C0CAE1DBE504300EA89D3 /* __HPVCZeroView.xib */; };
-		264C0CB31DBF3FD500EA89D3 /* ComputeSummariesOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264C0CB21DBF3FD500EA89D3 /* ComputeSummariesOperation.swift */; };
+		264C0CB31DBF3FD500EA89D3 /* MakeSummariesOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264C0CB21DBF3FD500EA89D3 /* MakeSummariesOperation.swift */; };
 		264C0CB51DBF7C3800EA89D3 /* __HPVCDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264C0CB41DBF7C3800EA89D3 /* __HPVCDayCell.swift */; };
 		264C0CB71DBF7C4800EA89D3 /* __HPVCSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264C0CB61DBF7C4800EA89D3 /* __HPVCSummaryCell.swift */; };
 		264C0CB91DBF7C9400EA89D3 /* __HPVCDayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 264C0CB81DBF7C9400EA89D3 /* __HPVCDayCell.xib */; };
@@ -85,6 +85,8 @@
 		267804191DB78E1D00B29873 /* CategoryPickerAddCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267804181DB78E1D00B29873 /* CategoryPickerAddCategoryCell.swift */; };
 		2685D6D71D7C397200ED778E /* PercentFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2685D6D61D7C397200ED778E /* PercentFormatter.swift */; };
 		2687FA3C1D0EC46F00D544F5 /* MakePagesOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2687FA3B1D0EC46F00D544F5 /* MakePagesOperation.swift */; };
+		268D39A71DC70E67005EBC4B /* __HPVCHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 268D39A61DC70E67005EBC4B /* __HPVCHeaderView.xib */; };
+		268D39A91DC70EBD005EBC4B /* __HPVCHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268D39A81DC70EBD005EBC4B /* __HPVCHeaderView.swift */; };
 		268F47F41D60D24D0088AC6B /* CustomPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F47EF1D60D24D0088AC6B /* CustomPickerCell.swift */; };
 		268F47F51D60D24D0088AC6B /* CustomPickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 268F47F01D60D24D0088AC6B /* CustomPickerCell.xib */; };
 		268F47F61D60D24D0088AC6B /* CustomPickerHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F47F11D60D24D0088AC6B /* CustomPickerHeader.swift */; };
@@ -201,7 +203,7 @@
 		264C0CAB1DBE409D00EA89D3 /* DateRange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateRange.swift; sourceTree = "<group>"; };
 		264C0CAD1DBE504300EA89D3 /* __HPVCZeroView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __HPVCZeroView.swift; sourceTree = "<group>"; };
 		264C0CAE1DBE504300EA89D3 /* __HPVCZeroView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __HPVCZeroView.xib; sourceTree = "<group>"; };
-		264C0CB21DBF3FD500EA89D3 /* ComputeSummariesOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComputeSummariesOperation.swift; sourceTree = "<group>"; };
+		264C0CB21DBF3FD500EA89D3 /* MakeSummariesOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeSummariesOperation.swift; sourceTree = "<group>"; };
 		264C0CB41DBF7C3800EA89D3 /* __HPVCDayCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __HPVCDayCell.swift; sourceTree = "<group>"; };
 		264C0CB61DBF7C4800EA89D3 /* __HPVCSummaryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __HPVCSummaryCell.swift; sourceTree = "<group>"; };
 		264C0CB81DBF7C9400EA89D3 /* __HPVCDayCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __HPVCDayCell.xib; sourceTree = "<group>"; };
@@ -243,6 +245,8 @@
 		267804181DB78E1D00B29873 /* CategoryPickerAddCategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerAddCategoryCell.swift; sourceTree = "<group>"; };
 		2685D6D61D7C397200ED778E /* PercentFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PercentFormatter.swift; sourceTree = "<group>"; };
 		2687FA3B1D0EC46F00D544F5 /* MakePagesOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakePagesOperation.swift; sourceTree = "<group>"; };
+		268D39A61DC70E67005EBC4B /* __HPVCHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __HPVCHeaderView.xib; sourceTree = "<group>"; };
+		268D39A81DC70EBD005EBC4B /* __HPVCHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __HPVCHeaderView.swift; sourceTree = "<group>"; };
 		268F47EF1D60D24D0088AC6B /* CustomPickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPickerCell.swift; sourceTree = "<group>"; };
 		268F47F01D60D24D0088AC6B /* CustomPickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomPickerCell.xib; sourceTree = "<group>"; };
 		268F47F11D60D24D0088AC6B /* CustomPickerHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPickerHeader.swift; sourceTree = "<group>"; };
@@ -332,12 +336,14 @@
 				264C0CA91DBE408C00EA89D3 /* HomePageVC.swift */,
 				264C0CAD1DBE504300EA89D3 /* __HPVCZeroView.swift */,
 				264C0CAE1DBE504300EA89D3 /* __HPVCZeroView.xib */,
-				264C0CB21DBF3FD500EA89D3 /* ComputeSummariesOperation.swift */,
+				264C0CB21DBF3FD500EA89D3 /* MakeSummariesOperation.swift */,
 				264C0CB61DBF7C4800EA89D3 /* __HPVCSummaryCell.swift */,
 				264C0CB41DBF7C3800EA89D3 /* __HPVCDayCell.swift */,
 				264C0CB81DBF7C9400EA89D3 /* __HPVCDayCell.xib */,
 				264C0CBA1DBF7EA000EA89D3 /* __HPVCGraphBackground.xib */,
 				264C0CBC1DBF7FB300EA89D3 /* __HPVCGraphBackground.swift */,
+				268D39A61DC70E67005EBC4B /* __HPVCHeaderView.xib */,
+				268D39A81DC70EBD005EBC4B /* __HPVCHeaderView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -739,6 +745,7 @@
 				266946871CC7711000A68424 /* Icon-60@2x.png in Resources */,
 				268F47FC1D60D26D0088AC6B /* __CPVCView.xib in Resources */,
 				261AF6311D5F395200E03A48 /* Avenir-Light.ttf in Resources */,
+				268D39A71DC70E67005EBC4B /* __HPVCHeaderView.xib in Resources */,
 				261AF6301D5F395200E03A48 /* Avenir-HeavyOblique.ttf in Resources */,
 				261AF6321D5F395200E03A48 /* Avenir-LightOblique.ttf in Resources */,
 				266946891CC7711000A68424 /* Icon@2x.png in Resources */,
@@ -774,6 +781,7 @@
 				265222A01D66CFCE007FED96 /* DatePickerVC.swift in Sources */,
 				26440F991DB229C300BD8F1C /* Expense+CoreDataClass.swift in Sources */,
 				261F147A1DA4D5E40072FAE7 /* Notifications.swift in Sources */,
+				268D39A91DC70EBD005EBC4B /* __HPVCHeaderView.swift in Sources */,
 				266408C21D4A630E00609580 /* Button.swift in Sources */,
 				264C0CAC1DBE409D00EA89D3 /* DateRange.swift in Sources */,
 				26EB76FF1D7C5B060001723D /* Summary.swift in Sources */,
@@ -797,7 +805,7 @@
 				266CBDB41D2676D900F5D5D1 /* EditExpenseVC.swift in Sources */,
 				262731831DB23EEF00119F76 /* FetchRequestBuilder.swift in Sources */,
 				26FF03191D2BBB8D00BA74FD /* BaseFormVC.swift in Sources */,
-				264C0CB31DBF3FD500EA89D3 /* ComputeSummariesOperation.swift in Sources */,
+				264C0CB31DBF3FD500EA89D3 /* MakeSummariesOperation.swift in Sources */,
 				268F47FB1D60D26D0088AC6B /* __CPVCView.swift in Sources */,
 				264C0CB71DBF7C4800EA89D3 /* __HPVCSummaryCell.swift in Sources */,
 				26440F9C1DB22A0300BD8F1C /* Category+Custom.swift in Sources */,

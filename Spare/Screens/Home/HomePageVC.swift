@@ -10,6 +10,7 @@ import UIKit
 import Mold
 
 fileprivate enum ViewID: String {
+    case headerView = "headerView"
     case dayCell = "dayCell"
     case weekCell = "weekCell"
     case monthCell = "monthCell"
@@ -24,7 +25,15 @@ class HomePageVC: MDOperationViewController {
     let customLoadingView = OperationVCLoadingView()
     let zeroView = __HPVCZeroView.instantiateFromNib()
     
-    var summaries = [Summary]()
+    var data = (NSDecimalNumber(value: 0), [Summary]())
+    
+    var total: NSDecimalNumber {
+        return self.data.0
+    }
+    
+    var summaries : [Summary] {
+        return self.data.1
+    }
     
     override var loadingView: UIView {
         return self.customLoadingView
@@ -54,9 +63,10 @@ class HomePageVC: MDOperationViewController {
         
         self.collectionView.backgroundColor = UIColor.clear
         self.collectionView.alwaysBounceVertical = true
-        self.collectionView.register(__HPVCDayCell.nib(), forCellWithReuseIdentifier: ViewID.dayCell.rawValue)
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
+        self.collectionView.register(__HPVCDayCell.nib(), forCellWithReuseIdentifier: ViewID.dayCell.rawValue)
+        self.collectionView.register(__HPVCHeaderView.nib(), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: ViewID.headerView.rawValue)
         
         let flowLayout = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         flowLayout.scrollDirection = .vertical
@@ -65,9 +75,9 @@ class HomePageVC: MDOperationViewController {
     }
     
     override func makeOperation() -> MDOperation? {
-        return ComputeSummariesOperation(dateRange: self.dateRange)
+        return MakeSummariesOperation(dateRange: self.dateRange)
             .onSuccess({[unowned self] result in
-                self.summaries = result as! [Summary]
+                self.data = result as! (NSDecimalNumber, [Summary])
                 self.showView(.primary)
                 self.collectionView.reloadData()
             })
@@ -83,6 +93,12 @@ extension HomePageVC: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.summaries.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: ViewID.headerView.rawValue, for: indexPath) as! __HPVCHeaderView
+        headerView.data = (self.dateRange, self.total)
+        return headerView
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -108,25 +124,32 @@ extension HomePageVC: UICollectionViewDataSource {
 
 extension HomePageVC: UICollectionViewDelegate {}
 
+fileprivate let kInset = CGFloat(10)
+
 extension HomePageVC: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let summary = self.summaries[indexPath.item]
-        let cellWidth = collectionView.bounds.size.width - 20
+        let cellWidth = collectionView.bounds.size.width - kInset * 2
         let height = kCellClasses[App.selectedPeriodization.rawValue].height(for: summary, atCellWidth: cellWidth)
         return CGSize(width: cellWidth, height: height)
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        let width = collectionView.bounds.size.width - kInset * 2
+        return CGSize(width: width, height: 44)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 10
+        return kInset
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 10
+        return kInset
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsetsMake(10, 10, 10, 10)
+        return UIEdgeInsetsMake(0, kInset, kInset, kInset)
     }
     
 }

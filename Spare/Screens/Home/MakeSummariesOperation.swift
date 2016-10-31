@@ -1,5 +1,5 @@
 //
-//  ComputeSummariesOperation.swift
+//  MakeSummariesOperation.swift
 //  Spare
 //
 //  Created by Matt Quiros on 25/10/2016.
@@ -9,7 +9,7 @@
 import Foundation
 import Mold
 
-class ComputeSummariesOperation: MDOperation {
+class MakeSummariesOperation: MDOperation {
     
     var dateRange: DateRange
     
@@ -37,7 +37,7 @@ class ComputeSummariesOperation: MDOperation {
             // and the dateRangeTotal is not zero (division by 0 throws).
             // Otherwise, create a summary with zero total and percentage.
             if let expenses = mappedExpenses[category],
-                expenses.isEmpty == false && dateRangeTotal == 0 {
+                expenses.isEmpty == false && dateRangeTotal > 0 {
                 let categoryTotal = expenses.total()
                 let categoryPercentage = (categoryTotal / dateRangeTotal).doubleValue
                 summaries.append(Summary(category: category, dateRange: self.dateRange, total: categoryTotal, percentage: categoryPercentage))
@@ -50,7 +50,8 @@ class ComputeSummariesOperation: MDOperation {
             }
         }
         
-        return summaries
+        let result = (dateRangeTotal, summaries)
+        return result
     }
     
 }

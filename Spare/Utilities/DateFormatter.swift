@@ -17,22 +17,6 @@ private let kSharedFormatter: Foundation.DateFormatter = {
 
 class DateFormatter {
     
-//    class func displayTextForStartDate(_ startDate: Date, endDate: Date, periodization: Periodization = App.state.selectedPeriodization, startOfWeek: StartOfWeek = App.state.selectedStartOfWeek) -> String {
-//        let dateRange = DateRange(startDate: startDate,
-//                                           endDate: endDate,
-//                                           periodization: periodization,
-//                                           startOfWeek: startOfWeek)
-//        return dateRange.displayText()
-//    }
-//    
-//    class func displayTextForSummary(_ summary: Summary) -> String {
-//        let dateRange = DateRange(startDate: summary.startDate as Date,
-//                                           endDate: summary.endDate as Date,
-//                                           periodization: summary.periodization,
-//                                           startOfWeek: App.state.selectedStartOfWeek)
-//        return dateRange.displayText()
-//    }
-    
     class func displayTextForExpenseEditorDate(_ date: Date?) -> String {
         guard let date = date
             else {
@@ -55,11 +39,11 @@ class DateFormatter {
         switch App.selectedPeriodization {
         case .day:
             if dateRange.start.isSameDayAsDate(currentDate) {
-                return "Today"
+                kSharedFormatter.dateFormat = "'Today,' MMM d"
             } else {
                 kSharedFormatter.dateFormat = "EEE, MMM d"
-                return kSharedFormatter.string(from: dateRange.start)
             }
+            return kSharedFormatter.string(from: dateRange.start)
             
         case .week:
             if dateRange.start.isSameWeekAsDate(Date(), whenFirstWeekdayIs: App.selectedStartOfWeek.rawValue) {

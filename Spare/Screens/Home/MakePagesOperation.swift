@@ -63,7 +63,7 @@ class MakePagesOperation: MDOperation {
             var interval = TimeInterval(0)
             let _ = calendar.dateInterval(of: .weekOfYear, start: &startDate, interval: &interval, for: offsetDate)
             let endDate = startDate.addingTimeInterval(interval - 1)
-            return DateRange(start: startDate, end: endDate)
+            return DateRange(start: startDate.startOfDay(), end: endDate.endOfDay())
             
         case .month:
             let offsetDate = calendar.date(byAdding: .month, value: page * -1, to: self.currentDate)!
@@ -72,7 +72,7 @@ class MakePagesOperation: MDOperation {
             let dayRange = calendar.range(of: .day, in: .month, for: offsetDate)!
             let endDate = calendar.date(bySetting: .day, value: dayRange.upperBound, of: offsetDate)!
             
-            return DateRange(start: startDate, end: endDate)
+            return DateRange(start: startDate.startOfDay(), end: endDate.endOfDay())
             
         case .year:
             let offsetDate = calendar.date(byAdding: .year, value: page * -1, to: self.currentDate)!
@@ -88,7 +88,7 @@ class MakePagesOperation: MDOperation {
             components.day = dayRange.upperBound
             let endDate = calendar.date(from: components)!
             
-            return DateRange(start: startDate, end: endDate)
+            return DateRange(start: startDate.startOfDay(), end: endDate.endOfDay())
         }
     }
     

@@ -257,16 +257,6 @@ extension ExpenseEditorVC {
         
         let customPicker = CustomPickerVC(identifier: "PaymentMethod", headerTitle: "PAID WITH", initiallySelectedIndex: selectedIndex)
         customPicker.setCustomTransitioningDelegate(self.customPickerAnimator)
-//        customPicker.customView.headerLabel.text = "PAID WITH"
-        
-//        let delegate = PaymentMethodPickerDelegate(selectedIndex: selectedIndex)
-//        delegate.tapAction = {[unowned self] tappedIndex in
-//            let paymentMethods = PaymentMethod.allValues
-//            let paymentMethodNumber = paymentMethods[tappedIndex].rawValue as NSNumber?
-//            self.expense.paymentMethod = paymentMethodNumber
-//            self.dismiss(animated: true, completion: nil)
-//        }
-//        customPicker.delegate = delegate
         customPicker.delegate = self
         
         self.present(customPicker, animated: true, completion: nil)

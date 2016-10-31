@@ -10,7 +10,7 @@ import UIKit
 
 fileprivate let kPadding = CGFloat(10)
 fileprivate let kLabelSpacing = CGFloat(6)
-fileprivate let kGraphContainerHeight = CGFloat(150)
+fileprivate let kGraphContainerHeight = CGFloat(120)
 
 class __HPVCDayCell: __HPVCSummaryCell {
     
@@ -35,9 +35,22 @@ class __HPVCDayCell: __HPVCSummaryCell {
                 self.setNeedsLayout()
             }
             
-            self.nameLabel.text = self.summary?.category.name
-            self.totalLabel.text = AmountFormatter.displayTextForAmount(self.summary?.total)
-            self.pieChartView.percentage = self.summary?.percentage ?? 0
+            guard let summary = self.summary
+                else {
+                    return
+            }
+            
+            self.nameLabel.text = summary.category.name
+            self.totalLabel.text = AmountFormatter.displayTextForAmount(summary.total)
+            
+            self.percentageLabel.text = {
+                if summary.percentage > 0 {
+                    return PercentFormatter.displayTextForPercent(summary.percentage)
+                }
+                return nil
+            }()
+            
+            self.pieChartView.percentage = summary.percentage
         }
     }
     
@@ -48,7 +61,8 @@ class __HPVCDayCell: __HPVCSummaryCell {
             self.graphContainer,
             self.graphBackgroundContainer,
             self.graphBackground,
-            self.pieChartContainer
+            self.pieChartContainer,
+            self.pieChartView
         )
         
         self.graphBackgroundContainer.addSubviewAndFill(self.graphBackground)
@@ -57,6 +71,9 @@ class __HPVCDayCell: __HPVCSummaryCell {
         
         __HPVCSummaryCell.applyAttributesToNameLabel(self.nameLabel)
         __HPVCSummaryCell.applyAttributesTotalLabel(self.totalLabel)
+        
+        self.percentageLabel.textColor = Color.UniversalTextColor
+        self.percentageLabel.font = Font.make(.Book, 14)
         
         for padding in self.paddings {
             padding.constant = kPadding
