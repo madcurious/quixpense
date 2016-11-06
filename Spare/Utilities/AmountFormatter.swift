@@ -23,7 +23,7 @@ final class AmountFormatter {
     // Nope, can't initialize it.
     fileprivate init() {}
     
-    class func displayTextForAmount(_ amount: NSDecimalNumber?) -> String {
+    class func displayText(for amount: NSDecimalNumber?) -> String {
         if let amount = amount,
             let text = kSharedFormatter.string(from: amount) {
             return text

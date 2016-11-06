@@ -122,12 +122,12 @@
                   moduleName = "Spare"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/mattquiros/Developer/spare-ios/Spare/Screens/ExpenseEditor/AddExpenseVC.swift"
-                  timestampString = "499586564.019268"
+                  timestampString = "500141338.707684"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "45"
                   endingLineNumber = "45"
-                  offsetFromSymbolStart = "80">
+                  offsetFromSymbolStart = "73">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -137,12 +137,12 @@
                   moduleName = "Spare"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/mattquiros/Developer/spare-ios/Spare/Screens/ExpenseEditor/AddExpenseVC.swift"
-                  timestampString = "499586564.020379"
+                  timestampString = "500141338.708801"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "45"
                   endingLineNumber = "45"
-                  offsetFromSymbolStart = "20">
+                  offsetFromSymbolStart = "15">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -152,12 +152,12 @@
                   moduleName = "Spare"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/mattquiros/Developer/spare-ios/Spare/Screens/ExpenseEditor/AddExpenseVC.swift"
-                  timestampString = "499586564.021688"
+                  timestampString = "500141338.709904"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "45"
                   endingLineNumber = "45"
-                  offsetFromSymbolStart = "12">
+                  offsetFromSymbolStart = "4">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -185,12 +185,12 @@
                   moduleName = "Spare"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/mattquiros/Developer/spare-ios/Spare/Screens/ExpenseEditor/AddExpenseVC.swift"
-                  timestampString = "499586564.024815"
+                  timestampString = "500141338.712372"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "51"
                   endingLineNumber = "51"
-                  offsetFromSymbolStart = "272">
+                  offsetFromSymbolStart = "334">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -200,12 +200,12 @@
                   moduleName = "Spare"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/mattquiros/Developer/spare-ios/Spare/Screens/ExpenseEditor/AddExpenseVC.swift"
-                  timestampString = "499586564.025928"
+                  timestampString = "500141338.713605"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "45"
                   endingLineNumber = "45"
-                  offsetFromSymbolStart = "12">
+                  offsetFromSymbolStart = "4">
                </Location>
             </Locations>
          </BreakpointContent>

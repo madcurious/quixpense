@@ -1,5 +1,5 @@
 //
-//  __HPVCGraphBackground.swift
+//  GraphBackground.swift
 //  Spare
 //
 //  Created by Matt Quiros on 25/10/2016.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class __HPVCGraphBackground: UIView {
+class GraphBackground: UIView {
     
     @IBOutlet var edges: [UIView]!
     @IBOutlet var midlines: [UIView]!

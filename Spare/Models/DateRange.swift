@@ -13,6 +13,15 @@ struct DateRange: Equatable {
     var start: Date
     var end: Date
     
+    init() {
+        self.init(start: Date(), end: Date())
+    }
+    
+    init(start: Date, end: Date) {
+        self.start = start
+        self.end = end
+    }
+    
     func contains(date: Date) -> Bool {
         let calendar = Calendar.current
         let significantUnits: Set<Calendar.Component> = [.month, .day, .year]

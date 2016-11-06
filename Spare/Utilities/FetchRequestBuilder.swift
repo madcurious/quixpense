@@ -16,4 +16,9 @@ class FetchRequestBuilder<T: NSFetchRequestResult> {
         return request
     }
     
+    class func makeGenericFetchRequest() -> NSFetchRequest<NSFetchRequestResult> {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: md_getClassName(T.self))
+        return request
+    }
+    
 }
