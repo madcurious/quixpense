@@ -42,22 +42,14 @@ class ChartCell: UICollectionViewCell {
         }
     }
     
-    class func applyNameLabelAttributes(to label: UILabel) {
-        label.textColor = Color.UniversalTextColor
-        label.font = Font.make(.Heavy, 16)
-        label.numberOfLines = 0
-        label.lineBreakMode = .byWordWrapping
-    }
-    
-    class func applyTotalLabelAttributes(to label: UILabel) {
-        label.textColor = Color.UniversalTextColor
-        label.font = Font.make(.Book, 16)
-        label.numberOfLines = 1
-        label.lineBreakMode = .byTruncatingTail
-    }
-    
     class func height(for chartData: ChartData, atCellWidth cellWidth: CGFloat) -> CGFloat {
-        return 150
+        switch App.selectedPeriodization {
+        case .day:
+            return __DCVCView.height(for: chartData, atCellWidth: cellWidth)
+            
+        default:
+            return 120
+        }
     }
     
 }

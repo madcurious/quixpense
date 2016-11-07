@@ -91,13 +91,23 @@
                 <outlet property="emptyLabel" destination="lgw-wB-hMU" id="VJj-Gi-oIa"/>
                 <outlet property="graphBackgroundContainer" destination="Oo1-5s-FkP" id="7VQ-UA-Osl"/>
                 <outlet property="graphContainer" destination="VqN-CY-hNd" id="duH-9L-Sb2"/>
+                <outlet property="graphContainerHeight" destination="GlJ-VG-Z4O" id="wbj-N8-QP0"/>
+                <outlet property="labelSpacing" destination="Ei2-Hs-6c0" id="KAG-bM-41k"/>
                 <outlet property="nameLabel" destination="5gD-NV-K3V" id="NYj-Td-4Gh"/>
                 <outlet property="percentLabel" destination="BTO-p7-fc1" id="c08-qk-9x4"/>
                 <outlet property="pieChartContainer" destination="sPY-kW-VYQ" id="BdZ-DH-33L"/>
                 <outlet property="pieView" destination="ARV-1O-82Q" id="Yg0-JT-UFv"/>
                 <outlet property="totalLabel" destination="vDC-n9-zM5" id="ppt-U0-Rha"/>
+                <outletCollection property="paddings" destination="lwd-Ng-Laz" collectionClass="NSMutableArray" id="dQx-EP-hqt"/>
+                <outletCollection property="paddings" destination="lCP-26-fep" collectionClass="NSMutableArray" id="2Mm-MQ-NK7"/>
+                <outletCollection property="paddings" destination="S4K-rC-Nc1" collectionClass="NSMutableArray" id="MQZ-RO-98N"/>
+                <outletCollection property="paddings" destination="Puc-6q-7cY" collectionClass="NSMutableArray" id="1Lw-8M-fZR"/>
+                <outletCollection property="paddings" destination="0lV-Y8-slj" collectionClass="NSMutableArray" id="SnQ-si-K9D"/>
+                <outletCollection property="paddings" destination="EIP-fs-TCJ" collectionClass="NSMutableArray" id="2Qq-nk-uIA"/>
+                <outletCollection property="paddings" destination="RWP-mv-ZHt" collectionClass="NSMutableArray" id="0Ca-fn-vx2"/>
+                <outletCollection property="paddings" destination="XDQ-Fd-nfQ" id="wEb-iY-NGL"/>
             </connections>
-            <point key="canvasLocation" x="-145" y="-51"/>
+            <point key="canvasLocation" x="-145.5" y="-51.5"/>
         </view>
     </objects>
 </document>

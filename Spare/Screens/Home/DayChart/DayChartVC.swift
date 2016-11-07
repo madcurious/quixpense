@@ -20,9 +20,6 @@ class DayChartVC: HomeChartVC {
         }
     }
     
-    var total = NSDecimalNumber(value: 0)
-    var percent = 0.0
-    
     override func loadView() {
         self.view = self.customView
     }
@@ -60,15 +57,17 @@ class DayChartVC: HomeChartVC {
             }
             
             .onStart {[unowned self] in
-                self.customView.data = nil
+                // Displays the category name immediately, but ellipses for total and percent labels.
+                self.customView.chartData = self.chartData
             }
             
             .onSuccess({[unowned self] result in
-                let (total, percent) = result as! (NSDecimalNumber, Double)
-                self.total = total
-                self.percent = percent
+                let (categoryTotal, percent) = result as! (NSDecimalNumber, Double)
+                self.chartData.categoryTotal = categoryTotal
+                self.chartData.percent = percent
                 
-                self.customView.data = (total, percent)
+                // Reset the chart data in the custom view to re-display the values.
+                self.customView.chartData = self.chartData
             })
     }
     

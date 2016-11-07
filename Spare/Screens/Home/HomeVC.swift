@@ -65,7 +65,7 @@ class HomeVC: MDOperationViewController {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: self.nowButton)
         
         let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(handleFinishedInitializingCoreDataStack), name: Notifications.LoadAppVCFinishedLoadingCoreDataStack, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(handleFinishedInitializingCoreDataStack), name: Notifications.CoreDataStackFinishedInitializing, object: nil)
     }
     
     override func makeOperation() -> MDOperation? {
@@ -75,7 +75,7 @@ class HomeVC: MDOperationViewController {
         }
         
         return MDBlockOperation {[unowned self] in
-            CategoryProvider.initialize(completion: {[unowned self] in
+            CategoryProvider.refresh(completion: {[unowned self] in
                 self.operationQueue.addOperation(
                     MakePagesOperation(currentDate: self.currentDate,
                                        periodization: App.selectedPeriodization,

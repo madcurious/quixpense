@@ -14,21 +14,21 @@ import Foundation
 struct PageData: Equatable {
     
     var dateRange: DateRange
-    var total: NSDecimalNumber
+    var dateRangeTotal: NSDecimalNumber
     
     init() {
         self.dateRange = DateRange()
-        self.total = 0
+        self.dateRangeTotal = 0
     }
     
-    init(dateRange: DateRange, total: NSDecimalNumber) {
+    init(dateRange: DateRange, dateRangeTotal: NSDecimalNumber) {
         self.dateRange = dateRange
-        self.total = total
+        self.dateRangeTotal = dateRangeTotal
     }
     
 }
 
 func ==(lhs: PageData, rhs: PageData) -> Bool {
     return lhs.dateRange == rhs.dateRange &&
-    lhs.total == rhs.total
+    lhs.dateRangeTotal == rhs.dateRangeTotal
 }

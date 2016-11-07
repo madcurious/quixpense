@@ -75,7 +75,7 @@ class MakePagesOperation: MDOperation {
                     return nil
             }
             
-            let page = PageData(dateRange: dateRange, total: total)
+            let page = PageData(dateRange: dateRange, dateRangeTotal: total)
             pageData.insert(page, at: 0)
             
             if self.isCancelled {

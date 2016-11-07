@@ -12,7 +12,7 @@ private let prefix = Bundle.main.bundleIdentifier! + "."
 
 class Notifications {
     
-    static let LoadAppVCFinishedLoadingCoreDataStack = Notification.Name("\(prefix)LoadAppVCFinishedLoadingCoreDataStack")
+    static let CoreDataStackFinishedInitializing = Notification.Name("\(prefix)CoreDataStackFinishedInitializing")
     
     static let MonthPageVCDidSelectDate = Notification.Name("\(prefix)MonthPageVCDidSelectDate")
     

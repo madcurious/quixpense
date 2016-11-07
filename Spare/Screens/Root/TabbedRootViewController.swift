@@ -29,7 +29,7 @@ class TabbedRootViewController: UITabBarController {
         self.operationQueue.addOperation(
             LoadAppOperation().onSuccess { result in
                 App.coreDataStack = result as! NSPersistentContainer
-                NotificationCenter.default.post(name: Notifications.LoadAppVCFinishedLoadingCoreDataStack, object: nil)
+                NotificationCenter.default.post(name: Notifications.CoreDataStackFinishedInitializing, object: nil)
             }
         )
     }

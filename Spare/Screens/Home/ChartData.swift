@@ -12,13 +12,15 @@ struct ChartData {
     
     var category: Category
     private var pageData: PageData
+    var categoryTotal: NSDecimalNumber?
+    var percent: Double?
     
     var dateRange: DateRange {
         return self.pageData.dateRange
     }
     
     var dateRangeTotal: NSDecimalNumber {
-        return self.pageData.total
+        return self.pageData.dateRangeTotal
     }
     
     init() {

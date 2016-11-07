@@ -11,10 +11,6 @@ import Mold
 
 fileprivate enum ViewID: String {
     case headerView = "headerView"
-//    case dayCell = "dayCell"
-//    case weekCell = "weekCell"
-//    case monthCell = "monthCell"
-//    case yearCell = "yearCell"
     case chartCell = "chartCell"
 }
 
@@ -22,11 +18,6 @@ fileprivate let kCellClasses = [__HPVCDayCell.self]
 
 class HomePageVC: UIViewController {
     
-//    enum State {
-//        case loading, displaying
-//    }
-    
-//    let loadingView = OperationVCLoadingView()
     let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout())
     
     var pageData: PageData
@@ -46,9 +37,6 @@ class HomePageVC: UIViewController {
     }
     
     override func loadView() {
-//        let view = UIView()
-//        view.addSubviewsAndFill(self.loadingView, self.collectionView)
-//        self.view = view
         self.view = self.collectionView
     }
     
@@ -65,19 +53,12 @@ class HomePageVC: UIViewController {
         let flowLayout = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         flowLayout.scrollDirection = .vertical
         
-//        self.setState(.displaying)
-        
         for category in self.categories {
             let chartData = ChartData(category: category, pageData: self.pageData)
             self.chartData.append(chartData)
         }
         self.collectionView.reloadData()
     }
-    
-//    func setState(_ state: HomePageVC.State) {
-//        self.loadingView.isHidden = state != .loading
-//        self.collectionView.isHidden = state != .displaying
-//    }
     
 }
 
@@ -99,22 +80,6 @@ extension HomePageVC: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let identifier: String = {
-//            switch App.selectedPeriodization {
-//            case .day:
-//                return ViewID.dayCell.rawValue
-//            case .week:
-//                return ViewID.weekCell.rawValue
-//            case .month:
-//                return ViewID.monthCell.rawValue
-//            case .year:
-//                return ViewID.yearCell.rawValue
-//            }
-//        }()
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! __HPVCSummaryCell
-//        cell.summary = self.summaries[indexPath.item]
-//        return cell
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ViewID.chartCell.rawValue, for: indexPath) as! ChartCell
         cell.data = (self.chartData[indexPath.item], App.selectedPeriodization)
         return cell
@@ -129,10 +94,8 @@ fileprivate let kInset = CGFloat(10)
 extension HomePageVC: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        let summary = self.summaries[indexPath.item]
         let chartData = self.chartData[indexPath.item]
         let cellWidth = collectionView.bounds.size.width - kInset * 2
-//        let height = kCellClasses[App.selectedPeriodization.rawValue].height(for: chartData, atCellWidth: cellWidth)
         let height = ChartCell.height(for: chartData, atCellWidth: cellWidth)
         return CGSize(width: cellWidth, height: height)
     }

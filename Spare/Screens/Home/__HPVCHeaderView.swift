@@ -26,7 +26,7 @@ class __HPVCHeaderView: UICollectionReusableView {
             }
             
             self.dateLabel.text = DateFormatter.displayText(for: data.dateRange)
-            self.totalLabel.text = AmountFormatter.displayText(for: data.total)
+            self.totalLabel.text = AmountFormatter.displayText(for: data.dateRangeTotal)
         }
     }
     

@@ -22,7 +22,7 @@ class CategoryProvider {
     private var allCategories = [Category]()
     private var isInitialized = false
     
-    class func initialize(completion: @escaping () -> ()) {
+    class func refresh(completion: @escaping () -> ()) {
         kSharedInstance.runOperation(completion: completion)
     }
     

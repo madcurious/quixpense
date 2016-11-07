@@ -9,6 +9,10 @@
 import UIKit
 import Mold
 
+fileprivate let kPadding = CGFloat(10)
+fileprivate let kLabelSpacing = CGFloat(6)
+fileprivate let kGraphContainerHeight = CGFloat(120)
+
 class __DCVCView: UIView {
     
     @IBOutlet weak var nameLabel: UILabel!
@@ -23,32 +27,48 @@ class __DCVCView: UIView {
     @IBOutlet weak var percentLabel: UILabel!
     @IBOutlet weak var emptyLabel: UILabel!
     
-    var category: Category? {
-        didSet {
-            if let category = self.category {
-                self.nameLabel.text = category.name
-            } else {
-                self.nameLabel.text = "..."
-            }
-            self.setNeedsLayout()
-        }
-    }
+    @IBOutlet var paddings: [NSLayoutConstraint]!
+    @IBOutlet weak var labelSpacing: NSLayoutConstraint!
+    @IBOutlet weak var graphContainerHeight: NSLayoutConstraint!
     
-    var data: (total: NSDecimalNumber, percent: Double)? {
+    var chartData: ChartData? {
         didSet {
-            if let data = self.data {
-                self.totalLabel.text = AmountFormatter.displayText(for: data.total)
-                self.percentLabel.text = PercentFormatter.displayTextForPercent(data.percent)
-                
-                if data.total == 0 {
-                    
-                }
+            defer {
+                self.setNeedsLayout()
             }
-            else {
+            
+            guard let chartData = self.chartData
+                else {
+                    return
+            }
+            
+            // Always set the category name.
+            self.nameLabel.text = chartData.category.name
+            
+            switch (chartData.dateRangeTotal, chartData.categoryTotal, chartData.percent) {
+            case (0, _, _),
+                 (_, .some, _) where chartData.categoryTotal == 0:
+                self.totalLabel.text = AmountFormatter.displayText(for: 0)
+                self.percentLabel.text = PercentFormatter.displayTextForPercent(0)
+                self.emptyLabel.isHidden = false
+                self.pieChartContainer.isHidden = true
+                
+            case (_, nil, nil):
                 self.totalLabel.text = "..."
                 self.percentLabel.text = "..."
+                self.emptyLabel.isHidden = true
+                self.pieChartContainer.isHidden = true
+                
+            case (_, .some(let categoryTotal), .some(let percent)) where categoryTotal > 0:
+                self.totalLabel.text = AmountFormatter.displayText(for: categoryTotal)
+                self.percentLabel.text = PercentFormatter.displayTextForPercent(percent)
+                
+                self.pieView.percent = percent
+                self.emptyLabel.isHidden = true
+                self.pieChartContainer.isHidden = false
+                
+            default: ()
             }
-            self.setNeedsLayout()
         }
     }
     
@@ -64,12 +84,37 @@ class __DCVCView: UIView {
         )
         self.backgroundColor = UIColor(hex: 0x333333)
         
+        HomeChartVC.applyAttributes(toNameLabel: self.nameLabel)
+        HomeChartVC.applyAttributes(toTotalLabel: self.totalLabel)
+        
         self.graphBackgroundContainer.addSubviewAndFill(self.graphBackground)
         
         self.emptyLabel.text = "No expenses"
         
         self.percentLabel.textColor = Color.UniversalTextColor
         self.percentLabel.font = Font.make(.Book, 14)
+        
+        for padding in self.paddings {
+            padding.constant = kPadding
+        }
+        self.graphContainerHeight.constant = kGraphContainerHeight
+        self.labelSpacing.constant = kLabelSpacing
+    }
+    
+    class func height(for chartData: ChartData, atCellWidth cellWidth: CGFloat) -> CGFloat {
+        let totalLabel = UILabel()
+        HomeChartVC.applyAttributes(toTotalLabel: totalLabel)
+        totalLabel.text = AmountFormatter.displayText(for: chartData.dateRangeTotal)
+        totalLabel.sizeToFit()
+        
+        let nameLabel = UILabel()
+        HomeChartVC.applyAttributes(toNameLabel: nameLabel)
+        nameLabel.text = chartData.category.name
+        let nameLabelWidth = cellWidth - (kPadding * 2 + kLabelSpacing + totalLabel.bounds.size.width)
+        let nameLabelHeight = nameLabel.sizeThatFits(CGSize(width: nameLabelWidth, height: CGFloat.greatestFiniteMagnitude)).height
+        
+        let height = kPadding + nameLabelHeight + kPadding + kGraphContainerHeight + kPadding
+        return height
     }
     
 }
