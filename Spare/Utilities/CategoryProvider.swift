@@ -14,16 +14,21 @@ fileprivate let kSharedInstance = CategoryProvider()
 
 class CategoryProvider {
     
-    public static var allCategories: [Category] = kSharedInstance.allCategories
+    public static var allCategories: [Category] {
+        return kSharedInstance.allCategories
+    }
     
     private let operationQueue = OperationQueue()
     private var allCategories = [Category]()
+    private var isInitialized = false
+    
+    class func initialize(completion: @escaping () -> ()) {
+        kSharedInstance.runOperation(completion: completion)
+    }
     
     fileprivate init() {
         let system = NotificationCenter.default
         system.addObserver(self, selector: #selector(handleUpdateOnMainContext(notification:)), name: Notification.Name.NSManagedObjectContextDidSave, object: App.coreDataStack.viewContext)
-        
-        self.runOperation()
     }
     
     @objc private func handleUpdateOnMainContext(notification: Notification) {
@@ -40,11 +45,12 @@ class CategoryProvider {
         }
     }
     
-    private func runOperation() {
+    private func runOperation(completion: (() -> ())? = nil) {
         self.operationQueue.addOperation(
             GetAllCategoriesOperation()
                 .onSuccess({[unowned self] result in
                     self.allCategories = result as! [Category]
+                    completion?()
                 })
         )
     }
@@ -56,15 +62,8 @@ fileprivate class GetAllCategoriesOperation: MDOperation {
     fileprivate override func makeResult(fromSource source: Any?) throws -> Any? {
         let context = App.coreDataStack.viewContext
         let request = FetchRequestBuilder<Category>.makeFetchRequest()
-        request.resultType = .
         
-        let countExpression = NSExpressionDescription()
-        countExpression.name = "count"
-        countExpression.expression = NSExpression(forKeyPath: "@count.expenses")
-        
-        
-        request.sortDescriptors = [NSSortDescriptor(key: "expenses.count", ascending: false)]
-        let categories = try context.fetch(request)
+        let categories = try context.fetch(request).sorted(by: { $0.expenses?.count ?? 0 > $1.expenses?.count ?? 0 })
         return categories
     }
     

@@ -9,7 +9,6 @@
 import UIKit
 import Mold
 
-
 fileprivate enum ViewID: String {
     case headerView = "headerView"
 //    case dayCell = "dayCell"
@@ -23,13 +22,12 @@ fileprivate let kCellClasses = [__HPVCDayCell.self]
 
 class HomePageVC: UIViewController {
     
-    enum View {
-        case loading, primary, zero
-    }
+//    enum State {
+//        case loading, displaying
+//    }
     
+//    let loadingView = OperationVCLoadingView()
     let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout())
-    let loadingView = OperationVCLoadingView()
-    let zeroView = __HPVCZeroView.instantiateFromNib()
     
     var pageData: PageData
     var chartData = [ChartData]()
@@ -48,10 +46,10 @@ class HomePageVC: UIViewController {
     }
     
     override func loadView() {
-        let view = UIView()
-        view.addSubviewsAndFill(self.loadingView, self.zeroView, self.collectionView)
-        
-        self.view = view
+//        let view = UIView()
+//        view.addSubviewsAndFill(self.loadingView, self.collectionView)
+//        self.view = view
+        self.view = self.collectionView
     }
     
     override func viewDidLoad() {
@@ -61,21 +59,25 @@ class HomePageVC: UIViewController {
         self.collectionView.alwaysBounceVertical = true
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
-//        self.collectionView.register(__HPVCDayCell.nib(), forCellWithReuseIdentifier: ViewID.dayCell.rawValue)
         self.collectionView.register(ChartCell.self, forCellWithReuseIdentifier: ViewID.chartCell.rawValue)
         self.collectionView.register(__HPVCHeaderView.nib(), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: ViewID.headerView.rawValue)
         
         let flowLayout = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         flowLayout.scrollDirection = .vertical
         
-        self.showView(.zero)
+//        self.setState(.displaying)
+        
+        for category in self.categories {
+            let chartData = ChartData(category: category, pageData: self.pageData)
+            self.chartData.append(chartData)
+        }
+        self.collectionView.reloadData()
     }
     
-    func showView(_ view: HomePageVC.View) {
-        self.zeroView.isHidden = view != .zero
-        self.loadingView.isHidden = view != .loading
-        self.collectionView.isHidden = view != .primary
-    }
+//    func setState(_ state: HomePageVC.State) {
+//        self.loadingView.isHidden = state != .loading
+//        self.collectionView.isHidden = state != .displaying
+//    }
     
 }
 
@@ -86,7 +88,8 @@ extension HomePageVC: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.categories.count
+        let count = self.categories.count
+        return count
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -113,8 +116,7 @@ extension HomePageVC: UICollectionViewDataSource {
 //        return cell
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ViewID.chartCell.rawValue, for: indexPath) as! ChartCell
-        cell.chartData = self.chartData[indexPath.item]
-        cell.mode = App.selectedPeriodization
+        cell.data = (self.chartData[indexPath.item], App.selectedPeriodization)
         return cell
     }
     

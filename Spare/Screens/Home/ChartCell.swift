@@ -10,23 +10,26 @@ import UIKit
 
 class ChartCell: UICollectionViewCell {
     
-    var chartData: ChartData? {
+    var data: (chartData: ChartData, mode: Periodization)? {
         didSet {
-            if let chartData = self.chartData {
-                self.chartData = chartData
+            defer {
+                self.setNeedsLayout()
             }
-        }
-    }
-    
-    var mode = App.selectedPeriodization {
-        didSet {
-            switch mode {
+            
+            guard let data = self.data
+                else {
+                    return
+            }
+            
+            switch data.mode {
             case .day:
                 self.chartVC = self.dayChartVC
                 
             default:
                 fatalError("UNIMPLEMENTED")
             }
+            
+            self.chartVC.chartData = data.chartData
         }
     }
     

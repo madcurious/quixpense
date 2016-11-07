@@ -23,6 +23,10 @@ class DayChartVC: HomeChartVC {
     var total = NSDecimalNumber(value: 0)
     var percent = 0.0
     
+    override func loadView() {
+        self.view = self.customView
+    }
+    
     override func makeOperation() -> MDOperation? {
         return MDBlockOperation {[unowned self] in
             let request = FetchRequestBuilder<Expense>.makeGenericFetchRequest()
@@ -40,19 +44,25 @@ class DayChartVC: HomeChartVC {
             sumExpression.expressionResultType = .decimalAttributeType
             request.propertiesToFetch = [sumExpression]
             
+            // Initialize categoryTotal to 0 in case the request returns nothing
+            // because there are no expenses in the date range.
+            var categoryTotal = NSDecimalNumber(value: 0)
             let context = App.coreDataStack.newBackgroundContext()
-            guard let results = try context.fetch(request) as? [[String : NSDecimalNumber]],
-                let categoryTotal = results[0]["sum"]
-                else {
-                    return nil
+            if let sum = (try context.fetch(request) as? [[String : NSDecimalNumber]])?.first?["sum"] {
+                categoryTotal = sum
             }
             
-            let result = (categoryTotal, categoryTotal / self.chartData.dateRangeTotal)
+            // Avoid division by 0.
+            let percent = self.chartData.dateRangeTotal == 0 ? 0 : Double(categoryTotal / self.chartData.dateRangeTotal)
+            let result = (categoryTotal, percent)
+            
             return result
             }
+            
             .onStart {[unowned self] in
                 self.customView.data = nil
             }
+            
             .onSuccess({[unowned self] result in
                 let (total, percent) = result as! (NSDecimalNumber, Double)
                 self.total = total

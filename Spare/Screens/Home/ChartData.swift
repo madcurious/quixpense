@@ -22,7 +22,7 @@ struct ChartData {
     }
     
     init() {
-        self.category = Category()
+        self.category = Category(entity: Category.entity(), insertInto: nil)
         self.pageData = PageData()
     }
     

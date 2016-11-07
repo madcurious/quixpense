@@ -35,8 +35,8 @@ class HomeVC: MDOperationViewController {
         return self.customLoadingView
     }
     
-    override init() {
-        super.init()
+    init() {
+        super.init(nibName: nil, bundle: nil)
         self.title = "Spare"
         self.navigationItem.title = "Home"
     }
@@ -74,34 +74,40 @@ class HomeVC: MDOperationViewController {
                 return nil
         }
         
-        return MakePagesOperation(currentDate: self.currentDate,
-            periodization: App.selectedPeriodization,
-            startOfWeek: App.selectedStartOfWeek,
-            count: 10,
-            pageOffset: self.pageData.count)
-            
-            .onSuccess({[unowned self] result in
-                self.pageData.insert(contentsOf: result as! [PageData], at: 0)
-                
-                if self.currentView != .primary {
-                    // Populate the pageVC with a junk DateRange so that programatically scrolling to the last page works.
-                    self.pageViewController.setViewControllers([HomePageVC(pageData: PageData())], direction: .forward, animated: false, completion: nil)
-                    
-                    self.scrollToLastPage(animated: false)
-                    self.showView(.primary)
-                }
-                })
+        return MDBlockOperation {[unowned self] in
+            CategoryProvider.initialize(completion: {[unowned self] in
+                self.operationQueue.addOperation(
+                    MakePagesOperation(currentDate: self.currentDate,
+                                       periodization: App.selectedPeriodization,
+                                       startOfWeek: App.selectedStartOfWeek,
+                                       count: 10,
+                                       pageOffset: self.pageData.count)
+                        
+                        .onSuccess({[unowned self] result in
+                            self.pageData.insert(contentsOf: result as! [PageData], at: 0)
+                            
+                            if self.currentView != .primary {
+                                // Populate the pageVC with a junk DateRange so that programatically scrolling to the last page works.
+                                self.pageViewController.setViewControllers([HomePageVC(pageData: PageData())], direction: .forward, animated: false, completion: nil)
+                                
+                                self.scrollToLastPage(animated: false)
+                                self.showView(.primary)
+                            }
+                            })
+                )
+            })
+        }
     }
     
     func scrollToLastPage(animated: Bool) {
-        guard let lastRange = self.pageData.last?.dateRange,
+        guard let lastData = self.pageData.last,
             let currentPage = self.pageViewController.viewControllers?.first as? HomePageVC,
-            currentPage.pageData.dateRange != lastRange
+            currentPage.pageData.dateRange != lastData.dateRange
             else {
                 return
         }
         
-        self.pageViewController.setViewControllers([HomePageVC(pageData: PageData())], direction: .forward, animated: animated, completion: nil)
+        self.pageViewController.setViewControllers([HomePageVC(pageData: lastData)], direction: .forward, animated: animated, completion: nil)
     }
     
     func handleFinishedInitializingCoreDataStack() {
