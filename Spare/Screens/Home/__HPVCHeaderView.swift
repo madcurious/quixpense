@@ -14,19 +14,19 @@ class __HPVCHeaderView: UICollectionReusableView {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
     
-    var data: (dateRange: DateRange, total: NSDecimalNumber)? {
+    var data: PageData? {
         didSet {
             defer {
                 self.setNeedsLayout()
             }
             
-            guard let (dateRange, total) = self.data
+            guard let data = self.data
                 else {
                 return
             }
             
-            self.dateLabel.text = DateFormatter.displayText(for: dateRange)
-            self.totalLabel.text = AmountFormatter.displayTextForAmount(total)
+            self.dateLabel.text = DateFormatter.displayText(for: data.dateRange)
+            self.totalLabel.text = AmountFormatter.displayText(for: data.total)
         }
     }
     

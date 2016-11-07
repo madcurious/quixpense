@@ -21,7 +21,7 @@ class HomeVC: MDOperationViewController {
     }()
     
     let currentDate = Date()
-    var dateRanges = [DateRange]()
+    var pageData = [PageData]()
     
     let nowButton = Button(string: "Now", font: Font.ModalBarButtonText, textColor: Color.UniversalTextColor)
     let periodizationButton = PeriodizationButton()
@@ -35,8 +35,8 @@ class HomeVC: MDOperationViewController {
         return self.customLoadingView
     }
     
-    override init() {
-        super.init()
+    init() {
+        super.init(nibName: nil, bundle: nil)
         self.title = "Spare"
         self.navigationItem.title = "Home"
     }
@@ -74,34 +74,40 @@ class HomeVC: MDOperationViewController {
                 return nil
         }
         
-        return MakePagesOperation(currentDate: self.currentDate,
-            periodization: App.selectedPeriodization,
-            startOfWeek: App.selectedStartOfWeek,
-            count: 10,
-            pageOffset: self.dateRanges.count)
-            
-            .onSuccess({[unowned self] result in
-                self.dateRanges.insert(contentsOf: result as! [DateRange], at: 0)
-                
-                if self.currentView != .primary {
-                    // Populate the pageVC with a junk DateRange so that programatically scrolling to the last page works.
-                    self.pageViewController.setViewControllers([HomePageVC(dateRange: DateRange(start: Date(), end: Date()))], direction: .forward, animated: false, completion: nil)
-                    
-                    self.scrollToLastPage(animated: false)
-                    self.showView(.primary)
-                }
-                })
+        return MDBlockOperation {[unowned self] in
+            CategoryProvider.initialize(completion: {[unowned self] in
+                self.operationQueue.addOperation(
+                    MakePagesOperation(currentDate: self.currentDate,
+                                       periodization: App.selectedPeriodization,
+                                       startOfWeek: App.selectedStartOfWeek,
+                                       count: 10,
+                                       pageOffset: self.pageData.count)
+                        
+                        .onSuccess({[unowned self] result in
+                            self.pageData.insert(contentsOf: result as! [PageData], at: 0)
+                            
+                            if self.currentView != .primary {
+                                // Populate the pageVC with a junk DateRange so that programatically scrolling to the last page works.
+                                self.pageViewController.setViewControllers([HomePageVC(pageData: PageData())], direction: .forward, animated: false, completion: nil)
+                                
+                                self.scrollToLastPage(animated: false)
+                                self.showView(.primary)
+                            }
+                            })
+                )
+            })
+        }
     }
     
     func scrollToLastPage(animated: Bool) {
-        guard let lastRange = self.dateRanges.last,
+        guard let lastData = self.pageData.last,
             let currentPage = self.pageViewController.viewControllers?.first as? HomePageVC,
-            currentPage.dateRange != lastRange
+            currentPage.pageData.dateRange != lastData.dateRange
             else {
                 return
         }
         
-        self.pageViewController.setViewControllers([HomePageVC(dateRange: lastRange)], direction: .forward, animated: animated, completion: nil)
+        self.pageViewController.setViewControllers([HomePageVC(pageData: lastData)], direction: .forward, animated: animated, completion: nil)
     }
     
     func handleFinishedInitializingCoreDataStack() {
@@ -114,7 +120,7 @@ class HomeVC: MDOperationViewController {
     
     func handleSelectionOfPeriodization() {
         App.selectedPeriodization = self.periodizationButton.selectedPeriodization
-        self.dateRanges = []
+        self.pageData = []
         self.runOperation()
     }
     
@@ -128,7 +134,7 @@ extension HomeVC: UIPageViewControllerDataSource {
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let currentPage = self.pageViewController.viewControllers?.first as? HomePageVC,
-            let currentIndex = self.dateRanges.index(of: currentPage.dateRange)
+            let currentIndex = self.pageData.index(of: currentPage.pageData)
             else {
                 return nil
         }
@@ -141,7 +147,7 @@ extension HomeVC: UIPageViewControllerDataSource {
                 self.operationQueue.addOperation(op)
             }
             
-            let previousPage = HomePageVC(dateRange: self.dateRanges[previousIndex])
+            let previousPage = HomePageVC(pageData: self.pageData[previousIndex])
             return previousPage
         }
         
@@ -150,14 +156,14 @@ extension HomeVC: UIPageViewControllerDataSource {
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         guard let currentPage = self.pageViewController.viewControllers?.first as? HomePageVC,
-            let currentIndex = self.dateRanges.index(of: currentPage.dateRange)
+            let currentIndex = self.pageData.index(of: currentPage.pageData)
             else {
                 return nil
         }
         
         let nextIndex = currentIndex + 1
-        if nextIndex < self.dateRanges.count {
-            let previousPage = HomePageVC(dateRange: self.dateRanges[nextIndex])
+        if nextIndex < self.pageData.count {
+            let previousPage = HomePageVC(pageData: self.pageData[nextIndex])
             return previousPage
         }
         return nil

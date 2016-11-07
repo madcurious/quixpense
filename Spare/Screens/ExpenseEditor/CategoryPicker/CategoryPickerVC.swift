@@ -23,7 +23,7 @@ class CategoryPickerVC: UIViewController {
     
     let customView = __CategoryPickerVCView.instantiateFromNib()
     
-    var categories = App.allCategories()
+    var categories = [Category]()
     var isTypingACategory = false
     
     let operationQueue = OperationQueue()
@@ -173,7 +173,7 @@ extension CategoryPickerVC {
     func handleTextFieldFinishedEditing() {
         self.isTypingACategory = false
         
-        self.categories = App.allCategories()
+        self.categories = CategoryProvider.allCategories
         self.customView.tableView.reloadData()
     }
     

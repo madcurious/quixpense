@@ -82,10 +82,10 @@ struct App {
         }
     }
     
-    static func allCategories() -> [Category] {
-        let request = FetchRequestBuilder<Category>.makeFetchRequest()
-        let categories = try! App.mainQueueContext.fetch(request)
-        return categories
-    }
+//    static func allCategories() -> [Category] {
+//        let request = FetchRequestBuilder<Category>.makeFetchRequest()
+//        let categories = try! App.mainQueueContext.fetch(request)
+//        return categories
+//    }
     
 }

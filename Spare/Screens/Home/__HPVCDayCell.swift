@@ -23,7 +23,7 @@ class __HPVCDayCell: __HPVCSummaryCell {
     @IBOutlet weak var pieChartView: __HPVCPieChart!
     @IBOutlet weak var percentageLabel: UILabel!
     
-    let graphBackground = __HPVCGraphBackground.instantiateFromNib()
+    let graphBackground = GraphBackground.instantiateFromNib()
     
     @IBOutlet var paddings: [NSLayoutConstraint]!
     @IBOutlet weak var labelSpacing: NSLayoutConstraint!
@@ -41,7 +41,7 @@ class __HPVCDayCell: __HPVCSummaryCell {
             }
             
             self.nameLabel.text = summary.category.name
-            self.totalLabel.text = AmountFormatter.displayTextForAmount(summary.total)
+            self.totalLabel.text = AmountFormatter.displayText(for: summary.total)
             
             self.percentageLabel.text = {
                 if summary.percentage > 0 {
@@ -85,7 +85,7 @@ class __HPVCDayCell: __HPVCSummaryCell {
     override class func height(for summary: Summary, atCellWidth cellWidth: CGFloat) -> CGFloat {
         let totalLabel = UILabel()
         __HPVCSummaryCell.applyAttributesTotalLabel(totalLabel)
-        totalLabel.text = AmountFormatter.displayTextForAmount(summary.total)
+        totalLabel.text = AmountFormatter.displayText(for: summary.total)
         totalLabel.sizeToFit()
         
         let nameLabel = UILabel()

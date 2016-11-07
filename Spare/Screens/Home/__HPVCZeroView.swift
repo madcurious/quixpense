@@ -38,7 +38,7 @@ class __HPVCZeroView: UIView {
         self.totalLabel.numberOfLines = 1
         self.totalLabel.textAlignment = .center
         self.totalLabel.textColor = Color.UniversalSecondaryTextColor
-        self.totalLabel.text = AmountFormatter.displayTextForAmount(NSDecimalNumber(value: 0 as Int))
+        self.totalLabel.text = AmountFormatter.displayText(for: NSDecimalNumber(value: 0 as Int))
         
         self.dateLabel.numberOfLines = 1
         self.dateLabel.font = Font.make(.Book, 40)
