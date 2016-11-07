@@ -173,7 +173,7 @@ extension CategoryPickerVC {
     func handleTextFieldFinishedEditing() {
         self.isTypingACategory = false
         
-        self.categories = CategoryProvider.allCategories
+        self.categories = App.allCategories
         self.customView.tableView.reloadData()
     }
     

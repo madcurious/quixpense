@@ -11,26 +11,25 @@ import Foundation
 struct ChartData {
     
     var category: Category
-    private var pageData: PageData
-    var categoryTotal: NSDecimalNumber?
-    var percent: Double?
+    var dateRange: DateRange
+    var dateRangeTotal: NSDecimalNumber
+    var categoryTotal: NSDecimalNumber
+    var ratio: Double
     
-    var dateRange: DateRange {
-        return self.pageData.dateRange
-    }
-    
-    var dateRangeTotal: NSDecimalNumber {
-        return self.pageData.dateRangeTotal
-    }
-    
-    init() {
-        self.category = Category(entity: Category.entity(), insertInto: nil)
-        self.pageData = PageData()
-    }
-    
-    init(category: Category, pageData: PageData) {
-        self.category = category
-        self.pageData = pageData
-    }
+//    init() {
+//        self.category = Category(entity: Category.entity(), insertInto: nil)
+//        self.dateRange = DateRange()
+//        self.dateRangeTotal = 0
+//        self.categoryTotal = 0
+//        self.ratio = 0
+//    }
+//    
+//    init(category: Category, pageData: PageData) {
+//        self.category = category
+//        self.dateRange = pageData.dateRange
+//        self.dateRangeTotal = pageData.dateRangeTotal
+//        self.categoryTotal = 0
+//        self.ratio = 0
+//    }
     
 }

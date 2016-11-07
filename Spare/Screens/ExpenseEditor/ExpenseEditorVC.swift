@@ -276,7 +276,7 @@ extension ExpenseEditorVC: CategoryPickerVCDelegate {
          was added but not saved, so it should be deleted.
          */
         if let category = self.expense.category,
-            CategoryProvider.allCategories.contains(category) == false {
+            App.allCategories.contains(category) == false {
             self.managedObjectContext.delete(category)
         }
         

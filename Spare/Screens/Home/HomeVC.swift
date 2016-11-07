@@ -74,29 +74,23 @@ class HomeVC: MDOperationViewController {
                 return nil
         }
         
-        return MDBlockOperation {[unowned self] in
-            CategoryProvider.refresh(completion: {[unowned self] in
-                self.operationQueue.addOperation(
-                    MakePagesOperation(currentDate: self.currentDate,
-                                       periodization: App.selectedPeriodization,
-                                       startOfWeek: App.selectedStartOfWeek,
-                                       count: 10,
-                                       pageOffset: self.pageData.count)
-                        
-                        .onSuccess({[unowned self] result in
-                            self.pageData.insert(contentsOf: result as! [PageData], at: 0)
-                            
-                            if self.currentView != .primary {
-                                // Populate the pageVC with a junk DateRange so that programatically scrolling to the last page works.
-                                self.pageViewController.setViewControllers([HomePageVC(pageData: PageData())], direction: .forward, animated: false, completion: nil)
-                                
-                                self.scrollToLastPage(animated: false)
-                                self.showView(.primary)
-                            }
-                            })
-                )
-            })
-        }
+        return MakePagesOperation(currentDate: self.currentDate,
+                                  periodization: App.selectedPeriodization,
+                                  startOfWeek: App.selectedStartOfWeek,
+                                  count: 10,
+                                  pageOffset: self.pageData.count)
+            
+            .onSuccess({[unowned self] result in
+                self.pageData.insert(contentsOf: result as! [PageData], at: 0)
+                
+                if self.currentView != .primary {
+                    // Populate the pageVC with a junk DateRange so that programatically scrolling to the last page works.
+                    self.pageViewController.setViewControllers([HomePageVC(pageData: PageData())], direction: .forward, animated: false, completion: nil)
+                    
+                    self.scrollToLastPage(animated: false)
+                    self.showView(.primary)
+                }
+                })
     }
     
     func scrollToLastPage(animated: Bool) {

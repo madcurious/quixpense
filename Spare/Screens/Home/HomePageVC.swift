@@ -11,21 +11,21 @@ import Mold
 
 fileprivate enum ViewID: String {
     case headerView = "headerView"
-    case chartCell = "chartCell"
+    case dayCell = "dayCell"
+    
+    static let cellIdentifiers = [
+        ViewID.dayCell.rawValue
+    ]
 }
 
 fileprivate let kCellClasses = [__HPVCDayCell.self]
 
-class HomePageVC: UIViewController {
+class HomePageVC: MDOperationViewController {
     
     let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout())
     
     var pageData: PageData
     var chartData = [ChartData]()
-    
-    var categories: [Category] {
-        return CategoryProvider.allCategories
-    }
     
     init(pageData: PageData) {
         self.pageData = pageData
@@ -47,17 +47,40 @@ class HomePageVC: UIViewController {
         self.collectionView.alwaysBounceVertical = true
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
-        self.collectionView.register(ChartCell.self, forCellWithReuseIdentifier: ViewID.chartCell.rawValue)
+        self.collectionView.register(__HPVCDayCell.nib(), forCellWithReuseIdentifier: ViewID.dayCell.rawValue)
         self.collectionView.register(__HPVCHeaderView.nib(), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: ViewID.headerView.rawValue)
         
         let flowLayout = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         flowLayout.scrollDirection = .vertical
-        
-        for category in self.categories {
-            let chartData = ChartData(category: category, pageData: self.pageData)
-            self.chartData.append(chartData)
+    }
+    
+    override func makeOperation() -> MDOperation? {
+        return MDBlockOperation {
+            // Fetch all categories if still nil.
+            guard App.allCategories == nil
+                else {
+                    return nil
+            }
+            
+            let context = App.coreDataStack.viewContext
+            let request = FetchRequestBuilder<Category>.makeFetchRequest()
+            let categories = try context.fetch(request).sorted(by: { $0.expenses?.count ?? 0 > $1.expenses?.count ?? 0 })
+            return categories
         }
-        self.collectionView.reloadData()
+        .onSuccess({[unowned self] (result) in
+            if let categories = result as? [Category] {
+                App.allCategories = categories
+            }
+            
+            self.operationQueue.addOperation(
+                MakeChartDataOperation(pageData: self.pageData, periodization: App.selectedPeriodization)
+                .onSuccess({[unowned self] (result) in
+                    self.chartData = result as! [ChartData]
+                    self.collectionView.reloadData()
+                    self.showView(.primary)
+                })
+            )
+        })
     }
     
 }
@@ -69,8 +92,7 @@ extension HomePageVC: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let count = self.categories.count
-        return count
+        return self.chartData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -80,8 +102,9 @@ extension HomePageVC: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ViewID.chartCell.rawValue, for: indexPath) as! ChartCell
-        cell.data = (self.chartData[indexPath.item], App.selectedPeriodization)
+        let identifier = ViewID.cellIdentifiers[App.selectedPeriodization.rawValue]
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! __HPVCChartCell
+        cell.chartData = self.chartData[indexPath.item]
         return cell
     }
     
@@ -96,7 +119,7 @@ extension HomePageVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let chartData = self.chartData[indexPath.item]
         let cellWidth = collectionView.bounds.size.width - kInset * 2
-        let height = ChartCell.height(for: chartData, atCellWidth: cellWidth)
+        let height = kCellClasses[indexPath.item].height(for: chartData, atCellWidth: cellWidth)
         return CGSize(width: cellWidth, height: height)
     }
     

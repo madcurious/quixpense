@@ -12,7 +12,7 @@ fileprivate let kPadding = CGFloat(10)
 fileprivate let kLabelSpacing = CGFloat(6)
 fileprivate let kGraphContainerHeight = CGFloat(120)
 
-class __HPVCDayCell: __HPVCSummaryCell {
+class __HPVCDayCell: __HPVCChartCell {
     
     @IBOutlet weak var wrapperView: UIView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -21,7 +21,8 @@ class __HPVCDayCell: __HPVCSummaryCell {
     @IBOutlet weak var graphBackgroundContainer: UIView!
     @IBOutlet weak var pieChartContainer: UIView!
     @IBOutlet weak var pieChartView: __HPVCPieChart!
-    @IBOutlet weak var percentageLabel: UILabel!
+    @IBOutlet weak var percentLabel: UILabel!
+    @IBOutlet weak var noExpensesLabel: UILabel!
     
     let graphBackground = GraphBackground.instantiateFromNib()
     
@@ -29,28 +30,31 @@ class __HPVCDayCell: __HPVCSummaryCell {
     @IBOutlet weak var labelSpacing: NSLayoutConstraint!
     @IBOutlet weak var graphContainerHeight: NSLayoutConstraint!
     
-    override var summary: Summary? {
+    override var chartData: ChartData? {
         didSet {
             defer {
                 self.setNeedsLayout()
             }
             
-            guard let summary = self.summary
+            guard let chartData = self.chartData
                 else {
                     return
             }
             
-            self.nameLabel.text = summary.category.name
-            self.totalLabel.text = AmountFormatter.displayText(for: summary.total)
+            self.nameLabel.text = chartData.category.name
+            self.totalLabel.text = AmountFormatter.displayText(for: chartData.categoryTotal)
             
-            self.percentageLabel.text = {
-                if summary.percentage > 0 {
-                    return PercentFormatter.displayTextForPercent(summary.percentage)
-                }
-                return nil
-            }()
+            if chartData.ratio > 0 {
+                self.percentLabel.text = PercentFormatter.displayTextForPercent(chartData.ratio)
+                self.pieChartView.ratio = chartData.ratio
+                
+                self.pieChartContainer.isHidden = false
+                self.noExpensesLabel.isHidden = true
+            } else {
+                self.pieChartContainer.isHidden = true
+                self.noExpensesLabel.isHidden = false
+            }
             
-            self.pieChartView.percentage = summary.percentage
         }
     }
     
@@ -69,11 +73,12 @@ class __HPVCDayCell: __HPVCSummaryCell {
         
         self.wrapperView.backgroundColor = UIColor(hex: 0x333333)
         
-        __HPVCSummaryCell.applyAttributesToNameLabel(self.nameLabel)
-        __HPVCSummaryCell.applyAttributesTotalLabel(self.totalLabel)
+        __HPVCChartCell.applyAttributes(toNameLabel: self.nameLabel)
+        __HPVCChartCell.applyAttributes(toTotalLabel: self.totalLabel)
+        __HPVCChartCell.applyAttributes(toNoExpensesLabel: self.noExpensesLabel)
         
-        self.percentageLabel.textColor = Color.UniversalTextColor
-        self.percentageLabel.font = Font.make(.Book, 14)
+        self.percentLabel.textColor = Color.UniversalTextColor
+        self.percentLabel.font = Font.make(.Book, 14)
         
         for padding in self.paddings {
             padding.constant = kPadding
@@ -82,15 +87,15 @@ class __HPVCDayCell: __HPVCSummaryCell {
         self.labelSpacing.constant = kLabelSpacing
     }
     
-    override class func height(for summary: Summary, atCellWidth cellWidth: CGFloat) -> CGFloat {
+    override class func height(for chartData: ChartData, atCellWidth cellWidth: CGFloat) -> CGFloat {
         let totalLabel = UILabel()
-        __HPVCSummaryCell.applyAttributesTotalLabel(totalLabel)
-        totalLabel.text = AmountFormatter.displayText(for: summary.total)
+        __HPVCChartCell.applyAttributes(toTotalLabel: totalLabel)
+        totalLabel.text = AmountFormatter.displayText(for: chartData.categoryTotal)
         totalLabel.sizeToFit()
         
         let nameLabel = UILabel()
-        __HPVCSummaryCell.applyAttributesToNameLabel(nameLabel)
-        nameLabel.text = summary.category.name
+        __HPVCChartCell.applyAttributes(toNameLabel: nameLabel)
+        nameLabel.text = chartData.category.name
         let nameLabelWidth = cellWidth - (kPadding * 2 + kLabelSpacing + totalLabel.bounds.size.width)
         let nameLabelHeight = nameLabel.sizeThatFits(CGSize(width: nameLabelWidth, height: CGFloat.greatestFiniteMagnitude)).height
         
@@ -102,7 +107,7 @@ class __HPVCDayCell: __HPVCSummaryCell {
 
 class __HPVCPieChart: UIView {
     
-    var percentage = 0.0 {
+    var ratio = 0.0 {
         didSet {
             self.setNeedsDisplay()
         }
@@ -118,7 +123,7 @@ class __HPVCPieChart: UIView {
         let insetRect = rect.insetBy(dx: 1, dy: 1)
         let radius = insetRect.height / 2
         let startAngle = CGFloat(M_PI_2)
-        let endAngle = startAngle + CGFloat(2 * M_PI * self.percentage)
+        let endAngle = startAngle + CGFloat(2 * M_PI * self.ratio)
         
         let fillPath = UIBezierPath(arcCenter: center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
         context.setFillColor(UIColor(hex: 0xd8d8d8).cgColor)

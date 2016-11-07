@@ -48,7 +48,6 @@
 		264C0CB01DBE504300EA89D3 /* __HPVCZeroView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 264C0CAE1DBE504300EA89D3 /* __HPVCZeroView.xib */; };
 		264C0CB31DBF3FD500EA89D3 /* MakeSummariesOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264C0CB21DBF3FD500EA89D3 /* MakeSummariesOperation.swift */; };
 		264C0CB51DBF7C3800EA89D3 /* __HPVCDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264C0CB41DBF7C3800EA89D3 /* __HPVCDayCell.swift */; };
-		264C0CB71DBF7C4800EA89D3 /* __HPVCSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264C0CB61DBF7C4800EA89D3 /* __HPVCSummaryCell.swift */; };
 		264C0CB91DBF7C9400EA89D3 /* __HPVCDayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 264C0CB81DBF7C9400EA89D3 /* __HPVCDayCell.xib */; };
 		264C0CBB1DBF7EA000EA89D3 /* GraphBackground.xib in Resources */ = {isa = PBXBuildFile; fileRef = 264C0CBA1DBF7EA000EA89D3 /* GraphBackground.xib */; };
 		264C0CBD1DBF7FB300EA89D3 /* GraphBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264C0CBC1DBF7FB300EA89D3 /* GraphBackground.swift */; };
@@ -109,16 +108,13 @@
 		269D49FC1CE1643A00109990 /* AddExpenseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269D49FB1CE1643A00109990 /* AddExpenseVC.swift */; };
 		269E7E101D68C96000476870 /* MonthPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269E7E0F1D68C96000476870 /* MonthPageVC.swift */; };
 		269E7E121D69985D00476870 /* CustomPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269E7E111D69985D00476870 /* CustomPickerView.swift */; };
+		26A1CB3D1DD0A2F600DAE89E /* __HPVCChartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A1CB3C1DD0A2F600DAE89E /* __HPVCChartCell.swift */; };
+		26A1CB3F1DD0A8B800DAE89E /* MakeChartDataOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A1CB3E1DD0A8B800DAE89E /* MakeChartDataOperation.swift */; };
 		26B075EA1D8FE26B0026692E /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B075E91D8FE26B0026692E /* HomeVC.swift */; };
 		26B075F21D8FFE250026692E /* OperationVCLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B075F11D8FFE250026692E /* OperationVCLoadingView.swift */; };
 		26B0760C1D901DC60026692E /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B0760B1D901DC60026692E /* Array.swift */; };
 		26BC4F961CE429AE0011BE98 /* ValidateExpenseOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC4F951CE429AE0011BE98 /* ValidateExpenseOperation.swift */; };
 		26C056831DCF5AE3000BB70E /* CategoryProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C056821DCF5AE3000BB70E /* CategoryProvider.swift */; };
-		26C056861DCF6857000BB70E /* DayChartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C056851DCF6857000BB70E /* DayChartVC.swift */; };
-		26C056881DCF687F000BB70E /* HomeChartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C056871DCF687F000BB70E /* HomeChartVC.swift */; };
-		26C0568A1DCF6A79000BB70E /* __DCVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C056891DCF6A79000BB70E /* __DCVCView.swift */; };
-		26C0568C1DCF6A82000BB70E /* __DCVCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26C0568B1DCF6A82000BB70E /* __DCVCView.xib */; };
-		26C0568E1DCF8451000BB70E /* ChartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C0568D1DCF8451000BB70E /* ChartCell.swift */; };
 		26C056901DCF8492000BB70E /* PageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C0568F1DCF8492000BB70E /* PageData.swift */; };
 		26C056921DCF849F000BB70E /* ChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C056911DCF849F000BB70E /* ChartData.swift */; };
 		26E4E0591937AF690096191A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E4E0581937AF690096191A /* QuartzCore.framework */; };
@@ -211,7 +207,6 @@
 		264C0CAE1DBE504300EA89D3 /* __HPVCZeroView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __HPVCZeroView.xib; sourceTree = "<group>"; };
 		264C0CB21DBF3FD500EA89D3 /* MakeSummariesOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeSummariesOperation.swift; sourceTree = "<group>"; };
 		264C0CB41DBF7C3800EA89D3 /* __HPVCDayCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __HPVCDayCell.swift; sourceTree = "<group>"; };
-		264C0CB61DBF7C4800EA89D3 /* __HPVCSummaryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __HPVCSummaryCell.swift; sourceTree = "<group>"; };
 		264C0CB81DBF7C9400EA89D3 /* __HPVCDayCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __HPVCDayCell.xib; sourceTree = "<group>"; };
 		264C0CBA1DBF7EA000EA89D3 /* GraphBackground.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GraphBackground.xib; sourceTree = "<group>"; };
 		264C0CBC1DBF7FB300EA89D3 /* GraphBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphBackground.swift; sourceTree = "<group>"; };
@@ -276,16 +271,13 @@
 		269D49FB1CE1643A00109990 /* AddExpenseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddExpenseVC.swift; sourceTree = "<group>"; };
 		269E7E0F1D68C96000476870 /* MonthPageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthPageVC.swift; sourceTree = "<group>"; };
 		269E7E111D69985D00476870 /* CustomPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPickerView.swift; sourceTree = "<group>"; };
+		26A1CB3C1DD0A2F600DAE89E /* __HPVCChartCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __HPVCChartCell.swift; sourceTree = "<group>"; };
+		26A1CB3E1DD0A8B800DAE89E /* MakeChartDataOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeChartDataOperation.swift; sourceTree = "<group>"; };
 		26B075E91D8FE26B0026692E /* HomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		26B075F11D8FFE250026692E /* OperationVCLoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperationVCLoadingView.swift; sourceTree = "<group>"; };
 		26B0760B1D901DC60026692E /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		26BC4F951CE429AE0011BE98 /* ValidateExpenseOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidateExpenseOperation.swift; sourceTree = "<group>"; };
 		26C056821DCF5AE3000BB70E /* CategoryProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryProvider.swift; sourceTree = "<group>"; };
-		26C056851DCF6857000BB70E /* DayChartVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayChartVC.swift; sourceTree = "<group>"; };
-		26C056871DCF687F000BB70E /* HomeChartVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeChartVC.swift; sourceTree = "<group>"; };
-		26C056891DCF6A79000BB70E /* __DCVCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __DCVCView.swift; sourceTree = "<group>"; };
-		26C0568B1DCF6A82000BB70E /* __DCVCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __DCVCView.xib; sourceTree = "<group>"; };
-		26C0568D1DCF8451000BB70E /* ChartCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartCell.swift; sourceTree = "<group>"; };
 		26C0568F1DCF8492000BB70E /* PageData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageData.swift; sourceTree = "<group>"; };
 		26C056911DCF849F000BB70E /* ChartData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartData.swift; sourceTree = "<group>"; };
 		26D4C8F41946E624001B42DC /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
@@ -346,23 +338,21 @@
 			isa = PBXGroup;
 			children = (
 				26C0568F1DCF8492000BB70E /* PageData.swift */,
-				26C056871DCF687F000BB70E /* HomeChartVC.swift */,
-				26C056841DCF684F000BB70E /* DayChart */,
 				26B075E91D8FE26B0026692E /* HomeVC.swift */,
 				2687FA3B1D0EC46F00D544F5 /* MakePagesOperation.swift */,
 				264C0CA91DBE408C00EA89D3 /* HomePageVC.swift */,
 				264C0CAD1DBE504300EA89D3 /* __HPVCZeroView.swift */,
 				264C0CAE1DBE504300EA89D3 /* __HPVCZeroView.xib */,
 				264C0CB21DBF3FD500EA89D3 /* MakeSummariesOperation.swift */,
-				264C0CB61DBF7C4800EA89D3 /* __HPVCSummaryCell.swift */,
 				264C0CB41DBF7C3800EA89D3 /* __HPVCDayCell.swift */,
 				264C0CB81DBF7C9400EA89D3 /* __HPVCDayCell.xib */,
 				264C0CBA1DBF7EA000EA89D3 /* GraphBackground.xib */,
 				264C0CBC1DBF7FB300EA89D3 /* GraphBackground.swift */,
 				268D39A61DC70E67005EBC4B /* __HPVCHeaderView.xib */,
 				268D39A81DC70EBD005EBC4B /* __HPVCHeaderView.swift */,
-				26C0568D1DCF8451000BB70E /* ChartCell.swift */,
 				26C056911DCF849F000BB70E /* ChartData.swift */,
+				26A1CB3C1DD0A2F600DAE89E /* __HPVCChartCell.swift */,
+				26A1CB3E1DD0A8B800DAE89E /* MakeChartDataOperation.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -636,16 +626,6 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		26C056841DCF684F000BB70E /* DayChart */ = {
-			isa = PBXGroup;
-			children = (
-				26C056851DCF6857000BB70E /* DayChartVC.swift */,
-				26C056891DCF6A79000BB70E /* __DCVCView.swift */,
-				26C0568B1DCF6A82000BB70E /* __DCVCView.xib */,
-			);
-			path = DayChart;
-			sourceTree = "<group>";
-		};
 		26EB76FD1D7C5B060001723D /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -760,7 +740,6 @@
 				2603F8C31CCA45FF007F311F /* LaunchScreen.storyboard in Resources */,
 				261AF62B1D5F395200E03A48 /* Avenir-Black.ttf in Resources */,
 				267804171DB72C0100B29873 /* __CategoryPickerVCView.xib in Resources */,
-				26C0568C1DCF6A82000BB70E /* __DCVCView.xib in Resources */,
 				265222A61D66D00A007FED96 /* __DPVCView.xib in Resources */,
 				261AF61E1D5F257900E03A48 /* __EEVCView.xib in Resources */,
 				261AF62D1D5F395200E03A48 /* Avenir-Book.ttf in Resources */,
@@ -819,13 +798,12 @@
 				268F47FE1D60D2900088AC6B /* CustomPickerPresentationAnimator.swift in Sources */,
 				264C0CB51DBF7C3800EA89D3 /* __HPVCDayCell.swift in Sources */,
 				266632B01DB24FFF007B992D /* LoadAppOperation.swift in Sources */,
-				26C0568A1DCF6A79000BB70E /* __DCVCView.swift in Sources */,
 				26B0760C1D901DC60026692E /* Array.swift in Sources */,
 				266946931CC77A1A00A68424 /* AppDelegate.swift in Sources */,
 				2687FA3C1D0EC46F00D544F5 /* MakePagesOperation.swift in Sources */,
+				26A1CB3F1DD0A8B800DAE89E /* MakeChartDataOperation.swift in Sources */,
 				267804131DB72AB200B29873 /* CategoryPickerVC.swift in Sources */,
 				266632AE1DB24AA7007B992D /* TabbedRootViewController.swift in Sources */,
-				26C056861DCF6857000BB70E /* DayChartVC.swift in Sources */,
 				261AF61C1D5F255000E03A48 /* __EEVCView.swift in Sources */,
 				26EAED2D1DBA2ABC00191041 /* SearchCategoryOperation.swift in Sources */,
 				269E7E121D69985D00476870 /* CustomPickerView.swift in Sources */,
@@ -836,13 +814,11 @@
 				268F47F61D60D24D0088AC6B /* CustomPickerHeader.swift in Sources */,
 				26E9CEAE1D66D5AA0005E087 /* __DPVCDayCell.swift in Sources */,
 				266CBDB41D2676D900F5D5D1 /* EditExpenseVC.swift in Sources */,
-				26C0568E1DCF8451000BB70E /* ChartCell.swift in Sources */,
 				262731831DB23EEF00119F76 /* FetchRequestBuilder.swift in Sources */,
 				26C056901DCF8492000BB70E /* PageData.swift in Sources */,
 				26FF03191D2BBB8D00BA74FD /* BaseFormVC.swift in Sources */,
 				264C0CB31DBF3FD500EA89D3 /* MakeSummariesOperation.swift in Sources */,
 				268F47FB1D60D26D0088AC6B /* __CPVCView.swift in Sources */,
-				264C0CB71DBF7C4800EA89D3 /* __HPVCSummaryCell.swift in Sources */,
 				266408B41D4A571400609580 /* PeriodizationButton.swift in Sources */,
 				267804191DB78E1D00B29873 /* CategoryPickerAddCategoryCell.swift in Sources */,
 				260024151CC7E5F300EB2026 /* SettingsVC.swift in Sources */,
@@ -866,6 +842,7 @@
 				2669468F1CC7711000A68424 /* Spare.xcdatamodeld in Sources */,
 				26440F9A1DB229C300BD8F1C /* Expense+CoreDataProperties.swift in Sources */,
 				265222A41D66CFF3007FED96 /* __DPVCView.swift in Sources */,
+				26A1CB3D1DD0A2F600DAE89E /* __HPVCChartCell.swift in Sources */,
 				268F480D1D60D3490088AC6B /* Color.swift in Sources */,
 				267804151DB72BF000B29873 /* __CategoryPickerVCView.swift in Sources */,
 				268F48131D60D3490088AC6B /* PaymentMethod.swift in Sources */,
@@ -873,7 +850,6 @@
 				268F480E1D60D3490088AC6B /* Duration.swift in Sources */,
 				264C0CBD1DBF7FB300EA89D3 /* GraphBackground.swift in Sources */,
 				26440F951DB2299900BD8F1C /* Category+CoreDataClass.swift in Sources */,
-				26C056881DCF687F000BB70E /* HomeChartVC.swift in Sources */,
 				268F48111D60D3490088AC6B /* Font.swift in Sources */,
 				268F481E1D60DE020088AC6B /* CustomPickerDismissalAnimator.swift in Sources */,
 				268F48191D60D3DE0088AC6B /* CustomPickerTransitioningDelegate.swift in Sources */,

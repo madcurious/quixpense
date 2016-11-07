@@ -42,15 +42,23 @@
                                                     <constraint firstAttribute="width" secondItem="khh-dL-SPk" secondAttribute="height" id="sLD-iS-nWY"/>
                                                 </constraints>
                                             </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vFq-mW-okh">
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.85098040100000005" green="0.94901961089999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
+                                            <constraint firstItem="vFq-mW-okh" firstAttribute="leading" secondItem="khh-dL-SPk" secondAttribute="trailing" constant="6" id="2Bj-h3-hJc"/>
                                             <constraint firstItem="khh-dL-SPk" firstAttribute="leading" secondItem="iuU-fJ-w69" secondAttribute="leading" id="3LY-EK-Fi6"/>
                                             <constraint firstItem="khh-dL-SPk" firstAttribute="top" secondItem="iuU-fJ-w69" secondAttribute="top" id="57A-ud-cDa"/>
+                                            <constraint firstAttribute="trailing" secondItem="vFq-mW-okh" secondAttribute="trailing" id="KuD-qC-2KE"/>
                                             <constraint firstAttribute="bottom" secondItem="khh-dL-SPk" secondAttribute="bottom" id="Plw-ON-KzV"/>
+                                            <constraint firstItem="vFq-mW-okh" firstAttribute="centerY" secondItem="iuU-fJ-w69" secondAttribute="centerY" id="Xqu-eM-S9U"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vFq-mW-okh">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fvM-8w-Brq">
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -58,14 +66,13 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.85098040100000005" green="0.94901961089999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="vFq-mW-okh" firstAttribute="centerY" secondItem="iuU-fJ-w69" secondAttribute="centerY" id="7lU-7f-Wb1"/>
-                                    <constraint firstItem="vFq-mW-okh" firstAttribute="trailing" secondItem="iuU-fJ-w69" secondAttribute="trailing" id="9Sh-a5-mJl"/>
+                                    <constraint firstItem="fvM-8w-Brq" firstAttribute="centerY" secondItem="zSc-ll-G7p" secondAttribute="centerY" id="7qx-yT-D4k"/>
                                     <constraint firstAttribute="trailing" secondItem="rs1-ss-dH9" secondAttribute="trailing" id="9ze-3j-qeD"/>
                                     <constraint firstItem="rs1-ss-dH9" firstAttribute="leading" secondItem="zSc-ll-G7p" secondAttribute="leading" id="Ezp-Ui-9aO"/>
                                     <constraint firstItem="rs1-ss-dH9" firstAttribute="top" secondItem="zSc-ll-G7p" secondAttribute="top" id="INI-BT-AJz"/>
                                     <constraint firstAttribute="bottom" secondItem="rs1-ss-dH9" secondAttribute="bottom" id="Qwt-Bg-Vhd"/>
+                                    <constraint firstItem="fvM-8w-Brq" firstAttribute="centerX" secondItem="zSc-ll-G7p" secondAttribute="centerX" id="XNh-ge-Wly"/>
                                     <constraint firstItem="iuU-fJ-w69" firstAttribute="centerX" secondItem="zSc-ll-G7p" secondAttribute="centerX" id="b5d-Gf-LyJ"/>
-                                    <constraint firstItem="vFq-mW-okh" firstAttribute="leading" secondItem="khh-dL-SPk" secondAttribute="trailing" constant="10" id="cvG-AY-9VE"/>
                                     <constraint firstItem="iuU-fJ-w69" firstAttribute="centerY" secondItem="zSc-ll-G7p" secondAttribute="centerY" id="gAW-5k-rhI"/>
                                     <constraint firstAttribute="height" constant="150" id="hTt-dx-tjK"/>
                                 </constraints>
@@ -99,7 +106,8 @@
                 <outlet property="graphContainerHeight" destination="hTt-dx-tjK" id="XAD-Mk-Cgn"/>
                 <outlet property="labelSpacing" destination="Ejm-4q-01c" id="x70-Fe-1ia"/>
                 <outlet property="nameLabel" destination="Y54-nR-2VX" id="pbO-wA-MdV"/>
-                <outlet property="percentageLabel" destination="vFq-mW-okh" id="aar-57-Rfq"/>
+                <outlet property="noExpensesLabel" destination="fvM-8w-Brq" id="dOH-xV-dQZ"/>
+                <outlet property="percentLabel" destination="vFq-mW-okh" id="TwF-7S-cU4"/>
                 <outlet property="pieChartContainer" destination="iuU-fJ-w69" id="rZ6-OM-r1j"/>
                 <outlet property="pieChartView" destination="khh-dL-SPk" id="e7Q-zZ-O90"/>
                 <outlet property="totalLabel" destination="tCv-Wv-hBa" id="nBd-eY-bUv"/>

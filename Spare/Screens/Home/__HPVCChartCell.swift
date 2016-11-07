@@ -1,37 +1,16 @@
 //
-//  HomeChartVC.swift
+//  __HPVCChartCell.swift
 //  Spare
 //
-//  Created by Matt Quiros on 06/11/2016.
+//  Created by Matt Quiros on 07/11/2016.
 //  Copyright © 2016 Matt Quiros. All rights reserved.
 //
 
 import UIKit
-import Mold
 
-class HomeChartVC: UIViewController {
+class __HPVCChartCell: UICollectionViewCell {
     
-    var operationQueue = OperationQueue()
-    var chartData = ChartData()
-    
-    
-    func makeOperation() -> MDOperation? {
-        return nil
-    }
-    
-    func runOperation() {
-        guard let operation = self.makeOperation()
-            else {
-                return
-        }
-        
-        self.operationQueue.addOperation(operation)
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.runOperation()
-    }
+    var chartData: ChartData?
     
     class func applyAttributes(toNameLabel label: UILabel) {
         label.textColor = Color.UniversalTextColor
@@ -45,6 +24,16 @@ class HomeChartVC: UIViewController {
         label.font = Font.make(.Book, 16)
         label.numberOfLines = 1
         label.lineBreakMode = .byTruncatingTail
+    }
+    
+    class func applyAttributes(toNoExpensesLabel label: UILabel) {
+        label.textColor = UIColor(hex: 0x666666)
+        label.font = Font.make(.Medium, 20)
+        label.text = "No expenses"
+    }
+    
+    class func height(for chartData: ChartData, atCellWidth cellWidth: CGFloat) -> CGFloat {
+        fatalError()
     }
     
 }

@@ -29,8 +29,7 @@ final class AmountFormatter {
             return text
         }
         
-        let zeroAmount = NSDecimalNumber(value: 0 as Int)
-        return kSharedFormatter.string(from: zeroAmount)!
+        return kSharedFormatter.string(from: 0)!
     }
     
     class func currencyCode() -> String {

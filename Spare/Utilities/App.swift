@@ -18,31 +18,14 @@ private enum SettingKey: String {
 
 struct App {
     
-//    class var state: App {
-//        return kSharedState
-//    }
-    
-//    static var coreDataStack: CoreDataStack! {
-//        get {
-//            return kSharedState.coreDataStack
-//        }
-//        set {
-//            kSharedState.coreDataStack = newValue
-//        }
-//    }
-//    
-//    static var mainQueueContext: NSManagedObjectContext {
-//        return kSharedState.coreDataStack.mainQueueContext
-//    }
-    
     fileprivate init() {}
-    
-//    fileprivate var coreDataStack: CoreDataStack!
     
     static var coreDataStack: NSPersistentContainer!
     static var mainQueueContext: NSManagedObjectContext {
         return self.coreDataStack.viewContext
     }
+    
+    static var allCategories: [Category]!
     
     static var selectedPeriodization: Periodization {
         get {
@@ -81,11 +64,5 @@ struct App {
             defaults.synchronize()
         }
     }
-    
-//    static func allCategories() -> [Category] {
-//        let request = FetchRequestBuilder<Category>.makeFetchRequest()
-//        let categories = try! App.mainQueueContext.fetch(request)
-//        return categories
-//    }
     
 }
