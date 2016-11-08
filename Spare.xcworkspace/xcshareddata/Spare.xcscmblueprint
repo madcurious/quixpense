@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "B2C538A9CDBDEAFD5E299ED7264E4EAC7DBE2471",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "295F2F8E35081E5EE4E52331E08374CF79594006" : 9223372036854775807,
+    "B2C538A9CDBDEAFD5E299ED7264E4EAC7DBE2471" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "850EF21A-6982-4BE6-B1AA-12359BC6153A",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "295F2F8E35081E5EE4E52331E08374CF79594006" : "spare-ios\/Mold\/",
+    "B2C538A9CDBDEAFD5E299ED7264E4EAC7DBE2471" : "spare-ios\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Spare",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Spare.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/mattquiros\/Mold.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "295F2F8E35081E5EE4E52331E08374CF79594006"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/mattquiros\/spare-ios",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "B2C538A9CDBDEAFD5E299ED7264E4EAC7DBE2471"
+    }
+  ]
+}

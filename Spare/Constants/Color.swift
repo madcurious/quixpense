@@ -30,6 +30,6 @@ class Color {
     
     static let UniversalTextColor = UIColor.white
     static let UniversalSecondaryTextColor = UIColor(hex: 0x666666)
-    static let UniversalBackgroundColor = UIColor(hex: 0x111111)
+    static let UniversalBackgroundColor = UIColor(hex: 0x222222)
     
 }

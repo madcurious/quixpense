@@ -25,9 +25,6 @@ final class Font {
     
     static let ExpenseEditorKeypadText = Font.make(.bold, AnySize)
     
-    static let FieldLabel = Font.make(.bold, 14)
-    static let FieldValue = Font.make(.regular, 20)
-    
     static let ModalBarButtonText = Font.make(.regular, 17)
     static let NavBarTitle = Font.make(.bold, 19)
     
@@ -40,7 +37,6 @@ final class Font {
         default:
             break
         }
-        print(UIFont.fontNames(forFamilyName: "Noto Sans UI"))
         return UIFont(name: fontName, size: size)!
     }
     

@@ -1,0 +1,650 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		03A15FC2D4C66D30759CF9DC0BF3AE79 /* VENTokenField.h in Headers */ = {isa = PBXBuildFile; fileRef = 1745BD84663BC85F1580318FB177E8A6 /* VENTokenField.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		19B9412DC02FC36F70D413BA546C244A /* ScrollViewFrameAccessor.h in Headers */ = {isa = PBXBuildFile; fileRef = C293CCA90C63E7FF0833471F06134006 /* ScrollViewFrameAccessor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1EB5F9651C34280A9ECE1E13D19B89BC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
+		2B2BFB49AEDB1BC747102614C43B4B7B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
+		331C9DB2E465D5B5C7C305C39021DE41 /* VENTokenField-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 357AA8524488A4C89DB74774CDE36652 /* VENTokenField-dummy.m */; };
+		3F6511F037828851D1078A838E46B9C7 /* ViewFrameAccessor.h in Headers */ = {isa = PBXBuildFile; fileRef = A380C59115ED318C208927CBCA73A0E7 /* ViewFrameAccessor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		59230B5594862216632AF66E24A23536 /* VENToken.h in Headers */ = {isa = PBXBuildFile; fileRef = 98C8E7596E51E0D0A643AAF07602DFC2 /* VENToken.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7B235D3A54B4746101FDB738DF1A3657 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
+		8C91F6FDFFE4D4E62565EFA58B486984 /* Pods-Spare-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A925531952C96EED9B40EC07DF8734B0 /* Pods-Spare-dummy.m */; };
+		9C89864A59B50F50CBDE0D8E45129F90 /* ScrollViewFrameAccessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A27E4A606B1471EDFE8FE70D27E624C /* ScrollViewFrameAccessor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A6E8055F32DD6261A796C4A81430F5B3 /* VENBackspaceTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = DAAFF0F7EBCA63269224358D499FB0D0 /* VENBackspaceTextField.m */; };
+		BF785B3D288302FC177A6695F88F583E /* VENToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FEEBF7121DD683A854C72C0684E7112 /* VENToken.m */; };
+		DCAF11106A4832E0DBBFB31949068ACD /* ViewFrameAccessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E0E80B6850C7673610726319AB840B /* ViewFrameAccessor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E31B7B91175BBB19C8CD0C0304F10431 /* VENTokenField.m in Sources */ = {isa = PBXBuildFile; fileRef = 5509F0B212CEAC5A94CE82CE00ED9E49 /* VENTokenField.m */; };
+		E77BB0D37A326ED6010FA8FB8FF4EB78 /* VENBackspaceTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = 311AC8BEA81789C6AAC5AE38EAC8B99A /* VENBackspaceTextField.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E86E6A51842C055E912A3811346102C9 /* FrameAccessor-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 90750767F5E0E9B12FE7F6E0C9316E95 /* FrameAccessor-dummy.m */; };
+		F952339396C0EDCFF3493B549A5363C2 /* FrameAccessor.h in Headers */ = {isa = PBXBuildFile; fileRef = D63656594BA45197E3C4BE00E4795D1F /* FrameAccessor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		478EFB184FBFB9009A0627E4FF86E291 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0F7B1940DE10624DFABB6A65D0BE9B4A;
+			remoteInfo = FrameAccessor;
+		};
+		7081A350AE0B63FAC102F930E742CD3E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0F7B1940DE10624DFABB6A65D0BE9B4A;
+			remoteInfo = FrameAccessor;
+		};
+		9E09BC9FEFF2579B3B87590CEDD25D7E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E2D2FA778716CCE816AE0B66D5184F18;
+			remoteInfo = VENTokenField;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		059C793A27D64B3FF1DF98C4C35D2D93 /* Pods-Spare-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Spare-resources.sh"; sourceTree = "<group>"; };
+		0CD10FAC30E285BD02EAB452F36479B8 /* libFrameAccessor.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFrameAccessor.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		0D4A1D0AE7FE791D8ADE141AFBBF7C1D /* FrameAccessor-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FrameAccessor-prefix.pch"; sourceTree = "<group>"; };
+		1745BD84663BC85F1580318FB177E8A6 /* VENTokenField.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VENTokenField.h; path = VENTokenField/VENTokenField.h; sourceTree = "<group>"; };
+		212D768E1A46132071D0EE5B0607FA83 /* Pods-Spare-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Spare-acknowledgements.plist"; sourceTree = "<group>"; };
+		311AC8BEA81789C6AAC5AE38EAC8B99A /* VENBackspaceTextField.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VENBackspaceTextField.h; path = VENTokenField/VENBackspaceTextField.h; sourceTree = "<group>"; };
+		357AA8524488A4C89DB74774CDE36652 /* VENTokenField-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "VENTokenField-dummy.m"; sourceTree = "<group>"; };
+		47852E56F22C6AA1F2B9950E227FED79 /* FrameAccessor.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FrameAccessor.xcconfig; sourceTree = "<group>"; };
+		5509F0B212CEAC5A94CE82CE00ED9E49 /* VENTokenField.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VENTokenField.m; path = VENTokenField/VENTokenField.m; sourceTree = "<group>"; };
+		5A27E4A606B1471EDFE8FE70D27E624C /* ScrollViewFrameAccessor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ScrollViewFrameAccessor.m; path = FrameAccessor/ScrollViewFrameAccessor.m; sourceTree = "<group>"; };
+		6FEEBF7121DD683A854C72C0684E7112 /* VENToken.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VENToken.m; path = VENTokenField/VENToken.m; sourceTree = "<group>"; };
+		73729FEEDB75EC1EC664B9F19FDB1869 /* VENTokenField-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "VENTokenField-prefix.pch"; sourceTree = "<group>"; };
+		82A1F527FDF3AF11DB0E4F3C31F76DA6 /* Pods-Spare.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Spare.debug.xcconfig"; sourceTree = "<group>"; };
+		84856D4FC7BCBCF4517C6B3885C24B92 /* Pods-Spare-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Spare-frameworks.sh"; sourceTree = "<group>"; };
+		89E0E80B6850C7673610726319AB840B /* ViewFrameAccessor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ViewFrameAccessor.m; path = FrameAccessor/ViewFrameAccessor.m; sourceTree = "<group>"; };
+		90750767F5E0E9B12FE7F6E0C9316E95 /* FrameAccessor-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FrameAccessor-dummy.m"; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		98C8E7596E51E0D0A643AAF07602DFC2 /* VENToken.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VENToken.h; path = VENTokenField/VENToken.h; sourceTree = "<group>"; };
+		99C43D38F5FFA70342E1BC9AF083C920 /* libVENTokenField.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libVENTokenField.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A380C59115ED318C208927CBCA73A0E7 /* ViewFrameAccessor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ViewFrameAccessor.h; path = FrameAccessor/ViewFrameAccessor.h; sourceTree = "<group>"; };
+		A925531952C96EED9B40EC07DF8734B0 /* Pods-Spare-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Spare-dummy.m"; sourceTree = "<group>"; };
+		C293CCA90C63E7FF0833471F06134006 /* ScrollViewFrameAccessor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ScrollViewFrameAccessor.h; path = FrameAccessor/ScrollViewFrameAccessor.h; sourceTree = "<group>"; };
+		C84811DC838275FD9B360B70FF0E098C /* libPods-Spare.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Spare.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		D63656594BA45197E3C4BE00E4795D1F /* FrameAccessor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FrameAccessor.h; path = FrameAccessor/FrameAccessor.h; sourceTree = "<group>"; };
+		DAAFF0F7EBCA63269224358D499FB0D0 /* VENBackspaceTextField.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VENBackspaceTextField.m; path = VENTokenField/VENBackspaceTextField.m; sourceTree = "<group>"; };
+		E087221BC835F0F5E342C8FD2109403E /* Pods-Spare-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Spare-acknowledgements.markdown"; sourceTree = "<group>"; };
+		E7DBB92E2E7DEF1498E6B3C948BA2BBC /* VENTokenField.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = VENTokenField.xcconfig; sourceTree = "<group>"; };
+		E7EB701B95BE94356B3EB13CA746C685 /* VENToken.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = VENToken.xib; path = VENTokenField/VENToken.xib; sourceTree = "<group>"; };
+		E9D047ABD890968278654F42FC122F0E /* Pods-Spare.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Spare.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		491B4468F23C0924AA6C79566ADC1BA2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1EB5F9651C34280A9ECE1E13D19B89BC /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C6F82729850333F1DB940AAC4F2856B7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2B2BFB49AEDB1BC747102614C43B4B7B /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DB483FDCB3AA1E631AEFAE87684AD612 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7B235D3A54B4746101FDB738DF1A3657 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		36BFDB0EAFE061DD3702E1B2C8EBC8F5 /* VENTokenField */ = {
+			isa = PBXGroup;
+			children = (
+				311AC8BEA81789C6AAC5AE38EAC8B99A /* VENBackspaceTextField.h */,
+				DAAFF0F7EBCA63269224358D499FB0D0 /* VENBackspaceTextField.m */,
+				98C8E7596E51E0D0A643AAF07602DFC2 /* VENToken.h */,
+				6FEEBF7121DD683A854C72C0684E7112 /* VENToken.m */,
+				1745BD84663BC85F1580318FB177E8A6 /* VENTokenField.h */,
+				5509F0B212CEAC5A94CE82CE00ED9E49 /* VENTokenField.m */,
+				CEF054FC47B42C531410AB95A86E385F /* Resources */,
+				BDED68BB2660F2C20D1699270B8EAFF4 /* Support Files */,
+			);
+			path = VENTokenField;
+			sourceTree = "<group>";
+		};
+		3DCAB2B7CDE207B3958B6CB957FCC758 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		5727661D71EAFC77C0B320D1F97771C6 /* FrameAccessor */ = {
+			isa = PBXGroup;
+			children = (
+				D63656594BA45197E3C4BE00E4795D1F /* FrameAccessor.h */,
+				C293CCA90C63E7FF0833471F06134006 /* ScrollViewFrameAccessor.h */,
+				5A27E4A606B1471EDFE8FE70D27E624C /* ScrollViewFrameAccessor.m */,
+				A380C59115ED318C208927CBCA73A0E7 /* ViewFrameAccessor.h */,
+				89E0E80B6850C7673610726319AB840B /* ViewFrameAccessor.m */,
+				684D98C109B7D84C398836AE57FA73C1 /* Support Files */,
+			);
+			path = FrameAccessor;
+			sourceTree = "<group>";
+		};
+		684D98C109B7D84C398836AE57FA73C1 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				47852E56F22C6AA1F2B9950E227FED79 /* FrameAccessor.xcconfig */,
+				90750767F5E0E9B12FE7F6E0C9316E95 /* FrameAccessor-dummy.m */,
+				0D4A1D0AE7FE791D8ADE141AFBBF7C1D /* FrameAccessor-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/FrameAccessor";
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				97683CC917DF83FD5350EC24F601FF7F /* Pods */,
+				A1BBFEABA788B1B43BC53AA5FC3D7656 /* Products */,
+				FBB7B7433222051DBDA1DAFBA307B82C /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		97683CC917DF83FD5350EC24F601FF7F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5727661D71EAFC77C0B320D1F97771C6 /* FrameAccessor */,
+				36BFDB0EAFE061DD3702E1B2C8EBC8F5 /* VENTokenField */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		A1BBFEABA788B1B43BC53AA5FC3D7656 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0CD10FAC30E285BD02EAB452F36479B8 /* libFrameAccessor.a */,
+				C84811DC838275FD9B360B70FF0E098C /* libPods-Spare.a */,
+				99C43D38F5FFA70342E1BC9AF083C920 /* libVENTokenField.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3DCAB2B7CDE207B3958B6CB957FCC758 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BDED68BB2660F2C20D1699270B8EAFF4 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				E7DBB92E2E7DEF1498E6B3C948BA2BBC /* VENTokenField.xcconfig */,
+				357AA8524488A4C89DB74774CDE36652 /* VENTokenField-dummy.m */,
+				73729FEEDB75EC1EC664B9F19FDB1869 /* VENTokenField-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/VENTokenField";
+			sourceTree = "<group>";
+		};
+		CEF054FC47B42C531410AB95A86E385F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E7EB701B95BE94356B3EB13CA746C685 /* VENToken.xib */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		E5964CC0F666002EC924E418B8EF0A10 /* Pods-Spare */ = {
+			isa = PBXGroup;
+			children = (
+				E087221BC835F0F5E342C8FD2109403E /* Pods-Spare-acknowledgements.markdown */,
+				212D768E1A46132071D0EE5B0607FA83 /* Pods-Spare-acknowledgements.plist */,
+				A925531952C96EED9B40EC07DF8734B0 /* Pods-Spare-dummy.m */,
+				84856D4FC7BCBCF4517C6B3885C24B92 /* Pods-Spare-frameworks.sh */,
+				059C793A27D64B3FF1DF98C4C35D2D93 /* Pods-Spare-resources.sh */,
+				82A1F527FDF3AF11DB0E4F3C31F76DA6 /* Pods-Spare.debug.xcconfig */,
+				E9D047ABD890968278654F42FC122F0E /* Pods-Spare.release.xcconfig */,
+			);
+			name = "Pods-Spare";
+			path = "Target Support Files/Pods-Spare";
+			sourceTree = "<group>";
+		};
+		FBB7B7433222051DBDA1DAFBA307B82C /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				E5964CC0F666002EC924E418B8EF0A10 /* Pods-Spare */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		B8B328E1BE57E88EC92B2AD3D4DBFC3F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E77BB0D37A326ED6010FA8FB8FF4EB78 /* VENBackspaceTextField.h in Headers */,
+				59230B5594862216632AF66E24A23536 /* VENToken.h in Headers */,
+				03A15FC2D4C66D30759CF9DC0BF3AE79 /* VENTokenField.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EA88A340756822CAD041304EB3DD892E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F952339396C0EDCFF3493B549A5363C2 /* FrameAccessor.h in Headers */,
+				19B9412DC02FC36F70D413BA546C244A /* ScrollViewFrameAccessor.h in Headers */,
+				3F6511F037828851D1078A838E46B9C7 /* ViewFrameAccessor.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		0F7B1940DE10624DFABB6A65D0BE9B4A /* FrameAccessor */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 65C440F2AABDA4CA2F618CCAEE4CB818 /* Build configuration list for PBXNativeTarget "FrameAccessor" */;
+			buildPhases = (
+				D05ECD22FEFA860E2CBA43A94B826AB0 /* Sources */,
+				C6F82729850333F1DB940AAC4F2856B7 /* Frameworks */,
+				EA88A340756822CAD041304EB3DD892E /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FrameAccessor;
+			productName = FrameAccessor;
+			productReference = 0CD10FAC30E285BD02EAB452F36479B8 /* libFrameAccessor.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		5FAAF7E69548B9F443279DC0981E6F70 /* Pods-Spare */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DDCCFBB38FFDC824CD426F98AF522A75 /* Build configuration list for PBXNativeTarget "Pods-Spare" */;
+			buildPhases = (
+				0F0E7E9A3AA6D7889F3DE42ADF13A76E /* Sources */,
+				DB483FDCB3AA1E631AEFAE87684AD612 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				23C23F5527D3D0AD4B9F09FBD5AC93A8 /* PBXTargetDependency */,
+				FD4DD136417133276EC7C4494C67A783 /* PBXTargetDependency */,
+			);
+			name = "Pods-Spare";
+			productName = "Pods-Spare";
+			productReference = C84811DC838275FD9B360B70FF0E098C /* libPods-Spare.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		E2D2FA778716CCE816AE0B66D5184F18 /* VENTokenField */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4E5753971ECBD39EA84D9401F85129BA /* Build configuration list for PBXNativeTarget "VENTokenField" */;
+			buildPhases = (
+				EC94F0156256F42459BE18CAB6325C2E /* Sources */,
+				491B4468F23C0924AA6C79566ADC1BA2 /* Frameworks */,
+				B8B328E1BE57E88EC92B2AD3D4DBFC3F /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6671D7BA697B314E6177154AB0E86F5F /* PBXTargetDependency */,
+			);
+			name = VENTokenField;
+			productName = VENTokenField;
+			productReference = 99C43D38F5FFA70342E1BC9AF083C920 /* libVENTokenField.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = A1BBFEABA788B1B43BC53AA5FC3D7656 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0F7B1940DE10624DFABB6A65D0BE9B4A /* FrameAccessor */,
+				5FAAF7E69548B9F443279DC0981E6F70 /* Pods-Spare */,
+				E2D2FA778716CCE816AE0B66D5184F18 /* VENTokenField */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0F0E7E9A3AA6D7889F3DE42ADF13A76E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8C91F6FDFFE4D4E62565EFA58B486984 /* Pods-Spare-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D05ECD22FEFA860E2CBA43A94B826AB0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E86E6A51842C055E912A3811346102C9 /* FrameAccessor-dummy.m in Sources */,
+				9C89864A59B50F50CBDE0D8E45129F90 /* ScrollViewFrameAccessor.m in Sources */,
+				DCAF11106A4832E0DBBFB31949068ACD /* ViewFrameAccessor.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC94F0156256F42459BE18CAB6325C2E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A6E8055F32DD6261A796C4A81430F5B3 /* VENBackspaceTextField.m in Sources */,
+				BF785B3D288302FC177A6695F88F583E /* VENToken.m in Sources */,
+				331C9DB2E465D5B5C7C305C39021DE41 /* VENTokenField-dummy.m in Sources */,
+				E31B7B91175BBB19C8CD0C0304F10431 /* VENTokenField.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		23C23F5527D3D0AD4B9F09FBD5AC93A8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = FrameAccessor;
+			target = 0F7B1940DE10624DFABB6A65D0BE9B4A /* FrameAccessor */;
+			targetProxy = 478EFB184FBFB9009A0627E4FF86E291 /* PBXContainerItemProxy */;
+		};
+		6671D7BA697B314E6177154AB0E86F5F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = FrameAccessor;
+			target = 0F7B1940DE10624DFABB6A65D0BE9B4A /* FrameAccessor */;
+			targetProxy = 7081A350AE0B63FAC102F930E742CD3E /* PBXContainerItemProxy */;
+		};
+		FD4DD136417133276EC7C4494C67A783 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = VENTokenField;
+			target = E2D2FA778716CCE816AE0B66D5184F18 /* VENTokenField */;
+			targetProxy = 9E09BC9FEFF2579B3B87590CEDD25D7E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		04683C291AF52DB0FF1ADA0345E1D3FA /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E7DBB92E2E7DEF1498E6B3C948BA2BBC /* VENTokenField.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/VENTokenField/VENTokenField-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		05AC97F43C2554E78B9EB35CD91F6BC8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 47852E56F22C6AA1F2B9950E227FED79 /* FrameAccessor.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/FrameAccessor/FrameAccessor-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		22C8AC9ED52C5D510C24ABE7CA8B758D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E7DBB92E2E7DEF1498E6B3C948BA2BBC /* VENTokenField.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/VENTokenField/VENTokenField-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		3C308EFDCC9B880246D03BC6C634200F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 82A1F527FDF3AF11DB0E4F3C31F76DA6 /* Pods-Spare.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MACH_O_TYPE = staticlib;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		42287DDF97330524BA3EF220F0276DA6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		44AE7C0584038E0575FE376286CDCE95 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E9D047ABD890968278654F42FC122F0E /* Pods-Spare.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MACH_O_TYPE = staticlib;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		A685DE0F5FF0866F2D837E163D5933D5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 47852E56F22C6AA1F2B9950E227FED79 /* FrameAccessor.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/FrameAccessor/FrameAccessor-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		AE9439C22469D35336242DD983DB5C5F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				ONLY_ACTIVE_ARCH = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AE9439C22469D35336242DD983DB5C5F /* Debug */,
+				42287DDF97330524BA3EF220F0276DA6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4E5753971ECBD39EA84D9401F85129BA /* Build configuration list for PBXNativeTarget "VENTokenField" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22C8AC9ED52C5D510C24ABE7CA8B758D /* Debug */,
+				04683C291AF52DB0FF1ADA0345E1D3FA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		65C440F2AABDA4CA2F618CCAEE4CB818 /* Build configuration list for PBXNativeTarget "FrameAccessor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				05AC97F43C2554E78B9EB35CD91F6BC8 /* Debug */,
+				A685DE0F5FF0866F2D837E163D5933D5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DDCCFBB38FFDC824CD426F98AF522A75 /* Build configuration list for PBXNativeTarget "Pods-Spare" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3C308EFDCC9B880246D03BC6C634200F /* Debug */,
+				44AE7C0584038E0575FE376286CDCE95 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}

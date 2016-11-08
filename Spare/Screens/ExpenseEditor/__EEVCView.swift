@@ -9,27 +9,41 @@
 import UIKit
 import Mold
 
+fileprivate let kIconBackgroundViewWidth = CGFloat(50)
+
 class __EEVCView: UIView {
     
-    @IBOutlet weak var topContainer: UIView!
+    @IBOutlet weak var formContainer: UIView!
+    @IBOutlet weak var upperFormContainer: UIView!
+    @IBOutlet weak var iconBackgroundView: UIView!
     @IBOutlet weak var fieldContainer: UIView!
     @IBOutlet weak var categoryContainer: UIView!
     @IBOutlet weak var dateContainer: UIView!
     @IBOutlet weak var paymentMethodContainer: UIView!
+    @IBOutlet weak var subcategoriesContainer: UIView!
     @IBOutlet weak var noteContainer: UIView!
     @IBOutlet weak var amountContainer: UIView!
     
-    @IBOutlet var fieldLabels: [UILabel]!
+    @IBOutlet var iconContainers: [UIView]!
+    @IBOutlet weak var categoryImageView: UIImageView!
+    @IBOutlet weak var dateImageView: UIImageView!
+    @IBOutlet weak var paymentMethodImageView: UIImageView!
+    @IBOutlet weak var subcategoriesImageView: UIImageView!
+    @IBOutlet weak var noteImageView: UIImageView!
     
     @IBOutlet weak var categoryButton: UIButton!
     @IBOutlet weak var dateButton: UIButton!
     @IBOutlet weak var paymentMethodButton: UIButton!
+    @IBOutlet weak var subcategoriesButton: UIButton!
     @IBOutlet weak var noteTextField: UITextField!
     
     @IBOutlet weak var currencyLabel: UILabel!
     @IBOutlet private weak var amountLabel: UILabel!
     
     @IBOutlet weak var keypadCollectionView: UICollectionView!
+    
+    @IBOutlet weak var iconBackgroundViewWidth: NSLayoutConstraint!
+    
     
     var amountText: String? {
         didSet {
@@ -49,72 +63,66 @@ class __EEVCView: UIView {
         super.awakeFromNib()
         
         UIView.clearBackgroundColors(
-            self.topContainer,
+            self.formContainer,
+            self.upperFormContainer,
             self.fieldContainer,
             self.categoryContainer,
             self.dateContainer,
             self.paymentMethodContainer,
+            self.subcategoriesContainer,
             self.noteContainer,
             self.amountContainer
         )
+        UIView.clearBackgroundColors(self.iconContainers)
         
         self.backgroundColor = Color.UniversalBackgroundColor
+        self.iconBackgroundView.backgroundColor = UIColor(hex: 0x111111)
         self.keypadCollectionView.backgroundColor = Color.KeypadBackgroundColor
-        
-        let labels = ["CATEGORY", "DATE SPENT", "PAID WITH", "NOTES"]
-        for i in 0..<self.fieldLabels.count {
-            let label = self.fieldLabels[i]
-            label.textAlignment = .right
-            label.textColor = Color.FieldLabelTextColor
-            label.font = {
-                if MDScreen.sizeIs(.iPhone4) {
-                    return Font.FieldLabel.withSize(12)
-                }
-                return Font.FieldLabel
-            }()
-            label.text = labels[i]
-        }
         
         let textFields = [self.noteTextField!]
         let placeholders = ["(Optional)"]
         for i in 0 ..< textFields.count {
             let textField = textFields[i]
-            textField.font = Font.FieldValue
+            textField.font = Font.make(.regular, 17)
             textField.textColor = Color.FieldValueTextColor
-            textField.attributedPlaceholder = NSAttributedString(string: placeholders[i], font: Font.FieldValue, textColor: Color.FieldPlaceholderTextColor)
+            textField.attributedPlaceholder = NSAttributedString(string: placeholders[i], font: Font.make(.regular, 17), textColor: Color.FieldPlaceholderTextColor)
             textField.adjustsFontSizeToFitWidth = false
         }
         
+        let imageViews = [self.categoryImageView, self.dateImageView, self.paymentMethodImageView, self.subcategoriesImageView, self.noteImageView]
+        let imageNames = ["categoryIcon", "dateIcon", "paymentMethodIcon", "subcategoriesIcon", "noteIcon"]
+        for i in 0 ..< imageViews.count {
+            guard let imageView = imageViews[i]
+                else {
+                    continue
+            }
+            imageView.image = UIImage.templateNamed(imageNames[i])
+            imageView.tintColor = UIColor(hex: 0x666666)
+        }
         
         let buttons = [self.categoryButton, self.dateButton, self.paymentMethodButton]
         for button in buttons {
             button?.tintColor = Color.FieldValueTextColor
-            button?.titleLabel?.font = {
-                if MDScreen.sizeIs(.iPhone4) {
-                    return Font.FieldValue.withSize(17)
-                }
-                return Font.FieldValue
-            }()
+            button?.titleLabel?.font = Font.make(.regular, 17)
             button?.contentHorizontalAlignment = .left
             button?.titleLabel?.numberOfLines = 1
             button?.titleLabel?.lineBreakMode = .byTruncatingTail
         }
         
-        let amountFont: UIFont = {
-            if MDScreen.sizeIsAtLeast(.iPhone5) {
-                return Font.make(.bold, 30)
-            }
-            return Font.make(.bold, 36)
-        }()
-        
         self.currencyLabel.textColor = Color.FieldLabelTextColor
-        self.currencyLabel.text = AmountFormatter.currencyCode()
-        self.currencyLabel.font = amountFont
+        self.currencyLabel.text = AmountFormatter.currencySymbol()
+        self.currencyLabel.font = Font.make(.bold, 24)
+        self.currencyLabel.textAlignment = .center
         
         self.amountLabel.textColor = Color.FieldValueTextColor
-        self.amountLabel.font = amountFont
+        self.amountLabel.font = {
+            if MDScreen.sizeIsAtLeast(.iPhone5) {
+                return Font.make(.bold, 17)
+            }
+            return Font.make(.bold, 24)
+        }()
         self.amountLabel.adjustsFontSizeToFitWidth = true
-        self.amountLabel.textAlignment = .right
+        self.amountLabel.textAlignment = .left
         self.amountLabel.numberOfLines = 1
         self.amountLabel.lineBreakMode = .byClipping
         

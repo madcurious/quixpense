@@ -36,4 +36,8 @@ final class AmountFormatter {
         return kSharedFormatter.currencyCode
     }
     
+    class func currencySymbol() -> String {
+        return kSharedFormatter.currencySymbol
+    }
+    
 }
