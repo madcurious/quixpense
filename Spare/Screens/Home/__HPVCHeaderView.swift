@@ -39,12 +39,12 @@ class __HPVCHeaderView: UICollectionReusableView {
         self.dateLabel.numberOfLines = 1
         self.dateLabel.lineBreakMode = .byTruncatingTail
         self.dateLabel.textColor = Color.UniversalTextColor
-        self.dateLabel.font = Font.make(.Book, 17)
+        self.dateLabel.font = Font.make(.regular, 17)
         
         self.totalLabel.numberOfLines = 1
         self.totalLabel.lineBreakMode = .byTruncatingTail
         self.totalLabel.textColor = Color.UniversalTextColor
-        self.totalLabel.font = Font.make(.Heavy, 17)
+        self.totalLabel.font = Font.make(.bold, 17)
     }
     
 }

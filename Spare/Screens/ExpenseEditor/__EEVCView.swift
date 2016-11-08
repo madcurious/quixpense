@@ -102,9 +102,9 @@ class __EEVCView: UIView {
         
         let amountFont: UIFont = {
             if MDScreen.sizeIsAtLeast(.iPhone5) {
-                return Font.make(.Heavy, 30)
+                return Font.make(.bold, 30)
             }
-            return Font.make(.Heavy, 36)
+            return Font.make(.bold, 36)
         }()
         
         self.currencyLabel.textColor = Color.FieldLabelTextColor

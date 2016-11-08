@@ -49,9 +49,9 @@ class AddExpenseVC: BaseFormVC {
                         }
                         
                         MDDispatcher.asyncRunInMainThread({
-                            // Throw a notification to notify summary views.
-                            let system = NotificationCenter.default
-                            system.post(name: Notifications.PerformedExpenseOperation, object: self.editor.expense)
+//                            // Throw a notification to notify summary views.
+//                            let system = NotificationCenter.default
+//                            system.post(name: Notifications.PerformedExpenseOperation, object: self.editor.expense)
                             
                             self.editor.reset()
                         })

@@ -30,9 +30,9 @@ class __HPVCZeroView: UIView {
         
         self.totalLabel.font = {
             if MDScreen.sizeIsAtLeast(.iPhone5) {
-                return Font.make(.Heavy, 80)
+                return Font.make(.bold, 80)
             }
-            return Font.make(.Heavy, 100)
+            return Font.make(.bold, 100)
         }()
         
         self.totalLabel.numberOfLines = 1
@@ -41,7 +41,7 @@ class __HPVCZeroView: UIView {
         self.totalLabel.text = AmountFormatter.displayText(for: NSDecimalNumber(value: 0 as Int))
         
         self.dateLabel.numberOfLines = 1
-        self.dateLabel.font = Font.make(.Book, 40)
+        self.dateLabel.font = Font.make(.regular, 40)
         self.dateLabel.adjustsFontSizeToFitWidth = true
         self.dateLabel.textColor = Color.UniversalSecondaryTextColor
         self.dateLabel.textAlignment = .center
@@ -50,7 +50,7 @@ class __HPVCZeroView: UIView {
         self.promptLabel.numberOfLines = 0
         self.promptLabel.lineBreakMode = .byWordWrapping
         self.promptLabel.textAlignment = .center
-        self.promptLabel.font = Font.make(.Medium, 18)
+        self.promptLabel.font = Font.make(.regular, 18)
         self.promptLabel.text = "To see a chart, you must go out and\nspend your money."
         
         self.verticalSpacing.constant = self.bounds.size.height * 0.2

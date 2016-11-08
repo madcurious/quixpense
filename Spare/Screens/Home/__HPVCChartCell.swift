@@ -14,21 +14,21 @@ class __HPVCChartCell: UICollectionViewCell {
     
     class func applyAttributes(toNameLabel label: UILabel) {
         label.textColor = Color.UniversalTextColor
-        label.font = Font.make(.Heavy, 16)
+        label.font = Font.make(.bold, 16)
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
     }
     
     class func applyAttributes(toTotalLabel label: UILabel) {
         label.textColor = Color.UniversalTextColor
-        label.font = Font.make(.Book, 16)
+        label.font = Font.make(.regular, 16)
         label.numberOfLines = 1
         label.lineBreakMode = .byTruncatingTail
     }
     
     class func applyAttributes(toNoExpensesLabel label: UILabel) {
         label.textColor = UIColor(hex: 0x666666)
-        label.font = Font.make(.Medium, 20)
+        label.font = Font.make(.regular, 20)
         label.text = "No expenses"
     }
     

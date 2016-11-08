@@ -78,7 +78,7 @@ class __HPVCDayCell: __HPVCChartCell {
         __HPVCChartCell.applyAttributes(toNoExpensesLabel: self.noExpensesLabel)
         
         self.percentLabel.textColor = Color.UniversalTextColor
-        self.percentLabel.font = Font.make(.Book, 14)
+        self.percentLabel.font = Font.make(.regular, 14)
         
         for padding in self.paddings {
             padding.constant = kPadding

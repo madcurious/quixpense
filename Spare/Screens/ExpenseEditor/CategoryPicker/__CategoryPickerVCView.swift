@@ -20,7 +20,7 @@ class __CategoryPickerVCView: CustomPickerView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        let textFieldFont = Font.make(.Medium, 17)
+        let textFieldFont = Font.make(.regular, 17)
         self.textField.backgroundColor = UIColor.clear
         self.textField.font = textFieldFont
         self.textField.textColor = UIColor.black

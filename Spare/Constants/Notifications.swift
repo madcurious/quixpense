@@ -16,6 +16,6 @@ class Notifications {
     
     static let MonthPageVCDidSelectDate = Notification.Name("\(prefix)MonthPageVCDidSelectDate")
     
-    static let PerformedExpenseOperation = Notification.Name("\(prefix)PerformedExpenseOperation")
+//    static let PerformedExpenseOperation = Notification.Name("\(prefix)PerformedExpenseOperation")
     
 }

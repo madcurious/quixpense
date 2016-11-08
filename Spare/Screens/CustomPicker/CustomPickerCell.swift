@@ -35,7 +35,7 @@ class CustomPickerCell: UITableViewCell {
         
         self.checkLabel.text = Icon.Check.rawValue
         self.checkLabel.textColor = Color.CustomPickerTextColor
-        self.checkLabel.font = Font.icon(20)
+        self.checkLabel.font = Font.makeIcon(size: 20)
         
         CustomPickerCell.applyItemLabelAttributes(self.itemLabel)
     }

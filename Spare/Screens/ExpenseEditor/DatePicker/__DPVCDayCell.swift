@@ -35,7 +35,7 @@ class __DPVCDayCell: UICollectionViewCell {
         
         self.dateLabel.textAlignment = .center
         self.dateLabel.textColor = Color.CustomPickerTextColor
-        self.dateLabel.font = Font.make(.Medium, 16)
+        self.dateLabel.font = Font.make(.regular, 16)
         
         self.selectionView.setNeedsDisplay()
     }

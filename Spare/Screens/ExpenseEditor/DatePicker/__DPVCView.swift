@@ -34,15 +34,15 @@ class __DPVCView: CustomPickerView {
         self.selectedDateLabel.textColor = Color.CustomPickerTextColor
         self.selectedDateLabel.textAlignment = .center
         self.selectedDateLabel.numberOfLines = 1
-        self.selectedDateLabel.font = Font.make(.Heavy, 26)
+        self.selectedDateLabel.font = Font.make(.bold, 26)
         
         self.monthLabel.textColor = Color.CustomPickerTextColor
         self.monthLabel.textAlignment = .center
-        self.monthLabel.font = Font.make(.Medium, 16)
+        self.monthLabel.font = Font.make(.regular, 16)
         
         let arrowButtons = [self.previousButton, self.nextButton]
         for button in arrowButtons {
-            button?.titleLabel?.font = Font.icon(20)
+            button?.titleLabel?.font = Font.makeIcon(size: 20)
             button?.contentHorizontalAlignment = .center
             button?.tintColor = UIColor.black
         }
@@ -54,7 +54,7 @@ class __DPVCView: CustomPickerView {
             let label = self.headerLabels[i]
             label.textAlignment = .center
             label.text = texts[i]
-            label.font = Font.make(.Medium, 14)
+            label.font = Font.make(.regular, 14)
             label.textColor = Color.CustomPickerHeaderTextColor
         }
     }

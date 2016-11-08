@@ -17,7 +17,7 @@ class __EEVCKeypadCell: UICollectionViewCell {
         didSet {
             if let text = self.text
                 , text == Icon.ExpenseEditorBackspace.rawValue {
-                self.keyLabel.font = Font.icon(Font.AnySize)
+                self.keyLabel.font = Font.makeIcon(size: Font.AnySize)
             } else {
                 self.keyLabel.font = Font.ExpenseEditorKeypadText
             }
