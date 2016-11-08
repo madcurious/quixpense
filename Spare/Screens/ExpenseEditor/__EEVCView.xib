@@ -111,7 +111,7 @@
                                                 </view>
                                                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="f6G-d1-zgh">
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="34" id="OQq-CZ-vKT"/>
+                                                        <constraint firstAttribute="height" constant="32" id="OQq-CZ-vKT"/>
                                                     </constraints>
                                                     <segments>
                                                         <segment title="First"/>
@@ -338,7 +338,7 @@
                 <outletCollection property="iconContainers" destination="wsP-K0-mZI" collectionClass="NSMutableArray" id="UcH-0f-DFK"/>
                 <outletCollection property="iconContainers" destination="Wgi-5V-TbZ" collectionClass="NSMutableArray" id="Ysu-pJ-6X1"/>
             </connections>
-            <point key="canvasLocation" x="142.5" y="367.5"/>
+            <point key="canvasLocation" x="92" y="337"/>
         </view>
     </objects>
 </document>

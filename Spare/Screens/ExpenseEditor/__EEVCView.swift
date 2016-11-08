@@ -76,8 +76,8 @@ class __EEVCView: UIView {
         UIView.clearBackgroundColors(self.iconContainers)
         
         self.backgroundColor = Color.UniversalBackgroundColor
-        self.iconBackgroundView.backgroundColor = UIColor(hex: 0x111111)
-        self.keypadCollectionView.backgroundColor = Color.KeypadBackgroundColor
+        self.iconBackgroundView.backgroundColor = UIColor(hex: 0x000000)
+        self.keypadCollectionView.backgroundColor = UIColor(hex: 0x222222)
         
         let textFields = [self.noteTextField!]
         let placeholders = ["Note (optional)"]
@@ -115,7 +115,7 @@ class __EEVCView: UIView {
             self.paymentMethodSegmentedControl.setTitle(PaymentMethod.allValues[i].text, forSegmentAt: i)
         }
         
-        self.currencyLabel.textColor = Color.FieldLabelTextColor
+        self.currencyLabel.textColor = UIColor(hex: 0x666666)
         self.currencyLabel.text = AmountFormatter.currencySymbol()
         self.currencyLabel.font = Font.make(.bold, 24)
         self.currencyLabel.textAlignment = .center

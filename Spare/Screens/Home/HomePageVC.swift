@@ -77,7 +77,8 @@ class HomePageVC: MDOperationViewController {
                 .onSuccess({[unowned self] (result) in
                     self.chartData = result as! [ChartData]
                     self.collectionView.reloadData()
-                    self.showView(.primary)
+                    
+                    self.updateView(forState: .displaying)
                 })
             )
         })

@@ -14,15 +14,10 @@ class Color {
     static let CustomPickerHeaderTextColor = UIColor(hex: 0xaaaaaa)
     static let CustomPickerTextColor = UIColor(hex: 0x111111)
     
-    static let FieldLabelTextColor = UIColor(hex: 0x666666)
     static let FieldValueTextColor = UIColor.white
-    static let FieldPlaceholderTextColor = UIColor(hex: 0x333333)
+    static let FieldPlaceholderTextColor = UIColor(hex: 0x666666)
     
-    static let KeypadBackgroundColor = UIColor(hex: 0x222222)
-    static let KeypadHighlightedBackgroundColor = UIColor(hex: 0x333333)
-    
-    static let NavigationBarBackgroundColor = UIColor(hex: 0x333333)
-    static let TabBarBackgroundColor = UIColor(hex: 0x333333)
+    static let NavigationBarBackgroundColor = UIColor(hex: 0x222222)
     
     static let SeparatorColor = UIColor(hex: 0x282828)
     
@@ -30,6 +25,6 @@ class Color {
     
     static let UniversalTextColor = UIColor.white
     static let UniversalSecondaryTextColor = UIColor(hex: 0x666666)
-    static let UniversalBackgroundColor = UIColor(hex: 0x222222)
+    static let UniversalBackgroundColor = UIColor(hex: 0x111111)
     
 }

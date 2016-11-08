@@ -10,7 +10,7 @@ import UIKit
 import Mold
 import CoreData
 
-class HomeVC: MDOperationViewController {
+class HomeVC: MDFullOperationViewController {
     
     let pageViewController: UIPageViewController = {
         let pager = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: [
@@ -27,7 +27,7 @@ class HomeVC: MDOperationViewController {
     let periodizationButton = PeriodizationButton()
     let customLoadingView = OperationVCLoadingView()
     
-    override var primaryView: UIView {
+    override var displayView: UIView {
         return self.pageViewController.view
     }
     
@@ -55,9 +55,7 @@ class HomeVC: MDOperationViewController {
         self.pageViewController.dataSource = self
         self.pageViewController.delegate = self
         
-        self.showView(.loading)
-        
-        self.noResultsView.backgroundColor = Color.UniversalBackgroundColor
+        self.updateView(forState: .loading)
         
         self.periodizationButton.addTarget(self, action: #selector(handleSelectionOfPeriodization), for: .valueChanged)
         self.nowButton.addTarget(self, action: #selector(handleTapOnNowButton), for: .touchUpInside)
@@ -83,12 +81,12 @@ class HomeVC: MDOperationViewController {
             .onSuccess({[unowned self] result in
                 self.pageData.insert(contentsOf: result as! [PageData], at: 0)
                 
-                if self.currentView != .primary {
+                if self.currentState != .displaying {
                     // Populate the pageVC with a junk DateRange so that programatically scrolling to the last page works.
                     self.pageViewController.setViewControllers([HomePageVC(pageData: PageData())], direction: .forward, animated: false, completion: nil)
                     
                     self.scrollToLastPage(animated: false)
-                    self.showView(.primary)
+                    self.updateView(forState: .displaying)
                 }
                 })
     }

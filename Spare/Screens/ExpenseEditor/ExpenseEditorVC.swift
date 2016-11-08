@@ -104,7 +104,7 @@ class ExpenseEditorVC: MDOperationViewController {
                     self.expense.category = categories.first
                 }
                 
-                self.showView(.primary)
+                self.updateView(forState: .displaying)
         }
         return op
     }
@@ -288,7 +288,8 @@ extension ExpenseEditorVC: CategoryPickerVCDelegate {
     }
     
     func categoryPickerDidSelectCategory(category: Category) {
-        
+        self.expense.category = self.managedObjectContext.object(with: category.objectID) as? Category
+        self.dismiss(animated: true, completion: nil)
     }
     
 }

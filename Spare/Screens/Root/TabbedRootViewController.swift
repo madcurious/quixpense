@@ -23,7 +23,7 @@ class TabbedRootViewController: UITabBarController {
         ]
         self.delegate = self
         
-        self.tabBar.barTintColor = Color.TabBarBackgroundColor
+        self.tabBar.barTintColor = UIColor(hex: 0x222222)
         self.tabBar.isTranslucent = false
         
         self.operationQueue.addOperation(
