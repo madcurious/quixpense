@@ -22,13 +22,12 @@ private let kPeriod = "."
  The amount is derived from the property `unformattedAmount`, which is simply the sequence of keys that
  were pressed in the custom keypad.
  */
-class ExpenseEditorVC: MDOperationViewController {
+class ExpenseEditorVC: UIViewController {
     
     let customView = __EEVCView.instantiateFromNib() as __EEVCView
     
     var managedObjectContext = App.coreDataStack.newBackgroundContext()
     var expense: Expense
-    var categories = [Category]()
     
     let keys = ["1", "2", "3", "4", "5", "6", "7", "8", "9", kPeriod, "0", Icon.ExpenseEditorBackspace.rawValue]
     let amountFormatter = NumberFormatter()
@@ -84,29 +83,10 @@ class ExpenseEditorVC: MDOperationViewController {
         
         self.customView.categoryButton.addTarget(self, action: #selector(handleTapOnCategoryButton), for: .touchUpInside)
         self.customView.dateButton.addTarget(self, action: #selector(handleTapOnDateButton), for: .touchUpInside)
-//        self.customView.paymentMethodButton.addTarget(self, action: #selector(handleTapOnPaymentMethodButton), for: .touchUpInside)
+        self.customView.paymentMethodSegmentedControl.addTarget(self, action: #selector(handleChangeOnPaymentMethod), for: .valueChanged)
+        self.customView.subcategoriesButton.addTarget(self, action: #selector(handleTapOnSubcategoriesButton), for: .touchUpInside)
         
         self.customView.noteTextField.delegate = self
-    }
-    
-    override func makeOperation() -> MDOperation? {
-        let op = MDBlockOperation {
-            let fetchRequest = FetchRequestBuilder<Category>.makeFetchRequest()
-            let categories = try self.managedObjectContext.fetch(fetchRequest)
-            return categories
-            }
-            .onSuccess {[unowned self] (result) in
-                let categories = result as! [Category]
-                self.categories = categories
-                
-                // Upon getting the categories, select the first category by default.
-                if self.expense.category == nil {
-                    self.expense.category = categories.first
-                }
-                
-                self.updateView(forState: .displaying)
-        }
-        return op
     }
     
     func reset() {
@@ -145,13 +125,13 @@ extension ExpenseEditorVC {
     func setupKVO(for expense: Expense) {
         expense.addObserver(self, forKeyPath: #keyPath(Expense.category), options: [.initial, .new], context: nil)
         expense.addObserver(self, forKeyPath: #keyPath(Expense.dateSpent), options: [.initial, .new], context: nil)
-        expense.addObserver(self, forKeyPath: #keyPath(Expense.paymentMethod), options: [.initial, .new], context: nil)
+        expense.addObserver(self, forKeyPath: #keyPath(Expense.subcategories), options: [.initial, .new], context: nil)
     }
     
     func removeKVO(for expense: Expense) {
         expense.removeObserver(self, forKeyPath: #keyPath(Expense.category))
         expense.removeObserver(self, forKeyPath: #keyPath(Expense.dateSpent))
-        expense.removeObserver(self, forKeyPath: #keyPath(Expense.paymentMethod))
+        expense.removeObserver(self, forKeyPath: #keyPath(Expense.subcategories))
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -170,8 +150,8 @@ extension ExpenseEditorVC {
         case "dateSpent":
             self.handleUpdateOnDateSpent(newValue: change?[.newKey] as? Date)
             
-        case "paymentMethod":
-            self.handleUpdateOnPaymentMethod(newValue: change?[.newKey] as? Int)
+        case "subcategories":
+            self.handleUpdateOnSubcategories()
             
         default:
             return
@@ -184,7 +164,7 @@ extension ExpenseEditorVC {
             self.customView.categoryButton.setTitle(categoryName, for: .normal)
             self.customView.categoryButton.setTitleColor(Color.FieldValueTextColor, for: .normal)
         } else {
-            self.customView.categoryButton.setTitle("Tap to edit", for: .normal)
+            self.customView.categoryButton.setTitle("Add a category (required)", for: .normal)
             self.customView.categoryButton.setTitleColor(Color.FieldPlaceholderTextColor, for: .normal)
         }
     }
@@ -217,12 +197,15 @@ extension ExpenseEditorVC {
         self.customView.dateButton.setTitle(DateFormatter.displayTextForExpenseEditorDate(newValue), for: .normal)
     }
     
-    func handleUpdateOnPaymentMethod(newValue: Int?) {
-        guard let paymentMethod = PaymentMethod(newValue)
-            else {
-                return
+    func handleUpdateOnSubcategories() {
+        if let subcategories = self.expense.subcategories,
+            subcategories.count > 0 {
+            self.customView.subcategoriesButton.setTitle("DEBUG list here...", for: .normal)
+            self.customView.subcategoriesButton.setTitleColor(Color.FieldValueTextColor, for: .normal)
+        } else {
+            self.customView.subcategoriesButton.setTitle("Subcategories (optional)", for: .normal)
+            self.customView.subcategoriesButton.setTitleColor(Color.FieldPlaceholderTextColor, for: .normal)
         }
-//        self.customView.paymentMethodButton.setTitle(paymentMethod.text, for: .normal)
     }
     
 }
@@ -239,27 +222,17 @@ extension ExpenseEditorVC {
     
     func handleTapOnDateButton() {
         let datePicker = DatePickerVC(selectedDate: self.expense.dateSpent! as Date, delegate: self)
-        datePicker.modalPresentationStyle = .custom
-        datePicker.transitioningDelegate = self.customPickerAnimator
+        datePicker.setCustomTransitioningDelegate(self.customPickerAnimator)
         self.present(datePicker, animated: true, completion: nil)
     }
     
-    func handleTapOnPaymentMethodButton() {
-        let selectedIndex: Int = {
-            guard let currentPaymentMethod = PaymentMethod(self.expense.paymentMethod?.intValue),
-                let index = PaymentMethod.allValues.index(of: currentPaymentMethod)
-                else {
-                    return 0
-            }
-            return index
-        }()
+    func handleChangeOnPaymentMethod() {
+        let selectedIndex = self.customView.paymentMethodSegmentedControl.selectedSegmentIndex
+        self.expense.paymentMethod = NSNumber(value: selectedIndex)
+    }
+    
+    func handleTapOnSubcategoriesButton() {
         
-        
-        let customPicker = CustomPickerVC(identifier: "PaymentMethod", headerTitle: "PAID WITH", initiallySelectedIndex: selectedIndex)
-        customPicker.setCustomTransitioningDelegate(self.customPickerAnimator)
-        customPicker.delegate = self
-        
-        self.present(customPicker, animated: true, completion: nil)
     }
     
 }
@@ -390,24 +363,6 @@ extension ExpenseEditorVC: UITextFieldDelegate {
         }
         
         return true
-    }
-    
-}
-
-// MARK: - CustomPickerVCDelegate
-extension ExpenseEditorVC: CustomPickerVCDelegate {
-    
-    func dataSource(forIdentifier identifier: String) -> [Any] {
-        return PaymentMethod.allValues
-    }
-    
-    func text(forIndexPath indexPath: IndexPath) -> String {
-        return PaymentMethod.allValues[indexPath.row].text
-    }
-    
-    func customPicker(_ customPicker: CustomPickerVC, didSelectRowAt indexPath: IndexPath) {
-        self.expense.paymentMethod = NSNumber(value: indexPath.row)
-        customPicker.dismiss(animated: true, completion: nil)
     }
     
 }

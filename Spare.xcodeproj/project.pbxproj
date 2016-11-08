@@ -87,7 +87,6 @@
 		268F48131D60D3490088AC6B /* PaymentMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F48081D60D3490088AC6B /* PaymentMethod.swift */; };
 		268F48141D60D3490088AC6B /* Periodization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F48091D60D3490088AC6B /* Periodization.swift */; };
 		268F48151D60D3490088AC6B /* StartOfWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F480A1D60D3490088AC6B /* StartOfWeek.swift */; };
-		268F48161D60D3490088AC6B /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F480B1D60D3490088AC6B /* Strings.swift */; };
 		268F48191D60D3DE0088AC6B /* CustomPickerTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F48181D60D3DE0088AC6B /* CustomPickerTransitioningDelegate.swift */; };
 		268F481E1D60DE020088AC6B /* CustomPickerDismissalAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F481D1D60DE020088AC6B /* CustomPickerDismissalAnimator.swift */; };
 		269D49F81CE1610100109990 /* ExpenseEditorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269D49F11CE1610100109990 /* ExpenseEditorVC.swift */; };
@@ -108,6 +107,8 @@
 		26C056831DCF5AE3000BB70E /* CategoryProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C056821DCF5AE3000BB70E /* CategoryProvider.swift */; };
 		26C056901DCF8492000BB70E /* PageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C0568F1DCF8492000BB70E /* PageData.swift */; };
 		26C056921DCF849F000BB70E /* ChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C056911DCF849F000BB70E /* ChartData.swift */; };
+		26D334C41DD2563D004BB4D0 /* Subcategory+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D334C21DD2563D004BB4D0 /* Subcategory+CoreDataClass.swift */; };
+		26D334C51DD2563D004BB4D0 /* Subcategory+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D334C31DD2563D004BB4D0 /* Subcategory+CoreDataProperties.swift */; };
 		26E4E0591937AF690096191A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E4E0581937AF690096191A /* QuartzCore.framework */; };
 		26E9CEAC1D66D59A0005E087 /* __DPVCDayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26E9CEAB1D66D59A0005E087 /* __DPVCDayCell.xib */; };
 		26E9CEAE1D66D5AA0005E087 /* __DPVCDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E9CEAD1D66D5AA0005E087 /* __DPVCDayCell.swift */; };
@@ -241,7 +242,6 @@
 		268F48081D60D3490088AC6B /* PaymentMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethod.swift; sourceTree = "<group>"; };
 		268F48091D60D3490088AC6B /* Periodization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Periodization.swift; sourceTree = "<group>"; };
 		268F480A1D60D3490088AC6B /* StartOfWeek.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartOfWeek.swift; sourceTree = "<group>"; };
-		268F480B1D60D3490088AC6B /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		268F48181D60D3DE0088AC6B /* CustomPickerTransitioningDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPickerTransitioningDelegate.swift; sourceTree = "<group>"; };
 		268F481D1D60DE020088AC6B /* CustomPickerDismissalAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPickerDismissalAnimator.swift; sourceTree = "<group>"; };
 		269D49F11CE1610100109990 /* ExpenseEditorVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseEditorVC.swift; sourceTree = "<group>"; };
@@ -262,6 +262,8 @@
 		26C056821DCF5AE3000BB70E /* CategoryProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryProvider.swift; sourceTree = "<group>"; };
 		26C0568F1DCF8492000BB70E /* PageData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageData.swift; sourceTree = "<group>"; };
 		26C056911DCF849F000BB70E /* ChartData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartData.swift; sourceTree = "<group>"; };
+		26D334C21DD2563D004BB4D0 /* Subcategory+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Subcategory+CoreDataClass.swift"; sourceTree = "<group>"; };
+		26D334C31DD2563D004BB4D0 /* Subcategory+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Subcategory+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		26D4C8F41946E624001B42DC /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		26E4E0581937AF690096191A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		26E9CEAB1D66D59A0005E087 /* __DPVCDayCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __DPVCDayCell.xib; sourceTree = "<group>"; };
@@ -360,6 +362,8 @@
 		2603F8C71CCA4BD1007F311F /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
+				26D334C21DD2563D004BB4D0 /* Subcategory+CoreDataClass.swift */,
+				26D334C31DD2563D004BB4D0 /* Subcategory+CoreDataProperties.swift */,
 				2603F8CC1CCA4C10007F311F /* Category+CoreDataProperties.swift */,
 				26440F931DB2299900BD8F1C /* Category+CoreDataClass.swift */,
 				26440F971DB229C300BD8F1C /* Expense+CoreDataClass.swift */,
@@ -574,7 +578,6 @@
 				268F48081D60D3490088AC6B /* PaymentMethod.swift */,
 				268F48091D60D3490088AC6B /* Periodization.swift */,
 				268F480A1D60D3490088AC6B /* StartOfWeek.swift */,
-				268F480B1D60D3490088AC6B /* Strings.swift */,
 				261F14791DA4D5E40072FAE7 /* Notifications.swift */,
 			);
 			path = Constants;
@@ -817,6 +820,7 @@
 			files = (
 				26C056831DCF5AE3000BB70E /* CategoryProvider.swift in Sources */,
 				26B075F21D8FFE250026692E /* OperationVCLoadingView.swift in Sources */,
+				26D334C51DD2563D004BB4D0 /* Subcategory+CoreDataProperties.swift in Sources */,
 				265222A01D66CFCE007FED96 /* DatePickerVC.swift in Sources */,
 				26440F991DB229C300BD8F1C /* Expense+CoreDataClass.swift in Sources */,
 				261F147A1DA4D5E40072FAE7 /* Notifications.swift in Sources */,
@@ -837,7 +841,6 @@
 				269E7E121D69985D00476870 /* CustomPickerView.swift in Sources */,
 				2685D6D71D7C397200ED778E /* PercentFormatter.swift in Sources */,
 				264C0CAF1DBE504300EA89D3 /* __HPVCZeroView.swift in Sources */,
-				268F48161D60D3490088AC6B /* Strings.swift in Sources */,
 				268F47F41D60D24D0088AC6B /* CustomPickerCell.swift in Sources */,
 				268F47F61D60D24D0088AC6B /* CustomPickerHeader.swift in Sources */,
 				26E9CEAE1D66D5AA0005E087 /* __DPVCDayCell.swift in Sources */,
@@ -859,6 +862,7 @@
 				26C056921DCF849F000BB70E /* ChartData.swift in Sources */,
 				268F48141D60D3490088AC6B /* Periodization.swift in Sources */,
 				269D49F81CE1610100109990 /* ExpenseEditorVC.swift in Sources */,
+				26D334C41DD2563D004BB4D0 /* Subcategory+CoreDataClass.swift in Sources */,
 				268F47F81D60D24E0088AC6B /* CustomPickerVC.swift in Sources */,
 				261AF63C1D5F41F500E03A48 /* __EEVCKeypadCell.swift in Sources */,
 				268F48121D60D3490088AC6B /* Icon.swift in Sources */,
