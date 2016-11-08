@@ -109,20 +109,26 @@
                                                         <constraint firstItem="TiU-ug-sFe" firstAttribute="centerX" secondItem="wsP-K0-mZI" secondAttribute="centerX" id="Nfh-pC-hIn"/>
                                                     </constraints>
                                                 </view>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B1Q-Ig-Amc">
-                                                    <state key="normal" title="Button"/>
-                                                </button>
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="f6G-d1-zgh">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="34" id="OQq-CZ-vKT"/>
+                                                    </constraints>
+                                                    <segments>
+                                                        <segment title="First"/>
+                                                        <segment title="Second"/>
+                                                        <segment title=""/>
+                                                    </segments>
+                                                </segmentedControl>
                                             </subviews>
                                             <color key="backgroundColor" red="0.81927943229675293" green="0.93609863519668579" blue="0.99960780143737793" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstItem="wsP-K0-mZI" firstAttribute="top" secondItem="XdT-RF-pev" secondAttribute="top" id="5UN-dR-jcy"/>
-                                                <constraint firstAttribute="bottom" secondItem="B1Q-Ig-Amc" secondAttribute="bottom" id="BDT-dB-cEC"/>
                                                 <constraint firstAttribute="height" constant="50" id="LPj-2x-NKM"/>
+                                                <constraint firstAttribute="trailing" secondItem="f6G-d1-zgh" secondAttribute="trailing" constant="20" id="Npn-Cs-JUA"/>
                                                 <constraint firstAttribute="bottom" secondItem="wsP-K0-mZI" secondAttribute="bottom" id="Qh0-5U-YvR"/>
                                                 <constraint firstItem="wsP-K0-mZI" firstAttribute="leading" secondItem="XdT-RF-pev" secondAttribute="leading" id="T1x-fx-AYi"/>
-                                                <constraint firstItem="B1Q-Ig-Amc" firstAttribute="leading" secondItem="wsP-K0-mZI" secondAttribute="trailing" constant="10" id="U0B-YE-0BW"/>
-                                                <constraint firstAttribute="trailing" secondItem="B1Q-Ig-Amc" secondAttribute="trailing" constant="10" id="WhW-Np-xU5"/>
-                                                <constraint firstItem="B1Q-Ig-Amc" firstAttribute="top" secondItem="XdT-RF-pev" secondAttribute="top" id="io5-RX-HIb"/>
+                                                <constraint firstItem="f6G-d1-zgh" firstAttribute="leading" secondItem="wsP-K0-mZI" secondAttribute="trailing" constant="10" id="fab-1O-gbO"/>
+                                                <constraint firstItem="f6G-d1-zgh" firstAttribute="centerY" secondItem="XdT-RF-pev" secondAttribute="centerY" id="zeo-Xi-NeC"/>
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RYq-6D-lIc">
@@ -317,9 +323,9 @@
                 <outlet property="noteContainer" destination="RYq-6D-lIc" id="Uvx-ew-lXz"/>
                 <outlet property="noteImageView" destination="m7I-pg-vWe" id="BrR-lW-Amt"/>
                 <outlet property="noteTextField" destination="ine-as-OPi" id="xko-EX-ijB"/>
-                <outlet property="paymentMethodButton" destination="B1Q-Ig-Amc" id="SWD-UV-euN"/>
                 <outlet property="paymentMethodContainer" destination="XdT-RF-pev" id="bBO-YQ-Opv"/>
                 <outlet property="paymentMethodImageView" destination="TiU-ug-sFe" id="cPt-uz-Z3F"/>
+                <outlet property="paymentMethodSegmentedControl" destination="f6G-d1-zgh" id="p6c-nr-fjj"/>
                 <outlet property="subcategoriesButton" destination="QDx-5Q-dsd" id="oCO-hx-R0l"/>
                 <outlet property="subcategoriesContainer" destination="ptS-f9-n9l" id="eoG-bu-aqR"/>
                 <outlet property="subcategoriesImageView" destination="M2U-xT-4ga" id="sNi-cw-l9l"/>

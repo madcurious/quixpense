@@ -84,7 +84,7 @@ class ExpenseEditorVC: MDOperationViewController {
         
         self.customView.categoryButton.addTarget(self, action: #selector(handleTapOnCategoryButton), for: .touchUpInside)
         self.customView.dateButton.addTarget(self, action: #selector(handleTapOnDateButton), for: .touchUpInside)
-        self.customView.paymentMethodButton.addTarget(self, action: #selector(handleTapOnPaymentMethodButton), for: .touchUpInside)
+//        self.customView.paymentMethodButton.addTarget(self, action: #selector(handleTapOnPaymentMethodButton), for: .touchUpInside)
         
         self.customView.noteTextField.delegate = self
     }
@@ -222,7 +222,7 @@ extension ExpenseEditorVC {
             else {
                 return
         }
-        self.customView.paymentMethodButton.setTitle(paymentMethod.text, for: .normal)
+//        self.customView.paymentMethodButton.setTitle(paymentMethod.text, for: .normal)
     }
     
 }

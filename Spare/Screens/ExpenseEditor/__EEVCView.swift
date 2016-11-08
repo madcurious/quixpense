@@ -33,7 +33,7 @@ class __EEVCView: UIView {
     
     @IBOutlet weak var categoryButton: UIButton!
     @IBOutlet weak var dateButton: UIButton!
-    @IBOutlet weak var paymentMethodButton: UIButton!
+    @IBOutlet weak var paymentMethodSegmentedControl: UISegmentedControl!
     @IBOutlet weak var subcategoriesButton: UIButton!
     @IBOutlet weak var noteTextField: UITextField!
     
@@ -80,7 +80,7 @@ class __EEVCView: UIView {
         self.keypadCollectionView.backgroundColor = Color.KeypadBackgroundColor
         
         let textFields = [self.noteTextField!]
-        let placeholders = ["(Optional)"]
+        let placeholders = ["Note (optional)"]
         for i in 0 ..< textFields.count {
             let textField = textFields[i]
             textField.font = Font.make(.regular, 17)
@@ -100,13 +100,19 @@ class __EEVCView: UIView {
             imageView.tintColor = UIColor(hex: 0x666666)
         }
         
-        let buttons = [self.categoryButton, self.dateButton, self.paymentMethodButton]
+        let buttons = [self.categoryButton, self.dateButton, self.subcategoriesButton]
         for button in buttons {
             button?.tintColor = Color.FieldValueTextColor
             button?.titleLabel?.font = Font.make(.regular, 17)
             button?.contentHorizontalAlignment = .left
             button?.titleLabel?.numberOfLines = 1
             button?.titleLabel?.lineBreakMode = .byTruncatingTail
+        }
+        
+        self.paymentMethodSegmentedControl.tintColor = Color.UniversalTextColor
+        self.paymentMethodSegmentedControl.setTitleTextAttributes([NSFontAttributeName : Font.make(.regular, 17)], for: .normal)
+        for i in 0 ..< PaymentMethod.allValues.count {
+            self.paymentMethodSegmentedControl.setTitle(PaymentMethod.allValues[i].text, forSegmentAt: i)
         }
         
         self.currencyLabel.textColor = Color.FieldLabelTextColor
