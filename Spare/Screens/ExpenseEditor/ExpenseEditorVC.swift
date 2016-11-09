@@ -102,7 +102,7 @@ class ExpenseEditorVC: UIViewController {
         expense.category = previousCategory
         expense.paymentMethod = previousPaymentMethod
         expense.note = nil
-        self.expense.amount = nil
+        expense.amount = nil
         self.expense = expense
         self.setupKVO(for: self.expense)
         

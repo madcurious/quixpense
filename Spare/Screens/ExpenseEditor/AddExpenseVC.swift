@@ -34,29 +34,25 @@ class AddExpenseVC: BaseFormVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.embedChildViewController(self.editor)
     }
     
     override func handleTapOnDoneBarButtonItem(_ sender: AnyObject) {
+        print("expense: \(self.editor.managedObjectContext.object(with: self.editor.expense.objectID) as! Expense)")
         self.queue.addOperation(
             ValidateExpenseOperation(expense: self.editor.expense)
                 .onSuccess({[unowned self] (_) in
-                    self.editor.managedObjectContext.saveRecursively({[unowned self] (error) in
+                    self.editor.managedObjectContext.saveRecursively({[unowned self] error in
                         if let error = error {
                             MDErrorDialog.showError(error, inPresenter: self)
                             return
                         }
                         
-                        MDDispatcher.asyncRunInMainThread({
-//                            // Throw a notification to notify summary views.
-//                            let system = NotificationCenter.default
-//                            system.post(name: Notifications.PerformedExpenseOperation, object: self.editor.expense)
-                            
+                        MDDispatcher.asyncRunInMainThread {[unowned self] in
                             self.editor.reset()
+                        }
                         })
-                    })
-                    
                     })
                 .onFail({[unowned self] (error) in
                     MDErrorDialog.showError(error, inPresenter: self)

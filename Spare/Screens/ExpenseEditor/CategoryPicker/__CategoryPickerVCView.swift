@@ -24,7 +24,7 @@ class __CategoryPickerVCView: CustomPickerView {
         self.textField.backgroundColor = UIColor.clear
         self.textField.font = textFieldFont
         self.textField.textColor = UIColor.black
-        self.textField.attributedPlaceholder = NSAttributedString(string: "Type a category", font: textFieldFont, textColor: UIColor(hex: 0xcccccc))
+        self.textField.attributedPlaceholder = NSAttributedString(string: "Type a category name", font: textFieldFont, textColor: UIColor(hex: 0xcccccc))
         self.textField.adjustsFontSizeToFitWidth = false
         self.textField.autocapitalizationType = .sentences
         

@@ -36,14 +36,12 @@ class __EEVCView: UIView {
     @IBOutlet weak var paymentMethodSegmentedControl: UISegmentedControl!
     @IBOutlet weak var subcategoriesButton: UIButton!
     @IBOutlet weak var noteTextField: UITextField!
-    
     @IBOutlet weak var currencyLabel: UILabel!
     @IBOutlet private weak var amountLabel: UILabel!
-    
     @IBOutlet weak var keypadCollectionView: UICollectionView!
     
     @IBOutlet weak var iconBackgroundViewWidth: NSLayoutConstraint!
-    
+    @IBOutlet var fieldContainerHeights: [NSLayoutConstraint]!
     
     var amountText: String? {
         didSet {
@@ -135,7 +133,13 @@ class __EEVCView: UIView {
         self.keypadCollectionView.isScrollEnabled = false
         self.keypadCollectionView.allowsSelection = true
         
-        self.setNeedsUpdateConstraints()
+        if MDScreen.sizeIsAtLeast(.iPhone5) {
+            for height in self.fieldContainerHeights {
+                height.constant = 44
+            }
+        }
+        
+        self.setNeedsLayout()
     }
     
 }

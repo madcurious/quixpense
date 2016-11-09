@@ -62,9 +62,7 @@ class CategoryPickerVC: MDOperationViewController {
         system.addObserver(self, selector: #selector(handleKeyboardWillChangeFrame(_:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
         
         // Text field notifications.
-//        system.addObserver(self, selector: #selector(handleTextFieldBeganEditing), name: NSNotification.Name.UITextFieldTextDidBeginEditing, object: nil)
         system.addObserver(self, selector: #selector(handleTextFieldTextChanged), name: NSNotification.Name.UITextFieldTextDidChange, object: nil)
-//        system.addObserver(self, selector: #selector(handleTextFieldFinishedEditing), name: NSNotification.Name.UITextFieldTextDidEndEditing, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -78,30 +76,18 @@ class CategoryPickerVC: MDOperationViewController {
     override func updateView(forState state: MDOperationViewController.State) {
         super.updateView(forState: state)
         
-        if state == .initial {
+        switch state {
+        case .initial:
             self.categories = App.allCategories
             self.customView.tableView.reloadData()
+            
+        case .displaying:
+            self.customView.tableView.reloadData()
+            
+        default:
+            break
         }
     }
-    
-    /*
-    func runSearchOperation(searchText: String) {
-        self.operationQueue.cancelAllOperations()
-        self.operationQueue.addOperation(
-            SearchCategoryOperation(searchText: searchText)
-                .onStart({[unowned self] in
-                    self.customView.tableView.isHidden = true
-                    })
-                .onReturn({[unowned self] in
-                    self.customView.tableView.isHidden = false
-                    })
-                .onSuccess({[unowned self] result in
-                    self.categories = result as! [Category]
-                    self.customView.tableView.reloadSections(IndexSet(integer: 1), with: .none)
-                    })
-        )
-    }
- */
     
     override func makeOperation() -> MDOperation? {
         guard let searchText = md_nonEmptyString(self.customView.textField.text)
@@ -112,7 +98,7 @@ class CategoryPickerVC: MDOperationViewController {
         return SearchCategoryOperation(searchText: searchText)
             .onSuccess({[unowned self] result in
                 self.categories = result as! [Category]
-                self.customView.tableView.reloadData()
+                self.updateView(forState: .displaying)
                 })
     }
     

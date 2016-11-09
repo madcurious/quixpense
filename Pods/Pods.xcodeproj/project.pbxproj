@@ -7,233 +7,259 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		03A15FC2D4C66D30759CF9DC0BF3AE79 /* VENTokenField.h in Headers */ = {isa = PBXBuildFile; fileRef = 1745BD84663BC85F1580318FB177E8A6 /* VENTokenField.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		19B9412DC02FC36F70D413BA546C244A /* ScrollViewFrameAccessor.h in Headers */ = {isa = PBXBuildFile; fileRef = C293CCA90C63E7FF0833471F06134006 /* ScrollViewFrameAccessor.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1EB5F9651C34280A9ECE1E13D19B89BC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
-		2B2BFB49AEDB1BC747102614C43B4B7B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
-		331C9DB2E465D5B5C7C305C39021DE41 /* VENTokenField-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 357AA8524488A4C89DB74774CDE36652 /* VENTokenField-dummy.m */; };
-		3F6511F037828851D1078A838E46B9C7 /* ViewFrameAccessor.h in Headers */ = {isa = PBXBuildFile; fileRef = A380C59115ED318C208927CBCA73A0E7 /* ViewFrameAccessor.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		59230B5594862216632AF66E24A23536 /* VENToken.h in Headers */ = {isa = PBXBuildFile; fileRef = 98C8E7596E51E0D0A643AAF07602DFC2 /* VENToken.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7B235D3A54B4746101FDB738DF1A3657 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
-		8C91F6FDFFE4D4E62565EFA58B486984 /* Pods-Spare-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A925531952C96EED9B40EC07DF8734B0 /* Pods-Spare-dummy.m */; };
-		9C89864A59B50F50CBDE0D8E45129F90 /* ScrollViewFrameAccessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A27E4A606B1471EDFE8FE70D27E624C /* ScrollViewFrameAccessor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		A6E8055F32DD6261A796C4A81430F5B3 /* VENBackspaceTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = DAAFF0F7EBCA63269224358D499FB0D0 /* VENBackspaceTextField.m */; };
-		BF785B3D288302FC177A6695F88F583E /* VENToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FEEBF7121DD683A854C72C0684E7112 /* VENToken.m */; };
-		DCAF11106A4832E0DBBFB31949068ACD /* ViewFrameAccessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E0E80B6850C7673610726319AB840B /* ViewFrameAccessor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		E31B7B91175BBB19C8CD0C0304F10431 /* VENTokenField.m in Sources */ = {isa = PBXBuildFile; fileRef = 5509F0B212CEAC5A94CE82CE00ED9E49 /* VENTokenField.m */; };
-		E77BB0D37A326ED6010FA8FB8FF4EB78 /* VENBackspaceTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = 311AC8BEA81789C6AAC5AE38EAC8B99A /* VENBackspaceTextField.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E86E6A51842C055E912A3811346102C9 /* FrameAccessor-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 90750767F5E0E9B12FE7F6E0C9316E95 /* FrameAccessor-dummy.m */; };
-		F952339396C0EDCFF3493B549A5363C2 /* FrameAccessor.h in Headers */ = {isa = PBXBuildFile; fileRef = D63656594BA45197E3C4BE00E4795D1F /* FrameAccessor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		11D8D855473655ED185B5BD9C563B503 /* VENTokenField-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A78830FF8EAE13D5D67EBD70D59BE4F /* VENTokenField-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		138ADA9FD1A4ADC8BF00DFDF4234AFE5 /* ViewFrameAccessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E4DCF92F3AF743F850EA66508081D4 /* ViewFrameAccessor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		1AD2F79E2D4B9277A858D19E003987EB /* VENTokenField.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D1C1880E95BA5E3CD4A92613EA61E6 /* VENTokenField.m */; };
+		1B065AD4192A97398A8D3A5088B7B3F1 /* VENBackspaceTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = A05B4370BA24D5CD3596926751E6F133 /* VENBackspaceTextField.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2FB878C68182D4480F5CD3F95CAC7302 /* FrameAccessor-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BAD9B49EAB7793B760E267991F7B9E9 /* FrameAccessor-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3D0E17B7188A93D51A8378B8989A2193 /* Pods-Spare-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E88458BEE4A1F07293BE8D2F8AC52D61 /* Pods-Spare-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4F830306AAE38F4133D1492978F6971C /* VENToken.m in Sources */ = {isa = PBXBuildFile; fileRef = E47AE048A50252AE7A5F1D74CDF3996D /* VENToken.m */; };
+		5A50AD342341340D393CDDFE80CE6689 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33F99B7A6D3F603D0FAE36F525BE9C9 /* Foundation.framework */; };
+		6BF8481FF0B2B454011205D6FCB29CC4 /* ScrollViewFrameAccessor.h in Headers */ = {isa = PBXBuildFile; fileRef = C530CDECEDD8EFB94D9C85E3470B1D11 /* ScrollViewFrameAccessor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		77105EC3DD1D12136D47BD4D050858C4 /* ViewFrameAccessor.h in Headers */ = {isa = PBXBuildFile; fileRef = FFD1F49334B78A4C768416530BA00CFB /* ViewFrameAccessor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		771867C5359701E8D1FD61990482CB1A /* Pods-Spare-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F48F7CFA3D51DA0EC1BE0671FE048C1D /* Pods-Spare-dummy.m */; };
+		80A9FBE1A4131E129200A5D5E843A1AD /* VENTokenField.h in Headers */ = {isa = PBXBuildFile; fileRef = 402122209C0DDCDFBCE4AFF13CA762A7 /* VENTokenField.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		89F85502E6D777914626784709816593 /* VENBackspaceTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 336253BB450267C4CD7C7024B6108827 /* VENBackspaceTextField.m */; };
+		9EB32ADBCFBA88A428E4388306652BD7 /* FrameAccessor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D8723A4171F0D8CE96D142A39EC07E /* FrameAccessor.framework */; };
+		BAA72E22AE077DAB24163BEB9A6A624D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33F99B7A6D3F603D0FAE36F525BE9C9 /* Foundation.framework */; };
+		C1B2BF1753395A507D3071FA56A32B5D /* VENToken.h in Headers */ = {isa = PBXBuildFile; fileRef = C894B5217454BE43C3F25B1DFBD07D6A /* VENToken.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C21C3D4990F14687CDD3CFD70359D68C /* ScrollViewFrameAccessor.m in Sources */ = {isa = PBXBuildFile; fileRef = AFBD8E9DBD26C66EB08DD844F828F2AE /* ScrollViewFrameAccessor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		C426F740ED7E3270031EF95267F747FA /* FrameAccessor-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C6781B0D5AB66C14E0A0E114FD6788 /* FrameAccessor-dummy.m */; };
+		C674C1CDC8306CB7A4A9D6646DFDE04F /* VENToken.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0E2CBA5D759BB45E7481E06132067D6 /* VENToken.xib */; };
+		D249C110A4A4D12FBF0AFFFE17ADBA0C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33F99B7A6D3F603D0FAE36F525BE9C9 /* Foundation.framework */; };
+		E19650854EDD76E2AA091966245E9C0B /* VENTokenField-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 36C63BF1AC803D9918B9A39124F01D31 /* VENTokenField-dummy.m */; };
+		EA57F678FFD38EEC1D3BD2463945DE36 /* FrameAccessor.h in Headers */ = {isa = PBXBuildFile; fileRef = EB8D0B89E08B1220B058A61455864FD8 /* FrameAccessor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		478EFB184FBFB9009A0627E4FF86E291 /* PBXContainerItemProxy */ = {
+		62897CDE47E67A7169B1F6CD77C47509 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 0F7B1940DE10624DFABB6A65D0BE9B4A;
-			remoteInfo = FrameAccessor;
-		};
-		7081A350AE0B63FAC102F930E742CD3E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0F7B1940DE10624DFABB6A65D0BE9B4A;
-			remoteInfo = FrameAccessor;
-		};
-		9E09BC9FEFF2579B3B87590CEDD25D7E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E2D2FA778716CCE816AE0B66D5184F18;
+			remoteGlobalIDString = F6FF88B5EA339091CCB88BC6D1D26CFF;
 			remoteInfo = VENTokenField;
+		};
+		B9B28DE90731667B13924228C413A4B1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 738FFB5A0A7C642A6657EA5241C1FB7E;
+			remoteInfo = FrameAccessor;
+		};
+		C0E4690118A4BBC73BE63F1F0ACAD251 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 738FFB5A0A7C642A6657EA5241C1FB7E;
+			remoteInfo = FrameAccessor;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		059C793A27D64B3FF1DF98C4C35D2D93 /* Pods-Spare-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Spare-resources.sh"; sourceTree = "<group>"; };
-		0CD10FAC30E285BD02EAB452F36479B8 /* libFrameAccessor.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFrameAccessor.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		0D4A1D0AE7FE791D8ADE141AFBBF7C1D /* FrameAccessor-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FrameAccessor-prefix.pch"; sourceTree = "<group>"; };
-		1745BD84663BC85F1580318FB177E8A6 /* VENTokenField.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VENTokenField.h; path = VENTokenField/VENTokenField.h; sourceTree = "<group>"; };
-		212D768E1A46132071D0EE5B0607FA83 /* Pods-Spare-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Spare-acknowledgements.plist"; sourceTree = "<group>"; };
-		311AC8BEA81789C6AAC5AE38EAC8B99A /* VENBackspaceTextField.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VENBackspaceTextField.h; path = VENTokenField/VENBackspaceTextField.h; sourceTree = "<group>"; };
-		357AA8524488A4C89DB74774CDE36652 /* VENTokenField-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "VENTokenField-dummy.m"; sourceTree = "<group>"; };
-		47852E56F22C6AA1F2B9950E227FED79 /* FrameAccessor.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FrameAccessor.xcconfig; sourceTree = "<group>"; };
-		5509F0B212CEAC5A94CE82CE00ED9E49 /* VENTokenField.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VENTokenField.m; path = VENTokenField/VENTokenField.m; sourceTree = "<group>"; };
-		5A27E4A606B1471EDFE8FE70D27E624C /* ScrollViewFrameAccessor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ScrollViewFrameAccessor.m; path = FrameAccessor/ScrollViewFrameAccessor.m; sourceTree = "<group>"; };
-		6FEEBF7121DD683A854C72C0684E7112 /* VENToken.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VENToken.m; path = VENTokenField/VENToken.m; sourceTree = "<group>"; };
-		73729FEEDB75EC1EC664B9F19FDB1869 /* VENTokenField-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "VENTokenField-prefix.pch"; sourceTree = "<group>"; };
-		82A1F527FDF3AF11DB0E4F3C31F76DA6 /* Pods-Spare.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Spare.debug.xcconfig"; sourceTree = "<group>"; };
-		84856D4FC7BCBCF4517C6B3885C24B92 /* Pods-Spare-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Spare-frameworks.sh"; sourceTree = "<group>"; };
-		89E0E80B6850C7673610726319AB840B /* ViewFrameAccessor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ViewFrameAccessor.m; path = FrameAccessor/ViewFrameAccessor.m; sourceTree = "<group>"; };
-		90750767F5E0E9B12FE7F6E0C9316E95 /* FrameAccessor-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FrameAccessor-dummy.m"; sourceTree = "<group>"; };
+		04234414B31FDEBE3D86E7180DCA7351 /* VENTokenField.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VENTokenField.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0BAD9B49EAB7793B760E267991F7B9E9 /* FrameAccessor-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FrameAccessor-umbrella.h"; sourceTree = "<group>"; };
+		15C9D7F32E90D6D396EF192A0949C38A /* Pods-Spare.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Spare.debug.xcconfig"; sourceTree = "<group>"; };
+		18A1263CD8C6BB82CAEA9E4A8B4FCAAF /* FrameAccessor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FrameAccessor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1CCDDC07BBBEEF284E568A972DBAFD14 /* Pods-Spare.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Spare.modulemap"; sourceTree = "<group>"; };
+		1DC46D9B0E2550593127EC5747C6C5A3 /* FrameAccessor-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FrameAccessor-prefix.pch"; sourceTree = "<group>"; };
+		21849BED12021AA5C2084C6B3B2D8C03 /* Pods-Spare-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Spare-acknowledgements.plist"; sourceTree = "<group>"; };
+		221E15749411E042E7609CD62CF23BC2 /* FrameAccessor.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FrameAccessor.xcconfig; sourceTree = "<group>"; };
+		22BAE00970896E53F738AA9ACD792121 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		32087DF87D3EE9FD670C9347A4512FF5 /* Pods-Spare-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Spare-frameworks.sh"; sourceTree = "<group>"; };
+		336253BB450267C4CD7C7024B6108827 /* VENBackspaceTextField.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VENBackspaceTextField.m; path = VENTokenField/VENBackspaceTextField.m; sourceTree = "<group>"; };
+		36C63BF1AC803D9918B9A39124F01D31 /* VENTokenField-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "VENTokenField-dummy.m"; sourceTree = "<group>"; };
+		3D1BE5BACC80B0C8C04A395C579A29F5 /* FrameAccessor.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = FrameAccessor.modulemap; sourceTree = "<group>"; };
+		402122209C0DDCDFBCE4AFF13CA762A7 /* VENTokenField.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VENTokenField.h; path = VENTokenField/VENTokenField.h; sourceTree = "<group>"; };
+		468273B22C5BE1919D13B0333FB7FA8F /* Pods-Spare.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Spare.release.xcconfig"; sourceTree = "<group>"; };
+		4BE895620E9537F71E95DE2CBCCBC1FB /* VENTokenField-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "VENTokenField-prefix.pch"; sourceTree = "<group>"; };
+		64D8723A4171F0D8CE96D142A39EC07E /* FrameAccessor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FrameAccessor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		70E4DCF92F3AF743F850EA66508081D4 /* ViewFrameAccessor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ViewFrameAccessor.m; path = FrameAccessor/ViewFrameAccessor.m; sourceTree = "<group>"; };
+		7B9F30B809F84261D32355B5615AADD0 /* Pods_Spare.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Spare.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D17ADA624752038F2157112FE9C5967 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8E43B025392410DA36F594CBA8F45C17 /* Pods-Spare-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Spare-acknowledgements.markdown"; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		98C8E7596E51E0D0A643AAF07602DFC2 /* VENToken.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VENToken.h; path = VENTokenField/VENToken.h; sourceTree = "<group>"; };
-		99C43D38F5FFA70342E1BC9AF083C920 /* libVENTokenField.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libVENTokenField.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		A380C59115ED318C208927CBCA73A0E7 /* ViewFrameAccessor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ViewFrameAccessor.h; path = FrameAccessor/ViewFrameAccessor.h; sourceTree = "<group>"; };
-		A925531952C96EED9B40EC07DF8734B0 /* Pods-Spare-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Spare-dummy.m"; sourceTree = "<group>"; };
-		C293CCA90C63E7FF0833471F06134006 /* ScrollViewFrameAccessor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ScrollViewFrameAccessor.h; path = FrameAccessor/ScrollViewFrameAccessor.h; sourceTree = "<group>"; };
-		C84811DC838275FD9B360B70FF0E098C /* libPods-Spare.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Spare.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		D63656594BA45197E3C4BE00E4795D1F /* FrameAccessor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FrameAccessor.h; path = FrameAccessor/FrameAccessor.h; sourceTree = "<group>"; };
-		DAAFF0F7EBCA63269224358D499FB0D0 /* VENBackspaceTextField.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VENBackspaceTextField.m; path = VENTokenField/VENBackspaceTextField.m; sourceTree = "<group>"; };
-		E087221BC835F0F5E342C8FD2109403E /* Pods-Spare-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Spare-acknowledgements.markdown"; sourceTree = "<group>"; };
-		E7DBB92E2E7DEF1498E6B3C948BA2BBC /* VENTokenField.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = VENTokenField.xcconfig; sourceTree = "<group>"; };
-		E7EB701B95BE94356B3EB13CA746C685 /* VENToken.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = VENToken.xib; path = VENTokenField/VENToken.xib; sourceTree = "<group>"; };
-		E9D047ABD890968278654F42FC122F0E /* Pods-Spare.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Spare.release.xcconfig"; sourceTree = "<group>"; };
+		9A78830FF8EAE13D5D67EBD70D59BE4F /* VENTokenField-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "VENTokenField-umbrella.h"; sourceTree = "<group>"; };
+		A05B4370BA24D5CD3596926751E6F133 /* VENBackspaceTextField.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VENBackspaceTextField.h; path = VENTokenField/VENBackspaceTextField.h; sourceTree = "<group>"; };
+		A0E2CBA5D759BB45E7481E06132067D6 /* VENToken.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = VENToken.xib; path = VENTokenField/VENToken.xib; sourceTree = "<group>"; };
+		A7BF0E8EF58F909CACBF1B9F7C6711FB /* Pods-Spare-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Spare-resources.sh"; sourceTree = "<group>"; };
+		AFBD8E9DBD26C66EB08DD844F828F2AE /* ScrollViewFrameAccessor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ScrollViewFrameAccessor.m; path = FrameAccessor/ScrollViewFrameAccessor.m; sourceTree = "<group>"; };
+		B1D1C1880E95BA5E3CD4A92613EA61E6 /* VENTokenField.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VENTokenField.m; path = VENTokenField/VENTokenField.m; sourceTree = "<group>"; };
+		C33F99B7A6D3F603D0FAE36F525BE9C9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		C530CDECEDD8EFB94D9C85E3470B1D11 /* ScrollViewFrameAccessor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ScrollViewFrameAccessor.h; path = FrameAccessor/ScrollViewFrameAccessor.h; sourceTree = "<group>"; };
+		C77C2FD2B54E9825EAD6F7DE905FC51E /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C894B5217454BE43C3F25B1DFBD07D6A /* VENToken.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VENToken.h; path = VENTokenField/VENToken.h; sourceTree = "<group>"; };
+		E1C6781B0D5AB66C14E0A0E114FD6788 /* FrameAccessor-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FrameAccessor-dummy.m"; sourceTree = "<group>"; };
+		E47AE048A50252AE7A5F1D74CDF3996D /* VENToken.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VENToken.m; path = VENTokenField/VENToken.m; sourceTree = "<group>"; };
+		E4BF02C89223FAF5092FF00C247595A0 /* VENTokenField.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = VENTokenField.xcconfig; sourceTree = "<group>"; };
+		E88458BEE4A1F07293BE8D2F8AC52D61 /* Pods-Spare-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Spare-umbrella.h"; sourceTree = "<group>"; };
+		EB8D0B89E08B1220B058A61455864FD8 /* FrameAccessor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FrameAccessor.h; path = FrameAccessor/FrameAccessor.h; sourceTree = "<group>"; };
+		F48F7CFA3D51DA0EC1BE0671FE048C1D /* Pods-Spare-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Spare-dummy.m"; sourceTree = "<group>"; };
+		F6F0B27A0A36A99AF1DE6599E285BE59 /* VENTokenField.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = VENTokenField.modulemap; sourceTree = "<group>"; };
+		FFD1F49334B78A4C768416530BA00CFB /* ViewFrameAccessor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ViewFrameAccessor.h; path = FrameAccessor/ViewFrameAccessor.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		491B4468F23C0924AA6C79566ADC1BA2 /* Frameworks */ = {
+		1146B60C8D1956936000CB856141ED5A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1EB5F9651C34280A9ECE1E13D19B89BC /* Foundation.framework in Frameworks */,
+				5A50AD342341340D393CDDFE80CE6689 /* Foundation.framework in Frameworks */,
+				9EB32ADBCFBA88A428E4388306652BD7 /* FrameAccessor.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C6F82729850333F1DB940AAC4F2856B7 /* Frameworks */ = {
+		C59C126FDEA4F6DA4E5DE6A62C608272 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2B2BFB49AEDB1BC747102614C43B4B7B /* Foundation.framework in Frameworks */,
+				D249C110A4A4D12FBF0AFFFE17ADBA0C /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DB483FDCB3AA1E631AEFAE87684AD612 /* Frameworks */ = {
+		DB93483215DA07EA1C4A15682C3C03AB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B235D3A54B4746101FDB738DF1A3657 /* Foundation.framework in Frameworks */,
+				BAA72E22AE077DAB24163BEB9A6A624D /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		36BFDB0EAFE061DD3702E1B2C8EBC8F5 /* VENTokenField */ = {
+		4F2313B11F9C2F1634AA4647845B8207 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				311AC8BEA81789C6AAC5AE38EAC8B99A /* VENBackspaceTextField.h */,
-				DAAFF0F7EBCA63269224358D499FB0D0 /* VENBackspaceTextField.m */,
-				98C8E7596E51E0D0A643AAF07602DFC2 /* VENToken.h */,
-				6FEEBF7121DD683A854C72C0684E7112 /* VENToken.m */,
-				1745BD84663BC85F1580318FB177E8A6 /* VENTokenField.h */,
-				5509F0B212CEAC5A94CE82CE00ED9E49 /* VENTokenField.m */,
-				CEF054FC47B42C531410AB95A86E385F /* Resources */,
-				BDED68BB2660F2C20D1699270B8EAFF4 /* Support Files */,
+				22BAE00970896E53F738AA9ACD792121 /* Info.plist */,
+				F6F0B27A0A36A99AF1DE6599E285BE59 /* VENTokenField.modulemap */,
+				E4BF02C89223FAF5092FF00C247595A0 /* VENTokenField.xcconfig */,
+				36C63BF1AC803D9918B9A39124F01D31 /* VENTokenField-dummy.m */,
+				4BE895620E9537F71E95DE2CBCCBC1FB /* VENTokenField-prefix.pch */,
+				9A78830FF8EAE13D5D67EBD70D59BE4F /* VENTokenField-umbrella.h */,
 			);
-			path = VENTokenField;
+			name = "Support Files";
+			path = "../Target Support Files/VENTokenField";
 			sourceTree = "<group>";
 		};
-		3DCAB2B7CDE207B3958B6CB957FCC758 /* iOS */ = {
+		5540121AB20369B55DE2E776CF23CA88 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */,
+				C33F99B7A6D3F603D0FAE36F525BE9C9 /* Foundation.framework */,
 			);
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		5727661D71EAFC77C0B320D1F97771C6 /* FrameAccessor */ = {
+		5D1D3F05AD26AC0EAB6251CD0824D49F /* VENTokenField */ = {
 			isa = PBXGroup;
 			children = (
-				D63656594BA45197E3C4BE00E4795D1F /* FrameAccessor.h */,
-				C293CCA90C63E7FF0833471F06134006 /* ScrollViewFrameAccessor.h */,
-				5A27E4A606B1471EDFE8FE70D27E624C /* ScrollViewFrameAccessor.m */,
-				A380C59115ED318C208927CBCA73A0E7 /* ViewFrameAccessor.h */,
-				89E0E80B6850C7673610726319AB840B /* ViewFrameAccessor.m */,
-				684D98C109B7D84C398836AE57FA73C1 /* Support Files */,
+				A05B4370BA24D5CD3596926751E6F133 /* VENBackspaceTextField.h */,
+				336253BB450267C4CD7C7024B6108827 /* VENBackspaceTextField.m */,
+				C894B5217454BE43C3F25B1DFBD07D6A /* VENToken.h */,
+				E47AE048A50252AE7A5F1D74CDF3996D /* VENToken.m */,
+				402122209C0DDCDFBCE4AFF13CA762A7 /* VENTokenField.h */,
+				B1D1C1880E95BA5E3CD4A92613EA61E6 /* VENTokenField.m */,
+				A771937495D02B444B098F1307D43D67 /* Resources */,
+				4F2313B11F9C2F1634AA4647845B8207 /* Support Files */,
 			);
-			path = FrameAccessor;
-			sourceTree = "<group>";
-		};
-		684D98C109B7D84C398836AE57FA73C1 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				47852E56F22C6AA1F2B9950E227FED79 /* FrameAccessor.xcconfig */,
-				90750767F5E0E9B12FE7F6E0C9316E95 /* FrameAccessor-dummy.m */,
-				0D4A1D0AE7FE791D8ADE141AFBBF7C1D /* FrameAccessor-prefix.pch */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/FrameAccessor";
+			path = VENTokenField;
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				BFEE9F6096070B6102CDB405FC8C6C87 /* Frameworks */,
 				97683CC917DF83FD5350EC24F601FF7F /* Pods */,
-				A1BBFEABA788B1B43BC53AA5FC3D7656 /* Products */,
-				FBB7B7433222051DBDA1DAFBA307B82C /* Targets Support Files */,
+				B23AA6A6FBB5254420723241229BC8AD /* Products */,
+				E8AEE068B649BEC1B5F28A86ADDDCDAB /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
 		97683CC917DF83FD5350EC24F601FF7F /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				5727661D71EAFC77C0B320D1F97771C6 /* FrameAccessor */,
-				36BFDB0EAFE061DD3702E1B2C8EBC8F5 /* VENTokenField */,
+				D279F9674868EEC66AB3FCADF35C5A56 /* FrameAccessor */,
+				5D1D3F05AD26AC0EAB6251CD0824D49F /* VENTokenField */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		A1BBFEABA788B1B43BC53AA5FC3D7656 /* Products */ = {
+		A771937495D02B444B098F1307D43D67 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				0CD10FAC30E285BD02EAB452F36479B8 /* libFrameAccessor.a */,
-				C84811DC838275FD9B360B70FF0E098C /* libPods-Spare.a */,
-				99C43D38F5FFA70342E1BC9AF083C920 /* libVENTokenField.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				3DCAB2B7CDE207B3958B6CB957FCC758 /* iOS */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		BDED68BB2660F2C20D1699270B8EAFF4 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				E7DBB92E2E7DEF1498E6B3C948BA2BBC /* VENTokenField.xcconfig */,
-				357AA8524488A4C89DB74774CDE36652 /* VENTokenField-dummy.m */,
-				73729FEEDB75EC1EC664B9F19FDB1869 /* VENTokenField-prefix.pch */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/VENTokenField";
-			sourceTree = "<group>";
-		};
-		CEF054FC47B42C531410AB95A86E385F /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				E7EB701B95BE94356B3EB13CA746C685 /* VENToken.xib */,
+				A0E2CBA5D759BB45E7481E06132067D6 /* VENToken.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		E5964CC0F666002EC924E418B8EF0A10 /* Pods-Spare */ = {
+		B23AA6A6FBB5254420723241229BC8AD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E087221BC835F0F5E342C8FD2109403E /* Pods-Spare-acknowledgements.markdown */,
-				212D768E1A46132071D0EE5B0607FA83 /* Pods-Spare-acknowledgements.plist */,
-				A925531952C96EED9B40EC07DF8734B0 /* Pods-Spare-dummy.m */,
-				84856D4FC7BCBCF4517C6B3885C24B92 /* Pods-Spare-frameworks.sh */,
-				059C793A27D64B3FF1DF98C4C35D2D93 /* Pods-Spare-resources.sh */,
-				82A1F527FDF3AF11DB0E4F3C31F76DA6 /* Pods-Spare.debug.xcconfig */,
-				E9D047ABD890968278654F42FC122F0E /* Pods-Spare.release.xcconfig */,
+				18A1263CD8C6BB82CAEA9E4A8B4FCAAF /* FrameAccessor.framework */,
+				7B9F30B809F84261D32355B5615AADD0 /* Pods_Spare.framework */,
+				04234414B31FDEBE3D86E7180DCA7351 /* VENTokenField.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BFEE9F6096070B6102CDB405FC8C6C87 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				64D8723A4171F0D8CE96D142A39EC07E /* FrameAccessor.framework */,
+				5540121AB20369B55DE2E776CF23CA88 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C1281C391A485A53A436A8FE7DA9F5BC /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				3D1BE5BACC80B0C8C04A395C579A29F5 /* FrameAccessor.modulemap */,
+				221E15749411E042E7609CD62CF23BC2 /* FrameAccessor.xcconfig */,
+				E1C6781B0D5AB66C14E0A0E114FD6788 /* FrameAccessor-dummy.m */,
+				1DC46D9B0E2550593127EC5747C6C5A3 /* FrameAccessor-prefix.pch */,
+				0BAD9B49EAB7793B760E267991F7B9E9 /* FrameAccessor-umbrella.h */,
+				8D17ADA624752038F2157112FE9C5967 /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/FrameAccessor";
+			sourceTree = "<group>";
+		};
+		D279F9674868EEC66AB3FCADF35C5A56 /* FrameAccessor */ = {
+			isa = PBXGroup;
+			children = (
+				EB8D0B89E08B1220B058A61455864FD8 /* FrameAccessor.h */,
+				C530CDECEDD8EFB94D9C85E3470B1D11 /* ScrollViewFrameAccessor.h */,
+				AFBD8E9DBD26C66EB08DD844F828F2AE /* ScrollViewFrameAccessor.m */,
+				FFD1F49334B78A4C768416530BA00CFB /* ViewFrameAccessor.h */,
+				70E4DCF92F3AF743F850EA66508081D4 /* ViewFrameAccessor.m */,
+				C1281C391A485A53A436A8FE7DA9F5BC /* Support Files */,
+			);
+			path = FrameAccessor;
+			sourceTree = "<group>";
+		};
+		D5C656657F4072D0344E32C43E877346 /* Pods-Spare */ = {
+			isa = PBXGroup;
+			children = (
+				C77C2FD2B54E9825EAD6F7DE905FC51E /* Info.plist */,
+				1CCDDC07BBBEEF284E568A972DBAFD14 /* Pods-Spare.modulemap */,
+				8E43B025392410DA36F594CBA8F45C17 /* Pods-Spare-acknowledgements.markdown */,
+				21849BED12021AA5C2084C6B3B2D8C03 /* Pods-Spare-acknowledgements.plist */,
+				F48F7CFA3D51DA0EC1BE0671FE048C1D /* Pods-Spare-dummy.m */,
+				32087DF87D3EE9FD670C9347A4512FF5 /* Pods-Spare-frameworks.sh */,
+				A7BF0E8EF58F909CACBF1B9F7C6711FB /* Pods-Spare-resources.sh */,
+				E88458BEE4A1F07293BE8D2F8AC52D61 /* Pods-Spare-umbrella.h */,
+				15C9D7F32E90D6D396EF192A0949C38A /* Pods-Spare.debug.xcconfig */,
+				468273B22C5BE1919D13B0333FB7FA8F /* Pods-Spare.release.xcconfig */,
 			);
 			name = "Pods-Spare";
 			path = "Target Support Files/Pods-Spare";
 			sourceTree = "<group>";
 		};
-		FBB7B7433222051DBDA1DAFBA307B82C /* Targets Support Files */ = {
+		E8AEE068B649BEC1B5F28A86ADDDCDAB /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				E5964CC0F666002EC924E418B8EF0A10 /* Pods-Spare */,
+				D5C656657F4072D0344E32C43E877346 /* Pods-Spare */,
 			);
 			name = "Targets Support Files";
 			sourceTree = "<group>";
@@ -241,36 +267,65 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		B8B328E1BE57E88EC92B2AD3D4DBFC3F /* Headers */ = {
+		22A82BB528B3AFDBB81AC5E875477C90 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E77BB0D37A326ED6010FA8FB8FF4EB78 /* VENBackspaceTextField.h in Headers */,
-				59230B5594862216632AF66E24A23536 /* VENToken.h in Headers */,
-				03A15FC2D4C66D30759CF9DC0BF3AE79 /* VENTokenField.h in Headers */,
+				2FB878C68182D4480F5CD3F95CAC7302 /* FrameAccessor-umbrella.h in Headers */,
+				EA57F678FFD38EEC1D3BD2463945DE36 /* FrameAccessor.h in Headers */,
+				6BF8481FF0B2B454011205D6FCB29CC4 /* ScrollViewFrameAccessor.h in Headers */,
+				77105EC3DD1D12136D47BD4D050858C4 /* ViewFrameAccessor.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EA88A340756822CAD041304EB3DD892E /* Headers */ = {
+		379D62E784C011AA7FE97CAD35B8C6CF /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F952339396C0EDCFF3493B549A5363C2 /* FrameAccessor.h in Headers */,
-				19B9412DC02FC36F70D413BA546C244A /* ScrollViewFrameAccessor.h in Headers */,
-				3F6511F037828851D1078A838E46B9C7 /* ViewFrameAccessor.h in Headers */,
+				1B065AD4192A97398A8D3A5088B7B3F1 /* VENBackspaceTextField.h in Headers */,
+				C1B2BF1753395A507D3071FA56A32B5D /* VENToken.h in Headers */,
+				11D8D855473655ED185B5BD9C563B503 /* VENTokenField-umbrella.h in Headers */,
+				80A9FBE1A4131E129200A5D5E843A1AD /* VENTokenField.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C751CC6C8EE1607AA894001F8533C778 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D0E17B7188A93D51A8378B8989A2193 /* Pods-Spare-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		0F7B1940DE10624DFABB6A65D0BE9B4A /* FrameAccessor */ = {
+		6D589AC666DAE635D444271ED5D93FA9 /* Pods-Spare */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 65C440F2AABDA4CA2F618CCAEE4CB818 /* Build configuration list for PBXNativeTarget "FrameAccessor" */;
+			buildConfigurationList = 1FC73687E96AF018529F8EE9A94C816D /* Build configuration list for PBXNativeTarget "Pods-Spare" */;
 			buildPhases = (
-				D05ECD22FEFA860E2CBA43A94B826AB0 /* Sources */,
-				C6F82729850333F1DB940AAC4F2856B7 /* Frameworks */,
-				EA88A340756822CAD041304EB3DD892E /* Headers */,
+				495EFD9B5AA76F7E7C1F464DC9C0FE25 /* Sources */,
+				DB93483215DA07EA1C4A15682C3C03AB /* Frameworks */,
+				C751CC6C8EE1607AA894001F8533C778 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FE8250B5877D4BA8D95EDCB671035966 /* PBXTargetDependency */,
+				AAC315E3D74831351CDAE236D24F334C /* PBXTargetDependency */,
+			);
+			name = "Pods-Spare";
+			productName = "Pods-Spare";
+			productReference = 7B9F30B809F84261D32355B5615AADD0 /* Pods_Spare.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		738FFB5A0A7C642A6657EA5241C1FB7E /* FrameAccessor */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 58DA4B0EE08343D12B8B69B6F10A3DB1 /* Build configuration list for PBXNativeTarget "FrameAccessor" */;
+			buildPhases = (
+				A70940230808E44B764EA4872B7746E2 /* Sources */,
+				C59C126FDEA4F6DA4E5DE6A62C608272 /* Frameworks */,
+				22A82BB528B3AFDBB81AC5E875477C90 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -278,44 +333,27 @@
 			);
 			name = FrameAccessor;
 			productName = FrameAccessor;
-			productReference = 0CD10FAC30E285BD02EAB452F36479B8 /* libFrameAccessor.a */;
-			productType = "com.apple.product-type.library.static";
+			productReference = 18A1263CD8C6BB82CAEA9E4A8B4FCAAF /* FrameAccessor.framework */;
+			productType = "com.apple.product-type.framework";
 		};
-		5FAAF7E69548B9F443279DC0981E6F70 /* Pods-Spare */ = {
+		F6FF88B5EA339091CCB88BC6D1D26CFF /* VENTokenField */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DDCCFBB38FFDC824CD426F98AF522A75 /* Build configuration list for PBXNativeTarget "Pods-Spare" */;
+			buildConfigurationList = 4C53D860238B8F9B29271D25EF7DDB98 /* Build configuration list for PBXNativeTarget "VENTokenField" */;
 			buildPhases = (
-				0F0E7E9A3AA6D7889F3DE42ADF13A76E /* Sources */,
-				DB483FDCB3AA1E631AEFAE87684AD612 /* Frameworks */,
+				75EEBEBD2DB3511323702A9FB6FF85FF /* Sources */,
+				1146B60C8D1956936000CB856141ED5A /* Frameworks */,
+				379D62E784C011AA7FE97CAD35B8C6CF /* Headers */,
+				DEF73FC5E3AAEF1C5E8A516D6829CAD9 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				23C23F5527D3D0AD4B9F09FBD5AC93A8 /* PBXTargetDependency */,
-				FD4DD136417133276EC7C4494C67A783 /* PBXTargetDependency */,
-			);
-			name = "Pods-Spare";
-			productName = "Pods-Spare";
-			productReference = C84811DC838275FD9B360B70FF0E098C /* libPods-Spare.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		E2D2FA778716CCE816AE0B66D5184F18 /* VENTokenField */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 4E5753971ECBD39EA84D9401F85129BA /* Build configuration list for PBXNativeTarget "VENTokenField" */;
-			buildPhases = (
-				EC94F0156256F42459BE18CAB6325C2E /* Sources */,
-				491B4468F23C0924AA6C79566ADC1BA2 /* Frameworks */,
-				B8B328E1BE57E88EC92B2AD3D4DBFC3F /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				6671D7BA697B314E6177154AB0E86F5F /* PBXTargetDependency */,
+				E887B6C295968D56CCC70953C57B81F8 /* PBXTargetDependency */,
 			);
 			name = VENTokenField;
 			productName = VENTokenField;
-			productReference = 99C43D38F5FFA70342E1BC9AF083C920 /* libVENTokenField.a */;
-			productType = "com.apple.product-type.library.static";
+			productReference = 04234414B31FDEBE3D86E7180DCA7351 /* VENTokenField.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
@@ -334,152 +372,137 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = A1BBFEABA788B1B43BC53AA5FC3D7656 /* Products */;
+			productRefGroup = B23AA6A6FBB5254420723241229BC8AD /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				0F7B1940DE10624DFABB6A65D0BE9B4A /* FrameAccessor */,
-				5FAAF7E69548B9F443279DC0981E6F70 /* Pods-Spare */,
-				E2D2FA778716CCE816AE0B66D5184F18 /* VENTokenField */,
+				738FFB5A0A7C642A6657EA5241C1FB7E /* FrameAccessor */,
+				6D589AC666DAE635D444271ED5D93FA9 /* Pods-Spare */,
+				F6FF88B5EA339091CCB88BC6D1D26CFF /* VENTokenField */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		DEF73FC5E3AAEF1C5E8A516D6829CAD9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C674C1CDC8306CB7A4A9D6646DFDE04F /* VENToken.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
-		0F0E7E9A3AA6D7889F3DE42ADF13A76E /* Sources */ = {
+		495EFD9B5AA76F7E7C1F464DC9C0FE25 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8C91F6FDFFE4D4E62565EFA58B486984 /* Pods-Spare-dummy.m in Sources */,
+				771867C5359701E8D1FD61990482CB1A /* Pods-Spare-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D05ECD22FEFA860E2CBA43A94B826AB0 /* Sources */ = {
+		75EEBEBD2DB3511323702A9FB6FF85FF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E86E6A51842C055E912A3811346102C9 /* FrameAccessor-dummy.m in Sources */,
-				9C89864A59B50F50CBDE0D8E45129F90 /* ScrollViewFrameAccessor.m in Sources */,
-				DCAF11106A4832E0DBBFB31949068ACD /* ViewFrameAccessor.m in Sources */,
+				89F85502E6D777914626784709816593 /* VENBackspaceTextField.m in Sources */,
+				4F830306AAE38F4133D1492978F6971C /* VENToken.m in Sources */,
+				E19650854EDD76E2AA091966245E9C0B /* VENTokenField-dummy.m in Sources */,
+				1AD2F79E2D4B9277A858D19E003987EB /* VENTokenField.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EC94F0156256F42459BE18CAB6325C2E /* Sources */ = {
+		A70940230808E44B764EA4872B7746E2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6E8055F32DD6261A796C4A81430F5B3 /* VENBackspaceTextField.m in Sources */,
-				BF785B3D288302FC177A6695F88F583E /* VENToken.m in Sources */,
-				331C9DB2E465D5B5C7C305C39021DE41 /* VENTokenField-dummy.m in Sources */,
-				E31B7B91175BBB19C8CD0C0304F10431 /* VENTokenField.m in Sources */,
+				C426F740ED7E3270031EF95267F747FA /* FrameAccessor-dummy.m in Sources */,
+				C21C3D4990F14687CDD3CFD70359D68C /* ScrollViewFrameAccessor.m in Sources */,
+				138ADA9FD1A4ADC8BF00DFDF4234AFE5 /* ViewFrameAccessor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		23C23F5527D3D0AD4B9F09FBD5AC93A8 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = FrameAccessor;
-			target = 0F7B1940DE10624DFABB6A65D0BE9B4A /* FrameAccessor */;
-			targetProxy = 478EFB184FBFB9009A0627E4FF86E291 /* PBXContainerItemProxy */;
-		};
-		6671D7BA697B314E6177154AB0E86F5F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = FrameAccessor;
-			target = 0F7B1940DE10624DFABB6A65D0BE9B4A /* FrameAccessor */;
-			targetProxy = 7081A350AE0B63FAC102F930E742CD3E /* PBXContainerItemProxy */;
-		};
-		FD4DD136417133276EC7C4494C67A783 /* PBXTargetDependency */ = {
+		AAC315E3D74831351CDAE236D24F334C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = VENTokenField;
-			target = E2D2FA778716CCE816AE0B66D5184F18 /* VENTokenField */;
-			targetProxy = 9E09BC9FEFF2579B3B87590CEDD25D7E /* PBXContainerItemProxy */;
+			target = F6FF88B5EA339091CCB88BC6D1D26CFF /* VENTokenField */;
+			targetProxy = 62897CDE47E67A7169B1F6CD77C47509 /* PBXContainerItemProxy */;
+		};
+		E887B6C295968D56CCC70953C57B81F8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = FrameAccessor;
+			target = 738FFB5A0A7C642A6657EA5241C1FB7E /* FrameAccessor */;
+			targetProxy = C0E4690118A4BBC73BE63F1F0ACAD251 /* PBXContainerItemProxy */;
+		};
+		FE8250B5877D4BA8D95EDCB671035966 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = FrameAccessor;
+			target = 738FFB5A0A7C642A6657EA5241C1FB7E /* FrameAccessor */;
+			targetProxy = B9B28DE90731667B13924228C413A4B1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		04683C291AF52DB0FF1ADA0345E1D3FA /* Release */ = {
+		0BFD775CB1B5F44F6EFA70A6B555DCF6 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E7DBB92E2E7DEF1498E6B3C948BA2BBC /* VENTokenField.xcconfig */;
+			baseConfigurationReference = E4BF02C89223FAF5092FF00C247595A0 /* VENTokenField.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/VENTokenField/VENTokenField-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				INFOPLIST_FILE = "Target Support Files/VENTokenField/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/VENTokenField/VENTokenField.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = VENTokenField;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
-		05AC97F43C2554E78B9EB35CD91F6BC8 /* Debug */ = {
+		351B79B23E3D47509829C3A15900DD98 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 47852E56F22C6AA1F2B9950E227FED79 /* FrameAccessor.xcconfig */;
+			baseConfigurationReference = 221E15749411E042E7609CD62CF23BC2 /* FrameAccessor.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/FrameAccessor/FrameAccessor-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				INFOPLIST_FILE = "Target Support Files/FrameAccessor/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/FrameAccessor/FrameAccessor.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = FrameAccessor;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		22C8AC9ED52C5D510C24ABE7CA8B758D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E7DBB92E2E7DEF1498E6B3C948BA2BBC /* VENTokenField.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/VENTokenField/VENTokenField-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		3C308EFDCC9B880246D03BC6C634200F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 82A1F527FDF3AF11DB0E4F3C31F76DA6 /* Pods-Spare.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				MACH_O_TYPE = staticlib;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
@@ -521,45 +544,65 @@
 			};
 			name = Release;
 		};
-		44AE7C0584038E0575FE376286CDCE95 /* Release */ = {
+		42AB5EA4DF3044BD6C7DC27980CCDA07 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E9D047ABD890968278654F42FC122F0E /* Pods-Spare.release.xcconfig */;
+			baseConfigurationReference = 15C9D7F32E90D6D396EF192A0949C38A /* Pods-Spare.debug.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Spare/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
-				MTL_ENABLE_DEBUG_INFO = NO;
+				MODULEMAP_FILE = "Target Support Files/Pods-Spare/Pods-Spare.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Pods_Spare;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
-			name = Release;
+			name = Debug;
 		};
-		A685DE0F5FF0866F2D837E163D5933D5 /* Release */ = {
+		5227A83A7B35FF1DA83B713C416E5267 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 47852E56F22C6AA1F2B9950E227FED79 /* FrameAccessor.xcconfig */;
+			baseConfigurationReference = 221E15749411E042E7609CD62CF23BC2 /* FrameAccessor.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/FrameAccessor/FrameAccessor-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				INFOPLIST_FILE = "Target Support Files/FrameAccessor/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/FrameAccessor/FrameAccessor.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = FrameAccessor;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
@@ -605,9 +648,80 @@
 			};
 			name = Debug;
 		};
+		CA5D8D62891C308EF4AD3D67B0A58C20 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E4BF02C89223FAF5092FF00C247595A0 /* VENTokenField.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/VENTokenField/VENTokenField-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/VENTokenField/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/VENTokenField/VENTokenField.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = VENTokenField;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		F9F42036297A945600E6164330A4C653 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 468273B22C5BE1919D13B0333FB7FA8F /* Pods-Spare.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Spare/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Spare/Pods-Spare.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Spare;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		1FC73687E96AF018529F8EE9A94C816D /* Build configuration list for PBXNativeTarget "Pods-Spare" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				42AB5EA4DF3044BD6C7DC27980CCDA07 /* Debug */,
+				F9F42036297A945600E6164330A4C653 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -617,29 +731,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4E5753971ECBD39EA84D9401F85129BA /* Build configuration list for PBXNativeTarget "VENTokenField" */ = {
+		4C53D860238B8F9B29271D25EF7DDB98 /* Build configuration list for PBXNativeTarget "VENTokenField" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				22C8AC9ED52C5D510C24ABE7CA8B758D /* Debug */,
-				04683C291AF52DB0FF1ADA0345E1D3FA /* Release */,
+				CA5D8D62891C308EF4AD3D67B0A58C20 /* Debug */,
+				0BFD775CB1B5F44F6EFA70A6B555DCF6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		65C440F2AABDA4CA2F618CCAEE4CB818 /* Build configuration list for PBXNativeTarget "FrameAccessor" */ = {
+		58DA4B0EE08343D12B8B69B6F10A3DB1 /* Build configuration list for PBXNativeTarget "FrameAccessor" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				05AC97F43C2554E78B9EB35CD91F6BC8 /* Debug */,
-				A685DE0F5FF0866F2D837E163D5933D5 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		DDCCFBB38FFDC824CD426F98AF522A75 /* Build configuration list for PBXNativeTarget "Pods-Spare" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				3C308EFDCC9B880246D03BC6C634200F /* Debug */,
-				44AE7C0584038E0575FE376286CDCE95 /* Release */,
+				351B79B23E3D47509829C3A15900DD98 /* Debug */,
+				5227A83A7B35FF1DA83B713C416E5267 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

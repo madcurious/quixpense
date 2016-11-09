@@ -31,7 +31,6 @@ class CategoryPickerAddCategoryCell: UITableViewCell {
     }
     
     func setup() {
-//        self.contentView.backgroundColor = UIColor(hex: 0xeeeeee)
         self.textLabel?.font = Font.make(.regular, 17)
         self.textLabel?.textColor = UIColor(hex: 0x666666)
     }
