@@ -7,14 +7,20 @@
 //
 
 import Foundation
+import CoreData
 
 struct ChartData {
     
-    var category: Category
+//    var category: Category
+    var categoryID: NSManagedObjectID
     var dateRange: DateRange
     var dateRangeTotal: NSDecimalNumber
     var categoryTotal: NSDecimalNumber
     var ratio: Double
+    
+    var category: Category? {
+        return App.mainQueueContext.object(with: self.categoryID) as? Category
+    }
     
 //    init() {
 //        self.category = Category(entity: Category.entity(), insertInto: nil)

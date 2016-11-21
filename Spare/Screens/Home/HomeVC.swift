@@ -10,6 +10,11 @@ import UIKit
 import Mold
 import CoreData
 
+/**
+ The app's Home tab. On app launch, it shows the loading view by default, waiting for the
+ Core Data stack to be initialized. After the Core Data stack has been initialized, the
+ `HomeVC` immediately fires up an operation to create the pages.
+ */
 class HomeVC: MDFullOperationViewController {
     
     let pageViewController: UIPageViewController = {

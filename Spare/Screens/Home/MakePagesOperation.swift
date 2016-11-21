@@ -43,6 +43,7 @@ class MakePagesOperation: MDOperation {
         
         // 1. For every i, generate the date range for the page.
         // 2. Then, get the total of all expenses in the date range.
+
         for i in 0 ..< self.count {
             // 1
             let dateRange = self.dateRangeForPage(self.pageOffset + i)
@@ -53,7 +54,7 @@ class MakePagesOperation: MDOperation {
             
             // 2
             
-            let request = FetchRequestBuilder<Expense>.makeGenericFetchRequest()
+            let request = FetchRequestBuilder<Expense>.makeGenericRequest()
             request.predicate = NSPredicate(
                 format: "%K >= %@ AND %K <= %@",
                 #keyPath(Expense.dateSpent), dateRange.start as NSDate,

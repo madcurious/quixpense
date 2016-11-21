@@ -33,7 +33,3 @@ func glb_applyGlobalVCSettings(_ viewController: UIViewController) {
     titleLabel.sizeToFit()
     viewController.navigationItem.titleView = titleLabel
 }
-
-//func glb_totalOfExpenses(_ expenses: [Expense]) -> NSDecimalNumber {
-//    return expenses.map({ $0.amount ?? 0}).reduce(0, +)
-//}

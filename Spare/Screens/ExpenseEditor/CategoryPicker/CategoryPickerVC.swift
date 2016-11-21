@@ -23,7 +23,8 @@ class CategoryPickerVC: MDOperationViewController {
     
     let customView = __CategoryPickerVCView.instantiateFromNib()
     
-    var categories = [Category]()
+    var allCategories = [Category]()
+    var displayedCategories = [Category]()
     
     var delegate: CategoryPickerVCDelegate?
     
@@ -68,7 +69,7 @@ class CategoryPickerVC: MDOperationViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if self.categories.count == 0 {
+        if self.displayedCategories.count == 0 {
             self.customView.textField.becomeFirstResponder()
         }
     }
@@ -78,7 +79,7 @@ class CategoryPickerVC: MDOperationViewController {
         
         switch state {
         case .initial:
-            self.categories = App.allCategories
+//            self.categories = App.allCategories // COMMENTED OUT FOR DEBUG
             self.customView.tableView.reloadData()
             
         case .displaying:
@@ -97,7 +98,7 @@ class CategoryPickerVC: MDOperationViewController {
         
         return SearchCategoryOperation(searchText: searchText)
             .onSuccess({[unowned self] result in
-                self.categories = result as! [Category]
+                self.displayedCategories = result as! [Category]
                 self.updateView(forState: .displaying)
                 })
     }
@@ -176,7 +177,7 @@ extension CategoryPickerVC {
         if md_nonEmptyString(self.customView.textField.text) != nil {
             self.runOperation()
         } else {
-            self.categories = App.allCategories
+//            self.displayedCategories = App.allCategories // COMMENTED OUT FOR DEBUG
             self.customView.tableView.reloadData()
         }
     }
@@ -214,7 +215,7 @@ extension CategoryPickerVC: UITableViewDataSource {
             section == 0 {
             return 1
         }
-        return self.categories.count
+        return self.displayedCategories.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -226,7 +227,7 @@ extension CategoryPickerVC: UITableViewDataSource {
             
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: ViewID.categoryCell.rawValue) as! CustomPickerCell
-            cell.itemLabel.text = self.categories[indexPath.row].name
+            cell.itemLabel.text = self.displayedCategories[indexPath.row].name
             return cell
         }
     }
@@ -245,7 +246,7 @@ extension CategoryPickerVC: UITableViewDelegate {
             indexPath.section == 0 {
             self.delegate?.categoryPickerDidTapAddCategory(categoryName: categoryName)
         } else {
-            self.delegate?.categoryPickerDidSelectCategory(category: self.categories[indexPath.row])
+            self.delegate?.categoryPickerDidSelectCategory(category: self.displayedCategories[indexPath.row])
         }
     }
     

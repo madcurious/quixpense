@@ -25,8 +25,6 @@ struct App {
         return self.coreDataStack.viewContext
     }
     
-    static var allCategories: [Category]!
-    
     static var selectedPeriodization: Periodization {
         get {
             let defaults = UserDefaults.standard

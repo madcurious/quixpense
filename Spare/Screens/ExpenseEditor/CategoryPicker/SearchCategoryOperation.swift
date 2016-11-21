@@ -17,7 +17,7 @@ class SearchCategoryOperation: MDOperation {
     }
     
     override func makeResult(fromSource source: Any?) throws -> Any? {
-        let request = FetchRequestBuilder<Category>.makeFetchRequest()
+        let request = FetchRequestBuilder<Category>.makeTypedRequest()
         request.predicate = NSPredicate(format: "name CONTAINS[cd] %@", self.searchText)
         
         if self.isCancelled {

@@ -62,6 +62,7 @@ class __EEVCView: UIView {
         
         UIView.clearBackgroundColors(
             self.formContainer,
+            self.iconBackgroundView,
             self.upperFormContainer,
             self.fieldContainer,
             self.categoryContainer,
@@ -74,7 +75,7 @@ class __EEVCView: UIView {
         UIView.clearBackgroundColors(self.iconContainers)
         
         self.backgroundColor = Color.UniversalBackgroundColor
-        self.iconBackgroundView.backgroundColor = UIColor(hex: 0x000000)
+//        self.iconBackgroundView.backgroundColor = UIColor(hex: 0x000000)
         self.keypadCollectionView.backgroundColor = UIColor(hex: 0x222222)
         
         let textFields = [self.noteTextField!]

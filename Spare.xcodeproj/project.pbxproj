@@ -93,6 +93,7 @@
 		269D49FC1CE1643A00109990 /* AddExpenseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269D49FB1CE1643A00109990 /* AddExpenseVC.swift */; };
 		269E7E101D68C96000476870 /* MonthPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269E7E0F1D68C96000476870 /* MonthPageVC.swift */; };
 		269E7E121D69985D00476870 /* CustomPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269E7E111D69985D00476870 /* CustomPickerView.swift */; };
+		269FF08A1DE2F4A70021230B /* GetAllCategoryIDsOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269FF0891DE2F4A70021230B /* GetAllCategoryIDsOperation.swift */; };
 		26A1CB3D1DD0A2F600DAE89E /* __HPVCChartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A1CB3C1DD0A2F600DAE89E /* __HPVCChartCell.swift */; };
 		26A1CB3F1DD0A8B800DAE89E /* MakeChartDataOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A1CB3E1DD0A8B800DAE89E /* MakeChartDataOperation.swift */; };
 		26A1CB4C1DD1ABD600DAE89E /* NotoSansUI-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26A1CB441DD1ABD600DAE89E /* NotoSansUI-Bold.ttf */; };
@@ -104,7 +105,6 @@
 		26B075F21D8FFE250026692E /* OperationVCLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B075F11D8FFE250026692E /* OperationVCLoadingView.swift */; };
 		26B0760C1D901DC60026692E /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B0760B1D901DC60026692E /* Array.swift */; };
 		26BC4F961CE429AE0011BE98 /* ValidateExpenseOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC4F951CE429AE0011BE98 /* ValidateExpenseOperation.swift */; };
-		26C056831DCF5AE3000BB70E /* CategoryProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C056821DCF5AE3000BB70E /* CategoryProvider.swift */; };
 		26C056901DCF8492000BB70E /* PageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C0568F1DCF8492000BB70E /* PageData.swift */; };
 		26C056921DCF849F000BB70E /* ChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C056911DCF849F000BB70E /* ChartData.swift */; };
 		26D334C41DD2563D004BB4D0 /* Subcategory+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D334C21DD2563D004BB4D0 /* Subcategory+CoreDataClass.swift */; };
@@ -248,6 +248,7 @@
 		269D49FB1CE1643A00109990 /* AddExpenseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddExpenseVC.swift; sourceTree = "<group>"; };
 		269E7E0F1D68C96000476870 /* MonthPageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthPageVC.swift; sourceTree = "<group>"; };
 		269E7E111D69985D00476870 /* CustomPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPickerView.swift; sourceTree = "<group>"; };
+		269FF0891DE2F4A70021230B /* GetAllCategoryIDsOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetAllCategoryIDsOperation.swift; sourceTree = "<group>"; };
 		26A1CB3C1DD0A2F600DAE89E /* __HPVCChartCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __HPVCChartCell.swift; sourceTree = "<group>"; };
 		26A1CB3E1DD0A8B800DAE89E /* MakeChartDataOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeChartDataOperation.swift; sourceTree = "<group>"; };
 		26A1CB441DD1ABD600DAE89E /* NotoSansUI-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansUI-Bold.ttf"; sourceTree = "<group>"; };
@@ -259,7 +260,6 @@
 		26B075F11D8FFE250026692E /* OperationVCLoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperationVCLoadingView.swift; sourceTree = "<group>"; };
 		26B0760B1D901DC60026692E /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		26BC4F951CE429AE0011BE98 /* ValidateExpenseOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidateExpenseOperation.swift; sourceTree = "<group>"; };
-		26C056821DCF5AE3000BB70E /* CategoryProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryProvider.swift; sourceTree = "<group>"; };
 		26C0568F1DCF8492000BB70E /* PageData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageData.swift; sourceTree = "<group>"; };
 		26C056911DCF849F000BB70E /* ChartData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartData.swift; sourceTree = "<group>"; };
 		26D334C21DD2563D004BB4D0 /* Subcategory+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Subcategory+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -524,7 +524,7 @@
 				2669AB031D7C302700DDA321 /* AmountFormatter.swift */,
 				2685D6D61D7C397200ED778E /* PercentFormatter.swift */,
 				262731821DB23EEF00119F76 /* FetchRequestBuilder.swift */,
-				26C056821DCF5AE3000BB70E /* CategoryProvider.swift */,
+				269FF0891DE2F4A70021230B /* GetAllCategoryIDsOperation.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -818,7 +818,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				26C056831DCF5AE3000BB70E /* CategoryProvider.swift in Sources */,
 				26B075F21D8FFE250026692E /* OperationVCLoadingView.swift in Sources */,
 				26D334C51DD2563D004BB4D0 /* Subcategory+CoreDataProperties.swift in Sources */,
 				265222A01D66CFCE007FED96 /* DatePickerVC.swift in Sources */,
@@ -873,6 +872,7 @@
 				2669468F1CC7711000A68424 /* Spare.xcdatamodeld in Sources */,
 				26440F9A1DB229C300BD8F1C /* Expense+CoreDataProperties.swift in Sources */,
 				265222A41D66CFF3007FED96 /* __DPVCView.swift in Sources */,
+				269FF08A1DE2F4A70021230B /* GetAllCategoryIDsOperation.swift in Sources */,
 				26A1CB3D1DD0A2F600DAE89E /* __HPVCChartCell.swift in Sources */,
 				268F480D1D60D3490088AC6B /* Color.swift in Sources */,
 				267804151DB72BF000B29873 /* __CategoryPickerVCView.swift in Sources */,

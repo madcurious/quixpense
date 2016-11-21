@@ -21,15 +21,17 @@ class MakeChartDataOperation: MDOperation {
     }
     
     override func makeResult(fromSource source: Any?) throws -> Any? {
+        let context = App.coreDataStack.newBackgroundContext()
+        let categories = try Category.fetchAll(inContext: context)
+        
         var chartData = [ChartData]()
-        for category in App.allCategories {
+        for category in categories {
             var categoryTotal = NSDecimalNumber(value: 0)
             var ratio = 0.0
             
             // Avoid division by zero.
             if self.pageData.dateRangeTotal > 0 {
-                let context = App.coreDataStack.newBackgroundContext()
-                let request = FetchRequestBuilder<Expense>.makeGenericFetchRequest()
+                let request = FetchRequestBuilder<Expense>.makeGenericRequest()
                 request.predicate = NSPredicate(
                     format: "%K >= %@ AND %K <= %@ AND %K == %@",
                     #keyPath(Expense.dateSpent), self.pageData.dateRange.start as NSDate,
@@ -52,7 +54,7 @@ class MakeChartDataOperation: MDOperation {
                 }
             }
             
-            let newChartData = ChartData(category: category,
+            let newChartData = ChartData(categoryID: category.objectID,
                                          dateRange: self.pageData.dateRange,
                                          dateRangeTotal: self.pageData.dateRangeTotal,
                                          categoryTotal: categoryTotal,

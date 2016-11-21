@@ -41,7 +41,7 @@ class __HPVCDayCell: __HPVCChartCell {
                     return
             }
             
-            self.nameLabel.text = chartData.category.name
+            self.nameLabel.text = chartData.category?.name
             self.totalLabel.text = AmountFormatter.displayText(for: chartData.categoryTotal)
             
             if chartData.ratio > 0 {
@@ -95,7 +95,7 @@ class __HPVCDayCell: __HPVCChartCell {
         
         let nameLabel = UILabel()
         __HPVCChartCell.applyAttributes(toNameLabel: nameLabel)
-        nameLabel.text = chartData.category.name
+        nameLabel.text = chartData.category?.name
         let nameLabelWidth = cellWidth - (kPadding * 2 + kLabelSpacing + totalLabel.bounds.size.width)
         let nameLabelHeight = nameLabel.sizeThatFits(CGSize(width: nameLabelWidth, height: CGFloat.greatestFiniteMagnitude)).height
         

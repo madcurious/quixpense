@@ -248,8 +248,8 @@ extension ExpenseEditorVC: CategoryPickerVCDelegate {
          A category that does not exist in the main queue's MOC is a category that
          was added but not saved, so it should be deleted.
          */
-        if let category = self.expense.category,
-            App.allCategories.contains(category) == false {
+        if let category = self.expense.category {
+//            self.allCategories.contains(category) == false { // COMMENTED OUT FOR DEBUG
             self.managedObjectContext.delete(category)
         }
         

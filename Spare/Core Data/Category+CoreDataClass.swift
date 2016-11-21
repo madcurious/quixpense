@@ -11,5 +11,11 @@ import CoreData
 
 
 public class Category: NSManagedObject {
-
+    
+    class func fetchAll(inContext context: NSManagedObjectContext) throws -> [Category] {
+        let request = FetchRequestBuilder<Category>.makeTypedRequest()
+        let categories = try context.fetch(request).sorted(by: { return $0.expenses?.count ?? 0 > $1.expenses?.count ?? 0 })
+        return categories
+    }
+    
 }

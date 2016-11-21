@@ -55,33 +55,41 @@ class HomePageVC: MDOperationViewController {
     }
     
     override func makeOperation() -> MDOperation? {
-        return MDBlockOperation {
-            // Fetch all categories if still nil.
-            guard App.allCategories == nil
-                else {
-                    return nil
-            }
-            
-            let context = App.coreDataStack.viewContext
-            let request = FetchRequestBuilder<Category>.makeFetchRequest()
-            let categories = try context.fetch(request).sorted(by: { $0.expenses?.count ?? 0 > $1.expenses?.count ?? 0 })
-            return categories
-        }
-        .onSuccess({[unowned self] (result) in
-            if let categories = result as? [Category] {
-                App.allCategories = categories
-            }
-            
-            self.operationQueue.addOperation(
-                MakeChartDataOperation(pageData: self.pageData, periodization: App.selectedPeriodization)
-                .onSuccess({[unowned self] (result) in
-                    self.chartData = result as! [ChartData]
-                    self.collectionView.reloadData()
-                    
-                    self.updateView(forState: .displaying)
+//        return MDBlockOperation {
+//            // Fetch all categories if still nil.
+//            guard App.allCategories == nil
+//                else {
+//                    return nil
+//            }
+//            
+//            let context = App.coreDataStack.viewContext
+//            let request = FetchRequestBuilder<Category>.makeFetchRequest()
+//            let categories = try context.fetch(request).sorted(by: { $0.expenses?.count ?? 0 > $1.expenses?.count ?? 0 })
+//            return categories
+//        }
+//        .onSuccess({[unowned self] (result) in
+//            if let categories = result as? [Category] {
+//                App.allCategories = categories
+//            }
+//            
+//            self.operationQueue.addOperation(
+//                MakeChartDataOperation(pageData: self.pageData, periodization: App.selectedPeriodization)
+//                .onSuccess({[unowned self] (result) in
+//                    self.chartData = result as! [ChartData]
+//                    self.collectionView.reloadData()
+//                    
+//                    self.updateView(forState: .displaying)
+//                })
+//            )
+//        })
+        
+        return MakeChartDataOperation(pageData: self.pageData, periodization: App.selectedPeriodization)
+            .onSuccess({[unowned self] (result) in
+                self.chartData = result as! [ChartData]
+                self.collectionView.reloadData()
+                
+                self.updateView(forState: .displaying)
                 })
-            )
-        })
     }
     
 }
