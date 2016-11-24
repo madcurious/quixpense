@@ -106,7 +106,7 @@ extension HomePageVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let chartData = self.chartData[indexPath.item]
         let cellWidth = collectionView.bounds.size.width - kInset * 2
-        let height = kCellClasses[indexPath.item].height(for: chartData, atCellWidth: cellWidth)
+        let height = kCellClasses[App.selectedPeriodization.rawValue].height(for: chartData, atCellWidth: cellWidth)
         return CGSize(width: cellWidth, height: height)
     }
     
