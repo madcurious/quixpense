@@ -1,5 +1,5 @@
 //
-//  MakeChartDataOperation.swift
+//  MakePageDataOperation.swift
 //  Spare
 //
 //  Created by Matt Quiros on 07/11/2016.
@@ -10,18 +10,46 @@ import Foundation
 import Mold
 import CoreData
 
-class MakeChartDataOperation: MDOperation {
+class MakePageDataOperation: MDOperation {
     
-    let pageData: PageData
+    let dateRange: DateRange
     let periodization: Periodization
     
-    init(pageData: PageData, periodization: Periodization) {
-        self.pageData = pageData
+    init(dateRange: DateRange, periodization: Periodization) {
+        self.dateRange = dateRange
         self.periodization = periodization
     }
     
     override func makeResult(fromSource source: Any?) throws -> Any? {
+        // 1. First, compute for the total of all expenses in the date range.
+        // 2. Then, build the chart data for every category.
+        
+        // 1
+        
+        let request = FetchRequestBuilder<Expense>.makeGenericRequest()
+        request.predicate = NSPredicate(
+            format: "%K >= %@ AND %K <= %@",
+            #keyPath(Expense.dateSpent), dateRange.start as NSDate,
+            #keyPath(Expense.dateSpent), dateRange.end as NSDate
+        )
+        request.resultType = .dictionaryResultType
+        
+        let sumExpression = NSExpressionDescription()
+        sumExpression.name = "sum"
+        sumExpression.expression = NSExpression(forKeyPath: "@sum.amount")
+        sumExpression.expressionResultType = .decimalAttributeType
+        request.propertiesToFetch = [sumExpression]
+        
         let context = App.coreDataStack.newBackgroundContext()
+        guard let fetchResult = try context.fetch(request) as? [[String : NSDecimalNumber]],
+            let dict = fetchResult.first,
+            let dateRangeTotal = dict["sum"]
+            else {
+                return nil
+        }
+        
+        // 2
+        
         let categories = try Category.fetchAll(inContext: context)
         
         var chartData = [ChartData]()
@@ -30,12 +58,12 @@ class MakeChartDataOperation: MDOperation {
             var ratio = 0.0
             
             // Avoid division by zero.
-            if self.pageData.dateRangeTotal > 0 {
+            if dateRangeTotal > 0 {
                 let request = FetchRequestBuilder<Expense>.makeGenericRequest()
                 request.predicate = NSPredicate(
                     format: "%K >= %@ AND %K <= %@ AND %K == %@",
-                    #keyPath(Expense.dateSpent), self.pageData.dateRange.start as NSDate,
-                    #keyPath(Expense.dateSpent), self.pageData.dateRange.end as NSDate,
+                    #keyPath(Expense.dateSpent), self.dateRange.start as NSDate,
+                    #keyPath(Expense.dateSpent), self.dateRange.end as NSDate,
                     #keyPath(Expense.category), category
                 )
                 request.resultType = .dictionaryResultType
@@ -50,13 +78,13 @@ class MakeChartDataOperation: MDOperation {
                     let dict = array.first,
                     let sum = dict["sum"] {
                     categoryTotal = sum
-                    ratio = Double(categoryTotal / self.pageData.dateRangeTotal)
+                    ratio = Double(categoryTotal / dateRangeTotal)
                 }
             }
             
             let newChartData = ChartData(categoryID: category.objectID,
-                                         dateRange: self.pageData.dateRange,
-                                         dateRangeTotal: self.pageData.dateRangeTotal,
+                                         dateRange: self.dateRange,
+                                         dateRangeTotal: dateRangeTotal,
                                          categoryTotal: categoryTotal,
                                          ratio: ratio)
             chartData.append(newChartData)
@@ -66,7 +94,8 @@ class MakeChartDataOperation: MDOperation {
             }
         }
         
-        return chartData
+        let result = (dateRangeTotal, chartData)
+        return result
     }
     
 }

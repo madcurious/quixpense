@@ -1,5 +1,5 @@
 //
-//  MakePagesOperation.swift
+//  MakeDateRangesOperation.swift
 //  Spare
 //
 //  Created by Matt Quiros on 13/06/2016.
@@ -14,7 +14,7 @@ import CoreData
  Makes an array of date ranges. Each date range represents a single page
  in the home screen.
  */
-class MakePagesOperation: MDOperation {
+class MakeDateRangesOperation: MDOperation {
     
     var currentDate: Date
     var periodization: Periodization
@@ -39,51 +39,17 @@ class MakePagesOperation: MDOperation {
     }
     
     override func makeResult(fromSource source: Any?) throws -> Any? {
-        var pageData = [PageData]()
-        
-        // 1. For every i, generate the date range for the page.
-        // 2. Then, get the total of all expenses in the date range.
-
+        var dateRanges = [DateRange]()
         for i in 0 ..< self.count {
-            // 1
             let dateRange = self.dateRangeForPage(self.pageOffset + i)
-            
-            if self.isCancelled {
-                return nil
-            }
-            
-            // 2
-            
-            let request = FetchRequestBuilder<Expense>.makeGenericRequest()
-            request.predicate = NSPredicate(
-                format: "%K >= %@ AND %K <= %@",
-                #keyPath(Expense.dateSpent), dateRange.start as NSDate,
-                #keyPath(Expense.dateSpent), dateRange.end as NSDate
-            )
-            request.resultType = .dictionaryResultType
-            
-            let sumExpression = NSExpressionDescription()
-            sumExpression.name = "sum"
-            sumExpression.expression = NSExpression(forKeyPath: "@sum.amount")
-            sumExpression.expressionResultType = .decimalAttributeType
-            request.propertiesToFetch = [sumExpression]
-            
-            let context = App.coreDataStack.newBackgroundContext()
-            guard let result = try context.fetch(request) as? [[String : NSDecimalNumber]],
-                let dict = result.first,
-                let total = dict["sum"]
-                else {
-                    return nil
-            }
-            
-            let page = PageData(dateRange: dateRange, dateRangeTotal: total)
-            pageData.insert(page, at: 0)
+            dateRanges.insert(dateRange, at: 0)
             
             if self.isCancelled {
                 return nil
             }
         }
-        return pageData
+        
+        return dateRanges
     }
     
     func dateRangeForPage(_ page: Int) -> DateRange {

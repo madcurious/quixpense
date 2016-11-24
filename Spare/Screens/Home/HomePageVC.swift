@@ -24,11 +24,12 @@ class HomePageVC: MDFullOperationViewController {
     
     let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout())
     
-    var pageData: PageData
+    var dateRange: DateRange
+    var dateRangeTotal = NSDecimalNumber(value: 0)
     var chartData = [ChartData]()
     
-    init(pageData: PageData) {
-        self.pageData = pageData
+    init(dateRange: DateRange) {
+        self.dateRange = dateRange
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -62,9 +63,11 @@ class HomePageVC: MDFullOperationViewController {
     }
     
     override func makeOperation() -> MDOperation? {
-        return MakeChartDataOperation(pageData: self.pageData, periodization: App.selectedPeriodization)
+        return MakePageDataOperation(dateRange: self.dateRange, periodization: App.selectedPeriodization)
             .onSuccess({[unowned self] (result) in
-                self.chartData = result as! [ChartData]
+                let (dateRangeTotal, chartData) = result as! (NSDecimalNumber, [ChartData])
+                self.dateRangeTotal = dateRangeTotal
+                self.chartData = chartData
                 self.collectionView.reloadData()
                 self.updateView(forState: .displaying)
                 })
@@ -84,7 +87,7 @@ extension HomePageVC: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: ViewID.headerView.rawValue, for: indexPath) as! __HPVCHeaderView
-        headerView.data = self.pageData
+        headerView.data = (self.dateRange, self.dateRangeTotal)
         return headerView
     }
     

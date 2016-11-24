@@ -14,7 +14,7 @@ class __HPVCHeaderView: UICollectionReusableView {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
     
-    var data: PageData? {
+    var data: (dateRange: DateRange, dateRangeTotal: NSDecimalNumber)? {
         didSet {
             defer {
                 self.setNeedsLayout()
