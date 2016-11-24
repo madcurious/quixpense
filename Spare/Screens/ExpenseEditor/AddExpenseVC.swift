@@ -8,6 +8,7 @@
 
 import UIKit
 import Mold
+import FTIndicator
 
 class AddExpenseVC: BaseFormVC {
     
@@ -51,6 +52,7 @@ class AddExpenseVC: BaseFormVC {
                         
                         MDDispatcher.asyncRunInMainThread {[unowned self] in
                             self.editor.reset()
+                            FTIndicator.showSuccess(withMessage: "Saved expense")
                         }
                         })
                     })

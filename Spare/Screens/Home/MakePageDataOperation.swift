@@ -87,6 +87,8 @@ class MakePageDataOperation: MDOperation {
             }
         }
         
+        chartData.sort(by: { $0.categoryTotal > $1.categoryTotal })
+        
         let result = (dateRangeTotal, chartData)
         return result
     }

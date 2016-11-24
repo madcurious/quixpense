@@ -21,25 +21,18 @@ public class Category: NSManagedObject {
     }
     
     /**
-     Fetches all categories as the `Category` managed object subclass, and optionally sorts them
-     by most popular first. The more expenses there are in a category, the more popular it is.
-     
-     By default, `sorted` is `true` since getting the categories as `Category` objects almost always
-     means that the order matters. When it doesn't, categories are fetched by ID only.
+     Fetches all categories as the `Category` managed object subclass, sorted by most popular first.
+     The more expenses there are in a category, the more popular it is.
      */
-    class func fetchAll(inContext context: NSManagedObjectContext, sorted: Bool = true) throws -> [Category] {
+    class func fetchAll(inContext context: NSManagedObjectContext) throws -> [Category] {
         let request = FetchRequestBuilder<Category>.makeTypedRequest()
-        let categories = try context.fetch(request)
-        
-        if sorted {
-            return categories.sorted(by: { return $0.expenses?.count ?? 0 > $1.expenses?.count ?? 0 })
-        } else {
-            return categories
-        }
+        var categories = try context.fetch(request)
+        categories.sort(by: { return $0.expenses?.count ?? 0 > $1.expenses?.count ?? 0 })
+        return categories
     }
     
     class func fetchAllIDs(inContext context: NSManagedObjectContext) throws -> [NSManagedObjectID] {
-        return try self.fetchAll(inContext: context, sorted: false).map({ $0.objectID })
+        return try self.fetchAll(inContext: context).map({ $0.objectID })
     }
     
 }

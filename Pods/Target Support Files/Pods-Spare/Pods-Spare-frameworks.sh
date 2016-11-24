@@ -84,10 +84,12 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "$BUILT_PRODUCTS_DIR/FTIndicator/FTIndicator.framework"
   install_framework "$BUILT_PRODUCTS_DIR/FrameAccessor/FrameAccessor.framework"
   install_framework "$BUILT_PRODUCTS_DIR/VENTokenField/VENTokenField.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "$BUILT_PRODUCTS_DIR/FTIndicator/FTIndicator.framework"
   install_framework "$BUILT_PRODUCTS_DIR/FrameAccessor/FrameAccessor.framework"
   install_framework "$BUILT_PRODUCTS_DIR/VENTokenField/VENTokenField.framework"
 fi

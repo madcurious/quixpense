@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import Mold
+import FTIndicator
 
 private enum ViewID: String {
     case KeypadCell = "KeypadCell"
@@ -76,7 +77,7 @@ class ExpenseEditorVC: UIViewController {
         }
         
         // Dismiss the keyboard when the user taps anywhere in the view.
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapOnView))
         tapGesture.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tapGesture)
         
@@ -259,6 +260,11 @@ extension ExpenseEditorVC {
     
     func handleTapOnSubcategoriesButton() {
         
+    }
+    
+    func handleTapOnView() {
+        self.dismissKeyboard()
+        FTProgressIndicator.dismiss()
     }
     
 }
