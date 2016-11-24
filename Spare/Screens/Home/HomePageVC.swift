@@ -54,6 +54,11 @@ class HomePageVC: MDFullOperationViewController {
         
         let flowLayout = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         flowLayout.scrollDirection = .vertical
+        
+        // The page should re-run the operation when:
+        // 1. A new category was added.
+        // 2. A new expense was added into its date range.
+        
     }
     
     override func makeOperation() -> MDOperation? {

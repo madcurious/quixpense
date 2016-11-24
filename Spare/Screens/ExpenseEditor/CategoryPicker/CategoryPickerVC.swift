@@ -23,7 +23,7 @@ class CategoryPickerVC: MDOperationViewController {
     
     let customView = __CPVCView.instantiateFromNib()
     
-    var allCategories = [Category]()
+    var allCategories = Category.fetchAllInViewContext()
     var displayedCategories = [Category]()
     
     var delegate: CategoryPickerVCDelegate?
@@ -43,12 +43,12 @@ class CategoryPickerVC: MDOperationViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.updateView(forState: .initial)
-        
         self.customView.tableView.register(SlideUpPickerCell.nib(), forCellReuseIdentifier: ViewID.categoryCell.rawValue)
         self.customView.tableView.register(CategoryPickerAddCategoryCell.self, forCellReuseIdentifier: ViewID.addCategoryCell.rawValue)
         self.customView.tableView.dataSource = self
         self.customView.tableView.delegate = self
+        
+        self.updateView(forState: .initial)
         
         // Dismissal tap
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapOnDimView))
@@ -79,7 +79,7 @@ class CategoryPickerVC: MDOperationViewController {
         
         switch state {
         case .initial:
-//            self.categories = App.allCategories // COMMENTED OUT FOR DEBUG
+            self.displayedCategories = self.allCategories
             self.customView.tableView.reloadData()
             
         case .displaying:
@@ -177,7 +177,7 @@ extension CategoryPickerVC {
         if md_nonEmptyString(self.customView.textField.text) != nil {
             self.runOperation()
         } else {
-//            self.displayedCategories = App.allCategories // COMMENTED OUT FOR DEBUG
+            self.displayedCategories = self.allCategories
             self.customView.tableView.reloadData()
         }
     }

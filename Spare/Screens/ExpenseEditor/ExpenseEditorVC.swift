@@ -33,7 +33,7 @@ class ExpenseEditorVC: UIViewController {
     let amountFormatter = NumberFormatter()
     dynamic var unformattedAmount = ""
     
-    let customPickerAnimator = SlideUpPickerTransitioningDelegate()
+    let pickerAnimator = SlideUpPickerTransitioningDelegate()
     
     init(expense: Expense?) {
         if let objectID = expense?.objectID,
@@ -61,10 +61,12 @@ class ExpenseEditorVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Set the amount formatter's starting configuration.
         self.amountFormatter.numberStyle = .currency
         self.amountFormatter.currencySymbol = ""
         self.amountFormatter.usesGroupingSeparator = true
         
+        // Add KVO hooks between the model and the view.
         self.addObserver(self, forKeyPath: #keyPath(ExpenseEditorVC.unformattedAmount), options: [.initial, .new], context: nil)
         self.setupKVO(for: self.expense)
         
@@ -73,19 +75,21 @@ class ExpenseEditorVC: UIViewController {
             self.customView.noteTextField.text = note
         }
         
+        // Dismiss the keyboard when the user taps anywhere in the view.
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tapGesture.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tapGesture)
         
+        // Setup the keypad collection view.
         self.customView.keypadCollectionView.dataSource = self
         self.customView.keypadCollectionView.delegate = self
         self.customView.keypadCollectionView.register(__EEVCKeypadCell.self, forCellWithReuseIdentifier: ViewID.KeypadCell.rawValue)
         
+        // Add actions to the controls in the view.
         self.customView.categoryButton.addTarget(self, action: #selector(handleTapOnCategoryButton), for: .touchUpInside)
         self.customView.dateButton.addTarget(self, action: #selector(handleTapOnDateButton), for: .touchUpInside)
         self.customView.paymentMethodSegmentedControl.addTarget(self, action: #selector(handleChangeOnPaymentMethod), for: .valueChanged)
         self.customView.subcategoriesButton.addTarget(self, action: #selector(handleTapOnSubcategoriesButton), for: .touchUpInside)
-        
         self.customView.noteTextField.delegate = self
     }
     
@@ -112,9 +116,31 @@ class ExpenseEditorVC: UIViewController {
         self.amountFormatter.minimumFractionDigits = 0
     }
     
+    /**
+     Deletes an unsaved new category from the context.
+     
+     A new category is only created when the expense that added it is saved. If the user adds a new
+     category, then changes the category to an existing one instead, then the new Category object
+     must be deleted from the context so that it is not saved into the persistent store.
+     */
+    func deleteUnsavedCategory() {
+        // Get all the officially saved categories.
+        let allCategoryIDs = Category.fetchAllIDsInViewContext()
+        
+        // Checking for whether the view context contains the category should depend on the NSManagedObjectID and
+        // not the Category class because we are checking between two MOCs.
+        // The contains function returns a false even when the view context contains a category in this editor's MOC
+        // just because they are different contexts.
+        if let category = self.expense.category,
+            allCategoryIDs.contains(category.objectID) == false {
+            self.managedObjectContext.delete(category)
+        }
+    }
+    
     deinit {
         self.removeObserver(self, forKeyPath: #keyPath(ExpenseEditorVC.unformattedAmount))
         self.removeKVO(for: self.expense)
+        NotificationCenter.default.removeObserver(self)
     }
     
 }
@@ -216,13 +242,13 @@ extension ExpenseEditorVC {
     func handleTapOnCategoryButton() {
         let picker = CategoryPickerVC()
         picker.delegate = self
-        picker.setCustomTransitioningDelegate(self.customPickerAnimator)
+        picker.setCustomTransitioningDelegate(self.pickerAnimator)
         self.present(picker, animated: true, completion: nil)
     }
     
     func handleTapOnDateButton() {
         let datePicker = DatePickerVC(selectedDate: self.expense.dateSpent! as Date, delegate: self)
-        datePicker.setCustomTransitioningDelegate(self.customPickerAnimator)
+        datePicker.setCustomTransitioningDelegate(self.pickerAnimator)
         self.present(datePicker, animated: true, completion: nil)
     }
     
@@ -241,18 +267,7 @@ extension ExpenseEditorVC {
 extension ExpenseEditorVC: CategoryPickerVCDelegate {
     
     func categoryPickerDidTapAddCategory(categoryName: String) {
-        /*
-         New categories are only saved if the expense itself was saved. Otherwise, they
-         should be deleted.
-         
-         A category that does not exist in the main queue's MOC is a category that
-         was added but not saved, so it should be deleted.
-         */
-        if let category = self.expense.category {
-//            self.allCategories.contains(category) == false { // COMMENTED OUT FOR DEBUG
-            self.managedObjectContext.delete(category)
-        }
-        
+        self.deleteUnsavedCategory()
         let category = Category(entity: Category.entity(), insertInto: self.managedObjectContext)
         category.name = categoryName
         self.expense.category = category
@@ -261,6 +276,7 @@ extension ExpenseEditorVC: CategoryPickerVCDelegate {
     }
     
     func categoryPickerDidSelectCategory(category: Category) {
+        self.deleteUnsavedCategory()
         self.expense.category = self.managedObjectContext.object(with: category.objectID) as? Category
         self.dismiss(animated: true, completion: nil)
     }
