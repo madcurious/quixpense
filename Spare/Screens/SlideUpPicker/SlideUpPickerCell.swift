@@ -22,11 +22,11 @@ class SlideUpPickerCell: UITableViewCell {
     static let ItemLabelTop = CGFloat(10)
     static let ItemLabelBottom = CGFloat(10)
     
-    static let sizerLabel: UILabel = {
-        let label = UILabel()
-        SlideUpPickerCell.applyItemLabelAttributes(label)
-        return label
-    }()
+    var isChecked = false {
+        didSet {
+            self.checkLabel.isHidden = self.isChecked == false
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -35,7 +35,8 @@ class SlideUpPickerCell: UITableViewCell {
         
         self.checkLabel.text = Icon.Check.rawValue
         self.checkLabel.textColor = Color.CustomPickerTextColor
-        self.checkLabel.font = Font.makeIcon(size: 20)
+        self.checkLabel.font = Font.makeIcon(size: 14)
+        self.checkLabel.isHidden = true
         
         SlideUpPickerCell.applyItemLabelAttributes(self.itemLabel)
     }

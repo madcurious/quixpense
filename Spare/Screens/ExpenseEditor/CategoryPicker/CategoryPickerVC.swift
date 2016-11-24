@@ -8,6 +8,7 @@
 
 import UIKit
 import Mold
+import CoreData
 
 protocol CategoryPickerVCDelegate {
     func categoryPickerDidTapAddCategory(categoryName: String)
@@ -25,11 +26,19 @@ class CategoryPickerVC: MDOperationViewController {
     
     var allCategories = Category.fetchAllInViewContext()
     var displayedCategories = [Category]()
+    var selectedCategoryIndex: Int?
+    var selectedCategoryID: NSManagedObjectID?
     
     var delegate: CategoryPickerVCDelegate?
     
-    init() {
+    init(selectedCategoryID: NSManagedObjectID?) {
         super.init(nibName: nil, bundle: nil)
+        
+        self.selectedCategoryID = selectedCategoryID
+        if let selectedCategoryID = selectedCategoryID,
+            let index = self.allCategories.index(where: { $0.objectID == selectedCategoryID }) {
+            self.selectedCategoryIndex = index
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -99,6 +108,10 @@ class CategoryPickerVC: MDOperationViewController {
         return SearchCategoryOperation(searchText: searchText)
             .onSuccess({[unowned self] result in
                 self.displayedCategories = result as! [Category]
+                
+                // If the selected category is in the search results, keep it checked upon reloadData().
+                self.selectedCategoryIndex = self.displayedCategories.index(where: { $0.objectID == self.selectedCategoryID })
+                
                 self.updateView(forState: .displaying)
                 })
     }
@@ -169,25 +182,18 @@ extension CategoryPickerVC {
         })
     }
     
-//    func handleTextFieldBeganEditing() {
-//        self.isTypingACategory = true
-//    }
-    
     func handleTextFieldTextChanged() {
         if md_nonEmptyString(self.customView.textField.text) != nil {
             self.runOperation()
         } else {
             self.displayedCategories = self.allCategories
+            
+            // Update the selected index by finding the category in the allCategories array.
+            self.selectedCategoryIndex = self.allCategories.index(where: { $0.objectID == self.selectedCategoryID })
+            
             self.customView.tableView.reloadData()
         }
     }
-    
-//    func handleTextFieldFinishedEditing() {
-//        self.isTypingACategory = false
-//        
-//        self.categories = App.allCategories
-//        self.customView.tableView.reloadData()
-//    }
     
 }
 
@@ -202,15 +208,6 @@ extension CategoryPickerVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        switch self.isTypingACategory {
-//        case true where section == 0 &&
-//            md_nonEmptyString(self.customView.textField.text) != nil:
-//            return 1
-//            
-//        default:
-//            return self.categories.count
-//        }
-        
         if md_nonEmptyString(self.customView.textField.text) != nil &&
             section == 0 {
             return 1
@@ -228,6 +225,7 @@ extension CategoryPickerVC: UITableViewDataSource {
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: ViewID.categoryCell.rawValue) as! SlideUpPickerCell
             cell.itemLabel.text = self.displayedCategories[indexPath.row].name
+            cell.isChecked = self.selectedCategoryIndex == indexPath.row
             return cell
         }
     }
@@ -246,6 +244,16 @@ extension CategoryPickerVC: UITableViewDelegate {
             indexPath.section == 0 {
             self.delegate?.categoryPickerDidTapAddCategory(categoryName: categoryName)
         } else {
+            let oldIndex = self.selectedCategoryIndex
+            self.selectedCategoryIndex = indexPath.row
+            tableView.reloadRows(at: {
+                if let oldIndex = oldIndex,
+                    indexPath.row != oldIndex {
+                    return [indexPath, IndexPath(row: oldIndex, section: indexPath.section)]
+                }
+                return [indexPath]
+                }(), with: .automatic)
+            
             self.delegate?.categoryPickerDidSelectCategory(category: self.displayedCategories[indexPath.row])
         }
     }

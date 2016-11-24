@@ -19,7 +19,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vv9-rO-ftP">
                             <color key="backgroundColor" red="1" green="0.22098938130000001" blue="0.20376318839999999" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="50" id="N8u-zn-eKb"/>
+                                <constraint firstAttribute="width" constant="40" id="N8u-zn-eKb"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n08-Gi-isV">

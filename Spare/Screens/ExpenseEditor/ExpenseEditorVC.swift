@@ -241,7 +241,7 @@ extension ExpenseEditorVC {
 extension ExpenseEditorVC {
     
     func handleTapOnCategoryButton() {
-        let picker = CategoryPickerVC()
+        let picker = CategoryPickerVC(selectedCategoryID: self.expense.category?.objectID)
         picker.delegate = self
         picker.setCustomTransitioningDelegate(self.pickerAnimator)
         self.present(picker, animated: true, completion: nil)
