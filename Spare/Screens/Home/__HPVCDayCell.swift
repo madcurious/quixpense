@@ -121,14 +121,19 @@ class __HPVCPieChart: UIView {
         let center = CGPoint(x: rect.size.width / 2, y: rect.size.height / 2)
         let insetRect = rect.insetBy(dx: 1, dy: 1)
         let radius = insetRect.height / 2
-        let startAngle = CGFloat(M_PI_2)
+        let startAngle = CGFloat(-M_PI_2)
         let endAngle = startAngle + CGFloat(2 * M_PI * self.ratio)
         
-        let fillPath = UIBezierPath(arcCenter: center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
+        let fillPath = UIBezierPath()
+        fillPath.move(to: center)
+        fillPath.addArc(withCenter: center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
+        fillPath.close()
         context.setFillColor(UIColor(hex: 0xd8d8d8).cgColor)
         fillPath.fill()
         
-        let emptyPath = UIBezierPath(arcCenter: center, radius: radius, startAngle: endAngle, endAngle: startAngle, clockwise: true)
+        let emptyPath = UIBezierPath()
+        emptyPath.move(to: center)
+        emptyPath.addArc(withCenter: center, radius: radius, startAngle: endAngle, endAngle: startAngle, clockwise: true)
         context.setFillColor(UIColor(hex: 0x4e4e4e).cgColor)
         emptyPath.fill()
     }

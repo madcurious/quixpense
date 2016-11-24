@@ -41,12 +41,8 @@ class MakePageDataOperation: MDOperation {
         request.propertiesToFetch = [sumExpression]
         
         let context = App.coreDataStack.newBackgroundContext()
-        guard let fetchResult = try context.fetch(request) as? [[String : NSDecimalNumber]],
-            let dict = fetchResult.first,
-            let dateRangeTotal = dict["sum"]
-            else {
-                return nil
-        }
+        let fetchResult = try! context.fetch(request) as! [[String : NSDecimalNumber]]
+        let dateRangeTotal = fetchResult.first!["sum"] ?? 0
         
         // 2
         
@@ -55,7 +51,6 @@ class MakePageDataOperation: MDOperation {
         var chartData = [ChartData]()
         for category in categories {
             var categoryTotal = NSDecimalNumber(value: 0)
-            var ratio = 0.0
             
             // Avoid division by zero.
             if dateRangeTotal > 0 {
@@ -78,15 +73,13 @@ class MakePageDataOperation: MDOperation {
                     let dict = array.first,
                     let sum = dict["sum"] {
                     categoryTotal = sum
-                    ratio = Double(categoryTotal / dateRangeTotal)
                 }
             }
             
             let newChartData = ChartData(categoryID: category.objectID,
                                          dateRange: self.dateRange,
                                          dateRangeTotal: dateRangeTotal,
-                                         categoryTotal: categoryTotal,
-                                         ratio: ratio)
+                                         categoryTotal: categoryTotal)
             chartData.append(newChartData)
             
             if self.isCancelled {

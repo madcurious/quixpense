@@ -8,6 +8,7 @@
 
 import UIKit
 import Mold
+import CoreData
 
 fileprivate enum ViewID: String {
     case headerView = "headerView"
@@ -56,10 +57,9 @@ class HomePageVC: MDFullOperationViewController {
         let flowLayout = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         flowLayout.scrollDirection = .vertical
         
-        // The page should re-run the operation when:
-        // 1. A new category was added.
-        // 2. A new expense was added into its date range.
-        
+        // The page should re-run the operation whenever an MOC saves.
+        let system = NotificationCenter.default
+        system.addObserver(self, selector: #selector(handleContextDidSaveNotification(notification:)), name: Notification.Name.NSManagedObjectContextDidSave, object: nil)
     }
     
     override func makeOperation() -> MDOperation? {
@@ -71,6 +71,22 @@ class HomePageVC: MDFullOperationViewController {
                 self.collectionView.reloadData()
                 self.updateView(forState: .displaying)
                 })
+    }
+    
+    func handleContextDidSaveNotification(notification: Notification) {
+        guard notification.name == Notification.Name.NSManagedObjectContextDidSave
+            else {
+                return
+        }
+        
+        // I initially put a checker to re-run only when a Category or Expense is updated,
+        // but inserting/updating/deleting an Expense also includes its Category in the userInfo,
+        // so the re-run will be triggered almost always whenever there's a save.
+        self.runOperation()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
 }

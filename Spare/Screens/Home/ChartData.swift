@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import Mold
 
 struct ChartData {
     
@@ -15,7 +16,14 @@ struct ChartData {
     var dateRange: DateRange
     var dateRangeTotal: NSDecimalNumber
     var categoryTotal: NSDecimalNumber
-    var ratio: Double
+    
+    var ratio: Double {
+        guard self.dateRangeTotal > 0
+            else {
+                return 0
+        }
+        return Double(self.categoryTotal / self.dateRangeTotal)
+    }
     
     var category: Category? {
         return App.mainQueueContext.object(with: self.categoryID) as? Category
