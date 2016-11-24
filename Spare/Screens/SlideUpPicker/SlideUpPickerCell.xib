@@ -9,11 +9,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="120" id="qGy-M9-qR9" customClass="CustomPickerCell" customModule="Spare" customModuleProvider="target">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="120" id="qGy-M9-qR9" customClass="SlideUpPickerCell" customModule="Spare" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qGy-M9-qR9" id="BGI-2U-xGL">
-                <frame key="frameInset" width="320" height="119.5"/>
+                <frame key="frameInset" width="320" height="119"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iYE-5C-adv">
@@ -53,7 +53,7 @@
                 <outlet property="itemLabelLeading" destination="RRC-X7-aqe" id="FBw-CU-UmK"/>
                 <outlet property="itemLabelTrailing" destination="ZAC-KK-OAr" id="wFz-wh-w7B"/>
             </connections>
-            <point key="canvasLocation" x="257" y="250"/>
+            <point key="canvasLocation" x="-160" y="-160"/>
         </tableViewCell>
     </objects>
 </document>

@@ -21,7 +21,7 @@ fileprivate enum ViewID: String {
 
 class CategoryPickerVC: MDOperationViewController {
     
-    let customView = __CategoryPickerVCView.instantiateFromNib()
+    let customView = __CPVCView.instantiateFromNib()
     
     var allCategories = [Category]()
     var displayedCategories = [Category]()
@@ -45,7 +45,7 @@ class CategoryPickerVC: MDOperationViewController {
         
         self.updateView(forState: .initial)
         
-        self.customView.tableView.register(CustomPickerCell.nib(), forCellReuseIdentifier: ViewID.categoryCell.rawValue)
+        self.customView.tableView.register(SlideUpPickerCell.nib(), forCellReuseIdentifier: ViewID.categoryCell.rawValue)
         self.customView.tableView.register(CategoryPickerAddCategoryCell.self, forCellReuseIdentifier: ViewID.addCategoryCell.rawValue)
         self.customView.tableView.dataSource = self
         self.customView.tableView.delegate = self
@@ -226,7 +226,7 @@ extension CategoryPickerVC: UITableViewDataSource {
             return cell
             
         default:
-            let cell = tableView.dequeueReusableCell(withIdentifier: ViewID.categoryCell.rawValue) as! CustomPickerCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: ViewID.categoryCell.rawValue) as! SlideUpPickerCell
             cell.itemLabel.text = self.displayedCategories[indexPath.row].name
             return cell
         }
@@ -255,7 +255,7 @@ extension CategoryPickerVC: UITableViewDelegate {
 /*
 class CategoryPickerVC: UIViewController {
     
-    let customView = __CategoryPickerVCView.instantiateFromNib()
+    let customView = __CPVCView.instantiateFromNib()
     
     var categories = [Category]()
     var isTypingACategory = false
@@ -279,7 +279,7 @@ class CategoryPickerVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.customView.tableView.register(CustomPickerCell.nib(), forCellReuseIdentifier: ViewID.categoryCell.rawValue)
+        self.customView.tableView.register(SlideUpPickerCell.nib(), forCellReuseIdentifier: ViewID.categoryCell.rawValue)
         self.customView.tableView.register(CategoryPickerAddCategoryCell.self, forCellReuseIdentifier: ViewID.addCategoryCell.rawValue)
         self.customView.tableView.dataSource = self
         self.customView.tableView.delegate = self
@@ -444,7 +444,7 @@ extension CategoryPickerVC: UITableViewDataSource {
             return cell
             
         default:
-            let cell = tableView.dequeueReusableCell(withIdentifier: ViewID.categoryCell.rawValue) as! CustomPickerCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: ViewID.categoryCell.rawValue) as! SlideUpPickerCell
             cell.itemLabel.text = self.categories[indexPath.row].name
             return cell
         }

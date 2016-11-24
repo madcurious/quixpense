@@ -1,5 +1,5 @@
 //
-//  CustomPickerTransitioningDelegate.swift
+//  SlideUpPickerTransitioningDelegate.swift
 //  Spare
 //
 //  Created by Matt Quiros on 15/08/2016.
@@ -8,14 +8,14 @@
 
 import UIKit
 
-class CustomPickerTransitioningDelegate: NSObject, UIViewControllerTransitioningDelegate {
+class SlideUpPickerTransitioningDelegate: NSObject, UIViewControllerTransitioningDelegate {
     
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return CustomPickerPresentationAnimator()
+        return SlideUpPickerPresentationAnimator()
     }
     
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return CustomPickerDismissalAnimator()
+        return SlideUpPickerDismissalAnimator()
     }
     
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class __DPVCView: CustomPickerView {
+class __DPVCView: SlideUpPickerView {
     
     @IBOutlet weak var selectedDateLabel: UILabel!
     @IBOutlet weak var arrowContainer: UIView!

@@ -1,5 +1,5 @@
 //
-//  __CategoryPickerVCView.swift
+//  __CPVCView.swift
 //  Spare
 //
 //  Created by Matt Quiros on 19/10/2016.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class __CategoryPickerVCView: CustomPickerView {
+class __CPVCView: SlideUpPickerView {
     
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var borderView: UIView!

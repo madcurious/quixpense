@@ -1,5 +1,5 @@
 //
-//  CustomPickerView.swift
+//  SlideUpPickerView.swift
 //  Spare
 //
 //  Created by Matt Quiros on 21/08/2016.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CustomPickerView: UIView {
+class SlideUpPickerView: UIView {
     
     @IBOutlet weak var dimView: UIView!
     @IBOutlet weak var mainContainer: UIView!
@@ -18,7 +18,6 @@ class CustomPickerView: UIView {
         
         self.backgroundColor = UIColor.clear
         self.dimView.backgroundColor = UIColor.black
-//        self.mainContainer.backgroundColor = UIColor.white
     }
     
 }

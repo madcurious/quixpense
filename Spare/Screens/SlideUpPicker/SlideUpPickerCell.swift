@@ -1,5 +1,5 @@
 //
-//  CustomPickerCell.swift
+//  SlideUpPickerCell.swift
 //  Spare
 //
 //  Created by Matt Quiros on 14/08/2016.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CustomPickerCell: UITableViewCell {
+class SlideUpPickerCell: UITableViewCell {
     
     @IBOutlet weak var emptyView: UIView!
     @IBOutlet weak var checkLabel: UILabel!
@@ -24,7 +24,7 @@ class CustomPickerCell: UITableViewCell {
     
     static let sizerLabel: UILabel = {
         let label = UILabel()
-        CustomPickerCell.applyItemLabelAttributes(label)
+        SlideUpPickerCell.applyItemLabelAttributes(label)
         return label
     }()
     
@@ -37,12 +37,12 @@ class CustomPickerCell: UITableViewCell {
         self.checkLabel.textColor = Color.CustomPickerTextColor
         self.checkLabel.font = Font.makeIcon(size: 20)
         
-        CustomPickerCell.applyItemLabelAttributes(self.itemLabel)
+        SlideUpPickerCell.applyItemLabelAttributes(self.itemLabel)
     }
     
     override func updateConstraints() {
-        self.itemLabelLeading.constant = CustomPickerCell.ItemLabelLeading
-        self.itemLabelTrailing.constant = CustomPickerCell.ItemLabelTrailing
+        self.itemLabelLeading.constant = SlideUpPickerCell.ItemLabelLeading
+        self.itemLabelTrailing.constant = SlideUpPickerCell.ItemLabelTrailing
         
         super.updateConstraints()
     }

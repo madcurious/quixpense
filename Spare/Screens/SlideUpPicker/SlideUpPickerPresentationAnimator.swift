@@ -1,5 +1,5 @@
 //
-//  CustomPickerPresentationAnimator.swift
+//  SlideUpPickerPresentationAnimator.swift
 //  Spare
 //
 //  Created by Matt Quiros on 15/08/2016.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CustomPickerPresentationAnimator: NSObject, UIViewControllerAnimatedTransitioning {
+class SlideUpPickerPresentationAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return Duration.Animation
@@ -16,7 +16,7 @@ class CustomPickerPresentationAnimator: NSObject, UIViewControllerAnimatedTransi
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         guard let toVC = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to),
-            let toView = transitionContext.view(forKey: UITransitionContextViewKey.to) as? CustomPickerView
+            let toView = transitionContext.view(forKey: UITransitionContextViewKey.to) as? SlideUpPickerView
             else {
                 return
         }

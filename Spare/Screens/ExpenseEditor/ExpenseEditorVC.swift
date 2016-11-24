@@ -33,7 +33,7 @@ class ExpenseEditorVC: UIViewController {
     let amountFormatter = NumberFormatter()
     dynamic var unformattedAmount = ""
     
-    let customPickerAnimator = CustomPickerTransitioningDelegate()
+    let customPickerAnimator = SlideUpPickerTransitioningDelegate()
     
     init(expense: Expense?) {
         if let objectID = expense?.objectID,

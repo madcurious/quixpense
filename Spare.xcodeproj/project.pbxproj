@@ -65,21 +65,13 @@
 		2669AB041D7C302700DDA321 /* AmountFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2669AB031D7C302700DDA321 /* AmountFormatter.swift */; };
 		266CBDB41D2676D900F5D5D1 /* EditExpenseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266CBDB31D2676D900F5D5D1 /* EditExpenseVC.swift */; };
 		267804131DB72AB200B29873 /* CategoryPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267804121DB72AB200B29873 /* CategoryPickerVC.swift */; };
-		267804151DB72BF000B29873 /* __CategoryPickerVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267804141DB72BF000B29873 /* __CategoryPickerVCView.swift */; };
-		267804171DB72C0100B29873 /* __CategoryPickerVCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 267804161DB72C0100B29873 /* __CategoryPickerVCView.xib */; };
+		267804151DB72BF000B29873 /* __CPVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267804141DB72BF000B29873 /* __CPVCView.swift */; };
+		267804171DB72C0100B29873 /* __CPVCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 267804161DB72C0100B29873 /* __CPVCView.xib */; };
 		267804191DB78E1D00B29873 /* CategoryPickerAddCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267804181DB78E1D00B29873 /* CategoryPickerAddCategoryCell.swift */; };
 		2685D6D71D7C397200ED778E /* PercentFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2685D6D61D7C397200ED778E /* PercentFormatter.swift */; };
 		2687FA3C1D0EC46F00D544F5 /* MakePagesOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2687FA3B1D0EC46F00D544F5 /* MakePagesOperation.swift */; };
 		268D39A71DC70E67005EBC4B /* __HPVCHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 268D39A61DC70E67005EBC4B /* __HPVCHeaderView.xib */; };
 		268D39A91DC70EBD005EBC4B /* __HPVCHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268D39A81DC70EBD005EBC4B /* __HPVCHeaderView.swift */; };
-		268F47F41D60D24D0088AC6B /* CustomPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F47EF1D60D24D0088AC6B /* CustomPickerCell.swift */; };
-		268F47F51D60D24D0088AC6B /* CustomPickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 268F47F01D60D24D0088AC6B /* CustomPickerCell.xib */; };
-		268F47F61D60D24D0088AC6B /* CustomPickerHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F47F11D60D24D0088AC6B /* CustomPickerHeader.swift */; };
-		268F47F71D60D24D0088AC6B /* CustomPickerHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 268F47F21D60D24D0088AC6B /* CustomPickerHeader.xib */; };
-		268F47F81D60D24E0088AC6B /* CustomPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F47F31D60D24D0088AC6B /* CustomPickerVC.swift */; };
-		268F47FB1D60D26D0088AC6B /* __CPVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F47F91D60D26D0088AC6B /* __CPVCView.swift */; };
-		268F47FC1D60D26D0088AC6B /* __CPVCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 268F47FA1D60D26D0088AC6B /* __CPVCView.xib */; };
-		268F47FE1D60D2900088AC6B /* CustomPickerPresentationAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F47FD1D60D2900088AC6B /* CustomPickerPresentationAnimator.swift */; };
 		268F480D1D60D3490088AC6B /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F48021D60D3490088AC6B /* Color.swift */; };
 		268F480E1D60D3490088AC6B /* Duration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F48031D60D3490088AC6B /* Duration.swift */; };
 		268F48111D60D3490088AC6B /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F48061D60D3490088AC6B /* Font.swift */; };
@@ -87,12 +79,9 @@
 		268F48131D60D3490088AC6B /* PaymentMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F48081D60D3490088AC6B /* PaymentMethod.swift */; };
 		268F48141D60D3490088AC6B /* Periodization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F48091D60D3490088AC6B /* Periodization.swift */; };
 		268F48151D60D3490088AC6B /* StartOfWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F480A1D60D3490088AC6B /* StartOfWeek.swift */; };
-		268F48191D60D3DE0088AC6B /* CustomPickerTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F48181D60D3DE0088AC6B /* CustomPickerTransitioningDelegate.swift */; };
-		268F481E1D60DE020088AC6B /* CustomPickerDismissalAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F481D1D60DE020088AC6B /* CustomPickerDismissalAnimator.swift */; };
 		269D49F81CE1610100109990 /* ExpenseEditorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269D49F11CE1610100109990 /* ExpenseEditorVC.swift */; };
 		269D49FC1CE1643A00109990 /* AddExpenseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269D49FB1CE1643A00109990 /* AddExpenseVC.swift */; };
 		269E7E101D68C96000476870 /* MonthPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269E7E0F1D68C96000476870 /* MonthPageVC.swift */; };
-		269E7E121D69985D00476870 /* CustomPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269E7E111D69985D00476870 /* CustomPickerView.swift */; };
 		269FF08A1DE2F4A70021230B /* GetAllCategoryIDsOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269FF0891DE2F4A70021230B /* GetAllCategoryIDsOperation.swift */; };
 		26A1CB3D1DD0A2F600DAE89E /* __HPVCChartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A1CB3C1DD0A2F600DAE89E /* __HPVCChartCell.swift */; };
 		26A1CB3F1DD0A8B800DAE89E /* MakeChartDataOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A1CB3E1DD0A8B800DAE89E /* MakeChartDataOperation.swift */; };
@@ -107,6 +96,12 @@
 		26BC4F961CE429AE0011BE98 /* ValidateExpenseOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BC4F951CE429AE0011BE98 /* ValidateExpenseOperation.swift */; };
 		26C056901DCF8492000BB70E /* PageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C0568F1DCF8492000BB70E /* PageData.swift */; };
 		26C056921DCF849F000BB70E /* ChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C056911DCF849F000BB70E /* ChartData.swift */; };
+		26C50D141DE6F57A0088BC2B /* SlideUpPickerDismissalAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C50D091DE6F57A0088BC2B /* SlideUpPickerDismissalAnimator.swift */; };
+		26C50D171DE6F57A0088BC2B /* SlideUpPickerPresentationAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C50D0C1DE6F57A0088BC2B /* SlideUpPickerPresentationAnimator.swift */; };
+		26C50D181DE6F57A0088BC2B /* SlideUpPickerTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C50D0D1DE6F57A0088BC2B /* SlideUpPickerTransitioningDelegate.swift */; };
+		26C50D1A1DE6F57A0088BC2B /* SlideUpPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C50D0F1DE6F57A0088BC2B /* SlideUpPickerView.swift */; };
+		26C50D1D1DE6F65F0088BC2B /* SlideUpPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C50D1B1DE6F65F0088BC2B /* SlideUpPickerCell.swift */; };
+		26C50D1E1DE6F65F0088BC2B /* SlideUpPickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26C50D1C1DE6F65F0088BC2B /* SlideUpPickerCell.xib */; };
 		26D334C41DD2563D004BB4D0 /* Subcategory+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D334C21DD2563D004BB4D0 /* Subcategory+CoreDataClass.swift */; };
 		26D334C51DD2563D004BB4D0 /* Subcategory+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D334C31DD2563D004BB4D0 /* Subcategory+CoreDataProperties.swift */; };
 		26E4E0591937AF690096191A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E4E0581937AF690096191A /* QuartzCore.framework */; };
@@ -220,21 +215,13 @@
 		2669AB031D7C302700DDA321 /* AmountFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmountFormatter.swift; sourceTree = "<group>"; };
 		266CBDB31D2676D900F5D5D1 /* EditExpenseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditExpenseVC.swift; sourceTree = "<group>"; };
 		267804121DB72AB200B29873 /* CategoryPickerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerVC.swift; sourceTree = "<group>"; };
-		267804141DB72BF000B29873 /* __CategoryPickerVCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __CategoryPickerVCView.swift; sourceTree = "<group>"; };
-		267804161DB72C0100B29873 /* __CategoryPickerVCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __CategoryPickerVCView.xib; sourceTree = "<group>"; };
+		267804141DB72BF000B29873 /* __CPVCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __CPVCView.swift; sourceTree = "<group>"; };
+		267804161DB72C0100B29873 /* __CPVCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __CPVCView.xib; sourceTree = "<group>"; };
 		267804181DB78E1D00B29873 /* CategoryPickerAddCategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerAddCategoryCell.swift; sourceTree = "<group>"; };
 		2685D6D61D7C397200ED778E /* PercentFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PercentFormatter.swift; sourceTree = "<group>"; };
 		2687FA3B1D0EC46F00D544F5 /* MakePagesOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakePagesOperation.swift; sourceTree = "<group>"; };
 		268D39A61DC70E67005EBC4B /* __HPVCHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __HPVCHeaderView.xib; sourceTree = "<group>"; };
 		268D39A81DC70EBD005EBC4B /* __HPVCHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __HPVCHeaderView.swift; sourceTree = "<group>"; };
-		268F47EF1D60D24D0088AC6B /* CustomPickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPickerCell.swift; sourceTree = "<group>"; };
-		268F47F01D60D24D0088AC6B /* CustomPickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomPickerCell.xib; sourceTree = "<group>"; };
-		268F47F11D60D24D0088AC6B /* CustomPickerHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPickerHeader.swift; sourceTree = "<group>"; };
-		268F47F21D60D24D0088AC6B /* CustomPickerHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomPickerHeader.xib; sourceTree = "<group>"; };
-		268F47F31D60D24D0088AC6B /* CustomPickerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPickerVC.swift; sourceTree = "<group>"; };
-		268F47F91D60D26D0088AC6B /* __CPVCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __CPVCView.swift; sourceTree = "<group>"; };
-		268F47FA1D60D26D0088AC6B /* __CPVCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __CPVCView.xib; sourceTree = "<group>"; };
-		268F47FD1D60D2900088AC6B /* CustomPickerPresentationAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPickerPresentationAnimator.swift; sourceTree = "<group>"; };
 		268F48021D60D3490088AC6B /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		268F48031D60D3490088AC6B /* Duration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Duration.swift; sourceTree = "<group>"; };
 		268F48061D60D3490088AC6B /* Font.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
@@ -242,12 +229,9 @@
 		268F48081D60D3490088AC6B /* PaymentMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethod.swift; sourceTree = "<group>"; };
 		268F48091D60D3490088AC6B /* Periodization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Periodization.swift; sourceTree = "<group>"; };
 		268F480A1D60D3490088AC6B /* StartOfWeek.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartOfWeek.swift; sourceTree = "<group>"; };
-		268F48181D60D3DE0088AC6B /* CustomPickerTransitioningDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPickerTransitioningDelegate.swift; sourceTree = "<group>"; };
-		268F481D1D60DE020088AC6B /* CustomPickerDismissalAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPickerDismissalAnimator.swift; sourceTree = "<group>"; };
 		269D49F11CE1610100109990 /* ExpenseEditorVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseEditorVC.swift; sourceTree = "<group>"; };
 		269D49FB1CE1643A00109990 /* AddExpenseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddExpenseVC.swift; sourceTree = "<group>"; };
 		269E7E0F1D68C96000476870 /* MonthPageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthPageVC.swift; sourceTree = "<group>"; };
-		269E7E111D69985D00476870 /* CustomPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPickerView.swift; sourceTree = "<group>"; };
 		269FF0891DE2F4A70021230B /* GetAllCategoryIDsOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetAllCategoryIDsOperation.swift; sourceTree = "<group>"; };
 		26A1CB3C1DD0A2F600DAE89E /* __HPVCChartCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __HPVCChartCell.swift; sourceTree = "<group>"; };
 		26A1CB3E1DD0A8B800DAE89E /* MakeChartDataOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeChartDataOperation.swift; sourceTree = "<group>"; };
@@ -262,6 +246,12 @@
 		26BC4F951CE429AE0011BE98 /* ValidateExpenseOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidateExpenseOperation.swift; sourceTree = "<group>"; };
 		26C0568F1DCF8492000BB70E /* PageData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageData.swift; sourceTree = "<group>"; };
 		26C056911DCF849F000BB70E /* ChartData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartData.swift; sourceTree = "<group>"; };
+		26C50D091DE6F57A0088BC2B /* SlideUpPickerDismissalAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideUpPickerDismissalAnimator.swift; sourceTree = "<group>"; };
+		26C50D0C1DE6F57A0088BC2B /* SlideUpPickerPresentationAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideUpPickerPresentationAnimator.swift; sourceTree = "<group>"; };
+		26C50D0D1DE6F57A0088BC2B /* SlideUpPickerTransitioningDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideUpPickerTransitioningDelegate.swift; sourceTree = "<group>"; };
+		26C50D0F1DE6F57A0088BC2B /* SlideUpPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideUpPickerView.swift; sourceTree = "<group>"; };
+		26C50D1B1DE6F65F0088BC2B /* SlideUpPickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideUpPickerCell.swift; sourceTree = "<group>"; };
+		26C50D1C1DE6F65F0088BC2B /* SlideUpPickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SlideUpPickerCell.xib; sourceTree = "<group>"; };
 		26D334C21DD2563D004BB4D0 /* Subcategory+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Subcategory+CoreDataClass.swift"; sourceTree = "<group>"; };
 		26D334C31DD2563D004BB4D0 /* Subcategory+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Subcategory+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		26D4C8F41946E624001B42DC /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
@@ -312,11 +302,11 @@
 		260024051CC7E5F300EB2026 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				26C50D041DE6F57A0088BC2B /* SlideUpPicker */,
 				266632AC1DB24A96007B992D /* Root */,
 				260024081CC7E5F300EB2026 /* Home */,
 				2600240E1CC7E5F300EB2026 /* Settings */,
 				269D49EE1CE1610100109990 /* ExpenseEditor */,
-				268F47EE1D60D24D0088AC6B /* CustomPicker */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -533,8 +523,8 @@
 			isa = PBXGroup;
 			children = (
 				267804121DB72AB200B29873 /* CategoryPickerVC.swift */,
-				267804141DB72BF000B29873 /* __CategoryPickerVCView.swift */,
-				267804161DB72C0100B29873 /* __CategoryPickerVCView.xib */,
+				267804141DB72BF000B29873 /* __CPVCView.swift */,
+				267804161DB72C0100B29873 /* __CPVCView.xib */,
 				267804181DB78E1D00B29873 /* CategoryPickerAddCategoryCell.swift */,
 				26EAED2C1DBA2ABC00191041 /* SearchCategoryOperation.swift */,
 			);
@@ -548,24 +538,6 @@
 				26FF03181D2BBB8D00BA74FD /* BaseNavBarVC.swift */,
 			);
 			path = Shared;
-			sourceTree = "<group>";
-		};
-		268F47EE1D60D24D0088AC6B /* CustomPicker */ = {
-			isa = PBXGroup;
-			children = (
-				268F47F91D60D26D0088AC6B /* __CPVCView.swift */,
-				268F47FA1D60D26D0088AC6B /* __CPVCView.xib */,
-				268F47EF1D60D24D0088AC6B /* CustomPickerCell.swift */,
-				268F47F01D60D24D0088AC6B /* CustomPickerCell.xib */,
-				268F47F11D60D24D0088AC6B /* CustomPickerHeader.swift */,
-				268F47F21D60D24D0088AC6B /* CustomPickerHeader.xib */,
-				268F47F31D60D24D0088AC6B /* CustomPickerVC.swift */,
-				268F47FD1D60D2900088AC6B /* CustomPickerPresentationAnimator.swift */,
-				268F48181D60D3DE0088AC6B /* CustomPickerTransitioningDelegate.swift */,
-				268F481D1D60DE020088AC6B /* CustomPickerDismissalAnimator.swift */,
-				269E7E111D69985D00476870 /* CustomPickerView.swift */,
-			);
-			path = CustomPicker;
 			sourceTree = "<group>";
 		};
 		268F48011D60D3490088AC6B /* Constants */ = {
@@ -605,6 +577,19 @@
 				26B0760B1D901DC60026692E /* Array.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		26C50D041DE6F57A0088BC2B /* SlideUpPicker */ = {
+			isa = PBXGroup;
+			children = (
+				26C50D1B1DE6F65F0088BC2B /* SlideUpPickerCell.swift */,
+				26C50D1C1DE6F65F0088BC2B /* SlideUpPickerCell.xib */,
+				26C50D091DE6F57A0088BC2B /* SlideUpPickerDismissalAnimator.swift */,
+				26C50D0C1DE6F57A0088BC2B /* SlideUpPickerPresentationAnimator.swift */,
+				26C50D0D1DE6F57A0088BC2B /* SlideUpPickerTransitioningDelegate.swift */,
+				26C50D0F1DE6F57A0088BC2B /* SlideUpPickerView.swift */,
+			);
+			path = SlideUpPicker;
 			sourceTree = "<group>";
 		};
 		26EB76FD1D7C5B060001723D /* Models */ = {
@@ -729,17 +714,15 @@
 				266946841CC7711000A68424 /* Default@2x.png in Resources */,
 				2603F8C31CCA45FF007F311F /* LaunchScreen.storyboard in Resources */,
 				26A1CB4F1DD1ABD600DAE89E /* NotoSansUI-Regular.ttf in Resources */,
-				267804171DB72C0100B29873 /* __CategoryPickerVCView.xib in Resources */,
+				267804171DB72C0100B29873 /* __CPVCView.xib in Resources */,
 				26A1CB4E1DD1ABD600DAE89E /* NotoSansUI-Italic.ttf in Resources */,
 				265222A61D66D00A007FED96 /* __DPVCView.xib in Resources */,
 				261AF61E1D5F257900E03A48 /* __EEVCView.xib in Resources */,
 				2669468B1CC7711000A68424 /* iPhone.storyboard in Resources */,
-				268F47F71D60D24D0088AC6B /* CustomPickerHeader.xib in Resources */,
 				2669468A1CC7711000A68424 /* Images.xcassets in Resources */,
 				264C0CB01DBE504300EA89D3 /* __HPVCZeroView.xib in Resources */,
 				264C0CB91DBF7C9400EA89D3 /* __HPVCDayCell.xib in Resources */,
 				266946871CC7711000A68424 /* Icon-60@2x.png in Resources */,
-				268F47FC1D60D26D0088AC6B /* __CPVCView.xib in Resources */,
 				268D39A71DC70E67005EBC4B /* __HPVCHeaderView.xib in Resources */,
 				266946891CC7711000A68424 /* Icon@2x.png in Resources */,
 				26A1CB4C1DD1ABD600DAE89E /* NotoSansUI-Bold.ttf in Resources */,
@@ -749,8 +732,8 @@
 				266946881CC7711000A68424 /* Icon-Small@2x.png in Resources */,
 				26A1CB511DD1B21500DAE89E /* spare-icons.ttf in Resources */,
 				266946851CC7711000A68424 /* InfoPlist.strings in Resources */,
-				268F47F51D60D24D0088AC6B /* CustomPickerCell.xib in Resources */,
 				26A1CB4D1DD1ABD600DAE89E /* NotoSansUI-BoldItalic.ttf in Resources */,
+				26C50D1E1DE6F65F0088BC2B /* SlideUpPickerCell.xib in Resources */,
 				266946831CC7711000A68424 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -819,6 +802,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				26B075F21D8FFE250026692E /* OperationVCLoadingView.swift in Sources */,
+				26C50D171DE6F57A0088BC2B /* SlideUpPickerPresentationAnimator.swift in Sources */,
 				26D334C51DD2563D004BB4D0 /* Subcategory+CoreDataProperties.swift in Sources */,
 				265222A01D66CFCE007FED96 /* DatePickerVC.swift in Sources */,
 				26440F991DB229C300BD8F1C /* Expense+CoreDataClass.swift in Sources */,
@@ -826,7 +810,6 @@
 				268D39A91DC70EBD005EBC4B /* __HPVCHeaderView.swift in Sources */,
 				266408C21D4A630E00609580 /* Button.swift in Sources */,
 				264C0CAC1DBE409D00EA89D3 /* DateRange.swift in Sources */,
-				268F47FE1D60D2900088AC6B /* CustomPickerPresentationAnimator.swift in Sources */,
 				264C0CB51DBF7C3800EA89D3 /* __HPVCDayCell.swift in Sources */,
 				266632B01DB24FFF007B992D /* LoadAppOperation.swift in Sources */,
 				26B0760C1D901DC60026692E /* Array.swift in Sources */,
@@ -834,22 +817,21 @@
 				2687FA3C1D0EC46F00D544F5 /* MakePagesOperation.swift in Sources */,
 				26A1CB3F1DD0A8B800DAE89E /* MakeChartDataOperation.swift in Sources */,
 				267804131DB72AB200B29873 /* CategoryPickerVC.swift in Sources */,
+				26C50D141DE6F57A0088BC2B /* SlideUpPickerDismissalAnimator.swift in Sources */,
 				266632AE1DB24AA7007B992D /* TabbedRootViewController.swift in Sources */,
+				26C50D1A1DE6F57A0088BC2B /* SlideUpPickerView.swift in Sources */,
 				261AF61C1D5F255000E03A48 /* __EEVCView.swift in Sources */,
 				26EAED2D1DBA2ABC00191041 /* SearchCategoryOperation.swift in Sources */,
-				269E7E121D69985D00476870 /* CustomPickerView.swift in Sources */,
 				2685D6D71D7C397200ED778E /* PercentFormatter.swift in Sources */,
 				264C0CAF1DBE504300EA89D3 /* __HPVCZeroView.swift in Sources */,
-				268F47F41D60D24D0088AC6B /* CustomPickerCell.swift in Sources */,
-				268F47F61D60D24D0088AC6B /* CustomPickerHeader.swift in Sources */,
 				26E9CEAE1D66D5AA0005E087 /* __DPVCDayCell.swift in Sources */,
 				266CBDB41D2676D900F5D5D1 /* EditExpenseVC.swift in Sources */,
 				262731831DB23EEF00119F76 /* FetchRequestBuilder.swift in Sources */,
 				26C056901DCF8492000BB70E /* PageData.swift in Sources */,
 				26FF03191D2BBB8D00BA74FD /* BaseFormVC.swift in Sources */,
-				268F47FB1D60D26D0088AC6B /* __CPVCView.swift in Sources */,
 				266408B41D4A571400609580 /* PeriodizationButton.swift in Sources */,
 				267804191DB78E1D00B29873 /* CategoryPickerAddCategoryCell.swift in Sources */,
+				26C50D181DE6F57A0088BC2B /* SlideUpPickerTransitioningDelegate.swift in Sources */,
 				260024151CC7E5F300EB2026 /* SettingsVC.swift in Sources */,
 				2669AB021D7C300F00DDA321 /* GlobalFunctions.swift in Sources */,
 				2669AB011D7C300F00DDA321 /* DateFormatter.swift in Sources */,
@@ -862,7 +844,6 @@
 				268F48141D60D3490088AC6B /* Periodization.swift in Sources */,
 				269D49F81CE1610100109990 /* ExpenseEditorVC.swift in Sources */,
 				26D334C41DD2563D004BB4D0 /* Subcategory+CoreDataClass.swift in Sources */,
-				268F47F81D60D24E0088AC6B /* CustomPickerVC.swift in Sources */,
 				261AF63C1D5F41F500E03A48 /* __EEVCKeypadCell.swift in Sources */,
 				268F48121D60D3490088AC6B /* Icon.swift in Sources */,
 				269E7E101D68C96000476870 /* MonthPageVC.swift in Sources */,
@@ -871,19 +852,18 @@
 				26BC4F961CE429AE0011BE98 /* ValidateExpenseOperation.swift in Sources */,
 				2669468F1CC7711000A68424 /* Spare.xcdatamodeld in Sources */,
 				26440F9A1DB229C300BD8F1C /* Expense+CoreDataProperties.swift in Sources */,
+				26C50D1D1DE6F65F0088BC2B /* SlideUpPickerCell.swift in Sources */,
 				265222A41D66CFF3007FED96 /* __DPVCView.swift in Sources */,
 				269FF08A1DE2F4A70021230B /* GetAllCategoryIDsOperation.swift in Sources */,
 				26A1CB3D1DD0A2F600DAE89E /* __HPVCChartCell.swift in Sources */,
 				268F480D1D60D3490088AC6B /* Color.swift in Sources */,
-				267804151DB72BF000B29873 /* __CategoryPickerVCView.swift in Sources */,
+				267804151DB72BF000B29873 /* __CPVCView.swift in Sources */,
 				268F48131D60D3490088AC6B /* PaymentMethod.swift in Sources */,
 				2669AB041D7C302700DDA321 /* AmountFormatter.swift in Sources */,
 				268F480E1D60D3490088AC6B /* Duration.swift in Sources */,
 				264C0CBD1DBF7FB300EA89D3 /* GraphBackground.swift in Sources */,
 				26440F951DB2299900BD8F1C /* Category+CoreDataClass.swift in Sources */,
 				268F48111D60D3490088AC6B /* Font.swift in Sources */,
-				268F481E1D60DE020088AC6B /* CustomPickerDismissalAnimator.swift in Sources */,
-				268F48191D60D3DE0088AC6B /* CustomPickerTransitioningDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

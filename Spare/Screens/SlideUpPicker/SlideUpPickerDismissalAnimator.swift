@@ -1,5 +1,5 @@
 //
-//  CustomPickerDismissalAnimator.swift
+//  SlideUpPickerDismissalAnimator.swift
 //  Spare
 //
 //  Created by Matt Quiros on 15/08/2016.
@@ -8,14 +8,14 @@
 
 import UIKit
 
-class CustomPickerDismissalAnimator: NSObject, UIViewControllerAnimatedTransitioning {
+class SlideUpPickerDismissalAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return Duration.Animation
     }
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-        guard let fromView = transitionContext.view(forKey: UITransitionContextViewKey.from) as? CustomPickerView
+        guard let fromView = transitionContext.view(forKey: UITransitionContextViewKey.from) as? SlideUpPickerView
             else {
                 return
         }
