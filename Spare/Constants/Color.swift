@@ -15,7 +15,7 @@ class Color {
     static let CustomPickerTextColor = UIColor(hex: 0x111111)
     
     static let FieldValueTextColor = UIColor.white
-    static let FieldPlaceholderTextColor = UIColor(hex: 0x666666)
+    static let FieldPlaceholderTextColor = UIColor(hex: 0x333333)
     
     static let NavigationBarBackgroundColor = UIColor(hex: 0x222222)
     

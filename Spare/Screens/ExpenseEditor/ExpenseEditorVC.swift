@@ -164,7 +164,7 @@ extension ExpenseEditorVC {
             self.customView.categoryButton.setTitle(categoryName, for: .normal)
             self.customView.categoryButton.setTitleColor(Color.FieldValueTextColor, for: .normal)
         } else {
-            self.customView.categoryButton.setTitle("Add a category (required)", for: .normal)
+            self.customView.categoryButton.setTitle("Category (required)", for: .normal)
             self.customView.categoryButton.setTitleColor(Color.FieldPlaceholderTextColor, for: .normal)
         }
     }

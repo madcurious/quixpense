@@ -36,7 +36,7 @@ class MakeChartDataOperation: MDOperation {
                     format: "%K >= %@ AND %K <= %@ AND %K == %@",
                     #keyPath(Expense.dateSpent), self.pageData.dateRange.start as NSDate,
                     #keyPath(Expense.dateSpent), self.pageData.dateRange.end as NSDate,
-                    #keyPath(Expense.category), category
+                    #keyPath(Expense.category.objectID), category
                 )
                 request.resultType = .dictionaryResultType
                 

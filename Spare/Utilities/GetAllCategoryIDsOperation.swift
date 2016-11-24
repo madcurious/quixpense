@@ -17,6 +17,7 @@ class GetAllCategoryIDsOperation: MDOperation {
         context.parent = App.coreDataStack.viewContext
         
         let request = FetchRequestBuilder<Category>.makeIDOnlyRequest()
+//        let categories = try context.fetch(request).sorted(by: { $0.expenses?.count ?? 0 > $1.expenses?.count ?? 0 })
         let IDs = try context.fetch(request).sorted(by: {id1, id2 in
             guard let left = context.object(with: id1) as? Category,
                 let right = context.object(with: id2) as? Category

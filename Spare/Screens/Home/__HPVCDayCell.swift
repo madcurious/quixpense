@@ -54,7 +54,6 @@ class __HPVCDayCell: __HPVCChartCell {
                 self.pieChartContainer.isHidden = true
                 self.noExpensesLabel.isHidden = false
             }
-            
         }
     }
     

@@ -18,4 +18,8 @@ public class Category: NSManagedObject {
         return categories
     }
     
+    class func fetchAllIDs(inContext context: NSManagedObjectContext) throws -> [NSManagedObjectID] {
+        return try self.fetchAll(inContext: context).map({ $0.objectID })
+    }
+    
 }

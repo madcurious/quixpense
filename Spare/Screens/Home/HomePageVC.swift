@@ -20,7 +20,7 @@ fileprivate enum ViewID: String {
 
 fileprivate let kCellClasses = [__HPVCDayCell.self]
 
-class HomePageVC: MDOperationViewController {
+class HomePageVC: MDFullOperationViewController {
     
     let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout())
     
@@ -43,6 +43,8 @@ class HomePageVC: MDOperationViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.updateView(forState: .loading)
+        
         self.collectionView.backgroundColor = UIColor.clear
         self.collectionView.alwaysBounceVertical = true
         self.collectionView.dataSource = self
@@ -55,39 +57,10 @@ class HomePageVC: MDOperationViewController {
     }
     
     override func makeOperation() -> MDOperation? {
-//        return MDBlockOperation {
-//            // Fetch all categories if still nil.
-//            guard App.allCategories == nil
-//                else {
-//                    return nil
-//            }
-//            
-//            let context = App.coreDataStack.viewContext
-//            let request = FetchRequestBuilder<Category>.makeFetchRequest()
-//            let categories = try context.fetch(request).sorted(by: { $0.expenses?.count ?? 0 > $1.expenses?.count ?? 0 })
-//            return categories
-//        }
-//        .onSuccess({[unowned self] (result) in
-//            if let categories = result as? [Category] {
-//                App.allCategories = categories
-//            }
-//            
-//            self.operationQueue.addOperation(
-//                MakeChartDataOperation(pageData: self.pageData, periodization: App.selectedPeriodization)
-//                .onSuccess({[unowned self] (result) in
-//                    self.chartData = result as! [ChartData]
-//                    self.collectionView.reloadData()
-//                    
-//                    self.updateView(forState: .displaying)
-//                })
-//            )
-//        })
-        
         return MakeChartDataOperation(pageData: self.pageData, periodization: App.selectedPeriodization)
             .onSuccess({[unowned self] (result) in
                 self.chartData = result as! [ChartData]
                 self.collectionView.reloadData()
-                
                 self.updateView(forState: .displaying)
                 })
     }

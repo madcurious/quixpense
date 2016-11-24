@@ -120,12 +120,7 @@ class __EEVCView: UIView {
         self.currencyLabel.textAlignment = .center
         
         self.amountLabel.textColor = Color.FieldValueTextColor
-        self.amountLabel.font = {
-            if MDScreen.sizeIsAtLeast(.iPhone5) {
-                return Font.make(.bold, 17)
-            }
-            return Font.make(.bold, 24)
-        }()
+        self.amountLabel.font = Font.make(.regular, 30)
         self.amountLabel.adjustsFontSizeToFitWidth = true
         self.amountLabel.textAlignment = .left
         self.amountLabel.numberOfLines = 1
