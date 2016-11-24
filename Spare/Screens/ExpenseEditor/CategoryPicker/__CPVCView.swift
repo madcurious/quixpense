@@ -20,6 +20,10 @@ class __CPVCView: SlideUpPickerView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        self.mainContainer.backgroundColor = UIColor.white
+        UIView.clearBackgroundColors(
+            self.tableView)
+        
         let textFieldFont = Font.make(.regular, 17)
         self.textField.backgroundColor = UIColor.clear
         self.textField.font = textFieldFont
@@ -33,7 +37,6 @@ class __CPVCView: SlideUpPickerView {
         
         self.tableView.showsVerticalScrollIndicator = true
         self.tableView.separatorStyle = .none
-        self.tableView.backgroundColor = UIColor.red
     }
     
 }
