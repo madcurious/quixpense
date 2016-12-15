@@ -107,6 +107,7 @@ class MakePageDataOperation: MDOperation {
             var dates: [String]?
             var weekdays: [String]?
             var dailyAverage: NSDecimalNumber?
+            var percentages: [CGFloat]?
             
             switch self.periodization {
             case .day:
@@ -114,13 +115,42 @@ class MakePageDataOperation: MDOperation {
                 
             case .week:
                 let numberOfDaysInAWeek = 7
-                var date = self.dateRange.start
+                var dayOfWeek = self.dateRange.start
                 dates = [String]()
-                for _ in 0 ..< numberOfDaysInAWeek {
-                    dates?.append(self.dayOfWeekFormatter.string(from: date))
+                percentages = Array<CGFloat>(repeating: 0, count: numberOfDaysInAWeek)
+                for i in 0 ..< numberOfDaysInAWeek {
+                    // Append
+                    dates?.append(self.dayOfWeekFormatter.string(from: dayOfWeek))
+                    
+                    // Get the total of expenses in that day and compute for its percentage
+                    // relative to the category total.
+                    // Avoid division by zero.
+                    if categoryTotal > 0 {
+                        var dailyTotal = NSDecimalNumber(value: 0)
+                        let request = FetchRequestBuilder<Expense>.makeGenericRequest()
+                        request.predicate = NSPredicate(
+                            format: "%K >= %@ AND %K <= %@ AND %K == %@",
+                            #keyPath(Expense.dateSpent), dayOfWeek.startOfDay() as NSDate,
+                            #keyPath(Expense.dateSpent), dayOfWeek.endOfDay() as NSDate,
+                            #keyPath(Expense.category), category
+                        )
+                        request.resultType = .dictionaryResultType
+                        let sumExpression = NSExpressionDescription()
+                        sumExpression.name = "sum"
+                        sumExpression.expressionResultType = .decimalAttributeType
+                        sumExpression.expression = NSExpression(forKeyPath: "@sum.amount")
+                        request.propertiesToFetch = [sumExpression]
+                        if let array = try context.fetch(request) as? [[String : NSDecimalNumber]],
+                            let dict = array.first,
+                            let sum = dict["sum"] {
+                            dailyTotal = sum
+                        }
+                        percentages?[i] = CGFloat(dailyTotal / categoryTotal)
+                    }
+                    
                     
                     // Move to the next day.
-                    date = Calendar.current.date(byAdding: .day, value: 1, to: date)!
+                    dayOfWeek = Calendar.current.date(byAdding: .day, value: 1, to: dayOfWeek)!
                     
                     if self.isCancelled {
                         return nil
@@ -142,7 +172,8 @@ class MakePageDataOperation: MDOperation {
                                          categoryTotal: categoryTotal,
                                          dates: dates,
                                          weekdays: weekdays,
-                                         dailyAverage: dailyAverage)
+                                         dailyAverage: dailyAverage,
+                                         percentages: percentages)
             chartData.append(newChartData)
             
             if self.isCancelled {

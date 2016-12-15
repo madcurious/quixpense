@@ -15,10 +15,19 @@ class __HPVCWeekCell: __HPVCChartCell {
     
     @IBOutlet var weekdayLabels: [UILabel]!
     
+    @IBOutlet weak var barStackView: UIStackView!
+    @IBOutlet var barViewContainers: [UIView]!
+    @IBOutlet var barViews: [UIView]!
+    
     @IBOutlet var dateLabels: [UILabel]!
+    
+    @IBOutlet var barWidths: [NSLayoutConstraint]!
+    @IBOutlet var barHeights: [NSLayoutConstraint]!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        UIView.clearBackgroundColors(self.barViewContainers)
         
         self.dailyAverageLabel.font = Font.make(.regular, 12)
         self.dailyAverageLabel.textColor = Color.UniversalTextColor
@@ -37,10 +46,18 @@ class __HPVCWeekCell: __HPVCChartCell {
             label.textColor = Color.UniversalTextColor
             label.textAlignment = .center
         }
+        
+        let barWidth = CGFloat(6)
+        for i in 0 ..< 7 {
+            self.barWidths[i].constant = barWidth
+            
+            self.barViews[i].backgroundColor = UIColor(hex: 0xd8d8d8)
+            self.barViews[i].layer.cornerRadius = barWidth / 2
+        }
     }
     
-    override func update(forChartData chartData: ChartData?, includingGraph: Bool) {
-        super.update(forChartData: chartData, includingGraph: includingGraph)
+    override func update(withData chartData: ChartData?, drawGraph: Bool) {
+        super.update(withData: chartData, drawGraph: drawGraph)
         
         guard let chartData = chartData
             else {
@@ -60,9 +77,23 @@ class __HPVCWeekCell: __HPVCChartCell {
             label.text = chartData.dates?[i] ?? nil
         }
         
-        if includingGraph == true {
-            
+        guard drawGraph == true,
+            let percentages = chartData.percentages
+            else {
+                return
         }
+        
+        if percentages.contains(where: { $0 > 0 }) {
+            self.noExpensesLabel.isHidden = true
+        } else {
+            self.noExpensesLabel.isHidden = false
+        }
+        
+        self.layoutIfNeeded()
+        for i in 0 ..< 7 {
+            self.barHeights[i].constant = self.barStackView.bounds.size.height * percentages[i]
+        }
+        self.setNeedsLayout()
     }
     
 }

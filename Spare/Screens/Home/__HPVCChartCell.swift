@@ -39,7 +39,7 @@ class __HPVCChartCell: UICollectionViewCell {
     
     var chartData: ChartData? {
         didSet {
-            self.update(forChartData: chartData, includingGraph: true)
+            self.update(withData: chartData, drawGraph: true)
         }
     }
     
@@ -89,7 +89,7 @@ class __HPVCChartCell: UICollectionViewCell {
      
      This function is meant to be overridden in the subclass but the subclass must always call super.
      */
-    func update(forChartData chartData: ChartData?, includingGraph: Bool) {
+    func update(withData chartData: ChartData?, drawGraph: Bool) {
         defer {
             self.setNeedsLayout()
         }
@@ -106,7 +106,7 @@ class __HPVCChartCell: UICollectionViewCell {
     public class func height(for chartData: ChartData, atCellWidth cellWidth: CGFloat) -> CGFloat {
         let dummyCell = self.instantiateFromNib()
         dummyCell.frame = CGRect(x: 0, y: 0, width: cellWidth, height: 0)
-        dummyCell.update(forChartData: chartData, includingGraph: false)
+        dummyCell.update(withData: chartData, drawGraph: false)
         dummyCell.layoutIfNeeded()
         return dummyCell.wrapperView.bounds.size.height
     }

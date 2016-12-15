@@ -13,13 +13,13 @@ import Mold
 struct ChartData {
     
     var categoryID: NSManagedObjectID
-//    var dateRange: DateRange
     var dateRangeTotal: NSDecimalNumber
     var categoryTotal: NSDecimalNumber
     
     var dates: [String]?
     var weekdays: [String]?
     var dailyAverage: NSDecimalNumber?
+    var percentages: [CGFloat]?
     
     var ratio: Double {
         guard self.dateRangeTotal > 0

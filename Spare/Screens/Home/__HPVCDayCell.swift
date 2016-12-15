@@ -26,10 +26,10 @@ class __HPVCDayCell: __HPVCChartCell {
         self.percentLabel.font = Font.make(.regular, 14)
     }
     
-    override func update(forChartData chartData: ChartData?, includingGraph: Bool) {
-        super.update(forChartData: chartData, includingGraph: includingGraph)
+    override func update(withData chartData: ChartData?, drawGraph: Bool) {
+        super.update(withData: chartData, drawGraph: drawGraph)
         
-        if includingGraph == true,
+        if drawGraph == true,
             let chartData = chartData {
             if chartData.ratio > 0 {
                 self.percentLabel.text = PercentFormatter.displayText(for: chartData.ratio)
