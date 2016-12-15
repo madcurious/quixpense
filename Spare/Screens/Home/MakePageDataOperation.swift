@@ -15,6 +15,19 @@ class MakePageDataOperation: MDOperation {
     let dateRange: DateRange
     let periodization: Periodization
     
+    lazy var weekdayFormatter: Foundation.DateFormatter = {
+        let formatter = Foundation.DateFormatter()
+        formatter.dateFormat = "EEEEE"
+        formatter.locale = Locale.current
+        return formatter
+    }()
+    
+    lazy var dayOfWeekFormatter: Foundation.DateFormatter = {
+        let formatter = Foundation.DateFormatter()
+        formatter.dateFormat = "d"
+        return formatter
+    }()
+    
     init(dateRange: DateRange, periodization: Periodization) {
         self.dateRange = dateRange
         self.periodization = periodization
@@ -46,13 +59,14 @@ class MakePageDataOperation: MDOperation {
         
         // 2
         
-        let categories = try Category.fetchAll(inContext: context)
+        let categories = try Category.fetchAll(inContext: context, sortedBy: nil)
         
         var chartData = [ChartData]()
         for category in categories {
             var categoryTotal = NSDecimalNumber(value: 0)
             
-            // Avoid division by zero.
+            // Compute for the category total only if there are any expenses in the date range.
+            // This is to avoid division by zero when computing for the category percentage or ratio.
             if dateRangeTotal > 0 {
                 let request = FetchRequestBuilder<Expense>.makeGenericRequest()
                 request.predicate = NSPredicate(
@@ -76,10 +90,47 @@ class MakePageDataOperation: MDOperation {
                 }
             }
             
+            // Compute for the optional properties depending on the periodization.
+            
+            var dates: [String]?
+            var weekdays: [String]?
+            var dailyAverage: NSDecimalNumber?
+            
+            switch self.periodization {
+            case .day:
+                break
+                
+            case .week:
+                guard let numberOfDaysInAWeek = Calendar.current.range(of: .weekOfMonth, in: .month, for: self.dateRange.start)?.upperBound
+                    else {
+                        break
+                }
+                
+                var date = self.dateRange.start
+                dates = [String]()
+                for _ in 0 ..< numberOfDaysInAWeek {
+                    dates?.append(self.dayOfWeekFormatter.string(from: date))
+                    
+                    // Move to the next day.
+                    date = Calendar.current.date(byAdding: .day, value: 1, to: date)!
+                }
+                
+                weekdays = self.weekdayFormatter.veryShortWeekdaySymbols
+                dailyAverage = categoryTotal / NSDecimalNumber(value: numberOfDaysInAWeek)
+                
+            case .month: ()
+                
+                
+            case .year: ()
+            }
+            
+            
             let newChartData = ChartData(categoryID: category.objectID,
-                                         dateRange: self.dateRange,
                                          dateRangeTotal: dateRangeTotal,
-                                         categoryTotal: categoryTotal)
+                                         categoryTotal: categoryTotal,
+                                         dates: dates,
+                                         weekdays: weekdays,
+                                         dailyAverage: dailyAverage)
             chartData.append(newChartData)
             
             if self.isCancelled {
@@ -91,6 +142,15 @@ class MakePageDataOperation: MDOperation {
         
         let result = (dateRangeTotal, chartData)
         return result
+    }
+    
+    func computeForDatesAndWeekdays() -> ([String], [String]) {
+        guard self.periodization != .day
+            else {
+                fatalError("Dev error--can't call this for day periodization.")
+        }
+        
+        return ([String](), [String]())
     }
     
 }

@@ -8,9 +8,43 @@
 
 import UIKit
 
+/**
+ Parent class for the chart cells that are displayed in a page in the Home screen.
+ Provides a list of shared properties and their attributes as they should consistently appear
+ across subclasses.
+ 
+ Subclasses must have their own XIB files where the Autolayout rules are completely defined,
+ without warnings and errors. Dynamic heights are computed by instantiating a dummy cell from
+ one of the subclass XIBs and then getting the wrapper view's height.
+ */
 class __HPVCChartCell: UICollectionViewCell {
     
-    var chartData: ChartData?
+    /// Wraps all of the cell's content. Its height is always the height of the content
+    /// given the cell's width, and is always independent from the height of the cell itself.
+    @IBOutlet weak var wrapperView: UIView!
+    
+    /// Displays the category name.
+    @IBOutlet weak var nameLabel: UILabel!
+    
+    /// Displays the category total.
+    @IBOutlet weak var totalLabel: UILabel!
+    
+    /// Displays the "No expenses" label.
+    @IBOutlet weak var noExpensesLabel: UILabel!
+    
+    var chartData: ChartData? {
+        didSet {
+            self.update(forChartData: chartData, includingGraph: true)
+        }
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        __HPVCChartCell.applyAttributes(toNameLabel: self.nameLabel)
+        __HPVCChartCell.applyAttributes(toTotalLabel: self.totalLabel)
+        __HPVCChartCell.applyAttributes(toNoExpensesLabel: self.noExpensesLabel)
+    }
     
     class func applyAttributes(toNameLabel label: UILabel) {
         label.textColor = Color.UniversalTextColor
@@ -32,8 +66,32 @@ class __HPVCChartCell: UICollectionViewCell {
         label.text = "No expenses"
     }
     
-    class func height(for chartData: ChartData, atCellWidth cellWidth: CGFloat) -> CGFloat {
-        fatalError()
+    /**
+     Update the cell's subviews for the chart data. If the cell is being used for display,
+     the second parameter should be `true`. If the cell is only a dummy that is being used
+     for dynamic height computation, then the second parameter should be `false` to save resources.
+     
+     This function is meant to be overridden in the subclass but the subclass must always call super.
+     */
+    func update(forChartData chartData: ChartData?, includingGraph: Bool) {
+        defer {
+            self.setNeedsLayout()
+        }
+        
+        guard let chartData = chartData
+            else {
+                return
+        }
+        
+        self.nameLabel.text = chartData.category?.name
+        self.totalLabel.text = AmountFormatter.displayText(for: chartData.categoryTotal)
+    }
+    
+    public class func height(for chartData: ChartData, atCellWidth cellWidth: CGFloat) -> CGFloat {
+        let dummyCell = self.instantiateFromNib()
+        dummyCell.frame = CGRect(x: 0, y: 0, width: cellWidth, height: 0)
+        dummyCell.update(forChartData: chartData, includingGraph: false)
+        return dummyCell.wrapperView.bounds.size.height
     }
     
 }

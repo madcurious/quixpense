@@ -12,7 +12,7 @@ final class PercentFormatter {
     
     fileprivate init() {}
     
-    class func displayTextForPercent(_ percent: Double) -> String {
+    class func displayText(for percent: Double) -> String {
         return String(format: "%.0f%%", percent * 100)
     }
     

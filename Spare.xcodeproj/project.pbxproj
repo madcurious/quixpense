@@ -41,6 +41,8 @@
 		265222A01D66CFCE007FED96 /* DatePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2652229F1D66CFCE007FED96 /* DatePickerVC.swift */; };
 		265222A41D66CFF3007FED96 /* __DPVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265222A31D66CFF3007FED96 /* __DPVCView.swift */; };
 		265222A61D66D00A007FED96 /* __DPVCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 265222A51D66D00A007FED96 /* __DPVCView.xib */; };
+		265751671E027C4000A18C9E /* __HPVCWeekCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265751661E027C4000A18C9E /* __HPVCWeekCell.swift */; };
+		265751691E027C4C00A18C9E /* __HPVCWeekCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 265751681E027C4C00A18C9E /* __HPVCWeekCell.xib */; };
 		266408B41D4A571400609580 /* PeriodizationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266408B31D4A571400609580 /* PeriodizationButton.swift */; };
 		266408C21D4A630E00609580 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266408C11D4A630E00609580 /* Button.swift */; };
 		266632AE1DB24AA7007B992D /* TabbedRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266632AD1DB24AA7007B992D /* TabbedRootViewController.swift */; };
@@ -186,6 +188,8 @@
 		2652229F1D66CFCE007FED96 /* DatePickerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerVC.swift; sourceTree = "<group>"; };
 		265222A31D66CFF3007FED96 /* __DPVCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __DPVCView.swift; sourceTree = "<group>"; };
 		265222A51D66D00A007FED96 /* __DPVCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __DPVCView.xib; sourceTree = "<group>"; };
+		265751661E027C4000A18C9E /* __HPVCWeekCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __HPVCWeekCell.swift; sourceTree = "<group>"; };
+		265751681E027C4C00A18C9E /* __HPVCWeekCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __HPVCWeekCell.xib; sourceTree = "<group>"; };
 		266408B31D4A571400609580 /* PeriodizationButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeriodizationButton.swift; sourceTree = "<group>"; };
 		266408C11D4A630E00609580 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		266632AD1DB24AA7007B992D /* TabbedRootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabbedRootViewController.swift; sourceTree = "<group>"; };
@@ -326,6 +330,8 @@
 				26C056911DCF849F000BB70E /* ChartData.swift */,
 				26A1CB3C1DD0A2F600DAE89E /* __HPVCChartCell.swift */,
 				26A1CB3E1DD0A8B800DAE89E /* MakePageDataOperation.swift */,
+				265751661E027C4000A18C9E /* __HPVCWeekCell.swift */,
+				265751681E027C4C00A18C9E /* __HPVCWeekCell.xib */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -712,6 +718,7 @@
 				2603F8C31CCA45FF007F311F /* LaunchScreen.storyboard in Resources */,
 				26A1CB4F1DD1ABD600DAE89E /* NotoSansUI-Regular.ttf in Resources */,
 				267804171DB72C0100B29873 /* __CPVCView.xib in Resources */,
+				265751691E027C4C00A18C9E /* __HPVCWeekCell.xib in Resources */,
 				26A1CB4E1DD1ABD600DAE89E /* NotoSansUI-Italic.ttf in Resources */,
 				265222A61D66D00A007FED96 /* __DPVCView.xib in Resources */,
 				261AF61E1D5F257900E03A48 /* __EEVCView.xib in Resources */,
@@ -818,6 +825,7 @@
 				266632AE1DB24AA7007B992D /* TabbedRootViewController.swift in Sources */,
 				26C50D1A1DE6F57A0088BC2B /* SlideUpPickerView.swift in Sources */,
 				261AF61C1D5F255000E03A48 /* __EEVCView.swift in Sources */,
+				265751671E027C4000A18C9E /* __HPVCWeekCell.swift in Sources */,
 				26EAED2D1DBA2ABC00191041 /* SearchCategoryOperation.swift in Sources */,
 				2685D6D71D7C397200ED778E /* PercentFormatter.swift in Sources */,
 				264C0CAF1DBE504300EA89D3 /* __HPVCZeroView.swift in Sources */,

@@ -9,11 +9,10 @@
 import Foundation
 import CoreData
 
-
 public class Category: NSManagedObject {
     
     class func fetchAllInViewContext() -> [Category] {
-        return try! self.fetchAll(inContext: App.coreDataStack.viewContext)
+        return try! self.fetchAll(inContext: App.coreDataStack.viewContext, sortedBy: nil)
     }
     
     class func fetchAllIDsInViewContext() -> [NSManagedObjectID] {
@@ -24,15 +23,19 @@ public class Category: NSManagedObject {
      Fetches all categories as the `Category` managed object subclass, sorted by most popular first.
      The more expenses there are in a category, the more popular it is.
      */
-    class func fetchAll(inContext context: NSManagedObjectContext) throws -> [Category] {
+    class func fetchAll(inContext context: NSManagedObjectContext, sortedBy sortOrder: ((Category, Category) -> Bool)?) throws -> [Category] {
         let request = FetchRequestBuilder<Category>.makeTypedRequest()
         var categories = try context.fetch(request)
-        categories.sort(by: { return $0.expenses?.count ?? 0 > $1.expenses?.count ?? 0 })
+        
+        if let sortOrder = sortOrder {
+            categories.sort(by: sortOrder)
+        }
+//        categories.sort(by: { return $0.expenses?.count ?? 0 > $1.expenses?.count ?? 0 })
         return categories
     }
     
     class func fetchAllIDs(inContext context: NSManagedObjectContext) throws -> [NSManagedObjectID] {
-        return try self.fetchAll(inContext: context).map({ $0.objectID })
+        return try self.fetchAll(inContext: context, sortedBy: nil).map({ $0.objectID })
     }
     
 }

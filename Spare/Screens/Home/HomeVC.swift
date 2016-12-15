@@ -117,6 +117,8 @@ class HomeVC: MDFullOperationViewController {
     
     func handleSelectionOfPeriodization() {
         App.selectedPeriodization = self.periodizationButton.selectedPeriodization
+        NotificationCenter.default.post(name: Notifications.SelectedPeriodizationChanged, object: nil)
+        
         self.dateRanges = []
         self.runOperation()
     }
