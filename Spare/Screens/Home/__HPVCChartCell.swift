@@ -32,6 +32,11 @@ class __HPVCChartCell: UICollectionViewCell {
     /// Displays the "No expenses" label.
     @IBOutlet weak var noExpensesLabel: UILabel!
     
+    @IBOutlet weak var graphContainer: UIView!
+    @IBOutlet weak var graphBackgroundContainer: UIView!
+    
+    let graphBackground = GraphBackground.instantiateFromNib()
+    
     var chartData: ChartData? {
         didSet {
             self.update(forChartData: chartData, includingGraph: true)
@@ -41,9 +46,20 @@ class __HPVCChartCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        UIView.clearBackgroundColors(
+            self.graphContainer,
+            self.graphBackgroundContainer,
+            self.graphBackground
+            )
+        
+        self.backgroundColor = UIColor.red
+        self.wrapperView.backgroundColor = UIColor(hex: 0x333333)
+        
         __HPVCChartCell.applyAttributes(toNameLabel: self.nameLabel)
         __HPVCChartCell.applyAttributes(toTotalLabel: self.totalLabel)
         __HPVCChartCell.applyAttributes(toNoExpensesLabel: self.noExpensesLabel)
+        
+        self.graphBackgroundContainer.addSubviewAndFill(self.graphBackground)
     }
     
     class func applyAttributes(toNameLabel label: UILabel) {
@@ -91,6 +107,7 @@ class __HPVCChartCell: UICollectionViewCell {
         let dummyCell = self.instantiateFromNib()
         dummyCell.frame = CGRect(x: 0, y: 0, width: cellWidth, height: 0)
         dummyCell.update(forChartData: chartData, includingGraph: false)
+        dummyCell.layoutIfNeeded()
         return dummyCell.wrapperView.bounds.size.height
     }
     

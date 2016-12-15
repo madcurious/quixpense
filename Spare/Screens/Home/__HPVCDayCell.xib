@@ -112,8 +112,8 @@
             </constraints>
             <size key="customSize" width="350" height="293"/>
             <connections>
-                <outlet property="graphBackgroundContainer" destination="rs1-ss-dH9" id="7BK-dh-cZt"/>
-                <outlet property="graphContainer" destination="zSc-ll-G7p" id="mWP-qj-gmq"/>
+                <outlet property="graphBackgroundContainer" destination="rs1-ss-dH9" id="ezT-DS-ry3"/>
+                <outlet property="graphContainer" destination="zSc-ll-G7p" id="ldL-uK-B70"/>
                 <outlet property="nameLabel" destination="Y54-nR-2VX" id="E1J-Nt-suc"/>
                 <outlet property="noExpensesLabel" destination="fvM-8w-Brq" id="bjU-Xd-jYX"/>
                 <outlet property="percentLabel" destination="vFq-mW-okh" id="TwF-7S-cU4"/>

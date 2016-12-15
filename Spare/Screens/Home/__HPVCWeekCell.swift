@@ -15,20 +15,17 @@ class __HPVCWeekCell: __HPVCChartCell {
     
     @IBOutlet var weekdayLabels: [UILabel]!
     
-    @IBOutlet weak var graphContainer: UIView!
-    @IBOutlet weak var graphBackgroundContainer: UIView!
-    
     @IBOutlet var dateLabels: [UILabel]!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.dailyAverageLabel.font = Font.make(.regular, 10)
+        self.dailyAverageLabel.font = Font.make(.regular, 12)
         self.dailyAverageLabel.textColor = Color.UniversalTextColor
         self.dailyAverageLabel.numberOfLines = 1
         self.dailyAverageLabel.lineBreakMode = .byTruncatingTail
         
-        self.percentLabel.font = Font.make(.regular, 10)
+        self.percentLabel.font = Font.make(.regular, 12)
         self.percentLabel.textColor = Color.UniversalTextColor
         self.percentLabel.numberOfLines = 1
         self.percentLabel.lineBreakMode = .byTruncatingTail
@@ -36,8 +33,9 @@ class __HPVCWeekCell: __HPVCChartCell {
         var accessoryLabels = weekdayLabels!
         accessoryLabels.append(contentsOf: dateLabels)
         for label in accessoryLabels {
-            label.font = Font.make(.regular, 8)
+            label.font = Font.make(.regular, 10)
             label.textColor = Color.UniversalTextColor
+            label.textAlignment = .center
         }
     }
     

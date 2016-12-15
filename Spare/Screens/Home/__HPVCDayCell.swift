@@ -10,29 +10,17 @@ import UIKit
 
 class __HPVCDayCell: __HPVCChartCell {
     
-    @IBOutlet weak var graphContainer: UIView!
-    @IBOutlet weak var graphBackgroundContainer: UIView!
     @IBOutlet weak var pieChartContainer: UIView!
     @IBOutlet weak var pieChartView: __HPVCPieChart!
     @IBOutlet weak var percentLabel: UILabel!
     
-    let graphBackground = GraphBackground.instantiateFromNib()
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.backgroundColor = UIColor.red
         UIView.clearBackgroundColors(
-            self.graphContainer,
-            self.graphBackgroundContainer,
-            self.graphBackground,
             self.pieChartContainer,
             self.pieChartView
         )
-        
-        self.graphBackgroundContainer.addSubviewAndFill(self.graphBackground)
-        
-        self.wrapperView.backgroundColor = UIColor(hex: 0x333333)
         
         self.percentLabel.textColor = Color.UniversalTextColor
         self.percentLabel.font = Font.make(.regular, 14)

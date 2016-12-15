@@ -13,9 +13,11 @@ import CoreData
 fileprivate enum ViewID: String {
     case headerView = "headerView"
     case dayCell = "dayCell"
+    case weekCell = "weekCell"
     
     static let cellIdentifiers = [
-        ViewID.dayCell.rawValue
+        ViewID.dayCell.rawValue,
+        ViewID.weekCell.rawValue
     ]
 }
 
@@ -51,8 +53,9 @@ class HomePageVC: MDFullOperationViewController {
         self.collectionView.alwaysBounceVertical = true
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
-        self.collectionView.register(__HPVCDayCell.nib(), forCellWithReuseIdentifier: ViewID.dayCell.rawValue)
         self.collectionView.register(__HPVCHeaderView.nib(), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: ViewID.headerView.rawValue)
+        self.collectionView.register(__HPVCDayCell.nib(), forCellWithReuseIdentifier: ViewID.dayCell.rawValue)
+        self.collectionView.register(__HPVCWeekCell.nib(), forCellWithReuseIdentifier: ViewID.weekCell.rawValue)
         
         let flowLayout = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         flowLayout.scrollDirection = .vertical

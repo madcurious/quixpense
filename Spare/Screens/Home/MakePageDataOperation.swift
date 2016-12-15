@@ -34,6 +34,10 @@ class MakePageDataOperation: MDOperation {
     }
     
     override func makeResult(fromSource source: Any?) throws -> Any? {
+        if self.isCancelled {
+            return nil
+        }
+        
         // 1. First, compute for the total of all expenses in the date range.
         // 2. Then, build the chart data for every category.
         
@@ -56,6 +60,10 @@ class MakePageDataOperation: MDOperation {
         let context = App.coreDataStack.newBackgroundContext()
         let fetchResult = try! context.fetch(request) as! [[String : NSDecimalNumber]]
         let dateRangeTotal = fetchResult.first!["sum"] ?? 0
+        
+        if self.isCancelled {
+            return nil
+        }
         
         // 2
         
@@ -90,6 +98,10 @@ class MakePageDataOperation: MDOperation {
                 }
             }
             
+            if self.isCancelled {
+                return nil
+            }
+            
             // Compute for the optional properties depending on the periodization.
             
             var dates: [String]?
@@ -101,11 +113,7 @@ class MakePageDataOperation: MDOperation {
                 break
                 
             case .week:
-                guard let numberOfDaysInAWeek = Calendar.current.range(of: .weekOfMonth, in: .month, for: self.dateRange.start)?.upperBound
-                    else {
-                        break
-                }
-                
+                let numberOfDaysInAWeek = 7
                 var date = self.dateRange.start
                 dates = [String]()
                 for _ in 0 ..< numberOfDaysInAWeek {
@@ -113,6 +121,10 @@ class MakePageDataOperation: MDOperation {
                     
                     // Move to the next day.
                     date = Calendar.current.date(byAdding: .day, value: 1, to: date)!
+                    
+                    if self.isCancelled {
+                        return nil
+                    }
                 }
                 
                 weekdays = self.weekdayFormatter.veryShortWeekdaySymbols
