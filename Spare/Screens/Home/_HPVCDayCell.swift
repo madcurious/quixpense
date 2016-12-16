@@ -1,5 +1,5 @@
 //
-//  __HPVCDayCell.swift
+//  _HPVCDayCell.swift
 //  Spare
 //
 //  Created by Matt Quiros on 25/10/2016.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class __HPVCDayCell: __HPVCChartCell {
+class _HPVCDayCell: _HPVCChartCell {
     
     @IBOutlet weak var pieChartContainer: UIView!
     @IBOutlet weak var pieChartView: __HPVCPieChart!

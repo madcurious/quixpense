@@ -1,5 +1,5 @@
 //
-//  __HPVCChartCell.swift
+//  _HPVCChartCell.swift
 //  Spare
 //
 //  Created by Matt Quiros on 07/11/2016.
@@ -17,7 +17,7 @@ import UIKit
  without warnings and errors. Dynamic heights are computed by instantiating a dummy cell from
  one of the subclass XIBs and then getting the wrapper view's height.
  */
-class __HPVCChartCell: UICollectionViewCell {
+class _HPVCChartCell: UICollectionViewCell {
     
     /// Wraps all of the cell's content. Its height is always the height of the content
     /// given the cell's width, and is always independent from the height of the cell itself.
@@ -55,9 +55,9 @@ class __HPVCChartCell: UICollectionViewCell {
         self.backgroundColor = UIColor.red
         self.wrapperView.backgroundColor = UIColor(hex: 0x333333)
         
-        __HPVCChartCell.applyAttributes(toNameLabel: self.nameLabel)
-        __HPVCChartCell.applyAttributes(toTotalLabel: self.totalLabel)
-        __HPVCChartCell.applyAttributes(toNoExpensesLabel: self.noExpensesLabel)
+        _HPVCChartCell.applyAttributes(toNameLabel: self.nameLabel)
+        _HPVCChartCell.applyAttributes(toTotalLabel: self.totalLabel)
+        _HPVCChartCell.applyAttributes(toNoExpensesLabel: self.noExpensesLabel)
         
         self.graphBackgroundContainer.addSubviewAndFill(self.graphBackground)
     }

@@ -1,5 +1,5 @@
 //
-//  __HPVCWeekCell.swift
+//  _HPVCWeekCell.swift
 //  Spare
 //
 //  Created by Matt Quiros on 15/12/2016.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class __HPVCWeekCell: __HPVCChartCell {
+class _HPVCWeekCell: _HPVCChartCell {
     
     @IBOutlet weak var dailyAverageLabel: UILabel!
     @IBOutlet weak var percentLabel: UILabel!

@@ -21,7 +21,7 @@ fileprivate enum ViewID: String {
     ]
 }
 
-fileprivate let kCellClasses: [__HPVCChartCell.Type] = [__HPVCDayCell.self, __HPVCWeekCell.self]
+fileprivate let kCellClasses: [_HPVCChartCell.Type] = [_HPVCDayCell.self, _HPVCWeekCell.self]
 
 class HomePageVC: MDFullOperationViewController {
     
@@ -54,8 +54,8 @@ class HomePageVC: MDFullOperationViewController {
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
         self.collectionView.register(__HPVCHeaderView.nib(), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: ViewID.headerView.rawValue)
-        self.collectionView.register(__HPVCDayCell.nib(), forCellWithReuseIdentifier: ViewID.dayCell.rawValue)
-        self.collectionView.register(__HPVCWeekCell.nib(), forCellWithReuseIdentifier: ViewID.weekCell.rawValue)
+        self.collectionView.register(_HPVCDayCell.nib(), forCellWithReuseIdentifier: ViewID.dayCell.rawValue)
+        self.collectionView.register(_HPVCWeekCell.nib(), forCellWithReuseIdentifier: ViewID.weekCell.rawValue)
         
         let flowLayout = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         flowLayout.scrollDirection = .vertical
@@ -113,7 +113,7 @@ extension HomePageVC: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let identifier = ViewID.cellIdentifiers[App.selectedPeriodization.rawValue]
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! __HPVCChartCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! _HPVCChartCell
         cell.chartData = self.chartData[indexPath.item]
         return cell
     }
