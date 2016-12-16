@@ -89,7 +89,8 @@ class MakePageDataOperation: MDOperation {
                 dailyPercentages = try self.getDailyPercentages(forCategory: category, inContext: context)
                 
             case .month: ()
-                
+                let numberOfDaysInTheMonth = Calendar.current.range(of: .day, in: .month, for: self.dateRange.start)!.upperBound
+                dailyAverage = categoryTotal / NSDecimalNumber(value: numberOfDaysInTheMonth)
                 
             case .year: ()
             }
@@ -186,17 +187,28 @@ class MakePageDataOperation: MDOperation {
      are a fraction of the maximum.
      */
     func getDailyPercentages(forCategory category: Category, inContext context: NSManagedObjectContext) throws -> [CGFloat] {
-        var dayOfWeek = self.dateRange.start
+        var date = self.dateRange.start
         var dailyTotals = [NSDecimalNumber]()
         
-        for _ in 0 ..< kNumberOfDaysInAWeek {
+        let numberOfDays: Int = {
+            switch self.periodization {
+            case .week:
+                return 7
+                
+            default:
+                let numberOfDaysInMonth = Calendar.current.range(of: .day, in: .month, for: date)!.upperBound
+                return numberOfDaysInMonth
+            }
+        }()
+        
+        for _ in 0 ..< numberOfDays {
             var dailyTotal = NSDecimalNumber(value: 0)
             
             let request = FetchRequestBuilder<Expense>.makeGenericRequest()
             request.predicate = NSPredicate(
                 format: "%K >= %@ AND %K <= %@ AND %K == %@",
-                #keyPath(Expense.dateSpent), dayOfWeek.startOfDay() as NSDate,
-                #keyPath(Expense.dateSpent), dayOfWeek.endOfDay() as NSDate,
+                #keyPath(Expense.dateSpent), date.startOfDay() as NSDate,
+                #keyPath(Expense.dateSpent), date.endOfDay() as NSDate,
                 #keyPath(Expense.category), category
             )
             request.resultType = .dictionaryResultType
@@ -215,15 +227,15 @@ class MakePageDataOperation: MDOperation {
             dailyTotals.append(dailyTotal)
             
             // Move to the next day.
-            dayOfWeek = Calendar.current.date(byAdding: .day, value: 1, to: dayOfWeek)!
+            date = Calendar.current.date(byAdding: .day, value: 1, to: date)!
         }
         
-        var dailyPercentages = Array<CGFloat>(repeating: 0, count: kNumberOfDaysInAWeek)
+        var dailyPercentages = Array<CGFloat>(repeating: 0, count: numberOfDays)
         
         // Avoid division by zero.
         if let maxDailyTotal = dailyTotals.max(by: { $0 < $1 }),
             maxDailyTotal > 0 {
-            for i in 0 ..< kNumberOfDaysInAWeek {
+            for i in 0 ..< numberOfDays {
                 dailyPercentages[i] = CGFloat(dailyTotals[i] / maxDailyTotal)
             }
         }

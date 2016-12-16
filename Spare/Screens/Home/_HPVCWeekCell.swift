@@ -11,7 +11,7 @@ import UIKit
 class _HPVCWeekCell: _HPVCChartCell {
     
     @IBOutlet weak var dailyAverageLabel: UILabel!
-    @IBOutlet weak var percentLabel: UILabel!
+    @IBOutlet weak var percentageLabel: UILabel!
     
     @IBOutlet var weekdayLabels: [UILabel]!
     
@@ -34,10 +34,10 @@ class _HPVCWeekCell: _HPVCChartCell {
         self.dailyAverageLabel.numberOfLines = 1
         self.dailyAverageLabel.lineBreakMode = .byTruncatingTail
         
-        self.percentLabel.font = Font.make(.regular, 12)
-        self.percentLabel.textColor = Color.UniversalTextColor
-        self.percentLabel.numberOfLines = 1
-        self.percentLabel.lineBreakMode = .byTruncatingTail
+        self.percentageLabel.font = Font.make(.regular, 12)
+        self.percentageLabel.textColor = Color.UniversalTextColor
+        self.percentageLabel.numberOfLines = 1
+        self.percentageLabel.lineBreakMode = .byTruncatingTail
         
         var accessoryLabels = weekdayLabels!
         accessoryLabels.append(contentsOf: dateLabels)
@@ -65,7 +65,7 @@ class _HPVCWeekCell: _HPVCChartCell {
         }
         
         self.dailyAverageLabel.text = "Daily average: \(AmountFormatter.displayText(for: chartData.dailyAverage))"
-        self.percentLabel.text = PercentFormatter.displayText(for: chartData.ratio)
+        self.percentageLabel.text = PercentFormatter.displayText(for: chartData.ratio)
         
         for i in 0 ..< self.weekdayLabels.count {
             let label = self.weekdayLabels[i]

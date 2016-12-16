@@ -73,10 +73,14 @@ class MakeDateRangesOperation: MDOperation {
             
         case .month:
             let offsetDate = calendar.date(byAdding: .month, value: page * -1, to: self.currentDate)!
-            let startDate = calendar.date(bySetting: .day, value: 1, of: offsetDate)!
+            var components = calendar.dateComponents([.month, .day, .year], from: offsetDate)
             
-            let dayRange = calendar.range(of: .day, in: .month, for: offsetDate)!
-            let endDate = calendar.date(bySetting: .day, value: dayRange.upperBound, of: offsetDate)!
+            components.day = 1
+            let startDate = calendar.date(from: components)!
+            
+            let lastDayInMonth = calendar.range(of: .day, in: .month, for: offsetDate)!.upperBound - 1
+            components.day = lastDayInMonth
+            let endDate = calendar.date(from: components)!
             
             return DateRange(start: startDate.startOfDay(), end: endDate.endOfDay())
             

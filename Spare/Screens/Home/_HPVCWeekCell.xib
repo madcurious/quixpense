@@ -344,7 +344,7 @@
                 <outlet property="graphContainer" destination="zsN-Ii-Pzg" id="JTx-hM-mn7"/>
                 <outlet property="nameLabel" destination="Bsf-fi-emr" id="i6Y-Et-Rnl"/>
                 <outlet property="noExpensesLabel" destination="DVV-5i-ab0" id="U1z-ee-qWd"/>
-                <outlet property="percentLabel" destination="2y3-hV-Jc2" id="whJ-01-Rbz"/>
+                <outlet property="percentageLabel" destination="2y3-hV-Jc2" id="Cw3-4j-fXN"/>
                 <outlet property="totalLabel" destination="5kJ-SS-Fpp" id="0Np-EZ-z4b"/>
                 <outlet property="wrapperView" destination="QyW-gg-MP6" id="car-8W-jg8"/>
                 <outletCollection property="weekdayLabels" destination="k7l-mN-Fdc" collectionClass="NSMutableArray" id="dEK-ge-MDE"/>

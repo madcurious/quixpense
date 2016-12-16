@@ -43,6 +43,8 @@
 		265222A61D66D00A007FED96 /* __DPVCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 265222A51D66D00A007FED96 /* __DPVCView.xib */; };
 		265751671E027C4000A18C9E /* _HPVCWeekCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265751661E027C4000A18C9E /* _HPVCWeekCell.swift */; };
 		265751691E027C4C00A18C9E /* _HPVCWeekCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 265751681E027C4C00A18C9E /* _HPVCWeekCell.xib */; };
+		265751721E0412D800A18C9E /* _HPVCMonthCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 265751711E0412D800A18C9E /* _HPVCMonthCell.xib */; };
+		265751741E0412E200A18C9E /* _HPVCMonthCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265751731E0412E200A18C9E /* _HPVCMonthCell.swift */; };
 		266408B41D4A571400609580 /* PeriodizationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266408B31D4A571400609580 /* PeriodizationButton.swift */; };
 		266408C21D4A630E00609580 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266408C11D4A630E00609580 /* Button.swift */; };
 		266632AE1DB24AA7007B992D /* TabbedRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266632AD1DB24AA7007B992D /* TabbedRootViewController.swift */; };
@@ -190,6 +192,8 @@
 		265222A51D66D00A007FED96 /* __DPVCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __DPVCView.xib; sourceTree = "<group>"; };
 		265751661E027C4000A18C9E /* _HPVCWeekCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _HPVCWeekCell.swift; sourceTree = "<group>"; };
 		265751681E027C4C00A18C9E /* _HPVCWeekCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = _HPVCWeekCell.xib; sourceTree = "<group>"; };
+		265751711E0412D800A18C9E /* _HPVCMonthCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = _HPVCMonthCell.xib; sourceTree = "<group>"; };
+		265751731E0412E200A18C9E /* _HPVCMonthCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _HPVCMonthCell.swift; sourceTree = "<group>"; };
 		266408B31D4A571400609580 /* PeriodizationButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeriodizationButton.swift; sourceTree = "<group>"; };
 		266408C11D4A630E00609580 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		266632AD1DB24AA7007B992D /* TabbedRootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabbedRootViewController.swift; sourceTree = "<group>"; };
@@ -332,6 +336,8 @@
 				26A1CB3E1DD0A8B800DAE89E /* MakePageDataOperation.swift */,
 				265751661E027C4000A18C9E /* _HPVCWeekCell.swift */,
 				265751681E027C4C00A18C9E /* _HPVCWeekCell.xib */,
+				265751731E0412E200A18C9E /* _HPVCMonthCell.swift */,
+				265751711E0412D800A18C9E /* _HPVCMonthCell.xib */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -727,6 +733,7 @@
 				264C0CB01DBE504300EA89D3 /* __HPVCZeroView.xib in Resources */,
 				264C0CB91DBF7C9400EA89D3 /* _HPVCDayCell.xib in Resources */,
 				266946871CC7711000A68424 /* Icon-60@2x.png in Resources */,
+				265751721E0412D800A18C9E /* _HPVCMonthCell.xib in Resources */,
 				268D39A71DC70E67005EBC4B /* __HPVCHeaderView.xib in Resources */,
 				266946891CC7711000A68424 /* Icon@2x.png in Resources */,
 				26A1CB4C1DD1ABD600DAE89E /* NotoSansUI-Bold.ttf in Resources */,
@@ -810,6 +817,7 @@
 				26D334C51DD2563D004BB4D0 /* Subcategory+CoreDataProperties.swift in Sources */,
 				265222A01D66CFCE007FED96 /* DatePickerVC.swift in Sources */,
 				26440F991DB229C300BD8F1C /* Expense+CoreDataClass.swift in Sources */,
+				265751741E0412E200A18C9E /* _HPVCMonthCell.swift in Sources */,
 				261F147A1DA4D5E40072FAE7 /* Notifications.swift in Sources */,
 				268D39A91DC70EBD005EBC4B /* __HPVCHeaderView.swift in Sources */,
 				266408C21D4A630E00609580 /* Button.swift in Sources */,
