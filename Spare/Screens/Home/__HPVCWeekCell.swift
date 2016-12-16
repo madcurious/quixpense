@@ -42,7 +42,7 @@ class __HPVCWeekCell: __HPVCChartCell {
         var accessoryLabels = weekdayLabels!
         accessoryLabels.append(contentsOf: dateLabels)
         for label in accessoryLabels {
-            label.font = Font.make(.regular, 10)
+            label.font = Font.make(.regular, 11)
             label.textColor = Color.UniversalTextColor
             label.textAlignment = .center
         }

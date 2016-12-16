@@ -64,14 +64,14 @@ class __HPVCChartCell: UICollectionViewCell {
     
     class func applyAttributes(toNameLabel label: UILabel) {
         label.textColor = Color.UniversalTextColor
-        label.font = Font.make(.bold, 16)
+        label.font = Font.make(.bold, 17)
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
     }
     
     class func applyAttributes(toTotalLabel label: UILabel) {
         label.textColor = Color.UniversalTextColor
-        label.font = Font.make(.regular, 16)
+        label.font = Font.make(.regular, 17)
         label.numberOfLines = 1
         label.lineBreakMode = .byTruncatingTail
     }
