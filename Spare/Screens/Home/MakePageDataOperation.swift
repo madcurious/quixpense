@@ -10,6 +10,8 @@ import Foundation
 import Mold
 import CoreData
 
+private let kNumberOfDaysInAWeek = 7
+
 class MakePageDataOperation: MDOperation {
     
     let dateRange: DateRange
@@ -38,28 +40,14 @@ class MakePageDataOperation: MDOperation {
             return nil
         }
         
+        let context = App.coreDataStack.newBackgroundContext()
+        
         // 1. First, compute for the total of all expenses in the date range.
         // 2. Then, build the chart data for every category.
         
         // 1
         
-        let request = FetchRequestBuilder<Expense>.makeGenericRequest()
-        request.predicate = NSPredicate(
-            format: "%K >= %@ AND %K <= %@",
-            #keyPath(Expense.dateSpent), dateRange.start as NSDate,
-            #keyPath(Expense.dateSpent), dateRange.end as NSDate
-        )
-        request.resultType = .dictionaryResultType
-        
-        let sumExpression = NSExpressionDescription()
-        sumExpression.name = "sum"
-        sumExpression.expression = NSExpression(forKeyPath: "@sum.amount")
-        sumExpression.expressionResultType = .decimalAttributeType
-        request.propertiesToFetch = [sumExpression]
-        
-        let context = App.coreDataStack.newBackgroundContext()
-        let fetchResult = try! context.fetch(request) as! [[String : NSDecimalNumber]]
-        let dateRangeTotal = fetchResult.first!["sum"] ?? 0
+        let dateRangeTotal = try self.getDateRangeTotal(inContext: context)
         
         if self.isCancelled {
             return nil
@@ -76,26 +64,7 @@ class MakePageDataOperation: MDOperation {
             // Compute for the category total only if there are any expenses in the date range.
             // This is to avoid division by zero when computing for the category percentage or ratio.
             if dateRangeTotal > 0 {
-                let request = FetchRequestBuilder<Expense>.makeGenericRequest()
-                request.predicate = NSPredicate(
-                    format: "%K >= %@ AND %K <= %@ AND %K == %@",
-                    #keyPath(Expense.dateSpent), self.dateRange.start as NSDate,
-                    #keyPath(Expense.dateSpent), self.dateRange.end as NSDate,
-                    #keyPath(Expense.category), category
-                )
-                request.resultType = .dictionaryResultType
-                
-                let sumExpression = NSExpressionDescription()
-                sumExpression.name = "sum"
-                sumExpression.expressionResultType = .decimalAttributeType
-                sumExpression.expression = NSExpression(forKeyPath: "@sum.amount")
-                request.propertiesToFetch = [sumExpression]
-                
-                if let array = try context.fetch(request) as? [[String : NSDecimalNumber]],
-                    let dict = array.first,
-                    let sum = dict["sum"] {
-                    categoryTotal = sum
-                }
+                categoryTotal = try self.getCategoryTotal(for: category, inContext: context)
             }
             
             if self.isCancelled {
@@ -107,58 +76,17 @@ class MakePageDataOperation: MDOperation {
             var dates: [String]?
             var weekdays: [String]?
             var dailyAverage: NSDecimalNumber?
-            var percentages: [CGFloat]?
+            var dailyPercentages: [CGFloat]?
             
             switch self.periodization {
             case .day:
                 break
                 
             case .week:
-                let numberOfDaysInAWeek = 7
-                var dayOfWeek = self.dateRange.start
-                dates = [String]()
-                percentages = Array<CGFloat>(repeating: 0, count: numberOfDaysInAWeek)
-                for i in 0 ..< numberOfDaysInAWeek {
-                    // Append
-                    dates?.append(self.dayOfWeekFormatter.string(from: dayOfWeek))
-                    
-                    // Get the total of expenses in that day and compute for its percentage
-                    // relative to the category total.
-                    // Avoid division by zero.
-                    if categoryTotal > 0 {
-                        var dailyTotal = NSDecimalNumber(value: 0)
-                        let request = FetchRequestBuilder<Expense>.makeGenericRequest()
-                        request.predicate = NSPredicate(
-                            format: "%K >= %@ AND %K <= %@ AND %K == %@",
-                            #keyPath(Expense.dateSpent), dayOfWeek.startOfDay() as NSDate,
-                            #keyPath(Expense.dateSpent), dayOfWeek.endOfDay() as NSDate,
-                            #keyPath(Expense.category), category
-                        )
-                        request.resultType = .dictionaryResultType
-                        let sumExpression = NSExpressionDescription()
-                        sumExpression.name = "sum"
-                        sumExpression.expressionResultType = .decimalAttributeType
-                        sumExpression.expression = NSExpression(forKeyPath: "@sum.amount")
-                        request.propertiesToFetch = [sumExpression]
-                        if let array = try context.fetch(request) as? [[String : NSDecimalNumber]],
-                            let dict = array.first,
-                            let sum = dict["sum"] {
-                            dailyTotal = sum
-                        }
-                        percentages?[i] = CGFloat(dailyTotal / categoryTotal)
-                    }
-                    
-                    
-                    // Move to the next day.
-                    dayOfWeek = Calendar.current.date(byAdding: .day, value: 1, to: dayOfWeek)!
-                    
-                    if self.isCancelled {
-                        return nil
-                    }
-                }
-                
+                dailyAverage = categoryTotal / NSDecimalNumber(value: kNumberOfDaysInAWeek)
+                dates = self.getDatesOfTheWeek()
                 weekdays = self.weekdayFormatter.veryShortWeekdaySymbols
-                dailyAverage = categoryTotal / NSDecimalNumber(value: numberOfDaysInAWeek)
+                dailyPercentages = try self.getDailyPercentages(forCategory: category, inContext: context)
                 
             case .month: ()
                 
@@ -173,7 +101,7 @@ class MakePageDataOperation: MDOperation {
                                          dates: dates,
                                          weekdays: weekdays,
                                          dailyAverage: dailyAverage,
-                                         percentages: percentages)
+                                         dailyPercentages: dailyPercentages)
             chartData.append(newChartData)
             
             if self.isCancelled {
@@ -187,13 +115,120 @@ class MakePageDataOperation: MDOperation {
         return result
     }
     
-    func computeForDatesAndWeekdays() -> ([String], [String]) {
-        guard self.periodization != .day
-            else {
-                fatalError("Dev error--can't call this for day periodization.")
+    /**
+     Gets the total of all expenses in all categories within the date range.
+     */
+    func getDateRangeTotal(inContext context: NSManagedObjectContext) throws -> NSDecimalNumber {
+        let request = FetchRequestBuilder<Expense>.makeGenericRequest()
+        request.predicate = NSPredicate(
+            format: "%K >= %@ AND %K <= %@",
+            #keyPath(Expense.dateSpent), dateRange.start as NSDate,
+            #keyPath(Expense.dateSpent), dateRange.end as NSDate
+        )
+        request.resultType = .dictionaryResultType
+        
+        let sumExpression = NSExpressionDescription()
+        sumExpression.name = "sum"
+        sumExpression.expression = NSExpression(forKeyPath: "@sum.amount")
+        sumExpression.expressionResultType = .decimalAttributeType
+        request.propertiesToFetch = [sumExpression]
+        
+        let fetchResult = try context.fetch(request) as! [[String : NSDecimalNumber]]
+        
+        if let dateRangeTotal = fetchResult.first?["sum"] {
+            return dateRangeTotal
+        }
+        return 0
+    }
+    
+    /**
+     Gets the total of all expenses in the category, given the operation's date range.
+     Best not to call this function if the date range total has already been found to be zero.
+     */
+    func getCategoryTotal(for category: Category, inContext context: NSManagedObjectContext) throws -> NSDecimalNumber {
+        let request = FetchRequestBuilder<Expense>.makeGenericRequest()
+        request.predicate = NSPredicate(
+            format: "%K >= %@ AND %K <= %@ AND %K == %@",
+            #keyPath(Expense.dateSpent), self.dateRange.start as NSDate,
+            #keyPath(Expense.dateSpent), self.dateRange.end as NSDate,
+            #keyPath(Expense.category), category
+        )
+        request.resultType = .dictionaryResultType
+        
+        let sumExpression = NSExpressionDescription()
+        sumExpression.name = "sum"
+        sumExpression.expressionResultType = .decimalAttributeType
+        sumExpression.expression = NSExpression(forKeyPath: "@sum.amount")
+        request.propertiesToFetch = [sumExpression]
+        
+        if let array = try context.fetch(request) as? [[String : NSDecimalNumber]],
+            let dict = array.first,
+            let sum = dict["sum"] {
+            return sum
+        }
+        return 0
+    }
+    
+    func getDatesOfTheWeek() -> [String] {
+        var dates = [String]()
+        var dayOfWeek = self.dateRange.start
+        for _ in 0 ..< kNumberOfDaysInAWeek {
+            dates.append(self.dayOfWeekFormatter.string(from: dayOfWeek))
+            
+            // Move to the next day.
+            dayOfWeek = Calendar.current.date(byAdding: .day, value: 1, to: dayOfWeek)!
+        }
+        return dates
+    }
+    
+    /**
+     Returns the bar heights as an array of fractions, from 0 to 1. The maximum expense is always 1 and the other heights
+     are a fraction of the maximum.
+     */
+    func getDailyPercentages(forCategory category: Category, inContext context: NSManagedObjectContext) throws -> [CGFloat] {
+        var dayOfWeek = self.dateRange.start
+        var dailyTotals = [NSDecimalNumber]()
+        
+        for _ in 0 ..< kNumberOfDaysInAWeek {
+            var dailyTotal = NSDecimalNumber(value: 0)
+            
+            let request = FetchRequestBuilder<Expense>.makeGenericRequest()
+            request.predicate = NSPredicate(
+                format: "%K >= %@ AND %K <= %@ AND %K == %@",
+                #keyPath(Expense.dateSpent), dayOfWeek.startOfDay() as NSDate,
+                #keyPath(Expense.dateSpent), dayOfWeek.endOfDay() as NSDate,
+                #keyPath(Expense.category), category
+            )
+            request.resultType = .dictionaryResultType
+            let sumExpression = NSExpressionDescription()
+            sumExpression.name = "sum"
+            sumExpression.expressionResultType = .decimalAttributeType
+            sumExpression.expression = NSExpression(forKeyPath: "@sum.amount")
+            request.propertiesToFetch = [sumExpression]
+            
+            if let array = try context.fetch(request) as? [[String : NSDecimalNumber]],
+                let dict = array.first,
+                let sum = dict["sum"] {
+                dailyTotal = sum
+            }
+            
+            dailyTotals.append(dailyTotal)
+            
+            // Move to the next day.
+            dayOfWeek = Calendar.current.date(byAdding: .day, value: 1, to: dayOfWeek)!
         }
         
-        return ([String](), [String]())
+        var dailyPercentages = Array<CGFloat>(repeating: 0, count: kNumberOfDaysInAWeek)
+        
+        // Avoid division by zero.
+        if let maxDailyTotal = dailyTotals.max(by: { $0 < $1 }),
+            maxDailyTotal > 0 {
+            for i in 0 ..< kNumberOfDaysInAWeek {
+                dailyPercentages[i] = CGFloat(dailyTotals[i] / maxDailyTotal)
+            }
+        }
+        
+        return dailyPercentages
     }
     
 }

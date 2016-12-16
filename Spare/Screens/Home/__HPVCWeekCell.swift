@@ -78,7 +78,7 @@ class __HPVCWeekCell: __HPVCChartCell {
         }
         
         guard drawGraph == true,
-            let percentages = chartData.percentages
+            let percentages = chartData.dailyPercentages
             else {
                 return
         }

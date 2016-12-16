@@ -34,7 +34,10 @@ class Button: UIControl {
     
     override func sizeToFit() {
         self.label.sizeToFit()
-        self.frame = self.label.bounds
+        self.frame = CGRect(x: self.frame.origin.x,
+                            y: self.frame.origin.y,
+                            width: self.label.bounds.size.width,
+                            height: self.label.bounds.size.height)
     }
     
     required init?(coder aDecoder: NSCoder) {

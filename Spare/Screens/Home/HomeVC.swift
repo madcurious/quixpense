@@ -67,8 +67,11 @@ class HomeVC: MDFullOperationViewController {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: self.periodizationButton)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: self.nowButton)
         
-        let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(handleFinishedInitializingCoreDataStack), name: Notifications.CoreDataStackFinishedInitializing, object: nil)
+        let system = NotificationCenter.default
+        system.addObserver(self, selector: #selector(handleFinishedInitializingCoreDataStack), name: Notifications.CoreDataStackFinishedInitializing, object: nil)
+        
+        // Observe when selected periodization changes.
+        system.addObserver(self, selector: #selector(handleSelectionOfPeriodization), name: Notifications.SelectedPeriodizationChanged, object: nil)
     }
     
     override func makeOperation() -> MDOperation? {
@@ -117,8 +120,6 @@ class HomeVC: MDFullOperationViewController {
     
     func handleSelectionOfPeriodization() {
         App.selectedPeriodization = self.periodizationButton.selectedPeriodization
-        NotificationCenter.default.post(name: Notifications.SelectedPeriodizationChanged, object: nil)
-        
         self.dateRanges = []
         self.runOperation()
     }

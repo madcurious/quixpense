@@ -64,9 +64,6 @@ class HomePageVC: MDFullOperationViewController {
         
         // The page should re-run the operation whenever an MOC saves.
         system.addObserver(self, selector: #selector(handleContextDidSaveNotification(notification:)), name: Notification.Name.NSManagedObjectContextDidSave, object: nil)
-        
-        // Observe when selected periodization changes.
-        system.addObserver(self, selector: #selector(handleChangeOfSelectedPeriodization), name: Notifications.SelectedPeriodizationChanged, object: nil)
     }
     
     override func makeOperation() -> MDOperation? {
@@ -89,10 +86,6 @@ class HomePageVC: MDFullOperationViewController {
         // I initially put a checker to re-run only when a Category or Expense is updated,
         // but inserting/updating/deleting an Expense also includes its Category in the userInfo,
         // so the re-run will be triggered almost always whenever there's a save.
-        self.runOperation()
-    }
-    
-    func handleChangeOfSelectedPeriodization() {
         self.runOperation()
     }
     

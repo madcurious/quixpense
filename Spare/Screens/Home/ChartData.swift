@@ -19,7 +19,7 @@ struct ChartData {
     var dates: [String]?
     var weekdays: [String]?
     var dailyAverage: NSDecimalNumber?
-    var percentages: [CGFloat]?
+    var dailyPercentages: [CGFloat]?
     
     var ratio: Double {
         guard self.dateRangeTotal > 0
