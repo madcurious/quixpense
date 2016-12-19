@@ -102,6 +102,8 @@ class _HPVCChartCell: UICollectionViewCell {
         accessoryLabel.font = Font.make(.regular, 11)
         accessoryLabel.textColor = Color.UniversalTextColor
         accessoryLabel.textAlignment = .center
+        accessoryLabel.numberOfLines = 1
+        accessoryLabel.lineBreakMode = .byTruncatingTail
     }
     
     /**

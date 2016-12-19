@@ -15,7 +15,7 @@ class _HPVCYearCell: _HPVCChartCell {
     @IBOutlet weak var monthlyAverageLabel: UILabel!
     @IBOutlet weak var percentageLabel: UILabel!
     @IBOutlet weak var barStackView: UIStackView!
-    @IBOutlet weak var dateLabelContainer: UIView!
+    @IBOutlet weak var monthLabelContainer: UIView!
     
     var monthLabels = [UILabel]()
     var barViews = [_HPVCBarView]()
@@ -32,26 +32,26 @@ class _HPVCYearCell: _HPVCChartCell {
             _HPVCChartCell.format(accessoryLabel: monthLabel)
             monthLabel.text = "\(i + 1)"
             self.monthLabels.append(monthLabel)
-            self.dateLabelContainer.addSubview(monthLabel)
+            self.monthLabelContainer.addSubview(monthLabel)
             
             // Add top and bottom constraints to the month labels.
             let constraints = [
                 NSLayoutConstraint(item: monthLabel,
                                    attribute: .top,
                                    relatedBy: .equal,
-                                   toItem: self.dateLabelContainer,
+                                   toItem: self.monthLabelContainer,
                                    attribute: .top,
                                    multiplier: 1,
                                    constant: 0),
                 NSLayoutConstraint(item: monthLabel,
                                    attribute: .bottom,
                                    relatedBy: .equal,
-                                   toItem: self.dateLabelContainer,
+                                   toItem: self.monthLabelContainer,
                                    attribute: .bottom,
                                    multiplier: 1,
                                    constant: 0)
             ]
-            self.dateLabelContainer.addConstraints(constraints)
+            self.monthLabelContainer.addConstraints(constraints)
             
             // Create the bar views.
             let barView = _HPVCBarView()

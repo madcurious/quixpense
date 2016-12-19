@@ -62,7 +62,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="380" height="120"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Wzo-fl-DLb">
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Wzo-fl-DLb">
                                         <rect key="frame" x="0.0" y="0.0" width="380" height="120"/>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X4e-Ie-8Mr">
@@ -121,9 +121,9 @@
             <size key="customSize" width="400" height="272"/>
             <connections>
                 <outlet property="barStackView" destination="Wzo-fl-DLb" id="xzs-pj-aSq"/>
-                <outlet property="dateLabelContainer" destination="4Ff-1E-L9j" id="hjb-XD-E7O"/>
                 <outlet property="graphBackgroundContainer" destination="hVD-Aw-13B" id="6Lc-x9-GMH"/>
                 <outlet property="graphContainer" destination="uyl-aQ-tV4" id="jBe-j0-iGt"/>
+                <outlet property="monthLabelContainer" destination="4Ff-1E-L9j" id="SyV-5K-K7I"/>
                 <outlet property="monthlyAverageLabel" destination="k8B-9e-Q4p" id="AyO-4a-kOl"/>
                 <outlet property="nameLabel" destination="vMu-i2-uLi" id="akv-db-Q8i"/>
                 <outlet property="noExpensesLabel" destination="X4e-Ie-8Mr" id="QiG-GA-zlK"/>

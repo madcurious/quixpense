@@ -77,17 +77,17 @@ class MakePageDataOperation: MDOperation {
                 newData.dailyAverage = categoryTotal / NSDecimalNumber(value: kNumberOfDaysInAWeek)
                 newData.datesInWeek = self.getDatesOfTheWeek()
                 newData.weekdays = self.weekdayFormatter.veryShortWeekdaySymbols
-                newData.dailyPercentages = try self.getDailyPercentages(forCategory: category, inContext: context)
+                newData.dailyPercentages = try self.getPercentages(forCategory: category, inContext: context)
                 
             case .month: ()
                 let numberOfDaysInTheMonth = Calendar.current.numberOfDaysInMonth(of: self.dateRange.start)
                 newData.dailyAverage = categoryTotal / NSDecimalNumber(value: numberOfDaysInTheMonth)
-                newData.dailyPercentages = try self.getDailyPercentages(forCategory: category, inContext: context)
+                newData.dailyPercentages = try self.getPercentages(forCategory: category, inContext: context)
                 
                 
             case .year:
                 newData.monthlyAverage = categoryTotal / 12
-                newData.monthlyPercentages = []
+                newData.monthlyPercentages = try self.getPercentages(forCategory: category, inContext: context)
             }
             
             chartData.append(newData)
@@ -171,32 +171,44 @@ class MakePageDataOperation: MDOperation {
     }
     
     /**
-     Returns the bar heights as an array of fractions, from 0 to 1. The maximum expense is always 1 and the other heights
-     are a fraction of the maximum.
+     Returns the bars in a graph represented as height percentages from 0 to 1. The highest non-zero
+     total is always 1.0 and all other bars are percentages of it.
+     
+     For week and month views, the percentages represent a day. For the year view, each percentage is a month.
+     A crash is produced if called with a day periodization.
      */
-    func getDailyPercentages(forCategory category: Category, inContext context: NSManagedObjectContext) throws -> [CGFloat] {
-        var date = self.dateRange.start
-        var dailyTotals = [NSDecimalNumber]()
+    func getPercentages(forCategory category: Category, inContext context: NSManagedObjectContext) throws -> [CGFloat] {
+        var referenceDate = self.dateRange.start
+        var totals = [NSDecimalNumber]()
         
-        let numberOfDays: Int = {
+        let numberOfItems: Int = {
             switch self.periodization {
             case .week:
                 return 7
                 
-            default:
-                let numberOfDaysInMonth = Calendar.current.numberOfDaysInMonth(of: date)
+            case .month:
+                let numberOfDaysInMonth = Calendar.current.numberOfDaysInMonth(of: referenceDate)
                 return numberOfDaysInMonth
+                
+            case .year:
+                return 12
+                
+            default:
+                fatalError("Can't call \(#function) for periodization \(self.periodization)")
             }
         }()
         
-        for _ in 0 ..< numberOfDays {
-            var dailyTotal = NSDecimalNumber(value: 0)
+        // Compute for the individual totals that represent each bar.
+        // Later, we compute the percentages based on the highest total we find.
+        let skipComponent = self.periodization == .year ? Calendar.Component.month : .day
+        for _ in 0 ..< numberOfItems {
+            var individualTotal = NSDecimalNumber(value: 0)
             
             let request = FetchRequestBuilder<Expense>.makeGenericRequest()
             request.predicate = NSPredicate(
                 format: "%K >= %@ AND %K <= %@ AND %K == %@",
-                #keyPath(Expense.dateSpent), date.startOfDay() as NSDate,
-                #keyPath(Expense.dateSpent), date.endOfDay() as NSDate,
+                #keyPath(Expense.dateSpent), referenceDate.startOfDay() as NSDate,
+                #keyPath(Expense.dateSpent), referenceDate.endOfDay() as NSDate,
                 #keyPath(Expense.category), category
             )
             request.resultType = .dictionaryResultType
@@ -209,26 +221,26 @@ class MakePageDataOperation: MDOperation {
             if let array = try context.fetch(request) as? [[String : NSDecimalNumber]],
                 let dict = array.first,
                 let sum = dict["sum"] {
-                dailyTotal = sum
+                individualTotal = sum
             }
             
-            dailyTotals.append(dailyTotal)
+            totals.append(individualTotal)
             
-            // Move to the next day.
-            date = Calendar.current.date(byAdding: .day, value: 1, to: date)!
+            // Advance to the next reference date for the next bar.
+            referenceDate = Calendar.current.date(byAdding: skipComponent, value: 1, to: referenceDate)!
         }
         
-        var dailyPercentages = Array<CGFloat>(repeating: 0, count: numberOfDays)
+        var percentages = Array<CGFloat>(repeating: 0, count: numberOfItems)
         
         // Avoid division by zero.
-        if let maxDailyTotal = dailyTotals.max(by: { $0 < $1 }),
-            maxDailyTotal > 0 {
-            for i in 0 ..< numberOfDays {
-                dailyPercentages[i] = CGFloat(dailyTotals[i] / maxDailyTotal)
+        if let highestTotal = totals.max(by: { $0 < $1 }),
+            highestTotal > 0 {
+            for i in 0 ..< numberOfItems {
+                percentages[i] = CGFloat(totals[i] / highestTotal)
             }
         }
         
-        return dailyPercentages
+        return percentages
     }
     
 }
