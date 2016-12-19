@@ -16,12 +16,16 @@ class _HPVCMonthCell: _HPVCChartCell {
     @IBOutlet weak var percentageLabel: UILabel!
     
     @IBOutlet weak var barStackView: UIStackView!
+    
+    @IBOutlet weak var dateLabelContainer: UIView!
     @IBOutlet var dateLabels: [UILabel]!
     
-    fileprivate var barViews = [_HPVCMonthCellBarView]()
+//    fileprivate var barViews = [_HPVCMonthCellBarView]()
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        self.dateLabelContainer.backgroundColor = UIColor.clear
         
         self.dailyAverageLabel.font = Font.make(.regular, 12)
         self.dailyAverageLabel.textColor = Color.UniversalTextColor
@@ -42,6 +46,30 @@ class _HPVCMonthCell: _HPVCChartCell {
             
             dateLabel += 7
         }
+        
+        // Always add 31 bar views. Show or hide the last three later as needed.
+        for _ in 0 ..< 31 {
+            let barView = _HPVCMonthCellBarView()
+            self.barStackView.addArrangedSubview(barView)
+            
+//            let view = UIView()
+//            view.backgroundColor = UIColor.randomColor()
+//            self.barStackView.addArrangedSubview(view)
+        }
+        
+        let dates = [1, 8, 15, 22, 29]
+        for i in 0 ..< dates.count {
+            let label = self.dateLabels[i]
+            label.text = "\(dates[i])"
+            let centerX = NSLayoutConstraint(item: label,
+                                             attribute: .centerX,
+                                             relatedBy: .equal,
+                                             toItem: self.barStackView.arrangedSubviews[dates[i] - 1],
+                                             attribute: .centerX,
+                                             multiplier: 1,
+                                             constant: 0)
+            self.wrapperView.addConstraint(centerX)
+        }
     }
     
     override func update(withData chartData: ChartData?, drawGraph: Bool) {
@@ -56,21 +84,22 @@ class _HPVCMonthCell: _HPVCChartCell {
         self.percentageLabel.text = "\(PercentFormatter.displayText(for: chartData.ratio)) of total"
         
         guard drawGraph == true,
-            let percentages = chartData.dailyPercentages
+            let percentages = chartData.dailyPercentages,
+            percentages.contains(where: { $0 > 0 })
             else {
-            return
+                self.noExpensesLabel.isHidden = false
+                return
         }
         
-        switch barViews.count {
-        case 0:
-            self.addBarViews(quantity: 28)
-            fallthrough
-            
-        default:
-            if barViews.count < percentages.count {
-                self.addBarViews(quantity: percentages.count - barViews.count)
-            } else if percentages.count < barViews.count {
-                self.removeBarViews(quantity: barViews.count - percentages.count)
+        self.noExpensesLabel.isHidden = true
+        
+        // Hide or show the last 3 bar views (29, 30, 31) if they are more
+        // than the number of days in the month.
+        for i in 28 ..< self.barStackView.arrangedSubviews.count {
+            if i < percentages.count {
+                self.barStackView.arrangedSubviews[i].isHidden = false
+            } else {
+                self.barStackView.arrangedSubviews[i].isHidden = true
             }
         }
         
@@ -78,59 +107,18 @@ class _HPVCMonthCell: _HPVCChartCell {
         self.layoutIfNeeded()
         
         for i in 0 ..< percentages.count {
-            let barView = self.barViews[i]
+            let barView = self.barStackView.arrangedSubviews[i] as! _HPVCMonthCellBarView
             let percentage = percentages[i]
             barView.height = self.barStackView.bounds.size.height * percentage
         }
         
-        guard let dates = chartData.dates
-            else {
-                return
-        }
-        
-        // Hide the last date label if there are only 4 dates to be displayed.
-        if dates.count < self.dateLabels.count {
-            self.dateLabels.last?.isHidden = true
-        } else {
+        if percentages.count >= 29 {
             self.dateLabels.last?.isHidden = false
-        }
-        
-        for i in 0 ..< dates.count {
-            let label = self.dateLabels[i]
-            
-            // Add a center constraint to the label if not previously added.
-            guard label.constraints.first(where: { $0.identifier == kCenterConstraintID }) != nil
-                else {
-                    let centerX = NSLayoutConstraint(item: label,
-                                                     attribute: .centerX,
-                                                     relatedBy: .equal,
-                                                     toItem: self.barViews[dates[i - 1]],
-                                                     attribute: .centerX,
-                                                     multiplier: 1,
-                                                     constant: 0)
-                    label.addConstraint(centerX)
-                    continue
-            }
+        } else {
+            self.dateLabels.last?.isHidden = true
         }
         
         self.setNeedsLayout()
-    }
-    
-    func addBarViews(quantity: Int) {
-        for _ in 0 ..< quantity {
-            let barView = _HPVCMonthCellBarView()
-            barView.backgroundColor = UIColor.clear
-            self.barStackView.addArrangedSubview(barView)
-        }
-    }
-    
-    func removeBarViews(quantity: Int) {
-        for _ in 0 ..< quantity {
-            if let lastBarView = self.barStackView.arrangedSubviews.last {
-                self.barStackView.removeArrangedSubview(lastBarView)
-                lastBarView.removeFromSuperview()
-            }
-        }
     }
     
 }
@@ -138,6 +126,8 @@ class _HPVCMonthCell: _HPVCChartCell {
 fileprivate class _HPVCMonthCellBarView: UIView {
     
     let barView = UIView()
+    
+    static let width = CGFloat(6)
     
     var height: CGFloat {
         get {
@@ -162,6 +152,7 @@ fileprivate class _HPVCMonthCellBarView: UIView {
     }
     
     func setup() {
+        self.backgroundColor = UIColor.clear
         self.barView.backgroundColor = UIColor(hex: 0xd8d8d8)
         self.addSubview(self.barView)
         
@@ -195,9 +186,11 @@ fileprivate class _HPVCMonthCellBarView: UIView {
                                toItem: nil,
                                attribute: .notAnAttribute,
                                multiplier: 1,
-                               constant: 0),
+                               constant: _HPVCMonthCellBarView.width),
             self.heightConstraint
             ])
+        
+        self.barView.layer.cornerRadius = _HPVCMonthCellBarView.width / 2
     }
     
 }

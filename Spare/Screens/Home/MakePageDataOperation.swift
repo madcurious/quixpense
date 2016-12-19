@@ -84,7 +84,7 @@ class MakePageDataOperation: MDOperation {
                 dailyPercentages = try self.getDailyPercentages(forCategory: category, inContext: context)
                 
             case .month: ()
-                dates = self.getDatesOfTheMonth()
+//                dates = self.getDatesOfTheMonth()
             
                 let numberOfDaysInTheMonth = Calendar.current.numberOfDaysInMonth(of: self.dateRange.start)
                 dailyAverage = categoryTotal / NSDecimalNumber(value: numberOfDaysInTheMonth)
@@ -183,14 +183,14 @@ class MakePageDataOperation: MDOperation {
         return dates
     }
     
-    func getDatesOfTheMonth() -> [Int] {
-        var dates = kConstantDatesOfTheMonth
-        let numberOfDaysInTheMonth = Calendar.current.numberOfDaysInMonth(of: self.dateRange.start)
-        if numberOfDaysInTheMonth >= 29 {
-            dates.append(29)
-        }
-        return dates
-    }
+//    func getDatesOfTheMonth() -> [Int] {
+//        var dates = kConstantDatesOfTheMonth
+//        let numberOfDaysInTheMonth = Calendar.current.numberOfDaysInMonth(of: self.dateRange.start)
+//        if numberOfDaysInTheMonth >= 29 {
+//            dates.append(29)
+//        }
+//        return dates
+//    }
     
     /**
      Returns the bar heights as an array of fractions, from 0 to 1. The maximum expense is always 1 and the other heights
