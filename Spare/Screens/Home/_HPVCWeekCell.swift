@@ -29,22 +29,13 @@ class _HPVCWeekCell: _HPVCChartCell {
         
         UIView.clearBackgroundColors(self.barViewContainers)
         
-        self.dailyAverageLabel.font = Font.make(.regular, 12)
-        self.dailyAverageLabel.textColor = Color.UniversalTextColor
-        self.dailyAverageLabel.numberOfLines = 1
-        self.dailyAverageLabel.lineBreakMode = .byTruncatingTail
-        
-        self.percentageLabel.font = Font.make(.regular, 12)
-        self.percentageLabel.textColor = Color.UniversalTextColor
-        self.percentageLabel.numberOfLines = 1
-        self.percentageLabel.lineBreakMode = .byTruncatingTail
+        _HPVCChartCell.format(detailLabel: self.dailyAverageLabel, alignment: .left)
+        _HPVCChartCell.format(detailLabel: self.percentageLabel, alignment: .right)
         
         var accessoryLabels = weekdayLabels!
         accessoryLabels.append(contentsOf: dateLabels)
         for label in accessoryLabels {
-            label.font = Font.make(.regular, 11)
-            label.textColor = Color.UniversalTextColor
-            label.textAlignment = .center
+            _HPVCChartCell.format(accessoryLabel: label)
         }
         
         let barWidth = CGFloat(6)
@@ -65,14 +56,14 @@ class _HPVCWeekCell: _HPVCChartCell {
         }
         
         self.dailyAverageLabel.text = "Daily average: \(AmountFormatter.displayText(for: chartData.dailyAverage))"
-        self.percentageLabel.text = PercentFormatter.displayText(for: chartData.ratio)
+        self.percentageLabel.text = PercentFormatter.displayText(for: chartData.categoryPercentage)
         
         for i in 0 ..< self.weekdayLabels.count {
             let label = self.weekdayLabels[i]
             label.text = chartData.weekdays?[i] ?? nil
         }
         
-        if let dates = chartData.dates {
+        if let dates = chartData.datesInWeek {
             for i in 0 ..< self.dateLabels.count {
                 let label = self.dateLabels[i]
                 label.text = "\(dates[i])"

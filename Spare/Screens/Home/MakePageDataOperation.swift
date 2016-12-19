@@ -66,44 +66,31 @@ class MakePageDataOperation: MDOperation {
                 return nil
             }
             
+            var newData = ChartData(categoryID: category.objectID, dateRangeTotal: dateRangeTotal, categoryTotal: categoryTotal, periodization: self.periodization)
+            
             // Compute for the optional properties depending on the periodization.
-            
-            var dates: [Int]?
-            var weekdays: [String]?
-            var dailyAverage: NSDecimalNumber?
-            var dailyPercentages: [CGFloat]?
-            
             switch self.periodization {
             case .day:
                 break
                 
             case .week:
-                dailyAverage = categoryTotal / NSDecimalNumber(value: kNumberOfDaysInAWeek)
-                dates = self.getDatesOfTheWeek()
-                weekdays = self.weekdayFormatter.veryShortWeekdaySymbols
-                dailyPercentages = try self.getDailyPercentages(forCategory: category, inContext: context)
+                newData.dailyAverage = categoryTotal / NSDecimalNumber(value: kNumberOfDaysInAWeek)
+                newData.datesInWeek = self.getDatesOfTheWeek()
+                newData.weekdays = self.weekdayFormatter.veryShortWeekdaySymbols
+                newData.dailyPercentages = try self.getDailyPercentages(forCategory: category, inContext: context)
                 
             case .month: ()
-//                dates = self.getDatesOfTheMonth()
-            
                 let numberOfDaysInTheMonth = Calendar.current.numberOfDaysInMonth(of: self.dateRange.start)
-                dailyAverage = categoryTotal / NSDecimalNumber(value: numberOfDaysInTheMonth)
+                newData.dailyAverage = categoryTotal / NSDecimalNumber(value: numberOfDaysInTheMonth)
+                newData.dailyPercentages = try self.getDailyPercentages(forCategory: category, inContext: context)
                 
-                dailyPercentages = try self.getDailyPercentages(forCategory: category, inContext: context)
                 
-                
-            case .year: ()
+            case .year:
+                newData.monthlyAverage = categoryTotal / 12
+                newData.monthlyPercentages = []
             }
             
-            
-            let newChartData = ChartData(categoryID: category.objectID,
-                                         dateRangeTotal: dateRangeTotal,
-                                         categoryTotal: categoryTotal,
-                                         dates: dates,
-                                         weekdays: weekdays,
-                                         dailyAverage: dailyAverage,
-                                         dailyPercentages: dailyPercentages)
-            chartData.append(newChartData)
+            chartData.append(newData)
             
             if self.isCancelled {
                 return nil
@@ -182,15 +169,6 @@ class MakePageDataOperation: MDOperation {
         }
         return dates
     }
-    
-//    func getDatesOfTheMonth() -> [Int] {
-//        var dates = kConstantDatesOfTheMonth
-//        let numberOfDaysInTheMonth = Calendar.current.numberOfDaysInMonth(of: self.dateRange.start)
-//        if numberOfDaysInTheMonth >= 29 {
-//            dates.append(29)
-//        }
-//        return dates
-//    }
     
     /**
      Returns the bar heights as an array of fractions, from 0 to 1. The maximum expense is always 1 and the other heights

@@ -68,6 +68,9 @@
 		2669AB021D7C300F00DDA321 /* GlobalFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2669AAFF1D7C300F00DDA321 /* GlobalFunctions.swift */; };
 		2669AB041D7C302700DDA321 /* AmountFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2669AB031D7C302700DDA321 /* AmountFormatter.swift */; };
 		266CBDB41D2676D900F5D5D1 /* EditExpenseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266CBDB31D2676D900F5D5D1 /* EditExpenseVC.swift */; };
+		26761A691E07FCE1002E9FDA /* _HPVCBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26761A681E07FCE1002E9FDA /* _HPVCBarView.swift */; };
+		26761A6B1E07FDBD002E9FDA /* _HPVCYearCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26761A6A1E07FDBD002E9FDA /* _HPVCYearCell.swift */; };
+		26761A6D1E07FDD9002E9FDA /* _HPVCYearCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26761A6C1E07FDD9002E9FDA /* _HPVCYearCell.xib */; };
 		267804131DB72AB200B29873 /* CategoryPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267804121DB72AB200B29873 /* CategoryPickerVC.swift */; };
 		267804151DB72BF000B29873 /* __CPVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267804141DB72BF000B29873 /* __CPVCView.swift */; };
 		267804171DB72C0100B29873 /* __CPVCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 267804161DB72C0100B29873 /* __CPVCView.xib */; };
@@ -221,6 +224,9 @@
 		2669AAFF1D7C300F00DDA321 /* GlobalFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalFunctions.swift; sourceTree = "<group>"; };
 		2669AB031D7C302700DDA321 /* AmountFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmountFormatter.swift; sourceTree = "<group>"; };
 		266CBDB31D2676D900F5D5D1 /* EditExpenseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditExpenseVC.swift; sourceTree = "<group>"; };
+		26761A681E07FCE1002E9FDA /* _HPVCBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _HPVCBarView.swift; sourceTree = "<group>"; };
+		26761A6A1E07FDBD002E9FDA /* _HPVCYearCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _HPVCYearCell.swift; sourceTree = "<group>"; };
+		26761A6C1E07FDD9002E9FDA /* _HPVCYearCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = _HPVCYearCell.xib; sourceTree = "<group>"; };
 		267804121DB72AB200B29873 /* CategoryPickerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerVC.swift; sourceTree = "<group>"; };
 		267804141DB72BF000B29873 /* __CPVCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __CPVCView.swift; sourceTree = "<group>"; };
 		267804161DB72C0100B29873 /* __CPVCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __CPVCView.xib; sourceTree = "<group>"; };
@@ -338,6 +344,9 @@
 				265751681E027C4C00A18C9E /* _HPVCWeekCell.xib */,
 				265751731E0412E200A18C9E /* _HPVCMonthCell.swift */,
 				265751711E0412D800A18C9E /* _HPVCMonthCell.xib */,
+				26761A681E07FCE1002E9FDA /* _HPVCBarView.swift */,
+				26761A6A1E07FDBD002E9FDA /* _HPVCYearCell.swift */,
+				26761A6C1E07FDD9002E9FDA /* _HPVCYearCell.xib */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -732,6 +741,7 @@
 				2669468A1CC7711000A68424 /* Images.xcassets in Resources */,
 				264C0CB01DBE504300EA89D3 /* __HPVCZeroView.xib in Resources */,
 				264C0CB91DBF7C9400EA89D3 /* _HPVCDayCell.xib in Resources */,
+				26761A6D1E07FDD9002E9FDA /* _HPVCYearCell.xib in Resources */,
 				266946871CC7711000A68424 /* Icon-60@2x.png in Resources */,
 				265751721E0412D800A18C9E /* _HPVCMonthCell.xib in Resources */,
 				268D39A71DC70E67005EBC4B /* __HPVCHeaderView.xib in Resources */,
@@ -840,6 +850,7 @@
 				26E9CEAE1D66D5AA0005E087 /* __DPVCDayCell.swift in Sources */,
 				266CBDB41D2676D900F5D5D1 /* EditExpenseVC.swift in Sources */,
 				262731831DB23EEF00119F76 /* FetchRequestBuilder.swift in Sources */,
+				26761A691E07FCE1002E9FDA /* _HPVCBarView.swift in Sources */,
 				26FF03191D2BBB8D00BA74FD /* BaseFormVC.swift in Sources */,
 				266408B41D4A571400609580 /* PeriodizationButton.swift in Sources */,
 				267804191DB78E1D00B29873 /* CategoryPickerAddCategoryCell.swift in Sources */,
@@ -870,6 +881,7 @@
 				26A1CB3D1DD0A2F600DAE89E /* _HPVCChartCell.swift in Sources */,
 				268F480D1D60D3490088AC6B /* Color.swift in Sources */,
 				267804151DB72BF000B29873 /* __CPVCView.swift in Sources */,
+				26761A6B1E07FDBD002E9FDA /* _HPVCYearCell.swift in Sources */,
 				268F48131D60D3490088AC6B /* PaymentMethod.swift in Sources */,
 				2669AB041D7C302700DDA321 /* AmountFormatter.swift in Sources */,
 				268F480E1D60D3490088AC6B /* Duration.swift in Sources */,

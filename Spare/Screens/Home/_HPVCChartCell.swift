@@ -55,31 +55,53 @@ class _HPVCChartCell: UICollectionViewCell {
         self.backgroundColor = UIColor.red
         self.wrapperView.backgroundColor = UIColor(hex: 0x333333)
         
-        _HPVCChartCell.applyAttributes(toNameLabel: self.nameLabel)
-        _HPVCChartCell.applyAttributes(toTotalLabel: self.totalLabel)
-        _HPVCChartCell.applyAttributes(toNoExpensesLabel: self.noExpensesLabel)
+        _HPVCChartCell.format(nameLabel: self.nameLabel)
+        _HPVCChartCell.format(totalLabel: self.totalLabel)
+        _HPVCChartCell.format(noExpensesLabel: self.noExpensesLabel)
         
         self.graphBackgroundContainer.addSubviewAndFill(self.graphBackground)
     }
     
-    class func applyAttributes(toNameLabel label: UILabel) {
-        label.textColor = Color.UniversalTextColor
-        label.font = Font.make(.bold, 17)
-        label.numberOfLines = 0
-        label.lineBreakMode = .byWordWrapping
+    class func format(nameLabel: UILabel) {
+        nameLabel.textColor = Color.UniversalTextColor
+        nameLabel.font = Font.make(.bold, 17)
+        nameLabel.numberOfLines = 0
+        nameLabel.lineBreakMode = .byWordWrapping
     }
     
-    class func applyAttributes(toTotalLabel label: UILabel) {
-        label.textColor = Color.UniversalTextColor
-        label.font = Font.make(.regular, 17)
-        label.numberOfLines = 1
-        label.lineBreakMode = .byTruncatingTail
+    class func format(totalLabel: UILabel) {
+        totalLabel.textColor = Color.UniversalTextColor
+        totalLabel.font = Font.make(.regular, 17)
+        totalLabel.numberOfLines = 1
+        totalLabel.lineBreakMode = .byTruncatingTail
     }
     
-    class func applyAttributes(toNoExpensesLabel label: UILabel) {
-        label.textColor = UIColor(hex: 0x666666)
-        label.font = Font.make(.regular, 20)
-        label.text = "No expenses"
+    class func format(noExpensesLabel: UILabel) {
+        noExpensesLabel.textColor = UIColor(hex: 0x666666)
+        noExpensesLabel.font = Font.make(.regular, 20)
+        noExpensesLabel.text = "No expenses"
+    }
+    
+    /**
+     Applies formatting to detail labels, which are only available in week, month, and year cells.
+     Detail labels display either a daily or a monthly average, and the `categoryPercentage`.
+     */
+    class func format(detailLabel: UILabel, alignment: NSTextAlignment) {
+        detailLabel.font = Font.make(.regular, 12)
+        detailLabel.textColor = Color.UniversalTextColor
+        detailLabel.numberOfLines = 1
+        detailLabel.lineBreakMode = .byTruncatingTail
+        detailLabel.textAlignment = alignment
+    }
+    
+    /**
+     Applies formatting to accessory labels. Accessory labels are only present in week, month, and year
+     cells and display dates or months under the graph, or days of the week over the graph.
+     */
+    class func format(accessoryLabel: UILabel) {
+        accessoryLabel.font = Font.make(.regular, 11)
+        accessoryLabel.textColor = Color.UniversalTextColor
+        accessoryLabel.textAlignment = .center
     }
     
     /**

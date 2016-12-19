@@ -6,14 +6,14 @@
 //  Copyright © 2016 Matt Quiros. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 final class PercentFormatter {
     
     fileprivate init() {}
     
-    class func displayText(for percent: Double) -> String {
-        return String(format: "%.0f%%", percent * 100)
+    class func displayText(for percentage: CGFloat) -> String {
+        return String(format: "%.0f%%", percentage * 100)
     }
     
 }

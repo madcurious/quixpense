@@ -10,6 +10,15 @@ import UIKit
 
 private let kCenterConstraintID = "kCenterConstraintID"
 
+/**
+ Custom cell for the monthly view. The views that display the bars are added programatically in `awakeFromNib`
+ because they're quite a lot, and it's easier to change them all at once in code than in XIB.
+ 
+ There are always 31 bars, the last three of which are hidden or shown depending on the number of days
+ in the month. There are always five date labels as well, from the 1st of the month and every 7 days.
+ The label for the 29th day is shown or hidden depending on whether there is a 29th day in the month.
+ The date labels are also center-aligned to their respective bars.
+ */
 class _HPVCMonthCell: _HPVCChartCell {
     
     @IBOutlet weak var dailyAverageLabel: UILabel!
@@ -20,41 +29,26 @@ class _HPVCMonthCell: _HPVCChartCell {
     @IBOutlet weak var dateLabelContainer: UIView!
     @IBOutlet var dateLabels: [UILabel]!
     
-//    fileprivate var barViews = [_HPVCMonthCellBarView]()
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         
         self.dateLabelContainer.backgroundColor = UIColor.clear
         
-        self.dailyAverageLabel.font = Font.make(.regular, 12)
-        self.dailyAverageLabel.textColor = Color.UniversalTextColor
-        self.dailyAverageLabel.numberOfLines = 1
-        self.dailyAverageLabel.lineBreakMode = .byTruncatingTail
+        _HPVCChartCell.format(detailLabel: self.dailyAverageLabel, alignment: .left)
+        _HPVCChartCell.format(detailLabel: self.percentageLabel, alignment: .right)
         
-        self.percentageLabel.font = Font.make(.regular, 12)
-        self.percentageLabel.textColor = Color.UniversalTextColor
-        self.percentageLabel.numberOfLines = 1
-        self.percentageLabel.lineBreakMode = .byTruncatingTail
-        
-        var dateLabel = 1
+        var date = 1
         for label in self.dateLabels {
-            label.font = Font.make(.regular, 11)
-            label.textColor = Color.UniversalTextColor
-            label.textAlignment = .center
-            label.text = "\(dateLabel)"
-            
-            dateLabel += 7
+            _HPVCChartCell.format(accessoryLabel: label)
+            label.text = "\(date)"
+            date += 7
         }
         
-        // Always add 31 bar views. Show or hide the last three later as needed.
+        // Programatically add 31 bar views because doing this in code is easier to change than if done via XIB.
+        //
         for _ in 0 ..< 31 {
-            let barView = _HPVCMonthCellBarView()
+            let barView = _HPVCBarView()
             self.barStackView.addArrangedSubview(barView)
-            
-//            let view = UIView()
-//            view.backgroundColor = UIColor.randomColor()
-//            self.barStackView.addArrangedSubview(view)
         }
         
         let dates = [1, 8, 15, 22, 29]
@@ -81,7 +75,7 @@ class _HPVCMonthCell: _HPVCChartCell {
         }
         
         self.dailyAverageLabel.text = "Daily average: \(AmountFormatter.displayText(for: chartData.dailyAverage))"
-        self.percentageLabel.text = "\(PercentFormatter.displayText(for: chartData.ratio)) of total"
+        self.percentageLabel.text = "\(PercentFormatter.displayText(for: chartData.categoryPercentage)) of total"
         
         guard drawGraph == true,
             let percentages = chartData.dailyPercentages,
@@ -107,7 +101,7 @@ class _HPVCMonthCell: _HPVCChartCell {
         self.layoutIfNeeded()
         
         for i in 0 ..< percentages.count {
-            let barView = self.barStackView.arrangedSubviews[i] as! _HPVCMonthCellBarView
+            let barView = self.barStackView.arrangedSubviews[i] as! _HPVCBarView
             let percentage = percentages[i]
             barView.height = self.barStackView.bounds.size.height * percentage
         }
@@ -123,74 +117,3 @@ class _HPVCMonthCell: _HPVCChartCell {
     
 }
 
-fileprivate class _HPVCMonthCellBarView: UIView {
-    
-    let barView = UIView()
-    
-    static let width = CGFloat(6)
-    
-    var height: CGFloat {
-        get {
-            return self.heightConstraint.constant
-        }
-        set {
-            self.heightConstraint.constant = newValue
-            self.setNeedsLayout()
-        }
-    }
-    
-    private var heightConstraint: NSLayoutConstraint!
-    
-    init() {
-        super.init(frame: CGRect.zero)
-        self.setup()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        self.setup()
-    }
-    
-    func setup() {
-        self.backgroundColor = UIColor.clear
-        self.barView.backgroundColor = UIColor(hex: 0xd8d8d8)
-        self.addSubview(self.barView)
-        
-        self.barView.translatesAutoresizingMaskIntoConstraints = false
-        self.heightConstraint = NSLayoutConstraint(item: self.barView,
-                                                   attribute: .height,
-                                                   relatedBy: .equal,
-                                                   toItem: nil,
-                                                   attribute: .notAnAttribute,
-                                                   multiplier: 1,
-                                                   constant: 0)
-        
-        self.addConstraints([
-            NSLayoutConstraint(item: self.barView,
-                               attribute: .centerX,
-                               relatedBy: .equal,
-                               toItem: self,
-                               attribute: .centerX,
-                               multiplier: 1,
-                               constant: 0),
-            NSLayoutConstraint(item: self.barView,
-                               attribute: .bottom,
-                               relatedBy: .equal,
-                               toItem: self,
-                               attribute: .bottom,
-                               multiplier: 1,
-                               constant: 0),
-            NSLayoutConstraint(item: self.barView,
-                               attribute: .width,
-                               relatedBy: .equal,
-                               toItem: nil,
-                               attribute: .notAnAttribute,
-                               multiplier: 1,
-                               constant: _HPVCMonthCellBarView.width),
-            self.heightConstraint
-            ])
-        
-        self.barView.layer.cornerRadius = _HPVCMonthCellBarView.width / 2
-    }
-    
-}

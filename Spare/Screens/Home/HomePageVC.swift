@@ -15,15 +15,17 @@ fileprivate enum ViewID: String {
     case dayCell = "dayCell"
     case weekCell = "weekCell"
     case monthCell = "monthCell"
+    case yearCell = "yearCell"
     
     static let cellIdentifiers = [
         ViewID.dayCell.rawValue,
         ViewID.weekCell.rawValue,
-        ViewID.monthCell.rawValue
+        ViewID.monthCell.rawValue,
+        ViewID.yearCell.rawValue
     ]
 }
 
-fileprivate let kCellClasses: [_HPVCChartCell.Type] = [_HPVCDayCell.self, _HPVCWeekCell.self, _HPVCMonthCell.self]
+fileprivate let kCellClasses: [_HPVCChartCell.Type] = [_HPVCDayCell.self, _HPVCWeekCell.self, _HPVCMonthCell.self, _HPVCYearCell.self]
 
 class HomePageVC: MDFullOperationViewController {
     
@@ -59,6 +61,7 @@ class HomePageVC: MDFullOperationViewController {
         self.collectionView.register(_HPVCDayCell.nib(), forCellWithReuseIdentifier: ViewID.dayCell.rawValue)
         self.collectionView.register(_HPVCWeekCell.nib(), forCellWithReuseIdentifier: ViewID.weekCell.rawValue)
         self.collectionView.register(_HPVCMonthCell.nib(), forCellWithReuseIdentifier: ViewID.monthCell.rawValue)
+        self.collectionView.register(_HPVCYearCell.nib(), forCellWithReuseIdentifier: ViewID.yearCell.rawValue)
         
         let flowLayout = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         flowLayout.scrollDirection = .vertical

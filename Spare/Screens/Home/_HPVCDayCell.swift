@@ -31,9 +31,9 @@ class _HPVCDayCell: _HPVCChartCell {
         
         if drawGraph == true,
             let chartData = chartData {
-            if chartData.ratio > 0 {
-                self.percentLabel.text = PercentFormatter.displayText(for: chartData.ratio)
-                self.pieChartView.ratio = chartData.ratio
+            if chartData.categoryPercentage > 0 {
+                self.percentLabel.text = PercentFormatter.displayText(for: chartData.categoryPercentage)
+                self.pieChartView.percentage = chartData.categoryPercentage
                 
                 self.pieChartContainer.isHidden = false
                 self.noExpensesLabel.isHidden = true
@@ -48,7 +48,7 @@ class _HPVCDayCell: _HPVCChartCell {
 
 class __HPVCPieChart: UIView {
     
-    var ratio = 0.0 {
+    var percentage = CGFloat(0) {
         didSet {
             self.setNeedsDisplay()
         }
@@ -64,7 +64,7 @@ class __HPVCPieChart: UIView {
         let insetRect = rect.insetBy(dx: 1, dy: 1)
         let radius = insetRect.height / 2
         let startAngle = CGFloat(-M_PI_2)
-        let endAngle = startAngle + CGFloat(2 * M_PI * self.ratio)
+        let endAngle = startAngle + (2 * CGFloat(M_PI) * self.percentage)
         
         let fillPath = UIBezierPath()
         fillPath.move(to: center)
