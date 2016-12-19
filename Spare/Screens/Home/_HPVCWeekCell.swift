@@ -72,9 +72,11 @@ class _HPVCWeekCell: _HPVCChartCell {
             label.text = chartData.weekdays?[i] ?? nil
         }
         
-        for i in 0 ..< self.dateLabels.count {
-            let label = self.dateLabels[i]
-            label.text = chartData.dates?[i] ?? nil
+        if let dates = chartData.dates {
+            for i in 0 ..< self.dateLabels.count {
+                let label = self.dateLabels[i]
+                label.text = "\(dates[i])"
+            }
         }
         
         guard drawGraph == true,

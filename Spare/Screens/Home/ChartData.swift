@@ -16,7 +16,7 @@ struct ChartData {
     var dateRangeTotal: NSDecimalNumber
     var categoryTotal: NSDecimalNumber
     
-    var dates: [String]?
+    var dates: [Int]?
     var weekdays: [String]?
     var dailyAverage: NSDecimalNumber?
     var dailyPercentages: [CGFloat]?

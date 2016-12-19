@@ -8,6 +8,8 @@
 
 import UIKit
 
+private let kCenterConstraintID = "kCenterConstraintID"
+
 class _HPVCMonthCell: _HPVCChartCell {
     
     @IBOutlet weak var dailyAverageLabel: UILabel!
@@ -79,6 +81,36 @@ class _HPVCMonthCell: _HPVCChartCell {
             let barView = self.barViews[i]
             let percentage = percentages[i]
             barView.height = self.barStackView.bounds.size.height * percentage
+        }
+        
+        guard let dates = chartData.dates
+            else {
+                return
+        }
+        
+        // Hide the last date label if there are only 4 dates to be displayed.
+        if dates.count < self.dateLabels.count {
+            self.dateLabels.last?.isHidden = true
+        } else {
+            self.dateLabels.last?.isHidden = false
+        }
+        
+        for i in 0 ..< dates.count {
+            let label = self.dateLabels[i]
+            
+            // Add a center constraint to the label if not previously added.
+            guard label.constraints.first(where: { $0.identifier == kCenterConstraintID }) != nil
+                else {
+                    let centerX = NSLayoutConstraint(item: label,
+                                                     attribute: .centerX,
+                                                     relatedBy: .equal,
+                                                     toItem: self.barViews[dates[i - 1]],
+                                                     attribute: .centerX,
+                                                     multiplier: 1,
+                                                     constant: 0)
+                    label.addConstraint(centerX)
+                    continue
+            }
         }
         
         self.setNeedsLayout()

@@ -11,6 +11,7 @@ import Mold
 import CoreData
 
 private let kNumberOfDaysInAWeek = 7
+private let kConstantDatesOfTheMonth = [1, 8, 15, 22]
 
 class MakePageDataOperation: MDOperation {
     
@@ -21,12 +22,6 @@ class MakePageDataOperation: MDOperation {
         let formatter = Foundation.DateFormatter()
         formatter.dateFormat = "EEEEE"
         formatter.locale = Locale.current
-        return formatter
-    }()
-    
-    lazy var dayOfWeekFormatter: Foundation.DateFormatter = {
-        let formatter = Foundation.DateFormatter()
-        formatter.dateFormat = "d"
         return formatter
     }()
     
@@ -73,7 +68,7 @@ class MakePageDataOperation: MDOperation {
             
             // Compute for the optional properties depending on the periodization.
             
-            var dates: [String]?
+            var dates: [Int]?
             var weekdays: [String]?
             var dailyAverage: NSDecimalNumber?
             var dailyPercentages: [CGFloat]?
@@ -89,8 +84,13 @@ class MakePageDataOperation: MDOperation {
                 dailyPercentages = try self.getDailyPercentages(forCategory: category, inContext: context)
                 
             case .month: ()
-                let numberOfDaysInTheMonth = Calendar.current.range(of: .day, in: .month, for: self.dateRange.start)!.upperBound
+                dates = self.getDatesOfTheMonth()
+            
+                let numberOfDaysInTheMonth = Calendar.current.numberOfDaysInMonth(of: self.dateRange.start)
                 dailyAverage = categoryTotal / NSDecimalNumber(value: numberOfDaysInTheMonth)
+                
+                dailyPercentages = try self.getDailyPercentages(forCategory: category, inContext: context)
+                
                 
             case .year: ()
             }
@@ -170,14 +170,24 @@ class MakePageDataOperation: MDOperation {
         return 0
     }
     
-    func getDatesOfTheWeek() -> [String] {
-        var dates = [String]()
+    func getDatesOfTheWeek() -> [Int] {
+        var dates = [Int]()
         var dayOfWeek = self.dateRange.start
         for _ in 0 ..< kNumberOfDaysInAWeek {
-            dates.append(self.dayOfWeekFormatter.string(from: dayOfWeek))
+            let day = Calendar.current.component(.day, from: dayOfWeek)
+            dates.append(day)
             
             // Move to the next day.
             dayOfWeek = Calendar.current.date(byAdding: .day, value: 1, to: dayOfWeek)!
+        }
+        return dates
+    }
+    
+    func getDatesOfTheMonth() -> [Int] {
+        var dates = kConstantDatesOfTheMonth
+        let numberOfDaysInTheMonth = Calendar.current.numberOfDaysInMonth(of: self.dateRange.start)
+        if numberOfDaysInTheMonth >= 29 {
+            dates.append(29)
         }
         return dates
     }
@@ -196,7 +206,7 @@ class MakePageDataOperation: MDOperation {
                 return 7
                 
             default:
-                let numberOfDaysInMonth = Calendar.current.range(of: .day, in: .month, for: date)!.upperBound
+                let numberOfDaysInMonth = Calendar.current.numberOfDaysInMonth(of: date)
                 return numberOfDaysInMonth
             }
         }()
