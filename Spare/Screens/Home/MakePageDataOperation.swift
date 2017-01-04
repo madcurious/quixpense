@@ -205,10 +205,25 @@ class MakePageDataOperation: MDOperation {
             var individualTotal = NSDecimalNumber(value: 0)
             
             let request = FetchRequestBuilder<Expense>.makeGenericRequest()
+            let fromDate: NSDate = {
+                if self.periodization == .year {
+                    return referenceDate.startOfMonth() as NSDate
+                }
+                return referenceDate.startOfDay() as NSDate
+            }()
+            let toDate: NSDate = {
+                if self.periodization == .year {
+                    return referenceDate.endOfMonth() as NSDate
+                }
+                return referenceDate.endOfDay() as NSDate
+            }()
+            
+            print("referenceDate: \(MDDateFormatter.string(for: referenceDate)!)\nfromDate: \(MDDateFormatter.string(for: fromDate)!)\ntoDate: \(MDDateFormatter.string(for: toDate)!)\n---")
+            
             request.predicate = NSPredicate(
                 format: "%K >= %@ AND %K <= %@ AND %K == %@",
-                #keyPath(Expense.dateSpent), referenceDate.startOfDay() as NSDate,
-                #keyPath(Expense.dateSpent), referenceDate.endOfDay() as NSDate,
+                #keyPath(Expense.dateSpent), fromDate,
+                #keyPath(Expense.dateSpent), toDate,
                 #keyPath(Expense.category), category
             )
             request.resultType = .dictionaryResultType
