@@ -23,6 +23,8 @@ class _HPVCYearCell: _HPVCChartCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        UIView.clearBackgroundColors(self.monthLabelContainer)
+        
         _HPVCChartCell.format(detailLabel: self.monthlyAverageLabel, alignment: .left)
         _HPVCChartCell.format(detailLabel: self.percentageLabel, alignment: .right)
         
@@ -35,6 +37,7 @@ class _HPVCYearCell: _HPVCChartCell {
             self.monthLabelContainer.addSubview(monthLabel)
             
             // Add top and bottom constraints to the month labels.
+            monthLabel.translatesAutoresizingMaskIntoConstraints = false
             let constraints = [
                 NSLayoutConstraint(item: monthLabel,
                                    attribute: .top,
@@ -96,7 +99,7 @@ class _HPVCYearCell: _HPVCChartCell {
         self.noExpensesLabel.isHidden = true
         
         for i in 0 ..< kNumberOfMonthsInAYear {
-            self.barViews[i].height = percentages[i]
+            self.barViews[i].height = self.barStackView.bounds.size.height * percentages[i]
         }
     }
     
