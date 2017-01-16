@@ -27,9 +27,12 @@ class TabbedRootViewController: UITabBarController {
         self.tabBar.isTranslucent = false
         
         self.operationQueue.addOperation(
-            LoadAppOperation().onSuccess { result in
+            LoadAppOperation().onSuccess {[unowned self] result in
                 App.coreDataStack = result as! NSPersistentContainer
-                NotificationCenter.default.post(name: Notifications.CoreDataStackFinishedInitializing, object: nil)
+                
+                self.operationQueue.addOperation(MakeDummyDataOperation().onSuccess({ (_) in
+                    NotificationCenter.default.post(name: Notifications.CoreDataStackFinishedInitializing, object: nil)
+                }))
             }
         )
     }

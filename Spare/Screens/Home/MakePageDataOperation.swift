@@ -218,7 +218,7 @@ class MakePageDataOperation: MDOperation {
                 return referenceDate.endOfDay() as NSDate
             }()
             
-            print("referenceDate: \(MDDateFormatter.string(for: referenceDate)!)\nfromDate: \(MDDateFormatter.string(for: fromDate)!)\ntoDate: \(MDDateFormatter.string(for: toDate)!)\n---")
+//            print("referenceDate: \(MDDateFormatter.string(for: referenceDate)!)\nfromDate: \(MDDateFormatter.string(for: fromDate)!)\ntoDate: \(MDDateFormatter.string(for: toDate)!)\n---")
             
             request.predicate = NSPredicate(
                 format: "%K >= %@ AND %K <= %@ AND %K == %@",

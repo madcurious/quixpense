@@ -76,6 +76,7 @@
 		267804171DB72C0100B29873 /* __CPVCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 267804161DB72C0100B29873 /* __CPVCView.xib */; };
 		267804191DB78E1D00B29873 /* CategoryPickerAddCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267804181DB78E1D00B29873 /* CategoryPickerAddCategoryCell.swift */; };
 		2685D6D71D7C397200ED778E /* PercentFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2685D6D61D7C397200ED778E /* PercentFormatter.swift */; };
+		26867F941E2CB87E00FD3BB4 /* MakeDummyDataOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26867F931E2CB87E00FD3BB4 /* MakeDummyDataOperation.swift */; };
 		2687FA3C1D0EC46F00D544F5 /* MakeDateRangesOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2687FA3B1D0EC46F00D544F5 /* MakeDateRangesOperation.swift */; };
 		268D39A71DC70E67005EBC4B /* __HPVCHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 268D39A61DC70E67005EBC4B /* __HPVCHeaderView.xib */; };
 		268D39A91DC70EBD005EBC4B /* __HPVCHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268D39A81DC70EBD005EBC4B /* __HPVCHeaderView.swift */; };
@@ -232,6 +233,7 @@
 		267804161DB72C0100B29873 /* __CPVCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __CPVCView.xib; sourceTree = "<group>"; };
 		267804181DB78E1D00B29873 /* CategoryPickerAddCategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerAddCategoryCell.swift; sourceTree = "<group>"; };
 		2685D6D61D7C397200ED778E /* PercentFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PercentFormatter.swift; sourceTree = "<group>"; };
+		26867F931E2CB87E00FD3BB4 /* MakeDummyDataOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeDummyDataOperation.swift; sourceTree = "<group>"; };
 		2687FA3B1D0EC46F00D544F5 /* MakeDateRangesOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeDateRangesOperation.swift; sourceTree = "<group>"; };
 		268D39A61DC70E67005EBC4B /* __HPVCHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __HPVCHeaderView.xib; sourceTree = "<group>"; };
 		268D39A81DC70EBD005EBC4B /* __HPVCHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __HPVCHeaderView.swift; sourceTree = "<group>"; };
@@ -533,6 +535,7 @@
 				2685D6D61D7C397200ED778E /* PercentFormatter.swift */,
 				262731821DB23EEF00119F76 /* FetchRequestBuilder.swift */,
 				269FF0891DE2F4A70021230B /* GetAllCategoryIDsOperation.swift */,
+				26867F931E2CB87E00FD3BB4 /* MakeDummyDataOperation.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -836,6 +839,7 @@
 				266632B01DB24FFF007B992D /* LoadAppOperation.swift in Sources */,
 				26B0760C1D901DC60026692E /* Array.swift in Sources */,
 				266946931CC77A1A00A68424 /* AppDelegate.swift in Sources */,
+				26867F941E2CB87E00FD3BB4 /* MakeDummyDataOperation.swift in Sources */,
 				2687FA3C1D0EC46F00D544F5 /* MakeDateRangesOperation.swift in Sources */,
 				26A1CB3F1DD0A8B800DAE89E /* MakePageDataOperation.swift in Sources */,
 				267804131DB72AB200B29873 /* CategoryPickerVC.swift in Sources */,

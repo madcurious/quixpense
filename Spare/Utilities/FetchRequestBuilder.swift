@@ -23,6 +23,7 @@ class FetchRequestBuilder<T: NSFetchRequestResult> {
     
     class func makeIDOnlyRequest() -> NSFetchRequest<NSManagedObjectID> {
         let request = NSFetchRequest<NSManagedObjectID>(entityName: md_getClassName(T.self))
+        request.resultType = .managedObjectIDResultType
         return request
     }
     
