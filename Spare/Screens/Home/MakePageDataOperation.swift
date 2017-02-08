@@ -35,7 +35,7 @@ class MakePageDataOperation: MDOperation {
             return nil
         }
         
-        let context = App.coreDataStack.newBackgroundContext()
+        let context = App.coreDataStack.viewContext
         
         // 1. First, compute for the total of all expenses in the date range.
         // 2. Then, build the chart data for every category.

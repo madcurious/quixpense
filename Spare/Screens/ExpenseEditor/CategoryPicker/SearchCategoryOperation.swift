@@ -24,7 +24,7 @@ class SearchCategoryOperation: MDOperation {
             return nil
         }
         
-        return try App.mainQueueContext.fetch(request)
+        return try App.coreDataStack.viewContext.fetch(request)
     }
     
 }

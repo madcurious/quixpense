@@ -20,8 +20,8 @@ class LoadAppOperation: MDOperation {
             return
         }
         
-        let stack = NSPersistentContainer(name: "Spare")
-        stack.loadPersistentStores(completionHandler: {[unowned self] (_, error) in
+        let persistentContainer = NSPersistentContainer(name: "Spare")
+        persistentContainer.loadPersistentStores(completionHandler: {[unowned self] (_, error) in
             defer {
                 self.closeOperation()
             }
@@ -30,7 +30,7 @@ class LoadAppOperation: MDOperation {
                 self.runFailBlock(error)
                 return
             }
-            self.runSuccessBlock(stack)
+            self.runSuccessBlock(persistentContainer)
         })
     }
     

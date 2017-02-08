@@ -84,7 +84,8 @@ class HomePageVC: MDFullOperationViewController {
     }
     
     func handleContextDidSaveNotification(notification: Notification) {
-        guard notification.name == Notification.Name.NSManagedObjectContextDidSave
+        guard notification.name == Notification.Name.NSManagedObjectContextDidSave &&
+            (notification.object as? NSManagedObjectContext) == App.coreDataStack.viewContext
             else {
                 return
         }

@@ -75,6 +75,7 @@
 		267804151DB72BF000B29873 /* __CPVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267804141DB72BF000B29873 /* __CPVCView.swift */; };
 		267804171DB72C0100B29873 /* __CPVCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 267804161DB72C0100B29873 /* __CPVCView.xib */; };
 		267804191DB78E1D00B29873 /* CategoryPickerAddCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267804181DB78E1D00B29873 /* CategoryPickerAddCategoryCell.swift */; };
+		2683D0C31E4B467E009D7605 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2683D0C21E4B467E009D7605 /* CoreDataStack.swift */; };
 		2685D6D71D7C397200ED778E /* PercentFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2685D6D61D7C397200ED778E /* PercentFormatter.swift */; };
 		26867F941E2CB87E00FD3BB4 /* MakeDummyDataOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26867F931E2CB87E00FD3BB4 /* MakeDummyDataOperation.swift */; };
 		2687FA3C1D0EC46F00D544F5 /* MakeDateRangesOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2687FA3B1D0EC46F00D544F5 /* MakeDateRangesOperation.swift */; };
@@ -109,6 +110,8 @@
 		26C50D1A1DE6F57A0088BC2B /* SlideUpPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C50D0F1DE6F57A0088BC2B /* SlideUpPickerView.swift */; };
 		26C50D1D1DE6F65F0088BC2B /* SlideUpPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C50D1B1DE6F65F0088BC2B /* SlideUpPickerCell.swift */; };
 		26C50D1E1DE6F65F0088BC2B /* SlideUpPickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26C50D1C1DE6F65F0088BC2B /* SlideUpPickerCell.xib */; };
+		26D1FAF21E36F14A00409410 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D1FAF11E36F14A00409410 /* Theme.swift */; };
+		26D1FAF61E36F44B00409410 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D1FAF51E36F44B00409410 /* Palette.swift */; };
 		26D334C41DD2563D004BB4D0 /* Subcategory+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D334C21DD2563D004BB4D0 /* Subcategory+CoreDataClass.swift */; };
 		26D334C51DD2563D004BB4D0 /* Subcategory+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D334C31DD2563D004BB4D0 /* Subcategory+CoreDataProperties.swift */; };
 		26E4E0591937AF690096191A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E4E0581937AF690096191A /* QuartzCore.framework */; };
@@ -232,6 +235,7 @@
 		267804141DB72BF000B29873 /* __CPVCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = __CPVCView.swift; sourceTree = "<group>"; };
 		267804161DB72C0100B29873 /* __CPVCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = __CPVCView.xib; sourceTree = "<group>"; };
 		267804181DB78E1D00B29873 /* CategoryPickerAddCategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerAddCategoryCell.swift; sourceTree = "<group>"; };
+		2683D0C21E4B467E009D7605 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		2685D6D61D7C397200ED778E /* PercentFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PercentFormatter.swift; sourceTree = "<group>"; };
 		26867F931E2CB87E00FD3BB4 /* MakeDummyDataOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeDummyDataOperation.swift; sourceTree = "<group>"; };
 		2687FA3B1D0EC46F00D544F5 /* MakeDateRangesOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeDateRangesOperation.swift; sourceTree = "<group>"; };
@@ -266,6 +270,8 @@
 		26C50D0F1DE6F57A0088BC2B /* SlideUpPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideUpPickerView.swift; sourceTree = "<group>"; };
 		26C50D1B1DE6F65F0088BC2B /* SlideUpPickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideUpPickerCell.swift; sourceTree = "<group>"; };
 		26C50D1C1DE6F65F0088BC2B /* SlideUpPickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SlideUpPickerCell.xib; sourceTree = "<group>"; };
+		26D1FAF11E36F14A00409410 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		26D1FAF51E36F44B00409410 /* Palette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
 		26D334C21DD2563D004BB4D0 /* Subcategory+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Subcategory+CoreDataClass.swift"; sourceTree = "<group>"; };
 		26D334C31DD2563D004BB4D0 /* Subcategory+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Subcategory+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		26D4C8F41946E624001B42DC /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
@@ -536,6 +542,7 @@
 				262731821DB23EEF00119F76 /* FetchRequestBuilder.swift */,
 				269FF0891DE2F4A70021230B /* GetAllCategoryIDsOperation.swift */,
 				26867F931E2CB87E00FD3BB4 /* MakeDummyDataOperation.swift */,
+				2683D0C21E4B467E009D7605 /* CoreDataStack.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -572,6 +579,8 @@
 				268F48091D60D3490088AC6B /* Periodization.swift */,
 				268F480A1D60D3490088AC6B /* StartOfWeek.swift */,
 				261F14791DA4D5E40072FAE7 /* Notifications.swift */,
+				26D1FAF11E36F14A00409410 /* Theme.swift */,
+				26D1FAF51E36F44B00409410 /* Palette.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -858,7 +867,9 @@
 				26FF03191D2BBB8D00BA74FD /* BaseFormVC.swift in Sources */,
 				266408B41D4A571400609580 /* PeriodizationButton.swift in Sources */,
 				267804191DB78E1D00B29873 /* CategoryPickerAddCategoryCell.swift in Sources */,
+				26D1FAF21E36F14A00409410 /* Theme.swift in Sources */,
 				26C50D181DE6F57A0088BC2B /* SlideUpPickerTransitioningDelegate.swift in Sources */,
+				2683D0C31E4B467E009D7605 /* CoreDataStack.swift in Sources */,
 				260024151CC7E5F300EB2026 /* SettingsVC.swift in Sources */,
 				2669AB021D7C300F00DDA321 /* GlobalFunctions.swift in Sources */,
 				2669AB011D7C300F00DDA321 /* DateFormatter.swift in Sources */,
@@ -872,6 +883,7 @@
 				269D49F81CE1610100109990 /* ExpenseEditorVC.swift in Sources */,
 				26D334C41DD2563D004BB4D0 /* Subcategory+CoreDataClass.swift in Sources */,
 				261AF63C1D5F41F500E03A48 /* __EEVCKeypadCell.swift in Sources */,
+				26D1FAF61E36F44B00409410 /* Palette.swift in Sources */,
 				268F48121D60D3490088AC6B /* Icon.swift in Sources */,
 				269E7E101D68C96000476870 /* MonthPageVC.swift in Sources */,
 				26FF031A1D2BBB8D00BA74FD /* BaseNavBarVC.swift in Sources */,

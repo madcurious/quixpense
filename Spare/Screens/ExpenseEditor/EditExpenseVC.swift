@@ -28,22 +28,37 @@ class EditExpenseVC: BaseFormVC {
     override func handleTapOnDoneBarButtonItem(_ sender: AnyObject) {
         self.queue.addOperation(
             ValidateExpenseOperation(expense: self.editor.expense)
+            .chain(if: nil, configurator: {[unowned self] (_) -> MDOperation in
+                return MDBlockOperation({[unowned self] _ in
+                    try self.editor.managedObjectContext.saveToStore()
+                })
                 .onSuccess({[unowned self] (_) in
-                    self.editor.managedObjectContext.saveRecursively({[unowned self] error in
-                        if let error = error {
-                            MDErrorDialog.showError(error, inPresenter: self)
-                            return
-                        }
-                        MDDispatcher.asyncRunInMainThread {[unowned self] in
-                            self.dismiss(animated: true, completion: nil)
-                        }
-                        })
-                    })
-                .onFail({[unowned self] error in
-                    MDErrorDialog.showError(error, inPresenter: self)
-                    })
-            
+                    self.dismiss(animated: true, completion: nil)
+                })
+            })
+            .onFail({[unowned self] error in
+                MDErrorDialog.showError(error, inPresenter: self)
+            })
         )
+        
+//        self.queue.addOperation(
+//            ValidateExpenseOperation(expense: self.editor.expense)
+//                .onSuccess({[unowned self] (_) in
+//                    self.editor.managedObjectContext.saveRecursively({[unowned self] error in
+//                        if let error = error {
+//                            MDErrorDialog.showError(error, inPresenter: self)
+//                            return
+//                        }
+//                        MDDispatcher.asyncRunInMainThread {[unowned self] in
+//                            self.dismiss(animated: true, completion: nil)
+//                        }
+//                        })
+//                    })
+//                .onFail({[unowned self] error in
+//                    MDErrorDialog.showError(error, inPresenter: self)
+//                    })
+//            
+//        )
     }
     
     required init?(coder aDecoder: NSCoder) {

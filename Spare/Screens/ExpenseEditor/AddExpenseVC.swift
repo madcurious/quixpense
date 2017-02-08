@@ -41,25 +41,42 @@ class AddExpenseVC: BaseFormVC {
     
     override func handleTapOnDoneBarButtonItem(_ sender: AnyObject) {
         print("expense: \(self.editor.managedObjectContext.object(with: self.editor.expense.objectID) as! Expense)")
+        
         self.queue.addOperation(
             ValidateExpenseOperation(expense: self.editor.expense)
+            .chain(if: nil, configurator: {[unowned self] _ -> MDOperation in
+                return MDBlockOperation({[unowned self] _ -> Any? in
+                    try self.editor.managedObjectContext.saveToStore()
+                })
                 .onSuccess({[unowned self] (_) in
-                    self.editor.managedObjectContext.saveRecursively({[unowned self] error in
-                        if let error = error {
-                            MDErrorDialog.showError(error, inPresenter: self)
-                            return
-                        }
-                        
-                        MDDispatcher.asyncRunInMainThread {[unowned self] in
-                            self.editor.reset()
-                            FTIndicator.showSuccess(withMessage: "Saved expense")
-                        }
-                        })
-                    })
-                .onFail({[unowned self] (error) in
-                    MDErrorDialog.showError(error, inPresenter: self)
-                    })
+                    self.editor.reset()
+                    FTIndicator.showSuccess(withMessage: "Saved!")
+                })
+            })
+            .onFail({[unowned self] (error) in
+                MDErrorDialog.showError(error, inPresenter: self)
+            })
         )
+        
+//        self.queue.addOperation(
+//            ValidateExpenseOperation(expense: self.editor.expense)
+//                .onSuccess({[unowned self] (_) in
+//                    self.editor.managedObjectContext.saveRecursively({[unowned self] error in
+//                        if let error = error {
+//                            MDErrorDialog.showError(error, inPresenter: self)
+//                            return
+//                        }
+//                        
+//                        MDDispatcher.asyncRunInMainThread {[unowned self] in
+//                            self.editor.reset()
+//                            FTIndicator.showSuccess(withMessage: "Saved expense")
+//                        }
+//                        })
+//                    })
+//                .onFail({[unowned self] (error) in
+//                    MDErrorDialog.showError(error, inPresenter: self)
+//                    })
+//        )
     }
     
 }

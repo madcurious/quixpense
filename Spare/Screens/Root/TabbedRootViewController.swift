@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Mold
 
 class TabbedRootViewController: UITabBarController {
     
@@ -28,7 +29,8 @@ class TabbedRootViewController: UITabBarController {
         
         self.operationQueue.addOperation(
             LoadAppOperation().onSuccess {[unowned self] result in
-                App.coreDataStack = result as! NSPersistentContainer
+                let persistentContainer = result as! NSPersistentContainer
+                App.coreDataStack = CoreDataStack(persistentContainer: persistentContainer)
                 
                 self.operationQueue.addOperation(MakeDummyDataOperation().onSuccess({ (_) in
                     NotificationCenter.default.post(name: Notifications.CoreDataStackFinishedInitializing, object: nil)

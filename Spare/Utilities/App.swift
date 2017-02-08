@@ -20,10 +20,7 @@ struct App {
     
     fileprivate init() {}
     
-    static var coreDataStack: NSPersistentContainer!
-    static var mainQueueContext: NSManagedObjectContext {
-        return self.coreDataStack.viewContext
-    }
+    static var coreDataStack: CoreDataStack!
     
     static var selectedPeriodization: Periodization {
         get {
@@ -62,5 +59,7 @@ struct App {
             defaults.synchronize()
         }
     }
+    
+    static var theme = Theme.light
     
 }

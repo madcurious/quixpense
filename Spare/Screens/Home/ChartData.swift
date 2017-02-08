@@ -33,7 +33,7 @@ struct ChartData {
     }
     
     var category: Category? {
-        return App.mainQueueContext.object(with: self.categoryID) as? Category
+        return App.coreDataStack.viewContext.object(with: self.categoryID) as? Category
     }
     
     init(categoryID: NSManagedObjectID,

@@ -11,6 +11,7 @@ import Mold
 
 class Color {
     
+    
     static let CustomPickerHeaderTextColor = UIColor(hex: 0xaaaaaa)
     static let CustomPickerTextColor = UIColor(hex: 0x111111)
     

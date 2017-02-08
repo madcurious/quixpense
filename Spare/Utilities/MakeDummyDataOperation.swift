@@ -19,13 +19,12 @@ class MakeDummyDataOperation: MDOperation {
     }
     
     override func makeResult(fromSource source: Any?) throws -> Any? {
-        let mainContext = App.mainQueueContext
         let writeContext = App.coreDataStack.newBackgroundContext()
         
         // If there are no categories yet, make them.
         
         let categoryFetch = FetchRequestBuilder<Category>.makeIDOnlyRequest()
-        let allCategories = try mainContext.fetch(categoryFetch)
+        let allCategories = try writeContext.fetch(categoryFetch)
         if allCategories.count == 0 {
             self.makeCategories(inContext: writeContext)
         }
@@ -35,7 +34,7 @@ class MakeDummyDataOperation: MDOperation {
         
         let expenseFetch = FetchRequestBuilder<Expense>.makeTypedRequest()
         expenseFetch.sortDescriptors = [NSSortDescriptor(key: "dateSpent", ascending: false)]
-        let expenses = try mainContext.fetch(expenseFetch)
+        let expenses = try writeContext.fetch(expenseFetch)
         let oldestDate: Date
         
         if expenses.count == 0 {
@@ -49,9 +48,7 @@ class MakeDummyDataOperation: MDOperation {
         }
         
         self.makeExpenses(fromDate: oldestDate, inContext: writeContext)
-        writeContext.performAndWait { 
-            writeContext.saveRecursively(nil)
-        }
+        try writeContext.saveToStore()
         
         return nil
     }
