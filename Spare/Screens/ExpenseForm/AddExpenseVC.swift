@@ -27,6 +27,8 @@ class AddExpenseVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = "ADD EXPENSE"
+        self.view.backgroundColor = UIColor.white
     }
     
 }

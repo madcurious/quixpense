@@ -18,6 +18,10 @@ class BaseNavBarVC: UINavigationController, Themeable {
     func applyTheme() {
         self.navigationBar.barTintColor = Global.theme.barBackgroundColor
         self.navigationBar.tintColor = Global.theme.barTintColor
+        self.navigationBar.titleTextAttributes = [
+            NSFontAttributeName : Font.bold(17),
+            NSForegroundColorAttributeName : Global.theme.barTintColor
+        ]
     }
     
 }

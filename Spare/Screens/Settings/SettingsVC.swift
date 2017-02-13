@@ -22,6 +22,13 @@ class SettingsVC: UIViewController {
     
     func initialize() {
         self.tabBarItem.image = UIImage.templateNamed("tabIconSettings")
+        
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.navigationItem.title = "SETTINGS"
+        self.view.backgroundColor = UIColor.white
     }
     
 }

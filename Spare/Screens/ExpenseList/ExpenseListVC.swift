@@ -26,6 +26,8 @@ class ExpenseListVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = "EXPENSES"
+        self.view.backgroundColor = UIColor.white
     }
     
 }
