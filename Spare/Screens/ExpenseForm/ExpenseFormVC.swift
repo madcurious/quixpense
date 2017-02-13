@@ -1,5 +1,5 @@
 //
-//  SettingsVC.swift
+//  ExpenseFormVC.swift
 //  Spare
 //
 //  Created by Matt Quiros on 14/02/2017.
@@ -8,8 +8,6 @@
 
 import UIKit
 
-class SettingsVC: UIViewController {
-    
-    
+class ExpenseFormVC: UIViewController {
     
 }

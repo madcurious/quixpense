@@ -1,5 +1,5 @@
 //
-//  SettingsVC.swift
+//  Global.swift
 //  Spare
 //
 //  Created by Matt Quiros on 14/02/2017.
@@ -8,8 +8,8 @@
 
 import UIKit
 
-class SettingsVC: UIViewController {
+struct Global {
     
-    
+    static var theme = Theme.light
     
 }

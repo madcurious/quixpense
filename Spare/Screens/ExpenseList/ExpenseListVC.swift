@@ -1,5 +1,5 @@
 //
-//  SettingsVC.swift
+//  ExpenseListVC.swift
 //  Spare
 //
 //  Created by Matt Quiros on 14/02/2017.
@@ -8,8 +8,10 @@
 
 import UIKit
 
-class SettingsVC: UIViewController {
+class ExpenseListVC: UIViewController {
     
-    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
     
 }
