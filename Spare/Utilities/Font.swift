@@ -15,7 +15,7 @@ struct Font {
     }
     
     static func regular(_ size: CGFloat) -> UIFont {
-        return UIFont(name: "NotoSansUI-Regular", size: size)!
+        return UIFont(name: "NotoSansUI", size: size)!
     }
     
 }

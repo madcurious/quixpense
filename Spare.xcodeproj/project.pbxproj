@@ -34,6 +34,12 @@
 		2669468B1CC7711000A68424 /* iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 266946521CC7711000A68424 /* iPhone.storyboard */; };
 		2669468F1CC7711000A68424 /* Spare.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 266946571CC7711000A68424 /* Spare.xcdatamodeld */; };
 		266946931CC77A1A00A68424 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266946921CC77A1A00A68424 /* AppDelegate.swift */; };
+		269635981E544CDA0001FC05 /* _EFVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269635971E544CDA0001FC05 /* _EFVCView.swift */; };
+		2696359A1E544CF50001FC05 /* _EFVCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 269635991E544CF50001FC05 /* _EFVCView.xib */; };
+		2696359E1E5450360001FC05 /* _EFVCAmountBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2696359D1E5450360001FC05 /* _EFVCAmountBox.swift */; };
+		269635A01E5450460001FC05 /* _EFVCAmountBox.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2696359F1E5450460001FC05 /* _EFVCAmountBox.xib */; };
+		269635A21E5450A60001FC05 /* _EFVCFieldBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269635A11E5450A60001FC05 /* _EFVCFieldBox.swift */; };
+		269635A41E5457C80001FC05 /* AmountFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269635A31E5457C80001FC05 /* AmountFormatter.swift */; };
 		26A1CB4C1DD1ABD600DAE89E /* NotoSansUI-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26A1CB441DD1ABD600DAE89E /* NotoSansUI-Bold.ttf */; };
 		26A1CB4D1DD1ABD600DAE89E /* NotoSansUI-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26A1CB451DD1ABD600DAE89E /* NotoSansUI-BoldItalic.ttf */; };
 		26A1CB4E1DD1ABD600DAE89E /* NotoSansUI-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26A1CB461DD1ABD600DAE89E /* NotoSansUI-Italic.ttf */; };
@@ -123,6 +129,12 @@
 		266946581CC7711000A68424 /* Spare.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Spare.xcdatamodel; sourceTree = "<group>"; };
 		266946911CC77A1900A68424 /* Spare-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Spare-Bridging-Header.h"; sourceTree = "<group>"; };
 		266946921CC77A1A00A68424 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		269635971E544CDA0001FC05 /* _EFVCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _EFVCView.swift; sourceTree = "<group>"; };
+		269635991E544CF50001FC05 /* _EFVCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = _EFVCView.xib; sourceTree = "<group>"; };
+		2696359D1E5450360001FC05 /* _EFVCAmountBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _EFVCAmountBox.swift; sourceTree = "<group>"; };
+		2696359F1E5450460001FC05 /* _EFVCAmountBox.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = _EFVCAmountBox.xib; sourceTree = "<group>"; };
+		269635A11E5450A60001FC05 /* _EFVCFieldBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _EFVCFieldBox.swift; sourceTree = "<group>"; };
+		269635A31E5457C80001FC05 /* AmountFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmountFormatter.swift; sourceTree = "<group>"; };
 		26A1CB441DD1ABD600DAE89E /* NotoSansUI-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansUI-Bold.ttf"; sourceTree = "<group>"; };
 		26A1CB451DD1ABD600DAE89E /* NotoSansUI-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansUI-BoldItalic.ttf"; sourceTree = "<group>"; };
 		26A1CB461DD1ABD600DAE89E /* NotoSansUI-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansUI-Italic.ttf"; sourceTree = "<group>"; };
@@ -305,6 +317,7 @@
 		26A30C781E522E840047307D /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				269635A31E5457C80001FC05 /* AmountFormatter.swift */,
 				26A30C8B1E52318D0047307D /* Theme.swift */,
 				26A30C8D1E5232240047307D /* Global.swift */,
 				26A30C971E52417C0047307D /* Font.swift */,
@@ -339,8 +352,13 @@
 		26A30C831E522FDB0047307D /* ExpenseForm */ = {
 			isa = PBXGroup;
 			children = (
-				26A30C841E522FE60047307D /* ExpenseFormVC.swift */,
 				26A30C861E5230020047307D /* AddExpenseVC.swift */,
+				26A30C841E522FE60047307D /* ExpenseFormVC.swift */,
+				269635971E544CDA0001FC05 /* _EFVCView.swift */,
+				269635991E544CF50001FC05 /* _EFVCView.xib */,
+				269635A11E5450A60001FC05 /* _EFVCFieldBox.swift */,
+				2696359D1E5450360001FC05 /* _EFVCAmountBox.swift */,
+				2696359F1E5450460001FC05 /* _EFVCAmountBox.xib */,
 			);
 			path = ExpenseForm;
 			sourceTree = "<group>";
@@ -472,10 +490,12 @@
 				2669468A1CC7711000A68424 /* Images.xcassets in Resources */,
 				266946871CC7711000A68424 /* Icon-60@2x.png in Resources */,
 				266946891CC7711000A68424 /* Icon@2x.png in Resources */,
+				269635A01E5450460001FC05 /* _EFVCAmountBox.xib in Resources */,
 				26A1CB4C1DD1ABD600DAE89E /* NotoSansUI-Bold.ttf in Resources */,
 				266946861CC7711000A68424 /* Icon-40@2x.png in Resources */,
 				266946881CC7711000A68424 /* Icon-Small@2x.png in Resources */,
 				26A1CB511DD1B21500DAE89E /* spare-icons.ttf in Resources */,
+				2696359A1E544CF50001FC05 /* _EFVCView.xib in Resources */,
 				266946851CC7711000A68424 /* InfoPlist.strings in Resources */,
 				26A1CB4D1DD1ABD600DAE89E /* NotoSansUI-BoldItalic.ttf in Resources */,
 				266946831CC7711000A68424 /* Default-568h@2x.png in Resources */,
@@ -551,11 +571,15 @@
 				2669468F1CC7711000A68424 /* Spare.xcdatamodeld in Sources */,
 				26A30C7B1E522EAB0047307D /* RootVC.swift in Sources */,
 				26A30C871E5230020047307D /* AddExpenseVC.swift in Sources */,
+				269635A21E5450A60001FC05 /* _EFVCFieldBox.swift in Sources */,
 				26A30C8A1E5231620047307D /* BaseNavBarVC.swift in Sources */,
 				26A30C851E522FE60047307D /* ExpenseFormVC.swift in Sources */,
+				269635981E544CDA0001FC05 /* _EFVCView.swift in Sources */,
 				26A30C801E522F3B0047307D /* ExpenseListVC.swift in Sources */,
 				26A30C8E1E5232240047307D /* Global.swift in Sources */,
+				269635A41E5457C80001FC05 /* AmountFormatter.swift in Sources */,
 				26A30C921E5235950047307D /* SettingsVC.swift in Sources */,
+				2696359E1E5450360001FC05 /* _EFVCAmountBox.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

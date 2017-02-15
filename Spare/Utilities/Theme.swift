@@ -30,4 +30,18 @@ enum Theme {
         return UIColor.white
     }
     
+    var fieldLabelTextColor: UIColor {
+        if self == .light {
+            return UIColor.hex(0xbbbbbb)
+        }
+        return UIColor.hex(0x999999)
+    }
+    
+    var tableViewSeparatorColor: UIColor {
+        if self == .light {
+            return UIColor.hex(0xdddddd)
+        }
+        return UIColor.hex(0x555555)
+    }
+    
 }

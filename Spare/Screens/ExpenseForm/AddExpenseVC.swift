@@ -11,6 +11,8 @@ import Mold
 
 class AddExpenseVC: UIViewController {
     
+    let editor = ExpenseFormVC()
+    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         self.initialize()
@@ -27,8 +29,11 @@ class AddExpenseVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.navigationItem.title = "ADD EXPENSE"
         self.view.backgroundColor = UIColor.white
+        
+        self.embedChildViewController(self.editor)
     }
     
 }
