@@ -35,7 +35,7 @@ class _EFVCFieldBox: UIView {
         UIView.clearBackgroundColors(self, self.contentView)
         
         self.fieldLabel.font = Font.regular(10)
-        self.fieldLabel.textColor = Global.theme.fieldLabelTextColor
+        self.fieldLabel.textColor = Global.theme.formFieldNameTextColor
         self.fieldLabel.numberOfLines = 1
         self.fieldLabel.lineBreakMode = .byTruncatingTail
         

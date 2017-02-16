@@ -21,6 +21,7 @@ class ExpenseFormVC: UIViewController {
         super.viewDidLoad()
         
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap(gesture:)))
+        tapRecognizer.cancelsTouchesInView = false
         self.customView.addGestureRecognizer(tapRecognizer)
     }
     

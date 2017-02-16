@@ -30,11 +30,25 @@ enum Theme {
         return UIColor.white
     }
     
-    var fieldLabelTextColor: UIColor {
+    var formFieldNameTextColor: UIColor {
         if self == .light {
             return UIColor.hex(0xbbbbbb)
         }
         return UIColor.hex(0x999999)
+    }
+    
+    var formFieldPlaceholderTextColor: UIColor {
+        if self == .light {
+            return UIColor.hex(0xdddddd)
+        }
+        return UIColor.hex(0x555555)
+    }
+    
+    var formFieldValueTextColor: UIColor {
+        if self == .light {
+            return UIColor.black
+        }
+        return UIColor.white
     }
     
     var tableViewSeparatorColor: UIColor {
