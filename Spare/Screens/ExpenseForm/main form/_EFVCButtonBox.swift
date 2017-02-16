@@ -20,6 +20,7 @@ class _EFVCButtonBox: _EFVCFieldBox, Themeable {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        self.fieldButton.backgroundColor = UIColor.clear
         self.fieldButton.font = Font.regular(17)
         
         self.applyTheme()
