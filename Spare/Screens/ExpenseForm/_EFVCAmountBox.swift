@@ -12,8 +12,11 @@ class _EFVCAmountBox: _EFVCFieldBox {
     
     @IBOutlet weak var textField: UITextField!
     
+    override var mainResponder: UIView {
+        return self.textField
+    }
+    
     let currencyLabel = UILabel(frame: CGRect.zero)
-//    let invalidCharacters = CharacterSet.decimalNumberCharacterSet().inverted
     let numberFormatter = NumberFormatter()
     
     override func awakeFromNib() {
