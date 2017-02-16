@@ -22,18 +22,13 @@ class _EFVCView: UIView {
         self.scrollView.alwaysBounceVertical = true
         
         self.dateBox.fieldLabel.text = "DATE"
+        self.dateBox.iconImageView.image = UIImage.templateNamed("dateIcon")
         self.dateBox.fieldButton.placeholder = "Tap to edit"
         
         let fieldBoxes = [self.amountBox, self.dateBox]
         for box in fieldBoxes {
             self.stackView.addArrangedSubview(box)
         }
-        
-//        self.dateBox.fieldButton.addTarget(self, action: #selector(test), for: .touchUpInside)
-    }
-    
-    func test() {
-//        self.dateBox.fieldButton.text = "Thu, 16 Feb"
     }
     
 }

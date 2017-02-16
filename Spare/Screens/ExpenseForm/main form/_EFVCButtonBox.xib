@@ -33,7 +33,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nZk-yl-n8e">
-                            <rect key="frame" x="15" y="69" width="360" height="1"/>
+                            <rect key="frame" x="40" y="69" width="335" height="1"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="Y9k-B7-2c7"/>
@@ -50,11 +50,11 @@
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="mKH-C4-U7n" firstAttribute="leading" secondItem="WSX-Wf-ZCf" secondAttribute="trailing" constant="10" id="03P-Ce-ZQV"/>
+                        <constraint firstItem="nZk-yl-n8e" firstAttribute="leading" secondItem="bI9-3m-J5O" secondAttribute="leading" id="401-vG-Kuz"/>
                         <constraint firstItem="WSX-Wf-ZCf" firstAttribute="centerY" secondItem="ta0-Lm-Gti" secondAttribute="centerY" id="Bqy-xv-REo"/>
                         <constraint firstAttribute="trailing" secondItem="bI9-3m-J5O" secondAttribute="trailing" constant="10" id="DTZ-AX-0YP"/>
                         <constraint firstAttribute="trailing" secondItem="nZk-yl-n8e" secondAttribute="trailing" id="L7j-Gn-klj"/>
                         <constraint firstItem="bI9-3m-J5O" firstAttribute="leading" secondItem="WSX-Wf-ZCf" secondAttribute="trailing" constant="10" id="ThY-wY-kLU"/>
-                        <constraint firstItem="nZk-yl-n8e" firstAttribute="leading" secondItem="ta0-Lm-Gti" secondAttribute="leading" constant="15" id="Uxc-eE-LnO"/>
                         <constraint firstItem="WSX-Wf-ZCf" firstAttribute="leading" secondItem="ta0-Lm-Gti" secondAttribute="leading" constant="10" id="ZIm-Cp-b0m"/>
                         <constraint firstAttribute="bottom" secondItem="nZk-yl-n8e" secondAttribute="bottom" id="ZnQ-8A-6uL"/>
                         <constraint firstItem="bI9-3m-J5O" firstAttribute="top" secondItem="ta0-Lm-Gti" secondAttribute="top" constant="10" id="bM3-8B-c5n"/>

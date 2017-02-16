@@ -9,7 +9,7 @@
 import UIKit
 import Mold
 
-class _EFVCButtonBox: _EFVCFieldBox, Themeable {
+class _EFVCButtonBox: _EFVCFieldBox {
     
     @IBOutlet weak var fieldButton: MDTextFieldButton!
     
@@ -26,7 +26,9 @@ class _EFVCButtonBox: _EFVCFieldBox, Themeable {
         self.applyTheme()
     }
     
-    func applyTheme() {
+    override func applyTheme() {
+        super.applyTheme()
+        
         self.fieldLabel.textColor = Global.theme.formFieldNameTextColor
         
         self.fieldButton.placeholderTextColor = Global.theme.formFieldPlaceholderTextColor

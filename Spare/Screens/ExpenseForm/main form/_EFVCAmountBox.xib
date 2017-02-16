@@ -43,7 +43,7 @@
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SO4-Kt-bBg">
-                            <rect key="frame" x="15" y="69" width="360" height="1"/>
+                            <rect key="frame" x="40" y="69" width="335" height="1"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="OS8-P7-xyn"/>
@@ -52,7 +52,6 @@
                     </subviews>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstItem="SO4-Kt-bBg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="CId-4V-jSA"/>
                         <constraint firstItem="AFz-jc-R2a" firstAttribute="leading" secondItem="O4O-D2-T4K" secondAttribute="trailing" constant="10" id="Dwo-8S-SX0"/>
                         <constraint firstItem="eNt-a0-gvO" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="Hln-Cp-RN0"/>
                         <constraint firstAttribute="trailing" secondItem="AFz-jc-R2a" secondAttribute="trailing" constant="10" id="XaF-IK-8Ub"/>
@@ -62,6 +61,7 @@
                         <constraint firstAttribute="trailing" secondItem="eNt-a0-gvO" secondAttribute="trailing" constant="10" id="jJR-Cn-1BQ"/>
                         <constraint firstItem="O4O-D2-T4K" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="lg1-fQ-HXF"/>
                         <constraint firstAttribute="bottom" secondItem="SO4-Kt-bBg" secondAttribute="bottom" id="q0v-qt-HVQ"/>
+                        <constraint firstItem="SO4-Kt-bBg" firstAttribute="leading" secondItem="eNt-a0-gvO" secondAttribute="leading" id="q7Q-j4-yTN"/>
                         <constraint firstAttribute="trailing" secondItem="SO4-Kt-bBg" secondAttribute="trailing" id="saX-FM-mBU"/>
                         <constraint firstItem="eNt-a0-gvO" firstAttribute="leading" secondItem="O4O-D2-T4K" secondAttribute="trailing" constant="10" id="wjK-Cd-X01"/>
                     </constraints>

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class _EFVCFieldBox: UIView {
+class _EFVCFieldBox: UIView, Themeable {
     
     @IBOutlet weak var contentView: UIView!
     
@@ -32,23 +32,30 @@ class _EFVCFieldBox: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        self.applyTheme()
+        
         UIView.clearBackgroundColors(self, self.contentView)
         
         self.fieldLabel.font = Font.regular(10)
-        self.fieldLabel.textColor = Global.theme.formFieldNameTextColor
         self.fieldLabel.numberOfLines = 1
         self.fieldLabel.lineBreakMode = .byTruncatingTail
         
-        self.separatorView.backgroundColor = Global.theme.tableViewSeparatorColor
         self.separatorViewHeight.constant = 0.5
     }
     
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
-        if point.x >= self.mainResponder.frame.origin.x &&
+        if self.bounds.contains(point) && // Common sense says this bool shouldn't be necessary but looks like an iOS bug.
+            point.x >= self.mainResponder.frame.origin.x &&
             point.x <= (self.mainResponder.frame.origin.x + self.mainResponder.bounds.size.width) {
             return self.mainResponder
         }
         return super.hitTest(point, with: event)
+    }
+    
+    func applyTheme() {
+        self.iconImageView.tintColor = Global.theme.formIconColor
+        self.fieldLabel.textColor = Global.theme.formFieldNameTextColor
+        self.separatorView.backgroundColor = Global.theme.tableViewSeparatorColor
     }
     
 }

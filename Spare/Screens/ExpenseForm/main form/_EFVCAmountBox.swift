@@ -22,6 +22,8 @@ class _EFVCAmountBox: _EFVCFieldBox {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        self.iconImageView.image = UIImage.templateNamed("amountIcon")
+        
         self.fieldLabel.text = "AMOUNT"
         
         self.textField.backgroundColor = UIColor.clear
@@ -29,7 +31,6 @@ class _EFVCAmountBox: _EFVCFieldBox {
         self.textField.placeholder = "0.00"
         
         self.currencyLabel.font = Font.regular(17)
-        self.currencyLabel.textColor = Global.theme.formFieldNameTextColor
         self.currencyLabel.text = AmountFormatter.currencySymbol()
         self.currencyLabel.frame = CGRect(x: 0, y: 0, width: 20, height: self.currencyLabel.intrinsicContentSize.height)
         self.textField.leftView = self.currencyLabel
@@ -37,6 +38,12 @@ class _EFVCAmountBox: _EFVCFieldBox {
         
         self.textField.keyboardType = .decimalPad
         self.textField.delegate = self
+    }
+    
+    override func applyTheme() {
+        super.applyTheme()
+        
+        self.currencyLabel.textColor = Global.theme.formFieldNameTextColor
     }
     
 }

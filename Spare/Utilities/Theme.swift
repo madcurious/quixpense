@@ -30,6 +30,10 @@ enum Theme {
         return UIColor.white
     }
     
+    var formIconColor: UIColor {
+        return self.formFieldNameTextColor
+    }
+    
     var formFieldNameTextColor: UIColor {
         if self == .light {
             return UIColor.hex(0xbbbbbb)
