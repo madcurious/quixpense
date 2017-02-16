@@ -23,7 +23,7 @@ class _EFVCView: UIView {
         
         self.dateBox.fieldLabel.text = "DATE"
         self.dateBox.iconImageView.image = UIImage.templateNamed("dateIcon")
-        self.dateBox.fieldButton.placeholder = "Tap to edit"
+        self.dateBox.fieldButton.placeholder = "Required"
         
         let fieldBoxes = [self.amountBox, self.dateBox]
         for box in fieldBoxes {

@@ -10,6 +10,12 @@ import UIKit
 
 class EFPickerVC: UIViewController {
     
+    override var title: String? {
+        didSet {
+            self.customView.titleLabel.text = self.title?.uppercased()
+        }
+    }
+    
     let customView = _EFPVCView.instantiateFromNib()
     
     override func loadView() {
@@ -21,6 +27,10 @@ class EFPickerVC: UIViewController {
         
         self.customView.cancelButton.addTarget(self, action: #selector(handleTapOnCancelButton), for: .touchUpInside)
         self.customView.doneButton.addTarget(self, action: #selector(handleTapOnDoneButton), for: .touchUpInside)
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTapOnCancelButton))
+        tapGestureRecognizer.cancelsTouchesInView = false
+        self.customView.dimView.addGestureRecognizer(tapGestureRecognizer)
     }
     
     func handleTapOnCancelButton() {

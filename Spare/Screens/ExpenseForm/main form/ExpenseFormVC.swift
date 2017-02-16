@@ -12,6 +12,7 @@ import Mold
 class ExpenseFormVC: UIViewController {
     
     let customView = _EFVCView.instantiateFromNib()
+    let pickerTransitioningDelegate = EFPickerVCTransitioningDelegate()
     
     override func loadView() {
         self.view = self.customView
@@ -23,10 +24,18 @@ class ExpenseFormVC: UIViewController {
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap(gesture:)))
         tapRecognizer.cancelsTouchesInView = false
         self.customView.addGestureRecognizer(tapRecognizer)
+        
+        self.customView.dateBox.fieldButton.addTarget(self, action: #selector(handleTapOnDateButton), for: .touchUpInside)
     }
     
     func handleTap(gesture: UITapGestureRecognizer) {
         self.dismissKeyboard()
+    }
+    
+    func handleTapOnDateButton() {
+        let picker = EFPickerVC(nibName: nil, bundle: nil)
+        picker.setCustomTransitioningDelegate(self.pickerTransitioningDelegate)
+        self.present(picker, animated: true, completion: nil)
     }
     
 }
