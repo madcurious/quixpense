@@ -52,7 +52,6 @@
 		26A1CB4D1DD1ABD600DAE89E /* NotoSansUI-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26A1CB451DD1ABD600DAE89E /* NotoSansUI-BoldItalic.ttf */; };
 		26A1CB4E1DD1ABD600DAE89E /* NotoSansUI-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26A1CB461DD1ABD600DAE89E /* NotoSansUI-Italic.ttf */; };
 		26A1CB4F1DD1ABD600DAE89E /* NotoSansUI-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26A1CB471DD1ABD600DAE89E /* NotoSansUI-Regular.ttf */; };
-		26A1CB511DD1B21500DAE89E /* spare-icons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26A1CB501DD1B21500DAE89E /* spare-icons.ttf */; };
 		26A30C7B1E522EAB0047307D /* RootVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A30C7A1E522EAB0047307D /* RootVC.swift */; };
 		26A30C801E522F3B0047307D /* ExpenseListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A30C7F1E522F3B0047307D /* ExpenseListVC.swift */; };
 		26A30C871E5230020047307D /* AddExpenseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A30C861E5230020047307D /* AddExpenseVC.swift */; };
@@ -154,7 +153,6 @@
 		26A1CB451DD1ABD600DAE89E /* NotoSansUI-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansUI-BoldItalic.ttf"; sourceTree = "<group>"; };
 		26A1CB461DD1ABD600DAE89E /* NotoSansUI-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansUI-Italic.ttf"; sourceTree = "<group>"; };
 		26A1CB471DD1ABD600DAE89E /* NotoSansUI-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansUI-Regular.ttf"; sourceTree = "<group>"; };
-		26A1CB501DD1B21500DAE89E /* spare-icons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "spare-icons.ttf"; sourceTree = "<group>"; };
 		26A30C7A1E522EAB0047307D /* RootVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootVC.swift; sourceTree = "<group>"; };
 		26A30C7F1E522F3B0047307D /* ExpenseListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseListVC.swift; sourceTree = "<group>"; };
 		26A30C861E5230020047307D /* AddExpenseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddExpenseVC.swift; sourceTree = "<group>"; };
@@ -241,7 +239,6 @@
 		261370A91CD7A114007BAF56 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				26A1CB501DD1B21500DAE89E /* spare-icons.ttf */,
 				26A1CB441DD1ABD600DAE89E /* NotoSansUI-Bold.ttf */,
 				26A1CB451DD1ABD600DAE89E /* NotoSansUI-BoldItalic.ttf */,
 				26A1CB461DD1ABD600DAE89E /* NotoSansUI-Italic.ttf */,
@@ -533,7 +530,6 @@
 				26A1CB4C1DD1ABD600DAE89E /* NotoSansUI-Bold.ttf in Resources */,
 				266946861CC7711000A68424 /* Icon-40@2x.png in Resources */,
 				266946881CC7711000A68424 /* Icon-Small@2x.png in Resources */,
-				26A1CB511DD1B21500DAE89E /* spare-icons.ttf in Resources */,
 				266946851CC7711000A68424 /* InfoPlist.strings in Resources */,
 				26A1CB4D1DD1ABD600DAE89E /* NotoSansUI-BoldItalic.ttf in Resources */,
 				266946831CC7711000A68424 /* Default-568h@2x.png in Resources */,

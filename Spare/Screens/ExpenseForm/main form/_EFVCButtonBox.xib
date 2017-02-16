@@ -27,7 +27,7 @@
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bI9-3m-J5O">
-                            <rect key="frame" x="40" y="10" width="325" height="23"/>
+                            <rect key="frame" x="40" y="4" width="325" height="29"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -57,7 +57,7 @@
                         <constraint firstItem="bI9-3m-J5O" firstAttribute="leading" secondItem="WSX-Wf-ZCf" secondAttribute="trailing" constant="10" id="ThY-wY-kLU"/>
                         <constraint firstItem="WSX-Wf-ZCf" firstAttribute="leading" secondItem="ta0-Lm-Gti" secondAttribute="leading" constant="10" id="ZIm-Cp-b0m"/>
                         <constraint firstAttribute="bottom" secondItem="nZk-yl-n8e" secondAttribute="bottom" id="ZnQ-8A-6uL"/>
-                        <constraint firstItem="bI9-3m-J5O" firstAttribute="top" secondItem="ta0-Lm-Gti" secondAttribute="top" constant="10" id="bM3-8B-c5n"/>
+                        <constraint firstItem="bI9-3m-J5O" firstAttribute="top" secondItem="ta0-Lm-Gti" secondAttribute="top" constant="4" id="bM3-8B-c5n"/>
                         <constraint firstItem="mKH-C4-U7n" firstAttribute="top" secondItem="bI9-3m-J5O" secondAttribute="bottom" constant="2" id="hFO-pR-6FZ"/>
                         <constraint firstItem="nZk-yl-n8e" firstAttribute="top" secondItem="mKH-C4-U7n" secondAttribute="bottom" constant="4" id="lTX-yX-fdT"/>
                         <constraint firstAttribute="trailing" secondItem="mKH-C4-U7n" secondAttribute="trailing" constant="10" id="ovf-Kh-FzP"/>
