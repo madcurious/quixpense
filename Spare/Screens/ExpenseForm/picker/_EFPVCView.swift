@@ -14,8 +14,20 @@ class _EFPVCView: UIView, Themeable {
     @IBOutlet weak var dimView: UIView!
     
     @IBOutlet weak var titleBar: UIView!
+    @IBOutlet weak var titleBarHeight: NSLayoutConstraint!
+    @IBOutlet weak var titleBarBottom: NSLayoutConstraint!
     
     @IBOutlet weak var mainViewContainer: UIView!
+    
+    var mainViewContainerHeight: CGFloat {
+        get {
+            return self.contentViewHeight.constant - (self.titleBarHeight.constant + self.titleBarBottom.constant)
+        }
+        set {
+            self.contentViewHeight.constant = self.titleBarHeight.constant + self.titleBarBottom.constant + newValue
+            self.setNeedsLayout()
+        }
+    }
     
     @IBOutlet weak var cancelButton: MDImageButton!
     @IBOutlet weak var titleLabel: UILabel!

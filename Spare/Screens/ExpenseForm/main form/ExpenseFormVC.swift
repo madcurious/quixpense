@@ -33,7 +33,7 @@ class ExpenseFormVC: UIViewController {
     }
     
     func handleTapOnDateButton() {
-        let picker = EFPickerVC(nibName: nil, bundle: nil)
+        let picker = EFDatePickerVC(nibName: nil, bundle: nil)
         picker.setCustomTransitioningDelegate(self.pickerTransitioningDelegate)
         self.present(picker, animated: true, completion: nil)
     }
