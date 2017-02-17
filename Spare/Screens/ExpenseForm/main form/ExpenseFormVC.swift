@@ -14,10 +14,6 @@ class ExpenseFormVC: UIViewController {
     let customView = _EFVCView.instantiateFromNib()
     let pickerTransitioningDelegate = EFPickerVCTransitioningDelegate()
     
-    override var formScrollView: UIScrollView {
-        return self.customView.scrollView
-    }
-    
     override func loadView() {
         self.view = self.customView
     }
@@ -25,13 +21,17 @@ class ExpenseFormVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.addFormScrollViewKeyboardObservers()
-        
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap(gesture:)))
         tapRecognizer.cancelsTouchesInView = false
         self.customView.addGestureRecognizer(tapRecognizer)
         
         self.customView.dateBox.fieldButton.addTarget(self, action: #selector(handleTapOnDateButton), for: .touchUpInside)
+        
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(handleKeyboardWillShow(notification:)), name: Notification.Name.UIKeyboardWillShow, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(handleKeyboardWillHide(notification:)), name: Notification.Name.UIKeyboardWillHide, object: nil)
+        
+        self.customView.scrollView.delegate = self
     }
     
     func handleTap(gesture: UITapGestureRecognizer) {
@@ -44,29 +44,58 @@ class ExpenseFormVC: UIViewController {
         self.present(picker, animated: true, completion: nil)
     }
     
-    override func performAdditionalKeyboardWillShowTasks(notification: Notification, bottomInset: CGFloat) {
-        guard self.customView.notesBox.textView.isFirstResponder,
+    func handleKeyboardWillShow(notification: Notification) {
+        guard let keyboardFrame = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
             let animationDuration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber
             else {
                 return
         }
         
-        var adjustedBottomInset = bottomInset
-        if UIApplication.shared.statusBarFrame.size.height == 40 {
-//            adjustedBottomInset += tabBar.bounds.size.height - 6
-            adjustedBottomInset += UIApplication.shared.statusBarFrame.size.height
-        } else if let navigationBar = self.navigationController?.navigationBar {
-            adjustedBottomInset += navigationBar.bounds.size.height
+        var bottomInset = keyboardFrame.height
+        if let tabBar = self.tabBarController?.tabBar {
+            bottomInset -= tabBar.bounds.size.height
+        }
+        
+        let shouldAdjustOffset = self.customView.notesBox.textView.isFirstResponder
+        let convertedOrigin = UIApplication.shared.keyWindow!.rootViewController!.view.convert(self.customView.stackView.frame.origin, from: self.customView.stackView.superview!)
+        let inset = (convertedOrigin.y + self.customView.stackView.bounds.size.height) - keyboardFrame.origin.y
+        
+        UIView.animate(withDuration: animationDuration.doubleValue,
+                       animations: {[unowned self] in
+                        self.customView.scrollViewBottom.constant = bottomInset
+                        self.customView.setNeedsLayout()
+                        self.customView.layoutIfNeeded()
+                        
+                        if shouldAdjustOffset {
+                            self.customView.scrollView.contentOffset = CGPoint(x: 0, y: inset)
+                        }
+        })
+    }
+    
+    func handleKeyboardWillHide(notification: Notification) {
+        guard let animationDuration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber
+            else {
+                return
         }
         
         UIView.animate(withDuration: animationDuration.doubleValue,
-                       animations: {
-                        self.formScrollView.contentOffset = CGPoint(x: 0, y: self.customView.stackView.bounds.size.height - adjustedBottomInset - self.customView.notesBox.bounds.size.height)
+                       animations: {[unowned self] in
+                        self.customView.scrollViewBottom.constant = 0
+                        self.customView.setNeedsLayout()
+                        self.customView.layoutIfNeeded()
         })
     }
     
     deinit {
         NotificationCenter.default.removeObserver(self)
+    }
+    
+}
+
+extension ExpenseFormVC: UIScrollViewDelegate {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        print("offset: \(scrollView.contentOffset)")
     }
     
 }

@@ -42,6 +42,7 @@
             <nil key="simulatedStatusBarMetrics"/>
             <connections>
                 <outlet property="scrollView" destination="rZF-Dt-vjt" id="g9T-nM-wWV"/>
+                <outlet property="scrollViewBottom" destination="xet-w3-7Sy" id="lXm-3e-ntR"/>
                 <outlet property="stackView" destination="mcM-eN-OPO" id="VUM-iy-X5r"/>
             </connections>
             <point key="canvasLocation" x="-126" y="26"/>

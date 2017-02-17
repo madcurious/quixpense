@@ -11,6 +11,8 @@ import UIKit
 class _EFVCView: UIView {
     
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var scrollViewBottom: NSLayoutConstraint!
+    
     @IBOutlet weak var stackView: UIStackView!
     
     let amountBox = _EFVCAmountBox.instantiateFromNib()
