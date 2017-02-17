@@ -27,7 +27,7 @@
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eNt-a0-gvO">
-                            <rect key="frame" x="40" y="4" width="325" height="29"/>
+                            <rect key="frame" x="40" y="0.0" width="325" height="33"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -53,7 +53,7 @@
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="AFz-jc-R2a" firstAttribute="leading" secondItem="O4O-D2-T4K" secondAttribute="trailing" constant="10" id="Dwo-8S-SX0"/>
-                        <constraint firstItem="eNt-a0-gvO" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="4" id="Hln-Cp-RN0"/>
+                        <constraint firstItem="eNt-a0-gvO" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Hln-Cp-RN0"/>
                         <constraint firstAttribute="trailing" secondItem="AFz-jc-R2a" secondAttribute="trailing" constant="10" id="XaF-IK-8Ub"/>
                         <constraint firstItem="AFz-jc-R2a" firstAttribute="top" secondItem="eNt-a0-gvO" secondAttribute="bottom" constant="2" id="Y2q-8L-7W5"/>
                         <constraint firstItem="O4O-D2-T4K" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="euF-Dy-uOh"/>

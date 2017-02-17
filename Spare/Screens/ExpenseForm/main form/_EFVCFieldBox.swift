@@ -36,7 +36,7 @@ class _EFVCFieldBox: UIView, Themeable {
         
         UIView.clearBackgroundColors(self, self.contentView)
         
-        self.fieldLabel.font = Font.regular(10)
+        self.fieldLabel.font = Font.regular(12)
         self.fieldLabel.numberOfLines = 1
         self.fieldLabel.lineBreakMode = .byTruncatingTail
         

@@ -19,6 +19,7 @@ class _EFVCView: UIView {
     let subcategoriesBox = _EFVCButtonBox.instantiateFromNib()
     let paymentMethodsBox = _EFVCButtonBox.instantiateFromNib()
     let itemNameBox = _EFVCButtonBox.instantiateFromNib()
+    let notesBox = _EFVCNotesBox.instantiateFromNib()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -34,7 +35,7 @@ class _EFVCView: UIView {
             ("ITEM NAME", "itemNameIcon", "e.g. Breakfast at Tiffany's")
         ]
         
-        let fieldBoxes = [self.amountBox, self.dateBox, self.categoryBox, self.subcategoriesBox, self.paymentMethodsBox, self.itemNameBox]
+        let fieldBoxes = [self.amountBox, self.dateBox, self.categoryBox, self.subcategoriesBox, self.paymentMethodsBox, self.itemNameBox, self.notesBox]
         for i in 0 ..< fieldBoxes.count {
             switch i {
             case 1 ... 5:

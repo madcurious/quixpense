@@ -23,6 +23,8 @@
 		260DFDC31E55912200E3B92E /* _EFVCButtonBox.xib in Resources */ = {isa = PBXBuildFile; fileRef = 260DFDC21E55912200E3B92E /* _EFVCButtonBox.xib */; };
 		260DFDCF1E55F37600E3B92E /* EFPickerVCTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260DFDCE1E55F37600E3B92E /* EFPickerVCTransitioningDelegate.swift */; };
 		260DFDD11E562AEE00E3B92E /* EFDatePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260DFDD01E562AEE00E3B92E /* EFDatePickerVC.swift */; };
+		260DFDD31E569F6F00E3B92E /* _EFVCNotesBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260DFDD21E569F6F00E3B92E /* _EFVCNotesBox.swift */; };
+		260DFDD51E569F9D00E3B92E /* _EFVCNotesBox.xib in Resources */ = {isa = PBXBuildFile; fileRef = 260DFDD41E569F9D00E3B92E /* _EFVCNotesBox.xib */; };
 		261EB86318DDB630009DDF78 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86218DDB630009DDF78 /* Foundation.framework */; };
 		261EB86518DDB630009DDF78 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86418DDB630009DDF78 /* CoreGraphics.framework */; };
 		261EB86718DDB631009DDF78 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86618DDB631009DDF78 /* UIKit.framework */; };
@@ -120,6 +122,8 @@
 		260DFDC21E55912200E3B92E /* _EFVCButtonBox.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = _EFVCButtonBox.xib; sourceTree = "<group>"; };
 		260DFDCE1E55F37600E3B92E /* EFPickerVCTransitioningDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EFPickerVCTransitioningDelegate.swift; sourceTree = "<group>"; };
 		260DFDD01E562AEE00E3B92E /* EFDatePickerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EFDatePickerVC.swift; sourceTree = "<group>"; };
+		260DFDD21E569F6F00E3B92E /* _EFVCNotesBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _EFVCNotesBox.swift; sourceTree = "<group>"; };
+		260DFDD41E569F9D00E3B92E /* _EFVCNotesBox.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = _EFVCNotesBox.xib; sourceTree = "<group>"; };
 		261EB85F18DDB630009DDF78 /* Spare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		261EB86218DDB630009DDF78 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		261EB86418DDB630009DDF78 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -220,6 +224,8 @@
 				260DFDAC1E5584D900E3B92E /* ExpenseFormVC.swift */,
 				260DFDC01E55911700E3B92E /* _EFVCButtonBox.swift */,
 				260DFDC21E55912200E3B92E /* _EFVCButtonBox.xib */,
+				260DFDD21E569F6F00E3B92E /* _EFVCNotesBox.swift */,
+				260DFDD41E569F9D00E3B92E /* _EFVCNotesBox.xib */,
 			);
 			path = "main form";
 			sourceTree = "<group>";
@@ -516,6 +522,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				260DFDD51E569F9D00E3B92E /* _EFVCNotesBox.xib in Resources */,
 				266946841CC7711000A68424 /* Default@2x.png in Resources */,
 				260DFDB91E55867700E3B92E /* _EFPVCView.xib in Resources */,
 				260DFDB21E5584D900E3B92E /* _EFVCView.xib in Resources */,
@@ -609,6 +616,7 @@
 				260DFDB11E5584D900E3B92E /* _EFVCView.swift in Sources */,
 				260DFDAE1E5584D900E3B92E /* _EFVCAmountBox.swift in Sources */,
 				2669468F1CC7711000A68424 /* Spare.xcdatamodeld in Sources */,
+				260DFDD31E569F6F00E3B92E /* _EFVCNotesBox.swift in Sources */,
 				26A30C7B1E522EAB0047307D /* RootVC.swift in Sources */,
 				26A30C871E5230020047307D /* AddExpenseVC.swift in Sources */,
 				260DFDD11E562AEE00E3B92E /* EFDatePickerVC.swift in Sources */,

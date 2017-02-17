@@ -12,16 +12,26 @@ class BaseNavBarVC: UINavigationController, Themeable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.delegate = self
         self.applyTheme()
     }
     
     func applyTheme() {
+        self.navigationBar.isTranslucent = false
         self.navigationBar.barTintColor = Global.theme.barBackgroundColor
         self.navigationBar.tintColor = Global.theme.barTintColor
         self.navigationBar.titleTextAttributes = [
             NSFontAttributeName : Font.bold(17),
             NSForegroundColorAttributeName : Global.theme.barTintColor
         ]
+    }
+    
+}
+
+extension BaseNavBarVC: UINavigationControllerDelegate {
+    
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+        viewController.edgesForExtendedLayout = []
     }
     
 }
