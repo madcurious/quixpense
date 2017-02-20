@@ -15,7 +15,7 @@ class _EFPSVCView: UIView, Themeable {
     
     @IBOutlet weak var tableViewContainer: UIView!
     
-    @IBOutlet weak var defaultTableView: UITableView!
+    @IBOutlet weak var fullTableView: UITableView!
     @IBOutlet weak var resultsTableView: UITableView!
     
     override func awakeFromNib() {
@@ -30,8 +30,11 @@ class _EFPSVCView: UIView, Themeable {
         
         self.applyTheme()
         
-        self.defaultTableView.separatorStyle = .none
+        self.fullTableView.separatorStyle = .none
         self.resultsTableView.separatorStyle = .none
+        self.resultsTableView.isHidden = true
+        self.fullTableView.backgroundColor = UIColor.red
+        self.resultsTableView.backgroundColor = UIColor.green
     }
     
     func applyTheme() {

@@ -246,8 +246,8 @@
 				260DFDB81E55867700E3B92E /* _EFPVCView.xib */,
 				260DFDCE1E55F37600E3B92E /* EFPickerVCTransitioningDelegate.swift */,
 				260DFDD01E562AEE00E3B92E /* EFDatePickerVC.swift */,
-				26331FBB1E5B555A00AACE68 /* EFPickerSearchVC.swift */,
 				26331FB71E5AE6EE00AACE68 /* EFCategoryPickerVC.swift */,
+				26331FBB1E5B555A00AACE68 /* EFPickerSearchVC.swift */,
 				26331FBD1E5B559300AACE68 /* _EFPSVCView.xib */,
 				26331FBF1E5B55A100AACE68 /* _EFPSVCView.swift */,
 			);

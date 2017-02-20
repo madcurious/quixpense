@@ -10,10 +10,19 @@ import UIKit
 
 class EFPickerSearchVC: UIViewController {
     
+    enum TableView {
+        case full, results
+    }
+    
     let customView = _EFPSVCView.instantiateFromNib()
     
     override func loadView() {
         self.view = self.customView
+    }
+    
+    func showTableView(_ tableView: TableView) {
+        self.customView.fullTableView.isHidden = tableView != .full
+        self.customView.resultsTableView.isHidden = tableView != .results
     }
     
 }

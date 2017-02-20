@@ -29,6 +29,7 @@ class EFCategoryPickerVC: EFPickerVC {
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(handleKeyboardWillShow(notification:)), name: Notification.Name.UIKeyboardWillShow, object: nil)
         notificationCenter.addObserver(self, selector: #selector(handleKeyboardWillHide(notification:)), name: Notification.Name.UIKeyboardWillHide, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(handleTextDidChange(notification:)), name: Notification.Name.UITextFieldTextDidChange, object: self.searchVC.customView.textField)
     }
     
     deinit {
@@ -68,6 +69,15 @@ extension EFCategoryPickerVC {
                         self.customView.setNeedsLayout()
                         self.customView.layoutIfNeeded()
         })
+    }
+    
+    func handleTextDidChange(notification: Notification) {
+        if let text = self.searchVC.customView.textField.text,
+            text.characters.count > 0 {
+            self.searchVC.showTableView(.results)
+        } else {
+            self.searchVC.showTableView(.full)
+        }
     }
     
     override func handleTapOnDimView() {

@@ -74,7 +74,7 @@
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="defaultTableView" destination="fxS-1x-CRP" id="I9T-ot-yCK"/>
+                <outlet property="fullTableView" destination="fxS-1x-CRP" id="gQm-wj-OPT"/>
                 <outlet property="resultsTableView" destination="cjP-RL-VFd" id="crz-Ih-H3Q"/>
                 <outlet property="tableViewContainer" destination="nGr-ja-F4X" id="5Ou-tQ-FIb"/>
                 <outlet property="textField" destination="gSb-BA-Mx7" id="dG3-Ml-YKy"/>
