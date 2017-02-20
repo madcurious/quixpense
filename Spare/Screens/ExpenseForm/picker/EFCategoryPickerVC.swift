@@ -11,6 +11,7 @@ import UIKit
 class EFCategoryPickerVC: EFPickerVC {
     
     let searchVC = EFPickerSearchVC()
+    var categories = [Category]()
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nil, bundle: nil)
@@ -30,6 +31,8 @@ class EFCategoryPickerVC: EFPickerVC {
         notificationCenter.addObserver(self, selector: #selector(handleKeyboardWillShow(notification:)), name: Notification.Name.UIKeyboardWillShow, object: nil)
         notificationCenter.addObserver(self, selector: #selector(handleKeyboardWillHide(notification:)), name: Notification.Name.UIKeyboardWillHide, object: nil)
         notificationCenter.addObserver(self, selector: #selector(handleTextDidChange(notification:)), name: Notification.Name.UITextFieldTextDidChange, object: self.searchVC.customView.textField)
+        
+        
     }
     
     deinit {

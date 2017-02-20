@@ -39,6 +39,13 @@
 		26331FBC1E5B555A00AACE68 /* EFPickerSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26331FBB1E5B555A00AACE68 /* EFPickerSearchVC.swift */; };
 		26331FBE1E5B559300AACE68 /* _EFPSVCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26331FBD1E5B559300AACE68 /* _EFPSVCView.xib */; };
 		26331FC01E5B55A100AACE68 /* _EFPSVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26331FBF1E5B55A100AACE68 /* _EFPSVCView.swift */; };
+		26331FC21E5B684700AACE68 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26331FC11E5B684700AACE68 /* CoreDataStack.swift */; };
+		26331FCA1E5B692100AACE68 /* Category+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26331FC41E5B692100AACE68 /* Category+CoreDataClass.swift */; };
+		26331FCB1E5B692100AACE68 /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26331FC51E5B692100AACE68 /* Category+CoreDataProperties.swift */; };
+		26331FCC1E5B692100AACE68 /* Expense+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26331FC61E5B692100AACE68 /* Expense+CoreDataClass.swift */; };
+		26331FCD1E5B692100AACE68 /* Expense+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26331FC71E5B692100AACE68 /* Expense+CoreDataProperties.swift */; };
+		26331FCE1E5B692100AACE68 /* Subcategory+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26331FC81E5B692100AACE68 /* Subcategory+CoreDataClass.swift */; };
+		26331FCF1E5B692100AACE68 /* Subcategory+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26331FC91E5B692100AACE68 /* Subcategory+CoreDataProperties.swift */; };
 		2666C2C61957CF7A003752BF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2666C2C41957CF7A003752BF /* SystemConfiguration.framework */; };
 		2666C2C81957CF93003752BF /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2666C2C71957CF93003752BF /* libz.dylib */; };
 		2666C2CA1957CFA1003752BF /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2666C2C91957CFA1003752BF /* libsqlite3.dylib */; };
@@ -142,6 +149,13 @@
 		26331FBB1E5B555A00AACE68 /* EFPickerSearchVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EFPickerSearchVC.swift; sourceTree = "<group>"; };
 		26331FBD1E5B559300AACE68 /* _EFPSVCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = _EFPSVCView.xib; sourceTree = "<group>"; };
 		26331FBF1E5B55A100AACE68 /* _EFPSVCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _EFPSVCView.swift; sourceTree = "<group>"; };
+		26331FC11E5B684700AACE68 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		26331FC41E5B692100AACE68 /* Category+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataClass.swift"; sourceTree = "<group>"; };
+		26331FC51E5B692100AACE68 /* Category+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		26331FC61E5B692100AACE68 /* Expense+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Expense+CoreDataClass.swift"; sourceTree = "<group>"; };
+		26331FC71E5B692100AACE68 /* Expense+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Expense+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		26331FC81E5B692100AACE68 /* Subcategory+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Subcategory+CoreDataClass.swift"; sourceTree = "<group>"; };
+		26331FC91E5B692100AACE68 /* Subcategory+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Subcategory+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		2666C2C11957CF4F003752BF /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalyticsServices.a; path = GoogleAnalytics/libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
 		2666C2C31957CF7A003752BF /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		2666C2C41957CF7A003752BF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -327,9 +341,23 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		26331FC31E5B692100AACE68 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				26331FC41E5B692100AACE68 /* Category+CoreDataClass.swift */,
+				26331FC51E5B692100AACE68 /* Category+CoreDataProperties.swift */,
+				26331FC61E5B692100AACE68 /* Expense+CoreDataClass.swift */,
+				26331FC71E5B692100AACE68 /* Expense+CoreDataProperties.swift */,
+				26331FC81E5B692100AACE68 /* Subcategory+CoreDataClass.swift */,
+				26331FC91E5B692100AACE68 /* Subcategory+CoreDataProperties.swift */,
+			);
+			path = "Core Data";
+			sourceTree = "<group>";
+		};
 		266946471CC7711000A68424 /* Spare */ = {
 			isa = PBXGroup;
 			children = (
+				26331FC31E5B692100AACE68 /* Core Data */,
 				26A30C771E522E840047307D /* Screens */,
 				26A30C781E522E840047307D /* Utilities */,
 			);
@@ -377,6 +405,7 @@
 				26A30C8B1E52318D0047307D /* Theme.swift */,
 				26A30C8D1E5232240047307D /* Global.swift */,
 				26A30C971E52417C0047307D /* Font.swift */,
+				26331FC11E5B684700AACE68 /* CoreDataStack.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -623,27 +652,34 @@
 				266946931CC77A1A00A68424 /* AppDelegate.swift in Sources */,
 				260DFDC11E55911700E3B92E /* _EFVCButtonBox.swift in Sources */,
 				26A30C981E52417C0047307D /* Font.swift in Sources */,
+				26331FCA1E5B692100AACE68 /* Category+CoreDataClass.swift in Sources */,
 				260DFDB01E5584D900E3B92E /* _EFVCFieldBox.swift in Sources */,
 				260DFDCF1E55F37600E3B92E /* EFPickerVCTransitioningDelegate.swift in Sources */,
 				26331FC01E5B55A100AACE68 /* _EFPSVCView.swift in Sources */,
 				26A30C8C1E52318D0047307D /* Theme.swift in Sources */,
+				26331FCE1E5B692100AACE68 /* Subcategory+CoreDataClass.swift in Sources */,
 				260DFDB11E5584D900E3B92E /* _EFVCView.swift in Sources */,
 				26331FBC1E5B555A00AACE68 /* EFPickerSearchVC.swift in Sources */,
+				26331FCB1E5B692100AACE68 /* Category+CoreDataProperties.swift in Sources */,
 				260DFDAE1E5584D900E3B92E /* _EFVCAmountBox.swift in Sources */,
 				2669468F1CC7711000A68424 /* Spare.xcdatamodeld in Sources */,
 				260DFDD31E569F6F00E3B92E /* _EFVCNotesBox.swift in Sources */,
+				26331FCC1E5B692100AACE68 /* Expense+CoreDataClass.swift in Sources */,
 				26A30C7B1E522EAB0047307D /* RootVC.swift in Sources */,
 				26A30C871E5230020047307D /* AddExpenseVC.swift in Sources */,
 				260DFDD11E562AEE00E3B92E /* EFDatePickerVC.swift in Sources */,
+				26331FCD1E5B692100AACE68 /* Expense+CoreDataProperties.swift in Sources */,
 				26A30C8A1E5231620047307D /* BaseNavBarVC.swift in Sources */,
 				26331FB81E5AE6EE00AACE68 /* EFCategoryPickerVC.swift in Sources */,
 				26A30C801E522F3B0047307D /* ExpenseListVC.swift in Sources */,
 				26A30C8E1E5232240047307D /* Global.swift in Sources */,
 				260DFDB71E55864100E3B92E /* _EFPVCView.swift in Sources */,
+				26331FC21E5B684700AACE68 /* CoreDataStack.swift in Sources */,
 				269635A41E5457C80001FC05 /* AmountFormatter.swift in Sources */,
 				260DFDB51E5584FA00E3B92E /* EFPickerVC.swift in Sources */,
 				260DFDB31E5584D900E3B92E /* ExpenseFormVC.swift in Sources */,
 				26A30C921E5235950047307D /* SettingsVC.swift in Sources */,
+				26331FCF1E5B692100AACE68 /* Subcategory+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

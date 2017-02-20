@@ -15,12 +15,14 @@ class EFPickerSearchVC: UIViewController {
     }
     
     let customView = _EFPSVCView.instantiateFromNib()
+    var currentTableView = TableView.full
     
     override func loadView() {
         self.view = self.customView
     }
     
     func showTableView(_ tableView: TableView) {
+        self.currentTableView = tableView
         self.customView.fullTableView.isHidden = tableView != .full
         self.customView.resultsTableView.isHidden = tableView != .results
     }
