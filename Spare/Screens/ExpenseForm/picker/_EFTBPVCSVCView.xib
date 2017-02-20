@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="_EFTBPVCSVCView" customModule="Spare" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="296"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QPg-3t-Xl6">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                    <subviews>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DBf-9r-l5p">
+                            <rect key="frame" x="10" y="5" width="355" height="34"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="34" id="qoP-hq-vG7"/>
+                            </constraints>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                    </subviews>
+                    <color key="backgroundColor" red="0.85098040100000005" green="0.94901961089999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="DBf-9r-l5p" firstAttribute="centerY" secondItem="QPg-3t-Xl6" secondAttribute="centerY" id="LE4-rf-G8o"/>
+                        <constraint firstAttribute="trailing" secondItem="DBf-9r-l5p" secondAttribute="trailing" constant="10" id="RJa-HI-qfC"/>
+                        <constraint firstAttribute="height" constant="44" id="geV-BD-gVA"/>
+                        <constraint firstItem="DBf-9r-l5p" firstAttribute="leading" secondItem="QPg-3t-Xl6" secondAttribute="leading" constant="10" id="wxI-CI-6xa"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qBe-ib-p6M">
+                    <rect key="frame" x="0.0" y="44" width="375" height="252"/>
+                    <subviews>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jfv-Ao-bVy">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="252"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </tableView>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="N9e-K4-AuW">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="252"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </tableView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="jfv-Ao-bVy" firstAttribute="top" secondItem="qBe-ib-p6M" secondAttribute="top" id="6ig-u4-8TO"/>
+                        <constraint firstItem="N9e-K4-AuW" firstAttribute="top" secondItem="qBe-ib-p6M" secondAttribute="top" id="A0l-F5-FBQ"/>
+                        <constraint firstAttribute="trailing" secondItem="jfv-Ao-bVy" secondAttribute="trailing" id="BPu-Ml-E90"/>
+                        <constraint firstAttribute="bottom" secondItem="jfv-Ao-bVy" secondAttribute="bottom" id="HLq-Rz-nzL"/>
+                        <constraint firstAttribute="trailing" secondItem="N9e-K4-AuW" secondAttribute="trailing" id="Vtc-64-BaZ"/>
+                        <constraint firstAttribute="bottom" secondItem="N9e-K4-AuW" secondAttribute="bottom" id="aXS-Un-Kd9"/>
+                        <constraint firstItem="jfv-Ao-bVy" firstAttribute="leading" secondItem="qBe-ib-p6M" secondAttribute="leading" id="ltu-Iz-D9u"/>
+                        <constraint firstItem="N9e-K4-AuW" firstAttribute="leading" secondItem="qBe-ib-p6M" secondAttribute="leading" id="wh4-46-rp7"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="QPg-3t-Xl6" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="AEM-a0-Vev"/>
+                <constraint firstItem="qBe-ib-p6M" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="WyA-M5-CTw"/>
+                <constraint firstAttribute="bottom" secondItem="qBe-ib-p6M" secondAttribute="bottom" id="aam-5O-34r"/>
+                <constraint firstItem="QPg-3t-Xl6" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="gWV-bl-IxY"/>
+                <constraint firstItem="qBe-ib-p6M" firstAttribute="top" secondItem="QPg-3t-Xl6" secondAttribute="bottom" id="k3U-z7-X17"/>
+                <constraint firstAttribute="trailing" secondItem="QPg-3t-Xl6" secondAttribute="trailing" id="ntL-Nn-Oq6"/>
+                <constraint firstAttribute="trailing" secondItem="qBe-ib-p6M" secondAttribute="trailing" id="nyC-bb-31t"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="defaultTableView" destination="jfv-Ao-bVy" id="BDi-p7-kcw"/>
+                <outlet property="resultsTableView" destination="N9e-K4-AuW" id="T2I-dt-tPI"/>
+                <outlet property="searchTextField" destination="DBf-9r-l5p" id="xFH-lh-j1U"/>
+                <outlet property="tableViewContainer" destination="qBe-ib-p6M" id="N7C-PH-ckM"/>
+                <outlet property="textBoxContainer" destination="QPg-3t-Xl6" id="jQp-bj-3CK"/>
+            </connections>
+            <point key="canvasLocation" x="-169.5" y="-57"/>
+        </view>
+    </objects>
+</document>

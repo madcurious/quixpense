@@ -32,7 +32,17 @@ class ExpenseFormVC: UIViewController {
         notificationCenter.addObserver(self, selector: #selector(handleKeyboardWillHide(notification:)), name: Notification.Name.UIKeyboardWillHide, object: nil)
         
         self.customView.scrollView.delegate = self
+        
+        self.customView.categoryBox.fieldButton.addTarget(self, action: #selector(handleTapOnCategoryButton), for: .touchUpInside)
     }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+}
+
+extension ExpenseFormVC {
     
     func handleTap(gesture: UITapGestureRecognizer) {
         self.dismissKeyboard()
@@ -40,6 +50,12 @@ class ExpenseFormVC: UIViewController {
     
     func handleTapOnDateButton() {
         let picker = EFDatePickerVC(nibName: nil, bundle: nil)
+        picker.setCustomTransitioningDelegate(self.pickerTransitioningDelegate)
+        self.present(picker, animated: true, completion: nil)
+    }
+    
+    func handleTapOnCategoryButton() {
+        let picker = EFCategoryPickerVC(nibName: nil, bundle: nil)
         picker.setCustomTransitioningDelegate(self.pickerTransitioningDelegate)
         self.present(picker, animated: true, completion: nil)
     }
@@ -84,10 +100,6 @@ class ExpenseFormVC: UIViewController {
                         self.customView.setNeedsLayout()
                         self.customView.layoutIfNeeded()
         })
-    }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self)
     }
     
 }
