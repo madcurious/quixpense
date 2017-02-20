@@ -97,7 +97,7 @@
                 <outlet property="contentViewHeight" destination="BcW-MZ-HJl" id="R0z-1Y-wNU"/>
                 <outlet property="dimView" destination="6AP-IS-bwd" id="hNU-qQ-gFh"/>
                 <outlet property="doneButton" destination="1mr-J3-PM5" id="A16-JE-kib"/>
-                <outlet property="mainViewContainer" destination="sQL-SB-SbE" id="6GK-5Q-NaX"/>
+                <outlet property="pickerViewContainer" destination="sQL-SB-SbE" id="vzw-Iz-Ind"/>
                 <outlet property="titleBar" destination="cR8-N9-Tvb" id="fGp-xX-nIC"/>
                 <outlet property="titleBarBottom" destination="XSE-dO-WNN" id="ByH-qt-mBU"/>
                 <outlet property="titleBarHeight" destination="XCR-gb-08u" id="A6b-xM-qbX"/>

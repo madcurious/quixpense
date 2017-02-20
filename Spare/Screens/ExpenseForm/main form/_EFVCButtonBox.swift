@@ -29,10 +29,10 @@ class _EFVCButtonBox: _EFVCFieldBox {
     override func applyTheme() {
         super.applyTheme()
         
-        self.fieldLabel.textColor = Global.theme.formFieldNameTextColor
+        self.fieldLabel.textColor = Global.theme.fieldNameTextColor
         
-        self.fieldButton.placeholderTextColor = Global.theme.formFieldPlaceholderTextColor
-        self.fieldButton.textColor = Global.theme.formFieldValueTextColor
+        self.fieldButton.placeholderTextColor = Global.theme.fieldPlaceholderTextColor
+        self.fieldButton.textColor = Global.theme.fieldValueTextColor
     }
     
 }

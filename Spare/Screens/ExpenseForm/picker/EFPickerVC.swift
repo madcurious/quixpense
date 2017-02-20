@@ -28,7 +28,7 @@ class EFPickerVC: UIViewController {
         self.customView.cancelButton.addTarget(self, action: #selector(handleTapOnCancelButton), for: .touchUpInside)
         self.customView.doneButton.addTarget(self, action: #selector(handleTapOnDoneButton), for: .touchUpInside)
         
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTapOnCancelButton))
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTapOnDimView))
         tapGestureRecognizer.cancelsTouchesInView = false
         self.customView.dimView.addGestureRecognizer(tapGestureRecognizer)
     }
@@ -38,6 +38,10 @@ class EFPickerVC: UIViewController {
     }
     
     func handleTapOnDoneButton() {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func handleTapOnDimView() {
         self.dismiss(animated: true, completion: nil)
     }
     

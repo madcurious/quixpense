@@ -17,49 +17,92 @@ enum Theme {
     case light, dark
     
     var barBackgroundColor: UIColor {
-        if self == .light {
+        switch self {
+        case .light:
             return UIColor.white
+        case .dark:
+            return UIColor.hex(0x2f2f2f)
         }
-        return UIColor.hex(0x2f2f2f)
     }
     
     var barTintColor: UIColor {
-        if self == .light {
+        switch self {
+        case .light:
             return UIColor.black
+        case .dark:
+            return UIColor.white
         }
-        return UIColor.white
     }
     
-    var formIconColor: UIColor {
-        return self.formFieldNameTextColor
+    var fieldIconColor: UIColor {
+        return self.fieldNameTextColor
     }
     
-    var formFieldNameTextColor: UIColor {
-        if self == .light {
+    var fieldNameTextColor: UIColor {
+        switch self {
+        case .light:
             return UIColor.hex(0xbbbbbb)
+        case .dark:
+            return UIColor.hex(0x999999)
         }
-        return UIColor.hex(0x999999)
     }
     
-    var formFieldPlaceholderTextColor: UIColor {
-        if self == .light {
+    var fieldPlaceholderTextColor: UIColor {
+        switch self {
+        case .light:
             return UIColor.hex(0xdddddd)
+        case .dark:
+            return UIColor.hex(0x555555)
         }
-        return UIColor.hex(0x555555)
     }
     
-    var formFieldValueTextColor: UIColor {
-        if self == .light {
+    var fieldValueTextColor: UIColor {
+        switch self {
+        case .light:
+            return UIColor.black
+        case .dark:
+            return UIColor.white
+        }
+    }
+    
+    var mainBackgroundColor: UIColor {
+        switch self {
+        case .light:
+            return UIColor.white
+        case .dark:
+            return UIColor.hex(0x262626)
+        }
+    }
+    
+    /// For the text fields in pickers in the expense form.
+    var pickerFieldValueTextColor: UIColor {
+        switch self {
+        case .light:
+            return UIColor.white
+            
+        case .dark:
             return UIColor.black
         }
-        return UIColor.white
+    }
+    
+    var pickerTextFieldBackgroundColor: UIColor {
+        switch self {
+        case .light:
+            return UIColor.hex(0x666666)
+            
+        case .dark:
+            return UIColor.white
+        }
     }
     
     var tableViewSeparatorColor: UIColor {
-        if self == .light {
+        switch self {
+        case .light:
             return UIColor.hex(0xdddddd)
+            
+        case .dark:
+            return UIColor.hex(0x555555)
         }
-        return UIColor.hex(0x555555)
     }
     
 }

@@ -14,6 +14,7 @@ class RootVC: UITabBarController, Themeable {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.tabBar.isTranslucent = false
         self.applyTheme()
         
         let tabs = [

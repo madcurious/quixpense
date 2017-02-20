@@ -40,8 +40,8 @@ class _EFVCNotesBox: _EFVCFieldBox {
     override func applyTheme() {
         super.applyTheme()
         self.iconImageView.image = UIImage.templateNamed("notesIcon")
-        self.placeholderLabel.textColor = Global.theme.formFieldPlaceholderTextColor
-        self.textView.textColor = Global.theme.formFieldValueTextColor
+        self.placeholderLabel.textColor = Global.theme.fieldPlaceholderTextColor
+        self.textView.textColor = Global.theme.fieldValueTextColor
     }
     
     func handleTextDidChange() {

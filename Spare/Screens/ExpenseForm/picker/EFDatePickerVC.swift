@@ -19,8 +19,8 @@ class EFDatePickerVC: EFPickerVC {
     override func loadView() {
         super.loadView()
         
-        self.customView.mainViewContainerHeight = self.datePicker.intrinsicContentSize.height
-        self.customView.mainViewContainer.addSubviewAndFill(self.datePicker)
+        self.customView.pickerViewContainerHeight = self.datePicker.intrinsicContentSize.height
+        self.customView.pickerViewContainer.addSubviewAndFill(self.datePicker)
     }
     
     override func viewDidLoad() {

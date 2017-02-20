@@ -17,9 +17,9 @@ class _EFPVCView: UIView, Themeable {
     @IBOutlet weak var titleBarHeight: NSLayoutConstraint!
     @IBOutlet weak var titleBarBottom: NSLayoutConstraint!
     
-    @IBOutlet weak var mainViewContainer: UIView!
+    @IBOutlet weak var pickerViewContainer: UIView!
     
-    var mainViewContainerHeight: CGFloat {
+    var pickerViewContainerHeight: CGFloat {
         get {
             return self.contentViewHeight.constant - (self.titleBarHeight.constant + self.titleBarBottom.constant)
         }

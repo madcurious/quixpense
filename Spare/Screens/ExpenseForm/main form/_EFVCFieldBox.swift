@@ -53,8 +53,8 @@ class _EFVCFieldBox: UIView, Themeable {
     }
     
     func applyTheme() {
-        self.iconImageView.tintColor = Global.theme.formIconColor
-        self.fieldLabel.textColor = Global.theme.formFieldNameTextColor
+        self.iconImageView.tintColor = Global.theme.fieldIconColor
+        self.fieldLabel.textColor = Global.theme.fieldNameTextColor
         self.separatorView.backgroundColor = Global.theme.tableViewSeparatorColor
     }
     

@@ -35,11 +35,10 @@
 		261EB88418DDB631009DDF78 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86818DDB631009DDF78 /* CoreData.framework */; };
 		261EB88C18DDB631009DDF78 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 261EB88A18DDB631009DDF78 /* InfoPlist.strings */; };
 		261EB88E18DDB631009DDF78 /* SpareTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 261EB88D18DDB631009DDF78 /* SpareTests.m */; };
-		26331FAC1E5AB2BE00AACE68 /* _EFTBPVCSVCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26331FAB1E5AB2BE00AACE68 /* _EFTBPVCSVCView.xib */; };
-		26331FB21E5AC5E500AACE68 /* EFTextBoxPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26331FB11E5AC5E500AACE68 /* EFTextBoxPickerVC.swift */; };
-		26331FB41E5ADA4900AACE68 /* EFTBPVCSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26331FB31E5ADA4900AACE68 /* EFTBPVCSearchVC.swift */; };
-		26331FB61E5AE52600AACE68 /* _EFTBPVCSVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26331FB51E5AE52600AACE68 /* _EFTBPVCSVCView.swift */; };
 		26331FB81E5AE6EE00AACE68 /* EFCategoryPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26331FB71E5AE6EE00AACE68 /* EFCategoryPickerVC.swift */; };
+		26331FBC1E5B555A00AACE68 /* EFPickerSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26331FBB1E5B555A00AACE68 /* EFPickerSearchVC.swift */; };
+		26331FBE1E5B559300AACE68 /* _EFPSVCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26331FBD1E5B559300AACE68 /* _EFPSVCView.xib */; };
+		26331FC01E5B55A100AACE68 /* _EFPSVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26331FBF1E5B55A100AACE68 /* _EFPSVCView.swift */; };
 		2666C2C61957CF7A003752BF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2666C2C41957CF7A003752BF /* SystemConfiguration.framework */; };
 		2666C2C81957CF93003752BF /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2666C2C71957CF93003752BF /* libz.dylib */; };
 		2666C2CA1957CFA1003752BF /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2666C2C91957CFA1003752BF /* libsqlite3.dylib */; };
@@ -139,11 +138,10 @@
 		261EB88918DDB631009DDF78 /* SpareTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SpareTests-Info.plist"; sourceTree = "<group>"; };
 		261EB88B18DDB631009DDF78 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		261EB88D18DDB631009DDF78 /* SpareTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpareTests.m; sourceTree = "<group>"; };
-		26331FAB1E5AB2BE00AACE68 /* _EFTBPVCSVCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = _EFTBPVCSVCView.xib; sourceTree = "<group>"; };
-		26331FB11E5AC5E500AACE68 /* EFTextBoxPickerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EFTextBoxPickerVC.swift; sourceTree = "<group>"; };
-		26331FB31E5ADA4900AACE68 /* EFTBPVCSearchVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EFTBPVCSearchVC.swift; sourceTree = "<group>"; };
-		26331FB51E5AE52600AACE68 /* _EFTBPVCSVCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _EFTBPVCSVCView.swift; sourceTree = "<group>"; };
 		26331FB71E5AE6EE00AACE68 /* EFCategoryPickerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EFCategoryPickerVC.swift; sourceTree = "<group>"; };
+		26331FBB1E5B555A00AACE68 /* EFPickerSearchVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EFPickerSearchVC.swift; sourceTree = "<group>"; };
+		26331FBD1E5B559300AACE68 /* _EFPSVCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = _EFPSVCView.xib; sourceTree = "<group>"; };
+		26331FBF1E5B55A100AACE68 /* _EFPSVCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _EFPSVCView.swift; sourceTree = "<group>"; };
 		2666C2C11957CF4F003752BF /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalyticsServices.a; path = GoogleAnalytics/libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
 		2666C2C31957CF7A003752BF /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		2666C2C41957CF7A003752BF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -248,11 +246,10 @@
 				260DFDB81E55867700E3B92E /* _EFPVCView.xib */,
 				260DFDCE1E55F37600E3B92E /* EFPickerVCTransitioningDelegate.swift */,
 				260DFDD01E562AEE00E3B92E /* EFDatePickerVC.swift */,
-				26331FB11E5AC5E500AACE68 /* EFTextBoxPickerVC.swift */,
-				26331FB31E5ADA4900AACE68 /* EFTBPVCSearchVC.swift */,
-				26331FB51E5AE52600AACE68 /* _EFTBPVCSVCView.swift */,
-				26331FAB1E5AB2BE00AACE68 /* _EFTBPVCSVCView.xib */,
+				26331FBB1E5B555A00AACE68 /* EFPickerSearchVC.swift */,
 				26331FB71E5AE6EE00AACE68 /* EFCategoryPickerVC.swift */,
+				26331FBD1E5B559300AACE68 /* _EFPSVCView.xib */,
+				26331FBF1E5B55A100AACE68 /* _EFPSVCView.swift */,
 			);
 			path = picker;
 			sourceTree = "<group>";
@@ -546,7 +543,7 @@
 				260DFDAF1E5584D900E3B92E /* _EFVCAmountBox.xib in Resources */,
 				26A1CB4E1DD1ABD600DAE89E /* NotoSansUI-Italic.ttf in Resources */,
 				2669468B1CC7711000A68424 /* iPhone.storyboard in Resources */,
-				26331FAC1E5AB2BE00AACE68 /* _EFTBPVCSVCView.xib in Resources */,
+				26331FBE1E5B559300AACE68 /* _EFPSVCView.xib in Resources */,
 				2669468A1CC7711000A68424 /* Images.xcassets in Resources */,
 				266946871CC7711000A68424 /* Icon-60@2x.png in Resources */,
 				266946891CC7711000A68424 /* Icon@2x.png in Resources */,
@@ -623,15 +620,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				26331FB61E5AE52600AACE68 /* _EFTBPVCSVCView.swift in Sources */,
 				266946931CC77A1A00A68424 /* AppDelegate.swift in Sources */,
 				260DFDC11E55911700E3B92E /* _EFVCButtonBox.swift in Sources */,
-				26331FB21E5AC5E500AACE68 /* EFTextBoxPickerVC.swift in Sources */,
 				26A30C981E52417C0047307D /* Font.swift in Sources */,
 				260DFDB01E5584D900E3B92E /* _EFVCFieldBox.swift in Sources */,
 				260DFDCF1E55F37600E3B92E /* EFPickerVCTransitioningDelegate.swift in Sources */,
+				26331FC01E5B55A100AACE68 /* _EFPSVCView.swift in Sources */,
 				26A30C8C1E52318D0047307D /* Theme.swift in Sources */,
 				260DFDB11E5584D900E3B92E /* _EFVCView.swift in Sources */,
+				26331FBC1E5B555A00AACE68 /* EFPickerSearchVC.swift in Sources */,
 				260DFDAE1E5584D900E3B92E /* _EFVCAmountBox.swift in Sources */,
 				2669468F1CC7711000A68424 /* Spare.xcdatamodeld in Sources */,
 				260DFDD31E569F6F00E3B92E /* _EFVCNotesBox.swift in Sources */,
@@ -644,7 +641,6 @@
 				26A30C8E1E5232240047307D /* Global.swift in Sources */,
 				260DFDB71E55864100E3B92E /* _EFPVCView.swift in Sources */,
 				269635A41E5457C80001FC05 /* AmountFormatter.swift in Sources */,
-				26331FB41E5ADA4900AACE68 /* EFTBPVCSearchVC.swift in Sources */,
 				260DFDB51E5584FA00E3B92E /* EFPickerVC.swift in Sources */,
 				260DFDB31E5584D900E3B92E /* ExpenseFormVC.swift in Sources */,
 				26A30C921E5235950047307D /* SettingsVC.swift in Sources */,
