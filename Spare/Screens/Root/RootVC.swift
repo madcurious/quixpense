@@ -31,6 +31,11 @@ class RootVC: UITabBarController, Themeable {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
     func applyTheme() {
         self.tabBar.barTintColor = Global.theme.barBackgroundColor
         self.tabBar.tintColor = Global.theme.barTintColor

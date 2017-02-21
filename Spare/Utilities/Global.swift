@@ -10,6 +10,7 @@ import UIKit
 
 struct Global {
     
+    static var coreDataStack: CoreDataStack!
     static var theme = Theme.light
     
 }
