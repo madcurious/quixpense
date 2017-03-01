@@ -44,4 +44,12 @@ class LoadAppVC: MDOperationViewController {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
+    override func updateView(forState state: MDOperationViewController.State) {
+        super.updateView(forState: state)
+        
+        if case .failed(let error) = state {
+            MDErrorDialog.showError(error, from: self)
+        }
+    }
+    
 }
