@@ -78,6 +78,7 @@
 		26DDDCAC1E5C23C2001617A1 /* _LAVCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26DDDCAB1E5C23C2001617A1 /* _LAVCView.xib */; };
 		26DDDCAE1E5C285F001617A1 /* InitializeCoreDataStackOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DDDCAD1E5C285F001617A1 /* InitializeCoreDataStackOperation.swift */; };
 		26E4E0591937AF690096191A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E4E0581937AF690096191A /* QuartzCore.framework */; };
+		26F1A96E1E5D890400752F1A /* GenerateDummyDataOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F1A96D1E5D890400752F1A /* GenerateDummyDataOperation.swift */; };
 		616B52302A44459579721AC9 /* Pods_Spare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B392D50401377663DE37E8A8 /* Pods_Spare.framework */; };
 /* End PBXBuildFile section */
 
@@ -197,6 +198,7 @@
 		26DDDCAB1E5C23C2001617A1 /* _LAVCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = _LAVCView.xib; sourceTree = "<group>"; };
 		26DDDCAD1E5C285F001617A1 /* InitializeCoreDataStackOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitializeCoreDataStackOperation.swift; sourceTree = "<group>"; };
 		26E4E0581937AF690096191A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		26F1A96D1E5D890400752F1A /* GenerateDummyDataOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateDummyDataOperation.swift; sourceTree = "<group>"; };
 		59C2B0311ED5D0556A5A2FEF /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B1211CBF60E5725987043C3 /* Pods-Spare.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spare.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Spare/Pods-Spare.debug.xcconfig"; sourceTree = "<group>"; };
 		B392D50401377663DE37E8A8 /* Pods_Spare.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Spare.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -468,6 +470,7 @@
 				26DDDCA91E5C23AB001617A1 /* _LAVCView.swift */,
 				26DDDCAB1E5C23C2001617A1 /* _LAVCView.xib */,
 				26DDDCAD1E5C285F001617A1 /* InitializeCoreDataStackOperation.swift */,
+				26F1A96D1E5D890400752F1A /* GenerateDummyDataOperation.swift */,
 			);
 			path = LoadApp;
 			sourceTree = "<group>";
@@ -684,6 +687,7 @@
 				26DDDCAE1E5C285F001617A1 /* InitializeCoreDataStackOperation.swift in Sources */,
 				260DFDB11E5584D900E3B92E /* _EFVCView.swift in Sources */,
 				26331FBC1E5B555A00AACE68 /* EFPickerSearchVC.swift in Sources */,
+				26F1A96E1E5D890400752F1A /* GenerateDummyDataOperation.swift in Sources */,
 				26331FCB1E5B692100AACE68 /* Category+CoreDataProperties.swift in Sources */,
 				260DFDAE1E5584D900E3B92E /* _EFVCAmountBox.swift in Sources */,
 				2669468F1CC7711000A68424 /* Spare.xcdatamodeld in Sources */,

@@ -22,19 +22,21 @@ class LoadAppVC: MDOperationViewController {
         super.viewDidLoad()
     }
     
-    override func makeOperation() -> MDOperation? {
-        return InitializeCoreDataStackOperation()
-        .onSuccess({ (result) in
-            guard let persistentContainer = result as? NSPersistentContainer
-                else {
-                    return
-            }
-            
+    override func makeOperations() -> [MDOperation]? {
+        let initializeOp = InitializeCoreDataStackOperation()
+        initializeOp.successBlock = MDOperationSuccessBlock(runsInMainThread: false, block: { result in
+            let persistentContainer = result as! NSPersistentContainer
             let coreDataStack = CoreDataStack(persistentContainer: persistentContainer)
             Global.coreDataStack = coreDataStack
-            
+        })
+        
+        let generateDummyDataOp = GenerateDummyDataOperation()
+        generateDummyDataOp.successBlock = MDOperationSuccessBlock(block: {[unowned self] (result) in
             self.navigationController?.pushViewController(RootVC(), animated: true)
         })
+        generateDummyDataOp.addDependency(initializeOp)
+        
+        return [initializeOp, generateDummyDataOp]
     }
     
     override func viewWillAppear(_ animated: Bool) {

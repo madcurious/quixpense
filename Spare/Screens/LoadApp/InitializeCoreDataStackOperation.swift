@@ -9,27 +9,35 @@
 import Mold
 import CoreData
 
-class InitializeCoreDataStackOperation: MDOperation {
+class InitializeCoreDataStackOperation: MDAsynchronousOperation {
     
     override func main() {
         self.runStartBlock()
         
         if self.isCancelled {
-            self.closeOperation()
+            self.finish()
             return
         }
         
         let persistentContainer = NSPersistentContainer(name: "Spare")
         persistentContainer.loadPersistentStores(completionHandler: {[unowned self] (_, error) in
             defer {
-                self.closeOperation()
+                self.finish()
+            }
+            
+            if self.isCancelled {
+                return
             }
             
             if let error = error {
-                self.runFailBlock(error)
-                return
+                self.error = error
+                self.runReturnBlock()
+                self.runFailureBlock()
+            } else {
+                self.result = persistentContainer
+                self.runReturnBlock()
+                self.runSuccessBlock()
             }
-            self.runSuccessBlock(persistentContainer)
         })
     }
     
