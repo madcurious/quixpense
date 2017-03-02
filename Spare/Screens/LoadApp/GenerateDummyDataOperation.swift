@@ -22,33 +22,8 @@ class GenerateDummyDataOperation: MDOperation {
     
     var context: NSManagedObjectContext!
     
-    override var shouldExecute: Bool {
-        guard let coreDataStack = Global.coreDataStack
-            else {
-                return false
-        }
-        
-        let context = coreDataStack.newBackgroundContext()
-        let categoryFetch = NSFetchRequest<Category>(entityName: "Category")
-        let categories = try! context.fetch(categoryFetch)
-        if categories.count == 0 {
-            return true
-        }
-        
-        return false
-    }
-    
     override func makeResult(from source: Any?) throws -> Any? {
         self.context = Global.coreDataStack.newBackgroundContext()
-        
-//        // DEBUG
-//        let request: NSFetchRequest<Category> = Category.fetchRequest()
-//        context.performAndWait {
-//            let categories = try! request.execute()
-//            for category in categories {
-//                print(category.name!)
-//            }
-//        }
         
         self.makeCategories()
         self.makeExpenses()
@@ -59,8 +34,17 @@ class GenerateDummyDataOperation: MDOperation {
     }
     
     func makeCategories() {
+        let categoryFetch = NSFetchRequest<Category>(entityName: "Category")
+        let categories = try! self.context.fetch(categoryFetch)
+        
+        // Don't make categories if there already are.
+        guard categories.count == 0
+            else {
+                return
+        }
+
         for categoryName in kCategoryNames {
-            let category = Category(context: context)
+            let category = Category(context: self.context)
             category.name = categoryName
         }
     }

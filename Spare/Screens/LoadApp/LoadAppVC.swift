@@ -28,6 +28,12 @@ class LoadAppVC: MDOperationViewController {
             let persistentContainer = result as! NSPersistentContainer
             let coreDataStack = CoreDataStack(persistentContainer: persistentContainer)
             Global.coreDataStack = coreDataStack
+            
+            if Debug.shouldGenerateDummyData == false {
+                MDDispatcher.asyncRunInMainThread {[unowned self] in
+                    self.navigationController?.pushViewController(RootVC(), animated: true)
+                }
+            }
         })
         
         let generateDummyDataOp = GenerateDummyDataOperation()
@@ -35,6 +41,10 @@ class LoadAppVC: MDOperationViewController {
             self.navigationController?.pushViewController(RootVC(), animated: true)
         })
         generateDummyDataOp.addDependency(initializeOp)
+        
+        if Debug.shouldGenerateDummyData == false {
+            generateDummyDataOp.cancel()
+        }
         
         return [initializeOp, generateDummyDataOp]
     }
