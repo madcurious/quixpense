@@ -83,6 +83,10 @@
 		26E4E0591937AF690096191A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E4E0581937AF690096191A /* QuartzCore.framework */; };
 		26F1A96E1E5D890400752F1A /* GenerateDummyDataOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F1A96D1E5D890400752F1A /* GenerateDummyDataOperation.swift */; };
 		26F57AF11E67DE1B0034FF4B /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F57AF01E67DE1B0034FF4B /* Debug.swift */; };
+		26FE4E071E6C77C40063258D /* _ELVCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FE4E061E6C77C40063258D /* _ELVCCell.swift */; };
+		26FE4E091E6C78010063258D /* _ELVCCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26FE4E081E6C78010063258D /* _ELVCCell.xib */; };
+		26FE4E0B1E6C8CF90063258D /* _ELVCCellCheckbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FE4E0A1E6C8CF90063258D /* _ELVCCellCheckbox.swift */; };
+		26FE4E0D1E6C8D130063258D /* _ELVCCellCheckbox.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26FE4E0C1E6C8D130063258D /* _ELVCCellCheckbox.xib */; };
 		616B52302A44459579721AC9 /* Pods_Spare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B392D50401377663DE37E8A8 /* Pods_Spare.framework */; };
 /* End PBXBuildFile section */
 
@@ -207,6 +211,10 @@
 		26E4E0581937AF690096191A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		26F1A96D1E5D890400752F1A /* GenerateDummyDataOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateDummyDataOperation.swift; sourceTree = "<group>"; };
 		26F57AF01E67DE1B0034FF4B /* Debug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
+		26FE4E061E6C77C40063258D /* _ELVCCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _ELVCCell.swift; sourceTree = "<group>"; };
+		26FE4E081E6C78010063258D /* _ELVCCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = _ELVCCell.xib; sourceTree = "<group>"; };
+		26FE4E0A1E6C8CF90063258D /* _ELVCCellCheckbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _ELVCCellCheckbox.swift; sourceTree = "<group>"; };
+		26FE4E0C1E6C8D130063258D /* _ELVCCellCheckbox.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = _ELVCCellCheckbox.xib; sourceTree = "<group>"; };
 		59C2B0311ED5D0556A5A2FEF /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B1211CBF60E5725987043C3 /* Pods-Spare.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spare.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Spare/Pods-Spare.debug.xcconfig"; sourceTree = "<group>"; };
 		B392D50401377663DE37E8A8 /* Pods_Spare.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Spare.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -445,6 +453,10 @@
 				26973DA71E690C8F0086C4F8 /* ExpenseListVC.swift */,
 				26A230311E6902D600B61402 /* _ELVCView.swift */,
 				26973DA81E690C8F0086C4F8 /* _ELVCView.xib */,
+				26FE4E061E6C77C40063258D /* _ELVCCell.swift */,
+				26FE4E081E6C78010063258D /* _ELVCCell.xib */,
+				26FE4E0A1E6C8CF90063258D /* _ELVCCellCheckbox.swift */,
+				26FE4E0C1E6C8D130063258D /* _ELVCCellCheckbox.xib */,
 			);
 			path = ExpenseList;
 			sourceTree = "<group>";
@@ -604,6 +616,7 @@
 				260DFDB21E5584D900E3B92E /* _EFVCView.xib in Resources */,
 				2603F8C31CCA45FF007F311F /* LaunchScreen.storyboard in Resources */,
 				26A1CB4F1DD1ABD600DAE89E /* NotoSansUI-Regular.ttf in Resources */,
+				26FE4E0D1E6C8D130063258D /* _ELVCCellCheckbox.xib in Resources */,
 				260DFDAF1E5584D900E3B92E /* _EFVCAmountBox.xib in Resources */,
 				26A1CB4E1DD1ABD600DAE89E /* NotoSansUI-Italic.ttf in Resources */,
 				2669468B1CC7711000A68424 /* iPhone.storyboard in Resources */,
@@ -616,6 +629,7 @@
 				266946861CC7711000A68424 /* Icon-40@2x.png in Resources */,
 				266946881CC7711000A68424 /* Icon-Small@2x.png in Resources */,
 				266946851CC7711000A68424 /* InfoPlist.strings in Resources */,
+				26FE4E091E6C78010063258D /* _ELVCCell.xib in Resources */,
 				26A1CB4D1DD1ABD600DAE89E /* NotoSansUI-BoldItalic.ttf in Resources */,
 				26973DAA1E690C8F0086C4F8 /* _ELVCView.xib in Resources */,
 				266946831CC7711000A68424 /* Default-568h@2x.png in Resources */,
@@ -692,9 +706,11 @@
 				26331FCA1E5B692100AACE68 /* Category+CoreDataClass.swift in Sources */,
 				26DDDCA81E5C238B001617A1 /* LoadAppVC.swift in Sources */,
 				26DDDCAA1E5C23AB001617A1 /* _LAVCView.swift in Sources */,
+				26FE4E071E6C77C40063258D /* _ELVCCell.swift in Sources */,
 				260DFDB01E5584D900E3B92E /* _EFVCFieldBox.swift in Sources */,
 				260DFDCF1E55F37600E3B92E /* EFPickerVCTransitioningDelegate.swift in Sources */,
 				26331FC01E5B55A100AACE68 /* _EFPSVCView.swift in Sources */,
+				26FE4E0B1E6C8CF90063258D /* _ELVCCellCheckbox.swift in Sources */,
 				26A30C8C1E52318D0047307D /* Theme.swift in Sources */,
 				26331FCE1E5B692100AACE68 /* Subcategory+CoreDataClass.swift in Sources */,
 				26DDDCAE1E5C285F001617A1 /* InitializeCoreDataStackOperation.swift in Sources */,

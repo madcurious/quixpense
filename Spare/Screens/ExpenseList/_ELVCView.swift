@@ -10,6 +10,8 @@ import UIKit
 
 class _ELVCView: UIView {
     
+    @IBOutlet weak var tableView: UITableView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.backgroundColor = UIColor.blue

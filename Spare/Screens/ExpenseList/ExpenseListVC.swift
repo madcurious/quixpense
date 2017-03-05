@@ -9,6 +9,8 @@
 import UIKit
 import Mold
 
+private let kCellID = "kCellID"
+
 class ExpenseListVC: UIViewController {
     
     let customView = _ELVCView.instantiateFromNib()
@@ -37,6 +39,35 @@ class ExpenseListVC: UIViewController {
         
         self.navigationItem.title = "EXPENSES"
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: self.filterButton)
+        
+        self.customView.tableView.dataSource = self
+        self.customView.tableView.delegate = self
+        self.customView.tableView.register(_ELVCCell.nib(), forCellReuseIdentifier: kCellID)
     }
 
+}
+
+extension ExpenseListVC: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: kCellID, for: indexPath) as! _ELVCCell
+        return cell
+    }
+    
+}
+
+extension ExpenseListVC: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 44
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
 }

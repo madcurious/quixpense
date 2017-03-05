@@ -34,6 +34,28 @@ enum Theme {
         }
     }
     
+    var disclosureIndicatorColor: UIColor {
+        return UIColor.hex(0xdddddd)
+    }
+    
+    var expenseListCellCheckColor: UIColor {
+        switch self {
+        case .light:
+            return UIColor.black
+        case .dark:
+            fatalError()
+        }
+    }
+    
+    var expenseListCellCheckboxColor: UIColor {
+        switch self {
+        case .light:
+            return UIColor.hex(0xdddddd)
+        case .dark:
+            fatalError()
+        }
+    }
+    
     var fieldIconColor: UIColor {
         return self.fieldNameTextColor
     }

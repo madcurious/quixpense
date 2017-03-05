@@ -27,6 +27,9 @@
                 <constraint firstItem="XWt-Ur-idr" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ojz-y1-o9H"/>
                 <constraint firstAttribute="trailing" secondItem="XWt-Ur-idr" secondAttribute="trailing" id="svM-N9-0Tb"/>
             </constraints>
+            <connections>
+                <outlet property="tableView" destination="XWt-Ur-idr" id="nDN-1v-IzV"/>
+            </connections>
         </view>
     </objects>
 </document>
