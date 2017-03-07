@@ -12,7 +12,9 @@ class _ELVCCell: UITableViewCell, Themeable {
     
     var expense: Expense? {
         didSet {
-            
+            self.amountLabel.text = AmountFormatter.displayText(for: self.expense?.amount)
+            self.detailLabel.text = self.expense?.category?.name
+            self.setNeedsLayout()
         }
     }
     
@@ -48,6 +50,8 @@ class _ELVCCell: UITableViewCell, Themeable {
     
     func applyTheme() {
         self.checkbox.applyTheme()
+        self.amountLabel.textColor = Global.theme.expenseListCellAmountLabelTextColor
+        self.detailLabel.textColor = Global.theme.expenseListCellDetailLabelTextColor
         self.disclosureIndicatorImageView.tintColor = Global.theme.disclosureIndicatorColor
     }
     

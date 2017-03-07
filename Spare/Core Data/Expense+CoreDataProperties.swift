@@ -1,9 +1,9 @@
 //
 //  Expense+CoreDataProperties.swift
-//  
+//  Spare
 //
-//  Created by Matt Quiros on 21/02/2017.
-//
+//  Created by Matt Quiros on 06/03/2017.
+//  Copyright © 2017 Matt Quiros. All rights reserved.
 //
 
 import Foundation
@@ -20,6 +20,8 @@ extension Expense {
     @NSManaged public var dateSpent: NSDate?
     @NSManaged public var note: String?
     @NSManaged public var paymentMethod: NSNumber?
+    @NSManaged public var dateCreated: NSDate?
+    @NSManaged public var sectionDate: NSDate?
     @NSManaged public var category: Category?
     @NSManaged public var subcategories: NSOrderedSet?
 

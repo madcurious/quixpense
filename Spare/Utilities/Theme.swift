@@ -56,6 +56,42 @@ enum Theme {
         }
     }
     
+    var expenseListCellAmountLabelTextColor: UIColor {
+        switch self {
+        case .light:
+            return UIColor.black
+        case .dark:
+            return UIColor.white
+        }
+    }
+    
+    var expenseListCellDetailLabelTextColor: UIColor {
+        switch self {
+        case.light:
+            return UIColor.hex(0x999999)
+        case .dark:
+            fatalError()
+        }
+    }
+    
+    var expenseListSectionHeaderBackgroundColor: UIColor {
+        switch self {
+        case .light:
+            return UIColor.hex(0x666666)
+        case .dark:
+            fatalError()
+        }
+    }
+    
+    var expenseListSectionHeaderTextColor: UIColor {
+        switch self {
+        case .light:
+            return UIColor.white
+        case .dark:
+            fatalError()
+        }
+    }
+    
     var fieldIconColor: UIColor {
         return self.fieldNameTextColor
     }

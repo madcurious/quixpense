@@ -87,6 +87,9 @@
 		26FE4E091E6C78010063258D /* _ELVCCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26FE4E081E6C78010063258D /* _ELVCCell.xib */; };
 		26FE4E0B1E6C8CF90063258D /* _ELVCCellCheckbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FE4E0A1E6C8CF90063258D /* _ELVCCellCheckbox.swift */; };
 		26FE4E0D1E6C8D130063258D /* _ELVCCellCheckbox.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26FE4E0C1E6C8D130063258D /* _ELVCCellCheckbox.xib */; };
+		26FE4E111E6D4D420063258D /* FetchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FE4E101E6D4D420063258D /* FetchRequest.swift */; };
+		26FE4E141E6EA1570063258D /* _ELVCSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FE4E131E6EA1570063258D /* _ELVCSectionHeader.swift */; };
+		26FE4E161E6EA1BE0063258D /* _ELVCSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26FE4E151E6EA1BE0063258D /* _ELVCSectionHeader.xib */; };
 		616B52302A44459579721AC9 /* Pods_Spare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B392D50401377663DE37E8A8 /* Pods_Spare.framework */; };
 /* End PBXBuildFile section */
 
@@ -215,6 +218,9 @@
 		26FE4E081E6C78010063258D /* _ELVCCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = _ELVCCell.xib; sourceTree = "<group>"; };
 		26FE4E0A1E6C8CF90063258D /* _ELVCCellCheckbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _ELVCCellCheckbox.swift; sourceTree = "<group>"; };
 		26FE4E0C1E6C8D130063258D /* _ELVCCellCheckbox.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = _ELVCCellCheckbox.xib; sourceTree = "<group>"; };
+		26FE4E101E6D4D420063258D /* FetchRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchRequest.swift; sourceTree = "<group>"; };
+		26FE4E131E6EA1570063258D /* _ELVCSectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _ELVCSectionHeader.swift; sourceTree = "<group>"; };
+		26FE4E151E6EA1BE0063258D /* _ELVCSectionHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = _ELVCSectionHeader.xib; sourceTree = "<group>"; };
 		59C2B0311ED5D0556A5A2FEF /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B1211CBF60E5725987043C3 /* Pods-Spare.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spare.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Spare/Pods-Spare.debug.xcconfig"; sourceTree = "<group>"; };
 		B392D50401377663DE37E8A8 /* Pods_Spare.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Spare.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -435,6 +441,7 @@
 				26A30C971E52417C0047307D /* Font.swift */,
 				26331FC11E5B684700AACE68 /* CoreDataStack.swift */,
 				26F57AF01E67DE1B0034FF4B /* Debug.swift */,
+				26FE4E101E6D4D420063258D /* FetchRequest.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -457,6 +464,8 @@
 				26FE4E081E6C78010063258D /* _ELVCCell.xib */,
 				26FE4E0A1E6C8CF90063258D /* _ELVCCellCheckbox.swift */,
 				26FE4E0C1E6C8D130063258D /* _ELVCCellCheckbox.xib */,
+				26FE4E131E6EA1570063258D /* _ELVCSectionHeader.swift */,
+				26FE4E151E6EA1BE0063258D /* _ELVCSectionHeader.xib */,
 			);
 			path = ExpenseList;
 			sourceTree = "<group>";
@@ -610,6 +619,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26FE4E161E6EA1BE0063258D /* _ELVCSectionHeader.xib in Resources */,
 				260DFDD51E569F9D00E3B92E /* _EFVCNotesBox.xib in Resources */,
 				266946841CC7711000A68424 /* Default@2x.png in Resources */,
 				260DFDB91E55867700E3B92E /* _EFPVCView.xib in Resources */,
@@ -714,6 +724,7 @@
 				26A30C8C1E52318D0047307D /* Theme.swift in Sources */,
 				26331FCE1E5B692100AACE68 /* Subcategory+CoreDataClass.swift in Sources */,
 				26DDDCAE1E5C285F001617A1 /* InitializeCoreDataStackOperation.swift in Sources */,
+				26FE4E141E6EA1570063258D /* _ELVCSectionHeader.swift in Sources */,
 				260DFDB11E5584D900E3B92E /* _EFVCView.swift in Sources */,
 				26F57AF11E67DE1B0034FF4B /* Debug.swift in Sources */,
 				26331FBC1E5B555A00AACE68 /* EFPickerSearchVC.swift in Sources */,
@@ -721,6 +732,7 @@
 				26F1A96E1E5D890400752F1A /* GenerateDummyDataOperation.swift in Sources */,
 				26331FCB1E5B692100AACE68 /* Category+CoreDataProperties.swift in Sources */,
 				260DFDAE1E5584D900E3B92E /* _EFVCAmountBox.swift in Sources */,
+				26FE4E111E6D4D420063258D /* FetchRequest.swift in Sources */,
 				2669468F1CC7711000A68424 /* Spare.xcdatamodeld in Sources */,
 				260DFDD31E569F6F00E3B92E /* _EFVCNotesBox.swift in Sources */,
 				26331FCC1E5B692100AACE68 /* Expense+CoreDataClass.swift in Sources */,

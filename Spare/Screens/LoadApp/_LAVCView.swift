@@ -14,6 +14,7 @@ class _LAVCView: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.activityIndicator.startAnimating()
     }
     
 }

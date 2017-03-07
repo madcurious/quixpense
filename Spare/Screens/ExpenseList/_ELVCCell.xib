@@ -23,7 +23,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FU5-2A-vRt">
-                                <rect key="frame" x="10" y="14" width="16" height="16"/>
+                                <rect key="frame" x="15" y="14" width="16" height="16"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="FU5-2A-vRt" secondAttribute="height" id="9S5-YG-93w"/>
@@ -31,13 +31,13 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" text="P 350.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bUK-s3-WSw">
-                                <rect key="frame" x="36" y="11" width="70" height="21"/>
+                                <rect key="frame" x="41" y="11" width="70" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Food and Drinks" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F4q-RC-kIU">
-                                <rect key="frame" x="110" y="11" width="237" height="21"/>
+                                <rect key="frame" x="115" y="11" width="232" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -53,7 +53,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="bUK-s3-WSw" firstAttribute="leading" secondItem="FU5-2A-vRt" secondAttribute="trailing" constant="10" id="MgO-3s-7Aj"/>
-                            <constraint firstItem="FU5-2A-vRt" firstAttribute="leading" secondItem="MgV-Ch-jZ4" secondAttribute="leading" constant="10" id="Tt9-VQ-FHL"/>
+                            <constraint firstItem="FU5-2A-vRt" firstAttribute="leading" secondItem="MgV-Ch-jZ4" secondAttribute="leading" constant="15" id="Tt9-VQ-FHL"/>
                             <constraint firstItem="F4q-RC-kIU" firstAttribute="centerY" secondItem="MgV-Ch-jZ4" secondAttribute="centerY" id="XLm-dx-4Jt"/>
                             <constraint firstItem="F4q-RC-kIU" firstAttribute="leading" secondItem="bUK-s3-WSw" secondAttribute="trailing" constant="4" id="cJ5-qk-Xnm"/>
                             <constraint firstItem="d3F-1Q-msI" firstAttribute="centerY" secondItem="MgV-Ch-jZ4" secondAttribute="centerY" id="eWl-g6-p5A"/>

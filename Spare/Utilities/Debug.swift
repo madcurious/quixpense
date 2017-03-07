@@ -10,7 +10,7 @@ import Foundation
 
 struct Debug {
     
-    static let isOn = false
+    static let isOn = true
     static let shouldGenerateDummyData = isOn && true
     
 }

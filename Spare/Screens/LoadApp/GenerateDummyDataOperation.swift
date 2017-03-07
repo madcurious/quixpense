@@ -83,8 +83,8 @@ class GenerateDummyDataOperation: MDOperation {
         for i in 0 ..< numberOfDays {
             print("Current date (day \(i + 1)): \(dateSpent)")
             for category in categories {
-                // Make 1-20 expenses.
-                let numberOfExpenses = 1 + arc4random_uniform(20)
+                // Make 0-10 expenses.
+                let numberOfExpenses = arc4random_uniform(10)
                 print("- Making \(numberOfExpenses) expenses for category '\(category.name!)'")
                 
                 for _ in 0 ..< numberOfExpenses {
