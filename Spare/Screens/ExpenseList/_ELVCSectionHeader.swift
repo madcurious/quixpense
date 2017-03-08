@@ -13,6 +13,29 @@ class _ELVCSectionHeader: UITableViewHeaderFooterView, Themeable {
     @IBOutlet weak var leftLabel: UILabel!
     @IBOutlet weak var rightLabel: UILabel!
     
+    fileprivate static let dateStringParser: DateFormatter = {
+        let parser = DateFormatter()
+        parser.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZZZ"
+        return parser
+    }()
+    
+    var dateString: String? {
+        didSet {
+            defer {
+                self.setNeedsLayout()
+            }
+            
+            guard let dateString = self.dateString,
+                let sectionDate = _ELVCSectionHeader.dateStringParser.date(from: dateString)
+                else {
+                    self.leftLabel.text = nil
+                    return
+            }
+            
+            self.leftLabel.text = Expense.sectionDateFomatter().string(from: sectionDate)
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         

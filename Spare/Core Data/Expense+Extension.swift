@@ -11,7 +11,7 @@ import CoreData
 
 fileprivate let kSectionDateFormatter: DateFormatter = {
     let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "MM/dd/yyyy"
+    dateFormatter.dateFormat = "dd MMM yyyy"
     return dateFormatter
 }()
 
@@ -45,8 +45,6 @@ extension Expense {
         if keyPath == #keyPath(Expense.dateSpent) {
             self.computeSectionDate()
         }
-        
-//        super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
     }
     
     func computeSectionDate() {

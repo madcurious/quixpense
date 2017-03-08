@@ -105,7 +105,7 @@ extension ExpenseListVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: ViewID.header.rawValue) as! _ELVCSectionHeader
-        headerView.leftLabel.text = self.fetchedResultsController.sections![section].name
+        headerView.dateString = self.fetchedResultsController.sections?[section].name
         return headerView
     }
     
