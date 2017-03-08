@@ -24,15 +24,20 @@ class _ELVCSectionHeader: UITableViewHeaderFooterView, Themeable {
             defer {
                 self.setNeedsLayout()
             }
-            
             guard let dateString = self.dateString,
                 let sectionDate = _ELVCSectionHeader.dateStringParser.date(from: dateString)
                 else {
                     self.leftLabel.text = nil
                     return
             }
-            
             self.leftLabel.text = Expense.sectionDateFomatter().string(from: sectionDate)
+        }
+    }
+    
+    var sectionTotal: NSDecimalNumber? {
+        didSet {
+            self.rightLabel.text = AmountFormatter.displayText(for: self.sectionTotal)
+            self.setNeedsLayout()
         }
     }
     

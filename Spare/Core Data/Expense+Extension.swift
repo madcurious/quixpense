@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import Mold
 
 fileprivate let kSectionDateFormatter: DateFormatter = {
     let dateFormatter = DateFormatter()
@@ -61,6 +62,14 @@ extension Expense {
         if let sectionDate = Calendar.current.date(from: components) {
             self.sectionDate = sectionDate as NSDate
         }
+    }
+    
+}
+
+extension Array where Element: Expense {
+    
+    func total() -> NSDecimalNumber {
+        return self.map({ $0.amount ?? 0}).reduce(0, +)
     }
     
 }

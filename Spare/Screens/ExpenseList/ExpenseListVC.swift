@@ -19,6 +19,7 @@ class ExpenseListVC: UIViewController {
     
     let customView = _ELVCView.instantiateFromNib()
     let filterButton = MDImageButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30), image: UIImage.templateNamed("filterIcon")!)
+    let totalCache = NSCache<NSNumber, NSDecimalNumber>()
     
     let fetchedResultsController: NSFetchedResultsController<Expense> = {
         let fetchRequest = FetchRequest<Expense>.make()
@@ -64,6 +65,19 @@ class ExpenseListVC: UIViewController {
         self.fetchedResultsController.delegate = self
         try? self.fetchedResultsController.performFetch()
     }
+    
+    @discardableResult
+    func computeAndCacheTotal(for section: Int) -> NSDecimalNumber {
+        if let expenses = self.fetchedResultsController.sections?[section].objects as? [Expense],
+            expenses.count > 0 {
+            let total = expenses.total()
+            self.totalCache.setObject(total, forKey: NSNumber(value: section))
+            return total
+        } else {
+            self.totalCache.removeObject(forKey: NSNumber(value: section))
+            return NSDecimalNumber(value: 0)
+        }
+    }
 
 }
 
@@ -106,6 +120,11 @@ extension ExpenseListVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: ViewID.header.rawValue) as! _ELVCSectionHeader
         headerView.dateString = self.fetchedResultsController.sections?[section].name
+        if let computedTotal = self.totalCache.object(forKey: NSNumber(value: section)) {
+            headerView.sectionTotal = computedTotal
+        } else {
+            headerView.sectionTotal = self.computeAndCacheTotal(for: section)
+        }
         return headerView
     }
     
@@ -119,6 +138,16 @@ extension ExpenseListVC: NSFetchedResultsControllerDelegate {
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         self.customView.tableView.reloadData()
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        if let oldSection = indexPath?.section {
+            self.computeAndCacheTotal(for: oldSection)
+        }
+        
+        if let newSection = newIndexPath?.section {
+            self.computeAndCacheTotal(for: newSection)
+        }
     }
     
 }
