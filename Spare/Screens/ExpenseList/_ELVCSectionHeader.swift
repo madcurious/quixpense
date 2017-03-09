@@ -56,9 +56,9 @@ class _ELVCSectionHeader: UITableViewHeaderFooterView, Themeable {
     }
     
     func applyTheme() {
-        self.contentView.backgroundColor = Global.theme.expenseListSectionHeaderBackgroundColor
-        self.leftLabel.textColor = Global.theme.expenseListSectionHeaderTextColor
-        self.rightLabel.textColor = Global.theme.expenseListSectionHeaderTextColor
+        self.contentView.backgroundColor = Global.theme.color(for: .expenseListSectionHeaderBackground)
+        self.leftLabel.textColor = Global.theme.color(for: .expenseListSectionHeaderText)
+        self.rightLabel.textColor = Global.theme.color(for: .expenseListSectionHeaderText)
     }
     
 }

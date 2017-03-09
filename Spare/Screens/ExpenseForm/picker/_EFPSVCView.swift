@@ -38,8 +38,8 @@ class _EFPSVCView: UIView, Themeable {
     }
     
     func applyTheme() {
-        self.textField.backgroundColor = Global.theme.pickerTextFieldBackgroundColor
-        self.textField.textColor = Global.theme.pickerFieldValueTextColor
+        self.textField.backgroundColor = Global.theme.color(for: .pickerTextFieldBackground)
+        self.textField.textColor = Global.theme.color(for: .pickerFieldValue)
     }
     
 }

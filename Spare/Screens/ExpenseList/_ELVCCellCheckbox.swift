@@ -23,8 +23,8 @@ class _ELVCCellCheckbox: UIView, Themeable {
     }
     
     func applyTheme() {
-        self.boxImageView.tintColor = Global.theme.expenseListCellCheckboxColor
-        self.checkImageView.tintColor = Global.theme.expenseListCellCheckColor
+        self.boxImageView.tintColor = Global.theme.color(for: .expenseListCellCheckbox)
+        self.checkImageView.tintColor = Global.theme.color(for: .expenseListCellCheck)
     }
     
 }

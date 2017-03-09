@@ -60,9 +60,9 @@ class _EFPVCView: UIView, Themeable {
     }
     
     func applyTheme() {
-        self.cancelButton.tintColor = Global.theme.barTintColor
-        self.doneButton.tintColor = Global.theme.barTintColor
-        self.titleLabel.textColor = Global.theme.barTintColor
+        self.cancelButton.tintColor = Global.theme.color(for: .barTint)
+        self.doneButton.tintColor = Global.theme.color(for: .barTint)
+        self.titleLabel.textColor = Global.theme.color(for: .barTint)
     }
     
 }

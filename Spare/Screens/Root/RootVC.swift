@@ -37,8 +37,8 @@ class RootVC: UITabBarController, Themeable {
     }
     
     func applyTheme() {
-        self.tabBar.barTintColor = Global.theme.barBackgroundColor
-        self.tabBar.tintColor = Global.theme.barTintColor
+        self.tabBar.barTintColor = Global.theme.color(for: .barBackground)
+        self.tabBar.tintColor = Global.theme.color(for: .barTint)
     }
     
 }

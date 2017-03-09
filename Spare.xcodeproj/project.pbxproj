@@ -46,6 +46,7 @@
 		26331FCD1E5B692100AACE68 /* Expense+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26331FC71E5B692100AACE68 /* Expense+CoreDataProperties.swift */; };
 		26331FCE1E5B692100AACE68 /* Subcategory+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26331FC81E5B692100AACE68 /* Subcategory+CoreDataClass.swift */; };
 		26331FCF1E5B692100AACE68 /* Subcategory+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26331FC91E5B692100AACE68 /* Subcategory+CoreDataProperties.swift */; };
+		26628A2D1E714AB100E80494 /* LightTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26628A2C1E714AB100E80494 /* LightTheme.swift */; };
 		2666C2C61957CF7A003752BF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2666C2C41957CF7A003752BF /* SystemConfiguration.framework */; };
 		2666C2C81957CF93003752BF /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2666C2C71957CF93003752BF /* libz.dylib */; };
 		2666C2CA1957CFA1003752BF /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2666C2C91957CFA1003752BF /* libsqlite3.dylib */; };
@@ -172,6 +173,7 @@
 		26331FC71E5B692100AACE68 /* Expense+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Expense+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		26331FC81E5B692100AACE68 /* Subcategory+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Subcategory+CoreDataClass.swift"; sourceTree = "<group>"; };
 		26331FC91E5B692100AACE68 /* Subcategory+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Subcategory+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		26628A2C1E714AB100E80494 /* LightTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightTheme.swift; sourceTree = "<group>"; };
 		2666C2C11957CF4F003752BF /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalyticsServices.a; path = GoogleAnalytics/libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
 		2666C2C31957CF7A003752BF /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		2666C2C41957CF7A003752BF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -442,6 +444,7 @@
 				26331FC11E5B684700AACE68 /* CoreDataStack.swift */,
 				26F57AF01E67DE1B0034FF4B /* Debug.swift */,
 				26FE4E101E6D4D420063258D /* FetchRequest.swift */,
+				26628A2C1E714AB100E80494 /* LightTheme.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -721,6 +724,7 @@
 				260DFDCF1E55F37600E3B92E /* EFPickerVCTransitioningDelegate.swift in Sources */,
 				26331FC01E5B55A100AACE68 /* _EFPSVCView.swift in Sources */,
 				26FE4E0B1E6C8CF90063258D /* _ELVCCellCheckbox.swift in Sources */,
+				26628A2D1E714AB100E80494 /* LightTheme.swift in Sources */,
 				26A30C8C1E52318D0047307D /* Theme.swift in Sources */,
 				26331FCE1E5B692100AACE68 /* Subcategory+CoreDataClass.swift in Sources */,
 				26DDDCAE1E5C285F001617A1 /* InitializeCoreDataStackOperation.swift in Sources */,

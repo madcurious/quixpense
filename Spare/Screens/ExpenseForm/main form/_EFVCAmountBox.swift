@@ -43,7 +43,7 @@ class _EFVCAmountBox: _EFVCFieldBox {
     override func applyTheme() {
         super.applyTheme()
         
-        self.currencyLabel.textColor = Global.theme.fieldNameTextColor
+        self.currencyLabel.textColor = Global.theme.color(for: .fieldName)
     }
     
 }

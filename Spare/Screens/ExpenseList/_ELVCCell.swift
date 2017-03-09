@@ -50,9 +50,9 @@ class _ELVCCell: UITableViewCell, Themeable {
     
     func applyTheme() {
         self.checkbox.applyTheme()
-        self.amountLabel.textColor = Global.theme.expenseListCellAmountLabelTextColor
-        self.detailLabel.textColor = Global.theme.expenseListCellDetailLabelTextColor
-        self.disclosureIndicatorImageView.tintColor = Global.theme.disclosureIndicatorColor
+        self.amountLabel.textColor = Global.theme.color(for: .expenseListCellAmountLabel)
+        self.detailLabel.textColor = Global.theme.color(for: .expenseListCellDetailLabel)
+        self.disclosureIndicatorImageView.tintColor = Global.theme.color(for: .disclosureIndicator)
     }
     
 }
