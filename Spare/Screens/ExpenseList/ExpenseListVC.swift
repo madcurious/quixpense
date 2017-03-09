@@ -102,6 +102,8 @@ extension ExpenseListVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ViewID.cell.rawValue, for: indexPath) as! _ELVCCell
         cell.expense = self.fetchedResultsController.object(at: indexPath)
+        cell.indexPath = indexPath
+        cell.delegate = self
         return cell
     }
     
@@ -147,6 +149,17 @@ extension ExpenseListVC: NSFetchedResultsControllerDelegate {
         
         if let newSection = newIndexPath?.section {
             self.computeAndCacheTotal(for: newSection)
+        }
+    }
+    
+}
+
+extension ExpenseListVC: _ELVCCellDelegate {
+    
+    func cellDidCheck(_ cell: _ELVCCell) {
+        guard let indexPath = cell.indexPath
+            else {
+                return
         }
     }
     

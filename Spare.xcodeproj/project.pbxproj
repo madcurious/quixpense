@@ -86,8 +86,6 @@
 		26F57AF11E67DE1B0034FF4B /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F57AF01E67DE1B0034FF4B /* Debug.swift */; };
 		26FE4E071E6C77C40063258D /* _ELVCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FE4E061E6C77C40063258D /* _ELVCCell.swift */; };
 		26FE4E091E6C78010063258D /* _ELVCCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26FE4E081E6C78010063258D /* _ELVCCell.xib */; };
-		26FE4E0B1E6C8CF90063258D /* _ELVCCellCheckbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FE4E0A1E6C8CF90063258D /* _ELVCCellCheckbox.swift */; };
-		26FE4E0D1E6C8D130063258D /* _ELVCCellCheckbox.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26FE4E0C1E6C8D130063258D /* _ELVCCellCheckbox.xib */; };
 		26FE4E111E6D4D420063258D /* FetchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FE4E101E6D4D420063258D /* FetchRequest.swift */; };
 		26FE4E141E6EA1570063258D /* _ELVCSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FE4E131E6EA1570063258D /* _ELVCSectionHeader.swift */; };
 		26FE4E161E6EA1BE0063258D /* _ELVCSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26FE4E151E6EA1BE0063258D /* _ELVCSectionHeader.xib */; };
@@ -218,8 +216,6 @@
 		26F57AF01E67DE1B0034FF4B /* Debug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
 		26FE4E061E6C77C40063258D /* _ELVCCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _ELVCCell.swift; sourceTree = "<group>"; };
 		26FE4E081E6C78010063258D /* _ELVCCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = _ELVCCell.xib; sourceTree = "<group>"; };
-		26FE4E0A1E6C8CF90063258D /* _ELVCCellCheckbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _ELVCCellCheckbox.swift; sourceTree = "<group>"; };
-		26FE4E0C1E6C8D130063258D /* _ELVCCellCheckbox.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = _ELVCCellCheckbox.xib; sourceTree = "<group>"; };
 		26FE4E101E6D4D420063258D /* FetchRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchRequest.swift; sourceTree = "<group>"; };
 		26FE4E131E6EA1570063258D /* _ELVCSectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _ELVCSectionHeader.swift; sourceTree = "<group>"; };
 		26FE4E151E6EA1BE0063258D /* _ELVCSectionHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = _ELVCSectionHeader.xib; sourceTree = "<group>"; };
@@ -465,8 +461,6 @@
 				26973DA81E690C8F0086C4F8 /* _ELVCView.xib */,
 				26FE4E061E6C77C40063258D /* _ELVCCell.swift */,
 				26FE4E081E6C78010063258D /* _ELVCCell.xib */,
-				26FE4E0A1E6C8CF90063258D /* _ELVCCellCheckbox.swift */,
-				26FE4E0C1E6C8D130063258D /* _ELVCCellCheckbox.xib */,
 				26FE4E131E6EA1570063258D /* _ELVCSectionHeader.swift */,
 				26FE4E151E6EA1BE0063258D /* _ELVCSectionHeader.xib */,
 			);
@@ -629,7 +623,6 @@
 				260DFDB21E5584D900E3B92E /* _EFVCView.xib in Resources */,
 				2603F8C31CCA45FF007F311F /* LaunchScreen.storyboard in Resources */,
 				26A1CB4F1DD1ABD600DAE89E /* NotoSansUI-Regular.ttf in Resources */,
-				26FE4E0D1E6C8D130063258D /* _ELVCCellCheckbox.xib in Resources */,
 				260DFDAF1E5584D900E3B92E /* _EFVCAmountBox.xib in Resources */,
 				26A1CB4E1DD1ABD600DAE89E /* NotoSansUI-Italic.ttf in Resources */,
 				2669468B1CC7711000A68424 /* iPhone.storyboard in Resources */,
@@ -723,7 +716,6 @@
 				260DFDB01E5584D900E3B92E /* _EFVCFieldBox.swift in Sources */,
 				260DFDCF1E55F37600E3B92E /* EFPickerVCTransitioningDelegate.swift in Sources */,
 				26331FC01E5B55A100AACE68 /* _EFPSVCView.swift in Sources */,
-				26FE4E0B1E6C8CF90063258D /* _ELVCCellCheckbox.swift in Sources */,
 				26628A2D1E714AB100E80494 /* LightTheme.swift in Sources */,
 				26A30C8C1E52318D0047307D /* Theme.swift in Sources */,
 				26331FCE1E5B692100AACE68 /* Subcategory+CoreDataClass.swift in Sources */,
