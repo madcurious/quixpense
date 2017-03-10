@@ -16,6 +16,10 @@ class _ELVCView: UIView {
         super.awakeFromNib()
         
         self.backgroundColor = Global.theme.color(for: .mainBackground)
+        
+        self.tableView.delaysContentTouches = false
+        self.tableView.panGestureRecognizer.delaysTouchesBegan = false
+        self.tableView.backgroundColor = Global.theme.color(for: .mainBackground)
         self.tableView.separatorStyle = .none
     }
     

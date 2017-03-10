@@ -45,12 +45,16 @@ class _ELVCCell: UITableViewCell, Themeable {
     @IBOutlet weak var detailLabel: UILabel!
     @IBOutlet weak var disclosureIndicatorImageView: UIImageView!
     
-    private var touchPoint: CGPoint?
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        UIView.clearBackgroundColors(self.wrapperView, self.checkTapArea)
+        // Only way to disable multiple touch on multiple table view cells.
+        self.isExclusiveTouch = true
+        
+        UIView.clearBackgroundColors(self,
+                                     self.contentView,
+                                     self.checkTapArea)
+        self.wrapperView.backgroundColor = Global.theme.color(for: .mainBackground)
         
         self.amountLabel.font = Font.regular(17)
         self.amountLabel.textAlignment = .left
@@ -63,6 +67,7 @@ class _ELVCCell: UITableViewCell, Themeable {
         self.detailLabel.lineBreakMode = .byTruncatingTail
         
         self.disclosureIndicatorImageView.image = UIImage.templateNamed("disclosureIndicator")
+        self.selectionStyle = .none
         
         self.applyTheme()
     }
@@ -78,28 +83,70 @@ class _ELVCCell: UITableViewCell, Themeable {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.touchPoint = touches.first?.location(in: self)
-        super.touchesBegan(touches, with: event)
+        defer {
+            super.touchesBegan(touches, with: event)
+        }
+        
+        if let touchPoint = touches.first?.location(in: self.wrapperView),
+            self.wrapperView.frame.contains(touchPoint) &&
+            self.checkTapArea.frame.contains(touchPoint) == false {
+            self.beginTrackingTouch(at: touchPoint)
+        }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.touchPoint = touches.first?.location(in: self)
+        if let touchPoint = touches.first?.location(in: self.wrapperView) {
+            self.endTrackingTouch(at: touchPoint, animated: false)
+        }
         super.touchesMoved(touches, with: event)
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if let touchPoint = self.touchPoint,
-            self.checkTapArea.frame.contains(touchPoint) {
+        defer {
+            super.touchesEnded(touches, with: event)
+        }
+        
+        guard let touchPoint = touches.first?.location(in: self.wrapperView)
+            else {
+                return
+        }
+        
+        if self.checkTapArea.frame.contains(touchPoint) {
             self.isChecked = !(self.isChecked)
             self.delegate?.cellDidCheck(self)
         }
-        self.touchPoint = nil
-        super.touchesEnded(touches, with: event)
+        
+        self.endTrackingTouch(at: touchPoint, animated: true)
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.touchPoint = nil
+        if let touchPoint = touches.first?.location(in: self.wrapperView) {
+            self.endTrackingTouch(at: touchPoint, animated: false)
+        }
         super.touchesCancelled(touches, with: event)
+    }
+    
+    func beginTrackingTouch(at point: CGPoint) {
+        if self.checkTapArea.frame.contains(point) || self.isChecked {
+            return
+        }
+        self.wrapperView.backgroundColor = UIColor.blue
+    }
+    
+    func endTrackingTouch(at point: CGPoint, animated: Bool) {
+        if self.checkTapArea.frame.contains(point) || self.isChecked {
+            return
+        }
+        
+        if animated {
+            self.wrapperView.backgroundColor = UIColor.blue
+            UIView.animate(withDuration: 0.25,
+                           animations: {
+                            self.wrapperView.backgroundColor = UIColor.white
+            })
+        } else {
+            self.wrapperView.backgroundColor = UIColor.white
+        }
     }
     
 }
