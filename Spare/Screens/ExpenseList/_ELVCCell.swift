@@ -87,17 +87,30 @@ class _ELVCCell: UITableViewCell, Themeable {
             super.touchesBegan(touches, with: event)
         }
         
-        if let touchPoint = touches.first?.location(in: self.wrapperView),
-            self.wrapperView.frame.contains(touchPoint) &&
-            self.checkTapArea.frame.contains(touchPoint) == false {
-            self.beginTrackingTouch(at: touchPoint)
+        guard let touchPoint = touches.first?.location(in: self.wrapperView)
+            else {
+                return
         }
+        
+        if self.checkTapArea.frame.contains(touchPoint) {
+            if self.isChecked == false {
+                self.makeSelected(true)
+            } else {
+                
+            }
+        } else {
+            self.makeHighlighted(true, animated: false)
+        }
+        
+//        if let touchPoint = touches.first?.location(in: self.wrapperView),
+//            self.wrapperView.frame.contains(touchPoint) &&
+//            self.checkTapArea.frame.contains(touchPoint) == false {
+//            self.beginTrackingTouch(at: touchPoint)
+//        }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if let touchPoint = touches.first?.location(in: self.wrapperView) {
-            self.endTrackingTouch(at: touchPoint, animated: false)
-        }
+        self.makeHighlighted(false, animated: false)
         super.touchesMoved(touches, with: event)
     }
     
@@ -114,39 +127,57 @@ class _ELVCCell: UITableViewCell, Themeable {
         if self.checkTapArea.frame.contains(touchPoint) {
             self.isChecked = !(self.isChecked)
             self.delegate?.cellDidCheck(self)
+        } else {   
+            self.makeHighlighted(false, animated: true)
         }
-        
-        self.endTrackingTouch(at: touchPoint, animated: true)
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if let touchPoint = touches.first?.location(in: self.wrapperView) {
-            self.endTrackingTouch(at: touchPoint, animated: false)
-        }
+        self.makeHighlighted(false, animated: false)
         super.touchesCancelled(touches, with: event)
     }
     
-    func beginTrackingTouch(at point: CGPoint) {
-        if self.checkTapArea.frame.contains(point) || self.isChecked {
-            return
+//    func beginTrackingTouch(at point: CGPoint) {
+//        if self.checkTapArea.frame.contains(point) || self.isChecked {
+//            return
+//        }
+//        self.wrapperView.backgroundColor = UIColor.blue
+//    }
+//    
+//    func endTrackingTouch(at point: CGPoint, animated: Bool) {
+//        if self.checkTapArea.frame.contains(point) || self.isChecked {
+//            return
+//        }
+//        
+//        if animated {
+//            self.wrapperView.backgroundColor = UIColor.blue
+//            UIView.animate(withDuration: 0.25,
+//                           animations: {
+//                            self.wrapperView.backgroundColor = UIColor.white
+//            })
+//        } else {
+//            self.wrapperView.backgroundColor = UIColor.white
+//        }
+//    }
+    
+    func makeHighlighted(_ highlighted: Bool, animated: Bool) {
+        if highlighted {
+            self.wrapperView.backgroundColor = UIColor.blue
+        } else {
+            if animated {
+                self.wrapperView.backgroundColor = UIColor.blue
+                UIView.animate(withDuration: 0.25,
+                               animations: {
+                                self.wrapperView.backgroundColor = UIColor.white
+                })
+            } else {
+                self.wrapperView.backgroundColor = UIColor.white
+            }
         }
-        self.wrapperView.backgroundColor = UIColor.blue
     }
     
-    func endTrackingTouch(at point: CGPoint, animated: Bool) {
-        if self.checkTapArea.frame.contains(point) || self.isChecked {
-            return
-        }
+    func makeSelected(_ selected: Bool) {
         
-        if animated {
-            self.wrapperView.backgroundColor = UIColor.blue
-            UIView.animate(withDuration: 0.25,
-                           animations: {
-                            self.wrapperView.backgroundColor = UIColor.white
-            })
-        } else {
-            self.wrapperView.backgroundColor = UIColor.white
-        }
     }
     
 }
