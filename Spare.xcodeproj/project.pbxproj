@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		260024311CC8C5AE00EB2026 /* Mold.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 260024301CC8C53A00EB2026 /* Mold.framework */; };
 		260024321CC8C5AE00EB2026 /* Mold.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 260024301CC8C53A00EB2026 /* Mold.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2603C0D21E7708C20025E2E9 /* ExpenseListNavBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2603C0D11E7708C20025E2E9 /* ExpenseListNavBarVC.swift */; };
 		2603F8C31CCA45FF007F311F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2603F8C21CCA45FF007F311F /* LaunchScreen.storyboard */; };
 		260DFDAE1E5584D900E3B92E /* _EFVCAmountBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260DFDA71E5584D900E3B92E /* _EFVCAmountBox.swift */; };
 		260DFDAF1E5584D900E3B92E /* _EFVCAmountBox.xib in Resources */ = {isa = PBXBuildFile; fileRef = 260DFDA81E5584D900E3B92E /* _EFVCAmountBox.xib */; };
@@ -133,6 +134,7 @@
 /* Begin PBXFileReference section */
 		260023B51CC7D9CE00EB2026 /* Mold.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Mold.xcodeproj; path = Mold/Mold.xcodeproj; sourceTree = "<group>"; };
 		260023FD1CC7E0B000EB2026 /* Mold.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mold.framework; path = "Mold/build/Debug-iphoneos/Mold.framework"; sourceTree = "<group>"; };
+		2603C0D11E7708C20025E2E9 /* ExpenseListNavBarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseListNavBarVC.swift; sourceTree = "<group>"; };
 		2603F8C21CCA45FF007F311F /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2603F8C61CCA476E007F311F /* Spare_v2.0.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Spare_v2.0.xcdatamodel; sourceTree = "<group>"; };
 		260DFDA71E5584D900E3B92E /* _EFVCAmountBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _EFVCAmountBox.swift; sourceTree = "<group>"; };
@@ -463,6 +465,7 @@
 				26FE4E081E6C78010063258D /* _ELVCCell.xib */,
 				26FE4E131E6EA1570063258D /* _ELVCSectionHeader.swift */,
 				26FE4E151E6EA1BE0063258D /* _ELVCSectionHeader.xib */,
+				2603C0D11E7708C20025E2E9 /* ExpenseListNavBarVC.swift */,
 			);
 			path = ExpenseList;
 			sourceTree = "<group>";
@@ -726,6 +729,7 @@
 				26331FBC1E5B555A00AACE68 /* EFPickerSearchVC.swift in Sources */,
 				26973DA91E690C8F0086C4F8 /* ExpenseListVC.swift in Sources */,
 				26F1A96E1E5D890400752F1A /* GenerateDummyDataOperation.swift in Sources */,
+				2603C0D21E7708C20025E2E9 /* ExpenseListNavBarVC.swift in Sources */,
 				26331FCB1E5B692100AACE68 /* Category+CoreDataProperties.swift in Sources */,
 				260DFDAE1E5584D900E3B92E /* _EFVCAmountBox.swift in Sources */,
 				26FE4E111E6D4D420063258D /* FetchRequest.swift in Sources */,
