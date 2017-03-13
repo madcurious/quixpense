@@ -21,7 +21,7 @@ class ExpenseListVC: UIViewController {
     let filterButton = MDImageButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30), image: UIImage.templateNamed("filterIcon")!)
     let totalCache = NSCache<NSNumber, NSDecimalNumber>()
     
-    private let titleLabel: UILabel = {
+    fileprivate let titleLabel: UILabel = {
         let titleLabel = UILabel()
         titleLabel.font = Font.bold(17)
         titleLabel.textColor = Global.theme.color(for: .barTint)
@@ -112,7 +112,12 @@ class ExpenseListVC: UIViewController {
                             self.titleLabel.sizeToFit()
                             self.navigationItem.rightBarButtonItems = nil
                         } else {
+                            let previouslyCheckedIndexPaths = self.checkedIndexPaths
                             self.checkedIndexPaths = []
+                            if previouslyCheckedIndexPaths.count > 0 {
+                                self.customView.tableView.reloadRows(at: previouslyCheckedIndexPaths, with: .none)
+                            }
+                            
                             self.navigationItem.leftBarButtonItems = nil
                             self.titleLabel.text = "EXPENSES"
                             self.titleLabel.sizeToFit()
@@ -233,9 +238,12 @@ extension ExpenseListVC: NSFetchedResultsControllerDelegate {
 extension ExpenseListVC: _ELVCCellDelegate {
     
     func cellDidToggleCheck(_ cell: _ELVCCell) {
-        self.toggleManageMode(on: true)
+        guard let indexPath = cell.indexPath
+            else {
+                return
+        }
         
-        let indexPath = cell.indexPath!
+        let initialCount = self.checkedIndexPaths.count
         if cell.isChecked {
             self.checkedIndexPaths.append(indexPath)
         } else {
@@ -243,8 +251,19 @@ extension ExpenseListVC: _ELVCCellDelegate {
                 self.checkedIndexPaths.remove(at: index)
             }
         }
+        let resultingCount = self.checkedIndexPaths.count
         
-        self.navigationItem.title = "SELECTED (\(self.checkedIndexPaths.count))"
+        if resultingCount == 0 {
+            // Animate to exit edit mode.
+            self.toggleManageMode(on: false)
+        } else if resultingCount > 0 && initialCount == 0 {
+            // If coming from non-edit mode, animate.
+            self.toggleManageMode(on: true)
+        } else if resultingCount > 0 {
+            // Just update the selected count.
+            self.titleLabel.text = "SELECTED (\(self.checkedIndexPaths.count))"
+            self.titleLabel.sizeToFit()
+        }
     }
     
     func cellDidTap(_ cell: _ELVCCell) {
