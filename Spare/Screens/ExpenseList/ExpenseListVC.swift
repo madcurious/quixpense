@@ -156,11 +156,11 @@ extension ExpenseListVC: NSFetchedResultsControllerDelegate {
 
 extension ExpenseListVC: _ELVCCellDelegate {
     
-    func cellDidCheck(_ cell: _ELVCCell) {
-        guard let indexPath = cell.indexPath
-            else {
-                return
-        }
+    func cellDidToggleCheck(_ cell: _ELVCCell) {
+    }
+    
+    func cellDidTap(_ cell: _ELVCCell) {
+        
     }
     
 }
