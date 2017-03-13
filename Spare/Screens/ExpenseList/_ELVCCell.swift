@@ -32,7 +32,12 @@ class _ELVCCell: UITableViewCell, Themeable {
     var delegate: _ELVCCellDelegate?
     var indexPath: IndexPath?
     
-    var isChecked = false
+    var isChecked = false {
+        didSet {
+            self.updateCheckIcon()
+            self.updateCheckIconTint()
+        }
+    }
     
     /// Determines whether the cell is tracking touch events for highlighting or checking.
     var isTrackingTouches = false
@@ -68,13 +73,13 @@ class _ELVCCell: UITableViewCell, Themeable {
         self.disclosureIndicatorImageView.image = UIImage.templateNamed("disclosureIndicator")
         self.selectionStyle = .none
         
-        self.setCheckIcon(checked: false)
+        self.updateCheckIcon()
+        
         self.applyTheme()
     }
     
     func applyTheme() {
-        self.setCheckIconTint(checked: self.isChecked)
-        
+        self.updateCheckIconTint()
         self.amountLabel.textColor = Global.theme.color(for: .expenseListCellAmountLabel)
         self.detailLabel.textColor = Global.theme.color(for: .expenseListCellDetailLabel)
         self.disclosureIndicatorImageView.tintColor = Global.theme.color(for: .disclosureIndicator)
@@ -124,7 +129,10 @@ class _ELVCCell: UITableViewCell, Themeable {
         }
         
         if self.checkTapArea.frame.contains(touchPoint) {
-            self.makeChecked(!self.isChecked)
+            self.isChecked = !self.isChecked
+            if let delegate = self.delegate {
+                delegate.cellDidToggleCheck(self)
+            }
         } else {
             self.makeHighlighted(false, animated: true)
         }
@@ -146,27 +154,16 @@ class _ELVCCell: UITableViewCell, Themeable {
         }
     }
     
-    func makeChecked(_ checked: Bool) {
-        self.isChecked = checked
-        
-        self.setCheckIcon(checked: checked)
-        self.setCheckIconTint(checked: checked)
-        
-        if let delegate = self.delegate {
-            delegate.cellDidToggleCheck(self)
-        }
-    }
-    
-    private func setCheckIcon(checked: Bool) {
-        if checked {
+    private func updateCheckIcon() {
+        if self.isChecked {
             self.checkImageView.image = UIImage.templateNamed("_ELVCCellCheckboxChecked")
         } else {
             self.checkImageView.image = UIImage.templateNamed("_ELVCCellCheckboxUnchecked")
         }
     }
     
-    private func setCheckIconTint(checked: Bool) {
-        if checked {
+    private func updateCheckIconTint() {
+        if self.isChecked {
             self.checkImageView.tintColor = Global.theme.color(for: .expenseListCellCheckboxChecked)
         } else {
             self.checkImageView.tintColor = Global.theme.color(for: .expenseListCellCheckboxUnchecked)

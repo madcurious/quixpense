@@ -21,6 +21,17 @@ class ExpenseListVC: UIViewController {
     let filterButton = MDImageButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30), image: UIImage.templateNamed("filterIcon")!)
     let totalCache = NSCache<NSNumber, NSDecimalNumber>()
     
+    private let titleLabel: UILabel = {
+        let titleLabel = UILabel()
+        titleLabel.font = Font.bold(17)
+        titleLabel.textColor = Global.theme.color(for: .barTint)
+        titleLabel.text = "EXPENSES"
+        titleLabel.sizeToFit()
+        return titleLabel
+    }()
+    
+    private let exitManageModeButton = MDImageButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30), image: UIImage.templateNamed("Cancel")!)
+    
     let fetchedResultsController: NSFetchedResultsController<Expense> = {
         let fetchRequest = FetchRequest<Expense>.make()
         fetchRequest.sortDescriptors = [
@@ -32,6 +43,9 @@ class ExpenseListVC: UIViewController {
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: Global.coreDataStack.viewContext, sectionNameKeyPath: #keyPath(Expense.sectionDate), cacheName: "ExpenseListVCCache")
         return fetchedResultsController
     }()
+    
+    var checkedIndexPaths = [IndexPath]()
+    var isInManageMode = false
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -54,13 +68,16 @@ class ExpenseListVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.title = "EXPENSES"
+        self.navigationItem.leftBarButtonItem = nil
+        self.navigationItem.titleView = self.titleLabel
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: self.filterButton)
         
         self.customView.tableView.dataSource = self
         self.customView.tableView.delegate = self
         self.customView.tableView.register(_ELVCCell.nib(), forCellReuseIdentifier: ViewID.cell.rawValue)
         self.customView.tableView.register(_ELVCSectionHeader.nib(), forHeaderFooterViewReuseIdentifier: ViewID.header.rawValue)
+        
+        self.exitManageModeButton.addTarget(self, action: #selector(handleTapOnExitManageModeButton), for: .touchUpInside)
         
         self.fetchedResultsController.delegate = self
         try? self.fetchedResultsController.performFetch()
@@ -77,6 +94,58 @@ class ExpenseListVC: UIViewController {
             self.totalCache.removeObject(forKey: NSNumber(value: section))
             return NSDecimalNumber(value: 0)
         }
+    }
+    
+    func toggleManageMode(on: Bool) {
+        self.isInManageMode = on
+        
+        UIView.animate(withDuration: 0.25,
+                       animations: {[unowned self] in
+                        for view in self.getNavigationItemViews() {
+                            view.alpha = 0
+                        }
+        },
+                       completion: {[unowned self] _ in
+                        if on {
+                            self.navigationItem.leftBarButtonItems = [UIBarButtonItem(customView: self.exitManageModeButton)]
+                            self.titleLabel.text = "SELECTED (\(self.checkedIndexPaths.count))"
+                            self.titleLabel.sizeToFit()
+                            self.navigationItem.rightBarButtonItems = nil
+                        } else {
+                            self.checkedIndexPaths = []
+                            self.navigationItem.leftBarButtonItems = nil
+                            self.titleLabel.text = "EXPENSES"
+                            self.titleLabel.sizeToFit()
+                            self.navigationItem.rightBarButtonItems = [UIBarButtonItem(customView: self.filterButton)]
+                        }
+                        
+                        UIView.animate(withDuration: 0.25,
+                                       animations: {
+                                        for view in self.getNavigationItemViews() {
+                                            view.alpha = 1
+                                        }
+                        })
+        })
+    }
+    
+    func getNavigationItemViews() -> [UIView] {
+        var views = [UIView]()
+        if let leftBarButtonItemViews = self.navigationItem.leftBarButtonItems?.flatMap({ $0.customView }) {
+            views.append(contentsOf: leftBarButtonItemViews)
+        }
+        if let titleView = self.navigationItem.titleView {
+            views.append(titleView)
+        }
+        if let rightBarButtonItemViews = self.navigationItem.rightBarButtonItems?.flatMap({ $0.customView }) {
+            views.append(contentsOf: rightBarButtonItemViews)
+        }
+        return views
+    }
+    
+    // MARK: - Target actions
+    
+    func handleTapOnExitManageModeButton() {
+        self.toggleManageMode(on: false)
     }
 
 }
@@ -104,6 +173,13 @@ extension ExpenseListVC: UITableViewDataSource {
         cell.expense = self.fetchedResultsController.object(at: indexPath)
         cell.indexPath = indexPath
         cell.delegate = self
+        
+        if self.isInManageMode && self.checkedIndexPaths.contains(indexPath) {
+            cell.isChecked = true
+        } else {
+            cell.isChecked = false
+        }
+        
         return cell
     }
     
@@ -157,6 +233,18 @@ extension ExpenseListVC: NSFetchedResultsControllerDelegate {
 extension ExpenseListVC: _ELVCCellDelegate {
     
     func cellDidToggleCheck(_ cell: _ELVCCell) {
+        self.toggleManageMode(on: true)
+        
+        let indexPath = cell.indexPath!
+        if cell.isChecked {
+            self.checkedIndexPaths.append(indexPath)
+        } else {
+            if let index = self.checkedIndexPaths.index(of: indexPath) {
+                self.checkedIndexPaths.remove(at: index)
+            }
+        }
+        
+        self.navigationItem.title = "SELECTED (\(self.checkedIndexPaths.count))"
     }
     
     func cellDidTap(_ cell: _ELVCCell) {
