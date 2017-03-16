@@ -56,29 +56,6 @@ class ExpenseListNavBarVC: BaseNavBarVC {
         
         self.navigationBar.alpha = editing ? 0 : 1
         self.editingNavigationBar.alpha = editing ? 1 : 0
-        
-//        self.navigationBar.isUserInteractionEnabled = false
-//        self.editingNavigationBar.isUserInteractionEnabled = false
-//        
-//        UIView.animateKeyframes(withDuration: 0.25,
-//                                delay: 0,
-//                                options: [.layoutSubviews],
-//                                animations: {[unowned self] in
-//                                    UIView.addKeyframe(withRelativeStartTime: 0,
-//                                                       relativeDuration: 0.5,
-//                                                       animations: {
-//                                                        self.navigationBar.alpha = editing ? 0 : 1
-//                                    })
-//                                    UIView.addKeyframe(withRelativeStartTime: 0.5,
-//                                                       relativeDuration: 0.5,
-//                                                       animations: {
-//                                                        self.editingNavigationBar.alpha = editing ? 1 : 0
-//                                    })
-//            },
-//                                completion: {[unowned self] _ in
-//                                    self.navigationBar.isUserInteractionEnabled = true
-//                                    self.editingNavigationBar.isUserInteractionEnabled = true
-//        })
     }
     
 }
