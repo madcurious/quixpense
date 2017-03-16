@@ -18,7 +18,7 @@ class RootVC: UITabBarController, Themeable {
         self.applyTheme()
         
         let tabs = [
-            ExpenseListNavBarVC(rootViewController: ExpenseListVC()),
+            ExpenseListNavBarVC(),
             BaseNavBarVC(rootViewController: AddExpenseVC()),
             BaseNavBarVC(rootViewController: SettingsVC())
         ]

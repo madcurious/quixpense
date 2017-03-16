@@ -25,6 +25,8 @@ class ExpenseListVC: UIViewController {
         return self.navigationController as? ExpenseListNavBarVC
     }
     
+    var editingNavigationItem = UINavigationItem()
+    
     fileprivate let titleLabel: UILabel = {
         let titleLabel = UILabel()
         titleLabel.font = Font.bold(17)
@@ -34,7 +36,7 @@ class ExpenseListVC: UIViewController {
         return titleLabel
     }()
     
-    private let exitManageModeButton = MDImageButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30), image: UIImage.templateNamed("Cancel")!)
+    private let exitEditModeButton = MDImageButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30), image: UIImage.templateNamed("Cancel")!)
     
     let fetchedResultsController: NSFetchedResultsController<Expense> = {
         let fetchRequest = FetchRequest<Expense>.make()
@@ -63,6 +65,10 @@ class ExpenseListVC: UIViewController {
     
     func initialize() {
         self.tabBarItem.image = UIImage.templateNamed("tabIconExpenseList")
+        
+        self.exitEditModeButton.addTarget(self, action: #selector(handleTapOnExitEditModeButton), for: .touchUpInside)
+        self.editingNavigationItem.leftBarButtonItem = UIBarButtonItem(customView: self.exitEditModeButton)
+        self.editingNavigationItem.titleView = self.titleLabel
     }
     
     override func loadView() {
@@ -80,8 +86,6 @@ class ExpenseListVC: UIViewController {
         self.customView.tableView.delegate = self
         self.customView.tableView.register(_ELVCCell.nib(), forCellReuseIdentifier: ViewID.cell.rawValue)
         self.customView.tableView.register(_ELVCSectionHeader.nib(), forHeaderFooterViewReuseIdentifier: ViewID.header.rawValue)
-        
-        self.exitManageModeButton.addTarget(self, action: #selector(handleTapOnExitManageModeButton), for: .touchUpInside)
         
         self.fetchedResultsController.delegate = self
         try? self.fetchedResultsController.performFetch()
@@ -153,7 +157,7 @@ class ExpenseListVC: UIViewController {
     
     // MARK: - Target actions
     
-    func handleTapOnExitManageModeButton() {
+    func handleTapOnExitEditModeButton() {
         self.toggleManageMode(on: false)
     }
 
