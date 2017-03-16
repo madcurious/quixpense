@@ -20,16 +20,23 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MgV-Ch-jZ4">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FU5-2A-vRt">
-                                <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+                                <rect key="frame" x="0.0" y="-1" width="44" height="45"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zx9-v3-Pg5">
-                                        <rect key="frame" x="15" y="14" width="16" height="16"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MKk-1Q-yIj">
+                                        <rect key="frame" x="15" y="15" width="16" height="16"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="zx9-v3-Pg5" secondAttribute="height" id="90t-6N-loE"/>
-                                            <constraint firstAttribute="height" constant="16" id="p14-c5-dSM"/>
+                                            <constraint firstAttribute="width" secondItem="MKk-1Q-yIj" secondAttribute="height" id="e7l-FP-Bwi"/>
+                                            <constraint firstAttribute="height" constant="16" id="fRd-uE-T1q"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XdV-wE-RU4">
+                                        <rect key="frame" x="15" y="15" width="16" height="16"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="XdV-wE-RU4" secondAttribute="height" multiplier="1:1" id="6l2-JY-oea"/>
+                                            <constraint firstAttribute="height" constant="16" id="gEc-VT-YK7"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
@@ -37,24 +44,25 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="8iq-ys-pJg"/>
                                     <constraint firstAttribute="width" secondItem="FU5-2A-vRt" secondAttribute="height" id="9S5-YG-93w"/>
-                                    <constraint firstItem="zx9-v3-Pg5" firstAttribute="centerY" secondItem="FU5-2A-vRt" secondAttribute="centerY" id="B9L-8p-ICE"/>
-                                    <constraint firstItem="zx9-v3-Pg5" firstAttribute="leading" secondItem="FU5-2A-vRt" secondAttribute="leading" constant="15" id="QCL-Kd-5sa"/>
+                                    <constraint firstItem="XdV-wE-RU4" firstAttribute="centerY" secondItem="FU5-2A-vRt" secondAttribute="centerY" id="VAh-J6-Tq1"/>
+                                    <constraint firstItem="MKk-1Q-yIj" firstAttribute="leading" secondItem="FU5-2A-vRt" secondAttribute="leading" constant="15" id="kau-2o-B4v"/>
+                                    <constraint firstItem="MKk-1Q-yIj" firstAttribute="centerY" secondItem="FU5-2A-vRt" secondAttribute="centerY" id="vLs-h0-hIx"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" text="P 350.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bUK-s3-WSw">
-                                <rect key="frame" x="44" y="11.5" width="70" height="21"/>
+                                <rect key="frame" x="44" y="11" width="70" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Food and Drinks" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F4q-RC-kIU">
-                                <rect key="frame" x="118" y="11.5" width="229" height="21"/>
+                                <rect key="frame" x="118" y="11" width="229" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="d3F-1Q-msI">
-                                <rect key="frame" x="357" y="15.5" width="8" height="13"/>
+                                <rect key="frame" x="357" y="15" width="8" height="13"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="13" id="SH4-Ed-f3x"/>
                                     <constraint firstAttribute="width" secondItem="d3F-1Q-msI" secondAttribute="height" multiplier="8:13" id="atZ-Nv-NxW"/>
@@ -63,6 +71,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="XdV-wE-RU4" firstAttribute="leading" secondItem="MgV-Ch-jZ4" secondAttribute="leading" constant="15" id="FDL-eh-6jK"/>
                             <constraint firstItem="bUK-s3-WSw" firstAttribute="leading" secondItem="FU5-2A-vRt" secondAttribute="trailing" id="MgO-3s-7Aj"/>
                             <constraint firstItem="FU5-2A-vRt" firstAttribute="leading" secondItem="MgV-Ch-jZ4" secondAttribute="leading" id="Tt9-VQ-FHL"/>
                             <constraint firstItem="F4q-RC-kIU" firstAttribute="centerY" secondItem="MgV-Ch-jZ4" secondAttribute="centerY" id="XLm-dx-4Jt"/>
@@ -84,8 +93,9 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="amountLabel" destination="bUK-s3-WSw" id="HVZ-wH-mmB"/>
-                <outlet property="checkImageView" destination="zx9-v3-Pg5" id="sMx-ed-ShI"/>
                 <outlet property="checkTapArea" destination="FU5-2A-vRt" id="PU8-bb-BdO"/>
+                <outlet property="checkboxImageView" destination="MKk-1Q-yIj" id="9ir-Tm-kRJ"/>
+                <outlet property="checkmarkImageView" destination="XdV-wE-RU4" id="Ecj-1B-Rwx"/>
                 <outlet property="detailLabel" destination="F4q-RC-kIU" id="bdQ-d2-zwF"/>
                 <outlet property="disclosureIndicatorImageView" destination="d3F-1Q-msI" id="PVN-jG-d69"/>
                 <outlet property="wrapperView" destination="MgV-Ch-jZ4" id="Zfp-Xu-IZl"/>

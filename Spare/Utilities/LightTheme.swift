@@ -19,13 +19,14 @@ struct LightTheme: Theme {
             return UIColor.white
             
         case .barTint,
-             .expenseListCellCheckboxChecked,
+             .elvcCellCheckboxChecked,
              .expenseListCellAmountLabel,
              .fieldValue:
             return UIColor.black
             
         case .disclosureIndicator,
-             .expenseListCellCheckboxUnchecked,
+             .elvcCellCheckboxUnchecked,
+             .expenseListCellHighlightedBackground,
              .fieldPlaceholder,
              .tableViewSeparator:
             return UIColor.hex(0xdddddd)
@@ -40,6 +41,9 @@ struct LightTheme: Theme {
         case .fieldIcon,
              .fieldName:
             return UIColor.hex(0xbbbbbb)
+            
+        case .expenseListCellCheckedBackground:
+            return UIColor.hex(0xeeeeee)
         }
     }
     
