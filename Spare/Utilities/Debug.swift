@@ -11,6 +11,6 @@ import Foundation
 struct Debug {
     
     static let isOn = true
-    static let shouldGenerateDummyData = isOn && false
+    static let shouldGenerateDummyData = isOn && true
     
 }

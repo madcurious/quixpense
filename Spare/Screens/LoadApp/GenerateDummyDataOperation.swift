@@ -89,7 +89,7 @@ class GenerateDummyDataOperation: MDOperation {
                 
                 for _ in 0 ..< numberOfExpenses {
                     // Generate amount from 1-3000 pesos.
-                    let amount = 1 + (3000 * Double(arc4random()) / Double(arc4random_uniform(UInt32.max)))
+                    let amount = 1 + (3000 * Double(arc4random()) / Double(UInt32.max))
                     
                     let newExpense = Expense(context: self.context)
                     newExpense.category = category

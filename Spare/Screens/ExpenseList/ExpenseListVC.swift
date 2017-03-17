@@ -91,10 +91,19 @@ class ExpenseListVC: UIViewController {
         
         do {
             try self.fetchedResultsController.performFetch()
-            if self.fetchedResultsController.fetchedObjects?.count == 0 {
-                self.customView.activityIndicatorView.isHidden = true
-                self.customView.noExpensesLabel.isHidden = false
-                self.customView.tableView.isHidden = true
+            
+            if let count = self.fetchedResultsController.fetchedObjects?.count {
+                if count == 0 {
+                    self.customView.activityIndicatorView.isHidden = true
+                    self.customView.noExpensesLabel.isHidden = false
+                    self.customView.tableView.isHidden = true
+                } else {
+                    self.customView.tableView.reloadData()
+                    
+                    self.customView.activityIndicatorView.isHidden = true
+                    self.customView.noExpensesLabel.isHidden = true
+                    self.customView.tableView.isHidden = false
+                }
             }
         } catch {
             
@@ -190,10 +199,7 @@ extension ExpenseListVC: UITableViewDelegate {
 }
 
 extension ExpenseListVC: NSFetchedResultsControllerDelegate {
-    
-    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        
-    }
+
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         switch controller.fetchedObjects?.count ?? 0 {
