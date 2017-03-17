@@ -29,9 +29,10 @@ class ExpenseListNavBarVC: BaseNavBarVC {
         self.editingNavigationBar.barTintColor = Global.theme.color(for: .expenseListSectionHeaderBackground)
         self.editingNavigationBar.tintColor = Global.theme.color(for: .barTint)
         self.editingNavigationBar.alpha = 0
-        self.editingNavigationBar.setItems([self.expenseListVC.editingNavigationItem], animated: false)
+        self.editingNavigationBar.titleTextAttributes = self.navigationBar.titleTextAttributes
         
         self.setViewControllers([self.expenseListVC], animated: false)
+        self.editingNavigationBar.setItems([self.expenseListVC.editingNavigationItem], animated: false)
         
         self.view.addSubview(self.editingNavigationBar)
         self.view.backgroundColor = Global.theme.color(for: .mainBackground)
@@ -50,11 +51,9 @@ class ExpenseListNavBarVC: BaseNavBarVC {
                                                  height: self.navigationBar.frame.size.height + heightOffset)
     }
     
-    override func setEditing(_ editing: Bool, animated: Bool) {
-        super.setEditing(editing, animated: animated)
-        
-        self.navigationBar.alpha = editing ? 0 : 1
-        self.editingNavigationBar.alpha = editing ? 1 : 0
+    func showEditingNavigationbar(_ show: Bool) {
+        self.navigationBar.alpha = show ? 0 : 1
+        self.editingNavigationBar.alpha = show ? 1 : 0
     }
     
 }

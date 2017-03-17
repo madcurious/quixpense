@@ -27,14 +27,13 @@ class ExpenseListVC: UIViewController {
     
     var editingNavigationItem = UINavigationItem()
     
-    fileprivate let titleLabel: UILabel = {
-        let titleLabel = UILabel()
-        titleLabel.font = Font.bold(17)
-        titleLabel.textColor = Global.theme.color(for: .barTint)
-        titleLabel.text = "EXPENSES"
-        titleLabel.sizeToFit()
-        return titleLabel
-    }()
+//    fileprivate let titleLabel: UILabel = {
+//        let titleLabel = UILabel(frame: CGRect.zero)
+//        titleLabel.font = Font.bold(17)
+//        titleLabel.textColor = Global.theme.color(for: .barTint)
+//        titleLabel.autoresizingMask = .flexibleWidth
+//        return titleLabel
+//    }()
     
     private let exitEditModeButton = MDImageButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30), image: UIImage.templateNamed("Cancel")!)
     
@@ -51,7 +50,6 @@ class ExpenseListVC: UIViewController {
     }()
     
     var checkedIndexPaths = [IndexPath]()
-    var isInManageMode = false
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -68,7 +66,6 @@ class ExpenseListVC: UIViewController {
         
         self.exitEditModeButton.addTarget(self, action: #selector(handleTapOnExitEditModeButton), for: .touchUpInside)
         self.editingNavigationItem.leftBarButtonItem = UIBarButtonItem(customView: self.exitEditModeButton)
-        self.editingNavigationItem.titleView = self.titleLabel
     }
     
     override func loadView() {
@@ -79,7 +76,7 @@ class ExpenseListVC: UIViewController {
         super.viewDidLoad()
         
         self.navigationItem.leftBarButtonItem = nil
-        self.navigationItem.titleView = self.titleLabel
+        self.navigationItem.title = "EXPENSES"
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: self.filterButton)
         
         self.customView.tableView.dataSource = self
@@ -123,15 +120,16 @@ class ExpenseListVC: UIViewController {
         }
     }
     
-    func toggleManageMode(on: Bool) {
-        self.isInManageMode = on
-        self.customNavigationController?.setEditing(on, animated: true)
-    }
-    
     // MARK: - Target actions
     
     func handleTapOnExitEditModeButton() {
-        self.toggleManageMode(on: false)
+        self.customNavigationController?.showEditingNavigationbar(false)
+        
+        if self.checkedIndexPaths.count > 0 {
+            let previouslyCheckedIndexPaths = self.checkedIndexPaths
+            self.checkedIndexPaths = []
+            self.customView.tableView.reloadRows(at: previouslyCheckedIndexPaths, with: .none)
+        }
     }
 
 }
@@ -160,7 +158,7 @@ extension ExpenseListVC: UITableViewDataSource {
         cell.indexPath = indexPath
         cell.delegate = self
         
-        if self.isInManageMode && self.checkedIndexPaths.contains(indexPath) {
+        if self.checkedIndexPaths.contains(indexPath) {
             cell.isChecked = true
         } else {
             cell.isChecked = false
@@ -237,7 +235,6 @@ extension ExpenseListVC: _ELVCCellDelegate {
                 return
         }
         
-        let initialCount = self.checkedIndexPaths.count
         if cell.isChecked {
             self.checkedIndexPaths.append(indexPath)
         } else {
@@ -245,18 +242,12 @@ extension ExpenseListVC: _ELVCCellDelegate {
                 self.checkedIndexPaths.remove(at: index)
             }
         }
-        let resultingCount = self.checkedIndexPaths.count
         
-        if resultingCount == 0 {
-            // Animate to exit edit mode.
-            self.toggleManageMode(on: false)
-        } else if resultingCount > 0 && initialCount == 0 {
-            // If coming from non-edit mode, animate.
-            self.toggleManageMode(on: true)
-        } else if resultingCount > 0 {
-            // Just update the selected count.
-            self.titleLabel.text = "SELECTED (\(self.checkedIndexPaths.count))"
-            self.titleLabel.sizeToFit()
+        if self.checkedIndexPaths.count == 0 {
+            self.customNavigationController?.showEditingNavigationbar(false)
+        } else {
+            self.editingNavigationItem.title = "SELECTED (\(self.checkedIndexPaths.count))"
+            self.customNavigationController?.showEditingNavigationbar(true)
         }
     }
     
