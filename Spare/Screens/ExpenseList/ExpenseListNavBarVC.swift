@@ -14,25 +14,24 @@ class ExpenseListNavBarVC: BaseNavBarVC {
     let expenseListVC = ExpenseListVC(nibName: nil, bundle: nil)
     
     init() {
-        super.init(rootViewController: self.expenseListVC)
-    }
-    
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        super.init(nibName: nil, bundle: nil)
+        self.setViewControllers([self.expenseListVC], animated: false)
     }
     
     required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.editingNavigationBar.isTranslucent = false
-        self.editingNavigationBar.barTintColor = Global.theme.color(for: .barBackground)
+        self.editingNavigationBar.barTintColor = Global.theme.color(for: .expenseListSectionHeaderBackground)
         self.editingNavigationBar.tintColor = Global.theme.color(for: .barTint)
         self.editingNavigationBar.alpha = 0
         self.editingNavigationBar.setItems([self.expenseListVC.editingNavigationItem], animated: false)
+        
+        self.setViewControllers([self.expenseListVC], animated: false)
         
         self.view.addSubview(self.editingNavigationBar)
         self.view.backgroundColor = Global.theme.color(for: .mainBackground)

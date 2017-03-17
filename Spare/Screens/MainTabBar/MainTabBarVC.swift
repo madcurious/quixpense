@@ -1,5 +1,5 @@
 //
-//  RootVC.swift
+//  MainTabBarVC.swift
 //  Spare
 //
 //  Created by Matt Quiros on 14/02/2017.
@@ -9,7 +9,7 @@
 import UIKit
 import Mold
 
-class RootVC: UITabBarController, Themeable {
+class MainTabBarVC: UITabBarController, Themeable {
     
     override func viewDidLoad() {
         super.viewDidLoad()

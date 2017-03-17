@@ -31,14 +31,14 @@ class LoadAppVC: MDOperationViewController {
             
             if Debug.shouldGenerateDummyData == false {
                 MDDispatcher.asyncRunInMainThread {[unowned self] in
-                    self.navigationController?.pushViewController(RootVC(), animated: true)
+                    self.navigationController?.pushViewController(MainTabBarVC(), animated: true)
                 }
             }
         })
         
         let generateDummyDataOp = GenerateDummyDataOperation()
         generateDummyDataOp.successBlock = MDOperationSuccessBlock(block: {[unowned self] (result) in
-            self.navigationController?.pushViewController(RootVC(), animated: true)
+            self.navigationController?.pushViewController(MainTabBarVC(), animated: true)
         })
         generateDummyDataOp.addDependency(initializeOp)
         

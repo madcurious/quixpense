@@ -107,53 +107,7 @@ class ExpenseListVC: UIViewController {
     func toggleManageMode(on: Bool) {
         self.isInManageMode = on
         self.customNavigationController?.setEditing(on, animated: true)
-//        UIView.animate(withDuration: 0.25,
-//                       animations: {[unowned self] in
-//                        for view in self.getNavigationItemViews() {
-//                            view.alpha = 0
-//                        }
-//        },
-//                       completion: {[unowned self] _ in
-//                        if on {
-//                            self.navigationItem.leftBarButtonItems = [UIBarButtonItem(customView: self.exitManageModeButton)]
-//                            self.titleLabel.text = "SELECTED (\(self.checkedIndexPaths.count))"
-//                            self.titleLabel.sizeToFit()
-//                            self.navigationItem.rightBarButtonItems = nil
-//                        } else {
-//                            let previouslyCheckedIndexPaths = self.checkedIndexPaths
-//                            self.checkedIndexPaths = []
-//                            if previouslyCheckedIndexPaths.count > 0 {
-//                                self.customView.tableView.reloadRows(at: previouslyCheckedIndexPaths, with: .none)
-//                            }
-//                            
-//                            self.navigationItem.leftBarButtonItems = nil
-//                            self.titleLabel.text = "EXPENSES"
-//                            self.titleLabel.sizeToFit()
-//                            self.navigationItem.rightBarButtonItems = [UIBarButtonItem(customView: self.filterButton)]
-//                        }
-//                        
-//                        UIView.animate(withDuration: 0.25,
-//                                       animations: {
-//                                        for view in self.getNavigationItemViews() {
-//                                            view.alpha = 1
-//                                        }
-//                        })
-//        })
     }
-    
-//    func getNavigationItemViews() -> [UIView] {
-//        var views = [UIView]()
-//        if let leftBarButtonItemViews = self.navigationItem.leftBarButtonItems?.flatMap({ $0.customView }) {
-//            views.append(contentsOf: leftBarButtonItemViews)
-//        }
-//        if let titleView = self.navigationItem.titleView {
-//            views.append(titleView)
-//        }
-//        if let rightBarButtonItemViews = self.navigationItem.rightBarButtonItems?.flatMap({ $0.customView }) {
-//            views.append(contentsOf: rightBarButtonItemViews)
-//        }
-//        return views
-//    }
     
     // MARK: - Target actions
     
