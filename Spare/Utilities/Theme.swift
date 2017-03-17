@@ -38,5 +38,6 @@ enum UIElement {
     mainBackground,
     pickerFieldValue,
     pickerTextFieldBackground,
+    promptLabel,
     tableViewSeparator
 }

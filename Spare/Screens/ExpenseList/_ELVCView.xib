@@ -15,6 +15,15 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="bgL-5v-d4x">
+                    <rect key="frame" x="177" y="323" width="20" height="20"/>
+                </activityIndicatorView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uh6-4v-Ov9">
+                    <rect key="frame" x="20" y="323" width="335" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XWt-Ur-idr">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -22,12 +31,19 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="uh6-4v-Ov9" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="4Io-z8-gSu"/>
+                <constraint firstItem="bgL-5v-d4x" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="4Tc-5n-O3o"/>
                 <constraint firstItem="XWt-Ur-idr" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="4Yj-h6-ZHL"/>
                 <constraint firstAttribute="bottom" secondItem="XWt-Ur-idr" secondAttribute="bottom" id="4xg-6i-5NW"/>
+                <constraint firstItem="bgL-5v-d4x" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="6eU-ji-KdY"/>
+                <constraint firstAttribute="trailing" secondItem="uh6-4v-Ov9" secondAttribute="trailing" constant="20" id="bbr-jU-BWU"/>
                 <constraint firstItem="XWt-Ur-idr" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ojz-y1-o9H"/>
+                <constraint firstItem="uh6-4v-Ov9" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="sX2-69-gJp"/>
                 <constraint firstAttribute="trailing" secondItem="XWt-Ur-idr" secondAttribute="trailing" id="svM-N9-0Tb"/>
             </constraints>
             <connections>
+                <outlet property="activityIndicatorView" destination="bgL-5v-d4x" id="nwu-tz-YfV"/>
+                <outlet property="noExpensesLabel" destination="uh6-4v-Ov9" id="Dgp-QJ-Vjk"/>
                 <outlet property="tableView" destination="XWt-Ur-idr" id="nDN-1v-IzV"/>
             </connections>
         </view>

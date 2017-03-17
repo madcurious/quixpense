@@ -88,7 +88,17 @@ class ExpenseListVC: UIViewController {
         self.customView.tableView.register(_ELVCSectionHeader.nib(), forHeaderFooterViewReuseIdentifier: ViewID.header.rawValue)
         
         self.fetchedResultsController.delegate = self
-        try? self.fetchedResultsController.performFetch()
+        
+        do {
+            try self.fetchedResultsController.performFetch()
+            if self.fetchedResultsController.fetchedObjects?.count == 0 {
+                self.customView.activityIndicatorView.isHidden = true
+                self.customView.noExpensesLabel.isHidden = false
+                self.customView.tableView.isHidden = true
+            }
+        } catch {
+            
+        }
     }
     
     @discardableResult
@@ -181,8 +191,24 @@ extension ExpenseListVC: UITableViewDelegate {
 
 extension ExpenseListVC: NSFetchedResultsControllerDelegate {
     
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        
+    }
+    
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        self.customView.tableView.reloadData()
+        switch controller.fetchedObjects?.count ?? 0 {
+        case 0:
+            self.customView.activityIndicatorView.isHidden = true
+            self.customView.noExpensesLabel.isHidden = false
+            self.customView.tableView.isHidden = true
+            
+        default:
+            self.customView.activityIndicatorView.isHidden = true
+            self.customView.noExpensesLabel.isHidden = true
+            
+            self.customView.tableView.reloadData()
+            self.customView.tableView.isHidden = false
+        }
     }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {

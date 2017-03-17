@@ -44,6 +44,9 @@ struct LightTheme: Theme {
             
         case .expenseListCellCheckedBackground:
             return UIColor.hex(0xeeeeee)
+            
+        case .promptLabel:
+            return UIColor.hex(0xaaaaaa)
         }
     }
     

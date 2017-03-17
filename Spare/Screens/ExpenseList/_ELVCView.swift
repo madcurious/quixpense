@@ -10,6 +10,9 @@ import UIKit
 
 class _ELVCView: UIView {
     
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
+    @IBOutlet weak var noExpensesLabel: UILabel!
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func awakeFromNib() {
@@ -17,10 +20,22 @@ class _ELVCView: UIView {
         
         self.backgroundColor = Global.theme.color(for: .mainBackground)
         
+        self.activityIndicatorView.startAnimating()
+        
+        self.noExpensesLabel.textAlignment = .center
+        self.noExpensesLabel.numberOfLines = 0
+        self.noExpensesLabel.lineBreakMode = .byWordWrapping
+        self.noExpensesLabel.isHidden = true
+        self.noExpensesLabel.attributedText = NSAttributedString(attributedStrings:
+            NSAttributedString(string: "No expenses found", font: Font.regular(24), textColor: Global.theme.color(for: .promptLabel)),
+                                                                 NSAttributedString(string: "\n\nYou must go out and spend your\nmoney.", font: Font.regular(17), textColor: Global.theme.color(for: .promptLabel))
+        )
+        
         self.tableView.delaysContentTouches = false
         self.tableView.panGestureRecognizer.delaysTouchesBegan = false
         self.tableView.backgroundColor = Global.theme.color(for: .mainBackground)
         self.tableView.separatorStyle = .none
+        self.tableView.isHidden = true
     }
     
 }
