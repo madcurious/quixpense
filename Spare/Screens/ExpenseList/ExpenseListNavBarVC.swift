@@ -11,11 +11,11 @@ import UIKit
 class ExpenseListNavBarVC: BaseNavBarVC {
     
     let editingNavigationBar = UINavigationBar(frame: CGRect.zero)
-    let expenseListVC = ExpenseListVC(nibName: nil, bundle: nil)
+//    let expenseListVC = ExpenseListVC(nibName: nil, bundle: nil)
     
     init() {
         super.init(nibName: nil, bundle: nil)
-        self.setViewControllers([self.expenseListVC], animated: false)
+//        self.setViewControllers([self.expenseListVC], animated: false)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -26,13 +26,13 @@ class ExpenseListNavBarVC: BaseNavBarVC {
         super.viewDidLoad()
         
         self.editingNavigationBar.isTranslucent = false
-        self.editingNavigationBar.barTintColor = Global.theme.color(for: .expenseListSectionHeaderBackground)
+        self.editingNavigationBar.barTintColor = Global.theme.color(for: .elvcSectionHeaderBackground)
         self.editingNavigationBar.tintColor = Global.theme.color(for: .barTint)
         self.editingNavigationBar.alpha = 0
         self.editingNavigationBar.titleTextAttributes = self.navigationBar.titleTextAttributes
         
-        self.setViewControllers([self.expenseListVC], animated: false)
-        self.editingNavigationBar.setItems([self.expenseListVC.editingNavigationItem], animated: false)
+//        self.setViewControllers([self.expenseListVC], animated: false)
+//        self.editingNavigationBar.setItems([self.expenseListVC.editingNavigationItem], animated: false)
         
         self.view.addSubview(self.editingNavigationBar)
         self.view.backgroundColor = Global.theme.color(for: .mainBackground)

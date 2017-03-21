@@ -34,7 +34,7 @@ class _ELVCView: UIView {
         self.tableView.delaysContentTouches = false
         self.tableView.panGestureRecognizer.delaysTouchesBegan = false
         self.tableView.backgroundColor = Global.theme.color(for: .mainBackground)
-        self.tableView.separatorStyle = .none
+//        self.tableView.separatorStyle = .none
         self.tableView.isHidden = true
     }
     

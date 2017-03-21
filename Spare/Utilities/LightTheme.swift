@@ -13,37 +13,31 @@ struct LightTheme: Theme {
     func color(for element: UIElement) -> UIColor {
         switch element {
         case .barBackground,
-             .expenseListSectionHeaderText,
+             .elvcSectionHeaderText,
              .mainBackground,
              .pickerFieldValue:
             return UIColor.white
             
         case .barTint,
-             .elvcCellCheckboxChecked,
-             .expenseListCellAmountLabel,
+             .elvcCellAmountText,
              .fieldValue:
             return UIColor.black
             
         case .disclosureIndicator,
-             .elvcCellCheckboxUnchecked,
-             .expenseListCellHighlightedBackground,
              .fieldPlaceholder,
              .tableViewSeparator:
             return UIColor.hex(0xdddddd)
             
-        case .expenseListCellDetailLabel:
+        case .elvcCellDetailText:
             return UIColor.hex(0x999999)
             
-        case .expenseListSectionHeaderBackground,
+        case .elvcSectionHeaderBackground,
              .pickerTextFieldBackground:
             return UIColor.hex(0x666666)
             
         case .fieldIcon,
              .fieldName:
             return UIColor.hex(0xbbbbbb)
-            
-        case .expenseListCellCheckedBackground:
-            return UIColor.hex(0xeeeeee)
             
         case .promptLabel:
             return UIColor.hex(0xaaaaaa)

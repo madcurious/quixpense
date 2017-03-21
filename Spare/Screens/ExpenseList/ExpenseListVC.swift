@@ -21,21 +21,11 @@ class ExpenseListVC: UIViewController {
     let filterButton = MDImageButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30), image: UIImage.templateNamed("filterIcon")!)
     let totalCache = NSCache<NSNumber, NSDecimalNumber>()
     
-    var customNavigationController: ExpenseListNavBarVC? {
-        return self.navigationController as? ExpenseListNavBarVC
-    }
-    
-    var editingNavigationItem = UINavigationItem()
-    
-//    fileprivate let titleLabel: UILabel = {
-//        let titleLabel = UILabel(frame: CGRect.zero)
-//        titleLabel.font = Font.bold(17)
-//        titleLabel.textColor = Global.theme.color(for: .barTint)
-//        titleLabel.autoresizingMask = .flexibleWidth
-//        return titleLabel
-//    }()
-    
-    private let exitEditModeButton = MDImageButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30), image: UIImage.templateNamed("Cancel")!)
+//    var customNavigationController: ExpenseListNavBarVC? {
+//        return self.navigationController as? ExpenseListNavBarVC
+//    }
+//    var editingNavigationItem = UINavigationItem()
+//    private let exitEditModeButton = MDImageButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30), image: UIImage.templateNamed("Cancel")!)
     
     let fetchedResultsController: NSFetchedResultsController<Expense> = {
         let fetchRequest = FetchRequest<Expense>.make()
@@ -49,7 +39,7 @@ class ExpenseListVC: UIViewController {
         return fetchedResultsController
     }()
     
-    var checkedIndexPaths = [IndexPath]()
+//    var checkedIndexPaths = [IndexPath]()
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -64,8 +54,8 @@ class ExpenseListVC: UIViewController {
     func initialize() {
         self.tabBarItem.image = UIImage.templateNamed("tabIconExpenseList")
         
-        self.exitEditModeButton.addTarget(self, action: #selector(handleTapOnExitEditModeButton), for: .touchUpInside)
-        self.editingNavigationItem.leftBarButtonItem = UIBarButtonItem(customView: self.exitEditModeButton)
+//        self.exitEditModeButton.addTarget(self, action: #selector(handleTapOnExitEditModeButton), for: .touchUpInside)
+//        self.editingNavigationItem.leftBarButtonItem = UIBarButtonItem(customView: self.exitEditModeButton)
     }
     
     override func loadView() {
@@ -122,15 +112,15 @@ class ExpenseListVC: UIViewController {
     
     // MARK: - Target actions
     
-    func handleTapOnExitEditModeButton() {
-        self.customNavigationController?.showEditingNavigationbar(false)
-        
-        if self.checkedIndexPaths.count > 0 {
-            let previouslyCheckedIndexPaths = self.checkedIndexPaths
-            self.checkedIndexPaths = []
-            self.customView.tableView.reloadRows(at: previouslyCheckedIndexPaths, with: .none)
-        }
-    }
+//    func handleTapOnExitEditModeButton() {
+//        self.customNavigationController?.showEditingNavigationbar(false)
+//        
+//        if self.checkedIndexPaths.count > 0 {
+//            let previouslyCheckedIndexPaths = self.checkedIndexPaths
+//            self.checkedIndexPaths = []
+//            self.customView.tableView.reloadRows(at: previouslyCheckedIndexPaths, with: .none)
+//        }
+//    }
 
 }
 
@@ -155,15 +145,6 @@ extension ExpenseListVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ViewID.cell.rawValue, for: indexPath) as! _ELVCCell
         cell.expense = self.fetchedResultsController.object(at: indexPath)
-        cell.indexPath = indexPath
-        cell.delegate = self
-        
-        if self.checkedIndexPaths.contains(indexPath) {
-            cell.isChecked = true
-        } else {
-            cell.isChecked = false
-        }
-        
         return cell
     }
     
@@ -227,32 +208,32 @@ extension ExpenseListVC: NSFetchedResultsControllerDelegate {
     
 }
 
-extension ExpenseListVC: _ELVCCellDelegate {
-    
-    func cellDidToggleCheck(_ cell: _ELVCCell) {
-        guard let indexPath = cell.indexPath
-            else {
-                return
-        }
-        
-        if cell.isChecked {
-            self.checkedIndexPaths.append(indexPath)
-        } else {
-            if let index = self.checkedIndexPaths.index(of: indexPath) {
-                self.checkedIndexPaths.remove(at: index)
-            }
-        }
-        
-        if self.checkedIndexPaths.count == 0 {
-            self.customNavigationController?.showEditingNavigationbar(false)
-        } else {
-            self.editingNavigationItem.title = "SELECTED (\(self.checkedIndexPaths.count))"
-            self.customNavigationController?.showEditingNavigationbar(true)
-        }
-    }
-    
-    func cellDidTap(_ cell: _ELVCCell) {
-        
-    }
-    
-}
+//extension ExpenseListVC: _ELVCCellDelegate {
+//    
+//    func cellDidToggleCheck(_ cell: _ELVCCell) {
+//        guard let indexPath = cell.indexPath
+//            else {
+//                return
+//        }
+//        
+//        if cell.isChecked {
+//            self.checkedIndexPaths.append(indexPath)
+//        } else {
+//            if let index = self.checkedIndexPaths.index(of: indexPath) {
+//                self.checkedIndexPaths.remove(at: index)
+//            }
+//        }
+//        
+//        if self.checkedIndexPaths.count == 0 {
+//            self.customNavigationController?.showEditingNavigationbar(false)
+//        } else {
+//            self.editingNavigationItem.title = "SELECTED (\(self.checkedIndexPaths.count))"
+//            self.customNavigationController?.showEditingNavigationbar(true)
+//        }
+//    }
+//    
+//    func cellDidTap(_ cell: _ELVCCell) {
+//        
+//    }
+//    
+//}

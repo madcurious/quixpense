@@ -78,6 +78,8 @@
 		26A30C8E1E5232240047307D /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A30C8D1E5232240047307D /* Global.swift */; };
 		26A30C921E5235950047307D /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A30C911E5235950047307D /* SettingsVC.swift */; };
 		26A30C981E52417C0047307D /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A30C971E52417C0047307D /* Font.swift */; };
+		26D6736F1E811BC2009C4DDE /* _ELVCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D6736E1E811BC2009C4DDE /* _ELVCCell.swift */; };
+		26D673711E811D19009C4DDE /* _ELVCCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26D673701E811D19009C4DDE /* _ELVCCell.xib */; };
 		26DDDCA81E5C238B001617A1 /* LoadAppVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DDDCA71E5C238B001617A1 /* LoadAppVC.swift */; };
 		26DDDCAA1E5C23AB001617A1 /* _LAVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DDDCA91E5C23AB001617A1 /* _LAVCView.swift */; };
 		26DDDCAC1E5C23C2001617A1 /* _LAVCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26DDDCAB1E5C23C2001617A1 /* _LAVCView.xib */; };
@@ -85,8 +87,8 @@
 		26E4E0591937AF690096191A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E4E0581937AF690096191A /* QuartzCore.framework */; };
 		26F1A96E1E5D890400752F1A /* GenerateDummyDataOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F1A96D1E5D890400752F1A /* GenerateDummyDataOperation.swift */; };
 		26F57AF11E67DE1B0034FF4B /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F57AF01E67DE1B0034FF4B /* Debug.swift */; };
-		26FE4E071E6C77C40063258D /* _ELVCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FE4E061E6C77C40063258D /* _ELVCCell.swift */; };
-		26FE4E091E6C78010063258D /* _ELVCCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26FE4E081E6C78010063258D /* _ELVCCell.xib */; };
+		26FE4E071E6C77C40063258D /* _ELVCCheckboxCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FE4E061E6C77C40063258D /* _ELVCCheckboxCell.swift */; };
+		26FE4E091E6C78010063258D /* _ELVCCheckboxCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26FE4E081E6C78010063258D /* _ELVCCheckboxCell.xib */; };
 		26FE4E111E6D4D420063258D /* FetchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FE4E101E6D4D420063258D /* FetchRequest.swift */; };
 		26FE4E141E6EA1570063258D /* _ELVCSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FE4E131E6EA1570063258D /* _ELVCSectionHeader.swift */; };
 		26FE4E161E6EA1BE0063258D /* _ELVCSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26FE4E151E6EA1BE0063258D /* _ELVCSectionHeader.xib */; };
@@ -209,6 +211,8 @@
 		26A30C911E5235950047307D /* SettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		26A30C971E52417C0047307D /* Font.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		26D4C8F41946E624001B42DC /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		26D6736E1E811BC2009C4DDE /* _ELVCCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _ELVCCell.swift; sourceTree = "<group>"; };
+		26D673701E811D19009C4DDE /* _ELVCCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = _ELVCCell.xib; sourceTree = "<group>"; };
 		26DDDCA71E5C238B001617A1 /* LoadAppVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadAppVC.swift; sourceTree = "<group>"; };
 		26DDDCA91E5C23AB001617A1 /* _LAVCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _LAVCView.swift; sourceTree = "<group>"; };
 		26DDDCAB1E5C23C2001617A1 /* _LAVCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = _LAVCView.xib; sourceTree = "<group>"; };
@@ -216,8 +220,8 @@
 		26E4E0581937AF690096191A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		26F1A96D1E5D890400752F1A /* GenerateDummyDataOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateDummyDataOperation.swift; sourceTree = "<group>"; };
 		26F57AF01E67DE1B0034FF4B /* Debug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
-		26FE4E061E6C77C40063258D /* _ELVCCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _ELVCCell.swift; sourceTree = "<group>"; };
-		26FE4E081E6C78010063258D /* _ELVCCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = _ELVCCell.xib; sourceTree = "<group>"; };
+		26FE4E061E6C77C40063258D /* _ELVCCheckboxCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _ELVCCheckboxCell.swift; sourceTree = "<group>"; };
+		26FE4E081E6C78010063258D /* _ELVCCheckboxCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = _ELVCCheckboxCell.xib; sourceTree = "<group>"; };
 		26FE4E101E6D4D420063258D /* FetchRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchRequest.swift; sourceTree = "<group>"; };
 		26FE4E131E6EA1570063258D /* _ELVCSectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _ELVCSectionHeader.swift; sourceTree = "<group>"; };
 		26FE4E151E6EA1BE0063258D /* _ELVCSectionHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = _ELVCSectionHeader.xib; sourceTree = "<group>"; };
@@ -461,11 +465,13 @@
 				26973DA71E690C8F0086C4F8 /* ExpenseListVC.swift */,
 				26A230311E6902D600B61402 /* _ELVCView.swift */,
 				26973DA81E690C8F0086C4F8 /* _ELVCView.xib */,
-				26FE4E061E6C77C40063258D /* _ELVCCell.swift */,
-				26FE4E081E6C78010063258D /* _ELVCCell.xib */,
+				26FE4E061E6C77C40063258D /* _ELVCCheckboxCell.swift */,
+				26FE4E081E6C78010063258D /* _ELVCCheckboxCell.xib */,
 				26FE4E131E6EA1570063258D /* _ELVCSectionHeader.swift */,
 				26FE4E151E6EA1BE0063258D /* _ELVCSectionHeader.xib */,
 				2603C0D11E7708C20025E2E9 /* ExpenseListNavBarVC.swift */,
+				26D6736E1E811BC2009C4DDE /* _ELVCCell.swift */,
+				26D673701E811D19009C4DDE /* _ELVCCell.xib */,
 			);
 			path = ExpenseList;
 			sourceTree = "<group>";
@@ -632,13 +638,14 @@
 				26331FBE1E5B559300AACE68 /* _EFPSVCView.xib in Resources */,
 				2669468A1CC7711000A68424 /* Images.xcassets in Resources */,
 				266946871CC7711000A68424 /* Icon-60@2x.png in Resources */,
+				26D673711E811D19009C4DDE /* _ELVCCell.xib in Resources */,
 				266946891CC7711000A68424 /* Icon@2x.png in Resources */,
 				26DDDCAC1E5C23C2001617A1 /* _LAVCView.xib in Resources */,
 				26A1CB4C1DD1ABD600DAE89E /* NotoSansUI-Bold.ttf in Resources */,
 				266946861CC7711000A68424 /* Icon-40@2x.png in Resources */,
 				266946881CC7711000A68424 /* Icon-Small@2x.png in Resources */,
 				266946851CC7711000A68424 /* InfoPlist.strings in Resources */,
-				26FE4E091E6C78010063258D /* _ELVCCell.xib in Resources */,
+				26FE4E091E6C78010063258D /* _ELVCCheckboxCell.xib in Resources */,
 				26A1CB4D1DD1ABD600DAE89E /* NotoSansUI-BoldItalic.ttf in Resources */,
 				26973DAA1E690C8F0086C4F8 /* _ELVCView.xib in Resources */,
 				266946831CC7711000A68424 /* Default-568h@2x.png in Resources */,
@@ -715,7 +722,7 @@
 				26331FCA1E5B692100AACE68 /* Category+CoreDataClass.swift in Sources */,
 				26DDDCA81E5C238B001617A1 /* LoadAppVC.swift in Sources */,
 				26DDDCAA1E5C23AB001617A1 /* _LAVCView.swift in Sources */,
-				26FE4E071E6C77C40063258D /* _ELVCCell.swift in Sources */,
+				26FE4E071E6C77C40063258D /* _ELVCCheckboxCell.swift in Sources */,
 				260DFDB01E5584D900E3B92E /* _EFVCFieldBox.swift in Sources */,
 				260DFDCF1E55F37600E3B92E /* EFPickerVCTransitioningDelegate.swift in Sources */,
 				26331FC01E5B55A100AACE68 /* _EFPSVCView.swift in Sources */,
@@ -740,6 +747,7 @@
 				26A30C871E5230020047307D /* AddExpenseVC.swift in Sources */,
 				260DFDD11E562AEE00E3B92E /* EFDatePickerVC.swift in Sources */,
 				26331FCD1E5B692100AACE68 /* Expense+CoreDataProperties.swift in Sources */,
+				26D6736F1E811BC2009C4DDE /* _ELVCCell.swift in Sources */,
 				26A30C8A1E5231620047307D /* BaseNavBarVC.swift in Sources */,
 				26331FB81E5AE6EE00AACE68 /* EFCategoryPickerVC.swift in Sources */,
 				26A30C8E1E5232240047307D /* Global.swift in Sources */,
