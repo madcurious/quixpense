@@ -22,8 +22,10 @@ enum UIElement {
     case
     barBackground,
     barTint,
+    commonCellMainText,
+    commonCellCheckmark,
+    commonCellImageButton,
     disclosureIndicator,
-    elvcCellAmountText,
     elvcCellDetailText,
     elvcSectionHeaderBackground,
     elvcSectionHeaderText,

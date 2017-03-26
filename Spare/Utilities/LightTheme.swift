@@ -19,7 +19,9 @@ struct LightTheme: Theme {
             return UIColor.white
             
         case .barTint,
-             .elvcCellAmountText,
+             .commonCellMainText,
+             .commonCellCheckmark,
+             .commonCellImageButton,
              .fieldValue:
             return UIColor.black
             

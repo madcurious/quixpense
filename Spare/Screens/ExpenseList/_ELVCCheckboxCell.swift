@@ -86,7 +86,7 @@ class _ELVCCheckboxCell: UITableViewCell, Themeable {
     func applyTheme() {
         self.updateViewsBasedOnCheckedState()
         
-        self.amountLabel.textColor = Global.theme.color(for: .elvcCellAmountText)
+        self.amountLabel.textColor = Global.theme.color(for: .commonCellMainText)
         self.detailLabel.textColor = Global.theme.color(for: .elvcCellDetailText)
         self.disclosureIndicatorImageView.tintColor = Global.theme.color(for: .disclosureIndicator)
     }

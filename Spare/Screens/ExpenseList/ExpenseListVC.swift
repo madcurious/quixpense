@@ -21,12 +21,6 @@ class ExpenseListVC: UIViewController {
     let filterButton = MDImageButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30), image: UIImage.templateNamed("filterIcon")!)
     let totalCache = NSCache<NSNumber, NSDecimalNumber>()
     
-//    var customNavigationController: ExpenseListNavBarVC? {
-//        return self.navigationController as? ExpenseListNavBarVC
-//    }
-//    var editingNavigationItem = UINavigationItem()
-//    private let exitEditModeButton = MDImageButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30), image: UIImage.templateNamed("Cancel")!)
-    
     let fetchedResultsController: NSFetchedResultsController<Expense> = {
         let fetchRequest = FetchRequest<Expense>.make()
         fetchRequest.sortDescriptors = [
@@ -38,8 +32,6 @@ class ExpenseListVC: UIViewController {
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: Global.coreDataStack.viewContext, sectionNameKeyPath: #keyPath(Expense.sectionDate), cacheName: "ExpenseListVCCache")
         return fetchedResultsController
     }()
-    
-//    var checkedIndexPaths = [IndexPath]()
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -53,9 +45,6 @@ class ExpenseListVC: UIViewController {
     
     func initialize() {
         self.tabBarItem.image = UIImage.templateNamed("tabIconExpenseList")
-        
-//        self.exitEditModeButton.addTarget(self, action: #selector(handleTapOnExitEditModeButton), for: .touchUpInside)
-//        self.editingNavigationItem.leftBarButtonItem = UIBarButtonItem(customView: self.exitEditModeButton)
     }
     
     override func loadView() {
@@ -67,6 +56,8 @@ class ExpenseListVC: UIViewController {
         
         self.navigationItem.leftBarButtonItem = nil
         self.navigationItem.title = "EXPENSES"
+        
+        self.filterButton.addTarget(self, action: #selector(handleTapOnFilterButton), for: .touchUpInside)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: self.filterButton)
         
         self.customView.tableView.dataSource = self
@@ -112,15 +103,10 @@ class ExpenseListVC: UIViewController {
     
     // MARK: - Target actions
     
-//    func handleTapOnExitEditModeButton() {
-//        self.customNavigationController?.showEditingNavigationbar(false)
-//        
-//        if self.checkedIndexPaths.count > 0 {
-//            let previouslyCheckedIndexPaths = self.checkedIndexPaths
-//            self.checkedIndexPaths = []
-//            self.customView.tableView.reloadRows(at: previouslyCheckedIndexPaths, with: .none)
-//        }
-//    }
+    func handleTapOnFilterButton() {
+        let filterModal = BaseNavBarVC(rootViewController: ExpenseFilterPickerVC())
+        self.present(filterModal, animated: true, completion: nil)
+    }
 
 }
 

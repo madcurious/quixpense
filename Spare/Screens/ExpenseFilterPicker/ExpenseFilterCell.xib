@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="58" id="W3C-fd-a2A" customClass="ExpenseFilterCell" customModule="Spare" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="58"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="W3C-fd-a2A" id="Lzy-z7-r8M">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="57"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OG9-bf-h0F">
+                        <rect key="frame" x="15" y="21" width="16" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="16" id="gsg-Lq-n1s"/>
+                            <constraint firstAttribute="width" secondItem="OG9-bf-h0F" secondAttribute="height" id="ix6-Sg-LBz"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EkL-Wt-Diu">
+                        <rect key="frame" x="46" y="18" width="285" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="czC-tn-cjJ">
+                        <rect key="frame" x="331" y="0.0" width="44" height="57"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6ab-Qf-xMn" customClass="MDImageButton" customModule="Mold">
+                                <rect key="frame" x="14" y="21" width="16" height="16"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="6ab-Qf-xMn" secondAttribute="height" id="27b-0s-Sc2"/>
+                                    <constraint firstAttribute="height" constant="16" id="MPt-AP-Dzi"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.90588235289999997" blue="0.73333333329999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6ab-Qf-xMn" firstAttribute="centerY" secondItem="czC-tn-cjJ" secondAttribute="centerY" id="FWy-cl-Cug"/>
+                            <constraint firstAttribute="width" constant="44" id="Kvu-EK-Teq"/>
+                            <constraint firstItem="6ab-Qf-xMn" firstAttribute="centerX" secondItem="czC-tn-cjJ" secondAttribute="centerX" id="bUy-bO-Vcy"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="czC-tn-cjJ" firstAttribute="top" secondItem="Lzy-z7-r8M" secondAttribute="top" id="Dnl-ze-RgO"/>
+                    <constraint firstItem="EkL-Wt-Diu" firstAttribute="leading" secondItem="Lzy-z7-r8M" secondAttribute="leading" constant="46" id="VMF-VI-sfs"/>
+                    <constraint firstItem="OG9-bf-h0F" firstAttribute="centerY" secondItem="Lzy-z7-r8M" secondAttribute="centerY" id="Zyz-eN-4bm"/>
+                    <constraint firstAttribute="trailing" secondItem="czC-tn-cjJ" secondAttribute="trailing" id="a1I-H0-kf1"/>
+                    <constraint firstItem="EkL-Wt-Diu" firstAttribute="centerY" secondItem="Lzy-z7-r8M" secondAttribute="centerY" id="bqm-Dy-agH"/>
+                    <constraint firstItem="OG9-bf-h0F" firstAttribute="leading" secondItem="Lzy-z7-r8M" secondAttribute="leading" constant="15" id="jTR-7T-Hfx"/>
+                    <constraint firstItem="czC-tn-cjJ" firstAttribute="leading" secondItem="EkL-Wt-Diu" secondAttribute="trailing" id="kzR-Ov-jXl"/>
+                    <constraint firstAttribute="bottom" secondItem="czC-tn-cjJ" secondAttribute="bottom" id="o1Y-rq-Le9"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="checkmarkImageView" destination="OG9-bf-h0F" id="xBz-NL-iEd"/>
+                <outlet property="editButton" destination="6ab-Qf-xMn" id="5Hc-iL-Irb"/>
+                <outlet property="editButtonTapArea" destination="czC-tn-cjJ" id="a4f-pD-0m2"/>
+                <outlet property="nameLabel" destination="EkL-Wt-Diu" id="AYl-0J-IYV"/>
+                <outlet property="nameLabelLeading" destination="VMF-VI-sfs" id="1KB-ft-gi2"/>
+            </connections>
+            <point key="canvasLocation" x="18.5" y="-92"/>
+        </tableViewCell>
+    </objects>
+</document>

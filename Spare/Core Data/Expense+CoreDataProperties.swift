@@ -2,7 +2,7 @@
 //  Expense+CoreDataProperties.swift
 //  Spare
 //
-//  Created by Matt Quiros on 06/03/2017.
+//  Created by Matt Quiros on 26/03/2017.
 //  Copyright © 2017 Matt Quiros. All rights reserved.
 //
 
@@ -17,13 +17,13 @@ extension Expense {
     }
 
     @NSManaged public var amount: NSDecimalNumber?
+    @NSManaged public var dateCreated: NSDate?
     @NSManaged public var dateSpent: NSDate?
     @NSManaged public var note: String?
-    @NSManaged public var paymentMethod: NSNumber?
-    @NSManaged public var dateCreated: NSDate?
     @NSManaged public var sectionDate: NSDate?
     @NSManaged public var category: Category?
     @NSManaged public var subcategories: NSOrderedSet?
+    @NSManaged public var paymentMethods: NSSet?
 
 }
 
@@ -59,5 +59,22 @@ extension Expense {
 
     @objc(removeSubcategories:)
     @NSManaged public func removeFromSubcategories(_ values: NSOrderedSet)
+
+}
+
+// MARK: Generated accessors for paymentMethods
+extension Expense {
+
+    @objc(addPaymentMethodsObject:)
+    @NSManaged public func addToPaymentMethods(_ value: PaymentMethod)
+
+    @objc(removePaymentMethodsObject:)
+    @NSManaged public func removeFromPaymentMethods(_ value: PaymentMethod)
+
+    @objc(addPaymentMethods:)
+    @NSManaged public func addToPaymentMethods(_ values: NSSet)
+
+    @objc(removePaymentMethods:)
+    @NSManaged public func removeFromPaymentMethods(_ values: NSSet)
 
 }

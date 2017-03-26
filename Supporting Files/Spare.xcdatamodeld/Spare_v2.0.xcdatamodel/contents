@@ -9,10 +9,22 @@
         <attribute name="dateCreated" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="dateSpent" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="note" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
-        <attribute name="paymentMethod" optional="YES" attributeType="Integer 32" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="sectionDate" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="expenses" inverseEntity="Category" syncable="YES"/>
+        <relationship name="paymentMethods" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PaymentMethod" inverseName="expenses" inverseEntity="PaymentMethod" syncable="YES"/>
         <relationship name="subcategories" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Subcategory" inverseName="expenses" inverseEntity="Subcategory" syncable="YES"/>
+    </entity>
+    <entity name="ExpenseFilter" representedClassName=".ExpenseFilter" syncable="YES">
+        <attribute name="fromDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="rawCategoryIds" optional="YES" attributeType="Transformable" valueTransformerName="ExpenseFilterValueTransformer" syncable="YES"/>
+        <attribute name="rawPaymentMethodIds" optional="YES" attributeType="Transformable" valueTransformerName="ExpenseFilterValueTransformer" syncable="YES"/>
+        <attribute name="rawSubcategoryIds" optional="YES" attributeType="Transformable" valueTransformerName="ExpenseFilterValueTransformer" syncable="YES"/>
+        <attribute name="toDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+    </entity>
+    <entity name="PaymentMethod" representedClassName=".PaymentMethod" syncable="YES">
+        <attribute name="name" attributeType="String" indexed="YES" syncable="YES"/>
+        <relationship name="expenses" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Expense" inverseName="paymentMethods" inverseEntity="Expense" syncable="YES"/>
     </entity>
     <entity name="SPRCategory" representedClassName="SPRCategory" syncable="YES">
         <attribute name="colorNumber" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
@@ -35,9 +47,11 @@
     </entity>
     <elements>
         <element name="Category" positionX="72" positionY="351" width="128" height="75"/>
-        <element name="Expense" positionX="304" positionY="375" width="128" height="30"/>
+        <element name="Expense" positionX="304" positionY="375" width="128" height="165"/>
         <element name="SPRCategory" positionX="99" positionY="81" width="128" height="30"/>
         <element name="SPRExpense" positionX="378" positionY="36" width="128" height="135"/>
         <element name="Subcategory" positionX="225" positionY="189" width="128" height="75"/>
+        <element name="ExpenseFilter" positionX="225" positionY="189" width="128" height="135"/>
+        <element name="PaymentMethod" positionX="234" positionY="198" width="128" height="75"/>
     </elements>
 </model>
