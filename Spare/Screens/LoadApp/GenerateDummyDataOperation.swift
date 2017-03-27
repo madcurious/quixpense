@@ -61,15 +61,15 @@ class GenerateDummyDataOperation: MDOperation {
                 let fromDate = Calendar.current.date(from: components)!
                 return fromDate
             } else {
-                expenses.sort(by: { $0.dateSpent!.compare($1.dateSpent! as Date) == .orderedDescending })
-                let fromDate = expenses.first!.dateSpent! as Date
+                expenses.sort(by: { $0.dateSpent!.compare($1.dateSpent! as Date) == .orderedAscending })
+                let fromDate = expenses.last!.dateSpent! as Date
                 return fromDate
             }
         }()
         
         let toDate = Date()
         
-        if (fromDate as Date).isSameDayAsDate(toDate) {
+        if fromDate.isSameDayAsDate(toDate) {
             return
         }
         
@@ -78,25 +78,28 @@ class GenerateDummyDataOperation: MDOperation {
         let categories = try! self.context.fetch(categoryFetch)
         var dateSpent = fromDate
         
+        print("fromDate: \(fromDate)")
+        print("toDate: \(toDate)")
         print("Making dummy expenses for \(numberOfDays) days...")
+        print("===============")
         
         for i in 0 ..< numberOfDays {
             print("Current date (day \(i + 1)): \(dateSpent)")
             for category in categories {
                 // Make 0-10 expenses.
                 let numberOfExpenses = arc4random_uniform(10)
-                print("- Making \(numberOfExpenses) expenses for category '\(category.name!)'")
+//                print("- Making \(numberOfExpenses) expenses for category '\(category.name!)'")
                 
                 for _ in 0 ..< numberOfExpenses {
                     // Generate amount from 1-3000 pesos.
-                    let amount = 1 + (3000 * Double(arc4random()) / Double(UInt32.max))
+                    let amount = 1 + (2500 * Double(arc4random()) / Double(UInt32.max))
                     
                     let newExpense = Expense(context: self.context)
                     newExpense.category = category
                     newExpense.amount = NSDecimalNumber(value: amount)
                     newExpense.dateSpent = dateSpent as NSDate
                     
-                    print("-- amount: \(amount)")
+//                    print("-- amount: \(amount)")
                 }
             }
             
