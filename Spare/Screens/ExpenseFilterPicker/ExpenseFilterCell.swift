@@ -18,10 +18,26 @@ class ExpenseFilterCell: UITableViewCell, Themeable {
     
     @IBOutlet weak var nameLabelLeading: NSLayoutConstraint!
     
+    var filter: ExpenseFilter? {
+        didSet {
+            self.nameLabel.text = self.filter?.name
+            self.editButtonTapArea.isHidden = self.filter?.isUserEditable == false
+            self.setNeedsLayout()
+        }
+    }
+    
+    var isChecked = false {
+        didSet {
+            self.checkmarkImageView.isHidden = self.isChecked == false
+            self.setNeedsLayout()
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
         self.checkmarkImageView.image = UIImage.templateNamed("cellAccessoryCheckmark")
+        self.checkmarkImageView.isHidden = true
         
         self.nameLabel.font = Font.regular(17)
         self.nameLabel.numberOfLines = 1
@@ -35,14 +51,21 @@ class ExpenseFilterCell: UITableViewCell, Themeable {
     }
     
     func applyTheme() {
-        self.checkmarkImageView.tintColor = Global.theme.color(for: .commonCellCheckmark)
+        self.checkmarkImageView.tintColor = Global.theme.color(for: .cellAccessoryIcon)
         self.nameLabel.textColor = Global.theme.color(for: .commonCellMainText)
-        self.editButton.tintColor = Global.theme.color(for: .commonCellImageButton)
+        self.editButton.tintColor = Global.theme.color(for: .cellAccessoryIcon)
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         self.separatorInset = UIEdgeInsets(top: 0, left: self.nameLabelLeading.constant, bottom: 0, right: 0)
+    }
+    
+    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        if self.editButtonTapArea.frame.contains(point) {
+            return self.editButton
+        }
+        return super.hitTest(point, with: event)
     }
     
 }

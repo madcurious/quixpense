@@ -30,11 +30,10 @@ class ExpenseFilterPickerVC: UIViewController {
         self.navigationItem.title = "FILTER"
         self.navigationItem.rightBarButtonItem = BarButtonItems.make(.done, target: self, action: #selector(handleTapOnDoneButton))
         
-//        self.tableView.separatorColor = UIColor.clear
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.register(ExpenseFilterCell.nib(), forCellReuseIdentifier: ViewID.expenseFilterCell.rawValue)
-        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: ViewID.newFilterCell.rawValue)
+        self.tableView.register(NewFilterCell.nib(), forCellReuseIdentifier: ViewID.newFilterCell.rawValue)
     }
     
     func handleTapOnCancelButton() {

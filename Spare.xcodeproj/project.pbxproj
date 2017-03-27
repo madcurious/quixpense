@@ -58,6 +58,7 @@
 		265DFB7D1E87C8C400439D9A /* NewFilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265DFB7C1E87C8C400439D9A /* NewFilterCell.swift */; };
 		265DFB7F1E87C8E500439D9A /* ExpenseFilterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 265DFB7E1E87C8E500439D9A /* ExpenseFilterCell.xib */; };
 		265DFB811E87D07300439D9A /* BarButtonItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265DFB801E87D07300439D9A /* BarButtonItems.swift */; };
+		265DFB831E88ACC100439D9A /* NewFilterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 265DFB821E88ACC100439D9A /* NewFilterCell.xib */; };
 		26628A2D1E714AB100E80494 /* LightTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26628A2C1E714AB100E80494 /* LightTheme.swift */; };
 		2666C2C61957CF7A003752BF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2666C2C41957CF7A003752BF /* SystemConfiguration.framework */; };
 		2666C2C81957CF93003752BF /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2666C2C71957CF93003752BF /* libz.dylib */; };
@@ -197,6 +198,7 @@
 		265DFB7C1E87C8C400439D9A /* NewFilterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewFilterCell.swift; sourceTree = "<group>"; };
 		265DFB7E1E87C8E500439D9A /* ExpenseFilterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExpenseFilterCell.xib; sourceTree = "<group>"; };
 		265DFB801E87D07300439D9A /* BarButtonItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarButtonItems.swift; sourceTree = "<group>"; };
+		265DFB821E88ACC100439D9A /* NewFilterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewFilterCell.xib; sourceTree = "<group>"; };
 		26628A2C1E714AB100E80494 /* LightTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightTheme.swift; sourceTree = "<group>"; };
 		2666C2C11957CF4F003752BF /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalyticsServices.a; path = GoogleAnalytics/libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
 		2666C2C31957CF7A003752BF /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
@@ -426,6 +428,7 @@
 				265DFB7A1E87C89D00439D9A /* ExpenseFilterCell.swift */,
 				265DFB7E1E87C8E500439D9A /* ExpenseFilterCell.xib */,
 				265DFB7C1E87C8C400439D9A /* NewFilterCell.swift */,
+				265DFB821E88ACC100439D9A /* NewFilterCell.xib */,
 			);
 			path = ExpenseFilterPicker;
 			sourceTree = "<group>";
@@ -674,6 +677,7 @@
 				260DFDB21E5584D900E3B92E /* _EFVCView.xib in Resources */,
 				2603F8C31CCA45FF007F311F /* LaunchScreen.storyboard in Resources */,
 				26A1CB4F1DD1ABD600DAE89E /* NotoSansUI-Regular.ttf in Resources */,
+				265DFB831E88ACC100439D9A /* NewFilterCell.xib in Resources */,
 				260DFDAF1E5584D900E3B92E /* _EFVCAmountBox.xib in Resources */,
 				26A1CB4E1DD1ABD600DAE89E /* NotoSansUI-Italic.ttf in Resources */,
 				2669468B1CC7711000A68424 /* iPhone.storyboard in Resources */,
