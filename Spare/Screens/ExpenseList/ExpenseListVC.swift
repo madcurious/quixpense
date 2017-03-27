@@ -193,33 +193,3 @@ extension ExpenseListVC: NSFetchedResultsControllerDelegate {
     }
     
 }
-
-//extension ExpenseListVC: _ELVCCellDelegate {
-//    
-//    func cellDidToggleCheck(_ cell: _ELVCCell) {
-//        guard let indexPath = cell.indexPath
-//            else {
-//                return
-//        }
-//        
-//        if cell.isChecked {
-//            self.checkedIndexPaths.append(indexPath)
-//        } else {
-//            if let index = self.checkedIndexPaths.index(of: indexPath) {
-//                self.checkedIndexPaths.remove(at: index)
-//            }
-//        }
-//        
-//        if self.checkedIndexPaths.count == 0 {
-//            self.customNavigationController?.showEditingNavigationbar(false)
-//        } else {
-//            self.editingNavigationItem.title = "SELECTED (\(self.checkedIndexPaths.count))"
-//            self.customNavigationController?.showEditingNavigationbar(true)
-//        }
-//    }
-//    
-//    func cellDidTap(_ cell: _ELVCCell) {
-//        
-//    }
-//    
-//}

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 fileprivate enum ViewID: String {
     case expenseFilterCell = "expenseFilterCell"
@@ -16,7 +17,15 @@ fileprivate enum ViewID: String {
 class ExpenseFilterPickerVC: UIViewController {
     
     let tableView = UITableView(frame: .zero, style: .grouped)
-    var filters = [ExpenseFilter]()
+    let fetchedResultsController: NSFetchedResultsController<ExpenseFilter> = {
+        let fetchRequest = FetchRequest<ExpenseFilter>.make()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(ExpenseFilter.displayOrder), ascending: true)]
+        
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: Global.coreDataStack.viewContext, sectionNameKeyPath: nil, cacheName: "ExpenseFilterPickerVCCache")
+        return fetchedResultsController
+    }()
+    
+    var selectedIndexPath = IndexPath(row: 0, section: 0)
     
     override func loadView() {
         self.tableView.backgroundColor = Global.theme.color(for: .mainBackground)
@@ -34,6 +43,13 @@ class ExpenseFilterPickerVC: UIViewController {
         self.tableView.delegate = self
         self.tableView.register(ExpenseFilterCell.nib(), forCellReuseIdentifier: ViewID.expenseFilterCell.rawValue)
         self.tableView.register(NewFilterCell.nib(), forCellReuseIdentifier: ViewID.newFilterCell.rawValue)
+        
+        self.fetchedResultsController.delegate = self
+        
+        do {
+            try self.fetchedResultsController.performFetch()
+            self.tableView.reloadData()
+        } catch {}
     }
     
     func handleTapOnCancelButton() {
@@ -55,7 +71,7 @@ extension ExpenseFilterPickerVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return 5
+            return self.fetchedResultsController.fetchedObjects?.count ?? 1
             
         default:
             return 1
@@ -66,6 +82,8 @@ extension ExpenseFilterPickerVC: UITableViewDataSource {
         switch indexPath.section {
         case 0:
             let cell = self.tableView.dequeueReusableCell(withIdentifier: ViewID.expenseFilterCell.rawValue) as! ExpenseFilterCell
+            cell.filter = self.fetchedResultsController.fetchedObjects?[indexPath.row]
+            cell.isChecked = self.selectedIndexPath == indexPath
             return cell
             
         default:
@@ -83,7 +101,22 @@ extension ExpenseFilterPickerVC: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if indexPath != self.selectedIndexPath {
+            let oldIndexPath = self.selectedIndexPath
+            self.selectedIndexPath = indexPath
+            self.tableView.reloadRows(at: [oldIndexPath, indexPath], with: .automatic)
+        }
+        
         self.tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+}
+
+extension ExpenseFilterPickerVC: NSFetchedResultsControllerDelegate {
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        self.tableView.reloadData()
     }
     
 }

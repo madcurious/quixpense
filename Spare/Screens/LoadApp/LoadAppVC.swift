@@ -23,11 +23,30 @@ class LoadAppVC: MDOperationViewController {
     }
     
     override func makeOperations() -> [MDOperation]? {
+        var operations = [MDOperation]()
+        
         let initializeOp = InitializeCoreDataStackOperation()
         initializeOp.successBlock = MDOperationSuccessBlock(runsInMainThread: false, block: { result in
             let persistentContainer = result as! NSPersistentContainer
             let coreDataStack = CoreDataStack(persistentContainer: persistentContainer)
             Global.coreDataStack = coreDataStack
+            
+            let userDefaults = UserDefaults.standard
+            if userDefaults.bool(forKey: UserDefaultsKey.hasGeneratedDefaultData.rawValue) == false {
+                let generateDefaultDataOp = GenerateDefaultDataOperation()
+                generateDefaultDataOp.successBlock = MDOperationSuccessBlock(runsInMainThread: false, block: { (_) in
+                    userDefaults.set(true, forKey: UserDefaultsKey.hasGeneratedDefaultData.rawValue)
+                    userDefaults.synchronize()
+                })
+                generateDefaultDataOp.addDependency(initializeOp)
+                
+                if let generateDummyDataOp = self.operationQueue.operations.first(where: { $0 is GenerateDummyDataOperation }) {
+                    generateDummyDataOp.removeDependency(initializeOp)
+                    generateDummyDataOp.addDependency(generateDefaultDataOp)
+                }
+                
+                self.operationQueue.addOperation(generateDefaultDataOp)
+            }
             
             if Debug.shouldGenerateDummyData == false {
                 MDDispatcher.asyncRunInMainThread {[unowned self] in
@@ -35,18 +54,18 @@ class LoadAppVC: MDOperationViewController {
                 }
             }
         })
+        operations.append(initializeOp)
         
-        let generateDummyDataOp = GenerateDummyDataOperation()
-        generateDummyDataOp.successBlock = MDOperationSuccessBlock(block: {[unowned self] (result) in
-            self.navigationController?.pushViewController(MainTabBarVC(), animated: true)
-        })
-        generateDummyDataOp.addDependency(initializeOp)
-        
-        if Debug.shouldGenerateDummyData == false {
-            generateDummyDataOp.cancel()
+        if Debug.shouldGenerateDummyData {
+            let generateDummyDataOp = GenerateDummyDataOperation()
+            generateDummyDataOp.successBlock = MDOperationSuccessBlock(block: {[unowned self] (result) in
+                self.navigationController?.pushViewController(MainTabBarVC(), animated: true)
+            })
+            generateDummyDataOp.addDependency(initializeOp)
+            operations.append(generateDummyDataOp)
         }
         
-        return [initializeOp, generateDummyDataOp]
+        return operations
     }
     
     override func viewWillAppear(_ animated: Bool) {

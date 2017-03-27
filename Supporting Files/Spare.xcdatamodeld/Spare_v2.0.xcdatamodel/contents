@@ -15,6 +15,7 @@
         <relationship name="subcategories" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Subcategory" inverseName="expenses" inverseEntity="Subcategory" syncable="YES"/>
     </entity>
     <entity name="ExpenseFilter" representedClassName=".ExpenseFilter" syncable="YES">
+        <attribute name="displayOrder" attributeType="Double" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="fromDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="isUserEditable" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
@@ -49,10 +50,10 @@
     <elements>
         <element name="Category" positionX="72" positionY="351" width="128" height="75"/>
         <element name="Expense" positionX="304" positionY="375" width="128" height="165"/>
+        <element name="ExpenseFilter" positionX="225" positionY="189" width="128" height="165"/>
+        <element name="PaymentMethod" positionX="234" positionY="198" width="128" height="75"/>
         <element name="SPRCategory" positionX="99" positionY="81" width="128" height="30"/>
         <element name="SPRExpense" positionX="378" positionY="36" width="128" height="135"/>
         <element name="Subcategory" positionX="225" positionY="189" width="128" height="75"/>
-        <element name="ExpenseFilter" positionX="225" positionY="189" width="128" height="150"/>
-        <element name="PaymentMethod" positionX="234" positionY="198" width="128" height="75"/>
     </elements>
 </model>

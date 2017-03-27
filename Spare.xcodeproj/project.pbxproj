@@ -90,6 +90,8 @@
 		26A30C8E1E5232240047307D /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A30C8D1E5232240047307D /* Global.swift */; };
 		26A30C921E5235950047307D /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A30C911E5235950047307D /* SettingsVC.swift */; };
 		26A30C981E52417C0047307D /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A30C971E52417C0047307D /* Font.swift */; };
+		26B38F0F1E88FB2C00177CFE /* GenerateDefaultDataOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B38F0E1E88FB2C00177CFE /* GenerateDefaultDataOperation.swift */; };
+		26B38F111E89068500177CFE /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B38F101E89068500177CFE /* UserDefaultsKey.swift */; };
 		26D6736F1E811BC2009C4DDE /* _ELVCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D6736E1E811BC2009C4DDE /* _ELVCCell.swift */; };
 		26D673711E811D19009C4DDE /* _ELVCCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26D673701E811D19009C4DDE /* _ELVCCell.xib */; };
 		26DDDCA81E5C238B001617A1 /* LoadAppVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DDDCA71E5C238B001617A1 /* LoadAppVC.swift */; };
@@ -234,6 +236,8 @@
 		26A30C8D1E5232240047307D /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		26A30C911E5235950047307D /* SettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		26A30C971E52417C0047307D /* Font.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		26B38F0E1E88FB2C00177CFE /* GenerateDefaultDataOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateDefaultDataOperation.swift; sourceTree = "<group>"; };
+		26B38F101E89068500177CFE /* UserDefaultsKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
 		26D4C8F41946E624001B42DC /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		26D6736E1E811BC2009C4DDE /* _ELVCCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _ELVCCell.swift; sourceTree = "<group>"; };
 		26D673701E811D19009C4DDE /* _ELVCCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = _ELVCCell.xib; sourceTree = "<group>"; };
@@ -499,6 +503,7 @@
 				26FE4E101E6D4D420063258D /* FetchRequest.swift */,
 				26628A2C1E714AB100E80494 /* LightTheme.swift */,
 				265DFB801E87D07300439D9A /* BarButtonItems.swift */,
+				26B38F101E89068500177CFE /* UserDefaultsKey.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -554,6 +559,7 @@
 				26DDDCAB1E5C23C2001617A1 /* _LAVCView.xib */,
 				26DDDCAD1E5C285F001617A1 /* InitializeCoreDataStackOperation.swift */,
 				26F1A96D1E5D890400752F1A /* GenerateDummyDataOperation.swift */,
+				26B38F0E1E88FB2C00177CFE /* GenerateDefaultDataOperation.swift */,
 			);
 			path = LoadApp;
 			sourceTree = "<group>";
@@ -769,6 +775,7 @@
 				265DFB6F1E87C4E500439D9A /* ExpenseFilter+Extensions.swift in Sources */,
 				26DDDCA81E5C238B001617A1 /* LoadAppVC.swift in Sources */,
 				265DFB811E87D07300439D9A /* BarButtonItems.swift in Sources */,
+				26B38F0F1E88FB2C00177CFE /* GenerateDefaultDataOperation.swift in Sources */,
 				26DDDCAA1E5C23AB001617A1 /* _LAVCView.swift in Sources */,
 				26FE4E071E6C77C40063258D /* _ELVCCheckboxCell.swift in Sources */,
 				260DFDB01E5584D900E3B92E /* _EFVCFieldBox.swift in Sources */,
@@ -785,6 +792,7 @@
 				26FE4E141E6EA1570063258D /* _ELVCSectionHeader.swift in Sources */,
 				260DFDB11E5584D900E3B92E /* _EFVCView.swift in Sources */,
 				26F57AF11E67DE1B0034FF4B /* Debug.swift in Sources */,
+				26B38F111E89068500177CFE /* UserDefaultsKey.swift in Sources */,
 				26331FBC1E5B555A00AACE68 /* EFPickerSearchVC.swift in Sources */,
 				26973DA91E690C8F0086C4F8 /* ExpenseListVC.swift in Sources */,
 				26F1A96E1E5D890400752F1A /* GenerateDummyDataOperation.swift in Sources */,

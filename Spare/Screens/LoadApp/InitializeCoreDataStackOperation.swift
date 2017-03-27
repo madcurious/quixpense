@@ -30,15 +30,17 @@ class InitializeCoreDataStackOperation: MDAsynchronousOperation {
             }
             
             if let error = error {
-                self.error = error
                 self.runReturnBlock()
-                self.runFailureBlock()
+                self.runFailureBlock(error: error)
             } else {
-                self.result = persistentContainer
                 self.runReturnBlock()
-                self.runSuccessBlock()
+                self.runSuccessBlock(result: persistentContainer)
             }
         })
+    }
+    
+    deinit {
+        print("Deinit \(self)")
     }
     
 }
