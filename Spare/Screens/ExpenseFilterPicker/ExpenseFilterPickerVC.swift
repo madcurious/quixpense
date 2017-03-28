@@ -102,7 +102,8 @@ extension ExpenseFilterPickerVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if indexPath != self.selectedIndexPath {
+        if indexPath.section == 0 &&
+            indexPath != self.selectedIndexPath {
             let oldIndexPath = self.selectedIndexPath
             self.selectedIndexPath = indexPath
             self.tableView.reloadRows(at: [oldIndexPath, indexPath], with: .automatic)

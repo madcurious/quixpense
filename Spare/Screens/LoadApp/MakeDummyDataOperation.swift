@@ -1,5 +1,5 @@
 //
-//  GenerateDummyDataOperation.swift
+//  MakeDummyDataOperation.swift
 //  Spare
 //
 //  Created by Matt Quiros on 22/02/2017.
@@ -18,7 +18,7 @@ private let kCategoryNames = [
     "Vacation"
 ]
 
-class GenerateDummyDataOperation: MDOperation {
+class MakeDummyDataOperation: MDOperation {
     
     var context: NSManagedObjectContext!
     

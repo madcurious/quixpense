@@ -31,21 +31,23 @@ class LoadAppVC: MDOperationViewController {
             let coreDataStack = CoreDataStack(persistentContainer: persistentContainer)
             Global.coreDataStack = coreDataStack
             
+            // Generate default data if it hasn't been done before.
             let userDefaults = UserDefaults.standard
             if userDefaults.bool(forKey: UserDefaultsKey.hasGeneratedDefaultData.rawValue) == false {
-                let generateDefaultDataOp = GenerateDefaultDataOperation()
-                generateDefaultDataOp.successBlock = MDOperationSuccessBlock(runsInMainThread: false, block: { (_) in
+                let makeDefaultDataOp = MakeDefaultDataOperation()
+                makeDefaultDataOp.successBlock = MDOperationSuccessBlock(runsInMainThread: false, block: { (_) in
                     userDefaults.set(true, forKey: UserDefaultsKey.hasGeneratedDefaultData.rawValue)
                     userDefaults.synchronize()
                 })
-                generateDefaultDataOp.addDependency(initializeOp)
+                makeDefaultDataOp.addDependency(initializeOp)
                 
-                if let generateDummyDataOp = self.operationQueue.operations.first(where: { $0 is GenerateDummyDataOperation }) {
-                    generateDummyDataOp.removeDependency(initializeOp)
-                    generateDummyDataOp.addDependency(generateDefaultDataOp)
+                // If there is a MakeDummyDataOperation, make it dependent on the MakeDefaultDataOperation.
+                if let makeDummyDataOp = self.operationQueue.operations.first(where: { $0 is MakeDummyDataOperation }) {
+                    makeDummyDataOp.removeDependency(initializeOp)
+                    makeDummyDataOp.addDependency(makeDefaultDataOp)
                 }
                 
-                self.operationQueue.addOperation(generateDefaultDataOp)
+                self.operationQueue.addOperation(makeDefaultDataOp)
             }
             
             if Debug.shouldGenerateDummyData == false {
@@ -57,12 +59,12 @@ class LoadAppVC: MDOperationViewController {
         operations.append(initializeOp)
         
         if Debug.shouldGenerateDummyData {
-            let generateDummyDataOp = GenerateDummyDataOperation()
-            generateDummyDataOp.successBlock = MDOperationSuccessBlock(block: {[unowned self] (result) in
+            let makeDummyDataOp = MakeDummyDataOperation()
+            makeDummyDataOp.successBlock = MDOperationSuccessBlock(block: {[unowned self] (result) in
                 self.navigationController?.pushViewController(MainTabBarVC(), animated: true)
             })
-            generateDummyDataOp.addDependency(initializeOp)
-            operations.append(generateDummyDataOp)
+            makeDummyDataOp.addDependency(initializeOp)
+            operations.append(makeDummyDataOp)
         }
         
         return operations

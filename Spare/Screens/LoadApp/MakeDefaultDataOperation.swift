@@ -1,5 +1,5 @@
 //
-//  GenerateDefaultDataOperation.swift
+//  MakeDefaultDataOperation.swift
 //  Spare
 //
 //  Created by Matt Quiros on 27/03/2017.
@@ -9,7 +9,7 @@
 import CoreData
 import Mold
 
-class GenerateDefaultDataOperation: MDOperation {
+class MakeDefaultDataOperation: MDOperation {
     
     var context: NSManagedObjectContext!
     
