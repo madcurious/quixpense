@@ -41,8 +41,8 @@ class ExpenseFilterPickerVC: UIViewController {
         
         self.tableView.dataSource = self
         self.tableView.delegate = self
-        self.tableView.register(ExpenseFilterCell.nib(), forCellReuseIdentifier: ViewID.expenseFilterCell.rawValue)
-        self.tableView.register(NewFilterCell.nib(), forCellReuseIdentifier: ViewID.newFilterCell.rawValue)
+        self.tableView.register(_EFPFilterCell.nib(), forCellReuseIdentifier: ViewID.expenseFilterCell.rawValue)
+        self.tableView.register(_EFPNewFilterCell.nib(), forCellReuseIdentifier: ViewID.newFilterCell.rawValue)
         
         self.fetchedResultsController.delegate = self
         
@@ -81,7 +81,7 @@ extension ExpenseFilterPickerVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
-            let cell = self.tableView.dequeueReusableCell(withIdentifier: ViewID.expenseFilterCell.rawValue) as! ExpenseFilterCell
+            let cell = self.tableView.dequeueReusableCell(withIdentifier: ViewID.expenseFilterCell.rawValue) as! _EFPFilterCell
             cell.filter = self.fetchedResultsController.fetchedObjects?[indexPath.row]
             cell.isChecked = self.selectedIndexPath == indexPath
             return cell
@@ -107,6 +107,8 @@ extension ExpenseFilterPickerVC: UITableViewDelegate {
             let oldIndexPath = self.selectedIndexPath
             self.selectedIndexPath = indexPath
             self.tableView.reloadRows(at: [oldIndexPath, indexPath], with: .automatic)
+        } else if indexPath.section == 1 {
+            self.navigationController?.pushViewController(ExpenseFilterEditorVC(filterId: nil), animated: true)
         }
         
         self.tableView.deselectRow(at: indexPath, animated: true)

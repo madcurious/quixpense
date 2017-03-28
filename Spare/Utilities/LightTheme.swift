@@ -19,17 +19,18 @@ struct LightTheme: Theme {
             return UIColor.white
             
         case .barTint,
-             .commonCellMainText,
+             .cellMainText,
              .cellAccessoryIcon,
-             .fieldValue:
+             .textFieldValue:
             return UIColor.black
             
-        case .disclosureIndicator,
-             .fieldPlaceholder,
-             .tableViewSeparator:
+        case .cellAccessoryDisclosureIndicator,
+             .tableViewSeparator,
+             .textFieldPlaceholder:
             return UIColor.hex(0xdddddd)
             
-        case .elvcCellDetailText:
+        case .cellSecondaryText,
+             .groupedTableViewSectionHeaderText:
             return UIColor.hex(0x999999)
             
         case .elvcSectionHeaderBackground,

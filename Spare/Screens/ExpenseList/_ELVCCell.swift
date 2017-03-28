@@ -35,15 +35,15 @@ class _ELVCCell: UITableViewCell, Themeable {
         self.detailLabel.numberOfLines = 1
         self.detailLabel.lineBreakMode = .byTruncatingTail
         
-        self.disclosureIndicatorImageView.image = UIImage.templateNamed("disclosureIndicator")
+        self.disclosureIndicatorImageView.image = UIImage.templateNamed("cellAccessoryDisclosureIndicator")
         
         self.applyTheme()
     }
     
     func applyTheme() {
-        self.amountLabel.textColor = Global.theme.color(for: .commonCellMainText)
-        self.detailLabel.textColor = Global.theme.color(for: .elvcCellDetailText)
-        self.disclosureIndicatorImageView.tintColor = Global.theme.color(for: .disclosureIndicator)
+        self.amountLabel.textColor = Global.theme.color(for: .cellMainText)
+        self.detailLabel.textColor = Global.theme.color(for: .cellSecondaryText)
+        self.disclosureIndicatorImageView.tintColor = Global.theme.color(for: .cellAccessoryDisclosureIndicator)
     }
     
 }

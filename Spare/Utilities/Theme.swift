@@ -22,19 +22,20 @@ enum UIElement {
     case
     barBackground,
     barTint,
-    commonCellMainText,
+    cellMainText,
+    cellSecondaryText,
     cellAccessoryIcon,
-    disclosureIndicator,
-    elvcCellDetailText,
+    cellAccessoryDisclosureIndicator,
     elvcSectionHeaderBackground,
     elvcSectionHeaderText,
     fieldIcon,
     fieldName,
-    fieldPlaceholder,
-    fieldValue,
+    groupedTableViewSectionHeaderText,
     mainBackground,
     pickerFieldValue,
     pickerTextFieldBackground,
     promptLabel,
-    tableViewSeparator
+    tableViewSeparator,
+    textFieldPlaceholder,
+    textFieldValue
 }

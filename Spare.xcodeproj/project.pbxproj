@@ -47,18 +47,23 @@
 		26331FCD1E5B692100AACE68 /* Expense+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26331FC71E5B692100AACE68 /* Expense+CoreDataProperties.swift */; };
 		26331FCE1E5B692100AACE68 /* Subcategory+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26331FC81E5B692100AACE68 /* Subcategory+CoreDataClass.swift */; };
 		26331FCF1E5B692100AACE68 /* Subcategory+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26331FC91E5B692100AACE68 /* Subcategory+CoreDataProperties.swift */; };
+		2641461F1E8A4582006416B5 /* _EFPFilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2641461A1E8A4582006416B5 /* _EFPFilterCell.swift */; };
+		264146201E8A4582006416B5 /* _EFPFilterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2641461B1E8A4582006416B5 /* _EFPFilterCell.xib */; };
+		264146211E8A4582006416B5 /* ExpenseFilterPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2641461C1E8A4582006416B5 /* ExpenseFilterPickerVC.swift */; };
+		264146221E8A4582006416B5 /* _EFPNewFilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2641461D1E8A4582006416B5 /* _EFPNewFilterCell.swift */; };
+		264146231E8A4582006416B5 /* _EFPNewFilterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2641461E1E8A4582006416B5 /* _EFPNewFilterCell.xib */; };
+		264146261E8A45A2006416B5 /* ExpenseFilterEditorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264146251E8A45A2006416B5 /* ExpenseFilterEditorVC.swift */; };
+		264146281E8A4851006416B5 /* _EFENameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264146271E8A4851006416B5 /* _EFENameCell.swift */; };
+		2641462A1E8A4877006416B5 /* _EFENameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 264146291E8A4877006416B5 /* _EFENameCell.xib */; };
+		2641462C1E8A4A54006416B5 /* _EFEParameterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2641462B1E8A4A54006416B5 /* _EFEParameterCell.swift */; };
+		2641462E1E8A4A6C006416B5 /* _EFEParameterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2641462D1E8A4A6C006416B5 /* _EFEParameterCell.xib */; };
 		265DFB661E87AEFB00439D9A /* PaymentMethod+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265DFB621E87AEFB00439D9A /* PaymentMethod+CoreDataClass.swift */; };
 		265DFB671E87AEFB00439D9A /* PaymentMethod+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265DFB631E87AEFB00439D9A /* PaymentMethod+CoreDataProperties.swift */; };
 		265DFB6A1E87BEA400439D9A /* ExpenseFilter+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265DFB681E87BEA400439D9A /* ExpenseFilter+CoreDataClass.swift */; };
 		265DFB6B1E87BEA400439D9A /* ExpenseFilter+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265DFB691E87BEA400439D9A /* ExpenseFilter+CoreDataProperties.swift */; };
 		265DFB6D1E87BED700439D9A /* ExpenseFilterValueTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265DFB6C1E87BED700439D9A /* ExpenseFilterValueTransformer.swift */; };
 		265DFB6F1E87C4E500439D9A /* ExpenseFilter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265DFB6E1E87C4E500439D9A /* ExpenseFilter+Extensions.swift */; };
-		265DFB751E87C75100439D9A /* ExpenseFilterPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265DFB741E87C75100439D9A /* ExpenseFilterPickerVC.swift */; };
-		265DFB7B1E87C89D00439D9A /* ExpenseFilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265DFB7A1E87C89D00439D9A /* ExpenseFilterCell.swift */; };
-		265DFB7D1E87C8C400439D9A /* NewFilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265DFB7C1E87C8C400439D9A /* NewFilterCell.swift */; };
-		265DFB7F1E87C8E500439D9A /* ExpenseFilterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 265DFB7E1E87C8E500439D9A /* ExpenseFilterCell.xib */; };
 		265DFB811E87D07300439D9A /* BarButtonItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265DFB801E87D07300439D9A /* BarButtonItems.swift */; };
-		265DFB831E88ACC100439D9A /* NewFilterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 265DFB821E88ACC100439D9A /* NewFilterCell.xib */; };
 		26628A2D1E714AB100E80494 /* LightTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26628A2C1E714AB100E80494 /* LightTheme.swift */; };
 		2666C2C61957CF7A003752BF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2666C2C41957CF7A003752BF /* SystemConfiguration.framework */; };
 		2666C2C81957CF93003752BF /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2666C2C71957CF93003752BF /* libz.dylib */; };
@@ -189,18 +194,23 @@
 		26331FC71E5B692100AACE68 /* Expense+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Expense+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		26331FC81E5B692100AACE68 /* Subcategory+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Subcategory+CoreDataClass.swift"; sourceTree = "<group>"; };
 		26331FC91E5B692100AACE68 /* Subcategory+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Subcategory+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		2641461A1E8A4582006416B5 /* _EFPFilterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _EFPFilterCell.swift; sourceTree = "<group>"; };
+		2641461B1E8A4582006416B5 /* _EFPFilterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = _EFPFilterCell.xib; sourceTree = "<group>"; };
+		2641461C1E8A4582006416B5 /* ExpenseFilterPickerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseFilterPickerVC.swift; sourceTree = "<group>"; };
+		2641461D1E8A4582006416B5 /* _EFPNewFilterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _EFPNewFilterCell.swift; sourceTree = "<group>"; };
+		2641461E1E8A4582006416B5 /* _EFPNewFilterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = _EFPNewFilterCell.xib; sourceTree = "<group>"; };
+		264146251E8A45A2006416B5 /* ExpenseFilterEditorVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseFilterEditorVC.swift; sourceTree = "<group>"; };
+		264146271E8A4851006416B5 /* _EFENameCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _EFENameCell.swift; sourceTree = "<group>"; };
+		264146291E8A4877006416B5 /* _EFENameCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = _EFENameCell.xib; sourceTree = "<group>"; };
+		2641462B1E8A4A54006416B5 /* _EFEParameterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _EFEParameterCell.swift; sourceTree = "<group>"; };
+		2641462D1E8A4A6C006416B5 /* _EFEParameterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = _EFEParameterCell.xib; sourceTree = "<group>"; };
 		265DFB621E87AEFB00439D9A /* PaymentMethod+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PaymentMethod+CoreDataClass.swift"; sourceTree = "<group>"; };
 		265DFB631E87AEFB00439D9A /* PaymentMethod+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PaymentMethod+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		265DFB681E87BEA400439D9A /* ExpenseFilter+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ExpenseFilter+CoreDataClass.swift"; sourceTree = "<group>"; };
 		265DFB691E87BEA400439D9A /* ExpenseFilter+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ExpenseFilter+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		265DFB6C1E87BED700439D9A /* ExpenseFilterValueTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseFilterValueTransformer.swift; sourceTree = "<group>"; };
 		265DFB6E1E87C4E500439D9A /* ExpenseFilter+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ExpenseFilter+Extensions.swift"; sourceTree = "<group>"; };
-		265DFB741E87C75100439D9A /* ExpenseFilterPickerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseFilterPickerVC.swift; sourceTree = "<group>"; };
-		265DFB7A1E87C89D00439D9A /* ExpenseFilterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseFilterCell.swift; sourceTree = "<group>"; };
-		265DFB7C1E87C8C400439D9A /* NewFilterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewFilterCell.swift; sourceTree = "<group>"; };
-		265DFB7E1E87C8E500439D9A /* ExpenseFilterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExpenseFilterCell.xib; sourceTree = "<group>"; };
 		265DFB801E87D07300439D9A /* BarButtonItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarButtonItems.swift; sourceTree = "<group>"; };
-		265DFB821E88ACC100439D9A /* NewFilterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewFilterCell.xib; sourceTree = "<group>"; };
 		26628A2C1E714AB100E80494 /* LightTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightTheme.swift; sourceTree = "<group>"; };
 		2666C2C11957CF4F003752BF /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalyticsServices.a; path = GoogleAnalytics/libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
 		2666C2C31957CF7A003752BF /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
@@ -425,16 +435,37 @@
 			path = "Core Data";
 			sourceTree = "<group>";
 		};
-		265DFB731E87C74600439D9A /* ExpenseFilterPicker */ = {
+		264146181E8A4571006416B5 /* ExpenseFilter */ = {
 			isa = PBXGroup;
 			children = (
-				265DFB741E87C75100439D9A /* ExpenseFilterPickerVC.swift */,
-				265DFB7A1E87C89D00439D9A /* ExpenseFilterCell.swift */,
-				265DFB7E1E87C8E500439D9A /* ExpenseFilterCell.xib */,
-				265DFB7C1E87C8C400439D9A /* NewFilterCell.swift */,
-				265DFB821E88ACC100439D9A /* NewFilterCell.xib */,
+				264146241E8A458F006416B5 /* editor */,
+				264146191E8A4582006416B5 /* picker */,
 			);
-			path = ExpenseFilterPicker;
+			path = ExpenseFilter;
+			sourceTree = "<group>";
+		};
+		264146191E8A4582006416B5 /* picker */ = {
+			isa = PBXGroup;
+			children = (
+				2641461C1E8A4582006416B5 /* ExpenseFilterPickerVC.swift */,
+				2641461A1E8A4582006416B5 /* _EFPFilterCell.swift */,
+				2641461B1E8A4582006416B5 /* _EFPFilterCell.xib */,
+				2641461D1E8A4582006416B5 /* _EFPNewFilterCell.swift */,
+				2641461E1E8A4582006416B5 /* _EFPNewFilterCell.xib */,
+			);
+			path = picker;
+			sourceTree = "<group>";
+		};
+		264146241E8A458F006416B5 /* editor */ = {
+			isa = PBXGroup;
+			children = (
+				264146251E8A45A2006416B5 /* ExpenseFilterEditorVC.swift */,
+				264146271E8A4851006416B5 /* _EFENameCell.swift */,
+				264146291E8A4877006416B5 /* _EFENameCell.xib */,
+				2641462B1E8A4A54006416B5 /* _EFEParameterCell.swift */,
+				2641462D1E8A4A6C006416B5 /* _EFEParameterCell.xib */,
+			);
+			path = editor;
 			sourceTree = "<group>";
 		};
 		266946471CC7711000A68424 /* Spare */ = {
@@ -480,7 +511,7 @@
 		26A30C771E522E840047307D /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				265DFB731E87C74600439D9A /* ExpenseFilterPicker */,
+				264146181E8A4571006416B5 /* ExpenseFilter */,
 				267C2B7A1E7BDA03008EA3E0 /* MainTabBar */,
 				26DDDCA61E5C237F001617A1 /* LoadApp */,
 				26A30C881E5231530047307D /* Base */,
@@ -675,7 +706,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				265DFB7F1E87C8E500439D9A /* ExpenseFilterCell.xib in Resources */,
+				264146201E8A4582006416B5 /* _EFPFilterCell.xib in Resources */,
 				26FE4E161E6EA1BE0063258D /* _ELVCSectionHeader.xib in Resources */,
 				260DFDD51E569F9D00E3B92E /* _EFVCNotesBox.xib in Resources */,
 				266946841CC7711000A68424 /* Default@2x.png in Resources */,
@@ -683,8 +714,9 @@
 				260DFDB21E5584D900E3B92E /* _EFVCView.xib in Resources */,
 				2603F8C31CCA45FF007F311F /* LaunchScreen.storyboard in Resources */,
 				26A1CB4F1DD1ABD600DAE89E /* NotoSansUI-Regular.ttf in Resources */,
-				265DFB831E88ACC100439D9A /* NewFilterCell.xib in Resources */,
+				264146231E8A4582006416B5 /* _EFPNewFilterCell.xib in Resources */,
 				260DFDAF1E5584D900E3B92E /* _EFVCAmountBox.xib in Resources */,
+				2641462E1E8A4A6C006416B5 /* _EFEParameterCell.xib in Resources */,
 				26A1CB4E1DD1ABD600DAE89E /* NotoSansUI-Italic.ttf in Resources */,
 				2669468B1CC7711000A68424 /* iPhone.storyboard in Resources */,
 				26331FBE1E5B559300AACE68 /* _EFPSVCView.xib in Resources */,
@@ -692,6 +724,7 @@
 				266946871CC7711000A68424 /* Icon-60@2x.png in Resources */,
 				26D673711E811D19009C4DDE /* _ELVCCell.xib in Resources */,
 				266946891CC7711000A68424 /* Icon@2x.png in Resources */,
+				2641462A1E8A4877006416B5 /* _EFENameCell.xib in Resources */,
 				26DDDCAC1E5C23C2001617A1 /* _LAVCView.xib in Resources */,
 				26A1CB4C1DD1ABD600DAE89E /* NotoSansUI-Bold.ttf in Resources */,
 				266946861CC7711000A68424 /* Icon-40@2x.png in Resources */,
@@ -786,8 +819,6 @@
 				26A30C8C1E52318D0047307D /* Theme.swift in Sources */,
 				26331FCE1E5B692100AACE68 /* Subcategory+CoreDataClass.swift in Sources */,
 				265DFB661E87AEFB00439D9A /* PaymentMethod+CoreDataClass.swift in Sources */,
-				265DFB7B1E87C89D00439D9A /* ExpenseFilterCell.swift in Sources */,
-				265DFB7D1E87C8C400439D9A /* NewFilterCell.swift in Sources */,
 				26DDDCAE1E5C285F001617A1 /* InitializeCoreDataStackOperation.swift in Sources */,
 				26FE4E141E6EA1570063258D /* _ELVCSectionHeader.swift in Sources */,
 				260DFDB11E5584D900E3B92E /* _EFVCView.swift in Sources */,
@@ -795,18 +826,22 @@
 				26B38F111E89068500177CFE /* UserDefaultsKey.swift in Sources */,
 				26331FBC1E5B555A00AACE68 /* EFPickerSearchVC.swift in Sources */,
 				26973DA91E690C8F0086C4F8 /* ExpenseListVC.swift in Sources */,
+				2641462C1E8A4A54006416B5 /* _EFEParameterCell.swift in Sources */,
 				26F1A96E1E5D890400752F1A /* MakeDummyDataOperation.swift in Sources */,
 				2603C0D21E7708C20025E2E9 /* ExpenseListNavBarVC.swift in Sources */,
+				264146261E8A45A2006416B5 /* ExpenseFilterEditorVC.swift in Sources */,
 				26331FCB1E5B692100AACE68 /* Category+CoreDataProperties.swift in Sources */,
 				260DFDAE1E5584D900E3B92E /* _EFVCAmountBox.swift in Sources */,
 				26FE4E111E6D4D420063258D /* FetchRequest.swift in Sources */,
+				264146281E8A4851006416B5 /* _EFENameCell.swift in Sources */,
+				264146221E8A4582006416B5 /* _EFPNewFilterCell.swift in Sources */,
 				2669468F1CC7711000A68424 /* Spare.xcdatamodeld in Sources */,
 				265DFB6A1E87BEA400439D9A /* ExpenseFilter+CoreDataClass.swift in Sources */,
 				260DFDD31E569F6F00E3B92E /* _EFVCNotesBox.swift in Sources */,
 				26331FCC1E5B692100AACE68 /* Expense+CoreDataClass.swift in Sources */,
-				265DFB751E87C75100439D9A /* ExpenseFilterPickerVC.swift in Sources */,
 				26A2302C1E68F96D00B61402 /* Expense+Extension.swift in Sources */,
 				26A30C871E5230020047307D /* AddExpenseVC.swift in Sources */,
+				2641461F1E8A4582006416B5 /* _EFPFilterCell.swift in Sources */,
 				260DFDD11E562AEE00E3B92E /* EFDatePickerVC.swift in Sources */,
 				26331FCD1E5B692100AACE68 /* Expense+CoreDataProperties.swift in Sources */,
 				26D6736F1E811BC2009C4DDE /* _ELVCCell.swift in Sources */,
@@ -814,6 +849,7 @@
 				26331FB81E5AE6EE00AACE68 /* EFCategoryPickerVC.swift in Sources */,
 				26A30C8E1E5232240047307D /* Global.swift in Sources */,
 				265DFB6D1E87BED700439D9A /* ExpenseFilterValueTransformer.swift in Sources */,
+				264146211E8A4582006416B5 /* ExpenseFilterPickerVC.swift in Sources */,
 				260DFDB71E55864100E3B92E /* _EFPVCView.swift in Sources */,
 				267C2B7C1E7BDA03008EA3E0 /* MainTabBarVC.swift in Sources */,
 				26331FC21E5B684700AACE68 /* CoreDataStack.swift in Sources */,

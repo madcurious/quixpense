@@ -77,7 +77,7 @@ class _ELVCCheckboxCell: UITableViewCell, Themeable {
         self.detailLabel.numberOfLines = 1
         self.detailLabel.lineBreakMode = .byTruncatingTail
         
-        self.disclosureIndicatorImageView.image = UIImage.templateNamed("disclosureIndicator")
+        self.disclosureIndicatorImageView.image = UIImage.templateNamed("cellAccessoryDisclosureIndicator")
         self.selectionStyle = .none
         
         self.applyTheme()
@@ -86,9 +86,9 @@ class _ELVCCheckboxCell: UITableViewCell, Themeable {
     func applyTheme() {
         self.updateViewsBasedOnCheckedState()
         
-        self.amountLabel.textColor = Global.theme.color(for: .commonCellMainText)
-        self.detailLabel.textColor = Global.theme.color(for: .elvcCellDetailText)
-        self.disclosureIndicatorImageView.tintColor = Global.theme.color(for: .disclosureIndicator)
+        self.amountLabel.textColor = Global.theme.color(for: .cellMainText)
+        self.detailLabel.textColor = Global.theme.color(for: .cellSecondaryText)
+        self.disclosureIndicatorImageView.tintColor = Global.theme.color(for: .cellAccessoryDisclosureIndicator)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

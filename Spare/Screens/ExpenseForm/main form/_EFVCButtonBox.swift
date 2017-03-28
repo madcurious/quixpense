@@ -31,8 +31,8 @@ class _EFVCButtonBox: _EFVCFieldBox {
         
         self.fieldLabel.textColor = Global.theme.color(for: .fieldName)
         
-        self.fieldButton.placeholderTextColor = Global.theme.color(for: .fieldPlaceholder)
-        self.fieldButton.textColor = Global.theme.color(for: .fieldValue)
+        self.fieldButton.placeholderTextColor = Global.theme.color(for: .textFieldPlaceholder)
+        self.fieldButton.textColor = Global.theme.color(for: .textFieldValue)
     }
     
 }

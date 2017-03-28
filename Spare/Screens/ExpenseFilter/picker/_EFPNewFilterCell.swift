@@ -1,5 +1,5 @@
 //
-//  NewFilterCell.swift
+//  _EFPNewFilterCell.swift
 //  Spare
 //
 //  Created by Matt Quiros on 26/03/2017.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NewFilterCell: UITableViewCell, Themeable {
+class _EFPNewFilterCell: UITableViewCell, Themeable {
     
     @IBOutlet weak var accessoryImageView: UIImageView!
     @IBOutlet weak var promptLabel: UILabel!
@@ -26,7 +26,7 @@ class NewFilterCell: UITableViewCell, Themeable {
     
     func applyTheme() {
         self.accessoryImageView.tintColor = Global.theme.color(for: .cellAccessoryIcon)
-        self.promptLabel.textColor = Global.theme.color(for: .commonCellMainText)
+        self.promptLabel.textColor = Global.theme.color(for: .cellMainText)
     }
     
 }

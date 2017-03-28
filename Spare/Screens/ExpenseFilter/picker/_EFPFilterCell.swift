@@ -1,5 +1,5 @@
 //
-//  ExpenseFilterCell.swift
+//  _EFPFilterCell.swift
 //  Spare
 //
 //  Created by Matt Quiros on 26/03/2017.
@@ -9,7 +9,7 @@
 import UIKit
 import Mold
 
-class ExpenseFilterCell: UITableViewCell, Themeable {
+class _EFPFilterCell: UITableViewCell, Themeable {
     
     @IBOutlet weak var checkmarkImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -52,7 +52,7 @@ class ExpenseFilterCell: UITableViewCell, Themeable {
     
     func applyTheme() {
         self.checkmarkImageView.tintColor = Global.theme.color(for: .cellAccessoryIcon)
-        self.nameLabel.textColor = Global.theme.color(for: .commonCellMainText)
+        self.nameLabel.textColor = Global.theme.color(for: .cellMainText)
         self.editButton.tintColor = Global.theme.color(for: .cellAccessoryIcon)
     }
     
