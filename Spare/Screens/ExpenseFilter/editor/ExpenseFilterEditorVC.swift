@@ -115,6 +115,15 @@ extension ExpenseFilterEditorVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.tableView.deselectRow(at: indexPath, animated: true)
+        
+        switch (indexPath.section, indexPath.row) {
+        case (1, 0):
+            let datePicker = EFEVCDatePickerVC()
+            self.navigationController?.pushViewController(datePicker, animated: true)
+            
+        default:
+            break;
+        }
     }
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {

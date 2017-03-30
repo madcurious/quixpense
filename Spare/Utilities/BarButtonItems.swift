@@ -12,6 +12,7 @@ import Mold
 final class BarButtonItems {
     
     enum ButtonType {
+        case back
         case cancel
         case done
     }
@@ -19,6 +20,9 @@ final class BarButtonItems {
     class func make(_ buttonType: ButtonType, target: Any, action: Selector) -> UIBarButtonItem {
         let button: MDImageButton = {
             switch buttonType {
+            case .back:
+                return self.makeBackButton()
+                
             case .cancel:
                 return self.makeCancelButton()
                 
@@ -30,6 +34,12 @@ final class BarButtonItems {
         button.addTarget(target, action: action, for: .touchUpInside)
         let barButtonItem = UIBarButtonItem(customView: button)
         return barButtonItem
+    }
+    
+    fileprivate class func makeBackButton() -> MDImageButton {
+        let backButton = MDImageButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+        backButton.image = UIImage.templateNamed("navBarButtonBack")
+        return backButton
     }
     
     fileprivate class func makeCancelButton() -> MDImageButton {

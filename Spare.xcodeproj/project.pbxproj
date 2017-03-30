@@ -103,6 +103,12 @@
 		26DDDCAA1E5C23AB001617A1 /* _LAVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DDDCA91E5C23AB001617A1 /* _LAVCView.swift */; };
 		26DDDCAC1E5C23C2001617A1 /* _LAVCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26DDDCAB1E5C23C2001617A1 /* _LAVCView.xib */; };
 		26DDDCAE1E5C285F001617A1 /* InitializeCoreDataStackOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DDDCAD1E5C285F001617A1 /* InitializeCoreDataStackOperation.swift */; };
+		26E328101E8CFDA300CD7E03 /* EFEVCDatePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E3280F1E8CFDA300CD7E03 /* EFEVCDatePickerVC.swift */; };
+		26E328141E8D015600CD7E03 /* _EFEVCDPVCSwitchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26E328131E8D015600CD7E03 /* _EFEVCDPVCSwitchCell.xib */; };
+		26E328161E8D01CC00CD7E03 /* _EFEVCDPVCSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E328151E8D01CC00CD7E03 /* _EFEVCDPVCSwitchCell.swift */; };
+		26E328181E8D054900CD7E03 /* _EFEVCDPVCDatePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E328171E8D054900CD7E03 /* _EFEVCDPVCDatePickerCell.swift */; };
+		26E3281A1E8D056C00CD7E03 /* _EFEVCDPVCDatePickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26E328191E8D056C00CD7E03 /* _EFEVCDPVCDatePickerCell.xib */; };
+		26E3281F1E8D08CE00CD7E03 /* DateRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E3281E1E8D08CE00CD7E03 /* DateRange.swift */; };
 		26E4E0591937AF690096191A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E4E0581937AF690096191A /* QuartzCore.framework */; };
 		26F1A96E1E5D890400752F1A /* MakeDummyDataOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F1A96D1E5D890400752F1A /* MakeDummyDataOperation.swift */; };
 		26F57AF11E67DE1B0034FF4B /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F57AF01E67DE1B0034FF4B /* Debug.swift */; };
@@ -255,6 +261,12 @@
 		26DDDCA91E5C23AB001617A1 /* _LAVCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _LAVCView.swift; sourceTree = "<group>"; };
 		26DDDCAB1E5C23C2001617A1 /* _LAVCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = _LAVCView.xib; sourceTree = "<group>"; };
 		26DDDCAD1E5C285F001617A1 /* InitializeCoreDataStackOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitializeCoreDataStackOperation.swift; sourceTree = "<group>"; };
+		26E3280F1E8CFDA300CD7E03 /* EFEVCDatePickerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EFEVCDatePickerVC.swift; sourceTree = "<group>"; };
+		26E328131E8D015600CD7E03 /* _EFEVCDPVCSwitchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = _EFEVCDPVCSwitchCell.xib; sourceTree = "<group>"; };
+		26E328151E8D01CC00CD7E03 /* _EFEVCDPVCSwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _EFEVCDPVCSwitchCell.swift; sourceTree = "<group>"; };
+		26E328171E8D054900CD7E03 /* _EFEVCDPVCDatePickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _EFEVCDPVCDatePickerCell.swift; sourceTree = "<group>"; };
+		26E328191E8D056C00CD7E03 /* _EFEVCDPVCDatePickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = _EFEVCDPVCDatePickerCell.xib; sourceTree = "<group>"; };
+		26E3281E1E8D08CE00CD7E03 /* DateRange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateRange.swift; sourceTree = "<group>"; };
 		26E4E0581937AF690096191A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		26F1A96D1E5D890400752F1A /* MakeDummyDataOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeDummyDataOperation.swift; sourceTree = "<group>"; };
 		26F57AF01E67DE1B0034FF4B /* Debug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
@@ -459,6 +471,7 @@
 		264146241E8A458F006416B5 /* editor */ = {
 			isa = PBXGroup;
 			children = (
+				26E3280E1E8CFD6900CD7E03 /* date */,
 				264146251E8A45A2006416B5 /* ExpenseFilterEditorVC.swift */,
 				264146271E8A4851006416B5 /* _EFENameCell.swift */,
 				264146291E8A4877006416B5 /* _EFENameCell.xib */,
@@ -471,6 +484,7 @@
 		266946471CC7711000A68424 /* Spare */ = {
 			isa = PBXGroup;
 			children = (
+				26E3281D1E8D08C600CD7E03 /* Data Models */,
 				26331FC31E5B692100AACE68 /* Core Data */,
 				26A30C771E522E840047307D /* Screens */,
 				26A30C781E522E840047307D /* Utilities */,
@@ -595,6 +609,26 @@
 			path = LoadApp;
 			sourceTree = "<group>";
 		};
+		26E3280E1E8CFD6900CD7E03 /* date */ = {
+			isa = PBXGroup;
+			children = (
+				26E3280F1E8CFDA300CD7E03 /* EFEVCDatePickerVC.swift */,
+				26E328151E8D01CC00CD7E03 /* _EFEVCDPVCSwitchCell.swift */,
+				26E328131E8D015600CD7E03 /* _EFEVCDPVCSwitchCell.xib */,
+				26E328171E8D054900CD7E03 /* _EFEVCDPVCDatePickerCell.swift */,
+				26E328191E8D056C00CD7E03 /* _EFEVCDPVCDatePickerCell.xib */,
+			);
+			path = date;
+			sourceTree = "<group>";
+		};
+		26E3281D1E8D08C600CD7E03 /* Data Models */ = {
+			isa = PBXGroup;
+			children = (
+				26E3281E1E8D08CE00CD7E03 /* DateRange.swift */,
+			);
+			path = "Data Models";
+			sourceTree = "<group>";
+		};
 		31523B481DA9FFEB2909413E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -709,6 +743,7 @@
 				264146201E8A4582006416B5 /* _EFPFilterCell.xib in Resources */,
 				26FE4E161E6EA1BE0063258D /* _ELVCSectionHeader.xib in Resources */,
 				260DFDD51E569F9D00E3B92E /* _EFVCNotesBox.xib in Resources */,
+				26E3281A1E8D056C00CD7E03 /* _EFEVCDPVCDatePickerCell.xib in Resources */,
 				266946841CC7711000A68424 /* Default@2x.png in Resources */,
 				260DFDB91E55867700E3B92E /* _EFPVCView.xib in Resources */,
 				260DFDB21E5584D900E3B92E /* _EFVCView.xib in Resources */,
@@ -732,6 +767,7 @@
 				266946851CC7711000A68424 /* InfoPlist.strings in Resources */,
 				26FE4E091E6C78010063258D /* _ELVCCheckboxCell.xib in Resources */,
 				26A1CB4D1DD1ABD600DAE89E /* NotoSansUI-BoldItalic.ttf in Resources */,
+				26E328141E8D015600CD7E03 /* _EFEVCDPVCSwitchCell.xib in Resources */,
 				26973DAA1E690C8F0086C4F8 /* _ELVCView.xib in Resources */,
 				266946831CC7711000A68424 /* Default-568h@2x.png in Resources */,
 				260DFDC31E55912200E3B92E /* _EFVCButtonBox.xib in Resources */,
@@ -820,6 +856,7 @@
 				26331FCE1E5B692100AACE68 /* Subcategory+CoreDataClass.swift in Sources */,
 				265DFB661E87AEFB00439D9A /* PaymentMethod+CoreDataClass.swift in Sources */,
 				26DDDCAE1E5C285F001617A1 /* InitializeCoreDataStackOperation.swift in Sources */,
+				26E328161E8D01CC00CD7E03 /* _EFEVCDPVCSwitchCell.swift in Sources */,
 				26FE4E141E6EA1570063258D /* _ELVCSectionHeader.swift in Sources */,
 				260DFDB11E5584D900E3B92E /* _EFVCView.swift in Sources */,
 				26F57AF11E67DE1B0034FF4B /* Debug.swift in Sources */,
@@ -841,6 +878,7 @@
 				26331FCC1E5B692100AACE68 /* Expense+CoreDataClass.swift in Sources */,
 				26A2302C1E68F96D00B61402 /* Expense+Extension.swift in Sources */,
 				26A30C871E5230020047307D /* AddExpenseVC.swift in Sources */,
+				26E328101E8CFDA300CD7E03 /* EFEVCDatePickerVC.swift in Sources */,
 				2641461F1E8A4582006416B5 /* _EFPFilterCell.swift in Sources */,
 				260DFDD11E562AEE00E3B92E /* EFDatePickerVC.swift in Sources */,
 				26331FCD1E5B692100AACE68 /* Expense+CoreDataProperties.swift in Sources */,
@@ -849,10 +887,12 @@
 				26331FB81E5AE6EE00AACE68 /* EFCategoryPickerVC.swift in Sources */,
 				26A30C8E1E5232240047307D /* Global.swift in Sources */,
 				265DFB6D1E87BED700439D9A /* ExpenseFilterValueTransformer.swift in Sources */,
+				26E3281F1E8D08CE00CD7E03 /* DateRange.swift in Sources */,
 				264146211E8A4582006416B5 /* ExpenseFilterPickerVC.swift in Sources */,
 				260DFDB71E55864100E3B92E /* _EFPVCView.swift in Sources */,
 				267C2B7C1E7BDA03008EA3E0 /* MainTabBarVC.swift in Sources */,
 				26331FC21E5B684700AACE68 /* CoreDataStack.swift in Sources */,
+				26E328181E8D054900CD7E03 /* _EFEVCDPVCDatePickerCell.swift in Sources */,
 				269635A41E5457C80001FC05 /* AmountFormatter.swift in Sources */,
 				265DFB6B1E87BEA400439D9A /* ExpenseFilter+CoreDataProperties.swift in Sources */,
 				260DFDB51E5584FA00E3B92E /* EFPickerVC.swift in Sources */,
