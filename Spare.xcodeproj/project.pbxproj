@@ -99,6 +99,9 @@
 		26B38F111E89068500177CFE /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B38F101E89068500177CFE /* UserDefaultsKey.swift */; };
 		26D6736F1E811BC2009C4DDE /* _ELVCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D6736E1E811BC2009C4DDE /* _ELVCCell.swift */; };
 		26D673711E811D19009C4DDE /* _ELVCCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26D673701E811D19009C4DDE /* _ELVCCell.xib */; };
+		26D6C9A61E93791100DDDAE8 /* EFEVCValuePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D6C9A51E93791100DDDAE8 /* EFEVCValuePickerVC.swift */; };
+		26D6C9A91E93794C00DDDAE8 /* ValuePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D6C9A81E93794C00DDDAE8 /* ValuePickerCell.swift */; };
+		26D6C9AB1E93796D00DDDAE8 /* ValuePickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26D6C9AA1E93796D00DDDAE8 /* ValuePickerCell.xib */; };
 		26DDDCA81E5C238B001617A1 /* LoadAppVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DDDCA71E5C238B001617A1 /* LoadAppVC.swift */; };
 		26DDDCAA1E5C23AB001617A1 /* _LAVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DDDCA91E5C23AB001617A1 /* _LAVCView.swift */; };
 		26DDDCAC1E5C23C2001617A1 /* _LAVCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26DDDCAB1E5C23C2001617A1 /* _LAVCView.xib */; };
@@ -257,6 +260,9 @@
 		26D4C8F41946E624001B42DC /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		26D6736E1E811BC2009C4DDE /* _ELVCCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _ELVCCell.swift; sourceTree = "<group>"; };
 		26D673701E811D19009C4DDE /* _ELVCCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = _ELVCCell.xib; sourceTree = "<group>"; };
+		26D6C9A51E93791100DDDAE8 /* EFEVCValuePickerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EFEVCValuePickerVC.swift; sourceTree = "<group>"; };
+		26D6C9A81E93794C00DDDAE8 /* ValuePickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValuePickerCell.swift; sourceTree = "<group>"; };
+		26D6C9AA1E93796D00DDDAE8 /* ValuePickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ValuePickerCell.xib; sourceTree = "<group>"; };
 		26DDDCA71E5C238B001617A1 /* LoadAppVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadAppVC.swift; sourceTree = "<group>"; };
 		26DDDCA91E5C23AB001617A1 /* _LAVCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _LAVCView.swift; sourceTree = "<group>"; };
 		26DDDCAB1E5C23C2001617A1 /* _LAVCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = _LAVCView.xib; sourceTree = "<group>"; };
@@ -471,6 +477,7 @@
 		264146241E8A458F006416B5 /* editor */ = {
 			isa = PBXGroup;
 			children = (
+				26D6C9A41E93791100DDDAE8 /* value picker */,
 				26E3280E1E8CFD6900CD7E03 /* date */,
 				264146251E8A45A2006416B5 /* ExpenseFilterEditorVC.swift */,
 				264146271E8A4851006416B5 /* _EFENameCell.swift */,
@@ -484,6 +491,7 @@
 		266946471CC7711000A68424 /* Spare */ = {
 			isa = PBXGroup;
 			children = (
+				26D6C9A71E93794200DDDAE8 /* Views */,
 				26E3281D1E8D08C600CD7E03 /* Data Models */,
 				26331FC31E5B692100AACE68 /* Core Data */,
 				26A30C771E522E840047307D /* Screens */,
@@ -594,6 +602,23 @@
 				26A30C891E5231620047307D /* BaseNavBarVC.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		26D6C9A41E93791100DDDAE8 /* value picker */ = {
+			isa = PBXGroup;
+			children = (
+				26D6C9A51E93791100DDDAE8 /* EFEVCValuePickerVC.swift */,
+			);
+			path = "value picker";
+			sourceTree = "<group>";
+		};
+		26D6C9A71E93794200DDDAE8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				26D6C9A81E93794C00DDDAE8 /* ValuePickerCell.swift */,
+				26D6C9AA1E93796D00DDDAE8 /* ValuePickerCell.xib */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		26DDDCA61E5C237F001617A1 /* LoadApp */ = {
@@ -771,6 +796,7 @@
 				26973DAA1E690C8F0086C4F8 /* _ELVCView.xib in Resources */,
 				266946831CC7711000A68424 /* Default-568h@2x.png in Resources */,
 				260DFDC31E55912200E3B92E /* _EFVCButtonBox.xib in Resources */,
+				26D6C9AB1E93796D00DDDAE8 /* ValuePickerCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -853,6 +879,8 @@
 				265DFB671E87AEFB00439D9A /* PaymentMethod+CoreDataProperties.swift in Sources */,
 				26628A2D1E714AB100E80494 /* LightTheme.swift in Sources */,
 				26A30C8C1E52318D0047307D /* Theme.swift in Sources */,
+				26D6C9A91E93794C00DDDAE8 /* ValuePickerCell.swift in Sources */,
+				26D6C9A61E93791100DDDAE8 /* EFEVCValuePickerVC.swift in Sources */,
 				26331FCE1E5B692100AACE68 /* Subcategory+CoreDataClass.swift in Sources */,
 				265DFB661E87AEFB00439D9A /* PaymentMethod+CoreDataClass.swift in Sources */,
 				26DDDCAE1E5C285F001617A1 /* InitializeCoreDataStackOperation.swift in Sources */,

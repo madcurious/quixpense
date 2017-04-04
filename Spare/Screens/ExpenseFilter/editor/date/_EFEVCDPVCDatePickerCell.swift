@@ -24,6 +24,7 @@ class _EFEVCDPVCDatePickerCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        self.datePicker.datePickerMode = .date
         self.datePicker.addTarget(self, action: #selector(handleValueChangeOnDatePicker), for: .valueChanged)
         
         self.selectionStyle = .none

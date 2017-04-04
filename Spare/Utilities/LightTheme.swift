@@ -46,4 +46,17 @@ struct LightTheme: Theme {
         }
     }
     
+    func font(for element: StringElement) -> UIFont {
+        switch element {
+        case .cellSecondaryText,
+             .tableViewHeader:
+            return UIFont(name: "NotoSansUI", size: 14)!
+            
+        case .navBarTitle:
+            return UIFont(name: "NotoSansUI-Bold", size: 17)!
+        case .regularText:
+            return UIFont(name: "NotoSansUI", size: 17)!
+        }
+    }
+    
 }

@@ -8,16 +8,6 @@
 
 import UIKit
 
-protocol Themeable {
-    func applyTheme()
-}
-
-protocol Theme {
-    
-    func color(for element: UIElement) -> UIColor
-    
-}
-
 enum UIElement {
     case
     barBackground,
@@ -38,4 +28,23 @@ enum UIElement {
     tableViewSeparator,
     textFieldPlaceholder,
     textFieldValue
+}
+
+enum StringElement {
+    case
+    cellSecondaryText,
+    navBarTitle,
+    regularText,
+    tableViewHeader
+}
+
+protocol Theme {
+    
+    func color(for element: UIElement) -> UIColor
+    func font(for element: StringElement) -> UIFont
+    
+}
+
+protocol Themeable {
+    func applyTheme()
 }
