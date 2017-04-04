@@ -12,7 +12,6 @@ import CoreData
 fileprivate enum ViewID: String {
     case nameCell = "nameCell"
     case parameterCell = "parameterCell"
-//    case sectionHeader = "sectionHeader"
 }
 
 class ExpenseFilterEditorVC: UIViewController {
@@ -57,7 +56,6 @@ class ExpenseFilterEditorVC: UIViewController {
         
         self.tableView.register(_EFENameCell.nib(), forCellReuseIdentifier: ViewID.nameCell.rawValue)
         self.tableView.register(_EFEParameterCell.nib(), forCellReuseIdentifier: ViewID.parameterCell.rawValue)
-//        self.tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: ViewID.sectionHeader.rawValue)
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.estimatedRowHeight = 44
@@ -101,6 +99,17 @@ extension ExpenseFilterEditorVC: UITableViewDataSource {
             
         default:
             let cell = self.tableView.dequeueReusableCell(withIdentifier: ViewID.parameterCell.rawValue) as! _EFEParameterCell
+            cell.nameLabel.text = {
+                switch indexPath.row {
+                case 0:
+                    return "Date"
+                case 1:
+                    return "Categories"
+                default:
+                    return nil
+                }
+            }()
+            
             return cell
         }
     }
@@ -114,12 +123,24 @@ extension ExpenseFilterEditorVC: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard indexPath.section == 1
+            else {
+                return
+        }
+        
         self.tableView.deselectRow(at: indexPath, animated: true)
         
-        switch (indexPath.section, indexPath.row) {
-        case (1, 0):
+        switch (indexPath.row) {
+        case 0:
             let datePicker = EFEVCDatePickerVC()
             self.navigationController?.pushViewController(datePicker, animated: true)
+            
+        case 1:
+            let valuePicker = EFEVCValuePickerVC<Category>(title: "CATEGORIES",
+                                                           sortDescriptors: [NSSortDescriptor(key: #keyPath(Category.name), ascending: true)],
+                                                           selectedIndexPaths: nil,
+                                                           delegate: self)
+            self.navigationController?.pushViewController(valuePicker, animated: true)
             
         default:
             break;
@@ -147,6 +168,23 @@ extension ExpenseFilterEditorVC: UITableViewDelegate {
         default:
             return nil
         }
+    }
+    
+}
+
+extension ExpenseFilterEditorVC: EFEVCValuePickerVCDelegate {
+    
+    func text(for value: NSManagedObject) -> String? {
+        guard let category = value as? Category
+            else {
+                return nil
+        }
+        
+        return category.name
+    }
+    
+    func didSelect(indexPaths: [IndexPath]) {
+        
     }
     
 }

@@ -21,6 +21,7 @@ class EFEVCDatePickerVC: UIViewController {
     var hasToDate = true
     
     override func loadView() {
+        self.tableView.backgroundColor = Global.theme.color(for: .mainBackground)
         self.view = self.tableView
     }
     
