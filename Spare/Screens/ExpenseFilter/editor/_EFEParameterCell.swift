@@ -17,10 +17,10 @@ class _EFEParameterCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.nameLabel.font = Font.regular(17)
+        self.nameLabel.font = Global.theme.font(for: .regularText)
         self.nameLabel.textColor = Global.theme.color(for: .cellMainText)
         
-        self.valueLabel.font = Font.regular(14)
+        self.valueLabel.font = Global.theme.font(for: .cellSecondaryText)
         self.valueLabel.textColor = Global.theme.color(for: .cellSecondaryText)
         
         self.disclosureIndicatorImageView.image = UIImage.templateNamed("cellAccessoryDisclosureIndicator")

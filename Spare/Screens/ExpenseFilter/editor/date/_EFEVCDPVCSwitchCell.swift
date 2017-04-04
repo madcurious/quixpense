@@ -44,7 +44,7 @@ class _EFEVCDPVCSwitchCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.fieldLabel.font = Font.regular(17)
+        self.fieldLabel.font = Global.theme.font(for: .regularText)
         self.fieldLabel.textColor = Global.theme.color(for: .cellMainText)
         
         self.switchView.addTarget(self, action: #selector(handleValueChangeOnSwitchView), for: .valueChanged)

@@ -67,12 +67,12 @@ class _ELVCCheckboxCell: UITableViewCell, Themeable {
         self.checkboxImageView.image = UIImage.templateNamed("_ELVCCellCheckboxImageView")
         self.checkmarkImageView.image = UIImage.templateNamed("_ELVCCellCheckmarkImageView")
         
-        self.amountLabel.font = Font.regular(17)
+        self.amountLabel.font = Global.theme.font(for: .regularText)
         self.amountLabel.textAlignment = .left
         self.amountLabel.numberOfLines = 1
         self.amountLabel.lineBreakMode = .byTruncatingTail
         
-        self.detailLabel.font = Font.regular(17)
+        self.detailLabel.font = Global.theme.font(for: .regularText)
         self.detailLabel.textAlignment = .right
         self.detailLabel.numberOfLines = 1
         self.detailLabel.lineBreakMode = .byTruncatingTail

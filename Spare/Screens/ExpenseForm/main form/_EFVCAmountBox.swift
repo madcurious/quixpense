@@ -27,10 +27,10 @@ class _EFVCAmountBox: _EFVCFieldBox {
         self.fieldLabel.text = "AMOUNT"
         
         self.textField.backgroundColor = UIColor.clear
-        self.textField.font = Font.regular(17)
+        self.textField.font = Global.theme.font(for: .regularText)
         self.textField.placeholder = "0.00"
         
-        self.currencyLabel.font = Font.regular(17)
+        self.currencyLabel.font = Global.theme.font(for: .regularText)
         self.currencyLabel.text = AmountFormatter.currencySymbol()
         self.currencyLabel.frame = CGRect(x: 0, y: 0, width: 20, height: self.currencyLabel.intrinsicContentSize.height)
         self.textField.leftView = self.currencyLabel

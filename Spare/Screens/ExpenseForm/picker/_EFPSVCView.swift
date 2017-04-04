@@ -25,7 +25,7 @@ class _EFPSVCView: UIView, Themeable {
             self.textFieldContainer,
             self.tableViewContainer)
         
-        self.textField.font = Font.regular(17)
+        self.textField.font = Global.theme.font(for: .regularText)
         self.textField.autocapitalizationType = .sentences
         
         self.applyTheme()

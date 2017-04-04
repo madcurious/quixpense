@@ -51,7 +51,7 @@ class _EFPVCView: UIView, Themeable {
         self.cancelButton.image = UIImage.templateNamed("Cancel")
         self.doneButton.image = UIImage.templateNamed("Done")
         
-        self.titleLabel.font = Font.bold(17)
+        self.titleLabel.font = Global.theme.font(for: .navBarTitle)
         self.titleLabel.numberOfLines = 1
         self.titleLabel.lineBreakMode = .byTruncatingTail
         self.titleLabel.textAlignment = .center

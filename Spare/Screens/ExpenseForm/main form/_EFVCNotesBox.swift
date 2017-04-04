@@ -23,7 +23,7 @@ class _EFVCNotesBox: _EFVCFieldBox {
         self.fieldLabel.text = "NOTES"
         
         self.textView.text = nil
-        self.textView.font = Font.regular(17)
+        self.textView.font = Global.theme.font(for: .regularText)
         self.textView.textContainerInset = UIEdgeInsetsMake(
             0,
             -self.textView.textContainer.lineFragmentPadding,

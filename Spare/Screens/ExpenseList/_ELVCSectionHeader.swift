@@ -44,11 +44,11 @@ class _ELVCSectionHeader: UITableViewHeaderFooterView, Themeable {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.leftLabel.font = Font.regular(14)
+        self.leftLabel.font = Global.theme.font(for: .tableViewHeader)
         self.leftLabel.numberOfLines = 1
         self.leftLabel.textAlignment = .left
         
-        self.rightLabel.font = Font.regular(14)
+        self.rightLabel.font = Global.theme.font(for: .tableViewHeader)
         self.rightLabel.numberOfLines = 1
         self.rightLabel.textAlignment = .right
         

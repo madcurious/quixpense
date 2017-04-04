@@ -50,12 +50,19 @@ struct LightTheme: Theme {
         switch element {
         case .cellSecondaryText,
              .tableViewHeader:
-            return UIFont(name: "NotoSansUI", size: 14)!
+            return NotoSansUI.regular(14)
+            
+        case .infoLabelMainText:
+            return NotoSansUI.regular(24)
+            
+        case .infoLabelSecondaryText:
+            return NotoSansUI.regular(15)
             
         case .navBarTitle:
-            return UIFont(name: "NotoSansUI-Bold", size: 17)!
+            return NotoSansUI.bold(17)
+            
         case .regularText:
-            return UIFont(name: "NotoSansUI", size: 17)!
+            return NotoSansUI.regular(17)
         }
     }
     

@@ -132,7 +132,7 @@ extension ExpenseFilterEditorVC: UITableViewDelegate {
                 return
         }
         
-        headerLabel.font = Font.regular(14)
+        headerLabel.font = Global.theme.font(for: .tableViewHeader)
         headerLabel.textColor = Global.theme.color(for: .groupedTableViewSectionHeaderText)
         headerLabel.numberOfLines = 1
         headerLabel.lineBreakMode = .byTruncatingTail

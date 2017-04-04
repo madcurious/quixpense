@@ -19,7 +19,7 @@ class ValuePickerCell: UITableViewCell, Themeable {
         self.checkmarkImageView.image = UIImage.templateNamed("cellAccessoryCheckmark")
         self.checkmarkImageView.isHidden = true
         
-        self.valueLabel.font = Font.regular(17)
+        self.valueLabel.font = Global.theme.font(for: .regularText)
         
         self.applyTheme()
     }

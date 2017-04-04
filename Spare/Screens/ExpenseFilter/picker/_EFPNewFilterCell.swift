@@ -18,7 +18,7 @@ class _EFPNewFilterCell: UITableViewCell, Themeable {
         
         self.accessoryImageView.image = UIImage.templateNamed("cellAccessoryAdd")
         
-        self.promptLabel.font = Font.regular(17)
+        self.promptLabel.font = Global.theme.font(for: .regularText)
         self.promptLabel.text = "New filter"
         
         self.applyTheme()

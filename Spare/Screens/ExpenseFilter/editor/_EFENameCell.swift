@@ -17,7 +17,7 @@ class _EFENameCell: UITableViewCell {
         
         self.selectionStyle = .none
         
-        self.nameTextField.font = Font.regular(17)
+        self.nameTextField.font = Global.theme.font(for: .regularText)
         self.nameTextField.textColor = Global.theme.color(for: .textFieldValue)
         self.nameTextField.autocapitalizationType = .words
     }

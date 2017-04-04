@@ -39,7 +39,7 @@ class _EFPFilterCell: UITableViewCell, Themeable {
         self.checkmarkImageView.image = UIImage.templateNamed("cellAccessoryCheckmark")
         self.checkmarkImageView.isHidden = true
         
-        self.nameLabel.font = Font.regular(17)
+        self.nameLabel.font = Global.theme.font(for: .regularText)
         self.nameLabel.numberOfLines = 1
         self.nameLabel.lineBreakMode = .byTruncatingTail
         

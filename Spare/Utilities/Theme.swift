@@ -33,6 +33,8 @@ enum UIElement {
 enum StringElement {
     case
     cellSecondaryText,
+    infoLabelMainText,
+    infoLabelSecondaryText,
     navBarTitle,
     regularText,
     tableViewHeader

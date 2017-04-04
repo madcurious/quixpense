@@ -21,7 +21,7 @@ class _EFVCButtonBox: _EFVCFieldBox {
         super.awakeFromNib()
         
         self.fieldButton.backgroundColor = UIColor.clear
-        self.fieldButton.font = Font.regular(17)
+        self.fieldButton.font = Global.theme.font(for: .regularText)
         
         self.applyTheme()
     }

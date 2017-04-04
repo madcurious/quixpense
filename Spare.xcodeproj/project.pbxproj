@@ -94,7 +94,6 @@
 		26A30C8C1E52318D0047307D /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A30C8B1E52318D0047307D /* Theme.swift */; };
 		26A30C8E1E5232240047307D /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A30C8D1E5232240047307D /* Global.swift */; };
 		26A30C921E5235950047307D /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A30C911E5235950047307D /* SettingsVC.swift */; };
-		26A30C981E52417C0047307D /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A30C971E52417C0047307D /* Font.swift */; };
 		26B38F0F1E88FB2C00177CFE /* MakeDefaultDataOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B38F0E1E88FB2C00177CFE /* MakeDefaultDataOperation.swift */; };
 		26B38F111E89068500177CFE /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B38F101E89068500177CFE /* UserDefaultsKey.swift */; };
 		26D6736F1E811BC2009C4DDE /* _ELVCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D6736E1E811BC2009C4DDE /* _ELVCCell.swift */; };
@@ -102,6 +101,7 @@
 		26D6C9A61E93791100DDDAE8 /* EFEVCValuePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D6C9A51E93791100DDDAE8 /* EFEVCValuePickerVC.swift */; };
 		26D6C9A91E93794C00DDDAE8 /* ValuePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D6C9A81E93794C00DDDAE8 /* ValuePickerCell.swift */; };
 		26D6C9AB1E93796D00DDDAE8 /* ValuePickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26D6C9AA1E93796D00DDDAE8 /* ValuePickerCell.xib */; };
+		26D6C9AD1E93807400DDDAE8 /* NotoSansUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D6C9AC1E93807400DDDAE8 /* NotoSansUI.swift */; };
 		26DDDCA81E5C238B001617A1 /* LoadAppVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DDDCA71E5C238B001617A1 /* LoadAppVC.swift */; };
 		26DDDCAA1E5C23AB001617A1 /* _LAVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DDDCA91E5C23AB001617A1 /* _LAVCView.swift */; };
 		26DDDCAC1E5C23C2001617A1 /* _LAVCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26DDDCAB1E5C23C2001617A1 /* _LAVCView.xib */; };
@@ -254,7 +254,6 @@
 		26A30C8B1E52318D0047307D /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		26A30C8D1E5232240047307D /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		26A30C911E5235950047307D /* SettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
-		26A30C971E52417C0047307D /* Font.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		26B38F0E1E88FB2C00177CFE /* MakeDefaultDataOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeDefaultDataOperation.swift; sourceTree = "<group>"; };
 		26B38F101E89068500177CFE /* UserDefaultsKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
 		26D4C8F41946E624001B42DC /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
@@ -263,6 +262,7 @@
 		26D6C9A51E93791100DDDAE8 /* EFEVCValuePickerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EFEVCValuePickerVC.swift; sourceTree = "<group>"; };
 		26D6C9A81E93794C00DDDAE8 /* ValuePickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValuePickerCell.swift; sourceTree = "<group>"; };
 		26D6C9AA1E93796D00DDDAE8 /* ValuePickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ValuePickerCell.xib; sourceTree = "<group>"; };
+		26D6C9AC1E93807400DDDAE8 /* NotoSansUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotoSansUI.swift; sourceTree = "<group>"; };
 		26DDDCA71E5C238B001617A1 /* LoadAppVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadAppVC.swift; sourceTree = "<group>"; };
 		26DDDCA91E5C23AB001617A1 /* _LAVCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _LAVCView.swift; sourceTree = "<group>"; };
 		26DDDCAB1E5C23C2001617A1 /* _LAVCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = _LAVCView.xib; sourceTree = "<group>"; };
@@ -550,13 +550,13 @@
 				269635A31E5457C80001FC05 /* AmountFormatter.swift */,
 				26A30C8B1E52318D0047307D /* Theme.swift */,
 				26A30C8D1E5232240047307D /* Global.swift */,
-				26A30C971E52417C0047307D /* Font.swift */,
 				26331FC11E5B684700AACE68 /* CoreDataStack.swift */,
 				26F57AF01E67DE1B0034FF4B /* Debug.swift */,
 				26FE4E101E6D4D420063258D /* FetchRequest.swift */,
 				26628A2C1E714AB100E80494 /* LightTheme.swift */,
 				265DFB801E87D07300439D9A /* BarButtonItems.swift */,
 				26B38F101E89068500177CFE /* UserDefaultsKey.swift */,
+				26D6C9AC1E93807400DDDAE8 /* NotoSansUI.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -863,9 +863,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26D6C9AD1E93807400DDDAE8 /* NotoSansUI.swift in Sources */,
 				266946931CC77A1A00A68424 /* AppDelegate.swift in Sources */,
 				260DFDC11E55911700E3B92E /* _EFVCButtonBox.swift in Sources */,
-				26A30C981E52417C0047307D /* Font.swift in Sources */,
 				26331FCA1E5B692100AACE68 /* Category+CoreDataClass.swift in Sources */,
 				265DFB6F1E87C4E500439D9A /* ExpenseFilter+Extensions.swift in Sources */,
 				26DDDCA81E5C238B001617A1 /* LoadAppVC.swift in Sources */,

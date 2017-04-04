@@ -27,8 +27,12 @@ class _ELVCView: UIView {
         self.noExpensesLabel.lineBreakMode = .byWordWrapping
         self.noExpensesLabel.isHidden = true
         self.noExpensesLabel.attributedText = NSAttributedString(attributedStrings:
-            NSAttributedString(string: "No expenses found", font: Font.regular(24), textColor: Global.theme.color(for: .promptLabel)),
-                                                                 NSAttributedString(string: "\n\nYou must go out and spend your\nmoney.", font: Font.regular(15), textColor: Global.theme.color(for: .promptLabel))
+            NSAttributedString(string: "No expenses found",
+                               font: Global.theme.font(for: .infoLabelMainText),
+                               textColor: Global.theme.color(for: .promptLabel)),
+                                                                 NSAttributedString(string: "\n\nYou must go out and spend your\nmoney.",
+                                                                                    font: Global.theme.font(for: .infoLabelSecondaryText),
+                                                                                    textColor: Global.theme.color(for: .promptLabel))
         )
         
         self.tableView.delaysContentTouches = false

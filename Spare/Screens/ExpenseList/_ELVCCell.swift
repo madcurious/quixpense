@@ -27,10 +27,10 @@ class _ELVCCell: UITableViewCell, Themeable {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.amountLabel.font = Font.regular(17)
+        self.amountLabel.font = Global.theme.font(for: .regularText)
         self.amountLabel.textAlignment = .left
         
-        self.detailLabel.font = Font.regular(14)
+        self.detailLabel.font = Global.theme.font(for: .cellSecondaryText)
         self.detailLabel.textAlignment = .right
         self.detailLabel.numberOfLines = 1
         self.detailLabel.lineBreakMode = .byTruncatingTail
