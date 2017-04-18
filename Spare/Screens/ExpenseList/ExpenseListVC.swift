@@ -18,7 +18,6 @@ fileprivate enum ViewID: String {
 class ExpenseListVC: UIViewController {
     
     let customView = _ELVCView.instantiateFromNib()
-    let filterButton = MDImageButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30), image: UIImage.templateNamed("filterIcon")!)
     let totalCache = NSCache<NSNumber, NSDecimalNumber>()
     
     let fetchedResultsController: NSFetchedResultsController<Expense> = {
@@ -56,9 +55,6 @@ class ExpenseListVC: UIViewController {
         
         self.navigationItem.leftBarButtonItem = nil
         self.navigationItem.title = "EXPENSES"
-        
-        self.filterButton.addTarget(self, action: #selector(handleTapOnFilterButton), for: .touchUpInside)
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: self.filterButton)
         
         self.customView.tableView.dataSource = self
         self.customView.tableView.delegate = self
@@ -99,13 +95,6 @@ class ExpenseListVC: UIViewController {
             self.totalCache.removeObject(forKey: NSNumber(value: section))
             return NSDecimalNumber(value: 0)
         }
-    }
-    
-    // MARK: - Target actions
-    
-    func handleTapOnFilterButton() {
-        let filterModal = BaseNavBarVC(rootViewController: ExpenseFilterPickerVC())
-        self.present(filterModal, animated: true, completion: nil)
     }
 
 }
