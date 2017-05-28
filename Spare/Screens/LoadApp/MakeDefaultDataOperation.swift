@@ -17,7 +17,6 @@ class MakeDefaultDataOperation: MDOperation {
         self.context = Global.coreDataStack.newBackgroundContext()
         
         self.makeDefaultCategories()
-        self.makeDefaultExpenseFilters()
         
         try self.context.saveToStore()
         
@@ -27,19 +26,6 @@ class MakeDefaultDataOperation: MDOperation {
     private func makeDefaultCategories() {
         let uncategorized = Category(context: self.context)
         uncategorized.name = "Uncategorized"
-    }
-    
-    private func makeDefaultExpenseFilters() {
-        let expenseFilters = [("All Expenses", false),
-                              ("Last 7 days", true),
-                              ("Last 30 days", true)]
-        
-        for i in 0 ..< expenseFilters.count {
-            let filter = ExpenseFilter(context: self.context)
-            filter.name = expenseFilters[i].0
-            filter.isUserEditable = expenseFilters[i].1
-            filter.displayOrder = Double(i + 1)
-        }
     }
     
     deinit {

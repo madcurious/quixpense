@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="16C67" minimumToolsVersion="Xcode 8.0" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16F73" minimumToolsVersion="Xcode 8.0" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Category" representedClassName=".Category" syncable="YES">
         <attribute name="name" attributeType="String" indexed="YES" syncable="YES"/>
         <relationship name="expenses" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Expense" inverseName="category" inverseEntity="Expense" syncable="YES"/>
@@ -8,25 +8,9 @@
         <attribute name="amount" attributeType="Decimal" minValueString="0" syncable="YES"/>
         <attribute name="dateCreated" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="dateSpent" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="note" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="sectionDate" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="expenses" inverseEntity="Category" syncable="YES"/>
-        <relationship name="paymentMethods" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PaymentMethod" inverseName="expenses" inverseEntity="PaymentMethod" syncable="YES"/>
-        <relationship name="subcategories" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Subcategory" inverseName="expenses" inverseEntity="Subcategory" syncable="YES"/>
-    </entity>
-    <entity name="ExpenseFilter" representedClassName=".ExpenseFilter" syncable="YES">
-        <attribute name="displayOrder" attributeType="Double" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="fromDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="isUserEditable" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="name" attributeType="String" syncable="YES"/>
-        <attribute name="rawCategoryIds" optional="YES" attributeType="Transformable" valueTransformerName="ExpenseFilterValueTransformer" syncable="YES"/>
-        <attribute name="rawPaymentMethodIds" optional="YES" attributeType="Transformable" valueTransformerName="ExpenseFilterValueTransformer" syncable="YES"/>
-        <attribute name="rawSubcategoryIds" optional="YES" attributeType="Transformable" valueTransformerName="ExpenseFilterValueTransformer" syncable="YES"/>
-        <attribute name="toDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-    </entity>
-    <entity name="PaymentMethod" representedClassName=".PaymentMethod" syncable="YES">
-        <attribute name="name" attributeType="String" indexed="YES" syncable="YES"/>
-        <relationship name="expenses" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Expense" inverseName="paymentMethods" inverseEntity="Expense" syncable="YES"/>
+        <relationship name="tags" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tag" inverseName="expenses" inverseEntity="Tag" syncable="YES"/>
     </entity>
     <entity name="SPRCategory" representedClassName="SPRCategory" syncable="YES">
         <attribute name="colorNumber" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
@@ -43,17 +27,15 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SPRCategory" inverseName="expenses" inverseEntity="SPRCategory" syncable="YES"/>
     </entity>
-    <entity name="Subcategory" representedClassName=".Subcategory" syncable="YES">
+    <entity name="Tag" representedClassName="Tag" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="expenses" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Expense" inverseName="subcategories" inverseEntity="Expense" syncable="YES"/>
+        <relationship name="expenses" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Expense" inverseName="tags" inverseEntity="Expense" syncable="YES"/>
     </entity>
     <elements>
         <element name="Category" positionX="72" positionY="351" width="128" height="75"/>
-        <element name="Expense" positionX="304" positionY="375" width="128" height="165"/>
-        <element name="ExpenseFilter" positionX="225" positionY="189" width="128" height="165"/>
-        <element name="PaymentMethod" positionX="234" positionY="198" width="128" height="75"/>
+        <element name="Expense" positionX="304" positionY="375" width="128" height="135"/>
         <element name="SPRCategory" positionX="99" positionY="81" width="128" height="30"/>
         <element name="SPRExpense" positionX="378" positionY="36" width="128" height="135"/>
-        <element name="Subcategory" positionX="225" positionY="189" width="128" height="75"/>
+        <element name="Tag" positionX="225" positionY="189" width="128" height="75"/>
     </elements>
 </model>
