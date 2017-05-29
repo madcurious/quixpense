@@ -20,6 +20,8 @@ enum UIElement {
     elvcSectionHeaderText,
     fieldIcon,
     fieldName,
+    filterButtonBackground,
+    filterButtonContent,
     groupedTableViewSectionHeaderText,
     mainBackground,
     pickerFieldValue,
@@ -33,6 +35,7 @@ enum UIElement {
 enum StringElement {
     case
     cellSecondaryText,
+    filterButtonText,
     infoLabelMainText,
     infoLabelSecondaryText,
     navBarTitle,

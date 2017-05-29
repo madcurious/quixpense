@@ -14,6 +14,7 @@ struct LightTheme: Theme {
         switch element {
         case .barBackground,
              .elvcSectionHeaderText,
+             .filterButtonContent,
              .mainBackground,
              .pickerFieldValue:
             return UIColor.white
@@ -34,6 +35,7 @@ struct LightTheme: Theme {
             return UIColor.hex(0x999999)
             
         case .elvcSectionHeaderBackground,
+             .filterButtonBackground,
              .pickerTextFieldBackground:
             return UIColor.hex(0x666666)
             
@@ -49,6 +51,7 @@ struct LightTheme: Theme {
     func font(for element: StringElement) -> UIFont {
         switch element {
         case .cellSecondaryText,
+             .filterButtonText,
              .tableViewHeader:
             return NotoSansUI.regular(14)
             

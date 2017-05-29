@@ -32,7 +32,11 @@ class ExpenseListViewController: MDLoadableViewController {
         return fetchedResultsController
     }()
     
-    let filterButton = ExpenseListFilterButton.instantiateFromNib()
+    let filterButton: FilterButton = {
+        let filterButton = FilterButton.instantiateFromNib()
+        filterButton.sizeToFit()
+        return filterButton
+    }()
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -47,7 +51,6 @@ class ExpenseListViewController: MDLoadableViewController {
     func initialize() {
         self.tabBarItem.image = UIImage.templateNamed("tabIconExpenseList")
         self.navigationItem.titleView = self.filterButton
-        self.filterButton.sizeToFit()
     }
     
     override func loadView() {
