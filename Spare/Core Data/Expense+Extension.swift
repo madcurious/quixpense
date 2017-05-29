@@ -51,7 +51,7 @@ extension Expense {
     func computeSectionDate() {
         // Don't force-unwrap the optional in case the user attempts to save
         // an incomplete expense.
-        guard let dateSpent = self.dateSpent as? Date
+        guard let dateSpent = self.dateSpent as Date?
             else {
                 self.sectionDate = nil
                 return

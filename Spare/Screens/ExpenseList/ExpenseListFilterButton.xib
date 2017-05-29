@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ExpenseListFilterButton" customModule="Spare" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dpa-Wy-rhN">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="S3b-t9-Kpb">
+                            <rect key="frame" x="114.5" y="0.0" width="146" height="100"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S4T-pO-avF">
+                                    <rect key="frame" x="0.0" y="0.0" width="42" height="100"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HiQ-r4-Rgc">
+                                    <rect key="frame" x="46" y="0.0" width="100" height="100"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="HiQ-r4-Rgc" secondAttribute="height" id="TST-Bp-nog"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="HiQ-r4-Rgc" firstAttribute="height" secondItem="S3b-t9-Kpb" secondAttribute="height" id="uX0-yx-nbK"/>
+                            </constraints>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.85098040100000005" green="0.94901961089999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="S3b-t9-Kpb" firstAttribute="top" secondItem="dpa-Wy-rhN" secondAttribute="top" id="B4c-ok-Nyc"/>
+                        <constraint firstAttribute="bottom" secondItem="S3b-t9-Kpb" secondAttribute="bottom" id="jh7-qU-j6k"/>
+                        <constraint firstItem="S3b-t9-Kpb" firstAttribute="width" relation="lessThanOrEqual" secondItem="dpa-Wy-rhN" secondAttribute="width" id="tej-Ws-tYA"/>
+                        <constraint firstItem="S3b-t9-Kpb" firstAttribute="centerX" secondItem="dpa-Wy-rhN" secondAttribute="centerX" id="wAQ-ux-QRh"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="dpa-Wy-rhN" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="VQh-Z2-9eJ"/>
+                <constraint firstAttribute="bottom" secondItem="dpa-Wy-rhN" secondAttribute="bottom" id="lq8-Q7-ThN"/>
+                <constraint firstAttribute="trailing" secondItem="dpa-Wy-rhN" secondAttribute="trailing" id="mgi-Vc-RbJ"/>
+                <constraint firstItem="dpa-Wy-rhN" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="wtc-Cz-cMP"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="arrowImageView" destination="HiQ-r4-Rgc" id="2wD-CP-CY6"/>
+                <outlet property="contentView" destination="dpa-Wy-rhN" id="AHk-vf-0vU"/>
+                <outlet property="filterLabel" destination="S4T-pO-avF" id="JEd-HA-DEF"/>
+            </connections>
+            <point key="canvasLocation" x="-113.5" y="47"/>
+        </view>
+    </objects>
+</document>
