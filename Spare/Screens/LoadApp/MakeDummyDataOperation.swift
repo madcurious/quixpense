@@ -18,16 +18,15 @@ private let kCategoryNames = [
     "Vacation"
 ]
 
-class MakeDummyDataOperation: MDOperation {
+class MakeDummyDataOperation: MDOperation<Any?> {
     
     var context: NSManagedObjectContext!
     
     override func makeResult(from source: Any?) throws -> Any? {
         self.context = Global.coreDataStack.newBackgroundContext()
-        
+
         self.makeCategories()
         self.makeExpenses()
-        
         try self.context.saveToStore()
         
         return nil

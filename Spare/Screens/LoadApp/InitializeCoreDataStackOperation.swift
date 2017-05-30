@@ -9,7 +9,7 @@
 import Mold
 import CoreData
 
-class InitializeCoreDataStackOperation: MDAsynchronousOperation {
+class InitializeCoreDataStackOperation: MDAsynchronousOperation<NSPersistentContainer> {
     
     override func main() {
         self.runStartBlock()

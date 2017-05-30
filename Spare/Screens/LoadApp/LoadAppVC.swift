@@ -10,8 +10,9 @@ import UIKit
 import Mold
 import CoreData
 
-class LoadAppVC: MDOperationViewController {
+class LoadAppVC: MDLoadableViewController {
     
+    let operationQueue = OperationQueue()
     let customView = _LAVCView.instantiateFromNib()
     
     override func loadView() {
@@ -20,8 +21,26 @@ class LoadAppVC: MDOperationViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let initializeOperation = InitializeCoreDataStackOperation()
+        initializeOperation.successBlock = {[unowned self] persistentContainer in
+            let coreDataStack = CoreDataStack(persistentContainer: persistentContainer)
+            Global.coreDataStack = coreDataStack
+            self.navigationController?.pushViewController(MainTabBarVC(), animated: true)
+        }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.customView.activityIndicator.startAnimating()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.customView.activityIndicator.stopAnimating()
+    }
+    
+    /*
     override func makeOperations() -> [MDOperation]? {
         var operations = [MDOperation]()
         
@@ -82,5 +101,6 @@ class LoadAppVC: MDOperationViewController {
             MDErrorDialog.showError(error, from: self)
         }
     }
+ */
     
 }

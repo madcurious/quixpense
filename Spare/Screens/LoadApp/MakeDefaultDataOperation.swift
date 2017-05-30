@@ -9,7 +9,7 @@
 import CoreData
 import Mold
 
-class MakeDefaultDataOperation: MDOperation {
+class MakeDefaultDataOperation: MDOperation<Any?> {
     
     var context: NSManagedObjectContext!
     
@@ -26,10 +26,6 @@ class MakeDefaultDataOperation: MDOperation {
     private func makeDefaultCategories() {
         let uncategorized = Category(context: self.context)
         uncategorized.name = "Uncategorized"
-    }
-    
-    deinit {
-        print("Deinit \(self)")
     }
     
 }

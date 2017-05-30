@@ -12,9 +12,4 @@ class _LAVCView: UIView {
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        self.activityIndicator.startAnimating()
-    }
-    
 }
