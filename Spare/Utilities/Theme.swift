@@ -16,10 +16,17 @@ enum UIElement {
     cellSecondaryText,
     cellAccessoryIcon,
     cellAccessoryDisclosureIndicator,
+    
+    /// Main tint color for buttons and controls.
+    controlTint,
+    
     elvcSectionHeaderBackground,
     elvcSectionHeaderText,
     fieldIcon,
+    
+    /// For labels that name a field or a setting in a grouped table view.
     fieldName,
+    
     filterButtonBackground,
     filterButtonContent,
     groupedTableViewSectionHeaderText,
@@ -39,6 +46,7 @@ enum StringElement {
     infoLabelMainText,
     infoLabelSecondaryText,
     navBarTitle,
+    optionLabel,
     regularText,
     tableViewHeader
 }

@@ -22,6 +22,7 @@ struct LightTheme: Theme {
         case .barTint,
              .cellMainText,
              .cellAccessoryIcon,
+             .controlTint,
              .textFieldValue:
             return UIColor.black
             
@@ -52,6 +53,7 @@ struct LightTheme: Theme {
         switch element {
         case .cellSecondaryText,
              .filterButtonText,
+             .optionLabel,
              .tableViewHeader:
             return NotoSansUI.regular(14)
             
