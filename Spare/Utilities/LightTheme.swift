@@ -32,20 +32,16 @@ struct LightTheme: Theme {
             return UIColor.hex(0xdddddd)
             
         case .cellSecondaryText,
-             .groupedTableViewSectionHeaderText:
+             .fieldIcon,
+             .fieldName,
+             .groupedTableViewSectionHeaderText,
+             .promptLabel:
             return UIColor.hex(0x999999)
             
         case .elvcSectionHeaderBackground,
              .filterButtonBackground,
              .pickerTextFieldBackground:
             return UIColor.hex(0x666666)
-            
-        case .fieldIcon,
-             .fieldName:
-            return UIColor.hex(0xbbbbbb)
-            
-        case .promptLabel:
-            return UIColor.hex(0xaaaaaa)
         }
     }
     

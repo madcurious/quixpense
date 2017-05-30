@@ -117,7 +117,7 @@ extension ExpenseListViewController {
         
         popoverController.sourceView = self.filterButton
         popoverController.sourceRect = self.filterButton.frame
-        
+        popoverController.permittedArrowDirections = [.up]
         let filterPopupViewSize = filterPopup.customView.sizeThatFits(CGSize(width: 300, height: CGFloat.greatestFiniteMagnitude))
         modal.preferredContentSize = CGSize(width: 300,
                                             height: filterPopupViewSize.height)

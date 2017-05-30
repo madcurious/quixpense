@@ -10,14 +10,45 @@ import UIKit
 
 class FilterPopupView: UIView, Themeable {
     
+    @IBOutlet weak var contentStackView: UIStackView!
+    
     @IBOutlet weak var periodizationLabel: UILabel!
     @IBOutlet weak var periodizationControl: UISegmentedControl!
     
     @IBOutlet weak var groupingLabel: UILabel!
     @IBOutlet weak var groupingControl: UISegmentedControl!
     
+    
+    @IBOutlet weak var contentLeading: NSLayoutConstraint!
+    @IBOutlet weak var contentTop: NSLayoutConstraint!
+    @IBOutlet weak var contentTrailing: NSLayoutConstraint!
+    @IBOutlet weak var contentBottom: NSLayoutConstraint!
+    
+    
+    let contentInsets = UIEdgeInsets(top: 10, left: 10, bottom: 30, right: 10)
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        self.periodizationLabel.text = "PERIODIZATION"
+        let periodizationTexts = [Filter.Periodization.Daily.text(),
+                                  Filter.Periodization.Weekly.text(),
+                                  Filter.Periodization.Monthly.text()]
+        for i in 0 ..< periodizationTexts.count {
+            self.periodizationControl.setTitle(periodizationTexts[i], forSegmentAt: i)
+        }
+        
+        self.groupingLabel.text = "GROUPING"
+        let groupingTexts = [Filter.Grouping.Categories.text().capitalized,
+                             Filter.Grouping.Tags.text().capitalized]
+        for i in 0 ..< groupingTexts.count {
+            self.groupingControl.setTitle(groupingTexts[i], forSegmentAt: i)
+        }
+        
+        self.contentTop.constant = self.contentInsets.top
+        self.contentTrailing.constant = self.contentInsets.right
+        self.contentBottom.constant = self.contentInsets.bottom
+        self.contentLeading.constant = self.contentInsets.left
         
         self.applyTheme()
     }
@@ -39,5 +70,11 @@ class FilterPopupView: UIView, Themeable {
         self.periodizationControl.tintColor = Global.theme.color(for: .controlTint)
         self.groupingControl.tintColor = Global.theme.color(for: .controlTint)
     }
+    
+//    override func sizeThatFits(_ size: CGSize) -> CGSize {
+//        let stackViewSize = self.contentStackView.sizeThatFits(size)
+//        let totalSize = CGSize(width: stackViewSize.width + kSidePadding * 2, height: stackViewSize.height + kSidePadding * 2)
+//        return totalSize
+//    }
     
 }
