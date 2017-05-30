@@ -12,7 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="FilterPopupView" customModule="Spare" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="145"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="155"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="uzo-wv-rqv">
@@ -60,7 +60,7 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="uzo-wv-rqv" secondAttribute="bottom" constant="10" id="J7E-12-cHm"/>
+                <constraint firstAttribute="bottom" secondItem="uzo-wv-rqv" secondAttribute="bottom" constant="20" id="J7E-12-cHm"/>
                 <constraint firstAttribute="trailing" secondItem="uzo-wv-rqv" secondAttribute="trailing" constant="10" id="L6o-aV-eVf"/>
                 <constraint firstItem="uzo-wv-rqv" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="q04-8n-IjP"/>
                 <constraint firstItem="uzo-wv-rqv" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="q7D-OL-Zf1"/>
