@@ -11,8 +11,6 @@ import Mold
 
 class FilterButton: MDButton, Themeable {
     
-    @IBOutlet weak var roundedRectView: UIView!
-    @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var filterLabel: UILabel!
     @IBOutlet weak var arrowImageView: UIImageView!
     
@@ -21,14 +19,11 @@ class FilterButton: MDButton, Themeable {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-//        self.backgroundColor = .red
-//        self.filterLabel.backgroundColor = .yellow
-//        self.arrowImageView.backgroundColor = .green
-        UIView.clearBackgroundColors(self, self.filterLabel, self.arrowImageView)
-        
+        self.backgroundColor = .clear
         self.clipsToBounds = true
         
-        self.roundedRectView.isUserInteractionEnabled = false
+        self.filterLabel.isUserInteractionEnabled = false
+        self.arrowImageView.isUserInteractionEnabled = false
         
         self.filterLabel.font = Global.theme.font(for: .filterButtonText)
         self.filterLabel.numberOfLines = 1
@@ -41,19 +36,25 @@ class FilterButton: MDButton, Themeable {
         self.applyTheme()
     }
     
+    override func sizeThatFits(_ size: CGSize) -> CGSize {
+        return CGSize(width: self.filterLabel.sizeThatFits(size).width + self.arrowImageView.sizeThatFits(size).width, height: 30)
+    }
+    
     func applyTheme() {
-        self.roundedRectView.backgroundColor = Global.theme.color(for: .filterButtonBackground)
         self.filterLabel.textColor = Global.theme.color(for: .filterButtonContent)
         self.arrowImageView.tintColor = Global.theme.color(for: .filterButtonContent)
     }
     
+    override func draw(_ rect: CGRect) {
+        let roundedRectPath = UIBezierPath(roundedRect: self.filterLabel.frame,
+                                           cornerRadius: self.filterLabel.frame.size.height / 2)
+        Global.theme.color(for: .filterButtonBackground).setFill()
+        roundedRectPath.fill()
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.frame = CGRect(x: self.frame.origin.x,
-                            y: self.frame.origin.y,
-                            width: self.roundedRectView.sizeThatFits(CGSize.max).width,
-                            height: self.bounds.size.height)
-        self.roundedRectView.layer.cornerRadius = self.roundedRectView.bounds.size.height / 2
+        self.setNeedsDisplay()
     }
     
 }
