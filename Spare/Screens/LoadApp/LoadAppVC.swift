@@ -28,6 +28,7 @@ class LoadAppVC: MDLoadableViewController {
             Global.coreDataStack = coreDataStack
             self.navigationController?.pushViewController(MainTabBarVC(), animated: true)
         }
+        self.operationQueue.addOperation(initializeOperation)
     }
     
     override func viewWillAppear(_ animated: Bool) {
