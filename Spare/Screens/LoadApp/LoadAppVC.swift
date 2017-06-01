@@ -26,7 +26,16 @@ class LoadAppVC: MDLoadableViewController {
         initializeOperation.successBlock = {[unowned self] persistentContainer in
             let coreDataStack = CoreDataStack(persistentContainer: persistentContainer)
             Global.coreDataStack = coreDataStack
-            self.navigationController?.pushViewController(MainTabBarVC(), animated: true)
+            
+            if Debug.shouldGenerateDummyData {
+                let makeDummyDataOperation = MakeDummyDataOperation()
+                makeDummyDataOperation.successBlock = {[unowned self] _ in
+                    self.navigationController?.pushViewController(MainTabBarVC(), animated: true)
+                }
+                self.operationQueue.addOperation(makeDummyDataOperation)
+            } else {
+                self.navigationController?.pushViewController(MainTabBarVC(), animated: true)
+            }
         }
         self.operationQueue.addOperation(initializeOperation)
     }

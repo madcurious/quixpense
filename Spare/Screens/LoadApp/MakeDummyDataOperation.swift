@@ -24,7 +24,7 @@ class MakeDummyDataOperation: MDOperation<Any?> {
     
     override func makeResult(from source: Any?) throws -> Any? {
         self.context = Global.coreDataStack.newBackgroundContext()
-
+        
         self.makeCategories()
         self.makeExpenses()
         try self.context.saveToStore()
@@ -49,7 +49,7 @@ class MakeDummyDataOperation: MDOperation<Any?> {
     }
     
     func makeExpenses() {
-        let fromDate: Date = {
+        let lastDate: Date = {
             let expenseFetch = NSFetchRequest<Expense>(entityName: "Expense")
             var expenses = try! self.context.fetch(expenseFetch)
             if expenses.count == 0 {
@@ -68,16 +68,17 @@ class MakeDummyDataOperation: MDOperation<Any?> {
         
         let toDate = Date()
         
-        if fromDate.isSameDayAsDate(toDate) {
+        if lastDate.isSameDayAsDate(toDate) {
+            print("From and to date are the same, not making any new expenses.")
             return
         }
         
-        let numberOfDays = Calendar.current.dateComponents([.day], from: fromDate, to: toDate).day!
+        let numberOfDays = Calendar.current.dateComponents([.day], from: lastDate, to: toDate).day!
         let categoryFetch = NSFetchRequest<Category>(entityName: "Category")
         let categories = try! self.context.fetch(categoryFetch)
-        var dateSpent = fromDate
+        var dateSpent = Calendar.current.date(byAdding: .day, value: 1, to: lastDate)!
         
-        print("fromDate: \(fromDate)")
+        print("fromDate: \(lastDate)")
         print("toDate: \(toDate)")
         print("Making dummy expenses for \(numberOfDays) days...")
         print("===============")
@@ -87,7 +88,7 @@ class MakeDummyDataOperation: MDOperation<Any?> {
             for category in categories {
                 // Make 0-10 expenses.
                 let numberOfExpenses = arc4random_uniform(10)
-//                print("- Making \(numberOfExpenses) expenses for category '\(category.name!)'")
+                print("- Making \(numberOfExpenses) expenses for category '\(category.name!)'")
                 
                 for _ in 0 ..< numberOfExpenses {
                     // Generate amount from 1-3000 pesos.
@@ -98,7 +99,7 @@ class MakeDummyDataOperation: MDOperation<Any?> {
                     newExpense.amount = NSDecimalNumber(value: amount)
                     newExpense.dateSpent = dateSpent as NSDate
                     
-//                    print("-- amount: \(amount)")
+                    print("-- amount: \(amount)")
                 }
             }
             
