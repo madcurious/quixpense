@@ -8,6 +8,12 @@
 
 import UIKit
 
+fileprivate let kSectionDateFormatter: DateFormatter = {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "dd MMM yyyy"
+    return dateFormatter
+}()
+
 class _ELVCSectionHeader: UITableViewHeaderFooterView, Themeable {
     
     @IBOutlet weak var leftLabel: UILabel!
@@ -30,7 +36,7 @@ class _ELVCSectionHeader: UITableViewHeaderFooterView, Themeable {
                     self.leftLabel.text = nil
                     return
             }
-            self.leftLabel.text = Expense.sectionDateFomatter().string(from: sectionDate)
+            self.leftLabel.text = kSectionDateFormatter.string(from: sectionDate)
         }
     }
     

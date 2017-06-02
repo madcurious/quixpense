@@ -10,32 +10,31 @@ import Foundation
 import CoreData
 import Mold
 
-fileprivate let kSectionDateFormatter: DateFormatter = {
-    let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "dd MMM yyyy"
-    return dateFormatter
-}()
-
 extension Expense {
     
-    class func sectionDateFomatter() -> DateFormatter {
-        return kSectionDateFormatter
-    }
-    
+    /// Automatically invoked by Core Data when the receiver is first inserted into a managed object context.
     public override func awakeFromInsert() {
         super.awakeFromInsert()
-        self.dateCreated = Date() as NSDate
         self.setupKVOForSectionDate()
     }
     
+    /// Automatically invoked by Core Data when the managed object has been fetched.
     public override func awakeFromFetch() {
         super.awakeFromFetch()
         self.setupKVOForSectionDate()
     }
     
+    /// Automatically invoked by Core Data upon undo, redo, or "other multi-property state change."
     public override func awake(fromSnapshotEvents flags: NSSnapshotEventType) {
         super.awake(fromSnapshotEvents: flags)
         self.computeSectionDate()
+    }
+    
+    /// Invoked automatically by the Core Data framework when the receiver’s managed object context is saved.
+    public override func willSave() {
+        if self.dateCreated == nil && self.isDeleted == false {
+            self.dateCreated = Date() as NSDate
+        }
     }
     
     func setupKVOForSectionDate() {

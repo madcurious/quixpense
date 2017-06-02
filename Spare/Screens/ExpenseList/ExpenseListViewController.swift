@@ -28,7 +28,10 @@ class ExpenseListViewController: MDLoadableViewController {
         ]
         fetchRequest.fetchBatchSize = 30
         
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: Global.coreDataStack.viewContext, sectionNameKeyPath: #keyPath(Expense.sectionDate), cacheName: "ExpenseListVCCache")
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
+                                                                  managedObjectContext: Global.coreDataStack.viewContext,
+                                                                  sectionNameKeyPath: #keyPath(Expense.sectionDate),
+                                                                  cacheName: "ExpenseListVCCache")
         return fetchedResultsController
     }()
     
