@@ -26,23 +26,31 @@ class LoadAppVC: UIViewController {
         initializeOperation.successBlock = {[unowned self] persistentContainer in
             let coreDataStack = CoreDataStack(persistentContainer: persistentContainer)
             Global.coreDataStack = coreDataStack
-            self.navigationController?.pushViewController(MainTabBarVC(), animated: true)
+//            self.navigationController?.pushViewController(MainTabBarVC(), animated: true)
 //            if Debug.shouldGenerateDummyData == false {
 //                self.navigationController?.pushViewController(MainTabBarVC(), animated: true)
 //            }
-        }
-        
-        if Debug.shouldGenerateDummyData {
+            
             let makeDummyDataOperation = MakeDummyDataOperation()
             makeDummyDataOperation.successBlock = {[unowned self] _ in
                 self.navigationController?.pushViewController(MainTabBarVC(), animated: true)
             }
-            makeDummyDataOperation.addDependency(initializeOperation)
-            
-            self.operationQueue?.addOperations([makeDummyDataOperation, initializeOperation], waitUntilFinished: false)
-        } else {
-            self.operationQueue?.addOperation(initializeOperation)
+            makeDummyDataOperation.presentErrorDialogOnFailure(from: self)
+            self.operationQueue?.addOperation(makeDummyDataOperation)
         }
+        self.operationQueue?.addOperation(initializeOperation)
+        
+//        if Debug.shouldGenerateDummyData {
+//            let makeDummyDataOperation = MakeDummyDataOperation()
+//            makeDummyDataOperation.successBlock = {[unowned self] _ in
+//                self.navigationController?.pushViewController(MainTabBarVC(), animated: true)
+//            }
+//            makeDummyDataOperation.addDependency(initializeOperation)
+//            
+//            self.operationQueue?.addOperations([makeDummyDataOperation, initializeOperation], waitUntilFinished: false)
+//        } else {
+//            self.operationQueue?.addOperation(initializeOperation)
+//        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,8 +61,8 @@ class LoadAppVC: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.customView.activityIndicator.stopAnimating()
-        print("operations: \(self.operationQueue!.operations)")
-        self.operationQueue = nil
+//        print("operations: \(self.operationQueue!.operations)")
+//        self.operationQueue = nil
     }
     
     /*
