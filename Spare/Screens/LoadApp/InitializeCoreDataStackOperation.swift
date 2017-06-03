@@ -30,10 +30,8 @@ class InitializeCoreDataStackOperation: MDAsynchronousOperation<NSPersistentCont
             }
             
             if let error = error {
-                self.runReturnBlock()
                 self.runFailureBlock(error: error)
             } else {
-                self.runReturnBlock()
                 self.runSuccessBlock(result: persistentContainer)
             }
         })

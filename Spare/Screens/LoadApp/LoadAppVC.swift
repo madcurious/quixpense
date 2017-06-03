@@ -10,9 +10,9 @@ import UIKit
 import Mold
 import CoreData
 
-class LoadAppVC: MDLoadableViewController {
+class LoadAppVC: UIViewController {
     
-    let operationQueue = OperationQueue()
+    var operationQueue: OperationQueue? = OperationQueue()
     let customView = _LAVCView.instantiateFromNib()
     
     override func loadView() {
@@ -26,18 +26,23 @@ class LoadAppVC: MDLoadableViewController {
         initializeOperation.successBlock = {[unowned self] persistentContainer in
             let coreDataStack = CoreDataStack(persistentContainer: persistentContainer)
             Global.coreDataStack = coreDataStack
-            
-            if Debug.shouldGenerateDummyData {
-                let makeDummyDataOperation = MakeDummyDataOperation()
-                makeDummyDataOperation.successBlock = {[unowned self] _ in
-                    self.navigationController?.pushViewController(MainTabBarVC(), animated: true)
-                }
-                self.operationQueue.addOperation(makeDummyDataOperation)
-            } else {
+            self.navigationController?.pushViewController(MainTabBarVC(), animated: true)
+//            if Debug.shouldGenerateDummyData == false {
+//                self.navigationController?.pushViewController(MainTabBarVC(), animated: true)
+//            }
+        }
+        
+        if Debug.shouldGenerateDummyData {
+            let makeDummyDataOperation = MakeDummyDataOperation()
+            makeDummyDataOperation.successBlock = {[unowned self] _ in
                 self.navigationController?.pushViewController(MainTabBarVC(), animated: true)
             }
+            makeDummyDataOperation.addDependency(initializeOperation)
+            
+            self.operationQueue?.addOperations([makeDummyDataOperation, initializeOperation], waitUntilFinished: false)
+        } else {
+            self.operationQueue?.addOperation(initializeOperation)
         }
-        self.operationQueue.addOperation(initializeOperation)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,6 +53,8 @@ class LoadAppVC: MDLoadableViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.customView.activityIndicator.stopAnimating()
+        print("operations: \(self.operationQueue!.operations)")
+        self.operationQueue = nil
     }
     
     /*

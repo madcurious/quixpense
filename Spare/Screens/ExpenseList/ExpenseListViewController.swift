@@ -20,18 +20,33 @@ class ExpenseListViewController: MDLoadableViewController {
     let customView = ExpenseListView.instantiateFromNib()
     let totalCache = NSCache<NSNumber, NSDecimalNumber>()
     
-    let fetchedResultsController: NSFetchedResultsController<Expense> = {
-        let fetchRequest = FetchRequest<Expense>.make()
+    let fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult> = {
+//        let fetchRequest = FetchRequest<Expense>.make()
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Expense")
+        fetchRequest.resultType = .dictionaryResultType
         fetchRequest.sortDescriptors = [
-            NSSortDescriptor(key: #keyPath(Expense.sectionDate), ascending: false),
-            NSSortDescriptor(key: #keyPath(Expense.dateCreated), ascending: false)
+            NSSortDescriptor(key: #keyPath(Expense.sectionDate), ascending: false)
+//            NSSortDescriptor(key: #keyPath(Expense.dateCreated), ascending: false)
         ]
-        fetchRequest.fetchBatchSize = 30
+        
+//        let sumExpressionDescription = NSExpressionDescription()
+//        sumExpressionDescription.name = "sum"
+//        sumExpressionDescription.expressionResultType = .decimalAttributeType
+//        sumExpressionDescription.expression = NSExpression(forFunction: "sum:", arguments: [#keyPath(Expense.amount)])
+        
+        fetchRequest.propertiesToFetch = [
+            #keyPath(Expense.category)
+//            sumExpressionDescription
+        ]
+        fetchRequest.propertiesToGroupBy = [
+            #keyPath(Expense.category)
+        ]
+        fetchRequest.fetchLimit = 50
         
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
                                                                   managedObjectContext: Global.coreDataStack.viewContext,
                                                                   sectionNameKeyPath: #keyPath(Expense.sectionDate),
-                                                                  cacheName: "ExpenseListVCCache")
+                                                                  cacheName: nil)
         return fetchedResultsController
     }()
     
@@ -65,16 +80,20 @@ class ExpenseListViewController: MDLoadableViewController {
         
         self.filterButton.addTarget(self, action: #selector(handleTapOnFilterButton), for: .touchUpInside)
         
-        self.fetchedResultsController.delegate = self
+//        self.fetchedResultsController.delegate = self
         
         do {
             try self.fetchedResultsController.performFetch()
-            if let count = self.fetchedResultsController.fetchedObjects?.count {
-                if count == 0 {
-                    self.updateView(forState: .empty)
-                } else {
-                    self.updateView(forState: .showing)
-                }
+//            if let count = self.fetchedResultsController.fetchedObjects?.count {
+//                if count == 0 {
+//                    self.updateView(forState: .empty)
+//                } else {
+//                    self.updateView(forState: .showing)
+//                }
+//            }
+            
+            if let fetchedObjects = self.fetchedResultsController.fetchedObjects {
+                print(fetchedObjects)
             }
         } catch {
             
