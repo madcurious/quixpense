@@ -27,7 +27,13 @@ class MakeDummyDataOperation: MDOperation<Any?> {
         
         self.makeCategories()
         self.makeExpenses()
-        try self.context.saveToStore()
+        
+        do {
+            try self.context.saveToStore()
+        } catch {
+            print((error as NSError).userInfo)
+            throw error
+        }
         
         return nil
     }

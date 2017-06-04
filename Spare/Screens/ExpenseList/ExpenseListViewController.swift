@@ -21,27 +21,29 @@ class ExpenseListViewController: MDLoadableViewController {
     let totalCache = NSCache<NSNumber, NSDecimalNumber>()
     
     let fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult> = {
-//        let fetchRequest = FetchRequest<Expense>.make()
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Expense")
         fetchRequest.resultType = .dictionaryResultType
+        
         fetchRequest.sortDescriptors = [
             NSSortDescriptor(key: #keyPath(Expense.sectionDate), ascending: false)
 //            NSSortDescriptor(key: #keyPath(Expense.dateCreated), ascending: false)
         ]
         
-//        let sumExpressionDescription = NSExpressionDescription()
-//        sumExpressionDescription.name = "sum"
-//        sumExpressionDescription.expressionResultType = .decimalAttributeType
-//        sumExpressionDescription.expression = NSExpression(forFunction: "sum:", arguments: [#keyPath(Expense.amount)])
+        let sumExpressionDescription = NSExpressionDescription()
+        sumExpressionDescription.name = "sum"
+        sumExpressionDescription.expressionResultType = .decimalAttributeType
+        sumExpressionDescription.expression = NSExpression(forFunction: "sum:", arguments: [#keyPath(Expense.amount)])
+        
         
         fetchRequest.propertiesToFetch = [
-            #keyPath(Expense.category)
-//            sumExpressionDescription
+            #keyPath(Expense.sectionDate),
+            #keyPath(Expense.category),
+            sumExpressionDescription
         ]
         fetchRequest.propertiesToGroupBy = [
+            #keyPath(Expense.sectionDate),
             #keyPath(Expense.category)
         ]
-        fetchRequest.fetchLimit = 50
         
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
                                                                   managedObjectContext: Global.coreDataStack.viewContext,
@@ -92,8 +94,12 @@ class ExpenseListViewController: MDLoadableViewController {
 //                }
 //            }
             
-            if let fetchedObjects = self.fetchedResultsController.fetchedObjects {
-                print(fetchedObjects)
+            for i in 0 ..< (self.fetchedResultsController.sections?.count ?? 0) {
+                print("section: \(self.fetchedResultsController.sections![i].name)")
+                
+                for j in 0 ..< self.fetchedResultsController.sections![i].numberOfObjects {
+                    print("object: \(self.fetchedResultsController.object(at: IndexPath(item: j, section: i)))")
+                }
             }
         } catch {
             

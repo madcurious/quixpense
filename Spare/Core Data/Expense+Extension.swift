@@ -15,6 +15,7 @@ extension Expense {
     /// Automatically invoked by Core Data when the receiver is first inserted into a managed object context.
     public override func awakeFromInsert() {
         super.awakeFromInsert()
+        self.dateCreated = Date() as NSDate
         self.setupKVOForSectionDate()
     }
     
@@ -28,13 +29,6 @@ extension Expense {
     public override func awake(fromSnapshotEvents flags: NSSnapshotEventType) {
         super.awake(fromSnapshotEvents: flags)
         self.computeSectionDate()
-    }
-    
-    /// Invoked automatically by the Core Data framework when the receiver’s managed object context is saved.
-    public override func willSave() {
-        if self.dateCreated == nil && self.isDeleted == false {
-            self.dateCreated = Date() as NSDate
-        }
     }
     
     func setupKVOForSectionDate() {
