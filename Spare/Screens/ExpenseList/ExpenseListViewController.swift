@@ -33,6 +33,17 @@ class ExpenseListViewController: MDLoadableViewController {
 //        return fetchedResultsController
 //    }()
     
+    let fetchedResultsController: NSFetchedResultsController<CategorySection> = {
+        let fetchRequest = NSFetchRequest<CategorySection>(entityName: "CategorySection")
+        fetchRequest.sortDescriptors = [
+            NSSortDescriptor(key: #keyPath(CategorySection.sectionDate), ascending: false)
+        ]
+        return NSFetchedResultsController(fetchRequest: fetchRequest,
+                                          managedObjectContext: Global.coreDataStack.viewContext,
+                                          sectionNameKeyPath: #keyPath(CategorySection.sectionDate),
+                                          cacheName: "CacheName")
+    }()
+    
     let filterButton: FilterButton = {
         let filterButton = FilterButton.instantiateFromNib()
         filterButton.sizeToFit()
@@ -65,8 +76,8 @@ class ExpenseListViewController: MDLoadableViewController {
         
 //        self.fetchedResultsController.delegate = self
         
-//        do {
-//            try self.fetchedResultsController.performFetch()
+        do {
+            try self.fetchedResultsController.performFetch()
 //            if let count = self.fetchedResultsController.fetchedObjects?.count {
 //                if count == 0 {
 //                    self.updateView(forState: .empty)
@@ -75,16 +86,31 @@ class ExpenseListViewController: MDLoadableViewController {
 //                }
 //            }
             
-//            for i in 0 ..< (self.fetchedResultsController.sections?.count ?? 0) {
-//                print("section: \(self.fetchedResultsController.sections![i].name)")
-//                
-//                for j in 0 ..< self.fetchedResultsController.sections![i].numberOfObjects {
-//                    print("object: \(self.fetchedResultsController.object(at: IndexPath(item: j, section: i)))")
-//                }
-//            }
-//        } catch {
-//            
-//        }
+            for i in 0 ..< (self.fetchedResultsController.sections?.count ?? 0) {
+                print("sectionDate: \(self.fetchedResultsController.sections![i].name)")
+                
+                for j in 0 ..< self.fetchedResultsController.sections![i].numberOfObjects {
+                    let section = self.fetchedResultsController.object(at: IndexPath(item: j, section: i))
+                    print("    category: \(section.category!.name!)")
+                    print("    total: \(AmountFormatter.displayText(for: section.total))")
+                    
+                    guard let expenses = section.expenses?.allObjects as? [Expense]
+                        else {
+                            print("    no expenses")
+                            continue
+                    }
+                    
+                    print("    numberOfExpenses: \(expenses.count)")
+//                    expenses.forEach {
+//                        print("    expense: \($0)")
+//                    }
+                    print("    expenses total: \(AmountFormatter.displayText(for: expenses.total()))")
+                }
+                print("=================")
+            }
+        } catch {
+            
+        }
     }
     
     override func updateView(forState state: MDLoadableViewController.State) {
