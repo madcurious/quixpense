@@ -101,6 +101,11 @@ class MakeDummyDataOperation: MDOperation<Any?> {
                 let numberOfExpenses = arc4random_uniform(10)
                 print("- Making \(numberOfExpenses) expenses for category '\(category.name!)'")
                 
+                if numberOfExpenses == 0 {
+                    // Avoid making section entities if there will be no expenses to begin with.
+                    continue
+                }
+                
                 let categorySection = CategorySection(context: self.context)
                 categorySection.category = category
                 categorySection.sectionDate = sectionDate as NSDate
