@@ -91,22 +91,39 @@ class MakeDummyDataOperation: MDOperation<Any?> {
         
         for i in 0 ..< numberOfDays {
             print("Current date (day \(i + 1)): \(dateSpent)")
+            
+            // Remove the time components.
+            let components = Calendar.current.dateComponents([.month, .day, .year], from: dateSpent)
+            let sectionDate = Calendar.current.date(from: components)!
+            
             for category in categories {
                 // Make 0-10 expenses.
                 let numberOfExpenses = arc4random_uniform(10)
                 print("- Making \(numberOfExpenses) expenses for category '\(category.name!)'")
                 
+                let categorySection = CategorySection(context: self.context)
+                categorySection.category = category
+                categorySection.sectionDate = sectionDate as NSDate
+                
+                var categorySectionTotal = 0.0
+                var expenses = [Expense]()
+                
                 for _ in 0 ..< numberOfExpenses {
                     // Generate amount from 1-3000 pesos.
                     let amount = 1 + (2500 * Double(arc4random()) / Double(UInt32.max))
+                    categorySectionTotal += amount
                     
                     let newExpense = Expense(context: self.context)
                     newExpense.category = category
                     newExpense.amount = NSDecimalNumber(value: amount)
                     newExpense.dateSpent = dateSpent as NSDate
+                    expenses.append(newExpense)
                     
                     print("-- amount: \(amount)")
                 }
+                
+                categorySection.total = NSDecimalNumber(value: categorySectionTotal)
+                categorySection.expenses = NSSet(array: expenses)
             }
             
             dateSpent = Calendar.current.date(byAdding: .day, value: 1, to: dateSpent)!
