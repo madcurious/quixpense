@@ -69,12 +69,13 @@ class ExpenseListViewController: MDLoadableViewController {
                                                 forCellWithReuseIdentifier: ViewID.groupCell.rawValue)
         self.customView.collectionView.dataSource = self
         self.customView.collectionView.delegate = self
-        if let flowLayout = self.customView.collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            flowLayout.minimumLineSpacing = 0
-            flowLayout.minimumInteritemSpacing = 0
-        }
         
         self.performFetch()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        self.customView.collectionView.collectionViewLayout.invalidateLayout()
     }
     
     func performFetch() {
@@ -190,7 +191,13 @@ extension ExpenseListViewController: UICollectionViewDataSource {
 extension ExpenseListViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.size.width, height: 44)
+        let width: CGFloat = {
+            if self.traitCollection.horizontalSizeClass == .compact {
+                return collectionView.bounds.size.width
+            }
+            return collectionView.bounds.size.width * 0.7
+        }()
+        return CGSize(width: width, height: 44)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {

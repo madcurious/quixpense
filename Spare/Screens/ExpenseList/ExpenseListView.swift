@@ -34,6 +34,12 @@ class ExpenseListView: UIView {
                                                                                     textColor: Global.theme.color(for: .promptLabel))
         )
         
+        if let flowLayout = self.collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            flowLayout.minimumLineSpacing = 0
+            flowLayout.minimumInteritemSpacing = 0
+            flowLayout.sectionHeadersPinToVisibleBounds = true
+        }
+        
         self.collectionView.isHidden = true
         
     }
