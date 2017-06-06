@@ -35,7 +35,7 @@ class ExpenseListView: UIView {
         )
         
         if let flowLayout = self.collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            flowLayout.minimumLineSpacing = 0
+            flowLayout.minimumLineSpacing = 0.5
             flowLayout.minimumInteritemSpacing = 0
             flowLayout.sectionHeadersPinToVisibleBounds = true
         }

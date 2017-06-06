@@ -16,6 +16,8 @@ enum UIElement {
     /// Main tint color for buttons and controls.
     controlTint,
     
+    expenseListGroupCellBackgroundDefault,
+    expenseListGroupCellBackgroundHighlighted,
     expenseListSectionHeaderBackground,
     expenseListSectionHeaderText,
     

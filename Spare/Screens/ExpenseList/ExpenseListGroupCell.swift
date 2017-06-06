@@ -28,8 +28,17 @@ class ExpenseListGroupCell: UICollectionViewCell, Themeable {
         }
     }
     
+    override var isHighlighted: Bool {
+        didSet {
+            self.applyHighlight()
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        self.applyTheme()
+        self.applyHighlight()
     }
     
     func applyTheme() {
@@ -38,6 +47,14 @@ class ExpenseListGroupCell: UICollectionViewCell, Themeable {
         
         self.groupLabel.textColor = Global.theme.color(for: .regularText)
         self.totalLabel.textColor = Global.theme.color(for: .regularText)
+    }
+    
+    func applyHighlight() {
+        if self.isHighlighted {
+            self.backgroundColor = Global.theme.color(for: .expenseListGroupCellBackgroundHighlighted)
+        } else {
+            self.backgroundColor = Global.theme.color(for: .expenseListGroupCellBackgroundDefault)
+        }
     }
     
 }
