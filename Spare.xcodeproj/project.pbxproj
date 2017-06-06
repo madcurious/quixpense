@@ -78,6 +78,8 @@
 		26A30C8C1E52318D0047307D /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A30C8B1E52318D0047307D /* Theme.swift */; };
 		26A30C8E1E5232240047307D /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A30C8D1E5232240047307D /* Global.swift */; };
 		26A30C921E5235950047307D /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A30C911E5235950047307D /* SettingsVC.swift */; };
+		26A808981EE72B6A004077C4 /* ExpenseListExpenseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A808971EE72B6A004077C4 /* ExpenseListExpenseCell.swift */; };
+		26A8089A1EE72B87004077C4 /* ExpenseListExpenseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26A808991EE72B87004077C4 /* ExpenseListExpenseCell.xib */; };
 		26B38F0F1E88FB2C00177CFE /* MakeDefaultDataOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B38F0E1E88FB2C00177CFE /* MakeDefaultDataOperation.swift */; };
 		26B38F111E89068500177CFE /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B38F101E89068500177CFE /* UserDefaultsKey.swift */; };
 		26CB900B1EE5345D009F7099 /* Expense+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CB900A1EE5345D009F7099 /* Expense+Extension.swift */; };
@@ -211,6 +213,8 @@
 		26A30C8B1E52318D0047307D /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		26A30C8D1E5232240047307D /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		26A30C911E5235950047307D /* SettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
+		26A808971EE72B6A004077C4 /* ExpenseListExpenseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseListExpenseCell.swift; sourceTree = "<group>"; };
+		26A808991EE72B87004077C4 /* ExpenseListExpenseCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExpenseListExpenseCell.xib; sourceTree = "<group>"; };
 		26B38F0E1E88FB2C00177CFE /* MakeDefaultDataOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeDefaultDataOperation.swift; sourceTree = "<group>"; };
 		26B38F101E89068500177CFE /* UserDefaultsKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
 		26CB900A1EE5345D009F7099 /* Expense+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Expense+Extension.swift"; sourceTree = "<group>"; };
@@ -483,6 +487,8 @@
 				2657331C1EDD493300AD1AB9 /* FilterButton.xib */,
 				269ABAB81EE66F7C00487CE6 /* ExpenseListGroupCell.swift */,
 				269ABABA1EE66F9A00487CE6 /* ExpenseListGroupCell.xib */,
+				26A808971EE72B6A004077C4 /* ExpenseListExpenseCell.swift */,
+				26A808991EE72B87004077C4 /* ExpenseListExpenseCell.xib */,
 			);
 			path = ExpenseList;
 			sourceTree = "<group>";
@@ -665,6 +671,7 @@
 				26A1CB4E1DD1ABD600DAE89E /* NotoSansUI-Italic.ttf in Resources */,
 				2669468B1CC7711000A68424 /* iPhone.storyboard in Resources */,
 				26331FBE1E5B559300AACE68 /* _EFPSVCView.xib in Resources */,
+				26A8089A1EE72B87004077C4 /* ExpenseListExpenseCell.xib in Resources */,
 				2669468A1CC7711000A68424 /* Images.xcassets in Resources */,
 				266946871CC7711000A68424 /* Icon-60@2x.png in Resources */,
 				2657332A1EDD507C00AD1AB9 /* FilterPopupView.xib in Resources */,
@@ -746,6 +753,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				26D6C9AD1E93807400DDDAE8 /* NotoSansUI.swift in Sources */,
+				26A808981EE72B6A004077C4 /* ExpenseListExpenseCell.swift in Sources */,
 				266946931CC77A1A00A68424 /* AppDelegate.swift in Sources */,
 				260DFDC11E55911700E3B92E /* _EFVCButtonBox.swift in Sources */,
 				26DDDCA81E5C238B001617A1 /* LoadAppVC.swift in Sources */,

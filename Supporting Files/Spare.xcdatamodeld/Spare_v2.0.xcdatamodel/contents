@@ -9,7 +9,7 @@
         <attribute name="sectionDate" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="total" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <relationship name="category" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="categoryGroups" inverseEntity="Category" syncable="YES"/>
-        <relationship name="expenses" toMany="YES" deletionRule="Nullify" destinationEntity="Expense" inverseName="categoryGroup" inverseEntity="Expense" syncable="YES"/>
+        <relationship name="expenses" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Expense" inverseName="categoryGroup" inverseEntity="Expense" syncable="YES"/>
     </entity>
     <entity name="Expense" representedClassName=".Expense" syncable="YES" codeGenerationType="class">
         <attribute name="amount" attributeType="Decimal" minValueString="0" syncable="YES"/>
@@ -40,7 +40,7 @@
     </entity>
     <elements>
         <element name="Category" positionX="405" positionY="290" width="128" height="90"/>
-        <element name="CategoryGroup" positionX="403" positionY="473" width="128" height="103"/>
+        <element name="CategoryGroup" positionX="403" positionY="473" width="128" height="105"/>
         <element name="Expense" positionX="187" positionY="288" width="128" height="135"/>
         <element name="SPRCategory" positionX="198" positionY="27" width="128" height="30"/>
         <element name="SPRExpense" positionX="376" positionY="45" width="128" height="135"/>

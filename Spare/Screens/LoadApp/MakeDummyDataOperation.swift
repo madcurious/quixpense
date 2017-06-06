@@ -128,7 +128,7 @@ class MakeDummyDataOperation: MDOperation<Any?> {
                 }
                 
                 categoryGroup.total = NSDecimalNumber(value: categorySectionTotal)
-                categoryGroup.expenses = NSSet(array: expenses)
+                categoryGroup.expenses = NSOrderedSet(array: expenses)
             }
             
             dateSpent = Calendar.current.date(byAdding: .day, value: 1, to: dateSpent)!

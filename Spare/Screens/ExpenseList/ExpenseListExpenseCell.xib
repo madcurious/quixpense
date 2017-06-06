@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="o2X-Gi-Lwe" customClass="ExpenseListExpenseCell" customModule="Spare" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="289" height="107"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="289" height="107"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rui-Na-mGq">
+                        <rect key="frame" x="44" y="117" width="200" height="110"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OlD-MS-RPJ">
+                                <rect key="frame" x="0.0" y="0.0" width="207" height="107"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Cy-58-Ta1">
+                                <rect key="frame" x="207" y="0.0" width="42" height="107"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="rui-Na-mGq" firstAttribute="top" secondItem="o2X-Gi-Lwe" secondAttribute="top" id="0Dm-X6-vnL"/>
+                <constraint firstAttribute="bottom" secondItem="rui-Na-mGq" secondAttribute="bottom" id="6JL-oS-7Y0"/>
+                <constraint firstItem="rui-Na-mGq" firstAttribute="leading" secondItem="o2X-Gi-Lwe" secondAttribute="leading" constant="30" id="UEc-gL-r6Z"/>
+                <constraint firstAttribute="trailing" secondItem="rui-Na-mGq" secondAttribute="trailing" constant="10" id="bie-Bb-0mU"/>
+            </constraints>
+            <size key="customSize" width="289" height="107"/>
+            <connections>
+                <outlet property="amountLabel" destination="8Cy-58-Ta1" id="gO1-iq-thi"/>
+                <outlet property="descriptionLabel" destination="OlD-MS-RPJ" id="7KS-Rq-eSL"/>
+            </connections>
+            <point key="canvasLocation" x="-787.5" y="-625.5"/>
+        </collectionViewCell>
+    </objects>
+</document>

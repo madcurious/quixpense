@@ -24,7 +24,8 @@ class ExpenseListViewController: MDLoadableViewController {
     let fetchedResultsController: NSFetchedResultsController<CategoryGroup> = {
         let fetchRequest = FetchRequest<CategoryGroup>.make()
         fetchRequest.sortDescriptors = [
-            NSSortDescriptor(key: #keyPath(CategoryGroup.sectionDate), ascending: false)
+            NSSortDescriptor(key: #keyPath(CategoryGroup.sectionDate), ascending: false),
+            NSSortDescriptor(key: #keyPath(CategoryGroup.total), ascending: false)
         ]
         return NSFetchedResultsController(fetchRequest: fetchRequest,
                                           managedObjectContext: Global.coreDataStack.viewContext,
@@ -37,6 +38,8 @@ class ExpenseListViewController: MDLoadableViewController {
         filterButton.sizeToFit()
         return filterButton
     }()
+    
+    var expandedIndexPaths = Set<IndexPath>()
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -173,6 +176,13 @@ extension ExpenseListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ViewID.groupCell.rawValue, for: indexPath) as! ExpenseListGroupCell
         cell.categoryGroup = self.fetchedResultsController.object(at: indexPath)
+        
+        if self.expandedIndexPaths.contains(indexPath) {
+            cell.isExpanded = true
+        } else {
+            cell.isExpanded = false
+        }
+        
         return cell
     }
     
@@ -197,6 +207,10 @@ extension ExpenseListViewController: UICollectionViewDelegateFlowLayout {
             }
             return collectionView.bounds.size.width * 0.7
         }()
+        
+        if self.expandedIndexPaths.contains(indexPath) {
+            return CGSize(width: width, height: ExpenseListGroupCell.expandedHeight(for: self.fetchedResultsController.object(at: indexPath)))
+        }
         return CGSize(width: width, height: 44)
     }
     
@@ -214,5 +228,22 @@ extension ExpenseListViewController: UICollectionViewDelegateFlowLayout {
 
 // MARK: - UICollectionViewDelegate
 extension ExpenseListViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        
+        if self.expandedIndexPaths.contains(indexPath) {
+            self.expandedIndexPaths.remove(indexPath)
+        } else  {
+            self.expandedIndexPaths.insert(indexPath)
+        }
+        collectionView.performBatchUpdates({ 
+            collectionView.reloadItems(at: [indexPath])
+        }, completion: { _ in
+            if let groupCell = collectionView.cellForItem(at: indexPath) as? ExpenseListGroupCell {
+                groupCell.collectionView.reloadData()
+            }
+        })
+    }
     
 }

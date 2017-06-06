@@ -8,11 +8,25 @@
 
 import UIKit
 
+private let kRowHeight = CGFloat(44)
+private let kSeparatorHeight = CGFloat(0.5)
+
+private enum ViewID: String {
+    case expenseCell = "ExpenseCell"
+}
+
 class ExpenseListGroupCell: UICollectionViewCell, Themeable {
     
+    @IBOutlet weak var groupBackgroundView: UIView!
     @IBOutlet weak var arrowImageView: UIImageView!
     @IBOutlet weak var groupLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    class func expandedHeight(for group: CategoryGroup) -> CGFloat {
+        let expenseCount = CGFloat(group.expenses?.count ?? 0)
+        return kRowHeight + (expenseCount * kRowHeight) + (expenseCount * kSeparatorHeight)
+    }
     
     weak var categoryGroup: CategoryGroup? {
         didSet {
@@ -28,6 +42,20 @@ class ExpenseListGroupCell: UICollectionViewCell, Themeable {
         }
     }
     
+    var isExpanded = false {
+        didSet {
+            if self.isExpanded {
+                self.collectionView.dataSource = self
+                self.collectionView.delegate = self
+            } else {
+                self.collectionView.dataSource = nil
+                self.collectionView.delegate = nil
+            }
+            self.collectionView.reloadData()
+            self.setNeedsLayout()
+        }
+    }
+    
     override var isHighlighted: Bool {
         didSet {
             self.applyHighlight()
@@ -36,6 +64,13 @@ class ExpenseListGroupCell: UICollectionViewCell, Themeable {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        self.clipsToBounds = true
+        
+        self.collectionView.backgroundColor = .clear
+        self.collectionView.isScrollEnabled = false
+        self.collectionView.register(ExpenseListExpenseCell.nib(), forCellWithReuseIdentifier: ViewID.expenseCell.rawValue)
+        self.collectionView.clipsToBounds = true
         
         self.applyTheme()
         self.applyHighlight()
@@ -51,10 +86,49 @@ class ExpenseListGroupCell: UICollectionViewCell, Themeable {
     
     func applyHighlight() {
         if self.isHighlighted {
-            self.backgroundColor = Global.theme.color(for: .expenseListGroupCellBackgroundHighlighted)
+            self.groupBackgroundView.backgroundColor = Global.theme.color(for: .expenseListGroupCellBackgroundHighlighted)
         } else {
-            self.backgroundColor = Global.theme.color(for: .expenseListGroupCellBackgroundDefault)
+            self.groupBackgroundView.backgroundColor = Global.theme.color(for: .expenseListGroupCellBackgroundDefault)
         }
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.collectionView.collectionViewLayout.invalidateLayout()
+    }
+    
+}
+
+extension ExpenseListGroupCell: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.categoryGroup?.expenses?.count ?? 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ViewID.expenseCell.rawValue, for: indexPath) as! ExpenseListExpenseCell
+        cell.expense = self.categoryGroup?.expenses?.object(at: indexPath.item) as? Expense
+        return cell
+    }
+    
+}
+
+extension ExpenseListGroupCell: UICollectionViewDelegate {
+    
+}
+
+extension ExpenseListGroupCell: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.bounds.size.width, height: kRowHeight)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return kSeparatorHeight
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return kSeparatorHeight
     }
     
 }
