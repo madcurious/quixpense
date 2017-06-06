@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_5" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -15,36 +16,66 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="22"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="glc-Ja-YyM">
-                    <rect key="frame" x="15" y="0.0" width="350" height="22"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jUY-NA-ion">
+                    <rect key="frame" x="56" y="0.0" width="262.33333333333331" height="22"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DzI-9p-HYe">
-                            <rect key="frame" x="0.0" y="0.0" width="304" height="22"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Bv-dW-4F7">
-                            <rect key="frame" x="308" y="0.0" width="42" height="22"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="glc-Ja-YyM">
+                            <rect key="frame" x="15.666666666666686" y="0.0" width="236.66666666666663" height="22"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DzI-9p-HYe">
+                                    <rect key="frame" x="0.0" y="0.0" width="191" height="22"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Bv-dW-4F7">
+                                    <rect key="frame" x="195" y="0.0" width="41.666666666666629" height="22"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="22" id="jzs-ZY-LDg"/>
+                            </constraints>
+                        </stackView>
                     </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="22" id="jzs-ZY-LDg"/>
+                        <constraint firstAttribute="bottom" secondItem="glc-Ja-YyM" secondAttribute="bottom" id="1AM-xs-ARF"/>
+                        <constraint firstItem="glc-Ja-YyM" firstAttribute="leading" secondItem="jUY-NA-ion" secondAttribute="leading" constant="15" id="JBO-AS-oTl"/>
+                        <constraint firstItem="glc-Ja-YyM" firstAttribute="top" secondItem="jUY-NA-ion" secondAttribute="top" id="JCw-of-eaX"/>
+                        <constraint firstAttribute="trailing" secondItem="glc-Ja-YyM" secondAttribute="trailing" constant="10" id="aMf-c2-4Zi"/>
                     </constraints>
-                </stackView>
+                </view>
             </subviews>
             <constraints>
-                <constraint firstItem="glc-Ja-YyM" firstAttribute="top" secondItem="Fhs-nh-oZ6" secondAttribute="top" id="Of9-bR-0Wt"/>
-                <constraint firstItem="glc-Ja-YyM" firstAttribute="leading" secondItem="Fhs-nh-oZ6" secondAttribute="leading" constant="15" id="XZ9-yv-d5p"/>
-                <constraint firstAttribute="trailing" secondItem="glc-Ja-YyM" secondAttribute="trailing" constant="10" id="h12-LD-zhK"/>
-                <constraint firstAttribute="bottom" secondItem="glc-Ja-YyM" secondAttribute="bottom" id="rWM-9X-hLS"/>
+                <constraint firstItem="jUY-NA-ion" firstAttribute="width" secondItem="Fhs-nh-oZ6" secondAttribute="width" id="2Sy-Xn-yus"/>
+                <constraint firstItem="jUY-NA-ion" firstAttribute="top" secondItem="Fhs-nh-oZ6" secondAttribute="top" id="5Em-j6-A92"/>
+                <constraint firstItem="jUY-NA-ion" firstAttribute="centerX" secondItem="Fhs-nh-oZ6" secondAttribute="centerX" id="J32-vE-ntQ"/>
+                <constraint firstItem="jUY-NA-ion" firstAttribute="width" secondItem="Fhs-nh-oZ6" secondAttribute="width" multiplier="0.7" id="g57-5c-7aO"/>
+                <constraint firstAttribute="bottom" secondItem="jUY-NA-ion" secondAttribute="bottom" id="wGe-qc-dE1"/>
             </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="2Sy-Xn-yus"/>
+                    <exclude reference="g57-5c-7aO"/>
+                </mask>
+            </variation>
+            <variation key="widthClass=compact">
+                <mask key="constraints">
+                    <include reference="2Sy-Xn-yus"/>
+                </mask>
+            </variation>
+            <variation key="widthClass=regular">
+                <mask key="constraints">
+                    <include reference="g57-5c-7aO"/>
+                </mask>
+            </variation>
             <connections>
                 <outlet property="leftLabel" destination="DzI-9p-HYe" id="ueP-op-oAG"/>
                 <outlet property="rightLabel" destination="1Bv-dW-4F7" id="13J-66-EP9"/>
+                <outlet property="sizerView" destination="jUY-NA-ion" id="Ya0-gE-D8o"/>
             </connections>
         </collectionReusableView>
     </objects>

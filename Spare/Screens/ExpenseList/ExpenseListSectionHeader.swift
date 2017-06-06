@@ -22,6 +22,7 @@ fileprivate let kDateStringParser: DateFormatter = {
 
 class ExpenseListSectionHeader: UICollectionReusableView, Themeable {
     
+    @IBOutlet weak var sizerView: UIView!
     @IBOutlet weak var leftLabel: UILabel!
     @IBOutlet weak var rightLabel: UILabel!
     
@@ -49,6 +50,8 @@ class ExpenseListSectionHeader: UICollectionReusableView, Themeable {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        self.sizerView.backgroundColor = .clear
         
         self.leftLabel.font = Global.theme.font(for: .expenseListSectionHeader)
         self.leftLabel.numberOfLines = 1
