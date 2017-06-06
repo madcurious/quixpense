@@ -12,16 +12,13 @@ enum UIElement {
     case
     barBackground,
     barTint,
-    cellMainText,
-    cellSecondaryText,
-    cellAccessoryIcon,
-    cellAccessoryDisclosureIndicator,
     
     /// Main tint color for buttons and controls.
     controlTint,
     
-    elvcSectionHeaderBackground,
-    elvcSectionHeaderText,
+    expenseListSectionHeaderBackground,
+    expenseListSectionHeaderText,
+    
     fieldIcon,
     
     /// For labels that name a field or a setting in a grouped table view.
@@ -29,11 +26,14 @@ enum UIElement {
     
     filterButtonBackground,
     filterButtonContent,
-    groupedTableViewSectionHeaderText,
+    
     mainBackground,
     pickerFieldValue,
     pickerTextFieldBackground,
     promptLabel,
+    
+    regularText,
+    
     tableViewSeparator,
     textFieldPlaceholder,
     textFieldValue
@@ -42,13 +42,13 @@ enum UIElement {
 enum StringElement {
     case
     cellSecondaryText,
+    expenseListSectionHeader,
     filterButtonText,
     infoLabelMainText,
     infoLabelSecondaryText,
     navBarTitle,
     optionLabel,
-    regularText,
-    tableViewHeader
+    regularText
 }
 
 protocol Theme {

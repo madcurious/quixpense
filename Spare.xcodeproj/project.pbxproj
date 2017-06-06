@@ -66,6 +66,8 @@
 		269635A41E5457C80001FC05 /* AmountFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269635A31E5457C80001FC05 /* AmountFormatter.swift */; };
 		26973DA91E690C8F0086C4F8 /* ExpenseListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26973DA71E690C8F0086C4F8 /* ExpenseListViewController.swift */; };
 		26973DAA1E690C8F0086C4F8 /* ExpenseListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26973DA81E690C8F0086C4F8 /* ExpenseListView.xib */; };
+		269ABAB91EE66F7C00487CE6 /* ExpenseListGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269ABAB81EE66F7C00487CE6 /* ExpenseListGroupCell.swift */; };
+		269ABABB1EE66F9A00487CE6 /* ExpenseListGroupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 269ABABA1EE66F9A00487CE6 /* ExpenseListGroupCell.xib */; };
 		26A1CB4C1DD1ABD600DAE89E /* NotoSansUI-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26A1CB441DD1ABD600DAE89E /* NotoSansUI-Bold.ttf */; };
 		26A1CB4D1DD1ABD600DAE89E /* NotoSansUI-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26A1CB451DD1ABD600DAE89E /* NotoSansUI-BoldItalic.ttf */; };
 		26A1CB4E1DD1ABD600DAE89E /* NotoSansUI-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26A1CB461DD1ABD600DAE89E /* NotoSansUI-Italic.ttf */; };
@@ -79,10 +81,6 @@
 		26B38F0F1E88FB2C00177CFE /* MakeDefaultDataOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B38F0E1E88FB2C00177CFE /* MakeDefaultDataOperation.swift */; };
 		26B38F111E89068500177CFE /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B38F101E89068500177CFE /* UserDefaultsKey.swift */; };
 		26CB900B1EE5345D009F7099 /* Expense+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CB900A1EE5345D009F7099 /* Expense+Extension.swift */; };
-		26D6736F1E811BC2009C4DDE /* _ELVCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D6736E1E811BC2009C4DDE /* _ELVCCell.swift */; };
-		26D673711E811D19009C4DDE /* _ELVCCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26D673701E811D19009C4DDE /* _ELVCCell.xib */; };
-		26D6C9A91E93794C00DDDAE8 /* ValuePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D6C9A81E93794C00DDDAE8 /* ValuePickerCell.swift */; };
-		26D6C9AB1E93796D00DDDAE8 /* ValuePickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26D6C9AA1E93796D00DDDAE8 /* ValuePickerCell.xib */; };
 		26D6C9AD1E93807400DDDAE8 /* NotoSansUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D6C9AC1E93807400DDDAE8 /* NotoSansUI.swift */; };
 		26DDDCA81E5C238B001617A1 /* LoadAppVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DDDCA71E5C238B001617A1 /* LoadAppVC.swift */; };
 		26DDDCAA1E5C23AB001617A1 /* _LAVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DDDCA91E5C23AB001617A1 /* _LAVCView.swift */; };
@@ -92,11 +90,9 @@
 		26E4E0591937AF690096191A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E4E0581937AF690096191A /* QuartzCore.framework */; };
 		26F1A96E1E5D890400752F1A /* MakeDummyDataOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F1A96D1E5D890400752F1A /* MakeDummyDataOperation.swift */; };
 		26F57AF11E67DE1B0034FF4B /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F57AF01E67DE1B0034FF4B /* Debug.swift */; };
-		26FE4E071E6C77C40063258D /* _ELVCCheckboxCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FE4E061E6C77C40063258D /* _ELVCCheckboxCell.swift */; };
-		26FE4E091E6C78010063258D /* _ELVCCheckboxCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26FE4E081E6C78010063258D /* _ELVCCheckboxCell.xib */; };
 		26FE4E111E6D4D420063258D /* FetchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FE4E101E6D4D420063258D /* FetchRequest.swift */; };
-		26FE4E141E6EA1570063258D /* _ELVCSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FE4E131E6EA1570063258D /* _ELVCSectionHeader.swift */; };
-		26FE4E161E6EA1BE0063258D /* _ELVCSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26FE4E151E6EA1BE0063258D /* _ELVCSectionHeader.xib */; };
+		26FE4E141E6EA1570063258D /* ExpenseListSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FE4E131E6EA1570063258D /* ExpenseListSectionHeader.swift */; };
+		26FE4E161E6EA1BE0063258D /* ExpenseListSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26FE4E151E6EA1BE0063258D /* ExpenseListSectionHeader.xib */; };
 		616B52302A44459579721AC9 /* Pods_Spare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B392D50401377663DE37E8A8 /* Pods_Spare.framework */; };
 /* End PBXBuildFile section */
 
@@ -203,6 +199,8 @@
 		269635A31E5457C80001FC05 /* AmountFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmountFormatter.swift; sourceTree = "<group>"; };
 		26973DA71E690C8F0086C4F8 /* ExpenseListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseListViewController.swift; sourceTree = "<group>"; };
 		26973DA81E690C8F0086C4F8 /* ExpenseListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExpenseListView.xib; sourceTree = "<group>"; };
+		269ABAB81EE66F7C00487CE6 /* ExpenseListGroupCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseListGroupCell.swift; sourceTree = "<group>"; };
+		269ABABA1EE66F9A00487CE6 /* ExpenseListGroupCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExpenseListGroupCell.xib; sourceTree = "<group>"; };
 		26A1CB441DD1ABD600DAE89E /* NotoSansUI-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansUI-Bold.ttf"; sourceTree = "<group>"; };
 		26A1CB451DD1ABD600DAE89E /* NotoSansUI-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansUI-BoldItalic.ttf"; sourceTree = "<group>"; };
 		26A1CB461DD1ABD600DAE89E /* NotoSansUI-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansUI-Italic.ttf"; sourceTree = "<group>"; };
@@ -217,10 +215,6 @@
 		26B38F101E89068500177CFE /* UserDefaultsKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
 		26CB900A1EE5345D009F7099 /* Expense+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Expense+Extension.swift"; sourceTree = "<group>"; };
 		26D4C8F41946E624001B42DC /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
-		26D6736E1E811BC2009C4DDE /* _ELVCCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _ELVCCell.swift; sourceTree = "<group>"; };
-		26D673701E811D19009C4DDE /* _ELVCCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = _ELVCCell.xib; sourceTree = "<group>"; };
-		26D6C9A81E93794C00DDDAE8 /* ValuePickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValuePickerCell.swift; sourceTree = "<group>"; };
-		26D6C9AA1E93796D00DDDAE8 /* ValuePickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ValuePickerCell.xib; sourceTree = "<group>"; };
 		26D6C9AC1E93807400DDDAE8 /* NotoSansUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotoSansUI.swift; sourceTree = "<group>"; };
 		26DDDCA71E5C238B001617A1 /* LoadAppVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadAppVC.swift; sourceTree = "<group>"; };
 		26DDDCA91E5C23AB001617A1 /* _LAVCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _LAVCView.swift; sourceTree = "<group>"; };
@@ -230,11 +224,9 @@
 		26E4E0581937AF690096191A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		26F1A96D1E5D890400752F1A /* MakeDummyDataOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeDummyDataOperation.swift; sourceTree = "<group>"; };
 		26F57AF01E67DE1B0034FF4B /* Debug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
-		26FE4E061E6C77C40063258D /* _ELVCCheckboxCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _ELVCCheckboxCell.swift; sourceTree = "<group>"; };
-		26FE4E081E6C78010063258D /* _ELVCCheckboxCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = _ELVCCheckboxCell.xib; sourceTree = "<group>"; };
 		26FE4E101E6D4D420063258D /* FetchRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchRequest.swift; sourceTree = "<group>"; };
-		26FE4E131E6EA1570063258D /* _ELVCSectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _ELVCSectionHeader.swift; sourceTree = "<group>"; };
-		26FE4E151E6EA1BE0063258D /* _ELVCSectionHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = _ELVCSectionHeader.xib; sourceTree = "<group>"; };
+		26FE4E131E6EA1570063258D /* ExpenseListSectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseListSectionHeader.swift; sourceTree = "<group>"; };
+		26FE4E151E6EA1BE0063258D /* ExpenseListSectionHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExpenseListSectionHeader.xib; sourceTree = "<group>"; };
 		59C2B0311ED5D0556A5A2FEF /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B1211CBF60E5725987043C3 /* Pods-Spare.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spare.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Spare/Pods-Spare.debug.xcconfig"; sourceTree = "<group>"; };
 		B392D50401377663DE37E8A8 /* Pods_Spare.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Spare.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -484,15 +476,13 @@
 				26973DA71E690C8F0086C4F8 /* ExpenseListViewController.swift */,
 				26A230311E6902D600B61402 /* ExpenseListView.swift */,
 				26973DA81E690C8F0086C4F8 /* ExpenseListView.xib */,
-				26FE4E061E6C77C40063258D /* _ELVCCheckboxCell.swift */,
-				26FE4E081E6C78010063258D /* _ELVCCheckboxCell.xib */,
-				26FE4E131E6EA1570063258D /* _ELVCSectionHeader.swift */,
-				26FE4E151E6EA1BE0063258D /* _ELVCSectionHeader.xib */,
-				26D6736E1E811BC2009C4DDE /* _ELVCCell.swift */,
-				26D673701E811D19009C4DDE /* _ELVCCell.xib */,
+				26FE4E131E6EA1570063258D /* ExpenseListSectionHeader.swift */,
+				26FE4E151E6EA1BE0063258D /* ExpenseListSectionHeader.xib */,
 				265733101EDC1D3300AD1AB9 /* Filter.swift */,
 				265733161EDC653500AD1AB9 /* FilterButton.swift */,
 				2657331C1EDD493300AD1AB9 /* FilterButton.xib */,
+				269ABAB81EE66F7C00487CE6 /* ExpenseListGroupCell.swift */,
+				269ABABA1EE66F9A00487CE6 /* ExpenseListGroupCell.xib */,
 			);
 			path = ExpenseList;
 			sourceTree = "<group>";
@@ -526,8 +516,6 @@
 		26D6C9A71E93794200DDDAE8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				26D6C9A81E93794C00DDDAE8 /* ValuePickerCell.swift */,
-				26D6C9AA1E93796D00DDDAE8 /* ValuePickerCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -665,9 +653,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				26FE4E161E6EA1BE0063258D /* _ELVCSectionHeader.xib in Resources */,
+				26FE4E161E6EA1BE0063258D /* ExpenseListSectionHeader.xib in Resources */,
 				260DFDD51E569F9D00E3B92E /* _EFVCNotesBox.xib in Resources */,
 				266946841CC7711000A68424 /* Default@2x.png in Resources */,
+				269ABABB1EE66F9A00487CE6 /* ExpenseListGroupCell.xib in Resources */,
 				260DFDB91E55867700E3B92E /* _EFPVCView.xib in Resources */,
 				260DFDB21E5584D900E3B92E /* _EFVCView.xib in Resources */,
 				2603F8C31CCA45FF007F311F /* LaunchScreen.storyboard in Resources */,
@@ -679,20 +668,17 @@
 				2669468A1CC7711000A68424 /* Images.xcassets in Resources */,
 				266946871CC7711000A68424 /* Icon-60@2x.png in Resources */,
 				2657332A1EDD507C00AD1AB9 /* FilterPopupView.xib in Resources */,
-				26D673711E811D19009C4DDE /* _ELVCCell.xib in Resources */,
 				266946891CC7711000A68424 /* Icon@2x.png in Resources */,
 				26DDDCAC1E5C23C2001617A1 /* _LAVCView.xib in Resources */,
 				26A1CB4C1DD1ABD600DAE89E /* NotoSansUI-Bold.ttf in Resources */,
 				266946861CC7711000A68424 /* Icon-40@2x.png in Resources */,
 				266946881CC7711000A68424 /* Icon-Small@2x.png in Resources */,
 				266946851CC7711000A68424 /* InfoPlist.strings in Resources */,
-				26FE4E091E6C78010063258D /* _ELVCCheckboxCell.xib in Resources */,
 				26A1CB4D1DD1ABD600DAE89E /* NotoSansUI-BoldItalic.ttf in Resources */,
 				26973DAA1E690C8F0086C4F8 /* ExpenseListView.xib in Resources */,
 				2657331D1EDD493300AD1AB9 /* FilterButton.xib in Resources */,
 				266946831CC7711000A68424 /* Default-568h@2x.png in Resources */,
 				260DFDC31E55912200E3B92E /* _EFVCButtonBox.xib in Resources */,
-				26D6C9AB1E93796D00DDDAE8 /* ValuePickerCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -766,16 +752,14 @@
 				265DFB811E87D07300439D9A /* BarButtonItems.swift in Sources */,
 				26B38F0F1E88FB2C00177CFE /* MakeDefaultDataOperation.swift in Sources */,
 				26DDDCAA1E5C23AB001617A1 /* _LAVCView.swift in Sources */,
-				26FE4E071E6C77C40063258D /* _ELVCCheckboxCell.swift in Sources */,
 				260DFDB01E5584D900E3B92E /* _EFVCFieldBox.swift in Sources */,
 				260DFDCF1E55F37600E3B92E /* EFPickerVCTransitioningDelegate.swift in Sources */,
 				26331FC01E5B55A100AACE68 /* _EFPSVCView.swift in Sources */,
 				26628A2D1E714AB100E80494 /* LightTheme.swift in Sources */,
 				26A30C8C1E52318D0047307D /* Theme.swift in Sources */,
-				26D6C9A91E93794C00DDDAE8 /* ValuePickerCell.swift in Sources */,
 				26DDDCAE1E5C285F001617A1 /* InitializeCoreDataStackOperation.swift in Sources */,
 				265733171EDC653500AD1AB9 /* FilterButton.swift in Sources */,
-				26FE4E141E6EA1570063258D /* _ELVCSectionHeader.swift in Sources */,
+				26FE4E141E6EA1570063258D /* ExpenseListSectionHeader.swift in Sources */,
 				260DFDB11E5584D900E3B92E /* _EFVCView.swift in Sources */,
 				26F57AF11E67DE1B0034FF4B /* Debug.swift in Sources */,
 				26B38F111E89068500177CFE /* UserDefaultsKey.swift in Sources */,
@@ -789,8 +773,8 @@
 				265733111EDC1D3300AD1AB9 /* Filter.swift in Sources */,
 				26A30C871E5230020047307D /* AddExpenseVC.swift in Sources */,
 				260DFDD11E562AEE00E3B92E /* EFDatePickerVC.swift in Sources */,
-				26D6736F1E811BC2009C4DDE /* _ELVCCell.swift in Sources */,
 				26A30C8A1E5231620047307D /* BaseNavBarVC.swift in Sources */,
+				269ABAB91EE66F7C00487CE6 /* ExpenseListGroupCell.swift in Sources */,
 				2657332B1EDD507C00AD1AB9 /* FilterPopupViewController.swift in Sources */,
 				26331FB81E5AE6EE00AACE68 /* EFCategoryPickerVC.swift in Sources */,
 				26CB900B1EE5345D009F7099 /* Expense+Extension.swift in Sources */,

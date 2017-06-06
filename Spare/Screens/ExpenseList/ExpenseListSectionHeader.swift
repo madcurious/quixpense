@@ -8,22 +8,22 @@
 
 import UIKit
 
-fileprivate let kSectionDateFormatter: DateFormatter = {
+fileprivate let kDateFormatter: DateFormatter = {
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "dd MMM yyyy"
     return dateFormatter
 }()
 
-class _ELVCSectionHeader: UITableViewHeaderFooterView, Themeable {
+fileprivate let kDateStringParser: DateFormatter = {
+    let parser = DateFormatter()
+    parser.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZZZ"
+    return parser
+}()
+
+class ExpenseListSectionHeader: UICollectionReusableView, Themeable {
     
     @IBOutlet weak var leftLabel: UILabel!
     @IBOutlet weak var rightLabel: UILabel!
-    
-    fileprivate static let dateStringParser: DateFormatter = {
-        let parser = DateFormatter()
-        parser.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZZZ"
-        return parser
-    }()
     
     var dateString: String? {
         didSet {
@@ -31,12 +31,12 @@ class _ELVCSectionHeader: UITableViewHeaderFooterView, Themeable {
                 self.setNeedsLayout()
             }
             guard let dateString = self.dateString,
-                let sectionDate = _ELVCSectionHeader.dateStringParser.date(from: dateString)
+                let sectionDate = kDateStringParser.date(from: dateString)
                 else {
                     self.leftLabel.text = nil
                     return
             }
-            self.leftLabel.text = kSectionDateFormatter.string(from: sectionDate)
+            self.leftLabel.text = kDateFormatter.string(from: sectionDate)
         }
     }
     
@@ -50,11 +50,11 @@ class _ELVCSectionHeader: UITableViewHeaderFooterView, Themeable {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.leftLabel.font = Global.theme.font(for: .tableViewHeader)
+        self.leftLabel.font = Global.theme.font(for: .expenseListSectionHeader)
         self.leftLabel.numberOfLines = 1
         self.leftLabel.textAlignment = .left
         
-        self.rightLabel.font = Global.theme.font(for: .tableViewHeader)
+        self.rightLabel.font = Global.theme.font(for: .expenseListSectionHeader)
         self.rightLabel.numberOfLines = 1
         self.rightLabel.textAlignment = .right
         
@@ -62,9 +62,9 @@ class _ELVCSectionHeader: UITableViewHeaderFooterView, Themeable {
     }
     
     func applyTheme() {
-        self.contentView.backgroundColor = Global.theme.color(for: .elvcSectionHeaderBackground)
-        self.leftLabel.textColor = Global.theme.color(for: .elvcSectionHeaderText)
-        self.rightLabel.textColor = Global.theme.color(for: .elvcSectionHeaderText)
+        self.backgroundColor = Global.theme.color(for: .expenseListSectionHeaderBackground)
+        self.leftLabel.textColor = Global.theme.color(for: .expenseListSectionHeaderText)
+        self.rightLabel.textColor = Global.theme.color(for: .expenseListSectionHeaderText)
     }
     
 }

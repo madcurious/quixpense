@@ -13,32 +13,28 @@ struct LightTheme: Theme {
     func color(for element: UIElement) -> UIColor {
         switch element {
         case .barBackground,
-             .elvcSectionHeaderText,
+             .expenseListSectionHeaderText,
              .filterButtonContent,
              .mainBackground,
              .pickerFieldValue:
             return UIColor.white
             
         case .barTint,
-             .cellMainText,
-             .cellAccessoryIcon,
              .controlTint,
+             .regularText,
              .textFieldValue:
             return UIColor.black
             
-        case .cellAccessoryDisclosureIndicator,
-             .tableViewSeparator,
+        case .tableViewSeparator,
              .textFieldPlaceholder:
             return UIColor.hex(0xdddddd)
             
-        case .cellSecondaryText,
-             .fieldIcon,
+        case .fieldIcon,
              .fieldName,
-             .groupedTableViewSectionHeaderText,
              .promptLabel:
             return UIColor.hex(0x999999)
             
-        case .elvcSectionHeaderBackground,
+        case .expenseListSectionHeaderBackground,
              .filterButtonBackground,
              .pickerTextFieldBackground:
             return UIColor.hex(0x666666)
@@ -48,9 +44,9 @@ struct LightTheme: Theme {
     func font(for element: StringElement) -> UIFont {
         switch element {
         case .cellSecondaryText,
+             .expenseListSectionHeader,
              .filterButtonText,
-             .optionLabel,
-             .tableViewHeader:
+             .optionLabel:
             return NotoSansUI.regular(14)
             
         case .infoLabelMainText:

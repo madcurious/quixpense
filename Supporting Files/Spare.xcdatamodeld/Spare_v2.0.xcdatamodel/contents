@@ -2,21 +2,21 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16F73" minimumToolsVersion="Xcode 8.0" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Category" representedClassName=".Category" syncable="YES" codeGenerationType="class">
         <attribute name="name" attributeType="String" indexed="YES" syncable="YES"/>
-        <relationship name="categorySections" toMany="YES" deletionRule="Nullify" destinationEntity="CategorySection" inverseName="category" inverseEntity="CategorySection" syncable="YES"/>
+        <relationship name="categoryGroups" toMany="YES" deletionRule="Nullify" destinationEntity="CategoryGroup" inverseName="category" inverseEntity="CategoryGroup" syncable="YES"/>
         <relationship name="expenses" toMany="YES" deletionRule="Nullify" destinationEntity="Expense" inverseName="category" inverseEntity="Expense" syncable="YES"/>
     </entity>
-    <entity name="CategorySection" representedClassName=".CategorySection" syncable="YES" codeGenerationType="class">
+    <entity name="CategoryGroup" representedClassName=".CategoryGroup" syncable="YES" codeGenerationType="class">
         <attribute name="sectionDate" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="total" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
-        <relationship name="category" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="categorySections" inverseEntity="Category" syncable="YES"/>
-        <relationship name="expenses" toMany="YES" deletionRule="Nullify" destinationEntity="Expense" inverseName="categorySection" inverseEntity="Expense" syncable="YES"/>
+        <relationship name="category" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="categoryGroups" inverseEntity="Category" syncable="YES"/>
+        <relationship name="expenses" toMany="YES" deletionRule="Nullify" destinationEntity="Expense" inverseName="categoryGroup" inverseEntity="Expense" syncable="YES"/>
     </entity>
     <entity name="Expense" representedClassName=".Expense" syncable="YES" codeGenerationType="class">
         <attribute name="amount" attributeType="Decimal" minValueString="0" syncable="YES"/>
         <attribute name="dateCreated" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="dateSpent" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="category" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="expenses" inverseEntity="Category" syncable="YES"/>
-        <relationship name="categorySection" maxCount="1" deletionRule="Nullify" destinationEntity="CategorySection" inverseName="expenses" inverseEntity="CategorySection" syncable="YES"/>
+        <relationship name="categoryGroup" maxCount="1" deletionRule="Nullify" destinationEntity="CategoryGroup" inverseName="expenses" inverseEntity="CategoryGroup" syncable="YES"/>
         <relationship name="tags" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="expenses" inverseEntity="Tag" syncable="YES"/>
     </entity>
     <entity name="SPRCategory" representedClassName="SPRCategory" syncable="YES">
@@ -39,9 +39,9 @@
         <relationship name="expenses" toMany="YES" deletionRule="Nullify" destinationEntity="Expense" inverseName="tags" inverseEntity="Expense" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Category" positionX="405" positionY="290" width="128" height="88"/>
-        <element name="CategorySection" positionX="403" positionY="473" width="128" height="103"/>
-        <element name="Expense" positionX="187" positionY="288" width="128" height="133"/>
+        <element name="Category" positionX="405" positionY="290" width="128" height="90"/>
+        <element name="CategoryGroup" positionX="403" positionY="473" width="128" height="103"/>
+        <element name="Expense" positionX="187" positionY="288" width="128" height="135"/>
         <element name="SPRCategory" positionX="198" positionY="27" width="128" height="30"/>
         <element name="SPRExpense" positionX="376" positionY="45" width="128" height="135"/>
         <element name="Tag" positionX="-18" positionY="294" width="128" height="73"/>

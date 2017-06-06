@@ -11,8 +11,9 @@ import Mold
 import CoreData
 
 fileprivate enum ViewID: String {
-    case cell = "Cell"
     case header = "Header"
+    case group = "Group"
+    case expense = "Expense"
 }
 
 class ExpenseListViewController: MDLoadableViewController {
@@ -20,14 +21,14 @@ class ExpenseListViewController: MDLoadableViewController {
     let customView = ExpenseListView.instantiateFromNib()
     let totalCache = NSCache<NSNumber, NSDecimalNumber>()
     
-    let fetchedResultsController: NSFetchedResultsController<CategorySection> = {
-        let fetchRequest = NSFetchRequest<CategorySection>(entityName: "CategorySection")
+    let fetchedResultsController: NSFetchedResultsController<CategoryGroup> = {
+        let fetchRequest = FetchRequest<CategoryGroup>.make()
         fetchRequest.sortDescriptors = [
-            NSSortDescriptor(key: #keyPath(CategorySection.sectionDate), ascending: false)
+            NSSortDescriptor(key: #keyPath(CategoryGroup.sectionDate), ascending: false)
         ]
         return NSFetchedResultsController(fetchRequest: fetchRequest,
                                           managedObjectContext: Global.coreDataStack.viewContext,
-                                          sectionNameKeyPath: #keyPath(CategorySection.sectionDate),
+                                          sectionNameKeyPath: #keyPath(CategoryGroup.sectionDate),
                                           cacheName: "CacheName")
     }()
     
@@ -60,6 +61,12 @@ class ExpenseListViewController: MDLoadableViewController {
         super.viewDidLoad()
         
         self.filterButton.addTarget(self, action: #selector(handleTapOnFilterButton), for: .touchUpInside)
+        
+        self.customView.collectionView.register(ExpenseListSectionHeader.nib(),
+                                                forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
+                                                withReuseIdentifier: ViewID.header.rawValue)
+        self.customView.collectionView.register(ExpenseListGroupCell.nib(), forCellWithReuseIdentifier: ViewID.group.rawValue)
+        
         self.performFetch()
     }
     

@@ -106,9 +106,9 @@ class MakeDummyDataOperation: MDOperation<Any?> {
                     continue
                 }
                 
-                let categorySection = CategorySection(context: self.context)
-                categorySection.category = category
-                categorySection.sectionDate = sectionDate as NSDate
+                let categoryGroup = CategoryGroup(context: self.context)
+                categoryGroup.category = category
+                categoryGroup.sectionDate = sectionDate as NSDate
                 
                 var categorySectionTotal = 0.0
                 var expenses = [Expense]()
@@ -127,8 +127,8 @@ class MakeDummyDataOperation: MDOperation<Any?> {
                     print("-- amount: \(amount)")
                 }
                 
-                categorySection.total = NSDecimalNumber(value: categorySectionTotal)
-                categorySection.expenses = NSSet(array: expenses)
+                categoryGroup.total = NSDecimalNumber(value: categorySectionTotal)
+                categoryGroup.expenses = NSSet(array: expenses)
             }
             
             dateSpent = Calendar.current.date(byAdding: .day, value: 1, to: dateSpent)!
