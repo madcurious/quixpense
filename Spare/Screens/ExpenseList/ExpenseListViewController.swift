@@ -20,19 +20,6 @@ class ExpenseListViewController: MDLoadableViewController {
     let customView = ExpenseListView.instantiateFromNib()
     let totalCache = NSCache<NSNumber, NSDecimalNumber>()
     
-//    let fetchedResultsController: NSFetchedResultsController<Expense> = {
-//        let fetchRequest = NSFetchRequest<Expense>(entityName: "Expense")
-//        fetchRequest.sortDescriptors = [
-//            NSSortDescriptor(key: #keyPath(Expense.sectionDate), ascending: false)
-//        ]
-//        
-//        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
-//                                                                  managedObjectContext: Global.coreDataStack.viewContext,
-//                                                                  sectionNameKeyPath: #keyPath(Expense.sectionDate),
-//                                                                  cacheName: nil)
-//        return fetchedResultsController
-//    }()
-    
     let fetchedResultsController: NSFetchedResultsController<CategorySection> = {
         let fetchRequest = NSFetchRequest<CategorySection>(entityName: "CategorySection")
         fetchRequest.sortDescriptors = [
@@ -73,66 +60,31 @@ class ExpenseListViewController: MDLoadableViewController {
         super.viewDidLoad()
         
         self.filterButton.addTarget(self, action: #selector(handleTapOnFilterButton), for: .touchUpInside)
-        
-//        self.fetchedResultsController.delegate = self
-        
+        self.performFetch()
+    }
+    
+    func performFetch() {
+        self.showView(for: .loading)
         do {
             try self.fetchedResultsController.performFetch()
-//            if let count = self.fetchedResultsController.fetchedObjects?.count {
-//                if count == 0 {
-//                    self.updateView(forState: .empty)
-//                } else {
-//                    self.updateView(forState: .showing)
-//                }
-//            }
-            
-            for i in 0 ..< (self.fetchedResultsController.sections?.count ?? 0) {
-                print("sectionDate: \(self.fetchedResultsController.sections![i].name)")
-                
-                for j in 0 ..< self.fetchedResultsController.sections![i].numberOfObjects {
-                    let section = self.fetchedResultsController.object(at: IndexPath(item: j, section: i))
-                    print("    category: \(section.category!.name!)")
-                    print("    total: \(AmountFormatter.displayText(for: section.total))")
-                    
-                    guard let expenses = section.expenses?.allObjects as? [Expense]
-                        else {
-                            print("    no expenses")
-                            continue
-                    }
-                    
-                    print("    numberOfExpenses: \(expenses.count)")
-//                    expenses.forEach {
-//                        print("    expense: \($0)")
-//                    }
-                    print("    expenses total: \(AmountFormatter.displayText(for: expenses.total()))")
-                }
-                print("=================")
+            if let count = self.fetchedResultsController.fetchedObjects?.count,
+                count == 0 {
+                self.showView(for: .empty)
+            } else {
+                self.customView.collectionView.reloadData()
+                self.showView(for: .data)
             }
         } catch {
-            
+            self.showView(for: .error(error))
         }
     }
     
-    override func updateView(forState state: MDLoadableViewController.State) {
-        super.updateView(forState: state)
+    override func showView(for state: MDLoadableViewController.State) {
+        super.showView(for: state)
         
         self.customView.activityIndicatorView.isHidden = state != .initial || state != .loading
         self.customView.noExpensesLabel.isHidden = state != .empty
-        self.customView.collectionView.isHidden = state != .showing
-    }
-    
-    @discardableResult
-    func computeAndCacheTotal(for section: Int) -> NSDecimalNumber {
-//        if let expenses = self.fetchedResultsController.sections?[section].objects as? [Expense],
-//            expenses.count > 0 {
-//            let total = expenses.total()
-//            self.totalCache.setObject(total, forKey: NSNumber(value: section))
-//            return total
-//        } else {
-//            self.totalCache.removeObject(forKey: NSNumber(value: section))
-//            return NSDecimalNumber(value: 0)
-//        }
-        return NSDecimalNumber(value: 0)
+        self.customView.collectionView.isHidden = state != .data
     }
 
 }
@@ -175,23 +127,11 @@ extension ExpenseListViewController: UIPopoverPresentationControllerDelegate {
 extension ExpenseListViewController: NSFetchedResultsControllerDelegate {
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        switch controller.fetchedObjects?.count ?? 0 {
-        case 0:
-            self.updateView(forState: .empty)
-            
-        default:
-            self.updateView(forState: .showing)
-        }
+        self.performFetch()
     }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        if let oldSection = indexPath?.section {
-            self.computeAndCacheTotal(for: oldSection)
-        }
-        
-        if let newSection = newIndexPath?.section {
-            self.computeAndCacheTotal(for: newSection)
-        }
+        self.performFetch()
     }
     
 }
