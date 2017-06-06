@@ -11,9 +11,9 @@ import Mold
 import CoreData
 
 fileprivate enum ViewID: String {
-    case header = "Header"
-    case group = "Group"
-    case expense = "Expense"
+    case sectionHeader = "SectionHeader"
+    case groupCell = "GroupCell"
+    case expenseCell = "ExpenseCell"
 }
 
 class ExpenseListViewController: MDLoadableViewController {
@@ -64,8 +64,15 @@ class ExpenseListViewController: MDLoadableViewController {
         
         self.customView.collectionView.register(ExpenseListSectionHeader.nib(),
                                                 forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
-                                                withReuseIdentifier: ViewID.header.rawValue)
-        self.customView.collectionView.register(ExpenseListGroupCell.nib(), forCellWithReuseIdentifier: ViewID.group.rawValue)
+                                                withReuseIdentifier: ViewID.sectionHeader.rawValue)
+        self.customView.collectionView.register(ExpenseListGroupCell.nib(),
+                                                forCellWithReuseIdentifier: ViewID.groupCell.rawValue)
+        self.customView.collectionView.dataSource = self
+        self.customView.collectionView.delegate = self
+        if let flowLayout = self.customView.collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            flowLayout.minimumLineSpacing = 0
+            flowLayout.minimumInteritemSpacing = 0
+        }
         
         self.performFetch()
     }
@@ -140,6 +147,60 @@ extension ExpenseListViewController: NSFetchedResultsControllerDelegate {
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         self.performFetch()
     }
+    
+}
+
+// MARK: - UICollectionViewDataSource
+extension ExpenseListViewController: UICollectionViewDataSource {
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        guard let sections = self.fetchedResultsController.sections
+            else {
+                return 0
+        }
+        return sections.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        guard let sectionInfo = self.fetchedResultsController.sections?[section]
+            else {
+                return 0
+        }
+        return sectionInfo.numberOfObjects
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ViewID.groupCell.rawValue, for: indexPath) as! ExpenseListGroupCell
+        cell.categoryGroup = self.fetchedResultsController.object(at: indexPath)
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
+                                                                         withReuseIdentifier: ViewID.sectionHeader.rawValue,
+                                                                         for: indexPath) as! ExpenseListSectionHeader
+        headerView.dateString = self.fetchedResultsController.sections?[indexPath.section].name
+        headerView.sectionTotal = NSDecimalNumber(value: 9999.99)
+        return headerView
+    }
+    
+}
+
+// MARK: - UICollectionViewDelegateFlowLayout
+extension ExpenseListViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.bounds.size.width, height: 44)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: collectionView.bounds.size.width, height: 22)
+    }
+    
+}
+
+// MARK: - UICollectionViewDelegate
+extension ExpenseListViewController: UICollectionViewDelegate {
     
 }
 
