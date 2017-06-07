@@ -11,6 +11,7 @@ import Mold
 
 class FilterButton: MDButton, Themeable {
     
+    @IBOutlet weak var roundedRectView: UIView!
     @IBOutlet weak var filterLabel: UILabel!
     @IBOutlet weak var arrowImageView: UIImageView!
     
@@ -22,6 +23,7 @@ class FilterButton: MDButton, Themeable {
         self.backgroundColor = .clear
         self.clipsToBounds = true
         
+        self.roundedRectView.isUserInteractionEnabled = false
         self.filterLabel.isUserInteractionEnabled = false
         self.arrowImageView.isUserInteractionEnabled = false
         
@@ -37,24 +39,18 @@ class FilterButton: MDButton, Themeable {
     }
     
     override func sizeThatFits(_ size: CGSize) -> CGSize {
-        return CGSize(width: self.filterLabel.sizeThatFits(size).width + self.arrowImageView.sizeThatFits(size).width, height: 30)
+        return CGSize(width: self.filterLabel.sizeThatFits(size).width + self.arrowImageView.sizeThatFits(size).width, height: 44)
     }
     
     func applyTheme() {
+        self.roundedRectView.backgroundColor = Global.theme.color(for: .filterButtonBackground)
         self.filterLabel.textColor = Global.theme.color(for: .filterButtonContent)
         self.arrowImageView.tintColor = Global.theme.color(for: .filterButtonContent)
     }
     
-    override func draw(_ rect: CGRect) {
-        let roundedRectPath = UIBezierPath(roundedRect: self.filterLabel.frame,
-                                           cornerRadius: self.filterLabel.frame.size.height / 2)
-        Global.theme.color(for: .filterButtonBackground).setFill()
-        roundedRectPath.fill()
-    }
-    
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.setNeedsDisplay()
+        self.roundedRectView.layer.cornerRadius = self.roundedRectView.bounds.size.height / 2
     }
     
 }
