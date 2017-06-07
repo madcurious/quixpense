@@ -19,7 +19,6 @@ fileprivate enum ViewID: String {
 class ExpenseListViewController: MDLoadableViewController {
     
     let customView = ExpenseListView.instantiateFromNib()
-    let totalCache = NSCache<NSNumber, NSDecimalNumber>()
     
     let fetchedResultsController: NSFetchedResultsController<CategoryGroup> = {
         let fetchRequest = FetchRequest<CategoryGroup>.make()
@@ -40,6 +39,7 @@ class ExpenseListViewController: MDLoadableViewController {
         return filterButton
     }()
     
+    let sectionTotals = NSCache<NSString, NSDecimalNumber>()
     var expandedIndexPaths = Set<IndexPath>()
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -104,6 +104,19 @@ class ExpenseListViewController: MDLoadableViewController {
         self.customView.activityIndicatorView.isHidden = state != .initial || state != .loading
         self.customView.noExpensesLabel.isHidden = state != .empty
         self.customView.collectionView.isHidden = state != .data
+    }
+    
+    func computeTotal(forSection section: Int) -> NSDecimalNumber {
+        var total = NSDecimalNumber(value: 0)
+        guard let groups = self.fetchedResultsController.sections?[section].objects as? [CategoryGroup]
+            else {
+                return total
+        }
+        
+        groups.forEach { group in
+            total = total.adding(group.total ?? 0)
+        }
+        return total
     }
 
 }
@@ -191,8 +204,20 @@ extension ExpenseListViewController: UICollectionViewDataSource {
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
                                                                          withReuseIdentifier: ViewID.sectionHeader.rawValue,
                                                                          for: indexPath) as! ExpenseListSectionHeader
-        headerView.dateString = self.fetchedResultsController.sections?[indexPath.section].name
-        headerView.sectionTotal = NSDecimalNumber(value: 9999.99)
+        
+        if let sectionName = self.fetchedResultsController.sections?[indexPath.section].name {
+            headerView.dateString = sectionName
+            headerView.sectionTotal = {
+                if let total = self.sectionTotals.object(forKey: sectionName as NSString) {
+                    return total
+                } else {
+                    let total = self.computeTotal(forSection: indexPath.section)
+                    self.sectionTotals.setObject(total, forKey: sectionName as NSString)
+                    return total
+                }
+            }()
+        }
+        
         return headerView
     }
     
