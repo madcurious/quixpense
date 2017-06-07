@@ -27,6 +27,7 @@ class ExpenseListViewController: MDLoadableViewController {
             NSSortDescriptor(key: #keyPath(CategoryGroup.sectionDate), ascending: false),
             NSSortDescriptor(key: #keyPath(CategoryGroup.total), ascending: false)
         ]
+        fetchRequest.fetchBatchSize = 100
         return NSFetchedResultsController(fetchRequest: fetchRequest,
                                           managedObjectContext: Global.coreDataStack.viewContext,
                                           sectionNameKeyPath: #keyPath(CategoryGroup.sectionDate),
@@ -230,6 +231,7 @@ extension ExpenseListViewController: UICollectionViewDelegateFlowLayout {
 extension ExpenseListViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // Remove highlight.
         collectionView.deselectItem(at: indexPath, animated: true)
         
         guard let groupCell = collectionView.cellForItem(at: indexPath) as? ExpenseListGroupCell

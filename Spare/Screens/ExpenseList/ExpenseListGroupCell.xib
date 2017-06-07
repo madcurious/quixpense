@@ -58,7 +58,7 @@
                         </constraints>
                     </view>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="8dD-BS-dBS">
-                        <rect key="frame" x="0.0" y="44" width="320" height="100"/>
+                        <rect key="frame" x="0.0" y="46" width="320" height="100"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="100" id="xsH-H8-CCR"/>
@@ -73,7 +73,7 @@
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="8dD-BS-dBS" firstAttribute="top" secondItem="bd1-54-yXZ" secondAttribute="bottom" id="2xP-Pl-Ygv"/>
+                <constraint firstItem="8dD-BS-dBS" firstAttribute="top" secondItem="bd1-54-yXZ" secondAttribute="bottom" constant="2" id="2xP-Pl-Ygv"/>
                 <constraint firstItem="bd1-54-yXZ" firstAttribute="top" secondItem="RKV-qO-QTv" secondAttribute="top" id="7Ha-sA-ZmT"/>
                 <constraint firstItem="bd1-54-yXZ" firstAttribute="leading" secondItem="RKV-qO-QTv" secondAttribute="leading" id="C25-5k-aPQ"/>
                 <constraint firstAttribute="trailing" secondItem="bd1-54-yXZ" secondAttribute="trailing" id="bL2-p3-5xn"/>
@@ -85,6 +85,7 @@
                 <outlet property="arrowImageView" destination="B2c-0u-rtQ" id="3Td-Fk-xwW"/>
                 <outlet property="collectionView" destination="8dD-BS-dBS" id="MZE-qc-1e6"/>
                 <outlet property="collectionViewHeight" destination="xsH-H8-CCR" id="znG-rE-y1e"/>
+                <outlet property="collectionViewVerticalSpacing" destination="2xP-Pl-Ygv" id="uR9-bx-BW2"/>
                 <outlet property="groupBackgroundView" destination="bd1-54-yXZ" id="Vi6-AC-K1H"/>
                 <outlet property="groupLabel" destination="SQk-rV-8yc" id="Qhx-69-Coc"/>
                 <outlet property="totalLabel" destination="FKg-VA-ldH" id="dd9-Fp-2jx"/>

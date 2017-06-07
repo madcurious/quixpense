@@ -10,6 +10,7 @@ import UIKit
 
 private let kRowHeight = CGFloat(44)
 private let kSeparatorHeight = CGFloat(0.5)
+private let kCollectionViewVerticalSpacing = CGFloat(4)
 
 private enum ViewID: String {
     case expenseCell = "ExpenseCell"
@@ -23,10 +24,14 @@ class ExpenseListGroupCell: UICollectionViewCell, Themeable {
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var collectionViewVerticalSpacing: NSLayoutConstraint!
     
     class func expandedHeight(for group: CategoryGroup) -> CGFloat {
         let expenseCount = CGFloat(group.expenses?.count ?? 0)
-        return kRowHeight + (expenseCount * kRowHeight) + ((expenseCount - 1) * kSeparatorHeight)
+        return kRowHeight +
+            (expenseCount * kRowHeight) +
+            ((expenseCount - 1) * kSeparatorHeight) +
+            (kCollectionViewVerticalSpacing * 2)
     }
     
     weak var categoryGroup: CategoryGroup? {
@@ -79,6 +84,8 @@ class ExpenseListGroupCell: UICollectionViewCell, Themeable {
         
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
+        
+        self.collectionViewVerticalSpacing.constant = kCollectionViewVerticalSpacing
     }
     
     func applyTheme() {

@@ -20,6 +20,7 @@ enum UIElement {
     expenseListGroupCellBackgroundHighlighted,
     expenseListSectionHeaderBackground,
     expenseListSectionHeaderText,
+    expenseListStemView,
     
     fieldIcon,
     

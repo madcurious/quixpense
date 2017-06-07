@@ -11,38 +11,38 @@ import Foundation
 struct Filter {
     
     enum Periodization {
-        case Daily, Weekly, Monthly
+        case day, week, month
         
         func text() -> String {
             switch self {
-            case .Daily:
+            case .day:
                 return "Daily"
                 
-            case .Weekly:
+            case .week:
                 return "Weekly"
                 
-            case .Monthly:
+            case .month:
                 return "Monthly"
             }
         }
     }
     
     enum Grouping {
-        case Categories, Tags
+        case category, tag
         
         func text() -> String {
             switch self {
-            case .Categories:
+            case .category:
                 return "by category"
                 
-            case .Tags:
+            case .tag:
                 return "by tag"
             }
         }
     }
     
-    var periodization = Periodization.Daily
-    var grouping = Grouping.Categories
+    var periodization = Periodization.day
+    var grouping = Grouping.category
     
     func text() -> String {
         return "\(self.periodization.text()), \(self.grouping.text())"

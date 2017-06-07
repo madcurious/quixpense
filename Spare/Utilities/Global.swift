@@ -12,5 +12,6 @@ struct Global {
     
     static var coreDataStack: CoreDataStack!
     static var theme = LightTheme()
+    static var filter = Filter()
     
 }
