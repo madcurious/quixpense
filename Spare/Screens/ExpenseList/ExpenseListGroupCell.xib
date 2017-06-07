@@ -58,8 +58,11 @@
                         </constraints>
                     </view>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="8dD-BS-dBS">
-                        <rect key="frame" x="0.0" y="44" width="320" height="118"/>
+                        <rect key="frame" x="0.0" y="44" width="320" height="100"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="100" id="xsH-H8-CCR"/>
+                        </constraints>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="KOh-3k-77o">
                             <size key="itemSize" width="50" height="50"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -74,7 +77,6 @@
                 <constraint firstItem="bd1-54-yXZ" firstAttribute="top" secondItem="RKV-qO-QTv" secondAttribute="top" id="7Ha-sA-ZmT"/>
                 <constraint firstItem="bd1-54-yXZ" firstAttribute="leading" secondItem="RKV-qO-QTv" secondAttribute="leading" id="C25-5k-aPQ"/>
                 <constraint firstAttribute="trailing" secondItem="bd1-54-yXZ" secondAttribute="trailing" id="bL2-p3-5xn"/>
-                <constraint firstAttribute="bottom" secondItem="8dD-BS-dBS" secondAttribute="bottom" id="mix-VN-FTB"/>
                 <constraint firstAttribute="trailing" secondItem="8dD-BS-dBS" secondAttribute="trailing" id="t82-gx-kwF"/>
                 <constraint firstItem="8dD-BS-dBS" firstAttribute="leading" secondItem="RKV-qO-QTv" secondAttribute="leading" id="tNx-ak-oI2"/>
             </constraints>
@@ -82,6 +84,7 @@
             <connections>
                 <outlet property="arrowImageView" destination="B2c-0u-rtQ" id="3Td-Fk-xwW"/>
                 <outlet property="collectionView" destination="8dD-BS-dBS" id="MZE-qc-1e6"/>
+                <outlet property="collectionViewHeight" destination="xsH-H8-CCR" id="znG-rE-y1e"/>
                 <outlet property="groupBackgroundView" destination="bd1-54-yXZ" id="Vi6-AC-K1H"/>
                 <outlet property="groupLabel" destination="SQk-rV-8yc" id="Qhx-69-Coc"/>
                 <outlet property="totalLabel" destination="FKg-VA-ldH" id="dd9-Fp-2jx"/>

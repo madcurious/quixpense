@@ -244,14 +244,8 @@ extension ExpenseListViewController: UICollectionViewDelegate {
             self.expandedIndexPaths.insert(indexPath)
             groupCell.isExpanded = true
         }
-//        collectionView.reloadItems(at: [indexPath])
-        collectionView.performBatchUpdates({
-//            collectionView.reloadItems(at: [indexPath])
-        }, completion: { _ in
-//            if let groupCell = collectionView.cellForItem(at: indexPath) as? ExpenseListGroupCell {
-//                groupCell.collectionView.reloadData()
-//            }
-        })
+        
+        collectionView.performBatchUpdates(nil, completion: nil)
     }
     
 }

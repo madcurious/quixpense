@@ -22,6 +22,7 @@ class ExpenseListGroupCell: UICollectionViewCell, Themeable {
     @IBOutlet weak var groupLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
     
     class func expandedHeight(for group: CategoryGroup) -> CGFloat {
         let expenseCount = CGFloat(group.expenses?.count ?? 0)
@@ -33,6 +34,13 @@ class ExpenseListGroupCell: UICollectionViewCell, Themeable {
             if let categoryGroup = self.categoryGroup {
                 self.groupLabel.text = categoryGroup.category?.name
                 self.totalLabel.text = AmountFormatter.displayText(for: categoryGroup.total)
+                
+                let expenseCount = CGFloat(categoryGroup.expenses?.count ?? 0)
+                if expenseCount > 0 {
+                    self.collectionViewHeight.constant = (expenseCount * kRowHeight) + ((expenseCount - 1) * kSeparatorHeight)
+                } else {
+                    self.collectionViewHeight.constant = 0
+                }
             } else {
                 self.arrowImageView.image = nil
                 self.groupLabel.text = nil
