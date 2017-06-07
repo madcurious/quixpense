@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -57,37 +58,60 @@
                             <constraint firstItem="779-L4-15b" firstAttribute="top" secondItem="bd1-54-yXZ" secondAttribute="top" id="lg7-me-5jr"/>
                         </constraints>
                     </view>
-                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="8dD-BS-dBS">
-                        <rect key="frame" x="0.0" y="46" width="320" height="100"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HLK-Sz-Xfs">
+                        <rect key="frame" x="0.0" y="44" width="320" height="100"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fP0-y9-eCh">
+                                <rect key="frame" x="31" y="6" width="1" height="88"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="1" id="ZWE-S5-yU9"/>
+                                </constraints>
+                            </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="bxe-9E-YAm">
+                                <rect key="frame" x="32" y="0.0" width="288" height="100"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="QHD-Se-jXS"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="HaR-jS-YJF">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.79474441799999995" green="0.94982767479999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="100" id="xsH-H8-CCR"/>
+                            <constraint firstItem="bxe-9E-YAm" firstAttribute="width" secondItem="HLK-Sz-Xfs" secondAttribute="width" multiplier="9:10" id="4uv-32-Zi9"/>
+                            <constraint firstItem="bxe-9E-YAm" firstAttribute="top" secondItem="HLK-Sz-Xfs" secondAttribute="top" id="8jC-L2-jen"/>
+                            <constraint firstItem="fP0-y9-eCh" firstAttribute="top" secondItem="HLK-Sz-Xfs" secondAttribute="top" constant="6" id="Hbe-lF-46R"/>
+                            <constraint firstAttribute="bottom" secondItem="bxe-9E-YAm" secondAttribute="bottom" id="hap-9V-KVa"/>
+                            <constraint firstAttribute="trailing" secondItem="bxe-9E-YAm" secondAttribute="trailing" id="pRb-fK-FrC"/>
+                            <constraint firstItem="bxe-9E-YAm" firstAttribute="leading" secondItem="fP0-y9-eCh" secondAttribute="trailing" id="uyR-Bz-MMQ"/>
+                            <constraint firstAttribute="bottom" secondItem="fP0-y9-eCh" secondAttribute="bottom" constant="6" id="yww-cX-Kue"/>
                         </constraints>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="KOh-3k-77o">
-                            <size key="itemSize" width="50" height="50"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                    </collectionView>
+                    </view>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="8dD-BS-dBS" firstAttribute="top" secondItem="bd1-54-yXZ" secondAttribute="bottom" constant="2" id="2xP-Pl-Ygv"/>
                 <constraint firstItem="bd1-54-yXZ" firstAttribute="top" secondItem="RKV-qO-QTv" secondAttribute="top" id="7Ha-sA-ZmT"/>
                 <constraint firstItem="bd1-54-yXZ" firstAttribute="leading" secondItem="RKV-qO-QTv" secondAttribute="leading" id="C25-5k-aPQ"/>
+                <constraint firstAttribute="trailing" secondItem="HLK-Sz-Xfs" secondAttribute="trailing" id="L0b-zr-uPN"/>
                 <constraint firstAttribute="trailing" secondItem="bd1-54-yXZ" secondAttribute="trailing" id="bL2-p3-5xn"/>
-                <constraint firstAttribute="trailing" secondItem="8dD-BS-dBS" secondAttribute="trailing" id="t82-gx-kwF"/>
-                <constraint firstItem="8dD-BS-dBS" firstAttribute="leading" secondItem="RKV-qO-QTv" secondAttribute="leading" id="tNx-ak-oI2"/>
+                <constraint firstItem="HLK-Sz-Xfs" firstAttribute="leading" secondItem="RKV-qO-QTv" secondAttribute="leading" id="hae-cs-KNc"/>
+                <constraint firstItem="HLK-Sz-Xfs" firstAttribute="top" secondItem="bd1-54-yXZ" secondAttribute="bottom" id="kId-7x-zRd"/>
             </constraints>
             <size key="customSize" width="313" height="498"/>
             <connections>
                 <outlet property="arrowImageView" destination="B2c-0u-rtQ" id="3Td-Fk-xwW"/>
-                <outlet property="collectionView" destination="8dD-BS-dBS" id="MZE-qc-1e6"/>
-                <outlet property="collectionViewHeight" destination="xsH-H8-CCR" id="znG-rE-y1e"/>
-                <outlet property="collectionViewVerticalSpacing" destination="2xP-Pl-Ygv" id="uR9-bx-BW2"/>
+                <outlet property="collectionView" destination="bxe-9E-YAm" id="rCd-aB-a1K"/>
+                <outlet property="collectionViewContainer" destination="HLK-Sz-Xfs" id="oDV-oj-kdI"/>
+                <outlet property="collectionViewHeight" destination="QHD-Se-jXS" id="s2a-BN-ME7"/>
                 <outlet property="groupBackgroundView" destination="bd1-54-yXZ" id="Vi6-AC-K1H"/>
                 <outlet property="groupLabel" destination="SQk-rV-8yc" id="Qhx-69-Coc"/>
+                <outlet property="stemView" destination="fP0-y9-eCh" id="4rj-1Y-aQf"/>
                 <outlet property="totalLabel" destination="FKg-VA-ldH" id="dd9-Fp-2jx"/>
             </connections>
             <point key="canvasLocation" x="-183" y="-283"/>

@@ -10,7 +10,6 @@ import UIKit
 
 private let kRowHeight = CGFloat(44)
 private let kSeparatorHeight = CGFloat(0.5)
-private let kCollectionViewVerticalSpacing = CGFloat(4)
 
 private enum ViewID: String {
     case expenseCell = "ExpenseCell"
@@ -22,16 +21,17 @@ class ExpenseListGroupCell: UICollectionViewCell, Themeable {
     @IBOutlet weak var arrowImageView: UIImageView!
     @IBOutlet weak var groupLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
+    
+    @IBOutlet weak var collectionViewContainer: UIView!
+    @IBOutlet weak var stemView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
-    @IBOutlet weak var collectionViewVerticalSpacing: NSLayoutConstraint!
     
     class func expandedHeight(for group: CategoryGroup) -> CGFloat {
         let expenseCount = CGFloat(group.expenses?.count ?? 0)
         return kRowHeight +
             (expenseCount * kRowHeight) +
-            ((expenseCount - 1) * kSeparatorHeight) +
-            (kCollectionViewVerticalSpacing * 2)
+            ((expenseCount - 1) * kSeparatorHeight)
     }
     
     weak var categoryGroup: CategoryGroup? {
@@ -74,7 +74,9 @@ class ExpenseListGroupCell: UICollectionViewCell, Themeable {
         
         self.clipsToBounds = true
         
+        self.collectionViewContainer.backgroundColor = .clear
         self.collectionView.backgroundColor = .clear
+        
         self.collectionView.isScrollEnabled = false
         self.collectionView.register(ExpenseListExpenseCell.nib(), forCellWithReuseIdentifier: ViewID.expenseCell.rawValue)
         self.collectionView.clipsToBounds = true
@@ -84,12 +86,11 @@ class ExpenseListGroupCell: UICollectionViewCell, Themeable {
         
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
-        
-        self.collectionViewVerticalSpacing.constant = kCollectionViewVerticalSpacing
     }
     
     func applyTheme() {
         self.backgroundColor = Global.theme.color(for: .mainBackground)
+        self.stemView.backgroundColor = Global.theme.color(for: .expenseListStemView)
         
         self.groupLabel.font = Global.theme.font(for: .regularText)
         self.totalLabel.font = Global.theme.font(for: .regularText)

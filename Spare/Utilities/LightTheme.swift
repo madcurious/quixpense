@@ -19,8 +19,7 @@ struct LightTheme: Theme {
              .pickerFieldValue:
             return UIColor.white
             
-        case .expenseListGroupCellBackgroundDefault,
-             .expenseListStemView:
+        case .expenseListGroupCellBackgroundDefault:
             return UIColor.hex(0xeeeeee)
             
         case .barTint,
@@ -29,7 +28,8 @@ struct LightTheme: Theme {
              .textFieldValue:
             return UIColor.black
             
-        case .tableViewSeparator,
+        case .expenseListStemView,
+             .tableViewSeparator,
              .textFieldPlaceholder:
             return UIColor.hex(0xdddddd)
             

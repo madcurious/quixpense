@@ -10,8 +10,6 @@ import UIKit
 
 class ExpenseListExpenseCell: UICollectionViewCell, Themeable {
     
-    @IBOutlet weak var stemView: UIView!
-    @IBOutlet weak var sizerView: UIView!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var amountLabel: UILabel!
     
@@ -31,16 +29,12 @@ class ExpenseListExpenseCell: UICollectionViewCell, Themeable {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.sizerView.backgroundColor = .clear
-        
         self.applyTheme()
     }
     
     let dateFormatter = DateFormatter()
     
     func applyTheme() {
-        self.stemView.backgroundColor = Global.theme.color(for: .expenseListStemView)
-        
         self.descriptionLabel.font = Global.theme.font(for: .regularText)
         self.descriptionLabel.textColor = Global.theme.color(for: .regularText)
         self.descriptionLabel.textAlignment = .left
@@ -60,7 +54,7 @@ class ExpenseListExpenseCell: UICollectionViewCell, Themeable {
     }
     
     func makeDateDescription() -> String {
-        guard let dateSpent = self.expense?.dateSpent as? Date
+        guard let dateSpent = self.expense?.dateSpent as Date?
             else {
                 return ""
         }
