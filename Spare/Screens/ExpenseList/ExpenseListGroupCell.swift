@@ -25,7 +25,7 @@ class ExpenseListGroupCell: UICollectionViewCell, Themeable {
     
     class func expandedHeight(for group: CategoryGroup) -> CGFloat {
         let expenseCount = CGFloat(group.expenses?.count ?? 0)
-        return kRowHeight + (expenseCount * kRowHeight) + (expenseCount * kSeparatorHeight)
+        return kRowHeight + (expenseCount * kRowHeight) + ((expenseCount - 1) * kSeparatorHeight)
     }
     
     weak var categoryGroup: CategoryGroup? {
@@ -45,14 +45,8 @@ class ExpenseListGroupCell: UICollectionViewCell, Themeable {
     var isExpanded = false {
         didSet {
             if self.isExpanded {
-                self.collectionView.dataSource = self
-                self.collectionView.delegate = self
-            } else {
-                self.collectionView.dataSource = nil
-                self.collectionView.delegate = nil
+                self.collectionView.reloadData()
             }
-            self.collectionView.reloadData()
-            self.setNeedsLayout()
         }
     }
     
@@ -74,9 +68,14 @@ class ExpenseListGroupCell: UICollectionViewCell, Themeable {
         
         self.applyTheme()
         self.applyHighlight()
+        
+        self.collectionView.dataSource = self
+        self.collectionView.delegate = self
     }
     
     func applyTheme() {
+        self.backgroundColor = Global.theme.color(for: .mainBackground)
+        
         self.groupLabel.font = Global.theme.font(for: .regularText)
         self.totalLabel.font = Global.theme.font(for: .regularText)
         

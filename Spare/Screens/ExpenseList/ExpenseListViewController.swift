@@ -232,17 +232,25 @@ extension ExpenseListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         
+        guard let groupCell = collectionView.cellForItem(at: indexPath) as? ExpenseListGroupCell
+            else {
+                return
+        }
+        
         if self.expandedIndexPaths.contains(indexPath) {
             self.expandedIndexPaths.remove(indexPath)
+            groupCell.isExpanded = false
         } else  {
             self.expandedIndexPaths.insert(indexPath)
+            groupCell.isExpanded = true
         }
-        collectionView.performBatchUpdates({ 
-            collectionView.reloadItems(at: [indexPath])
+//        collectionView.reloadItems(at: [indexPath])
+        collectionView.performBatchUpdates({
+//            collectionView.reloadItems(at: [indexPath])
         }, completion: { _ in
-            if let groupCell = collectionView.cellForItem(at: indexPath) as? ExpenseListGroupCell {
-                groupCell.collectionView.reloadData()
-            }
+//            if let groupCell = collectionView.cellForItem(at: indexPath) as? ExpenseListGroupCell {
+//                groupCell.collectionView.reloadData()
+//            }
         })
     }
     
