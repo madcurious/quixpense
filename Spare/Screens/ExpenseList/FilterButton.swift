@@ -60,46 +60,52 @@ class FilterButton: MDButton, Themeable {
         self.roundedRectView.layer.cornerRadius = self.roundedRectView.bounds.size.height / 2
     }
     
-    // MARK: - Target actions
+}
+
+// MARK: - Target actions
+extension FilterButton {
     
     func handleTapOnSelf() {
-        let filterPopup = FilterPopupViewController(filter: self.filter, delegate: self)
-        let modal = BaseNavBarVC(rootViewController: filterPopup)
-        modal.modalPresentationStyle = .popover
+        let filterPopup = FilterPopupViewController(filter: self.filter)
+        filterPopup.modalPresentationStyle = .popover
         
-        guard let popoverController = modal.popoverPresentationController,
+        guard let popoverController = filterPopup.popoverPresentationController,
             let parent = UIApplication.shared.keyWindow?.rootViewController
             else {
                 return
         }
+        
         popoverController.delegate = self
         popoverController.sourceView = self
         popoverController.sourceRect = self.bounds
         popoverController.permittedArrowDirections = [.up]
-        let filterPopupViewSize = filterPopup.customView.sizeThatFits(CGSize(width: 300, height: CGFloat.greatestFiniteMagnitude))
-        modal.preferredContentSize = CGSize(width: 300,
-                                            height: filterPopupViewSize.height)
         
-        parent.present(modal, animated: true, completion: nil)
+        filterPopup.preferredContentSize = {
+            let computedSize = filterPopup.customView.sizeThatFits(CGSize(width: 300, height: CGFloat.greatestFiniteMagnitude))
+            return CGSize(width: 300,
+                          height: computedSize.height)
+        }()
+        
+        parent.present(filterPopup, animated: true, completion: nil)
     }
     
 }
 
-extension FilterButton: FilterPopupViewControllerDelegate {
-    
-    func filterPopupViewController(_ viewController: FilterPopupViewController, didSelect filter: Filter) {
-        if filter != self.filter {
-            self.filter = filter
-            self.sendActions(for: .valueChanged)
-        }
-    }
-    
-}
-
+// MARK: - UIPopoverPresentationControllerDelegate
 extension FilterButton: UIPopoverPresentationControllerDelegate {
     
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return .none
+    }
+    
+    func popoverPresentationControllerShouldDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) -> Bool {
+        if let filterPopup = popoverPresentationController.presentedViewController as? FilterPopupViewController {
+            if filterPopup.filter != self.filter {
+                self.filter = filterPopup.filter
+                self.sendActions(for: .valueChanged)
+            }
+        }
+        return true
     }
     
 }

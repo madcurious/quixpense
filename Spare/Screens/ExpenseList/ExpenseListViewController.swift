@@ -119,14 +119,6 @@ class ExpenseListViewController: MDLoadableViewController {
 
 }
 
-extension ExpenseListViewController: UIPopoverPresentationControllerDelegate {
-    
-    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
-        return .none
-    }
-    
-}
-
 // MARK: - NSFetchedResultsControllerDelegate
 extension ExpenseListViewController: NSFetchedResultsControllerDelegate {
     
