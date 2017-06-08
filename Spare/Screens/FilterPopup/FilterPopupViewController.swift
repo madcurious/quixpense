@@ -9,33 +9,28 @@
 import UIKit
 import Mold
 
-class FilterPopupViewController: UIViewController {
+protocol FilterPopupViewControllerDelegate {
     
-    class func present(from parent: UIViewController) {
-        let container = BaseNavBarVC(rootViewController: FilterPopupViewController())
-        container.modalPresentationStyle = .popover
-        
-        parent.present(container, animated: true) { 
-            guard let popoverController = container.popoverPresentationController,
-                let titleView = parent.navigationItem.titleView
-                else {
-                    return
-            }
-            popoverController.permittedArrowDirections = [.up]
-            popoverController.sourceView = titleView
-            popoverController.sourceRect = titleView.frame
-        }
-    }
+    func filterPopupViewController(_ viewController: FilterPopupViewController, didSelect filter: Filter)
+    
+}
+
+class FilterPopupViewController: UIViewController {
     
     let customView = FilterPopupView.instantiateFromNib()
     
-    init() {
+    var filter: Filter
+    var delegate: FilterPopupViewControllerDelegate
+    
+    init(filter: Filter, delegate: FilterPopupViewControllerDelegate) {
+        self.filter = filter
+        self.delegate = delegate
         super.init(nibName: nil, bundle: nil)
         self.navigationItem.title = "FILTER"
     }
     
     required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func loadView() {
@@ -45,8 +40,22 @@ class FilterPopupViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.customView.periodizationControl.selectedSegmentIndex = self.filter.periodization.rawValue
+        self.customView.periodizationControl.addTarget(self, action: #selector(handleValueChangeOnPeriodization), for: .valueChanged)
+        
+        self.customView.groupingControl.selectedSegmentIndex = self.filter.grouping.rawValue
+        self.customView.groupingControl.addTarget(self, action: #selector(handleValueChangeOnGrouping), for: .valueChanged)
+        
         self.navigationItem.leftBarButtonItem = BarButtonItems.make(.cancel, target: self, action: #selector(handleTapOnCancelButton))
         self.navigationItem.rightBarButtonItem = BarButtonItems.make(.done, target: self, action: #selector(handleTapOnDoneButton))
+    }
+    
+    func handleValueChangeOnPeriodization(sender: UISegmentedControl) {
+        self.filter.periodization = Filter.Periodization(rawValue: sender.selectedSegmentIndex)!
+    }
+    
+    func handleValueChangeOnGrouping(sender: UISegmentedControl) {
+        self.filter.grouping = Filter.Grouping(rawValue: sender.selectedSegmentIndex)!
     }
     
     func handleTapOnCancelButton() {
@@ -54,6 +63,7 @@ class FilterPopupViewController: UIViewController {
     }
     
     func handleTapOnDoneButton() {
+        self.delegate.filterPopupViewController(self, didSelect: self.filter)
         self.dismiss(animated: true, completion: nil)
     }
 }

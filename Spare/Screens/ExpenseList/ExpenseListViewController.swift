@@ -64,8 +64,6 @@ class ExpenseListViewController: MDLoadableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.filterButton.addTarget(self, action: #selector(handleTapOnFilterButton), for: .touchUpInside)
-        
         self.customView.collectionView.register(ExpenseListSectionHeader.nib(),
                                                 forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
                                                 withReuseIdentifier: ViewID.sectionHeader.rawValue)
@@ -119,32 +117,6 @@ class ExpenseListViewController: MDLoadableViewController {
         return total
     }
 
-}
-
-// MARK: - Target actions
-extension ExpenseListViewController {
-    
-    func handleTapOnFilterButton() {
-        let filterPopup = FilterPopupViewController()
-        let modal = BaseNavBarVC(rootViewController: filterPopup)
-        modal.modalPresentationStyle = .popover
-        
-        guard let popoverController = modal.popoverPresentationController
-            else {
-                return
-        }
-        popoverController.delegate = self
-        
-        popoverController.sourceView = self.filterButton
-        popoverController.sourceRect = self.filterButton.frame
-        popoverController.permittedArrowDirections = [.up]
-        let filterPopupViewSize = filterPopup.customView.sizeThatFits(CGSize(width: 300, height: CGFloat.greatestFiniteMagnitude))
-        modal.preferredContentSize = CGSize(width: 300,
-                                            height: filterPopupViewSize.height)
-        
-        self.present(modal, animated: true, completion: nil)
-    }
-    
 }
 
 extension ExpenseListViewController: UIPopoverPresentationControllerDelegate {

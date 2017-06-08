@@ -8,10 +8,15 @@
 
 import Foundation
 
-struct Filter {
+func ==(lhs: Filter, rhs: Filter) -> Bool {
+    return lhs.periodization == rhs.periodization &&
+        lhs.grouping == rhs.grouping
+}
+
+struct Filter: Equatable {
     
-    enum Periodization {
-        case day, week, month
+    enum Periodization: Int {
+        case day = 0, week, month
         
         func text() -> String {
             switch self {
@@ -27,8 +32,8 @@ struct Filter {
         }
     }
     
-    enum Grouping {
-        case category, tag
+    enum Grouping: Int {
+        case category = 0, tag
         
         func text() -> String {
             switch self {

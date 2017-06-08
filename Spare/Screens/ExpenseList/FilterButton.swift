@@ -15,7 +15,12 @@ class FilterButton: MDButton, Themeable {
     @IBOutlet weak var filterLabel: UILabel!
     @IBOutlet weak var arrowImageView: UIImageView!
     
-    var filter = Filter()
+    var filter = Global.filter {
+        didSet {
+            self.filterLabel.text = self.filter.text()
+            self.setNeedsLayout()
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -36,6 +41,8 @@ class FilterButton: MDButton, Themeable {
         self.arrowImageView.image = UIImage.templateNamed("filterButtonArrow")
         
         self.applyTheme()
+        
+        self.addTarget(self, action: #selector(handleTapOnSelf), for: .touchUpInside)
     }
     
     override func sizeThatFits(_ size: CGSize) -> CGSize {
@@ -53,4 +60,47 @@ class FilterButton: MDButton, Themeable {
         self.roundedRectView.layer.cornerRadius = self.roundedRectView.bounds.size.height / 2
     }
     
+    // MARK: - Target actions
+    
+    func handleTapOnSelf() {
+        let filterPopup = FilterPopupViewController(filter: self.filter, delegate: self)
+        let modal = BaseNavBarVC(rootViewController: filterPopup)
+        modal.modalPresentationStyle = .popover
+        
+        guard let popoverController = modal.popoverPresentationController,
+            let parent = UIApplication.shared.keyWindow?.rootViewController
+            else {
+                return
+        }
+        popoverController.delegate = self
+        popoverController.sourceView = self
+        popoverController.sourceRect = self.bounds
+        popoverController.permittedArrowDirections = [.up]
+        let filterPopupViewSize = filterPopup.customView.sizeThatFits(CGSize(width: 300, height: CGFloat.greatestFiniteMagnitude))
+        modal.preferredContentSize = CGSize(width: 300,
+                                            height: filterPopupViewSize.height)
+        
+        parent.present(modal, animated: true, completion: nil)
+    }
+    
 }
+
+extension FilterButton: FilterPopupViewControllerDelegate {
+    
+    func filterPopupViewController(_ viewController: FilterPopupViewController, didSelect filter: Filter) {
+        if filter != self.filter {
+            self.filter = filter
+            self.sendActions(for: .valueChanged)
+        }
+    }
+    
+}
+
+extension FilterButton: UIPopoverPresentationControllerDelegate {
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
+    }
+    
+}
+

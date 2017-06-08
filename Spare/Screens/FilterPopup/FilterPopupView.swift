@@ -18,12 +18,10 @@ class FilterPopupView: UIView, Themeable {
     @IBOutlet weak var groupingLabel: UILabel!
     @IBOutlet weak var groupingControl: UISegmentedControl!
     
-    
     @IBOutlet weak var contentLeading: NSLayoutConstraint!
     @IBOutlet weak var contentTop: NSLayoutConstraint!
     @IBOutlet weak var contentTrailing: NSLayoutConstraint!
     @IBOutlet weak var contentBottom: NSLayoutConstraint!
-    
     
     let contentInsets = UIEdgeInsets(top: 10, left: 10, bottom: 30, right: 10)
     
@@ -70,11 +68,5 @@ class FilterPopupView: UIView, Themeable {
         self.periodizationControl.tintColor = Global.theme.color(for: .controlTint)
         self.groupingControl.tintColor = Global.theme.color(for: .controlTint)
     }
-    
-//    override func sizeThatFits(_ size: CGSize) -> CGSize {
-//        let stackViewSize = self.contentStackView.sizeThatFits(size)
-//        let totalSize = CGSize(width: stackViewSize.width + kSidePadding * 2, height: stackViewSize.height + kSidePadding * 2)
-//        return totalSize
-//    }
     
 }
