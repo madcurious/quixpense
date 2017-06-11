@@ -33,7 +33,7 @@ class ExpenseListViewController: MDLoadableViewController {
             
             switch filter.periodization {
             case .day:
-                sortDescriptors.append(NSSortDescriptor(key: #keyPath(DayCategoryGroup.date), ascending: false))
+                sortDescriptors.insert(NSSortDescriptor(key: #keyPath(DayCategoryGroup.date), ascending: false), at: 0)
                 
             case .week, .month:
                 break

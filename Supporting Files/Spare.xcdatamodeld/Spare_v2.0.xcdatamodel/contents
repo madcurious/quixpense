@@ -13,7 +13,7 @@
         <attribute name="date" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="total" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <relationship name="category" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="dayCategoryGroups" inverseEntity="Category" syncable="YES"/>
-        <relationship name="expenses" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Expense" inverseName="dayCategoryGroup" inverseEntity="Expense" syncable="YES"/>
+        <relationship name="expenses" toMany="YES" deletionRule="Nullify" destinationEntity="Expense" inverseName="dayCategoryGroup" inverseEntity="Expense" syncable="YES"/>
     </entity>
     <entity name="Expense" representedClassName=".Expense" syncable="YES" codeGenerationType="class">
         <attribute name="amount" attributeType="Decimal" minValueString="0" syncable="YES"/>
@@ -33,14 +33,14 @@
         <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="total" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <relationship name="category" maxCount="1" deletionRule="No Action" destinationEntity="Category" inverseName="mondayWeekCategoryGroups" inverseEntity="Category" syncable="YES"/>
-        <relationship name="expenses" toMany="YES" deletionRule="No Action" ordered="YES" destinationEntity="Expense" inverseName="mondayWeekCategoryGroup" inverseEntity="Expense" syncable="YES"/>
+        <relationship name="expenses" toMany="YES" deletionRule="No Action" destinationEntity="Expense" inverseName="mondayWeekCategoryGroup" inverseEntity="Expense" syncable="YES"/>
     </entity>
     <entity name="MonthCategoryGroup" representedClassName="CategoryGroupWeekMonth" syncable="YES" codeGenerationType="class">
         <attribute name="endDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="total" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <relationship name="category" maxCount="1" deletionRule="No Action" destinationEntity="Category" inverseName="monthCategoryGroups" inverseEntity="Category" syncable="YES"/>
-        <relationship name="expenses" toMany="YES" deletionRule="No Action" ordered="YES" destinationEntity="Expense" inverseName="monthCategoryGroup" inverseEntity="Expense" syncable="YES"/>
+        <relationship name="expenses" toMany="YES" deletionRule="No Action" destinationEntity="Expense" inverseName="monthCategoryGroup" inverseEntity="Expense" syncable="YES"/>
     </entity>
     <entity name="SaturdayWeekCategoryGroup" representedClassName="SaturdayWeekCategoryGroup" syncable="YES" codeGenerationType="class">
         <attribute name="endDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
@@ -48,7 +48,7 @@
         <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="total" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <relationship name="category" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="saturdayWeekCategoryGroups" inverseEntity="Category" syncable="YES"/>
-        <relationship name="expenses" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Expense" inverseName="saturdayWeekCategoryGroup" inverseEntity="Expense" syncable="YES"/>
+        <relationship name="expenses" toMany="YES" deletionRule="Nullify" destinationEntity="Expense" inverseName="saturdayWeekCategoryGroup" inverseEntity="Expense" syncable="YES"/>
     </entity>
     <entity name="SPRCategory" representedClassName="SPRCategory" syncable="YES">
         <attribute name="colorNumber" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
@@ -71,7 +71,7 @@
         <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="total" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <relationship name="category" maxCount="1" deletionRule="No Action" destinationEntity="Category" inverseName="sundayWeekCategoryGroups" inverseEntity="Category" syncable="YES"/>
-        <relationship name="expenses" toMany="YES" deletionRule="No Action" ordered="YES" destinationEntity="Expense" inverseName="sundayWeekCategoryGroup" inverseEntity="Expense" syncable="YES"/>
+        <relationship name="expenses" toMany="YES" deletionRule="No Action" destinationEntity="Expense" inverseName="sundayWeekCategoryGroup" inverseEntity="Expense" syncable="YES"/>
     </entity>
     <entity name="Tag" representedClassName=".Tag" syncable="YES" codeGenerationType="class">
         <attribute name="name" attributeType="String" indexed="YES" syncable="YES"/>

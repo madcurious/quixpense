@@ -36,24 +36,42 @@ class ExpenseListGroupCell: UICollectionViewCell, Themeable {
     
     weak var categoryGroup: DayCategoryGroup? {
         didSet {
+            defer {
+                self.setNeedsLayout()
+            }
             if let categoryGroup = self.categoryGroup {
                 self.groupLabel.text = categoryGroup.category?.name
                 self.totalLabel.text = AmountFormatter.displayText(for: categoryGroup.total)
                 
-                let expenseCount = CGFloat(categoryGroup.expenses?.count ?? 0)
-                if expenseCount > 0 {
-                    self.collectionViewHeight.constant = (expenseCount * kRowHeight) + ((expenseCount - 1) * kSeparatorHeight)
-                } else {
-                    self.collectionViewHeight.constant = 0
+                guard let expenses = categoryGroup.expenses?.allObjects as? [Expense],
+                    expenses.count > 0
+                    else {
+                        self.orderedExpenses = []
+                        self.collectionViewHeight.constant = 0
+                        return
                 }
+                
+                self.orderedExpenses = expenses.sorted(by: {
+                    guard let date1 = $0.dateCreated as Date?,
+                        let date2 = $1.dateCreated as Date?
+                        else {
+                            return false
+                    }
+                    return date1.compare(date2) == .orderedDescending
+                })
+                
+                let expenseCount = CGFloat(expenses.count)
+                self.collectionViewHeight.constant = (expenseCount * kRowHeight) + ((expenseCount - 1) * kSeparatorHeight)
             } else {
                 self.arrowImageView.image = nil
                 self.groupLabel.text = nil
                 self.totalLabel.text = nil
+                self.orderedExpenses = []
             }
-            self.setNeedsLayout()
         }
     }
+    
+    var orderedExpenses = [Expense]()
     
     var isExpanded = false {
         didSet {
@@ -122,7 +140,7 @@ extension ExpenseListGroupCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ViewID.expenseCell.rawValue, for: indexPath) as! ExpenseListExpenseCell
-        cell.expense = self.categoryGroup?.expenses?.object(at: indexPath.item) as? Expense
+        cell.expense = self.orderedExpenses[indexPath.item]
         return cell
     }
     

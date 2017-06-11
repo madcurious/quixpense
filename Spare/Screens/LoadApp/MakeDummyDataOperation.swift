@@ -62,7 +62,7 @@ class MakeDummyDataOperation: MDOperation<Any?> {
                 var components = DateComponents()
                 components.month = 1
                 components.day = 1
-                components.year = 2016
+                components.year = 2017
                 let fromDate = Calendar.current.date(from: components)!
                 return fromDate
             } else {
@@ -92,9 +92,7 @@ class MakeDummyDataOperation: MDOperation<Any?> {
         for i in 0 ..< numberOfDays {
             print("Current date (day \(i + 1)): \(dateSpent)")
             
-            // Remove the time components.
-            let components = Calendar.current.dateComponents([.month, .day, .year], from: dateSpent)
-            let sectionDate = Calendar.current.date(from: components)!
+            var expenses = [Expense]()
             
             for category in categories {
                 // Make 0-10 expenses.
@@ -106,18 +104,7 @@ class MakeDummyDataOperation: MDOperation<Any?> {
                     continue
                 }
                 
-                let dayCategoryGroup = DayCategoryGroup(context: self.context)
-                dayCategoryGroup.category = category
-                dayCategoryGroup.date = sectionDate as NSDate
-                
-//                let sundayCategoryGroup = CategoryGroup(context: self.context)
-//                
-//                let mondayCategoryGroup = CategoryGroup(context: self.context)
-//                let saturdayCategoryGroup = CategoryGroup(context: self.context)
-//                let monthCategoryGroup = CategoryGroup(context: self.context)
-                
                 var categorySectionTotal = 0.0
-                var expenses = [Expense]()
                 
                 for _ in 0 ..< numberOfExpenses {
                     let amount = 1 + (2500 * Double(arc4random()) / Double(UInt32.max))
@@ -127,16 +114,32 @@ class MakeDummyDataOperation: MDOperation<Any?> {
                     newExpense.category = category
                     newExpense.amount = NSDecimalNumber(value: amount)
                     newExpense.dateSpent = dateSpent as NSDate
+                    newExpense.dateCreated = Date() as NSDate
                     expenses.append(newExpense)
                     
                     print("-- amount: \(amount)")
                 }
                 
-                dayCategoryGroup.total = NSDecimalNumber(value: categorySectionTotal)
-                dayCategoryGroup.expenses = NSOrderedSet(array: expenses)
+                self.makeDayCategoryGroup(for: expenses)
+                expenses = []
             }
             
             dateSpent = Calendar.current.date(byAdding: .day, value: 1, to: dateSpent)!
+        }
+    }
+    
+    func makeDayCategoryGroup(for expenses: [Expense]) {
+        let category = expenses.first!.category
+        let total = expenses.total()
+        let date = (expenses.first!.dateSpent! as Date).startOfDay()
+        
+        let dayCategoryGroup = DayCategoryGroup(context: self.context)
+        dayCategoryGroup.category = category
+        dayCategoryGroup.total = total
+        dayCategoryGroup.date = date as NSDate
+        
+        for expense in expenses {
+            expense.dayCategoryGroup = dayCategoryGroup
         }
     }
     
