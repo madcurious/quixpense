@@ -15,8 +15,8 @@ func ==(lhs: Filter, rhs: Filter) -> Bool {
 
 struct Filter: Equatable {
     
-    enum Periodization: Int {
-        case day = 0, week, month
+    enum Periodization: Int16 {
+        case day = 1, week, month
         
         func text() -> String {
             switch self {
@@ -30,10 +30,14 @@ struct Filter: Equatable {
                 return "Monthly"
             }
         }
+        
+        func toInt() -> Int {
+            return Int(self.rawValue)
+        }
     }
     
-    enum Grouping: Int {
-        case category = 0, tag
+    enum Grouping: Int16 {
+        case category = 1, tag
         
         func text() -> String {
             switch self {
@@ -43,6 +47,10 @@ struct Filter: Equatable {
             case .tag:
                 return "by tag"
             }
+        }
+        
+        func toInt() -> Int {
+            return Int(self.rawValue)
         }
     }
     

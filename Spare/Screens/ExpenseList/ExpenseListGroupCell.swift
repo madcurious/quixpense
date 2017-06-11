@@ -27,14 +27,14 @@ class ExpenseListGroupCell: UICollectionViewCell, Themeable {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
     
-    class func expandedHeight(for group: CategoryGroup) -> CGFloat {
+    class func expandedHeight(for group: DayCategoryGroup) -> CGFloat {
         let expenseCount = CGFloat(group.expenses?.count ?? 0)
         return kRowHeight +
             (expenseCount * kRowHeight) +
             ((expenseCount - 1) * kSeparatorHeight)
     }
     
-    weak var categoryGroup: CategoryGroup? {
+    weak var categoryGroup: DayCategoryGroup? {
         didSet {
             if let categoryGroup = self.categoryGroup {
                 self.groupLabel.text = categoryGroup.category?.name

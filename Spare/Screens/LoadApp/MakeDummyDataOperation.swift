@@ -106,15 +106,20 @@ class MakeDummyDataOperation: MDOperation<Any?> {
                     continue
                 }
                 
-                let categoryGroup = CategoryGroup(context: self.context)
-                categoryGroup.category = category
-                categoryGroup.sectionDate = sectionDate as NSDate
+                let dayCategoryGroup = DayCategoryGroup(context: self.context)
+                dayCategoryGroup.category = category
+                dayCategoryGroup.date = sectionDate as NSDate
+                
+//                let sundayCategoryGroup = CategoryGroup(context: self.context)
+//                
+//                let mondayCategoryGroup = CategoryGroup(context: self.context)
+//                let saturdayCategoryGroup = CategoryGroup(context: self.context)
+//                let monthCategoryGroup = CategoryGroup(context: self.context)
                 
                 var categorySectionTotal = 0.0
                 var expenses = [Expense]()
                 
                 for _ in 0 ..< numberOfExpenses {
-                    // Generate amount from 1-3000 pesos.
                     let amount = 1 + (2500 * Double(arc4random()) / Double(UInt32.max))
                     categorySectionTotal += amount
                     
@@ -127,8 +132,8 @@ class MakeDummyDataOperation: MDOperation<Any?> {
                     print("-- amount: \(amount)")
                 }
                 
-                categoryGroup.total = NSDecimalNumber(value: categorySectionTotal)
-                categoryGroup.expenses = NSOrderedSet(array: expenses)
+                dayCategoryGroup.total = NSDecimalNumber(value: categorySectionTotal)
+                dayCategoryGroup.expenses = NSOrderedSet(array: expenses)
             }
             
             dateSpent = Calendar.current.date(byAdding: .day, value: 1, to: dateSpent)!

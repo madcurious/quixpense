@@ -18,29 +18,39 @@ fileprivate enum ViewID: String {
 
 class ExpenseListViewController: MDLoadableViewController {
     
+    let filterButton = FilterButton.instantiateFromNib()
     let customView = ExpenseListView.instantiateFromNib()
     
-    let fetchedResultsController: NSFetchedResultsController<CategoryGroup> = {
-        let fetchRequest = FetchRequest<CategoryGroup>.make()
-        fetchRequest.sortDescriptors = [
-            NSSortDescriptor(key: #keyPath(CategoryGroup.sectionDate), ascending: false),
-            NSSortDescriptor(key: #keyPath(CategoryGroup.total), ascending: false)
-        ]
-        fetchRequest.fetchBatchSize = 100
-        return NSFetchedResultsController(fetchRequest: fetchRequest,
-                                          managedObjectContext: Global.coreDataStack.viewContext,
-                                          sectionNameKeyPath: #keyPath(CategoryGroup.sectionDate),
-                                          cacheName: "CacheName")
-    }()
-    
-    let filterButton: FilterButton = {
-        let filterButton = FilterButton.instantiateFromNib()
-        filterButton.sizeToFit()
-        return filterButton
-    }()
-    
+    let fetchedResultsController = ExpenseListViewController.makeFetchedResultsController(for: Global.filter)
     let sectionTotals = NSCache<NSString, NSDecimalNumber>()
     var expandedIndexPaths = Set<IndexPath>()
+    
+    class func makeFetchedResultsController(for filter: Filter) -> NSFetchedResultsController<DayCategoryGroup> {
+        switch filter.grouping {
+        case .category:
+            let fetchRequest = FetchRequest<DayCategoryGroup>.make()
+            var sortDescriptors = [NSSortDescriptor(key: #keyPath(DayCategoryGroup.total), ascending: false)]
+            
+            switch filter.periodization {
+            case .day:
+                sortDescriptors.append(NSSortDescriptor(key: #keyPath(DayCategoryGroup.date), ascending: false))
+                
+            case .week, .month:
+                break
+            }
+            
+            fetchRequest.sortDescriptors = sortDescriptors
+            fetchRequest.fetchBatchSize = 100
+            
+            return NSFetchedResultsController(fetchRequest: fetchRequest,
+                                              managedObjectContext: Global.coreDataStack.viewContext,
+                                              sectionNameKeyPath: #keyPath(DayCategoryGroup.date),
+                                              cacheName: "CacheName")
+            
+        case .tag:
+            fatalError("Unimplemented")
+        }
+    }
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -106,7 +116,7 @@ class ExpenseListViewController: MDLoadableViewController {
     
     func computeTotal(forSection section: Int) -> NSDecimalNumber {
         var total = NSDecimalNumber(value: 0)
-        guard let groups = self.fetchedResultsController.sections?[section].objects as? [CategoryGroup]
+        guard let groups = self.fetchedResultsController.sections?[section].objects as? [DayCategoryGroup]
             else {
                 return total
         }
@@ -152,7 +162,8 @@ extension ExpenseListViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ViewID.groupCell.rawValue, for: indexPath) as! ExpenseListGroupCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ViewID.groupCell.rawValue,
+                                                      for: indexPath) as! ExpenseListGroupCell
         cell.categoryGroup = self.fetchedResultsController.object(at: indexPath)
         
         if self.expandedIndexPaths.contains(indexPath) {
