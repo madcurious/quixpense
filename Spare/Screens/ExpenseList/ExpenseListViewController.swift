@@ -25,26 +25,19 @@ class ExpenseListViewController: MDLoadableViewController {
     let sectionTotals = NSCache<NSString, NSDecimalNumber>()
     var expandedIndexPaths = Set<IndexPath>()
     
-    class func makeFetchedResultsController(for filter: Filter) -> NSFetchedResultsController<DayCategoryGroup> {
+    class func makeFetchedResultsController(for filter: Filter) -> NSFetchedResultsController<NSFetchRequestResult> {
         switch filter.grouping {
         case .category:
-            let fetchRequest = FetchRequest<DayCategoryGroup>.make()
-            var sortDescriptors = [NSSortDescriptor(key: #keyPath(DayCategoryGroup.total), ascending: false)]
-            
-            switch filter.periodization {
-            case .day:
-                sortDescriptors.insert(NSSortDescriptor(key: #keyPath(DayCategoryGroup.date), ascending: false), at: 0)
-                
-            case .week, .month:
-                break
-            }
-            
-            fetchRequest.sortDescriptors = sortDescriptors
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: filter.groupEntityName())
+            fetchRequest.sortDescriptors = [
+                NSSortDescriptor(key: "endDate", ascending: false),
+                NSSortDescriptor(key: "total", ascending: false)
+            ]
             fetchRequest.fetchBatchSize = 100
             
             return NSFetchedResultsController(fetchRequest: fetchRequest,
                                               managedObjectContext: Global.coreDataStack.viewContext,
-                                              sectionNameKeyPath: #keyPath(DayCategoryGroup.date),
+                                              sectionNameKeyPath: "sectionIdentifier",
                                               cacheName: "CacheName")
             
         case .tag:
@@ -164,7 +157,7 @@ extension ExpenseListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ViewID.groupCell.rawValue,
                                                       for: indexPath) as! ExpenseListGroupCell
-        cell.categoryGroup = self.fetchedResultsController.object(at: indexPath)
+        cell.group = self.fetchedResultsController.object(at: indexPath)
         
         if self.expandedIndexPaths.contains(indexPath) {
             cell.isExpanded = true
@@ -180,14 +173,14 @@ extension ExpenseListViewController: UICollectionViewDataSource {
                                                                          withReuseIdentifier: ViewID.sectionHeader.rawValue,
                                                                          for: indexPath) as! ExpenseListSectionHeader
         
-        if let sectionName = self.fetchedResultsController.sections?[indexPath.section].name {
-            headerView.dateString = sectionName
+        if let sectionIdentifier = self.fetchedResultsController.sections?[indexPath.section].name {
+            headerView.sectionIdentifier = sectionIdentifier
             headerView.sectionTotal = {
-                if let total = self.sectionTotals.object(forKey: sectionName as NSString) {
+                if let total = self.sectionTotals.object(forKey: sectionIdentifier as NSString) {
                     return total
                 } else {
                     let total = self.computeTotal(forSection: indexPath.section)
-                    self.sectionTotals.setObject(total, forKey: sectionName as NSString)
+                    self.sectionTotals.setObject(total, forKey: sectionIdentifier as NSString)
                     return total
                 }
             }()

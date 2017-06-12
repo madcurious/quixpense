@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 private let kRowHeight = CGFloat(44)
 private let kSeparatorHeight = CGFloat(0.5)
@@ -27,24 +28,37 @@ class ExpenseListGroupCell: UICollectionViewCell, Themeable {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
     
-    class func expandedHeight(for group: DayCategoryGroup) -> CGFloat {
-        let expenseCount = CGFloat(group.expenses?.count ?? 0)
+    class func expandedHeight(for group: AnyObject) -> CGFloat {
+        guard let expenses = (group.value(forKey: "expenses") as? NSSet)?.allObjects as? [Expense],
+            expenses.count > 0
+            else {
+                return 0
+        }
+        let expenseCount = CGFloat(expenses.count)
         return kRowHeight +
             (expenseCount * kRowHeight) +
             ((expenseCount - 1) * kSeparatorHeight)
     }
     
-    weak var categoryGroup: DayCategoryGroup? {
+    var expenses: [Expense]? {
+        return (self.group?.value(forKey: "expenses") as? NSSet)?.allObjects as? [Expense]
+    }
+    
+    weak var group: AnyObject? {
         didSet {
             defer {
                 self.setNeedsLayout()
             }
-            if let categoryGroup = self.categoryGroup {
-                self.groupLabel.text = categoryGroup.category?.name
-                self.totalLabel.text = AmountFormatter.displayText(for: categoryGroup.total)
+            
+            if let group = self.group,
+                let classifierName = group.value(forKeyPath: "classifier.name") as? String,
+                let total = group.value(forKey: "total") as? NSDecimalNumber,
+                let expenses = self.expenses {
                 
-                guard let expenses = categoryGroup.expenses?.allObjects as? [Expense],
-                    expenses.count > 0
+                self.groupLabel.text = classifierName
+                self.totalLabel.text = AmountFormatter.displayText(for: total)
+                
+                guard expenses.count > 0
                     else {
                         self.orderedExpenses = []
                         self.collectionViewHeight.constant = 0
@@ -62,7 +76,9 @@ class ExpenseListGroupCell: UICollectionViewCell, Themeable {
                 
                 let expenseCount = CGFloat(expenses.count)
                 self.collectionViewHeight.constant = (expenseCount * kRowHeight) + ((expenseCount - 1) * kSeparatorHeight)
-            } else {
+            }
+            
+            else {
                 self.arrowImageView.image = nil
                 self.groupLabel.text = nil
                 self.totalLabel.text = nil
@@ -135,7 +151,7 @@ class ExpenseListGroupCell: UICollectionViewCell, Themeable {
 extension ExpenseListGroupCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.categoryGroup?.expenses?.count ?? 0
+        return self.expenses?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

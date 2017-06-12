@@ -14,11 +14,11 @@ fileprivate let kDateFormatter: DateFormatter = {
     return dateFormatter
 }()
 
-fileprivate let kDateStringParser: DateFormatter = {
-    let parser = DateFormatter()
-    parser.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZZZ"
-    return parser
-}()
+//fileprivate let kDateStringParser: DateFormatter = {
+//    let parser = DateFormatter()
+//    parser.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZZZ"
+//    return parser
+//}()
 
 class ExpenseListSectionHeader: UICollectionReusableView, Themeable {
     
@@ -26,18 +26,23 @@ class ExpenseListSectionHeader: UICollectionReusableView, Themeable {
     @IBOutlet weak var leftLabel: UILabel!
     @IBOutlet weak var rightLabel: UILabel!
     
-    var dateString: String? {
+    var sectionIdentifier: String? {
         didSet {
             defer {
                 self.setNeedsLayout()
             }
-            guard let dateString = self.dateString,
-                let sectionDate = kDateStringParser.date(from: dateString)
+            guard let sectionIdentifier = self.sectionIdentifier
                 else {
                     self.leftLabel.text = nil
                     return
             }
-            self.leftLabel.text = kDateFormatter.string(from: sectionDate)
+            
+            let (startDate, _) = SectionDateFormatter.parseDates(from: sectionIdentifier)
+            if Global.filter.periodization == .day {
+                self.leftLabel.text = kDateFormatter.string(from: startDate)
+            } else {
+                self.leftLabel.text = "Dummy"
+            }
         }
     }
     

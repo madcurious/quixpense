@@ -121,7 +121,7 @@ class MakeDummyDataOperation: MDOperation<Any?> {
                 }
                 
                 self.makeDayCategoryGroup(for: expenses)
-                self.makeSundayWeekCategoryGroup(for: expenses)
+//                self.makeSundayWeekCategoryGroup(for: expenses)
                 expenses = []
             }
             
@@ -132,51 +132,51 @@ class MakeDummyDataOperation: MDOperation<Any?> {
     func makeDayCategoryGroup(for expenses: [Expense]) {
         let category = expenses.first!.category
         let total = expenses.total()
-        let date = (expenses.first!.dateSpent! as Date).startOfDay()
+        let startDate = (expenses.first!.dateSpent! as Date).startOfDay()
+        let endDate = startDate.endOfDay()
         
         let dayCategoryGroup = DayCategoryGroup(context: self.context)
-        dayCategoryGroup.category = category
+        dayCategoryGroup.classifier = category
         dayCategoryGroup.total = total
-        dayCategoryGroup.date = date as NSDate
+        dayCategoryGroup.startDate = startDate as NSDate
+        dayCategoryGroup.endDate = endDate as NSDate
+        dayCategoryGroup.sectionIdentifier = SectionDateFormatter.sectionIdentifier(forStartDate: startDate, endDate: endDate)
         
         for expense in expenses {
             expense.dayCategoryGroup = dayCategoryGroup
         }
     }
     
-    func makeSundayWeekCategoryGroup(for expenses: [Expense]) {
-        for expense in expenses {
-            let weekStart = (expense.dateSpent! as Date).startOfWeek(firstWeekday: 1)
-            let weekEnd = weekStart.endOfWeek(firstWeekday: 1)
-            
-            let fetchRequest = FetchRequest<SundayWeekCategoryGroup>.make()
-            fetchRequest.predicate = NSPredicate(format: "%@ == %@ AND %@ == %@ AND %@ == %@",
-                                                 argumentArray: [
-                                                    #keyPath(SundayWeekCategoryGroup.startDate),
-                                                    weekStart,
-                                                    #keyPath(SundayWeekCategoryGroup.endDate),
-                                                    weekEnd,
-                                                    #keyPath(SundayWeekCategoryGroup.category),
-                                                    expense.category!
-                ])
-            if let existingGroup = try! self.context.fetch(fetchRequest).first {
-                existingGroup.total = existingGroup.total!.adding(expense.amount!)
-//                existingGroup.addToExpenses(expense)
-                
-                expense.sundayWeekCategoryGroup = existingGroup
-            } else {
-                let newGroup = SundayWeekCategoryGroup(context: self.context)
-                newGroup.startDate = weekStart as NSDate
-                newGroup.endDate = weekEnd as NSDate
-                newGroup.total = expense.amount
-                newGroup.category = expense.category
-//                newGroup.expenses = NSSet(object: expense)
-                newGroup.sectionIdentifier = SectionDateFormatter.sectionIdentifier(forStartDate: weekStart, endDate: weekEnd)
-                
-                expense.sundayWeekCategoryGroup = newGroup
-            }
-        }
-    }
+//    func makeSundayWeekCategoryGroup(for expenses: [Expense]) {
+//        for expense in expenses {
+//            let weekStart = (expense.dateSpent! as Date).startOfWeek(firstWeekday: 1)
+//            let weekEnd = weekStart.endOfWeek(firstWeekday: 1)
+//            
+//            let fetchRequest = FetchRequest<SundayWeekCategoryGroup>.make()
+//            fetchRequest.predicate = NSPredicate(format: "%@ == %@ AND %@ == %@ AND %@ == %@",
+//                                                 argumentArray: [
+//                                                    #keyPath(SundayWeekCategoryGroup.startDate),
+//                                                    weekStart,
+//                                                    #keyPath(SundayWeekCategoryGroup.endDate),
+//                                                    weekEnd,
+//                                                    #keyPath(SundayWeekCategoryGroup.category),
+//                                                    expense.category!
+//                ])
+//            if let existingGroup = try! self.context.fetch(fetchRequest).first {
+//                existingGroup.total = existingGroup.total!.adding(expense.amount!)
+//                expense.sundayWeekCategoryGroup = existingGroup
+//            } else {
+//                let newGroup = SundayWeekCategoryGroup(context: self.context)
+//                newGroup.startDate = weekStart as NSDate
+//                newGroup.endDate = weekEnd as NSDate
+//                newGroup.total = expense.amount
+//                newGroup.category = expense.category
+//                newGroup.sectionIdentifier = SectionDateFormatter.sectionIdentifier(forStartDate: weekStart, endDate: weekEnd)
+//                
+//                expense.sundayWeekCategoryGroup = newGroup
+//            }
+//        }
+//    }
     
     deinit {
         print("Deinit \(self)")
