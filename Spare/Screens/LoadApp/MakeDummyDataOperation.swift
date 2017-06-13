@@ -107,7 +107,7 @@ class MakeDummyDataOperation: MDOperation<Any?> {
                 var categorySectionTotal = 0.0
                 
                 for _ in 0 ..< numberOfExpenses {
-                    let amount = 1 + (1500 * Double(arc4random()) / Double(UInt32.max))
+                    let amount = 1 + (1000 * Double(arc4random()) / Double(UInt32.max))
                     categorySectionTotal += amount
                     
                     let newExpense = Expense(context: self.context)
@@ -155,10 +155,10 @@ class MakeDummyDataOperation: MDOperation<Any?> {
             let weekEnd = weekStart.endOfWeek(firstWeekday: firstWeekday)
             
             let fetchRequest = NSFetchRequest<WeekCategoryGroup>(entityName: md_getClassName(WeekCategoryGroup.self))
-            fetchRequest.predicate = NSPredicate(format: "%@ == %@ AND %@ == %@ AND %@ == %@",
+            fetchRequest.predicate = NSPredicate(format: "%K == %@ AND %K == %@ AND %K == %@",
                                                  argumentArray: [
-                                                    "startDate", weekStart,
-                                                    "endDate", weekEnd,
+                                                    "startDate", weekStart as NSDate,
+                                                    "endDate", weekEnd as NSDate,
                                                     "classifier", expense.category!
                 ])
             if let existingGroup = try! self.context.fetch(fetchRequest).first,
@@ -174,6 +174,17 @@ class MakeDummyDataOperation: MDOperation<Any?> {
                 newGroup.sectionIdentifier = SectionIdentifier.make(startDate: weekStart, endDate: weekEnd)
                 
                 expense.weekCategoryGroup = newGroup
+                
+//                let predicateComponents = [["startDate" : newGroup.startDate!],
+//                                           ["endDate" : newGroup.endDate!],
+//                                           ["classifier" : newGroup.classifier!]]
+//                for component in predicateComponents {
+//                    let predicate = NSPredicate(format: "%K == %@",
+//                                                argumentArray: [component.keys.first!, component.values.first!])
+//                    let matches = predicate.evaluate(with: newGroup)
+//                    print("predicate: \(predicate.predicateFormat)")
+//                    print("matches: \(matches)")
+//                }
             }
         }
     }
@@ -183,7 +194,7 @@ class MakeDummyDataOperation: MDOperation<Any?> {
             let startOfMonth = (expense.dateSpent! as Date).startOfMonth()
             let endOfMonth = (expense.dateSpent! as Date).endOfMonth()
             let fetchRequest = NSFetchRequest<MonthCategoryGroup>(entityName: md_getClassName(MonthCategoryGroup.self))
-            fetchRequest.predicate = NSPredicate(format: "%@ == %@ AND %@ == %@ AND %@ == %@",
+            fetchRequest.predicate = NSPredicate(format: "%K == %@ AND %K == %@ AND %K == %@",
                                                  argumentArray: [
                                                     "startDate", startOfMonth,
                                                     "endDate", endOfMonth,

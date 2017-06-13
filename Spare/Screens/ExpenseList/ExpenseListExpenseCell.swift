@@ -67,7 +67,7 @@ class ExpenseListExpenseCell: UICollectionViewCell, Themeable {
             return description
             
         case .week, .month:
-            self.dateFormatter.dateFormat = "MMM d, h:mm a"
+            self.dateFormatter.dateFormat = "d MMM, h:mm a"
             let description = self.dateFormatter.string(from: dateSpent)
             return description
         }

@@ -10,7 +10,7 @@ import UIKit
 
 fileprivate let kDateFormatter: DateFormatter = {
     let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "dd MMM yyyy"
+    dateFormatter.dateFormat = "d MMM yyyy"
     return dateFormatter
 }()
 
@@ -44,7 +44,7 @@ class ExpenseListSectionHeader: UICollectionReusableView, Themeable {
                 
             case .week:
                 let startDateFormatter = DateFormatter()
-                startDateFormatter.dateFormat = "dd MMM"
+                startDateFormatter.dateFormat = "d MMM"
                 self.leftLabel.text = "\(startDateFormatter.string(from: startDate)) - \(kDateFormatter.string(from: endDate))"
                 
             case .month:
