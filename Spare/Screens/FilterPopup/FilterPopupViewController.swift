@@ -31,19 +31,19 @@ class FilterPopupViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.customView.periodizationControl.selectedSegmentIndex = self.filter.periodization.toInt()
+        self.customView.periodizationControl.selectedSegmentIndex = self.filter.periodization.rawValue
         self.customView.periodizationControl.addTarget(self, action: #selector(handleValueChangeOnPeriodization), for: .valueChanged)
         
-        self.customView.groupingControl.selectedSegmentIndex = self.filter.grouping.toInt()
+        self.customView.groupingControl.selectedSegmentIndex = self.filter.grouping.rawValue
         self.customView.groupingControl.addTarget(self, action: #selector(handleValueChangeOnGrouping), for: .valueChanged)
     }
     
     func handleValueChangeOnPeriodization(sender: UISegmentedControl) {
-        self.filter.periodization = Filter.Periodization(rawValue: Int16(sender.selectedSegmentIndex))!
+        self.filter.periodization = Filter.Periodization(rawValue: sender.selectedSegmentIndex)!
     }
     
     func handleValueChangeOnGrouping(sender: UISegmentedControl) {
-        self.filter.grouping = Filter.Grouping(rawValue: Int16(sender.selectedSegmentIndex))!
+        self.filter.grouping = Filter.Grouping(rawValue: sender.selectedSegmentIndex)!
     }
     
 }

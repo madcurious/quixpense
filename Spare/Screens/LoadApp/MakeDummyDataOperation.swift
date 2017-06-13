@@ -84,20 +84,20 @@ class MakeDummyDataOperation: MDOperation<Any?> {
         let categories = try! self.context.fetch(categoryFetch)
         var dateSpent = Calendar.current.date(byAdding: .day, value: 1, to: lastDate)!
         
-        print("fromDate: \(lastDate)")
-        print("toDate: \(toDate)")
-        print("Making dummy expenses for \(numberOfDays) days...")
-        print("===============")
+//        print("fromDate: \(lastDate)")
+//        print("toDate: \(toDate)")
+//        print("Making dummy expenses for \(numberOfDays) days...")
+//        print("===============")
         
-        for i in 0 ..< numberOfDays {
-            print("Current date (day \(i + 1)): \(dateSpent)")
+        for _ in 0 ..< numberOfDays {
+//            print("Current date (day \(i + 1)): \(dateSpent)")
             
             var expenses = [Expense]()
             
             for category in categories {
                 // Make 0-10 expenses.
                 let numberOfExpenses = arc4random_uniform(10)
-                print("- Making \(numberOfExpenses) expenses for category '\(category.name!)'")
+//                print("- Making \(numberOfExpenses) expenses for category '\(category.name!)'")
                 
                 if numberOfExpenses == 0 {
                     // Avoid making section entities if there will be no expenses to begin with.
@@ -107,7 +107,7 @@ class MakeDummyDataOperation: MDOperation<Any?> {
                 var categorySectionTotal = 0.0
                 
                 for _ in 0 ..< numberOfExpenses {
-                    let amount = 1 + (2500 * Double(arc4random()) / Double(UInt32.max))
+                    let amount = 1 + (1500 * Double(arc4random()) / Double(UInt32.max))
                     categorySectionTotal += amount
                     
                     let newExpense = Expense(context: self.context)
@@ -117,7 +117,7 @@ class MakeDummyDataOperation: MDOperation<Any?> {
                     newExpense.dateCreated = Date() as NSDate
                     expenses.append(newExpense)
                     
-                    print("-- amount: \(amount)")
+//                    print("-- amount: \(amount)")
                 }
                 
                 self.makeDayCategoryGroup(for: expenses)

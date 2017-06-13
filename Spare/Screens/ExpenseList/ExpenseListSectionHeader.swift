@@ -37,11 +37,20 @@ class ExpenseListSectionHeader: UICollectionReusableView, Themeable {
                     return
             }
             
-            let (startDate, _) = SectionIdentifier.parse(sectionIdentifier)
-            if Global.filter.periodization == .day {
+            let (startDate, endDate) = SectionIdentifier.parse(sectionIdentifier)
+            switch Global.filter.periodization {
+            case .day:
                 self.leftLabel.text = kDateFormatter.string(from: startDate)
-            } else {
-                self.leftLabel.text = "Dummy"
+                
+            case .week:
+                let startDateFormatter = DateFormatter()
+                startDateFormatter.dateFormat = "dd MMM"
+                self.leftLabel.text = "\(startDateFormatter.string(from: startDate)) - \(kDateFormatter.string(from: endDate))"
+                
+            case .month:
+                let monthFormatter = DateFormatter()
+                monthFormatter.dateFormat = "MMM yyyy"
+                self.leftLabel.text = "\(monthFormatter.string(from: startDate))"
             }
         }
     }

@@ -21,7 +21,7 @@ class ExpenseListViewController: MDLoadableViewController {
     let filterButton = FilterButton.instantiateFromNib()
     let customView = ExpenseListView.instantiateFromNib()
     
-    let fetchedResultsController = ExpenseListViewController.makeFetchedResultsController(for: Global.filter)
+    var fetchedResultsController = ExpenseListViewController.makeFetchedResultsController(for: Global.filter)
     let sectionTotals = NSCache<NSString, NSDecimalNumber>()
     var expandedIndexPaths = Set<IndexPath>()
     
@@ -66,6 +66,8 @@ class ExpenseListViewController: MDLoadableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.filterButton.addTarget(self, action: #selector(handleValueChangeOnFilterButton), for: .valueChanged)
         
         self.customView.collectionView.register(ExpenseListSectionHeader.nib(),
                                                 forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
@@ -120,6 +122,17 @@ class ExpenseListViewController: MDLoadableViewController {
         return total
     }
 
+}
+
+// MARK: - Target actions
+extension ExpenseListViewController {
+    
+    func handleValueChangeOnFilterButton() {
+        Global.filter = self.filterButton.filter
+        self.fetchedResultsController = ExpenseListViewController.makeFetchedResultsController(for: Global.filter)
+        self.performFetch()
+    }
+    
 }
 
 // MARK: - NSFetchedResultsControllerDelegate
