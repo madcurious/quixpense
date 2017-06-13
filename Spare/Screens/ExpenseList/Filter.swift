@@ -62,24 +62,17 @@ struct Filter: Equatable {
         return "\(self.periodization.text()), \(self.grouping.text())"
     }
     
-    func groupEntityName() -> String {
+    func entityName() -> String {
         switch self.periodization{
         case .day:
             return md_getClassName(DayCategoryGroup.self)
             
         case .week:
-            return md_getClassName(SundayWeekCategoryGroup.self)
+            return md_getClassName(WeekCategoryGroup.self)
             
         case .month:
-            fatalError("Unimplemented")
+            return md_getClassName(MonthCategoryGroup.self)
         }
-    }
-    
-    func classifierKey() -> String {
-        if self.grouping == .category {
-            return "category"
-        }
-        return "tag"
     }
     
 }

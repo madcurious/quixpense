@@ -1,5 +1,5 @@
 //
-//  SectionDateFormatter.swift
+//  SectionIdentifier.swift
 //  Spare
 //
 //  Created by Matt Quiros on 12/06/2017.
@@ -8,15 +8,15 @@
 
 import Foundation
 
-final class SectionDateFormatter {
+final class SectionIdentifier {
     
     fileprivate init() {}
     
-    class func sectionIdentifier(forStartDate startDate: Date, endDate: Date) -> String {
+    class func make(startDate: Date, endDate: Date) -> String {
         return "\(startDate.timeIntervalSince1970)-\(endDate.timeIntervalSince1970)"
     }
     
-    class func parseDates(from sectionIdentifier: String) -> (startDate: Date, endDate: Date) {
+    class func parse(_ sectionIdentifier: String) -> (startDate: Date, endDate: Date) {
         let tokens = sectionIdentifier.components(separatedBy: "-")
         let startDate = Date(timeIntervalSince1970: TimeInterval(tokens[0])!)
         let endDate = Date(timeIntervalSince1970: TimeInterval(tokens[1])!)

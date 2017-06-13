@@ -37,7 +37,7 @@ class ExpenseListSectionHeader: UICollectionReusableView, Themeable {
                     return
             }
             
-            let (startDate, _) = SectionDateFormatter.parseDates(from: sectionIdentifier)
+            let (startDate, _) = SectionIdentifier.parse(sectionIdentifier)
             if Global.filter.periodization == .day {
                 self.leftLabel.text = kDateFormatter.string(from: startDate)
             } else {

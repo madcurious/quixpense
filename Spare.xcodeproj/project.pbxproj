@@ -40,7 +40,7 @@
 		26331FBE1E5B559300AACE68 /* _EFPSVCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26331FBD1E5B559300AACE68 /* _EFPSVCView.xib */; };
 		26331FC01E5B55A100AACE68 /* _EFPSVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26331FBF1E5B55A100AACE68 /* _EFPSVCView.swift */; };
 		26331FC21E5B684700AACE68 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26331FC11E5B684700AACE68 /* CoreDataStack.swift */; };
-		264D37C91EEE38DE0063CD53 /* SectionDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264D37C81EEE38DE0063CD53 /* SectionDateFormatter.swift */; };
+		264D37C91EEE38DE0063CD53 /* SectionIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264D37C81EEE38DE0063CD53 /* SectionIdentifier.swift */; };
 		265733111EDC1D3300AD1AB9 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265733101EDC1D3300AD1AB9 /* Filter.swift */; };
 		265733171EDC653500AD1AB9 /* FilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265733161EDC653500AD1AB9 /* FilterButton.swift */; };
 		2657331D1EDD493300AD1AB9 /* FilterButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2657331C1EDD493300AD1AB9 /* FilterButton.xib */; };
@@ -172,7 +172,7 @@
 		26331FBD1E5B559300AACE68 /* _EFPSVCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = _EFPSVCView.xib; sourceTree = "<group>"; };
 		26331FBF1E5B55A100AACE68 /* _EFPSVCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _EFPSVCView.swift; sourceTree = "<group>"; };
 		26331FC11E5B684700AACE68 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
-		264D37C81EEE38DE0063CD53 /* SectionDateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionDateFormatter.swift; sourceTree = "<group>"; };
+		264D37C81EEE38DE0063CD53 /* SectionIdentifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionIdentifier.swift; sourceTree = "<group>"; };
 		265733101EDC1D3300AD1AB9 /* Filter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		265733161EDC653500AD1AB9 /* FilterButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterButton.swift; sourceTree = "<group>"; };
 		2657331C1EDD493300AD1AB9 /* FilterButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilterButton.xib; sourceTree = "<group>"; };
@@ -472,7 +472,7 @@
 				26B38F101E89068500177CFE /* UserDefaultsKey.swift */,
 				26D6C9AC1E93807400DDDAE8 /* NotoSansUI.swift */,
 				2669A1C81EEADDAE00FFC9FD /* Weekday.swift */,
-				264D37C81EEE38DE0063CD53 /* SectionDateFormatter.swift */,
+				264D37C81EEE38DE0063CD53 /* SectionIdentifier.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -764,7 +764,7 @@
 				26B38F0F1E88FB2C00177CFE /* MakeDefaultDataOperation.swift in Sources */,
 				26DDDCAA1E5C23AB001617A1 /* _LAVCView.swift in Sources */,
 				260DFDB01E5584D900E3B92E /* _EFVCFieldBox.swift in Sources */,
-				264D37C91EEE38DE0063CD53 /* SectionDateFormatter.swift in Sources */,
+				264D37C91EEE38DE0063CD53 /* SectionIdentifier.swift in Sources */,
 				260DFDCF1E55F37600E3B92E /* EFPickerVCTransitioningDelegate.swift in Sources */,
 				26331FC01E5B55A100AACE68 /* _EFPSVCView.swift in Sources */,
 				26628A2D1E714AB100E80494 /* LightTheme.swift in Sources */,

@@ -28,7 +28,7 @@ class ExpenseListViewController: MDLoadableViewController {
     class func makeFetchedResultsController(for filter: Filter) -> NSFetchedResultsController<NSFetchRequestResult> {
         switch filter.grouping {
         case .category:
-            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: filter.groupEntityName())
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: filter.entityName())
             fetchRequest.sortDescriptors = [
                 NSSortDescriptor(key: "endDate", ascending: false),
                 NSSortDescriptor(key: "total", ascending: false)
