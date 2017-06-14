@@ -6,38 +6,34 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Fhs-nh-oZ6" customClass="ExpenseListSectionHeader" customModule="Spare" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="22"/>
+        <view contentMode="scaleToFill" id="OOA-Ni-14g" customClass="HomeSectionHeader" customModule="Spare" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="118"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jUY-NA-ion">
-                    <rect key="frame" x="-0.33333333333334281" y="0.0" width="375" height="22"/>
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="118"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="glc-Ja-YyM">
-                            <rect key="frame" x="15.666666666666657" y="0.0" width="349.33333333333337" height="22"/>
+                            <rect key="frame" x="15.666666666666657" y="0.0" width="388.33333333333337" height="118"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DzI-9p-HYe">
-                                    <rect key="frame" x="0.0" y="0.0" width="303.66666666666669" height="22"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342.66666666666663" height="118"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Bv-dW-4F7">
-                                    <rect key="frame" x="307.66666666666663" y="0.0" width="41.666666666666686" height="22"/>
+                                    <rect key="frame" x="346.66666666666663" y="0.0" width="41.666666666666686" height="118"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="22" id="jzs-ZY-LDg"/>
-                            </constraints>
                         </stackView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -49,34 +45,21 @@
                     </constraints>
                 </view>
             </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="jUY-NA-ion" firstAttribute="width" secondItem="Fhs-nh-oZ6" secondAttribute="width" id="2Sy-Xn-yus"/>
-                <constraint firstItem="jUY-NA-ion" firstAttribute="top" secondItem="Fhs-nh-oZ6" secondAttribute="top" id="5Em-j6-A92"/>
-                <constraint firstItem="jUY-NA-ion" firstAttribute="centerX" secondItem="Fhs-nh-oZ6" secondAttribute="centerX" id="J32-vE-ntQ"/>
-                <constraint firstItem="jUY-NA-ion" firstAttribute="width" secondItem="Fhs-nh-oZ6" secondAttribute="width" multiplier="0.7" id="g57-5c-7aO"/>
-                <constraint firstAttribute="bottom" secondItem="jUY-NA-ion" secondAttribute="bottom" id="wGe-qc-dE1"/>
+                <constraint firstItem="jUY-NA-ion" firstAttribute="top" secondItem="OOA-Ni-14g" secondAttribute="top" id="OVN-dm-nQc"/>
+                <constraint firstItem="jUY-NA-ion" firstAttribute="leading" secondItem="OOA-Ni-14g" secondAttribute="leading" id="SCJ-WZ-fUn"/>
+                <constraint firstAttribute="bottom" secondItem="jUY-NA-ion" secondAttribute="bottom" id="cnC-7M-6A0"/>
+                <constraint firstAttribute="trailing" secondItem="jUY-NA-ion" secondAttribute="trailing" id="lDz-e0-x1N"/>
             </constraints>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="2Sy-Xn-yus"/>
-                    <exclude reference="g57-5c-7aO"/>
-                </mask>
-            </variation>
-            <variation key="widthClass=compact">
-                <mask key="constraints">
-                    <include reference="2Sy-Xn-yus"/>
-                </mask>
-            </variation>
-            <variation key="widthClass=regular">
-                <mask key="constraints">
-                    <include reference="g57-5c-7aO"/>
-                </mask>
-            </variation>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="leftLabel" destination="DzI-9p-HYe" id="ueP-op-oAG"/>
-                <outlet property="rightLabel" destination="1Bv-dW-4F7" id="13J-66-EP9"/>
-                <outlet property="sizerView" destination="jUY-NA-ion" id="Ya0-gE-D8o"/>
+                <outlet property="leftLabel" destination="DzI-9p-HYe" id="Px9-Rq-yiW"/>
+                <outlet property="rightLabel" destination="1Bv-dW-4F7" id="Uxl-2i-u31"/>
+                <outlet property="sizerView" destination="jUY-NA-ion" id="2eg-kZ-MCq"/>
             </connections>
-        </collectionReusableView>
+            <point key="canvasLocation" x="41" y="809"/>
+        </view>
     </objects>
 </document>

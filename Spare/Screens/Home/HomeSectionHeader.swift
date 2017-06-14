@@ -20,7 +20,7 @@ fileprivate let kDateFormatter: DateFormatter = {
 //    return parser
 //}()
 
-class ExpenseListSectionHeader: UICollectionReusableView, Themeable {
+class HomeSectionHeader: UIView, Themeable {
     
     @IBOutlet weak var sizerView: UIView!
     @IBOutlet weak var leftLabel: UILabel!
@@ -67,11 +67,11 @@ class ExpenseListSectionHeader: UICollectionReusableView, Themeable {
         
         self.sizerView.backgroundColor = .clear
         
-        self.leftLabel.font = Global.theme.font(for: .expenseListSectionHeader)
+        self.leftLabel.font = Global.theme.font(for: .homeSectionHeader)
         self.leftLabel.numberOfLines = 1
         self.leftLabel.textAlignment = .left
         
-        self.rightLabel.font = Global.theme.font(for: .expenseListSectionHeader)
+        self.rightLabel.font = Global.theme.font(for: .homeSectionHeader)
         self.rightLabel.numberOfLines = 1
         self.rightLabel.textAlignment = .right
         
@@ -79,9 +79,9 @@ class ExpenseListSectionHeader: UICollectionReusableView, Themeable {
     }
     
     func applyTheme() {
-        self.backgroundColor = Global.theme.color(for: .expenseListSectionHeaderBackground)
-        self.leftLabel.textColor = Global.theme.color(for: .expenseListSectionHeaderText)
-        self.rightLabel.textColor = Global.theme.color(for: .expenseListSectionHeaderText)
+        self.backgroundColor = Global.theme.color(for: .homeSectionHeaderBackground)
+        self.leftLabel.textColor = Global.theme.color(for: .homeSectionHeaderText)
+        self.rightLabel.textColor = Global.theme.color(for: .homeSectionHeaderText)
     }
     
 }

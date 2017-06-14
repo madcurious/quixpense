@@ -1,5 +1,5 @@
 //
-//  ExpenseListView.swift
+//  HomeView.swift
 //  Spare
 //
 //  Created by Matt Quiros on 03/03/2017.
@@ -8,11 +8,11 @@
 
 import UIKit
 
-class ExpenseListView: UIView {
+class HomeView: UIView {
     
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     @IBOutlet weak var noExpensesLabel: UILabel!
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var tableView: UITableView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -34,13 +34,7 @@ class ExpenseListView: UIView {
                                                                                     textColor: Global.theme.color(for: .promptLabel))
         )
         
-        if let flowLayout = self.collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            flowLayout.minimumLineSpacing = 0.5
-            flowLayout.minimumInteritemSpacing = 0
-            flowLayout.sectionHeadersPinToVisibleBounds = true
-        }
-        
-        self.collectionView.isHidden = true
+        self.tableView.isHidden = true
         
     }
     

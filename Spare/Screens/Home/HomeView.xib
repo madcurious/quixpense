@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT" customClass="ExpenseListView" customModule="Spare" customModuleProvider="target">
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT" customClass="HomeView" customModule="Spare" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -24,33 +24,27 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="pgJ-gB-MbP">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OTI-On-KzO">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="GGQ-zP-1md">
-                        <size key="itemSize" width="50" height="50"/>
-                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                    </collectionViewFlowLayout>
-                </collectionView>
+                </tableView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="OTI-On-KzO" secondAttribute="bottom" id="3NK-34-KrX"/>
                 <constraint firstItem="uh6-4v-Ov9" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="4Io-z8-gSu"/>
                 <constraint firstItem="bgL-5v-d4x" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="4Tc-5n-O3o"/>
                 <constraint firstItem="bgL-5v-d4x" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="6eU-ji-KdY"/>
-                <constraint firstItem="pgJ-gB-MbP" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="BrZ-Yw-1HQ"/>
-                <constraint firstAttribute="trailing" secondItem="pgJ-gB-MbP" secondAttribute="trailing" id="MBF-dT-Taa"/>
                 <constraint firstAttribute="trailing" secondItem="uh6-4v-Ov9" secondAttribute="trailing" constant="20" id="bbr-jU-BWU"/>
-                <constraint firstAttribute="bottom" secondItem="pgJ-gB-MbP" secondAttribute="bottom" id="ibD-bU-HPG"/>
+                <constraint firstItem="OTI-On-KzO" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="hew-Zg-GVJ"/>
+                <constraint firstAttribute="trailing" secondItem="OTI-On-KzO" secondAttribute="trailing" id="nDA-WP-t4M"/>
                 <constraint firstItem="uh6-4v-Ov9" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="sX2-69-gJp"/>
-                <constraint firstItem="pgJ-gB-MbP" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="y6e-jS-jyR"/>
+                <constraint firstItem="OTI-On-KzO" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="xIb-wz-MPu"/>
             </constraints>
             <connections>
-                <outlet property="activityIndicatorView" destination="bgL-5v-d4x" id="AXV-Lj-vBF"/>
-                <outlet property="collectionView" destination="pgJ-gB-MbP" id="Npc-g0-hSP"/>
-                <outlet property="noExpensesLabel" destination="uh6-4v-Ov9" id="Pnh-Zh-0Ml"/>
+                <outlet property="activityIndicatorView" destination="bgL-5v-d4x" id="61z-5u-Dod"/>
+                <outlet property="noExpensesLabel" destination="uh6-4v-Ov9" id="IlQ-uk-NCa"/>
+                <outlet property="tableView" destination="OTI-On-KzO" id="0gd-Nf-PTW"/>
             </connections>
         </view>
     </objects>

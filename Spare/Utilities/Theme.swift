@@ -18,8 +18,8 @@ enum UIElement {
     
     expenseListGroupCellBackgroundDefault,
     expenseListGroupCellBackgroundHighlighted,
-    expenseListSectionHeaderBackground,
-    expenseListSectionHeaderText,
+    homeSectionHeaderBackground,
+    homeSectionHeaderText,
     expenseListStemView,
     
     fieldIcon,
@@ -45,7 +45,7 @@ enum UIElement {
 enum StringElement {
     case
     cellSecondaryText,
-    expenseListSectionHeader,
+    homeSectionHeader,
     filterButtonText,
     infoLabelMainText,
     infoLabelSecondaryText,
