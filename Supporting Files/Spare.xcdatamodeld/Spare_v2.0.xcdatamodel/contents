@@ -19,6 +19,11 @@
         <attribute name="amount" attributeType="Decimal" minValueString="0" syncable="YES"/>
         <attribute name="dateCreated" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="dateSpent" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="daySectionIdentifier" attributeType="String" syncable="YES"/>
+        <attribute name="mondayWeekSectionIdentifier" attributeType="String" syncable="YES"/>
+        <attribute name="monthSectionIdentifier" attributeType="String" syncable="YES"/>
+        <attribute name="saturdayWeekSectionIdentifier" attributeType="String" syncable="YES"/>
+        <attribute name="sundayWeekSectionIdentifier" attributeType="String" syncable="YES"/>
         <relationship name="category" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="expenses" inverseEntity="Category" syncable="YES"/>
         <relationship name="dayCategoryGroup" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DayCategoryGroup" inverseName="expenses" inverseEntity="DayCategoryGroup" syncable="YES"/>
         <relationship name="monthCategoryGroup" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MonthCategoryGroup" inverseName="expenses" inverseEntity="MonthCategoryGroup" syncable="YES"/>
@@ -63,7 +68,7 @@
     <elements>
         <element name="Category" positionX="405" positionY="290" width="128" height="120"/>
         <element name="DayCategoryGroup" positionX="189" positionY="180" width="128" height="135"/>
-        <element name="Expense" positionX="187" positionY="288" width="128" height="165"/>
+        <element name="Expense" positionX="187" positionY="288" width="128" height="238"/>
         <element name="MonthCategoryGroup" positionX="189" positionY="153" width="128" height="135"/>
         <element name="SPRCategory" positionX="198" positionY="27" width="128" height="30"/>
         <element name="SPRExpense" positionX="376" positionY="45" width="128" height="135"/>

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 import Mold
 
 func ==(lhs: Filter, rhs: Filter) -> Bool {
@@ -65,6 +66,54 @@ struct Filter: Equatable {
         case .month:
             return md_getClassName(MonthCategoryGroup.self)
         }
+    }
+    
+    func makeFetchedResultsController() -> NSFetchedResultsController<NSFetchRequestResult> {
+        let sectionNameKeyPath: String = {
+            switch self.periodization {
+            case .day:
+                return #keyPath(Expense.daySectionIdentifier)
+            case .week:
+                switch Global.startOfWeek {
+                case .sunday:
+                    return #keyPath(Expense.sundayWeekSectionIdentifier)
+                case .monday:
+                    return #keyPath(Expense.mondayWeekSectionIdentifier)
+                case .saturday:
+                    return #keyPath(Expense.saturdayWeekSectionIdentifier)
+                }
+            case .month:
+                return #keyPath(Expense.monthSectionIdentifier)
+            }
+            
+        }()
+        
+        let amountExpression = NSExpression(forKeyPath: #keyPath(Expense.amount))
+        let sumExpression = NSExpression(forFunction: "sum:", arguments: [amountExpression])
+        let sumExpressionDescription = NSExpressionDescription()
+        sumExpressionDescription.name = "total"
+        sumExpressionDescription.expression = sumExpression
+        sumExpressionDescription.expressionResultType = .decimalAttributeType
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: md_getClassName(Expense.self))
+        fetchRequest.resultType = .dictionaryResultType
+        fetchRequest.sortDescriptors = [
+            NSSortDescriptor(key: #keyPath(Expense.dateSpent), ascending: false)
+        ]
+        fetchRequest.propertiesToFetch = [
+            sectionNameKeyPath,
+            sumExpressionDescription,
+            #keyPath(Expense.category)
+        ]
+        fetchRequest.propertiesToGroupBy = [
+            sectionNameKeyPath,
+            #keyPath(Expense.category)
+        ]
+        
+        return NSFetchedResultsController(fetchRequest: fetchRequest,
+                                          managedObjectContext: Global.coreDataStack.viewContext,
+                                          sectionNameKeyPath: sectionNameKeyPath,
+                                          cacheName: "CacheName")
     }
     
 }

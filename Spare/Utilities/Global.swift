@@ -13,5 +13,6 @@ struct Global {
     static var coreDataStack: CoreDataStack!
     static var theme = LightTheme()
     static var filter = Filter()
+    static var startOfWeek = StartOfWeek(rawValue: Locale.current.calendar.firstWeekday)!
     
 }

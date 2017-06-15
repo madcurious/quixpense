@@ -15,12 +15,20 @@ fileprivate enum ViewID: String {
     case groupCell = "GroupCell"
 }
 
+private let kDateFormatter: DateFormatter = {
+    let df = DateFormatter()
+    df.dateStyle = .long
+    df.timeStyle = .long
+    return df
+}()
+
 class HomeViewController: MDLoadableViewController {
     
     let filterButton = FilterButton.instantiateFromNib()
     let customView = HomeView.instantiateFromNib()
     
-    var fetchedResultsController = HomeViewController.makeFetchedResultsController(for: Global.filter)
+//    var fetchedResultsController = HomeViewController.makeFetchedResultsController(for: Global.filter)
+    var fetchedResultsController = Global.filter.makeFetchedResultsController()
     let sectionTotals = NSCache<NSString, NSDecimalNumber>()
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -47,29 +55,48 @@ class HomeViewController: MDLoadableViewController {
         
         self.filterButton.addTarget(self, action: #selector(handleValueChangeOnFilterButton), for: .valueChanged)
         
-        self.customView.tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: ViewID.sectionHeader.rawValue)
-        self.customView.tableView.dataSource = self
-        self.customView.tableView.delegate = self
+//        self.customView.tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: ViewID.sectionHeader.rawValue)
+//        self.customView.tableView.dataSource = self
+//        self.customView.tableView.delegate = self
         
         self.performFetch()
     }
     
     func performFetch() {
-        self.showView(for: .loading)
+//        self.showView(for: .loading)
+//        
+//        self.sectionTotals.removeAllObjects()
+//        
+//        do {
+//            try self.fetchedResultsController.performFetch()
+//            if let count = self.fetchedResultsController.fetchedObjects?.count,
+//                count == 0 {
+//                self.showView(for: .empty)
+//            } else {
+//                self.customView.tableView.reloadData()
+//                self.showView(for: .data)
+//            }
+//        } catch {
+//            self.showView(for: .error(error))
+//        }
+        try! self.fetchedResultsController.performFetch()
         
-        self.sectionTotals.removeAllObjects()
-        
-        do {
-            try self.fetchedResultsController.performFetch()
-            if let count = self.fetchedResultsController.fetchedObjects?.count,
-                count == 0 {
-                self.showView(for: .empty)
-            } else {
-                self.customView.tableView.reloadData()
-                self.showView(for: .data)
+        print()
+        print()
+        print("=========")
+        for i in 0 ..< self.fetchedResultsController.sections!.count {
+            print("SECTION: \(self.fetchedResultsController.sections![i].name)")
+            print("NUMBER OF OBJECTS: \(self.fetchedResultsController.sections![i].numberOfObjects)")
+            
+            for j in 0 ..< self.fetchedResultsController.sections![i].numberOfObjects {
+                print("\tOBJECT: \(self.fetchedResultsController.object(at: IndexPath(row: j, section: i)))")
             }
-        } catch {
-            self.showView(for: .error(error))
+            
+            print()
+            print()
+            print("=========")
+            print()
+            print()
         }
     }
     
@@ -124,7 +151,8 @@ extension HomeViewController {
     
     func handleValueChangeOnFilterButton() {
         Global.filter = self.filterButton.filter
-        self.fetchedResultsController = HomeViewController.makeFetchedResultsController(for: Global.filter)
+//        self.fetchedResultsController = HomeViewController.makeFetchedResultsController(for: Global.filter)
+        self.fetchedResultsController = Global.filter.makeFetchedResultsController()
         self.performFetch()
     }
     

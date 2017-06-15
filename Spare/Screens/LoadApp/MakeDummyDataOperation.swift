@@ -18,6 +18,13 @@ private let kCategoryNames = [
     "Vacation"
 ]
 
+private let kDateFormatter: DateFormatter = {
+    let df = DateFormatter()
+    df.dateStyle = .long
+    df.timeStyle = .long
+    return df
+}()
+
 class MakeDummyDataOperation: MDOperation<Any?> {
     
     var context: NSManagedObjectContext!
@@ -60,7 +67,7 @@ class MakeDummyDataOperation: MDOperation<Any?> {
             var expenses = try! self.context.fetch(expenseFetch)
             if expenses.count == 0 {
                 var components = DateComponents()
-                components.month = 1
+                components.month = 6
                 components.day = 1
                 components.year = 2017
                 let fromDate = Calendar.current.date(from: components)!
@@ -118,6 +125,25 @@ class MakeDummyDataOperation: MDOperation<Any?> {
                     expenses.append(newExpense)
                     
 //                    print("-- amount: \(amount)")
+                    
+                    print("dateSpent: \(kDateFormatter.string(from: newExpense.dateSpent! as Date))")
+                    
+                    var (start, end) = SectionIdentifier.parse(newExpense.daySectionIdentifier!)
+                    print("daySectionIdentifier: \(kDateFormatter.string(from: start)) -> \(kDateFormatter.string(from: end))")
+                    
+                    (start, end) = SectionIdentifier.parse(newExpense.sundayWeekSectionIdentifier!)
+                    print("sundayWeekSectionIdentifier: \(kDateFormatter.string(from: start)) -> \(kDateFormatter.string(from: end))")
+                    
+                    (start, end) = SectionIdentifier.parse(newExpense.mondayWeekSectionIdentifier!)
+                    print("mondayWeekSectionIdentifier: \(kDateFormatter.string(from: start)) -> \(kDateFormatter.string(from: end))")
+                    
+                    (start, end) = SectionIdentifier.parse(newExpense.saturdayWeekSectionIdentifier!)
+                    print("saturdayWeekSectionIdentifier: \(kDateFormatter.string(from: start)) -> \(kDateFormatter.string(from: end))")
+                    
+                    (start, end) = SectionIdentifier.parse(newExpense.monthSectionIdentifier!)
+                    print("monthSectionIdentifier: \(kDateFormatter.string(from: start)) -> \(kDateFormatter.string(from: end))")
+                    
+                    print()
                 }
                 
                 self.makeDayCategoryGroup(for: expenses)
@@ -174,17 +200,6 @@ class MakeDummyDataOperation: MDOperation<Any?> {
                 newGroup.sectionIdentifier = SectionIdentifier.make(startDate: weekStart, endDate: weekEnd)
                 
                 expense.weekCategoryGroup = newGroup
-                
-//                let predicateComponents = [["startDate" : newGroup.startDate!],
-//                                           ["endDate" : newGroup.endDate!],
-//                                           ["classifier" : newGroup.classifier!]]
-//                for component in predicateComponents {
-//                    let predicate = NSPredicate(format: "%K == %@",
-//                                                argumentArray: [component.keys.first!, component.values.first!])
-//                    let matches = predicate.evaluate(with: newGroup)
-//                    print("predicate: \(predicate.predicateFormat)")
-//                    print("matches: \(matches)")
-//                }
             }
         }
     }
