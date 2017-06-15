@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Mold
 
 func ==(lhs: Filter, rhs: Filter) -> Bool {
     return lhs.periodization == rhs.periodization &&
@@ -51,6 +52,19 @@ struct Filter: Equatable {
     
     func text() -> String {
         return "\(self.periodization.text()), \(self.grouping.text())"
+    }
+    
+    func entityName() -> String {
+        switch self.periodization{
+        case .day:
+            return md_getClassName(DayCategoryGroup.self)
+            
+        case .week:
+            return md_getClassName(WeekCategoryGroup.self)
+            
+        case .month:
+            return md_getClassName(MonthCategoryGroup.self)
+        }
     }
     
 }

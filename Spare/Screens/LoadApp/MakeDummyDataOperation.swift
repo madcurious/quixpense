@@ -56,13 +56,13 @@ class MakeDummyDataOperation: MDOperation<Any?> {
     
     func makeExpenses() {
         let lastDate: Date = {
-            let expenseFetch = NSFetchRequest<Expense>(entityName: "Expense")
+            let expenseFetch = NSFetchRequest<Expense>(entityName: md_getClassName(Expense.self))
             var expenses = try! self.context.fetch(expenseFetch)
             if expenses.count == 0 {
                 var components = DateComponents()
                 components.month = 1
                 components.day = 1
-                components.year = 2016
+                components.year = 2017
                 let fromDate = Calendar.current.date(from: components)!
                 return fromDate
             } else {
@@ -80,58 +80,140 @@ class MakeDummyDataOperation: MDOperation<Any?> {
         }
         
         let numberOfDays = Calendar.current.dateComponents([.day], from: lastDate, to: toDate).day!
-        let categoryFetch = NSFetchRequest<Category>(entityName: "Category")
+        let categoryFetch = NSFetchRequest<Category>(entityName: md_getClassName(Category.self))
         let categories = try! self.context.fetch(categoryFetch)
         var dateSpent = Calendar.current.date(byAdding: .day, value: 1, to: lastDate)!
         
-        print("fromDate: \(lastDate)")
-        print("toDate: \(toDate)")
-        print("Making dummy expenses for \(numberOfDays) days...")
-        print("===============")
+//        print("fromDate: \(lastDate)")
+//        print("toDate: \(toDate)")
+//        print("Making dummy expenses for \(numberOfDays) days...")
+//        print("===============")
         
-        for i in 0 ..< numberOfDays {
-            print("Current date (day \(i + 1)): \(dateSpent)")
+        for _ in 0 ..< numberOfDays {
+//            print("Current date (day \(i + 1)): \(dateSpent)")
             
-            // Remove the time components.
-            let components = Calendar.current.dateComponents([.month, .day, .year], from: dateSpent)
-            let sectionDate = Calendar.current.date(from: components)!
+            var expenses = [Expense]()
             
             for category in categories {
                 // Make 0-10 expenses.
                 let numberOfExpenses = arc4random_uniform(10)
-                print("- Making \(numberOfExpenses) expenses for category '\(category.name!)'")
+//                print("- Making \(numberOfExpenses) expenses for category '\(category.name!)'")
                 
                 if numberOfExpenses == 0 {
                     // Avoid making section entities if there will be no expenses to begin with.
                     continue
                 }
                 
-                let categoryGroup = CategoryGroup(context: self.context)
-                categoryGroup.category = category
-                categoryGroup.sectionDate = sectionDate as NSDate
-                
                 var categorySectionTotal = 0.0
-                var expenses = [Expense]()
                 
                 for _ in 0 ..< numberOfExpenses {
-                    // Generate amount from 1-3000 pesos.
-                    let amount = 1 + (2500 * Double(arc4random()) / Double(UInt32.max))
+                    let amount = 1 + (1000 * Double(arc4random()) / Double(UInt32.max))
                     categorySectionTotal += amount
                     
                     let newExpense = Expense(context: self.context)
                     newExpense.category = category
                     newExpense.amount = NSDecimalNumber(value: amount)
                     newExpense.dateSpent = dateSpent as NSDate
+                    newExpense.dateCreated = Date() as NSDate
                     expenses.append(newExpense)
                     
-                    print("-- amount: \(amount)")
+//                    print("-- amount: \(amount)")
                 }
                 
-                categoryGroup.total = NSDecimalNumber(value: categorySectionTotal)
-                categoryGroup.expenses = NSOrderedSet(array: expenses)
+                self.makeDayCategoryGroup(for: expenses)
+                self.makeWeekCategoryGroups(for: expenses)
+                self.makeMonthCategoryGroups(for: expenses)
+                expenses = []
             }
             
             dateSpent = Calendar.current.date(byAdding: .day, value: 1, to: dateSpent)!
+        }
+    }
+    
+    func makeDayCategoryGroup(for expenses: [Expense]) {
+        let category = expenses.first!.category
+        let total = expenses.total()
+        let startDate = (expenses.first!.dateSpent! as Date).startOfDay()
+        let endDate = startDate.endOfDay()
+        
+        let dayCategoryGroup = DayCategoryGroup(context: self.context)
+        dayCategoryGroup.classifier = category
+        dayCategoryGroup.total = total
+        dayCategoryGroup.startDate = startDate as NSDate
+        dayCategoryGroup.endDate = endDate as NSDate
+        dayCategoryGroup.sectionIdentifier = SectionIdentifier.make(startDate: startDate, endDate: endDate)
+        
+        for expense in expenses {
+            expense.dayCategoryGroup = dayCategoryGroup
+        }
+    }
+    
+    func makeWeekCategoryGroups(for expenses: [Expense]) {
+        for expense in expenses {
+            let firstWeekday = NSLocale.current.calendar.firstWeekday
+            let weekStart = (expense.dateSpent! as Date).startOfWeek(firstWeekday: firstWeekday)
+            let weekEnd = weekStart.endOfWeek(firstWeekday: firstWeekday)
+            
+            let fetchRequest = NSFetchRequest<WeekCategoryGroup>(entityName: md_getClassName(WeekCategoryGroup.self))
+            fetchRequest.predicate = NSPredicate(format: "%K == %@ AND %K == %@ AND %K == %@",
+                                                 argumentArray: [
+                                                    "startDate", weekStart as NSDate,
+                                                    "endDate", weekEnd as NSDate,
+                                                    "classifier", expense.category!
+                ])
+            if let existingGroup = try! self.context.fetch(fetchRequest).first,
+                let runningTotal = existingGroup.value(forKey: "total") as? NSDecimalNumber {
+                existingGroup.total = runningTotal.adding(expense.amount!)
+                expense.weekCategoryGroup = existingGroup
+            } else {
+                let newGroup = WeekCategoryGroup(context: self.context)
+                newGroup.startDate = weekStart as NSDate
+                newGroup.endDate = weekEnd as NSDate
+                newGroup.total = expense.amount
+                newGroup.classifier = expense.category
+                newGroup.sectionIdentifier = SectionIdentifier.make(startDate: weekStart, endDate: weekEnd)
+                
+                expense.weekCategoryGroup = newGroup
+                
+//                let predicateComponents = [["startDate" : newGroup.startDate!],
+//                                           ["endDate" : newGroup.endDate!],
+//                                           ["classifier" : newGroup.classifier!]]
+//                for component in predicateComponents {
+//                    let predicate = NSPredicate(format: "%K == %@",
+//                                                argumentArray: [component.keys.first!, component.values.first!])
+//                    let matches = predicate.evaluate(with: newGroup)
+//                    print("predicate: \(predicate.predicateFormat)")
+//                    print("matches: \(matches)")
+//                }
+            }
+        }
+    }
+    
+    func makeMonthCategoryGroups(for expenses: [Expense]) {
+        for expense in expenses {
+            let startOfMonth = (expense.dateSpent! as Date).startOfMonth()
+            let endOfMonth = (expense.dateSpent! as Date).endOfMonth()
+            let fetchRequest = NSFetchRequest<MonthCategoryGroup>(entityName: md_getClassName(MonthCategoryGroup.self))
+            fetchRequest.predicate = NSPredicate(format: "%K == %@ AND %K == %@ AND %K == %@",
+                                                 argumentArray: [
+                                                    "startDate", startOfMonth,
+                                                    "endDate", endOfMonth,
+                                                    "classifier", expense.category!
+                ])
+            if let existingGroup = try! self.context.fetch(fetchRequest).first,
+                let runningTotal = existingGroup.value(forKey: "total") as? NSDecimalNumber {
+                existingGroup.total = runningTotal.adding(expense.amount!)
+                expense.monthCategoryGroup = existingGroup
+            } else {
+                let newGroup = MonthCategoryGroup(context: self.context)
+                newGroup.startDate = startOfMonth as NSDate
+                newGroup.endDate = endOfMonth as NSDate
+                newGroup.total = expense.amount
+                newGroup.classifier = expense.category
+                newGroup.sectionIdentifier = SectionIdentifier.make(startDate: startOfMonth, endDate: endOfMonth)
+                
+                expense.monthCategoryGroup = newGroup
+            }
         }
     }
     
