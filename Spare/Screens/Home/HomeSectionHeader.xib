@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="OOA-Ni-14g" customClass="HomeSectionHeader" customModule="Spare" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="118"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jUY-NA-ion">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="118"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="glc-Ja-YyM">
+                            <rect key="frame" x="15.666666666666657" y="0.0" width="388.33333333333337" height="118"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DzI-9p-HYe">
+                                    <rect key="frame" x="0.0" y="0.0" width="342.66666666666663" height="118"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Bv-dW-4F7">
+                                    <rect key="frame" x="346.66666666666663" y="0.0" width="41.666666666666686" height="118"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="glc-Ja-YyM" secondAttribute="bottom" id="1AM-xs-ARF"/>
+                        <constraint firstItem="glc-Ja-YyM" firstAttribute="leading" secondItem="jUY-NA-ion" secondAttribute="leading" constant="15" id="JBO-AS-oTl"/>
+                        <constraint firstItem="glc-Ja-YyM" firstAttribute="top" secondItem="jUY-NA-ion" secondAttribute="top" id="JCw-of-eaX"/>
+                        <constraint firstAttribute="trailing" secondItem="glc-Ja-YyM" secondAttribute="trailing" constant="10" id="aMf-c2-4Zi"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="jUY-NA-ion" firstAttribute="top" secondItem="OOA-Ni-14g" secondAttribute="top" id="OVN-dm-nQc"/>
+                <constraint firstItem="jUY-NA-ion" firstAttribute="leading" secondItem="OOA-Ni-14g" secondAttribute="leading" id="SCJ-WZ-fUn"/>
+                <constraint firstAttribute="bottom" secondItem="jUY-NA-ion" secondAttribute="bottom" id="cnC-7M-6A0"/>
+                <constraint firstAttribute="trailing" secondItem="jUY-NA-ion" secondAttribute="trailing" id="lDz-e0-x1N"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="leftLabel" destination="DzI-9p-HYe" id="Px9-Rq-yiW"/>
+                <outlet property="rightLabel" destination="1Bv-dW-4F7" id="Uxl-2i-u31"/>
+                <outlet property="sizerView" destination="jUY-NA-ion" id="2eg-kZ-MCq"/>
+            </connections>
+            <point key="canvasLocation" x="41" y="809"/>
+        </view>
+    </objects>
+</document>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="_EFVCView" customModule="Spare" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rZF-Dt-vjt">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="mcM-eN-OPO">
+                            <rect key="frame" x="0.0" y="6" width="375" height="667"/>
+                        </stackView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="mcM-eN-OPO" secondAttribute="trailing" id="OJN-Hh-eee"/>
+                        <constraint firstItem="mcM-eN-OPO" firstAttribute="leading" secondItem="rZF-Dt-vjt" secondAttribute="leading" id="lVq-EY-4ZP"/>
+                        <constraint firstItem="mcM-eN-OPO" firstAttribute="top" secondItem="rZF-Dt-vjt" secondAttribute="top" constant="6" id="mBN-cN-v6D"/>
+                        <constraint firstAttribute="bottom" secondItem="mcM-eN-OPO" secondAttribute="bottom" id="nvJ-kn-8rM"/>
+                        <constraint firstItem="mcM-eN-OPO" firstAttribute="width" secondItem="rZF-Dt-vjt" secondAttribute="width" id="yGd-R1-SfN"/>
+                        <constraint firstItem="mcM-eN-OPO" firstAttribute="height" secondItem="rZF-Dt-vjt" secondAttribute="height" placeholder="YES" id="yWX-fh-jY7"/>
+                    </constraints>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="rZF-Dt-vjt" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="cYZ-Bl-Fh5"/>
+                <constraint firstAttribute="trailing" secondItem="rZF-Dt-vjt" secondAttribute="trailing" id="nyd-Gy-50C"/>
+                <constraint firstItem="rZF-Dt-vjt" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="xE4-zn-hSW"/>
+                <constraint firstAttribute="bottom" secondItem="rZF-Dt-vjt" secondAttribute="bottom" id="xet-w3-7Sy"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <connections>
+                <outlet property="scrollView" destination="rZF-Dt-vjt" id="g9T-nM-wWV"/>
+                <outlet property="scrollViewBottom" destination="xet-w3-7Sy" id="lXm-3e-ntR"/>
+                <outlet property="stackView" destination="mcM-eN-OPO" id="VUM-iy-X5r"/>
+            </connections>
+            <point key="canvasLocation" x="-126" y="26"/>
+        </view>
+    </objects>
+</document>

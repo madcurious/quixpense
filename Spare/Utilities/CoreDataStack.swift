@@ -2,7 +2,7 @@
 //  CoreDataStack.swift
 //  Spare
 //
-//  Created by Matt Quiros on 08/02/2017.
+//  Created by Matt Quiros on 21/02/2017.
 //  Copyright © 2017 Matt Quiros. All rights reserved.
 //
 
@@ -44,3 +44,4 @@ class CoreDataStack: NSObject {
     }
     
 }
+

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="kVl-du-Fxf" customClass="FilterButton" customModule="Spare" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="220" height="210"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lem-jw-PPd">
+                    <rect key="frame" x="0.0" y="92.5" width="220" height="25"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tFM-Tc-86A">
+                    <rect key="frame" x="0.0" y="95" width="220" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yaR-9I-apC">
+                    <rect key="frame" x="199" y="94.5" width="21" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="yaR-9I-apC" secondAttribute="height" id="5AN-c8-UIa"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Lem-jw-PPd" secondAttribute="trailing" id="7nV-zf-UXE"/>
+                <constraint firstItem="yaR-9I-apC" firstAttribute="centerY" secondItem="kVl-du-Fxf" secondAttribute="centerY" id="HAi-Dx-Vvo"/>
+                <constraint firstItem="Lem-jw-PPd" firstAttribute="centerY" secondItem="kVl-du-Fxf" secondAttribute="centerY" id="QzI-ST-npQ"/>
+                <constraint firstItem="yaR-9I-apC" firstAttribute="height" secondItem="tFM-Tc-86A" secondAttribute="height" id="Uz9-kd-WPX"/>
+                <constraint firstAttribute="trailing" secondItem="tFM-Tc-86A" secondAttribute="trailing" id="aph-2u-xeg"/>
+                <constraint firstItem="Lem-jw-PPd" firstAttribute="leading" secondItem="kVl-du-Fxf" secondAttribute="leading" id="c5a-Dl-msm"/>
+                <constraint firstItem="Lem-jw-PPd" firstAttribute="height" secondItem="tFM-Tc-86A" secondAttribute="height" constant="4" id="ewC-e0-PUD"/>
+                <constraint firstItem="tFM-Tc-86A" firstAttribute="leading" secondItem="kVl-du-Fxf" secondAttribute="leading" id="i7w-vY-2HU"/>
+                <constraint firstAttribute="trailing" secondItem="yaR-9I-apC" secondAttribute="trailing" id="j7x-ew-DaE"/>
+                <constraint firstItem="tFM-Tc-86A" firstAttribute="centerY" secondItem="kVl-du-Fxf" secondAttribute="centerY" id="x8e-Ef-Wtk"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="arrowImageView" destination="yaR-9I-apC" id="XSj-x3-IAG"/>
+                <outlet property="filterLabel" destination="tFM-Tc-86A" id="daq-L4-iNc"/>
+                <outlet property="roundedRectView" destination="Lem-jw-PPd" id="7b6-3O-edu"/>
+            </connections>
+            <point key="canvasLocation" x="-89" y="-242"/>
+        </view>
+    </objects>
+</document>
