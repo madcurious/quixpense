@@ -128,12 +128,22 @@ struct Filter: Equatable {
     }
     
     private func makeFetcherForTags() -> NSFetchedResultsController<NSFetchRequestResult> {
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: md_getClassName(DayTagGroup.self))
+        let groupEntityName: String = {
+            switch self.periodization {
+            case .day:
+                return md_getClassName(DayTagGroup.self)
+            case .week:
+                return md_getClassName(WeekTagGroup.self)
+            case .month:
+                fatalError()
+            }
+        }()
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: groupEntityName)
         fetchRequest.sortDescriptors = [
             NSSortDescriptor(key: "endDate", ascending: false),
             NSSortDescriptor(key: "total", ascending: false)
         ]
-        fetchRequest.fetchBatchSize = 100
         
         return NSFetchedResultsController(fetchRequest: fetchRequest,
                                           managedObjectContext: Global.coreDataStack.viewContext,

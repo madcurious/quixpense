@@ -163,6 +163,7 @@ class MakeDummyDataOperation: MDOperation<Any?> {
                 self.makeWeekCategoryGroups(for: expenses)
                 self.makeMonthCategoryGroups(for: expenses)
                 self.makeDayTagGroups(for: expenses)
+                self.makeWeekTagGroups(for: expenses)
                 expenses = []
             }
             
@@ -261,7 +262,7 @@ class MakeDummyDataOperation: MDOperation<Any?> {
                 if let existingGroup = try! self.context.fetch(fetchRequest).first,
                     let runningTotal = existingGroup.total {
                     existingGroup.total = runningTotal.adding(expense.amount!)
-                    expense.dayTagGroup = existingGroup
+                    expense.addToDayTagGroups(existingGroup)
                 } else {
                     let newGroup = DayTagGroup(context: self.context)
                     newGroup.startDate = startDate as NSDate
@@ -270,7 +271,37 @@ class MakeDummyDataOperation: MDOperation<Any?> {
                     newGroup.classifier = tag
                     newGroup.sectionIdentifier = SectionIdentifier.make(startDate: startDate, endDate: endDate)
                     
-                    expense.dayTagGroup = newGroup
+                    expense.addToDayTagGroups(newGroup)
+                }
+            }
+        }
+    }
+    
+    func makeWeekTagGroups(for expenses: [Expense]) {
+        for expense in expenses {
+            let startOfWeek = (expense.dateSpent! as Date).startOfWeek(firstWeekday: Global.startOfWeek.rawValue)
+            let endOfWeek = (expense.dateSpent! as Date).endOfWeek(firstWeekday: Global.startOfWeek.rawValue)
+            let tags = expense.tags!.allObjects as! [Tag]
+            
+            for tag in tags {
+                let fetchRequest: NSFetchRequest<WeekTagGroup> = WeekTagGroup.fetchRequest()
+                fetchRequest.predicate = NSPredicate(format: "%K == %@ AND %K == %@ AND %K == %@",
+                                                     #keyPath(WeekTagGroup.classifier), tag,
+                                                     #keyPath(WeekTagGroup.startDate), startOfWeek as NSDate,
+                                                     #keyPath(WeekTagGroup.endDate), endOfWeek as NSDate)
+                if let existingGroup = try! self.context.fetch(fetchRequest).first,
+                    let runningTotal = existingGroup.total {
+                    existingGroup.total = runningTotal.adding(expense.amount!)
+                    expense.addToWeekTagGroups(existingGroup)
+                } else {
+                    let newGroup = WeekTagGroup(context: self.context)
+                    newGroup.startDate = startOfWeek as NSDate
+                    newGroup.endDate = endOfWeek as NSDate
+                    newGroup.total = expense.amount
+                    newGroup.classifier = tag
+                    newGroup.sectionIdentifier = SectionIdentifier.make(startDate: startOfWeek, endDate: endOfWeek)
+                    
+                    expense.addToWeekTagGroups(newGroup)
                 }
             }
         }
