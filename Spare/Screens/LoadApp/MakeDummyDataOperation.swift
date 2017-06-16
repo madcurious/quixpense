@@ -18,12 +18,15 @@ private let kCategoryNames = [
     "Vacation"
 ]
 
-private let kDateFormatter: DateFormatter = {
-    let df = DateFormatter()
-    df.dateStyle = .long
-    df.timeStyle = .long
-    return df
-}()
+private let kTagNames = [
+    "Tag A",
+    "Tag B",
+    "Tag C",
+    "Tag D",
+    "Tag E",
+    "Tag F",
+    "Tag G"
+]
 
 class MakeDummyDataOperation: MDOperation<Any?> {
     
@@ -33,6 +36,7 @@ class MakeDummyDataOperation: MDOperation<Any?> {
         self.context = Global.coreDataStack.newBackgroundContext()
         
         self.makeCategories()
+        self.makeTags()
         self.makeExpenses()
         
         do {
@@ -58,6 +62,21 @@ class MakeDummyDataOperation: MDOperation<Any?> {
         for categoryName in kCategoryNames {
             let category = Category(context: self.context)
             category.name = categoryName
+        }
+    }
+    
+    func makeTags() {
+        let fetchRequest = NSFetchRequest<Tag>(entityName: md_getClassName(Tag.self))
+        let tags = try! self.context.fetch(fetchRequest)
+        
+        guard tags.count == 0
+            else {
+                return
+        }
+        
+        for tagName in kTagNames {
+            let tag = Tag(context: self.context)
+            tag.name = tagName
         }
     }
     
@@ -89,6 +108,8 @@ class MakeDummyDataOperation: MDOperation<Any?> {
         let numberOfDays = Calendar.current.dateComponents([.day], from: lastDate, to: toDate).day!
         let categoryFetch = NSFetchRequest<Category>(entityName: md_getClassName(Category.self))
         let categories = try! self.context.fetch(categoryFetch)
+        let tagFetch = NSFetchRequest<Tag>(entityName: md_getClassName(Tag.self))
+        let tags = try! self.context.fetch(tagFetch)
         var dateSpent = Calendar.current.date(byAdding: .day, value: 1, to: lastDate)!
         
 //        print("fromDate: \(lastDate)")
@@ -122,33 +143,26 @@ class MakeDummyDataOperation: MDOperation<Any?> {
                     newExpense.amount = NSDecimalNumber(value: amount)
                     newExpense.dateSpent = dateSpent as NSDate
                     newExpense.dateCreated = Date() as NSDate
+                    
+                    // Tags
+                    let numberOfTags = Int(arc4random_uniform(UInt32(kTagNames.count)))
+                    var tagSet = Set<Tag>(tags)
+                    var chosenTags = Set<Tag>()
+                    while chosenTags.count != numberOfTags {
+                        chosenTags.insert(tagSet.popFirst()!)
+                    }
+                    newExpense.tags = chosenTags as NSSet
+                    
                     expenses.append(newExpense)
                     
-//                    print("-- amount: \(amount)")
-                    
-                    print("dateSpent: \(kDateFormatter.string(from: newExpense.dateSpent! as Date))")
-                    
-                    var (start, end) = SectionIdentifier.parse(newExpense.daySectionIdentifier!)
-                    print("daySectionIdentifier: \(kDateFormatter.string(from: start)) -> \(kDateFormatter.string(from: end))")
-                    
-                    (start, end) = SectionIdentifier.parse(newExpense.sundayWeekSectionIdentifier!)
-                    print("sundayWeekSectionIdentifier: \(kDateFormatter.string(from: start)) -> \(kDateFormatter.string(from: end))")
-                    
-                    (start, end) = SectionIdentifier.parse(newExpense.mondayWeekSectionIdentifier!)
-                    print("mondayWeekSectionIdentifier: \(kDateFormatter.string(from: start)) -> \(kDateFormatter.string(from: end))")
-                    
-                    (start, end) = SectionIdentifier.parse(newExpense.saturdayWeekSectionIdentifier!)
-                    print("saturdayWeekSectionIdentifier: \(kDateFormatter.string(from: start)) -> \(kDateFormatter.string(from: end))")
-                    
-                    (start, end) = SectionIdentifier.parse(newExpense.monthSectionIdentifier!)
-                    print("monthSectionIdentifier: \(kDateFormatter.string(from: start)) -> \(kDateFormatter.string(from: end))")
-                    
+                    print((newExpense.tags! as! Set<Tag>).map({ $0.name! }).joined(separator: ", "))
                     print()
                 }
                 
                 self.makeDayCategoryGroup(for: expenses)
                 self.makeWeekCategoryGroups(for: expenses)
                 self.makeMonthCategoryGroups(for: expenses)
+                self.makeDayTagGroups(for: expenses)
                 expenses = []
             }
             
@@ -228,6 +242,34 @@ class MakeDummyDataOperation: MDOperation<Any?> {
                 newGroup.sectionIdentifier = SectionIdentifier.make(startDate: startOfMonth, endDate: endOfMonth)
                 
                 expense.monthCategoryGroup = newGroup
+            }
+        }
+    }
+    
+    func makeDayTagGroups(for expenses: [Expense]) {
+        let startDate = (expenses.first!.dateSpent! as Date).startOfDay()
+        let endDate = startDate.endOfDay()
+        
+        for expense in expenses {
+            let tags = expense.tags!.allObjects as! [Tag]
+            for tag in tags {
+                let fetchRequest: NSFetchRequest<DayTagGroup> = DayTagGroup.fetchRequest()
+                fetchRequest.predicate = NSPredicate(format: "%K == %@ AND %K == %@ AND %K == %@",
+                                                     #keyPath(DayTagGroup.classifier), tag,
+                                                     #keyPath(DayTagGroup.startDate), startDate as NSDate,
+                                                     #keyPath(DayTagGroup.endDate), endDate as NSDate)
+                if let existingGroup = try! self.context.fetch(fetchRequest).first,
+                    let runningTotal = existingGroup.total {
+                    existingGroup.total = runningTotal.adding(expense.amount!)
+                    expense.dayTagGroup = existingGroup
+                } else {
+                    let newGroup = DayTagGroup(context: self.context)
+                    newGroup.startDate = startDate as NSDate
+                    newGroup.endDate = endDate as NSDate
+                    newGroup.total = expense.amount
+                    newGroup.classifier = tag
+                    newGroup.sectionIdentifier = SectionIdentifier.make(startDate: startDate, endDate: endDate)
+                }
             }
         }
     }

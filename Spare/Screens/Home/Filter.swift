@@ -85,7 +85,15 @@ struct Filter: Equatable {
             case .month:
                 return #keyPath(Expense.monthSectionIdentifier)
             }
-            
+        }()
+        
+        let classifierKeyPath: String = {
+            switch self.grouping {
+            case .category:
+                return #keyPath(Expense.category)
+            default:
+                return #keyPath(Expense.tags)
+            }
         }()
         
         let amountExpression = NSExpression(forKeyPath: #keyPath(Expense.amount))
@@ -103,11 +111,13 @@ struct Filter: Equatable {
         fetchRequest.propertiesToFetch = [
             sectionNameKeyPath,
             sumExpressionDescription,
-            #keyPath(Expense.category)
+//            #keyPath(Expense.category)
+            classifierKeyPath
         ]
         fetchRequest.propertiesToGroupBy = [
             sectionNameKeyPath,
-            #keyPath(Expense.category)
+//            #keyPath(Expense.category)
+            classifierKeyPath
         ]
         
         return NSFetchedResultsController(fetchRequest: fetchRequest,
