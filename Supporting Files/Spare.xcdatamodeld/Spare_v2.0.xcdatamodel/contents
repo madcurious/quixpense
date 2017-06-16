@@ -36,6 +36,7 @@
         <relationship name="dayCategoryGroup" maxCount="1" deletionRule="Nullify" destinationEntity="DayCategoryGroup" inverseName="expenses" inverseEntity="DayCategoryGroup" syncable="YES"/>
         <relationship name="dayTagGroups" toMany="YES" deletionRule="Nullify" destinationEntity="DayTagGroup" inverseName="expenses" inverseEntity="DayTagGroup" syncable="YES"/>
         <relationship name="monthCategoryGroup" maxCount="1" deletionRule="Nullify" destinationEntity="MonthCategoryGroup" inverseName="expenses" inverseEntity="MonthCategoryGroup" syncable="YES"/>
+        <relationship name="monthTagGroups" toMany="YES" deletionRule="Nullify" destinationEntity="MonthTagGroup" inverseName="expenses" inverseEntity="MonthTagGroup" syncable="YES"/>
         <relationship name="tags" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="expenses" inverseEntity="Tag" syncable="YES"/>
         <relationship name="weekCategoryGroup" maxCount="1" deletionRule="Nullify" destinationEntity="WeekCategoryGroup" inverseName="expenses" inverseEntity="WeekCategoryGroup" syncable="YES"/>
         <relationship name="weekTagGroups" toMany="YES" deletionRule="Nullify" destinationEntity="WeekTagGroup" inverseName="expenses" inverseEntity="WeekTagGroup" syncable="YES"/>
@@ -47,6 +48,14 @@
         <attribute name="total" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <relationship name="classifier" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="monthCategoryGroups" inverseEntity="Category" syncable="YES"/>
         <relationship name="expenses" toMany="YES" deletionRule="Nullify" destinationEntity="Expense" inverseName="monthCategoryGroup" inverseEntity="Expense" syncable="YES"/>
+    </entity>
+    <entity name="MonthTagGroup" representedClassName="MonthTagGroup" syncable="YES" codeGenerationType="class">
+        <attribute name="endDate" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="sectionIdentifier" attributeType="String" syncable="YES"/>
+        <attribute name="startDate" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="total" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="classifier" maxCount="1" deletionRule="Nullify" destinationEntity="Tag" inverseName="monthTagGroups" inverseEntity="Tag" syncable="YES"/>
+        <relationship name="expenses" toMany="YES" deletionRule="Nullify" destinationEntity="Expense" inverseName="monthTagGroups" inverseEntity="Expense" syncable="YES"/>
     </entity>
     <entity name="SPRCategory" representedClassName="SPRCategory" syncable="YES">
         <attribute name="colorNumber" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
@@ -67,6 +76,7 @@
         <attribute name="name" attributeType="String" indexed="YES" syncable="YES"/>
         <relationship name="dayTagGroups" toMany="YES" deletionRule="Nullify" destinationEntity="DayTagGroup" inverseName="classifier" inverseEntity="DayTagGroup" syncable="YES"/>
         <relationship name="expenses" toMany="YES" deletionRule="Nullify" destinationEntity="Expense" inverseName="tags" inverseEntity="Expense" syncable="YES"/>
+        <relationship name="monthTagGroups" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MonthTagGroup" inverseName="classifier" inverseEntity="MonthTagGroup" syncable="YES"/>
         <relationship name="weekTagGroups" toMany="YES" deletionRule="Nullify" destinationEntity="WeekTagGroup" inverseName="classifier" inverseEntity="WeekTagGroup" syncable="YES"/>
     </entity>
     <entity name="WeekCategoryGroup" representedClassName="WeekCategoryGroup" syncable="YES" codeGenerationType="class">
@@ -88,13 +98,14 @@
     <elements>
         <element name="Category" positionX="405" positionY="290" width="128" height="120"/>
         <element name="DayCategoryGroup" positionX="189" positionY="180" width="128" height="135"/>
-        <element name="Expense" positionX="187" positionY="288" width="128" height="28"/>
+        <element name="Expense" positionX="187" positionY="288" width="128" height="283"/>
         <element name="MonthCategoryGroup" positionX="189" positionY="153" width="128" height="135"/>
         <element name="SPRCategory" positionX="198" positionY="27" width="128" height="30"/>
         <element name="SPRExpense" positionX="376" positionY="45" width="128" height="135"/>
-        <element name="Tag" positionX="-18" positionY="294" width="128" height="28"/>
+        <element name="Tag" positionX="-18" positionY="294" width="128" height="118"/>
         <element name="WeekCategoryGroup" positionX="216" positionY="207" width="128" height="135"/>
         <element name="DayTagGroup" positionX="180" positionY="171" width="128" height="135"/>
         <element name="WeekTagGroup" positionX="207" positionY="198" width="128" height="135"/>
+        <element name="MonthTagGroup" positionX="216" positionY="207" width="128" height="135"/>
     </elements>
 </model>

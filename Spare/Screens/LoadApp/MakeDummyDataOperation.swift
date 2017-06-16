@@ -164,6 +164,7 @@ class MakeDummyDataOperation: MDOperation<Any?> {
                 self.makeMonthCategoryGroups(for: expenses)
                 self.makeDayTagGroups(for: expenses)
                 self.makeWeekTagGroups(for: expenses)
+                self.makeMonthTagGroups(for: expenses)
                 expenses = []
             }
             
@@ -302,6 +303,36 @@ class MakeDummyDataOperation: MDOperation<Any?> {
                     newGroup.sectionIdentifier = SectionIdentifier.make(startDate: startOfWeek, endDate: endOfWeek)
                     
                     expense.addToWeekTagGroups(newGroup)
+                }
+            }
+        }
+    }
+    
+    func makeMonthTagGroups(for expenses: [Expense]) {
+        for expense in expenses {
+            let startOfMonth = (expense.dateSpent! as Date).startOfMonth()
+            let endOfMonth = (expense.dateSpent! as Date).endOfMonth()
+            let tags = expense.tags!.allObjects as! [Tag]
+            
+            for tag in tags {
+                let fetchRequest: NSFetchRequest<MonthTagGroup> = MonthTagGroup.fetchRequest()
+                fetchRequest.predicate = NSPredicate(format: "%K == %@ AND %K == %@ AND %K == %@",
+                                                     #keyPath(MonthTagGroup.classifier), tag,
+                                                     #keyPath(MonthTagGroup.startDate), startOfMonth as NSDate,
+                                                     #keyPath(MonthTagGroup.endDate), endOfMonth as NSDate)
+                if let existingGroup = try! self.context.fetch(fetchRequest).first,
+                    let runningTotal = existingGroup.total {
+                    existingGroup.total = runningTotal.adding(expense.amount!)
+                    expense.addToMonthTagGroups(existingGroup)
+                } else {
+                    let newGroup = MonthTagGroup(context: self.context)
+                    newGroup.startDate = startOfMonth as NSDate
+                    newGroup.endDate = endOfMonth as NSDate
+                    newGroup.total = expense.amount
+                    newGroup.classifier = tag
+                    newGroup.sectionIdentifier = SectionIdentifier.make(startDate: startOfMonth, endDate: endOfMonth)
+                    
+                    expense.addToMonthTagGroups(newGroup)
                 }
             }
         }

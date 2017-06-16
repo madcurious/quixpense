@@ -135,7 +135,7 @@ struct Filter: Equatable {
             case .week:
                 return md_getClassName(WeekTagGroup.self)
             case .month:
-                fatalError()
+                return md_getClassName(MonthTagGroup.self)
             }
         }()
         
