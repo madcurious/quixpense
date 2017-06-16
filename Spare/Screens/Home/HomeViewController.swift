@@ -94,11 +94,7 @@ class HomeViewController: MDLoadableViewController {
         } else if let tagGroups = self.fetchedResultsController.sections?[section].objects as? [NSManagedObject] {
             var sectionExpenses = Set<Expense>()
             tagGroups.forEach { group in
-//                if let groupTotal = group.value(forKey: "total") as? NSDecimalNumber {
-//                    runningTotal = runningTotal.adding(groupTotal)
-//                }
                 if let groupExpenses = group.value(forKey: "expenses") as? Set<Expense> {
-//                    sectionExpenses.formUnion(groupExpenses)
                     groupExpenses.forEach({ (expense) in
                         if sectionExpenses.contains(expense) {
                             return
@@ -108,7 +104,6 @@ class HomeViewController: MDLoadableViewController {
                     })
                 }
             }
-//            return sectionExpenses.total()
         }
         
         return runningTotal

@@ -21,11 +21,11 @@ private let kCategoryNames = [
 private let kTagNames = [
     "Tag A",
     "Tag B",
-    "Tag C"
-//    "Tag D",
-//    "Tag E",
-//    "Tag F",
-//    "Tag G"
+    "Tag C",
+    "Tag D",
+    "Tag E",
+    "Tag F",
+    "Tag G"
 ]
 
 class MakeDummyDataOperation: MDOperation<Any?> {
@@ -86,7 +86,7 @@ class MakeDummyDataOperation: MDOperation<Any?> {
             var expenses = try! self.context.fetch(expenseFetch)
             if expenses.count == 0 {
                 var components = DateComponents()
-                components.month = 6
+                components.month = 1
                 components.day = 1
                 components.year = 2017
                 let fromDate = Calendar.current.date(from: components)!
@@ -146,7 +146,7 @@ class MakeDummyDataOperation: MDOperation<Any?> {
                     
                     // Tags
                     let numberOfTags = Int(arc4random_uniform(UInt32(tags.count))) + 1
-                    print("numberOfTags: \(numberOfTags)")
+//                    print("numberOfTags: \(numberOfTags)")
                     var chosenIndexes = Set<Int>()
                     while chosenIndexes.count < numberOfTags {
                         let randomIndex = Int(arc4random_uniform(UInt32(tags.count)))
@@ -166,8 +166,8 @@ class MakeDummyDataOperation: MDOperation<Any?> {
                     
                     expenses.append(newExpense)
                     
-                    print((newExpense.tags! as! Set<Tag>).map({ $0.name! }).joined(separator: ", "))
-                    print()
+//                    print((newExpense.tags! as! Set<Tag>).map({ $0.name! }).joined(separator: ", "))
+//                    print()
                 }
                 
                 self.makeDayCategoryGroup(for: expenses)
