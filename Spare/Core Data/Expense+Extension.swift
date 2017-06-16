@@ -76,7 +76,7 @@ extension Expense {
     
 }
 
-extension Array where Element: Expense {
+extension Sequence where Iterator.Element: Expense {
     
     func total() -> NSDecimalNumber {
         return self.map({ $0.amount ?? 0}).reduce(0, +)

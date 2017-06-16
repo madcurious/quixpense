@@ -97,7 +97,11 @@ struct Filter: Equatable {
             }
         }()
         
-        let classifierKeyPath = #keyPath(Expense.category)
+//        let classifierKeyPath = #keyPath(Expense.category)
+        let categoryExpressionDescription = NSExpressionDescription()
+        categoryExpressionDescription.name = "categoryID"
+        categoryExpressionDescription.expression = NSExpression(forKeyPath: #keyPath(Expense.category))
+        categoryExpressionDescription.expressionResultType = .objectIDAttributeType
         
         let amountExpression = NSExpression(forKeyPath: #keyPath(Expense.amount))
         let sumExpression = NSExpression(forFunction: "sum:", arguments: [amountExpression])
@@ -114,11 +118,11 @@ struct Filter: Equatable {
         fetchRequest.propertiesToFetch = [
             sectionNameKeyPath,
             sumExpressionDescription,
-            classifierKeyPath
+            categoryExpressionDescription
         ]
         fetchRequest.propertiesToGroupBy = [
             sectionNameKeyPath,
-            classifierKeyPath
+            categoryExpressionDescription
         ]
         
         return NSFetchedResultsController(fetchRequest: fetchRequest,
