@@ -69,6 +69,16 @@ struct Filter: Equatable {
     }
     
     func makeFetchedResultsController() -> NSFetchedResultsController<NSFetchRequestResult> {
+        switch self.grouping {
+        case .category:
+            return self.makeFetcherForCategory()
+            
+        case .tag:
+            return self.makeFetcherForTags()
+        }
+    }
+    
+    private func makeFetcherForCategory() -> NSFetchedResultsController<NSFetchRequestResult> {
         let sectionNameKeyPath: String = {
             switch self.periodization {
             case .day:
@@ -87,14 +97,7 @@ struct Filter: Equatable {
             }
         }()
         
-        let classifierKeyPath: String = {
-            switch self.grouping {
-            case .category:
-                return #keyPath(Expense.category)
-            default:
-                return #keyPath(Expense.tags)
-            }
-        }()
+        let classifierKeyPath = #keyPath(Expense.category)
         
         let amountExpression = NSExpression(forKeyPath: #keyPath(Expense.amount))
         let sumExpression = NSExpression(forFunction: "sum:", arguments: [amountExpression])
@@ -111,18 +114,30 @@ struct Filter: Equatable {
         fetchRequest.propertiesToFetch = [
             sectionNameKeyPath,
             sumExpressionDescription,
-//            #keyPath(Expense.category)
             classifierKeyPath
         ]
         fetchRequest.propertiesToGroupBy = [
             sectionNameKeyPath,
-//            #keyPath(Expense.category)
             classifierKeyPath
         ]
         
         return NSFetchedResultsController(fetchRequest: fetchRequest,
                                           managedObjectContext: Global.coreDataStack.viewContext,
                                           sectionNameKeyPath: sectionNameKeyPath,
+                                          cacheName: "CacheName")
+    }
+    
+    private func makeFetcherForTags() -> NSFetchedResultsController<NSFetchRequestResult> {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: md_getClassName(DayTagGroup.self))
+        fetchRequest.sortDescriptors = [
+            NSSortDescriptor(key: "endDate", ascending: false),
+            NSSortDescriptor(key: "total", ascending: false)
+        ]
+        fetchRequest.fetchBatchSize = 100
+        
+        return NSFetchedResultsController(fetchRequest: fetchRequest,
+                                          managedObjectContext: Global.coreDataStack.viewContext,
+                                          sectionNameKeyPath: "sectionIdentifier",
                                           cacheName: "CacheName")
     }
     

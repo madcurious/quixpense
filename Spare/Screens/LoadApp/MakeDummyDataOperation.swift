@@ -269,6 +269,8 @@ class MakeDummyDataOperation: MDOperation<Any?> {
                     newGroup.total = expense.amount
                     newGroup.classifier = tag
                     newGroup.sectionIdentifier = SectionIdentifier.make(startDate: startDate, endDate: endDate)
+                    
+                    expense.dayTagGroup = newGroup
                 }
             }
         }

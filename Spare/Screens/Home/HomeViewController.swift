@@ -221,6 +221,7 @@ extension HomeViewController: UITableViewDataSource {
     
 }
 
+// MARK: - UITableViewDelegate
 extension HomeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

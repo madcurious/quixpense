@@ -64,7 +64,7 @@
     </entity>
     <entity name="Tag" representedClassName=".Tag" isAbstract="YES" syncable="YES" codeGenerationType="class">
         <attribute name="name" attributeType="String" indexed="YES" syncable="YES"/>
-        <relationship name="dayTagGroups" maxCount="1" deletionRule="Nullify" destinationEntity="DayTagGroup" inverseName="classifier" inverseEntity="DayTagGroup" syncable="YES"/>
+        <relationship name="dayTagGroups" toMany="YES" deletionRule="Nullify" destinationEntity="DayTagGroup" inverseName="classifier" inverseEntity="DayTagGroup" syncable="YES"/>
         <relationship name="expenses" toMany="YES" deletionRule="Nullify" destinationEntity="Expense" inverseName="tags" inverseEntity="Expense" syncable="YES"/>
     </entity>
     <entity name="WeekCategoryGroup" representedClassName="WeekCategoryGroup" syncable="YES" codeGenerationType="class">
