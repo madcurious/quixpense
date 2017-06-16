@@ -18,6 +18,16 @@ private let kCategoryNames = [
     "Vacation"
 ]
 
+private let kTagNames = [
+    "Tag A",
+    "Tag B",
+    "Tag C",
+    "Tag D",
+    "Tag E",
+    "Tag F",
+    "Tag G"
+]
+
 class MakeDummyDataOperation: MDOperation<Any?> {
     
     var context: NSManagedObjectContext!
@@ -26,6 +36,7 @@ class MakeDummyDataOperation: MDOperation<Any?> {
         self.context = Global.coreDataStack.newBackgroundContext()
         
         self.makeCategories()
+        self.makeTags()
         self.makeExpenses()
         
         do {
@@ -51,6 +62,21 @@ class MakeDummyDataOperation: MDOperation<Any?> {
         for categoryName in kCategoryNames {
             let category = Category(context: self.context)
             category.name = categoryName
+        }
+    }
+    
+    func makeTags() {
+        let fetchRequest = NSFetchRequest<Tag>(entityName: md_getClassName(Tag.self))
+        let tags = try! self.context.fetch(fetchRequest)
+        
+        guard tags.count == 0
+            else {
+                return
+        }
+        
+        for tagName in kTagNames {
+            let tag = Tag(context: self.context)
+            tag.name = tagName
         }
     }
     
@@ -82,6 +108,8 @@ class MakeDummyDataOperation: MDOperation<Any?> {
         let numberOfDays = Calendar.current.dateComponents([.day], from: lastDate, to: toDate).day!
         let categoryFetch = NSFetchRequest<Category>(entityName: md_getClassName(Category.self))
         let categories = try! self.context.fetch(categoryFetch)
+        let tagFetch = NSFetchRequest<Tag>(entityName: md_getClassName(Tag.self))
+        let tags = try! self.context.fetch(tagFetch)
         var dateSpent = Calendar.current.date(byAdding: .day, value: 1, to: lastDate)!
         
 //        print("fromDate: \(lastDate)")
@@ -96,7 +124,7 @@ class MakeDummyDataOperation: MDOperation<Any?> {
             
             for category in categories {
                 // Make 0-10 expenses.
-                let numberOfExpenses = arc4random_uniform(10)
+                let numberOfExpenses = arc4random_uniform(11)
 //                print("- Making \(numberOfExpenses) expenses for category '\(category.name!)'")
                 
                 if numberOfExpenses == 0 {
@@ -115,14 +143,39 @@ class MakeDummyDataOperation: MDOperation<Any?> {
                     newExpense.amount = NSDecimalNumber(value: amount)
                     newExpense.dateSpent = dateSpent as NSDate
                     newExpense.dateCreated = Date() as NSDate
+                    
+                    // Tags
+                    let numberOfTags = Int(arc4random_uniform(UInt32(tags.count))) + 1
+//                    print("numberOfTags: \(numberOfTags)")
+                    var chosenIndexes = Set<Int>()
+                    while chosenIndexes.count < numberOfTags {
+                        let randomIndex = Int(arc4random_uniform(UInt32(tags.count)))
+                        if chosenIndexes.contains(randomIndex) {
+                            continue
+                        } else {
+                            chosenIndexes.insert(randomIndex)
+                        }
+                    }
+                    for index in chosenIndexes {
+                        newExpense.addToTags(tags[index])
+                    }
+                    
+                    
+//                    newExpense.tags = Set<Tag>(tags) as NSSet
+                    
+                    
                     expenses.append(newExpense)
                     
-//                    print("-- amount: \(amount)")
+//                    print((newExpense.tags! as! Set<Tag>).map({ $0.name! }).joined(separator: ", "))
+//                    print()
                 }
                 
                 self.makeDayCategoryGroup(for: expenses)
                 self.makeWeekCategoryGroups(for: expenses)
                 self.makeMonthCategoryGroups(for: expenses)
+                self.makeDayTagGroups(for: expenses)
+                self.makeWeekTagGroups(for: expenses)
+                self.makeMonthTagGroups(for: expenses)
                 expenses = []
             }
             
@@ -174,17 +227,6 @@ class MakeDummyDataOperation: MDOperation<Any?> {
                 newGroup.sectionIdentifier = SectionIdentifier.make(startDate: weekStart, endDate: weekEnd)
                 
                 expense.weekCategoryGroup = newGroup
-                
-//                let predicateComponents = [["startDate" : newGroup.startDate!],
-//                                           ["endDate" : newGroup.endDate!],
-//                                           ["classifier" : newGroup.classifier!]]
-//                for component in predicateComponents {
-//                    let predicate = NSPredicate(format: "%K == %@",
-//                                                argumentArray: [component.keys.first!, component.values.first!])
-//                    let matches = predicate.evaluate(with: newGroup)
-//                    print("predicate: \(predicate.predicateFormat)")
-//                    print("matches: \(matches)")
-//                }
             }
         }
     }
@@ -213,6 +255,96 @@ class MakeDummyDataOperation: MDOperation<Any?> {
                 newGroup.sectionIdentifier = SectionIdentifier.make(startDate: startOfMonth, endDate: endOfMonth)
                 
                 expense.monthCategoryGroup = newGroup
+            }
+        }
+    }
+    
+    func makeDayTagGroups(for expenses: [Expense]) {
+        let startDate = (expenses.first!.dateSpent! as Date).startOfDay()
+        let endDate = startDate.endOfDay()
+        
+        for expense in expenses {
+            let tags = expense.tags!.allObjects as! [Tag]
+            for tag in tags {
+                let fetchRequest: NSFetchRequest<DayTagGroup> = DayTagGroup.fetchRequest()
+                fetchRequest.predicate = NSPredicate(format: "%K == %@ AND %K == %@ AND %K == %@",
+                                                     #keyPath(DayTagGroup.classifier), tag,
+                                                     #keyPath(DayTagGroup.startDate), startDate as NSDate,
+                                                     #keyPath(DayTagGroup.endDate), endDate as NSDate)
+                if let existingGroup = try! self.context.fetch(fetchRequest).first,
+                    let runningTotal = existingGroup.total {
+                    existingGroup.total = runningTotal.adding(expense.amount!)
+                    expense.addToDayTagGroups(existingGroup)
+                } else {
+                    let newGroup = DayTagGroup(context: self.context)
+                    newGroup.startDate = startDate as NSDate
+                    newGroup.endDate = endDate as NSDate
+                    newGroup.total = expense.amount
+                    newGroup.classifier = tag
+                    newGroup.sectionIdentifier = SectionIdentifier.make(startDate: startDate, endDate: endDate)
+                    
+                    expense.addToDayTagGroups(newGroup)
+                }
+            }
+        }
+    }
+    
+    func makeWeekTagGroups(for expenses: [Expense]) {
+        for expense in expenses {
+            let startOfWeek = (expense.dateSpent! as Date).startOfWeek(firstWeekday: Global.startOfWeek.rawValue)
+            let endOfWeek = (expense.dateSpent! as Date).endOfWeek(firstWeekday: Global.startOfWeek.rawValue)
+            let tags = expense.tags!.allObjects as! [Tag]
+            
+            for tag in tags {
+                let fetchRequest: NSFetchRequest<WeekTagGroup> = WeekTagGroup.fetchRequest()
+                fetchRequest.predicate = NSPredicate(format: "%K == %@ AND %K == %@ AND %K == %@",
+                                                     #keyPath(WeekTagGroup.classifier), tag,
+                                                     #keyPath(WeekTagGroup.startDate), startOfWeek as NSDate,
+                                                     #keyPath(WeekTagGroup.endDate), endOfWeek as NSDate)
+                if let existingGroup = try! self.context.fetch(fetchRequest).first,
+                    let runningTotal = existingGroup.total {
+                    existingGroup.total = runningTotal.adding(expense.amount!)
+                    expense.addToWeekTagGroups(existingGroup)
+                } else {
+                    let newGroup = WeekTagGroup(context: self.context)
+                    newGroup.startDate = startOfWeek as NSDate
+                    newGroup.endDate = endOfWeek as NSDate
+                    newGroup.total = expense.amount
+                    newGroup.classifier = tag
+                    newGroup.sectionIdentifier = SectionIdentifier.make(startDate: startOfWeek, endDate: endOfWeek)
+                    
+                    expense.addToWeekTagGroups(newGroup)
+                }
+            }
+        }
+    }
+    
+    func makeMonthTagGroups(for expenses: [Expense]) {
+        for expense in expenses {
+            let startOfMonth = (expense.dateSpent! as Date).startOfMonth()
+            let endOfMonth = (expense.dateSpent! as Date).endOfMonth()
+            let tags = expense.tags!.allObjects as! [Tag]
+            
+            for tag in tags {
+                let fetchRequest: NSFetchRequest<MonthTagGroup> = MonthTagGroup.fetchRequest()
+                fetchRequest.predicate = NSPredicate(format: "%K == %@ AND %K == %@ AND %K == %@",
+                                                     #keyPath(MonthTagGroup.classifier), tag,
+                                                     #keyPath(MonthTagGroup.startDate), startOfMonth as NSDate,
+                                                     #keyPath(MonthTagGroup.endDate), endOfMonth as NSDate)
+                if let existingGroup = try! self.context.fetch(fetchRequest).first,
+                    let runningTotal = existingGroup.total {
+                    existingGroup.total = runningTotal.adding(expense.amount!)
+                    expense.addToMonthTagGroups(existingGroup)
+                } else {
+                    let newGroup = MonthTagGroup(context: self.context)
+                    newGroup.startDate = startOfMonth as NSDate
+                    newGroup.endDate = endOfMonth as NSDate
+                    newGroup.total = expense.amount
+                    newGroup.classifier = tag
+                    newGroup.sectionIdentifier = SectionIdentifier.make(startDate: startOfMonth, endDate: endOfMonth)
+                    
+                    expense.addToMonthTagGroups(newGroup)
+                }
             }
         }
     }

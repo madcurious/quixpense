@@ -20,7 +20,7 @@ class HomeViewController: MDLoadableViewController {
     let filterButton = FilterButton.instantiateFromNib()
     let customView = HomeView.instantiateFromNib()
     
-    var fetchedResultsController = HomeViewController.makeFetchedResultsController(for: Global.filter)
+    var fetchedResultsController = Global.filter.makeFetchedResultsController()
     let sectionTotals = NSCache<NSString, NSDecimalNumber>()
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -81,39 +81,55 @@ class HomeViewController: MDLoadableViewController {
         self.customView.tableView.isHidden = state != .data
     }
     
+    /// Computes for the section total which is displayed in the section header.
     func computeTotal(forSection section: Int) -> NSDecimalNumber {
-        var total = NSDecimalNumber(value: 0)
-        guard let groups = self.fetchedResultsController.sections?[section].objects as? [NSManagedObject]
-            else {
-                return total
-        }
+        var runningTotal = NSDecimalNumber(value: 0)
         
-        groups.forEach { group in
-            if let groupTotal = group.value(forKey: "total") as? NSDecimalNumber {
-                total = total.adding(groupTotal)
+        if let dictionaries = self.fetchedResultsController.sections?[section].objects as? [[String : AnyObject]] {
+            dictionaries.forEach({ (dictionary) in
+                if let total = dictionary["total"] as? NSDecimalNumber {
+                    runningTotal = runningTotal.adding(total)
+                }
+            })
+        } else if let tagGroups = self.fetchedResultsController.sections?[section].objects as? [NSManagedObject] {
+            var sectionExpenses = Set<Expense>()
+            tagGroups.forEach { group in
+                if let groupExpenses = group.value(forKey: "expenses") as? Set<Expense> {
+                    groupExpenses.forEach({ (expense) in
+                        if sectionExpenses.contains(expense) {
+                            return
+                        }
+                        sectionExpenses.insert(expense)
+                        runningTotal = runningTotal.adding(expense.amount ?? 0)
+                    })
+                }
             }
         }
         
-        return total
+        return runningTotal
     }
     
-    class func makeFetchedResultsController(for filter: Filter) -> NSFetchedResultsController<NSFetchRequestResult> {
-        switch filter.grouping {
-        case .category:
-            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: filter.entityName())
-            fetchRequest.sortDescriptors = [
-                NSSortDescriptor(key: "endDate", ascending: false),
-                NSSortDescriptor(key: "total", ascending: false)
-            ]
-            fetchRequest.fetchBatchSize = 100
-            
-            return NSFetchedResultsController(fetchRequest: fetchRequest,
-                                              managedObjectContext: Global.coreDataStack.viewContext,
-                                              sectionNameKeyPath: "sectionIdentifier",
-                                              cacheName: "CacheName")
-            
-        case .tag:
-            fatalError("Unimplemented")
+    func generateLabelTextsForObject(at indexPath: IndexPath) -> (String?, String?) {
+        if let tagGroup = self.fetchedResultsController.object(at: indexPath) as? NSManagedObject,
+            let tagName = tagGroup.value(forKeyPath: "classifier.name") as? String,
+            let total = tagGroup.value(forKey: "total") as? NSDecimalNumber {
+            return (tagName, AmountFormatter.displayText(for: total))
+        }
+        
+        else if
+            let section = self.fetchedResultsController.sections?[indexPath.section],
+            let sectionObjects = (section.objects as? [[String : AnyObject]])?.sorted(by: {
+                ($0["total"] as! NSDecimalNumber).compare(($1["total"] as! NSDecimalNumber)) == .orderedDescending
+            }),
+            let categoryID = sectionObjects[indexPath.row]["categoryID"] as? NSManagedObjectID,
+            let category = Global.coreDataStack.viewContext.object(with: categoryID) as? Category,
+            let categoryName = category.name,
+            let total = sectionObjects[indexPath.row]["total"] as? NSDecimalNumber {
+            return (categoryName, AmountFormatter.displayText(for: total))
+        }
+        
+        else {
+            return (nil, nil)
         }
     }
 
@@ -124,7 +140,7 @@ extension HomeViewController {
     
     func handleValueChangeOnFilterButton() {
         Global.filter = self.filterButton.filter
-        self.fetchedResultsController = HomeViewController.makeFetchedResultsController(for: Global.filter)
+        self.fetchedResultsController = Global.filter.makeFetchedResultsController()
         self.performFetch()
     }
     
@@ -170,29 +186,19 @@ extension HomeViewController: UITableViewDataSource {
         } else {
             cell = UITableViewCell(style: .value1, reuseIdentifier: ViewID.groupCell.rawValue)
             cell.accessoryType = .disclosureIndicator
-            
-            if let textLabel = cell.textLabel,
-                let detailTextLabel = cell.detailTextLabel {
-                textLabel.font = UIFont.systemFont(ofSize: 17)
-                detailTextLabel.font = UIFont.systemFont(ofSize: 17)
-            }
+            self.applyTheme(to: cell)
         }
         
-        if let group = self.fetchedResultsController.object(at: indexPath) as? NSManagedObject,
-            let classifierName = group.value(forKeyPath: "classifier.name") as? String,
-            let total = group.value(forKey: "total") as? NSDecimalNumber {
-            cell.textLabel?.text = classifierName
-            cell.detailTextLabel?.text = AmountFormatter.displayText(for: total)
-        } else {
-            cell.textLabel?.text = nil
-            cell.detailTextLabel?.text = nil
-        }
+        let (leftText, rightText) = self.generateLabelTextsForObject(at: indexPath)
+        cell.textLabel?.text = leftText
+        cell.detailTextLabel?.text = rightText
         
         return cell
     }
     
 }
 
+// MARK: - UITableViewDelegate
 extension HomeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -232,6 +238,31 @@ extension HomeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 22
+    }
+    
+}
+
+// MARK: - Themeable
+extension HomeViewController: Themeable {
+    
+    func applyTheme() {
+        self.customView.tableView.reloadData()
+    }
+    
+    func applyTheme(to tableViewCell: UITableViewCell) {
+        tableViewCell.contentView.backgroundColor = Global.theme.color(for: .mainBackground)
+        
+        guard let leftLabel = tableViewCell.textLabel,
+            let rightLabel = tableViewCell.detailTextLabel
+            else {
+                return
+        }
+        
+        leftLabel.font = Global.theme.font(for: .regularText)
+        leftLabel.textColor = Global.theme.color(for: .regularText)
+        
+        rightLabel.font = Global.theme.font(for: .regularText)
+        rightLabel.textColor = Global.theme.color(for: .regularText)
     }
     
 }
