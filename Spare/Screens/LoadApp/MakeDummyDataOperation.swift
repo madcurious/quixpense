@@ -21,11 +21,11 @@ private let kCategoryNames = [
 private let kTagNames = [
     "Tag A",
     "Tag B",
-    "Tag C",
-    "Tag D",
-    "Tag E",
-    "Tag F",
-    "Tag G"
+    "Tag C"
+//    "Tag D",
+//    "Tag E",
+//    "Tag F",
+//    "Tag G"
 ]
 
 class MakeDummyDataOperation: MDOperation<Any?> {
@@ -124,7 +124,7 @@ class MakeDummyDataOperation: MDOperation<Any?> {
             
             for category in categories {
                 // Make 0-10 expenses.
-                let numberOfExpenses = arc4random_uniform(10)
+                let numberOfExpenses = arc4random_uniform(11)
 //                print("- Making \(numberOfExpenses) expenses for category '\(category.name!)'")
                 
                 if numberOfExpenses == 0 {
@@ -145,13 +145,24 @@ class MakeDummyDataOperation: MDOperation<Any?> {
                     newExpense.dateCreated = Date() as NSDate
                     
                     // Tags
-                    let numberOfTags = Int(arc4random_uniform(UInt32(kTagNames.count)))
-                    var tagSet = Set<Tag>(tags)
-                    var chosenTags = Set<Tag>()
-                    while chosenTags.count != numberOfTags {
-                        chosenTags.insert(tagSet.popFirst()!)
+                    let numberOfTags = Int(arc4random_uniform(UInt32(tags.count))) + 1
+                    print("numberOfTags: \(numberOfTags)")
+                    var chosenIndexes = Set<Int>()
+                    while chosenIndexes.count < numberOfTags {
+                        let randomIndex = Int(arc4random_uniform(UInt32(tags.count)))
+                        if chosenIndexes.contains(randomIndex) {
+                            continue
+                        } else {
+                            chosenIndexes.insert(randomIndex)
+                        }
                     }
-                    newExpense.tags = chosenTags as NSSet
+                    for index in chosenIndexes {
+                        newExpense.addToTags(tags[index])
+                    }
+                    
+                    
+//                    newExpense.tags = Set<Tag>(tags) as NSSet
+                    
                     
                     expenses.append(newExpense)
                     
