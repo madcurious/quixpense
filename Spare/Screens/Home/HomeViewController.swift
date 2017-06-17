@@ -87,8 +87,8 @@ class HomeViewController: MDLoadableViewController {
         
         if let dictionaries = self.fetchedResultsController.sections?[section].objects as? [[String : AnyObject]] {
             dictionaries.forEach({ (dictionary) in
-                if let total = dictionary["total"] as? NSDecimalNumber {
-                    runningTotal = runningTotal.adding(total)
+                if let categoryGroup = ExpenseGroup(from: dictionary) {
+                    runningTotal = runningTotal.adding(categoryGroup.total)
                 }
             })
         } else if let tagGroups = self.fetchedResultsController.sections?[section].objects as? [NSManagedObject] {
@@ -230,6 +230,13 @@ extension HomeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        guard let expenseGroup = ExpenseGroup(from: self.fetchedResultsController.object(at: indexPath))
+            else {
+                return
+        }
+        let listScreen = ExpenseListViewController(group: expenseGroup)
+        self.navigationController?.pushViewController(listScreen, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

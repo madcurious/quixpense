@@ -35,7 +35,6 @@ class HomeView: UIView {
         )
         
         self.tableView.isHidden = true
-        
     }
     
 }

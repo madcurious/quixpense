@@ -10,6 +10,13 @@ import Foundation
 import CoreData
 import Mold
 
+fileprivate let kDateFormatter: DateFormatter = {
+    let formatter = DateFormatter()
+    formatter.dateStyle = .long
+    formatter.timeStyle = .long
+    return formatter
+}()
+
 extension Expense {
     
     public override func awakeFromInsert() {
@@ -72,6 +79,14 @@ extension Expense {
         self.mondayWeekSectionIdentifier = "\(startOfMondayWeek)-\(endOfMondayWeek)"
         self.saturdayWeekSectionIdentifier = "\(startOfSaturdayWeek)-\(endOfSaturdayWeek)"
         self.monthSectionIdentifier = "\(startOfMonth)-\(endOfMonth)"
+    }
+    
+    public func displayText() -> String {
+        if let tags = (self.tags as? Set<Tag>)?.map({ $0.name! }) {
+            return tags.joined(separator: ", ")
+        } else {
+            return kDateFormatter.string(from: self.dateSpent! as Date)
+        }
     }
     
 }

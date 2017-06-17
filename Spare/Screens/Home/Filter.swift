@@ -51,6 +51,28 @@ struct Filter: Equatable {
     var periodization = Periodization.day
     var grouping = Grouping.category
     
+    var categorySectionNameKeyPath: String {
+        guard self.grouping == .category
+            else {
+                fatalError("Do not call categorySectionIdentifier if grouping is not .tag")
+        }
+        switch self.periodization {
+        case .day:
+            return #keyPath(Expense.daySectionIdentifier)
+        case .week:
+            switch Global.startOfWeek {
+            case .sunday:
+                return #keyPath(Expense.sundayWeekSectionIdentifier)
+            case .monday:
+                return #keyPath(Expense.mondayWeekSectionIdentifier)
+            case .saturday:
+                return #keyPath(Expense.saturdayWeekSectionIdentifier)
+            }
+        case .month:
+            return #keyPath(Expense.monthSectionIdentifier)
+        }
+    }
+    
     func text() -> String {
         return "\(self.periodization.text()), \(self.grouping.text())"
     }
@@ -79,25 +101,6 @@ struct Filter: Equatable {
     }
     
     private func makeFetcherForCategory() -> NSFetchedResultsController<NSFetchRequestResult> {
-        let sectionNameKeyPath: String = {
-            switch self.periodization {
-            case .day:
-                return #keyPath(Expense.daySectionIdentifier)
-            case .week:
-                switch Global.startOfWeek {
-                case .sunday:
-                    return #keyPath(Expense.sundayWeekSectionIdentifier)
-                case .monday:
-                    return #keyPath(Expense.mondayWeekSectionIdentifier)
-                case .saturday:
-                    return #keyPath(Expense.saturdayWeekSectionIdentifier)
-                }
-            case .month:
-                return #keyPath(Expense.monthSectionIdentifier)
-            }
-        }()
-        
-//        let classifierKeyPath = #keyPath(Expense.category)
         let categoryExpressionDescription = NSExpressionDescription()
         categoryExpressionDescription.name = "categoryID"
         categoryExpressionDescription.expression = NSExpression(forKeyPath: #keyPath(Expense.category))
@@ -116,18 +119,18 @@ struct Filter: Equatable {
             NSSortDescriptor(key: #keyPath(Expense.dateSpent), ascending: false)
         ]
         fetchRequest.propertiesToFetch = [
-            sectionNameKeyPath,
+            self.categorySectionNameKeyPath,
             sumExpressionDescription,
             categoryExpressionDescription
         ]
         fetchRequest.propertiesToGroupBy = [
-            sectionNameKeyPath,
+            self.categorySectionNameKeyPath,
             categoryExpressionDescription
         ]
         
         return NSFetchedResultsController(fetchRequest: fetchRequest,
                                           managedObjectContext: Global.coreDataStack.viewContext,
-                                          sectionNameKeyPath: sectionNameKeyPath,
+                                          sectionNameKeyPath: self.categorySectionNameKeyPath,
                                           cacheName: "CacheName")
     }
     

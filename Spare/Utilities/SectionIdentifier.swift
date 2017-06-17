@@ -16,7 +16,7 @@ final class SectionIdentifier {
         return "\(startDate.timeIntervalSince1970)-\(endDate.timeIntervalSince1970)"
     }
     
-    class func parse(_ sectionIdentifier: String) -> (startDate: Date, endDate: Date) {
+    class func parse(_ sectionIdentifier: String) -> (Date, Date) {
         let tokens = sectionIdentifier.components(separatedBy: "-")
         let startDate = Date(timeIntervalSince1970: TimeInterval(tokens[0])!)
         let endDate = Date(timeIntervalSince1970: TimeInterval(tokens[1])!)
