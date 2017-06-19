@@ -28,7 +28,6 @@ class ExpenseListViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         
         self.title = self.group.value(forKeyPath: "classifier.name") as? String
-        self.navigationItem.backBarButtonItem?.title = nil
     }
     
     required init?(coder aDecoder: NSCoder) {
