@@ -115,9 +115,7 @@ struct Filter: Equatable {
         
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: md_getClassName(Expense.self))
         fetchRequest.resultType = .dictionaryResultType
-        fetchRequest.sortDescriptors = [
-            NSSortDescriptor(key: #keyPath(Expense.dateSpent), ascending: false)
-        ]
+        fetchRequest.sortDescriptors = []
         fetchRequest.propertiesToFetch = [
             self.categorySectionNameKeyPath,
             sumExpressionDescription,

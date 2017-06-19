@@ -9,13 +9,13 @@
 import UIKit
 import Mold
 
-class LoadableView: UIView {
+class LoadableView: MDLoadableView {
     
     let loadingView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
-    let errorLabel = UILabel(frame: .zero)
+    let infoLabel = UILabel(frame: .zero)
     let dataViewContainer = UIView(frame: .zero)
     
-    var state = MDLoadableViewController.State.initial {
+    override var state: MDLoadableView.State {
         didSet {
             self.loadingView.isHidden = self.state != .initial || self.state != .loading
             if self.state == .initial || self.state == .loading {
@@ -27,11 +27,20 @@ class LoadableView: UIView {
             self.dataViewContainer.isHidden = self.state != .data
             
             if case .error(let error) = self.state {
-                self.errorLabel.isHidden = false
-                self.errorLabel.text = error.localizedDescription
+                self.infoLabel.isHidden = false
+                self.infoLabel.text = error.localizedDescription
+            } else if case .noData(let someMessage) = self.state {
+                self.infoLabel.isHidden = false
+                if let stringMessage = someMessage as? String {
+                    self.infoLabel.text = stringMessage
+                } else if let attributedText = someMessage as? NSAttributedString {
+                    self.infoLabel.attributedText = attributedText
+                } else {
+                    self.infoLabel.text = nil
+                }
             } else {
-                self.errorLabel.isHidden = true
-                self.errorLabel.text = nil
+                self.infoLabel.isHidden = true
+                self.infoLabel.text = nil
             }
         }
     }
@@ -43,10 +52,10 @@ class LoadableView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.addSubviews(self.loadingView, self.errorLabel, self.dataViewContainer)
+        self.addSubviews(self.loadingView, self.infoLabel, self.dataViewContainer)
         self.addAutolayout()
         
-        self.errorLabel.isHidden = true
+        self.infoLabel.isHidden = true
         self.dataViewContainer.isHidden = true
     }
     
@@ -56,7 +65,7 @@ class LoadableView: UIView {
     
     func addAutolayout() {
         self.loadingView.translatesAutoresizingMaskIntoConstraints = false
-        self.errorLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.infoLabel.translatesAutoresizingMaskIntoConstraints = false
         self.dataViewContainer.translatesAutoresizingMaskIntoConstraints = false
         
         let rules = [
@@ -67,7 +76,7 @@ class LoadableView: UIView {
         ]
         
         let views = [
-            "errorLabel" : self.errorLabel,
+            "errorLabel" : self.infoLabel,
             "dataViewContainer" : self.dataViewContainer
         ]
         

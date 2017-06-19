@@ -41,7 +41,7 @@ class ExpenseListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tableView.register(Value1TableViewCell.self, forCellReuseIdentifier: ViewID.cell.rawValue)
+        self.tableView.register(TwoLabelTableViewCell.self, forCellReuseIdentifier: ViewID.cell.rawValue)
         self.tableView.dataSource = self
         self.tableView.delegate = self
         
@@ -99,10 +99,10 @@ extension ExpenseListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ViewID.cell.rawValue, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: ViewID.cell.rawValue, for: indexPath) as! TwoLabelTableViewCell
         
-        cell.textLabel?.text = self.expenses[indexPath.row].displayText()
-        cell.detailTextLabel?.text = AmountFormatter.displayText(for: self.expenses[indexPath.row].amount)
+        cell.leftLabel.text = self.expenses[indexPath.row].displayText()
+        cell.rightLabel.text = AmountFormatter.displayText(for: self.expenses[indexPath.row].amount)
         
         return cell
     }

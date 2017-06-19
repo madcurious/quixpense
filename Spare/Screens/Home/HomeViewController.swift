@@ -15,13 +15,25 @@ fileprivate enum ViewID: String {
     case groupCell = "GroupCell"
 }
 
-class HomeViewController: MDLoadableViewController {
+class HomeViewController: UIViewController {
     
     let filterButton = FilterButton.instantiateFromNib()
-    let customView = HomeView.instantiateFromNib()
+    let loadableView = LoadableView()
+    let tableView = UITableView(frame: .zero, style: .plain)
     
     var fetchedResultsController = Global.filter.makeFetchedResultsController()
     let sectionTotals = NSCache<NSString, NSDecimalNumber>()
+    var sortedGroups = [IndexPath : [ExpenseGroup?]]()
+    
+    lazy var noDataText: NSAttributedString = {
+        return NSAttributedString(attributedStrings:
+            NSAttributedString(string: "No expenses found",
+                               font: Global.theme.font(for: .infoLabelMainText),
+                               textColor: Global.theme.color(for: .promptLabel)),
+                                  NSAttributedString(string: "\n\nYou must go out and spend your\nmoney.",
+                                                     font: Global.theme.font(for: .infoLabelSecondaryText),
+                                                     textColor: Global.theme.color(for: .promptLabel)))
+    }()
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -39,7 +51,8 @@ class HomeViewController: MDLoadableViewController {
     }
     
     override func loadView() {
-        self.view = self.customView
+        self.loadableView.dataViewContainer.addSubviewsAndFill(self.tableView)
+        self.view = self.loadableView
     }
     
     override func viewDidLoad() {
@@ -47,15 +60,15 @@ class HomeViewController: MDLoadableViewController {
         
         self.filterButton.addTarget(self, action: #selector(handleValueChangeOnFilterButton), for: .valueChanged)
         
-        self.customView.tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: ViewID.sectionHeader.rawValue)
-        self.customView.tableView.dataSource = self
-        self.customView.tableView.delegate = self
+        self.tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: ViewID.sectionHeader.rawValue)
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
         
         self.performFetch()
     }
     
     func performFetch() {
-        self.showView(for: .loading)
+        self.loadableView.state = .loading
         
         self.sectionTotals.removeAllObjects()
         
@@ -63,22 +76,14 @@ class HomeViewController: MDLoadableViewController {
             try self.fetchedResultsController.performFetch()
             if let count = self.fetchedResultsController.fetchedObjects?.count,
                 count == 0 {
-                self.showView(for: .empty)
+                self.loadableView.state = .noData(self.noDataText)
             } else {
-                self.customView.tableView.reloadData()
-                self.showView(for: .data)
+                self.tableView.reloadData()
+                self.loadableView.state = .data
             }
         } catch {
-            self.showView(for: .error(error))
+            self.loadableView.state = .error(error)
         }
-    }
-    
-    override func showView(for state: MDLoadableViewController.State) {
-        super.showView(for: state)
-        
-        self.customView.activityIndicatorView.isHidden = state != .initial || state != .loading
-        self.customView.noExpensesLabel.isHidden = state != .empty
-        self.customView.tableView.isHidden = state != .data
     }
     
     /// Computes for the section total which is displayed in the section header.
@@ -107,6 +112,29 @@ class HomeViewController: MDLoadableViewController {
         }
         
         return runningTotal
+    }
+    
+    func group(at indexPath: IndexPath) -> ExpenseGroup? {
+        // Tag groups can simply be passed as-is to make an ExpenseGroup.
+        guard Global.filter.grouping == .category
+            else {
+                return ExpenseGroup(from: self.fetchedResultsController.object(at: indexPath))
+        }
+        
+        // Category groups are returned as dictionaries that are not sorted by highest total.
+        // If there is a sorted array in the cache, use the cached array.
+        if let existingSortedGroup = self.sortedGroups[indexPath] {
+            return existingSortedGroup[indexPath.row]
+        }
+        
+        let unsortedObjects = self.fetchedResultsController.sections![indexPath.section].objects as! [[String : AnyObject]]
+        let sortedObjects = unsortedObjects.sorted(by: {
+            ($0["total"] as! NSDecimalNumber).compare(($1["total"] as! NSDecimalNumber)) == .orderedDescending
+        }).map({
+            return ExpenseGroup(from: $0)
+        })
+        self.sortedGroups[indexPath] = sortedObjects
+        return sortedObjects[indexPath.row]
     }
     
     func generateLabelTextsForObject(at indexPath: IndexPath) -> (String?, String?) {
@@ -253,7 +281,7 @@ extension HomeViewController: UITableViewDelegate {
 extension HomeViewController: Themeable {
     
     func applyTheme() {
-        self.customView.tableView.reloadData()
+        self.tableView.reloadData()
     }
     
     func applyTheme(to tableViewCell: UITableViewCell) {

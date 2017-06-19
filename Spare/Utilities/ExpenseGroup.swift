@@ -10,9 +10,17 @@ import Foundation
 import CoreData
 import Mold
 
+/// Represents a group of expenses within the same `Category` or `Tag` and their total
+/// within a period.
 enum ExpenseGroup {
     
+    /// A group of expenses within the same category.
+    /// The associated dictionary is the result returned by the `NSFetchedResultsController`.
     case category([String : AnyObject])
+    
+    /// A group of expenses that all have a certain tag.
+    /// The associated `NSManagedObject` is the `DayTagGroup`, `WeekTagGroup`, or `MonthTagGroup`
+    /// returned by the `NSFetchedResultsController`.
     case tag(NSManagedObject)
     
     private static var categorySectionNameKeyPaths: [String] = {
