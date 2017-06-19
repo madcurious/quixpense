@@ -1,5 +1,5 @@
 //
-//  _ELVCSectionHeader.swift
+//  SectionTotalHeaderView.swift
 //  Spare
 //
 //  Created by Matt Quiros on 07/03/2017.
@@ -14,13 +14,7 @@ fileprivate let kDateFormatter: DateFormatter = {
     return dateFormatter
 }()
 
-//fileprivate let kDateStringParser: DateFormatter = {
-//    let parser = DateFormatter()
-//    parser.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZZZ"
-//    return parser
-//}()
-
-class HomeSectionHeader: UIView, Themeable {
+class SectionTotalHeaderView: UIView, Themeable {
     
     @IBOutlet weak var sizerView: UIView!
     @IBOutlet weak var leftLabel: UILabel!
@@ -67,11 +61,11 @@ class HomeSectionHeader: UIView, Themeable {
         
         self.sizerView.backgroundColor = .clear
         
-        self.leftLabel.font = Global.theme.font(for: .homeSectionHeader)
+        self.leftLabel.font = Global.theme.font(for: .sectionTotalHeaderView)
         self.leftLabel.numberOfLines = 1
         self.leftLabel.textAlignment = .left
         
-        self.rightLabel.font = Global.theme.font(for: .homeSectionHeader)
+        self.rightLabel.font = Global.theme.font(for: .sectionTotalHeaderView)
         self.rightLabel.numberOfLines = 1
         self.rightLabel.textAlignment = .right
         
@@ -79,9 +73,9 @@ class HomeSectionHeader: UIView, Themeable {
     }
     
     func applyTheme() {
-        self.backgroundColor = Global.theme.color(for: .homeSectionHeaderBackground)
-        self.leftLabel.textColor = Global.theme.color(for: .homeSectionHeaderText)
-        self.rightLabel.textColor = Global.theme.color(for: .homeSectionHeaderText)
+        self.backgroundColor = Global.theme.color(for: .sectionTotalHeaderViewBackground)
+        self.leftLabel.textColor = Global.theme.color(for: .sectionTotalHeaderViewText)
+        self.rightLabel.textColor = Global.theme.color(for: .sectionTotalHeaderViewText)
     }
     
 }

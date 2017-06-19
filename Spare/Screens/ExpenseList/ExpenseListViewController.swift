@@ -11,6 +11,7 @@ import CoreData
 import Mold
 
 fileprivate enum ViewID: String {
+    case sectionHeader = "sectionHeader"
     case cell = "cell"
 }
 
@@ -27,6 +28,7 @@ class ExpenseListViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         
         self.title = self.group.value(forKeyPath: "classifier.name") as? String
+        self.navigationItem.backBarButtonItem?.title = nil
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -41,6 +43,7 @@ class ExpenseListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: ViewID.sectionHeader.rawValue)
         self.tableView.register(TwoLabelTableViewCell.nib(), forCellReuseIdentifier: ViewID.cell.rawValue)
         self.tableView.dataSource = self
         self.tableView.delegate = self
@@ -95,6 +98,30 @@ extension ExpenseListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 44
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 22
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let existingView = tableView.dequeueReusableHeaderFooterView(withIdentifier: ViewID.sectionHeader.rawValue)!
+        let headerView: SectionTotalHeaderView
+        
+        if let existingHeader = existingView.subviews.first(where: {$0 is SectionTotalHeaderView}) as? SectionTotalHeaderView {
+            headerView = existingHeader
+        } else {
+            headerView = SectionTotalHeaderView.instantiateFromNib()
+            existingView.addSubviewsAndFill(headerView)
+        }
+        
+        if let sectionIdentifier = self.group.value(forKey: "sectionIdentifier") as? String,
+            let total = self.group.value(forKey: "total") as? NSDecimalNumber {
+            headerView.sectionIdentifier = sectionIdentifier
+            headerView.sectionTotal = total
+        }
+        
+        return existingView
     }
     
 }

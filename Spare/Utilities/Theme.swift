@@ -18,8 +18,8 @@ enum UIElement {
     
     disclosureIndicator,
     
-    homeSectionHeaderBackground,
-    homeSectionHeaderText,
+    sectionTotalHeaderViewBackground,
+    sectionTotalHeaderViewText,
     
     fieldIcon,
     
@@ -44,7 +44,7 @@ enum UIElement {
 enum StringElement {
     case
     cellSecondaryText,
-    homeSectionHeader,
+    sectionTotalHeaderView,
     filterButtonText,
     infoLabelMainText,
     infoLabelSecondaryText,

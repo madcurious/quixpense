@@ -192,12 +192,12 @@ extension HomeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let existingView = tableView.dequeueReusableHeaderFooterView(withIdentifier: ViewID.sectionHeader.rawValue)!
-        let headerView: HomeSectionHeader
+        let headerView: SectionTotalHeaderView
             
-        if let existingHeader = existingView.subviews.first(where: {$0 is HomeSectionHeader}) as? HomeSectionHeader {
+        if let existingHeader = existingView.subviews.first(where: {$0 is SectionTotalHeaderView}) as? SectionTotalHeaderView {
             headerView = existingHeader
         } else {
-            headerView = HomeSectionHeader.instantiateFromNib()
+            headerView = SectionTotalHeaderView.instantiateFromNib()
             existingView.addSubviewsAndFill(headerView)
         }
         
