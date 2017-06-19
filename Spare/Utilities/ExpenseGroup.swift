@@ -10,6 +10,7 @@ import Foundation
 import CoreData
 import Mold
 
+/*
 /// Represents a group of expenses within the same `Category` or `Tag` and their total
 /// within a period.
 enum ExpenseGroup {
@@ -85,3 +86,4 @@ enum ExpenseGroup {
     }
     
 }
+ */

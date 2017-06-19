@@ -37,8 +37,4 @@ class InitializeCoreDataStackOperation: MDAsynchronousOperation<NSPersistentCont
         })
     }
     
-    deinit {
-        print("Deinit \(self)")
-    }
-    
 }

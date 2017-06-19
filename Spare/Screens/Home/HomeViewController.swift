@@ -23,7 +23,6 @@ class HomeViewController: UIViewController {
     
     var fetchedResultsController = Global.filter.makeFetchedResultsController()
     let sectionTotals = NSCache<NSString, NSDecimalNumber>()
-    var sortedGroups = [IndexPath : [ExpenseGroup?]]()
     
     lazy var noDataText: NSAttributedString = {
         return NSAttributedString(attributedStrings:
@@ -61,6 +60,7 @@ class HomeViewController: UIViewController {
         self.filterButton.addTarget(self, action: #selector(handleValueChangeOnFilterButton), for: .valueChanged)
         
         self.tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: ViewID.sectionHeader.rawValue)
+        self.tableView.register(TwoLabelTableViewCell.nib(), forCellReuseIdentifier: ViewID.groupCell.rawValue)
         self.tableView.dataSource = self
         self.tableView.delegate = self
         
@@ -90,22 +90,29 @@ class HomeViewController: UIViewController {
     func computeTotal(forSection section: Int) -> NSDecimalNumber {
         var runningTotal = NSDecimalNumber(value: 0)
         
-        if let dictionaries = self.fetchedResultsController.sections?[section].objects as? [[String : AnyObject]] {
-            dictionaries.forEach({ (dictionary) in
-                if let categoryGroup = ExpenseGroup(from: dictionary) {
-                    runningTotal = runningTotal.adding(categoryGroup.total)
-                }
+        // For category groups, we simply add the total of each group.
+        if Global.filter.grouping == .category,
+            let categoryGroups = self.fetchedResultsController.sections?[section].objects as? [NSManagedObject] {
+            categoryGroups.forEach({
+                runningTotal += $0.value(forKey: "total") as! NSDecimalNumber
             })
-        } else if let tagGroups = self.fetchedResultsController.sections?[section].objects as? [NSManagedObject] {
-            var sectionExpenses = Set<Expense>()
+        }
+        
+            // For tag groups, we need to add the amount of all the expenses in the section.
+            // We can't simply add the totals of each tag group because expenses can have
+            // multiple tags and can therefore appear in multiple tag groups.
+        else if let tagGroups = self.fetchedResultsController.sections?[section].objects as? [NSManagedObject] {
+            var expensesInSection = Set<Expense>()
             tagGroups.forEach { group in
                 if let groupExpenses = group.value(forKey: "expenses") as? Set<Expense> {
-                    groupExpenses.forEach({ (expense) in
-                        if sectionExpenses.contains(expense) {
+                    groupExpenses.forEach({
+                        if expensesInSection.contains($0) {
+                            // Avoid counting the expense's amount if it has
+                            // already been added before.
                             return
                         }
-                        sectionExpenses.insert(expense)
-                        runningTotal = runningTotal.adding(expense.amount ?? 0)
+                        expensesInSection.insert($0)
+                        runningTotal += $0.amount!
                     })
                 }
             }
@@ -114,51 +121,13 @@ class HomeViewController: UIViewController {
         return runningTotal
     }
     
-    func group(at indexPath: IndexPath) -> ExpenseGroup? {
-        // Tag groups can simply be passed as-is to make an ExpenseGroup.
-        guard Global.filter.grouping == .category
-            else {
-                return ExpenseGroup(from: self.fetchedResultsController.object(at: indexPath))
-        }
-        
-        // Category groups are returned as dictionaries that are not sorted by highest total.
-        // If there is a sorted array in the cache, use the cached array.
-        if let existingSortedGroup = self.sortedGroups[indexPath] {
-            return existingSortedGroup[indexPath.row]
-        }
-        
-        let unsortedObjects = self.fetchedResultsController.sections![indexPath.section].objects as! [[String : AnyObject]]
-        let sortedObjects = unsortedObjects.sorted(by: {
-            ($0["total"] as! NSDecimalNumber).compare(($1["total"] as! NSDecimalNumber)) == .orderedDescending
-        }).map({
-            return ExpenseGroup(from: $0)
-        })
-        self.sortedGroups[indexPath] = sortedObjects
-        return sortedObjects[indexPath.row]
-    }
-    
-    func generateLabelTextsForObject(at indexPath: IndexPath) -> (String?, String?) {
-        if let tagGroup = self.fetchedResultsController.object(at: indexPath) as? NSManagedObject,
-            let tagName = tagGroup.value(forKeyPath: "classifier.name") as? String,
-            let total = tagGroup.value(forKey: "total") as? NSDecimalNumber {
+    func generateTextsForObject(at indexPath: IndexPath) -> (String?, String?) {
+        if let group = self.fetchedResultsController.object(at: indexPath) as? NSManagedObject,
+            let tagName = group.value(forKeyPath: "classifier.name") as? String,
+            let total = group.value(forKey: "total") as? NSDecimalNumber {
             return (tagName, AmountFormatter.displayText(for: total))
         }
-        
-        else if
-            let section = self.fetchedResultsController.sections?[indexPath.section],
-            let sectionObjects = (section.objects as? [[String : AnyObject]])?.sorted(by: {
-                ($0["total"] as! NSDecimalNumber).compare(($1["total"] as! NSDecimalNumber)) == .orderedDescending
-            }),
-            let categoryID = sectionObjects[indexPath.row]["categoryID"] as? NSManagedObjectID,
-            let category = Global.coreDataStack.viewContext.object(with: categoryID) as? Category,
-            let categoryName = category.name,
-            let total = sectionObjects[indexPath.row]["total"] as? NSDecimalNumber {
-            return (categoryName, AmountFormatter.displayText(for: total))
-        }
-        
-        else {
-            return (nil, nil)
-        }
+        return (nil, nil)
     }
 
 }
@@ -207,19 +176,11 @@ extension HomeViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: UITableViewCell
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: ViewID.groupCell.rawValue) as! TwoLabelTableViewCell
         
-        if let existingCell = tableView.dequeueReusableCell(withIdentifier: ViewID.groupCell.rawValue) {
-            cell = existingCell
-        } else {
-            cell = UITableViewCell(style: .value1, reuseIdentifier: ViewID.groupCell.rawValue)
-            cell.accessoryType = .disclosureIndicator
-            self.applyTheme(to: cell)
-        }
-        
-        let (leftText, rightText) = self.generateLabelTextsForObject(at: indexPath)
-        cell.textLabel?.text = leftText
-        cell.detailTextLabel?.text = rightText
+        let (leftText, rightText) = self.generateTextsForObject(at: indexPath)
+        cell.leftLabel.text = leftText
+        cell.rightLabel.text = rightText
         
         return cell
     }
@@ -259,11 +220,11 @@ extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        guard let expenseGroup = ExpenseGroup(from: self.fetchedResultsController.object(at: indexPath))
+        guard let group = self.fetchedResultsController.object(at: indexPath) as? NSManagedObject
             else {
                 return
         }
-        let listScreen = ExpenseListViewController(group: expenseGroup)
+        let listScreen = ExpenseListViewController(group: group)
         self.navigationController?.pushViewController(listScreen, animated: true)
     }
     

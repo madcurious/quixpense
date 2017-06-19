@@ -19,14 +19,14 @@ class ExpenseListViewController: UIViewController {
     let loadableView = LoadableView()
     let tableView = UITableView(frame: .zero, style: .plain)
     
-    let group: ExpenseGroup
+    let group: NSManagedObject
     var expenses = [Expense]()
     
-    init(group: ExpenseGroup) {
+    init(group: NSManagedObject) {
         self.group = group
         super.init(nibName: nil, bundle: nil)
         
-        self.title = self.group.groupName
+        self.title = self.group.value(forKeyPath: "classifier.name") as? String
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -41,7 +41,7 @@ class ExpenseListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tableView.register(TwoLabelTableViewCell.self, forCellReuseIdentifier: ViewID.cell.rawValue)
+        self.tableView.register(TwoLabelTableViewCell.nib(), forCellReuseIdentifier: ViewID.cell.rawValue)
         self.tableView.dataSource = self
         self.tableView.delegate = self
         
@@ -51,38 +51,16 @@ class ExpenseListViewController: UIViewController {
     func fetchExpenses() {
         self.loadableView.state = .loading
         
-        let sectionIdentifier = self.group.sectionIdentifier
-        
-        switch self.group {
-        case .category(_):
-            let fetchRequest: NSFetchRequest<Expense> = Expense.fetchRequest()
-            fetchRequest.predicate = NSPredicate(format: "%K == %@ AND %K == %@",
-                                                 sectionIdentifier.keyPath,
-                                                 sectionIdentifier.value,
-                                                 #keyPath(Expense.category),
-                                                 self.group.classifier
-            )
-            fetchRequest.sortDescriptors = [
-                NSSortDescriptor(key: #keyPath(Expense.dateCreated), ascending: false)
-            ]
-            do {
-                self.expenses = try Global.coreDataStack.viewContext.fetch(fetchRequest)
-                self.tableView.reloadData()
-                self.loadableView.state = .data
-            } catch {
-                self.loadableView.state = .error(error)
-            }
-            
-        case .tag(let tagGroup):
-            if let set = tagGroup.value(forKey: "expenses") as? NSSet,
-                let unsortedExpenses = set.allObjects as? [Expense] {
-                let sortedExpenses = unsortedExpenses.sorted(by: {
-                    ($0.dateCreated! as Date).compare($1.dateCreated! as Date) == .orderedDescending
-                })
-                self.expenses = sortedExpenses
-                self.tableView.reloadData()
-                self.loadableView.state = .data
-            }
+        if let set = self.group.value(forKey: "expenses") as? NSSet,
+            let unsortedExpenses = set.allObjects as? [Expense] {
+            let sortedExpenses = unsortedExpenses.sorted(by: {
+                ($0.dateCreated! as Date).compare($1.dateCreated! as Date) == .orderedDescending
+            })
+            self.expenses = sortedExpenses
+            self.tableView.reloadData()
+            self.loadableView.state = .data
+        } else {
+            self.loadableView.state = .noData("Could not load expenses for this group.")
         }
     }
     

@@ -93,6 +93,7 @@
 		26DF09901EF4437F00D26D14 /* LoadableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DF098F1EF4437F00D26D14 /* LoadableView.swift */; };
 		26DF09941EF61C2E00D26D14 /* TwoLabelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26DF09931EF61C2E00D26D14 /* TwoLabelTableViewCell.xib */; };
 		26DF09961EF61CBC00D26D14 /* TwoLabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DF09951EF61CBC00D26D14 /* TwoLabelTableViewCell.swift */; };
+		26DF099A1EF7950F00D26D14 /* MakeExpenseOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DF09991EF7950F00D26D14 /* MakeExpenseOperation.swift */; };
 		26E4E0591937AF690096191A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E4E0581937AF690096191A /* QuartzCore.framework */; };
 		26F1A96E1E5D890400752F1A /* MakeDummyDataOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F1A96D1E5D890400752F1A /* MakeDummyDataOperation.swift */; };
 		26F57AF11E67DE1B0034FF4B /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F57AF01E67DE1B0034FF4B /* Debug.swift */; };
@@ -230,6 +231,7 @@
 		26DF098F1EF4437F00D26D14 /* LoadableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoadableView.swift; path = Spare/Utilities/LoadableView.swift; sourceTree = SOURCE_ROOT; };
 		26DF09931EF61C2E00D26D14 /* TwoLabelTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TwoLabelTableViewCell.xib; path = Spare/Utilities/TwoLabelTableViewCell.xib; sourceTree = SOURCE_ROOT; };
 		26DF09951EF61CBC00D26D14 /* TwoLabelTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TwoLabelTableViewCell.swift; path = Spare/Utilities/TwoLabelTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		26DF09991EF7950F00D26D14 /* MakeExpenseOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeExpenseOperation.swift; sourceTree = "<group>"; };
 		26E4E0581937AF690096191A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		26F1A96D1E5D890400752F1A /* MakeDummyDataOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeDummyDataOperation.swift; sourceTree = "<group>"; };
 		26F57AF01E67DE1B0034FF4B /* Debug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
@@ -489,6 +491,7 @@
 				264D37C81EEE38DE0063CD53 /* SectionIdentifier.swift */,
 				26DF09851EF2E18900D26D14 /* StartOfWeek.swift */,
 				26DF098D1EF4344100D26D14 /* ExpenseGroup.swift */,
+				26DF09991EF7950F00D26D14 /* MakeExpenseOperation.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -782,6 +785,7 @@
 				260DFDAE1E5584D900E3B92E /* _EFVCAmountBox.swift in Sources */,
 				2669468F1CC7711000A68424 /* Spare.xcdatamodeld in Sources */,
 				2647CD471EF136770098E700 /* Filter.swift in Sources */,
+				26DF099A1EF7950F00D26D14 /* MakeExpenseOperation.swift in Sources */,
 				260DFDD31E569F6F00E3B92E /* _EFVCNotesBox.swift in Sources */,
 				26A30C871E5230020047307D /* AddExpenseVC.swift in Sources */,
 				260DFDD11E562AEE00E3B92E /* EFDatePickerVC.swift in Sources */,
