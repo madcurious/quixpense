@@ -12,7 +12,7 @@ import CoreData
 
 class LoadAppVC: UIViewController {
     
-    var operationQueue: OperationQueue? = OperationQueue()
+    var operationQueue = OperationQueue()
     let customView = _LAVCView.instantiateFromNib()
     
     override func loadView() {
@@ -23,17 +23,22 @@ class LoadAppVC: UIViewController {
         super.viewDidLoad()
         
         let initializeOperation = InitializeCoreDataStackOperation(dataModelName: "Spare", inMemory: false)
-        initializeOperation.successBlock = {[unowned self] persistentContainer in
-            let coreDataStack = CoreDataStack(persistentContainer: persistentContainer)
+        initializeOperation.successBlock = { _ in
+            initializeOperation.cancel()
+        }
+            
+        initializeOperation.completionBlock = {
+            let coreDataStack = CoreDataStack(persistentContainer: initializeOperation.result!)
             Global.coreDataStack = coreDataStack
             let makeDummyDataOperation = MakeDummyDataOperation()
             makeDummyDataOperation.successBlock = {[unowned self] _ in
                 self.navigationController?.pushViewController(MainTabBarVC(), animated: true)
             }
             makeDummyDataOperation.presentErrorDialogOnFailure(from: self)
-            self.operationQueue?.addOperation(makeDummyDataOperation)
+            self.operationQueue.addOperation(makeDummyDataOperation)
         }
-        self.operationQueue?.addOperation(initializeOperation)
+        
+        self.operationQueue.addOperation(initializeOperation)
     }
     
     override func viewWillAppear(_ animated: Bool) {

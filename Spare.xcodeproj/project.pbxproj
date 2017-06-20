@@ -14,6 +14,7 @@
 		261EB86518DDB630009DDF78 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86418DDB630009DDF78 /* CoreGraphics.framework */; };
 		261EB86718DDB631009DDF78 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86618DDB631009DDF78 /* UIKit.framework */; };
 		261EB86918DDB631009DDF78 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86818DDB631009DDF78 /* CoreData.framework */; };
+		26228AA41EF994EF00F0E3E3 /* MakeExpenseOperationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26228AA31EF994EF00F0E3E3 /* MakeExpenseOperationTest.swift */; };
 		26331FC21E5B684700AACE68 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26331FC11E5B684700AACE68 /* CoreDataStack.swift */; };
 		2647CD471EF136770098E700 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2647CD341EF136770098E700 /* Filter.swift */; };
 		2647CD481EF136770098E700 /* FilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2647CD351EF136770098E700 /* FilterButton.swift */; };
@@ -22,7 +23,7 @@
 		2647CD4D1EF136770098E700 /* HomeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2647CD3A1EF136770098E700 /* HomeView.xib */; };
 		2647CD4E1EF136770098E700 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2647CD3B1EF136770098E700 /* HomeViewController.swift */; };
 		264D37C91EEE38DE0063CD53 /* SectionIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264D37C81EEE38DE0063CD53 /* SectionIdentifier.swift */; };
-		264EE4AE1EF9049A004011FE /* CoreDataStackTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264EE4AD1EF9049A004011FE /* CoreDataStackTest.swift */; };
+		264EE4AE1EF9049A004011FE /* InitializeCoreDataStackTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264EE4AD1EF9049A004011FE /* InitializeCoreDataStackTest.swift */; };
 		264EE4AF1EF9094D004011FE /* InitializeCoreDataStackOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DDDCAD1E5C285F001617A1 /* InitializeCoreDataStackOperation.swift */; };
 		264EE4B01EF90976004011FE /* LoadableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DF099C1EF800D900D26D14 /* LoadableView.swift */; };
 		264EE4B11EF90976004011FE /* SectionTotalHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DF099D1EF800D900D26D14 /* SectionTotalHeaderView.swift */; };
@@ -193,6 +194,7 @@
 		261EB86618DDB631009DDF78 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		261EB86818DDB631009DDF78 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		261EB88018DDB631009DDF78 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		26228AA31EF994EF00F0E3E3 /* MakeExpenseOperationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeExpenseOperationTest.swift; sourceTree = "<group>"; };
 		26331FC11E5B684700AACE68 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		2647CD341EF136770098E700 /* Filter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		2647CD351EF136770098E700 /* FilterButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterButton.swift; sourceTree = "<group>"; };
@@ -203,7 +205,7 @@
 		264D37C81EEE38DE0063CD53 /* SectionIdentifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionIdentifier.swift; sourceTree = "<group>"; };
 		264EE4A11EF9044F004011FE /* SpareTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpareTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		264EE4A51EF90450004011FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		264EE4AD1EF9049A004011FE /* CoreDataStackTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStackTest.swift; sourceTree = "<group>"; };
+		264EE4AD1EF9049A004011FE /* InitializeCoreDataStackTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitializeCoreDataStackTest.swift; sourceTree = "<group>"; };
 		264EE4D21EF90F04004011FE /* MonthTagGroup+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MonthTagGroup+CoreDataClass.swift"; sourceTree = "<group>"; };
 		264EE4D31EF90F04004011FE /* MonthTagGroup+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MonthTagGroup+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		264EE4D41EF90F04004011FE /* Category+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -416,7 +418,8 @@
 			isa = PBXGroup;
 			children = (
 				264EE4A51EF90450004011FE /* Info.plist */,
-				264EE4AD1EF9049A004011FE /* CoreDataStackTest.swift */,
+				264EE4AD1EF9049A004011FE /* InitializeCoreDataStackTest.swift */,
+				26228AA31EF994EF00F0E3E3 /* MakeExpenseOperationTest.swift */,
 			);
 			path = SpareTests;
 			sourceTree = "<group>";
@@ -846,6 +849,7 @@
 				264EE4C51EF90976004011FE /* CoreDataStack.swift in Sources */,
 				264EE4C61EF90976004011FE /* Debug.swift in Sources */,
 				264EE4C71EF90976004011FE /* LightTheme.swift in Sources */,
+				26228AA41EF994EF00F0E3E3 /* MakeExpenseOperationTest.swift in Sources */,
 				264EE5091EF90FC7004011FE /* Category+CoreDataClass.swift in Sources */,
 				264EE4C81EF90976004011FE /* BarButtonItems.swift in Sources */,
 				264EE50A1EF90FC7004011FE /* DayCategoryGroup+CoreDataClass.swift in Sources */,
@@ -862,7 +866,7 @@
 				264EE50F1EF90FC7004011FE /* DayTagGroup+CoreDataClass.swift in Sources */,
 				264EE5141EF90FE8004011FE /* Expense+CoreDataProperties.swift in Sources */,
 				264EE4AF1EF9094D004011FE /* InitializeCoreDataStackOperation.swift in Sources */,
-				264EE4AE1EF9049A004011FE /* CoreDataStackTest.swift in Sources */,
+				264EE4AE1EF9049A004011FE /* InitializeCoreDataStackTest.swift in Sources */,
 				264EE5121EF90FE8004011FE /* Category+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

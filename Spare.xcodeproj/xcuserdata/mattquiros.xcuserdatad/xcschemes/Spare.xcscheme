@@ -40,7 +40,7 @@
             </BuildableReference>
             <SkippedTests>
                <Test
-                  Identifier = "SpareTests">
+                  Identifier = "MakeExpenseOperationTest">
                </Test>
             </SkippedTests>
          </TestableReference>
