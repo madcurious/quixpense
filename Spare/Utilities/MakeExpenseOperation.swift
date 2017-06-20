@@ -42,9 +42,9 @@ class MakeExpenseOperation: MDOperation<Expense> {
     
     override func makeResult(from source: Any?) throws -> Expense {
         let newExpense = Expense(context: self.context)
-        newExpense.dateCreated = Date()
+        newExpense.dateCreated = Date() as NSDate
         newExpense.amount = self.amount
-        newExpense.dateSpent = self.dateSpent
+        newExpense.dateSpent = self.dateSpent as NSDate
         
         let category = try self.makeCategory()
         newExpense.category = category

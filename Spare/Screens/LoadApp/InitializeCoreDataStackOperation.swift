@@ -11,6 +11,15 @@ import CoreData
 
 class InitializeCoreDataStackOperation: MDAsynchronousOperation<NSPersistentContainer> {
     
+    let dataModelName: String
+    let inMemory: Bool
+    
+    init(dataModelName: String, inMemory: Bool) {
+        self.dataModelName = dataModelName
+        self.inMemory = inMemory
+        super.init()
+    }
+    
     override func main() {
         self.runStartBlock()
         
@@ -19,8 +28,14 @@ class InitializeCoreDataStackOperation: MDAsynchronousOperation<NSPersistentCont
             return
         }
         
-        let persistentContainer = NSPersistentContainer(name: "Spare")
-        persistentContainer.loadPersistentStores(completionHandler: {[unowned self] (_, error) in
+        let persistentContainer = NSPersistentContainer(name: self.dataModelName)
+        
+        if self.inMemory,
+            let description = persistentContainer.persistentStoreDescriptions.first {
+            description.type = NSInMemoryStoreType
+        }
+        
+        persistentContainer.loadPersistentStores(completionHandler: {[unowned self] (persistentStoreDescriptions, error) in
             defer {
                 self.finish()
             }
@@ -30,8 +45,10 @@ class InitializeCoreDataStackOperation: MDAsynchronousOperation<NSPersistentCont
             }
             
             if let error = error {
+                self.error = error
                 self.runFailureBlock(error: error)
             } else {
+                self.result = persistentContainer
                 self.runSuccessBlock(result: persistentContainer)
             }
         })

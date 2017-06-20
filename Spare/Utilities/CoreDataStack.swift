@@ -13,7 +13,7 @@ class CoreDataStack: NSObject {
     
     let CoreDataStackDidFinishMergingChanges = Notification.Name.init("CoreDataStackDidFinishMergingChanges")
     
-    private let persistentContainer: NSPersistentContainer
+    let persistentContainer: NSPersistentContainer
     let viewContext: NSManagedObjectContext
     
     init(persistentContainer: NSPersistentContainer) {
