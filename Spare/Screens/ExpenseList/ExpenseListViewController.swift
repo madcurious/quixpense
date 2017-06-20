@@ -35,7 +35,7 @@ class ExpenseListViewController: UIViewController {
     }
     
     override func loadView() {
-        self.loadableView.dataViewContainer.addSubviewAndFill(self.tableView)
+        self.loadableView.dataViewContainer.addSubviewsAndFill(self.tableView)
         self.view = self.loadableView
     }
     

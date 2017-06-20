@@ -10,21 +10,6 @@
 		260024311CC8C5AE00EB2026 /* Mold.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 260024301CC8C53A00EB2026 /* Mold.framework */; };
 		260024321CC8C5AE00EB2026 /* Mold.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 260024301CC8C53A00EB2026 /* Mold.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2603F8C31CCA45FF007F311F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2603F8C21CCA45FF007F311F /* LaunchScreen.storyboard */; };
-		260DFDAE1E5584D900E3B92E /* _EFVCAmountBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260DFDA71E5584D900E3B92E /* _EFVCAmountBox.swift */; };
-		260DFDAF1E5584D900E3B92E /* _EFVCAmountBox.xib in Resources */ = {isa = PBXBuildFile; fileRef = 260DFDA81E5584D900E3B92E /* _EFVCAmountBox.xib */; };
-		260DFDB01E5584D900E3B92E /* _EFVCFieldBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260DFDA91E5584D900E3B92E /* _EFVCFieldBox.swift */; };
-		260DFDB11E5584D900E3B92E /* _EFVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260DFDAA1E5584D900E3B92E /* _EFVCView.swift */; };
-		260DFDB21E5584D900E3B92E /* _EFVCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 260DFDAB1E5584D900E3B92E /* _EFVCView.xib */; };
-		260DFDB31E5584D900E3B92E /* ExpenseFormVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260DFDAC1E5584D900E3B92E /* ExpenseFormVC.swift */; };
-		260DFDB51E5584FA00E3B92E /* EFPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260DFDB41E5584FA00E3B92E /* EFPickerVC.swift */; };
-		260DFDB71E55864100E3B92E /* _EFPVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260DFDB61E55864100E3B92E /* _EFPVCView.swift */; };
-		260DFDB91E55867700E3B92E /* _EFPVCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 260DFDB81E55867700E3B92E /* _EFPVCView.xib */; };
-		260DFDC11E55911700E3B92E /* _EFVCButtonBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260DFDC01E55911700E3B92E /* _EFVCButtonBox.swift */; };
-		260DFDC31E55912200E3B92E /* _EFVCButtonBox.xib in Resources */ = {isa = PBXBuildFile; fileRef = 260DFDC21E55912200E3B92E /* _EFVCButtonBox.xib */; };
-		260DFDCF1E55F37600E3B92E /* EFPickerVCTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260DFDCE1E55F37600E3B92E /* EFPickerVCTransitioningDelegate.swift */; };
-		260DFDD11E562AEE00E3B92E /* EFDatePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260DFDD01E562AEE00E3B92E /* EFDatePickerVC.swift */; };
-		260DFDD31E569F6F00E3B92E /* _EFVCNotesBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260DFDD21E569F6F00E3B92E /* _EFVCNotesBox.swift */; };
-		260DFDD51E569F9D00E3B92E /* _EFVCNotesBox.xib in Resources */ = {isa = PBXBuildFile; fileRef = 260DFDD41E569F9D00E3B92E /* _EFVCNotesBox.xib */; };
 		261EB86318DDB630009DDF78 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86218DDB630009DDF78 /* Foundation.framework */; };
 		261EB86518DDB630009DDF78 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86418DDB630009DDF78 /* CoreGraphics.framework */; };
 		261EB86718DDB631009DDF78 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86618DDB631009DDF78 /* UIKit.framework */; };
@@ -35,10 +20,6 @@
 		261EB88418DDB631009DDF78 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86818DDB631009DDF78 /* CoreData.framework */; };
 		261EB88C18DDB631009DDF78 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 261EB88A18DDB631009DDF78 /* InfoPlist.strings */; };
 		261EB88E18DDB631009DDF78 /* SpareTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 261EB88D18DDB631009DDF78 /* SpareTests.m */; };
-		26331FB81E5AE6EE00AACE68 /* EFCategoryPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26331FB71E5AE6EE00AACE68 /* EFCategoryPickerVC.swift */; };
-		26331FBC1E5B555A00AACE68 /* EFPickerSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26331FBB1E5B555A00AACE68 /* EFPickerSearchVC.swift */; };
-		26331FBE1E5B559300AACE68 /* _EFPSVCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26331FBD1E5B559300AACE68 /* _EFPSVCView.xib */; };
-		26331FC01E5B55A100AACE68 /* _EFPSVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26331FBF1E5B55A100AACE68 /* _EFPSVCView.swift */; };
 		26331FC21E5B684700AACE68 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26331FC11E5B684700AACE68 /* CoreDataStack.swift */; };
 		2647CD471EF136770098E700 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2647CD341EF136770098E700 /* Filter.swift */; };
 		2647CD481EF136770098E700 /* FilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2647CD351EF136770098E700 /* FilterButton.swift */; };
@@ -72,7 +53,6 @@
 		26A1CB4D1DD1ABD600DAE89E /* NotoSansUI-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26A1CB451DD1ABD600DAE89E /* NotoSansUI-BoldItalic.ttf */; };
 		26A1CB4E1DD1ABD600DAE89E /* NotoSansUI-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26A1CB461DD1ABD600DAE89E /* NotoSansUI-Italic.ttf */; };
 		26A1CB4F1DD1ABD600DAE89E /* NotoSansUI-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26A1CB471DD1ABD600DAE89E /* NotoSansUI-Regular.ttf */; };
-		26A30C871E5230020047307D /* AddExpenseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A30C861E5230020047307D /* AddExpenseVC.swift */; };
 		26A30C8A1E5231620047307D /* BaseNavBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A30C891E5231620047307D /* BaseNavBarVC.swift */; };
 		26A30C8C1E52318D0047307D /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A30C8B1E52318D0047307D /* Theme.swift */; };
 		26A30C8E1E5232240047307D /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A30C8D1E5232240047307D /* Global.swift */; };
@@ -143,21 +123,6 @@
 		260023FD1CC7E0B000EB2026 /* Mold.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mold.framework; path = "Mold/build/Debug-iphoneos/Mold.framework"; sourceTree = "<group>"; };
 		2603F8C21CCA45FF007F311F /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2603F8C61CCA476E007F311F /* Spare_v2.0.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Spare_v2.0.xcdatamodel; sourceTree = "<group>"; };
-		260DFDA71E5584D900E3B92E /* _EFVCAmountBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _EFVCAmountBox.swift; sourceTree = "<group>"; };
-		260DFDA81E5584D900E3B92E /* _EFVCAmountBox.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = _EFVCAmountBox.xib; sourceTree = "<group>"; };
-		260DFDA91E5584D900E3B92E /* _EFVCFieldBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _EFVCFieldBox.swift; sourceTree = "<group>"; };
-		260DFDAA1E5584D900E3B92E /* _EFVCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _EFVCView.swift; sourceTree = "<group>"; };
-		260DFDAB1E5584D900E3B92E /* _EFVCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = _EFVCView.xib; sourceTree = "<group>"; };
-		260DFDAC1E5584D900E3B92E /* ExpenseFormVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseFormVC.swift; sourceTree = "<group>"; };
-		260DFDB41E5584FA00E3B92E /* EFPickerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EFPickerVC.swift; sourceTree = "<group>"; };
-		260DFDB61E55864100E3B92E /* _EFPVCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _EFPVCView.swift; sourceTree = "<group>"; };
-		260DFDB81E55867700E3B92E /* _EFPVCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = _EFPVCView.xib; sourceTree = "<group>"; };
-		260DFDC01E55911700E3B92E /* _EFVCButtonBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _EFVCButtonBox.swift; sourceTree = "<group>"; };
-		260DFDC21E55912200E3B92E /* _EFVCButtonBox.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = _EFVCButtonBox.xib; sourceTree = "<group>"; };
-		260DFDCE1E55F37600E3B92E /* EFPickerVCTransitioningDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EFPickerVCTransitioningDelegate.swift; sourceTree = "<group>"; };
-		260DFDD01E562AEE00E3B92E /* EFDatePickerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EFDatePickerVC.swift; sourceTree = "<group>"; };
-		260DFDD21E569F6F00E3B92E /* _EFVCNotesBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _EFVCNotesBox.swift; sourceTree = "<group>"; };
-		260DFDD41E569F9D00E3B92E /* _EFVCNotesBox.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = _EFVCNotesBox.xib; sourceTree = "<group>"; };
 		261EB85F18DDB630009DDF78 /* Spare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		261EB86218DDB630009DDF78 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		261EB86418DDB630009DDF78 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -168,10 +133,6 @@
 		261EB88918DDB631009DDF78 /* SpareTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SpareTests-Info.plist"; sourceTree = "<group>"; };
 		261EB88B18DDB631009DDF78 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		261EB88D18DDB631009DDF78 /* SpareTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpareTests.m; sourceTree = "<group>"; };
-		26331FB71E5AE6EE00AACE68 /* EFCategoryPickerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EFCategoryPickerVC.swift; sourceTree = "<group>"; };
-		26331FBB1E5B555A00AACE68 /* EFPickerSearchVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EFPickerSearchVC.swift; sourceTree = "<group>"; };
-		26331FBD1E5B559300AACE68 /* _EFPSVCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = _EFPSVCView.xib; sourceTree = "<group>"; };
-		26331FBF1E5B55A100AACE68 /* _EFPSVCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _EFPSVCView.swift; sourceTree = "<group>"; };
 		26331FC11E5B684700AACE68 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		2647CD341EF136770098E700 /* Filter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		2647CD351EF136770098E700 /* FilterButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterButton.swift; sourceTree = "<group>"; };
@@ -209,7 +170,6 @@
 		26A1CB451DD1ABD600DAE89E /* NotoSansUI-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansUI-BoldItalic.ttf"; sourceTree = "<group>"; };
 		26A1CB461DD1ABD600DAE89E /* NotoSansUI-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansUI-Italic.ttf"; sourceTree = "<group>"; };
 		26A1CB471DD1ABD600DAE89E /* NotoSansUI-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansUI-Regular.ttf"; sourceTree = "<group>"; };
-		26A30C861E5230020047307D /* AddExpenseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddExpenseVC.swift; sourceTree = "<group>"; };
 		26A30C891E5231620047307D /* BaseNavBarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavBarVC.swift; sourceTree = "<group>"; };
 		26A30C8B1E52318D0047307D /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		26A30C8D1E5232240047307D /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
@@ -279,39 +239,6 @@
 				260024301CC8C53A00EB2026 /* Mold.framework */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		260DFDA61E5584D900E3B92E /* main form */ = {
-			isa = PBXGroup;
-			children = (
-				260DFDA71E5584D900E3B92E /* _EFVCAmountBox.swift */,
-				260DFDA81E5584D900E3B92E /* _EFVCAmountBox.xib */,
-				260DFDA91E5584D900E3B92E /* _EFVCFieldBox.swift */,
-				260DFDAA1E5584D900E3B92E /* _EFVCView.swift */,
-				260DFDAB1E5584D900E3B92E /* _EFVCView.xib */,
-				260DFDAC1E5584D900E3B92E /* ExpenseFormVC.swift */,
-				260DFDC01E55911700E3B92E /* _EFVCButtonBox.swift */,
-				260DFDC21E55912200E3B92E /* _EFVCButtonBox.xib */,
-				260DFDD21E569F6F00E3B92E /* _EFVCNotesBox.swift */,
-				260DFDD41E569F9D00E3B92E /* _EFVCNotesBox.xib */,
-			);
-			path = "main form";
-			sourceTree = "<group>";
-		};
-		260DFDAD1E5584D900E3B92E /* picker */ = {
-			isa = PBXGroup;
-			children = (
-				260DFDB41E5584FA00E3B92E /* EFPickerVC.swift */,
-				260DFDB61E55864100E3B92E /* _EFPVCView.swift */,
-				260DFDB81E55867700E3B92E /* _EFPVCView.xib */,
-				260DFDCE1E55F37600E3B92E /* EFPickerVCTransitioningDelegate.swift */,
-				260DFDD01E562AEE00E3B92E /* EFDatePickerVC.swift */,
-				26331FB71E5AE6EE00AACE68 /* EFCategoryPickerVC.swift */,
-				26331FBB1E5B555A00AACE68 /* EFPickerSearchVC.swift */,
-				26331FBD1E5B559300AACE68 /* _EFPSVCView.xib */,
-				26331FBF1E5B55A100AACE68 /* _EFPSVCView.swift */,
-			);
-			path = picker;
 			sourceTree = "<group>";
 		};
 		261370A91CD7A114007BAF56 /* Fonts */ = {
@@ -468,7 +395,6 @@
 				267C2B7A1E7BDA03008EA3E0 /* MainTabBar */,
 				26DDDCA61E5C237F001617A1 /* LoadApp */,
 				26A30C881E5231530047307D /* Base */,
-				26A30C831E522FDB0047307D /* ExpenseForm */,
 				26A30C7E1E522F2B0047307D /* Settings */,
 			);
 			path = Screens;
@@ -500,16 +426,6 @@
 				26A30C911E5235950047307D /* SettingsVC.swift */,
 			);
 			path = Settings;
-			sourceTree = "<group>";
-		};
-		26A30C831E522FDB0047307D /* ExpenseForm */ = {
-			isa = PBXGroup;
-			children = (
-				26A30C861E5230020047307D /* AddExpenseVC.swift */,
-				260DFDA61E5584D900E3B92E /* main form */,
-				260DFDAD1E5584D900E3B92E /* picker */,
-			);
-			path = ExpenseForm;
 			sourceTree = "<group>";
 		};
 		26A30C881E5231530047307D /* Base */ = {
@@ -618,7 +534,7 @@
 				TargetAttributes = {
 					261EB85E18DDB630009DDF78 = {
 						DevelopmentTeam = MEWJ9DWAEU;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 					261EB87E18DDB631009DDF78 = {
@@ -665,18 +581,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				260DFDD51E569F9D00E3B92E /* _EFVCNotesBox.xib in Resources */,
 				266946841CC7711000A68424 /* Default@2x.png in Resources */,
-				260DFDB91E55867700E3B92E /* _EFPVCView.xib in Resources */,
-				260DFDB21E5584D900E3B92E /* _EFVCView.xib in Resources */,
 				2603F8C31CCA45FF007F311F /* LaunchScreen.storyboard in Resources */,
 				26A1CB4F1DD1ABD600DAE89E /* NotoSansUI-Regular.ttf in Resources */,
-				260DFDAF1E5584D900E3B92E /* _EFVCAmountBox.xib in Resources */,
 				26A1CB4E1DD1ABD600DAE89E /* NotoSansUI-Italic.ttf in Resources */,
 				2647CD4D1EF136770098E700 /* HomeView.xib in Resources */,
 				26DF09A51EF800D900D26D14 /* TwoLabelTableViewCell.xib in Resources */,
 				2669468B1CC7711000A68424 /* iPhone.storyboard in Resources */,
-				26331FBE1E5B559300AACE68 /* _EFPSVCView.xib in Resources */,
 				2669468A1CC7711000A68424 /* Images.xcassets in Resources */,
 				266946871CC7711000A68424 /* Icon-60@2x.png in Resources */,
 				2657332A1EDD507C00AD1AB9 /* FilterPopupView.xib in Resources */,
@@ -690,7 +601,6 @@
 				2647CD491EF136770098E700 /* FilterButton.xib in Resources */,
 				26A1CB4D1DD1ABD600DAE89E /* NotoSansUI-BoldItalic.ttf in Resources */,
 				266946831CC7711000A68424 /* Default-568h@2x.png in Resources */,
-				260DFDC31E55912200E3B92E /* _EFVCButtonBox.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -760,50 +670,36 @@
 				26D6C9AD1E93807400DDDAE8 /* NotoSansUI.swift in Sources */,
 				266946931CC77A1A00A68424 /* AppDelegate.swift in Sources */,
 				26DF09A11EF800D900D26D14 /* LoadableView.swift in Sources */,
-				260DFDC11E55911700E3B92E /* _EFVCButtonBox.swift in Sources */,
 				26DDDCA81E5C238B001617A1 /* LoadAppVC.swift in Sources */,
 				265DFB811E87D07300439D9A /* BarButtonItems.swift in Sources */,
 				26B38F0F1E88FB2C00177CFE /* MakeDefaultDataOperation.swift in Sources */,
 				26DDDCAA1E5C23AB001617A1 /* _LAVCView.swift in Sources */,
 				2647CD4E1EF136770098E700 /* HomeViewController.swift in Sources */,
 				26DF09A21EF800D900D26D14 /* SectionTotalHeaderView.swift in Sources */,
-				260DFDB01E5584D900E3B92E /* _EFVCFieldBox.swift in Sources */,
 				264D37C91EEE38DE0063CD53 /* SectionIdentifier.swift in Sources */,
-				260DFDCF1E55F37600E3B92E /* EFPickerVCTransitioningDelegate.swift in Sources */,
-				26331FC01E5B55A100AACE68 /* _EFPSVCView.swift in Sources */,
 				26DF098C1EF41B0800D26D14 /* ExpenseListViewController.swift in Sources */,
 				26628A2D1E714AB100E80494 /* LightTheme.swift in Sources */,
 				26A30C8C1E52318D0047307D /* Theme.swift in Sources */,
 				26DDDCAE1E5C285F001617A1 /* InitializeCoreDataStackOperation.swift in Sources */,
-				260DFDB11E5584D900E3B92E /* _EFVCView.swift in Sources */,
 				2647CD4C1EF136770098E700 /* HomeView.swift in Sources */,
 				26F57AF11E67DE1B0034FF4B /* Debug.swift in Sources */,
 				26DF09861EF2E18900D26D14 /* StartOfWeek.swift in Sources */,
 				26B38F111E89068500177CFE /* UserDefaultsKey.swift in Sources */,
 				2647CD481EF136770098E700 /* FilterButton.swift in Sources */,
-				26331FBC1E5B555A00AACE68 /* EFPickerSearchVC.swift in Sources */,
 				26F1A96E1E5D890400752F1A /* MakeDummyDataOperation.swift in Sources */,
-				260DFDAE1E5584D900E3B92E /* _EFVCAmountBox.swift in Sources */,
 				2669468F1CC7711000A68424 /* Spare.xcdatamodeld in Sources */,
 				2647CD471EF136770098E700 /* Filter.swift in Sources */,
 				26DF099A1EF7950F00D26D14 /* MakeExpenseOperation.swift in Sources */,
-				260DFDD31E569F6F00E3B92E /* _EFVCNotesBox.swift in Sources */,
-				26A30C871E5230020047307D /* AddExpenseVC.swift in Sources */,
-				260DFDD11E562AEE00E3B92E /* EFDatePickerVC.swift in Sources */,
 				26A30C8A1E5231620047307D /* BaseNavBarVC.swift in Sources */,
 				2657332B1EDD507C00AD1AB9 /* FilterPopupViewController.swift in Sources */,
 				26DF09A41EF800D900D26D14 /* TwoLabelTableViewCell.swift in Sources */,
-				26331FB81E5AE6EE00AACE68 /* EFCategoryPickerVC.swift in Sources */,
 				26CB900B1EE5345D009F7099 /* Expense+Extension.swift in Sources */,
 				26A30C8E1E5232240047307D /* Global.swift in Sources */,
 				265733291EDD507C00AD1AB9 /* FilterPopupView.swift in Sources */,
 				26DF098E1EF4344100D26D14 /* ExpenseGroup.swift in Sources */,
-				260DFDB71E55864100E3B92E /* _EFPVCView.swift in Sources */,
 				267C2B7C1E7BDA03008EA3E0 /* MainTabBarVC.swift in Sources */,
 				26331FC21E5B684700AACE68 /* CoreDataStack.swift in Sources */,
 				269635A41E5457C80001FC05 /* AmountFormatter.swift in Sources */,
-				260DFDB51E5584FA00E3B92E /* EFPickerVC.swift in Sources */,
-				260DFDB31E5584D900E3B92E /* ExpenseFormVC.swift in Sources */,
 				26A30C921E5235950047307D /* SettingsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -965,7 +861,8 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Supporting Files/Spare-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
+				SWIFT_VERSION = 4.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -999,7 +896,8 @@
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Supporting Files/Spare-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
+				SWIFT_VERSION = 4.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

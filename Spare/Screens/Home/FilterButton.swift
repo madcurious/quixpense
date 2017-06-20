@@ -65,7 +65,7 @@ class FilterButton: MDButton, Themeable {
 // MARK: - Target actions
 extension FilterButton {
     
-    func handleTapOnSelf() {
+    @objc func handleTapOnSelf() {
         let filterPopup = FilterPopupViewController(filter: self.filter)
         filterPopup.modalPresentationStyle = .popover
         

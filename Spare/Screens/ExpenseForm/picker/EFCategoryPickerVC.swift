@@ -43,7 +43,7 @@ class EFCategoryPickerVC: EFPickerVC {
 
 extension EFCategoryPickerVC {
     
-    func handleKeyboardWillShow(notification: Notification) {
+    @objc func handleKeyboardWillShow(notification: Notification) {
         guard let keyboardFrame = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
             let animationDuration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber
             else {
@@ -59,7 +59,7 @@ extension EFCategoryPickerVC {
         })
     }
     
-    func handleKeyboardWillHide(notification: Notification) {
+    @objc func handleKeyboardWillHide(notification: Notification) {
         guard let animationDuration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber
             else {
                 return
@@ -74,7 +74,7 @@ extension EFCategoryPickerVC {
         })
     }
     
-    func handleTextDidChange(notification: Notification) {
+    @objc func handleTextDidChange(notification: Notification) {
         if let text = self.searchVC.customView.textField.text,
             text.characters.count > 0 {
             self.searchVC.showTableView(.results)
@@ -83,7 +83,7 @@ extension EFCategoryPickerVC {
         }
     }
     
-    override func handleTapOnDimView() {
+    override func performTapOnDimViewAction() {
         if self.searchVC.customView.textField.isFirstResponder {
             self.dismissKeyboard()
         } else {

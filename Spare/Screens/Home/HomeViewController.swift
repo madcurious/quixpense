@@ -135,7 +135,7 @@ class HomeViewController: UIViewController {
 // MARK: - Target actions
 extension HomeViewController {
     
-    func handleValueChangeOnFilterButton() {
+    @objc func handleValueChangeOnFilterButton() {
         Global.filter = self.filterButton.filter
         self.fetchedResultsController = Global.filter.makeFetchedResultsController()
         self.performFetch()

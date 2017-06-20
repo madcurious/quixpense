@@ -44,7 +44,7 @@ class _EFVCNotesBox: _EFVCFieldBox {
         self.textView.textColor = Global.theme.color(for: .textFieldValue)
     }
     
-    func handleTextDidChange() {
+    @objc func handleTextDidChange() {
         if let text = self.textView.text,
             text.characters.count > 0 {
             self.placeholderLabel.isHidden = true

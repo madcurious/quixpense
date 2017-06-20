@@ -44,23 +44,23 @@ class ExpenseFormVC: UIViewController {
 
 extension ExpenseFormVC {
     
-    func handleTap(gesture: UITapGestureRecognizer) {
+    @objc func handleTap(gesture: UITapGestureRecognizer) {
         self.dismissKeyboard()
     }
     
-    func handleTapOnDateButton() {
+    @objc func handleTapOnDateButton() {
         let picker = EFDatePickerVC(nibName: nil, bundle: nil)
         picker.setCustomTransitioningDelegate(self.pickerTransitioningDelegate)
         self.present(picker, animated: true, completion: nil)
     }
     
-    func handleTapOnCategoryButton() {
+    @objc func handleTapOnCategoryButton() {
         let picker = EFCategoryPickerVC(nibName: nil, bundle: nil)
         picker.setCustomTransitioningDelegate(self.pickerTransitioningDelegate)
         self.present(picker, animated: true, completion: nil)
     }
     
-    func handleKeyboardWillShow(notification: Notification) {
+    @objc func handleKeyboardWillShow(notification: Notification) {
         guard let keyboardFrame = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
             let animationDuration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber
             else {
@@ -88,7 +88,7 @@ extension ExpenseFormVC {
         })
     }
     
-    func handleKeyboardWillHide(notification: Notification) {
+    @objc func handleKeyboardWillHide(notification: Notification) {
         guard let animationDuration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber
             else {
                 return

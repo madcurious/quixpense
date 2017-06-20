@@ -38,11 +38,11 @@ class FilterPopupViewController: UIViewController {
         self.customView.groupingControl.addTarget(self, action: #selector(handleValueChangeOnGrouping), for: .valueChanged)
     }
     
-    func handleValueChangeOnPeriodization(sender: UISegmentedControl) {
+    @objc func handleValueChangeOnPeriodization(sender: UISegmentedControl) {
         self.filter.periodization = Filter.Periodization(rawValue: sender.selectedSegmentIndex)!
     }
     
-    func handleValueChangeOnGrouping(sender: UISegmentedControl) {
+    @objc func handleValueChangeOnGrouping(sender: UISegmentedControl) {
         self.filter.grouping = Filter.Grouping(rawValue: sender.selectedSegmentIndex)!
     }
     

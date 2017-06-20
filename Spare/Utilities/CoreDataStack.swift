@@ -31,7 +31,7 @@ class CoreDataStack: NSObject {
         return self.persistentContainer.newBackgroundContext()
     }
     
-    func handleSaveNotification(notification: Notification) {
+    @objc func handleSaveNotification(notification: Notification) {
         guard notification.name == Notification.Name.NSManagedObjectContextDidSave,
             let savedContext = notification.object as? NSManagedObjectContext,
             savedContext.parent == nil

@@ -56,10 +56,10 @@ class FilterPopupView: UIView, Themeable {
         self.groupingLabel.font = Global.theme.font(for: .optionLabel)
         
         self.periodizationControl.setTitleTextAttributes([
-            NSFontAttributeName : Global.theme.font(for: .regularText)
+            NSAttributedStringKey.font : Global.theme.font(for: .regularText)
             ], for: .normal)
         self.groupingControl.setTitleTextAttributes([
-            NSFontAttributeName : Global.theme.font(for: .regularText)
+            NSAttributedStringKey.font : Global.theme.font(for: .regularText)
             ], for: .normal)
         
         self.periodizationLabel.textColor = Global.theme.color(for: .fieldName)

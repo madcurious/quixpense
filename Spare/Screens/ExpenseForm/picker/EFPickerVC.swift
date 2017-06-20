@@ -33,16 +33,19 @@ class EFPickerVC: UIViewController {
         self.customView.dimView.addGestureRecognizer(tapGestureRecognizer)
     }
     
-    func handleTapOnCancelButton() {
+    @objc func handleTapOnCancelButton() {
         self.dismiss(animated: true, completion: nil)
     }
     
-    func handleTapOnDoneButton() {
+    @objc func handleTapOnDoneButton() {
         self.dismiss(animated: true, completion: nil)
     }
     
-    func handleTapOnDimView() {
-        self.dismiss(animated: true, completion: nil)
+    @objc func handleTapOnDimView() {
+        self.performTapOnDimViewAction()
     }
     
+    func performTapOnDimViewAction() {
+        self.dismiss(animated: true, completion: nil)
+    }
 }
