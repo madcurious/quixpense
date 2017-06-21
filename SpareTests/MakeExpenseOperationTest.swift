@@ -7,7 +7,7 @@
 //
 
 import XCTest
-import Spare
+@testable import Spare
 
 let kTimeOut = 10.0
 

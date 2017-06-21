@@ -9,16 +9,16 @@
 import Mold
 import CoreData
 
-class InitializeCoreDataStackOperation: MDAsynchronousOperation<NSPersistentContainer> {
+public class InitializeCoreDataStackOperation: MDAsynchronousOperation<NSPersistentContainer> {
     
-    let inMemory: Bool
+    public let inMemory: Bool
     
-    init(inMemory: Bool) {
+    public init(inMemory: Bool) {
         self.inMemory = inMemory
         super.init()
     }
     
-    override func main() {
+    public override func main() {
         self.runStartBlock()
         
         if self.isCancelled {
