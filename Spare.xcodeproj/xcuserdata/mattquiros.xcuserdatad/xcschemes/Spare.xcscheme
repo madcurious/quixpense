@@ -38,11 +38,6 @@
                BlueprintName = "SpareTests"
                ReferencedContainer = "container:Spare.xcodeproj">
             </BuildableReference>
-            <SkippedTests>
-               <Test
-                  Identifier = "MakeExpenseOperationTest">
-               </Test>
-            </SkippedTests>
          </TestableReference>
       </Testables>
       <MacroExpansion>

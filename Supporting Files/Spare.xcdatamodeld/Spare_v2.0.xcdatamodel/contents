@@ -7,13 +7,13 @@
         <relationship name="monthCategoryGroups" toMany="YES" deletionRule="Nullify" destinationEntity="MonthCategoryGroup" inverseName="classifier" inverseEntity="MonthCategoryGroup" syncable="YES"/>
         <relationship name="weekCategoryGroups" toMany="YES" deletionRule="Nullify" destinationEntity="WeekCategoryGroup" inverseName="classifier" inverseEntity="WeekCategoryGroup" syncable="YES"/>
     </entity>
-    <entity name="DayCategoryGroup" representedClassName="DayCategoryGroup" syncable="YES">
+    <entity name="DayCategoryGroup" representedClassName=".DayCategoryGroup" syncable="YES">
         <attribute name="sectionIdentifier" attributeType="String" syncable="YES"/>
         <attribute name="total" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <relationship name="classifier" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="dayCategoryGroups" inverseEntity="Category" syncable="YES"/>
         <relationship name="expenses" toMany="YES" deletionRule="Nullify" destinationEntity="Expense" inverseName="dayCategoryGroup" inverseEntity="Expense" syncable="YES"/>
     </entity>
-    <entity name="DayTagGroup" representedClassName="DayTagGroup" syncable="YES">
+    <entity name="DayTagGroup" representedClassName=".DayTagGroup" syncable="YES">
         <attribute name="sectionIdentifier" attributeType="String" syncable="YES"/>
         <attribute name="total" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <relationship name="classifier" maxCount="1" deletionRule="Nullify" destinationEntity="Tag" inverseName="dayTagGroups" inverseEntity="Tag" syncable="YES"/>
@@ -32,26 +32,26 @@
         <relationship name="weekCategoryGroup" maxCount="1" deletionRule="Nullify" destinationEntity="WeekCategoryGroup" inverseName="expenses" inverseEntity="WeekCategoryGroup" syncable="YES"/>
         <relationship name="weekTagGroups" toMany="YES" deletionRule="Nullify" destinationEntity="WeekTagGroup" inverseName="expenses" inverseEntity="WeekTagGroup" syncable="YES"/>
     </entity>
-    <entity name="MonthCategoryGroup" representedClassName="MonthCategoryGroup" syncable="YES">
+    <entity name="MonthCategoryGroup" representedClassName=".MonthCategoryGroup" syncable="YES">
         <attribute name="sectionIdentifier" attributeType="String" syncable="YES"/>
         <attribute name="total" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <relationship name="classifier" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="monthCategoryGroups" inverseEntity="Category" syncable="YES"/>
         <relationship name="expenses" toMany="YES" deletionRule="Nullify" destinationEntity="Expense" inverseName="monthCategoryGroup" inverseEntity="Expense" syncable="YES"/>
     </entity>
-    <entity name="MonthTagGroup" representedClassName="MonthTagGroup" syncable="YES">
+    <entity name="MonthTagGroup" representedClassName=".MonthTagGroup" syncable="YES">
         <attribute name="sectionIdentifier" attributeType="String" syncable="YES"/>
         <attribute name="total" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <relationship name="classifier" maxCount="1" deletionRule="Nullify" destinationEntity="Tag" inverseName="monthTagGroups" inverseEntity="Tag" syncable="YES"/>
         <relationship name="expenses" toMany="YES" deletionRule="Nullify" destinationEntity="Expense" inverseName="monthTagGroups" inverseEntity="Expense" syncable="YES"/>
     </entity>
-    <entity name="SPRCategory" representedClassName="SPRCategory" syncable="YES">
+    <entity name="SPRCategory" representedClassName=".SPRCategory" syncable="YES">
         <attribute name="colorNumber" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="displayedTotal" optional="YES" transient="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <attribute name="displayOrder" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="expenses" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="SPRExpense" inverseName="category" inverseEntity="SPRExpense" syncable="YES"/>
     </entity>
-    <entity name="SPRExpense" representedClassName="SPRExpense" syncable="YES">
+    <entity name="SPRExpense" representedClassName=".SPRExpense" syncable="YES">
         <attribute name="amount" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <attribute name="dateSpent" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="dateSpentAsSectionTitle" optional="YES" transient="YES" attributeType="String" syncable="YES"/>
@@ -66,13 +66,13 @@
         <relationship name="monthTagGroups" toMany="YES" deletionRule="Nullify" destinationEntity="MonthTagGroup" inverseName="classifier" inverseEntity="MonthTagGroup" syncable="YES"/>
         <relationship name="weekTagGroups" toMany="YES" deletionRule="Nullify" destinationEntity="WeekTagGroup" inverseName="classifier" inverseEntity="WeekTagGroup" syncable="YES"/>
     </entity>
-    <entity name="WeekCategoryGroup" representedClassName="WeekCategoryGroup" syncable="YES">
+    <entity name="WeekCategoryGroup" representedClassName=".WeekCategoryGroup" syncable="YES">
         <attribute name="sectionIdentifier" attributeType="String" syncable="YES"/>
         <attribute name="total" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <relationship name="classifier" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="weekCategoryGroups" inverseEntity="Category" syncable="YES"/>
         <relationship name="expenses" toMany="YES" deletionRule="Nullify" destinationEntity="Expense" inverseName="weekCategoryGroup" inverseEntity="Expense" syncable="YES"/>
     </entity>
-    <entity name="WeekTagGroup" representedClassName="WeekTagGroup" syncable="YES">
+    <entity name="WeekTagGroup" representedClassName=".WeekTagGroup" syncable="YES">
         <attribute name="sectionIdentifier" attributeType="String" syncable="YES"/>
         <attribute name="total" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <relationship name="classifier" maxCount="1" deletionRule="Nullify" destinationEntity="Tag" inverseName="weekTagGroups" inverseEntity="Tag" syncable="YES"/>
@@ -85,7 +85,7 @@
         <element name="Expense" positionX="187" positionY="288" width="128" height="210"/>
         <element name="MonthCategoryGroup" positionX="189" positionY="153" width="128" height="105"/>
         <element name="MonthTagGroup" positionX="216" positionY="207" width="128" height="105"/>
-        <element name="SPRCategory" positionX="198" positionY="27" width="128" height="30"/>
+        <element name="SPRCategory" positionX="198" positionY="27" width="128" height="120"/>
         <element name="SPRExpense" positionX="376" positionY="45" width="128" height="135"/>
         <element name="Tag" positionX="-18" positionY="294" width="128" height="120"/>
         <element name="WeekCategoryGroup" positionX="216" positionY="207" width="128" height="105"/>

@@ -7,6 +7,9 @@
 //
 
 import XCTest
+import Spare
+
+let kTimeOut = 10.0
 
 class MakeExpenseOperationTest: XCTestCase {
     
@@ -17,7 +20,7 @@ class MakeExpenseOperationTest: XCTestCase {
         super.setUp()
         let expectation = self.expectation(description: #function)
         
-        let op = InitializeCoreDataStackOperation(dataModelName: "Spare", inMemory: true)
+        let op = InitializeCoreDataStackOperation(inMemory: true)
         op.successBlock = {[unowned self] in
             self.coreDataStack = CoreDataStack(persistentContainer: $0)
         }
@@ -26,7 +29,7 @@ class MakeExpenseOperationTest: XCTestCase {
         }
         queue.addOperation(op)
         
-        self.waitForExpectations(timeout: TimeInterval.greatestFiniteMagnitude, handler: nil)
+        self.waitForExpectations(timeout: kTimeOut, handler: nil)
     }
     
     override func tearDown() {
@@ -51,7 +54,7 @@ class MakeExpenseOperationTest: XCTestCase {
         }
         op.start()
         
-        self.waitForExpectations(timeout: TimeInterval.greatestFiniteMagnitude, handler: nil)
+        self.waitForExpectations(timeout: kTimeOut, handler: nil)
     }
     
 }
