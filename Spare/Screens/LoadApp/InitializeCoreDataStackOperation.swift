@@ -35,7 +35,7 @@ class InitializeCoreDataStackOperation: MDAsynchronousOperation<NSPersistentCont
             description.type = NSInMemoryStoreType
         }
         
-        persistentContainer.loadPersistentStores(completionHandler: {[unowned self] (persistentStoreDescriptions, error) in
+        persistentContainer.loadPersistentStores(completionHandler: {[unowned self, persistentContainer] (persistentStoreDescriptions, error) in
             defer {
                 self.finish()
             }

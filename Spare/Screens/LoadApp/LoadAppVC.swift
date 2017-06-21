@@ -23,12 +23,8 @@ class LoadAppVC: UIViewController {
         super.viewDidLoad()
         
         let initializeOperation = InitializeCoreDataStackOperation(dataModelName: "Spare", inMemory: false)
-        initializeOperation.successBlock = { _ in
-            initializeOperation.cancel()
-        }
-            
-        initializeOperation.completionBlock = {
-            let coreDataStack = CoreDataStack(persistentContainer: initializeOperation.result!)
+        initializeOperation.successBlock = { result in
+            let coreDataStack = CoreDataStack(persistentContainer: result)
             Global.coreDataStack = coreDataStack
             let makeDummyDataOperation = MakeDummyDataOperation()
             makeDummyDataOperation.successBlock = {[unowned self] _ in
