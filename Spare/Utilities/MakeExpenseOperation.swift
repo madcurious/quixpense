@@ -42,9 +42,9 @@ public class MakeExpenseOperation: MDOperation<Expense> {
     
     public override func makeResult(from source: Any?) throws -> Expense {
         let newExpense = Expense(context: self.context)
-        newExpense.dateCreated = Date() as NSDate
+        newExpense.dateCreated = Date()
         newExpense.amount = self.amount
-        newExpense.dateSpent = self.dateSpent as NSDate
+        newExpense.dateSpent = self.dateSpent
         
         let category = try self.makeCategory()
         newExpense.category = category
@@ -64,7 +64,6 @@ public class MakeExpenseOperation: MDOperation<Expense> {
         for tag in tags {
             let dayTagGroup = try self.makeGroup(with: tag) as DayTagGroup
             newExpense.addToDayTagGroups(dayTagGroup)
-            //            newExpense.addToDayTagGroups(NSSet(objects: self.context.object(with: dayTagGroup.objectID)))
             
             let weekTagGroup = try self.makeGroup(with: tag) as WeekTagGroup
             newExpense.addToWeekTagGroups(weekTagGroup)
@@ -125,15 +124,7 @@ public class MakeExpenseOperation: MDOperation<Expense> {
             existingGroup.setValue(runningTotal, forKey: "total")
             return existingGroup
         } else {
-            // Create an instance of the group managed object.
-            // As much as this approach sucks, Core Data crashes if we instantiate
-            // a generic NSManagedObject instead and provide the entity name.
-            let newGroup: T = {[unowned self] in
-                let entityDescription = NSEntityDescription.entity(forEntityName: type.entityName, in: self.context)!
-                //                return NSManagedObject(entity: entityDescription, insertInto: self.context)
-                return T(entity: entityDescription, insertInto: self.context)
-                }()
-            
+            let newGroup = T(context: self.context)
             newGroup.setValue(sectionIdentifier, forKey: "sectionIdentifier")
             newGroup.setValue(self.amount, forKey: "total")
             newGroup.setValue(classifier, forKey: "classifier")
@@ -141,54 +132,6 @@ public class MakeExpenseOperation: MDOperation<Expense> {
             return newGroup
         }
     }
-    
-//    func makeGroup(type: ClassifierGroup, classifier: NSManagedObject) throws -> NSManagedObject {
-//        let sectionIdentifier = self.makeSectionIdentifier(for: type)
-//
-//        let groupFetch = NSFetchRequest<NSFetchRequestResult>(entityName: type.entityName)
-//        groupFetch.predicate = NSPredicate(format: "%K == %@ AND %K == %@",
-//                                           "sectionIdentifier", sectionIdentifier,
-//                                           "classifier", classifier
-//        )
-//
-//        if let existingGroup = try self.context.fetch(groupFetch).first as? NSManagedObject {
-//            var runningTotal = existingGroup.value(forKey: "total") as! NSDecimalNumber
-//            runningTotal += self.amount
-//            existingGroup.setValue(runningTotal, forKey: "total")
-//            return existingGroup
-//        } else {
-//            // Create an instance of the group managed object.
-//            // As much as this approach sucks, Core Data crashes if we instantiate
-//            // a generic NSManagedObject instead and provide the entity name.
-//            let newGroup: NSManagedObject = {[unowned self] in
-//                let entityDescription = NSEntityDescription.entity(forEntityName: type.entityName, in: self.context)!
-////                return NSManagedObject(entity: entityDescription, insertInto: self.context)
-//
-//                switch type {
-//                case .dayCategoryGroup:
-//                    return DayCategoryGroup(entity: entityDescription, insertInto: self.context)
-//                case .dayTagGroup:
-//                    return DayTagGroup(entity: entityDescription, insertInto: self.context)
-//                case .weekCategoryGroup:
-//                    return WeekCategoryGroup(entity: entityDescription, insertInto: self.context)
-//                case .weekTagGroup:
-//                    return WeekTagGroup(entity: entityDescription, insertInto: self.context)
-//                case .monthCategoryGroup:
-//                    return MonthCategoryGroup(entity: entityDescription, insertInto: self.context)
-//                case .monthTagGroup:
-//                    return MonthTagGroup(entity: entityDescription, insertInto: self.context)
-//                default:
-//                    fatalError("\(#function) - Attempted to make instance of invalid entityName: \(type)")
-//                }
-//            }()
-//
-//            newGroup.setValue(sectionIdentifier, forKey: "sectionIdentifier")
-//            newGroup.setValue(self.amount, forKey: "total")
-//            newGroup.setValue(classifier, forKey: "classifier")
-//
-//            return newGroup
-//        }
-//    }
         
     func makeSectionIdentifier(for type: ClassifierGroup) -> String {
         let startDate: Date
