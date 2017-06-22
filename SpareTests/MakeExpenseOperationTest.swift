@@ -8,8 +8,9 @@
 
 import XCTest
 @testable import Spare
+import CoreData
 
-let kTimeOut = 10.0
+let kTimeOut = 600.0
 
 class MakeExpenseOperationTest: XCTestCase {
     
@@ -20,14 +21,23 @@ class MakeExpenseOperationTest: XCTestCase {
         super.setUp()
         let expectation = self.expectation(description: #function)
         
-        let op = InitializeCoreDataStackOperation(inMemory: true)
-        op.successBlock = {[unowned self] in
-            self.coreDataStack = CoreDataStack(persistentContainer: $0)
-        }
-        op.completionBlock = {
+//        let op = InitializeCoreDataStackOperation(inMemory: true)
+//        op.successBlock = {[unowned self] in
+//            self.coreDataStack = CoreDataStack(persistentContainer: $0)
+//        }
+//        op.completionBlock = {
+//            expectation.fulfill()
+//        }
+//        queue.addOperation(op)
+        
+        let desc = NSPersistentStoreDescription()
+        desc.type = NSInMemoryStoreType
+        let container = NSPersistentContainer(name: "Spare")
+        container.persistentStoreDescriptions = [desc]
+        container.loadPersistentStores { [unowned self] (_, _) in
+            self.coreDataStack = CoreDataStack(persistentContainer: container)
             expectation.fulfill()
         }
-        queue.addOperation(op)
         
         self.waitForExpectations(timeout: kTimeOut, handler: nil)
     }

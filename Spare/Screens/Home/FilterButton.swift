@@ -11,9 +11,15 @@ import Mold
 
 class FilterButton: MDButton, Themeable {
     
+    @IBOutlet weak var sizerView: UIView!
+    @IBOutlet weak var sizerViewWidth: NSLayoutConstraint!
+    
+    @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var roundedRectView: UIView!
     @IBOutlet weak var filterLabel: UILabel!
     @IBOutlet weak var arrowImageView: UIImageView!
+    
+    @IBOutlet weak var roundedRectViewWidth: NSLayoutConstraint!
     
     var filter = Global.filter {
         didSet {
@@ -26,8 +32,10 @@ class FilterButton: MDButton, Themeable {
         super.awakeFromNib()
         
         self.backgroundColor = .clear
+        self.sizerView.backgroundColor = .clear
         self.clipsToBounds = true
         
+        self.sizerView.isUserInteractionEnabled = false
         self.roundedRectView.isUserInteractionEnabled = false
         self.filterLabel.isUserInteractionEnabled = false
         self.arrowImageView.isUserInteractionEnabled = false
@@ -45,19 +53,33 @@ class FilterButton: MDButton, Themeable {
         self.addTarget(self, action: #selector(handleTapOnSelf), for: .touchUpInside)
     }
     
-    override func sizeThatFits(_ size: CGSize) -> CGSize {
-        return CGSize(width: self.filterLabel.sizeThatFits(size).width + self.arrowImageView.sizeThatFits(size).width, height: 44)
-    }
-    
     func applyTheme() {
         self.roundedRectView.backgroundColor = Global.theme.color(for: .filterButtonBackground)
         self.filterLabel.textColor = Global.theme.color(for: .filterButtonContent)
         self.arrowImageView.tintColor = Global.theme.color(for: .filterButtonContent)
     }
     
+//    override func sizeThatFits(_ size: CGSize) -> CGSize {
+//        return CGSize(width: self.tappableWidth(), height: size.height)
+//    }
+    
     override func layoutSubviews() {
+        self.sizerViewWidth.constant = self.tappableWidth()
+        
         super.layoutSubviews()
+        
+        self.roundedRectViewWidth.constant = self.roundedRectWidth()
         self.roundedRectView.layer.cornerRadius = self.roundedRectView.bounds.size.height / 2
+    }
+    
+    func roundedRectWidth() -> CGFloat {
+        return self.filterLabel.sizeThatFits(.max).width +
+        self.arrowImageView.bounds.size.width * 2 +
+        4 * 2
+    }
+    
+    func tappableWidth() -> CGFloat {
+        return self.roundedRectWidth() + (30 * 2)
     }
     
 }
