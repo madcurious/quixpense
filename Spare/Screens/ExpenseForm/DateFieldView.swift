@@ -13,15 +13,15 @@ class DateFieldView: UIView, Themeable {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var fieldStackView: UIStackView!
     
-    @IBOutlet weak var dayStackView: UIStackView!
+    @IBOutlet weak var dayContainer: UIView!
     @IBOutlet weak var dayTextField: UITextField!
     @IBOutlet weak var dayLabel: UILabel!
     
-    @IBOutlet weak var monthStackView: UIStackView!
+    @IBOutlet weak var monthContainer: UIView!
     @IBOutlet weak var monthTextField: UITextField!
     @IBOutlet weak var monthLabel: UILabel!
     
-    @IBOutlet weak var yearStackView: UIStackView!
+    @IBOutlet weak var yearContainer: UIView!
     @IBOutlet weak var yearTextField: UITextField!
     @IBOutlet weak var yearLabel: UILabel!
     
@@ -51,6 +51,18 @@ class DateFieldView: UIView, Themeable {
             textField.textColor = Global.theme.color(for: .regularText)
             textField.textAlignment = .center
         }
+        self.dayTextField.attributedPlaceholder = NSAttributedString(
+            string: "31",
+            font: Global.theme.font(for: .regularText),
+            textColor: Global.theme.color(for: .placeholder))
+        self.monthTextField.attributedPlaceholder = NSAttributedString(
+            string: "12",
+            font: Global.theme.font(for: .regularText),
+            textColor: Global.theme.color(for: .placeholder))
+        self.yearTextField.attributedPlaceholder = NSAttributedString(
+            string: "1990",
+            font: Global.theme.font(for: .regularText),
+            textColor: Global.theme.color(for: .placeholder))
         
         for slashLabel in self.slashLabels {
             slashLabel.font = Global.theme.font(for: .regularText)
@@ -68,9 +80,9 @@ class DateFieldView: UIView, Themeable {
         let convertedPoint = self.convert(point, to: self.fieldStackView)
         
         switch convertedPoint {
-        case _ where self.yearStackView.frame.contains(convertedPoint):
+        case _ where self.yearContainer.frame.contains(convertedPoint):
             return self.yearTextField
-        case _ where self.monthStackView.frame.contains(convertedPoint):
+        case _ where self.monthContainer.frame.contains(convertedPoint):
             return self.monthTextField
         case _ where self.frame.contains(point):
             return self.dayTextField

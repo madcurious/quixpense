@@ -12,6 +12,7 @@
 		2603F8C31CCA45FF007F311F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2603F8C21CCA45FF007F311F /* LaunchScreen.storyboard */; };
 		261BB0161EFD0469006E0DC3 /* DateFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 261BB0151EFD0469006E0DC3 /* DateFieldView.xib */; };
 		261BB0181EFD04BF006E0DC3 /* DateFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261BB0171EFD04BF006E0DC3 /* DateFieldView.swift */; };
+		261BB01A1EFD1751006E0DC3 /* TimestampFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261BB0191EFD1751006E0DC3 /* TimestampFormatter.swift */; };
 		261EB86318DDB630009DDF78 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86218DDB630009DDF78 /* Foundation.framework */; };
 		261EB86518DDB630009DDF78 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86418DDB630009DDF78 /* CoreGraphics.framework */; };
 		261EB86718DDB631009DDF78 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86618DDB631009DDF78 /* UIKit.framework */; };
@@ -129,6 +130,7 @@
 		2603F8C61CCA476E007F311F /* Spare_v2.0.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Spare_v2.0.xcdatamodel; sourceTree = "<group>"; };
 		261BB0151EFD0469006E0DC3 /* DateFieldView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DateFieldView.xib; sourceTree = "<group>"; };
 		261BB0171EFD04BF006E0DC3 /* DateFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFieldView.swift; sourceTree = "<group>"; };
+		261BB0191EFD1751006E0DC3 /* TimestampFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimestampFormatter.swift; sourceTree = "<group>"; };
 		261EB85F18DDB630009DDF78 /* Spare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		261EB86218DDB630009DDF78 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		261EB86418DDB630009DDF78 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -432,6 +434,7 @@
 				26DF098D1EF4344100D26D14 /* ExpenseGroup.swift */,
 				26DF09991EF7950F00D26D14 /* MakeExpenseOperation.swift */,
 				26A814991EFA83FD002FE138 /* ClassifierGroup.swift */,
+				261BB0191EFD1751006E0DC3 /* TimestampFormatter.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -715,6 +718,7 @@
 				2657332B1EDD507C00AD1AB9 /* FilterPopupViewController.swift in Sources */,
 				26DF09A41EF800D900D26D14 /* TwoLabelTableViewCell.swift in Sources */,
 				266B5FFC1EFCEBE800063803 /* ExpenseFormView.swift in Sources */,
+				261BB01A1EFD1751006E0DC3 /* TimestampFormatter.swift in Sources */,
 				266B5FFA1EFCEAE800063803 /* AddExpenseViewController.swift in Sources */,
 				26CB900B1EE5345D009F7099 /* Expense+Extension.swift in Sources */,
 				26A30C8E1E5232240047307D /* Global.swift in Sources */,
