@@ -23,9 +23,9 @@
                             <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ati-js-F9A">
-                                    <rect key="frame" x="7" y="7" width="30" height="30"/>
+                                    <rect key="frame" x="10" y="10" width="24" height="24"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="30" id="1tE-Uf-oth"/>
+                                        <constraint firstAttribute="height" constant="24" id="1tE-Uf-oth"/>
                                         <constraint firstAttribute="width" secondItem="ati-js-F9A" secondAttribute="height" id="ouT-Io-Z5I"/>
                                     </constraints>
                                 </imageView>
@@ -68,7 +68,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="iconImageView" destination="ati-js-F9A" id="iKx-oM-VVa"/>
+                <outlet property="imageView" destination="ati-js-F9A" id="0ms-bh-Q9E"/>
                 <outlet property="textField" destination="O9y-L8-Uzm" id="g3P-PC-HS6"/>
             </connections>
             <point key="canvasLocation" x="-103" y="-212"/>

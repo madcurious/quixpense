@@ -10,7 +10,7 @@ import UIKit
 
 class AmountFieldView: UIView, Themeable {
     
-    @IBOutlet weak var iconImageView: UIImageView!
+    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var textField: UITextField!
     
     let currencyLabel = UILabel()
@@ -19,6 +19,8 @@ class AmountFieldView: UIView, Themeable {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.applyTheme()
+        
+        self.imageView.image = UIImage.templateNamed("amountIcon")
         
         self.currencyLabel.text = AmountFormatter.currencySymbol()
         self.currencyLabel.textAlignment = .left
@@ -30,6 +32,8 @@ class AmountFieldView: UIView, Themeable {
     }
     
     func applyTheme() {
+        self.imageView.tintColor = Global.theme.color(for: .fieldIcon)
+        
         self.currencyLabel.textColor = Global.theme.color(for: .placeholder)
         self.currencyLabel.font = Global.theme.font(for: .regularText)
         
@@ -44,6 +48,13 @@ class AmountFieldView: UIView, Themeable {
     override func layoutSubviews() {
         super.layoutSubviews()
         self.currencyLabel.frame = CGRect(x: 0, y: 0, width: 20, height: self.currencyLabel.intrinsicContentSize.height)
+    }
+    
+    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        if self.frame.contains(point) {
+            return self.textField
+        }
+        return super.hitTest(point, with: event)
     }
     
 }

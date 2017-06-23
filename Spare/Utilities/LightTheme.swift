@@ -12,30 +12,32 @@ struct LightTheme: Theme {
     
     func color(for element: UIElement) -> UIColor {
         switch element {
-        case .barBackground,
-             .sectionTotalHeaderViewText,
-             .filterButtonContent,
-             .mainBackground:
-            return UIColor.white
-            
         case .barTint,
              .controlTint,
              .regularText:
             return UIColor.black
             
+        case .sectionTotalHeaderViewBackground,
+             .filterButtonBackground:
+            return UIColor.hex(0x666666)
+            
+        case .groupedTabledViewSectionHeader,
+             .promptLabel:
+            return UIColor.hex(0x999999)
+            
         case .disclosureIndicator,
-             .placeholder,
              .tableViewSeparator:
             return UIColor.hex(0xdddddd)
             
         case .fieldIcon,
-             .groupedTabledViewSectionHeader,
-             .promptLabel:
-            return UIColor.hex(0x999999)
+             .placeholder:
+            return UIColor.hex(0xbbbbbb)
             
-        case .sectionTotalHeaderViewBackground,
-             .filterButtonBackground:
-            return UIColor.hex(0x666666)
+        case .barBackground,
+             .sectionTotalHeaderViewText,
+             .filterButtonContent,
+             .mainBackground:
+            return UIColor.white
         }
     }
     
