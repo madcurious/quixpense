@@ -129,6 +129,15 @@ class HomeViewController: UIViewController {
         }
         return (nil, nil)
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+    
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.willTransition(to: newCollection, with: coordinator)
+        self.filterButton.setNeedsUpdateConstraints()
+    }
 
 }
 

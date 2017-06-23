@@ -7,6 +7,10 @@
 //
 
 import XCTest
+@testable import Spare
+import CoreData
+
+let kTimeOut = 600.0
 
 class MakeExpenseOperationTest: XCTestCase {
     
@@ -17,16 +21,25 @@ class MakeExpenseOperationTest: XCTestCase {
         super.setUp()
         let expectation = self.expectation(description: #function)
         
-        let op = InitializeCoreDataStackOperation(dataModelName: "Spare", inMemory: true)
-        op.successBlock = {[unowned self] in
-            self.coreDataStack = CoreDataStack(persistentContainer: $0)
-        }
-        op.completionBlock = {
+//        let op = InitializeCoreDataStackOperation(inMemory: true)
+//        op.successBlock = {[unowned self] in
+//            self.coreDataStack = CoreDataStack(persistentContainer: $0)
+//        }
+//        op.completionBlock = {
+//            expectation.fulfill()
+//        }
+//        queue.addOperation(op)
+        
+        let desc = NSPersistentStoreDescription()
+        desc.type = NSInMemoryStoreType
+        let container = NSPersistentContainer(name: "Spare")
+        container.persistentStoreDescriptions = [desc]
+        container.loadPersistentStores { [unowned self] (_, _) in
+            self.coreDataStack = CoreDataStack(persistentContainer: container)
             expectation.fulfill()
         }
-        queue.addOperation(op)
         
-        self.waitForExpectations(timeout: TimeInterval.greatestFiniteMagnitude, handler: nil)
+        self.waitForExpectations(timeout: kTimeOut, handler: nil)
     }
     
     override func tearDown() {
@@ -51,7 +64,7 @@ class MakeExpenseOperationTest: XCTestCase {
         }
         op.start()
         
-        self.waitForExpectations(timeout: TimeInterval.greatestFiniteMagnitude, handler: nil)
+        self.waitForExpectations(timeout: kTimeOut, handler: nil)
     }
     
 }

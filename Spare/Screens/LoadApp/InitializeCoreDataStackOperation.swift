@@ -9,18 +9,16 @@
 import Mold
 import CoreData
 
-class InitializeCoreDataStackOperation: MDAsynchronousOperation<NSPersistentContainer> {
+public class InitializeCoreDataStackOperation: MDAsynchronousOperation<NSPersistentContainer> {
     
-    let dataModelName: String
-    let inMemory: Bool
+    public let inMemory: Bool
     
-    init(dataModelName: String, inMemory: Bool) {
-        self.dataModelName = dataModelName
+    public init(inMemory: Bool) {
         self.inMemory = inMemory
         super.init()
     }
     
-    override func main() {
+    public override func main() {
         self.runStartBlock()
         
         if self.isCancelled {
@@ -28,14 +26,14 @@ class InitializeCoreDataStackOperation: MDAsynchronousOperation<NSPersistentCont
             return
         }
         
-        let persistentContainer = NSPersistentContainer(name: self.dataModelName)
+        let persistentContainer = NSPersistentContainer(name: "Spare")
         
         if self.inMemory,
             let description = persistentContainer.persistentStoreDescriptions.first {
             description.type = NSInMemoryStoreType
         }
         
-        persistentContainer.loadPersistentStores(completionHandler: {[unowned self, persistentContainer] (persistentStoreDescriptions, error) in
+        persistentContainer.loadPersistentStores() { [unowned self] (_, error) in
             defer {
                 self.finish()
             }
@@ -47,11 +45,13 @@ class InitializeCoreDataStackOperation: MDAsynchronousOperation<NSPersistentCont
             if let error = error {
                 self.error = error
                 self.runFailureBlock(error: error)
+                self.finish()
             } else {
                 self.result = persistentContainer
                 self.runSuccessBlock(result: persistentContainer)
+                self.finish()
             }
-        })
+        }
     }
     
 }

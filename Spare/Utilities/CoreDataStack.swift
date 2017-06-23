@@ -9,14 +9,14 @@
 import Foundation
 import CoreData
 
-class CoreDataStack: NSObject {
+public class CoreDataStack: NSObject {
     
-    let CoreDataStackDidFinishMergingChanges = Notification.Name.init("CoreDataStackDidFinishMergingChanges")
+    public let CoreDataStackDidFinishMergingChanges = Notification.Name.init("CoreDataStackDidFinishMergingChanges")
     
-    let persistentContainer: NSPersistentContainer
-    let viewContext: NSManagedObjectContext
+    public let persistentContainer: NSPersistentContainer
+    public let viewContext: NSManagedObjectContext
     
-    init(persistentContainer: NSPersistentContainer) {
+    public init(persistentContainer: NSPersistentContainer) {
         self.persistentContainer = persistentContainer
         
         self.viewContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
@@ -27,11 +27,11 @@ class CoreDataStack: NSObject {
         NotificationCenter.default.addObserver(self, selector: #selector(handleSaveNotification(notification:)), name: Notification.Name.NSManagedObjectContextDidSave, object: nil)
     }
     
-    func newBackgroundContext() -> NSManagedObjectContext {
+    public func newBackgroundContext() -> NSManagedObjectContext {
         return self.persistentContainer.newBackgroundContext()
     }
     
-    @objc func handleSaveNotification(notification: Notification) {
+    @objc public func handleSaveNotification(notification: Notification) {
         guard notification.name == Notification.Name.NSManagedObjectContextDidSave,
             let savedContext = notification.object as? NSManagedObjectContext,
             savedContext.parent == nil

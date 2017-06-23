@@ -24,6 +24,10 @@ class BaseNavBarVC: UINavigationController, Themeable {
             NSAttributedStringKey.font.rawValue : Global.theme.font(for: .navBarTitle),
             NSAttributedStringKey.foregroundColor.rawValue : Global.theme.color(for: .barTint)
         ]
+        
+        if #available(iOS 11, *) {
+            self.navigationBar.prefersLargeTitles = false
+        }
     }
     
 }

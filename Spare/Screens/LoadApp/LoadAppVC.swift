@@ -22,10 +22,11 @@ class LoadAppVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let initializeOperation = InitializeCoreDataStackOperation(dataModelName: "Spare", inMemory: false)
+        let initializeOperation = InitializeCoreDataStackOperation(inMemory: false)
         initializeOperation.successBlock = { result in
             let coreDataStack = CoreDataStack(persistentContainer: result)
             Global.coreDataStack = coreDataStack
+            
             let makeDummyDataOperation = MakeDummyDataOperation()
             makeDummyDataOperation.successBlock = {[unowned self] _ in
                 self.navigationController?.pushViewController(MainTabBarVC(), animated: true)
@@ -33,6 +34,7 @@ class LoadAppVC: UIViewController {
             makeDummyDataOperation.presentErrorDialogOnFailure(from: self)
             self.operationQueue.addOperation(makeDummyDataOperation)
         }
+        initializeOperation.presentErrorDialogOnFailure(from: self)
         
         self.operationQueue.addOperation(initializeOperation)
     }
