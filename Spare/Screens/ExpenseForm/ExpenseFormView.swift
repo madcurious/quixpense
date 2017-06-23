@@ -17,6 +17,7 @@ class ExpenseFormView: UIView {
     let amountFieldView = AmountFieldView.instantiateFromNib()
     
     @IBOutlet weak var dateFieldContainer: UIView!
+    let dateFieldView = DateFieldView.instantiateFromNib()
     
     @IBOutlet weak var categoryFieldContainer: UIView!
     @IBOutlet weak var tagFieldContainer: UIView!
@@ -29,6 +30,7 @@ class ExpenseFormView: UIView {
         self.paintSeparatorViews()
         
         self.amountFieldContainer.addSubviewsAndFill(self.amountFieldView)
+        self.dateFieldContainer.addSubviewsAndFill(self.dateFieldView)
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTapOnView))
         tapGestureRecognizer.cancelsTouchesInView = false

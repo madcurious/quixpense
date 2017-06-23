@@ -43,6 +43,9 @@ struct LightTheme: Theme {
     
     func font(for element: StringElement) -> UIFont {
         switch element {
+        case .dateTextFieldLabel:
+            return NotoSansUI.regular(8)
+            
         case .cellSecondaryText,
              .sectionTotalHeaderView,
              .filterButtonText,

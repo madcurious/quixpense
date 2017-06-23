@@ -42,6 +42,7 @@ enum UIElement {
 enum StringElement {
     case
     cellSecondaryText,
+    dateTextFieldLabel,
     sectionTotalHeaderView,
     filterButtonText,
     infoLabelMainText,
