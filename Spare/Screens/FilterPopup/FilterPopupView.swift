@@ -62,8 +62,8 @@ class FilterPopupView: UIView, Themeable {
             NSAttributedStringKey.font : Global.theme.font(for: .regularText)
             ], for: .normal)
         
-        self.periodizationLabel.textColor = Global.theme.color(for: .fieldName)
-        self.groupingLabel.textColor = Global.theme.color(for: .fieldName)
+        self.periodizationLabel.textColor = Global.theme.color(for: .groupedTabledViewSectionHeader)
+        self.groupingLabel.textColor = Global.theme.color(for: .groupedTabledViewSectionHeader)
         
         self.periodizationControl.tintColor = Global.theme.color(for: .controlTint)
         self.groupingControl.tintColor = Global.theme.color(for: .controlTint)

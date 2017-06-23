@@ -23,22 +23,20 @@ enum UIElement {
     
     fieldIcon,
     
-    /// For labels that name a field or a setting in a grouped table view.
-    fieldName,
+    groupedTabledViewSectionHeader,
     
     filterButtonBackground,
     filterButtonContent,
     
     mainBackground,
-    pickerFieldValue,
-    pickerTextFieldBackground,
+    
+    placeholder,
+    
     promptLabel,
     
     regularText,
     
-    tableViewSeparator,
-    textFieldPlaceholder,
-    textFieldValue
+    tableViewSeparator
 }
 
 enum StringElement {

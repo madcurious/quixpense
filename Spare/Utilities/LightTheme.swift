@@ -15,29 +15,26 @@ struct LightTheme: Theme {
         case .barBackground,
              .sectionTotalHeaderViewText,
              .filterButtonContent,
-             .mainBackground,
-             .pickerFieldValue:
+             .mainBackground:
             return UIColor.white
             
         case .barTint,
              .controlTint,
-             .regularText,
-             .textFieldValue:
+             .regularText:
             return UIColor.black
             
         case .disclosureIndicator,
-             .tableViewSeparator,
-             .textFieldPlaceholder:
+             .placeholder,
+             .tableViewSeparator:
             return UIColor.hex(0xdddddd)
             
         case .fieldIcon,
-             .fieldName,
+             .groupedTabledViewSectionHeader,
              .promptLabel:
             return UIColor.hex(0x999999)
             
         case .sectionTotalHeaderViewBackground,
-             .filterButtonBackground,
-             .pickerTextFieldBackground:
+             .filterButtonBackground:
             return UIColor.hex(0x666666)
         }
     }
