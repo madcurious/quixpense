@@ -29,6 +29,8 @@ class DateFieldView: UIView, Themeable {
     @IBOutlet var textFieldLabels: [UILabel]!
     @IBOutlet var slashLabels: [UILabel]!
     
+    let invalidCharacterSet = CharacterSet.wholeNumberCharacterSet().inverted
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.applyTheme()
@@ -52,6 +54,8 @@ class DateFieldView: UIView, Themeable {
             textField.dateTextFieldDelegate = self
             textField.keyboardType = .numberPad
         }
+        
+        self.setDate(Date())
     }
     
     func applyTheme() {
@@ -111,23 +115,28 @@ class DateFieldView: UIView, Themeable {
         }
         
         switch textField {
-        case self.dayTextField:
-            if text.isEmpty {
-                self.monthTextField.becomeFirstResponder()
-            }
+        case self.yearTextField where text.characters.count == 4:
+            self.monthTextField.becomeFirstResponder()
             
-        case self.monthTextField:
-            if text.isEmpty {
-                self.yearTextField.becomeFirstResponder()
-            } else if text.characters.count == 2 {
-                self.dayTextField.becomeFirstResponder()
-            }
+        case self.monthTextField where text.characters.count == 2:
+            self.dayTextField.becomeFirstResponder()
             
-        default: // yearTextField
-            if text.characters.count == 4 {
-                self.monthTextField.becomeFirstResponder()
-            }
+        default:
+            break
         }
+    }
+    
+    // Convenience function for setting the value of all three text fields based on a date.
+    func setDate(_ date: Date) {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy"
+        self.yearTextField.text = formatter.string(from: date)
+        
+        formatter.dateFormat = "MM"
+        self.monthTextField.text = formatter.string(from: date)
+        
+        formatter.dateFormat = "dd"
+        self.dayTextField.text = formatter.string(from: date)
     }
     
     deinit {
@@ -139,33 +148,25 @@ class DateFieldView: UIView, Themeable {
 extension DateFieldView: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard string.rangeOfCharacter(from: self.invalidCharacterSet) == nil
+            else {
+                return false
+        }
+        
         guard let currentText = textField.text as NSString?
             else {
                 return true
         }
-        let resultingString = currentText.replacingCharacters(in: range, with: string)
+        let resultingText = currentText.replacingCharacters(in: range, with: string)
         
         switch textField {
-            
-            // If the text bleeds over the year field, move the cursor to the month field.
         case self.yearTextField:
-            if resultingString.characters.count > 4 {
-                self.monthTextField.text = string
-                self.monthTextField.becomeFirstResponder()
+            if resultingText.characters.count > 4 {
                 return false
             }
             
-            // If the text bleeds over the month field, move the cursor to the month field.
-        case self.monthTextField:
-            if resultingString.characters.count > 2 {
-                self.dayTextField.text = string
-                self.dayTextField.becomeFirstResponder()
-                return false
-            }
-            
-        // Don't allow the self.dayTextField to hold more than 2 characters.
         default:
-            if resultingString.characters.count > 2 {
+            if resultingText.characters.count > 2 {
                 return false
             }
         }
@@ -178,15 +179,15 @@ extension DateFieldView: UITextFieldDelegate {
 extension DateFieldView: DateTextFieldDelegate {
     
     func dateTextFieldDidPressBackspace(_ textField: DateTextField) {
-        guard let text = textField.text,
-            text.isEmpty
+        guard let text = textField.text
             else {
                 return
         }
+        
         switch textField {
-        case self.dayTextField:
+        case self.dayTextField where text.isEmpty:
             self.monthTextField.becomeFirstResponder()
-        case self.monthTextField:
+        case self.monthTextField where text.isEmpty:
             self.yearTextField.becomeFirstResponder()
         default:
             break
