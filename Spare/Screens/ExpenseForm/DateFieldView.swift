@@ -14,18 +14,18 @@ class DateFieldView: UIView, Themeable {
     @IBOutlet weak var fieldStackView: UIStackView!
     
     @IBOutlet weak var dayContainer: UIView!
-    @IBOutlet weak var dayTextField: UITextField!
+    @IBOutlet weak var dayTextField: DateTextField!
     @IBOutlet weak var dayLabel: UILabel!
     
     @IBOutlet weak var monthContainer: UIView!
-    @IBOutlet weak var monthTextField: UITextField!
+    @IBOutlet weak var monthTextField: DateTextField!
     @IBOutlet weak var monthLabel: UILabel!
     
     @IBOutlet weak var yearContainer: UIView!
-    @IBOutlet weak var yearTextField: UITextField!
+    @IBOutlet weak var yearTextField: DateTextField!
     @IBOutlet weak var yearLabel: UILabel!
     
-    @IBOutlet var textFields: [UITextField]!
+    @IBOutlet var textFields: [DateTextField]!
     @IBOutlet var textFieldLabels: [UILabel]!
     @IBOutlet var slashLabels: [UILabel]!
     
@@ -40,6 +40,17 @@ class DateFieldView: UIView, Themeable {
         self.yearLabel.text = "YYYY"
         for slashLabel in self.slashLabels {
             slashLabel.text = "/"
+        }
+        
+        for textField in self.textFields {
+            NotificationCenter.default.addObserver(
+                self,
+                selector: #selector(handleTextDidChangeNotification(_:)),
+                name: Notification.Name.UITextFieldTextDidChange,
+                object: textField)
+            textField.delegate = self
+            textField.dateTextFieldDelegate = self
+            textField.keyboardType = .numberPad
         }
     }
     
@@ -77,8 +88,9 @@ class DateFieldView: UIView, Themeable {
     }
     
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        // Tapping on the year and the month stack views activate their corresponding text fields.
+        // Tapping on anywhere else activates the day text field.
         let convertedPoint = self.convert(point, to: self.fieldStackView)
-        
         switch convertedPoint {
         case _ where self.yearContainer.frame.contains(convertedPoint):
             return self.yearTextField
@@ -91,4 +103,109 @@ class DateFieldView: UIView, Themeable {
         }
     }
     
+    @objc func handleTextDidChangeNotification(_ notification: Notification) {
+        guard let textField = notification.object as? UITextField,
+            let text = textField.text
+            else {
+                return
+        }
+        
+        switch textField {
+        case self.dayTextField:
+            if text.isEmpty {
+                self.monthTextField.becomeFirstResponder()
+            }
+            
+        case self.monthTextField:
+            if text.isEmpty {
+                self.yearTextField.becomeFirstResponder()
+            } else if text.characters.count == 2 {
+                self.dayTextField.becomeFirstResponder()
+            }
+            
+        default: // yearTextField
+            if text.characters.count == 4 {
+                self.monthTextField.becomeFirstResponder()
+            }
+        }
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+}
+
+extension DateFieldView: UITextFieldDelegate {
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let currentText = textField.text as NSString?
+            else {
+                return true
+        }
+        let resultingString = currentText.replacingCharacters(in: range, with: string)
+        
+        switch textField {
+            
+            // If the text bleeds over the year field, move the cursor to the month field.
+        case self.yearTextField:
+            if resultingString.characters.count > 4 {
+                self.monthTextField.text = string
+                self.monthTextField.becomeFirstResponder()
+                return false
+            }
+            
+            // If the text bleeds over the month field, move the cursor to the month field.
+        case self.monthTextField:
+            if resultingString.characters.count > 2 {
+                self.dayTextField.text = string
+                self.dayTextField.becomeFirstResponder()
+                return false
+            }
+            
+        // Don't allow the self.dayTextField to hold more than 2 characters.
+        default:
+            if resultingString.characters.count > 2 {
+                return false
+            }
+        }
+        
+        return true
+    }
+    
+}
+
+extension DateFieldView: DateTextFieldDelegate {
+    
+    func dateTextFieldDidPressBackspace(_ textField: DateTextField) {
+        guard let text = textField.text,
+            text.isEmpty
+            else {
+                return
+        }
+        switch textField {
+        case self.dayTextField:
+            self.monthTextField.becomeFirstResponder()
+        case self.monthTextField:
+            self.yearTextField.becomeFirstResponder()
+        default:
+            break
+        }
+    }
+    
+}
+
+class DateTextField: UITextField {
+    
+    var dateTextFieldDelegate: DateTextFieldDelegate?
+    
+    override func deleteBackward() {
+        super.deleteBackward()
+        self.dateTextFieldDelegate?.dateTextFieldDidPressBackspace(self)
+    }
+    
+}
+
+protocol DateTextFieldDelegate {
+    func dateTextFieldDidPressBackspace(_ textField: DateTextField)
 }
