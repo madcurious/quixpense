@@ -81,7 +81,7 @@ class DateFieldView: UIView, Themeable {
         
         for slashLabel in self.slashLabels {
             slashLabel.font = Global.theme.font(for: .regularText)
-            slashLabel.textColor = Global.theme.color(for: .regularText)
+            slashLabel.textColor = Global.theme.color(for: .placeholder)
         }
         
         for textFieldLabel in self.textFieldLabels {
