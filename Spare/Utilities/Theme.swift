@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum UIElement {
+enum ColoredElement {
     case
     barBackground,
     barTint,
@@ -23,7 +23,7 @@ enum UIElement {
     
     fieldIcon,
     
-    groupedTabledViewSectionHeader,
+    groupedTableViewSectionHeader,
     
     filterButtonBackground,
     filterButtonContent,
@@ -45,16 +45,16 @@ enum StringElement {
     dateTextFieldLabel,
     sectionTotalHeaderView,
     filterButtonText,
-    infoLabelMainText,
-    infoLabelSecondaryText,
+    loadableViewInfoLabelMainText,
+    loadableViewInfoLabelSecondaryText,
     navBarTitle,
-    optionLabel,
+    groupedTableViewSectionHeader,
     regularText
 }
 
 protocol Theme {
     
-    func color(for element: UIElement) -> UIColor
+    func color(for element: ColoredElement) -> UIColor
     func font(for element: StringElement) -> UIFont
     
 }

@@ -10,7 +10,7 @@ import UIKit
 
 struct LightTheme: Theme {
     
-    func color(for element: UIElement) -> UIColor {
+    func color(for element: ColoredElement) -> UIColor {
         switch element {
         case .barTint,
              .controlTint,
@@ -21,7 +21,7 @@ struct LightTheme: Theme {
              .filterButtonBackground:
             return UIColor.hex(0x666666)
             
-        case .groupedTabledViewSectionHeader,
+        case .groupedTableViewSectionHeader,
              .promptLabel:
             return UIColor.hex(0x999999)
             
@@ -49,13 +49,13 @@ struct LightTheme: Theme {
         case .cellSecondaryText,
              .sectionTotalHeaderView,
              .filterButtonText,
-             .optionLabel:
+             .groupedTableViewSectionHeader:
             return NotoSansUI.regular(14)
             
-        case .infoLabelMainText:
+        case .loadableViewInfoLabelMainText:
             return NotoSansUI.regular(24)
             
-        case .infoLabelSecondaryText:
+        case .loadableViewInfoLabelSecondaryText:
             return NotoSansUI.regular(15)
             
         case .navBarTitle:

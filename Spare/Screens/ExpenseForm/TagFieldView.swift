@@ -1,5 +1,5 @@
 //
-//  CategoryFieldView.swift
+//  TagFieldView.swift
 //  Spare
 //
 //  Created by Matt Quiros on 24/06/2017.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CategoryFieldView: UIView, Themeable {
+class TagFieldView: UIView, Themeable {
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var textField: UITextField!
@@ -17,8 +17,9 @@ class CategoryFieldView: UIView, Themeable {
         super.awakeFromNib()
         self.applyTheme()
         
-        self.imageView.image = UIImage.templateNamed("categoryIcon")
-        self.textField.autocapitalizationType = .sentences
+        self.imageView.image = UIImage.templateNamed("tagIcon")
+        
+        self.textField.autocapitalizationType = .none
     }
     
     func applyTheme() {
@@ -27,7 +28,7 @@ class CategoryFieldView: UIView, Themeable {
         self.textField.font = Global.theme.font(for: .regularText)
         self.textField.textColor = Global.theme.color(for: .regularText)
         self.textField.attributedPlaceholder = NSAttributedString(
-            string: "Category",
+            string: "Tags",
             font: Global.theme.font(for: .regularText),
             textColor: Global.theme.color(for: .placeholder))
     }

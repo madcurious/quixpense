@@ -52,8 +52,8 @@ class FilterPopupView: UIView, Themeable {
     }
     
     func applyTheme() {
-        self.periodizationLabel.font = Global.theme.font(for: .optionLabel)
-        self.groupingLabel.font = Global.theme.font(for: .optionLabel)
+        self.periodizationLabel.font = Global.theme.font(for: .groupedTableViewSectionHeader)
+        self.groupingLabel.font = Global.theme.font(for: .groupedTableViewSectionHeader)
         
         self.periodizationControl.setTitleTextAttributes([
             NSAttributedStringKey.font : Global.theme.font(for: .regularText)
@@ -62,8 +62,8 @@ class FilterPopupView: UIView, Themeable {
             NSAttributedStringKey.font : Global.theme.font(for: .regularText)
             ], for: .normal)
         
-        self.periodizationLabel.textColor = Global.theme.color(for: .groupedTabledViewSectionHeader)
-        self.groupingLabel.textColor = Global.theme.color(for: .groupedTabledViewSectionHeader)
+        self.periodizationLabel.textColor = Global.theme.color(for: .groupedTableViewSectionHeader)
+        self.groupingLabel.textColor = Global.theme.color(for: .groupedTableViewSectionHeader)
         
         self.periodizationControl.tintColor = Global.theme.color(for: .controlTint)
         self.groupingControl.tintColor = Global.theme.color(for: .controlTint)

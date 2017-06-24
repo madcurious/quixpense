@@ -27,10 +27,10 @@ class HomeViewController: UIViewController {
     lazy var noDataText: NSAttributedString = {
         return NSAttributedString(attributedStrings:
             NSAttributedString(string: "No expenses found",
-                               font: Global.theme.font(for: .infoLabelMainText),
+                               font: Global.theme.font(for: .loadableViewInfoLabelMainText),
                                textColor: Global.theme.color(for: .promptLabel)),
                                   NSAttributedString(string: "\n\nYou must go out and spend your\nmoney.",
-                                                     font: Global.theme.font(for: .infoLabelSecondaryText),
+                                                     font: Global.theme.font(for: .loadableViewInfoLabelSecondaryText),
                                                      textColor: Global.theme.color(for: .promptLabel)))
     }()
     
