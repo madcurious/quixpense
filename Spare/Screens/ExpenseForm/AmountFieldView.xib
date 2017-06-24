@@ -38,24 +38,12 @@
                                 <constraint firstAttribute="height" constant="44" id="ZVz-Na-6vG"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="63t-co-ZTX">
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="O9y-L8-Uzm">
                             <rect key="frame" x="44" y="0.0" width="321" height="44"/>
-                            <subviews>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="O9y-L8-Uzm">
-                                    <rect key="frame" x="0.0" y="0.0" width="321" height="44"/>
-                                    <nil key="textColor"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits"/>
-                                </textField>
-                            </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstAttribute="trailing" secondItem="O9y-L8-Uzm" secondAttribute="trailing" id="1VI-wP-pZ1"/>
-                                <constraint firstAttribute="bottom" secondItem="O9y-L8-Uzm" secondAttribute="bottom" id="Cvk-Ta-8TS"/>
-                                <constraint firstItem="O9y-L8-Uzm" firstAttribute="top" secondItem="63t-co-ZTX" secondAttribute="top" id="FOk-uo-Iby"/>
-                                <constraint firstItem="O9y-L8-Uzm" firstAttribute="leading" secondItem="63t-co-ZTX" secondAttribute="leading" id="yqY-95-892"/>
-                            </constraints>
-                        </view>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
                     </subviews>
                 </stackView>
             </subviews>
