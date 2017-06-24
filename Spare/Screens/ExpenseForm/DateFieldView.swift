@@ -178,16 +178,11 @@ extension DateFieldView: UITextFieldDelegate {
 
 extension DateFieldView: DateTextFieldDelegate {
     
-    func dateTextFieldDidPressBackspace(_ textField: DateTextField) {
-        guard let text = textField.text
-            else {
-                return
-        }
-        
+    func dateTextFieldDidRequestFocusTransfer(_ textField: DateTextField) {
         switch textField {
-        case self.dayTextField where text.isEmpty:
+        case self.dayTextField:
             self.monthTextField.becomeFirstResponder()
-        case self.monthTextField where text.isEmpty:
+        case self.monthTextField:
             self.yearTextField.becomeFirstResponder()
         default:
             break
@@ -201,12 +196,17 @@ class DateTextField: UITextField {
     var dateTextFieldDelegate: DateTextFieldDelegate?
     
     override func deleteBackward() {
+        // If the text field was already empty when the backspace was pressed,
+        // request for focus to be transferred to the text field on the left.
+        if let text = self.text,
+            text.isEmpty {
+            self.dateTextFieldDelegate?.dateTextFieldDidRequestFocusTransfer(self)
+        }
         super.deleteBackward()
-        self.dateTextFieldDelegate?.dateTextFieldDidPressBackspace(self)
     }
     
 }
 
 protocol DateTextFieldDelegate {
-    func dateTextFieldDidPressBackspace(_ textField: DateTextField)
+    func dateTextFieldDidRequestFocusTransfer(_ textField: DateTextField)
 }
