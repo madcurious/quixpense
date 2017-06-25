@@ -8,22 +8,29 @@
 
 import UIKit
 
-class AddExpenseViewController: UIViewController {
+class AddExpenseViewController: ExpenseFormViewController {
     
-    let expenseForm = ExpenseFormViewController()
-    
-    init() {
-        super.init(nibName: nil, bundle: nil)
-        self.title = "Add"
+    override init() {
+        super.init()
+        self.title = "ADD EXPENSE"
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.embedChildViewController(self.expenseForm, toView: self.view)
+    override func handleTapOnCancelButton() {
+        self.view.endEditing(true)
+        
+        guard self.amountText.isEmpty &&
+            self.categoryText.isEmpty &&
+            self.tagText.isEmpty
+            else {
+                self.customView.reset()
+                return
+        }
+        
+        let alertController = UIAlertController(title: "Discard changes", message: "Are you sure you want to continue?", preferredStyle: .alert)
     }
     
 }

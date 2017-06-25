@@ -14,18 +14,14 @@ class ExpenseFormView: UIView, Themeable {
     @IBOutlet var separatorViews: [UIView]!
     
     @IBOutlet weak var requiredLabel: UILabel!
-    
     @IBOutlet weak var amountFieldContainer: UIView!
     let amountFieldView = AmountFieldView.instantiateFromNib()
-    
     @IBOutlet weak var dateFieldContainer: UIView!
     let dateFieldView = DateFieldView.instantiateFromNib()
     
     @IBOutlet weak var optionalLabel: UILabel!
-    
     @IBOutlet weak var categoryFieldContainer: UIView!
     let categoryFieldView = CategoryFieldView.instantiateFromNib()
-    
     @IBOutlet weak var tagFieldContainer: UIView!
     let tagFieldView = TagFieldView.instantiateFromNib()
     
@@ -62,6 +58,13 @@ class ExpenseFormView: UIView, Themeable {
         for separatorView in self.separatorViews {
             separatorView.backgroundColor = Global.theme.color(for: .tableViewSeparator)
         }
+    }
+    
+    func reset() {
+        self.amountFieldView.textField.text = nil
+        self.dateFieldView.setToCurrentDate()
+        self.categoryFieldView.textField.text = nil
+        self.tagFieldView.textField.text = nil
     }
     
     /// Recursive function that clears the background of `superview` and its subviews.

@@ -55,7 +55,7 @@ class DateFieldView: UIView, Themeable {
             textField.keyboardType = .numberPad
         }
         
-        self.setDate(Date())
+        self.setToCurrentDate()
     }
     
     func applyTheme() {
@@ -137,6 +137,10 @@ class DateFieldView: UIView, Themeable {
         
         formatter.dateFormat = "dd"
         self.dayTextField.text = formatter.string(from: date)
+    }
+    
+    func setToCurrentDate() {
+        self.setDate(Date())
     }
     
     deinit {
