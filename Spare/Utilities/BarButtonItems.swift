@@ -37,19 +37,25 @@ final class BarButtonItems {
     }
     
     fileprivate class func makeBackButton() -> MDImageButton {
-        let backButton = MDImageButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+        let backButton = MDImageButton()
+        backButton.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        backButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
         backButton.image = UIImage.templateNamed("navBarButtonBack")
         return backButton
     }
     
     fileprivate class func makeCancelButton() -> MDImageButton {
-        let cancelButton = MDImageButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+        let cancelButton = MDImageButton()
+        cancelButton.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        cancelButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
         cancelButton.image = UIImage.templateNamed("navBarButtonCancel")
         return cancelButton
     }
     
     fileprivate class func makeDoneButton() -> MDImageButton {
-        let doneButton = MDImageButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+        let doneButton = MDImageButton()
+        doneButton.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        doneButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
         doneButton.image = UIImage.templateNamed("navBarButtonDone")
         return doneButton
     }
