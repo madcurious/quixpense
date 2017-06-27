@@ -36,7 +36,7 @@ final class BarButtonItems {
         return barButtonItem
     }
     
-    fileprivate class func makeBackButton() -> MDImageButton {
+    private class func makeBackButton() -> MDImageButton {
         let backButton = MDImageButton()
         backButton.widthAnchor.constraint(equalToConstant: 30).isActive = true
         backButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
@@ -44,7 +44,7 @@ final class BarButtonItems {
         return backButton
     }
     
-    fileprivate class func makeCancelButton() -> MDImageButton {
+    private class func makeCancelButton() -> MDImageButton {
         let cancelButton = MDImageButton()
         cancelButton.widthAnchor.constraint(equalToConstant: 30).isActive = true
         cancelButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
@@ -52,7 +52,7 @@ final class BarButtonItems {
         return cancelButton
     }
     
-    fileprivate class func makeDoneButton() -> MDImageButton {
+    private class func makeDoneButton() -> MDImageButton {
         let doneButton = MDImageButton()
         doneButton.widthAnchor.constraint(equalToConstant: 30).isActive = true
         doneButton.heightAnchor.constraint(equalToConstant: 30).isActive = true

@@ -22,11 +22,9 @@ class AddExpenseViewController: ExpenseFormViewController {
     override func handleTapOnCancelButton() {
         self.view.endEditing(true)
         
-        guard self.amountText.isEmpty == false ||
-            self.categoryText.isEmpty == false ||
-            self.tagText.isEmpty == false
+        guard self.hasUnsavedChanges()
             else {
-                self.customView.reset()
+                self.resetFields()
                 return
         }
         
@@ -34,7 +32,7 @@ class AddExpenseViewController: ExpenseFormViewController {
             title: "Discard changes", message: "Are you sure you want to continue?", preferredStyle: .alert)
         alertController.addCancelAction()
         alertController.addAction(UIAlertAction(title: "Discard", style: .destructive, handler: { (_) in
-            self.customView.reset()
+            self.resetFields()
             alertController.dismiss(animated: true, completion: nil)
         }))
         self.present(alertController, animated: true, completion: nil)

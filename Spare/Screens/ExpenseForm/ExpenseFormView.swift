@@ -40,10 +40,6 @@ class ExpenseFormView: UIView, Themeable {
         
         self.requiredLabel.text = "REQUIRED"
         self.optionalLabel.text = "OPTIONAL"
-        
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTapOnView))
-        tapGestureRecognizer.cancelsTouchesInView = false
-        self.addGestureRecognizer(tapGestureRecognizer)
     }
     
     func applyTheme() {
@@ -60,13 +56,6 @@ class ExpenseFormView: UIView, Themeable {
         }
     }
     
-    func reset() {
-        self.amountFieldView.textField.text = nil
-        self.dateFieldView.setToCurrentDate()
-        self.categoryFieldView.textField.text = nil
-        self.tagFieldView.textField.text = nil
-    }
-    
     /// Recursive function that clears the background of `superview` and its subviews.
     private func clearBackgrounds(from superview: UIView) {
         if let stackView = superview as? UIStackView {
@@ -79,14 +68,6 @@ class ExpenseFormView: UIView, Themeable {
                 self.clearBackgrounds(from: subview)
             }
         }
-    }
-    
-}
-
-private extension ExpenseFormView {
-    
-    @objc func handleTapOnView() {
-        self.endEditing(true)
     }
     
 }

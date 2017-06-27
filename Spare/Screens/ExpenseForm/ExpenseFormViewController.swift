@@ -12,33 +12,6 @@ class ExpenseFormViewController: UIViewController {
     
     let customView = ExpenseFormView.instantiateFromNib()
     
-    var amountText: String {
-        get {
-            return self.customView.amountFieldView.textField.text ?? ""
-        }
-        set {
-            self.customView.amountFieldView.textField.text = newValue
-        }
-    }
-    
-    var categoryText: String {
-        get {
-            return self.customView.categoryFieldView.textField.text ?? ""
-        }
-        set {
-            self.customView.categoryFieldView.textField.text = newValue
-        }
-    }
-    
-    var tagText: String {
-        get {
-            return self.customView.tagFieldView.textField.text ?? ""
-        }
-        set {
-            self.customView.tagFieldView.textField.text = newValue
-        }
-    }
-    
     init() {
         super.init(nibName: nil, bundle: nil)
         self.initialize()
@@ -60,10 +33,32 @@ class ExpenseFormViewController: UIViewController {
             self, selector: #selector(handleKeyboardWillShow(_:)), name: Notification.Name.UIKeyboardWillShow, object: nil)
         notificationCenter.addObserver(
             self, selector: #selector(handleKeyboardWillHide(_:)), name: Notification.Name.UIKeyboardWillHide, object: nil)
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTapOnView))
+        tapGestureRecognizer.cancelsTouchesInView = false
+        self.customView.addGestureRecognizer(tapGestureRecognizer)
     }
     
     override func loadView() {
         self.view = self.customView
+    }
+    
+    func hasUnsavedChanges() -> Bool {
+        guard let amountText = self.customView.amountFieldView.textField.text,
+            let categoryText = self.customView.categoryFieldView.textField.text,
+            let tagText = self.customView.tagFieldView.textField.text,
+            amountText.isEmpty == false || categoryText.isEmpty == false || tagText.isEmpty == false
+            else {
+                return false
+        }
+        return true
+    }
+    
+    func resetFields() {
+        self.customView.amountFieldView.textField.text = nil
+        self.customView.dateFieldView.setToCurrentDate()
+        self.customView.categoryFieldView.textField.text = nil
+        self.customView.tagFieldView.textField.text = nil
     }
     
     deinit {
@@ -72,7 +67,13 @@ class ExpenseFormViewController: UIViewController {
     
 }
 
+// MARK: - Target actions
+
 extension ExpenseFormViewController {
+    
+    @objc func handleTapOnView() {
+        self.customView.endEditing(true)
+    }
     
     @objc func handleTapOnCancelButton() {
         
@@ -101,3 +102,5 @@ extension ExpenseFormViewController {
     }
     
 }
+
+
