@@ -110,9 +110,9 @@ public class MakeExpenseOperation: MDOperation<Expense> {
     }
     
     func makeGroup<T: NSManagedObject>(with classifier: NSManagedObject) throws -> T {
-        let type = ClassifierGroup(className: md_getClassName(T.self))!
-        let sectionIdentifier = self.makeSectionIdentifier(for: type)
-        let groupFetch = NSFetchRequest<T>(entityName: type.entityName)
+        let className = md_getClassName(T.self)
+        let sectionIdentifier = self.makeSectionIdentifier(for: T.self)
+        let groupFetch = NSFetchRequest<T>(entityName: className)
         groupFetch.predicate = NSPredicate(format: "%K == %@ AND %K == %@",
                                            "sectionIdentifier", sectionIdentifier,
                                            "classifier", classifier
@@ -132,22 +132,19 @@ public class MakeExpenseOperation: MDOperation<Expense> {
             return newGroup
         }
     }
-        
-    func makeSectionIdentifier(for type: ClassifierGroup) -> String {
+    
+    func makeSectionIdentifier(for type: AnyClass) -> String {
         let startDate: Date
         let endDate: Date
         
-        switch type {
-        case .dayCategoryGroup, .dayTagGroup:
+        if type === DayCategoryGroup.self || type === DayTagGroup.self {
             startDate = self.dateSpent.startOfDay()
             endDate = self.dateSpent.endOfDay()
-            
-        case .weekCategoryGroup, .weekTagGroup:
+        } else if type === WeekCategoryGroup.self || type === WeekTagGroup.self {
             let firstWeekday = Global.startOfWeek.rawValue
             startDate = self.dateSpent.startOfWeek(firstWeekday: firstWeekday)
             endDate = self.dateSpent.endOfWeek(firstWeekday: firstWeekday)
-            
-        case .monthCategoryGroup, .monthTagGroup:
+        } else {
             startDate = self.dateSpent.startOfMonth()
             endDate = self.dateSpent.endOfMonth()
         }

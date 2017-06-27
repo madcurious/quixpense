@@ -10,12 +10,7 @@ import Foundation
 import CoreData
 import Mold
 
-func ==(lhs: Filter, rhs: Filter) -> Bool {
-    return lhs.periodization == rhs.periodization &&
-        lhs.grouping == rhs.grouping
-}
-
-struct Filter: Equatable {
+struct Filter {
     
     enum Periodization: Int {
         case day = 0, week, month
@@ -88,6 +83,15 @@ struct Filter: Equatable {
                                           managedObjectContext: Global.coreDataStack.viewContext,
                                           sectionNameKeyPath: "sectionIdentifier",
                                           cacheName: "CacheName")
+    }
+    
+}
+
+extension Filter: Equatable {
+    
+    static func ==(lhs: Filter, rhs: Filter) -> Bool {
+        return lhs.periodization == rhs.periodization &&
+            lhs.grouping == rhs.grouping
     }
     
 }

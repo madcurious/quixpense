@@ -11,6 +11,7 @@ import UIKit
 class ExpenseFormViewController: UIViewController {
     
     let customView = ExpenseFormView.instantiateFromNib()
+    let suggestionList = SuggestionsViewController()
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -29,10 +30,18 @@ class ExpenseFormViewController: UIViewController {
             .done, target: self, action: #selector(handleTapOnDoneButton))
         
         let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(
-            self, selector: #selector(handleKeyboardWillShow(_:)), name: Notification.Name.UIKeyboardWillShow, object: nil)
-        notificationCenter.addObserver(
-            self, selector: #selector(handleKeyboardWillHide(_:)), name: Notification.Name.UIKeyboardWillHide, object: nil)
+        notificationCenter.addObserver(self,
+                                       selector: #selector(handleKeyboardWillShow(_:)),
+                                       name: Notification.Name.UIKeyboardWillShow,
+                                       object: nil)
+        notificationCenter.addObserver(self,
+                                       selector: #selector(handleKeyboardWillHide(_:)),
+                                       name: Notification.Name.UIKeyboardWillHide,
+                                       object: nil)
+        notificationCenter.addObserver(self,
+                                       selector: #selector(handleTextDidChange(_:)),
+                                       name: Notification.Name.UITextFieldTextDidChange,
+                                       object: self.customView.categoryFieldView.textField)
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTapOnView))
         tapGestureRecognizer.cancelsTouchesInView = false
@@ -99,6 +108,18 @@ extension ExpenseFormViewController {
     @objc func handleKeyboardWillHide(_ notification: Notification) {
         self.customView.scrollView.contentInset = .zero
         self.customView.scrollView.scrollIndicatorInsets = .zero
+    }
+    
+    @objc func handleTextDidChange(_ notification: Notification) {
+        guard let object = notification.object as? UITextField
+            else {
+                return
+        }
+        
+        if object == self.customView.categoryFieldView.textField {
+            let query = self.customView.categoryFieldView.textField.text
+            self.suggestionList.fetchSuggestions(for: query, classifierType: .category)
+        }
     }
     
 }
