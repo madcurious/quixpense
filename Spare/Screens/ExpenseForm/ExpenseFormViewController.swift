@@ -38,10 +38,22 @@ class ExpenseFormViewController: UIViewController {
                                        selector: #selector(handleKeyboardWillHide(_:)),
                                        name: Notification.Name.UIKeyboardWillHide,
                                        object: nil)
-        notificationCenter.addObserver(self,
-                                       selector: #selector(handleTextDidChange(_:)),
-                                       name: Notification.Name.UITextFieldTextDidChange,
-                                       object: self.customView.categoryFieldView.textField)
+        
+        let textFieldsWithSuggestions = [self.customView.categoryFieldView.textField, self.customView.tagFieldView.textField]
+        for textField in textFieldsWithSuggestions {
+            notificationCenter.addObserver(self,
+                                           selector: #selector(handleTextFieldDidBeginEditing(_:)),
+                                           name: Notification.Name.UITextFieldTextDidBeginEditing,
+                                           object: textField)
+            notificationCenter.addObserver(self,
+                                           selector: #selector(handleTextFieldTextDidChange),
+                                           name: Notification.Name.UITextFieldTextDidChange,
+                                           object: textField)
+            notificationCenter.addObserver(self,
+                                           selector: #selector(handleTextFieldDidEndEditing(_:)),
+                                           name: Notification.Name.UITextFieldTextDidEndEditing,
+                                           object: textField)
+        }
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTapOnView))
         tapGestureRecognizer.cancelsTouchesInView = false
@@ -110,16 +122,37 @@ extension ExpenseFormViewController {
         self.customView.scrollView.scrollIndicatorInsets = .zero
     }
     
-    @objc func handleTextDidChange(_ notification: Notification) {
-        guard let object = notification.object as? UITextField
+    @objc func handleTextFieldDidBeginEditing(_ notification: Notification) {
+        guard let textField = notification.object as? UITextField
             else {
                 return
         }
         
-        if object == self.customView.categoryFieldView.textField {
-            let query = self.customView.categoryFieldView.textField.text
-            self.suggestionList.fetchSuggestions(for: query)
+        if textField == self.customView.categoryFieldView.textField {
+            let contentOffset = 44 * 3 + self.customView.categoryFieldView.bounds.size.height
+            self.customView.scrollView.setContentOffset(CGPoint(x: 0, y: contentOffset), animated: true)
+            self.embedChildViewController(self.suggestionList, toView: self.view, fillSuperview: false)
+            self.suggestionList.view.frame = CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: 44 * 3)
+        } else {
+            self.unembedChildViewController(self.suggestionList)
         }
+    }
+    
+    @objc func handleTextFieldTextDidChange(_ notification: Notification) {
+        guard let textField = notification.object as? UITextField
+            else {
+                return
+        }
+        
+        let query = textField.text
+        
+        if textField == self.customView.categoryFieldView.textField {
+            self.suggestionList.fetchSuggestions(for: query, classifierType: .category)
+        }
+    }
+    
+    @objc func handleTextFieldDidEndEditing(_ notification: Notification) {
+        
     }
     
 }

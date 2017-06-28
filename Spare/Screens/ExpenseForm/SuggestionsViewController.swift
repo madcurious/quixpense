@@ -16,14 +16,10 @@ private enum ViewID: String {
 
 class SuggestionsViewController: UIViewController {
     
-    enum ClassifierType {
-        case category, tag
-    }
-    
     let tableView = UITableView(frame: .zero, style: .plain)
     let loadableView = LoadableView()
     let operationQueue = OperationQueue()
-    var results = [ClassifierManagedObject]()
+    var results = [NSManagedObject]()
     
     override func loadView() {
         self.loadableView.dataViewContainer.addSubviewsAndFill(self.tableView)
@@ -37,47 +33,20 @@ class SuggestionsViewController: UIViewController {
         self.tableView.delegate = self
     }
     
-    @discardableResult
-    func fetchSuggestions<T: ClassifierManagedObject>(for string: String?) -> [T]? {
-        let operation = FetchSuggestionsOperation<T>(query: string)
-        operation.successBlock = {[unowned self] results in
+    func fetchSuggestions(for query: String?, classifierType: ClassifierType) {
+        let fetchOperation = FetchSuggestionsOperation(query: query, classifierType: classifierType)
+        fetchOperation.successBlock = {[unowned self] results in
             self.results = results
             self.tableView.reloadData()
             self.loadableView.state = .data
         }
+        fetchOperation.failureBlock = {[unowned self] error in
+            self.loadableView.state = .error(error)
+        }
         
-        
-        return nil
-        
-//        func makeSuccessBlock<T: ClassifierManagedObject>() -> ([T]) -> Void {
-//            return {[unowned self] results in
-//                self.results = results
-//                self.tableView.reloadData()
-//                self.loadableView.state = .data
-//            }
-//        }
-//
-//        let failureBlock = {[unowned self] error in
-//            self.loadableView.state = .error(error)
-//        }
-//
-//        func runOperation(_ operation: Operation) {
-//            self.operationQueue.cancelAllOperations()
-//            self.loadableView.state = .loading
-//            self.operationQueue.addOperation(operation)
-//        }
-//
-//        if classifierType == .category {
-//            let operation = FetchSuggestionsOperation<Category>(query: string)
-//            operation.successBlock = makeSuccessBlock()
-//            operation.failureBlock = failureBlock
-//            runOperation(operation)
-//        } else {
-//            let operation = FetchSuggestionsOperation<Tag>(query: string)
-//            operation.successBlock = makeSuccessBlock()
-//            operation.failureBlock = failureBlock
-//            runOperation(operation)
-//        }
+        self.loadableView.state = .loading
+        self.operationQueue.cancelAllOperations()
+        self.operationQueue.addOperation(fetchOperation)
     }
     
 }

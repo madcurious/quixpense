@@ -24,7 +24,6 @@
 		26201A0C1EFA78D800E737B3 /* MakeExpenseOperationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26228AA31EF994EF00F0E3E3 /* MakeExpenseOperationTest.swift */; };
 		263034F91F02435F00844C4F /* SuggestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263034F81F02435F00844C4F /* SuggestionsViewController.swift */; };
 		263034FB1F02525D00844C4F /* FetchSuggestionsOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263034FA1F02525D00844C4F /* FetchSuggestionsOperation.swift */; };
-		263035011F02549800844C4F /* Classifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263035001F02549800844C4F /* Classifier.swift */; };
 		26331FC21E5B684700AACE68 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26331FC11E5B684700AACE68 /* CoreDataStack.swift */; };
 		2647CD471EF136770098E700 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2647CD341EF136770098E700 /* Filter.swift */; };
 		2647CD481EF136770098E700 /* FilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2647CD351EF136770098E700 /* FilterButton.swift */; };
@@ -55,6 +54,7 @@
 		266B5FFC1EFCEBE800063803 /* ExpenseFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266B5FFB1EFCEBE800063803 /* ExpenseFormView.swift */; };
 		266B5FFE1EFCEBF800063803 /* ExpenseFormView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 266B5FFD1EFCEBF800063803 /* ExpenseFormView.xib */; };
 		267C2B7C1E7BDA03008EA3E0 /* MainTabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267C2B7B1E7BDA03008EA3E0 /* MainTabBarVC.swift */; };
+		2695CBEB1F03B9B5009D5FFA /* ClassifierType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2695CBEA1F03B9B5009D5FFA /* ClassifierType.swift */; };
 		269635A41E5457C80001FC05 /* AmountFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269635A31E5457C80001FC05 /* AmountFormatter.swift */; };
 		26A1CB4C1DD1ABD600DAE89E /* NotoSansUI-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26A1CB441DD1ABD600DAE89E /* NotoSansUI-Bold.ttf */; };
 		26A1CB4D1DD1ABD600DAE89E /* NotoSansUI-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26A1CB451DD1ABD600DAE89E /* NotoSansUI-BoldItalic.ttf */; };
@@ -148,7 +148,6 @@
 		26228AA31EF994EF00F0E3E3 /* MakeExpenseOperationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeExpenseOperationTest.swift; sourceTree = "<group>"; };
 		263034F81F02435F00844C4F /* SuggestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionsViewController.swift; sourceTree = "<group>"; };
 		263034FA1F02525D00844C4F /* FetchSuggestionsOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchSuggestionsOperation.swift; sourceTree = "<group>"; };
-		263035001F02549800844C4F /* Classifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classifier.swift; sourceTree = "<group>"; };
 		26331FC11E5B684700AACE68 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		2647CD341EF136770098E700 /* Filter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		2647CD351EF136770098E700 /* FilterButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterButton.swift; sourceTree = "<group>"; };
@@ -185,6 +184,7 @@
 		266B5FFB1EFCEBE800063803 /* ExpenseFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseFormView.swift; sourceTree = "<group>"; };
 		266B5FFD1EFCEBF800063803 /* ExpenseFormView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpenseFormView.xib; sourceTree = "<group>"; };
 		267C2B7B1E7BDA03008EA3E0 /* MainTabBarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarVC.swift; sourceTree = "<group>"; };
+		2695CBEA1F03B9B5009D5FFA /* ClassifierType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassifierType.swift; sourceTree = "<group>"; };
 		269635A31E5457C80001FC05 /* AmountFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmountFormatter.swift; sourceTree = "<group>"; };
 		26A1CB441DD1ABD600DAE89E /* NotoSansUI-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansUI-Bold.ttf"; sourceTree = "<group>"; };
 		26A1CB451DD1ABD600DAE89E /* NotoSansUI-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansUI-BoldItalic.ttf"; sourceTree = "<group>"; };
@@ -318,7 +318,6 @@
 			isa = PBXGroup;
 			children = (
 				26CB900A1EE5345D009F7099 /* Expense+Extension.swift */,
-				263035001F02549800844C4F /* Classifier.swift */,
 			);
 			path = "Core Data";
 			sourceTree = "<group>";
@@ -447,6 +446,7 @@
 				26DF098D1EF4344100D26D14 /* ExpenseGroup.swift */,
 				26DF09991EF7950F00D26D14 /* MakeExpenseOperation.swift */,
 				261BB0191EFD1751006E0DC3 /* TimestampFormatter.swift */,
+				2695CBEA1F03B9B5009D5FFA /* ClassifierType.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -712,7 +712,6 @@
 				26DDDCAA1E5C23AB001617A1 /* _LAVCView.swift in Sources */,
 				2647CD4E1EF136770098E700 /* HomeViewController.swift in Sources */,
 				263034FB1F02525D00844C4F /* FetchSuggestionsOperation.swift in Sources */,
-				263035011F02549800844C4F /* Classifier.swift in Sources */,
 				26DF09A21EF800D900D26D14 /* SectionTotalHeaderView.swift in Sources */,
 				264D37C91EEE38DE0063CD53 /* SectionIdentifier.swift in Sources */,
 				261BB0181EFD04BF006E0DC3 /* DateFieldView.swift in Sources */,
@@ -745,6 +744,7 @@
 				26331FC21E5B684700AACE68 /* CoreDataStack.swift in Sources */,
 				26F6169B1EFCF5FB005519E6 /* AmountFieldView.swift in Sources */,
 				269635A41E5457C80001FC05 /* AmountFormatter.swift in Sources */,
+				2695CBEB1F03B9B5009D5FFA /* ClassifierType.swift in Sources */,
 				26A30C921E5235950047307D /* SettingsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
