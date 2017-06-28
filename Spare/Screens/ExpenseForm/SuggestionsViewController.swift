@@ -37,36 +37,47 @@ class SuggestionsViewController: UIViewController {
         self.tableView.delegate = self
     }
     
-    func fetchSuggestions(for string: String?, classifierType: ClassifierType) {
-        func makeSuccessBlock<T: ClassifierManagedObject>() -> ([T]) -> Void {
-            return {[unowned self] results in
-                self.results = results
-                self.tableView.reloadData()
-                self.loadableView.state = .data
-            }
+    @discardableResult
+    func fetchSuggestions<T: ClassifierManagedObject>(for string: String?) -> [T]? {
+        let operation = FetchSuggestionsOperation<T>(query: string)
+        operation.successBlock = {[unowned self] results in
+            self.results = results
+            self.tableView.reloadData()
+            self.loadableView.state = .data
         }
         
-        let failureBlock = {[unowned self] error in
-            self.loadableView.state = .error(error)
-        }
         
-        func runOperation(_ operation: Operation) {
-            self.operationQueue.cancelAllOperations()
-            self.loadableView.state = .loading
-            self.operationQueue.addOperation(operation)
-        }
+        return nil
         
-        if classifierType == .category {
-            let operation = FetchSuggestionsOperation<Category>(query: string)
-            operation.successBlock = makeSuccessBlock()
-            operation.failureBlock = failureBlock
-            runOperation(operation)
-        } else {
-            let operation = FetchSuggestionsOperation<Tag>(query: string)
-            operation.successBlock = makeSuccessBlock()
-            operation.failureBlock = failureBlock
-            runOperation(operation)
-        }
+//        func makeSuccessBlock<T: ClassifierManagedObject>() -> ([T]) -> Void {
+//            return {[unowned self] results in
+//                self.results = results
+//                self.tableView.reloadData()
+//                self.loadableView.state = .data
+//            }
+//        }
+//
+//        let failureBlock = {[unowned self] error in
+//            self.loadableView.state = .error(error)
+//        }
+//
+//        func runOperation(_ operation: Operation) {
+//            self.operationQueue.cancelAllOperations()
+//            self.loadableView.state = .loading
+//            self.operationQueue.addOperation(operation)
+//        }
+//
+//        if classifierType == .category {
+//            let operation = FetchSuggestionsOperation<Category>(query: string)
+//            operation.successBlock = makeSuccessBlock()
+//            operation.failureBlock = failureBlock
+//            runOperation(operation)
+//        } else {
+//            let operation = FetchSuggestionsOperation<Tag>(query: string)
+//            operation.successBlock = makeSuccessBlock()
+//            operation.failureBlock = failureBlock
+//            runOperation(operation)
+//        }
     }
     
 }

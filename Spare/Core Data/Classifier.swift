@@ -9,8 +9,12 @@
 import Foundation
 import CoreData
 
-typealias ClassifierManagedObject = NSManagedObject & Classifier
+protocol Classifier {
+    var name: String? { get set }
+}
 
-protocol Classifier {}
 extension Category: Classifier {}
+
 extension Tag: Classifier {}
+
+typealias ClassifierManagedObject = NSManagedObject & Classifier

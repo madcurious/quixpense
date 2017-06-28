@@ -118,7 +118,7 @@ extension ExpenseFormViewController {
         
         if object == self.customView.categoryFieldView.textField {
             let query = self.customView.categoryFieldView.textField.text
-            self.suggestionList.fetchSuggestions(for: query, classifierType: .category)
+            self.suggestionList.fetchSuggestions(for: query)
         }
     }
     
