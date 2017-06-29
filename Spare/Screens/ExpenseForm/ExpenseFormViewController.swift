@@ -16,15 +16,19 @@ class ExpenseFormViewController: UIViewController {
     
     init() {
         super.init(nibName: nil, bundle: nil)
-        self.initialize()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.initialize()
     }
     
-    func initialize() {
+    override func loadView() {
+        self.view = self.customView
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
         self.navigationItem.leftBarButtonItem = BarButtonItems.make(
             .cancel, target: self, action: #selector(handleTapOnCancelButton))
         self.navigationItem.rightBarButtonItem = BarButtonItems.make(
@@ -43,10 +47,6 @@ class ExpenseFormViewController: UIViewController {
         let textFieldsWithSuggestions = [self.customView.categoryFieldView.textField, self.customView.tagFieldView.textField]
         for textField in textFieldsWithSuggestions {
             notificationCenter.addObserver(self,
-                                           selector: #selector(handleTextFieldDidBeginEditing(_:)),
-                                           name: Notification.Name.UITextFieldTextDidBeginEditing,
-                                           object: textField)
-            notificationCenter.addObserver(self,
                                            selector: #selector(handleTextFieldTextDidChange),
                                            name: Notification.Name.UITextFieldTextDidChange,
                                            object: textField)
@@ -59,10 +59,8 @@ class ExpenseFormViewController: UIViewController {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTapOnView))
         tapGestureRecognizer.cancelsTouchesInView = false
         self.customView.addGestureRecognizer(tapGestureRecognizer)
-    }
-    
-    override func loadView() {
-        self.view = self.customView
+        
+        self.customView.scrollView.delegate = self
     }
     
     func hasUnsavedChanges() -> Bool {
@@ -107,43 +105,70 @@ extension ExpenseFormViewController {
     
     @objc func handleKeyboardWillShow(_ notification: Notification) {
         guard let userInfo = notification.userInfo,
-            let keyboardFrame = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue as? CGRect
-//            let animationDuration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSValue as? NSNumber as? Double
+            let keyboardFrame = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue as? CGRect,
+            let animationDuration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSValue as? NSNumber as? Double
             else {
                 return
         }
         
-        let overlapHeight = (UIApplication.shared.statusBarFrame.height + self.navigationController!.navigationBar.bounds.size.height + self.customView.contentView.bounds.size.height) - keyboardFrame.origin.y
+        var contentOffsetY = CGFloat(0)
+        let minimumSuggestionListY = UIScreen.main.nativeSize.height - keyboardFrame.height - suggestionListHeight
+        var suggestionListY = minimumSuggestionListY
+        
+        if self.customView.categoryFieldView.textField.isFirstResponder {
+            let lowerLeftCorner: CGPoint = {
+                var corner = self.customView.categoryFieldView.frame.origin
+                corner.y += self.customView.categoryFieldView.bounds.size.height
+                corner = UIApplication.shared.keyWindow!.convert(corner, from: self.customView.categoryFieldView)
+                return corner
+            }()
+            
+            if lowerLeftCorner.y > minimumSuggestionListY {
+                // The field appears below the suggestion list so take the deficit into account in the offset.
+                contentOffsetY += lowerLeftCorner.y - suggestionListY
+            } else {
+                // Adjust the suggestion list.
+                suggestionListY = lowerLeftCorner.y
+            }
+            
+            self.embedChildViewController(
+                self.suggestionList,
+                toView: self.view,
+                completionBlock: {[unowned self] in
+                    self.suggestionList.view.frame = CGRect(x: 0,
+                                                            y: self.view.bounds.size.height,
+                                                            width: self.view.bounds.size.width,
+                                                            height: self.suggestionListHeight)
+            })
+        }
+        
+        // DEBUG
+        else {
+            self.suggestionList.unembedFromParentViewController()
+        }
         
         let newInsets = UIEdgeInsetsMake(0, 0, keyboardFrame.size.height - self.tabBarController!.tabBar.bounds.size.height, 0)
         self.customView.scrollView.contentInset = newInsets
         self.customView.scrollView.scrollIndicatorInsets = newInsets
         
-        self.customView.scrollView.setContentOffset(CGPoint(x: 0, y: overlapHeight), animated: true)
+        let suggestionListFrame: CGRect = {
+            var frame = self.suggestionList.view.frame
+            frame.origin.y = suggestionListY
+            frame = self.view.convert(frame, from: UIApplication.shared.keyWindow!)
+            return frame
+        }()
+        UIView.animate(
+            withDuration: animationDuration,
+            animations: { [unowned self] in
+                self.customView.scrollView.contentOffset = CGPoint(x: 0, y: contentOffsetY)
+                self.suggestionList.view.frame = suggestionListFrame
+        })
     }
     
     @objc func handleKeyboardWillHide(_ notification: Notification) {
         self.customView.scrollView.contentInset = .zero
         self.customView.scrollView.scrollIndicatorInsets = .zero
-    }
-    
-    @objc func handleTextFieldDidBeginEditing(_ notification: Notification) {
-        guard let textField = notification.object as? UITextField
-            else {
-                return
-        }
-        
-        if textField == self.customView.categoryFieldView.textField {
-//            let contentOffset = 44 * 3 + self.customView.categoryFieldView.bounds.size.height
-//            self.customView.scrollView.setContentOffset(CGPoint(x: 0, y: contentOffset), animated: true)
-            
-            
-            
-            self.embedChildViewController(self.suggestionList, toView: self.view, fillSuperview: false)
-            self.suggestionList.view.frame = CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.suggestionListHeight)
-        } else {
-            self.unembedChildViewController(self.suggestionList)
-        }
+        self.suggestionList.unembedFromParentViewController()
     }
     
     @objc func handleTextFieldTextDidChange(_ notification: Notification) {
@@ -161,6 +186,14 @@ extension ExpenseFormViewController {
     
     @objc func handleTextFieldDidEndEditing(_ notification: Notification) {
         
+    }
+    
+}
+
+extension ExpenseFormViewController: UIScrollViewDelegate {
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        self.suggestionList.unembedFromParentViewController()
     }
     
 }

@@ -29,6 +29,7 @@ class SuggestionsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.tableView.backgroundColor = .groupTableViewBackground
         self.tableView.dataSource = self
         self.tableView.delegate = self
     }
@@ -65,6 +66,7 @@ extension SuggestionsViewController: UITableViewDataSource {
             cell = existingCell
         } else {
             cell = UITableViewCell(style: .default, reuseIdentifier: ViewID.resultCell.rawValue)
+            cell.backgroundColor = .groupTableViewBackground
         }
         
         cell.textLabel?.text = self.results[indexPath.row].value(forKey: "name") as? String
