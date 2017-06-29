@@ -226,6 +226,7 @@
             <connections>
                 <outlet property="amountFieldContainer" destination="4go-gx-hgv" id="bKZ-ni-4zZ"/>
                 <outlet property="categoryFieldContainer" destination="vrK-AF-tl5" id="dt2-i8-q5X"/>
+                <outlet property="contentView" destination="g0t-Fc-SLT" id="gs7-rW-IJB"/>
                 <outlet property="dateFieldContainer" destination="Cf9-Fk-NWm" id="gv5-ic-55l"/>
                 <outlet property="optionalLabel" destination="6jN-hL-8Tp" id="mzD-QE-xQd"/>
                 <outlet property="requiredLabel" destination="lp6-nW-VHW" id="iUG-01-sJx"/>

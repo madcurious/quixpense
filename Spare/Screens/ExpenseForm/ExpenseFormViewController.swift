@@ -12,6 +12,7 @@ class ExpenseFormViewController: UIViewController {
     
     let customView = ExpenseFormView.instantiateFromNib()
     let suggestionList = SuggestionsViewController()
+    let suggestionListHeight = CGFloat(44 * 2)
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -112,9 +113,13 @@ extension ExpenseFormViewController {
                 return
         }
         
+        let overlapHeight = (UIApplication.shared.statusBarFrame.height + self.navigationController!.navigationBar.bounds.size.height + self.customView.contentView.bounds.size.height) - keyboardFrame.origin.y
+        
         let newInsets = UIEdgeInsetsMake(0, 0, keyboardFrame.size.height - self.tabBarController!.tabBar.bounds.size.height, 0)
         self.customView.scrollView.contentInset = newInsets
         self.customView.scrollView.scrollIndicatorInsets = newInsets
+        
+        self.customView.scrollView.setContentOffset(CGPoint(x: 0, y: overlapHeight), animated: true)
     }
     
     @objc func handleKeyboardWillHide(_ notification: Notification) {
@@ -129,10 +134,13 @@ extension ExpenseFormViewController {
         }
         
         if textField == self.customView.categoryFieldView.textField {
-            let contentOffset = 44 * 3 + self.customView.categoryFieldView.bounds.size.height
-            self.customView.scrollView.setContentOffset(CGPoint(x: 0, y: contentOffset), animated: true)
+//            let contentOffset = 44 * 3 + self.customView.categoryFieldView.bounds.size.height
+//            self.customView.scrollView.setContentOffset(CGPoint(x: 0, y: contentOffset), animated: true)
+            
+            
+            
             self.embedChildViewController(self.suggestionList, toView: self.view, fillSuperview: false)
-            self.suggestionList.view.frame = CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: 44 * 3)
+            self.suggestionList.view.frame = CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.suggestionListHeight)
         } else {
             self.unembedChildViewController(self.suggestionList)
         }
@@ -156,5 +164,3 @@ extension ExpenseFormViewController {
     }
     
 }
-
-

@@ -11,6 +11,8 @@ import UIKit
 class ExpenseFormView: UIView, Themeable {
     
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var contentView: UIView!
+    
     @IBOutlet var separatorViews: [UIView]!
     
     @IBOutlet weak var requiredLabel: UILabel!
