@@ -136,7 +136,19 @@ extension ExpenseFormViewController {
                 suggestionListY = lowerLeftCorner.y
             }
             
+            self.suggestionList.fetchSuggestions(for: self.customView.categoryFieldView.textField.text, classifierType: .category)
             self.embedChildViewController(self.suggestionList, toView: self.view, fillSuperview: false)
+            self.suggestionList.view.frame = {
+                var frame = CGRect(x: 20,
+                                   y: suggestionListY,
+                                   width: self.view.bounds.size.width - 40,
+                                   height: self.suggestionListHeight)
+                frame = self.view.convert(frame, from: UIApplication.shared.keyWindow!)
+                return frame
+            }()
+            self.suggestionList.view.setNeedsLayout()
+            self.suggestionList.view.layoutIfNeeded()
+            self.suggestionList.view.isHidden = true
         }
         
         // DEBUG
@@ -148,17 +160,13 @@ extension ExpenseFormViewController {
         self.customView.scrollView.contentInset = newInsets
         self.customView.scrollView.scrollIndicatorInsets = newInsets
         
-        var suggestionListFrame = CGRect(x: 20,
-                                         y: suggestionListY,
-                                         width: self.view.bounds.size.width - 40,
-                                         height: self.suggestionListHeight)
-        suggestionListFrame = self.view.convert(suggestionListFrame, from: UIApplication.shared.keyWindow!)
+        
         UIView.animate(
             withDuration: animationDuration,
             animations: {[unowned self] in
                 self.customView.scrollView.contentOffset = CGPoint(x: 0, y: contentOffsetY)
             }, completion: {[unowned self] _ in
-                self.suggestionList.view.frame = suggestionListFrame
+                self.suggestionList.view.isHidden = false
         })
     }
     
