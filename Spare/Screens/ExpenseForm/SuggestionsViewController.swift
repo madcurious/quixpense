@@ -88,3 +88,104 @@ extension SuggestionsViewController: UITableViewDelegate {
     }
     
 }
+
+extension SuggestionsViewController {
+    
+    class func present(from presenter: ExpenseFormViewController, keyboardBounds: CGRect) {
+        let modal = SuggestionsViewController()
+        
+        let transitioningDelegate = kTransitioningDelegate
+        transitioningDelegate.keyboardBounds = keyboardBounds
+        transitioningDelegate.presentingFormView = presenter.customView
+        
+        modal.setCustomTransitioningDelegate(transitioningDelegate)
+        presenter.present(modal, animated: true, completion: nil)
+    }
+    
+}
+
+fileprivate let kTransitioningDelegate = SuggestionsViewControllerTransitioningDelegate()
+
+fileprivate class SuggestionsViewControllerTransitioningDelegate: NSObject, UIViewControllerTransitioningDelegate {
+    
+    var keyboardBounds = CGRect.zero
+    var presentingFormView = ExpenseFormView()
+    
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return SuggestionsPresentationController(keyboardBounds: self.keyboardBounds, presentingFormView: self.presentingFormView)
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return SuggestionsDismissalController()
+    }
+    
+}
+
+fileprivate class SuggestionsPresentationController: NSObject, UIViewControllerAnimatedTransitioning {
+    
+    var keyboardBounds: CGRect
+    var presentingFormView: ExpenseFormView
+    
+    init(keyboardBounds: CGRect, presentingFormView: ExpenseFormView) {
+        self.keyboardBounds = keyboardBounds
+        self.presentingFormView = presentingFormView
+    }
+    
+    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+        return 0.25
+    }
+    
+    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+//        guard let fromView = transitionContext.view(forKey: .from) as? ExpenseFormView
+//            else {
+//                return
+//        }
+        let containerView = transitionContext.containerView
+        
+        let listHeight = CGFloat(44 * 2)
+        let minimumY = self.keyboardBounds.size.height - listHeight
+        
+        let scrollViewOffset: CGPoint = {
+            let lowerLeftCorner: CGPoint = {
+                var corner = self.presentingFormView.categoryFieldView.frame.origin
+                corner.y += self.presentingFormView.categoryFieldView.bounds.size.height
+                corner = UIApplication.shared.keyWindow!.convert(corner, from: self.presentingFormView.categoryFieldView)
+                return corner
+            }()
+            
+            if lowerLeftCorner.y > minimumY {
+                // The field appears below the suggestion list so take the deficit into account in the offset.
+                return CGPoint(x: 0, y: lowerLeftCorner.y - minimumY)
+            } else {
+                return .zero
+            }
+        }()
+        
+        UIView.animate(withDuration: self.transitionDuration(using: transitionContext),
+                       animations: {
+                        self.presentingFormView.scrollView.contentOffset = scrollViewOffset
+        },
+                       completion: { _ in
+                        transitionContext.completeTransition(true)
+        })
+    }
+}
+
+fileprivate class SuggestionsDismissalController: NSObject, UIViewControllerAnimatedTransitioning {
+    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+        return 0.25
+    }
+    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+        guard let toView = transitionContext.view(forKey: .to) as? ExpenseFormView
+            else {
+                return
+        }
+        
+        UIView.animate(withDuration: self.transitionDuration(using: transitionContext),
+                       animations: {
+                        toView.scrollView.contentOffset = .zero
+        }, completion: { _ in
+            transitionContext.completeTransition(true)
+        })
+    }
+}

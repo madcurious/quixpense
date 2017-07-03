@@ -116,58 +116,63 @@ extension ExpenseFormViewController {
                 return
         }
         
-        var contentOffsetY = CGFloat(0)
-        let minimumSuggestionListY = UIScreen.main.nativeSize.height - keyboardFrame.height - self.suggestionListHeight
-        var suggestionListY = minimumSuggestionListY
-        
         if self.customView.categoryFieldView.textField.isFirstResponder {
-            let lowerLeftCorner: CGPoint = {
-                var corner = self.customView.categoryFieldView.frame.origin
-                corner.y += self.customView.categoryFieldView.bounds.size.height
-                corner = UIApplication.shared.keyWindow!.convert(corner, from: self.customView.categoryFieldView)
-                return corner
-            }()
-            
-            if lowerLeftCorner.y > minimumSuggestionListY {
-                // The field appears below the suggestion list so take the deficit into account in the offset.
-                contentOffsetY += lowerLeftCorner.y - suggestionListY
-            } else {
-                // Adjust the suggestion list.
-                suggestionListY = lowerLeftCorner.y
-            }
-            
-            self.suggestionList.fetchSuggestions(for: self.customView.categoryFieldView.textField.text, classifierType: .category)
-            self.embedChildViewController(self.suggestionList, toView: self.view, fillSuperview: false)
-            self.suggestionList.view.frame = {
-                var frame = CGRect(x: 20,
-                                   y: suggestionListY,
-                                   width: self.view.bounds.size.width - 40,
-                                   height: self.suggestionListHeight)
-                frame = self.view.convert(frame, from: UIApplication.shared.keyWindow!)
-                return frame
-            }()
-            self.suggestionList.view.setNeedsLayout()
-            self.suggestionList.view.layoutIfNeeded()
-            self.suggestionList.view.isHidden = true
+            SuggestionsViewController.present(from: self, keyboardBounds: keyboardFrame)
         }
         
-        // DEBUG
-        else {
-            self.suggestionList.unembedFromParentViewController()
-        }
         
-        let newInsets = UIEdgeInsetsMake(0, 0, keyboardFrame.size.height - self.tabBarController!.tabBar.bounds.size.height, 0)
-        self.customView.scrollView.contentInset = newInsets
-        self.customView.scrollView.scrollIndicatorInsets = newInsets
-        
-        
-        UIView.animate(
-            withDuration: animationDuration,
-            animations: {[unowned self] in
-                self.customView.scrollView.contentOffset = CGPoint(x: 0, y: contentOffsetY)
-            }, completion: {[unowned self] _ in
-                self.suggestionList.view.isHidden = false
-        })
+//        var contentOffsetY = CGFloat(0)
+//        let minimumSuggestionListY = UIScreen.main.nativeSize.height - keyboardFrame.height - self.suggestionListHeight
+//        var suggestionListY = minimumSuggestionListY
+//
+//        if self.customView.categoryFieldView.textField.isFirstResponder {
+//            let lowerLeftCorner: CGPoint = {
+//                var corner = self.customView.categoryFieldView.frame.origin
+//                corner.y += self.customView.categoryFieldView.bounds.size.height
+//                corner = UIApplication.shared.keyWindow!.convert(corner, from: self.customView.categoryFieldView)
+//                return corner
+//            }()
+//
+//            if lowerLeftCorner.y > minimumSuggestionListY {
+//                // The field appears below the suggestion list so take the deficit into account in the offset.
+//                contentOffsetY += lowerLeftCorner.y - suggestionListY
+//            } else {
+//                // Adjust the suggestion list.
+//                suggestionListY = lowerLeftCorner.y
+//            }
+//
+//            self.suggestionList.fetchSuggestions(for: self.customView.categoryFieldView.textField.text, classifierType: .category)
+//            self.embedChildViewController(self.suggestionList, toView: self.view, fillSuperview: false)
+//            self.suggestionList.view.frame = {
+//                var frame = CGRect(x: 20,
+//                                   y: suggestionListY,
+//                                   width: self.view.bounds.size.width - 40,
+//                                   height: self.suggestionListHeight)
+//                frame = self.view.convert(frame, from: UIApplication.shared.keyWindow!)
+//                return frame
+//            }()
+//            self.suggestionList.view.setNeedsLayout()
+//            self.suggestionList.view.layoutIfNeeded()
+//            self.suggestionList.view.isHidden = true
+//        }
+//
+//        // DEBUG
+//        else {
+//            self.suggestionList.unembedFromParentViewController()
+//        }
+//
+//        let newInsets = UIEdgeInsetsMake(0, 0, keyboardFrame.size.height - self.tabBarController!.tabBar.bounds.size.height, 0)
+//        self.customView.scrollView.contentInset = newInsets
+//        self.customView.scrollView.scrollIndicatorInsets = newInsets
+//
+//
+//        UIView.animate(
+//            withDuration: animationDuration,
+//            animations: {[unowned self] in
+//                self.customView.scrollView.contentOffset = CGPoint(x: 0, y: contentOffsetY)
+//            }, completion: {[unowned self] _ in
+//                self.suggestionList.view.isHidden = false
+//        })
     }
     
     @objc func handleKeyboardWillHide(_ notification: Notification) {
