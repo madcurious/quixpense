@@ -9,6 +9,10 @@
 import UIKit
 import CoreData
 
+protocol CategoryPickerViewControllerDelegate {
+    func categoryPicker(_ picker: CategoryPickerViewController, didSelectCategory category: Category)
+}
+
 fileprivate let kTransitioningDelegate = CategoryPickerTransitioningDelegate()
 
 private enum ViewID: String {
@@ -16,8 +20,6 @@ private enum ViewID: String {
 }
 
 class CategoryPickerViewController: UIViewController {
-    
-    let customView = CategoryPickerView.instantiateFromNib()
     
     let fetchedResultsController: NSFetchedResultsController<Category> = {
         let fetchRequest: NSFetchRequest<Category> = Category.fetchRequest()
@@ -27,6 +29,9 @@ class CategoryPickerViewController: UIViewController {
                                                     sectionNameKeyPath: nil,
                                                     cacheName: nil)
     }()
+    
+    let customView = CategoryPickerView.instantiateFromNib()
+    var delegate: CategoryPickerViewControllerDelegate?
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -85,6 +90,8 @@ extension CategoryPickerViewController: UITableViewDataSource {
         
         if indexPath.section == 0 {
             cell.nameLabel.text = self.fetchedResultsController.object(at: indexPath).name
+        } else {
+            cell.nameLabel.text = "Label"
         }
         
         return cell
@@ -95,6 +102,8 @@ extension CategoryPickerViewController: UITableViewDataSource {
 extension CategoryPickerViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.delegate?.categoryPicker(self, didSelectCategory: self.fetchedResultsController.object(at: indexPath))
+        
         tableView.deselectRow(at: indexPath, animated: true)
         self.dismiss(animated: true, completion: nil)
     }
@@ -108,6 +117,7 @@ extension CategoryPickerViewController {
     class func present(from presenter: ExpenseFormViewController) {
         let picker = CategoryPickerViewController()
         picker.setCustomTransitioningDelegate(kTransitioningDelegate)
+        picker.delegate = presenter
         presenter.present(picker, animated: true, completion: nil)
     }
     

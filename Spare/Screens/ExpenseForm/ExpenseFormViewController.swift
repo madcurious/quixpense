@@ -162,7 +162,6 @@ extension ExpenseFormViewController {
         self.customView.scrollView.contentInset = newInsets
         self.customView.scrollView.scrollIndicatorInsets = newInsets
         
-        
         UIView.animate(
             withDuration: animationDuration,
             animations: {[unowned self] in
@@ -199,6 +198,18 @@ extension ExpenseFormViewController {
     
 }
 
+// MARK: - CategoryPickerViewControllerDelegate
+
+extension ExpenseFormViewController: CategoryPickerViewControllerDelegate {
+    
+    func categoryPicker(_ picker: CategoryPickerViewController, didSelectCategory category: Category) {
+        self.customView.categoryFieldView.textField.text = category.name
+    }
+    
+}
+
+// MARK: - UIScrollViewDelegate
+
 extension ExpenseFormViewController: UIScrollViewDelegate {
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
@@ -206,6 +217,8 @@ extension ExpenseFormViewController: UIScrollViewDelegate {
     }
     
 }
+
+// MARK: - UITextFieldDelegate
 
 extension ExpenseFormViewController: UITextFieldDelegate {
     
