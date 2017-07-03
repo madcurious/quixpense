@@ -44,25 +44,31 @@ struct LightTheme: Theme {
     func font(for element: StringElement) -> UIFont {
         switch element {
         case .dateTextFieldLabel:
-            return NotoSansUI.regular(10)
+//            return NotoSansUI.regular(10)
+            return .systemFont(ofSize: 10)
             
         case .cellSecondaryText,
              .sectionTotalHeaderView,
              .filterButtonText,
              .groupedTableViewSectionHeader:
-            return NotoSansUI.regular(14)
+//            return NotoSansUI.regular(14)
+            return .systemFont(ofSize: 12)
             
         case .loadableViewInfoLabelMainText:
-            return NotoSansUI.regular(24)
+//            return NotoSansUI.regular(24)
+            return .systemFont(ofSize: 24)
             
         case .loadableViewInfoLabelSecondaryText:
-            return NotoSansUI.regular(15)
+//            return NotoSansUI.regular(15)
+            return .systemFont(ofSize: 15)
             
         case .navBarTitle:
-            return NotoSansUI.bold(17)
+//            return NotoSansUI.bold(17)
+            return .boldSystemFont(ofSize: 17)
             
         case .regularText:
-            return NotoSansUI.regular(17)
+//            return NotoSansUI.regular(17)
+            return .systemFont(ofSize: 17)
         }
     }
     

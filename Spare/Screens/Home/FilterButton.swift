@@ -82,6 +82,13 @@ class FilterButton: MDButton, Themeable {
         return self.roundedRectWidth() + (30 * 2)
     }
     
+    override func didMoveToSuperview() {
+        super.didMoveToSuperview()
+        
+        // As soon as the button is added to the navigation bar, center it horizontally.
+        self.centerXAnchor.constraint(equalTo: self.superview!.centerXAnchor, constant: 0).isActive = true
+    }
+    
 }
 
 // MARK: - Target actions
