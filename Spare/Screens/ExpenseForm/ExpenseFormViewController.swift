@@ -66,6 +66,8 @@ class ExpenseFormViewController: UIViewController {
         self.customView.addGestureRecognizer(tapGestureRecognizer)
         
         self.customView.scrollView.delegate = self
+        
+        self.customView.categoryFieldView.textField.delegate = self
     }
     
     func hasUnsavedChanges() -> Bool {
@@ -201,6 +203,17 @@ extension ExpenseFormViewController: UIScrollViewDelegate {
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         self.suggestionList.unembedFromParentViewController()
+    }
+    
+}
+
+extension ExpenseFormViewController: UITextFieldDelegate {
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if textField == self.customView.categoryFieldView.textField {
+            CategoryPickerViewController.present(from: self)
+        }
+        return false
     }
     
 }

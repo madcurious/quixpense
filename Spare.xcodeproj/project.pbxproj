@@ -86,6 +86,9 @@
 		26F57AF11E67DE1B0034FF4B /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F57AF01E67DE1B0034FF4B /* Debug.swift */; };
 		26F6169B1EFCF5FB005519E6 /* AmountFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F6169A1EFCF5FB005519E6 /* AmountFieldView.swift */; };
 		26F6169D1EFCF604005519E6 /* AmountFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26F6169C1EFCF604005519E6 /* AmountFieldView.xib */; };
+		26F78C901F0A388000CF0389 /* CategoryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F78C8F1F0A388000CF0389 /* CategoryPickerViewController.swift */; };
+		26F78C921F0A38CF00CF0389 /* CategoryPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26F78C911F0A38CF00CF0389 /* CategoryPickerView.xib */; };
+		26F78C941F0A38D900CF0389 /* CategoryPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F78C931F0A38D900CF0389 /* CategoryPickerView.swift */; };
 		616B52302A44459579721AC9 /* Pods_Spare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B392D50401377663DE37E8A8 /* Pods_Spare.framework */; };
 /* End PBXBuildFile section */
 
@@ -217,6 +220,9 @@
 		26F57AF01E67DE1B0034FF4B /* Debug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
 		26F6169A1EFCF5FB005519E6 /* AmountFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountFieldView.swift; sourceTree = "<group>"; };
 		26F6169C1EFCF604005519E6 /* AmountFieldView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AmountFieldView.xib; sourceTree = "<group>"; };
+		26F78C8F1F0A388000CF0389 /* CategoryPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPickerViewController.swift; sourceTree = "<group>"; };
+		26F78C911F0A38CF00CF0389 /* CategoryPickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryPickerView.xib; sourceTree = "<group>"; };
+		26F78C931F0A38D900CF0389 /* CategoryPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPickerView.swift; sourceTree = "<group>"; };
 		59C2B0311ED5D0556A5A2FEF /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B1211CBF60E5725987043C3 /* Pods-Spare.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spare.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Spare/Pods-Spare.debug.xcconfig"; sourceTree = "<group>"; };
 		B392D50401377663DE37E8A8 /* Pods_Spare.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Spare.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -402,6 +408,9 @@
 				261BB0241EFE721B006E0DC3 /* TagFieldView.xib */,
 				263034F81F02435F00844C4F /* SuggestionsViewController.swift */,
 				263034FA1F02525D00844C4F /* FetchSuggestionsOperation.swift */,
+				26F78C8F1F0A388000CF0389 /* CategoryPickerViewController.swift */,
+				26F78C911F0A38CF00CF0389 /* CategoryPickerView.xib */,
+				26F78C931F0A38D900CF0389 /* CategoryPickerView.swift */,
 			);
 			path = ExpenseForm;
 			sourceTree = "<group>";
@@ -624,6 +633,7 @@
 				2669468A1CC7711000A68424 /* Images.xcassets in Resources */,
 				266946871CC7711000A68424 /* Icon-60@2x.png in Resources */,
 				2657332A1EDD507C00AD1AB9 /* FilterPopupView.xib in Resources */,
+				26F78C921F0A38CF00CF0389 /* CategoryPickerView.xib in Resources */,
 				266946891CC7711000A68424 /* Icon@2x.png in Resources */,
 				26DDDCAC1E5C23C2001617A1 /* _LAVCView.xib in Resources */,
 				26DF09A31EF800D900D26D14 /* SectionTotalHeaderView.xib in Resources */,
@@ -714,6 +724,7 @@
 				263034FB1F02525D00844C4F /* FetchSuggestionsOperation.swift in Sources */,
 				26DF09A21EF800D900D26D14 /* SectionTotalHeaderView.swift in Sources */,
 				264D37C91EEE38DE0063CD53 /* SectionIdentifier.swift in Sources */,
+				26F78C941F0A38D900CF0389 /* CategoryPickerView.swift in Sources */,
 				261BB0181EFD04BF006E0DC3 /* DateFieldView.swift in Sources */,
 				26DF098C1EF41B0800D26D14 /* ExpenseListViewController.swift in Sources */,
 				26628A2D1E714AB100E80494 /* LightTheme.swift in Sources */,
@@ -744,6 +755,7 @@
 				26331FC21E5B684700AACE68 /* CoreDataStack.swift in Sources */,
 				26F6169B1EFCF5FB005519E6 /* AmountFieldView.swift in Sources */,
 				269635A41E5457C80001FC05 /* AmountFormatter.swift in Sources */,
+				26F78C901F0A388000CF0389 /* CategoryPickerViewController.swift in Sources */,
 				2695CBEB1F03B9B5009D5FFA /* ClassifierType.swift in Sources */,
 				26A30C921E5235950047307D /* SettingsVC.swift in Sources */,
 			);

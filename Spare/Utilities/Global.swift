@@ -15,4 +15,6 @@ struct Global {
     static var filter = Filter()
     static var startOfWeek = StartOfWeek(rawValue: Locale.current.calendar.firstWeekday)!
     
+    static let viewControllerTransitionAnimationDuration = TimeInterval(0.25)
+    
 }
