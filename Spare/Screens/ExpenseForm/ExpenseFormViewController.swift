@@ -12,7 +12,12 @@ class ExpenseFormViewController: UIViewController {
     
     let customView = ExpenseFormView.instantiateFromNib()
     let suggestionList = SuggestionsViewController()
-    let suggestionListHeight = CGFloat(44 * 2)
+    let suggestionListHeight: CGFloat = {
+        if UIScreen.main.nativeSize.height == 568 {
+            return CGFloat(44 * 2)
+        }
+        return CGFloat(44 * 3)
+    }()
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -112,7 +117,7 @@ extension ExpenseFormViewController {
         }
         
         var contentOffsetY = CGFloat(0)
-        let minimumSuggestionListY = UIScreen.main.nativeSize.height - keyboardFrame.height - suggestionListHeight
+        let minimumSuggestionListY = UIScreen.main.nativeSize.height - keyboardFrame.height - self.suggestionListHeight
         var suggestionListY = minimumSuggestionListY
         
         if self.customView.categoryFieldView.textField.isFirstResponder {
@@ -131,15 +136,7 @@ extension ExpenseFormViewController {
                 suggestionListY = lowerLeftCorner.y
             }
             
-            self.embedChildViewController(
-                self.suggestionList,
-                toView: self.view,
-                completionBlock: {[unowned self] in
-                    self.suggestionList.view.frame = CGRect(x: 0,
-                                                            y: self.view.bounds.size.height,
-                                                            width: self.view.bounds.size.width,
-                                                            height: self.suggestionListHeight)
-            })
+            self.embedChildViewController(self.suggestionList, toView: self.view, fillSuperview: false)
         }
         
         // DEBUG
@@ -151,16 +148,16 @@ extension ExpenseFormViewController {
         self.customView.scrollView.contentInset = newInsets
         self.customView.scrollView.scrollIndicatorInsets = newInsets
         
-        let suggestionListFrame: CGRect = {
-            var frame = self.suggestionList.view.frame
-            frame.origin.y = suggestionListY
-            frame = self.view.convert(frame, from: UIApplication.shared.keyWindow!)
-            return frame
-        }()
+        var suggestionListFrame = CGRect(x: 20,
+                                         y: suggestionListY,
+                                         width: self.view.bounds.size.width - 40,
+                                         height: self.suggestionListHeight)
+        suggestionListFrame = self.view.convert(suggestionListFrame, from: UIApplication.shared.keyWindow!)
         UIView.animate(
             withDuration: animationDuration,
-            animations: { [unowned self] in
+            animations: {[unowned self] in
                 self.customView.scrollView.contentOffset = CGPoint(x: 0, y: contentOffsetY)
+            }, completion: {[unowned self] _ in
                 self.suggestionList.view.frame = suggestionListFrame
         })
     }
@@ -168,7 +165,9 @@ extension ExpenseFormViewController {
     @objc func handleKeyboardWillHide(_ notification: Notification) {
         self.customView.scrollView.contentInset = .zero
         self.customView.scrollView.scrollIndicatorInsets = .zero
+        
         self.suggestionList.unembedFromParentViewController()
+        self.suggestionList.view.frame = .zero
     }
     
     @objc func handleTextFieldTextDidChange(_ notification: Notification) {
