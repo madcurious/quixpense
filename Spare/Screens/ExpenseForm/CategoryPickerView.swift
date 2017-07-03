@@ -30,7 +30,7 @@ class CategoryPickerView: UIView {
 extension CategoryPickerView: Themeable {
     
     func applyTheme() {
-        self.recursivelyClearBackgroundColors()
+        self.clearAllBackgroundColors()
         
         self.dimView.backgroundColor = .black
         

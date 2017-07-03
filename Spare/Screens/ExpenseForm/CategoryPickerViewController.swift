@@ -7,18 +7,26 @@
 //
 
 import UIKit
+import CoreData
 
 fileprivate let kTransitioningDelegate = CategoryPickerTransitioningDelegate()
 
+private enum ViewID: String {
+    case itemCell = "itemCell"
+}
+
 class CategoryPickerViewController: UIViewController {
     
-    class func present(from presenter: ExpenseFormViewController) {
-        let picker = CategoryPickerViewController()
-        picker.setCustomTransitioningDelegate(kTransitioningDelegate)
-        presenter.present(picker, animated: true, completion: nil)
-    }
-    
     let customView = CategoryPickerView.instantiateFromNib()
+    
+    let fetchedResultsController: NSFetchedResultsController<Category> = {
+        let fetchRequest: NSFetchRequest<Category> = Category.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(Category.name), ascending: true)]
+        return NSFetchedResultsController<Category>(fetchRequest: fetchRequest,
+                                                    managedObjectContext: Global.coreDataStack.viewContext,
+                                                    sectionNameKeyPath: nil,
+                                                    cacheName: nil)
+    }()
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -37,6 +45,18 @@ class CategoryPickerViewController: UIViewController {
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTapOnDimView))
         self.customView.dimView.addGestureRecognizer(tapGestureRecognizer)
+        
+        do {
+            try self.fetchedResultsController.performFetch()
+            
+            self.customView.tableView.dataSource = self
+            self.customView.tableView.delegate = self
+            self.customView.tableView.register(PickerItemCell.nib(), forCellReuseIdentifier: ViewID.itemCell.rawValue)
+            self.customView.tableView.rowHeight = UITableViewAutomaticDimension
+            self.customView.tableView.estimatedRowHeight = 44
+            
+            self.customView.tableView.reloadData()
+        } catch {}
     }
     
     @objc func handleTapOnDimView() {
@@ -44,6 +64,56 @@ class CategoryPickerViewController: UIViewController {
     }
     
 }
+
+extension CategoryPickerViewController: UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch section {
+        case 0:
+            return self.fetchedResultsController.fetchedObjects?.count ?? 0
+        default:
+            return 1
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: ViewID.itemCell.rawValue, for: indexPath) as! PickerItemCell
+        
+        if indexPath.section == 0 {
+            cell.nameLabel.text = self.fetchedResultsController.object(at: indexPath).name
+        }
+        
+        return cell
+    }
+    
+}
+
+extension CategoryPickerViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+}
+
+// MARK: - Class functions
+
+extension CategoryPickerViewController {
+    
+    class func present(from presenter: ExpenseFormViewController) {
+        let picker = CategoryPickerViewController()
+        picker.setCustomTransitioningDelegate(kTransitioningDelegate)
+        presenter.present(picker, animated: true, completion: nil)
+    }
+    
+}
+
+// MARK: - Internal classes
 
 fileprivate class CategoryPickerTransitioningDelegate: NSObject, UIViewControllerTransitioningDelegate {
     

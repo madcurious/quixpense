@@ -89,6 +89,8 @@
 		26F78C901F0A388000CF0389 /* CategoryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F78C8F1F0A388000CF0389 /* CategoryPickerViewController.swift */; };
 		26F78C921F0A38CF00CF0389 /* CategoryPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26F78C911F0A38CF00CF0389 /* CategoryPickerView.xib */; };
 		26F78C941F0A38D900CF0389 /* CategoryPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F78C931F0A38D900CF0389 /* CategoryPickerView.swift */; };
+		26F78C961F0A49CE00CF0389 /* PickerItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F78C951F0A49CE00CF0389 /* PickerItemCell.swift */; };
+		26F78C981F0A49E100CF0389 /* PickerItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26F78C971F0A49E100CF0389 /* PickerItemCell.xib */; };
 		616B52302A44459579721AC9 /* Pods_Spare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B392D50401377663DE37E8A8 /* Pods_Spare.framework */; };
 /* End PBXBuildFile section */
 
@@ -223,6 +225,8 @@
 		26F78C8F1F0A388000CF0389 /* CategoryPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPickerViewController.swift; sourceTree = "<group>"; };
 		26F78C911F0A38CF00CF0389 /* CategoryPickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryPickerView.xib; sourceTree = "<group>"; };
 		26F78C931F0A38D900CF0389 /* CategoryPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPickerView.swift; sourceTree = "<group>"; };
+		26F78C951F0A49CE00CF0389 /* PickerItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerItemCell.swift; sourceTree = "<group>"; };
+		26F78C971F0A49E100CF0389 /* PickerItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PickerItemCell.xib; sourceTree = "<group>"; };
 		59C2B0311ED5D0556A5A2FEF /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B1211CBF60E5725987043C3 /* Pods-Spare.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spare.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Spare/Pods-Spare.debug.xcconfig"; sourceTree = "<group>"; };
 		B392D50401377663DE37E8A8 /* Pods_Spare.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Spare.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -411,6 +415,8 @@
 				26F78C8F1F0A388000CF0389 /* CategoryPickerViewController.swift */,
 				26F78C911F0A38CF00CF0389 /* CategoryPickerView.xib */,
 				26F78C931F0A38D900CF0389 /* CategoryPickerView.swift */,
+				26F78C951F0A49CE00CF0389 /* PickerItemCell.swift */,
+				26F78C971F0A49E100CF0389 /* PickerItemCell.xib */,
 			);
 			path = ExpenseForm;
 			sourceTree = "<group>";
@@ -628,6 +634,7 @@
 				261BB0211EFE6E55006E0DC3 /* CategoryFieldView.xib in Resources */,
 				26A1CB4F1DD1ABD600DAE89E /* NotoSansUI-Regular.ttf in Resources */,
 				26A1CB4E1DD1ABD600DAE89E /* NotoSansUI-Italic.ttf in Resources */,
+				26F78C981F0A49E100CF0389 /* PickerItemCell.xib in Resources */,
 				26DF09A51EF800D900D26D14 /* TwoLabelTableViewCell.xib in Resources */,
 				2669468B1CC7711000A68424 /* iPhone.storyboard in Resources */,
 				2669468A1CC7711000A68424 /* Images.xcassets in Resources */,
@@ -730,6 +737,7 @@
 				26628A2D1E714AB100E80494 /* LightTheme.swift in Sources */,
 				26A30C8C1E52318D0047307D /* Theme.swift in Sources */,
 				26DDDCAE1E5C285F001617A1 /* InitializeCoreDataStackOperation.swift in Sources */,
+				26F78C961F0A49CE00CF0389 /* PickerItemCell.swift in Sources */,
 				26F57AF11E67DE1B0034FF4B /* Debug.swift in Sources */,
 				26DF09861EF2E18900D26D14 /* StartOfWeek.swift in Sources */,
 				26B38F111E89068500177CFE /* UserDefaultsKey.swift in Sources */,
