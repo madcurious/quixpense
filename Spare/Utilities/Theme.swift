@@ -9,47 +9,37 @@
 import UIKit
 
 enum ColoredElement {
-    case
-    barBackground,
-    barTint,
+    case barBackground
+    case barTint
+    case checkImageView
     
-    /// Main tint color for buttons and controls.
-    controlTint,
+    /// Main tint color for buttons and controls
+    case controlTint
     
-    disclosureIndicator,
-    
-    sectionTotalHeaderViewBackground,
-    sectionTotalHeaderViewText,
-    
-    fieldIcon,
-    
-    groupedTableViewSectionHeader,
-    
-    filterButtonBackground,
-    filterButtonContent,
-    
-    mainBackground,
-    
-    placeholder,
-    
-    promptLabel,
-    
-    regularText,
-    
-    tableViewSeparator
+    case disclosureIndicator
+    case sectionTotalHeaderViewBackground
+    case sectionTotalHeaderViewText
+    case fieldIcon
+    case filterButtonBackground
+    case filterButtonContent
+    case groupedTableViewSectionHeader
+    case mainBackground
+    case placeholder
+    case promptLabel
+    case regularText
+    case tableViewSeparator
 }
 
 enum StringElement {
-    case
-    cellSecondaryText,
-    dateTextFieldLabel,
-    sectionTotalHeaderView,
-    filterButtonText,
-    loadableViewInfoLabelMainText,
-    loadableViewInfoLabelSecondaryText,
-    navBarTitle,
-    groupedTableViewSectionHeader,
-    regularText
+    case cellSecondaryText
+    case dateTextFieldLabel
+    case filterButtonText
+    case groupedTableViewSectionHeader
+    case loadableViewInfoLabelMainText
+    case loadableViewInfoLabelSecondaryText
+    case navBarTitle
+    case regularText
+    case sectionTotalHeaderView
 }
 
 protocol Theme {

@@ -228,7 +228,7 @@ extension ExpenseFormViewController: UITextFieldDelegate {
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if textField == self.customView.categoryFieldView.textField {
-            CategoryPickerViewController.present(from: self)
+            CategoryPickerViewController.present(from: self, selectedCategoryID: nil)
         }
         return false
     }

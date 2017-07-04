@@ -22,18 +22,37 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ygh-VN-6UM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="GHw-ye-NNG">
-                                <rect key="frame" x="15" y="6" width="350" height="30"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="GHw-ye-NNG">
+                                <rect key="frame" x="10" y="6" width="355" height="30"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aev-CM-PqX">
-                                        <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SAM-WQ-eIF">
+                                        <rect key="frame" x="0.0" y="0.0" width="14" height="30"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NUL-6W-WS4">
+                                                <rect key="frame" x="0.0" y="8" width="14" height="14"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="NUL-6W-WS4" secondAttribute="height" id="vUG-3p-1GI"/>
+                                                </constraints>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iE5-vA-bTR">
+                                                <rect key="frame" x="0.0" y="8" width="14" height="14"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="oD4-en-bx8"/>
-                                            <constraint firstAttribute="width" secondItem="aev-CM-PqX" secondAttribute="height" id="yfJ-jn-deb"/>
+                                            <constraint firstItem="iE5-vA-bTR" firstAttribute="width" secondItem="NUL-6W-WS4" secondAttribute="width" id="6HZ-73-nqF"/>
+                                            <constraint firstItem="iE5-vA-bTR" firstAttribute="centerX" secondItem="NUL-6W-WS4" secondAttribute="centerX" id="6WZ-GM-SvV"/>
+                                            <constraint firstItem="iE5-vA-bTR" firstAttribute="centerY" secondItem="NUL-6W-WS4" secondAttribute="centerY" id="A7p-sJ-ukC"/>
+                                            <constraint firstItem="NUL-6W-WS4" firstAttribute="width" secondItem="SAM-WQ-eIF" secondAttribute="width" id="J4W-sk-azB"/>
+                                            <constraint firstAttribute="trailing" secondItem="NUL-6W-WS4" secondAttribute="trailing" id="Kct-bK-F5A"/>
+                                            <constraint firstAttribute="width" constant="14" id="bP2-HK-PSV"/>
+                                            <constraint firstItem="iE5-vA-bTR" firstAttribute="height" secondItem="NUL-6W-WS4" secondAttribute="height" id="klQ-Bx-7bV"/>
+                                            <constraint firstItem="NUL-6W-WS4" firstAttribute="centerY" secondItem="SAM-WQ-eIF" secondAttribute="centerY" id="t2i-C4-GIZ"/>
+                                            <constraint firstItem="NUL-6W-WS4" firstAttribute="leading" secondItem="SAM-WQ-eIF" secondAttribute="leading" id="xRN-R1-O6h"/>
                                         </constraints>
-                                    </imageView>
+                                    </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OhY-pz-03y">
-                                        <rect key="frame" x="34" y="0.0" width="316" height="30"/>
+                                        <rect key="frame" x="20" y="0.0" width="335" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -45,7 +64,8 @@
                         <constraints>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="43" id="0Db-9x-4kV"/>
                             <constraint firstAttribute="bottom" secondItem="GHw-ye-NNG" secondAttribute="bottom" constant="7.5" id="0XT-zz-TYS"/>
-                            <constraint firstItem="GHw-ye-NNG" firstAttribute="leading" secondItem="ygh-VN-6UM" secondAttribute="leading" constant="15" id="cgR-eZ-LIQ"/>
+                            <constraint firstItem="SAM-WQ-eIF" firstAttribute="centerY" secondItem="ygh-VN-6UM" secondAttribute="centerY" id="Bwf-9Z-94v"/>
+                            <constraint firstItem="GHw-ye-NNG" firstAttribute="leading" secondItem="ygh-VN-6UM" secondAttribute="leading" constant="10" id="cgR-eZ-LIQ"/>
                             <constraint firstAttribute="trailing" secondItem="GHw-ye-NNG" secondAttribute="trailing" constant="10" id="fS1-VQ-Nll"/>
                             <constraint firstItem="GHw-ye-NNG" firstAttribute="top" secondItem="ygh-VN-6UM" secondAttribute="top" constant="6" id="jIg-oP-3Ke"/>
                         </constraints>
@@ -59,7 +79,8 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="checkboxImageView" destination="aev-CM-PqX" id="aGL-e0-Xzo"/>
+                <outlet property="checkImageView" destination="iE5-vA-bTR" id="xgv-XR-lOO"/>
+                <outlet property="checkboxImageView" destination="NUL-6W-WS4" id="ZfL-xM-ehg"/>
                 <outlet property="nameLabel" destination="OhY-pz-03y" id="qhE-zx-e63"/>
                 <outlet property="sizerView" destination="ygh-VN-6UM" id="NtR-4S-NEW"/>
             </connections>

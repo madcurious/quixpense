@@ -38,6 +38,9 @@ struct LightTheme: Theme {
              .filterButtonContent,
              .mainBackground:
             return UIColor.white
+            
+        case .checkImageView:
+            return .green
         }
     }
     

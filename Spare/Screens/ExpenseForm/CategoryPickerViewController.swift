@@ -34,8 +34,10 @@ class CategoryPickerViewController: UIViewController {
     
     let customView = CategoryPickerView.instantiateFromNib()
     var delegate: CategoryPickerViewControllerDelegate?
+    var selectedCategoryID: NSManagedObjectID?
     
-    init() {
+    init(selectedCategoryID: NSManagedObjectID?) {
+        self.selectedCategoryID = selectedCategoryID
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -93,7 +95,9 @@ extension CategoryPickerViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: ViewID.itemCell.rawValue, for: indexPath) as! PickerItemCell
         
         if indexPath.section == 0 {
-            cell.nameLabel.text = self.fetchedResultsController.object(at: indexPath).name
+            let category = self.fetchedResultsController.object(at: indexPath)
+            cell.nameLabel.text = category.name
+            cell.isActive = category.objectID == self.selectedCategoryID
         } else {
             cell.nameLabel.text = "Label"
         }
@@ -112,8 +116,17 @@ extension CategoryPickerViewController: UITableViewDelegate {
         
         switch indexPath.section {
         case 0:
-            self.delegate?.categoryPicker(self, didSelectCategory:self.fetchedResultsController.object(at: indexPath))
-            self.dismiss(animated: true, completion: nil)
+            var reloadRows = [indexPath]
+            if let currentCategory = self.fetchedResultsController.fetchedObjects?.first(where: { $0.objectID == self.selectedCategoryID }),
+                let oldIndexPath = self.fetchedResultsController.indexPath(forObject: currentCategory) {
+                reloadRows.append(oldIndexPath)
+            }
+            let category = self.fetchedResultsController.object(at: indexPath)
+            self.selectedCategoryID = category.objectID
+            tableView.reloadRows(at: reloadRows, with: .automatic)
+            
+            self.delegate?.categoryPicker(self, didSelectCategory:category)
+//            self.dismiss(animated: true, completion: nil)
             
         default:
             self.dismiss(animated: true, completion: {
@@ -142,8 +155,8 @@ extension CategoryPickerViewController: UITableViewDelegate {
 
 extension CategoryPickerViewController {
     
-    class func present(from presenter: ExpenseFormViewController) {
-        let picker = CategoryPickerViewController()
+    class func present(from presenter: ExpenseFormViewController, selectedCategoryID: NSManagedObjectID?) {
+        let picker = CategoryPickerViewController(selectedCategoryID: selectedCategoryID)
         picker.setCustomTransitioningDelegate(kTransitioningDelegate)
         picker.delegate = presenter
         presenter.present(picker, animated: true, completion: nil)
