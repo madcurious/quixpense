@@ -206,6 +206,10 @@ extension ExpenseFormViewController: CategoryPickerViewControllerDelegate {
         self.customView.categoryFieldView.textField.text = category.name
     }
     
+    func categoryPicker(_ picker: CategoryPickerViewController, didAddNewCategoryName name: String) {
+        self.customView.categoryFieldView.textField.text = name
+    }
+    
 }
 
 // MARK: - UIScrollViewDelegate

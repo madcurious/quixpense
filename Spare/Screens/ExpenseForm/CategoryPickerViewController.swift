@@ -8,9 +8,11 @@
 
 import UIKit
 import CoreData
+import Mold
 
 protocol CategoryPickerViewControllerDelegate {
     func categoryPicker(_ picker: CategoryPickerViewController, didSelectCategory category: Category)
+    func categoryPicker(_ picker: CategoryPickerViewController, didAddNewCategoryName name: String)
 }
 
 fileprivate let kTransitioningDelegate = CategoryPickerTransitioningDelegate()
@@ -70,6 +72,8 @@ class CategoryPickerViewController: UIViewController {
     
 }
 
+// MARK: - UITableViewDataSource
+
 extension CategoryPickerViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -99,13 +103,37 @@ extension CategoryPickerViewController: UITableViewDataSource {
     
 }
 
+// MARK: - UITableViewDelegate
+
 extension CategoryPickerViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.delegate?.categoryPicker(self, didSelectCategory: self.fetchedResultsController.object(at: indexPath))
-        
         tableView.deselectRow(at: indexPath, animated: true)
-        self.dismiss(animated: true, completion: nil)
+        
+        switch indexPath.section {
+        case 0:
+            self.delegate?.categoryPicker(self, didSelectCategory:self.fetchedResultsController.object(at: indexPath))
+            self.dismiss(animated: true, completion: nil)
+            
+        default:
+            self.dismiss(animated: true, completion: {
+                let alertController = UIAlertController(title: nil, message: "Enter a new category name:", preferredStyle: .alert)
+                alertController.addTextField(configurationHandler: { (textField) in
+                    textField.autocapitalizationType = .sentences
+                })
+                alertController.addAction(UIAlertAction(title: "Add", style: .default, handler: {[unowned self] (_) in
+                    guard let delegate = self.delegate,
+                        let categoryName = alertController.textFields?.first?.text
+                        else {
+                            return
+                    }
+                    delegate.categoryPicker(self, didAddNewCategoryName: categoryName)
+                    alertController.dismiss(animated: true, completion: nil)
+                }))
+                alertController.addCancelAction()
+                md_rootViewController().present(alertController, animated: true, completion: nil)
+            })
+        }
     }
     
 }
@@ -123,7 +151,7 @@ extension CategoryPickerViewController {
     
 }
 
-// MARK: - Internal classes
+// MARK: - Internal animator classes
 
 fileprivate class CategoryPickerTransitioningDelegate: NSObject, UIViewControllerTransitioningDelegate {
     
