@@ -21,6 +21,13 @@ private enum ViewID: String {
 
 class CategoryPickerViewController: UIViewController {
     
+    class func present(from presenter: ExpenseFormViewController, selectedCategoryID: NSManagedObjectID?) {
+        let picker = CategoryPickerViewController(selectedCategoryID: selectedCategoryID)
+        picker.setCustomTransitioningDelegate(SlideUpPicker.sharedTransitioningDelegate)
+        picker.delegate = presenter
+        presenter.present(picker, animated: true, completion: nil)
+    }
+    
     let fetchedResultsController: NSFetchedResultsController<Category> = {
         let fetchRequest: NSFetchRequest<Category> = Category.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(Category.name), ascending: true)]
@@ -145,19 +152,6 @@ extension CategoryPickerViewController: UITableViewDelegate {
                 md_rootViewController().present(alertController, animated: true, completion: nil)
             })
         }
-    }
-    
-}
-
-// MARK: - Class functions
-
-extension CategoryPickerViewController {
-    
-    class func present(from presenter: ExpenseFormViewController, selectedCategoryID: NSManagedObjectID?) {
-        let picker = CategoryPickerViewController(selectedCategoryID: selectedCategoryID)
-        picker.setCustomTransitioningDelegate(SlideUpPicker.sharedTransitioningDelegate)
-        picker.delegate = presenter
-        presenter.present(picker, animated: true, completion: nil)
     }
     
 }

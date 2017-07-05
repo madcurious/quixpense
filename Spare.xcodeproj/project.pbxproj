@@ -84,6 +84,8 @@
 		26E4E0591937AF690096191A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E4E0581937AF690096191A /* QuartzCore.framework */; };
 		26E98BF41F0CD7B900A5C3D5 /* TagPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E98BF31F0CD7B900A5C3D5 /* TagPickerViewController.swift */; };
 		26E98BF61F0CD9F700A5C3D5 /* SlideUpPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E98BF51F0CD9F700A5C3D5 /* SlideUpPicker.swift */; };
+		26E98BF81F0CDE4E00A5C3D5 /* TagPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E98BF71F0CDE4E00A5C3D5 /* TagPickerView.swift */; };
+		26E98BFA1F0CDE6200A5C3D5 /* TagPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26E98BF91F0CDE6200A5C3D5 /* TagPickerView.xib */; };
 		26F1A96E1E5D890400752F1A /* MakeDummyDataOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F1A96D1E5D890400752F1A /* MakeDummyDataOperation.swift */; };
 		26F57AF11E67DE1B0034FF4B /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F57AF01E67DE1B0034FF4B /* Debug.swift */; };
 		26F6169B1EFCF5FB005519E6 /* AmountFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F6169A1EFCF5FB005519E6 /* AmountFieldView.swift */; };
@@ -222,6 +224,8 @@
 		26E4E0581937AF690096191A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		26E98BF31F0CD7B900A5C3D5 /* TagPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagPickerViewController.swift; sourceTree = "<group>"; };
 		26E98BF51F0CD9F700A5C3D5 /* SlideUpPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideUpPicker.swift; sourceTree = "<group>"; };
+		26E98BF71F0CDE4E00A5C3D5 /* TagPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagPickerView.swift; sourceTree = "<group>"; };
+		26E98BF91F0CDE6200A5C3D5 /* TagPickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TagPickerView.xib; sourceTree = "<group>"; };
 		26F1A96D1E5D890400752F1A /* MakeDummyDataOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeDummyDataOperation.swift; sourceTree = "<group>"; };
 		26F57AF01E67DE1B0034FF4B /* Debug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
 		26F6169A1EFCF5FB005519E6 /* AmountFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountFieldView.swift; sourceTree = "<group>"; };
@@ -423,6 +427,8 @@
 				26F78C971F0A49E100CF0389 /* PickerItemCell.xib */,
 				26E98BF31F0CD7B900A5C3D5 /* TagPickerViewController.swift */,
 				26E98BF51F0CD9F700A5C3D5 /* SlideUpPicker.swift */,
+				26E98BF71F0CDE4E00A5C3D5 /* TagPickerView.swift */,
+				26E98BF91F0CDE6200A5C3D5 /* TagPickerView.xib */,
 			);
 			path = ExpenseForm;
 			sourceTree = "<group>";
@@ -653,6 +659,7 @@
 				26A1CB4C1DD1ABD600DAE89E /* NotoSansUI-Bold.ttf in Resources */,
 				266946861CC7711000A68424 /* Icon-40@2x.png in Resources */,
 				26F6169D1EFCF604005519E6 /* AmountFieldView.xib in Resources */,
+				26E98BFA1F0CDE6200A5C3D5 /* TagPickerView.xib in Resources */,
 				261BB0251EFE721B006E0DC3 /* TagFieldView.xib in Resources */,
 				266946881CC7711000A68424 /* Icon-Small@2x.png in Resources */,
 				266946851CC7711000A68424 /* InfoPlist.strings in Resources */,
@@ -762,6 +769,7 @@
 				263034F91F02435F00844C4F /* SuggestionsViewController.swift in Sources */,
 				266B5FFA1EFCEAE800063803 /* AddExpenseViewController.swift in Sources */,
 				26CB900B1EE5345D009F7099 /* Expense+Extension.swift in Sources */,
+				26E98BF81F0CDE4E00A5C3D5 /* TagPickerView.swift in Sources */,
 				26A30C8E1E5232240047307D /* Global.swift in Sources */,
 				265733291EDD507C00AD1AB9 /* FilterPopupView.swift in Sources */,
 				26DF098E1EF4344100D26D14 /* ExpenseGroup.swift in Sources */,

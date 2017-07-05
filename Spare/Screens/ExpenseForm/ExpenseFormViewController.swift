@@ -68,6 +68,7 @@ class ExpenseFormViewController: UIViewController {
         self.customView.scrollView.delegate = self
         
         self.customView.categoryFieldView.textField.delegate = self
+        self.customView.tagFieldView.textField.delegate = self
     }
     
     func hasUnsavedChanges() -> Bool {
@@ -227,8 +228,11 @@ extension ExpenseFormViewController: UIScrollViewDelegate {
 extension ExpenseFormViewController: UITextFieldDelegate {
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        if textField == self.customView.categoryFieldView.textField {
+        switch textField {
+        case self.customView.categoryFieldView.textField:
             CategoryPickerViewController.present(from: self, selectedCategoryID: nil)
+        default:
+            TagPickerViewController.present(from: self)
         }
         return false
     }
