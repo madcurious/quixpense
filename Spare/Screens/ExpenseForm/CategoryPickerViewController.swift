@@ -15,8 +15,6 @@ protocol CategoryPickerViewControllerDelegate {
     func categoryPicker(_ picker: CategoryPickerViewController, didAddNewCategoryName name: String)
 }
 
-fileprivate let kTransitioningDelegate = CategoryPickerTransitioningDelegate()
-
 private enum ViewID: String {
     case itemCell = "itemCell"
 }
@@ -157,89 +155,9 @@ extension CategoryPickerViewController {
     
     class func present(from presenter: ExpenseFormViewController, selectedCategoryID: NSManagedObjectID?) {
         let picker = CategoryPickerViewController(selectedCategoryID: selectedCategoryID)
-        picker.setCustomTransitioningDelegate(kTransitioningDelegate)
+        picker.setCustomTransitioningDelegate(SlideUpPicker.sharedTransitioningDelegate)
         picker.delegate = presenter
         presenter.present(picker, animated: true, completion: nil)
-    }
-    
-}
-
-// MARK: - Internal animator classes
-
-fileprivate class CategoryPickerTransitioningDelegate: NSObject, UIViewControllerTransitioningDelegate {
-    
-    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return CategoryPickerPresentationAnimator()
-    }
-    
-    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return CategoryPickerDismissalAnimator()
-    }
-    
-}
-
-fileprivate class CategoryPickerPresentationAnimator: NSObject, UIViewControllerAnimatedTransitioning {
-    
-    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return Global.viewControllerTransitionAnimationDuration
-    }
-    
-    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-        guard let toView = transitionContext.view(forKey: .to) as? CategoryPickerView
-            else {
-                return
-        }
-        
-        let containerView = transitionContext.containerView
-        containerView.addSubviewsAndFill(toView)
-        
-        toView.setNeedsLayout()
-        toView.layoutIfNeeded()
-        toView.dimView.alpha = 0.0
-        toView.stackViewBottom.constant = -(toView.stackView.bounds.size.height)
-        toView.setNeedsLayout()
-        toView.layoutIfNeeded()
-        
-        UIView.animate(withDuration: self.transitionDuration(using: transitionContext),
-                       animations: {
-                        
-                        toView.dimView.alpha = 0.4
-                        
-                        toView.stackViewBottom.constant = 0
-                        toView.setNeedsLayout()
-                        toView.layoutIfNeeded()
-        }, completion: { _ in
-            transitionContext.completeTransition(true)
-        })
-    }
-    
-}
-
-fileprivate class CategoryPickerDismissalAnimator: NSObject, UIViewControllerAnimatedTransitioning {
-    
-    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return Global.viewControllerTransitionAnimationDuration
-    }
-    
-    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-        guard let fromView = transitionContext.view(forKey: .from) as? CategoryPickerView
-            else {
-                return
-        }
-        
-        let containerView = transitionContext.containerView
-        containerView.addSubviewsAndFill(fromView)
-        
-        UIView.animate(withDuration: self.transitionDuration(using: transitionContext),
-                       animations: {
-                        fromView.dimView.alpha = 0
-                        
-                        fromView.stackViewBottom.constant = -(fromView.stackView.bounds.size.height)
-                        fromView.setNeedsLayout()
-                        fromView.layoutIfNeeded()
-        }, completion: { _ in
-            transitionContext.completeTransition(true)
-        })
     }
     
 }

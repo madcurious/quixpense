@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.14"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -26,33 +25,20 @@
                                 <rect key="frame" x="10" y="6" width="355" height="30"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SAM-WQ-eIF">
-                                        <rect key="frame" x="0.0" y="0.0" width="14" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="22" height="30"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NUL-6W-WS4">
-                                                <rect key="frame" x="0.0" y="8" width="14" height="14"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" secondItem="NUL-6W-WS4" secondAttribute="height" id="vUG-3p-1GI"/>
-                                                </constraints>
-                                            </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iE5-vA-bTR">
-                                                <rect key="frame" x="0.0" y="8" width="14" height="14"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iE5-vA-bTR">
+                                                <rect key="frame" x="0.0" y="4" width="22" height="22"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="iE5-vA-bTR" firstAttribute="width" secondItem="NUL-6W-WS4" secondAttribute="width" id="6HZ-73-nqF"/>
-                                            <constraint firstItem="iE5-vA-bTR" firstAttribute="centerX" secondItem="NUL-6W-WS4" secondAttribute="centerX" id="6WZ-GM-SvV"/>
-                                            <constraint firstItem="iE5-vA-bTR" firstAttribute="centerY" secondItem="NUL-6W-WS4" secondAttribute="centerY" id="A7p-sJ-ukC"/>
-                                            <constraint firstItem="NUL-6W-WS4" firstAttribute="width" secondItem="SAM-WQ-eIF" secondAttribute="width" id="J4W-sk-azB"/>
-                                            <constraint firstAttribute="trailing" secondItem="NUL-6W-WS4" secondAttribute="trailing" id="Kct-bK-F5A"/>
-                                            <constraint firstAttribute="width" constant="14" id="bP2-HK-PSV"/>
-                                            <constraint firstItem="iE5-vA-bTR" firstAttribute="height" secondItem="NUL-6W-WS4" secondAttribute="height" id="klQ-Bx-7bV"/>
-                                            <constraint firstItem="NUL-6W-WS4" firstAttribute="centerY" secondItem="SAM-WQ-eIF" secondAttribute="centerY" id="t2i-C4-GIZ"/>
-                                            <constraint firstItem="NUL-6W-WS4" firstAttribute="leading" secondItem="SAM-WQ-eIF" secondAttribute="leading" id="xRN-R1-O6h"/>
+                                            <constraint firstAttribute="width" constant="22" id="bP2-HK-PSV"/>
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OhY-pz-03y">
-                                        <rect key="frame" x="20" y="0.0" width="335" height="30"/>
+                                        <rect key="frame" x="28" y="0.0" width="327" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -80,9 +66,11 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="checkImageView" destination="iE5-vA-bTR" id="xgv-XR-lOO"/>
-                <outlet property="checkboxImageView" destination="NUL-6W-WS4" id="ZfL-xM-ehg"/>
+                <outlet property="checkImageViewContainerWidth" destination="bP2-HK-PSV" id="5mG-Lg-Epq"/>
                 <outlet property="nameLabel" destination="OhY-pz-03y" id="qhE-zx-e63"/>
                 <outlet property="sizerView" destination="ygh-VN-6UM" id="NtR-4S-NEW"/>
+                <outlet property="stackView" destination="GHw-ye-NNG" id="Gw8-9i-0gS"/>
+                <outlet property="stackViewLeading" destination="cgR-eZ-LIQ" id="RKa-E4-o7D"/>
             </connections>
             <point key="canvasLocation" x="-110" y="-52"/>
         </tableViewCell>

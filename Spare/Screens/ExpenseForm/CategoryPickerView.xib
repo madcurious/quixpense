@@ -20,7 +20,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="VV8-v8-bfT">
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="VV8-v8-bfT">
                     <rect key="frame" x="0.0" y="284" width="320" height="284"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Ge-2f-mgb">
@@ -41,8 +41,15 @@
                                 <constraint firstAttribute="trailing" secondItem="5Z3-hc-JY0" secondAttribute="trailing" constant="20" id="xxg-jf-TFE"/>
                             </constraints>
                         </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="di3-NS-jDT">
+                            <rect key="frame" x="0.0" y="44" width="320" height="0.0"/>
+                            <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="0.5" id="QYK-Ae-CFm"/>
+                            </constraints>
+                        </view>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CNW-ue-PbK">
-                            <rect key="frame" x="0.0" y="46" width="320" height="238"/>
+                            <rect key="frame" x="0.0" y="44" width="320" height="240"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </tableView>
                     </subviews>
@@ -64,6 +71,7 @@
                 <outlet property="stackView" destination="VV8-v8-bfT" id="oR6-q3-f5N"/>
                 <outlet property="stackViewBottom" destination="yj5-6M-8Ok" id="a7f-Sj-9Aq"/>
                 <outlet property="tableView" destination="CNW-ue-PbK" id="LGM-zt-VHr"/>
+                <outlet property="titleBarSeparatorView" destination="di3-NS-jDT" id="Nib-q8-w6y"/>
                 <outlet property="titleBarView" destination="8Ge-2f-mgb" id="DDC-Yl-hmb"/>
                 <outlet property="titleLabel" destination="5Z3-hc-JY0" id="A0Y-iV-unk"/>
             </connections>

@@ -28,6 +28,8 @@ class FilterButton: MDButton, Themeable {
         }
     }
     
+    var centerConstraint: NSLayoutConstraint?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -85,8 +87,15 @@ class FilterButton: MDButton, Themeable {
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
         
-        // As soon as the button is added to the navigation bar, center it horizontally.
-        self.centerXAnchor.constraint(equalTo: self.superview!.centerXAnchor, constant: 0).isActive = true
+        // As soon as the filter button is added to the navigation bar, add Autolayout
+        // that centers the button horizontally.
+        // Need to wrap this in optional binding because iOS may remove the button
+        // from the superview during UINavigationController's push animation.
+        if let superview = self.superview,
+            self.centerConstraint == nil {
+            self.centerConstraint = self.centerXAnchor.constraint(equalTo: superview.centerXAnchor, constant: 0)
+            self.centerConstraint?.isActive = true
+        }
     }
     
 }

@@ -82,6 +82,8 @@
 		26DF09A41EF800D900D26D14 /* TwoLabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DF099F1EF800D900D26D14 /* TwoLabelTableViewCell.swift */; };
 		26DF09A51EF800D900D26D14 /* TwoLabelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26DF09A01EF800D900D26D14 /* TwoLabelTableViewCell.xib */; };
 		26E4E0591937AF690096191A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E4E0581937AF690096191A /* QuartzCore.framework */; };
+		26E98BF41F0CD7B900A5C3D5 /* TagPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E98BF31F0CD7B900A5C3D5 /* TagPickerViewController.swift */; };
+		26E98BF61F0CD9F700A5C3D5 /* SlideUpPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E98BF51F0CD9F700A5C3D5 /* SlideUpPicker.swift */; };
 		26F1A96E1E5D890400752F1A /* MakeDummyDataOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F1A96D1E5D890400752F1A /* MakeDummyDataOperation.swift */; };
 		26F57AF11E67DE1B0034FF4B /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F57AF01E67DE1B0034FF4B /* Debug.swift */; };
 		26F6169B1EFCF5FB005519E6 /* AmountFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F6169A1EFCF5FB005519E6 /* AmountFieldView.swift */; };
@@ -218,6 +220,8 @@
 		26DF099F1EF800D900D26D14 /* TwoLabelTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoLabelTableViewCell.swift; sourceTree = "<group>"; };
 		26DF09A01EF800D900D26D14 /* TwoLabelTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TwoLabelTableViewCell.xib; sourceTree = "<group>"; };
 		26E4E0581937AF690096191A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		26E98BF31F0CD7B900A5C3D5 /* TagPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagPickerViewController.swift; sourceTree = "<group>"; };
+		26E98BF51F0CD9F700A5C3D5 /* SlideUpPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideUpPicker.swift; sourceTree = "<group>"; };
 		26F1A96D1E5D890400752F1A /* MakeDummyDataOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeDummyDataOperation.swift; sourceTree = "<group>"; };
 		26F57AF01E67DE1B0034FF4B /* Debug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
 		26F6169A1EFCF5FB005519E6 /* AmountFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountFieldView.swift; sourceTree = "<group>"; };
@@ -417,6 +421,8 @@
 				26F78C931F0A38D900CF0389 /* CategoryPickerView.swift */,
 				26F78C951F0A49CE00CF0389 /* PickerItemCell.swift */,
 				26F78C971F0A49E100CF0389 /* PickerItemCell.xib */,
+				26E98BF31F0CD7B900A5C3D5 /* TagPickerViewController.swift */,
+				26E98BF51F0CD9F700A5C3D5 /* SlideUpPicker.swift */,
 			);
 			path = ExpenseForm;
 			sourceTree = "<group>";
@@ -720,11 +726,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				26D6C9AD1E93807400DDDAE8 /* NotoSansUI.swift in Sources */,
+				26E98BF41F0CD7B900A5C3D5 /* TagPickerViewController.swift in Sources */,
 				266B5FF81EFCEADC00063803 /* ExpenseFormViewController.swift in Sources */,
 				266946931CC77A1A00A68424 /* AppDelegate.swift in Sources */,
 				26DF09A11EF800D900D26D14 /* LoadableView.swift in Sources */,
 				26DDDCA81E5C238B001617A1 /* LoadAppVC.swift in Sources */,
 				265DFB811E87D07300439D9A /* BarButtonItems.swift in Sources */,
+				26E98BF61F0CD9F700A5C3D5 /* SlideUpPicker.swift in Sources */,
 				26B38F0F1E88FB2C00177CFE /* MakeDefaultDataOperation.swift in Sources */,
 				26DDDCAA1E5C23AB001617A1 /* _LAVCView.swift in Sources */,
 				2647CD4E1EF136770098E700 /* HomeViewController.swift in Sources */,

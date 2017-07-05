@@ -11,17 +11,32 @@ import UIKit
 class PickerItemCell: UITableViewCell {
     
     @IBOutlet weak var sizerView: UIView!
-    @IBOutlet weak var checkboxImageView: UIImageView!
+    @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var checkImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
+    
+    @IBOutlet weak var stackViewLeading: NSLayoutConstraint!
+    @IBOutlet weak var checkImageViewContainerWidth: NSLayoutConstraint!
+    
+    private static let stackViewLeading = CGFloat(10)
+    private static let stackViewSpacing = CGFloat(6)
+    private static let checkImageViewContainerWidth = CGFloat(22)
+    
+    var separatorLeftInset: CGFloat {
+        return self.stackViewLeading.constant + self.checkImageViewContainerWidth.constant + self.stackView.spacing
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         self.applyTheme()
         
-        self.checkboxImageView.image = UIImage.templateNamed("cellAccessoryItemUnchecked")
         self.checkImageView.image = UIImage.templateNamed("cellAccessoryItemChecked")
         self.checkImageView.isHidden = true
+        
+        self.separatorInset = UIEdgeInsetsMake(0, self.separatorLeftInset, 0, 0)
+//        self.stackViewLeading.constant = PickerItemCell.stackViewLeading
+//        self.stackView.spacing = PickerItemCell.stackViewSpacing
+//        self.checkImageViewContainerWidth.constant = PickerItemCell.checkImageViewContainerWidth
     }
     
     var isActive = false {
@@ -36,7 +51,6 @@ extension PickerItemCell: Themeable {
     
     func applyTheme() {
         self.sizerView.clearAllBackgroundColors()
-        self.checkboxImageView.tintColor = Global.theme.color(for: .controlTint)
         self.checkImageView.tintColor = Global.theme.color(for: .checkImageView)
     }
     

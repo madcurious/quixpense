@@ -21,7 +21,8 @@ struct LightTheme: Theme {
              .filterButtonBackground:
             return UIColor.hex(0x666666)
             
-        case .groupedTableViewSectionHeader,
+        case .checkImageView,
+             .groupedTableViewSectionHeader,
              .promptLabel:
             return UIColor.hex(0x999999)
             
@@ -39,8 +40,8 @@ struct LightTheme: Theme {
              .mainBackground:
             return UIColor.white
             
-        case .checkImageView:
-            return .green
+//        case .checkImageView:
+//            return .hex(0x0076FF)
         }
     }
     
