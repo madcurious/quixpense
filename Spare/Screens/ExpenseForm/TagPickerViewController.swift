@@ -8,9 +8,14 @@
 
 import UIKit
 import CoreData
+import Mold
 
 private enum ViewID: String {
     case itemCell = "itemCell"
+}
+
+private enum Section: Int {
+    case recents, allTags, newTag
 }
 
 class TagPickerViewController: UIViewController {
@@ -18,19 +23,14 @@ class TagPickerViewController: UIViewController {
     class func present(from presenter: ExpenseFormViewController) {
         let picker = TagPickerViewController()
         picker.setCustomTransitioningDelegate(SlideUpPicker.sharedTransitioningDelegate)
-//        picker.delegate = presenter
         presenter.present(picker, animated: true, completion: nil)
     }
     
     let customView = TagPickerView.instantiateFromNib()
     
-    let allTagsFetcher: NSFetchedResultsController<Tag> = {
-        let fetchRequest: NSFetchRequest<Tag> = Tag.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(Tag.name), ascending: true)]
-        return NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: Global.coreDataStack.viewContext, sectionNameKeyPath: nil, cacheName: nil)
-    }()
-    
     var selectedTags = Set<NSManagedObjectID>()
+    
+    private let internalNavigationController = UINavigationController(nibName: nil, bundle: nil)
     
     override func loadView() {
         self.view = self.customView
@@ -39,23 +39,11 @@ class TagPickerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.internalNavigationController.pushViewController(TagListViewController(), animated: false)
+        self.embedChildViewController(self.internalNavigationController, toView: self.customView.contentView, fillSuperview: true)
+        
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTapOnDimView))
         self.customView.dimView.addGestureRecognizer(tapGestureRecognizer)
-        
-        self.customView.tableView.dataSource = self
-        self.customView.tableView.delegate = self
-        self.customView.tableView.register(PickerItemCell.nib(), forCellReuseIdentifier: ViewID.itemCell.rawValue)
-        self.customView.tableView.rowHeight = UITableViewAutomaticDimension
-        self.customView.tableView.estimatedRowHeight = 44
-        
-        do {
-            try self.allTagsFetcher.performFetch()
-            self.customView.tableView.reloadData()
-        } catch{}
-    }
-    
-    func tag(at index: UInt) -> Tag {
-        return self.allTagsFetcher
     }
     
     @objc func handleTapOnDimView() {
@@ -64,57 +52,91 @@ class TagPickerViewController: UIViewController {
     
 }
 
-extension TagPickerViewController: UITableViewDataSource {
+// MARK: -
+fileprivate class TagListViewController: UITableViewController {
     
-    func numberOfSections(in tableView: UITableView) -> Int {
+    let tagFetcher: NSFetchedResultsController<Tag> = {
+        let fetchRequest: NSFetchRequest<Tag> = Tag.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(Tag.name), ascending: true)]
+        return NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: Global.coreDataStack.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+    }()
+    
+    init() {
+        super.init(style: .grouped)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
+        self.tableView.register(PickerItemCell.nib(), forCellReuseIdentifier: ViewID.itemCell.rawValue)
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 44
+        
+        do {
+            try self.tagFetcher.performFetch()
+            self.tableView.reloadData()
+        } catch {}
+    }
+    
+    // MARK: UITableViewDataSource
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 3
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0:
-            return 3
-        case 1:
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch Section(rawValue: section)! {
+        case .allTags:
+            return self.tagFetcher.fetchedObjects?.count ?? 0
+        case .newTag:
             return 1
-        default:
-            return self.allTagsFetcher.fetchedObjects?.count ?? 0
+        case .recents:
+            return 3
         }
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ViewID.itemCell.rawValue, for: indexPath) as! PickerItemCell
         
-        switch indexPath.section {
-        case 0, 1:
+        switch Section(rawValue: indexPath.section)! {
+        case .allTags:
+            cell.nameLabel.text = self.tagFetcher.object(at: IndexPath(item: indexPath.item, section: 0)).name
+        case .newTag:
+            cell.nameLabel.text = "Add a new tag"
+        case .recents:
             break
-        default:
-            cell.nameLabel.text = self.allTagsFetcher.object(at: IndexPath(item: indexPath.item, section: 0)).name
         }
         
         return cell
     }
     
-}
-
-extension TagPickerViewController: UITableViewDelegate {
+    // MARK: UITableViewDelegate
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        switch indexPath.section {
-        case 0, 2:
-            let tag = self.allTagsFetcher.object(at: IndexPath(row: indexPath.row, section: 0))
+        switch Section(rawValue: indexPath.section)! {
+        case .newTag:
+            self.navigationController?.pushViewController(NewClassifierViewController(classifierType: .tag), animated: true)
+        default:
+            break
         }
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch section {
-        case 0:
-            return "Recent"
-        case 1:
-            return nil
-        default:
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch Section(rawValue: section)! {
+        case .allTags:
             return "All tags"
+        case .newTag:
+            return nil
+        case .recents:
+            return "Recent"
         }
     }
     
