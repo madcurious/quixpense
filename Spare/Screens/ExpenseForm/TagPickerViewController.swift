@@ -30,6 +30,8 @@ class TagPickerViewController: UIViewController {
         return NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: Global.coreDataStack.viewContext, sectionNameKeyPath: nil, cacheName: nil)
     }()
     
+    var selectedTags = Set<NSManagedObjectID>()
+    
     override func loadView() {
         self.view = self.customView
     }
@@ -45,6 +47,15 @@ class TagPickerViewController: UIViewController {
         self.customView.tableView.register(PickerItemCell.nib(), forCellReuseIdentifier: ViewID.itemCell.rawValue)
         self.customView.tableView.rowHeight = UITableViewAutomaticDimension
         self.customView.tableView.estimatedRowHeight = 44
+        
+        do {
+            try self.allTagsFetcher.performFetch()
+            self.customView.tableView.reloadData()
+        } catch{}
+    }
+    
+    func tag(at index: UInt) -> Tag {
+        return self.allTagsFetcher
     }
     
     @objc func handleTapOnDimView() {
@@ -72,6 +83,14 @@ extension TagPickerViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ViewID.itemCell.rawValue, for: indexPath) as! PickerItemCell
+        
+        switch indexPath.section {
+        case 0, 1:
+            break
+        default:
+            cell.nameLabel.text = self.allTagsFetcher.object(at: IndexPath(item: indexPath.item, section: 0)).name
+        }
+        
         return cell
     }
     
@@ -81,6 +100,11 @@ extension TagPickerViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        switch indexPath.section {
+        case 0, 2:
+            let tag = self.allTagsFetcher.object(at: IndexPath(row: indexPath.row, section: 0))
+        }
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
