@@ -14,31 +14,22 @@ private let kContentViewHeightWithoutKeyboard = UIScreen.main.nativeSize.height 
 
 class SlideUpPickerViewController: UIViewController {
     
-    private static let sharedTransitioningDelegate: UIViewControllerTransitioningDelegate = SlideUpPickerTransitioningDelegate()
-    public static let contentViewHeightWithoutKeyboard = kContentViewHeightWithoutKeyboard
-    
-    class func present(_ picker: SlideUpPickerViewController, from presenter: ExpenseFormViewController) {
-        picker.setCustomTransitioningDelegate(kSharedTransitioningDelegate)
-        presenter.present(picker, animated: true, completion: nil)
-    }
-    
     lazy var customView = SlideUpPickerView.instantiateFromNib()
     
-    override func loadView() {
-        self.customView.contentViewHeight.constant = kContentViewHeightWithoutKeyboard
-        self.view = self.customView
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    @objc func handleKeyboardWillHide(_ notification: Notification) {
+        guard let userInfo = notification.userInfo,
+            let animationDuration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSValue as? TimeInterval
+            else {
+                return
+        }
         
-        let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(handleKeyboardWillShow(_:)), name: Notification.Name.UIKeyboardWillShow, object: nil)
-        notificationCenter.addObserver(self, selector: #selector(handleKeyboardWillHide(_:)), name: Notification.Name.UIKeyboardWillHide, object: nil)
-    }
-    
-    func performAdditionalKeyboardWillHideAnimations(contentViewHeightWithoutKeyboard: CGFloat) {
-        
+        UIView.animate(withDuration: animationDuration,
+                       animations: {[unowned self] in
+                        self.customView.contentViewHeight.constant = kContentViewHeightWithoutKeyboard
+                        self.customView.contentViewBottom.constant = 0
+                        self.customView.setNeedsLayout()
+                        self.customView.layoutIfNeeded()
+        })
     }
     
     @objc func handleKeyboardWillShow(_ notification: Notification) {
@@ -58,20 +49,17 @@ class SlideUpPickerViewController: UIViewController {
         })
     }
     
-    @objc func handleKeyboardWillHide(_ notification: Notification) {
-        guard let userInfo = notification.userInfo,
-            let animationDuration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSValue as? TimeInterval
-            else {
-                return
-        }
+    override func loadView() {
+        self.customView.contentViewHeight.constant = kContentViewHeightWithoutKeyboard
+        self.view = self.customView
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
-        UIView.animate(withDuration: animationDuration,
-                       animations: {[unowned self] in
-                        self.customView.contentViewHeight.constant = kContentViewHeightWithoutKeyboard
-                        self.customView.contentViewBottom.constant = 0
-                        self.customView.setNeedsLayout()
-                        self.customView.layoutIfNeeded()
-        })
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(handleKeyboardWillShow(_:)), name: Notification.Name.UIKeyboardWillShow, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(handleKeyboardWillHide(_:)), name: Notification.Name.UIKeyboardWillHide, object: nil)
     }
     
     deinit {
@@ -80,6 +68,36 @@ class SlideUpPickerViewController: UIViewController {
     
 }
 
+// MARK: Class functions
+extension SlideUpPickerViewController {
+    
+    class func present(_ picker: SlideUpPickerViewController, from presenter: ExpenseFormViewController) {
+        picker.setCustomTransitioningDelegate(kSharedTransitioningDelegate)
+        presenter.present(picker, animated: true, completion: nil)
+    }
+    
+    /// Returns a `UINavigationController` that is internally customized to fix a layout issue in iOS,
+    /// where pressing the back button from `NewClassifierViewController` doesn't properly resize
+    /// the root view controller in the picker.
+    class func makeInternalNavigationController() -> UINavigationController {
+        class InternalNavigationController: UINavigationController {
+            override func viewDidLoad() {
+                super.viewDidLoad()
+                self.interactivePopGestureRecognizer?.isEnabled = false
+            }
+            override func viewWillLayoutSubviews() {
+                super.viewWillLayoutSubviews()
+                self.view.frame.size.height = kContentViewHeightWithoutKeyboard // layout fix
+            }
+        }
+        
+        let internalNavigationController = InternalNavigationController(nibName: nil, bundle: nil)
+        return internalNavigationController
+    }
+    
+}
+
+// MARK: - SlideUpPickerTransitioningDelegate
 fileprivate class SlideUpPickerTransitioningDelegate: NSObject, UIViewControllerTransitioningDelegate {
     
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
@@ -92,11 +110,8 @@ fileprivate class SlideUpPickerTransitioningDelegate: NSObject, UIViewController
     
 }
 
+// MARK: - SlideUpPickerPresentationAnimator
 fileprivate class SlideUpPickerPresentationAnimator: NSObject, UIViewControllerAnimatedTransitioning {
-    
-    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 0.25
-    }
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         guard let toView = transitionContext.view(forKey: .to) as? SlideUpPickerView
@@ -125,13 +140,13 @@ fileprivate class SlideUpPickerPresentationAnimator: NSObject, UIViewControllerA
         })
     }
     
-}
-
-fileprivate class SlideUpPickerDismissalAnimator: NSObject, UIViewControllerAnimatedTransitioning {
-    
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 0.25
     }
+    
+}
+
+fileprivate class SlideUpPickerDismissalAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         guard let fromView = transitionContext.view(forKey: .from) as? SlideUpPickerView
@@ -151,6 +166,10 @@ fileprivate class SlideUpPickerDismissalAnimator: NSObject, UIViewControllerAnim
         }, completion: { _ in
             transitionContext.completeTransition(true)
         })
+    }
+    
+    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+        return 0.25
     }
     
 }

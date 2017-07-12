@@ -35,8 +35,20 @@ class NewClassifierViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.tableView.isScrollEnabled = false
         self.tableView.register(NewClassifierTextFieldCell.nib(), forCellReuseIdentifier: ViewID.textFieldCell.rawValue)
         self.tableView.reloadData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        guard let textFieldCell = self.tableView(self.tableView, cellForRowAt: IndexPath(row: 0, section: 0)) as? NewClassifierTextFieldCell,
+            let textField = textFieldCell.textField
+            else {
+                return
+        }
+        textField.becomeFirstResponder()
     }
     
 }

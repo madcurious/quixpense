@@ -25,14 +25,13 @@ class TagPickerViewController: SlideUpPickerViewController {
         SlideUpPickerViewController.present(picker, from: presenter)
     }
     
-    fileprivate lazy var internalNavigationController = InternalNavigationController()
+    lazy var internalNavigationController = SlideUpPickerViewController.makeInternalNavigationController()
     var selectedTags = Set<NSManagedObjectID>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.internalNavigationController.pushViewController(TagListViewController(), animated: false)
-        self.internalNavigationController.view.backgroundColor = .blue
+        self.internalNavigationController.setViewControllers([TagListViewController()], animated: false)
         self.embedChildViewController(self.internalNavigationController, toView: self.customView.contentView, fillSuperview: true)
         
         
@@ -46,25 +45,7 @@ class TagPickerViewController: SlideUpPickerViewController {
     
 }
 
-fileprivate class InternalNavigationController: UINavigationController {
-    
-    init() {
-        super.init(nibName: nil, bundle: nil)
-        self.interactivePopGestureRecognizer?.isEnabled = false
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        self.view.frame.size.height = SlideUpPickerViewController.contentViewHeightWithoutKeyboard
-    }
-    
-}
-
-// MARK: -
+// MARK: - TagListViewController
 fileprivate class TagListViewController: UIViewController {
     
     let tagFetcher: NSFetchedResultsController<Tag> = {

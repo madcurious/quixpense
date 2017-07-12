@@ -28,7 +28,6 @@ extension SlideUpPickerView: Themeable {
     func applyTheme() {
         self.clearAllBackgroundColors()
         self.dimView.backgroundColor = .black
-        self.contentView.backgroundColor = .red
     }
     
 }
