@@ -45,6 +45,12 @@ class PickerItemCell: UITableViewCell {
         }
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.isActive = false
+        self.nameLabel.text = nil
+    }
+    
 }
 
 extension PickerItemCell: Themeable {

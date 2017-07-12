@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13122.17" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.14"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="NewClassifierView" customModule="Spare" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="FOA-VA-BGy">
+                    <rect key="frame" x="0.0" y="36" width="375" height="69.5"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DPx-aP-qDW">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="24.5"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ary-JA-Taa">
+                                    <rect key="frame" x="15" y="0.0" width="350" height="20.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="ary-JA-Taa" firstAttribute="top" secondItem="DPx-aP-qDW" secondAttribute="top" id="9mE-ns-DcF"/>
+                                <constraint firstItem="ary-JA-Taa" firstAttribute="leading" secondItem="DPx-aP-qDW" secondAttribute="leading" constant="15" id="UiS-y0-gRu"/>
+                                <constraint firstAttribute="trailing" secondItem="ary-JA-Taa" secondAttribute="trailing" constant="10" id="gxu-H3-kmE"/>
+                                <constraint firstAttribute="bottom" secondItem="ary-JA-Taa" secondAttribute="bottom" constant="4" id="ucD-wO-kEf"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QTU-Rs-j9C">
+                            <rect key="frame" x="0.0" y="24.5" width="375" height="0.5"/>
+                            <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="0.5" id="yEa-Tl-Lm1"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6BE-Pn-FdJ">
+                            <rect key="frame" x="0.0" y="25" width="375" height="44"/>
+                            <subviews>
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="04s-gP-HAh">
+                                    <rect key="frame" x="15" y="0.0" width="350" height="44"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="44" id="5q3-6G-PBi"/>
+                                    </constraints>
+                                    <nil key="textColor"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="04s-gP-HAh" firstAttribute="leading" secondItem="6BE-Pn-FdJ" secondAttribute="leading" constant="15" id="04k-BM-nB5"/>
+                                <constraint firstAttribute="trailing" secondItem="04s-gP-HAh" secondAttribute="trailing" constant="10" id="2sj-6h-LyV"/>
+                                <constraint firstItem="04s-gP-HAh" firstAttribute="top" secondItem="6BE-Pn-FdJ" secondAttribute="top" id="C0o-XW-qrH"/>
+                                <constraint firstAttribute="bottom" secondItem="04s-gP-HAh" secondAttribute="bottom" id="lsf-fA-qKo"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jvE-1v-Yeb">
+                            <rect key="frame" x="0.0" y="69" width="375" height="0.5"/>
+                            <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="0.5" id="j7d-V5-j8f"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="FOA-VA-BGy" secondAttribute="trailing" id="W2P-1F-sgd"/>
+                <constraint firstItem="FOA-VA-BGy" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Z1S-4c-eIP"/>
+                <constraint firstItem="FOA-VA-BGy" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="36" id="uUd-2l-A3J"/>
+            </constraints>
+            <connections>
+                <outlet property="promptLabel" destination="ary-JA-Taa" id="L4x-Rj-QnK"/>
+                <outlet property="textField" destination="04s-gP-HAh" id="vTd-xd-Mda"/>
+                <outlet property="textFieldContainer" destination="6BE-Pn-FdJ" id="zjq-AJ-7hF"/>
+                <outletCollection property="separatorViews" destination="QTU-Rs-j9C" collectionClass="NSMutableArray" id="8Fb-o2-Z1T"/>
+                <outletCollection property="separatorViews" destination="jvE-1v-Yeb" collectionClass="NSMutableArray" id="ycc-RJ-0zK"/>
+            </connections>
+        </view>
+    </objects>
+</document>

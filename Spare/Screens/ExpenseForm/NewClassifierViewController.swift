@@ -7,18 +7,23 @@
 //
 
 import UIKit
+import Mold
 
-private enum ViewID: String {
-    case textFieldCell = "textFieldCell"
-}
+//private enum ViewID: String {
+//    case textFieldCell = "textFieldCell"
+//}
 
-class NewClassifierViewController: UITableViewController {
+class NewClassifierViewController: UIViewController {
     
     let classifierType: ClassifierType
+    let successAction: (String) -> ()
     
-    init(classifierType: ClassifierType) {
+    lazy var customView = NewClassifierView.instantiateFromNib()
+    
+    init(classifierType: ClassifierType, successAction: @escaping (String) -> ()) {
         self.classifierType = classifierType
-        super.init(style: .grouped)
+        self.successAction = successAction
+        super.init(nibName: nil, bundle: nil)
         
         switch classifierType {
         case .category:
@@ -32,60 +37,43 @@ class NewClassifierViewController: UITableViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func loadView() {
+        self.view = self.customView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tableView.isScrollEnabled = false
-        self.tableView.register(NewClassifierTextFieldCell.nib(), forCellReuseIdentifier: ViewID.textFieldCell.rawValue)
-        self.tableView.reloadData()
+        self.navigationItem.leftBarButtonItem = BarButtonItems.make(.cancel, target: self, action: #selector(handleTapOnCancelButton))
+        self.navigationItem.rightBarButtonItem = BarButtonItems.make(.done, target: self, action: #selector(handleTapOnDoneButton))
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        guard let textFieldCell = self.tableView(self.tableView, cellForRowAt: IndexPath(row: 0, section: 0)) as? NewClassifierTextFieldCell,
-            let textField = textFieldCell.textField
+        self.customView.textField.becomeFirstResponder()
+    }
+    
+}
+
+@objc extension NewClassifierViewController {
+    
+    func handleTapOnCancelButton() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    func handleTapOnDoneButton() {
+        guard let text = self.customView.textField.text?.trim()
             else {
                 return
         }
-        textField.becomeFirstResponder()
-    }
-    
-}
-
-// MARK: - UITableViewDataSource
-
-extension NewClassifierViewController {
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCell(withIdentifier: ViewID.textFieldCell.rawValue, for: indexPath)
-        return cell
-    }
-    
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch self.classifierType {
-        case .category:
-            return "Enter a category name:"
-            
-        case .tag:
-            return "Enter a tag name:"
+        
+        if text.isEmpty == true {
+            MDAlertDialog.showInPresenter(self, title: nil, message: "You must enter a \(self.classifierType.description) name.", cancelButtonTitle: "Got it!")
+        } else {
+            self.successAction(text)
+            self.navigationController?.popViewController(animated: true)
         }
     }
-    
-}
-
-// MARK: - UITableViewDelegate
-
-extension NewClassifierViewController {
-    
-    
     
 }

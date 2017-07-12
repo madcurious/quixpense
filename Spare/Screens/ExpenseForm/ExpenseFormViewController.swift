@@ -232,7 +232,7 @@ extension ExpenseFormViewController: UITextFieldDelegate {
         case self.customView.categoryFieldView.textField:
             CategoryPickerViewController.present(from: self, selectedCategoryID: nil)
         default:
-            TagPickerViewController.present(from: self)
+            TagPickerViewController.present(from: self, selectedTags: nil)
         }
         return false
     }

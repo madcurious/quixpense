@@ -18,22 +18,37 @@ private enum Section: Int {
     case recents, allTags, newTag
 }
 
+fileprivate var kSelectedTags = Set<NSManagedObjectID>()
+
+/// Container for the entire tag picker. Internally manages a navigation controller where the
+/// first screen is the list of tags, and the second screen is for adding a new tag.
 class TagPickerViewController: SlideUpPickerViewController {
     
-    class func present(from presenter: ExpenseFormViewController) {
-        let picker = TagPickerViewController()
+    class func present(from presenter: ExpenseFormViewController, selectedTags: Set<NSManagedObjectID>?) {
+        let picker = TagPickerViewController(selectedTags: selectedTags)
         SlideUpPickerViewController.present(picker, from: presenter)
     }
     
-    lazy var internalNavigationController = SlideUpPickerViewController.makeInternalNavigationController()
-    var selectedTags = Set<NSManagedObjectID>()
+    private lazy var internalNavigationController = SlideUpPickerViewController.makeInternalNavigationController()
+    
+    init(selectedTags: Set<NSManagedObjectID>?) {
+        super.init(nibName: nil, bundle: nil)
+        if let selectedTags = selectedTags {
+            kSelectedTags = selectedTags
+        } else {
+            kSelectedTags.removeAll()
+        }
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.internalNavigationController.setViewControllers([TagListViewController()], animated: false)
         self.embedChildViewController(self.internalNavigationController, toView: self.customView.contentView, fillSuperview: true)
-        
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTapOnDimView))
         self.customView.dimView.addGestureRecognizer(tapGestureRecognizer)
@@ -46,11 +61,15 @@ class TagPickerViewController: SlideUpPickerViewController {
 }
 
 // MARK: - TagListViewController
+
+/// Internal view controller that contains the list of tags.
+
 fileprivate class TagListViewController: UIViewController {
     
     let tagFetcher: NSFetchedResultsController<Tag> = {
         let fetchRequest: NSFetchRequest<Tag> = Tag.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(Tag.name), ascending: true)]
+        fetchRequest.predicate = NSPredicate(format: "%K != %@", #keyPath(Tag.name), DefaultClassifier.untagged.rawValue)
         return NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: Global.coreDataStack.viewContext, sectionNameKeyPath: nil, cacheName: nil)
     }()
     
@@ -69,10 +88,23 @@ fileprivate class TagListViewController: UIViewController {
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 44
         
+        self.performFetch()
+    }
+    
+    func performFetch() {
         do {
             try self.tagFetcher.performFetch()
             self.tableView.reloadData()
-        } catch {}
+        } catch { }
+    }
+    
+    func tag(at indexPath: IndexPath) -> Tag {
+        let section = Section(rawValue: indexPath.section)!
+        if section == .allTags {
+            return self.tagFetcher.object(at: IndexPath(item: indexPath.row, section: 0))
+        }
+        // Recents
+        return self.tagFetcher.object(at: IndexPath(item: indexPath.item, section: 0))
     }
     
 }
@@ -100,10 +132,16 @@ extension TagListViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: ViewID.itemCell.rawValue, for: indexPath) as! PickerItemCell
         
         switch Section(rawValue: indexPath.section)! {
+            
         case .allTags:
-            cell.nameLabel.text = self.tagFetcher.object(at: IndexPath(item: indexPath.item, section: 0)).name
+            let tag = self.tag(at: indexPath)
+            cell.nameLabel.text = tag.name
+            cell.isActive = kSelectedTags.contains(tag.objectID)
+            
         case .newTag:
             cell.nameLabel.text = "Add a new tag"
+            cell.isActive = kSelectedTags.contains(self.tag(at: indexPath).objectID)
+            
         case .recents:
             break
         }
@@ -121,10 +159,29 @@ extension TagListViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         
         switch Section(rawValue: indexPath.section)! {
+        case .allTags, .recents:
+            let tagID = self.tag(at: indexPath).objectID
+            if kSelectedTags.contains(tagID) {
+                kSelectedTags.remove(tagID)
+            } else {
+                kSelectedTags.insert(tagID)
+            }
+            let cell = self.tableView.cellForRow(at: indexPath) as! PickerItemCell
+            cell.isActive = kSelectedTags.contains(tagID)
+            
         case .newTag:
-            self.navigationController?.pushViewController(NewClassifierViewController(classifierType: .tag), animated: true)
-        default:
-            break
+            let addScreen = NewClassifierViewController(classifierType: .tag, successAction: {[unowned self] name in
+                let newTag = Tag(context: Global.coreDataStack.viewContext)
+                newTag.name = name
+                
+                kSelectedTags.insert(newTag.objectID)
+                self.performFetch()
+                
+                var tagIndexPath = self.tagFetcher.indexPath(forObject: newTag)!
+                tagIndexPath.section = Section.allTags.rawValue
+                self.tableView.scrollToRow(at: tagIndexPath, at: .top, animated: false)
+            })
+            self.navigationController?.pushViewController(addScreen, animated: true)
         }
     }
     

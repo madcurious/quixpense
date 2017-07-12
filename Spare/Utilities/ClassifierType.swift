@@ -13,6 +13,15 @@ enum ClassifierType {
     
     case category, tag
     
+    var description: String {
+        switch self {
+        case .category:
+            return "category"
+        case .tag:
+            return "tag"
+        }
+    }
+    
     func entityName() -> String {
         switch self {
         case .category:

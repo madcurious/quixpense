@@ -16,16 +16,15 @@ class MakeDefaultDataOperation: MDOperation<Any?> {
     override func makeResult(from source: Any?) throws -> Any? {
         self.context = Global.coreDataStack.newBackgroundContext()
         
-        self.makeDefaultCategories()
+        let uncategorized = Category(context: self.context)
+        uncategorized.name = DefaultClassifier.uncategorized.rawValue
+        
+        let untagged = Tag(context: self.context)
+        untagged.name = DefaultClassifier.untagged.rawValue
         
         try self.context.saveToStore()
         
         return nil
-    }
-    
-    private func makeDefaultCategories() {
-        let uncategorized = Category(context: self.context)
-        uncategorized.name = "Uncategorized"
     }
     
 }

@@ -30,13 +30,13 @@ public class MakeExpenseOperation: MDOperation<Expense> {
         if let categoryName = categoryName {
             self.categoryName = categoryName
         } else {
-            self.categoryName = "Uncategorized"
+            self.categoryName = DefaultClassifier.uncategorized.rawValue
         }
         
         if let tagNames = tagNames {
             self.tagNames = tagNames
         } else {
-            self.tagNames = ["Untagged"]
+            self.tagNames = [DefaultClassifier.untagged.rawValue]
         }
     }
     

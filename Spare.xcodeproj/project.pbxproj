@@ -30,6 +30,9 @@
 		2647CD491EF136770098E700 /* FilterButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2647CD361EF136770098E700 /* FilterButton.xib */; };
 		2647CD4E1EF136770098E700 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2647CD3B1EF136770098E700 /* HomeViewController.swift */; };
 		264D37C91EEE38DE0063CD53 /* SectionIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264D37C81EEE38DE0063CD53 /* SectionIdentifier.swift */; };
+		265390EF1F15EB8000C7BD34 /* NewClassifierView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265390EE1F15EB8000C7BD34 /* NewClassifierView.swift */; };
+		265390F11F15EB9200C7BD34 /* NewClassifierView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 265390F01F15EB9200C7BD34 /* NewClassifierView.xib */; };
+		265390F31F15F10F00C7BD34 /* DefaultClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265390F21F15F10F00C7BD34 /* DefaultClassifier.swift */; };
 		265733291EDD507C00AD1AB9 /* FilterPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265733261EDD507C00AD1AB9 /* FilterPopupView.swift */; };
 		2657332A1EDD507C00AD1AB9 /* FilterPopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 265733271EDD507C00AD1AB9 /* FilterPopupView.xib */; };
 		2657332B1EDD507C00AD1AB9 /* FilterPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265733281EDD507C00AD1AB9 /* FilterPopupViewController.swift */; };
@@ -168,6 +171,9 @@
 		264D37C81EEE38DE0063CD53 /* SectionIdentifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionIdentifier.swift; sourceTree = "<group>"; };
 		264EE4A11EF9044F004011FE /* SpareTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpareTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		264EE4A51EF90450004011FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		265390EE1F15EB8000C7BD34 /* NewClassifierView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewClassifierView.swift; sourceTree = "<group>"; };
+		265390F01F15EB9200C7BD34 /* NewClassifierView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewClassifierView.xib; sourceTree = "<group>"; };
+		265390F21F15F10F00C7BD34 /* DefaultClassifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultClassifier.swift; sourceTree = "<group>"; };
 		265733261EDD507C00AD1AB9 /* FilterPopupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterPopupView.swift; sourceTree = "<group>"; };
 		265733271EDD507C00AD1AB9 /* FilterPopupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilterPopupView.xib; sourceTree = "<group>"; };
 		265733281EDD507C00AD1AB9 /* FilterPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterPopupViewController.swift; sourceTree = "<group>"; };
@@ -438,6 +444,8 @@
 				2668CA5E1F13AA0900E77198 /* NewClassifierViewController.swift */,
 				2668CA601F13AAB500E77198 /* NewClassifierTextFieldCell.xib */,
 				2668CA621F13AAC300E77198 /* NewClassifierTextFieldCell.swift */,
+				265390EE1F15EB8000C7BD34 /* NewClassifierView.swift */,
+				265390F01F15EB9200C7BD34 /* NewClassifierView.xib */,
 			);
 			path = ExpenseForm;
 			sourceTree = "<group>";
@@ -483,6 +491,7 @@
 				26DF09991EF7950F00D26D14 /* MakeExpenseOperation.swift */,
 				261BB0191EFD1751006E0DC3 /* TimestampFormatter.swift */,
 				2695CBEA1F03B9B5009D5FFA /* ClassifierType.swift */,
+				265390F21F15F10F00C7BD34 /* DefaultClassifier.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -652,6 +661,7 @@
 				266946841CC7711000A68424 /* Default@2x.png in Resources */,
 				261BB0161EFD0469006E0DC3 /* DateFieldView.xib in Resources */,
 				2657DEBE1F14C2B9003DA778 /* SlideUpPickerView.xib in Resources */,
+				265390F11F15EB9200C7BD34 /* NewClassifierView.xib in Resources */,
 				2603F8C31CCA45FF007F311F /* LaunchScreen.storyboard in Resources */,
 				2668CA611F13AAB500E77198 /* NewClassifierTextFieldCell.xib in Resources */,
 				261BB0211EFE6E55006E0DC3 /* CategoryFieldView.xib in Resources */,
@@ -764,6 +774,7 @@
 				2657DEBC1F14C2A4003DA778 /* SlideUpPickerView.swift in Sources */,
 				26DDDCAE1E5C285F001617A1 /* InitializeCoreDataStackOperation.swift in Sources */,
 				2668CA5F1F13AA0900E77198 /* NewClassifierViewController.swift in Sources */,
+				265390EF1F15EB8000C7BD34 /* NewClassifierView.swift in Sources */,
 				26F78C961F0A49CE00CF0389 /* PickerItemCell.swift in Sources */,
 				26F57AF11E67DE1B0034FF4B /* Debug.swift in Sources */,
 				26DF09861EF2E18900D26D14 /* StartOfWeek.swift in Sources */,
@@ -786,6 +797,7 @@
 				265733291EDD507C00AD1AB9 /* FilterPopupView.swift in Sources */,
 				26DF098E1EF4344100D26D14 /* ExpenseGroup.swift in Sources */,
 				261BB0231EFE7212006E0DC3 /* TagFieldView.swift in Sources */,
+				265390F31F15F10F00C7BD34 /* DefaultClassifier.swift in Sources */,
 				261BB01F1EFE6E1E006E0DC3 /* CategoryFieldView.swift in Sources */,
 				267C2B7C1E7BDA03008EA3E0 /* MainTabBarVC.swift in Sources */,
 				26331FC21E5B684700AACE68 /* CoreDataStack.swift in Sources */,
