@@ -45,8 +45,6 @@
 		2666C2C81957CF93003752BF /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2666C2C71957CF93003752BF /* libz.dylib */; };
 		2666C2CA1957CFA1003752BF /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2666C2C91957CFA1003752BF /* libsqlite3.dylib */; };
 		2668CA5F1F13AA0900E77198 /* NewClassifierViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2668CA5E1F13AA0900E77198 /* NewClassifierViewController.swift */; };
-		2668CA611F13AAB500E77198 /* NewClassifierTextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2668CA601F13AAB500E77198 /* NewClassifierTextFieldCell.xib */; };
-		2668CA631F13AAC300E77198 /* NewClassifierTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2668CA621F13AAC300E77198 /* NewClassifierTextFieldCell.swift */; };
 		266946831CC7711000A68424 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 266946491CC7711000A68424 /* Default-568h@2x.png */; };
 		266946841CC7711000A68424 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2669464A1CC7711000A68424 /* Default@2x.png */; };
 		266946851CC7711000A68424 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2669464B1CC7711000A68424 /* InfoPlist.strings */; };
@@ -187,8 +185,6 @@
 		2666C2C71957CF93003752BF /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		2666C2C91957CFA1003752BF /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		2668CA5E1F13AA0900E77198 /* NewClassifierViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewClassifierViewController.swift; sourceTree = "<group>"; };
-		2668CA601F13AAB500E77198 /* NewClassifierTextFieldCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewClassifierTextFieldCell.xib; sourceTree = "<group>"; };
-		2668CA621F13AAC300E77198 /* NewClassifierTextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewClassifierTextFieldCell.swift; sourceTree = "<group>"; };
 		2668CA641F13BD0400E77198 /* SlideUpPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideUpPickerViewController.swift; sourceTree = "<group>"; };
 		266946491CC7711000A68424 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		2669464A1CC7711000A68424 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
@@ -442,8 +438,6 @@
 				26F78C971F0A49E100CF0389 /* PickerItemCell.xib */,
 				26E98BF31F0CD7B900A5C3D5 /* TagPickerViewController.swift */,
 				2668CA5E1F13AA0900E77198 /* NewClassifierViewController.swift */,
-				2668CA601F13AAB500E77198 /* NewClassifierTextFieldCell.xib */,
-				2668CA621F13AAC300E77198 /* NewClassifierTextFieldCell.swift */,
 				265390EE1F15EB8000C7BD34 /* NewClassifierView.swift */,
 				265390F01F15EB9200C7BD34 /* NewClassifierView.xib */,
 			);
@@ -663,7 +657,6 @@
 				2657DEBE1F14C2B9003DA778 /* SlideUpPickerView.xib in Resources */,
 				265390F11F15EB9200C7BD34 /* NewClassifierView.xib in Resources */,
 				2603F8C31CCA45FF007F311F /* LaunchScreen.storyboard in Resources */,
-				2668CA611F13AAB500E77198 /* NewClassifierTextFieldCell.xib in Resources */,
 				261BB0211EFE6E55006E0DC3 /* CategoryFieldView.xib in Resources */,
 				26A1CB4F1DD1ABD600DAE89E /* NotoSansUI-Regular.ttf in Resources */,
 				26A1CB4E1DD1ABD600DAE89E /* NotoSansUI-Italic.ttf in Resources */,
@@ -754,7 +747,6 @@
 			files = (
 				26D6C9AD1E93807400DDDAE8 /* NotoSansUI.swift in Sources */,
 				26E98BF41F0CD7B900A5C3D5 /* TagPickerViewController.swift in Sources */,
-				2668CA631F13AAC300E77198 /* NewClassifierTextFieldCell.swift in Sources */,
 				266B5FF81EFCEADC00063803 /* ExpenseFormViewController.swift in Sources */,
 				266946931CC77A1A00A68424 /* AppDelegate.swift in Sources */,
 				26DF09A11EF800D900D26D14 /* LoadableView.swift in Sources */,
