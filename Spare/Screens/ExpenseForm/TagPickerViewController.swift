@@ -68,8 +68,8 @@ fileprivate class TagListViewController: UIViewController {
     
     let tagFetcher: NSFetchedResultsController<Tag> = {
         let fetchRequest: NSFetchRequest<Tag> = Tag.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(Tag.name), ascending: true)]
         fetchRequest.predicate = NSPredicate(format: "%K != %@", #keyPath(Tag.name), DefaultClassifier.untagged.rawValue)
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(Tag.name), ascending: true)]
         return NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: Global.coreDataStack.viewContext, sectionNameKeyPath: nil, cacheName: nil)
     }()
     

@@ -9,10 +9,6 @@
 import UIKit
 import Mold
 
-//private enum ViewID: String {
-//    case textFieldCell = "textFieldCell"
-//}
-
 class NewClassifierViewController: UIViewController {
     
     let classifierType: ClassifierType
@@ -50,7 +46,6 @@ class NewClassifierViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         self.customView.textField.becomeFirstResponder()
     }
     
