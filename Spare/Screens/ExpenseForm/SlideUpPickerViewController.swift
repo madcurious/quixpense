@@ -80,7 +80,7 @@ extension SlideUpPickerViewController {
     /// where pressing the back button from `NewClassifierViewController` doesn't properly resize
     /// the root view controller in the picker.
     class func makeInternalNavigationController() -> UINavigationController {
-        class InternalNavigationController: UINavigationController {
+        class InternalNavigationController: BaseNavBarVC {
             override func viewDidLoad() {
                 super.viewDidLoad()
                 self.interactivePopGestureRecognizer?.isEnabled = false

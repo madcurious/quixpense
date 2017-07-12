@@ -39,7 +39,6 @@ class NewClassifierViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.navigationItem.leftBarButtonItem = BarButtonItems.make(.cancel, target: self, action: #selector(handleTapOnCancelButton))
         self.navigationItem.rightBarButtonItem = BarButtonItems.make(.done, target: self, action: #selector(handleTapOnDoneButton))
     }

@@ -20,6 +20,7 @@ class NewClassifierView: UIView {
         self.applyTheme()
         
         self.promptLabel.text = "NAME"
+        self.textField.autocapitalizationType = .sentences
     }
     
 }
@@ -37,6 +38,8 @@ extension NewClassifierView: Themeable {
         
         self.promptLabel.font = Global.theme.font(for: .groupedTableViewSectionHeader)
         self.promptLabel.textColor = Global.theme.color(for: .groupedTableViewSectionHeader)
+        
+        self.textField.font = Global.theme.font(for: .regularText)
     }
     
 }

@@ -75,6 +75,15 @@ fileprivate class TagListViewController: UIViewController {
     
     lazy var tableView = UITableView(frame: .zero, style: .grouped)
     
+    init() {
+        super.init(nibName: nil, bundle: nil)
+        self.title = "Tags"
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func loadView() {
         self.view = self.tableView
     }

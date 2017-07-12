@@ -78,6 +78,7 @@ fileprivate class CategoryListViewController: UITableViewController {
     
     init() {
         super.init(style: .grouped)
+        self.title = "Categories"
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -127,7 +128,7 @@ extension CategoryListViewController {
             cell.nameLabel.text = category.name
             cell.isActive = category.objectID == kSelectedCategoryID
         } else {
-            cell.nameLabel.text = "Label"
+            cell.nameLabel.text = "Add a new category"
         }
         
         return cell
