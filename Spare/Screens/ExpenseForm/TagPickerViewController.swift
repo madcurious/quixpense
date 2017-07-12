@@ -18,29 +18,23 @@ private enum Section: Int {
     case recents, allTags, newTag
 }
 
-class TagPickerViewController: UIViewController {
+class TagPickerViewController: SlideUpPickerViewController {
     
     class func present(from presenter: ExpenseFormViewController) {
         let picker = TagPickerViewController()
-        picker.setCustomTransitioningDelegate(SlideUpPicker.sharedTransitioningDelegate)
-        presenter.present(picker, animated: true, completion: nil)
+        SlideUpPickerViewController.present(picker, from: presenter)
     }
     
-    let customView = TagPickerView.instantiateFromNib()
-    
+    fileprivate lazy var internalNavigationController = InternalNavigationController()
     var selectedTags = Set<NSManagedObjectID>()
-    
-    private let internalNavigationController = UINavigationController(nibName: nil, bundle: nil)
-    
-    override func loadView() {
-        self.view = self.customView
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.internalNavigationController.pushViewController(TagListViewController(), animated: false)
+        self.internalNavigationController.view.backgroundColor = .blue
         self.embedChildViewController(self.internalNavigationController, toView: self.customView.contentView, fillSuperview: true)
+        
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTapOnDimView))
         self.customView.dimView.addGestureRecognizer(tapGestureRecognizer)
@@ -52,8 +46,26 @@ class TagPickerViewController: UIViewController {
     
 }
 
+fileprivate class InternalNavigationController: UINavigationController {
+    
+    init() {
+        super.init(nibName: nil, bundle: nil)
+        self.interactivePopGestureRecognizer?.isEnabled = false
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        self.view.frame.size.height = SlideUpPickerViewController.contentViewHeightWithoutKeyboard
+    }
+    
+}
+
 // MARK: -
-fileprivate class TagListViewController: UITableViewController {
+fileprivate class TagListViewController: UIViewController {
     
     let tagFetcher: NSFetchedResultsController<Tag> = {
         let fetchRequest: NSFetchRequest<Tag> = Tag.fetchRequest()
@@ -61,12 +73,10 @@ fileprivate class TagListViewController: UITableViewController {
         return NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: Global.coreDataStack.viewContext, sectionNameKeyPath: nil, cacheName: nil)
     }()
     
-    init() {
-        super.init(style: .grouped)
-    }
+    lazy var tableView = UITableView(frame: .zero, style: .grouped)
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    override func loadView() {
+        self.view = self.tableView
     }
     
     override func viewDidLoad() {
@@ -84,13 +94,17 @@ fileprivate class TagListViewController: UITableViewController {
         } catch {}
     }
     
-    // MARK: UITableViewDataSource
+}
+
+// MARK: UITableViewDataSource
+
+extension TagListViewController: UITableViewDataSource {
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 3
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch Section(rawValue: section)! {
         case .allTags:
             return self.tagFetcher.fetchedObjects?.count ?? 0
@@ -101,7 +115,7 @@ fileprivate class TagListViewController: UITableViewController {
         }
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ViewID.itemCell.rawValue, for: indexPath) as! PickerItemCell
         
         switch Section(rawValue: indexPath.section)! {
@@ -116,9 +130,13 @@ fileprivate class TagListViewController: UITableViewController {
         return cell
     }
     
-    // MARK: UITableViewDelegate
+}
+
+// MARK: UITableViewDelegate
+
+extension TagListViewController: UITableViewDelegate {
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
         switch Section(rawValue: indexPath.section)! {
@@ -129,7 +147,7 @@ fileprivate class TagListViewController: UITableViewController {
         }
     }
     
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch Section(rawValue: section)! {
         case .allTags:
             return "All tags"

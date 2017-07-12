@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.14"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -53,6 +52,9 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </tableView>
                     </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="341" id="PL2-Ub-JD3"/>
+                    </constraints>
                 </stackView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -61,7 +63,6 @@
                 <constraint firstAttribute="trailing" secondItem="VV8-v8-bfT" secondAttribute="trailing" id="INL-4L-4dU"/>
                 <constraint firstAttribute="bottom" secondItem="ZjU-ms-bac" secondAttribute="bottom" id="R2t-6x-Myd"/>
                 <constraint firstItem="ZjU-ms-bac" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="VUK-2b-sxz"/>
-                <constraint firstItem="VV8-v8-bfT" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="3:5" id="XqB-vO-hcG"/>
                 <constraint firstItem="VV8-v8-bfT" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="hFu-NV-rRi"/>
                 <constraint firstItem="ZjU-ms-bac" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="oaO-Tp-4It"/>
                 <constraint firstAttribute="bottom" secondItem="VV8-v8-bfT" secondAttribute="bottom" id="yj5-6M-8Ok"/>
@@ -70,6 +71,7 @@
                 <outlet property="dimView" destination="ZjU-ms-bac" id="CbM-5S-xS7"/>
                 <outlet property="stackView" destination="VV8-v8-bfT" id="oR6-q3-f5N"/>
                 <outlet property="stackViewBottom" destination="yj5-6M-8Ok" id="a7f-Sj-9Aq"/>
+                <outlet property="stackViewHeight" destination="PL2-Ub-JD3" id="e1u-ph-aYr"/>
                 <outlet property="tableView" destination="CNW-ue-PbK" id="LGM-zt-VHr"/>
                 <outlet property="titleBarSeparatorView" destination="di3-NS-jDT" id="Nib-q8-w6y"/>
                 <outlet property="titleBarView" destination="8Ge-2f-mgb" id="DDC-Yl-hmb"/>

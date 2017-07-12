@@ -18,6 +18,7 @@ class CategoryPickerView: UIView {
     
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var stackViewBottom: NSLayoutConstraint!
+    @IBOutlet weak var stackViewHeight: NSLayoutConstraint!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -45,22 +46,6 @@ extension CategoryPickerView: Themeable {
         self.titleLabel.numberOfLines = 1
         
         self.tableView.backgroundColor = Global.theme.color(for: .mainBackground)
-    }
-    
-}
-
-extension CategoryPickerView: SlideUpPickerAnimatable {
-    
-    var transparentBackgroundView: UIView {
-        return self.dimView
-    }
-    
-    var contentView: UIView {
-        return self.stackView
-    }
-    
-    var contentViewBottom: NSLayoutConstraint {
-        return self.stackViewBottom
     }
     
 }

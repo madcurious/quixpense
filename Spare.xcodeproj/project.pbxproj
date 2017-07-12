@@ -33,6 +33,9 @@
 		265733291EDD507C00AD1AB9 /* FilterPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265733261EDD507C00AD1AB9 /* FilterPopupView.swift */; };
 		2657332A1EDD507C00AD1AB9 /* FilterPopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 265733271EDD507C00AD1AB9 /* FilterPopupView.xib */; };
 		2657332B1EDD507C00AD1AB9 /* FilterPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265733281EDD507C00AD1AB9 /* FilterPopupViewController.swift */; };
+		2657DEBA1F14AEB8003DA778 /* SlideUpPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2668CA641F13BD0400E77198 /* SlideUpPickerViewController.swift */; };
+		2657DEBC1F14C2A4003DA778 /* SlideUpPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2657DEBB1F14C2A4003DA778 /* SlideUpPickerView.swift */; };
+		2657DEBE1F14C2B9003DA778 /* SlideUpPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2657DEBD1F14C2B9003DA778 /* SlideUpPickerView.xib */; };
 		265DFB811E87D07300439D9A /* BarButtonItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265DFB801E87D07300439D9A /* BarButtonItems.swift */; };
 		26628A2D1E714AB100E80494 /* LightTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26628A2C1E714AB100E80494 /* LightTheme.swift */; };
 		2666C2C61957CF7A003752BF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2666C2C41957CF7A003752BF /* SystemConfiguration.framework */; };
@@ -86,9 +89,6 @@
 		26DF09A51EF800D900D26D14 /* TwoLabelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26DF09A01EF800D900D26D14 /* TwoLabelTableViewCell.xib */; };
 		26E4E0591937AF690096191A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E4E0581937AF690096191A /* QuartzCore.framework */; };
 		26E98BF41F0CD7B900A5C3D5 /* TagPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E98BF31F0CD7B900A5C3D5 /* TagPickerViewController.swift */; };
-		26E98BF61F0CD9F700A5C3D5 /* SlideUpPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E98BF51F0CD9F700A5C3D5 /* SlideUpPicker.swift */; };
-		26E98BF81F0CDE4E00A5C3D5 /* TagPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E98BF71F0CDE4E00A5C3D5 /* TagPickerView.swift */; };
-		26E98BFA1F0CDE6200A5C3D5 /* TagPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26E98BF91F0CDE6200A5C3D5 /* TagPickerView.xib */; };
 		26F1A96E1E5D890400752F1A /* MakeDummyDataOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F1A96D1E5D890400752F1A /* MakeDummyDataOperation.swift */; };
 		26F57AF11E67DE1B0034FF4B /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F57AF01E67DE1B0034FF4B /* Debug.swift */; };
 		26F6169B1EFCF5FB005519E6 /* AmountFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F6169A1EFCF5FB005519E6 /* AmountFieldView.swift */; };
@@ -171,6 +171,8 @@
 		265733261EDD507C00AD1AB9 /* FilterPopupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterPopupView.swift; sourceTree = "<group>"; };
 		265733271EDD507C00AD1AB9 /* FilterPopupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilterPopupView.xib; sourceTree = "<group>"; };
 		265733281EDD507C00AD1AB9 /* FilterPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterPopupViewController.swift; sourceTree = "<group>"; };
+		2657DEBB1F14C2A4003DA778 /* SlideUpPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideUpPickerView.swift; sourceTree = "<group>"; };
+		2657DEBD1F14C2B9003DA778 /* SlideUpPickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SlideUpPickerView.xib; sourceTree = "<group>"; };
 		265DFB801E87D07300439D9A /* BarButtonItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarButtonItems.swift; sourceTree = "<group>"; };
 		26628A2C1E714AB100E80494 /* LightTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightTheme.swift; sourceTree = "<group>"; };
 		2666C2C11957CF4F003752BF /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalyticsServices.a; path = GoogleAnalytics/libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 		2668CA5E1F13AA0900E77198 /* NewClassifierViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewClassifierViewController.swift; sourceTree = "<group>"; };
 		2668CA601F13AAB500E77198 /* NewClassifierTextFieldCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewClassifierTextFieldCell.xib; sourceTree = "<group>"; };
 		2668CA621F13AAC300E77198 /* NewClassifierTextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewClassifierTextFieldCell.swift; sourceTree = "<group>"; };
+		2668CA641F13BD0400E77198 /* SlideUpPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideUpPickerViewController.swift; sourceTree = "<group>"; };
 		266946491CC7711000A68424 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		2669464A1CC7711000A68424 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		2669464C1CC7711000A68424 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -229,9 +232,6 @@
 		26DF09A01EF800D900D26D14 /* TwoLabelTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TwoLabelTableViewCell.xib; sourceTree = "<group>"; };
 		26E4E0581937AF690096191A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		26E98BF31F0CD7B900A5C3D5 /* TagPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagPickerViewController.swift; sourceTree = "<group>"; };
-		26E98BF51F0CD9F700A5C3D5 /* SlideUpPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideUpPicker.swift; sourceTree = "<group>"; };
-		26E98BF71F0CDE4E00A5C3D5 /* TagPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagPickerView.swift; sourceTree = "<group>"; };
-		26E98BF91F0CDE6200A5C3D5 /* TagPickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TagPickerView.xib; sourceTree = "<group>"; };
 		26F1A96D1E5D890400752F1A /* MakeDummyDataOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeDummyDataOperation.swift; sourceTree = "<group>"; };
 		26F57AF01E67DE1B0034FF4B /* Debug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
 		26F6169A1EFCF5FB005519E6 /* AmountFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountFieldView.swift; sourceTree = "<group>"; };
@@ -426,15 +426,15 @@
 				261BB0241EFE721B006E0DC3 /* TagFieldView.xib */,
 				263034F81F02435F00844C4F /* SuggestionsViewController.swift */,
 				263034FA1F02525D00844C4F /* FetchSuggestionsOperation.swift */,
+				2668CA641F13BD0400E77198 /* SlideUpPickerViewController.swift */,
+				2657DEBB1F14C2A4003DA778 /* SlideUpPickerView.swift */,
+				2657DEBD1F14C2B9003DA778 /* SlideUpPickerView.xib */,
 				26F78C8F1F0A388000CF0389 /* CategoryPickerViewController.swift */,
 				26F78C911F0A38CF00CF0389 /* CategoryPickerView.xib */,
 				26F78C931F0A38D900CF0389 /* CategoryPickerView.swift */,
 				26F78C951F0A49CE00CF0389 /* PickerItemCell.swift */,
 				26F78C971F0A49E100CF0389 /* PickerItemCell.xib */,
 				26E98BF31F0CD7B900A5C3D5 /* TagPickerViewController.swift */,
-				26E98BF51F0CD9F700A5C3D5 /* SlideUpPicker.swift */,
-				26E98BF71F0CDE4E00A5C3D5 /* TagPickerView.swift */,
-				26E98BF91F0CDE6200A5C3D5 /* TagPickerView.xib */,
 				2668CA5E1F13AA0900E77198 /* NewClassifierViewController.swift */,
 				2668CA601F13AAB500E77198 /* NewClassifierTextFieldCell.xib */,
 				2668CA621F13AAC300E77198 /* NewClassifierTextFieldCell.swift */,
@@ -651,6 +651,7 @@
 			files = (
 				266946841CC7711000A68424 /* Default@2x.png in Resources */,
 				261BB0161EFD0469006E0DC3 /* DateFieldView.xib in Resources */,
+				2657DEBE1F14C2B9003DA778 /* SlideUpPickerView.xib in Resources */,
 				2603F8C31CCA45FF007F311F /* LaunchScreen.storyboard in Resources */,
 				2668CA611F13AAB500E77198 /* NewClassifierTextFieldCell.xib in Resources */,
 				261BB0211EFE6E55006E0DC3 /* CategoryFieldView.xib in Resources */,
@@ -669,7 +670,6 @@
 				26A1CB4C1DD1ABD600DAE89E /* NotoSansUI-Bold.ttf in Resources */,
 				266946861CC7711000A68424 /* Icon-40@2x.png in Resources */,
 				26F6169D1EFCF604005519E6 /* AmountFieldView.xib in Resources */,
-				26E98BFA1F0CDE6200A5C3D5 /* TagPickerView.xib in Resources */,
 				261BB0251EFE721B006E0DC3 /* TagFieldView.xib in Resources */,
 				266946881CC7711000A68424 /* Icon-Small@2x.png in Resources */,
 				266946851CC7711000A68424 /* InfoPlist.strings in Resources */,
@@ -750,7 +750,6 @@
 				26DF09A11EF800D900D26D14 /* LoadableView.swift in Sources */,
 				26DDDCA81E5C238B001617A1 /* LoadAppVC.swift in Sources */,
 				265DFB811E87D07300439D9A /* BarButtonItems.swift in Sources */,
-				26E98BF61F0CD9F700A5C3D5 /* SlideUpPicker.swift in Sources */,
 				26B38F0F1E88FB2C00177CFE /* MakeDefaultDataOperation.swift in Sources */,
 				26DDDCAA1E5C23AB001617A1 /* _LAVCView.swift in Sources */,
 				2647CD4E1EF136770098E700 /* HomeViewController.swift in Sources */,
@@ -762,6 +761,7 @@
 				26DF098C1EF41B0800D26D14 /* ExpenseListViewController.swift in Sources */,
 				26628A2D1E714AB100E80494 /* LightTheme.swift in Sources */,
 				26A30C8C1E52318D0047307D /* Theme.swift in Sources */,
+				2657DEBC1F14C2A4003DA778 /* SlideUpPickerView.swift in Sources */,
 				26DDDCAE1E5C285F001617A1 /* InitializeCoreDataStackOperation.swift in Sources */,
 				2668CA5F1F13AA0900E77198 /* NewClassifierViewController.swift in Sources */,
 				26F78C961F0A49CE00CF0389 /* PickerItemCell.swift in Sources */,
@@ -772,6 +772,7 @@
 				26F1A96E1E5D890400752F1A /* MakeDummyDataOperation.swift in Sources */,
 				2669468F1CC7711000A68424 /* Spare.xcdatamodeld in Sources */,
 				2647CD471EF136770098E700 /* Filter.swift in Sources */,
+				2657DEBA1F14AEB8003DA778 /* SlideUpPickerViewController.swift in Sources */,
 				26DF099A1EF7950F00D26D14 /* MakeExpenseOperation.swift in Sources */,
 				26A30C8A1E5231620047307D /* BaseNavBarVC.swift in Sources */,
 				2657332B1EDD507C00AD1AB9 /* FilterPopupViewController.swift in Sources */,
@@ -781,7 +782,6 @@
 				263034F91F02435F00844C4F /* SuggestionsViewController.swift in Sources */,
 				266B5FFA1EFCEAE800063803 /* AddExpenseViewController.swift in Sources */,
 				26CB900B1EE5345D009F7099 /* Expense+Extension.swift in Sources */,
-				26E98BF81F0CDE4E00A5C3D5 /* TagPickerView.swift in Sources */,
 				26A30C8E1E5232240047307D /* Global.swift in Sources */,
 				265733291EDD507C00AD1AB9 /* FilterPopupView.swift in Sources */,
 				26DF098E1EF4344100D26D14 /* ExpenseGroup.swift in Sources */,

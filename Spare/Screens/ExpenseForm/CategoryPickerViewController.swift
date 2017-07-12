@@ -19,13 +19,12 @@ private enum ViewID: String {
     case itemCell = "itemCell"
 }
 
-class CategoryPickerViewController: UIViewController {
+class CategoryPickerViewController: SlideUpPickerViewController {
     
     class func present(from presenter: ExpenseFormViewController, selectedCategoryID: NSManagedObjectID?) {
         let picker = CategoryPickerViewController(selectedCategoryID: selectedCategoryID)
-        picker.setCustomTransitioningDelegate(SlideUpPicker.sharedTransitioningDelegate)
         picker.delegate = presenter
-        presenter.present(picker, animated: true, completion: nil)
+        SlideUpPickerViewController.present(picker, from: presenter)
     }
     
     let fetchedResultsController: NSFetchedResultsController<Category> = {
@@ -37,7 +36,7 @@ class CategoryPickerViewController: UIViewController {
                                                     cacheName: nil)
     }()
     
-    let customView = CategoryPickerView.instantiateFromNib()
+    lazy var tableView = UITableView(frame: .zero, style: .grouped)
     var delegate: CategoryPickerViewControllerDelegate?
     var selectedCategoryID: NSManagedObjectID?
     
@@ -51,6 +50,7 @@ class CategoryPickerViewController: UIViewController {
     }
     
     override func loadView() {
+        self.customView.contentView.addSubviewsAndFill(self.tableView)
         self.view = self.customView
     }
     
@@ -63,14 +63,18 @@ class CategoryPickerViewController: UIViewController {
         do {
             try self.fetchedResultsController.performFetch()
             
-            self.customView.tableView.dataSource = self
-            self.customView.tableView.delegate = self
-            self.customView.tableView.register(PickerItemCell.nib(), forCellReuseIdentifier: ViewID.itemCell.rawValue)
-            self.customView.tableView.rowHeight = UITableViewAutomaticDimension
-            self.customView.tableView.estimatedRowHeight = 44
+            self.tableView.dataSource = self
+            self.tableView.delegate = self
+            self.tableView.register(PickerItemCell.nib(), forCellReuseIdentifier: ViewID.itemCell.rawValue)
+            self.tableView.rowHeight = UITableViewAutomaticDimension
+            self.tableView.estimatedRowHeight = 44
             
-            self.customView.tableView.reloadData()
+            self.tableView.reloadData()
         } catch {}
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
     }
     
     @objc func handleTapOnDimView() {

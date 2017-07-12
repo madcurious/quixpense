@@ -17,6 +17,7 @@ class NewClassifierTextFieldCell: UITableViewCell {
         self.applyTheme()
         
         self.selectionStyle = .none
+        self.textField.autocapitalizationType = .sentences
     }
     
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
