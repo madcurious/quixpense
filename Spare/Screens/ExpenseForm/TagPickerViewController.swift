@@ -15,7 +15,7 @@ private enum ViewID: String {
 }
 
 private enum Section: Int {
-    case recents, allTags, newTag
+    case allTags, newTag
 }
 
 fileprivate var kSelectedTags = Set<NSManagedObjectID>()
@@ -47,14 +47,26 @@ class TagPickerViewController: SlideUpPickerViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.internalNavigationController.setViewControllers([TagListViewController()], animated: false)
+        self.internalNavigationController.setViewControllers([TagListViewController(navBarTarget: self)], animated: false)
         self.embedChildViewController(self.internalNavigationController, toView: self.customView.contentView, fillSuperview: true)
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTapOnDimView))
         self.customView.dimView.addGestureRecognizer(tapGestureRecognizer)
     }
     
-    @objc func handleTapOnDimView() {
+}
+
+@objc extension TagPickerViewController {
+    
+    func handleTapOnDimView() {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func handleTapOnCancelButton() {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func handleTapOnDoneButton() {
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -74,8 +86,10 @@ fileprivate class TagListViewController: UIViewController {
     }()
     
     lazy var tableView = UITableView(frame: .zero, style: .grouped)
+    unowned var navBarTarget: TagPickerViewController
     
-    init() {
+    init(navBarTarget: TagPickerViewController) {
+        self.navBarTarget = navBarTarget
         super.init(nibName: nil, bundle: nil)
         self.title = "Tags"
     }
@@ -90,6 +104,9 @@ fileprivate class TagListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationItem.leftBarButtonItem = BarButtonItems.make(.cancel, target: self.navBarTarget, action: #selector(TagPickerViewController.handleTapOnCancelButton))
+        self.navigationItem.rightBarButtonItem = BarButtonItems.make(.done, target: self.navBarTarget, action: #selector(TagPickerViewController.handleTapOnDoneButton))
         
         self.tableView.dataSource = self
         self.tableView.delegate = self
@@ -123,7 +140,7 @@ fileprivate class TagListViewController: UIViewController {
 extension TagListViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -132,8 +149,6 @@ extension TagListViewController: UITableViewDataSource {
             return self.tagFetcher.fetchedObjects?.count ?? 0
         case .newTag:
             return 1
-        case .recents:
-            return 3
         }
     }
     
@@ -150,9 +165,6 @@ extension TagListViewController: UITableViewDataSource {
         case .newTag:
             cell.nameLabel.text = "Add a new tag"
             cell.isActive = kSelectedTags.contains(self.tag(at: indexPath).objectID)
-            
-        case .recents:
-            break
         }
         
         return cell
@@ -168,7 +180,7 @@ extension TagListViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         
         switch Section(rawValue: indexPath.section)! {
-        case .allTags, .recents:
+        case .allTags:
             let tagID = self.tag(at: indexPath).objectID
             if kSelectedTags.contains(tagID) {
                 kSelectedTags.remove(tagID)
@@ -191,17 +203,6 @@ extension TagListViewController: UITableViewDelegate {
                 self.tableView.scrollToRow(at: tagIndexPath, at: .top, animated: false)
             })
             self.navigationController?.pushViewController(addScreen, animated: true)
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch Section(rawValue: section)! {
-        case .allTags:
-            return "All tags"
-        case .newTag:
-            return nil
-        case .recents:
-            return "Recent"
         }
     }
     

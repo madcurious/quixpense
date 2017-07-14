@@ -51,14 +51,26 @@ class CategoryPickerViewController: SlideUpPickerViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.internalNavigationController.setViewControllers([CategoryListViewController()], animated: false)
+        self.internalNavigationController.setViewControllers([CategoryListViewController(navBarTarget: self)], animated: false)
         self.embedChildViewController(self.internalNavigationController, toView: self.customView.contentView, fillSuperview: true)
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTapOnDimView))
         self.customView.dimView.addGestureRecognizer(tapGestureRecognizer)
     }
     
-    @objc func handleTapOnDimView() {
+}
+
+@objc extension CategoryPickerViewController {
+    
+    func handleTapOnDimView() {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func handleTapOnCancelButton() {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func handleTapOnDoneButton() {
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -76,7 +88,10 @@ fileprivate class CategoryListViewController: UITableViewController {
                                                     cacheName: nil)
     }()
     
-    init() {
+    unowned var navBarTarget: CategoryPickerViewController
+    
+    init(navBarTarget: CategoryPickerViewController) {
+        self.navBarTarget = navBarTarget
         super.init(style: .grouped)
         self.title = "Categories"
     }
@@ -87,6 +102,9 @@ fileprivate class CategoryListViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationItem.leftBarButtonItem = BarButtonItems.make(.cancel, target: self.navBarTarget, action: #selector(CategoryPickerViewController.handleTapOnCancelButton))
+        self.navigationItem.rightBarButtonItem = BarButtonItems.make(.done, target: self.navBarTarget, action: #selector(CategoryPickerViewController.handleTapOnDoneButton))
         
         self.tableView.register(PickerItemCell.nib(), forCellReuseIdentifier: ViewID.itemCell.rawValue)
         self.tableView.rowHeight = UITableViewAutomaticDimension
