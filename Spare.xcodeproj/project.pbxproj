@@ -10,8 +10,6 @@
 		260024311CC8C5AE00EB2026 /* Mold.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 260024301CC8C53A00EB2026 /* Mold.framework */; };
 		260024321CC8C5AE00EB2026 /* Mold.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 260024301CC8C53A00EB2026 /* Mold.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2603F8C31CCA45FF007F311F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2603F8C21CCA45FF007F311F /* LaunchScreen.storyboard */; };
-		261BB0161EFD0469006E0DC3 /* DateFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 261BB0151EFD0469006E0DC3 /* DateFieldView.xib */; };
-		261BB0181EFD04BF006E0DC3 /* DateFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261BB0171EFD04BF006E0DC3 /* DateFieldView.swift */; };
 		261BB01A1EFD1751006E0DC3 /* TimestampFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261BB0191EFD1751006E0DC3 /* TimestampFormatter.swift */; };
 		261BB01F1EFE6E1E006E0DC3 /* CategoryFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261BB01E1EFE6E1E006E0DC3 /* CategoryFieldView.swift */; };
 		261BB0211EFE6E55006E0DC3 /* CategoryFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 261BB0201EFE6E55006E0DC3 /* CategoryFieldView.xib */; };
@@ -22,8 +20,6 @@
 		261EB86718DDB631009DDF78 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86618DDB631009DDF78 /* UIKit.framework */; };
 		261EB86918DDB631009DDF78 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86818DDB631009DDF78 /* CoreData.framework */; };
 		26201A0C1EFA78D800E737B3 /* MakeExpenseOperationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26228AA31EF994EF00F0E3E3 /* MakeExpenseOperationTest.swift */; };
-		263034F91F02435F00844C4F /* SuggestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263034F81F02435F00844C4F /* SuggestionsViewController.swift */; };
-		263034FB1F02525D00844C4F /* FetchSuggestionsOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263034FA1F02525D00844C4F /* FetchSuggestionsOperation.swift */; };
 		26331FC21E5B684700AACE68 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26331FC11E5B684700AACE68 /* CoreDataStack.swift */; };
 		2647CD471EF136770098E700 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2647CD341EF136770098E700 /* Filter.swift */; };
 		2647CD481EF136770098E700 /* FilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2647CD351EF136770098E700 /* FilterButton.swift */; };
@@ -73,6 +69,8 @@
 		26A30C921E5235950047307D /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A30C911E5235950047307D /* SettingsVC.swift */; };
 		26B38F0F1E88FB2C00177CFE /* MakeDefaultDataOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B38F0E1E88FB2C00177CFE /* MakeDefaultDataOperation.swift */; };
 		26B38F111E89068500177CFE /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B38F101E89068500177CFE /* UserDefaultsKey.swift */; };
+		26C5721A1F1C9061005F63ED /* DateFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C572191F1C9061005F63ED /* DateFieldView.swift */; };
+		26C5721C1F1C90BC005F63ED /* DateFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26C5721B1F1C90BC005F63ED /* DateFieldView.xib */; };
 		26CB900B1EE5345D009F7099 /* Expense+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CB900A1EE5345D009F7099 /* Expense+Extension.swift */; };
 		26D6C9AD1E93807400DDDAE8 /* NotoSansUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D6C9AC1E93807400DDDAE8 /* NotoSansUI.swift */; };
 		26DDDCA81E5C238B001617A1 /* LoadAppVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DDDCA71E5C238B001617A1 /* LoadAppVC.swift */; };
@@ -145,8 +143,6 @@
 		260023FD1CC7E0B000EB2026 /* Mold.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mold.framework; path = "Mold/build/Debug-iphoneos/Mold.framework"; sourceTree = "<group>"; };
 		2603F8C21CCA45FF007F311F /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2603F8C61CCA476E007F311F /* Spare_v2.0.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Spare_v2.0.xcdatamodel; sourceTree = "<group>"; };
-		261BB0151EFD0469006E0DC3 /* DateFieldView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DateFieldView.xib; sourceTree = "<group>"; };
-		261BB0171EFD04BF006E0DC3 /* DateFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFieldView.swift; sourceTree = "<group>"; };
 		261BB0191EFD1751006E0DC3 /* TimestampFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimestampFormatter.swift; sourceTree = "<group>"; };
 		261BB01E1EFE6E1E006E0DC3 /* CategoryFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryFieldView.swift; sourceTree = "<group>"; };
 		261BB0201EFE6E55006E0DC3 /* CategoryFieldView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryFieldView.xib; sourceTree = "<group>"; };
@@ -159,8 +155,6 @@
 		261EB86818DDB631009DDF78 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		261EB88018DDB631009DDF78 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		26228AA31EF994EF00F0E3E3 /* MakeExpenseOperationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeExpenseOperationTest.swift; sourceTree = "<group>"; };
-		263034F81F02435F00844C4F /* SuggestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionsViewController.swift; sourceTree = "<group>"; };
-		263034FA1F02525D00844C4F /* FetchSuggestionsOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchSuggestionsOperation.swift; sourceTree = "<group>"; };
 		26331FC11E5B684700AACE68 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		2647CD341EF136770098E700 /* Filter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		2647CD351EF136770098E700 /* FilterButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterButton.swift; sourceTree = "<group>"; };
@@ -216,6 +210,8 @@
 		26A30C911E5235950047307D /* SettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		26B38F0E1E88FB2C00177CFE /* MakeDefaultDataOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeDefaultDataOperation.swift; sourceTree = "<group>"; };
 		26B38F101E89068500177CFE /* UserDefaultsKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
+		26C572191F1C9061005F63ED /* DateFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFieldView.swift; sourceTree = "<group>"; };
+		26C5721B1F1C90BC005F63ED /* DateFieldView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DateFieldView.xib; sourceTree = "<group>"; };
 		26CB900A1EE5345D009F7099 /* Expense+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Expense+Extension.swift"; sourceTree = "<group>"; };
 		26D4C8F41946E624001B42DC /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		26D6C9AC1E93807400DDDAE8 /* NotoSansUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotoSansUI.swift; sourceTree = "<group>"; };
@@ -420,14 +416,10 @@
 				266B5FFD1EFCEBF800063803 /* ExpenseFormView.xib */,
 				26F6169A1EFCF5FB005519E6 /* AmountFieldView.swift */,
 				26F6169C1EFCF604005519E6 /* AmountFieldView.xib */,
-				261BB0171EFD04BF006E0DC3 /* DateFieldView.swift */,
-				261BB0151EFD0469006E0DC3 /* DateFieldView.xib */,
 				261BB01E1EFE6E1E006E0DC3 /* CategoryFieldView.swift */,
 				261BB0201EFE6E55006E0DC3 /* CategoryFieldView.xib */,
 				261BB0221EFE7212006E0DC3 /* TagFieldView.swift */,
 				261BB0241EFE721B006E0DC3 /* TagFieldView.xib */,
-				263034F81F02435F00844C4F /* SuggestionsViewController.swift */,
-				263034FA1F02525D00844C4F /* FetchSuggestionsOperation.swift */,
 				2668CA641F13BD0400E77198 /* SlideUpPickerViewController.swift */,
 				2657DEBB1F14C2A4003DA778 /* SlideUpPickerView.swift */,
 				2657DEBD1F14C2B9003DA778 /* SlideUpPickerView.xib */,
@@ -440,6 +432,8 @@
 				2668CA5E1F13AA0900E77198 /* NewClassifierViewController.swift */,
 				265390EE1F15EB8000C7BD34 /* NewClassifierView.swift */,
 				265390F01F15EB9200C7BD34 /* NewClassifierView.xib */,
+				26C572191F1C9061005F63ED /* DateFieldView.swift */,
+				26C5721B1F1C90BC005F63ED /* DateFieldView.xib */,
 			);
 			path = ExpenseForm;
 			sourceTree = "<group>";
@@ -653,7 +647,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				266946841CC7711000A68424 /* Default@2x.png in Resources */,
-				261BB0161EFD0469006E0DC3 /* DateFieldView.xib in Resources */,
 				2657DEBE1F14C2B9003DA778 /* SlideUpPickerView.xib in Resources */,
 				265390F11F15EB9200C7BD34 /* NewClassifierView.xib in Resources */,
 				2603F8C31CCA45FF007F311F /* LaunchScreen.storyboard in Resources */,
@@ -672,6 +665,7 @@
 				26DF09A31EF800D900D26D14 /* SectionTotalHeaderView.xib in Resources */,
 				26A1CB4C1DD1ABD600DAE89E /* NotoSansUI-Bold.ttf in Resources */,
 				266946861CC7711000A68424 /* Icon-40@2x.png in Resources */,
+				26C5721C1F1C90BC005F63ED /* DateFieldView.xib in Resources */,
 				26F6169D1EFCF604005519E6 /* AmountFieldView.xib in Resources */,
 				261BB0251EFE721B006E0DC3 /* TagFieldView.xib in Resources */,
 				266946881CC7711000A68424 /* Icon-Small@2x.png in Resources */,
@@ -755,11 +749,9 @@
 				26B38F0F1E88FB2C00177CFE /* MakeDefaultDataOperation.swift in Sources */,
 				26DDDCAA1E5C23AB001617A1 /* _LAVCView.swift in Sources */,
 				2647CD4E1EF136770098E700 /* HomeViewController.swift in Sources */,
-				263034FB1F02525D00844C4F /* FetchSuggestionsOperation.swift in Sources */,
 				26DF09A21EF800D900D26D14 /* SectionTotalHeaderView.swift in Sources */,
 				264D37C91EEE38DE0063CD53 /* SectionIdentifier.swift in Sources */,
 				26F78C941F0A38D900CF0389 /* CategoryPickerView.swift in Sources */,
-				261BB0181EFD04BF006E0DC3 /* DateFieldView.swift in Sources */,
 				26DF098C1EF41B0800D26D14 /* ExpenseListViewController.swift in Sources */,
 				26628A2D1E714AB100E80494 /* LightTheme.swift in Sources */,
 				26A30C8C1E52318D0047307D /* Theme.swift in Sources */,
@@ -774,6 +766,7 @@
 				2647CD481EF136770098E700 /* FilterButton.swift in Sources */,
 				26F1A96E1E5D890400752F1A /* MakeDummyDataOperation.swift in Sources */,
 				2669468F1CC7711000A68424 /* Spare.xcdatamodeld in Sources */,
+				26C5721A1F1C9061005F63ED /* DateFieldView.swift in Sources */,
 				2647CD471EF136770098E700 /* Filter.swift in Sources */,
 				2657DEBA1F14AEB8003DA778 /* SlideUpPickerViewController.swift in Sources */,
 				26DF099A1EF7950F00D26D14 /* MakeExpenseOperation.swift in Sources */,
@@ -782,7 +775,6 @@
 				26DF09A41EF800D900D26D14 /* TwoLabelTableViewCell.swift in Sources */,
 				266B5FFC1EFCEBE800063803 /* ExpenseFormView.swift in Sources */,
 				261BB01A1EFD1751006E0DC3 /* TimestampFormatter.swift in Sources */,
-				263034F91F02435F00844C4F /* SuggestionsViewController.swift in Sources */,
 				266B5FFA1EFCEAE800063803 /* AddExpenseViewController.swift in Sources */,
 				26CB900B1EE5345D009F7099 /* Expense+Extension.swift in Sources */,
 				26A30C8E1E5232240047307D /* Global.swift in Sources */,
