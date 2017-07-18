@@ -17,7 +17,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QGo-6n-c6K">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                    <rect key="frame" x="0.0" y="0.0" width="365" height="44"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Fb-PO-ofD">
                             <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
@@ -38,30 +38,18 @@
                                 <constraint firstItem="qFU-17-c56" firstAttribute="centerX" secondItem="9Fb-PO-ofD" secondAttribute="centerX" id="rcB-tU-szG"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zu2-bi-Kx9">
-                            <rect key="frame" x="44" y="0.0" width="331" height="44"/>
-                            <subviews>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KOZ-T6-NbT">
-                                    <rect key="frame" x="0.0" y="0.0" width="331" height="44"/>
-                                    <nil key="textColor"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits"/>
-                                </textField>
-                            </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstAttribute="bottom" secondItem="KOZ-T6-NbT" secondAttribute="bottom" id="3IU-Zw-Lwa"/>
-                                <constraint firstAttribute="trailing" secondItem="KOZ-T6-NbT" secondAttribute="trailing" id="3j3-2U-1X0"/>
-                                <constraint firstItem="KOZ-T6-NbT" firstAttribute="top" secondItem="zu2-bi-Kx9" secondAttribute="top" id="K8k-kW-4gT"/>
-                                <constraint firstItem="KOZ-T6-NbT" firstAttribute="leading" secondItem="zu2-bi-Kx9" secondAttribute="leading" id="mxO-f0-drM"/>
-                            </constraints>
-                        </view>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="m9b-9J-VHn" customClass="DateFieldViewTextField" customModule="Spare" customModuleProvider="target">
+                            <rect key="frame" x="44" y="0.0" width="321" height="44"/>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
                     </subviews>
                 </stackView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="QGo-6n-c6K" secondAttribute="trailing" id="ACV-dK-e2Q"/>
+                <constraint firstAttribute="trailing" secondItem="QGo-6n-c6K" secondAttribute="trailing" constant="10" id="ACV-dK-e2Q"/>
                 <constraint firstAttribute="bottom" secondItem="QGo-6n-c6K" secondAttribute="bottom" id="NcI-4x-Of2"/>
                 <constraint firstItem="QGo-6n-c6K" firstAttribute="leading" secondItem="yrd-vX-gn6" secondAttribute="leading" id="Zwk-UX-YsL"/>
                 <constraint firstItem="QGo-6n-c6K" firstAttribute="top" secondItem="yrd-vX-gn6" secondAttribute="top" id="usz-gf-PbE"/>
@@ -69,7 +57,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="imageView" destination="qFU-17-c56" id="Hc5-VY-G2H"/>
-                <outlet property="textField" destination="KOZ-T6-NbT" id="W65-Fh-Ffn"/>
+                <outlet property="textField" destination="m9b-9J-VHn" id="9Po-af-D95"/>
             </connections>
             <point key="canvasLocation" x="-192.5" y="-52"/>
         </view>

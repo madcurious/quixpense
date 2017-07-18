@@ -7,30 +7,43 @@
 //
 
 import UIKit
+import Mold
 
 class DateFieldView: UIView {
     
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var textField: DateFieldViewTextField!
     
     private let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.dateFormat = "E, d MMM yyyy"
+        formatter.dateFormat = "E d MMM yyyy, h:mm a"
         return formatter
     }()
     
     private lazy var datePicker = UIDatePicker(frame: .zero)
+//        let datePicker = UIDatePicker(frame: .zero)
+//        datePicker.datePickerMode = .date
+//        return datePicker
+//    }()
+    
     var date = Date()
     
     override func awakeFromNib() {
         super.awakeFromNib()
         self.clearAllBackgroundColors()
-        
         self.setToCurrentDate()
         
-        self.datePicker.addObserver(self, forKeyPath: #keyPath(UIDatePicker.date), options: [.new], context: nil)
+        self.imageView.image = UIImage.templateNamed("dateIcon")
         
+        self.textField.isUserInteractionEnabled = false
         self.textField.inputView = self.datePicker
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTapOnViewArea))
+        self.addGestureRecognizer(tapGestureRecognizer)
+        
+        self.datePicker.addTarget(self, action: #selector(handleValueChangeOnDatePicker), for: .valueChanged)
+        
+        self.applyTheme()
     }
     
     func setToCurrentDate() {
@@ -42,12 +55,12 @@ class DateFieldView: UIView {
         self.textField.text = self.dateFormatter.string(from: date)
     }
     
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        guard keyPath == #keyPath(UIDatePicker.date)
-            else {
-                return
-        }
+    @objc func handleValueChangeOnDatePicker() {
         self.setDate(self.datePicker.date)
+    }
+    
+    @objc func handleTapOnViewArea() {
+        self.textField.becomeFirstResponder()
     }
     
 }
@@ -56,8 +69,22 @@ extension DateFieldView: Themeable {
     
     func applyTheme() {
         self.imageView.tintColor = Global.theme.color(for: .fieldIcon)
+        
         self.textField.font = Global.theme.font(for: .regularText)
         self.textField.textColor = Global.theme.color(for: .regularText)
+    }
+    
+}
+
+class DateFieldViewTextField: UITextField {
+    
+    override var canBecomeFirstResponder: Bool {
+        return true
+    }
+    
+    override func caretRect(for position: UITextPosition) -> CGRect {
+        // Hides the cursor even when the text field is active.
+        return .zero
     }
     
 }
