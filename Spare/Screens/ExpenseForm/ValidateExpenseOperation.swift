@@ -9,52 +9,46 @@
 import Foundation
 import Mold
 
-class ValidateExpenseOperation: MDAsynchronousOperation<Bool> {
+enum ValidateExpenseOperationError: LocalizedError {
+    case emptyAmount
+    case zeroAmount
     
-    enum Error: LocalizedError {
-        case emptyAmount
-        case zeroAmount
-        
-        var localizedDescription: String {
-            switch self {
-            case .emptyAmount:
-                return "Amount can't be empty."
-                
-            case .zeroAmount:
-                return "Amount can't be zero."
-            }
+    var localizedDescription: String {
+        switch self {
+        case .emptyAmount:
+            return "Amount can't be empty."
+            
+        case .zeroAmount:
+            return "Amount can't be zero."
         }
     }
-    
+}
+
+class ValidateExpenseOperation: TBAsynchronousOperation<Any, Bool, ValidateExpenseOperationError> {
     var amountText: String?
     
-    init(amountText: String?) {
+    init(amountText: String?, completionBlock: @escaping TBOperationCompletionBlock) {
         self.amountText = amountText
+        super.init(completionBlock: completionBlock)
     }
     
-    override func makeResult(from source: Any?) throws -> Bool {
+    override func main() {
         if self.amountText == nil {
-            throw ValidateExpenseOperation.Error.emptyAmount
+            self.error = .emptyAmount
         }
         
         if let amountText = self.amountText,
             amountText.trim().isEmpty {
-            throw ValidateExpenseOperation.Error.emptyAmount
+            self.error = .emptyAmount
         }
         
         if NSDecimalNumber(string: self.amountText).isEqual(to: 0) {
-            throw ValidateExpenseOperation.Error.zeroAmount
+            self.error = .zeroAmount
         }
         
-        return true
-    }
-    
-    override func main() {
-        do {
-            self.successBlock?(try self.makeResult(from: nil))
-        } catch {
-            self.failureBlock?(error)
-        }
+        self.result = true
+        
+        self.finish()
     }
     
 }
