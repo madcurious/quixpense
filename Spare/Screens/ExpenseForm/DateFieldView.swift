@@ -21,12 +21,8 @@ class DateFieldView: UIView {
     }()
     
     private lazy var datePicker = UIDatePicker(frame: .zero)
-//        let datePicker = UIDatePicker(frame: .zero)
-//        datePicker.datePickerMode = .date
-//        return datePicker
-//    }()
     
-    var date = Date()
+    var selectedDate = Date()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -51,7 +47,7 @@ class DateFieldView: UIView {
     }
     
     func setDate(_ date: Date) {
-        self.date = date
+        self.selectedDate = date
         self.textField.text = self.dateFormatter.string(from: date)
     }
     
@@ -60,6 +56,7 @@ class DateFieldView: UIView {
     }
     
     @objc func handleTapOnViewArea() {
+        self.datePicker.date = self.selectedDate
         self.textField.becomeFirstResponder()
     }
     
@@ -69,7 +66,6 @@ extension DateFieldView: Themeable {
     
     func applyTheme() {
         self.imageView.tintColor = Global.theme.color(for: .fieldIcon)
-        
         self.textField.font = Global.theme.font(for: .regularText)
         self.textField.textColor = Global.theme.color(for: .regularText)
     }

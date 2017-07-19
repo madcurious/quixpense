@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Mold
 
 class AddExpenseViewController: ExpenseFormViewController {
     
@@ -36,6 +37,19 @@ class AddExpenseViewController: ExpenseFormViewController {
             alertController.dismiss(animated: true, completion: nil)
         }))
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    override func handleTapOnDoneButton() {
+        let validateOperation = ValidateExpenseOperation(amountText: self.amountText)
+        validateOperation.successBlock = {[unowned self] _ in
+            print("SUCCESS")
+        }
+        validateOperation.failureBlock = {[unowned self] error in
+            if let validationError = error as? ValidateExpenseOperation.Error {
+                MDErrorDialog.showError(validationError, from: self, dialogTitle: validationError.localizedDescription, cancelButtonTitle: "Got it!")
+            }
+        }
+        validateOperation.start()
     }
     
 }
