@@ -94,15 +94,6 @@ class MakeDummyDataOperation: MDOperation<Any?> {
                     }
                 }()
                 
-//                let makeOperation = MakeExpenseOperation(context: self.context,
-//                                                         amount: NSDecimalNumber(value: amount),
-//                                                         dateSpent: currentDateSpent,
-//                                                         categoryName: categoryName,
-//                                                         tagNames: tagNames)
-//                makeOperation.start()
-//                if let error = makeOperation.error {
-//                    throw error
-//                }
                 let addOp = AddExpenseOperation(context: self.context,
                                                 amount: NSDecimalNumber(value: amount),
                                                 dateSpent: currentDateSpent,

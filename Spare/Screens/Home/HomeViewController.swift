@@ -65,6 +65,8 @@ class HomeViewController: UIViewController {
         self.tableView.delegate = self
         
         self.performFetch()
+        
+        self.fetchedResultsController.delegate = self
     }
     
     func performFetch() {
@@ -147,6 +149,7 @@ extension HomeViewController {
     @objc func handleValueChangeOnFilterButton() {
         Global.filter = self.filterButton.filter
         self.fetchedResultsController = Global.filter.makeFetchedResultsController()
+        self.fetchedResultsController.delegate = self
         self.performFetch()
     }
     

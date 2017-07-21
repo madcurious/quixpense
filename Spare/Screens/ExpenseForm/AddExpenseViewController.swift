@@ -63,15 +63,19 @@ class AddExpenseViewController: ExpenseFormViewController {
             return input
         }()
         
-        let addOp = AddExpenseOperation(context: nil, amount: NSDecimalNumber(string: self.amountText!), dateSpent: self.customView.dateFieldView.selectedDate, category: categoryInput, tags: nil) {[unowned self] result in
-            switch result {
-            case .success(_):
-                MDAlertDialog.showInPresenter(self, title: "Expense saved.", message: nil, cancelButtonTitle: "Got it!")
-            case .error(let error):
-                MDAlertDialog.showInPresenter(self, title: error.localizedDescription, message: nil, cancelButtonTitle: "Got it!")
-                
-            default: break
-            }
+        let addOp = AddExpenseOperation(context: nil,
+                                        amount: NSDecimalNumber(string: self.amountText!),
+                                        dateSpent: self.customView.dateFieldView.selectedDate,
+                                        category: categoryInput,
+                                        tags: nil) {[unowned self] result in
+                                            switch result {
+                                            case .success(_):
+                                                MDAlertDialog.showInPresenter(self, title: "Expense saved.", message: nil, cancelButtonTitle: "Got it!")
+                                            case .error(let error):
+                                                MDAlertDialog.showInPresenter(self, title: error.localizedDescription, message: nil, cancelButtonTitle: "Got it!")
+                                                
+                                            default: break
+                                            }
         }
         
         addOp.addDependency(validateOp)
