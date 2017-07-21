@@ -16,7 +16,7 @@ enum AddExpenseOperationError: LocalizedError {
     var localizedDescription: String {
         switch self {
         case .coreDataError(let error):
-            return "Database error occurred: \(error.localizedDescription)"
+            return "Database error occurred: \(error)"
         }
     }
 }
@@ -57,14 +57,14 @@ class AddExpenseOperation: TBAsynchronousOperation<Any, NSManagedObjectID, AddEx
             // Set the category.
             if let category = self.category {
                 newExpense.category = category
-            } else if let uncategorized = try DefaultClassifier.uncategorized.fetch(in: self.context) as? Category {
+            } else if let uncategorized: Category = try DefaultClassifier.uncategorized.fetch(in: self.context) {
                 newExpense.category = uncategorized
             }
             
             // Set the tags.
             if let tags = self.tags as NSSet? {
                 newExpense.tags = tags
-            } else if let untagged = try DefaultClassifier.untagged.fetch(in: self.context) as? Tag {
+            } else if let untagged: Tag = try DefaultClassifier.untagged.fetch(in: self.context) {
                 newExpense.addToTags(untagged)
             }
             

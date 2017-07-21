@@ -13,18 +13,11 @@ enum DefaultClassifier: String {
     case uncategorized = "Uncategorized"
     case untagged = "Untagged"
     
-    func fetch(in context: NSManagedObjectContext) throws -> NSManagedObject? {
-        switch self {
-        case .uncategorized:
-            let fetchRequest: NSFetchRequest<Category> = Category.fetchRequest()
-            fetchRequest.predicate = NSPredicate(format: "%K == %@", #keyPath(Category.name), self.rawValue)
-            return try context.fetch(fetchRequest).first
-            
-        case .untagged:
-            let fetchRequest: NSFetchRequest<Tag> = Tag.fetchRequest()
-            fetchRequest.predicate = NSPredicate(format: "%K == %@", #keyPath(Tag.name), self.rawValue)
-            return try context.fetch(fetchRequest).first
-        }
+    func fetch<T: NSManagedObject>(in context: NSManagedObjectContext) throws -> T? {
+        let fetchRequest = NSFetchRequest<T>()
+        fetchRequest.entity = T.entity()
+        fetchRequest.predicate = NSPredicate(format: "%K == %@", "name", self.rawValue)
+        return try context.fetch(fetchRequest).first
     }
     
 }
