@@ -20,6 +20,7 @@
 		261EB86718DDB631009DDF78 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86618DDB631009DDF78 /* UIKit.framework */; };
 		261EB86918DDB631009DDF78 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86818DDB631009DDF78 /* CoreData.framework */; };
 		26201A0C1EFA78D800E737B3 /* MakeExpenseOperationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26228AA31EF994EF00F0E3E3 /* MakeExpenseOperationTest.swift */; };
+		2631F7EC1F21E03E007FD12C /* CategoryInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E83F9C1F21DFB8004F650D /* CategoryInput.swift */; };
 		26331FC21E5B684700AACE68 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26331FC11E5B684700AACE68 /* CoreDataStack.swift */; };
 		2647CD471EF136770098E700 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2647CD341EF136770098E700 /* Filter.swift */; };
 		2647CD481EF136770098E700 /* FilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2647CD351EF136770098E700 /* FilterButton.swift */; };
@@ -89,6 +90,7 @@
 		26DF09A41EF800D900D26D14 /* TwoLabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DF099F1EF800D900D26D14 /* TwoLabelTableViewCell.swift */; };
 		26DF09A51EF800D900D26D14 /* TwoLabelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26DF09A01EF800D900D26D14 /* TwoLabelTableViewCell.xib */; };
 		26E4E0591937AF690096191A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E4E0581937AF690096191A /* QuartzCore.framework */; };
+		26E83F9B1F21DF33004F650D /* TagInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E83F9A1F21DF33004F650D /* TagInput.swift */; };
 		26E98BF41F0CD7B900A5C3D5 /* TagPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E98BF31F0CD7B900A5C3D5 /* TagPickerViewController.swift */; };
 		26F1A96E1E5D890400752F1A /* MakeDummyDataOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F1A96D1E5D890400752F1A /* MakeDummyDataOperation.swift */; };
 		26F57AF11E67DE1B0034FF4B /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F57AF01E67DE1B0034FF4B /* Debug.swift */; };
@@ -233,6 +235,8 @@
 		26DF099F1EF800D900D26D14 /* TwoLabelTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoLabelTableViewCell.swift; sourceTree = "<group>"; };
 		26DF09A01EF800D900D26D14 /* TwoLabelTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TwoLabelTableViewCell.xib; sourceTree = "<group>"; };
 		26E4E0581937AF690096191A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		26E83F9A1F21DF33004F650D /* TagInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagInput.swift; sourceTree = "<group>"; };
+		26E83F9C1F21DFB8004F650D /* CategoryInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryInput.swift; sourceTree = "<group>"; };
 		26E98BF31F0CD7B900A5C3D5 /* TagPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagPickerViewController.swift; sourceTree = "<group>"; };
 		26F1A96D1E5D890400752F1A /* MakeDummyDataOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeDummyDataOperation.swift; sourceTree = "<group>"; };
 		26F57AF01E67DE1B0034FF4B /* Debug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
@@ -486,6 +490,8 @@
 				2695CBEA1F03B9B5009D5FFA /* ClassifierType.swift */,
 				265390F21F15F10F00C7BD34 /* DefaultClassifier.swift */,
 				26CA5AF01F20ADD000B204C7 /* AddExpenseOperation.swift */,
+				26E83F9C1F21DFB8004F650D /* CategoryInput.swift */,
+				26E83F9A1F21DF33004F650D /* TagInput.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -779,6 +785,7 @@
 				26DF099A1EF7950F00D26D14 /* MakeExpenseOperation.swift in Sources */,
 				26A30C8A1E5231620047307D /* BaseNavBarVC.swift in Sources */,
 				26CA5AF11F20ADD000B204C7 /* AddExpenseOperation.swift in Sources */,
+				26E83F9B1F21DF33004F650D /* TagInput.swift in Sources */,
 				2657332B1EDD507C00AD1AB9 /* FilterPopupViewController.swift in Sources */,
 				26DF09A41EF800D900D26D14 /* TwoLabelTableViewCell.swift in Sources */,
 				266B5FFC1EFCEBE800063803 /* ExpenseFormView.swift in Sources */,
@@ -794,6 +801,7 @@
 				267C2B7C1E7BDA03008EA3E0 /* MainTabBarVC.swift in Sources */,
 				26331FC21E5B684700AACE68 /* CoreDataStack.swift in Sources */,
 				26F6169B1EFCF5FB005519E6 /* AmountFieldView.swift in Sources */,
+				2631F7EC1F21E03E007FD12C /* CategoryInput.swift in Sources */,
 				269635A41E5457C80001FC05 /* AmountFormatter.swift in Sources */,
 				26F78C901F0A388000CF0389 /* CategoryPickerViewController.swift in Sources */,
 				2695CBEB1F03B9B5009D5FFA /* ClassifierType.swift in Sources */,

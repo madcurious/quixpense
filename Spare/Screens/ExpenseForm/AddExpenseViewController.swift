@@ -51,7 +51,19 @@ class AddExpenseViewController: ExpenseFormViewController {
             }
         }
         
-        let addOp = AddExpenseOperation(amount: NSDecimalNumber(string: self.amountText!), dateSpent: self.customView.dateFieldView.selectedDate, category: self.selectedCategory, tags: self.selectedTags) {[unowned self] result in
+        let categoryInput: CategoryInput = {
+            guard let selectedCategory = self.selectedCategory
+                else {
+                    return .none
+            }
+            if nil != Global.coreDataStack.newBackgroundContext().object(with: selectedCategory.objectID) as? Category {
+                return .id(selectedCategory.objectID)
+            }
+            let input = CategoryInput.name(selectedCategory.name!)
+            return input
+        }()
+        
+        let addOp = AddExpenseOperation(context: nil, amount: NSDecimalNumber(string: self.amountText!), dateSpent: self.customView.dateFieldView.selectedDate, category: categoryInput, tags: nil) {[unowned self] result in
             switch result {
             case .success(_):
                 MDAlertDialog.showInPresenter(self, title: "Expense saved.", message: nil, cancelButtonTitle: "Got it!")
@@ -63,6 +75,9 @@ class AddExpenseViewController: ExpenseFormViewController {
         }
         
         addOp.addDependency(validateOp)
+        
+        Global.coreDataStack.viewContext.rollback() // Discard the unsaved category/tag entities.
+        
         self.operationQueue.addOperations([validateOp, addOp], waitUntilFinished: false)
     }
     

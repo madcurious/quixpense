@@ -21,20 +21,22 @@ enum AddExpenseOperationError: LocalizedError {
     }
 }
 
-class AddExpenseOperation: TBAsynchronousOperation<Any, NSManagedObjectID, AddExpenseOperationError> {
+class AddExpenseOperation: TBOperation<Any, NSManagedObjectID, AddExpenseOperationError> {
     
     let context: NSManagedObjectContext
     let amount: NSDecimalNumber
     let dateSpent: Date
-    let category: Category?
-    let tags: Set<Tag>?
+    let category: CategoryInput
+    let tags: Set<TagInput>?
     
-    init(amount: NSDecimalNumber,
-                dateSpent: Date,
-                category: Category?,
-                tags: Set<Tag>?,
-                completionBlock: @escaping TBOperationCompletionBlock) {
-        self.context = Global.coreDataStack.newBackgroundContext()
+    init(context: NSManagedObjectContext?,
+         amount: NSDecimalNumber,
+         dateSpent: Date,
+         category: CategoryInput,
+         tags: Set<TagInput>?,
+         completionBlock: TBOperationCompletionBlock?) {
+        
+        self.context = context ?? Global.coreDataStack.newBackgroundContext()
         self.amount = amount
         self.dateSpent = dateSpent
         self.category = category
@@ -44,10 +46,6 @@ class AddExpenseOperation: TBAsynchronousOperation<Any, NSManagedObjectID, AddEx
     }
     
     override func main() {
-        defer {
-            self.finish()
-        }
-        
         do {
             let newExpense = Expense(context: self.context)
             newExpense.dateCreated = Date()
@@ -55,17 +53,59 @@ class AddExpenseOperation: TBAsynchronousOperation<Any, NSManagedObjectID, AddEx
             newExpense.dateSpent = self.dateSpent
             
             // Set the category.
-            if let category = self.category {
-                newExpense.category = category
-            } else if let uncategorized: Category = try DefaultClassifier.uncategorized.fetch(in: self.context) {
-                newExpense.category = uncategorized
+            switch self.category {
+            case .id(let objectID):
+                newExpense.category = self.context.object(with: objectID) as? Category
+            case .name(let categoryName):
+                // Check if the category name exists; if not, create it.
+                let fetchRequest: NSFetchRequest<Category> = Category.fetchRequest()
+                fetchRequest.predicate = NSPredicate(format: "%K == %@", #keyPath(Category.name), categoryName)
+                if let existingCategory = try self.context.fetch(fetchRequest).first {
+                    newExpense.category = existingCategory
+                } else {
+                    let newCategory = Category(context: self.context)
+                    newCategory.name = categoryName
+                    newExpense.category = newCategory
+                }
+            case .none:
+                if let uncategorized: Category = try DefaultClassifier.uncategorized.fetch(in: self.context) {
+                    newExpense.category = uncategorized
+                } else {
+                    let uncategorized = Category(context: self.context)
+                    uncategorized.name = DefaultClassifier.uncategorized.rawValue
+                    newExpense.category = uncategorized
+                }
             }
             
             // Set the tags.
-            if let tags = self.tags as NSSet? {
-                newExpense.tags = tags
-            } else if let untagged: Tag = try DefaultClassifier.untagged.fetch(in: self.context) {
-                newExpense.addToTags(untagged)
+            if let tags = self.tags {
+                for input in tags {
+                    switch input {
+                    case .id(let objectID):
+                        if let existingTag = self.context.object(with: objectID) as? Tag {
+                            newExpense.addToTags(existingTag)
+                        }
+                    case .name(let tagName):
+                        // If the tag name exists, use it; it not, create it.
+                        let fetchRequest: NSFetchRequest<Tag> = Tag.fetchRequest()
+                        fetchRequest.predicate = NSPredicate(format: "%K == %@", #keyPath(Tag.name), tagName)
+                        if let existingTag = try self.context.fetch(fetchRequest).first {
+                            newExpense.addToTags(existingTag)
+                        } else {
+                            let newTag = Tag(context: self.context)
+                            newTag.name = tagName
+                            newExpense.addToTags(newTag)
+                        }
+                    }
+                }
+            } else {
+                if let untagged: Tag = try DefaultClassifier.untagged.fetch(in: self.context) {
+                    newExpense.addToTags(untagged)
+                } else {
+                    let untagged = Tag(context: self.context)
+                    untagged.name = DefaultClassifier.untagged.rawValue
+                    newExpense.addToTags(untagged)
+                }
             }
             
             // Make the category groups.

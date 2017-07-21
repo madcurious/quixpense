@@ -9,13 +9,14 @@
 import CoreData
 import Mold
 
-private let kCategoryNames = [
+private let kCategoryNames: [String?] = [
     "Food and Drinks",
     "Transportation",
     "Grooming",
     "Fitness",
     "Electronics",
-    "Vacation"
+    "Vacation",
+    nil
 ]
 
 private let kTagNames = [
@@ -62,36 +63,58 @@ class MakeDummyDataOperation: MDOperation<Any?> {
             let numberOfExpenses = arc4random_uniform(11)
             for _ in 0 ..< numberOfExpenses {
                 let amount = 1 + (1000 * Double(arc4random()) / Double(UInt32.max))
-                let categoryName: String = {
+                
+                let category: CategoryInput = {
                     let randomIndex = Int(arc4random_uniform(UInt32(kCategoryNames.count)))
-                    return kCategoryNames[randomIndex]
-                }()
-                let tagNames: [String]? = {
-                    let numberOfTags = Int(arc4random_uniform(UInt32(kTagNames.count)))
-                    if numberOfTags == 0 {
-                        return nil
+                    if let randomCategory = kCategoryNames[randomIndex] {
+                        return .name(randomCategory)
                     }
-                    
-                    var chosenTags = [String]()
-                    while chosenTags.count != numberOfTags {
-                        let randomIndex = Int(arc4random_uniform(UInt32(kTagNames.count)))
-                        if chosenTags.contains(kTagNames[randomIndex]) {
-                            continue
-                        } else {
-                            chosenTags.append(kTagNames[randomIndex])
-                        }
-                    }
-                    return chosenTags
+                    return .none
                 }()
                 
-                let makeOperation = MakeExpenseOperation(context: self.context,
-                                                         amount: NSDecimalNumber(value: amount),
-                                                         dateSpent: currentDateSpent,
-                                                         categoryName: categoryName,
-                                                         tagNames: tagNames)
-                makeOperation.start()
-                if let error = makeOperation.error {
+                let tags: Set<TagInput>? = {
+                    let noTags = arc4random_uniform(2) == 1
+                    if noTags {
+                        return nil
+                    } else {
+                        let numberOfTags = Int(arc4random_uniform(UInt32(kTagNames.count)))
+                        if numberOfTags == 0 {
+                            return nil
+                        }
+                        var chosenTags = Set<TagInput>()
+                        while chosenTags.count != numberOfTags {
+                            let randomIndex = Int(arc4random_uniform(UInt32(kTagNames.count)))
+                            if chosenTags.contains(.name(kTagNames[randomIndex])) {
+                                continue
+                            } else {
+                                chosenTags.insert(.name(kTagNames[randomIndex]))
+                            }
+                        }
+                        return chosenTags
+                    }
+                }()
+                
+//                let makeOperation = MakeExpenseOperation(context: self.context,
+//                                                         amount: NSDecimalNumber(value: amount),
+//                                                         dateSpent: currentDateSpent,
+//                                                         categoryName: categoryName,
+//                                                         tagNames: tagNames)
+//                makeOperation.start()
+//                if let error = makeOperation.error {
+//                    throw error
+//                }
+                let addOp = AddExpenseOperation(context: self.context,
+                                                amount: NSDecimalNumber(value: amount),
+                                                dateSpent: currentDateSpent,
+                                                category: category,
+                                                tags: tags,
+                                                completionBlock: nil)
+                addOp.start()
+                
+                switch addOp.result {
+                case .error(let error):
                     throw error
+                default: break
                 }
             }
             
