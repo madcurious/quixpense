@@ -11,6 +11,8 @@ import Mold
 
 class AddExpenseViewController: ExpenseFormViewController {
     
+    let operationQueue = OperationQueue()
+    
     override init() {
         super.init()
         self.title = "ADD EXPENSE"
@@ -40,16 +42,28 @@ class AddExpenseViewController: ExpenseFormViewController {
     }
     
     override func handleTapOnDoneButton() {
-        let validateOp = ValidateExpenseOperation(amountText: self.amountText) {[unowned self] (someResult, someError) in
-            if let error = someError {
-                MDDispatcher.asyncRunInMainThread {
-                    MDAlertDialog.showInPresenter(self, title: error.localizedDescription, message: nil, cancelButtonTitle: "Got it!")
-                }
-            } else {
-                print("SUCCESS")
+        let validateOp = ValidateExpenseOperation(amountText: self.amountText) {[unowned self] result in
+            switch result {
+            case .error(let error):
+                MDAlertDialog.showInPresenter(self, title: error.localizedDescription, message: nil, cancelButtonTitle: "Got it!")
+            default:
+                break
             }
         }
-        validateOp.start()
+        
+        let addOp = AddExpenseOperation(amount: NSDecimalNumber(string: self.amountText!), dateSpent: self.customView.dateFieldView.selectedDate, category: self.selectedCategory, tags: self.selectedTags) {[unowned self] result in
+            switch result {
+            case .success(_):
+                MDAlertDialog.showInPresenter(self, title: "Expense saved.", message: nil, cancelButtonTitle: "Got it!")
+            case .error(let error):
+                MDAlertDialog.showInPresenter(self, title: error.localizedDescription, message: nil, cancelButtonTitle: "Got it!")
+                
+            default: break
+            }
+        }
+        
+        addOp.addDependency(validateOp)
+        self.operationQueue.addOperations([validateOp, addOp], waitUntilFinished: false)
     }
     
 }

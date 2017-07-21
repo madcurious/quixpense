@@ -33,22 +33,27 @@ class ValidateExpenseOperation: TBAsynchronousOperation<Any, Bool, ValidateExpen
     }
     
     override func main() {
+        defer {
+            self.finish()
+        }
+        
         if self.amountText == nil {
-            self.error = .emptyAmount
+            self.result = .error(.emptyAmount)
+            return
         }
         
         if let amountText = self.amountText,
             amountText.trim().isEmpty {
-            self.error = .emptyAmount
+            self.result = .error(.emptyAmount)
+            return
         }
         
         if NSDecimalNumber(string: self.amountText).isEqual(to: 0) {
-            self.error = .zeroAmount
+            self.result = .error(.zeroAmount)
+            return
         }
         
-        self.result = true
-        
-        self.finish()
+        self.result = .success(true)
     }
     
 }
