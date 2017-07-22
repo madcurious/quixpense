@@ -64,7 +64,7 @@ class MakeDummyDataOperation: MDOperation<Any?> {
             for _ in 0 ..< numberOfExpenses {
                 let amount = 1 + (1000 * Double(arc4random()) / Double(UInt32.max))
                 
-                let category: CategoryInput = {
+                let category: CategoryArgument = {
                     let randomIndex = Int(arc4random_uniform(UInt32(kCategoryNames.count)))
                     if let randomCategory = kCategoryNames[randomIndex] {
                         return .name(randomCategory)

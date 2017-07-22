@@ -51,7 +51,7 @@ class AddExpenseViewController: ExpenseFormViewController {
             }
         }
         
-        let categoryInput: CategoryInput = {
+        let categoryInput: CategoryArgument = {
             guard let selectedCategory = self.selectedCategory
                 else {
                     return .none
@@ -59,7 +59,7 @@ class AddExpenseViewController: ExpenseFormViewController {
             if nil != Global.coreDataStack.newBackgroundContext().object(with: selectedCategory.objectID) as? Category {
                 return .id(selectedCategory.objectID)
             }
-            let input = CategoryInput.name(selectedCategory.name!)
+            let input = CategoryArgument.name(selectedCategory.name!)
             return input
         }()
         

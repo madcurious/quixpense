@@ -20,17 +20,29 @@ private enum ViewID: String {
 }
 
 private enum Section: Int {
+    init(_ section: Int) {
+        switch section {
+        case 0:
+            self = .allCategories
+        case 1:
+            self = .newCategory
+        default:
+            fatalError()
+        }
+    }
+    
     case allCategories = 0
     case newCategory = 1
 }
 
-fileprivate var kSelectedCategoryID: NSManagedObjectID?
+//fileprivate var kSelectedCategoryID: NSManagedObjectID?
 fileprivate weak var delegate: ExpenseFormViewController?
+fileprivate var globalSelectedCategory = CategoryArgument.none
 
 class CategoryPickerViewController: SlideUpPickerViewController {
     
-    class func present(from presenter: ExpenseFormViewController, selectedCategoryID: NSManagedObjectID?) {
-        let picker = CategoryPickerViewController(selectedCategoryID: selectedCategoryID)
+    class func present(from presenter: ExpenseFormViewController, selectedCategory: CategoryArgument) {
+        let picker = CategoryPickerViewController(selectedCategory: selectedCategory)
         picker.delegate = presenter
         SlideUpPickerViewController.present(picker, from: presenter)
     }
@@ -39,9 +51,9 @@ class CategoryPickerViewController: SlideUpPickerViewController {
     
     var delegate: CategoryPickerViewControllerDelegate?
     
-    init(selectedCategoryID: NSManagedObjectID?) {
+    private init(selectedCategory: CategoryArgument) {
+        globalSelectedCategory = selectedCategory
         super.init(nibName: nil, bundle: nil)
-        kSelectedCategoryID = selectedCategoryID
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -51,7 +63,7 @@ class CategoryPickerViewController: SlideUpPickerViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.internalNavigationController.setViewControllers([CategoryListViewController(navBarTarget: self)], animated: false)
+        self.internalNavigationController.setViewControllers([CategoryListViewController(container: self)], animated: false)
         self.embedChildViewController(self.internalNavigationController, toView: self.customView.contentView, fillSuperview: true)
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTapOnDimView))
@@ -78,6 +90,7 @@ class CategoryPickerViewController: SlideUpPickerViewController {
 
 fileprivate class CategoryListViewController: UITableViewController {
     
+    /// Fetch controller for all categories except "Uncategorized"
     let categoryFetcher: NSFetchedResultsController<Category> = {
         let fetchRequest: NSFetchRequest<Category> = Category.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "%K != %@", #keyPath(Category.name), DefaultClassifier.uncategorized.rawValue)
@@ -88,10 +101,11 @@ fileprivate class CategoryListViewController: UITableViewController {
                                                     cacheName: nil)
     }()
     
-    unowned var navBarTarget: CategoryPickerViewController
+    unowned var container: CategoryPickerViewController
+    var categories = [CategoryArgument]()
     
-    init(navBarTarget: CategoryPickerViewController) {
-        self.navBarTarget = navBarTarget
+    init(container: CategoryPickerViewController) {
+        self.container = container
         super.init(style: .grouped)
         self.title = "Categories"
     }
@@ -103,20 +117,59 @@ fileprivate class CategoryListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.leftBarButtonItem = BarButtonItems.make(.cancel, target: self.navBarTarget, action: #selector(CategoryPickerViewController.handleTapOnCancelButton))
-        self.navigationItem.rightBarButtonItem = BarButtonItems.make(.done, target: self.navBarTarget, action: #selector(CategoryPickerViewController.handleTapOnDoneButton))
+        self.navigationItem.leftBarButtonItem = BarButtonItems.make(.cancel, target: self.container, action: #selector(CategoryPickerViewController.handleTapOnCancelButton))
+        self.navigationItem.rightBarButtonItem = BarButtonItems.make(.done, target: self.container, action: #selector(CategoryPickerViewController.handleTapOnDoneButton))
         
         self.tableView.register(PickerItemCell.nib(), forCellReuseIdentifier: ViewID.itemCell.rawValue)
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 44
-        self.performFetch()
+        
+        self.buildDataSource()
+        self.tableView.reloadData()
     }
     
     func performFetch() {
         do {
             try self.categoryFetcher.performFetch()
             self.tableView.reloadData()
-        } catch {}
+        } catch { }
+    }
+    
+    func buildDataSource() {
+        do {
+            self.categories = []
+            
+            // Fetch the categories.
+            try self.categoryFetcher.performFetch()
+            if let categories = self.categoryFetcher.fetchedObjects {
+                for category in categories {
+                    self.categories.append(.id(category.objectID))
+                }
+            }
+            
+            // If there is an initial selection and it is a user-entered name,
+            // add it to the data source as well.
+            if case .name(let enteredName) = globalSelectedCategory {
+                // Find the insertion index for the user-entered name in an ascending-ordered list of names.
+                let insertionIndex: Int = {
+                    guard let categories = self.categoryFetcher.fetchedObjects
+                        else {
+                            return 0
+                    }
+                    let index = categories.index(where: {
+                        guard let categoryName = $0.name
+                            else {
+                                return true
+                        }
+                        let comparison = enteredName.compare(categoryName)
+                        return comparison == .orderedAscending
+                    })
+                    return index ?? 0
+                }()
+                self.categories.insert(globalSelectedCategory, at: insertionIndex)
+            }
+        }
+        catch { }
     }
     
 }
@@ -141,11 +194,18 @@ extension CategoryListViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ViewID.itemCell.rawValue, for: indexPath) as! PickerItemCell
         
-        if indexPath.section == Section.allCategories.rawValue {
-            let category = self.categoryFetcher.object(at: indexPath)
-            cell.nameLabel.text = category.name
-            cell.isActive = category.objectID == kSelectedCategoryID
-        } else {
+        switch Section(indexPath.section) {
+        case .allCategories:
+            let category = self.categories[indexPath.row]
+            if case .id(let objectID) = category,
+                let categoryName = (Global.coreDataStack.viewContext.object(with: objectID) as? Category)?.name {
+                cell.nameLabel.text = categoryName
+            } else if case .name(let categoryName) = category {
+                cell.nameLabel.text = categoryName
+            }
+            cell.isActive = category == globalSelectedCategory
+            
+        case .newCategory:
             cell.nameLabel.text = "Add a new category"
         }
         
@@ -161,7 +221,7 @@ extension CategoryListViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        switch Section(rawValue: indexPath.section)! {
+        switch Section(indexPath.section) {
         case .allCategories:
             guard let currentCategory = self.categoryFetcher.fetchedObjects?.first(where: { $0.objectID == kSelectedCategoryID }),
                 let currentlySelectedIndexPath = self.categoryFetcher.indexPath(forObject: currentCategory)

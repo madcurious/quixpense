@@ -26,13 +26,13 @@ class AddExpenseOperation: TBOperation<Any, NSManagedObjectID, AddExpenseOperati
     let context: NSManagedObjectContext
     let amount: NSDecimalNumber
     let dateSpent: Date
-    let category: CategoryInput
+    let category: CategoryArgument
     let tags: Set<TagInput>?
     
     init(context: NSManagedObjectContext?,
          amount: NSDecimalNumber,
          dateSpent: Date,
-         category: CategoryInput,
+         category: CategoryArgument,
          tags: Set<TagInput>?,
          completionBlock: TBOperationCompletionBlock?) {
         

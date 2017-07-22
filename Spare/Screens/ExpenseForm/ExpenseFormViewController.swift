@@ -114,7 +114,7 @@ extension ExpenseFormViewController: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         switch textField {
         case self.customView.categoryFieldView.textField:
-            CategoryPickerViewController.present(from: self, selectedCategoryID: nil)
+            CategoryPickerViewController.present(from: self, selectedCategory: .none)
         default:
             TagPickerViewController.present(from: self, selectedTags: nil)
         }
