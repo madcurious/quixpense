@@ -70,7 +70,11 @@ class AddExpenseViewController: ExpenseFormViewController {
                                         tags: nil) {[unowned self] result in
                                             switch result {
                                             case .success(_):
-                                                MDAlertDialog.showInPresenter(self, title: "Expense saved.", message: nil, cancelButtonTitle: "Got it!")
+                                                MDDispatcher.asyncRunInMainThread {
+                                                    MDAlertDialog.showInPresenter(self, title: "Expense saved.", message: nil, cancelButtonTitle: "Got it!")
+                                                    self.resetFields()
+                                                }
+                                                
                                             case .error(let error):
                                                 MDAlertDialog.showInPresenter(self, title: error.localizedDescription, message: nil, cancelButtonTitle: "Got it!")
                                                 
