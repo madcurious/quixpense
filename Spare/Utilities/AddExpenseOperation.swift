@@ -27,13 +27,13 @@ class AddExpenseOperation: TBOperation<Any, NSManagedObjectID, AddExpenseOperati
     let amount: NSDecimalNumber
     let dateSpent: Date
     let category: CategoryArgument
-    let tags: Set<TagInput>?
+    let tags: Set<TagArgument>?
     
     init(context: NSManagedObjectContext?,
          amount: NSDecimalNumber,
          dateSpent: Date,
          category: CategoryArgument,
-         tags: Set<TagInput>?,
+         tags: Set<TagArgument>?,
          completionBlock: TBOperationCompletionBlock?) {
         
         self.context = context ?? Global.coreDataStack.newBackgroundContext()
@@ -43,6 +43,15 @@ class AddExpenseOperation: TBOperation<Any, NSManagedObjectID, AddExpenseOperati
         self.tags = tags
         
         super.init(completionBlock: completionBlock)
+    }
+    
+    convenience init(context: NSManagedObjectContext?, inputModel: ExpenseFormViewController.InputModel, completionBlock: TBOperationCompletionBlock?) {
+        self.init(context: context,
+                  amount: NSDecimalNumber(string: inputModel.amountText),
+                  dateSpent: inputModel.selectedDate,
+                  category: inputModel.selectedCategory,
+                  tags: inputModel.selectedTags,
+                  completionBlock: completionBlock)
     }
     
     override func main() {

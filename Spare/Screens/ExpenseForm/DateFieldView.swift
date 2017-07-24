@@ -27,7 +27,7 @@ class DateFieldView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.clearAllBackgroundColors()
-        self.setToCurrentDate()
+        self.setDate(Date())
         
         self.imageView.image = UIImage.templateNamed("dateIcon")
         
@@ -40,10 +40,6 @@ class DateFieldView: UIView {
         self.datePicker.addTarget(self, action: #selector(handleValueChangeOnDatePicker), for: .valueChanged)
         
         self.applyTheme()
-    }
-    
-    func setToCurrentDate() {
-        self.setDate(Date())
     }
     
     func setDate(_ date: Date) {

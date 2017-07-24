@@ -88,7 +88,7 @@
 		26DF09A41EF800D900D26D14 /* TwoLabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DF099F1EF800D900D26D14 /* TwoLabelTableViewCell.swift */; };
 		26DF09A51EF800D900D26D14 /* TwoLabelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26DF09A01EF800D900D26D14 /* TwoLabelTableViewCell.xib */; };
 		26E4E0591937AF690096191A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E4E0581937AF690096191A /* QuartzCore.framework */; };
-		26E83F9B1F21DF33004F650D /* TagInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E83F9A1F21DF33004F650D /* TagInput.swift */; };
+		26E83F9B1F21DF33004F650D /* TagArgument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E83F9A1F21DF33004F650D /* TagArgument.swift */; };
 		26E98BF41F0CD7B900A5C3D5 /* TagPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E98BF31F0CD7B900A5C3D5 /* TagPickerViewController.swift */; };
 		26F1A96E1E5D890400752F1A /* MakeDummyDataOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F1A96D1E5D890400752F1A /* MakeDummyDataOperation.swift */; };
 		26F57AF11E67DE1B0034FF4B /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F57AF01E67DE1B0034FF4B /* Debug.swift */; };
@@ -231,7 +231,7 @@
 		26DF099F1EF800D900D26D14 /* TwoLabelTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoLabelTableViewCell.swift; sourceTree = "<group>"; };
 		26DF09A01EF800D900D26D14 /* TwoLabelTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TwoLabelTableViewCell.xib; sourceTree = "<group>"; };
 		26E4E0581937AF690096191A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		26E83F9A1F21DF33004F650D /* TagInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagInput.swift; sourceTree = "<group>"; };
+		26E83F9A1F21DF33004F650D /* TagArgument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagArgument.swift; sourceTree = "<group>"; };
 		26E83F9C1F21DFB8004F650D /* CategoryArgument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryArgument.swift; sourceTree = "<group>"; };
 		26E98BF31F0CD7B900A5C3D5 /* TagPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagPickerViewController.swift; sourceTree = "<group>"; };
 		26F1A96D1E5D890400752F1A /* MakeDummyDataOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeDummyDataOperation.swift; sourceTree = "<group>"; };
@@ -486,7 +486,7 @@
 				265390F21F15F10F00C7BD34 /* DefaultClassifier.swift */,
 				26CA5AF01F20ADD000B204C7 /* AddExpenseOperation.swift */,
 				26E83F9C1F21DFB8004F650D /* CategoryArgument.swift */,
-				26E83F9A1F21DF33004F650D /* TagInput.swift */,
+				26E83F9A1F21DF33004F650D /* TagArgument.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -777,7 +777,7 @@
 				2657DEBA1F14AEB8003DA778 /* SlideUpPickerViewController.swift in Sources */,
 				26A30C8A1E5231620047307D /* BaseNavBarVC.swift in Sources */,
 				26CA5AF11F20ADD000B204C7 /* AddExpenseOperation.swift in Sources */,
-				26E83F9B1F21DF33004F650D /* TagInput.swift in Sources */,
+				26E83F9B1F21DF33004F650D /* TagArgument.swift in Sources */,
 				2657332B1EDD507C00AD1AB9 /* FilterPopupViewController.swift in Sources */,
 				26DF09A41EF800D900D26D14 /* TwoLabelTableViewCell.swift in Sources */,
 				266B5FFC1EFCEBE800063803 /* ExpenseFormView.swift in Sources */,

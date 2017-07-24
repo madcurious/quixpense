@@ -42,7 +42,7 @@ class AddExpenseViewController: ExpenseFormViewController {
     }
     
     override func handleTapOnDoneButton() {
-        let validateOp = ValidateExpenseOperation(amountText: self.amountText) {[unowned self] result in
+        let validateOp = ValidateExpenseOperation(amountText: self.inputModel.amountText) {[unowned self] result in
             switch result {
             case .error(let error):
                 MDAlertDialog.showInPresenter(self, title: error.localizedDescription, message: nil, cancelButtonTitle: "Got it!")
@@ -51,35 +51,19 @@ class AddExpenseViewController: ExpenseFormViewController {
             }
         }
         
-        let categoryInput: CategoryArgument = {
-            guard let selectedCategory = self.selectedCategory
-                else {
-                    return .none
+        let addOp = AddExpenseOperation(context: nil, inputModel: self.inputModel) {[unowned self] result in
+            switch result {
+            case .success(_):
+                MDDispatcher.asyncRunInMainThread {
+                    MDAlertDialog.showInPresenter(self, title: "Expense saved.", message: nil, cancelButtonTitle: "Got it!")
+                    self.resetFields()
+                }
+                
+            case .error(let error):
+                MDAlertDialog.showInPresenter(self, title: error.localizedDescription, message: nil, cancelButtonTitle: "Got it!")
+                
+            default: break
             }
-            if nil != Global.coreDataStack.newBackgroundContext().object(with: selectedCategory.objectID) as? Category {
-                return .id(selectedCategory.objectID)
-            }
-            let input = CategoryArgument.name(selectedCategory.name!)
-            return input
-        }()
-        
-        let addOp = AddExpenseOperation(context: nil,
-                                        amount: NSDecimalNumber(string: self.amountText!),
-                                        dateSpent: self.customView.dateFieldView.selectedDate,
-                                        category: categoryInput,
-                                        tags: nil) {[unowned self] result in
-                                            switch result {
-                                            case .success(_):
-                                                MDDispatcher.asyncRunInMainThread {
-                                                    MDAlertDialog.showInPresenter(self, title: "Expense saved.", message: nil, cancelButtonTitle: "Got it!")
-                                                    self.resetFields()
-                                                }
-                                                
-                                            case .error(let error):
-                                                MDAlertDialog.showInPresenter(self, title: error.localizedDescription, message: nil, cancelButtonTitle: "Got it!")
-                                                
-                                            default: break
-                                            }
         }
         
         addOp.addDependency(validateOp)

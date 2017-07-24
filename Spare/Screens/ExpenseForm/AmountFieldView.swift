@@ -14,7 +14,7 @@ class AmountFieldView: UIView, Themeable {
     @IBOutlet weak var textField: UITextField!
     
     let currencyLabel = UILabel()
-    let invalidCharacterSet = CharacterSet.decimalNumberCharacterSet().inverted
+//    let invalidCharacterSet = CharacterSet.decimalNumberCharacterSet().inverted
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -28,7 +28,7 @@ class AmountFieldView: UIView, Themeable {
         self.textField.keyboardType = .decimalPad
         self.textField.leftView = self.currencyLabel
         self.textField.leftViewMode = .always
-        self.textField.delegate = self
+//        self.textField.delegate = self
     }
     
     func applyTheme() {
@@ -59,14 +59,15 @@ class AmountFieldView: UIView, Themeable {
     
 }
 
-extension AmountFieldView: UITextFieldDelegate {
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        // Don't allow text editing if the text replacement contains invalid characters.
-        if let _ = string.rangeOfCharacter(from: self.invalidCharacterSet) {
-            return false
-        }
-        return true
-    }
-    
-}
+//extension AmountFieldView: UITextFieldDelegate {
+//
+//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+//        // Don't allow text editing if the text replacement contains invalid characters.
+//        if let _ = string.rangeOfCharacter(from: self.invalidCharacterSet) {
+//            return false
+//        }
+//        return true
+//    }
+//
+//}
+

@@ -1,5 +1,5 @@
 //
-//  TagInput.swift
+//  TagArgument.swift
 //  Spare
 //
 //  Created by Matt Quiros on 21/07/2017.
@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-enum TagInput: Hashable {
+enum TagArgument: Hashable {
     case id(NSManagedObjectID)
     case name(String)
     
@@ -22,7 +22,7 @@ enum TagInput: Hashable {
         }
     }
     
-    static func ==(lhs: TagInput, rhs: TagInput) -> Bool {
+    static func ==(lhs: TagArgument, rhs: TagArgument) -> Bool {
         switch (lhs, rhs) {
         case (.id(let objectID1), .id(let objectID2)) where objectID1 == objectID2:
             return true

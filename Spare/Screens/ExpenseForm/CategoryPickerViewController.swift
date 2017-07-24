@@ -11,8 +11,7 @@ import CoreData
 import Mold
 
 protocol CategoryPickerViewControllerDelegate {
-    func categoryPicker(_ picker: CategoryPickerViewController, didSelectCategory category: Category)
-    func categoryPicker(_ picker: CategoryPickerViewController, didAddNewCategoryName name: String)
+    func categoryPicker(_ picker: CategoryPickerViewController, didSelectCategory category: CategoryArgument)
 }
 
 private enum ViewID: String {
@@ -35,7 +34,6 @@ private enum Section: Int {
     case newCategory = 1
 }
 
-//fileprivate var kSelectedCategoryID: NSManagedObjectID?
 fileprivate weak var delegate: ExpenseFormViewController?
 fileprivate var globalSelectedCategory = CategoryArgument.none
 
@@ -185,7 +183,7 @@ extension CategoryListViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case Section.allCategories.rawValue:
-            return self.categoryFetcher.fetchedObjects?.count ?? 0
+            return self.categories.count
         default:
             return 1
         }
@@ -223,43 +221,27 @@ extension CategoryListViewController {
         
         switch Section(indexPath.section) {
         case .allCategories:
-            guard let currentCategory = self.categoryFetcher.fetchedObjects?.first(where: { $0.objectID == kSelectedCategoryID }),
-                let currentlySelectedIndexPath = self.categoryFetcher.indexPath(forObject: currentCategory)
-                else {
-                    // If there isn't an initially selected category, simply check the category at the indexPath.
-                    let category = self.categoryFetcher.object(at: indexPath)
-                    kSelectedCategoryID = category.objectID
-                    let cell = self.tableView.cellForRow(at: indexPath) as! PickerItemCell
-                    cell.isActive = true
-                    return
+            if globalSelectedCategory != .none {
+                let oldCell = self.tableView.cellForRow(at: indexPath) as! PickerItemCell
+                oldCell.isActive = false
             }
             
-            // If the same category is tapped, deselect.
-            if currentlySelectedIndexPath == indexPath {
-                kSelectedCategoryID = nil
-                let cell = self.tableView.cellForRow(at: currentlySelectedIndexPath) as! PickerItemCell
-                cell.isActive = false
+            globalSelectedCategory = self.categories[indexPath.row]
+            let newSelectionCell = self.tableView.cellForRow(at: indexPath) as! PickerItemCell
+            newSelectionCell.isActive = true
+            
+            if let delegate = self.container.delegate {
+                delegate.categoryPicker(self.container, didSelectCategory: globalSelectedCategory)
             }
-                
-                // Otherwise, update the location of the check mark.
-            else {
-                let category = self.categoryFetcher.object(at: indexPath)
-                kSelectedCategoryID = category.objectID
-                let oldSelectionCell = self.tableView.cellForRow(at: currentlySelectedIndexPath) as! PickerItemCell
-                oldSelectionCell.isActive = false
-                let newSelectionCell = self.tableView.cellForRow(at: indexPath) as! PickerItemCell
-                newSelectionCell.isActive = true
-            }
+            self.dismiss(animated: true, completion: nil)
             
         case .newCategory:
             let newScreen = NewClassifierViewController(classifierType: .category, successAction: {[unowned self] name in
-                let newCategory = Category(context: Global.coreDataStack.viewContext)
-                newCategory.name = name
-                kSelectedCategoryID = newCategory.objectID
-                
-                self.performFetch()
-                let indexPath = self.categoryFetcher.indexPath(forObject: newCategory)!
-                self.tableView.scrollToRow(at: indexPath, at: .top, animated: false)
+                globalSelectedCategory = .name(name)
+                if let delegate = self.container.delegate {
+                    delegate.categoryPicker(self.container, didSelectCategory: globalSelectedCategory)
+                }
+                self.dismiss(animated: true, completion: nil)
             })
             self.navigationController?.pushViewController(newScreen, animated: true)
         }

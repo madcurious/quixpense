@@ -72,7 +72,7 @@ class MakeDummyDataOperation: MDOperation<Any?> {
                     return .none
                 }()
                 
-                let tags: Set<TagInput>? = {
+                let tags: Set<TagArgument>? = {
                     let noTags = arc4random_uniform(2) == 1
                     if noTags {
                         return nil
@@ -81,7 +81,7 @@ class MakeDummyDataOperation: MDOperation<Any?> {
                         if numberOfTags == 0 {
                             return nil
                         }
-                        var chosenTags = Set<TagInput>()
+                        var chosenTags = Set<TagArgument>()
                         while chosenTags.count != numberOfTags {
                             let randomIndex = Int(arc4random_uniform(UInt32(kTagNames.count)))
                             if chosenTags.contains(.name(kTagNames[randomIndex])) {
