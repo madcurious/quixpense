@@ -68,7 +68,7 @@ class AddExpenseViewController: ExpenseFormViewController {
         
         addOp.addDependency(validateOp)
         
-        Global.coreDataStack.viewContext.rollback() // Discard the unsaved category/tag entities.
+//        Global.coreDataStack.viewContext.rollback() // Discard the unsaved category/tag entities.
         
         self.operationQueue.addOperations([validateOp, addOp], waitUntilFinished: false)
     }

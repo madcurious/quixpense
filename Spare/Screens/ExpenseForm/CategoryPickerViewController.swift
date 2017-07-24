@@ -76,14 +76,6 @@ class CategoryPickerViewController: SlideUpPickerViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    func handleTapOnCancelButton() {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    func handleTapOnDoneButton() {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
 }
 
 fileprivate class CategoryListViewController: UITableViewController {
@@ -114,9 +106,6 @@ fileprivate class CategoryListViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.navigationItem.leftBarButtonItem = BarButtonItems.make(.cancel, target: self.container, action: #selector(CategoryPickerViewController.handleTapOnCancelButton))
-        self.navigationItem.rightBarButtonItem = BarButtonItems.make(.done, target: self.container, action: #selector(CategoryPickerViewController.handleTapOnDoneButton))
         
         self.tableView.register(PickerItemCell.nib(), forCellReuseIdentifier: ViewID.itemCell.rawValue)
         self.tableView.rowHeight = UITableViewAutomaticDimension
@@ -233,7 +222,7 @@ extension CategoryListViewController {
             if let delegate = self.container.delegate {
                 delegate.categoryPicker(self.container, didSelectCategory: globalSelectedCategory)
             }
-            self.dismiss(animated: true, completion: nil)
+//            self.dismiss(animated: true, completion: nil)
             
         case .newCategory:
             let newScreen = NewClassifierViewController(classifierType: .category, successAction: {[unowned self] name in

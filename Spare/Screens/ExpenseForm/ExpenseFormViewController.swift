@@ -104,6 +104,10 @@ extension ExpenseFormViewController {
 extension ExpenseFormViewController: CategoryPickerViewControllerDelegate {
     
     func categoryPicker(_ picker: CategoryPickerViewController, didSelectCategory category: CategoryArgument) {
+        // Update the model.
+        self.inputModel.selectedCategory = category
+        
+        // Update the text field.
         switch category {
         case .id(let objectID):
             self.customView.categoryFieldView.textField.text = {
@@ -135,7 +139,7 @@ extension ExpenseFormViewController: UITextFieldDelegate {
             return true
             
         case self.customView.categoryFieldView.textField:
-            CategoryPickerViewController.present(from: self, selectedCategory: .none)
+            CategoryPickerViewController.present(from: self, selectedCategory: self.inputModel.selectedCategory)
             return false
             
         default:
