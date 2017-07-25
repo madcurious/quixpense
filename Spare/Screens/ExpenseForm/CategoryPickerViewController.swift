@@ -211,8 +211,11 @@ extension CategoryListViewController {
         switch Section(indexPath.section) {
         case .allCategories:
             if globalSelectedCategory != .none,
-                let oldIndex = self.categories.index(of: globalSelectedCategory) {
-                let oldCell = self.tableView.cellForRow(at: IndexPath(row: oldIndex, section: Section.allCategories.rawValue)) as! PickerItemCell
+                let oldIndex = self.categories.index(of: globalSelectedCategory),
+                
+                // cellForRow returns nil if the cell is not visible.
+                let oldCell = self.tableView.cellForRow(at: IndexPath(row: oldIndex, section: Section.allCategories.rawValue)) as? PickerItemCell {
+                
                 oldCell.isActive = false
             }
             

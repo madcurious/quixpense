@@ -10,17 +10,21 @@ import UIKit
 
 class NewClassifierView: UIView {
     
-    @IBOutlet weak var promptLabel: UILabel!
+    @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var textFieldContainer: UIView!
     @IBOutlet weak var textField: UITextField!
     @IBOutlet var separatorViews: [UIView]!
+    @IBOutlet weak var footerLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         self.applyTheme()
         
-        self.promptLabel.text = "NAME"
+        self.headerLabel.text = "NAME"
         self.textField.autocapitalizationType = .sentences
+        
+        self.footerLabel.numberOfLines = 0
+        self.footerLabel.lineBreakMode = .byWordWrapping
     }
     
 }
@@ -36,10 +40,13 @@ extension NewClassifierView: Themeable {
             separatorView.backgroundColor = Global.theme.color(for: .tableViewSeparator)
         }
         
-        self.promptLabel.font = Global.theme.font(for: .groupedTableViewSectionHeader)
-        self.promptLabel.textColor = Global.theme.color(for: .groupedTableViewSectionHeader)
+        self.headerLabel.font = Global.theme.font(for: .groupedTableViewSectionHeader)
+        self.headerLabel.textColor = Global.theme.color(for: .groupedTableViewSectionHeader)
         
         self.textField.font = Global.theme.font(for: .regularText)
+        
+        self.footerLabel.font = Global.theme.font(for: .groupedTableViewSectionHeader)
+        self.footerLabel.textColor = Global.theme.color(for: .groupedTableViewSectionFooter)
     }
     
 }

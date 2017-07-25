@@ -16,7 +16,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="FOA-VA-BGy">
-                    <rect key="frame" x="0.0" y="36" width="375" height="69.5"/>
+                    <rect key="frame" x="0.0" y="30" width="375" height="94"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DPx-aP-qDW">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="24.5"/>
@@ -71,6 +71,24 @@
                                 <constraint firstAttribute="height" constant="0.5" id="j7d-V5-j8f"/>
                             </constraints>
                         </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eNo-Ia-fuH">
+                            <rect key="frame" x="0.0" y="69.5" width="375" height="24.5"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UiO-zr-puK">
+                                    <rect key="frame" x="15" y="4" width="350" height="20.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="UiO-zr-puK" firstAttribute="leading" secondItem="eNo-Ia-fuH" secondAttribute="leading" constant="15" id="58d-uJ-2TL"/>
+                                <constraint firstAttribute="trailing" secondItem="UiO-zr-puK" secondAttribute="trailing" constant="10" id="PzG-Wv-OgR"/>
+                                <constraint firstAttribute="bottom" secondItem="UiO-zr-puK" secondAttribute="bottom" id="frl-bP-gzw"/>
+                                <constraint firstItem="UiO-zr-puK" firstAttribute="top" secondItem="eNo-Ia-fuH" secondAttribute="top" constant="4" id="oYL-So-Owt"/>
+                            </constraints>
+                        </view>
                     </subviews>
                 </stackView>
             </subviews>
@@ -78,10 +96,11 @@
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="FOA-VA-BGy" secondAttribute="trailing" id="W2P-1F-sgd"/>
                 <constraint firstItem="FOA-VA-BGy" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Z1S-4c-eIP"/>
-                <constraint firstItem="FOA-VA-BGy" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="36" id="uUd-2l-A3J"/>
+                <constraint firstItem="FOA-VA-BGy" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="30" id="uUd-2l-A3J"/>
             </constraints>
             <connections>
-                <outlet property="promptLabel" destination="ary-JA-Taa" id="L4x-Rj-QnK"/>
+                <outlet property="footerLabel" destination="UiO-zr-puK" id="ps7-Kd-jl7"/>
+                <outlet property="headerLabel" destination="ary-JA-Taa" id="6ug-lE-qlB"/>
                 <outlet property="textField" destination="04s-gP-HAh" id="vTd-xd-Mda"/>
                 <outlet property="textFieldContainer" destination="6BE-Pn-FdJ" id="zjq-AJ-7hF"/>
                 <outletCollection property="separatorViews" destination="QTU-Rs-j9C" collectionClass="NSMutableArray" id="8Fb-o2-Z1T"/>

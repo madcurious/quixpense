@@ -41,6 +41,14 @@ class NewClassifierViewController: UIViewController {
         super.viewDidLoad()
         self.navigationItem.leftBarButtonItem = BarButtonItems.make(.cancel, target: self, action: #selector(handleTapOnCancelButton))
         self.navigationItem.rightBarButtonItem = BarButtonItems.make(.done, target: self, action: #selector(handleTapOnDoneButton))
+        
+        let classifierPlural: String = {
+            if self.classifierType == .category {
+                return "categories"
+            }
+            return "tags"
+        }()
+        self.customView.footerLabel.text = "New \(classifierPlural) are saved when the expense is saved."
     }
     
     override func viewWillAppear(_ animated: Bool) {

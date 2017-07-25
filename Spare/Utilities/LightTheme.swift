@@ -23,6 +23,7 @@ struct LightTheme: Theme {
             
         case .checkImageView,
              .groupedTableViewSectionHeader,
+             .groupedTableViewSectionFooter,
              .promptLabel:
             return UIColor.hex(0x999999)
             
@@ -54,7 +55,8 @@ struct LightTheme: Theme {
         case .cellSecondaryText,
              .sectionTotalHeaderView,
              .filterButtonText,
-             .groupedTableViewSectionHeader:
+             .groupedTableViewSectionHeader,
+             .groupedTableViewSectionFooter:
 //            return NotoSansUI.regular(14)
             return .systemFont(ofSize: 12)
             

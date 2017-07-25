@@ -23,6 +23,7 @@ enum ColoredElement {
     case filterButtonBackground
     case filterButtonContent
     case groupedTableViewSectionHeader
+    case groupedTableViewSectionFooter
     case mainBackground
     case placeholder
     case promptLabel
@@ -35,6 +36,7 @@ enum StringElement {
     case dateTextFieldLabel
     case filterButtonText
     case groupedTableViewSectionHeader
+    case groupedTableViewSectionFooter
     case loadableViewInfoLabelMainText
     case loadableViewInfoLabelSecondaryText
     case navBarTitle
