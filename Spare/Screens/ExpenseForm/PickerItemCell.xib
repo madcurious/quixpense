@@ -21,7 +21,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ygh-VN-6UM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="GHw-ye-NNG">
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="GHw-ye-NNG">
                                 <rect key="frame" x="10" y="6" width="355" height="30"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SAM-WQ-eIF">
@@ -38,7 +38,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OhY-pz-03y">
-                                        <rect key="frame" x="28" y="0.0" width="327" height="30"/>
+                                        <rect key="frame" x="32" y="0.0" width="323" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -65,7 +65,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="checkImageView" destination="iE5-vA-bTR" id="xgv-XR-lOO"/>
+                <outlet property="accessoryImageView" destination="iE5-vA-bTR" id="qe2-un-JuZ"/>
                 <outlet property="checkImageViewContainerWidth" destination="bP2-HK-PSV" id="5mG-Lg-Epq"/>
                 <outlet property="nameLabel" destination="OhY-pz-03y" id="qhE-zx-e63"/>
                 <outlet property="sizerView" destination="ygh-VN-6UM" id="NtR-4S-NEW"/>

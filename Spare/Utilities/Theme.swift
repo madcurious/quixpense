@@ -11,7 +11,6 @@ import UIKit
 enum ColoredElement {
     case barBackground
     case barTint
-    case checkImageView
     
     /// Main tint color for buttons and controls
     case controlTint

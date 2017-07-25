@@ -15,7 +15,33 @@ private enum ViewID: String {
 }
 
 private enum Section: Int {
-    case allTags, newTag
+    case allTags, options
+    init(_ section: Int) {
+        switch section {
+        case 0:
+            self = .allTags
+        case 1:
+            self = .options
+        default:
+            fatalError()
+        }
+    }
+    static let all: [Section] = [.allTags, .options]
+}
+
+private enum Option: Int {
+    case clear, new
+    init(_ option: Int) {
+        switch option {
+        case 0:
+            self = .clear
+        case 1:
+            self = .new
+        default:
+            fatalError()
+        }
+    }
+    static let all: [Option] = [.clear, .new]
 }
 
 fileprivate var kSelectedTags = Set<NSManagedObjectID>()
@@ -140,15 +166,15 @@ fileprivate class TagListViewController: UIViewController {
 extension TagListViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return Section.all.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch Section(rawValue: section)! {
         case .allTags:
             return self.tagFetcher.fetchedObjects?.count ?? 0
-        case .newTag:
-            return 1
+        case .options:
+            return Option.all.count
         }
     }
     
@@ -160,11 +186,20 @@ extension TagListViewController: UITableViewDataSource {
         case .allTags:
             let tag = self.tag(at: indexPath)
             cell.nameLabel.text = tag.name
-            cell.isActive = kSelectedTags.contains(tag.objectID)
+            cell.accessoryImageType = .check
+            cell.showsAccessoryImage = kSelectedTags.contains(tag.objectID)
             
-        case .newTag:
-            cell.nameLabel.text = "Add a new tag"
-            cell.isActive = kSelectedTags.contains(self.tag(at: indexPath).objectID)
+        case .options:
+            cell.showsAccessoryImage = true
+            switch Option(indexPath.row) {
+            case .clear:
+                cell.nameLabel.text = "Clear all tags"
+                cell.accessoryImageType = .remove
+                
+            case .new:
+                cell.nameLabel.text = "Add a new tag"
+                cell.accessoryImageType = .add
+            }
         }
         
         return cell
@@ -188,9 +223,9 @@ extension TagListViewController: UITableViewDelegate {
                 kSelectedTags.insert(tagID)
             }
             let cell = self.tableView.cellForRow(at: indexPath) as! PickerItemCell
-            cell.isActive = kSelectedTags.contains(tagID)
+            cell.showsAccessoryImage = kSelectedTags.contains(tagID)
             
-        case .newTag:
+        case .options:
             let addScreen = NewClassifierViewController(classifierType: .tag, successAction: {[unowned self] name in
                 let newTag = Tag(context: Global.coreDataStack.viewContext)
                 newTag.name = name

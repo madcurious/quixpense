@@ -35,21 +35,21 @@ private enum Section: Int {
 }
 
 private enum Option: Int {
-    case clear = 0
-    case new = 1
+    case new = 0
+    case remove = 1
     
     init(_ option: Int) {
         switch option {
-        case 0:
-            self = .clear
-        case 1:
+        case Option.remove.rawValue:
+            self = .remove
+        case Option.new.rawValue:
             self = .new
         default:
             fatalError()
         }
     }
     
-    static let all: [Option] = [.clear, .new]
+    static let all: [Option] = [.remove, .new]
 }
 
 fileprivate weak var delegate: ExpenseFormViewController?
@@ -208,13 +208,18 @@ extension CategoryListViewController {
             } else if case .name(let categoryName) = category {
                 cell.nameLabel.text = categoryName
             }
-            cell.isActive = category == globalSelectedCategory
+            cell.accessoryImageType = .check
+            cell.showsAccessoryImage = category == globalSelectedCategory
             
         case .options:
             switch Option(indexPath.row) {
-            case .clear:
-                cell.nameLabel.text = "Clear category"
+            case .remove:
+                cell.accessoryImageType = .remove
+                cell.showsAccessoryImage = true
+                cell.nameLabel.text = "Remove selection"
             case .new:
+                cell.accessoryImageType = .add
+                cell.showsAccessoryImage = true
                 cell.nameLabel.text = "Add a new category"
             }
         }
@@ -238,13 +243,12 @@ extension CategoryListViewController {
                 
                 // cellForRow returns nil if the cell is not visible.
                 let oldCell = self.tableView.cellForRow(at: IndexPath(row: oldIndex, section: Section.allCategories.rawValue)) as? PickerItemCell {
-                
-                oldCell.isActive = false
+                oldCell.showsAccessoryImage = false
             }
             
             globalSelectedCategory = self.categories[indexPath.row]
             let newSelectionCell = self.tableView.cellForRow(at: indexPath) as! PickerItemCell
-            newSelectionCell.isActive = true
+            newSelectionCell.showsAccessoryImage = true
             
             if let delegate = self.container.delegate {
                 delegate.categoryPicker(self.container, didSelectCategory: globalSelectedCategory)
@@ -253,7 +257,7 @@ extension CategoryListViewController {
             
         case .options:
             switch Option(indexPath.row) {
-            case .clear:
+            case .remove:
                 if let delegate = self.container.delegate {
                     delegate.categoryPicker(self.container, didSelectCategory: .none)
                 }
