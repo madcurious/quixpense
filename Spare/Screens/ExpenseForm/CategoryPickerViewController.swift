@@ -210,8 +210,9 @@ extension CategoryListViewController {
         
         switch Section(indexPath.section) {
         case .allCategories:
-            if globalSelectedCategory != .none {
-                let oldCell = self.tableView.cellForRow(at: indexPath) as! PickerItemCell
+            if globalSelectedCategory != .none,
+                let oldIndex = self.categories.index(of: globalSelectedCategory) {
+                let oldCell = self.tableView.cellForRow(at: IndexPath(row: oldIndex, section: Section.allCategories.rawValue)) as! PickerItemCell
                 oldCell.isActive = false
             }
             
@@ -222,7 +223,7 @@ extension CategoryListViewController {
             if let delegate = self.container.delegate {
                 delegate.categoryPicker(self.container, didSelectCategory: globalSelectedCategory)
             }
-//            self.dismiss(animated: true, completion: nil)
+            self.dismiss(animated: true, completion: nil)
             
         case .newCategory:
             let newScreen = NewClassifierViewController(classifierType: .category, successAction: {[unowned self] name in
