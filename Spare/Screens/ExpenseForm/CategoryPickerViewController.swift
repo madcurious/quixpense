@@ -19,19 +19,37 @@ private enum ViewID: String {
 }
 
 private enum Section: Int {
+    case allCategories = 0
+    case options = 1
+    
     init(_ section: Int) {
         switch section {
         case 0:
             self = .allCategories
         case 1:
-            self = .newCategory
+            self = .options
+        default:
+            fatalError()
+        }
+    }
+}
+
+private enum Option: Int {
+    case clear = 0
+    case new = 1
+    
+    init(_ option: Int) {
+        switch option {
+        case 0:
+            self = .clear
+        case 1:
+            self = .new
         default:
             fatalError()
         }
     }
     
-    case allCategories = 0
-    case newCategory = 1
+    static let all: [Option] = [.clear, .new]
 }
 
 fileprivate weak var delegate: ExpenseFormViewController?
@@ -174,7 +192,7 @@ extension CategoryListViewController {
         case Section.allCategories.rawValue:
             return self.categories.count
         default:
-            return 1
+            return Option.all.count
         }
     }
     
@@ -192,8 +210,13 @@ extension CategoryListViewController {
             }
             cell.isActive = category == globalSelectedCategory
             
-        case .newCategory:
-            cell.nameLabel.text = "Add a new category"
+        case .options:
+            switch Option(indexPath.row) {
+            case .clear:
+                cell.nameLabel.text = "Clear category"
+            case .new:
+                cell.nameLabel.text = "Add a new category"
+            }
         }
         
         return cell
@@ -228,15 +251,25 @@ extension CategoryListViewController {
             }
             self.dismiss(animated: true, completion: nil)
             
-        case .newCategory:
-            let newScreen = NewClassifierViewController(classifierType: .category, successAction: {[unowned self] name in
-                globalSelectedCategory = .name(name)
+        case .options:
+            switch Option(indexPath.row) {
+            case .clear:
                 if let delegate = self.container.delegate {
-                    delegate.categoryPicker(self.container, didSelectCategory: globalSelectedCategory)
+                    delegate.categoryPicker(self.container, didSelectCategory: .none)
                 }
                 self.dismiss(animated: true, completion: nil)
-            })
-            self.navigationController?.pushViewController(newScreen, animated: true)
+                
+            case .new:
+                let newScreen = NewClassifierViewController(classifierType: .category, successAction: {[unowned self] name in
+                    globalSelectedCategory = .name(name)
+                    if let delegate = self.container.delegate {
+                        delegate.categoryPicker(self.container, didSelectCategory: globalSelectedCategory)
+                    }
+                    self.dismiss(animated: true, completion: nil)
+                })
+                self.navigationController?.pushViewController(newScreen, animated: true)
+                
+            }
         }
     }
     

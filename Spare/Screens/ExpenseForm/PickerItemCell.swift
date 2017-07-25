@@ -18,10 +18,6 @@ class PickerItemCell: UITableViewCell {
     @IBOutlet weak var stackViewLeading: NSLayoutConstraint!
     @IBOutlet weak var checkImageViewContainerWidth: NSLayoutConstraint!
     
-    private static let stackViewLeading = CGFloat(10)
-    private static let stackViewSpacing = CGFloat(6)
-    private static let checkImageViewContainerWidth = CGFloat(22)
-    
     var separatorLeftInset: CGFloat {
         return self.stackViewLeading.constant + self.checkImageViewContainerWidth.constant + self.stackView.spacing
     }
@@ -34,9 +30,6 @@ class PickerItemCell: UITableViewCell {
         self.checkImageView.isHidden = true
         
         self.separatorInset = UIEdgeInsetsMake(0, self.separatorLeftInset, 0, 0)
-//        self.stackViewLeading.constant = PickerItemCell.stackViewLeading
-//        self.stackView.spacing = PickerItemCell.stackViewSpacing
-//        self.checkImageViewContainerWidth.constant = PickerItemCell.checkImageViewContainerWidth
     }
     
     var isActive = false {
