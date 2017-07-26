@@ -47,6 +47,7 @@ class ExpenseFormViewController: UIViewController {
         customView.addGestureRecognizer(tapGestureRecognizer)
         
         customView.categoryFieldView.editButton.addTarget(self, action: #selector(handleTapOnCategoryEditButton), for: .touchUpInside)
+        customView.categoryFieldView.clearButton.addTarget(self, action: #selector(handleTapOnCategoryClearButton), for: .touchUpInside)
         
         customView.amountFieldView.textField.delegate = self
         customView.tagFieldView.textField.delegate = self
@@ -102,6 +103,11 @@ class ExpenseFormViewController: UIViewController {
         CategoryPickerViewController.present(from: self, selectedCategory: inputModel.selectedCategory)
     }
     
+    func handleTapOnCategoryClearButton() {
+        inputModel.selectedCategory = .none
+        customView.categoryFieldView.setCategory(.none)
+    }
+    
 }
 
 // MARK: - CategoryPickerViewControllerDelegate
@@ -114,25 +120,6 @@ extension ExpenseFormViewController: CategoryPickerViewControllerDelegate {
         
         // Update the view.
         customView.categoryFieldView.setCategory(category)
-        
-//        // Update the text field.
-//        switch category {
-//        case .id(let objectID):
-//            customView.categoryFieldView.editButton.titleLabel.text = {
-//                guard let category = Global.coreDataStack.viewContext.object(with: objectID) as? Category,
-//                    let categoryName = category.name
-//                    else {
-//                        return nil
-//                }
-//                return categoryName
-//            }()
-//
-//        case .name(let name):
-//            customView.categoryFieldView.editButton.titleLabel.text = name
-//
-//        case .none:
-//            customView.categoryFieldView.editButton.titleLabel.text = nil
-//        }
     }
     
 }

@@ -44,6 +44,7 @@ class CategoryFieldView: UIView, Themeable {
         case .none:
             nameLabel.text = placeholder
             nameLabel.textColor = Global.theme.color(for: .placeholder)
+            clearButton.isHidden = true
             
         case .id(let objectID):
             if let category = Global.coreDataStack.viewContext.object(with: objectID) as? Category,
@@ -54,10 +55,12 @@ class CategoryFieldView: UIView, Themeable {
                 nameLabel.text = placeholder
                 nameLabel.textColor = Global.theme.color(for: .placeholder)
             }
+            clearButton.isHidden = false
             
         case .name(let categoryName):
             nameLabel.text = categoryName
             nameLabel.textColor = Global.theme.color(for: .regularText)
+            clearButton.isHidden = false
         }
     }
     
