@@ -23,8 +23,9 @@ class ExpenseFormView: UIView, Themeable {
     let dateFieldView = DateFieldView.instantiateFromNib()
     
     @IBOutlet weak var optionalLabel: UILabel!
-    @IBOutlet weak var categoryFieldContainer: UIView!
-    let categoryFieldView = CategoryFieldView.instantiateFromNib()
+//    @IBOutlet weak var categoryFieldContainer: UIView!
+//    let categoryFieldView = CategoryFieldView.instantiateFromNib()
+    @IBOutlet weak var categoryFieldView: CategoryFieldView!
     @IBOutlet weak var tagFieldContainer: UIView!
     let tagFieldView = TagFieldView.instantiateFromNib()
     
@@ -38,7 +39,7 @@ class ExpenseFormView: UIView, Themeable {
         
         amountFieldContainer.addSubviewsAndFill(amountFieldView)
         dateFieldContainer.addSubviewsAndFill(dateFieldView)
-        categoryFieldContainer.addSubviewsAndFill(categoryFieldView)
+//        categoryFieldContainer.addSubviewsAndFill(categoryFieldView)
         tagFieldContainer.addSubviewsAndFill(tagFieldView)
         
         requiredLabel.text = "REQUIRED"

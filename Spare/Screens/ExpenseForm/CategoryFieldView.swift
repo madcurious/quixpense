@@ -9,34 +9,16 @@
 import UIKit
 import Mold
 
-class CategoryFieldView: UIView, Themeable {
-    
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var editButton: MDButton!
-    @IBOutlet private weak var nameLabel: UILabel!
-    @IBOutlet weak var clearButton: MDButton!
-    @IBOutlet weak var clearButtonImageView: UIImageView!
+class CategoryFieldView: ClassifierFieldView {
     
     private let placeholder = "Category"
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        clearAllBackgroundColors()
-        applyTheme()
+    override func setup() {
+        super.setup()
         
-        imageView.image = UIImage.templateNamed("categoryIcon")
+        iconImageView.image = UIImage.templateNamed("categoryIcon")
         
-        nameLabel.numberOfLines = 0
-        nameLabel.lineBreakMode = .byWordWrapping
         setCategory(.none)
-        
-        clearButtonImageView.image = UIImage.templateNamed("cellAccessoryClear")
-    }
-    
-    func applyTheme() {
-        imageView.tintColor = Global.theme.color(for: .fieldIcon)
-        nameLabel.font = Global.theme.font(for: .regularText)
-        clearButtonImageView.tintColor = Global.theme.color(for: .cellAccessoryClear)
     }
     
     func setCategory(_ category: CategoryArgument) {
