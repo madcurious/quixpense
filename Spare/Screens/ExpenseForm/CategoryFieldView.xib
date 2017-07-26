@@ -13,14 +13,14 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CategoryFieldView" customModule="Spare" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nig-pw-ytF">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="APD-5f-fFt">
-                            <rect key="frame" x="0.0" y="0.0" width="44" height="75"/>
+                            <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7fA-sP-40y">
                                     <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
@@ -50,27 +50,41 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7OQ-tp-P3a">
-                            <rect key="frame" x="44" y="0.0" width="289" height="75"/>
+                            <rect key="frame" x="44" y="0.0" width="289" height="44"/>
                             <subviews>
-                                <view contentMode="scaleToFill" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="HLa-Rw-oQU" customClass="MDLabelButton" customModule="Mold">
-                                    <rect key="frame" x="0.0" y="12" width="289" height="51.5"/>
+                                <view contentMode="scaleToFill" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="HLa-Rw-oQU" customClass="MDButton" customModule="Mold">
+                                    <rect key="frame" x="0.0" y="0.0" width="289" height="44"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E1B-po-mvT">
+                                            <rect key="frame" x="0.0" y="12" width="289" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="E1B-po-mvT" secondAttribute="bottom" constant="11.5" id="1wH-Qz-vEx"/>
+                                        <constraint firstAttribute="trailing" secondItem="E1B-po-mvT" secondAttribute="trailing" id="fMA-AZ-v59"/>
+                                        <constraint firstItem="E1B-po-mvT" firstAttribute="top" secondItem="HLa-Rw-oQU" secondAttribute="top" constant="12" id="fRc-Xx-JQI"/>
+                                        <constraint firstItem="E1B-po-mvT" firstAttribute="leading" secondItem="HLa-Rw-oQU" secondAttribute="leading" id="vX2-6E-kN6"/>
+                                    </constraints>
                                 </view>
                             </subviews>
                             <color key="backgroundColor" red="0.85098040100000005" green="0.94901961089999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
-                                <constraint firstItem="HLa-Rw-oQU" firstAttribute="top" secondItem="7OQ-tp-P3a" secondAttribute="top" constant="12" id="3L2-SH-C0j"/>
+                                <constraint firstItem="HLa-Rw-oQU" firstAttribute="top" secondItem="7OQ-tp-P3a" secondAttribute="top" id="3L2-SH-C0j"/>
                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="900" constant="44" id="JWv-KV-MPy"/>
                                 <constraint firstAttribute="trailing" secondItem="HLa-Rw-oQU" secondAttribute="trailing" id="WW0-DL-aNC"/>
                                 <constraint firstItem="HLa-Rw-oQU" firstAttribute="leading" secondItem="7OQ-tp-P3a" secondAttribute="leading" id="gI0-rX-pfo"/>
-                                <constraint firstAttribute="bottom" secondItem="HLa-Rw-oQU" secondAttribute="bottom" constant="11.5" id="wWl-sP-RZr"/>
+                                <constraint firstAttribute="bottom" secondItem="HLa-Rw-oQU" secondAttribute="bottom" id="wWl-sP-RZr"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="udA-e0-EcS">
-                            <rect key="frame" x="333" y="0.0" width="42" height="75"/>
+                            <rect key="frame" x="333" y="0.0" width="42" height="44"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D8q-g2-9kc" customClass="MDImageButton" customModule="Mold">
-                                    <rect key="frame" x="10" y="26.5" width="22" height="22"/>
+                                    <rect key="frame" x="10" y="11" width="22" height="22"/>
                                     <color key="backgroundColor" red="0.85098040100000005" green="0.94901961089999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="22" id="5Ja-RJ-wBd"/>
@@ -97,11 +111,12 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="editButton" destination="HLa-Rw-oQU" id="M8y-96-htf"/>
+                <outlet property="editButton" destination="HLa-Rw-oQU" id="f7h-sq-SmY"/>
                 <outlet property="imageView" destination="uzr-5o-8lH" id="BbS-SW-wTz"/>
+                <outlet property="nameLabel" destination="E1B-po-mvT" id="4On-W4-p1K"/>
                 <outlet property="removeButton" destination="D8q-g2-9kc" id="7Wt-e8-HTy"/>
             </connections>
-            <point key="canvasLocation" x="-107.5" y="-201.5"/>
+            <point key="canvasLocation" x="-107.5" y="-221"/>
         </view>
     </objects>
 </document>

@@ -31,45 +31,31 @@ class ExpenseFormView: UIView, Themeable {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.clearBackgrounds(from: self.scrollView)
-        self.applyTheme()
+        clearAllBackgroundColors()
+        applyTheme()
         
-        self.scrollView.alwaysBounceVertical = true
+        scrollView.alwaysBounceVertical = true
         
-        self.amountFieldContainer.addSubviewsAndFill(self.amountFieldView)
-        self.dateFieldContainer.addSubviewsAndFill(self.dateFieldView)
-        self.categoryFieldContainer.addSubviewsAndFill(self.categoryFieldView)
-        self.tagFieldContainer.addSubviewsAndFill(self.tagFieldView)
+        amountFieldContainer.addSubviewsAndFill(amountFieldView)
+        dateFieldContainer.addSubviewsAndFill(dateFieldView)
+        categoryFieldContainer.addSubviewsAndFill(categoryFieldView)
+        tagFieldContainer.addSubviewsAndFill(tagFieldView)
         
-        self.requiredLabel.text = "REQUIRED"
-        self.optionalLabel.text = "OPTIONAL"
+        requiredLabel.text = "REQUIRED"
+        optionalLabel.text = "OPTIONAL"
     }
     
     func applyTheme() {
-        self.backgroundColor = Global.theme.color(for: .mainBackground)
+        backgroundColor = Global.theme.color(for: .mainBackground)
         
-        let sectionLabels = [self.requiredLabel, self.optionalLabel];
+        let sectionLabels = [requiredLabel, optionalLabel];
         for sectionLabel in sectionLabels {
             sectionLabel?.font = Global.theme.font(for: .groupedTableViewSectionHeader)
             sectionLabel?.textColor = Global.theme.color(for: .groupedTableViewSectionHeader)
         }
         
-        for separatorView in self.separatorViews {
+        for separatorView in separatorViews {
             separatorView.backgroundColor = Global.theme.color(for: .tableViewSeparator)
-        }
-    }
-    
-    /// Recursive function that clears the background of `superview` and its subviews.
-    private func clearBackgrounds(from superview: UIView) {
-        if let stackView = superview as? UIStackView {
-            for subview in stackView.arrangedSubviews {
-                self.clearBackgrounds(from: subview)
-            }
-        } else {
-            superview.backgroundColor = .clear
-            for subview in superview.subviews {
-                self.clearBackgrounds(from: subview)
-            }
         }
     }
     
