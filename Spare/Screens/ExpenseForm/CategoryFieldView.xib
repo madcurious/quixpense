@@ -83,12 +83,23 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="udA-e0-EcS">
                             <rect key="frame" x="333" y="0.0" width="42" height="44"/>
                             <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D8q-g2-9kc" customClass="MDImageButton" customModule="Mold">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D8q-g2-9kc" customClass="MDButton" customModule="Mold">
                                     <rect key="frame" x="10" y="11" width="22" height="22"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="G7Z-vw-5WJ">
+                                            <rect key="frame" x="0.0" y="0.0" width="22" height="22"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="22" id="GTI-7a-WLD"/>
+                                                <constraint firstAttribute="width" secondItem="G7Z-vw-5WJ" secondAttribute="height" id="amI-F9-9Hf"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
                                     <color key="backgroundColor" red="0.85098040100000005" green="0.94901961089999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="22" id="5Ja-RJ-wBd"/>
-                                        <constraint firstAttribute="width" constant="22" id="RvX-a7-cRv"/>
+                                        <constraint firstAttribute="bottom" secondItem="G7Z-vw-5WJ" secondAttribute="bottom" id="BDZ-DX-oZj"/>
+                                        <constraint firstAttribute="trailing" secondItem="G7Z-vw-5WJ" secondAttribute="trailing" id="Cwb-xO-Pnq"/>
+                                        <constraint firstItem="G7Z-vw-5WJ" firstAttribute="leading" secondItem="D8q-g2-9kc" secondAttribute="leading" id="M05-im-SqK"/>
+                                        <constraint firstItem="G7Z-vw-5WJ" firstAttribute="top" secondItem="D8q-g2-9kc" secondAttribute="top" id="vB4-cR-4cj"/>
                                     </constraints>
                                 </view>
                             </subviews>
@@ -111,12 +122,13 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="clearButton" destination="D8q-g2-9kc" id="n1m-Y0-das"/>
+                <outlet property="clearButtonImageView" destination="G7Z-vw-5WJ" id="u8D-Lj-Vgh"/>
                 <outlet property="editButton" destination="HLa-Rw-oQU" id="f7h-sq-SmY"/>
                 <outlet property="imageView" destination="uzr-5o-8lH" id="BbS-SW-wTz"/>
                 <outlet property="nameLabel" destination="E1B-po-mvT" id="4On-W4-p1K"/>
-                <outlet property="removeButton" destination="D8q-g2-9kc" id="7Wt-e8-HTy"/>
             </connections>
-            <point key="canvasLocation" x="-107.5" y="-221"/>
+            <point key="canvasLocation" x="-183" y="-600"/>
         </view>
     </objects>
 </document>

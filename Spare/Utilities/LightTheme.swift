@@ -17,6 +17,9 @@ struct LightTheme: Theme {
              .regularText:
             return UIColor.black
             
+        case .cellAccessoryClear:
+            return .hex(0xff6565)
+            
         case .sectionTotalHeaderViewBackground,
              .filterButtonBackground:
             return UIColor.hex(0x666666)
