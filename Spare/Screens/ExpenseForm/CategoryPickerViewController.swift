@@ -20,36 +20,18 @@ private enum ViewID: String {
 
 private enum Section: Int {
     case allCategories = 0
-    case options = 1
+    case addNew = 1
     
     init(_ section: Int) {
         switch section {
         case 0:
             self = .allCategories
         case 1:
-            self = .options
+            self = .addNew
         default:
             fatalError()
         }
     }
-}
-
-private enum Option: Int {
-    case new = 0
-    case remove = 1
-    
-    init(_ option: Int) {
-        switch option {
-        case Option.remove.rawValue:
-            self = .remove
-        case Option.new.rawValue:
-            self = .new
-        default:
-            fatalError()
-        }
-    }
-    
-    static let all: [Option] = [.remove, .new]
 }
 
 fileprivate weak var delegate: ExpenseFormViewController?
@@ -192,7 +174,7 @@ extension CategoryListViewController {
         case Section.allCategories.rawValue:
             return self.categories.count
         default:
-            return Option.all.count
+            return 1
         }
     }
     
@@ -211,17 +193,10 @@ extension CategoryListViewController {
             cell.accessoryImageType = .check
             cell.showsAccessoryImage = category == globalSelectedCategory
             
-        case .options:
-            switch Option(indexPath.row) {
-            case .remove:
-                cell.accessoryImageType = .remove
-                cell.showsAccessoryImage = true
-                cell.nameLabel.text = "Remove selection"
-            case .new:
-                cell.accessoryImageType = .add
-                cell.showsAccessoryImage = true
-                cell.nameLabel.text = "Add a new category"
-            }
+        case .addNew:
+            cell.accessoryImageType = .add
+            cell.showsAccessoryImage = true
+            cell.nameLabel.text = "Add a new category"
         }
         
         return cell
@@ -255,25 +230,15 @@ extension CategoryListViewController {
             }
             self.dismiss(animated: true, completion: nil)
             
-        case .options:
-            switch Option(indexPath.row) {
-            case .remove:
+        case .addNew:
+            let newScreen = NewClassifierViewController(classifierType: .category, successAction: {[unowned self] name in
+                globalSelectedCategory = .name(name)
                 if let delegate = self.container.delegate {
-                    delegate.categoryPicker(self.container, didSelectCategory: .none)
+                    delegate.categoryPicker(self.container, didSelectCategory: globalSelectedCategory)
                 }
                 self.dismiss(animated: true, completion: nil)
-                
-            case .new:
-                let newScreen = NewClassifierViewController(classifierType: .category, successAction: {[unowned self] name in
-                    globalSelectedCategory = .name(name)
-                    if let delegate = self.container.delegate {
-                        delegate.categoryPicker(self.container, didSelectCategory: globalSelectedCategory)
-                    }
-                    self.dismiss(animated: true, completion: nil)
-                })
-                self.navigationController?.pushViewController(newScreen, animated: true)
-                
-            }
+            })
+            self.navigationController?.pushViewController(newScreen, animated: true)
         }
     }
     
