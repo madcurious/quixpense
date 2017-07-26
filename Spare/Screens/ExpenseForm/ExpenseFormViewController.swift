@@ -31,30 +31,31 @@ class ExpenseFormViewController: UIViewController {
     }
     
     override func loadView() {
-        self.view = self.customView
+        view = customView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.leftBarButtonItem = BarButtonItems.make(
+        navigationItem.leftBarButtonItem = BarButtonItems.make(
             .cancel, target: self, action: #selector(handleTapOnCancelButton))
-        self.navigationItem.rightBarButtonItem = BarButtonItems.make(
+        navigationItem.rightBarButtonItem = BarButtonItems.make(
             .done, target: self, action: #selector(handleTapOnDoneButton))
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTapOnView))
         tapGestureRecognizer.cancelsTouchesInView = false
-        self.customView.addGestureRecognizer(tapGestureRecognizer)
+        customView.addGestureRecognizer(tapGestureRecognizer)
         
-        self.customView.amountFieldView.textField.delegate = self
-        self.customView.categoryFieldView.textField.delegate = self
-        self.customView.tagFieldView.textField.delegate = self
+        customView.categoryFieldView.editButton.addTarget(self, action: #selector(handleTapOnCategoryEditButton), for: .touchUpInside)
+        
+        customView.amountFieldView.textField.delegate = self
+        customView.tagFieldView.textField.delegate = self
     }
     
     func hasUnsavedChanges() -> Bool {
-        guard (self.inputModel.amountText?.isEmpty ?? true) == false ||
-            self.inputModel.selectedCategory != .none ||
-            self.inputModel.selectedTags.isEmpty == false
+        guard (inputModel.amountText?.isEmpty ?? true) == false ||
+            inputModel.selectedCategory != .none ||
+            inputModel.selectedTags.isEmpty == false
             else {
                 return false
         }
@@ -63,16 +64,16 @@ class ExpenseFormViewController: UIViewController {
     
     func resetFields() {
         // Reset the input model.
-        self.inputModel.amountText = nil
-        self.inputModel.selectedDate = Date()
-        self.inputModel.selectedCategory = .none
-        self.inputModel.selectedTags.removeAll()
+        inputModel.amountText = nil
+        inputModel.selectedDate = Date()
+        inputModel.selectedCategory = .none
+        inputModel.selectedTags.removeAll()
         
         // Reset the views.
-        self.customView.amountFieldView.textField.text = nil
-        self.customView.dateFieldView.setDate(self.inputModel.selectedDate)
-        self.customView.categoryFieldView.textField.text = nil
-        self.customView.tagFieldView.textField.text = nil
+        customView.amountFieldView.textField.text = nil
+        customView.dateFieldView.setDate(inputModel.selectedDate)
+        customView.categoryFieldView.setCategory(.none)
+        customView.tagFieldView.textField.text = nil
     }
     
     deinit {
@@ -83,18 +84,22 @@ class ExpenseFormViewController: UIViewController {
 
 // MARK: - Target actions
 
-extension ExpenseFormViewController {
+@objc extension ExpenseFormViewController {
     
-    @objc func handleTapOnView() {
-        self.customView.endEditing(true)
+    func handleTapOnView() {
+        customView.endEditing(true)
     }
     
-    @objc func handleTapOnCancelButton() {
+    func handleTapOnCancelButton() {
         
     }
     
-    @objc func handleTapOnDoneButton() {
+    func handleTapOnDoneButton() {
         
+    }
+    
+    func handleTapOnCategoryEditButton() {
+        CategoryPickerViewController.present(from: self, selectedCategory: inputModel.selectedCategory)
     }
     
 }
@@ -105,26 +110,29 @@ extension ExpenseFormViewController: CategoryPickerViewControllerDelegate {
     
     func categoryPicker(_ picker: CategoryPickerViewController, didSelectCategory category: CategoryArgument) {
         // Update the model.
-        self.inputModel.selectedCategory = category
+        inputModel.selectedCategory = category
         
-        // Update the text field.
-        switch category {
-        case .id(let objectID):
-            self.customView.categoryFieldView.textField.text = {
-                guard let category = Global.coreDataStack.viewContext.object(with: objectID) as? Category,
-                    let categoryName = category.name
-                    else {
-                        return nil
-                }
-                return categoryName
-            }()
-            
-        case .name(let name):
-            self.customView.categoryFieldView.textField.text = name
-            
-        case .none:
-            self.customView.categoryFieldView.textField.text = nil
-        }
+        // Update the view.
+        customView.categoryFieldView.setCategory(category)
+        
+//        // Update the text field.
+//        switch category {
+//        case .id(let objectID):
+//            customView.categoryFieldView.editButton.titleLabel.text = {
+//                guard let category = Global.coreDataStack.viewContext.object(with: objectID) as? Category,
+//                    let categoryName = category.name
+//                    else {
+//                        return nil
+//                }
+//                return categoryName
+//            }()
+//
+//        case .name(let name):
+//            customView.categoryFieldView.editButton.titleLabel.text = name
+//
+//        case .none:
+//            customView.categoryFieldView.editButton.titleLabel.text = nil
+//        }
     }
     
 }
@@ -135,12 +143,8 @@ extension ExpenseFormViewController: UITextFieldDelegate {
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         switch textField {
-        case self.customView.amountFieldView.textField:
+        case customView.amountFieldView.textField:
             return true
-            
-        case self.customView.categoryFieldView.textField:
-            CategoryPickerViewController.present(from: self, selectedCategory: self.inputModel.selectedCategory)
-            return false
             
         default:
             TagPickerViewController.present(from: self, selectedTags: nil)
@@ -150,17 +154,17 @@ extension ExpenseFormViewController: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         // Don't allow text editing if the text replacement contains invalid characters.
-        if textField == self.customView.amountFieldView.textField,
-            let _ = string.rangeOfCharacter(from: self.invalidAmountCharacters) {
+        if textField == customView.amountFieldView.textField,
+            let _ = string.rangeOfCharacter(from: invalidAmountCharacters) {
             return false
         }
         
         switch textField {
-        case self.customView.amountFieldView.textField:
-            if let _ = string.rangeOfCharacter(from: self.invalidAmountCharacters) {
+        case customView.amountFieldView.textField:
+            if let _ = string.rangeOfCharacter(from: invalidAmountCharacters) {
                 return false
             } else {
-                self.inputModel.amountText = {
+                inputModel.amountText = {
                     guard let existingText = textField.text as NSString?
                         else {
                             return nil

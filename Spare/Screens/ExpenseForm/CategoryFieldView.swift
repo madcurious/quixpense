@@ -7,36 +7,55 @@
 //
 
 import UIKit
+import Mold
 
 class CategoryFieldView: UIView, Themeable {
     
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var textField: UITextField!
+    
+    @IBOutlet weak var editButton: MDLabelButton!
+    @IBOutlet weak var removeButton: MDImageButton!
+    
+    private let placeholder = "Category"
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.applyTheme()
+        applyTheme()
         
-        self.imageView.image = UIImage.templateNamed("categoryIcon")
-        self.textField.autocapitalizationType = .sentences
+        imageView.image = UIImage.templateNamed("categoryIcon")
+        
+        editButton.titleLabel.numberOfLines = 0
+        editButton.titleLabel.lineBreakMode = .byWordWrapping
+        setCategory(.none)
+        
+        editButton.backgroundColor = .red
     }
     
     func applyTheme() {
-        self.imageView.tintColor = Global.theme.color(for: .fieldIcon)
-        
-        self.textField.font = Global.theme.font(for: .regularText)
-        self.textField.textColor = Global.theme.color(for: .regularText)
-        self.textField.attributedPlaceholder = NSAttributedString(
-            string: "Category",
-            font: Global.theme.font(for: .regularText),
-            textColor: Global.theme.color(for: .placeholder))
+        imageView.tintColor = Global.theme.color(for: .fieldIcon)
+        editButton.titleLabel.font = Global.theme.font(for: .regularText)
     }
     
-    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
-        if self.frame.contains(point) {
-            return self.textField
+    func setCategory(_ category: CategoryArgument) {
+        switch category {
+        case .none:
+            editButton.titleLabel.text = placeholder
+            editButton.titleLabel.textColor = Global.theme.color(for: .placeholder)
+            
+        case .id(let objectID):
+            if let category = Global.coreDataStack.viewContext.object(with: objectID) as? Category,
+                let categoryName = category.name {
+                editButton.titleLabel.text = categoryName
+                editButton.titleLabel.textColor = Global.theme.color(for: .regularText)
+            } else {
+                editButton.titleLabel.text = placeholder
+                editButton.titleLabel.textColor = Global.theme.color(for: .placeholder)
+            }
+            
+        case .name(let categoryName):
+            editButton.titleLabel.text = categoryName
+            editButton.titleLabel.textColor = Global.theme.color(for: .regularText)
         }
-        return super.hitTest(point, with: event)
     }
     
 }

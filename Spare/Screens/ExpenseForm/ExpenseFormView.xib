@@ -147,7 +147,7 @@
                                                                     <rect key="frame" x="0.0" y="0.66666666666668561" width="414" height="43.999999999999972"/>
                                                                     <color key="backgroundColor" red="0.62653217490000002" green="1" blue="0.68137150120000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="height" constant="44" id="1hg-6x-MiK"/>
+                                                                        <constraint firstAttribute="height" constant="44" placeholder="YES" id="1hg-6x-MiK"/>
                                                                     </constraints>
                                                                 </view>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a9V-hZ-i6y">
