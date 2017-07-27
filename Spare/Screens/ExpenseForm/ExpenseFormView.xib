@@ -167,7 +167,7 @@
                                                                         <constraint firstAttribute="bottom" secondItem="cKr-iN-F48" secondAttribute="bottom" id="u3N-nR-n4Z"/>
                                                                     </constraints>
                                                                 </view>
-                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1yn-kO-Hqb">
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1yn-kO-Hqb" customClass="TagFieldView" customModule="Spare" customModuleProvider="target">
                                                                     <rect key="frame" x="0.0" y="45.333333333333343" width="414" height="44"/>
                                                                     <color key="backgroundColor" red="0.79474441799999995" green="0.94982767479999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <constraints>
@@ -232,7 +232,7 @@
                 <outlet property="optionalLabel" destination="6jN-hL-8Tp" id="mzD-QE-xQd"/>
                 <outlet property="requiredLabel" destination="lp6-nW-VHW" id="iUG-01-sJx"/>
                 <outlet property="scrollView" destination="Ouw-hb-EwT" id="LKE-gN-3rh"/>
-                <outlet property="tagFieldContainer" destination="1yn-kO-Hqb" id="EL1-Yw-2Y8"/>
+                <outlet property="tagFieldView" destination="1yn-kO-Hqb" id="4Kr-RE-0AR"/>
                 <outletCollection property="separatorViews" destination="OrV-D6-1EW" collectionClass="NSMutableArray" id="pTG-RJ-Yex"/>
                 <outletCollection property="separatorViews" destination="u7W-2N-puh" collectionClass="NSMutableArray" id="CSf-pb-doG"/>
                 <outletCollection property="separatorViews" destination="Z81-pE-Coa" collectionClass="NSMutableArray" id="oQc-8L-GMi"/>

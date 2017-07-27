@@ -72,16 +72,16 @@ class MakeDummyDataOperation: MDOperation<Any?> {
                     return .none
                 }()
                 
-                let tags: Set<TagArgument>? = {
+                let tags: TagArgument = {
                     let noTags = arc4random_uniform(2) == 1
                     if noTags {
-                        return nil
+                        return .none
                     } else {
                         let numberOfTags = Int(arc4random_uniform(UInt32(kTagNames.count)))
                         if numberOfTags == 0 {
-                            return nil
+                            return .none
                         }
-                        var chosenTags = Set<TagArgument>()
+                        var chosenTags = Set<TagArgument.SetMember>()
                         while chosenTags.count != numberOfTags {
                             let randomIndex = Int(arc4random_uniform(UInt32(kTagNames.count)))
                             if chosenTags.contains(.name(kTagNames[randomIndex])) {
@@ -90,7 +90,7 @@ class MakeDummyDataOperation: MDOperation<Any?> {
                                 chosenTags.insert(.name(kTagNames[randomIndex]))
                             }
                         }
-                        return chosenTags
+                        return .set(chosenTags)
                     }
                 }()
                 

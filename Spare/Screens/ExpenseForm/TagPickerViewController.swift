@@ -10,70 +10,30 @@ import UIKit
 import CoreData
 import Mold
 
-private enum ViewID: String {
-    case itemCell = "itemCell"
+protocol TagPickerViewControllerDelegate {
+    func tagPicker(_ picker: TagPickerViewController, didSelectTags tags: TagArgument)
 }
 
-private enum Section: Int {
-    case allTags, options
-    init(_ section: Int) {
-        switch section {
-        case 0:
-            self = .allTags
-        case 1:
-            self = .options
-        default:
-            fatalError()
-        }
-    }
-    static let all: [Section] = [.allTags, .options]
-}
-
-private enum Option: Int {
-    case clear, new
-    init(_ option: Int) {
-        switch option {
-        case 0:
-            self = .clear
-        case 1:
-            self = .new
-        default:
-            fatalError()
-        }
-    }
-    static let all: [Option] = [.clear, .new]
-}
-
-fileprivate var kSelectedTags = Set<NSManagedObjectID>()
+fileprivate var globalSelectedTags = TagArgument.none
 
 /// Container for the entire tag picker. Internally manages a navigation controller where the
 /// first screen is the list of tags, and the second screen is for adding a new tag.
 class TagPickerViewController: SlideUpPickerViewController {
     
-    class func present(from presenter: ExpenseFormViewController, selectedTags: Set<NSManagedObjectID>?) {
-        let picker = TagPickerViewController(selectedTags: selectedTags)
+    class func present(from presenter: ExpenseFormViewController, selectedTags: TagArgument) {
+        globalSelectedTags = selectedTags
+        let picker = TagPickerViewController(nibName: nil, bundle: nil)
+        picker.delegate = presenter
         SlideUpPickerViewController.present(picker, from: presenter)
     }
     
     private lazy var internalNavigationController = SlideUpPickerViewController.makeInternalNavigationController()
-    
-    init(selectedTags: Set<NSManagedObjectID>?) {
-        super.init(nibName: nil, bundle: nil)
-        if let selectedTags = selectedTags {
-            kSelectedTags = selectedTags
-        } else {
-            kSelectedTags.removeAll()
-        }
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    var delegate: TagPickerViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.internalNavigationController.setViewControllers([TagListViewController(navBarTarget: self)], animated: false)
+        self.internalNavigationController.setViewControllers([TagListViewController(container: self)], animated: false)
         self.embedChildViewController(self.internalNavigationController, toView: self.customView.contentView, fillSuperview: true)
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTapOnDimView))
@@ -93,6 +53,9 @@ class TagPickerViewController: SlideUpPickerViewController {
     }
     
     func handleTapOnDoneButton() {
+        if let delegate = delegate {
+            delegate.tagPicker(self, didSelectTags: globalSelectedTags)
+        }
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -100,8 +63,26 @@ class TagPickerViewController: SlideUpPickerViewController {
 
 // MARK: - TagListViewController
 
-/// Internal view controller that contains the list of tags.
+private enum ViewID: String {
+    case itemCell = "itemCell"
+}
 
+private enum Section: Int {
+    case allTags, add
+    init(_ section: Int) {
+        switch section {
+        case 0:
+            self = .allTags
+        case 1:
+            self = .add
+        default:
+            fatalError()
+        }
+    }
+    static let all: [Section] = [.allTags, .add]
+}
+
+/// Internal view controller that contains the list of tags.
 fileprivate class TagListViewController: UIViewController {
     
     let tagFetcher: NSFetchedResultsController<Tag> = {
@@ -112,10 +93,12 @@ fileprivate class TagListViewController: UIViewController {
     }()
     
     lazy var tableView = UITableView(frame: .zero, style: .grouped)
-    unowned var navBarTarget: TagPickerViewController
+    unowned var container: TagPickerViewController
     
-    init(navBarTarget: TagPickerViewController) {
-        self.navBarTarget = navBarTarget
+    var dataSource: [TagArgument.SetMember] = []
+    
+    init(container: TagPickerViewController) {
+        self.container = container
         super.init(nibName: nil, bundle: nil)
         self.title = "Tags"
     }
@@ -131,8 +114,8 @@ fileprivate class TagListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.leftBarButtonItem = BarButtonItems.make(.cancel, target: self.navBarTarget, action: #selector(TagPickerViewController.handleTapOnCancelButton))
-        self.navigationItem.rightBarButtonItem = BarButtonItems.make(.done, target: self.navBarTarget, action: #selector(TagPickerViewController.handleTapOnDoneButton))
+        self.navigationItem.leftBarButtonItem = BarButtonItems.make(.cancel, target: self.container, action: #selector(TagPickerViewController.handleTapOnCancelButton))
+        self.navigationItem.rightBarButtonItem = BarButtonItems.make(.done, target: self.container, action: #selector(TagPickerViewController.handleTapOnDoneButton))
         
         self.tableView.dataSource = self
         self.tableView.delegate = self
@@ -140,23 +123,59 @@ fileprivate class TagListViewController: UIViewController {
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 44
         
-        self.performFetch()
+        buildDataSource()
+        tableView.reloadData()
     }
     
-    func performFetch() {
+    func buildDataSource() {
         do {
-            try self.tagFetcher.performFetch()
-            self.tableView.reloadData()
+            dataSource = []
+            
+            // Fetch the tags.
+            try tagFetcher.performFetch()
+            if let tags = tagFetcher.fetchedObjects {
+                tags.forEach {
+                    dataSource.append(.id($0.objectID))
+                }
+            }
+            
+            // If there are initially selected user-entered names, add them to the data source as well.
+            switch globalSelectedTags {
+            case .set(let set) where set.isEmpty == false:
+                for member in set {
+                    switch member {
+                    case .name(let enteredName):
+                        if let index = insertionIndex(for: enteredName) {
+                            dataSource.insert(.name(enteredName), at: index)
+                        }
+                    default:
+                        continue
+                    }
+                }
+            default: break
+            }
         } catch { }
     }
     
-    func tag(at indexPath: IndexPath) -> Tag {
-        let section = Section(rawValue: indexPath.section)!
-        if section == .allTags {
-            return self.tagFetcher.object(at: IndexPath(item: indexPath.row, section: 0))
+    // Find the insertion index for the user-entered name in an ascending-ordered list of names.
+    // The data source should have been populated with the existing tags before this function is called.
+    func insertionIndex(for name: String) -> Int? {
+        let dataSourceAsStrings = dataSource.flatMap {
+            switch $0 {
+            case .id(let objectID):
+                guard let tagName = (Global.coreDataStack.viewContext.object(with: objectID) as? Tag)?.name
+                    else {
+                        return nil
+                }
+                return tagName
+            case .name(let tagName):
+                return tagName
+            }
         }
-        // Recents
-        return self.tagFetcher.object(at: IndexPath(item: indexPath.item, section: 0))
+        
+        // May return nil if the data source already contains the string.
+        let index = dataSourceAsStrings.index(where: { name.compare($0) == .orderedAscending })
+        return index
     }
     
 }
@@ -172,9 +191,9 @@ extension TagListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch Section(rawValue: section)! {
         case .allTags:
-            return self.tagFetcher.fetchedObjects?.count ?? 0
-        case .options:
-            return Option.all.count
+            return self.dataSource.count
+        case .add:
+            return 1
         }
     }
     
@@ -182,24 +201,31 @@ extension TagListViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: ViewID.itemCell.rawValue, for: indexPath) as! PickerItemCell
         
         switch Section(rawValue: indexPath.section)! {
-            
         case .allTags:
-            let tag = self.tag(at: indexPath)
-            cell.nameLabel.text = tag.name
+            // Update the cell appearance depending on whether the tag will be selected/deselected.
+            let setMember = dataSource[indexPath.row]
+            cell.nameLabel.text = {
+                if case .id(let objectID) = setMember,
+                    let tagName = (Global.coreDataStack.viewContext.object(with: objectID) as? Tag)?.name {
+                    return tagName
+                } else if case .name(let tagName) = setMember {
+                    return tagName
+                }
+                return nil
+            }()
             cell.accessoryImageType = .check
-            cell.showsAccessoryImage = kSelectedTags.contains(tag.objectID)
+            cell.showsAccessoryImage = {
+                if case .set(let set) = globalSelectedTags,
+                    set.contains(setMember) {
+                    return true
+                }
+                return false
+            }()
             
-        case .options:
+        case .add:
+            cell.accessoryImageType = .add
             cell.showsAccessoryImage = true
-            switch Option(indexPath.row) {
-            case .clear:
-                cell.nameLabel.text = "Clear all tags"
-                cell.accessoryImageType = .remove
-                
-            case .new:
-                cell.nameLabel.text = "Add a new tag"
-                cell.accessoryImageType = .add
-            }
+            cell.nameLabel.text = "Add a new tag"
         }
         
         return cell
@@ -216,26 +242,49 @@ extension TagListViewController: UITableViewDelegate {
         
         switch Section(rawValue: indexPath.section)! {
         case .allTags:
-            let tagID = self.tag(at: indexPath).objectID
-            if kSelectedTags.contains(tagID) {
-                kSelectedTags.remove(tagID)
-            } else {
-                kSelectedTags.insert(tagID)
-            }
-            let cell = self.tableView.cellForRow(at: indexPath) as! PickerItemCell
-            cell.showsAccessoryImage = kSelectedTags.contains(tagID)
+            let tag = dataSource[indexPath.row]
+            let cell = tableView.cellForRow(at: indexPath) as! PickerItemCell
             
-        case .options:
+            // If there is a set of selections, insert or remove the tag
+            // depending on whether it is already contained or not.
+            if case .set(var set) = globalSelectedTags,
+                set.isEmpty == false {
+                if set.contains(tag) {
+                    set.remove(tag)
+                    cell.showsAccessoryImage = false
+                } else {
+                    set.insert(tag)
+                    cell.showsAccessoryImage = true
+                }
+            }
+                
+                // Otherwise, initialize a set of selections with the tag in it.
+            else {
+                globalSelectedTags = .set([tag])
+                cell.showsAccessoryImage = true
+            }
+            
+        case .add:
             let addScreen = NewClassifierViewController(classifierType: .tag, successAction: {[unowned self] name in
-                let newTag = Tag(context: Global.coreDataStack.viewContext)
-                newTag.name = name
+                // If there are no selected tags yet, initialize a set with the name in it.
+                // Otherwise, insert the name if it is not yet in the set.
+                switch globalSelectedTags {
+                case .none:
+                    globalSelectedTags = .set([.name(name)])
+                case .set(var set):
+                    if set.contains(.name(name)) == false {
+                        set.insert(.name(name))
+                    }
+                }
                 
-                kSelectedTags.insert(newTag.objectID)
-                self.performFetch()
+                // If the index is not yet in the data source, insert it and reload the table view.
+                if let index = self.insertionIndex(for: name) {
+                    self.dataSource.insert(.name(name), at: index)
+                    self.tableView.reloadData()
+                    self.tableView.scrollToRow(at: IndexPath(row: index, section: Section.allTags.rawValue), at: .top, animated: false)
+                }
                 
-                var tagIndexPath = self.tagFetcher.indexPath(forObject: newTag)!
-                tagIndexPath.section = Section.allTags.rawValue
-                self.tableView.scrollToRow(at: tagIndexPath, at: .top, animated: false)
+                self.navigationController?.popViewController(animated: true)
             })
             self.navigationController?.pushViewController(addScreen, animated: true)
         }

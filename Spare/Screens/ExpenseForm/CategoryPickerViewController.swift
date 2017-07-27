@@ -20,14 +20,14 @@ private enum ViewID: String {
 
 private enum Section: Int {
     case allCategories = 0
-    case addNew = 1
+    case add = 1
     
     init(_ section: Int) {
         switch section {
         case 0:
             self = .allCategories
         case 1:
-            self = .addNew
+            self = .add
         default:
             fatalError()
         }
@@ -40,7 +40,8 @@ fileprivate var globalSelectedCategory = CategoryArgument.none
 class CategoryPickerViewController: SlideUpPickerViewController {
     
     class func present(from presenter: ExpenseFormViewController, selectedCategory: CategoryArgument) {
-        let picker = CategoryPickerViewController(selectedCategory: selectedCategory)
+        globalSelectedCategory = selectedCategory
+        let picker = CategoryPickerViewController(nibName: nil, bundle: nil)
         picker.delegate = presenter
         SlideUpPickerViewController.present(picker, from: presenter)
     }
@@ -48,15 +49,6 @@ class CategoryPickerViewController: SlideUpPickerViewController {
     lazy var internalNavigationController = SlideUpPickerViewController.makeInternalNavigationController()
     
     var delegate: CategoryPickerViewControllerDelegate?
-    
-    private init(selectedCategory: CategoryArgument) {
-        globalSelectedCategory = selectedCategory
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -113,13 +105,6 @@ fileprivate class CategoryListViewController: UITableViewController {
         
         self.buildDataSource()
         self.tableView.reloadData()
-    }
-    
-    func performFetch() {
-        do {
-            try self.categoryFetcher.performFetch()
-            self.tableView.reloadData()
-        } catch { }
     }
     
     func buildDataSource() {
@@ -193,7 +178,7 @@ extension CategoryListViewController {
             cell.accessoryImageType = .check
             cell.showsAccessoryImage = category == globalSelectedCategory
             
-        case .addNew:
+        case .add:
             cell.accessoryImageType = .add
             cell.showsAccessoryImage = true
             cell.nameLabel.text = "Add a new category"
@@ -230,7 +215,7 @@ extension CategoryListViewController {
             }
             self.dismiss(animated: true, completion: nil)
             
-        case .addNew:
+        case .add:
             let newScreen = NewClassifierViewController(classifierType: .category, successAction: {[unowned self] name in
                 globalSelectedCategory = .name(name)
                 if let delegate = self.container.delegate {

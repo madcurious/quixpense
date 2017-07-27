@@ -8,36 +8,43 @@
 
 import UIKit
 
-class TagFieldView: UIView, Themeable {
+class TagFieldView: ClassifierFieldView {
     
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var textField: UITextField!
+    private let placeholder = "Tags"
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        self.applyTheme()
+    override func setup() {
+        super.setup()
         
-        self.imageView.image = UIImage.templateNamed("tagIcon")
+        iconImageView.image = UIImage.templateNamed("tagIcon")
         
-        self.textField.autocapitalizationType = .none
+        setTags(.none)
     }
     
-    func applyTheme() {
-        self.imageView.tintColor = Global.theme.color(for: .fieldIcon)
-        
-        self.textField.font = Global.theme.font(for: .regularText)
-        self.textField.textColor = Global.theme.color(for: .regularText)
-        self.textField.attributedPlaceholder = NSAttributedString(
-            string: "Tags",
-            font: Global.theme.font(for: .regularText),
-            textColor: Global.theme.color(for: .placeholder))
-    }
-    
-    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
-        if self.frame.contains(point) {
-            return self.textField
+    func setTags(_ tags: TagArgument) {
+        switch tags {
+        case .set(let set) where set.isEmpty == false:
+            let tagNames = set.flatMap {
+                switch $0 {
+                case .id(let objectID):
+                    if let tag = Global.coreDataStack.viewContext.object(with: objectID) as? Tag,
+                        let tagName = tag.name {
+                        return tagName
+                    }
+                    return nil
+                case .name(let tagName):
+                    return tagName
+                }
+            }
+            nameLabel.text = tagNames.joined(separator: ",")
+            nameLabel.textColor = Global.theme.color(for: .regularText)
+            clearButton.isHidden = false
+            
+            
+        default:
+            nameLabel.text = placeholder
+            nameLabel.textColor = Global.theme.color(for: .placeholder)
+            clearButton.isHidden = true
         }
-        return super.hitTest(point, with: event)
     }
     
 }

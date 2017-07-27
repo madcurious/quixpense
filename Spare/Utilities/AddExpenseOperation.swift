@@ -27,13 +27,13 @@ class AddExpenseOperation: TBOperation<Any, NSManagedObjectID, AddExpenseOperati
     let amount: NSDecimalNumber
     let dateSpent: Date
     let category: CategoryArgument
-    let tags: Set<TagArgument>?
+    let tags: TagArgument
     
     init(context: NSManagedObjectContext?,
          amount: NSDecimalNumber,
          dateSpent: Date,
          category: CategoryArgument,
-         tags: Set<TagArgument>?,
+         tags: TagArgument,
          completionBlock: TBOperationCompletionBlock?) {
         
         self.context = context ?? Global.coreDataStack.newBackgroundContext()
@@ -87,9 +87,12 @@ class AddExpenseOperation: TBOperation<Any, NSManagedObjectID, AddExpenseOperati
             }
             
             // Set the tags.
-            if let tags = self.tags {
-                for input in tags {
-                    switch input {
+            switch tags {
+                
+                // Add the members of the tag selection.
+            case .set(let set) where set.isEmpty == false:
+                for member in set {
+                    switch member {
                     case .id(let objectID):
                         if let existingTag = self.context.object(with: objectID) as? Tag {
                             newExpense.addToTags(existingTag)
@@ -107,7 +110,9 @@ class AddExpenseOperation: TBOperation<Any, NSManagedObjectID, AddExpenseOperati
                         }
                     }
                 }
-            } else {
+                
+                // Untagged
+            default:
                 if let untagged: Tag = try DefaultClassifier.untagged.fetch(in: self.context) {
                     newExpense.addToTags(untagged)
                 } else {

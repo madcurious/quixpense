@@ -14,7 +14,6 @@
 		261BB01F1EFE6E1E006E0DC3 /* CategoryFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261BB01E1EFE6E1E006E0DC3 /* CategoryFieldView.swift */; };
 		261BB0211EFE6E55006E0DC3 /* ClassifierFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 261BB0201EFE6E55006E0DC3 /* ClassifierFieldView.xib */; };
 		261BB0231EFE7212006E0DC3 /* TagFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261BB0221EFE7212006E0DC3 /* TagFieldView.swift */; };
-		261BB0251EFE721B006E0DC3 /* TagFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 261BB0241EFE721B006E0DC3 /* TagFieldView.xib */; };
 		261EB86318DDB630009DDF78 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86218DDB630009DDF78 /* Foundation.framework */; };
 		261EB86518DDB630009DDF78 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86418DDB630009DDF78 /* CoreGraphics.framework */; };
 		261EB86718DDB631009DDF78 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86618DDB631009DDF78 /* UIKit.framework */; };
@@ -150,7 +149,6 @@
 		261BB01E1EFE6E1E006E0DC3 /* CategoryFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryFieldView.swift; sourceTree = "<group>"; };
 		261BB0201EFE6E55006E0DC3 /* ClassifierFieldView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ClassifierFieldView.xib; sourceTree = "<group>"; };
 		261BB0221EFE7212006E0DC3 /* TagFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagFieldView.swift; sourceTree = "<group>"; };
-		261BB0241EFE721B006E0DC3 /* TagFieldView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TagFieldView.xib; sourceTree = "<group>"; };
 		261EB85F18DDB630009DDF78 /* Spare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		261EB86218DDB630009DDF78 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		261EB86418DDB630009DDF78 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -424,7 +422,6 @@
 				26F6169C1EFCF604005519E6 /* AmountFieldView.xib */,
 				261BB01E1EFE6E1E006E0DC3 /* CategoryFieldView.swift */,
 				261BB0221EFE7212006E0DC3 /* TagFieldView.swift */,
-				261BB0241EFE721B006E0DC3 /* TagFieldView.xib */,
 				2668CA641F13BD0400E77198 /* SlideUpPickerViewController.swift */,
 				2657DEBB1F14C2A4003DA778 /* SlideUpPickerView.swift */,
 				2657DEBD1F14C2B9003DA778 /* SlideUpPickerView.xib */,
@@ -676,7 +673,6 @@
 				266946861CC7711000A68424 /* Icon-40@2x.png in Resources */,
 				26C5721C1F1C90BC005F63ED /* DateFieldView.xib in Resources */,
 				26F6169D1EFCF604005519E6 /* AmountFieldView.xib in Resources */,
-				261BB0251EFE721B006E0DC3 /* TagFieldView.xib in Resources */,
 				266946881CC7711000A68424 /* Icon-Small@2x.png in Resources */,
 				266946851CC7711000A68424 /* InfoPlist.strings in Resources */,
 				2647CD491EF136770098E700 /* FilterButton.xib in Resources */,

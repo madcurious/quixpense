@@ -9,24 +9,41 @@
 import Foundation
 import CoreData
 
-enum TagArgument: Hashable {
-    case id(NSManagedObjectID)
-    case name(String)
+enum TagArgument: Equatable {
     
-    var hashValue: Int {
-        switch self {
-        case .id(let objectID):
-            return objectID.hashValue
-        case .name(let tagName):
-            return tagName.hashValue
+    enum SetMember: Hashable {
+        case id(NSManagedObjectID)
+        case name(String)
+        
+        var hashValue: Int {
+            switch self {
+            case .id(let objectID):
+                return objectID.hashValue
+            case .name(let tagName):
+                return tagName.hashValue
+            }
+        }
+        
+        static func ==(lhs: TagArgument.SetMember, rhs: TagArgument.SetMember) -> Bool {
+            switch (lhs, rhs) {
+            case (.id(let id1), .id(let id2)) where id1 == id2:
+                return true
+            case (.name(let name1), .name(let name2)) where name1 == name2:
+                return true
+            default:
+                return false
+            }
         }
     }
     
+    case none
+    case set(Set<TagArgument.SetMember>)
+    
     static func ==(lhs: TagArgument, rhs: TagArgument) -> Bool {
         switch (lhs, rhs) {
-        case (.id(let objectID1), .id(let objectID2)) where objectID1 == objectID2:
+        case (.none, .none):
             return true
-        case (.name(let name1), .name(let name2)) where name1 == name2:
+        case (.set(let set1), .set(let set2)) where set1 == set2:
             return true
         default:
             return false

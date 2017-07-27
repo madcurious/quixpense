@@ -15,7 +15,7 @@ class ExpenseFormViewController: UIViewController {
         var amountText: String?
         var selectedDate = Date()
         var selectedCategory = CategoryArgument.none
-        var selectedTags = Set<TagArgument>()
+        var selectedTags = TagArgument.none
     }
     
     let customView = ExpenseFormView.instantiateFromNib()
@@ -49,18 +49,31 @@ class ExpenseFormViewController: UIViewController {
         customView.categoryFieldView.editButton.addTarget(self, action: #selector(handleTapOnCategoryEditButton), for: .touchUpInside)
         customView.categoryFieldView.clearButton.addTarget(self, action: #selector(handleTapOnCategoryClearButton), for: .touchUpInside)
         
+        customView.tagFieldView.editButton.addTarget(self, action: #selector(handleTapOnTagEditButton), for: .touchUpInside)
+        
         customView.amountFieldView.textField.delegate = self
-        customView.tagFieldView.textField.delegate = self
     }
     
     func hasUnsavedChanges() -> Bool {
-        guard (inputModel.amountText?.isEmpty ?? true) == false ||
-            inputModel.selectedCategory != .none ||
-            inputModel.selectedTags.isEmpty == false
-            else {
-                return false
+        if inputModel.amountText != nil {
+            return true
         }
-        return true
+        
+        if let amountText = inputModel.amountText,
+            amountText.isEmpty == false {
+            return true
+        }
+        
+        if inputModel.selectedCategory != .none {
+            return true
+        }
+        
+        if case .set(let set) = inputModel.selectedTags,
+            set.isEmpty == false {
+            return true
+        }
+        
+        return false
     }
     
     func resetFields() {
@@ -68,13 +81,13 @@ class ExpenseFormViewController: UIViewController {
         inputModel.amountText = nil
         inputModel.selectedDate = Date()
         inputModel.selectedCategory = .none
-        inputModel.selectedTags.removeAll()
+        inputModel.selectedTags = .none
         
         // Reset the views.
         customView.amountFieldView.textField.text = nil
         customView.dateFieldView.setDate(inputModel.selectedDate)
         customView.categoryFieldView.setCategory(.none)
-        customView.tagFieldView.textField.text = nil
+        customView.tagFieldView.setTags(.none)
     }
     
     deinit {
@@ -108,6 +121,15 @@ class ExpenseFormViewController: UIViewController {
         customView.categoryFieldView.setCategory(.none)
     }
     
+    func handleTapOnTagEditButton() {
+        TagPickerViewController.present(from: self, selectedTags: inputModel.selectedTags)
+    }
+    
+    func handleTapOnTagClearButton() {
+        inputModel.selectedTags = .none
+        customView.tagFieldView.setTags(.none)
+    }
+    
 }
 
 // MARK: - CategoryPickerViewControllerDelegate
@@ -124,6 +146,17 @@ extension ExpenseFormViewController: CategoryPickerViewControllerDelegate {
     
 }
 
+// MARK: - TagPickerViewControllerDelegate
+
+extension ExpenseFormViewController: TagPickerViewControllerDelegate {
+    
+    func tagPicker(_ picker: TagPickerViewController, didSelectTags tags: TagArgument) {
+        inputModel.selectedTags = tags
+        customView.tagFieldView.setTags(tags)
+    }
+    
+}
+
 // MARK: - UITextFieldDelegate
 
 extension ExpenseFormViewController: UITextFieldDelegate {
@@ -134,7 +167,6 @@ extension ExpenseFormViewController: UITextFieldDelegate {
             return true
             
         default:
-            TagPickerViewController.present(from: self, selectedTags: nil)
             return false
         }
     }
