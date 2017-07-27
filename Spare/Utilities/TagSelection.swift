@@ -1,5 +1,5 @@
 //
-//  TagArgument.swift
+//  TagSelection.swift
 //  Spare
 //
 //  Created by Matt Quiros on 21/07/2017.
@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-enum TagArgument: Equatable {
+enum TagSelection: Equatable {
     
     enum SetMember: Hashable {
         case id(NSManagedObjectID)
@@ -24,7 +24,7 @@ enum TagArgument: Equatable {
             }
         }
         
-        static func ==(lhs: TagArgument.SetMember, rhs: TagArgument.SetMember) -> Bool {
+        static func ==(lhs: TagSelection.SetMember, rhs: TagSelection.SetMember) -> Bool {
             switch (lhs, rhs) {
             case (.id(let id1), .id(let id2)) where id1 == id2:
                 return true
@@ -37,9 +37,9 @@ enum TagArgument: Equatable {
     }
     
     case none
-    case set(Set<TagArgument.SetMember>)
+    case set(Set<TagSelection.SetMember>)
     
-    static func ==(lhs: TagArgument, rhs: TagArgument) -> Bool {
+    static func ==(lhs: TagSelection, rhs: TagSelection) -> Bool {
         switch (lhs, rhs) {
         case (.none, .none):
             return true

@@ -11,7 +11,7 @@ import CoreData
 import Mold
 
 protocol CategoryPickerViewControllerDelegate {
-    func categoryPicker(_ picker: CategoryPickerViewController, didSelectCategory category: CategoryArgument)
+    func categoryPicker(_ picker: CategoryPickerViewController, didSelectCategory category: CategorySelection)
 }
 
 private enum ViewID: String {
@@ -35,11 +35,11 @@ private enum Section: Int {
 }
 
 fileprivate weak var delegate: ExpenseFormViewController?
-fileprivate var globalSelectedCategory = CategoryArgument.none
+fileprivate var globalSelectedCategory = CategorySelection.none
 
 class CategoryPickerViewController: SlideUpPickerViewController {
     
-    class func present(from presenter: ExpenseFormViewController, selectedCategory: CategoryArgument) {
+    class func present(from presenter: ExpenseFormViewController, selectedCategory: CategorySelection) {
         globalSelectedCategory = selectedCategory
         let picker = CategoryPickerViewController(nibName: nil, bundle: nil)
         picker.delegate = presenter
@@ -84,7 +84,7 @@ fileprivate class CategoryListViewController: UITableViewController {
     }()
     
     unowned var container: CategoryPickerViewController
-    var categories = [CategoryArgument]()
+    var categories = [CategorySelection]()
     
     init(container: CategoryPickerViewController) {
         self.container = container

@@ -20,7 +20,7 @@ class TagFieldView: ClassifierFieldView {
         setTags(.none)
     }
     
-    func setTags(_ tags: TagArgument) {
+    func setTags(_ tags: TagSelection) {
         switch tags {
         case .set(let set) where set.isEmpty == false:
             let tagNames = set.flatMap {

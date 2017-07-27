@@ -1,5 +1,5 @@
 //
-//  CategoryArgument.swift
+//  CategorySelection.swift
 //  Spare
 //
 //  Created by Matt Quiros on 21/07/2017.
@@ -9,13 +9,13 @@
 import Foundation
 import CoreData
 
-enum CategoryArgument: Equatable {
+enum CategorySelection: Equatable {
     
     case id(NSManagedObjectID)
     case name(String)
     case none
     
-    static func ==(lhs: CategoryArgument, rhs: CategoryArgument) -> Bool {
+    static func ==(lhs: CategorySelection, rhs: CategorySelection) -> Bool {
         switch (lhs, rhs) {
         case (.id(let id1), .id(let id2)) where id1 == id2:
             return true

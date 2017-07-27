@@ -26,14 +26,14 @@ class AddExpenseOperation: TBOperation<Any, NSManagedObjectID, AddExpenseOperati
     let context: NSManagedObjectContext
     let amount: NSDecimalNumber
     let dateSpent: Date
-    let category: CategoryArgument
-    let tags: TagArgument
+    let category: CategorySelection
+    let tags: TagSelection
     
     init(context: NSManagedObjectContext?,
          amount: NSDecimalNumber,
          dateSpent: Date,
-         category: CategoryArgument,
-         tags: TagArgument,
+         category: CategorySelection,
+         tags: TagSelection,
          completionBlock: TBOperationCompletionBlock?) {
         
         self.context = context ?? Global.coreDataStack.newBackgroundContext()

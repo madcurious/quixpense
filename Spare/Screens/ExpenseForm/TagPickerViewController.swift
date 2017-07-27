@@ -11,16 +11,16 @@ import CoreData
 import Mold
 
 protocol TagPickerViewControllerDelegate {
-    func tagPicker(_ picker: TagPickerViewController, didSelectTags tags: TagArgument)
+    func tagPicker(_ picker: TagPickerViewController, didSelectTags tags: TagSelection)
 }
 
-fileprivate var globalSelectedTags = TagArgument.none
+fileprivate var globalSelectedTags = TagSelection.none
 
 /// Container for the entire tag picker. Internally manages a navigation controller where the
 /// first screen is the list of tags, and the second screen is for adding a new tag.
 class TagPickerViewController: SlideUpPickerViewController {
     
-    class func present(from presenter: ExpenseFormViewController, selectedTags: TagArgument) {
+    class func present(from presenter: ExpenseFormViewController, selectedTags: TagSelection) {
         globalSelectedTags = selectedTags
         let picker = TagPickerViewController(nibName: nil, bundle: nil)
         picker.delegate = presenter
@@ -95,7 +95,7 @@ fileprivate class TagListViewController: UIViewController {
     lazy var tableView = UITableView(frame: .zero, style: .grouped)
     unowned var container: TagPickerViewController
     
-    var dataSource: [TagArgument.SetMember] = []
+    var dataSource: [TagSelection.SetMember] = []
     
     init(container: TagPickerViewController) {
         self.container = container

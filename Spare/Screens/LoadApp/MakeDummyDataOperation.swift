@@ -64,7 +64,7 @@ class MakeDummyDataOperation: MDOperation<Any?> {
             for _ in 0 ..< numberOfExpenses {
                 let amount = 1 + (1000 * Double(arc4random()) / Double(UInt32.max))
                 
-                let category: CategoryArgument = {
+                let category: CategorySelection = {
                     let randomIndex = Int(arc4random_uniform(UInt32(kCategoryNames.count)))
                     if let randomCategory = kCategoryNames[randomIndex] {
                         return .name(randomCategory)
@@ -72,7 +72,7 @@ class MakeDummyDataOperation: MDOperation<Any?> {
                     return .none
                 }()
                 
-                let tags: TagArgument = {
+                let tags: TagSelection = {
                     let noTags = arc4random_uniform(2) == 1
                     if noTags {
                         return .none
@@ -81,7 +81,7 @@ class MakeDummyDataOperation: MDOperation<Any?> {
                         if numberOfTags == 0 {
                             return .none
                         }
-                        var chosenTags = Set<TagArgument.SetMember>()
+                        var chosenTags = Set<TagSelection.SetMember>()
                         while chosenTags.count != numberOfTags {
                             let randomIndex = Int(arc4random_uniform(UInt32(kTagNames.count)))
                             if chosenTags.contains(.name(kTagNames[randomIndex])) {

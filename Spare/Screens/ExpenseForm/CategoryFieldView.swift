@@ -21,7 +21,7 @@ class CategoryFieldView: ClassifierFieldView {
         setCategory(.none)
     }
     
-    func setCategory(_ category: CategoryArgument) {
+    func setCategory(_ category: CategorySelection) {
         switch category {
         case .none:
             nameLabel.text = placeholder

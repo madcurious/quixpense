@@ -14,8 +14,8 @@ class ExpenseFormViewController: UIViewController {
     struct InputModel {
         var amountText: String?
         var selectedDate = Date()
-        var selectedCategory = CategoryArgument.none
-        var selectedTags = TagArgument.none
+        var selectedCategory = CategorySelection.none
+        var selectedTags = TagSelection.none
     }
     
     let customView = ExpenseFormView.instantiateFromNib()
@@ -136,7 +136,7 @@ class ExpenseFormViewController: UIViewController {
 
 extension ExpenseFormViewController: CategoryPickerViewControllerDelegate {
     
-    func categoryPicker(_ picker: CategoryPickerViewController, didSelectCategory category: CategoryArgument) {
+    func categoryPicker(_ picker: CategoryPickerViewController, didSelectCategory category: CategorySelection) {
         // Update the model.
         inputModel.selectedCategory = category
         
@@ -150,7 +150,7 @@ extension ExpenseFormViewController: CategoryPickerViewControllerDelegate {
 
 extension ExpenseFormViewController: TagPickerViewControllerDelegate {
     
-    func tagPicker(_ picker: TagPickerViewController, didSelectTags tags: TagArgument) {
+    func tagPicker(_ picker: TagPickerViewController, didSelectTags tags: TagSelection) {
         inputModel.selectedTags = tags
         customView.tagFieldView.setTags(tags)
     }
