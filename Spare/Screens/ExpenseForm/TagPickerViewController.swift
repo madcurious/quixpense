@@ -270,9 +270,9 @@ extension TagListViewController: UITableViewDelegate {
                 case .none:
                     globalSelectedTags = .list([.name(name)])
                 case .list(var list):
-                    if list.index(of: .name(name)) == nil,
+                    if list.contains(.name(name)),
                         let insertionIndex = self.insertionIndex(for: name) {
-                        list.insert(.name(name), at: insertionIndex)
+                        self.choices.insert(.name(name), at: insertionIndex)
                     }
                 }
                 
@@ -280,7 +280,11 @@ extension TagListViewController: UITableViewDelegate {
                 if let index = self.insertionIndex(for: name) {
                     self.choices.insert(.name(name), at: index)
                     self.tableView.reloadData()
-                    self.tableView.scrollToRow(at: IndexPath(row: index, section: Section.allTags.rawValue), at: .top, animated: false)
+                    
+                    let indexPath = IndexPath(row: index, section: Section.allTags.rawValue)
+                    self.tableView.scrollToRow(at: indexPath, at: .top, animated: false)
+                    let cell = self.tableView.cellForRow(at: indexPath) as! PickerItemCell
+                    cell.showsAccessoryImage = true
                 }
                 
                 self.navigationController?.popViewController(animated: true)
