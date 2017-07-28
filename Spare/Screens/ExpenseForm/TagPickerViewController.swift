@@ -33,11 +33,11 @@ class TagPickerViewController: SlideUpPickerViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.internalNavigationController.setViewControllers([TagListViewController(container: self)], animated: false)
-        self.embedChildViewController(self.internalNavigationController, toView: self.customView.contentView, fillSuperview: true)
+        internalNavigationController.setViewControllers([TagListViewController(container: self)], animated: false)
+        embedChildViewController(internalNavigationController, toView: customView.contentView, fillSuperview: true)
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTapOnDimView))
-        self.customView.dimView.addGestureRecognizer(tapGestureRecognizer)
+        customView.dimView.addGestureRecognizer(tapGestureRecognizer)
     }
     
 }
@@ -45,18 +45,18 @@ class TagPickerViewController: SlideUpPickerViewController {
 @objc extension TagPickerViewController {
     
     func handleTapOnDimView() {
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     func handleTapOnCancelButton() {
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     func handleTapOnDoneButton() {
         if let delegate = delegate {
             delegate.tagPicker(self, didSelectTags: globalSelectedTags)
         }
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
 }
@@ -95,12 +95,12 @@ fileprivate class TagListViewController: UIViewController {
     lazy var tableView = UITableView(frame: .zero, style: .grouped)
     unowned var container: TagPickerViewController
     
-    var dataSource: [TagSelection.SetMember] = []
+    var choices: [TagSelection.SetMember] = []
     
     init(container: TagPickerViewController) {
         self.container = container
         super.init(nibName: nil, bundle: nil)
-        self.title = "Tags"
+        title = "Tags"
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -108,20 +108,20 @@ fileprivate class TagListViewController: UIViewController {
     }
     
     override func loadView() {
-        self.view = self.tableView
+        view = tableView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.leftBarButtonItem = BarButtonItems.make(.cancel, target: self.container, action: #selector(TagPickerViewController.handleTapOnCancelButton))
-        self.navigationItem.rightBarButtonItem = BarButtonItems.make(.done, target: self.container, action: #selector(TagPickerViewController.handleTapOnDoneButton))
+        navigationItem.leftBarButtonItem = BarButtonItems.make(.cancel, target: container, action: #selector(TagPickerViewController.handleTapOnCancelButton))
+        navigationItem.rightBarButtonItem = BarButtonItems.make(.done, target: container, action: #selector(TagPickerViewController.handleTapOnDoneButton))
         
-        self.tableView.dataSource = self
-        self.tableView.delegate = self
-        self.tableView.register(PickerItemCell.nib(), forCellReuseIdentifier: ViewID.itemCell.rawValue)
-        self.tableView.rowHeight = UITableViewAutomaticDimension
-        self.tableView.estimatedRowHeight = 44
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.register(PickerItemCell.nib(), forCellReuseIdentifier: ViewID.itemCell.rawValue)
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 44
         
         buildDataSource()
         tableView.reloadData()
@@ -129,13 +129,13 @@ fileprivate class TagListViewController: UIViewController {
     
     func buildDataSource() {
         do {
-            dataSource = []
+            choices = []
             
             // Fetch the tags.
             try tagFetcher.performFetch()
             if let tags = tagFetcher.fetchedObjects {
                 tags.forEach {
-                    dataSource.append(.id($0.objectID))
+                    choices.append(.id($0.objectID))
                 }
             }
             
@@ -146,7 +146,7 @@ fileprivate class TagListViewController: UIViewController {
                     switch member {
                     case .name(let enteredName):
                         if let index = insertionIndex(for: enteredName) {
-                            dataSource.insert(.name(enteredName), at: index)
+                            choices.insert(.name(enteredName), at: index)
                         }
                     default:
                         continue
@@ -160,7 +160,7 @@ fileprivate class TagListViewController: UIViewController {
     // Find the insertion index for the user-entered name in an ascending-ordered list of names.
     // The data source should have been populated with the existing tags before this function is called.
     func insertionIndex(for name: String) -> Int? {
-        let dataSourceAsStrings = dataSource.flatMap {
+        let dataSourceAsStrings = choices.flatMap {
             switch $0 {
             case .id(let objectID):
                 guard let tagName = (Global.coreDataStack.viewContext.object(with: objectID) as? Tag)?.name
@@ -191,7 +191,7 @@ extension TagListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch Section(rawValue: section)! {
         case .allTags:
-            return self.dataSource.count
+            return choices.count
         case .add:
             return 1
         }
@@ -203,7 +203,7 @@ extension TagListViewController: UITableViewDataSource {
         switch Section(rawValue: indexPath.section)! {
         case .allTags:
             // Update the cell appearance depending on whether the tag will be selected/deselected.
-            let setMember = dataSource[indexPath.row]
+            let setMember = choices[indexPath.row]
             cell.nameLabel.text = {
                 if case .id(let objectID) = setMember,
                     let tagName = (Global.coreDataStack.viewContext.object(with: objectID) as? Tag)?.name {
@@ -242,7 +242,7 @@ extension TagListViewController: UITableViewDelegate {
         
         switch Section(rawValue: indexPath.section)! {
         case .allTags:
-            let tag = dataSource[indexPath.row]
+            let tag = choices[indexPath.row]
             let cell = tableView.cellForRow(at: indexPath) as! PickerItemCell
             
             // If there is a set of selections, insert or remove the tag
@@ -256,12 +256,13 @@ extension TagListViewController: UITableViewDelegate {
                     set.insert(tag)
                     cell.showsAccessoryImage = true
                 }
+                globalSelectedTags = .set(set)
             }
                 
                 // Otherwise, initialize a set of selections with the tag in it.
             else {
-                globalSelectedTags = .set([tag])
                 cell.showsAccessoryImage = true
+                globalSelectedTags = .set([tag])
             }
             
         case .add:
@@ -279,14 +280,14 @@ extension TagListViewController: UITableViewDelegate {
                 
                 // If the index is not yet in the data source, insert it and reload the table view.
                 if let index = self.insertionIndex(for: name) {
-                    self.dataSource.insert(.name(name), at: index)
+                    self.choices.insert(.name(name), at: index)
                     self.tableView.reloadData()
                     self.tableView.scrollToRow(at: IndexPath(row: index, section: Section.allTags.rawValue), at: .top, animated: false)
                 }
                 
                 self.navigationController?.popViewController(animated: true)
             })
-            self.navigationController?.pushViewController(addScreen, animated: true)
+            navigationController?.pushViewController(addScreen, animated: true)
         }
     }
     

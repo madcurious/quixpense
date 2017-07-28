@@ -35,7 +35,7 @@ class TagFieldView: ClassifierFieldView {
                     return tagName
                 }
             }
-            nameLabel.text = tagNames.joined(separator: ",")
+            nameLabel.text = tagNames.joined(separator: ", ")
             nameLabel.textColor = Global.theme.color(for: .regularText)
             clearButton.isHidden = false
             

@@ -50,6 +50,7 @@ class ExpenseFormViewController: UIViewController {
         customView.categoryFieldView.clearButton.addTarget(self, action: #selector(handleTapOnCategoryClearButton), for: .touchUpInside)
         
         customView.tagFieldView.editButton.addTarget(self, action: #selector(handleTapOnTagEditButton), for: .touchUpInside)
+        customView.tagFieldView.clearButton.addTarget(self, action: #selector(handleTapOnTagClearButton), for: .touchUpInside)
         
         customView.amountFieldView.textField.delegate = self
     }

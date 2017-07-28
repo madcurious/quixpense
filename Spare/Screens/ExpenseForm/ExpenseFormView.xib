@@ -171,7 +171,7 @@
                                                                     <rect key="frame" x="0.0" y="45.333333333333343" width="414" height="44"/>
                                                                     <color key="backgroundColor" red="0.79474441799999995" green="0.94982767479999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="height" constant="44" id="9Po-Bt-X5g"/>
+                                                                        <constraint firstAttribute="height" constant="44" placeholder="YES" id="9Po-Bt-X5g"/>
                                                                     </constraints>
                                                                 </view>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="70s-rT-kpC">
