@@ -92,7 +92,7 @@ fileprivate class TagListViewController: UIViewController {
     lazy var tableView = UITableView(frame: .zero, style: .grouped)
     unowned var container: TagPickerViewController
     
-    var choices: [TagSelection.Member] = []
+    var selectionList: [TagSelection.Member] = []
     
     init(container: TagPickerViewController) {
         self.container = container
@@ -120,19 +120,19 @@ fileprivate class TagListViewController: UIViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 44
         
-        buildDataSource()
+        buildSelectionList()
         tableView.reloadData()
     }
     
-    func buildDataSource() {
+    func buildSelectionList() {
         do {
-            choices = []
+            selectionList = []
             
             // Fetch the tags.
             try tagFetcher.performFetch()
             if let tags = tagFetcher.fetchedObjects {
                 tags.forEach {
-                    choices.append(.id($0.objectID))
+                    selectionList.append(.id($0.objectID))
                 }
             }
             
@@ -143,7 +143,7 @@ fileprivate class TagListViewController: UIViewController {
                     switch member {
                     case .name(let enteredName):
                         if let index = insertionIndex(for: enteredName) {
-                            choices.insert(.name(enteredName), at: index)
+                            selectionList.insert(.name(enteredName), at: index)
                         }
                     default:
                         continue
@@ -154,10 +154,8 @@ fileprivate class TagListViewController: UIViewController {
         } catch { }
     }
     
-    // Find the insertion index for the user-entered name in an ascending-ordered list of names.
-    // The data source should have been populated with the existing tags before this function is called.
-    func insertionIndex(for name: String) -> Int? {
-        let dataSourceAsStrings = choices.flatMap {
+    func currentSelectionListAsStrings() -> [String] {
+        let list = selectionList.flatMap {
             switch $0 {
             case .id(let objectID):
                 guard let tagName = (Global.coreDataStack.viewContext.object(with: objectID) as? Tag)?.name
@@ -169,9 +167,14 @@ fileprivate class TagListViewController: UIViewController {
                 return tagName
             }
         }
-        
+        return list
+    }
+    
+    // Find the insertion index for the user-entered name in an ascending-ordered list of names.
+    // The data source should have been populated with the existing tags before this function is called.
+    func insertionIndex(for name: String) -> Int? {
         // May return nil if the data source already contains the string.
-        let index = dataSourceAsStrings.index(where: { name.compare($0) == .orderedAscending })
+        let index = currentSelectionListAsStrings().index(where: { name.compare($0) == .orderedAscending })
         return index
     }
     
@@ -188,7 +191,7 @@ extension TagListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch Section(rawValue: section)! {
         case .allTags:
-            return choices.count
+            return selectionList.count
         case .add:
             return 1
         }
@@ -200,7 +203,7 @@ extension TagListViewController: UITableViewDataSource {
         switch Section(rawValue: indexPath.section)! {
         case .allTags:
             // Update the cell appearance depending on whether the tag will be selected/deselected.
-            let member = choices[indexPath.row]
+            let member = selectionList[indexPath.row]
             cell.nameLabel.text = {
                 if case .id(let objectID) = member,
                     let tagName = (Global.coreDataStack.viewContext.object(with: objectID) as? Tag)?.name {
@@ -239,7 +242,7 @@ extension TagListViewController: UITableViewDelegate {
         
         switch Section(rawValue: indexPath.section)! {
         case .allTags:
-            let tag = choices[indexPath.row]
+            let tag = selectionList[indexPath.row]
             let cell = tableView.cellForRow(at: indexPath) as! PickerItemCell
             
             // If there is a set of selections, insert or remove the tag
@@ -263,34 +266,53 @@ extension TagListViewController: UITableViewDelegate {
             }
             
         case .add:
-            let addScreen = NewClassifierViewController(classifierType: .tag, successAction: {[unowned self] name in
-                // If there are no selected tags yet, initialize a set with the name in it.
-                // Otherwise, insert the name if it is not yet in the set.
-                switch globalSelectedTags {
-                case .none:
-                    globalSelectedTags = .list([.name(name)])
-                case .list(var list):
-                    if list.contains(.name(name)),
-                        let insertionIndex = self.insertionIndex(for: name) {
-                        self.choices.insert(.name(name), at: insertionIndex)
-                    }
-                }
-                
-                // If the index is not yet in the data source, insert it and reload the table view.
-                if let index = self.insertionIndex(for: name) {
-                    self.choices.insert(.name(name), at: index)
-                    self.tableView.reloadData()
-                    
-                    let indexPath = IndexPath(row: index, section: Section.allTags.rawValue)
-                    self.tableView.scrollToRow(at: indexPath, at: .top, animated: false)
-                    let cell = self.tableView.cellForRow(at: indexPath) as! PickerItemCell
-                    cell.showsAccessoryImage = true
-                }
-                
-                self.navigationController?.popViewController(animated: true)
-            })
-            navigationController?.pushViewController(addScreen, animated: true)
+            let newClassifierScreen = NewClassifierViewController(classifierType: .tag)
+            newClassifierScreen.delegate = self
+            navigationController?.pushViewController(newClassifierScreen, animated: true)
         }
+    }
+    
+}
+
+// MARK: - NewClassifierViewControllerDelegate
+
+extension TagListViewController: NewClassifierViewControllerDelegate {
+    
+    func newClassifierViewController(_ newClassifierViewController: NewClassifierViewController, didEnter classifierName: String?) {
+        guard let enteredName = classifierName?.trim(),
+            enteredName.isEmpty == false
+            else {
+                MDAlertDialog.showInPresenter(self, title: nil, message: "You must enter a tag name.", cancelButtonTitle: "Got it!")
+                return
+        }
+        
+        // Don't allow duplicate additions.
+        if currentSelectionListAsStrings().contains(enteredName) {
+            MDAlertDialog.showInPresenter(self, title: nil, message: "You already have a tag named '\(enteredName).'", cancelButtonTitle: "Got it!")
+            return
+        }
+        
+        // Update the tag selection.
+        switch globalSelectedTags {
+        case .list(var list) where list.isEmpty == false:
+            list.append(.name(enteredName))
+            globalSelectedTags = .list(list)
+        default:
+            globalSelectedTags = .list([.name(enteredName)])
+        }
+        
+        // Insert the entered name to the selection list and check the cell.
+        if let insertionIndex = insertionIndex(for: enteredName) {
+            selectionList.insert(.name(enteredName), at: insertionIndex)
+            tableView.reloadData()
+            
+            let indexPath = IndexPath(row: insertionIndex, section: Section.allTags.rawValue)
+            tableView.scrollToRow(at: indexPath, at: .top, animated: false)
+            let cell = tableView.cellForRow(at: indexPath) as! PickerItemCell
+            cell.showsAccessoryImage = true
+        }
+        
+        navigationController?.popViewController(animated: true)
     }
     
 }

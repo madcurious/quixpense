@@ -81,7 +81,7 @@ fileprivate class CategoryListViewController: UITableViewController {
     }()
     
     unowned var container: CategoryPickerViewController
-    var categories = [CategorySelection]()
+    var selectionList = [CategorySelection]()
     
     init(container: CategoryPickerViewController) {
         self.container = container
@@ -100,19 +100,19 @@ fileprivate class CategoryListViewController: UITableViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 44
         
-        buildDataSource()
+        buildSelectionList()
         tableView.reloadData()
     }
     
-    func buildDataSource() {
+    func buildSelectionList() {
         do {
-            categories = []
+            selectionList = []
             
             // Fetch the categories.
             try categoryFetcher.performFetch()
             if let objects = categoryFetcher.fetchedObjects {
                 for category in objects {
-                    categories.append(.id(category.objectID))
+                    selectionList.append(.id(category.objectID))
                 }
             }
             
@@ -135,10 +135,27 @@ fileprivate class CategoryListViewController: UITableViewController {
                     })
                     return index ?? 0
                 }()
-                categories.insert(globalSelectedCategory, at: insertionIndex)
+                selectionList.insert(globalSelectedCategory, at: insertionIndex)
             }
         }
         catch { }
+    }
+    
+    func currentSelectionListAsStrings() -> [String] {
+        let list = selectionList.flatMap {
+            switch $0 {
+            case .id(let objectID):
+                if let categoryName = (Global.coreDataStack.viewContext.object(with: objectID) as? Category)?.name {
+                    return categoryName
+                }
+                return nil
+            case .name(let name):
+                return name
+            case .none:
+                return nil
+            }
+        }
+        return list
     }
     
 }
@@ -154,7 +171,7 @@ extension CategoryListViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case Section.allCategories.rawValue:
-            return categories.count
+            return selectionList.count
         default:
             return 1
         }
@@ -165,7 +182,7 @@ extension CategoryListViewController {
         
         switch Section(indexPath.section) {
         case .allCategories:
-            let category = categories[indexPath.row]
+            let category = selectionList[indexPath.row]
             if case .id(let objectID) = category,
                 let categoryName = (Global.coreDataStack.viewContext.object(with: objectID) as? Category)?.name {
                 cell.nameLabel.text = categoryName
@@ -196,14 +213,14 @@ extension CategoryListViewController {
         switch Section(indexPath.section) {
         case .allCategories:
             if globalSelectedCategory != .none,
-                let oldIndex = categories.index(of: globalSelectedCategory),
+                let oldIndex = selectionList.index(of: globalSelectedCategory),
                 
                 // cellForRow returns nil if the cell is not visible.
                 let oldCell = tableView.cellForRow(at: IndexPath(row: oldIndex, section: Section.allCategories.rawValue)) as? PickerItemCell {
                 oldCell.showsAccessoryImage = false
             }
             
-            globalSelectedCategory = categories[indexPath.row]
+            globalSelectedCategory = selectionList[indexPath.row]
             let newSelectionCell = tableView.cellForRow(at: indexPath) as! PickerItemCell
             newSelectionCell.showsAccessoryImage = true
             
@@ -213,15 +230,35 @@ extension CategoryListViewController {
             dismiss(animated: true, completion: nil)
             
         case .add:
-            let newScreen = NewClassifierViewController(classifierType: .category, successAction: {[unowned self] name in
-                globalSelectedCategory = .name(name)
-                if let delegate = self.container.delegate {
-                    delegate.categoryPicker(self.container, didSelectCategory: globalSelectedCategory)
-                }
-                self.dismiss(animated: true, completion: nil)
-            })
-            navigationController?.pushViewController(newScreen, animated: true)
+            let newClassifierScreen = NewClassifierViewController(classifierType: .category)
+            newClassifierScreen.delegate = self
+            navigationController?.pushViewController(newClassifierScreen, animated: true)
         }
+    }
+    
+}
+
+extension CategoryListViewController: NewClassifierViewControllerDelegate {
+    
+    func newClassifierViewController(_ newClassifierViewController: NewClassifierViewController, didEnter classifierName: String?) {
+        guard let categoryName = classifierName?.trim(),
+            categoryName.isEmpty == false
+            else {
+                MDAlertDialog.showInPresenter(self, title: nil, message: "You must enter a category name.", cancelButtonTitle: "Got it!")
+                return
+        }
+        
+        // Do not allow categories with duplicate names.
+        if currentSelectionListAsStrings().contains(categoryName) {
+            MDAlertDialog.showInPresenter(self, title: nil, message: "You already have a category named '\(categoryName).'", cancelButtonTitle: "Got it!")
+            return
+        }
+        
+        // If successful, inform the delegate and dismiss.
+        if let delegate = delegate {
+            delegate.categoryPicker(self.container, didSelectCategory: .name(categoryName))
+        }
+        self.dismiss(animated: true, completion: nil)
     }
     
 }

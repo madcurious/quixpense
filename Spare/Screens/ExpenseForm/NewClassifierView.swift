@@ -18,13 +18,14 @@ class NewClassifierView: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.applyTheme()
+        applyTheme()
         
-        self.headerLabel.text = "NAME"
-        self.textField.autocapitalizationType = .sentences
+        headerLabel.text = "NAME"
+        textField.autocapitalizationType = .sentences
+        textField.clearButtonMode = .whileEditing
         
-        self.footerLabel.numberOfLines = 0
-        self.footerLabel.lineBreakMode = .byWordWrapping
+        footerLabel.numberOfLines = 0
+        footerLabel.lineBreakMode = .byWordWrapping
     }
     
 }
@@ -32,21 +33,21 @@ class NewClassifierView: UIView {
 extension NewClassifierView: Themeable {
     
     func applyTheme() {
-        self.clearAllBackgroundColors()
+        clearAllBackgroundColors()
         
-        self.backgroundColor = .groupTableViewBackground
-        self.textFieldContainer.backgroundColor = Global.theme.color(for: .mainBackground)
-        for separatorView in self.separatorViews {
+        backgroundColor = .groupTableViewBackground
+        textFieldContainer.backgroundColor = Global.theme.color(for: .mainBackground)
+        for separatorView in separatorViews {
             separatorView.backgroundColor = Global.theme.color(for: .tableViewSeparator)
         }
         
-        self.headerLabel.font = Global.theme.font(for: .groupedTableViewSectionHeader)
-        self.headerLabel.textColor = Global.theme.color(for: .groupedTableViewSectionHeader)
+        headerLabel.font = Global.theme.font(for: .groupedTableViewSectionHeader)
+        headerLabel.textColor = Global.theme.color(for: .groupedTableViewSectionHeader)
         
-        self.textField.font = Global.theme.font(for: .regularText)
+        textField.font = Global.theme.font(for: .regularText)
         
-        self.footerLabel.font = Global.theme.font(for: .groupedTableViewSectionHeader)
-        self.footerLabel.textColor = Global.theme.color(for: .groupedTableViewSectionFooter)
+        footerLabel.font = Global.theme.font(for: .groupedTableViewSectionHeader)
+        footerLabel.textColor = Global.theme.color(for: .groupedTableViewSectionFooter)
     }
     
 }

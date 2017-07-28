@@ -9,16 +9,19 @@
 import UIKit
 import Mold
 
+protocol NewClassifierViewControllerDelegate {
+    func newClassifierViewController(_ newClassifierViewController: NewClassifierViewController, didEnter classifierName: String?)
+}
+
 class NewClassifierViewController: UIViewController {
     
     let classifierType: ClassifierType
-    let successAction: (String) -> ()
+    var delegate: NewClassifierViewControllerDelegate?
     
     lazy var customView = NewClassifierView.instantiateFromNib()
     
-    init(classifierType: ClassifierType, successAction: @escaping (String) -> ()) {
+    init(classifierType: ClassifierType) {
         self.classifierType = classifierType
-        self.successAction = successAction
         super.init(nibName: nil, bundle: nil)
         
         switch classifierType {
@@ -65,16 +68,8 @@ class NewClassifierViewController: UIViewController {
     }
     
     func handleTapOnDoneButton() {
-        guard let text = self.customView.textField.text?.trim()
-            else {
-                return
-        }
-        
-        if text.isEmpty == true {
-            MDAlertDialog.showInPresenter(self, title: nil, message: "You must enter a \(self.classifierType.description) name.", cancelButtonTitle: "Got it!")
-        } else {
-            self.successAction(text)
-            self.navigationController?.popViewController(animated: true)
+        if let delegate = delegate {
+            delegate.newClassifierViewController(self, didEnter: customView.textField.text)
         }
     }
     
