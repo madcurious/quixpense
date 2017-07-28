@@ -11,7 +11,7 @@ import CoreData
 
 enum TagSelection: Equatable {
     
-    enum SetMember: Hashable {
+    enum Member: Hashable {
         case id(NSManagedObjectID)
         case name(String)
         
@@ -24,7 +24,7 @@ enum TagSelection: Equatable {
             }
         }
         
-        static func ==(lhs: TagSelection.SetMember, rhs: TagSelection.SetMember) -> Bool {
+        static func ==(lhs: TagSelection.Member, rhs: TagSelection.Member) -> Bool {
             switch (lhs, rhs) {
             case (.id(let id1), .id(let id2)) where id1 == id2:
                 return true
@@ -37,13 +37,13 @@ enum TagSelection: Equatable {
     }
     
     case none
-    case set(Set<TagSelection.SetMember>)
+    case list([TagSelection.Member])
     
     static func ==(lhs: TagSelection, rhs: TagSelection) -> Bool {
         switch (lhs, rhs) {
         case (.none, .none):
             return true
-        case (.set(let set1), .set(let set2)) where set1 == set2:
+        case (.list(let list1), .list(let list2)) where list1 == list2:
             return true
         default:
             return false

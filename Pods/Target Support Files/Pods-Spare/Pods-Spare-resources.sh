@@ -1,5 +1,5 @@
 #!/bin/sh
-set -e
+TagSelectionList -e
 
 mkdir -p "${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
 

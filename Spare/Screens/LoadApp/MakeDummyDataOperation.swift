@@ -81,16 +81,16 @@ class MakeDummyDataOperation: MDOperation<Any?> {
                         if numberOfTags == 0 {
                             return .none
                         }
-                        var chosenTags = Set<TagSelection.SetMember>()
+                        var chosenTags: [TagSelection.Member] = []
                         while chosenTags.count != numberOfTags {
                             let randomIndex = Int(arc4random_uniform(UInt32(kTagNames.count)))
                             if chosenTags.contains(.name(kTagNames[randomIndex])) {
                                 continue
                             } else {
-                                chosenTags.insert(.name(kTagNames[randomIndex]))
+                                chosenTags.append(.name(kTagNames[randomIndex]))
                             }
                         }
-                        return .set(chosenTags)
+                        return .list(chosenTags)
                     }
                 }()
                 

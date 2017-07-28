@@ -90,8 +90,8 @@ class AddExpenseOperation: TBOperation<Any, NSManagedObjectID, AddExpenseOperati
             switch tags {
                 
                 // Add the members of the tag selection.
-            case .set(let set) where set.isEmpty == false:
-                for member in set {
+            case .list(let list) where list.isEmpty == false:
+                for member in list {
                     switch member {
                     case .id(let objectID):
                         if let existingTag = self.context.object(with: objectID) as? Tag {

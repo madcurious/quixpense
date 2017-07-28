@@ -22,8 +22,8 @@ class TagFieldView: ClassifierFieldView {
     
     func setTags(_ tags: TagSelection) {
         switch tags {
-        case .set(let set) where set.isEmpty == false:
-            let tagNames = set.flatMap {
+        case .list(let list) where list.isEmpty == false:
+            let tagNames = list.flatMap {
                 switch $0 {
                 case .id(let objectID):
                     if let tag = Global.coreDataStack.viewContext.object(with: objectID) as? Tag,

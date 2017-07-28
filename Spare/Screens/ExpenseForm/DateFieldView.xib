@@ -17,7 +17,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QGo-6n-c6K">
-                    <rect key="frame" x="0.0" y="0.0" width="365" height="44"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Fb-PO-ofD">
                             <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
@@ -39,10 +39,10 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gEP-V4-GeD" customClass="MDButton" customModule="Mold">
-                            <rect key="frame" x="44" y="0.0" width="279" height="44"/>
+                            <rect key="frame" x="44" y="0.0" width="289" height="44"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dYx-jI-sct">
-                                    <rect key="frame" x="0.0" y="12" width="279" height="20"/>
+                                    <rect key="frame" x="0.0" y="12" width="289" height="20"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -58,7 +58,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ziV-C9-kkh">
-                            <rect key="frame" x="323" y="0.0" width="42" height="44"/>
+                            <rect key="frame" x="333" y="0.0" width="42" height="44"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ixj-av-xV2" customClass="MDButton" customModule="Mold">
                                     <rect key="frame" x="10" y="11" width="22" height="22"/>
@@ -90,7 +90,7 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="QGo-6n-c6K" secondAttribute="trailing" constant="10" id="ACV-dK-e2Q"/>
+                <constraint firstAttribute="trailing" secondItem="QGo-6n-c6K" secondAttribute="trailing" id="ACV-dK-e2Q"/>
                 <constraint firstAttribute="bottom" secondItem="QGo-6n-c6K" secondAttribute="bottom" id="NcI-4x-Of2"/>
                 <constraint firstItem="QGo-6n-c6K" firstAttribute="leading" secondItem="yrd-vX-gn6" secondAttribute="leading" id="Zwk-UX-YsL"/>
                 <constraint firstItem="QGo-6n-c6K" firstAttribute="top" secondItem="yrd-vX-gn6" secondAttribute="top" id="usz-gf-PbE"/>

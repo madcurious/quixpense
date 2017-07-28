@@ -72,8 +72,8 @@ class ExpenseFormViewController: UIViewController {
             return true
         }
         
-        if case .set(let set) = inputModel.selectedTags,
-            set.isEmpty == false {
+        if case .list(let list) = inputModel.selectedTags,
+            list.isEmpty == false {
             return true
         }
         

@@ -92,7 +92,7 @@ fileprivate class TagListViewController: UIViewController {
     lazy var tableView = UITableView(frame: .zero, style: .grouped)
     unowned var container: TagPickerViewController
     
-    var choices: [TagSelection.SetMember] = []
+    var choices: [TagSelection.Member] = []
     
     init(container: TagPickerViewController) {
         self.container = container
@@ -138,8 +138,8 @@ fileprivate class TagListViewController: UIViewController {
             
             // If there are initially selected user-entered names, add them to the data source as well.
             switch globalSelectedTags {
-            case .set(let set) where set.isEmpty == false:
-                for member in set {
+            case .list(let list) where list.isEmpty == false:
+                for member in list {
                     switch member {
                     case .name(let enteredName):
                         if let index = insertionIndex(for: enteredName) {
@@ -200,20 +200,20 @@ extension TagListViewController: UITableViewDataSource {
         switch Section(rawValue: indexPath.section)! {
         case .allTags:
             // Update the cell appearance depending on whether the tag will be selected/deselected.
-            let setMember = choices[indexPath.row]
+            let member = choices[indexPath.row]
             cell.nameLabel.text = {
-                if case .id(let objectID) = setMember,
+                if case .id(let objectID) = member,
                     let tagName = (Global.coreDataStack.viewContext.object(with: objectID) as? Tag)?.name {
                     return tagName
-                } else if case .name(let tagName) = setMember {
+                } else if case .name(let tagName) = member {
                     return tagName
                 }
                 return nil
             }()
             cell.accessoryImageType = .check
             cell.showsAccessoryImage = {
-                if case .set(let set) = globalSelectedTags,
-                    set.contains(setMember) {
+                if case .list(let list) = globalSelectedTags,
+                    list.contains(member) {
                     return true
                 }
                 return false
@@ -244,22 +244,22 @@ extension TagListViewController: UITableViewDelegate {
             
             // If there is a set of selections, insert or remove the tag
             // depending on whether it is already contained or not.
-            if case .set(var set) = globalSelectedTags,
-                set.isEmpty == false {
-                if set.contains(tag) {
-                    set.remove(tag)
+            if case .list(var list) = globalSelectedTags,
+                list.isEmpty == false {
+                if let index = list.index(of: tag) {
+                    list.remove(at: index)
                     cell.showsAccessoryImage = false
                 } else {
-                    set.insert(tag)
+                    list.append(tag)
                     cell.showsAccessoryImage = true
                 }
-                globalSelectedTags = .set(set)
+                globalSelectedTags = .list(list)
             }
                 
                 // Otherwise, initialize a set of selections with the tag in it.
             else {
                 cell.showsAccessoryImage = true
-                globalSelectedTags = .set([tag])
+                globalSelectedTags = .list([tag])
             }
             
         case .add:
@@ -268,10 +268,11 @@ extension TagListViewController: UITableViewDelegate {
                 // Otherwise, insert the name if it is not yet in the set.
                 switch globalSelectedTags {
                 case .none:
-                    globalSelectedTags = .set([.name(name)])
-                case .set(var set):
-                    if set.contains(.name(name)) == false {
-                        set.insert(.name(name))
+                    globalSelectedTags = .list([.name(name)])
+                case .list(var list):
+                    if list.index(of: .name(name)) == nil,
+                        let insertionIndex = self.insertionIndex(for: name) {
+                        list.insert(.name(name), at: insertionIndex)
                     }
                 }
                 
