@@ -46,6 +46,9 @@ class ExpenseFormViewController: UIViewController {
         tapGestureRecognizer.cancelsTouchesInView = false
         customView.addGestureRecognizer(tapGestureRecognizer)
         
+        customView.dateFieldView.editButton.addTarget(self, action: #selector(handleTapOnDateEditButton), for: .touchUpInside)
+        customView.dateFieldView.refreshButton.addTarget(self, action: #selector(handleTapOnDateRefreshButton), for: .touchUpInside)
+        
         customView.categoryFieldView.editButton.addTarget(self, action: #selector(handleTapOnCategoryEditButton), for: .touchUpInside)
         customView.categoryFieldView.clearButton.addTarget(self, action: #selector(handleTapOnCategoryClearButton), for: .touchUpInside)
         
@@ -113,6 +116,16 @@ class ExpenseFormViewController: UIViewController {
         
     }
     
+    func handleTapOnDateEditButton() {
+        DatePickerViewController.present(from: self, selectedDate: inputModel.selectedDate)
+    }
+    
+    func handleTapOnDateRefreshButton() {
+        let currentDate = Date()
+        inputModel.selectedDate = currentDate
+        customView.dateFieldView.setDate(currentDate)
+    }
+    
     func handleTapOnCategoryEditButton() {
         CategoryPickerViewController.present(from: self, selectedCategory: inputModel.selectedCategory)
     }
@@ -129,6 +142,17 @@ class ExpenseFormViewController: UIViewController {
     func handleTapOnTagClearButton() {
         inputModel.selectedTags = .none
         customView.tagFieldView.setTags(.none)
+    }
+    
+}
+
+// MARK: - DatePickerViewControllerDelegate
+
+extension ExpenseFormViewController: DatePickerViewControllerDelegate {
+    
+    func datePicker(_ datePicker: DatePickerViewController, didSelectDate date: Date) {
+        inputModel.selectedDate = date
+        customView.dateFieldView.setDate(date)
     }
     
 }

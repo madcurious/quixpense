@@ -72,9 +72,9 @@
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="E1B-po-mvT" secondAttribute="bottom" constant="11.5" id="1wH-Qz-vEx"/>
+                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="E1B-po-mvT" secondAttribute="bottom" priority="900" constant="11.5" id="1wH-Qz-vEx"/>
                                         <constraint firstAttribute="trailing" secondItem="E1B-po-mvT" secondAttribute="trailing" id="fMA-AZ-v59"/>
-                                        <constraint firstItem="E1B-po-mvT" firstAttribute="top" secondItem="HLa-Rw-oQU" secondAttribute="top" constant="12" id="fRc-Xx-JQI"/>
+                                        <constraint firstItem="E1B-po-mvT" firstAttribute="top" relation="greaterThanOrEqual" secondItem="HLa-Rw-oQU" secondAttribute="top" priority="900" constant="12" id="fRc-Xx-JQI"/>
                                         <constraint firstItem="E1B-po-mvT" firstAttribute="leading" secondItem="HLa-Rw-oQU" secondAttribute="leading" id="vX2-6E-kN6"/>
                                     </constraints>
                                 </view>
@@ -82,7 +82,7 @@
                             <color key="backgroundColor" red="0.85098040100000005" green="0.94901961089999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstItem="HLa-Rw-oQU" firstAttribute="top" secondItem="7OQ-tp-P3a" secondAttribute="top" id="3L2-SH-C0j"/>
-                                <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="900" constant="44" id="JWv-KV-MPy"/>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="JWv-KV-MPy"/>
                                 <constraint firstAttribute="trailing" secondItem="HLa-Rw-oQU" secondAttribute="trailing" id="WW0-DL-aNC"/>
                                 <constraint firstItem="HLa-Rw-oQU" firstAttribute="leading" secondItem="7OQ-tp-P3a" secondAttribute="leading" id="gI0-rX-pfo"/>
                                 <constraint firstAttribute="bottom" secondItem="HLa-Rw-oQU" secondAttribute="bottom" id="wWl-sP-RZr"/>

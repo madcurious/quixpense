@@ -38,12 +38,53 @@
                                 <constraint firstItem="qFU-17-c56" firstAttribute="centerX" secondItem="9Fb-PO-ofD" secondAttribute="centerX" id="rcB-tU-szG"/>
                             </constraints>
                         </view>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="m9b-9J-VHn" customClass="DateFieldViewTextField" customModule="Spare" customModuleProvider="target">
-                            <rect key="frame" x="44" y="0.0" width="321" height="44"/>
-                            <nil key="textColor"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
-                        </textField>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gEP-V4-GeD" customClass="MDButton" customModule="Mold">
+                            <rect key="frame" x="44" y="0.0" width="279" height="44"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dYx-jI-sct">
+                                    <rect key="frame" x="0.0" y="12" width="279" height="20"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="dYx-jI-sct" secondAttribute="trailing" id="Vsy-ar-U15"/>
+                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="dYx-jI-sct" secondAttribute="bottom" priority="900" constant="11.5" id="aTw-eY-itg"/>
+                                <constraint firstItem="dYx-jI-sct" firstAttribute="leading" secondItem="gEP-V4-GeD" secondAttribute="leading" id="b3m-EJ-93i"/>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="eGf-Dl-evY"/>
+                                <constraint firstItem="dYx-jI-sct" firstAttribute="top" relation="greaterThanOrEqual" secondItem="gEP-V4-GeD" secondAttribute="top" priority="900" constant="12" id="fFa-jw-Yfs"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ziV-C9-kkh">
+                            <rect key="frame" x="323" y="0.0" width="42" height="44"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ixj-av-xV2" customClass="MDButton" customModule="Mold">
+                                    <rect key="frame" x="10" y="11" width="22" height="22"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ulx-lL-KP4">
+                                            <rect key="frame" x="0.0" y="0.0" width="22" height="22"/>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="Ulx-lL-KP4" secondAttribute="bottom" id="Nyv-bK-1Da"/>
+                                        <constraint firstItem="Ulx-lL-KP4" firstAttribute="top" secondItem="Ixj-av-xV2" secondAttribute="top" id="YVj-gn-R9Q"/>
+                                        <constraint firstAttribute="height" constant="22" id="g1j-BE-VuT"/>
+                                        <constraint firstAttribute="trailing" secondItem="Ulx-lL-KP4" secondAttribute="trailing" id="gab-j0-3dD"/>
+                                        <constraint firstAttribute="width" secondItem="Ixj-av-xV2" secondAttribute="height" id="i6B-YD-u5R"/>
+                                        <constraint firstItem="Ulx-lL-KP4" firstAttribute="leading" secondItem="Ixj-av-xV2" secondAttribute="leading" id="kcg-Ms-e9w"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="Ixj-av-xV2" firstAttribute="centerY" secondItem="ziV-C9-kkh" secondAttribute="centerY" id="E7b-Q1-qGa"/>
+                                <constraint firstItem="Ixj-av-xV2" firstAttribute="leading" secondItem="ziV-C9-kkh" secondAttribute="leading" constant="10" id="Fyg-jF-sKG"/>
+                                <constraint firstAttribute="trailing" secondItem="Ixj-av-xV2" secondAttribute="trailing" constant="10" id="WnX-N3-WwV"/>
+                            </constraints>
+                        </view>
                     </subviews>
                 </stackView>
             </subviews>
@@ -56,8 +97,11 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="imageView" destination="qFU-17-c56" id="Hc5-VY-G2H"/>
-                <outlet property="textField" destination="m9b-9J-VHn" id="9Po-af-D95"/>
+                <outlet property="editButton" destination="gEP-V4-GeD" id="qID-Wn-Fum"/>
+                <outlet property="editButtonLabel" destination="dYx-jI-sct" id="560-i0-3uA"/>
+                <outlet property="iconImageView" destination="qFU-17-c56" id="r4y-yb-uXe"/>
+                <outlet property="refreshButton" destination="Ixj-av-xV2" id="Fd6-q9-0S0"/>
+                <outlet property="refreshButtonImageView" destination="Ulx-lL-KP4" id="H55-B0-S93"/>
             </connections>
             <point key="canvasLocation" x="-192.5" y="-52"/>
         </view>

@@ -16,6 +16,34 @@ class SlideUpPickerViewController: UIViewController {
     
     lazy var customView = SlideUpPickerView.instantiateFromNib()
     
+    override func loadView() {
+        self.customView.contentViewHeight.constant = kContentViewHeightWithoutKeyboard
+        self.view = self.customView
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(handleKeyboardWillShow(_:)), name: Notification.Name.UIKeyboardWillShow, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(handleKeyboardWillHide(_:)), name: Notification.Name.UIKeyboardWillHide, object: nil)
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTapOnDimView))
+        customView.dimView.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+}
+
+@objc extension SlideUpPickerViewController {
+    
+    func handleTapOnDimView() {
+        
+    }
+    
     @objc func handleKeyboardWillHide(_ notification: Notification) {
         guard let userInfo = notification.userInfo,
             let animationDuration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSValue as? TimeInterval
@@ -47,23 +75,6 @@ class SlideUpPickerViewController: UIViewController {
                         self.view.setNeedsLayout()
                         self.view.layoutIfNeeded()
         })
-    }
-    
-    override func loadView() {
-        self.customView.contentViewHeight.constant = kContentViewHeightWithoutKeyboard
-        self.view = self.customView
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(handleKeyboardWillShow(_:)), name: Notification.Name.UIKeyboardWillShow, object: nil)
-        notificationCenter.addObserver(self, selector: #selector(handleKeyboardWillHide(_:)), name: Notification.Name.UIKeyboardWillHide, object: nil)
-    }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self)
     }
     
 }

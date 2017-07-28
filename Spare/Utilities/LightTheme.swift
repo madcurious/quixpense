@@ -13,6 +13,7 @@ struct LightTheme: Theme {
     func color(for element: ColoredElement) -> UIColor {
         switch element {
         case .barTint,
+             .cellAccessoryRefresh,
              .controlTint,
              .regularText:
             return UIColor.black

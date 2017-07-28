@@ -53,19 +53,16 @@ class CategoryPickerViewController: SlideUpPickerViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.internalNavigationController.setViewControllers([CategoryListViewController(container: self)], animated: false)
-        self.embedChildViewController(self.internalNavigationController, toView: self.customView.contentView, fillSuperview: true)
-        
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTapOnDimView))
-        self.customView.dimView.addGestureRecognizer(tapGestureRecognizer)
+        internalNavigationController.setViewControllers([CategoryListViewController(container: self)], animated: false)
+        embedChildViewController(internalNavigationController, toView: customView.contentView, fillSuperview: true)
     }
     
 }
 
 @objc extension CategoryPickerViewController {
     
-    func handleTapOnDimView() {
-        self.dismiss(animated: true, completion: nil)
+    override func handleTapOnDimView() {
+        dismiss(animated: true, completion: nil)
     }
     
 }
@@ -89,7 +86,7 @@ fileprivate class CategoryListViewController: UITableViewController {
     init(container: CategoryPickerViewController) {
         self.container = container
         super.init(style: .grouped)
-        self.title = "Categories"
+        title = "Categories"
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -99,23 +96,23 @@ fileprivate class CategoryListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tableView.register(PickerItemCell.nib(), forCellReuseIdentifier: ViewID.itemCell.rawValue)
-        self.tableView.rowHeight = UITableViewAutomaticDimension
-        self.tableView.estimatedRowHeight = 44
+        tableView.register(PickerItemCell.nib(), forCellReuseIdentifier: ViewID.itemCell.rawValue)
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 44
         
-        self.buildDataSource()
-        self.tableView.reloadData()
+        buildDataSource()
+        tableView.reloadData()
     }
     
     func buildDataSource() {
         do {
-            self.categories = []
+            categories = []
             
             // Fetch the categories.
-            try self.categoryFetcher.performFetch()
-            if let categories = self.categoryFetcher.fetchedObjects {
-                for category in categories {
-                    self.categories.append(.id(category.objectID))
+            try categoryFetcher.performFetch()
+            if let objects = categoryFetcher.fetchedObjects {
+                for category in objects {
+                    categories.append(.id(category.objectID))
                 }
             }
             
@@ -124,7 +121,7 @@ fileprivate class CategoryListViewController: UITableViewController {
             if case .name(let enteredName) = globalSelectedCategory {
                 // Find the insertion index for the user-entered name in an ascending-ordered list of names.
                 let insertionIndex: Int = {
-                    guard let categories = self.categoryFetcher.fetchedObjects
+                    guard let categories = categoryFetcher.fetchedObjects
                         else {
                             return 0
                     }
@@ -138,7 +135,7 @@ fileprivate class CategoryListViewController: UITableViewController {
                     })
                     return index ?? 0
                 }()
-                self.categories.insert(globalSelectedCategory, at: insertionIndex)
+                categories.insert(globalSelectedCategory, at: insertionIndex)
             }
         }
         catch { }
@@ -157,7 +154,7 @@ extension CategoryListViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case Section.allCategories.rawValue:
-            return self.categories.count
+            return categories.count
         default:
             return 1
         }
@@ -168,7 +165,7 @@ extension CategoryListViewController {
         
         switch Section(indexPath.section) {
         case .allCategories:
-            let category = self.categories[indexPath.row]
+            let category = categories[indexPath.row]
             if case .id(let objectID) = category,
                 let categoryName = (Global.coreDataStack.viewContext.object(with: objectID) as? Category)?.name {
                 cell.nameLabel.text = categoryName
@@ -199,21 +196,21 @@ extension CategoryListViewController {
         switch Section(indexPath.section) {
         case .allCategories:
             if globalSelectedCategory != .none,
-                let oldIndex = self.categories.index(of: globalSelectedCategory),
+                let oldIndex = categories.index(of: globalSelectedCategory),
                 
                 // cellForRow returns nil if the cell is not visible.
-                let oldCell = self.tableView.cellForRow(at: IndexPath(row: oldIndex, section: Section.allCategories.rawValue)) as? PickerItemCell {
+                let oldCell = tableView.cellForRow(at: IndexPath(row: oldIndex, section: Section.allCategories.rawValue)) as? PickerItemCell {
                 oldCell.showsAccessoryImage = false
             }
             
-            globalSelectedCategory = self.categories[indexPath.row]
-            let newSelectionCell = self.tableView.cellForRow(at: indexPath) as! PickerItemCell
+            globalSelectedCategory = categories[indexPath.row]
+            let newSelectionCell = tableView.cellForRow(at: indexPath) as! PickerItemCell
             newSelectionCell.showsAccessoryImage = true
             
-            if let delegate = self.container.delegate {
-                delegate.categoryPicker(self.container, didSelectCategory: globalSelectedCategory)
+            if let delegate = container.delegate {
+                delegate.categoryPicker(container, didSelectCategory: globalSelectedCategory)
             }
-            self.dismiss(animated: true, completion: nil)
+            dismiss(animated: true, completion: nil)
             
         case .add:
             let newScreen = NewClassifierViewController(classifierType: .category, successAction: {[unowned self] name in
@@ -223,7 +220,7 @@ extension CategoryListViewController {
                 }
                 self.dismiss(animated: true, completion: nil)
             })
-            self.navigationController?.pushViewController(newScreen, animated: true)
+            navigationController?.pushViewController(newScreen, animated: true)
         }
     }
     

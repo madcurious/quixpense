@@ -35,16 +35,13 @@ class TagPickerViewController: SlideUpPickerViewController {
         
         internalNavigationController.setViewControllers([TagListViewController(container: self)], animated: false)
         embedChildViewController(internalNavigationController, toView: customView.contentView, fillSuperview: true)
-        
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTapOnDimView))
-        customView.dimView.addGestureRecognizer(tapGestureRecognizer)
     }
     
 }
 
 @objc extension TagPickerViewController {
     
-    func handleTapOnDimView() {
+    override func handleTapOnDimView() {
         dismiss(animated: true, completion: nil)
     }
     

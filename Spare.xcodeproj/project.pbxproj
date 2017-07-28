@@ -69,6 +69,7 @@
 		26A30C921E5235950047307D /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A30C911E5235950047307D /* SettingsVC.swift */; };
 		26B38A701F1F4EE000592ABB /* ValidateExpenseOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B38A6F1F1F4EE000592ABB /* ValidateExpenseOperation.swift */; };
 		26B38F111E89068500177CFE /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B38F101E89068500177CFE /* UserDefaultsKey.swift */; };
+		26BD228D1F2B2AC0007ADAB5 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BD228C1F2B2AC0007ADAB5 /* DatePickerViewController.swift */; };
 		26C5721A1F1C9061005F63ED /* DateFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C572191F1C9061005F63ED /* DateFieldView.swift */; };
 		26C5721C1F1C90BC005F63ED /* DateFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26C5721B1F1C90BC005F63ED /* DateFieldView.xib */; };
 		26CA5AF11F20ADD000B204C7 /* AddExpenseOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CA5AF01F20ADD000B204C7 /* AddExpenseOperation.swift */; };
@@ -95,8 +96,6 @@
 		26F6169D1EFCF604005519E6 /* AmountFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26F6169C1EFCF604005519E6 /* AmountFieldView.xib */; };
 		26F6EF691F28B34A00BD5B19 /* ClassifierFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F6EF681F28B34A00BD5B19 /* ClassifierFieldView.swift */; };
 		26F78C901F0A388000CF0389 /* CategoryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F78C8F1F0A388000CF0389 /* CategoryPickerViewController.swift */; };
-		26F78C921F0A38CF00CF0389 /* CategoryPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26F78C911F0A38CF00CF0389 /* CategoryPickerView.xib */; };
-		26F78C941F0A38D900CF0389 /* CategoryPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F78C931F0A38D900CF0389 /* CategoryPickerView.swift */; };
 		26F78C961F0A49CE00CF0389 /* PickerItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F78C951F0A49CE00CF0389 /* PickerItemCell.swift */; };
 		26F78C981F0A49E100CF0389 /* PickerItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26F78C971F0A49E100CF0389 /* PickerItemCell.xib */; };
 		616B52302A44459579721AC9 /* Pods_Spare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B392D50401377663DE37E8A8 /* Pods_Spare.framework */; };
@@ -211,6 +210,7 @@
 		26A30C911E5235950047307D /* SettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		26B38A6F1F1F4EE000592ABB /* ValidateExpenseOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateExpenseOperation.swift; sourceTree = "<group>"; };
 		26B38F101E89068500177CFE /* UserDefaultsKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
+		26BD228C1F2B2AC0007ADAB5 /* DatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
 		26C572191F1C9061005F63ED /* DateFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFieldView.swift; sourceTree = "<group>"; };
 		26C5721B1F1C90BC005F63ED /* DateFieldView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DateFieldView.xib; sourceTree = "<group>"; };
 		26CA5AF01F20ADD000B204C7 /* AddExpenseOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseOperation.swift; sourceTree = "<group>"; };
@@ -239,8 +239,6 @@
 		26F6169C1EFCF604005519E6 /* AmountFieldView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AmountFieldView.xib; sourceTree = "<group>"; };
 		26F6EF681F28B34A00BD5B19 /* ClassifierFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassifierFieldView.swift; sourceTree = "<group>"; };
 		26F78C8F1F0A388000CF0389 /* CategoryPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPickerViewController.swift; sourceTree = "<group>"; };
-		26F78C911F0A38CF00CF0389 /* CategoryPickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryPickerView.xib; sourceTree = "<group>"; };
-		26F78C931F0A38D900CF0389 /* CategoryPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPickerView.swift; sourceTree = "<group>"; };
 		26F78C951F0A49CE00CF0389 /* PickerItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerItemCell.swift; sourceTree = "<group>"; };
 		26F78C971F0A49E100CF0389 /* PickerItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PickerItemCell.xib; sourceTree = "<group>"; };
 		59C2B0311ED5D0556A5A2FEF /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -426,8 +424,6 @@
 				2657DEBB1F14C2A4003DA778 /* SlideUpPickerView.swift */,
 				2657DEBD1F14C2B9003DA778 /* SlideUpPickerView.xib */,
 				26F78C8F1F0A388000CF0389 /* CategoryPickerViewController.swift */,
-				26F78C911F0A38CF00CF0389 /* CategoryPickerView.xib */,
-				26F78C931F0A38D900CF0389 /* CategoryPickerView.swift */,
 				26F78C951F0A49CE00CF0389 /* PickerItemCell.swift */,
 				26F78C971F0A49E100CF0389 /* PickerItemCell.xib */,
 				26E98BF31F0CD7B900A5C3D5 /* TagPickerViewController.swift */,
@@ -439,6 +435,7 @@
 				26B38A6F1F1F4EE000592ABB /* ValidateExpenseOperation.swift */,
 				26F6EF681F28B34A00BD5B19 /* ClassifierFieldView.swift */,
 				261BB0201EFE6E55006E0DC3 /* ClassifierFieldView.xib */,
+				26BD228C1F2B2AC0007ADAB5 /* DatePickerViewController.swift */,
 			);
 			path = ExpenseForm;
 			sourceTree = "<group>";
@@ -665,7 +662,6 @@
 				2669468A1CC7711000A68424 /* Images.xcassets in Resources */,
 				266946871CC7711000A68424 /* Icon-60@2x.png in Resources */,
 				2657332A1EDD507C00AD1AB9 /* FilterPopupView.xib in Resources */,
-				26F78C921F0A38CF00CF0389 /* CategoryPickerView.xib in Resources */,
 				266946891CC7711000A68424 /* Icon@2x.png in Resources */,
 				26DDDCAC1E5C23C2001617A1 /* _LAVCView.xib in Resources */,
 				26DF09A31EF800D900D26D14 /* SectionTotalHeaderView.xib in Resources */,
@@ -746,6 +742,7 @@
 			files = (
 				26D6C9AD1E93807400DDDAE8 /* NotoSansUI.swift in Sources */,
 				26E98BF41F0CD7B900A5C3D5 /* TagPickerViewController.swift in Sources */,
+				26BD228D1F2B2AC0007ADAB5 /* DatePickerViewController.swift in Sources */,
 				266B5FF81EFCEADC00063803 /* ExpenseFormViewController.swift in Sources */,
 				266946931CC77A1A00A68424 /* AppDelegate.swift in Sources */,
 				26DF09A11EF800D900D26D14 /* LoadableView.swift in Sources */,
@@ -755,7 +752,6 @@
 				2647CD4E1EF136770098E700 /* HomeViewController.swift in Sources */,
 				26DF09A21EF800D900D26D14 /* SectionTotalHeaderView.swift in Sources */,
 				264D37C91EEE38DE0063CD53 /* SectionIdentifier.swift in Sources */,
-				26F78C941F0A38D900CF0389 /* CategoryPickerView.swift in Sources */,
 				26DF098C1EF41B0800D26D14 /* ExpenseListViewController.swift in Sources */,
 				26628A2D1E714AB100E80494 /* LightTheme.swift in Sources */,
 				26A30C8C1E52318D0047307D /* Theme.swift in Sources */,

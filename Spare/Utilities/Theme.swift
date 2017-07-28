@@ -13,6 +13,7 @@ enum ColoredElement {
     case barTint
     
     case cellAccessoryClear
+    case cellAccessoryRefresh
     
     /// Main tint color for buttons and controls
     case controlTint

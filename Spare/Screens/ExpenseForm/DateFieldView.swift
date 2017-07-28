@@ -11,8 +11,11 @@ import Mold
 
 class DateFieldView: UIView {
     
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var textField: DateFieldViewTextField!
+    @IBOutlet weak var iconImageView: UIImageView!
+    @IBOutlet weak var editButton: MDButton!
+    @IBOutlet weak var editButtonLabel: UILabel!
+    @IBOutlet weak var refreshButton: MDButton!
+    @IBOutlet weak var refreshButtonImageView: UIImageView!
     
     private let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -22,38 +25,26 @@ class DateFieldView: UIView {
     
     private lazy var datePicker = UIDatePicker(frame: .zero)
     
-    var selectedDate = Date()
-    
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.clearAllBackgroundColors()
-        self.setDate(Date())
+        clearAllBackgroundColors()
+        setDate(Date())
         
-        self.imageView.image = UIImage.templateNamed("dateIcon")
+        iconImageView.image = UIImage.templateNamed("dateIcon")
         
-        self.textField.isUserInteractionEnabled = false
-        self.textField.inputView = self.datePicker
+        refreshButtonImageView.image = UIImage.templateNamed("cellAccessoryRefresh")
         
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTapOnViewArea))
-        self.addGestureRecognizer(tapGestureRecognizer)
+        datePicker.addTarget(self, action: #selector(handleValueChangeOnDatePicker), for: .valueChanged)
         
-        self.datePicker.addTarget(self, action: #selector(handleValueChangeOnDatePicker), for: .valueChanged)
-        
-        self.applyTheme()
+        applyTheme()
     }
     
     func setDate(_ date: Date) {
-        self.selectedDate = date
-        self.textField.text = self.dateFormatter.string(from: date)
+        editButtonLabel.text = dateFormatter.string(from: date)
     }
     
     @objc func handleValueChangeOnDatePicker() {
-        self.setDate(self.datePicker.date)
-    }
-    
-    @objc func handleTapOnViewArea() {
-        self.datePicker.date = self.selectedDate
-        self.textField.becomeFirstResponder()
+        setDate(datePicker.date)
     }
     
 }
@@ -61,22 +52,10 @@ class DateFieldView: UIView {
 extension DateFieldView: Themeable {
     
     func applyTheme() {
-        self.imageView.tintColor = Global.theme.color(for: .fieldIcon)
-        self.textField.font = Global.theme.font(for: .regularText)
-        self.textField.textColor = Global.theme.color(for: .regularText)
-    }
-    
-}
-
-class DateFieldViewTextField: UITextField {
-    
-    override var canBecomeFirstResponder: Bool {
-        return true
-    }
-    
-    override func caretRect(for position: UITextPosition) -> CGRect {
-        // Hides the cursor even when the text field is active.
-        return .zero
+        iconImageView.tintColor = Global.theme.color(for: .fieldIcon)
+        editButtonLabel.font = Global.theme.font(for: .regularText)
+        editButtonLabel.textColor = Global.theme.color(for: .regularText)
+        refreshButtonImageView.tintColor = Global.theme.color(for: .cellAccessoryRefresh)
     }
     
 }
