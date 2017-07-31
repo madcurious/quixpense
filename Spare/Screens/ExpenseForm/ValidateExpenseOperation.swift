@@ -24,7 +24,7 @@ enum ValidateExpenseOperationError: LocalizedError {
     }
 }
 
-class ValidateExpenseOperation: TBAsynchronousOperation<Any, Bool, ValidateExpenseOperationError> {
+class ValidateExpenseOperation: TBAsynchronousOperation<Bool, ValidateExpenseOperationError> {
     var amountText: String?
     
     init(amountText: String?, completionBlock: @escaping TBOperationCompletionBlock) {

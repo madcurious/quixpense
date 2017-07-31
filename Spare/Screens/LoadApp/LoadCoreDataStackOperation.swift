@@ -1,33 +1,25 @@
 //
-//  InitializeCoreDataStackOperation.swift
+//  LoadCoreDataStackOperation.swift
 //  Spare
 //
-//  Created by Matt Quiros on 21/02/2017.
+//  Created by Matt Quiros on 31/07/2017.
 //  Copyright © 2017 Matt Quiros. All rights reserved.
 //
 
-import Mold
 import CoreData
+import Mold
 
-public class InitializeCoreDataStackOperation: MDAsynchronousOperation<NSPersistentContainer> {
+class LoadCoreDataStackOperation: TBAsynchronousOperation<NSPersistentContainer, Error> {
     
-    public let inMemory: Bool
+    let inMemory: Bool
     
-    public init(inMemory: Bool) {
+    init(inMemory: Bool, completionBlock: TBOperationCompletionBlock?) {
         self.inMemory = inMemory
-        super.init()
+        super.init(completionBlock: completionBlock)
     }
     
-    public override func main() {
-        self.runStartBlock()
-        
-        if self.isCancelled {
-            self.finish()
-            return
-        }
-        
+    override func main() {
         let persistentContainer = NSPersistentContainer(name: "Spare")
-        
         if self.inMemory,
             let description = persistentContainer.persistentStoreDescriptions.first {
             description.type = NSInMemoryStoreType
@@ -43,13 +35,9 @@ public class InitializeCoreDataStackOperation: MDAsynchronousOperation<NSPersist
             }
             
             if let error = error {
-                self.error = error
-                self.runFailureBlock(error: error)
-                self.finish()
+                self.result = .error(error)
             } else {
-                self.result = persistentContainer
-                self.runSuccessBlock(result: persistentContainer)
-                self.finish()
+                self.result = .success(persistentContainer)
             }
         }
     }

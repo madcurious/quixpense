@@ -11,16 +11,16 @@ import CoreData
 
 public class CoreDataStack: NSObject {
     
-    public let CoreDataStackDidFinishMergingChanges = Notification.Name.init("CoreDataStackDidFinishMergingChanges")
-    
     public let persistentContainer: NSPersistentContainer
-    public let viewContext: NSManagedObjectContext
+    public var viewContext: NSManagedObjectContext {
+        return persistentContainer.viewContext
+    }
     
     public init(persistentContainer: NSPersistentContainer) {
         self.persistentContainer = persistentContainer
         
-        self.viewContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
-        self.viewContext.persistentStoreCoordinator = persistentContainer.persistentStoreCoordinator
+//        viewContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+//        viewContext.persistentStoreCoordinator = persistentContainer.persistentStoreCoordinator
         
         super.init()
         
@@ -28,19 +28,18 @@ public class CoreDataStack: NSObject {
     }
     
     public func newBackgroundContext() -> NSManagedObjectContext {
-        return self.persistentContainer.newBackgroundContext()
+        return persistentContainer.newBackgroundContext()
     }
     
     @objc public func handleSaveNotification(notification: Notification) {
         guard notification.name == Notification.Name.NSManagedObjectContextDidSave,
             let savedContext = notification.object as? NSManagedObjectContext,
-            savedContext.parent == nil
+            savedContext.parent == nil // Only listen to save notifications from root parent contexts.
             else {
                 return
         }
         
-        self.viewContext.mergeChanges(fromContextDidSave: notification)
-        NotificationCenter.default.post(name: CoreDataStackDidFinishMergingChanges, object: nil)
+        viewContext.mergeChanges(fromContextDidSave: notification)
     }
     
 }

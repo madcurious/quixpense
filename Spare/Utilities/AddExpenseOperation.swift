@@ -21,7 +21,7 @@ enum AddExpenseOperationError: LocalizedError {
     }
 }
 
-class AddExpenseOperation: TBOperation<Any, NSManagedObjectID, AddExpenseOperationError> {
+class AddExpenseOperation: TBOperation<NSManagedObjectID, AddExpenseOperationError> {
     
     let context: NSManagedObjectContext
     let amount: NSDecimalNumber

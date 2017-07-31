@@ -27,15 +27,24 @@ private let kTagNames = [
     "Work"
 ]
 
-class MakeDummyDataOperation: MDOperation<Any?> {
+class MakeDummyDataOperation: TBOperation<Bool, Error> {
     
-    var context: NSManagedObjectContext!
-    
-    override func makeResult(from source: Any?) throws -> Any? {
-        self.context = Global.coreDataStack.newBackgroundContext()
+    override func main() {
+        let context = Global.coreDataStack.newBackgroundContext()
         
-        let startDate: Date = try {
-            if let lastDateSpent = try self.getLastExpenseDateSpent() {
+        let lastDateSpent = getLastDateSpent(from: context)
+        let currentDate = Date()
+        
+        // Don't generate expenses if the last date spent is the same day as the current date.
+        // Result should be success but pass false to signify that no expenses were generated.
+        if let lastDateSpent = lastDateSpent,
+            lastDateSpent.isSameDayAsDate(currentDate) {
+            result = .success(false)
+            return
+        }
+        
+        let startDate: Date = {
+            if let lastDateSpent = lastDateSpent {
                 let nextDateSpent = Calendar.current.date(byAdding: .day, value: 1, to: lastDateSpent)!
                 return nextDateSpent
             } else {
@@ -47,13 +56,6 @@ class MakeDummyDataOperation: MDOperation<Any?> {
                 return startDate
             }
         }()
-        
-        let currentDate = Date()
-        
-        // Don't make any new expenses if it's not a new day.
-        if startDate.isSameDayAsDate(currentDate) {
-            return nil
-        }
         
         let numberOfDays = Calendar.current.dateComponents([.day], from: startDate, to: currentDate).day!
         var i = 0
@@ -94,7 +96,7 @@ class MakeDummyDataOperation: MDOperation<Any?> {
                     }
                 }()
                 
-                let addOp = AddExpenseOperation(context: self.context,
+                let addOp = AddExpenseOperation(context: context,
                                                 amount: NSDecimalNumber(value: amount),
                                                 dateSpent: currentDateSpent,
                                                 category: category,
@@ -104,8 +106,11 @@ class MakeDummyDataOperation: MDOperation<Any?> {
                 
                 switch addOp.result {
                 case .error(let error):
-                    throw error
-                default: break
+                    result = .error(error)
+                    return
+                    
+                default:
+                    break
                 }
             }
             
@@ -114,21 +119,22 @@ class MakeDummyDataOperation: MDOperation<Any?> {
         } while i < numberOfDays
         
         do {
-            try self.context.saveToStore()
+            try context.saveToStore()
+            result = .success(true)
         } catch {
             print((error as NSError).userInfo)
-            throw error
+            result = .error(error)
         }
-        
-        return nil
     }
     
-    func getLastExpenseDateSpent() throws -> Date? {
+    func getLastDateSpent(from context: NSManagedObjectContext) -> Date? {
         let fetchRequest: NSFetchRequest<Expense> = Expense.fetchRequest()
         fetchRequest.sortDescriptors = [
             NSSortDescriptor(key: #keyPath(Expense.dateSpent), ascending: false)
         ]
-        if let lastExpense = try self.context.fetch(fetchRequest).first {
+        if let fetchedObjects = try? context.fetch(fetchRequest),
+            fetchedObjects.count > 0,
+            let lastExpense = fetchedObjects.first {
             return lastExpense.dateSpent as Date?
         }
         return nil

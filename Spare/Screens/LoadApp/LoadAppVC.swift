@@ -22,21 +22,33 @@ class LoadAppVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let initializeOperation = InitializeCoreDataStackOperation(inMemory: false)
-        initializeOperation.successBlock = { result in
-            let coreDataStack = CoreDataStack(persistentContainer: result)
-            Global.coreDataStack = coreDataStack
-            
-            let makeDummyDataOperation = MakeDummyDataOperation()
-            makeDummyDataOperation.successBlock = {[unowned self] _ in
-                self.navigationController?.pushViewController(MainTabBarVC(), animated: true)
+        let loadOp = LoadCoreDataStackOperation(inMemory: false) {[unowned self] (result) in
+            switch result {
+            case .error(let error):
+                MDAlertDialog.showInPresenter(self, title: nil, message: error.localizedDescription, cancelButtonTitle: "OK")
+                
+            case .success(let container):
+                Global.coreDataStack = container
+                
+                // Needs to be inside the completion block because the Global.coreDataStack variable needs to have been set.
+                // If loadOp is added as a dependency instead, makeDummyDataOp will be triggered once loadOp finishes,
+                // but without waiting for loadOp.completionBlock to finish, during which Global.coreDataStack is not yet set.
+                let makeDummyDataOp = MakeDummyDataOperation {[unowned self] (result) in
+                    switch result {
+                    case .error(let error):
+                        MDAlertDialog.showInPresenter(self, title: nil, message: error.localizedDescription, cancelButtonTitle: "OK")
+                    default:
+                        MDDispatcher.asyncRunInMainThread {
+                            self.navigationController?.pushViewController(MainTabBarVC(), animated: true)
+                        }
+                    }
+                }
+                self.operationQueue.addOperation(makeDummyDataOp)
+                
+            default: break
             }
-            makeDummyDataOperation.presentErrorDialogOnFailure(from: self)
-            self.operationQueue.addOperation(makeDummyDataOperation)
         }
-        initializeOperation.presentErrorDialogOnFailure(from: self)
-        
-        self.operationQueue.addOperation(initializeOperation)
+        self.operationQueue.addOperation(loadOp)
     }
     
     override func viewWillAppear(_ animated: Bool) {
