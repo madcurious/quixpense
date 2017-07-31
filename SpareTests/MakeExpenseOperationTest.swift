@@ -47,24 +47,24 @@ class MakeExpenseOperationTest: XCTestCase {
         self.coreDataStack = nil
     }
     
-    func testUncategorized() {
-        let expectation = self.expectation(description: #function)
-        
-        let context = self.coreDataStack.newBackgroundContext()
-        let currentDate = Date()
-        let op = MakeExpenseOperation(context: context,
-                                      amount: 150,
-                                      dateSpent: currentDate,
-                                      categoryName: nil,
-                                      tagNames: ["cash", "coffee"])
-        op.completionBlock = {
-            XCTAssertNotNil(op.result)
-            XCTAssertEqual(op.result!.category!.name, "Uncategorized")
-            expectation.fulfill()
-        }
-        op.start()
-        
-        self.waitForExpectations(timeout: kTimeOut, handler: nil)
-    }
+//    func testUncategorized() {
+//        let expectation = self.expectation(description: #function)
+//
+//        let context = self.coreDataStack.newBackgroundContext()
+//        let currentDate = Date()
+//        let op = MakeExpenseOperation(context: context,
+//                                      amount: 150,
+//                                      dateSpent: currentDate,
+//                                      categoryName: nil,
+//                                      tagNames: ["cash", "coffee"])
+//        op.completionBlock = {
+//            XCTAssertNotNil(op.result)
+//            XCTAssertEqual(op.result!.category!.name, "Uncategorized")
+//            expectation.fulfill()
+//        }
+//        op.start()
+//
+//        self.waitForExpectations(timeout: kTimeOut, handler: nil)
+//    }
     
 }

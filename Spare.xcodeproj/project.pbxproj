@@ -61,6 +61,7 @@
 		269635A41E5457C80001FC05 /* AmountFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269635A31E5457C80001FC05 /* AmountFormatter.swift */; };
 		26974F3A1F2F130C00CF15E2 /* TestAddExpenseOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26974F391F2F130C00CF15E2 /* TestAddExpenseOperation.swift */; };
 		26974F3C1F2F14E600CF15E2 /* LoadCoreDataStackOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26974F3B1F2F14E600CF15E2 /* LoadCoreDataStackOperation.swift */; };
+		26974F3E1F2F30AF00CF15E2 /* TestLoadCoreDataStackOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26974F3D1F2F30AF00CF15E2 /* TestLoadCoreDataStackOperation.swift */; };
 		26A1CB4C1DD1ABD600DAE89E /* NotoSansUI-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26A1CB441DD1ABD600DAE89E /* NotoSansUI-Bold.ttf */; };
 		26A1CB4D1DD1ABD600DAE89E /* NotoSansUI-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26A1CB451DD1ABD600DAE89E /* NotoSansUI-BoldItalic.ttf */; };
 		26A1CB4E1DD1ABD600DAE89E /* NotoSansUI-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26A1CB461DD1ABD600DAE89E /* NotoSansUI-Italic.ttf */; };
@@ -203,6 +204,7 @@
 		269635A31E5457C80001FC05 /* AmountFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmountFormatter.swift; sourceTree = "<group>"; };
 		26974F391F2F130C00CF15E2 /* TestAddExpenseOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAddExpenseOperation.swift; sourceTree = "<group>"; };
 		26974F3B1F2F14E600CF15E2 /* LoadCoreDataStackOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadCoreDataStackOperation.swift; sourceTree = "<group>"; };
+		26974F3D1F2F30AF00CF15E2 /* TestLoadCoreDataStackOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLoadCoreDataStackOperation.swift; sourceTree = "<group>"; };
 		26A1CB441DD1ABD600DAE89E /* NotoSansUI-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansUI-Bold.ttf"; sourceTree = "<group>"; };
 		26A1CB451DD1ABD600DAE89E /* NotoSansUI-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansUI-BoldItalic.ttf"; sourceTree = "<group>"; };
 		26A1CB461DD1ABD600DAE89E /* NotoSansUI-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansUI-Italic.ttf"; sourceTree = "<group>"; };
@@ -365,6 +367,7 @@
 				264EE4A51EF90450004011FE /* Info.plist */,
 				26228AA31EF994EF00F0E3E3 /* MakeExpenseOperationTest.swift */,
 				26974F391F2F130C00CF15E2 /* TestAddExpenseOperation.swift */,
+				26974F3D1F2F30AF00CF15E2 /* TestLoadCoreDataStackOperation.swift */,
 			);
 			path = SpareTests;
 			sourceTree = "<group>";
@@ -806,6 +809,7 @@
 			files = (
 				26974F3A1F2F130C00CF15E2 /* TestAddExpenseOperation.swift in Sources */,
 				26201A0C1EFA78D800E737B3 /* MakeExpenseOperationTest.swift in Sources */,
+				26974F3E1F2F30AF00CF15E2 /* TestLoadCoreDataStackOperation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
