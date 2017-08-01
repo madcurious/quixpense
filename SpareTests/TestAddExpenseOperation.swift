@@ -78,7 +78,7 @@ class TestAddExpenseOperation: XCTestCase {
                     return nil
                 }
             }()
-            XCTAssertNotNil(error)
+            XCTAssertNotNil(error, "Error found: \(error?.localizedDescription)")
             
             if case .success(let objectID) = result {
                 XCTAssertNil(objectID, "Expense with objectID \(objectID) added successfully when it should have failed.")

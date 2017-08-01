@@ -38,30 +38,4 @@ class TestCoreDataStackOperation: XCTestCase {
         waitForExpectations(timeout: 10, handler: nil)
     }
     
-    func testManualOperation() {
-        let xp = expectation(description: #function)
-        let container = NSPersistentContainer(name: "Spare")
-        
-        if let description = container.persistentStoreDescriptions.first {
-            description.type = NSInMemoryStoreType
-            print("\(#function) - setting in memory type")
-        } else {
-            print("\(#function) - did not set memory type")
-        }
-        
-        container.loadPersistentStores { (_, error) in
-            xp.fulfill()
-            XCTAssertNil(error)
-            if let persistentStoreDescription = container.persistentStoreDescriptions.first {
-                XCTAssertTrue(persistentStoreDescription.type == NSInMemoryStoreType)
-            }
-            
-            if let mergedModel = NSManagedObjectModel.mergedModel(from: [Bundle.main]) {
-                XCTAssertEqual(container.managedObjectModel, mergedModel)
-            }
-        }
-        waitForExpectations(timeout: 10, handler: nil)
-        
-    }
-    
 }
