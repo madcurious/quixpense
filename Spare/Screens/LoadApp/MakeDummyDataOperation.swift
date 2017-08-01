@@ -96,11 +96,12 @@ class MakeDummyDataOperation: TBOperation<Bool, Error> {
                     }
                 }()
                 
+                let enteredData = ExpenseFormViewController.EnteredData(amount: "\(amount)",
+                    date: currentDateSpent,
+                    category: category,
+                    tags: tags)
                 let addOp = AddExpenseOperation(context: context,
-                                                amount: NSDecimalNumber(value: amount),
-                                                dateSpent: currentDateSpent,
-                                                category: category,
-                                                tags: tags,
+                                                enteredData: enteredData,
                                                 completionBlock: nil)
                 addOp.start()
                 

@@ -70,7 +70,6 @@
 		26A30C8C1E52318D0047307D /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A30C8B1E52318D0047307D /* Theme.swift */; };
 		26A30C8E1E5232240047307D /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A30C8D1E5232240047307D /* Global.swift */; };
 		26A30C921E5235950047307D /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A30C911E5235950047307D /* SettingsVC.swift */; };
-		26B38A701F1F4EE000592ABB /* ValidateExpenseOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B38A6F1F1F4EE000592ABB /* ValidateExpenseOperation.swift */; };
 		26B38F111E89068500177CFE /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B38F101E89068500177CFE /* UserDefaultsKey.swift */; };
 		26BD228D1F2B2AC0007ADAB5 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BD228C1F2B2AC0007ADAB5 /* DatePickerViewController.swift */; };
 		26C5721A1F1C9061005F63ED /* DateFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C572191F1C9061005F63ED /* DateFieldView.swift */; };
@@ -213,7 +212,6 @@
 		26A30C8B1E52318D0047307D /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		26A30C8D1E5232240047307D /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		26A30C911E5235950047307D /* SettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
-		26B38A6F1F1F4EE000592ABB /* ValidateExpenseOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateExpenseOperation.swift; sourceTree = "<group>"; };
 		26B38F101E89068500177CFE /* UserDefaultsKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
 		26BD228C1F2B2AC0007ADAB5 /* DatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
 		26C572191F1C9061005F63ED /* DateFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFieldView.swift; sourceTree = "<group>"; };
@@ -438,7 +436,6 @@
 				265390F01F15EB9200C7BD34 /* NewClassifierView.xib */,
 				26C572191F1C9061005F63ED /* DateFieldView.swift */,
 				26C5721B1F1C90BC005F63ED /* DateFieldView.xib */,
-				26B38A6F1F1F4EE000592ABB /* ValidateExpenseOperation.swift */,
 				26F6EF681F28B34A00BD5B19 /* ClassifierFieldView.swift */,
 				261BB0201EFE6E55006E0DC3 /* ClassifierFieldView.xib */,
 				26BD228C1F2B2AC0007ADAB5 /* DatePickerViewController.swift */,
@@ -773,7 +770,6 @@
 				26F1A96E1E5D890400752F1A /* MakeDummyDataOperation.swift in Sources */,
 				2669468F1CC7711000A68424 /* Spare.xcdatamodeld in Sources */,
 				26C5721A1F1C9061005F63ED /* DateFieldView.swift in Sources */,
-				26B38A701F1F4EE000592ABB /* ValidateExpenseOperation.swift in Sources */,
 				2647CD471EF136770098E700 /* Filter.swift in Sources */,
 				2657DEBA1F14AEB8003DA778 /* SlideUpPickerViewController.swift in Sources */,
 				26A30C8A1E5231620047307D /* BaseNavBarVC.swift in Sources */,

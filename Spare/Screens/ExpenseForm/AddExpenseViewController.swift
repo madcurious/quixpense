@@ -42,16 +42,8 @@ class AddExpenseViewController: ExpenseFormViewController {
     }
     
     override func handleTapOnDoneButton() {
-        let validateOp = ValidateExpenseOperation(amountText: self.inputModel.amountText) {[unowned self] result in
-            switch result {
-            case .error(let error):
-                MDAlertDialog.showInPresenter(self, title: error.localizedDescription, message: nil, cancelButtonTitle: "Got it!")
-            default:
-                break
-            }
-        }
-        
-        let addOp = AddExpenseOperation(context: nil, inputModel: self.inputModel) {[unowned self] result in
+        let addOp = AddExpenseOperation(context: Global.coreDataStack.newBackgroundContext(),
+                                        enteredData: enteredData) {[unowned self] result in
             switch result {
             case .success(_):
                 MDDispatcher.asyncRunInMainThread {
@@ -65,12 +57,7 @@ class AddExpenseViewController: ExpenseFormViewController {
             default: break
             }
         }
-        
-        addOp.addDependency(validateOp)
-        
-//        Global.coreDataStack.viewContext.rollback() // Discard the unsaved category/tag entities.
-        
-        self.operationQueue.addOperations([validateOp, addOp], waitUntilFinished: false)
+        operationQueue.addOperation(addOp)
     }
     
 }
