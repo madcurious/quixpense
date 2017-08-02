@@ -9,8 +9,10 @@
 /* Begin PBXBuildFile section */
 		260024311CC8C5AE00EB2026 /* Mold.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 260024301CC8C53A00EB2026 /* Mold.framework */; };
 		260024321CC8C5AE00EB2026 /* Mold.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 260024301CC8C53A00EB2026 /* Mold.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		2602F3771F30852100BDCCC5 /* TestAddExpenseOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26974F391F2F130C00CF15E2 /* TestAddExpenseOperation.swift */; };
 		2603F8C31CCA45FF007F311F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2603F8C21CCA45FF007F311F /* LaunchScreen.storyboard */; };
+		261064B41F31C980005D4857 /* TestAddExpenseOperationCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261064B31F31C980005D4857 /* TestAddExpenseOperationCategory.swift */; };
+		261064B61F31C9C9005D4857 /* CoreDataTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261064B51F31C9C9005D4857 /* CoreDataTestCase.swift */; };
+		261064B71F31CA10005D4857 /* TestAddExpenseOperationAmount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261064B21F31C939005D4857 /* TestAddExpenseOperationAmount.swift */; };
 		261BB01A1EFD1751006E0DC3 /* TimestampFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261BB0191EFD1751006E0DC3 /* TimestampFormatter.swift */; };
 		261BB01F1EFE6E1E006E0DC3 /* CategoryFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261BB01E1EFE6E1E006E0DC3 /* CategoryFieldView.swift */; };
 		261BB0211EFE6E55006E0DC3 /* ClassifierFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 261BB0201EFE6E55006E0DC3 /* ClassifierFieldView.xib */; };
@@ -144,6 +146,9 @@
 		2602F36D1F3084C200BDCCC5 /* SpareTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpareTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2603F8C21CCA45FF007F311F /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2603F8C61CCA476E007F311F /* Spare_v2.0.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Spare_v2.0.xcdatamodel; sourceTree = "<group>"; };
+		261064B21F31C939005D4857 /* TestAddExpenseOperationAmount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAddExpenseOperationAmount.swift; sourceTree = "<group>"; };
+		261064B31F31C980005D4857 /* TestAddExpenseOperationCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAddExpenseOperationCategory.swift; sourceTree = "<group>"; };
+		261064B51F31C9C9005D4857 /* CoreDataTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataTestCase.swift; sourceTree = "<group>"; };
 		261BB0191EFD1751006E0DC3 /* TimestampFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimestampFormatter.swift; sourceTree = "<group>"; };
 		261BB01E1EFE6E1E006E0DC3 /* CategoryFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryFieldView.swift; sourceTree = "<group>"; };
 		261BB0201EFE6E55006E0DC3 /* ClassifierFieldView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ClassifierFieldView.xib; sourceTree = "<group>"; };
@@ -198,7 +203,6 @@
 		267C2B7B1E7BDA03008EA3E0 /* MainTabBarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarVC.swift; sourceTree = "<group>"; };
 		2695CBEA1F03B9B5009D5FFA /* ClassifierType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassifierType.swift; sourceTree = "<group>"; };
 		269635A31E5457C80001FC05 /* AmountFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmountFormatter.swift; sourceTree = "<group>"; };
-		26974F391F2F130C00CF15E2 /* TestAddExpenseOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAddExpenseOperation.swift; sourceTree = "<group>"; };
 		26974F3B1F2F14E600CF15E2 /* LoadCoreDataStackOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadCoreDataStackOperation.swift; sourceTree = "<group>"; };
 		26974F3D1F2F30AF00CF15E2 /* TestLoadCoreDataStackOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLoadCoreDataStackOperation.swift; sourceTree = "<group>"; };
 		26A1CB441DD1ABD600DAE89E /* NotoSansUI-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansUI-Bold.ttf"; sourceTree = "<group>"; };
@@ -359,9 +363,11 @@
 		264EE4A21EF90450004011FE /* SpareTests */ = {
 			isa = PBXGroup;
 			children = (
+				261064B21F31C939005D4857 /* TestAddExpenseOperationAmount.swift */,
 				264EE4A51EF90450004011FE /* Info.plist */,
-				26974F391F2F130C00CF15E2 /* TestAddExpenseOperation.swift */,
 				26974F3D1F2F30AF00CF15E2 /* TestLoadCoreDataStackOperation.swift */,
+				261064B31F31C980005D4857 /* TestAddExpenseOperationCategory.swift */,
+				261064B51F31C9C9005D4857 /* CoreDataTestCase.swift */,
 			);
 			path = SpareTests;
 			sourceTree = "<group>";
@@ -601,6 +607,7 @@
 					2602F36C1F3084C200BDCCC5 = {
 						CreatedOnToolsVersion = 9.0;
 						DevelopmentTeam = MEWJ9DWAEU;
+						LastSwiftMigration = 0900;
 						TestTargetID = 261EB85E18DDB630009DDF78;
 					};
 					261EB85E18DDB630009DDF78 = {
@@ -740,7 +747,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2602F3771F30852100BDCCC5 /* TestAddExpenseOperation.swift in Sources */,
+				261064B61F31C9C9005D4857 /* CoreDataTestCase.swift in Sources */,
+				261064B41F31C980005D4857 /* TestAddExpenseOperationCategory.swift in Sources */,
+				261064B71F31CA10005D4857 /* TestAddExpenseOperationAmount.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -838,6 +847,7 @@
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -865,6 +875,7 @@
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";

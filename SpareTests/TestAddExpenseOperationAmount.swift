@@ -1,5 +1,5 @@
 //
-//  TestAddExpenseOperation.swift
+//  TestAddExpenseOperationAmount.swift
 //  SpareTests
 //
 //  Created by Matt Quiros on 31/07/2017.
@@ -7,43 +7,12 @@
 //
 
 import XCTest
-import CoreData
 @testable import Spare
 
-class TestAddExpenseOperation: XCTestCase {
-    
-    var coreDataStack: NSPersistentContainer?
-    var operationQueue: OperationQueue?
-    
-    override func setUp() {
-        super.setUp()
-        
-        let queue = OperationQueue()
-        operationQueue = queue
-        
-        let xp = expectation(description: "\(#function)\(#line)")
-        let loadOp = LoadCoreDataStackOperation(inMemory: true) {[unowned self] result in
-            switch result {
-            case .success(let container):
-                self.coreDataStack = container
-            default:
-                break
-            }
-            xp.fulfill()
-        }
-        
-        queue.addOperation(loadOp)
-        waitForExpectations(timeout: 15, handler: nil)
-    }
-    
-    override func tearDown() {
-        coreDataStack = nil
-        operationQueue = nil
-    }
+class TestAddExpenseOperationAmount: CoreDataTestCase {
     
     func testAmountString(_ amountString: String?, expectedError: AddExpenseOperationError?) {
-        guard let queue = operationQueue,
-            let stack = coreDataStack
+        guard let stack = coreDataStack
             else {
                 XCTAssertNotNil(operationQueue)
                 XCTAssertNotNil(coreDataStack)
@@ -71,7 +40,7 @@ class TestAddExpenseOperation: XCTestCase {
             xp.fulfill()
         }
         
-        queue.addOperation(addOp)
+        operationQueue.addOperation(addOp)
         waitForExpectations(timeout: 30, handler: nil)
     }
     
