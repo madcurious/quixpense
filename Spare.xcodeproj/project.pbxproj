@@ -1062,6 +1062,7 @@
 				2602F3761F3084C200BDCCC5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		261EB85A18DDB630009DDF78 /* Build configuration list for PBXProject "Spare" */ = {
 			isa = XCConfigurationList;

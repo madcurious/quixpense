@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 import Mold
 
-enum AddExpenseOperationError: LocalizedError {
+enum AddExpenseOperationError: LocalizedError, Equatable {
     case amountIsNotANumber
     case amountIsEmpty
     case amountIsZero
@@ -29,6 +29,20 @@ enum AddExpenseOperationError: LocalizedError {
             
         case .coreDataError(let error):
             return "Database error occurred: \(error)"
+        }
+    }
+    
+    static func ==(lhs: AddExpenseOperationError, rhs: AddExpenseOperationError) -> Bool {
+        switch (lhs, rhs) {
+        case (.amountIsEmpty, .amountIsEmpty),
+             (.amountIsNotANumber, .amountIsNotANumber),
+             (.amountIsZero, .amountIsZero):
+            return true
+        case (.coreDataError(let error1), .coreDataError(let error2))
+            where (error1 as NSError) == (error2 as NSError):
+            return true
+        default:
+            return false
         }
     }
 }
@@ -57,22 +71,39 @@ class AddExpenseOperation: TBOperation<NSManagedObjectID, AddExpenseOperationErr
     }
     
     private func validateEnteredData() -> ValidationResult {
+        // Nil amount
         if enteredData.amount == nil {
             return .error(.amountIsEmpty)
         }
         
+        // Empty strings
         guard let amount = enteredData.amount?.trim(),
             amount.isEmpty == false
             else {
                 return .error(.amountIsEmpty)
         }
         
+        // Non-numeric characters
+        let invalidCharacterSet = CharacterSet.decimalNumberCharacterSet().inverted
+        guard amount.rangeOfCharacter(from: invalidCharacterSet) == nil
+            else {
+            return .error(.amountIsNotANumber)
+        }
+        
+        // Amount is just a period, no numbers
+        guard amount.rangeOfCharacter(from: CharacterSet.wholeNumberCharacterSet()) != nil
+            else {
+                return .error(.amountIsNotANumber)
+        }
+        
         let amountNumber = NSDecimalNumber(string: amount)
         
+        // NaN not allowed.
         if amountNumber.isEqual(to: NSDecimalNumber.notANumber) {
             return .error(.amountIsNotANumber)
         }
         
+        // Zero not allowed.
         if amountNumber.isEqual(to: 0) {
             return .error(.amountIsZero)
         }

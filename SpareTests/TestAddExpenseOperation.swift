@@ -15,22 +15,6 @@ class TestAddExpenseOperation: XCTestCase {
     var coreDataStack: NSPersistentContainer?
     var operationQueue: OperationQueue?
     
-//    override func setUp() {
-//        let loadOp = LoadCoreDataStackOperation(inMemory: true) {[unowned self] result in
-//            switch result {
-//            case .success(let container):
-//                self.coreDataStack = container
-//            default:
-//                break
-//            }
-//        }
-//        operationQueue.addOperations([loadOp], waitUntilFinished: true)
-//    }
-//
-//    override func tearDown() {
-//        coreDataStack = nil
-//    }
-    
     override func setUp() {
         super.setUp()
         
@@ -57,7 +41,7 @@ class TestAddExpenseOperation: XCTestCase {
         operationQueue = nil
     }
     
-    func testEmptyAmount() {
+    func testAmountString(_ amountString: String?, expectedError: AddExpenseOperationError?) {
         guard let queue = operationQueue,
             let stack = coreDataStack
             else {
@@ -68,9 +52,9 @@ class TestAddExpenseOperation: XCTestCase {
         
         let xp = expectation(description: #function)
         
-        let enteredData = ExpenseFormViewController.EnteredData(amount: nil, date: Date(), category: .none, tags: .none)
+        let enteredData = ExpenseFormViewController.EnteredData(amount: amountString, date: Date(), category: .none, tags: .none)
         let addOp = AddExpenseOperation(context: stack.newBackgroundContext(), enteredData: enteredData) { (result) in
-            let error: Error? = {
+            let error: AddExpenseOperationError? = {
                 switch result {
                 case .error(let error):
                     return error
@@ -78,21 +62,37 @@ class TestAddExpenseOperation: XCTestCase {
                     return nil
                 }
             }()
-            XCTAssertNotNil(error, "Error found: \(error?.localizedDescription)")
+            XCTAssertNotNil(error, "Error must not be nil.")
             
-            if case .success(let objectID) = result {
-                XCTAssertNil(objectID, "Expense with objectID \(objectID) added successfully when it should have failed.")
+            if let error = error,
+                let expectedError = expectedError {
+                XCTAssertTrue(error == expectedError, "Error is \(error), not expected error \(expectedError)")
             }
-            
-            if case .none = result {
-                XCTAssertFalse(true, "Result is none.")
-            }
-            
             xp.fulfill()
         }
         
         queue.addOperation(addOp)
         waitForExpectations(timeout: 30, handler: nil)
+    }
+    
+    func testNilAmount() {
+        testAmountString(nil, expectedError: .amountIsEmpty)
+    }
+    
+    func testEmptyStringAmount() {
+        testAmountString("", expectedError: .amountIsEmpty)
+    }
+    
+    func testZeroAmount() {
+        testAmountString("0", expectedError: .amountIsZero)
+    }
+    
+    func testPeriodAmount() {
+        testAmountString(".", expectedError: .amountIsNotANumber)
+    }
+    
+    func testInvalidCharacterAmount() {
+        testAmountString("1gHf😂/+=`$", expectedError: .amountIsNotANumber)
     }
     
 }
