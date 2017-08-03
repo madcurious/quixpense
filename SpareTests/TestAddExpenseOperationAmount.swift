@@ -12,17 +12,9 @@ import XCTest
 class TestAddExpenseOperationAmount: CoreDataTestCase {
     
     func testAmountString(_ amountString: String?, expectedError: AddExpenseOperationError?) {
-        guard let stack = coreDataStack
-            else {
-                XCTAssertNotNil(operationQueue)
-                XCTAssertNotNil(coreDataStack)
-                return
-        }
-        
         let xp = expectation(description: #function)
-        
         let enteredData = ExpenseFormViewController.EnteredData(amount: amountString, date: Date(), category: .none, tags: .none)
-        let addOp = AddExpenseOperation(context: stack.newBackgroundContext(), enteredData: enteredData) { (result) in
+        let addOp = AddExpenseOperation(context: coreDataStack.newBackgroundContext(), enteredData: enteredData) { (result) in
             let error: AddExpenseOperationError? = {
                 switch result {
                 case .error(let error):

@@ -16,12 +16,6 @@ class TestAddExpenseOperationCategory: CoreDataTestCase {
     override func setUp() {
         super.setUp()
         
-        guard let coreDataStack = coreDataStack
-            else {
-                XCTFail("Core data stack is nil. Why?")
-                return
-        }
-        
         let categoryNames = [
             "Food and Drinks",
             "Transportation",
@@ -41,12 +35,6 @@ class TestAddExpenseOperationCategory: CoreDataTestCase {
     }
     
     func testSelectedObjectID() {
-        guard let coreDataStack = coreDataStack
-            else {
-                XCTFail("Core data stack is nil. Why?")
-                return
-        }
-        
         let selectedCategoryName = "Transportation"
         let fetchRequest: NSFetchRequest<Spare.Category> = Category.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "%K == %@", #keyPath(Spare.Category.name), selectedCategoryName)
@@ -65,7 +53,7 @@ class TestAddExpenseOperationCategory: CoreDataTestCase {
                         XCTFail("Add expense returned no results")
                         
                     case .success(let objectID):
-                        if let expense = coreDataStack.viewContext.object(with: objectID) as? Expense {
+                        if let expense = self.coreDataStack.viewContext.object(with: objectID) as? Expense {
                             guard let expenseCategory = expense.category
                                 else {
                                     XCTFail("Expense category is nil! Expense ID: \(objectID)")
@@ -89,11 +77,48 @@ class TestAddExpenseOperationCategory: CoreDataTestCase {
     }
     
     func testEnteredName() {
-        
+        do {
+            let enteredCategory = "Vacation"
+            
+            // Test that it doesn't exist.
+            let existingFetchRequest: NSFetchRequest<Spare.Category> = Category.fetchRequest()
+            existingFetchRequest.predicate = NSPredicate(format: "%K == %@", #keyPath(Spare.Category.name), enteredCategory)
+            let existingCategory = try coreDataStack.viewContext.fetch(existingFetchRequest).first
+            XCTAssertNil(existingCategory, "Category with name \(enteredCategory) must not exist.")
+            
+            let xp = expectation(description: #function)
+            
+            // Test that it becomes inserted when an expense is inserted.
+            let enteredData = ExpenseFormViewController.EnteredData(amount: "250", date: Date(), category: .name(enteredCategory), tags: .none)
+            let context = coreDataStack.newBackgroundContext()
+            let addOp = AddExpenseOperation(context: context, enteredData: enteredData) { _ in
+                let existingCategory = try! self.coreDataStack.viewContext.fetch(existingFetchRequest).first
+                XCTAssertNotNil(existingCategory, "Category with name \(enteredCategory) must not be nil")
+                xp.fulfill()
+            }
+            operationQueue.addOperation(addOp)
+            waitForExpectations(timeout: 30, handler: nil)
+        } catch {
+            XCTFail("Error occurred: \(error)")
+        }
     }
     
     func testUncategorized() {
+        let xp = expectation(description: #function)
         
+        let enteredData = ExpenseFormViewController.EnteredData(amount: "250", date: Date(), category: .none, tags: .none)
+        let context = coreDataStack.newBackgroundContext()
+        let addOp = AddExpenseOperation(context: context, enteredData: enteredData) { result in
+            if case .success(let objectID) = result {
+                let expense = self.coreDataStack.viewContext.object(with: objectID) as! Expense
+                XCTAssert(expense.category!.name! == DefaultClassifier.uncategorized.rawValue, "Category is not uncategorized: \(expense.category!.name!)")
+            } else {
+                XCTFail("Result is not success: \(result)")
+            }
+            xp.fulfill()
+        }
+        operationQueue.addOperation(addOp)
+        waitForExpectations(timeout: 30, handler: nil)
     }
     
 }

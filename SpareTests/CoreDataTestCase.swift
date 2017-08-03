@@ -12,7 +12,7 @@ import CoreData
 
 class CoreDataTestCase: XCTestCase {
     
-    var coreDataStack: NSPersistentContainer?
+    var coreDataStack: NSPersistentContainer!
     var operationQueue = OperationQueue()
     
     override func setUp() {
@@ -36,6 +36,7 @@ class CoreDataTestCase: XCTestCase {
     }
     
     override func tearDown() {
+        super.tearDown()
         coreDataStack = nil
     }
     
