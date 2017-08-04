@@ -33,7 +33,7 @@ class LoadAppVC: UIViewController {
                 // Needs to be inside the completion block because the Global.coreDataStack variable needs to have been set.
                 // If loadOp is added as a dependency instead, makeDummyDataOp will be triggered once loadOp finishes,
                 // but without waiting for loadOp.completionBlock to finish, during which Global.coreDataStack is not yet set.
-                let makeDummyDataOp = MakeDummyDataOperation {[unowned self] (result) in
+                let makeDummyDataOp = MakeDummyDataOperation(from: .lastDateSpent) {[unowned self] (result) in
                     switch result {
                     case .error(let error):
                         MDAlertDialog.showInPresenter(self, title: nil, message: error.localizedDescription, cancelButtonTitle: "OK")

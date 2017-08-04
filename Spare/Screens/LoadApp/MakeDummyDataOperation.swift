@@ -29,37 +29,51 @@ private let kTagNames = [
 
 class MakeDummyDataOperation: TBOperation<Bool, Error> {
     
+    enum StartDate {
+        case date(Date)
+        case lastDateSpent
+    }
+    
+    let startDate: MakeDummyDataOperation.StartDate
+    
+    init(from startDate: MakeDummyDataOperation.StartDate, completionBlock: TBOperationCompletionBlock?) {
+        self.startDate = startDate
+        super.init(completionBlock: completionBlock)
+    }
+    
     override func main() {
         let context = Global.coreDataStack.newBackgroundContext()
-        
-        let lastDateSpent = getLastDateSpent(from: context)
         let currentDate = Date()
+        var start: Date
         
-        // Don't generate expenses if the last date spent is the same day as the current date.
-        // Result should be success but pass false to signify that no expenses were generated.
-        if let lastDateSpent = lastDateSpent,
-            lastDateSpent.isSameDayAsDate(currentDate) {
-            result = .success(false)
-            return
+        switch startDate {
+        case .date(let date):
+            start = date
+            
+        case .lastDateSpent:
+            if let lastDateSpent = getLastDateSpent(from: context),
+                let nextDateSpent = Calendar.current.date(byAdding: .day, value: 1, to: lastDateSpent) {
+                if Calendar.current.compare(nextDateSpent, to: currentDate, toGranularity: .day) == .orderedAscending {
+                    start = nextDateSpent
+                } else {
+                    // Finish the operation if the nextDateSpent occurs in the future relative to the current date.
+                    // Pass false to indicate that no expenses were generated.
+                    result = .success(false)
+                    return
+                }
+            } else {
+                var startOf2017 = DateComponents()
+                startOf2017.month = 1
+                startOf2017.day = 1
+                startOf2017.year = 2017
+                start = Calendar.current.date(from: startOf2017)!
+            }
         }
         
-        let startDate: Date = {
-            if let lastDateSpent = lastDateSpent {
-                let nextDateSpent = Calendar.current.date(byAdding: .day, value: 1, to: lastDateSpent)!
-                return nextDateSpent
-            } else {
-                var components = DateComponents()
-                components.month = 1
-                components.day = 1
-                components.year = 2017
-                let startDate = Calendar.current.date(from: components)!
-                return startDate
-            }
-        }()
         
-        let numberOfDays = Calendar.current.dateComponents([.day], from: startDate, to: currentDate).day!
+        let numberOfDays = Calendar.current.dateComponents([.day], from: start, to: currentDate).day!
         var i = 0
-        var currentDateSpent = startDate
+        var currentDateSpent = start
         
         repeat {
             let numberOfExpenses = arc4random_uniform(11)
@@ -126,7 +140,107 @@ class MakeDummyDataOperation: TBOperation<Bool, Error> {
             print((error as NSError).userInfo)
             result = .error(error)
         }
+        
     }
+    
+//    override func main() {
+//        let context = Global.coreDataStack.newBackgroundContext()
+//
+//        let lastDateSpent = getLastDateSpent(from: context)
+//        let currentDate = Date()
+//
+//        // Don't generate expenses if the last date spent is the same day as the current date.
+//        // Result should be success but pass false to signify that no expenses were generated.
+//        if let lastDateSpent = lastDateSpent,
+//            lastDateSpent.isSameDayAsDate(currentDate) {
+//            result = .success(false)
+//            return
+//        }
+//
+//        let startDate: Date = {
+//            if let lastDateSpent = lastDateSpent {
+//                let nextDateSpent = Calendar.current.date(byAdding: .day, value: 1, to: lastDateSpent)!
+//                return nextDateSpent
+//            } else {
+//                var components = DateComponents()
+//                components.month = 1
+//                components.day = 1
+//                components.year = 2017
+//                let startDate = Calendar.current.date(from: components)!
+//                return startDate
+//            }
+//        }()
+//
+//        let numberOfDays = Calendar.current.dateComponents([.day], from: startDate, to: currentDate).day!
+//        var i = 0
+//        var currentDateSpent = startDate
+//
+//        repeat {
+//            let numberOfExpenses = arc4random_uniform(11)
+//            for _ in 0 ..< numberOfExpenses {
+//                let amount = 1 + (1000 * Double(arc4random()) / Double(UInt32.max))
+//
+//                let category: CategorySelection = {
+//                    let randomIndex = Int(arc4random_uniform(UInt32(kCategoryNames.count)))
+//                    if let randomCategory = kCategoryNames[randomIndex] {
+//                        return .name(randomCategory)
+//                    }
+//                    return .none
+//                }()
+//
+//                let tags: TagSelection = {
+//                    let noTags = arc4random_uniform(2) == 1
+//                    if noTags {
+//                        return .none
+//                    } else {
+//                        let numberOfTags = Int(arc4random_uniform(UInt32(kTagNames.count)))
+//                        if numberOfTags == 0 {
+//                            return .none
+//                        }
+//                        var chosenTags: [TagSelection.Member] = []
+//                        while chosenTags.count != numberOfTags {
+//                            let randomIndex = Int(arc4random_uniform(UInt32(kTagNames.count)))
+//                            if chosenTags.contains(.name(kTagNames[randomIndex])) {
+//                                continue
+//                            } else {
+//                                chosenTags.append(.name(kTagNames[randomIndex]))
+//                            }
+//                        }
+//                        return .list(chosenTags)
+//                    }
+//                }()
+//
+//                let enteredData = ExpenseFormViewController.EnteredData(amount: "\(amount)",
+//                    date: currentDateSpent,
+//                    category: category,
+//                    tags: tags)
+//                let addOp = AddExpenseOperation(context: context,
+//                                                enteredData: enteredData,
+//                                                completionBlock: nil)
+//                addOp.start()
+//
+//                switch addOp.result {
+//                case .error(let error):
+//                    result = .error(error)
+//                    return
+//
+//                default:
+//                    break
+//                }
+//            }
+//
+//            currentDateSpent = Calendar.current.date(byAdding: .day, value: 1, to: currentDateSpent)!
+//            i += 1
+//        } while i < numberOfDays
+//
+//        do {
+//            try context.saveToStore()
+//            result = .success(true)
+//        } catch {
+//            print((error as NSError).userInfo)
+//            result = .error(error)
+//        }
+//    }
     
     func getLastDateSpent(from context: NSManagedObjectContext) -> Date? {
         let fetchRequest: NSFetchRequest<Expense> = Expense.fetchRequest()
