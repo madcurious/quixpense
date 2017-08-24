@@ -11,13 +11,6 @@ import Mold
 
 class ExpenseFormViewController: UIViewController {
     
-//    struct EnteredData {
-//        var amount: String?
-//        var date = Date()
-//        var category = CategorySelection.none
-//        var tags = TagSelection.none
-//    }
-    
     let customView = ExpenseFormView.instantiateFromNib()
     var enteredExpense = EnteredExpense()
     let invalidAmountCharacters = CharacterSet.decimalNumberCharacterSet().inverted

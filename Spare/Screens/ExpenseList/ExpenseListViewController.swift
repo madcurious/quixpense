@@ -93,6 +93,9 @@ extension ExpenseListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        let modalContainer = BaseNavBarVC(rootViewController: EditExpenseViewController(expenseId: expenses[indexPath.row].objectID))
+        present(modalContainer, animated: true, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

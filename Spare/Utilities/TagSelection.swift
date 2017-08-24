@@ -39,6 +39,20 @@ enum TagSelection: Equatable {
     case none
     case list([TagSelection.Member])
     
+    init(from set: NSSet) {
+        let tagSet = set.flatMap({ $0 as? Tag })
+        guard tagSet.isEmpty == false
+            else {
+                self = .none
+                return
+        }
+        var memberList = [TagSelection.Member]()
+        for tag in tagSet {
+            memberList.append(.id(tag.objectID))
+        }
+        self = .list(memberList)
+    }
+    
     static func ==(lhs: TagSelection, rhs: TagSelection) -> Bool {
         switch (lhs, rhs) {
         case (.none, .none):
