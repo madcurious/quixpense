@@ -40,7 +40,7 @@ class TestAddExpenseOperationCategory: CoreDataTestCase {
         fetchRequest.predicate = NSPredicate(format: "%K == %@", #keyPath(Spare.Category.name), selectedCategoryName)
         do {
             if let existingCategory = try coreDataStack.viewContext.fetch(fetchRequest).first {
-                let enteredData = ExpenseFormViewController.EnteredData(amount: "100.00", date: Date(), category: .id(existingCategory.objectID), tags: .none)
+                let enteredData = EnteredExpense(amount: "100.00", date: Date(), category: .id(existingCategory.objectID), tags: .none)
                 
                 let addContext = coreDataStack.newBackgroundContext()
                 let xp = expectation(description: "\(#function)\(#line)")
@@ -89,7 +89,7 @@ class TestAddExpenseOperationCategory: CoreDataTestCase {
             let xp = expectation(description: #function)
             
             // Test that it becomes inserted when an expense is inserted.
-            let enteredData = ExpenseFormViewController.EnteredData(amount: "250", date: Date(), category: .name(enteredCategory), tags: .none)
+            let enteredData = EnteredExpense(amount: "250", date: Date(), category: .name(enteredCategory), tags: .none)
             let context = coreDataStack.newBackgroundContext()
             let addOp = AddExpenseOperation(context: context, enteredData: enteredData) { _ in
                 let existingCategory = try! self.coreDataStack.viewContext.fetch(existingFetchRequest).first
@@ -106,7 +106,7 @@ class TestAddExpenseOperationCategory: CoreDataTestCase {
     func testUncategorized() {
         let xp = expectation(description: #function)
         
-        let enteredData = ExpenseFormViewController.EnteredData(amount: "250", date: Date(), category: .none, tags: .none)
+        let enteredData = EnteredExpense(amount: "250", date: Date(), category: .none, tags: .none)
         let context = coreDataStack.newBackgroundContext()
         let addOp = AddExpenseOperation(context: context, enteredData: enteredData) { result in
             if case .success(let objectID) = result {

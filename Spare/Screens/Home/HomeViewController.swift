@@ -36,55 +36,55 @@ class HomeViewController: UIViewController {
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        self.initialize()
+        initialize()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.initialize()
+        initialize()
     }
     
     func initialize() {
-        self.tabBarItem.image = UIImage.templateNamed("tabIconExpenseList")
-        self.navigationItem.titleView = self.filterButton
+        tabBarItem.image = UIImage.templateNamed("tabIconExpenseList")
+        navigationItem.titleView = filterButton
     }
     
     override func loadView() {
-        self.loadableView.dataViewContainer.addSubviewsAndFill(self.tableView)
-        self.view = self.loadableView
+        loadableView.dataViewContainer.addSubviewsAndFill(tableView)
+        view = loadableView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.filterButton.addTarget(self, action: #selector(handleValueChangeOnFilterButton), for: .valueChanged)
+        filterButton.addTarget(self, action: #selector(handleValueChangeOnFilterButton), for: .valueChanged)
         
-        self.tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: ViewID.sectionHeader.rawValue)
-        self.tableView.register(TwoLabelTableViewCell.nib(), forCellReuseIdentifier: ViewID.groupCell.rawValue)
-        self.tableView.dataSource = self
-        self.tableView.delegate = self
+        tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: ViewID.sectionHeader.rawValue)
+        tableView.register(TwoLabelTableViewCell.nib(), forCellReuseIdentifier: ViewID.groupCell.rawValue)
+        tableView.dataSource = self
+        tableView.delegate = self
         
-        self.performFetch()
+        performFetch()
         
-        self.fetchedResultsController.delegate = self
+        fetchedResultsController.delegate = self
     }
     
     func performFetch() {
-        self.loadableView.state = .loading
+        loadableView.state = .loading
         
-        self.sectionTotals.removeAllObjects()
+        sectionTotals.removeAllObjects()
         
         do {
-            try self.fetchedResultsController.performFetch()
-            if let count = self.fetchedResultsController.fetchedObjects?.count,
+            try fetchedResultsController.performFetch()
+            if let count = fetchedResultsController.fetchedObjects?.count,
                 count == 0 {
-                self.loadableView.state = .noData(self.noDataText)
+                loadableView.state = .noData(noDataText)
             } else {
-                self.tableView.reloadData()
-                self.loadableView.state = .data
+                tableView.reloadData()
+                loadableView.state = .data
             }
         } catch {
-            self.loadableView.state = .error(error)
+            loadableView.state = .error(error)
         }
     }
     
@@ -94,7 +94,7 @@ class HomeViewController: UIViewController {
         
         // For category groups, we simply add the total of each group.
         if Global.filter.grouping == .category,
-            let categoryGroups = self.fetchedResultsController.sections?[section].objects as? [NSManagedObject] {
+            let categoryGroups = fetchedResultsController.sections?[section].objects as? [NSManagedObject] {
             categoryGroups.forEach({
                 runningTotal += $0.value(forKey: "total") as! NSDecimalNumber
             })
@@ -103,7 +103,7 @@ class HomeViewController: UIViewController {
             // For tag groups, we need to add the amount of all the expenses in the section.
             // We can't simply add the totals of each tag group because expenses can have
             // multiple tags and can therefore appear in multiple tag groups.
-        else if let tagGroups = self.fetchedResultsController.sections?[section].objects as? [NSManagedObject] {
+        else if let tagGroups = fetchedResultsController.sections?[section].objects as? [NSManagedObject] {
             var expensesInSection = Set<Expense>()
             tagGroups.forEach { group in
                 if let groupExpenses = group.value(forKey: "expenses") as? Set<Expense> {
@@ -124,7 +124,7 @@ class HomeViewController: UIViewController {
     }
     
     func generateTextsForObject(at indexPath: IndexPath) -> (String?, String?) {
-        if let group = self.fetchedResultsController.object(at: indexPath) as? NSManagedObject,
+        if let group = fetchedResultsController.object(at: indexPath) as? NSManagedObject,
             let tagName = group.value(forKeyPath: "classifier.name") as? String,
             let total = group.value(forKey: "total") as? NSDecimalNumber {
             return (tagName, AmountFormatter.displayText(for: total))
@@ -138,7 +138,7 @@ class HomeViewController: UIViewController {
     
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
         super.willTransition(to: newCollection, with: coordinator)
-        self.filterButton.setNeedsUpdateConstraints()
+        filterButton.setNeedsUpdateConstraints()
     }
 
 }
@@ -147,10 +147,10 @@ class HomeViewController: UIViewController {
 extension HomeViewController {
     
     @objc func handleValueChangeOnFilterButton() {
-        Global.filter = self.filterButton.filter
-        self.fetchedResultsController = Global.filter.makeFetchedResultsController()
-        self.fetchedResultsController.delegate = self
-        self.performFetch()
+        Global.filter = filterButton.filter
+        fetchedResultsController = Global.filter.makeFetchedResultsController()
+        fetchedResultsController.delegate = self
+        performFetch()
     }
     
 }
@@ -159,11 +159,11 @@ extension HomeViewController {
 extension HomeViewController: NSFetchedResultsControllerDelegate {
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        self.performFetch()
+        performFetch()
     }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        self.performFetch()
+        performFetch()
     }
     
 }
@@ -172,7 +172,7 @@ extension HomeViewController: NSFetchedResultsControllerDelegate {
 extension HomeViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        guard let sections = self.fetchedResultsController.sections
+        guard let sections = fetchedResultsController.sections
             else {
                 return 0
         }
@@ -180,7 +180,7 @@ extension HomeViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let sectionInfo = self.fetchedResultsController.sections?[section]
+        guard let sectionInfo = fetchedResultsController.sections?[section]
             else {
                 return 0
         }
@@ -188,9 +188,9 @@ extension HomeViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCell(withIdentifier: ViewID.groupCell.rawValue) as! TwoLabelTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: ViewID.groupCell.rawValue) as! TwoLabelTableViewCell
         
-        let (leftText, rightText) = self.generateTextsForObject(at: indexPath)
+        let (leftText, rightText) = generateTextsForObject(at: indexPath)
         cell.leftLabel.text = leftText
         cell.rightLabel.text = rightText
         
@@ -213,14 +213,14 @@ extension HomeViewController: UITableViewDelegate {
             existingView.addSubviewsAndFill(headerView)
         }
         
-        if let sectionIdentifier = self.fetchedResultsController.sections?[section].name {
-            headerView.sectionIdentifier = self.fetchedResultsController.sections?[section].name
+        if let sectionIdentifier = fetchedResultsController.sections?[section].name {
+            headerView.sectionIdentifier = fetchedResultsController.sections?[section].name
             headerView.sectionTotal = {
-                if let total = self.sectionTotals.object(forKey: sectionIdentifier as NSString) {
+                if let total = sectionTotals.object(forKey: sectionIdentifier as NSString) {
                     return total
                 } else {
-                    let total = self.computeTotal(forSection: section)
-                    self.sectionTotals.setObject(total, forKey: sectionIdentifier as NSString)
+                    let total = computeTotal(forSection: section)
+                    sectionTotals.setObject(total, forKey: sectionIdentifier as NSString)
                     return total
                 }
             }()
@@ -232,12 +232,12 @@ extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        guard let group = self.fetchedResultsController.object(at: indexPath) as? NSManagedObject
+        guard let group = fetchedResultsController.object(at: indexPath) as? NSManagedObject
             else {
                 return
         }
         let listScreen = ExpenseListViewController(group: group)
-        self.navigationController?.pushViewController(listScreen, animated: true)
+        navigationController?.pushViewController(listScreen, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -254,7 +254,7 @@ extension HomeViewController: UITableViewDelegate {
 extension HomeViewController: Themeable {
     
     func applyTheme() {
-        self.tableView.reloadData()
+        tableView.reloadData()
     }
     
     func applyTheme(to tableViewCell: UITableViewCell) {

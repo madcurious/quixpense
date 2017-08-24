@@ -44,7 +44,7 @@ class TestCategoryGroupTotals: CoreDataTestCase {
         }()
         
         let context = coreDataStack.newBackgroundContext()
-        let enteredData = ExpenseFormViewController.EnteredData(amount: "456.15", date: dateSpent, category: .name(categoryName), tags: .none)
+        let enteredData = EnteredExpense(amount: "456.15", date: dateSpent, category: .name(categoryName), tags: .none)
         let xp = expectation(description: #function)
         let addOp = AddExpenseOperation(context: context, enteredData: enteredData) {[unowned self] (result) in
             defer {

@@ -9,40 +9,45 @@
 import UIKit
 import Mold
 
-class LoadableView: MDLoadableView {
+class LoadableView: UIView, TBLoadableView, Themeable {
     
     let loadingView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
     let infoLabel = UILabel(frame: .zero)
     let dataViewContainer = UIView(frame: .zero)
     
-    override var state: MDLoadableView.State {
+    var state = TBLoadableViewState.initial {
         didSet {
-            self.loadingView.isHidden = self.state != .initial || self.state != .loading
-            if self.state == .initial || self.state == .loading {
-                self.loadingView.startAnimating()
+            loadingView.isHidden = state != .initial || state != .loading
+            if state == .initial || state == .loading {
+                loadingView.startAnimating()
             } else {
-                self.loadingView.stopAnimating()
+                loadingView.stopAnimating()
             }
             
-            self.dataViewContainer.isHidden = self.state != .data
+            dataViewContainer.isHidden = state != .data
             
-            if case .error(let error) = self.state {
-                self.infoLabel.isHidden = false
-                self.infoLabel.text = error.localizedDescription
-            } else if case .noData(let someMessage) = self.state {
-                self.infoLabel.isHidden = false
+            if case .error(let error) = state {
+                infoLabel.isHidden = false
+                infoLabel.text = error.localizedDescription
+            } else if case .noData(let someMessage) = state {
+                infoLabel.isHidden = false
                 if let stringMessage = someMessage as? String {
-                    self.infoLabel.text = stringMessage
+                    infoLabel.text = stringMessage
+                    infoLabel.textColor = Global.theme.color(for: .regularText)
                 } else if let attributedText = someMessage as? NSAttributedString {
-                    self.infoLabel.attributedText = attributedText
+                    infoLabel.attributedText = attributedText
                 } else {
-                    self.infoLabel.text = nil
+                    infoLabel.text = nil
                 }
             } else {
-                self.infoLabel.isHidden = true
-                self.infoLabel.text = nil
+                infoLabel.isHidden = true
+                infoLabel.text = nil
             }
         }
+    }
+    
+    func applyTheme() {
+        backgroundColor = Global.theme.color(for: .mainBackground)
     }
     
     convenience init() {
@@ -52,11 +57,11 @@ class LoadableView: MDLoadableView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.addSubviews(self.loadingView, self.infoLabel, self.dataViewContainer)
-        self.addAutolayout()
+        addSubviews(loadingView, infoLabel, dataViewContainer)
+        addAutolayout()
         
-        self.infoLabel.isHidden = true
-        self.dataViewContainer.isHidden = true
+        infoLabel.isHidden = true
+        dataViewContainer.isHidden = true
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -64,9 +69,9 @@ class LoadableView: MDLoadableView {
     }
     
     func addAutolayout() {
-        self.loadingView.translatesAutoresizingMaskIntoConstraints = false
-        self.infoLabel.translatesAutoresizingMaskIntoConstraints = false
-        self.dataViewContainer.translatesAutoresizingMaskIntoConstraints = false
+        loadingView.translatesAutoresizingMaskIntoConstraints = false
+        infoLabel.translatesAutoresizingMaskIntoConstraints = false
+        dataViewContainer.translatesAutoresizingMaskIntoConstraints = false
         
         let rules = [
             "H:|-20-[errorLabel]-20-|",
@@ -76,23 +81,23 @@ class LoadableView: MDLoadableView {
         ]
         
         let views = [
-            "errorLabel" : self.infoLabel,
-            "dataViewContainer" : self.dataViewContainer
+            "errorLabel" : infoLabel,
+            "dataViewContainer" : dataViewContainer
         ]
         
-        self.addConstraints(NSLayoutConstraint.constraintsWithVisualFormatArray(rules,
+        addConstraints(NSLayoutConstraint.constraintsWithVisualFormatArray(rules,
                                                                                 metrics: nil,
                                                                                 views: views))
         
-        self.addConstraints([
-            NSLayoutConstraint(item: self.loadingView,
+        addConstraints([
+            NSLayoutConstraint(item: loadingView,
                                attribute: .centerX,
                                relatedBy: .equal,
                                toItem: self,
                                attribute: .centerX,
                                multiplier: 1,
                                constant: 0),
-            NSLayoutConstraint(item: self.loadingView,
+            NSLayoutConstraint(item: loadingView,
                                attribute: .centerY,
                                relatedBy: .equal,
                                toItem: self,

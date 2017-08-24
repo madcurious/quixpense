@@ -13,7 +13,7 @@ class TestAddExpenseOperationAmount: CoreDataTestCase {
     
     func testAmountString(_ amountString: String?, expectedError: AddExpenseOperationError?) {
         let xp = expectation(description: #function)
-        let enteredData = ExpenseFormViewController.EnteredData(amount: amountString, date: Date(), category: .none, tags: .none)
+        let enteredData = EnteredExpense(amount: amountString, date: Date(), category: .none, tags: .none)
         let addOp = AddExpenseOperation(context: coreDataStack.newBackgroundContext(), enteredData: enteredData) { (result) in
             let error: AddExpenseOperationError? = {
                 switch result {

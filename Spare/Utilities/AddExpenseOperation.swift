@@ -62,22 +62,22 @@ class AddExpenseOperation: TBOperation<NSManagedObjectID, AddExpenseOperationErr
     }
     
     let context: NSManagedObjectContext
-    let enteredData: ExpenseFormViewController.EnteredData
+    let enteredExpense: EnteredExpense
     
-    init(context: NSManagedObjectContext, enteredData: ExpenseFormViewController.EnteredData, completionBlock: TBOperationCompletionBlock?) {
+    init(context: NSManagedObjectContext, enteredExpense: EnteredExpense, completionBlock: TBOperationCompletionBlock?) {
         self.context = context
-        self.enteredData = enteredData
+        self.enteredExpense = enteredExpense
         super.init(completionBlock: completionBlock)
     }
     
     private func validateEnteredData() -> ValidationResult {
         // Nil amount
-        if enteredData.amount == nil {
+        if enteredExpense.amount == nil {
             return .error(.amountIsEmpty)
         }
         
         // Empty strings
-        guard let amount = enteredData.amount?.trim(),
+        guard let amount = enteredExpense.amount?.trim(),
             amount.isEmpty == false
             else {
                 return .error(.amountIsEmpty)
@@ -108,7 +108,7 @@ class AddExpenseOperation: TBOperation<NSManagedObjectID, AddExpenseOperationErr
             return .error(.amountIsZero)
         }
         
-        let validData = ValidEnteredData(amount: amountNumber, date: enteredData.date, category: enteredData.category, tags: enteredData.tags)
+        let validData = ValidEnteredData(amount: amountNumber, date: enteredExpense.date, category: enteredExpense.category, tags: enteredExpense.tags)
         return .success(validData)
     }
     

@@ -21,8 +21,8 @@ class BaseNavBarVC: UINavigationController, Themeable {
         self.navigationBar.barTintColor = Global.theme.color(for: .barBackground)
         self.navigationBar.tintColor = Global.theme.color(for: .barTint)
         self.navigationBar.titleTextAttributes = [
-            NSAttributedStringKey.font.rawValue : Global.theme.font(for: .navBarTitle),
-            NSAttributedStringKey.foregroundColor.rawValue : Global.theme.color(for: .barTint)
+            .font : Global.theme.font(for: .navBarTitle),
+            .foregroundColor : Global.theme.color(for: .barTint)
         ]
         
         if #available(iOS 11, *) {
