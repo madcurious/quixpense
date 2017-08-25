@@ -24,8 +24,29 @@ class ExpenseFormView: UIView, Themeable {
     
     @IBOutlet weak var optionalLabel: UILabel!
     @IBOutlet weak var categoryFieldView: CategoryFieldView!
-    @IBOutlet weak var tagFieldContainer: UIView!
     @IBOutlet weak var tagFieldView: TagFieldView!
+    
+    lazy var deleteView = ExpenseFormViewDeleteView(frame: .zero)
+    
+    var showsDeleteView = false {
+        didSet {
+            if showsDeleteView {
+                // Don't add the delete button if it's been added before.
+                guard deleteView.superview == nil
+                    else {
+                        return
+                }
+                contentStackView.addArrangedSubview(deleteView)
+            } else {
+                guard deleteView.superview == nil,
+                    contentStackView.arrangedSubviews.contains(deleteView) else {
+                        return
+                }
+                contentStackView.removeArrangedSubview(deleteView)
+                deleteView.removeFromSuperview()
+            }
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

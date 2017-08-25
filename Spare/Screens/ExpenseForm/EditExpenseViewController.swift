@@ -13,6 +13,14 @@ class EditExpenseViewController: ExpenseFormViewController {
     
     let expenseId: NSManagedObjectID
     
+    private let decimalFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.alwaysShowsDecimalSeparator = true
+        formatter.maximumFractionDigits = 2
+        return formatter
+    }()
+    
     init(expenseId: NSManagedObjectID) {
         self.expenseId = expenseId
         super.init()
@@ -25,6 +33,8 @@ class EditExpenseViewController: ExpenseFormViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        customView.showsDeleteView = true
         refreshFromSavedValues()
     }
     
@@ -34,19 +44,23 @@ class EditExpenseViewController: ExpenseFormViewController {
                 return
         }
         
-        let amountText = AmountFormatter.displayText(for: expense.amount)
-        customView.amountFieldView.textField.text = amountText
-        enteredExpense.amount = amountText
+        if let amount = expense.amount {
+            let amountText = decimalFormatter.string(from: amount)
+            customView.amountFieldView.textField.text = amountText
+            enteredExpense.amount = amountText
+        }
         
         if let dateSpent = expense.dateSpent {
             customView.dateFieldView.setDate(dateSpent)
             enteredExpense.date = dateSpent
         }
+        
         if let category = expense.category {
             let categorySelection = CategorySelection.id(category.objectID)
             customView.categoryFieldView.setCategory(categorySelection)
             enteredExpense.category = categorySelection
         }
+        
         if let tags = expense.tags {
             let tagSelection = TagSelection(from: tags)
             customView.tagFieldView.setTags(tagSelection)

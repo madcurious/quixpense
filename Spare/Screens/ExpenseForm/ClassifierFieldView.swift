@@ -28,7 +28,7 @@ class ClassifierFieldView: UIView, Themeable {
     }
     
     func setup() {
-        let internalView = self.viewFromNib(named: md_getClassName(ClassifierFieldView.self))
+        let internalView = self.ownedViewFromNib(nibName: String(describing: ClassifierFieldView.self))
         addSubviewsAndFill(internalView)
         
         clearAllBackgroundColors()
