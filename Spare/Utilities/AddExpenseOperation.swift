@@ -108,7 +108,7 @@ class AddExpenseOperation: TBOperation<NSManagedObjectID, AddExpenseOperationErr
             return .error(.amountIsZero)
         }
         
-        let validData = ValidEnteredData(amount: amountNumber, date: enteredExpense.date, category: enteredExpense.category, tags: enteredExpense.tags)
+        let validData = ValidEnteredData(amount: amountNumber, date: enteredExpense.date, category: enteredExpense.categorySelection, tags: enteredExpense.tagSelection)
         return .success(validData)
     }
     
@@ -184,7 +184,7 @@ class AddExpenseOperation: TBOperation<NSManagedObjectID, AddExpenseOperationErr
                 expense.category = uncategorized
             } else {
                 let uncategorized = Category(context: context)
-                uncategorized.name = DefaultClassifier.uncategorized.rawValue
+                uncategorized.name = DefaultClassifier.uncategorized.name
                 expense.category = uncategorized
             }
         }
@@ -221,7 +221,7 @@ class AddExpenseOperation: TBOperation<NSManagedObjectID, AddExpenseOperationErr
                 expense.addToTags(untagged)
             } else {
                 let untagged = Tag(context: context)
-                untagged.name = DefaultClassifier.untagged.rawValue
+                untagged.name = DefaultClassifier.untagged.name
                 expense.addToTags(untagged)
             }
         }
@@ -252,22 +252,13 @@ class AddExpenseOperation: TBOperation<NSManagedObjectID, AddExpenseOperationErr
     }
     
     private func makeSectionIdentifier(for type: AnyClass, basedOn date: Date) -> String {
-        let startDate: Date
-        let endDate: Date
-        
         if type === DayCategoryGroup.self || type === DayTagGroup.self {
-            startDate = date.startOfDay()
-            endDate = date.endOfDay()
+            return SectionIdentifier.make(dateSpent: date, periodization: .day)
         } else if type === WeekCategoryGroup.self || type === WeekTagGroup.self {
-            let firstWeekday = Global.startOfWeek.rawValue
-            startDate = date.startOfWeek(firstWeekday: firstWeekday)
-            endDate = date.endOfWeek(firstWeekday: firstWeekday)
+            return SectionIdentifier.make(dateSpent: date, periodization: .week)
         } else {
-            startDate = date.startOfMonth()
-            endDate = date.endOfMonth()
+            return SectionIdentifier.make(dateSpent: date, periodization: .month)
         }
-        
-        return SectionIdentifier.make(startDate: startDate, endDate: endDate)
     }
     
 }

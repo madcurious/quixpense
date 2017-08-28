@@ -12,37 +12,6 @@ import Mold
 
 struct Filter {
     
-    enum Periodization: Int {
-        case day = 0, week, month
-        
-        func text() -> String {
-            switch self {
-            case .day:
-                return "Daily"
-                
-            case .week:
-                return "Weekly"
-                
-            case .month:
-                return "Monthly"
-            }
-        }
-    }
-    
-    enum Grouping: Int {
-        case category = 0, tag
-        
-        func text() -> String {
-            switch self {
-            case .category:
-                return "by category"
-                
-            case .tag:
-                return "by tag"
-            }
-        }
-    }
-    
     var periodization = Periodization.day
     var grouping = Grouping.category
     

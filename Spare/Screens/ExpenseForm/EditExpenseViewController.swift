@@ -58,13 +58,13 @@ class EditExpenseViewController: ExpenseFormViewController {
         if let category = expense.category {
             let categorySelection = CategorySelection.id(category.objectID)
             customView.categoryFieldView.setCategory(categorySelection)
-            enteredExpense.category = categorySelection
+            enteredExpense.categorySelection = categorySelection
         }
         
         if let tags = expense.tags {
             let tagSelection = TagSelection(from: tags)
             customView.tagFieldView.setTags(tagSelection)
-            enteredExpense.tags = tagSelection
+            enteredExpense.tagSelection = tagSelection
         }
     }
     

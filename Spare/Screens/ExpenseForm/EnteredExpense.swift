@@ -9,8 +9,10 @@
 import Foundation
 
 struct EnteredExpense {
+    
     var amount: String?
     var date = Date()
-    var category = CategorySelection.none
-    var tags = TagSelection.none
+    var categorySelection = CategorySelection.none
+    var tagSelection = TagSelection.none
+    
 }

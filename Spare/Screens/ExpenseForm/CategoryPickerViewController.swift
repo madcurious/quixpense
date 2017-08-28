@@ -72,7 +72,7 @@ fileprivate class CategoryListViewController: UITableViewController {
     /// Fetch controller for all categories except "Uncategorized"
     let categoryFetcher: NSFetchedResultsController<Category> = {
         let fetchRequest: NSFetchRequest<Category> = Category.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "%K != %@", #keyPath(Category.name), DefaultClassifier.uncategorized.rawValue)
+        fetchRequest.predicate = NSPredicate(format: "%K != %@", #keyPath(Category.name), DefaultClassifier.uncategorized.name)
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(Category.name), ascending: true)]
         return NSFetchedResultsController<Category>(fetchRequest: fetchRequest,
                                                     managedObjectContext: Global.coreDataStack.viewContext,

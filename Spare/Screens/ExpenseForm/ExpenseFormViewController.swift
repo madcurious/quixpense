@@ -61,11 +61,11 @@ class ExpenseFormViewController: UIViewController {
             return true
         }
         
-        if enteredExpense.category != .none {
+        if enteredExpense.categorySelection != .none {
             return true
         }
         
-        if case .list(let list) = enteredExpense.tags,
+        if case .list(let list) = enteredExpense.tagSelection,
             list.isEmpty == false {
             return true
         }
@@ -77,8 +77,8 @@ class ExpenseFormViewController: UIViewController {
         // Reset the input model.
         enteredExpense.amount = nil
         enteredExpense.date = Date()
-        enteredExpense.category = .none
-        enteredExpense.tags = .none
+        enteredExpense.categorySelection = .none
+        enteredExpense.tagSelection = .none
         
         // Reset the views.
         customView.amountFieldView.textField.text = nil
@@ -120,20 +120,20 @@ class ExpenseFormViewController: UIViewController {
     }
     
     func handleTapOnCategoryEditButton() {
-        CategoryPickerViewController.present(from: self, selectedCategory: enteredExpense.category)
+        CategoryPickerViewController.present(from: self, selectedCategory: enteredExpense.categorySelection)
     }
     
     func handleTapOnCategoryClearButton() {
-        enteredExpense.category = .none
+        enteredExpense.categorySelection = .none
         customView.categoryFieldView.setCategory(.none)
     }
     
     func handleTapOnTagEditButton() {
-        TagPickerViewController.present(from: self, selectedTags: enteredExpense.tags)
+        TagPickerViewController.present(from: self, selectedTags: enteredExpense.tagSelection)
     }
     
     func handleTapOnTagClearButton() {
-        enteredExpense.tags = .none
+        enteredExpense.tagSelection = .none
         customView.tagFieldView.setTags(.none)
     }
     
@@ -156,7 +156,7 @@ extension ExpenseFormViewController: CategoryPickerViewControllerDelegate {
     
     func categoryPicker(_ picker: CategoryPickerViewController, didSelectCategory category: CategorySelection) {
         // Update the model.
-        enteredExpense.category = category
+        enteredExpense.categorySelection = category
         
         // Update the view.
         customView.categoryFieldView.setCategory(category)
@@ -169,7 +169,7 @@ extension ExpenseFormViewController: CategoryPickerViewControllerDelegate {
 extension ExpenseFormViewController: TagPickerViewControllerDelegate {
     
     func tagPicker(_ picker: TagPickerViewController, didSelectTags tags: TagSelection) {
-        enteredExpense.tags = tags
+        enteredExpense.tagSelection = tags
         customView.tagFieldView.setTags(tags)
     }
     

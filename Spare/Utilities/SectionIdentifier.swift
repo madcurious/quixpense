@@ -12,7 +12,25 @@ final class SectionIdentifier {
     
     fileprivate init() {}
     
-    class func make(startDate: Date, endDate: Date) -> String {
+    class func make(dateSpent: Date, periodization: Periodization) -> String {
+        let startDate: Date
+        let endDate: Date
+        
+        switch periodization {
+        case .day:
+            startDate = dateSpent.startOfDay()
+            endDate = dateSpent.endOfDay()
+            
+        case .week:
+            let firstWeekday = Global.startOfWeek.rawValue
+            startDate = dateSpent.startOfWeek(firstWeekday: firstWeekday)
+            endDate = dateSpent.endOfWeek(firstWeekday: firstWeekday)
+            
+        case .month:
+            startDate = dateSpent.startOfMonth()
+            endDate = dateSpent.endOfMonth()
+        }
+        
         return "\(startDate.timeIntervalSince1970)-\(endDate.timeIntervalSince1970)"
     }
     

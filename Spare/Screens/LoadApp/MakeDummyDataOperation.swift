@@ -112,8 +112,8 @@ class MakeDummyDataOperation: TBOperation<Bool, Error> {
                 
                 let enteredExpense = EnteredExpense(amount: "\(amount)",
                     date: currentDateSpent,
-                    category: category,
-                    tags: tags)
+                    categorySelection: category,
+                    tagSelection: tags)
                 let addOp = AddExpenseOperation(context: context,
                                                 enteredExpense: enteredExpense,
                                                 completionBlock: nil)

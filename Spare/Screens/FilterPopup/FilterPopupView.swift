@@ -29,16 +29,16 @@ class FilterPopupView: UIView, Themeable {
         super.awakeFromNib()
         
         self.periodizationLabel.text = "PERIODIZATION"
-        let periodizationTexts = [Filter.Periodization.day.text(),
-                                  Filter.Periodization.week.text(),
-                                  Filter.Periodization.month.text()]
+        let periodizationTexts = [Periodization.day.text(),
+                                  Periodization.week.text(),
+                                  Periodization.month.text()]
         for i in 0 ..< periodizationTexts.count {
             self.periodizationControl.setTitle(periodizationTexts[i], forSegmentAt: i)
         }
         
         self.groupingLabel.text = "GROUPING"
-        let groupingTexts = [Filter.Grouping.category.text().capitalized,
-                             Filter.Grouping.tag.text().capitalized]
+        let groupingTexts = [Grouping.category.text().capitalized,
+                             Grouping.tag.text().capitalized]
         for i in 0 ..< groupingTexts.count {
             self.groupingControl.setTitle(groupingTexts[i], forSegmentAt: i)
         }
