@@ -24,19 +24,30 @@ class EditExpenseOperation: TBOperation<Bool, TBError> {
     }
     
     override func main() {
-        let validateOp = ValidateEnteredExpenseOperation(enteredExpense: enteredExpense) { [unowned self] result in
-            if case .error(let error) = result {
-                self.result = .error(error)
-            } else if case .success(let validEnteredExpense) = result {
-                do {
-                    try self.editExpense(validEnteredExpense: validEnteredExpense)
-                    self.result = .success(true)
-                } catch {
-                    self.result = .error(TBError(error.localizedDescription))
-                }
-            }
+        // First, validate the entered expense.
+        let validationResult = validateEnteredExpense()
+        
+        if case .error(let error) = result {
+            self.result = .error(error)
+        } else if case .success(let _) = result {
+//            do {
+//                try self.editExpense(validEnteredExpense: validEnteredExpense)
+//                self.result = .success(true)
+//            } catch {
+//                self.result = .error(TBError(error.localizedDescription))
+//            }
+            
         }
-        validateOp.start()
+    }
+    
+    func validateEnteredExpense() -> ValidateEnteredExpenseOperation.Result {
+        let validateOperation = ValidateEnteredExpenseOperation(enteredExpense: enteredExpense, completionBlock: nil)
+        validateOperation.start()
+        return validateOperation.result
+    }
+    
+    func editExpense(from validEnteredExpense: ValidEnteredExpense) {
+        
     }
     
     func editExpense(validEnteredExpense: ValidEnteredExpense) throws {
