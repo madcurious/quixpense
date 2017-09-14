@@ -9,7 +9,26 @@
 import Foundation
 import Mold
 
-class ValidateEnteredExpenseOperation: TBOperation<ValidEnteredExpense, TBError> {
+enum ValidateEnteredExpenseError: LocalizedError {
+    
+    case amountIsEmpty
+    case amountIsNotANumber
+    case amountIsZero
+    
+    var errorDescription: String? {
+        switch self {
+        case .amountIsEmpty:
+            return "Amount can't be empty."
+        case .amountIsNotANumber:
+            return "Amount is not a valid number."
+        case .amountIsZero:
+            return "Amount can't be zero."
+        }
+    }
+    
+}
+
+class ValidateEnteredExpenseOperation: TBOperation<ValidEnteredExpense, ValidateEnteredExpenseError> {
     
     let enteredExpense: EnteredExpense
     
@@ -21,7 +40,7 @@ class ValidateEnteredExpenseOperation: TBOperation<ValidEnteredExpense, TBError>
     override func main() {
         // Nil amount
         if enteredExpense.amount == nil {
-            result = .error(TBError("Amount can't be empty."))
+            result = .error(.amountIsEmpty)
             return
         }
         
@@ -29,7 +48,7 @@ class ValidateEnteredExpenseOperation: TBOperation<ValidEnteredExpense, TBError>
         guard let amount = enteredExpense.amount?.trim(),
             amount.isEmpty == false
             else {
-                result = .error(TBError("Amount can't be empty."))
+                result = .error(.amountIsEmpty)
                 return
         }
         
@@ -37,14 +56,14 @@ class ValidateEnteredExpenseOperation: TBOperation<ValidEnteredExpense, TBError>
         let invalidCharacterSet = CharacterSet.decimalNumberCharacterSet().inverted
         guard amount.rangeOfCharacter(from: invalidCharacterSet) == nil
             else {
-                result = .error(TBError("The entered amount is not a number."))
+                result = .error(.amountIsNotANumber)
                 return
         }
         
         // Amount is just a period, no numbers
         guard amount.rangeOfCharacter(from: CharacterSet.wholeNumberCharacterSet()) != nil
             else {
-                result = .error(TBError("The entered amount is not a number."))
+                result = .error(.amountIsNotANumber)
                 return
         }
         
@@ -52,13 +71,13 @@ class ValidateEnteredExpenseOperation: TBOperation<ValidEnteredExpense, TBError>
         
         // NaN not allowed.
         if amountNumber.isEqual(to: NSDecimalNumber.notANumber) {
-            result = .error(TBError("The entered amount is not a number."))
+            result = .error(.amountIsNotANumber)
             return
         }
         
         // Zero not allowed.
         if amountNumber.isEqual(to: 0) {
-            result = .error(TBError("Amount can't be zero."))
+            result = .error(.amountIsZero)
             return
         }
         

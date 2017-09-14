@@ -10,7 +10,26 @@ import Foundation
 import CoreData
 import Mold
 
-class EditExpenseOperation: TBOperation<Bool, TBError> {
+enum EditExpenseError: LocalizedError {
+    
+    case expenseNotFound
+    case validationError(ValidateEnteredExpenseError)
+    case unknown
+    
+    var errorDescription: String? {
+        switch self {
+        case .expenseNotFound:
+            return "The expense to edit couldn't be found."
+        case .validationError(let validationError):
+            return validationError.errorDescription
+        case .unknown:
+            return "Unknown error occurred"
+        }
+    }
+    
+}
+
+class EditExpenseOperation: TBOperation<Bool, EditExpenseError> {
     
     let context: NSManagedObjectContext
     let expenseId: NSManagedObjectID
@@ -26,17 +45,14 @@ class EditExpenseOperation: TBOperation<Bool, TBError> {
     override func main() {
         // First, validate the entered expense.
         let validationResult = validateEnteredExpense()
-        
-        if case .error(let error) = result {
-            self.result = .error(error)
-        } else if case .success(let _) = result {
-//            do {
-//                try self.editExpense(validEnteredExpense: validEnteredExpense)
-//                self.result = .success(true)
-//            } catch {
-//                self.result = .error(TBError(error.localizedDescription))
-//            }
-            
+       
+        switch validationResult {
+        case .success(let validEnteredExpense):
+            editExpense(from: validEnteredExpense)
+        case .error(let error):
+            result = .error(.validationError(error))
+        case .none:
+            result = .none
         }
     }
     
@@ -53,7 +69,7 @@ class EditExpenseOperation: TBOperation<Bool, TBError> {
     func editExpense(validEnteredExpense: ValidEnteredExpense) throws {
         guard let expense = context.object(with: expenseId) as? Expense
             else {
-                result = .error(TBError("Expense with ID \(expenseId) not found."))
+                result = .error(.expenseNotFound)
                 return
         }
         
