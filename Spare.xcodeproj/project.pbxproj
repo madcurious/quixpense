@@ -53,7 +53,6 @@
 		266B5FFC1EFCEBE800063803 /* ExpenseFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266B5FFB1EFCEBE800063803 /* ExpenseFormView.swift */; };
 		266B5FFE1EFCEBF800063803 /* ExpenseFormView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 266B5FFD1EFCEBF800063803 /* ExpenseFormView.xib */; };
 		267C2B7C1E7BDA03008EA3E0 /* MainTabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267C2B7B1E7BDA03008EA3E0 /* MainTabBarVC.swift */; };
-		26821F641F34674D00837D23 /* TestCategoryGroupTotals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26821F631F34674D00837D23 /* TestCategoryGroupTotals.swift */; };
 		26974F3C1F2F14E600CF15E2 /* LoadCoreDataStackOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26974F3B1F2F14E600CF15E2 /* LoadCoreDataStackOperation.swift */; };
 		26A1CB4C1DD1ABD600DAE89E /* NotoSansUI-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26A1CB441DD1ABD600DAE89E /* NotoSansUI-Bold.ttf */; };
 		26A1CB4D1DD1ABD600DAE89E /* NotoSansUI-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26A1CB451DD1ABD600DAE89E /* NotoSansUI-BoldItalic.ttf */; };
@@ -212,7 +211,6 @@
 		266B5FFB1EFCEBE800063803 /* ExpenseFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseFormView.swift; sourceTree = "<group>"; };
 		266B5FFD1EFCEBF800063803 /* ExpenseFormView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpenseFormView.xib; sourceTree = "<group>"; };
 		267C2B7B1E7BDA03008EA3E0 /* MainTabBarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarVC.swift; sourceTree = "<group>"; };
-		26821F631F34674D00837D23 /* TestCategoryGroupTotals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCategoryGroupTotals.swift; sourceTree = "<group>"; };
 		26974F3B1F2F14E600CF15E2 /* LoadCoreDataStackOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadCoreDataStackOperation.swift; sourceTree = "<group>"; };
 		26974F3D1F2F30AF00CF15E2 /* TestLoadCoreDataStackOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLoadCoreDataStackOperation.swift; sourceTree = "<group>"; };
 		26A1CB441DD1ABD600DAE89E /* NotoSansUI-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansUI-Bold.ttf"; sourceTree = "<group>"; };
@@ -385,7 +383,6 @@
 				264EE4A51EF90450004011FE /* Info.plist */,
 				26974F3D1F2F30AF00CF15E2 /* TestLoadCoreDataStackOperation.swift */,
 				261064B51F31C9C9005D4857 /* CoreDataTestCase.swift */,
-				26821F631F34674D00837D23 /* TestCategoryGroupTotals.swift */,
 				26BEEBEE1F6A7A26005224C9 /* EditExpenseTest_Amount.swift */,
 				26BEEBF01F6A7A45005224C9 /* EditExpenseTest_Category.swift */,
 				26BEEBF21F6A7A9F005224C9 /* EditExpenseTest_Tags.swift */,
@@ -729,7 +726,6 @@
 				26BEEBF31F6A7A9F005224C9 /* EditExpenseTest_Tags.swift in Sources */,
 				26BEEBF51F6A7AB0005224C9 /* EditExpenseTest_DayCategoryGroup.swift in Sources */,
 				26BEEBF91F6A7AD7005224C9 /* EditExpenseTest_MonthCategoryGroup.swift in Sources */,
-				26821F641F34674D00837D23 /* TestCategoryGroupTotals.swift in Sources */,
 				26BEEBFD1F6A7AF8005224C9 /* EditExpenseTest_WeekTagGroups.swift in Sources */,
 				26BEEBF11F6A7A45005224C9 /* EditExpenseTest_Category.swift in Sources */,
 				26BEEBFB1F6A7AE7005224C9 /* EditExpenseTest_DayTagGroups.swift in Sources */,

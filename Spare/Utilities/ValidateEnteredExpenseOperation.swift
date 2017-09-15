@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 import Mold
 
 enum ValidateEnteredExpenseError: LocalizedError {
@@ -14,6 +15,7 @@ enum ValidateEnteredExpenseError: LocalizedError {
     case amountIsEmpty
     case amountIsNotANumber
     case amountIsZero
+    case unexpected(Error)
     
     var errorDescription: String? {
         switch self {
@@ -23,6 +25,8 @@ enum ValidateEnteredExpenseError: LocalizedError {
             return "Amount is not a valid number."
         case .amountIsZero:
             return "Amount can't be zero."
+        case .unexpected(let error):
+            return tb_errorMessage(from: error)
         }
     }
     
@@ -31,9 +35,11 @@ enum ValidateEnteredExpenseError: LocalizedError {
 class ValidateEnteredExpenseOperation: TBOperation<ValidEnteredExpense, ValidateEnteredExpenseError> {
     
     let enteredExpense: EnteredExpense
+    let context: NSManagedObjectContext
     
-    init(enteredExpense: EnteredExpense, completionBlock: TBOperationCompletionBlock?) {
+    init(enteredExpense: EnteredExpense, context: NSManagedObjectContext, completionBlock: TBOperationCompletionBlock?) {
         self.enteredExpense = enteredExpense
+        self.context = context
         super.init(completionBlock: completionBlock)
     }
     

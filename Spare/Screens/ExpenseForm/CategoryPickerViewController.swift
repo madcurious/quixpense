@@ -238,6 +238,8 @@ extension CategoryListViewController {
     
 }
 
+// MARK: - NewClassifierViewControllerDelegate
+
 extension CategoryListViewController: NewClassifierViewControllerDelegate {
     
     func newClassifierViewController(_ newClassifierViewController: NewClassifierViewController, didEnter classifierName: String?) {

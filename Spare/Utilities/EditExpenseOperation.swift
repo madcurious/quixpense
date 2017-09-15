@@ -14,7 +14,7 @@ enum EditExpenseError: LocalizedError {
     
     case expenseNotFound
     case validationError(ValidateEnteredExpenseError)
-    case unknown
+    case unexpected(Error)
     
     var errorDescription: String? {
         switch self {
@@ -22,14 +22,14 @@ enum EditExpenseError: LocalizedError {
             return "The expense to edit couldn't be found."
         case .validationError(let validationError):
             return validationError.errorDescription
-        case .unknown:
-            return "Unknown error occurred"
+        case .unexpected(let error):
+            return tb_errorMessage(from: error)
         }
     }
     
 }
 
-class EditExpenseOperation: TBOperation<Bool, EditExpenseError> {
+class EditExpenseOperation: TBOperation<NSManagedObjectID, EditExpenseError> {
     
     let context: NSManagedObjectContext
     let expenseId: NSManagedObjectID
@@ -46,27 +46,29 @@ class EditExpenseOperation: TBOperation<Bool, EditExpenseError> {
         // First, validate the entered expense.
         let validationResult = validateEnteredExpense()
        
-        switch validationResult {
-        case .success(let validEnteredExpense):
-            editExpense(from: validEnteredExpense)
-        case .error(let error):
-            result = .error(.validationError(error))
-        case .none:
-            result = .none
+        do {
+            switch validationResult {
+            case .success(let validEnteredExpense):
+                try editExpense(from: validEnteredExpense)
+            case .error(let error):
+                result = .error(.validationError(error))
+            case .none:
+                result = .none
+            }
+        } catch {
+            result = .error(.unexpected(error))
         }
     }
     
     func validateEnteredExpense() -> ValidateEnteredExpenseOperation.Result {
-        let validateOperation = ValidateEnteredExpenseOperation(enteredExpense: enteredExpense, completionBlock: nil)
+        let validateOperation = ValidateEnteredExpenseOperation(enteredExpense: enteredExpense,
+                                                                context: context,
+                                                                completionBlock: nil)
         validateOperation.start()
         return validateOperation.result
     }
     
-    func editExpense(from validEnteredExpense: ValidEnteredExpense) {
-        
-    }
-    
-    func editExpense(validEnteredExpense: ValidEnteredExpense) throws {
+    func editExpense(from validEnteredExpense: ValidEnteredExpense) throws {
         guard let expense = context.object(with: expenseId) as? Expense
             else {
                 result = .error(.expenseNotFound)
@@ -76,6 +78,8 @@ class EditExpenseOperation: TBOperation<Bool, EditExpenseError> {
         expense.amount = validEnteredExpense.amount
         expense.dateSpent = validEnteredExpense.date
         try updateCategory(for: expense, from: validEnteredExpense.categorySelection)
+        try context.saveToStore()
+        result = .success(expense.objectID)
     }
     
     func updateCategory(for expense: Expense, from selection: CategorySelection) throws {
@@ -183,7 +187,7 @@ class EditExpenseOperation: TBOperation<Bool, EditExpenseError> {
         }
     }
     
-    private func existingGroup<T: NSManagedObject>(withClassifier classifier: NSManagedObject, dateSpent: Date, periodization: Periodization) throws -> T? {
+    private func existingGroup<T>(withClassifier classifier: NSManagedObject, dateSpent: Date, periodization: Periodization) throws -> T? where T: NSManagedObject {
         let sectionIdentifier = SectionIdentifier.make(dateSpent: dateSpent, periodization: periodization)
         let fetchRequest = NSFetchRequest<T>(entityName: String(describing: T.self))
         fetchRequest.predicate = NSPredicate(format: "%K == %@ AND %K == %@",
