@@ -59,39 +59,29 @@ class EditExpenseOperation: TBOperation<NSManagedObjectID, EditExpenseError> {
         expense.dateSpent = validEnteredExpense.dateSpent
         
         if shouldChange(currentCategory: expense.category, from: validEnteredExpense.categorySelection) {
-            let newCategory = category(fromSelection: validEnteredExpense.categorySelection)
+            let newCategory = fetchOrMakeReplacementCategory(fromSelection: validEnteredExpense.categorySelection)
             expense.category = newCategory
             
+            // Replace the category groups
             let categoryGroups: [(String, Periodization)] = [
                 (#keyPath(Expense.dayCategoryGroup), .day),
                 (#keyPath(Expense.weekCategoryGroup), .week),
                 (#keyPath(Expense.monthCategoryGroup), .month)
             ]
             for (keyPath, periodization) in categoryGroups {
-                if let classifierGroup = expense.value(forKey: keyPath) as? ClassifierGroup {
-                    classifierGroup.removeFromExpenses(expense)
-                    classifierGroup.total = classifierGroup.total?.subtracting(validEnteredExpense.amount)
+                // Disassociate the current classifier group.
+                if let currentGroup = expense.value(forKey: keyPath) as? ClassifierGroup {
+                    currentGroup.removeFromExpenses(expense)
+                    currentGroup.total = currentGroup.total?.subtracting(validEnteredExpense.amount)
                 }
                 
-                if let newClassifierGroup = fetchClassifierGroup(classifier: newCategory, dateSpent: validEnteredExpense.dateSpent, periodization: periodization) {
-                    let currentTotal = newClassifierGroup.total ?? .zero
-                    newClassifierGroup.total = currentTotal.adding(validEnteredExpense.amount)
-                    newClassifierGroup.addToExpenses(expense)
+                if let newGroup = fetchReplacementClassifierGroup(periodization: periodization, classifier: newCategory, dateSpent: validEnteredExpense.dateSpent) {
+                    let currentTotal = newGroup.total ?? .zero
+                    newGroup.total = currentTotal.adding(validEnteredExpense.amount)
+                    newGroup.addToExpenses(expense)
                 } else {
-                    let newClassifierGroup: ClassifierGroup = {
-                        switch periodization {
-                        case .day:
-                            return DayCategoryGroup(context: context)
-                        case .week:
-                            return WeekCategoryGroup(context: context)
-                        case .month:
-                            return MonthCategoryGroup(context: context)
-                        }
-                    }()
-                    newClassifierGroup.sectionIdentifier = SectionIdentifier.make(dateSpent: validEnteredExpense.dateSpent, periodization: periodization)
-                    newClassifierGroup.total = validEnteredExpense.amount
-                    newClassifierGroup.classifier = newCategory
-                    newClassifierGroup.addToExpenses(expense)
+                    let newGroup = makeReplacementClassifierGroup(periodization: periodization, classifier: newCategory, dateSpent: validEnteredExpense.dateSpent)
+                    newGroup.addToExpenses(expense)
                 }
             }
         }
@@ -126,14 +116,14 @@ class EditExpenseOperation: TBOperation<NSManagedObjectID, EditExpenseError> {
         }
     }
     
-    func category(fromSelection categorySelection: CategorySelection) -> Category {
+    func fetchOrMakeReplacementCategory(fromSelection categorySelection: CategorySelection) -> Category {
         switch categorySelection {
         case .id(let objectId):
             return context.object(with: objectId) as! Category
             
         case .name(let categoryName):
             let fetchRequest: NSFetchRequest<Category> = Category.fetchRequest()
-            fetchRequest.predicate = NSPredicate(format: "%K == %@", #keyPath(Category.name), DefaultClassifier.uncategorized.name)
+            fetchRequest.predicate = NSPredicate(format: "%K == %@", #keyPath(Category.name), categoryName)
             if let existingCategory = try! context.fetch(fetchRequest).first {
                 return existingCategory
             } else {
@@ -149,7 +139,7 @@ class EditExpenseOperation: TBOperation<NSManagedObjectID, EditExpenseError> {
         }
     }
     
-    func fetchClassifierGroup(classifier: Classifier, dateSpent: Date, periodization: Periodization) -> ClassifierGroup? {
+    func fetchReplacementClassifierGroup(periodization: Periodization, classifier: Classifier, dateSpent: Date) -> ClassifierGroup? {
         let sectionIdentififer = SectionIdentifier.make(dateSpent: dateSpent, periodization: periodization)
         let predicate = NSPredicate(format: "%K == %@",
                                     #keyPath(ClassifierGroup.sectionIdentifier), sectionIdentififer,
@@ -189,6 +179,24 @@ class EditExpenseOperation: TBOperation<NSManagedObjectID, EditExpenseError> {
                 return (try? context.fetch(request))?.first
             }
         }
+    }
+    
+    func makeReplacementClassifierGroup(periodization: Periodization, classifier: Classifier, dateSpent: Date) -> ClassifierGroup {
+        let newClassifierGroup: ClassifierGroup = {
+            switch periodization {
+            case .day:
+                return DayCategoryGroup(context: context)
+            case .week:
+                return WeekCategoryGroup(context: context)
+            case .month:
+                return MonthCategoryGroup(context: context)
+            }
+        }()
+        newClassifierGroup.sectionIdentifier = SectionIdentifier.make(dateSpent: validEnteredExpense.dateSpent, periodization: periodization)
+        newClassifierGroup.total = validEnteredExpense.amount
+        newClassifierGroup.classifier = classifier
+//        newClassifierGroup.addToExpenses(expense)
+        return newClassifierGroup
     }
     
 }

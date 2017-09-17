@@ -26,6 +26,27 @@ class EditExpense_Category: CoreDataTestCase {
         operationQueue.addOperations(operations, waitUntilFinished: true)
     }
     
+    func makeFetchedResultsController() -> NSFetchedResultsController<Expense> {
+        let request: NSFetchRequest<Expense> = Expense.fetchRequest()
+        request.sortDescriptors = [
+            NSSortDescriptor(key: #keyPath(Expense.dateSpent), ascending: true)
+        ]
+        let frc = NSFetchedResultsController<Expense>(fetchRequest: request,
+                                                      managedObjectContext: coreDataStack.viewContext,
+                                                      sectionNameKeyPath: nil,
+                                                      cacheName: nil)
+        return frc
+    }
+    
+    func makeValidEnteredExpense(from enteredExpense: EnteredExpense) -> ValidEnteredExpense {
+        let validateOp = ValidateEnteredExpenseOperation(enteredExpense: enteredExpense, context: coreDataStack.newBackgroundContext(), completionBlock: nil)
+        validateOp.start()
+        if case .success(let validEnteredExpense) = validateOp.result {
+            return validEnteredExpense
+        }
+        fatalError()
+    }
+    
     // MARK: - Entered name
     
     func testEnteredName_sameAsCurrentCategoryName_shouldNotChange() {
@@ -39,7 +60,7 @@ class EditExpense_Category: CoreDataTestCase {
                 return
         }
         
-        let enteredExpense = EnteredExpense(amount: "999", dateSpent: Date(), categorySelection: .name("Food"), tagSelection: .none)
+        let enteredExpense = EnteredExpense(amount: "999", dateSpent: expense.dateSpent!, categorySelection: .name("Food"), tagSelection: .none)
         let validateOp = ValidateEnteredExpenseOperation(enteredExpense: enteredExpense, context: coreDataStack.newBackgroundContext(), completionBlock: nil)
         validateOp.start()
         
@@ -64,6 +85,48 @@ class EditExpense_Category: CoreDataTestCase {
                 fatalError()
         }
         XCTAssertEqual(editedExpense.category?.name, "Food")
+    }
+    
+    func testEnteredName_usingExistingCategory_shouldUpdateClassifierAndClassifierGroups() {
+        makeDummyExpenses()
+        let frc = makeFetchedResultsController()
+        try! frc.performFetch()
+        let expense0 = frc.fetchedObjects!.first!
+        let expense1 = frc.object(at: IndexPath(row: 1, section: 0))
+        let newCategoryEnteredName = "Transportation"
+        let validEnteredExpense = makeValidEnteredExpense(from: EnteredExpense(amount: "333.45",
+                                                                           dateSpent: expense1.dateSpent!,
+                                                                           categorySelection: .name(newCategoryEnteredName),
+                                                                           tagSelection: .none))
+        let editOp = EditExpenseOperation(context: coreDataStack.viewContext,
+                                          expenseId: expense0.objectID,
+                                          validEnteredExpense: validEnteredExpense,
+                                          completionBlock: nil)
+        let expenseToEdit = editOp.fetchExpense()!
+        
+        let shouldChange = editOp.shouldChange(currentCategory: expenseToEdit.category, from: validEnteredExpense.categorySelection)
+        XCTAssertTrue(shouldChange)
+        
+        let replacementCategory = editOp.fetchOrMakeReplacementCategory(fromSelection: validEnteredExpense.categorySelection)
+        XCTAssertEqual(replacementCategory.name, newCategoryEnteredName)
+        XCTAssertEqual(replacementCategory.name, expense1.category?.name)
+        XCTAssertEqual(replacementCategory.objectID, expense1.category?.objectID)
+        
+        let currentDayCategoryGroup = expenseToEdit.dayCategoryGroup
+        let currentWeekCategoryGroup = expenseToEdit.weekCategoryGroup
+        let currentMonthCategoryGroup = expenseToEdit.monthCategoryGroup
+        
+        let newDayCategoryGroup = editOp.fetchReplacementClassifierGroup(periodization: .day, classifier: replacementCategory, dateSpent: validEnteredExpense.dateSpent)
+        XCTAssertNotNil(newDayCategoryGroup)
+        XCTAssertEqual(expense1.dayCategoryGroup, newDayCategoryGroup)
+        
+        let newWeekCategoryGroup = editOp.fetchReplacementClassifierGroup(periodization: .week, classifier: replacementCategory, dateSpent: validEnteredExpense.dateSpent)
+        XCTAssertNotNil(newWeekCategoryGroup)
+        XCTAssertEqual(expense1.weekCategoryGroup, newWeekCategoryGroup)
+        
+        let newMonthCategoryGroup = editOp.fetchReplacementClassifierGroup(periodization: .month, classifier: replacementCategory, dateSpent: validEnteredExpense.dateSpent)
+        XCTAssertNotNil(newMonthCategoryGroup)
+        XCTAssertEqual(expense1.monthCategoryGroup, newMonthCategoryGroup)
     }
     
 }
