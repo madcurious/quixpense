@@ -87,7 +87,7 @@ class ValidateEnteredExpenseOperation: TBOperation<ValidEnteredExpense, Validate
             return
         }
         
-        let validExpense = ValidEnteredExpense(amount: amountNumber, date: enteredExpense.date, categorySelection: enteredExpense.categorySelection, tagSelection: enteredExpense.tagSelection)
+        let validExpense = ValidEnteredExpense(amount: amountNumber, dateSpent: enteredExpense.dateSpent, categorySelection: enteredExpense.categorySelection, tagSelection: enteredExpense.tagSelection)
         result = .success(validExpense)
     }
     

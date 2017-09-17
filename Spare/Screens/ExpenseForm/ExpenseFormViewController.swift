@@ -76,13 +76,13 @@ class ExpenseFormViewController: UIViewController {
     func resetFields() {
         // Reset the input model.
         enteredExpense.amount = nil
-        enteredExpense.date = Date()
+        enteredExpense.dateSpent = Date()
         enteredExpense.categorySelection = .none
         enteredExpense.tagSelection = .none
         
         // Reset the views.
         customView.amountFieldView.textField.text = nil
-        customView.dateFieldView.setDate(enteredExpense.date)
+        customView.dateFieldView.setDate(enteredExpense.dateSpent)
         customView.categoryFieldView.setCategory(.none)
         customView.tagFieldView.setTags(.none)
     }
@@ -110,12 +110,12 @@ class ExpenseFormViewController: UIViewController {
     }
     
     func handleTapOnDateEditButton() {
-        DatePickerViewController.present(from: self, selectedDate: enteredExpense.date)
+        DatePickerViewController.present(from: self, selectedDate: enteredExpense.dateSpent)
     }
     
     func handleTapOnDateRefreshButton() {
         let currentDate = Date()
-        enteredExpense.date = currentDate
+        enteredExpense.dateSpent = currentDate
         customView.dateFieldView.setDate(currentDate)
     }
     
@@ -144,7 +144,7 @@ class ExpenseFormViewController: UIViewController {
 extension ExpenseFormViewController: DatePickerViewControllerDelegate {
     
     func datePicker(_ datePicker: DatePickerViewController, didSelectDate date: Date) {
-        enteredExpense.date = date
+        enteredExpense.dateSpent = date
         customView.dateFieldView.setDate(date)
     }
     

@@ -11,7 +11,7 @@ import Foundation
 struct EnteredExpense {
     
     var amount: String?
-    var date = Date()
+    var dateSpent = Date()
     var categorySelection = CategorySelection.none
     var tagSelection = TagSelection.none
     

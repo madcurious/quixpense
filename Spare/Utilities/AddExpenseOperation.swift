@@ -108,7 +108,7 @@ class AddExpenseOperation: TBOperation<NSManagedObjectID, AddExpenseOperationErr
             return .error(.amountIsZero)
         }
         
-        let validData = ValidEnteredData(amount: amountNumber, date: enteredExpense.date, category: enteredExpense.categorySelection, tags: enteredExpense.tagSelection)
+        let validData = ValidEnteredData(amount: amountNumber, date: enteredExpense.dateSpent, category: enteredExpense.categorySelection, tags: enteredExpense.tagSelection)
         return .success(validData)
     }
     

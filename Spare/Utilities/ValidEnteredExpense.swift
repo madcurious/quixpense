@@ -11,7 +11,7 @@ import Foundation
 struct ValidEnteredExpense {
     
     let amount: NSDecimalNumber
-    let date: Date
+    let dateSpent: Date
     let categorySelection: CategorySelection
     let tagSelection: TagSelection
     

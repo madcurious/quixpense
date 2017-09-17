@@ -11,8 +11,14 @@ import CoreData
 
 enum CategorySelection: Equatable {
     
+    /// A `Category` that already exists. The associated value is that category's `objectID`.
     case id(NSManagedObjectID)
+    
+    /// A user-entered category name, interpreted as a user's intention to create a new category with
+    /// the supplied name in the associated value.
     case name(String)
+    
+    /// No category selected; and therefore, the default `Uncategorized` category will be assigned.
     case none
     
     static func ==(lhs: CategorySelection, rhs: CategorySelection) -> Bool {

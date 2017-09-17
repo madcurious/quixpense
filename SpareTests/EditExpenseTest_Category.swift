@@ -58,31 +58,31 @@ class EditExpenseTest_Category: CoreDataTestCase {
                                             }
         }
         operationQueue.addOperation(editOp)
-        waitForExpectations(timeout: 100000, handler: nil)
+        waitForExpectations(timeout: 30, handler: nil)
     }
     
-    func testEnteredName_alreadyExists_shouldFail() {
-        
-    }
-    
-    func testEnteredName_sameNameDifferentLetterCase_shouldAddNewCategory() {
-        
-    }
-    
-    func testEnteredName_emptyString_shouldFail() {
-        
-    }
-    
-    func testEnteredName_nilString_shouldFail() {
-        
-    }
-    
-    func testThatCategoryIsValidFromSelectedId() {
-        
-    }
-    
-    func testThatCategoryIsUncategorizedFromBlank() {
-        
-    }
+//    func testEnteredName_alreadyExists_shouldFail() {
+//
+//    }
+//
+//    func testEnteredName_sameNameDifferentLetterCase_shouldAddNewCategory() {
+//
+//    }
+//
+//    func testEnteredName_emptyString_shouldFail() {
+//
+//    }
+//
+//    func testEnteredName_nilString_shouldFail() {
+//
+//    }
+//
+//    func testThatCategoryIsValidFromSelectedId() {
+//
+//    }
+//
+//    func testThatCategoryIsUncategorizedFromBlank() {
+//
+//    }
     
 }

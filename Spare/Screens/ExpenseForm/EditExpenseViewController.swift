@@ -52,7 +52,7 @@ class EditExpenseViewController: ExpenseFormViewController {
         
         if let dateSpent = expense.dateSpent {
             customView.dateFieldView.setDate(dateSpent)
-            enteredExpense.date = dateSpent
+            enteredExpense.dateSpent = dateSpent
         }
         
         if let category = expense.category {
