@@ -69,6 +69,7 @@
 		26A1CB4F1DD1ABD600DAE89E /* NotoSansUI-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26A1CB471DD1ABD600DAE89E /* NotoSansUI-Regular.ttf */; };
 		26A30C8A1E5231620047307D /* BaseNavBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A30C891E5231620047307D /* BaseNavBarVC.swift */; };
 		26A30C921E5235950047307D /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A30C911E5235950047307D /* SettingsVC.swift */; };
+		26A4A40B1F6FF4FF0093A6F4 /* EditExpense_DateSpent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A4A40A1F6FF4FF0093A6F4 /* EditExpense_DateSpent.swift */; };
 		26B89D361F6E449D00D96C0D /* Expense+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B89D331F6E449C00D96C0D /* Expense+Extension.swift */; };
 		26B89D381F6E449D00D96C0D /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B89D351F6E449C00D96C0D /* CoreDataStack.swift */; };
 		26B89D3F1F6E44C500D96C0D /* DayCategoryGroup+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B89D391F6E44C500D96C0D /* DayCategoryGroup+CoreDataClass.swift */; };
@@ -239,6 +240,7 @@
 		26A1CB471DD1ABD600DAE89E /* NotoSansUI-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansUI-Regular.ttf"; sourceTree = "<group>"; };
 		26A30C891E5231620047307D /* BaseNavBarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavBarVC.swift; sourceTree = "<group>"; };
 		26A30C911E5235950047307D /* SettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
+		26A4A40A1F6FF4FF0093A6F4 /* EditExpense_DateSpent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditExpense_DateSpent.swift; sourceTree = "<group>"; };
 		26B89D331F6E449C00D96C0D /* Expense+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Expense+Extension.swift"; sourceTree = "<group>"; };
 		26B89D351F6E449C00D96C0D /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		26B89D391F6E44C500D96C0D /* DayCategoryGroup+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DayCategoryGroup+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -406,6 +408,7 @@
 				264EE4A51EF90450004011FE /* Info.plist */,
 				26974F3D1F2F30AF00CF15E2 /* TestLoadCoreDataStackOperation.swift */,
 				261064B51F31C9C9005D4857 /* CoreDataTestCase.swift */,
+				26A4A40A1F6FF4FF0093A6F4 /* EditExpense_DateSpent.swift */,
 			);
 			path = SpareTests;
 			sourceTree = "<group>";
@@ -763,6 +766,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				265CAD131F6E603A0044AFBF /* EditExpense_Category.swift in Sources */,
+				26A4A40B1F6FF4FF0093A6F4 /* EditExpense_DateSpent.swift in Sources */,
 				261064B61F31C9C9005D4857 /* CoreDataTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

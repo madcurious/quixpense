@@ -44,10 +44,6 @@ class EditExpenseOperation: TBOperation<NSManagedObjectID, EditExpenseError> {
         super.init(completionBlock: completionBlock)
     }
     
-    func fetchExpense() -> Expense? {
-        return context.object(with: expenseId) as? Expense
-    }
-    
     override func main() {
         guard let expense = fetchExpense()
             else {
@@ -55,12 +51,23 @@ class EditExpenseOperation: TBOperation<NSManagedObjectID, EditExpenseError> {
                 return
         }
         
-        expense.amount = validEnteredExpense.amount
-        expense.dateSpent = validEnteredExpense.dateSpent
+        var shouldReplaceClassifierGroups = false
         
-        if shouldChange(currentCategory: expense.category, from: validEnteredExpense.categorySelection) {
+        expense.amount = validEnteredExpense.amount
+        
+        if shouldChangeDateSpent(expense.dateSpent, with: validEnteredExpense.dateSpent) {
+            expense.dateSpent = validEnteredExpense.dateSpent
+            shouldReplaceClassifierGroups = true
+        }
+        
+        if shouldChangeCategory(expense.category, with: validEnteredExpense.categorySelection) {
             let newCategory = fetchOrMakeReplacementCategory(fromSelection: validEnteredExpense.categorySelection)
             expense.category = newCategory
+            shouldReplaceClassifierGroups = true
+        }
+        
+        if shouldReplaceClassifierGroups {
+            let category = expense.category!
             
             // Replace the category groups
             let categoryGroups: [(String, Periodization)] = [
@@ -68,18 +75,24 @@ class EditExpenseOperation: TBOperation<NSManagedObjectID, EditExpenseError> {
                 (#keyPath(Expense.weekCategoryGroup), .week),
                 (#keyPath(Expense.monthCategoryGroup), .month)
             ]
+            
             for (keyPath, periodization) in categoryGroups {
                 // Disassociate the current classifier group.
                 if let currentGroup = expense.value(forKey: keyPath) as? ClassifierGroup {
                     currentGroup.removeFromExpenses(expense)
                     currentGroup.total = currentGroup.total?.subtracting(validEnteredExpense.amount)
+                    
+                    // Delete the classifier group if it contains no more expenses.
+                    if currentGroup.expenses?.count == 0 {
+                        context.delete(currentGroup)
+                    }
                 }
                 
-                if let newGroup = fetchReplacementClassifierGroup(periodization: periodization, classifier: newCategory, dateSpent: validEnteredExpense.dateSpent) {
+                if let newGroup = fetchReplacementClassifierGroup(periodization: periodization, classifier: category, dateSpent: validEnteredExpense.dateSpent) {
                     newGroup.total = newGroup.total?.adding(validEnteredExpense.amount)
                     newGroup.addToExpenses(expense)
                 } else {
-                    let newGroup = makeReplacementClassifierGroup(periodization: periodization, classifier: newCategory, dateSpent: validEnteredExpense.dateSpent)
+                    let newGroup = makeReplacementClassifierGroup(periodization: periodization, classifier: category, dateSpent: validEnteredExpense.dateSpent)
                     newGroup.addToExpenses(expense)
                 }
             }
@@ -93,26 +106,43 @@ class EditExpenseOperation: TBOperation<NSManagedObjectID, EditExpenseError> {
         }
     }
     
-    func shouldChange(currentCategory: Category?, from categorySelection: CategorySelection) -> Bool {
+}
+
+extension EditExpenseOperation {
+    
+    func shouldChangeDateSpent(_ dateSpent: Date?, with newDateSpent: Date) -> Bool {
+        return dateSpent != newDateSpent
+    }
+    
+    func shouldChangeCategory(_ category: Category?, with categorySelection: CategorySelection) -> Bool {
         switch categorySelection {
         case .id(let objectId):
-            if currentCategory?.objectID == objectId {
+            if category?.objectID == objectId {
                 return false
             }
             return true
             
         case .name(let categoryName):
-            if currentCategory?.name == categoryName {
+            if category?.name == categoryName {
                 return false
             }
             return true
             
         case .none:
-            if currentCategory?.name == DefaultClassifier.uncategorized.name {
+            if category?.name == DefaultClassifier.uncategorized.name {
                 return false
             }
             return true
         }
+    }
+    
+}
+
+// MARK: - Fetch functions
+extension EditExpenseOperation {
+    
+    func fetchExpense() -> Expense? {
+        return context.object(with: expenseId) as? Expense
     }
     
     func fetchOrMakeReplacementCategory(fromSelection categorySelection: CategorySelection) -> Category {
@@ -194,7 +224,6 @@ class EditExpenseOperation: TBOperation<NSManagedObjectID, EditExpenseError> {
         newClassifierGroup.sectionIdentifier = SectionIdentifier.make(dateSpent: validEnteredExpense.dateSpent, periodization: periodization)
         newClassifierGroup.total = validEnteredExpense.amount
         newClassifierGroup.classifier = classifier
-//        newClassifierGroup.addToExpenses(expense)
         return newClassifierGroup
     }
     

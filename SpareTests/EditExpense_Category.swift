@@ -75,7 +75,7 @@ class EditExpense_Category: CoreDataTestCase {
                                           validEnteredExpense: validEnteredExpense,
                                           completionBlock: nil)
         let currentCategory = editOp.fetchExpense()?.category
-        let shouldChange = editOp.shouldChange(currentCategory: currentCategory, from: validEnteredExpense.categorySelection)
+        let shouldChange = editOp.shouldChangeCategory(currentCategory, with: validEnteredExpense.categorySelection)
         XCTAssertFalse(shouldChange)
         
         // Actually perform operation
@@ -105,7 +105,7 @@ class EditExpense_Category: CoreDataTestCase {
                                           completionBlock: nil)
         var expenseToEdit = editOp.fetchExpense()!
         
-        let shouldChange = editOp.shouldChange(currentCategory: expenseToEdit.category, from: validEnteredExpense.categorySelection)
+        let shouldChange = editOp.shouldChangeCategory(expenseToEdit.category, with: validEnteredExpense.categorySelection)
         XCTAssertTrue(shouldChange)
         
         let replacementCategory = editOp.fetchOrMakeReplacementCategory(fromSelection: validEnteredExpense.categorySelection)
