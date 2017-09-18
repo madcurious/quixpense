@@ -76,8 +76,7 @@ class EditExpenseOperation: TBOperation<NSManagedObjectID, EditExpenseError> {
                 }
                 
                 if let newGroup = fetchReplacementClassifierGroup(periodization: periodization, classifier: newCategory, dateSpent: validEnteredExpense.dateSpent) {
-                    let currentTotal = newGroup.total ?? .zero
-                    newGroup.total = currentTotal.adding(validEnteredExpense.amount)
+                    newGroup.total = newGroup.total?.adding(validEnteredExpense.amount)
                     newGroup.addToExpenses(expense)
                 } else {
                     let newGroup = makeReplacementClassifierGroup(periodization: periodization, classifier: newCategory, dateSpent: validEnteredExpense.dateSpent)
@@ -141,7 +140,7 @@ class EditExpenseOperation: TBOperation<NSManagedObjectID, EditExpenseError> {
     
     func fetchReplacementClassifierGroup(periodization: Periodization, classifier: Classifier, dateSpent: Date) -> ClassifierGroup? {
         let sectionIdentififer = SectionIdentifier.make(dateSpent: dateSpent, periodization: periodization)
-        let predicate = NSPredicate(format: "%K == %@",
+        let predicate = NSPredicate(format: "%K == %@ AND %K == %@",
                                     #keyPath(ClassifierGroup.sectionIdentifier), sectionIdentififer,
                                     #keyPath(ClassifierGroup.classifier), classifier)
         
