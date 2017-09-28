@@ -8,6 +8,7 @@
 
 import XCTest
 import CoreData
+import Mold
 @testable import Spare
 
 class CoreDataTestCase: XCTestCase {
@@ -15,29 +16,72 @@ class CoreDataTestCase: XCTestCase {
     var coreDataStack: NSPersistentContainer!
     var operationQueue = OperationQueue()
     
+    var setupTimeout = TimeInterval(60)
+    
     override func setUp() {
         super.setUp()
         
         operationQueue = OperationQueue()
         
         let xp = expectation(description: "\(#function)\(#line)")
-        let loadOp = LoadCoreDataStackOperation(inMemory: true) {[unowned self] result in
-            switch result {
-            case .success(let container):
-                self.coreDataStack = container
-            default:
-                break
-            }
+        loadCoreDataStack {
             xp.fulfill()
         }
-        
-        operationQueue.addOperation(loadOp)
-        waitForExpectations(timeout: 15, handler: nil)
+        wait(for: [xp], timeout: setupTimeout)
+    }
+    
+    func loadCoreDataStack(completion: (() -> Void)?) {
+        let xp = expectation(description: #function)
+        operationQueue.addOperation(
+            LoadCoreDataStackOperation(inMemory: true) {[unowned self] result in
+                switch result {
+                case .success(let container):
+                    self.coreDataStack = container
+                    completion?()
+                default:
+                    fatalError(#function)
+                }
+                xp.fulfill()
+        })
+        wait(for: [xp], timeout: setupTimeout)
     }
     
     override func tearDown() {
         super.tearDown()
         coreDataStack = nil
+    }
+    
+    func makeExpenses(from enteredExpenses: [EnteredExpense]) {
+        for enteredExpense in enteredExpenses {
+            let addOp = AddExpenseOperation(context: coreDataStack.newBackgroundContext(), enteredExpense: enteredExpense, completionBlock: nil)
+            addOp.start()
+        }
+    }
+    
+    func makeValidEnteredExpense(from enteredExpense: EnteredExpense) -> ValidEnteredExpense {
+        let validateOp = ValidateEnteredExpenseOperation(enteredExpense: enteredExpense, context: coreDataStack.newBackgroundContext(), completionBlock: nil)
+        validateOp.start()
+        
+        switch validateOp.result {
+        case .success(let validEnteredExpense):
+            return validEnteredExpense
+        case .error(let error):
+            fatalError("\(#function) - Error received: \(error)")
+        default:
+            fatalError("\(#function) - No result found.")
+        }
+    }
+    
+    func makeFetchControllerForAllExpenses() -> NSFetchedResultsController<Expense> {
+            let request: NSFetchRequest<Expense> = Expense.fetchRequest()
+            request.sortDescriptors = [
+                NSSortDescriptor(key: #keyPath(Expense.dateSpent), ascending: true)
+            ]
+            let frc = NSFetchedResultsController<Expense>(fetchRequest: request,
+                                                          managedObjectContext: coreDataStack.viewContext,
+                                                          sectionNameKeyPath: nil,
+                                                          cacheName: nil)
+            return frc
     }
     
 }

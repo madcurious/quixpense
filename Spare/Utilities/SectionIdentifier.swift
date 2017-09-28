@@ -10,8 +10,6 @@ import Foundation
 
 final class SectionIdentifier {
     
-    fileprivate init() {}
-    
     class func make(dateSpent: Date, periodization: Periodization) -> String {
         let startDate: Date
         let endDate: Date

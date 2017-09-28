@@ -47,6 +47,13 @@ enum AddExpenseOperationError: LocalizedError, Equatable {
     }
 }
 
+/**
+ Adds an operation to the persistent store.
+ 
+ - Important: Though it is possible, do not run multiple add expense operations simultaneously.
+ If any of the operations are adding a new category name to the persistent store, multiple categories
+ of the same name will be added to the store. To add multiple expenses, run the add operations serially.
+ */
 class AddExpenseOperation: TBOperation<NSManagedObjectID, AddExpenseOperationError> {
     
     private struct ValidEnteredData {

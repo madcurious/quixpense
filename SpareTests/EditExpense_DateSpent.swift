@@ -12,39 +12,15 @@ import CoreData
 
 class EditExpense_DateSpent: CoreDataTestCase {
     
-    func makeDummyExpenses() {
-        let dummy = [
-            ("250.00", "Food"),
-            ("164.11", "Transportation")
-        ]
-        var operations = [AddExpenseOperation]()
-        for (amount, categoryName) in dummy {
-            let enteredExpense = EnteredExpense(amount: amount, dateSpent: Date(), categorySelection: .name(categoryName), tagSelection: .none)
-            let addOp = AddExpenseOperation(context: coreDataStack.newBackgroundContext(), enteredExpense: enteredExpense, completionBlock: nil)
-            operations.append(addOp)
-        }
-        operationQueue.addOperations(operations, waitUntilFinished: true)
-    }
-    
-    func makeFetchedResultsController() -> NSFetchedResultsController<Expense> {
-        let request: NSFetchRequest<Expense> = Expense.fetchRequest()
-        request.sortDescriptors = [
-            NSSortDescriptor(key: #keyPath(Expense.dateSpent), ascending: true)
-        ]
-        let frc = NSFetchedResultsController<Expense>(fetchRequest: request,
-                                                      managedObjectContext: coreDataStack.viewContext,
-                                                      sectionNameKeyPath: nil,
-                                                      cacheName: nil)
-        return frc
-    }
-    
-    func makeValidEnteredExpense(from enteredExpense: EnteredExpense) -> ValidEnteredExpense {
-        let validateOp = ValidateEnteredExpenseOperation(enteredExpense: enteredExpense, context: coreDataStack.newBackgroundContext(), completionBlock: nil)
-        validateOp.start()
-        if case .success(let validEnteredExpense) = validateOp.result {
-            return validEnteredExpense
-        }
-        fatalError()
+    override func setUp() {
+        super.setUp()
+        makeExpenses(from: [
+            EnteredExpense(amount: "250.00", dateSpent: Date(), categorySelection: .name("Food"), tagSelection: .none),
+            EnteredExpense(amount: "164.11", dateSpent: Date(), categorySelection: .name("Transportation"), tagSelection: .none),
+            EnteredExpense(amount: "7.00", dateSpent: Date(), categorySelection: .name("Transportation"), tagSelection: .none),
+            EnteredExpense(amount: "149.00", dateSpent: Date(), categorySelection: .name("Food"), tagSelection: .none),
+            EnteredExpense(amount: "16", dateSpent: Date(), categorySelection: .name("Transportation"), tagSelection: .none)
+            ])
     }
     
 }
@@ -52,8 +28,7 @@ class EditExpense_DateSpent: CoreDataTestCase {
 extension EditExpense_DateSpent {
     
     func testDateSpent_newDate_shouldChangeClassifierGroups() {
-        makeDummyExpenses()
-        let frc = makeFetchedResultsController()
+        let frc = makeFetchControllerForAllExpenses()
         try! frc.performFetch()
         let firstExpense = frc.fetchedObjects!.first!
         let newDate = Date(timeIntervalSince1970: 1459468800)
