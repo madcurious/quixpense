@@ -24,7 +24,7 @@ enum CategorySelection: Equatable {
     /**
      No category selection, which defaults to the `Category` with a name of `Uncategorized`.
      */
-    case uncategorized
+    case none
     
     static func ==(lhs: CategorySelection, rhs: CategorySelection) -> Bool {
         switch (lhs, rhs) {
@@ -32,7 +32,7 @@ enum CategorySelection: Equatable {
             return true
         case (.new(let name1), .new(let name2)) where name1 == name2:
             return true
-        case (.uncategorized, .uncategorized):
+        case (.none, .none):
             return true
         default:
             return false

@@ -49,9 +49,9 @@ class AddExpenseOperation: TBOperation<NSManagedObjectID, AddExpenseError> {
             let fetchRequest: NSFetchRequest<Category> = Category.fetchRequest()
             fetchRequest.predicate = NSPredicate(format: "%K == %@", #keyPath(Category.name), categoryName)
             return try! context.fetch(fetchRequest).first
-        case .uncategorized:
+        case .none:
             let fetchRequest: NSFetchRequest<Category> = Category.fetchRequest()
-            fetchRequest.predicate = NSPredicate(format: "%K == %@", #keyPath(Category.name), DefaultClassifier.uncategorized.name)
+            fetchRequest.predicate = NSPredicate(format: "%K == %@", #keyPath(Category.name), DefaultClassifier.defaultCategoryName)
             return try! context.fetch(fetchRequest).first
         }
     }

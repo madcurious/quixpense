@@ -85,7 +85,7 @@ class MakeDummyDataOperation: TBOperation<Bool, Error> {
                     if let randomCategory = kCategoryNames[randomIndex] {
                         return .new(randomCategory)
                     }
-                    return .uncategorized
+                    return .none
                 }()
                 
                 let tags: TagSelection = {

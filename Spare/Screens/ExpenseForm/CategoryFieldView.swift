@@ -18,12 +18,12 @@ class CategoryFieldView: ClassifierFieldView {
         
         iconImageView.image = UIImage.templateNamed("categoryIcon")
         
-        setCategory(.uncategorized)
+        setCategory(.none)
     }
     
     func setCategory(_ category: CategorySelection) {
         switch category {
-        case .uncategorized:
+        case .none:
             nameLabel.text = placeholder
             nameLabel.textColor = Global.theme.color(for: .placeholder)
             clearButton.isHidden = true

@@ -12,7 +12,7 @@ import CoreData
 
 class AddExpense_Amount: CoreDataTestCase {
     
-    func validExpense(from rawExpense: RawExpense) -> ValidExpense {
+    func makeValidExpense(from rawExpense: RawExpense) -> ValidExpense {
         let validateOp = ValidateExpenseOperation(rawExpense: rawExpense, context: coreDataStack.viewContext, completionBlock: nil)
         validateOp.start()
         if case .success(let validExpense) = validateOp.result {
@@ -21,9 +21,24 @@ class AddExpense_Amount: CoreDataTestCase {
         fatalError()
     }
     
-//    func testAmount_amountIsValid_shouldSucceed() {
-//        let validExpense = validExpense(from: RawExpense(amount: "250.00", dateSpent: Date(), categorySelection: .name("Food"), tagSelection: .none))
-//        let addOp = AddExpenseOperation(context: coreDataStack, rawExpense: <#T##RawExpense#>, completionBlock: <#T##((TBOperation<NSManagedObjectID, AddExpenseOperationError>.Result) -> Void)?##((TBOperation<NSManagedObjectID, AddExpenseOperationError>.Result) -> Void)?##(TBOperation<NSManagedObjectID, AddExpenseOperationError>.Result) -> Void#>)
-//    }
+    func testAmount_validAmount_shouldSucceed() {
+        let rawExpense = RawExpense(amount: "250.00",
+                                    dateSpent: Date(),
+                                    categorySelection: .none,
+                                    tagSelection: .none)
+        let validExpense = makeValidExpense(from: rawExpense)
+        
+        let category = AddExpenseOperation.fetchExistingCategory(forSelection: validExpense.categorySelection, in: coreDataStack.viewContext)
+        let uncategorized: Spare.Category? = {
+            let fetchRequest: NSFetchRequest<Spare.Category> = Spare.Category.fetchRequest()
+            fetchRequest.predicate = NSPredicate(format: "%K == %@", #keyPath(Spare.Category.name), DefaultClassifier.defaultCategoryName)
+            return try! coreDataStack.viewContext.fetch(fetchRequest).first
+        }()
+        
+        XCTAssertNotNil(category)
+        XCTAssertNotNil(uncategorized)
+        XCTAssertEqual(category?.objectID, uncategorized?.objectID)
+        XCTAssertEqual(category?.name, DefaultClassifier.defaultCategoryName)
+    }
     
 }

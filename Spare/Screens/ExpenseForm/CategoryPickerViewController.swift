@@ -35,7 +35,7 @@ private enum Section: Int {
 }
 
 fileprivate weak var delegate: ExpenseFormViewController?
-fileprivate var globalSelectedCategory = CategorySelection.uncategorized
+fileprivate var globalSelectedCategory = CategorySelection.none
 
 class CategoryPickerViewController: SlideUpPickerViewController {
     
@@ -72,7 +72,7 @@ fileprivate class CategoryListViewController: UITableViewController {
     /// Fetch controller for all categories except "Uncategorized"
     let categoryFetcher: NSFetchedResultsController<Category> = {
         let fetchRequest: NSFetchRequest<Category> = Category.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "%K != %@", #keyPath(Category.name), DefaultClassifier.uncategorized.name)
+        fetchRequest.predicate = NSPredicate(format: "%K != %@", #keyPath(Category.name), DefaultClassifier.defaultCategoryName)
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(Category.name), ascending: true)]
         return NSFetchedResultsController<Category>(fetchRequest: fetchRequest,
                                                     managedObjectContext: Global.coreDataStack.viewContext,
@@ -151,7 +151,7 @@ fileprivate class CategoryListViewController: UITableViewController {
                 return nil
             case .new(let name):
                 return name
-            case .uncategorized:
+            case .none:
                 return nil
             }
         }
@@ -212,7 +212,7 @@ extension CategoryListViewController {
         
         switch Section(indexPath.section) {
         case .allCategories:
-            if globalSelectedCategory != .uncategorized,
+            if globalSelectedCategory != .none,
                 let oldIndex = selectionList.index(of: globalSelectedCategory),
                 
                 // cellForRow returns nil if the cell is not visible.

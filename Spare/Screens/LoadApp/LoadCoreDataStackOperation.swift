@@ -36,9 +36,32 @@ class LoadCoreDataStackOperation: TBAsynchronousOperation<NSPersistentContainer,
             
             if let error = error {
                 self.result = .error(error)
-            } else {
-                self.result = .success(persistentContainer)
             }
+            
+            // Generate the default classifiers, if not yet existing.
+            let context = persistentContainer.newBackgroundContext()
+            let categoryFetch: NSFetchRequest<Category> = Category.fetchRequest()
+            categoryFetch.predicate = NSPredicate(format: "%K == %@", #keyPath(Category.name), DefaultClassifier.defaultCategoryName)
+            let tagFetch: NSFetchRequest<Tag> = Tag.fetchRequest()
+            tagFetch.predicate = NSPredicate(format: "%K == %@", #keyPath(Tag.name), DefaultClassifier.defaultTagName)
+            do {
+                if try context.fetch(categoryFetch).first == nil {
+                    let defaultCategory = Category(context: context)
+                    defaultCategory.name = DefaultClassifier.defaultCategoryName
+                }
+                
+                if try context.fetch(tagFetch).first == nil {
+                    let defaultTag = Tag(context: context)
+                    defaultTag.name = DefaultClassifier.defaultTagName
+                }
+                
+                try context.saveToStore()
+            } catch {
+                self.result = .error(error)
+                return
+            }
+            
+            self.result = .success(persistentContainer)
         }
     }
     

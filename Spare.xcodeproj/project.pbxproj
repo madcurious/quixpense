@@ -119,6 +119,7 @@
 		26E98BF41F0CD7B900A5C3D5 /* TagPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E98BF31F0CD7B900A5C3D5 /* TagPickerViewController.swift */; };
 		26F1A96E1E5D890400752F1A /* MakeDummyDataOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F1A96D1E5D890400752F1A /* MakeDummyDataOperation.swift */; };
 		26F51AFC1F7E3D2C0073DAF2 /* CoreDataTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F51AFB1F7E3D2C0073DAF2 /* CoreDataTestCase.swift */; };
+		26F51AFE1F7E41B40073DAF2 /* AddExpense_Amount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F51AFD1F7E41B40073DAF2 /* AddExpense_Amount.swift */; };
 		26F6169B1EFCF5FB005519E6 /* AmountFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F6169A1EFCF5FB005519E6 /* AmountFieldView.swift */; };
 		26F6169D1EFCF604005519E6 /* AmountFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26F6169C1EFCF604005519E6 /* AmountFieldView.xib */; };
 		26F6EF691F28B34A00BD5B19 /* ClassifierFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F6EF681F28B34A00BD5B19 /* ClassifierFieldView.swift */; };
@@ -288,6 +289,7 @@
 		26E98BF31F0CD7B900A5C3D5 /* TagPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagPickerViewController.swift; sourceTree = "<group>"; };
 		26F1A96D1E5D890400752F1A /* MakeDummyDataOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeDummyDataOperation.swift; sourceTree = "<group>"; };
 		26F51AFB1F7E3D2C0073DAF2 /* CoreDataTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataTestCase.swift; sourceTree = "<group>"; };
+		26F51AFD1F7E41B40073DAF2 /* AddExpense_Amount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddExpense_Amount.swift; sourceTree = "<group>"; };
 		26F6169A1EFCF5FB005519E6 /* AmountFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountFieldView.swift; sourceTree = "<group>"; };
 		26F6169C1EFCF604005519E6 /* AmountFieldView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AmountFieldView.xib; sourceTree = "<group>"; };
 		26F6EF681F28B34A00BD5B19 /* ClassifierFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassifierFieldView.swift; sourceTree = "<group>"; };
@@ -399,6 +401,7 @@
 		264EE4A21EF90450004011FE /* SpareTests */ = {
 			isa = PBXGroup;
 			children = (
+				26F51AFD1F7E41B40073DAF2 /* AddExpense_Amount.swift */,
 				26F51AFB1F7E3D2C0073DAF2 /* CoreDataTestCase.swift */,
 				264EE4A51EF90450004011FE /* Info.plist */,
 			);
@@ -757,6 +760,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26F51AFE1F7E41B40073DAF2 /* AddExpense_Amount.swift in Sources */,
 				26F51AFC1F7E3D2C0073DAF2 /* CoreDataTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -128,8 +128,8 @@ extension EditExpenseOperation {
             }
             return true
             
-        case .uncategorized:
-            if category?.name == DefaultClassifier.uncategorized.name {
+        case .none:
+            if category?.name == DefaultClassifier.defaultCategoryName {
                 return false
             }
             return true
@@ -161,9 +161,9 @@ extension EditExpenseOperation {
                 return newCategory
             }
             
-        case .uncategorized:
+        case .none:
             let fetchRequest: NSFetchRequest<Category> = Category.fetchRequest()
-            fetchRequest.predicate = NSPredicate(format: "%K == %@", #keyPath(Category.name), DefaultClassifier.uncategorized.name)
+            fetchRequest.predicate = NSPredicate(format: "%K == %@", #keyPath(Category.name), DefaultClassifier.defaultCategoryName)
             return try! context.fetch(fetchRequest).first!
         }
     }

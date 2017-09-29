@@ -51,26 +51,26 @@ class CoreDataTestCase: XCTestCase {
         coreDataStack = nil
     }
     
-    func makeExpenses(from rawExpenses: [RawExpense]) {
-        for rawExpense in rawExpenses {
-            let addOp = AddExpenseOperation(context: coreDataStack.newBackgroundContext(), rawExpense: rawExpense, completionBlock: nil)
-            addOp.start()
-        }
-    }
+//    func makeExpenses(from rawExpenses: [RawExpense]) {
+//        for rawExpense in rawExpenses {
+//            let addOp = AddExpenseOperation(context: coreDataStack.newBackgroundContext(), validExpense: rawExpense, completionBlock: nil)
+//            addOp.start()
+//        }
+//    }
     
-    func makeValidEnteredExpense(from rawExpense: RawExpense) -> ValidExpense {
-        let validateOp = ValidateExpenseOperation(rawExpense: rawExpense, context: coreDataStack.newBackgroundContext(), completionBlock: nil)
-        validateOp.start()
-        
-        switch validateOp.result {
-        case .success(let validExpense):
-            return validExpense
-        case .error(let error):
-            fatalError("\(#function) - Error received: \(error)")
-        default:
-            fatalError("\(#function) - No result found.")
-        }
-    }
+//    func makeValidEnteredExpense(from rawExpense: RawExpense) -> ValidExpense {
+//        let validateOp = ValidateExpenseOperation(rawExpense: rawExpense, context: coreDataStack.newBackgroundContext(), completionBlock: nil)
+//        validateOp.start()
+//        
+//        switch validateOp.result {
+//        case .success(let validExpense):
+//            return validExpense
+//        case .error(let error):
+//            fatalError("\(#function) - Error received: \(error)")
+//        default:
+//            fatalError("\(#function) - No result found.")
+//        }
+//    }
     
     func makeFetchControllerForAllExpenses() -> NSFetchedResultsController<Expense> {
             let request: NSFetchRequest<Expense> = Expense.fetchRequest()
