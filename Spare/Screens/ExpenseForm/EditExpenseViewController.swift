@@ -56,7 +56,7 @@ class EditExpenseViewController: ExpenseFormViewController {
         }
         
         if let category = expense.category {
-            let categorySelection = CategorySelection.id(category.objectID)
+            let categorySelection = CategorySelection.existing(category.objectID)
             customView.categoryFieldView.setCategory(categorySelection)
             rawExpense.categorySelection = categorySelection
         }

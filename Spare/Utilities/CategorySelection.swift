@@ -11,23 +11,28 @@ import CoreData
 
 enum CategorySelection: Equatable {
     
-    /// A `Category` that already exists. The associated value is that category's `objectID`.
-    case id(NSManagedObjectID)
+    /**
+     An existing `Category` and its `objectID`.
+     */
+    case existing(NSManagedObjectID)
     
-    /// A user-entered category name, interpreted as a user's intention to create a new category with
-    /// the supplied name in the associated value.
-    case name(String)
+    /**
+     A new category with a provided name.
+     */
+    case new(String)
     
-    /// No category selected; and therefore, the default `Uncategorized` category will be assigned.
-    case none
+    /**
+     No category selection, which defaults to the `Category` with a name of `Uncategorized`.
+     */
+    case uncategorized
     
     static func ==(lhs: CategorySelection, rhs: CategorySelection) -> Bool {
         switch (lhs, rhs) {
-        case (.id(let id1), .id(let id2)) where id1 == id2:
+        case (.existing(let id1), .existing(let id2)) where id1 == id2:
             return true
-        case (.name(let name1), .name(let name2)) where name1 == name2:
+        case (.new(let name1), .new(let name2)) where name1 == name2:
             return true
-        case (.none, .none):
+        case (.uncategorized, .uncategorized):
             return true
         default:
             return false

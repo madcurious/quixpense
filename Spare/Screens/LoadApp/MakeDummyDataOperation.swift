@@ -83,9 +83,9 @@ class MakeDummyDataOperation: TBOperation<Bool, Error> {
                 let category: CategorySelection = {
                     let randomIndex = Int(arc4random_uniform(UInt32(kCategoryNames.count)))
                     if let randomCategory = kCategoryNames[randomIndex] {
-                        return .name(randomCategory)
+                        return .new(randomCategory)
                     }
-                    return .none
+                    return .uncategorized
                 }()
                 
                 let tags: TagSelection = {

@@ -43,13 +43,13 @@ class AddExpenseOperation: TBOperation<NSManagedObjectID, AddExpenseOperationErr
     
     class func fetchExistingCategory(forSelection categorySelection: CategorySelection, in context: NSManagedObjectContext) -> Category? {
         switch categorySelection {
-        case .id(let objectId):
+        case .existing(let objectId):
             return context.object(with: objectId) as? Category
-        case .name(let categoryName):
+        case .new(let categoryName):
             let fetchRequest: NSFetchRequest<Category> = Category.fetchRequest()
             fetchRequest.predicate = NSPredicate(format: "%K == %@", #keyPath(Category.name), categoryName)
             return try! context.fetch(fetchRequest).first
-        case .none:
+        case .uncategorized:
             let fetchRequest: NSFetchRequest<Category> = Category.fetchRequest()
             fetchRequest.predicate = NSPredicate(format: "%K == %@", #keyPath(Category.name), DefaultClassifier.uncategorized.name)
             return try! context.fetch(fetchRequest).first

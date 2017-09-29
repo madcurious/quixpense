@@ -18,17 +18,17 @@ class CategoryFieldView: ClassifierFieldView {
         
         iconImageView.image = UIImage.templateNamed("categoryIcon")
         
-        setCategory(.none)
+        setCategory(.uncategorized)
     }
     
     func setCategory(_ category: CategorySelection) {
         switch category {
-        case .none:
+        case .uncategorized:
             nameLabel.text = placeholder
             nameLabel.textColor = Global.theme.color(for: .placeholder)
             clearButton.isHidden = true
             
-        case .id(let objectID):
+        case .existing(let objectID):
             if let category = Global.coreDataStack.viewContext.object(with: objectID) as? Category,
                 let categoryName = category.name {
                 nameLabel.text = categoryName
@@ -39,7 +39,7 @@ class CategoryFieldView: ClassifierFieldView {
             }
             clearButton.isHidden = false
             
-        case .name(let categoryName):
+        case .new(let categoryName):
             nameLabel.text = categoryName
             nameLabel.textColor = Global.theme.color(for: .regularText)
             clearButton.isHidden = false

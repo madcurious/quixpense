@@ -116,19 +116,19 @@ extension EditExpenseOperation {
     
     func shouldChangeCategory(_ category: Category?, with categorySelection: CategorySelection) -> Bool {
         switch categorySelection {
-        case .id(let objectId):
+        case .existing(let objectId):
             if category?.objectID == objectId {
                 return false
             }
             return true
             
-        case .name(let categoryName):
+        case .new(let categoryName):
             if category?.name == categoryName {
                 return false
             }
             return true
             
-        case .none:
+        case .uncategorized:
             if category?.name == DefaultClassifier.uncategorized.name {
                 return false
             }
@@ -147,10 +147,10 @@ extension EditExpenseOperation {
     
     func fetchOrMakeReplacementCategory(fromSelection categorySelection: CategorySelection) -> Category {
         switch categorySelection {
-        case .id(let objectId):
+        case .existing(let objectId):
             return context.object(with: objectId) as! Category
             
-        case .name(let categoryName):
+        case .new(let categoryName):
             let fetchRequest: NSFetchRequest<Category> = Category.fetchRequest()
             fetchRequest.predicate = NSPredicate(format: "%K == %@", #keyPath(Category.name), categoryName)
             if let existingCategory = try! context.fetch(fetchRequest).first {
@@ -161,7 +161,7 @@ extension EditExpenseOperation {
                 return newCategory
             }
             
-        case .none:
+        case .uncategorized:
             let fetchRequest: NSFetchRequest<Category> = Category.fetchRequest()
             fetchRequest.predicate = NSPredicate(format: "%K == %@", #keyPath(Category.name), DefaultClassifier.uncategorized.name)
             return try! context.fetch(fetchRequest).first!

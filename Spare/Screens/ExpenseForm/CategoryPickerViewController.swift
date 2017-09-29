@@ -35,7 +35,7 @@ private enum Section: Int {
 }
 
 fileprivate weak var delegate: ExpenseFormViewController?
-fileprivate var globalSelectedCategory = CategorySelection.none
+fileprivate var globalSelectedCategory = CategorySelection.uncategorized
 
 class CategoryPickerViewController: SlideUpPickerViewController {
     
@@ -112,13 +112,13 @@ fileprivate class CategoryListViewController: UITableViewController {
             try categoryFetcher.performFetch()
             if let objects = categoryFetcher.fetchedObjects {
                 for category in objects {
-                    selectionList.append(.id(category.objectID))
+                    selectionList.append(.existing(category.objectID))
                 }
             }
             
             // If there is an initial selection and it is a user-entered name,
             // add it to the data source as well.
-            if case .name(let enteredName) = globalSelectedCategory {
+            if case .new(let enteredName) = globalSelectedCategory {
                 // Find the insertion index for the user-entered name in an ascending-ordered list of names.
                 let insertionIndex: Int = {
                     guard let categories = categoryFetcher.fetchedObjects
@@ -144,14 +144,14 @@ fileprivate class CategoryListViewController: UITableViewController {
     func currentSelectionListAsStrings() -> [String] {
         let list = selectionList.flatMap {
             switch $0 {
-            case .id(let objectID):
+            case .existing(let objectID):
                 if let categoryName = (Global.coreDataStack.viewContext.object(with: objectID) as? Category)?.name {
                     return categoryName
                 }
                 return nil
-            case .name(let name):
+            case .new(let name):
                 return name
-            case .none:
+            case .uncategorized:
                 return nil
             }
         }
@@ -183,10 +183,10 @@ extension CategoryListViewController {
         switch Section(indexPath.section) {
         case .allCategories:
             let category = selectionList[indexPath.row]
-            if case .id(let objectID) = category,
+            if case .existing(let objectID) = category,
                 let categoryName = (Global.coreDataStack.viewContext.object(with: objectID) as? Category)?.name {
                 cell.nameLabel.text = categoryName
-            } else if case .name(let categoryName) = category {
+            } else if case .new(let categoryName) = category {
                 cell.nameLabel.text = categoryName
             }
             cell.accessoryImageType = .check
@@ -212,7 +212,7 @@ extension CategoryListViewController {
         
         switch Section(indexPath.section) {
         case .allCategories:
-            if globalSelectedCategory != .none,
+            if globalSelectedCategory != .uncategorized,
                 let oldIndex = selectionList.index(of: globalSelectedCategory),
                 
                 // cellForRow returns nil if the cell is not visible.
@@ -258,7 +258,7 @@ extension CategoryListViewController: NewClassifierViewControllerDelegate {
         
         // If successful, inform the delegate and dismiss.
         if let delegate = delegate {
-            delegate.categoryPicker(self.container, didSelectCategory: .name(categoryName))
+            delegate.categoryPicker(self.container, didSelectCategory: .new(categoryName))
         }
         self.dismiss(animated: true, completion: nil)
     }

@@ -61,7 +61,7 @@ class ExpenseFormViewController: UIViewController {
             return true
         }
         
-        if rawExpense.categorySelection != .none {
+        if rawExpense.categorySelection != .uncategorized {
             return true
         }
         
@@ -77,13 +77,13 @@ class ExpenseFormViewController: UIViewController {
         // Reset the input model.
         rawExpense.amount = nil
         rawExpense.dateSpent = Date()
-        rawExpense.categorySelection = .none
+        rawExpense.categorySelection = .uncategorized
         rawExpense.tagSelection = .none
         
         // Reset the views.
         customView.amountFieldView.textField.text = nil
         customView.dateFieldView.setDate(rawExpense.dateSpent)
-        customView.categoryFieldView.setCategory(.none)
+        customView.categoryFieldView.setCategory(.uncategorized)
         customView.tagFieldView.setTags(.none)
     }
     
@@ -142,8 +142,8 @@ class ExpenseFormViewController: UIViewController {
     }
     
     func handleTapOnCategoryClearButton() {
-        rawExpense.categorySelection = .none
-        customView.categoryFieldView.setCategory(.none)
+        rawExpense.categorySelection = .uncategorized
+        customView.categoryFieldView.setCategory(.uncategorized)
     }
     
     func handleTapOnTagEditButton() {
