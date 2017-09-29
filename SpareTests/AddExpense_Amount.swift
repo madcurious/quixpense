@@ -12,7 +12,7 @@ import CoreData
 
 class AddExpense_Amount: CoreDataTestCase {
     
-    func validEnteredExpense(from enteredExpense: EnteredExpense) -> ValidEnteredExpense {
+    func validEnteredExpense(from enteredExpense: RawExpense) -> ValidExpense {
         let validateOp = ValidateEnteredExpenseOperation(enteredExpense: enteredExpense, context: coreDataStack.viewContext, completionBlock: nil)
         validateOp.start()
         if case .success(let validExpense) = validateOp.result {
@@ -22,8 +22,8 @@ class AddExpense_Amount: CoreDataTestCase {
     }
     
 //    func testAmount_amountIsValid_shouldSucceed() {
-//        let validExpense = validEnteredExpense(from: EnteredExpense(amount: "250.00", dateSpent: Date(), categorySelection: .name("Food"), tagSelection: .none))
-//        let addOp = AddExpenseOperation(context: coreDataStack, enteredExpense: <#T##EnteredExpense#>, completionBlock: <#T##((TBOperation<NSManagedObjectID, AddExpenseOperationError>.Result) -> Void)?##((TBOperation<NSManagedObjectID, AddExpenseOperationError>.Result) -> Void)?##(TBOperation<NSManagedObjectID, AddExpenseOperationError>.Result) -> Void#>)
+//        let validExpense = validEnteredExpense(from: RawExpense(amount: "250.00", dateSpent: Date(), categorySelection: .name("Food"), tagSelection: .none))
+//        let addOp = AddExpenseOperation(context: coreDataStack, enteredExpense: <#T##RawExpense#>, completionBlock: <#T##((TBOperation<NSManagedObjectID, AddExpenseOperationError>.Result) -> Void)?##((TBOperation<NSManagedObjectID, AddExpenseOperationError>.Result) -> Void)?##(TBOperation<NSManagedObjectID, AddExpenseOperationError>.Result) -> Void#>)
 //    }
     
 }

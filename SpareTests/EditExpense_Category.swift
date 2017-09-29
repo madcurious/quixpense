@@ -15,11 +15,11 @@ class EditExpense_Category: CoreDataTestCase {
     override func setUp() {
         super.setUp()
         makeExpenses(from: [
-            EnteredExpense(amount: "250.00", dateSpent: Date(), categorySelection: .name("Food"), tagSelection: .none),
-            EnteredExpense(amount: "164.11", dateSpent: Date(), categorySelection: .name("Transportation"), tagSelection: .none),
-            EnteredExpense(amount: "7.00", dateSpent: Date(), categorySelection: .name("Transportation"), tagSelection: .none),
-            EnteredExpense(amount: "149.00", dateSpent: Date(), categorySelection: .name("Food"), tagSelection: .none),
-            EnteredExpense(amount: "16", dateSpent: Date(), categorySelection: .name("Transportation"), tagSelection: .none)
+            RawExpense(amount: "250.00", dateSpent: Date(), categorySelection: .name("Food"), tagSelection: .none),
+            RawExpense(amount: "164.11", dateSpent: Date(), categorySelection: .name("Transportation"), tagSelection: .none),
+            RawExpense(amount: "7.00", dateSpent: Date(), categorySelection: .name("Transportation"), tagSelection: .none),
+            RawExpense(amount: "149.00", dateSpent: Date(), categorySelection: .name("Food"), tagSelection: .none),
+            RawExpense(amount: "16", dateSpent: Date(), categorySelection: .name("Transportation"), tagSelection: .none)
             ])
     }
     
@@ -33,7 +33,7 @@ class EditExpense_Category: CoreDataTestCase {
                 return
         }
         
-        let enteredExpense = EnteredExpense(amount: "999", dateSpent: expense.dateSpent!, categorySelection: .name("Food"), tagSelection: .none)
+        let enteredExpense = RawExpense(amount: "999", dateSpent: expense.dateSpent!, categorySelection: .name("Food"), tagSelection: .none)
         let validateOp = ValidateEnteredExpenseOperation(enteredExpense: enteredExpense, context: coreDataStack.newBackgroundContext(), completionBlock: nil)
         validateOp.start()
         
@@ -73,7 +73,7 @@ class EditExpense_Category: CoreDataTestCase {
         }()
         
         let newCategoryEnteredName = expense2.category!.name!
-        let validEnteredExpense = makeValidEnteredExpense(from: EnteredExpense(amount: "333.45",
+        let validEnteredExpense = makeValidEnteredExpense(from: RawExpense(amount: "333.45",
                                                                            dateSpent: expense2.dateSpent!,
                                                                            categorySelection: .name(newCategoryEnteredName),
                                                                            tagSelection: .none))

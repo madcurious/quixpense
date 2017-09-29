@@ -35,9 +35,9 @@ class EditExpenseOperation: TBOperation<NSManagedObjectID, EditExpenseError> {
     
     let context: NSManagedObjectContext
     let expenseId: NSManagedObjectID
-    let validEnteredExpense: ValidEnteredExpense
+    let validEnteredExpense: ValidExpense
     
-    init(context: NSManagedObjectContext, expenseId: NSManagedObjectID, validEnteredExpense: ValidEnteredExpense, completionBlock: TBOperationCompletionBlock?) {
+    init(context: NSManagedObjectContext, expenseId: NSManagedObjectID, validEnteredExpense: ValidExpense, completionBlock: TBOperationCompletionBlock?) {
         self.context = context
         self.expenseId = expenseId
         self.validEnteredExpense = validEnteredExpense

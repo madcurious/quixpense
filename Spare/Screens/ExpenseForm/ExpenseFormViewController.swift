@@ -12,7 +12,7 @@ import Mold
 class ExpenseFormViewController: UIViewController {
     
     let customView = ExpenseFormView.instantiateFromNib()
-    var enteredExpense = EnteredExpense()
+    var enteredExpense = RawExpense()
     let invalidAmountCharacters = CharacterSet.decimalNumberCharacterSet().inverted
     
     init() {
@@ -87,7 +87,7 @@ class ExpenseFormViewController: UIViewController {
         customView.tagFieldView.setTags(.none)
     }
     
-    func validateEnteredExpense(completion: @escaping (ValidEnteredExpense) -> Void) {
+    func validateEnteredExpense(completion: @escaping (ValidExpense) -> Void) {
         let validateOp = ValidateEnteredExpenseOperation(enteredExpense: enteredExpense, context: Global.coreDataStack.viewContext) { [unowned self] (result) in
             switch result {
             case .success(let validExpense):

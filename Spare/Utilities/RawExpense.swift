@@ -1,5 +1,5 @@
 //
-//  EnteredExpense.swift
+//  RawExpense.swift
 //  Spare
 //
 //  Created by Matt Quiros on 14/08/2017.
@@ -8,7 +8,8 @@
 
 import Foundation
 
-struct EnteredExpense {
+/// Represents a user-entered expense.
+struct RawExpense {
     
     var amount: String?
     var dateSpent = Date()

@@ -51,14 +51,14 @@ class CoreDataTestCase: XCTestCase {
         coreDataStack = nil
     }
     
-    func makeExpenses(from enteredExpenses: [EnteredExpense]) {
+    func makeExpenses(from enteredExpenses: [RawExpense]) {
         for enteredExpense in enteredExpenses {
             let addOp = AddExpenseOperation(context: coreDataStack.newBackgroundContext(), enteredExpense: enteredExpense, completionBlock: nil)
             addOp.start()
         }
     }
     
-    func makeValidEnteredExpense(from enteredExpense: EnteredExpense) -> ValidEnteredExpense {
+    func makeValidEnteredExpense(from enteredExpense: RawExpense) -> ValidExpense {
         let validateOp = ValidateEnteredExpenseOperation(enteredExpense: enteredExpense, context: coreDataStack.newBackgroundContext(), completionBlock: nil)
         validateOp.start()
         

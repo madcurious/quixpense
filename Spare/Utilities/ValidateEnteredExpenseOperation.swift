@@ -32,9 +32,9 @@ enum ValidateEnteredExpenseError: LocalizedError {
     
 }
 
-class ValidateEnteredExpenseOperation: TBOperation<ValidEnteredExpense, ValidateEnteredExpenseError> {
+class ValidateEnteredExpenseOperation: TBOperation<ValidExpense, ValidateEnteredExpenseError> {
     
-    let enteredExpense: EnteredExpense
+    let enteredExpense: RawExpense
     let context: NSManagedObjectContext
     
     /**
@@ -43,7 +43,7 @@ class ValidateEnteredExpenseOperation: TBOperation<ValidEnteredExpense, Validate
          - enteredExpense: The struct holding the raw values entered by the user.
          - context: The context where categories and tags will be fetched from to check if they already exist.
      */
-    init(enteredExpense: EnteredExpense, context: NSManagedObjectContext, completionBlock: TBOperationCompletionBlock?) {
+    init(enteredExpense: RawExpense, context: NSManagedObjectContext, completionBlock: TBOperationCompletionBlock?) {
         self.enteredExpense = enteredExpense
         self.context = context
         super.init(completionBlock: completionBlock)
@@ -93,7 +93,7 @@ class ValidateEnteredExpenseOperation: TBOperation<ValidEnteredExpense, Validate
             return
         }
         
-        let validExpense = ValidEnteredExpense(amount: amountNumber, dateSpent: enteredExpense.dateSpent, categorySelection: enteredExpense.categorySelection, tagSelection: enteredExpense.tagSelection)
+        let validExpense = ValidExpense(amount: amountNumber, dateSpent: enteredExpense.dateSpent, categorySelection: enteredExpense.categorySelection, tagSelection: enteredExpense.tagSelection)
         result = .success(validExpense)
     }
     

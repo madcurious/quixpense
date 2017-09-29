@@ -94,7 +94,7 @@
 		26BEEC3F1F6A7DB6005224C9 /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BEEC261F6A7D45005224C9 /* Debug.swift */; };
 		26BEEC401F6A7DB6005224C9 /* DefaultClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BEEC271F6A7D45005224C9 /* DefaultClassifier.swift */; };
 		26BEEC411F6A7DB6005224C9 /* EditExpenseOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BEEC281F6A7D45005224C9 /* EditExpenseOperation.swift */; };
-		26BEEC421F6A7DB6005224C9 /* EnteredExpense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BEEC291F6A7D45005224C9 /* EnteredExpense.swift */; };
+		26BEEC421F6A7DB6005224C9 /* RawExpense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BEEC291F6A7D45005224C9 /* RawExpense.swift */; };
 		26BEEC451F6A7DB6005224C9 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BEEC2C1F6A7D45005224C9 /* Global.swift */; };
 		26BEEC461F6A7DB6005224C9 /* Grouping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BEEC2D1F6A7D45005224C9 /* Grouping.swift */; };
 		26BEEC471F6A7DB6005224C9 /* LightTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BEEC2E1F6A7D45005224C9 /* LightTheme.swift */; };
@@ -107,7 +107,7 @@
 		26BEEC4E1F6A7DB6005224C9 /* TimestampFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BEEC351F6A7D45005224C9 /* TimestampFormatter.swift */; };
 		26BEEC4F1F6A7DB6005224C9 /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BEEC361F6A7D45005224C9 /* UserDefaultsKey.swift */; };
 		26BEEC501F6A7DB6005224C9 /* ValidateEnteredExpenseOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BEEC371F6A7D45005224C9 /* ValidateEnteredExpenseOperation.swift */; };
-		26BEEC511F6A7DB6005224C9 /* ValidEnteredExpense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BEEC381F6A7D45005224C9 /* ValidEnteredExpense.swift */; };
+		26BEEC511F6A7DB6005224C9 /* ValidExpense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BEEC381F6A7D45005224C9 /* ValidExpense.swift */; };
 		26C5721A1F1C9061005F63ED /* DateFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C572191F1C9061005F63ED /* DateFieldView.swift */; };
 		26C5721C1F1C90BC005F63ED /* DateFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26C5721B1F1C90BC005F63ED /* DateFieldView.xib */; };
 		26DDDCA81E5C238B001617A1 /* LoadAppVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DDDCA71E5C238B001617A1 /* LoadAppVC.swift */; };
@@ -266,7 +266,7 @@
 		26BEEC261F6A7D45005224C9 /* Debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
 		26BEEC271F6A7D45005224C9 /* DefaultClassifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultClassifier.swift; sourceTree = "<group>"; };
 		26BEEC281F6A7D45005224C9 /* EditExpenseOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditExpenseOperation.swift; sourceTree = "<group>"; };
-		26BEEC291F6A7D45005224C9 /* EnteredExpense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnteredExpense.swift; sourceTree = "<group>"; };
+		26BEEC291F6A7D45005224C9 /* RawExpense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawExpense.swift; sourceTree = "<group>"; };
 		26BEEC2C1F6A7D45005224C9 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		26BEEC2D1F6A7D45005224C9 /* Grouping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grouping.swift; sourceTree = "<group>"; };
 		26BEEC2E1F6A7D45005224C9 /* LightTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightTheme.swift; sourceTree = "<group>"; };
@@ -279,7 +279,7 @@
 		26BEEC351F6A7D45005224C9 /* TimestampFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimestampFormatter.swift; sourceTree = "<group>"; };
 		26BEEC361F6A7D45005224C9 /* UserDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
 		26BEEC371F6A7D45005224C9 /* ValidateEnteredExpenseOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateEnteredExpenseOperation.swift; sourceTree = "<group>"; };
-		26BEEC381F6A7D45005224C9 /* ValidEnteredExpense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidEnteredExpense.swift; sourceTree = "<group>"; };
+		26BEEC381F6A7D45005224C9 /* ValidExpense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidExpense.swift; sourceTree = "<group>"; };
 		26C572191F1C9061005F63ED /* DateFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFieldView.swift; sourceTree = "<group>"; };
 		26C5721B1F1C90BC005F63ED /* DateFieldView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DateFieldView.xib; sourceTree = "<group>"; };
 		26D4C8F41946E624001B42DC /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
@@ -571,7 +571,7 @@
 				26BEEC261F6A7D45005224C9 /* Debug.swift */,
 				26BEEC271F6A7D45005224C9 /* DefaultClassifier.swift */,
 				26BEEC281F6A7D45005224C9 /* EditExpenseOperation.swift */,
-				26BEEC291F6A7D45005224C9 /* EnteredExpense.swift */,
+				26BEEC291F6A7D45005224C9 /* RawExpense.swift */,
 				26BEEC2C1F6A7D45005224C9 /* Global.swift */,
 				26BEEC2D1F6A7D45005224C9 /* Grouping.swift */,
 				26BEEC2E1F6A7D45005224C9 /* LightTheme.swift */,
@@ -584,7 +584,7 @@
 				26BEEC351F6A7D45005224C9 /* TimestampFormatter.swift */,
 				26BEEC361F6A7D45005224C9 /* UserDefaultsKey.swift */,
 				26BEEC371F6A7D45005224C9 /* ValidateEnteredExpenseOperation.swift */,
-				26BEEC381F6A7D45005224C9 /* ValidEnteredExpense.swift */,
+				26BEEC381F6A7D45005224C9 /* ValidExpense.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -791,7 +791,7 @@
 				26BEEC401F6A7DB6005224C9 /* DefaultClassifier.swift in Sources */,
 				26320B3A1F6E4DD700D8E1FC /* MonthTagGroup+CoreDataClass.swift in Sources */,
 				26BEEC411F6A7DB6005224C9 /* EditExpenseOperation.swift in Sources */,
-				26BEEC421F6A7DB6005224C9 /* EnteredExpense.swift in Sources */,
+				26BEEC421F6A7DB6005224C9 /* RawExpense.swift in Sources */,
 				26BEEC451F6A7DB6005224C9 /* Global.swift in Sources */,
 				26BEEC461F6A7DB6005224C9 /* Grouping.swift in Sources */,
 				26BEEC471F6A7DB6005224C9 /* LightTheme.swift in Sources */,
@@ -806,7 +806,7 @@
 				26BEEC4E1F6A7DB6005224C9 /* TimestampFormatter.swift in Sources */,
 				26BEEC4F1F6A7DB6005224C9 /* UserDefaultsKey.swift in Sources */,
 				26BEEC501F6A7DB6005224C9 /* ValidateEnteredExpenseOperation.swift in Sources */,
-				26BEEC511F6A7DB6005224C9 /* ValidEnteredExpense.swift in Sources */,
+				26BEEC511F6A7DB6005224C9 /* ValidExpense.swift in Sources */,
 				26320B321F6E4CDB00D8E1FC /* Expense+CoreDataClass.swift in Sources */,
 				26E98BF41F0CD7B900A5C3D5 /* TagPickerViewController.swift in Sources */,
 				26BD228D1F2B2AC0007ADAB5 /* DatePickerViewController.swift in Sources */,

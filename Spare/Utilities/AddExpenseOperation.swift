@@ -33,9 +33,9 @@ enum AddExpenseOperationError: LocalizedError {
 class AddExpenseOperation: TBOperation<NSManagedObjectID, AddExpenseOperationError> {
     
     let context: NSManagedObjectContext
-    let validEnteredExpense: ValidEnteredExpense
+    let validEnteredExpense: ValidExpense
     
-    init(context: NSManagedObjectContext, validEnteredExpense: ValidEnteredExpense, completionBlock: TBOperationCompletionBlock?) {
+    init(context: NSManagedObjectContext, validEnteredExpense: ValidExpense, completionBlock: TBOperationCompletionBlock?) {
         self.context = context
         self.validEnteredExpense = validEnteredExpense
         super.init(completionBlock: completionBlock)
@@ -87,9 +87,9 @@ class AddExpenseOperation: TBOperation<NSManagedObjectID, AddExpenseOperationErr
 //    }
 //
 //    let context: NSManagedObjectContext
-//    let enteredExpense: EnteredExpense
+//    let enteredExpense: RawExpense
 //
-//    init(context: NSManagedObjectContext, enteredExpense: EnteredExpense, completionBlock: TBOperationCompletionBlock?) {
+//    init(context: NSManagedObjectContext, enteredExpense: RawExpense, completionBlock: TBOperationCompletionBlock?) {
 //        self.context = context
 //        self.enteredExpense = enteredExpense
 //        super.init(completionBlock: completionBlock)
