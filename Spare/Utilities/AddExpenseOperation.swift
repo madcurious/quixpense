@@ -58,9 +58,9 @@ class AddExpenseOperation: TBOperation<NSManagedObjectID, AddExpenseOperationErr
     
     class func fetchExistingTag(forTagSelectionMember member: TagSelection.Member, in context: NSManagedObjectContext) -> Tag? {
         switch member {
-        case .id(let objectId):
+        case .existing(let objectId):
             return context.object(with: objectId) as? Tag
-        case .name(let tagName):
+        case .new(let tagName):
             let fetchRequest: NSFetchRequest<Tag> = Tag.fetchRequest()
             fetchRequest.predicate = NSPredicate(format: "%K == %@", #keyPath(Tag.name), tagName)
             return try! context.fetch(fetchRequest).first

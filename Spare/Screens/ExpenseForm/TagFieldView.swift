@@ -25,13 +25,13 @@ class TagFieldView: ClassifierFieldView {
         case .list(let list) where list.isEmpty == false:
             let tagNames = list.flatMap {
                 switch $0 {
-                case .id(let objectID):
+                case .existing(let objectID):
                     if let tag = Global.coreDataStack.viewContext.object(with: objectID) as? Tag,
                         let tagName = tag.name {
                         return tagName
                     }
                     return nil
-                case .name(let tagName):
+                case .new(let tagName):
                     return tagName
                 }
             }

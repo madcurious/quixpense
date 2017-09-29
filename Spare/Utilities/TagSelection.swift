@@ -23,7 +23,7 @@ enum TagSelection: Equatable {
         }
         var memberList = [TagSelection.Member]()
         for tag in tagSet {
-            memberList.append(.id(tag.objectID))
+            memberList.append(.existing(tag.objectID))
         }
         self = .list(memberList)
     }
@@ -40,23 +40,23 @@ enum TagSelection: Equatable {
     }
     
     enum Member: Hashable {
-        case id(NSManagedObjectID)
-        case name(String)
+        case existing(NSManagedObjectID)
+        case new(String)
         
         var hashValue: Int {
             switch self {
-            case .id(let objectID):
+            case .existing(let objectID):
                 return objectID.hashValue
-            case .name(let tagName):
+            case .new(let tagName):
                 return tagName.hashValue
             }
         }
         
         static func ==(lhs: TagSelection.Member, rhs: TagSelection.Member) -> Bool {
             switch (lhs, rhs) {
-            case (.id(let id1), .id(let id2)) where id1 == id2:
+            case (.existing(let id1), .existing(let id2)) where id1 == id2:
                 return true
-            case (.name(let name1), .name(let name2)) where name1 == name2:
+            case (.new(let name1), .new(let name2)) where name1 == name2:
                 return true
             default:
                 return false

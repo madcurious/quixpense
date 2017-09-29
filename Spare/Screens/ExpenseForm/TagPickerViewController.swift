@@ -132,7 +132,7 @@ fileprivate class TagListViewController: UIViewController {
             try tagFetcher.performFetch()
             if let tags = tagFetcher.fetchedObjects {
                 tags.forEach {
-                    selectionList.append(.id($0.objectID))
+                    selectionList.append(.existing($0.objectID))
                 }
             }
             
@@ -141,9 +141,9 @@ fileprivate class TagListViewController: UIViewController {
             case .list(let list) where list.isEmpty == false:
                 for member in list {
                     switch member {
-                    case .name(let enteredName):
+                    case .new(let enteredName):
                         if let index = insertionIndex(for: enteredName) {
-                            selectionList.insert(.name(enteredName), at: index)
+                            selectionList.insert(.new(enteredName), at: index)
                         }
                     default:
                         continue
@@ -157,13 +157,13 @@ fileprivate class TagListViewController: UIViewController {
     func currentSelectionListAsStrings() -> [String] {
         let list = selectionList.flatMap {
             switch $0 {
-            case .id(let objectID):
+            case .existing(let objectID):
                 guard let tagName = (Global.coreDataStack.viewContext.object(with: objectID) as? Tag)?.name
                     else {
                         return nil
                 }
                 return tagName
-            case .name(let tagName):
+            case .new(let tagName):
                 return tagName
             }
         }
@@ -205,10 +205,10 @@ extension TagListViewController: UITableViewDataSource {
             // Update the cell appearance depending on whether the tag will be selected/deselected.
             let member = selectionList[indexPath.row]
             cell.nameLabel.text = {
-                if case .id(let objectID) = member,
+                if case .existing(let objectID) = member,
                     let tagName = (Global.coreDataStack.viewContext.object(with: objectID) as? Tag)?.name {
                     return tagName
-                } else if case .name(let tagName) = member {
+                } else if case .new(let tagName) = member {
                     return tagName
                 }
                 return nil
@@ -295,15 +295,15 @@ extension TagListViewController: NewClassifierViewControllerDelegate {
         // Update the tag selection.
         switch globalSelectedTags {
         case .list(var list) where list.isEmpty == false:
-            list.append(.name(enteredName))
+            list.append(.new(enteredName))
             globalSelectedTags = .list(list)
         default:
-            globalSelectedTags = .list([.name(enteredName)])
+            globalSelectedTags = .list([.new(enteredName)])
         }
         
         // Insert the entered name to the selection list and check the cell.
         if let insertionIndex = insertionIndex(for: enteredName) {
-            selectionList.insert(.name(enteredName), at: insertionIndex)
+            selectionList.insert(.new(enteredName), at: insertionIndex)
             tableView.reloadData()
             
             let indexPath = IndexPath(row: insertionIndex, section: Section.allTags.rawValue)

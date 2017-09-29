@@ -100,10 +100,10 @@ class MakeDummyDataOperation: TBOperation<Bool, Error> {
                         var chosenTags: [TagSelection.Member] = []
                         while chosenTags.count != numberOfTags {
                             let randomIndex = Int(arc4random_uniform(UInt32(kTagNames.count)))
-                            if chosenTags.contains(.name(kTagNames[randomIndex])) {
+                            if chosenTags.contains(.new(kTagNames[randomIndex])) {
                                 continue
                             } else {
-                                chosenTags.append(.name(kTagNames[randomIndex]))
+                                chosenTags.append(.new(kTagNames[randomIndex]))
                             }
                         }
                         return .list(chosenTags)
