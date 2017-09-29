@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 import Mold
 
-enum AddExpenseOperationError: LocalizedError {
+enum AddExpenseError: LocalizedError {
     
     case coreDataError(Error)
     
@@ -30,7 +30,7 @@ enum AddExpenseOperationError: LocalizedError {
  If any of the operations are adding a new category name to the persistent store, multiple categories
  of the same name will be added to the store. To add multiple expenses, run the add operations serially.
  */
-class AddExpenseOperation: TBOperation<NSManagedObjectID, AddExpenseOperationError> {
+class AddExpenseOperation: TBOperation<NSManagedObjectID, AddExpenseError> {
     
     let context: NSManagedObjectContext
     let validExpense: ValidExpense
