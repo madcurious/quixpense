@@ -11,31 +11,6 @@ import CoreData
 
 enum TagSelection: Equatable {
     
-    enum Member: Hashable {
-        case id(NSManagedObjectID)
-        case name(String)
-        
-        var hashValue: Int {
-            switch self {
-            case .id(let objectID):
-                return objectID.hashValue
-            case .name(let tagName):
-                return tagName.hashValue
-            }
-        }
-        
-        static func ==(lhs: TagSelection.Member, rhs: TagSelection.Member) -> Bool {
-            switch (lhs, rhs) {
-            case (.id(let id1), .id(let id2)) where id1 == id2:
-                return true
-            case (.name(let name1), .name(let name2)) where name1 == name2:
-                return true
-            default:
-                return false
-            }
-        }
-    }
-    
     case none
     case list([TagSelection.Member])
     
@@ -61,6 +36,31 @@ enum TagSelection: Equatable {
             return true
         default:
             return false
+        }
+    }
+    
+    enum Member: Hashable {
+        case id(NSManagedObjectID)
+        case name(String)
+        
+        var hashValue: Int {
+            switch self {
+            case .id(let objectID):
+                return objectID.hashValue
+            case .name(let tagName):
+                return tagName.hashValue
+            }
+        }
+        
+        static func ==(lhs: TagSelection.Member, rhs: TagSelection.Member) -> Bool {
+            switch (lhs, rhs) {
+            case (.id(let id1), .id(let id2)) where id1 == id2:
+                return true
+            case (.name(let name1), .name(let name2)) where name1 == name2:
+                return true
+            default:
+                return false
+            }
         }
     }
     

@@ -114,18 +114,29 @@ class MakeDummyDataOperation: TBOperation<Bool, Error> {
                     dateSpent: currentDateSpent,
                     categorySelection: category,
                     tagSelection: tags)
-                let addOp = AddExpenseOperation(context: context,
-                                                enteredExpense: enteredExpense,
-                                                completionBlock: nil)
-                addOp.start()
                 
-                switch addOp.result {
+                let validateOp = ValidateEnteredExpenseOperation(enteredExpense: enteredExpense, context: context, completionBlock: nil)
+                validateOp.start()
+                switch validateOp.result {
                 case .error(let error):
                     result = .error(error)
                     return
                     
-                default:
-                    break
+                case .success(let validExpense):
+                    let addOp = AddExpenseOperation(context: context,
+                                                    validEnteredExpense: validExpense,
+                                                    completionBlock: nil)
+                    addOp.start()
+                    switch addOp.result {
+                    case .error(let error):
+                        result = .error(error)
+                        return
+                    default:
+                        break
+                    }
+                    
+                case .none:
+                    return
                 }
             }
             

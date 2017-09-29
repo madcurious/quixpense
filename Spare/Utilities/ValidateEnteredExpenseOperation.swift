@@ -37,6 +37,12 @@ class ValidateEnteredExpenseOperation: TBOperation<ValidEnteredExpense, Validate
     let enteredExpense: EnteredExpense
     let context: NSManagedObjectContext
     
+    /**
+     Creates a new operation.
+     - parameters:
+         - enteredExpense: The struct holding the raw values entered by the user.
+         - context: The context where categories and tags will be fetched from to check if they already exist.
+     */
     init(enteredExpense: EnteredExpense, context: NSManagedObjectContext, completionBlock: TBOperationCompletionBlock?) {
         self.enteredExpense = enteredExpense
         self.context = context

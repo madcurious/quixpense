@@ -42,22 +42,24 @@ class AddExpenseViewController: ExpenseFormViewController {
     }
     
     override func handleTapOnDoneButton() {
-        let addOp = AddExpenseOperation(context: Global.coreDataStack.newBackgroundContext(),
-                                        enteredExpense: enteredExpense) {[unowned self] result in
-            switch result {
-            case .success(_):
-                MDDispatcher.asyncRunInMainThread {
-                    MDAlertDialog.showInPresenter(self, title: "Expense saved.", message: nil, cancelButtonTitle: "Got it!")
-                    self.resetFields()
-                }
-                
-            case .error(let error):
-                MDAlertDialog.showInPresenter(self, title: error.localizedDescription, message: nil, cancelButtonTitle: "Got it!")
-                
-            default: break
+        validateEnteredExpense { [unowned self] (validExpense) in
+            let addOp = AddExpenseOperation(context: Global.coreDataStack.newBackgroundContext(),
+                                            validEnteredExpense: validExpense) {[unowned self] result in
+                                                switch result {
+                                                case .success(_):
+                                                    MDDispatcher.asyncRunInMainThread {
+                                                        MDAlertDialog.showInPresenter(self, title: "Expense saved.", message: nil, cancelButtonTitle: "Got it!")
+                                                        self.resetFields()
+                                                    }
+                                                    
+                                                case .error(let error):
+                                                    MDAlertDialog.showInPresenter(self, title: error.localizedDescription, message: nil, cancelButtonTitle: "Got it!")
+                                                    
+                                                default: break
+                                                }
             }
+            self.operationQueue.addOperation(addOp)
         }
-        operationQueue.addOperation(addOp)
     }
     
 }

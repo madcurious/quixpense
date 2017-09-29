@@ -62,6 +62,7 @@
 		266B5FFC1EFCEBE800063803 /* ExpenseFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266B5FFB1EFCEBE800063803 /* ExpenseFormView.swift */; };
 		266B5FFE1EFCEBF800063803 /* ExpenseFormView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 266B5FFD1EFCEBF800063803 /* ExpenseFormView.xib */; };
 		267C2B7C1E7BDA03008EA3E0 /* MainTabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267C2B7B1E7BDA03008EA3E0 /* MainTabBarVC.swift */; };
+		268D7D491F7E301900C08DE1 /* AddExpense_Amount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268D7D481F7E301900C08DE1 /* AddExpense_Amount.swift */; };
 		26974F3C1F2F14E600CF15E2 /* LoadCoreDataStackOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26974F3B1F2F14E600CF15E2 /* LoadCoreDataStackOperation.swift */; };
 		26A1CB4C1DD1ABD600DAE89E /* NotoSansUI-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26A1CB441DD1ABD600DAE89E /* NotoSansUI-Bold.ttf */; };
 		26A1CB4D1DD1ABD600DAE89E /* NotoSansUI-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26A1CB451DD1ABD600DAE89E /* NotoSansUI-BoldItalic.ttf */; };
@@ -232,6 +233,7 @@
 		266B5FFB1EFCEBE800063803 /* ExpenseFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseFormView.swift; sourceTree = "<group>"; };
 		266B5FFD1EFCEBF800063803 /* ExpenseFormView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpenseFormView.xib; sourceTree = "<group>"; };
 		267C2B7B1E7BDA03008EA3E0 /* MainTabBarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarVC.swift; sourceTree = "<group>"; };
+		268D7D481F7E301900C08DE1 /* AddExpense_Amount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpense_Amount.swift; sourceTree = "<group>"; };
 		26974F3B1F2F14E600CF15E2 /* LoadCoreDataStackOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadCoreDataStackOperation.swift; sourceTree = "<group>"; };
 		26974F3D1F2F30AF00CF15E2 /* TestLoadCoreDataStackOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLoadCoreDataStackOperation.swift; sourceTree = "<group>"; };
 		26A1CB441DD1ABD600DAE89E /* NotoSansUI-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansUI-Bold.ttf"; sourceTree = "<group>"; };
@@ -409,6 +411,7 @@
 				26974F3D1F2F30AF00CF15E2 /* TestLoadCoreDataStackOperation.swift */,
 				261064B51F31C9C9005D4857 /* CoreDataTestCase.swift */,
 				26A4A40A1F6FF4FF0093A6F4 /* EditExpense_DateSpent.swift */,
+				268D7D481F7E301900C08DE1 /* AddExpense_Amount.swift */,
 			);
 			path = SpareTests;
 			sourceTree = "<group>";
@@ -767,6 +770,7 @@
 			files = (
 				265CAD131F6E603A0044AFBF /* EditExpense_Category.swift in Sources */,
 				26A4A40B1F6FF4FF0093A6F4 /* EditExpense_DateSpent.swift in Sources */,
+				268D7D491F7E301900C08DE1 /* AddExpense_Amount.swift in Sources */,
 				261064B61F31C9C9005D4857 /* CoreDataTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -87,6 +87,24 @@ class ExpenseFormViewController: UIViewController {
         customView.tagFieldView.setTags(.none)
     }
     
+    func validateEnteredExpense(completion: @escaping (ValidEnteredExpense) -> Void) {
+        let validateOp = ValidateEnteredExpenseOperation(enteredExpense: enteredExpense, context: Global.coreDataStack.viewContext) { [unowned self] (result) in
+            switch result {
+            case .success(let validExpense):
+                completion(validExpense)
+            case .error(let error):
+                MDDispatcher.asyncRunInMainThread {
+                    MDAlertDialog.showInPresenter(self, title: "Error", message: error.errorDescription, cancelButtonTitle: "Got it!")
+                }
+            case .none:
+                break
+            }
+        }
+        MDDispatcher.asyncRunInBackgroundThread {
+            validateOp.start()
+        }
+    }
+    
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
