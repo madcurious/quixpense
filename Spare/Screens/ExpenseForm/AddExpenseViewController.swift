@@ -42,9 +42,9 @@ class AddExpenseViewController: ExpenseFormViewController {
     }
     
     override func handleTapOnDoneButton() {
-        validateEnteredExpense { [unowned self] (validExpense) in
+        validateExpense { [unowned self] (validExpense) in
             let addOp = AddExpenseOperation(context: Global.coreDataStack.newBackgroundContext(),
-                                            validEnteredExpense: validExpense) {[unowned self] result in
+                                            validExpense: validExpense) {[unowned self] result in
                                                 switch result {
                                                 case .success(_):
                                                     MDDispatcher.asyncRunInMainThread {

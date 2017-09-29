@@ -47,24 +47,24 @@ class EditExpenseViewController: ExpenseFormViewController {
         if let amount = expense.amount {
             let amountText = decimalFormatter.string(from: amount)
             customView.amountFieldView.textField.text = amountText
-            enteredExpense.amount = amountText
+            rawExpense.amount = amountText
         }
         
         if let dateSpent = expense.dateSpent {
             customView.dateFieldView.setDate(dateSpent)
-            enteredExpense.dateSpent = dateSpent
+            rawExpense.dateSpent = dateSpent
         }
         
         if let category = expense.category {
             let categorySelection = CategorySelection.id(category.objectID)
             customView.categoryFieldView.setCategory(categorySelection)
-            enteredExpense.categorySelection = categorySelection
+            rawExpense.categorySelection = categorySelection
         }
         
         if let tags = expense.tags {
             let tagSelection = TagSelection(from: tags)
             customView.tagFieldView.setTags(tagSelection)
-            enteredExpense.tagSelection = tagSelection
+            rawExpense.tagSelection = tagSelection
         }
     }
     

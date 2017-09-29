@@ -33,11 +33,11 @@ enum AddExpenseOperationError: LocalizedError {
 class AddExpenseOperation: TBOperation<NSManagedObjectID, AddExpenseOperationError> {
     
     let context: NSManagedObjectContext
-    let validEnteredExpense: ValidExpense
+    let validExpense: ValidExpense
     
-    init(context: NSManagedObjectContext, validEnteredExpense: ValidExpense, completionBlock: TBOperationCompletionBlock?) {
+    init(context: NSManagedObjectContext, validExpense: ValidExpense, completionBlock: TBOperationCompletionBlock?) {
         self.context = context
-        self.validEnteredExpense = validEnteredExpense
+        self.validExpense = validExpense
         super.init(completionBlock: completionBlock)
     }
     
@@ -87,22 +87,22 @@ class AddExpenseOperation: TBOperation<NSManagedObjectID, AddExpenseOperationErr
 //    }
 //
 //    let context: NSManagedObjectContext
-//    let enteredExpense: RawExpense
+//    let rawExpense: RawExpense
 //
-//    init(context: NSManagedObjectContext, enteredExpense: RawExpense, completionBlock: TBOperationCompletionBlock?) {
+//    init(context: NSManagedObjectContext, rawExpense: RawExpense, completionBlock: TBOperationCompletionBlock?) {
 //        self.context = context
-//        self.enteredExpense = enteredExpense
+//        self.rawExpense = rawExpense
 //        super.init(completionBlock: completionBlock)
 //    }
 //
 //    private func validateEnteredData() -> ValidationResult {
 //        // Nil amount
-//        if enteredExpense.amount == nil {
+//        if rawExpense.amount == nil {
 //            return .error(.amountIsEmpty)
 //        }
 //
 //        // Empty strings
-//        guard let amount = enteredExpense.amount?.trim(),
+//        guard let amount = rawExpense.amount?.trim(),
 //            amount.isEmpty == false
 //            else {
 //                return .error(.amountIsEmpty)
@@ -133,7 +133,7 @@ class AddExpenseOperation: TBOperation<NSManagedObjectID, AddExpenseOperationErr
 //            return .error(.amountIsZero)
 //        }
 //
-//        let validData = ValidEnteredData(amount: amountNumber, date: enteredExpense.dateSpent, category: enteredExpense.categorySelection, tags: enteredExpense.tagSelection)
+//        let validData = ValidEnteredData(amount: amountNumber, date: rawExpense.dateSpent, category: rawExpense.categorySelection, tags: rawExpense.tagSelection)
 //        return .success(validData)
 //    }
 //

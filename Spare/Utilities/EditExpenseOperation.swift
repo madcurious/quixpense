@@ -35,12 +35,12 @@ class EditExpenseOperation: TBOperation<NSManagedObjectID, EditExpenseError> {
     
     let context: NSManagedObjectContext
     let expenseId: NSManagedObjectID
-    let validEnteredExpense: ValidExpense
+    let validExpense: ValidExpense
     
-    init(context: NSManagedObjectContext, expenseId: NSManagedObjectID, validEnteredExpense: ValidExpense, completionBlock: TBOperationCompletionBlock?) {
+    init(context: NSManagedObjectContext, expenseId: NSManagedObjectID, validExpense: ValidExpense, completionBlock: TBOperationCompletionBlock?) {
         self.context = context
         self.expenseId = expenseId
-        self.validEnteredExpense = validEnteredExpense
+        self.validExpense = validExpense
         super.init(completionBlock: completionBlock)
     }
     
@@ -53,15 +53,15 @@ class EditExpenseOperation: TBOperation<NSManagedObjectID, EditExpenseError> {
         
         var shouldReplaceClassifierGroups = false
         
-        expense.amount = validEnteredExpense.amount
+        expense.amount = validExpense.amount
         
-        if shouldChangeDateSpent(expense.dateSpent, with: validEnteredExpense.dateSpent) {
-            expense.dateSpent = validEnteredExpense.dateSpent
+        if shouldChangeDateSpent(expense.dateSpent, with: validExpense.dateSpent) {
+            expense.dateSpent = validExpense.dateSpent
             shouldReplaceClassifierGroups = true
         }
         
-        if shouldChangeCategory(expense.category, with: validEnteredExpense.categorySelection) {
-            let newCategory = fetchOrMakeReplacementCategory(fromSelection: validEnteredExpense.categorySelection)
+        if shouldChangeCategory(expense.category, with: validExpense.categorySelection) {
+            let newCategory = fetchOrMakeReplacementCategory(fromSelection: validExpense.categorySelection)
             expense.category = newCategory
             shouldReplaceClassifierGroups = true
         }
@@ -80,7 +80,7 @@ class EditExpenseOperation: TBOperation<NSManagedObjectID, EditExpenseError> {
                 // Disassociate the current classifier group.
                 if let currentGroup = expense.value(forKey: keyPath) as? ClassifierGroup {
                     currentGroup.removeFromExpenses(expense)
-                    currentGroup.total = currentGroup.total?.subtracting(validEnteredExpense.amount)
+                    currentGroup.total = currentGroup.total?.subtracting(validExpense.amount)
                     
                     // Delete the classifier group if it contains no more expenses.
                     if currentGroup.expenses?.count == 0 {
@@ -88,11 +88,11 @@ class EditExpenseOperation: TBOperation<NSManagedObjectID, EditExpenseError> {
                     }
                 }
                 
-                if let newGroup = fetchReplacementClassifierGroup(periodization: periodization, classifier: category, dateSpent: validEnteredExpense.dateSpent) {
-                    newGroup.total = newGroup.total?.adding(validEnteredExpense.amount)
+                if let newGroup = fetchReplacementClassifierGroup(periodization: periodization, classifier: category, dateSpent: validExpense.dateSpent) {
+                    newGroup.total = newGroup.total?.adding(validExpense.amount)
                     newGroup.addToExpenses(expense)
                 } else {
-                    let newGroup = makeReplacementClassifierGroup(periodization: periodization, classifier: category, dateSpent: validEnteredExpense.dateSpent)
+                    let newGroup = makeReplacementClassifierGroup(periodization: periodization, classifier: category, dateSpent: validExpense.dateSpent)
                     newGroup.addToExpenses(expense)
                 }
             }
@@ -221,8 +221,8 @@ extension EditExpenseOperation {
                 return MonthCategoryGroup(context: context)
             }
         }()
-        newClassifierGroup.sectionIdentifier = SectionIdentifier.make(dateSpent: validEnteredExpense.dateSpent, periodization: periodization)
-        newClassifierGroup.total = validEnteredExpense.amount
+        newClassifierGroup.sectionIdentifier = SectionIdentifier.make(dateSpent: validExpense.dateSpent, periodization: periodization)
+        newClassifierGroup.total = validExpense.amount
         newClassifierGroup.classifier = classifier
         return newClassifierGroup
     }

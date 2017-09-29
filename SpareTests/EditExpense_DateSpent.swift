@@ -32,13 +32,13 @@ extension EditExpense_DateSpent {
         try! frc.performFetch()
         let firstExpense = frc.fetchedObjects!.first!
         let newDate = Date(timeIntervalSince1970: 1459468800)
-        let validEnteredExpense = makeValidEnteredExpense(from: RawExpense(amount: "333.45",
+        let validExpense = makeValidEnteredExpense(from: RawExpense(amount: "333.45",
                                                                                dateSpent: newDate,
                                                                                categorySelection: .none,
                                                                                tagSelection: .none))
         let editOp = EditExpenseOperation(context: coreDataStack.viewContext,
                                           expenseId: firstExpense.objectID,
-                                          validEnteredExpense: validEnteredExpense,
+                                          validExpense: validExpense,
                                           completionBlock: nil)
         let expenseToEdit = editOp.fetchExpense()!
         

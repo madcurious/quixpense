@@ -12,7 +12,7 @@ import Mold
 class ExpenseFormViewController: UIViewController {
     
     let customView = ExpenseFormView.instantiateFromNib()
-    var enteredExpense = RawExpense()
+    var rawExpense = RawExpense()
     let invalidAmountCharacters = CharacterSet.decimalNumberCharacterSet().inverted
     
     init() {
@@ -52,20 +52,20 @@ class ExpenseFormViewController: UIViewController {
     }
     
     func hasUnsavedChanges() -> Bool {
-        if enteredExpense.amount != nil {
+        if rawExpense.amount != nil {
             return true
         }
         
-        if let amountText = enteredExpense.amount,
+        if let amountText = rawExpense.amount,
             amountText.isEmpty == false {
             return true
         }
         
-        if enteredExpense.categorySelection != .none {
+        if rawExpense.categorySelection != .none {
             return true
         }
         
-        if case .list(let list) = enteredExpense.tagSelection,
+        if case .list(let list) = rawExpense.tagSelection,
             list.isEmpty == false {
             return true
         }
@@ -75,20 +75,20 @@ class ExpenseFormViewController: UIViewController {
     
     func resetFields() {
         // Reset the input model.
-        enteredExpense.amount = nil
-        enteredExpense.dateSpent = Date()
-        enteredExpense.categorySelection = .none
-        enteredExpense.tagSelection = .none
+        rawExpense.amount = nil
+        rawExpense.dateSpent = Date()
+        rawExpense.categorySelection = .none
+        rawExpense.tagSelection = .none
         
         // Reset the views.
         customView.amountFieldView.textField.text = nil
-        customView.dateFieldView.setDate(enteredExpense.dateSpent)
+        customView.dateFieldView.setDate(rawExpense.dateSpent)
         customView.categoryFieldView.setCategory(.none)
         customView.tagFieldView.setTags(.none)
     }
     
-    func validateEnteredExpense(completion: @escaping (ValidExpense) -> Void) {
-        let validateOp = ValidateEnteredExpenseOperation(enteredExpense: enteredExpense, context: Global.coreDataStack.viewContext) { [unowned self] (result) in
+    func validateExpense(completion: @escaping (ValidExpense) -> Void) {
+        let validateOp = ValidateExpenseOperation(rawExpense: rawExpense, context: Global.coreDataStack.viewContext) { [unowned self] (result) in
             switch result {
             case .success(let validExpense):
                 completion(validExpense)
@@ -128,30 +128,30 @@ class ExpenseFormViewController: UIViewController {
     }
     
     func handleTapOnDateEditButton() {
-        DatePickerViewController.present(from: self, selectedDate: enteredExpense.dateSpent)
+        DatePickerViewController.present(from: self, selectedDate: rawExpense.dateSpent)
     }
     
     func handleTapOnDateRefreshButton() {
         let currentDate = Date()
-        enteredExpense.dateSpent = currentDate
+        rawExpense.dateSpent = currentDate
         customView.dateFieldView.setDate(currentDate)
     }
     
     func handleTapOnCategoryEditButton() {
-        CategoryPickerViewController.present(from: self, selectedCategory: enteredExpense.categorySelection)
+        CategoryPickerViewController.present(from: self, selectedCategory: rawExpense.categorySelection)
     }
     
     func handleTapOnCategoryClearButton() {
-        enteredExpense.categorySelection = .none
+        rawExpense.categorySelection = .none
         customView.categoryFieldView.setCategory(.none)
     }
     
     func handleTapOnTagEditButton() {
-        TagPickerViewController.present(from: self, selectedTags: enteredExpense.tagSelection)
+        TagPickerViewController.present(from: self, selectedTags: rawExpense.tagSelection)
     }
     
     func handleTapOnTagClearButton() {
-        enteredExpense.tagSelection = .none
+        rawExpense.tagSelection = .none
         customView.tagFieldView.setTags(.none)
     }
     
@@ -162,7 +162,7 @@ class ExpenseFormViewController: UIViewController {
 extension ExpenseFormViewController: DatePickerViewControllerDelegate {
     
     func datePicker(_ datePicker: DatePickerViewController, didSelectDate date: Date) {
-        enteredExpense.dateSpent = date
+        rawExpense.dateSpent = date
         customView.dateFieldView.setDate(date)
     }
     
@@ -174,7 +174,7 @@ extension ExpenseFormViewController: CategoryPickerViewControllerDelegate {
     
     func categoryPicker(_ picker: CategoryPickerViewController, didSelectCategory category: CategorySelection) {
         // Update the model.
-        enteredExpense.categorySelection = category
+        rawExpense.categorySelection = category
         
         // Update the view.
         customView.categoryFieldView.setCategory(category)
@@ -187,7 +187,7 @@ extension ExpenseFormViewController: CategoryPickerViewControllerDelegate {
 extension ExpenseFormViewController: TagPickerViewControllerDelegate {
     
     func tagPicker(_ picker: TagPickerViewController, didSelectTags tags: TagSelection) {
-        enteredExpense.tagSelection = tags
+        rawExpense.tagSelection = tags
         customView.tagFieldView.setTags(tags)
     }
     
@@ -219,7 +219,7 @@ extension ExpenseFormViewController: UITextFieldDelegate {
             if let _ = string.rangeOfCharacter(from: invalidAmountCharacters) {
                 return false
             } else {
-                enteredExpense.amount = {
+                rawExpense.amount = {
                     guard let existingText = textField.text as NSString?
                         else {
                             return nil

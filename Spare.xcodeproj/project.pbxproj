@@ -106,7 +106,7 @@
 		26BEEC4D1F6A7DB6005224C9 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BEEC341F6A7D45005224C9 /* Theme.swift */; };
 		26BEEC4E1F6A7DB6005224C9 /* TimestampFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BEEC351F6A7D45005224C9 /* TimestampFormatter.swift */; };
 		26BEEC4F1F6A7DB6005224C9 /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BEEC361F6A7D45005224C9 /* UserDefaultsKey.swift */; };
-		26BEEC501F6A7DB6005224C9 /* ValidateEnteredExpenseOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BEEC371F6A7D45005224C9 /* ValidateEnteredExpenseOperation.swift */; };
+		26BEEC501F6A7DB6005224C9 /* ValidateExpenseOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BEEC371F6A7D45005224C9 /* ValidateExpenseOperation.swift */; };
 		26BEEC511F6A7DB6005224C9 /* ValidExpense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BEEC381F6A7D45005224C9 /* ValidExpense.swift */; };
 		26C5721A1F1C9061005F63ED /* DateFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C572191F1C9061005F63ED /* DateFieldView.swift */; };
 		26C5721C1F1C90BC005F63ED /* DateFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26C5721B1F1C90BC005F63ED /* DateFieldView.xib */; };
@@ -278,7 +278,7 @@
 		26BEEC341F6A7D45005224C9 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		26BEEC351F6A7D45005224C9 /* TimestampFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimestampFormatter.swift; sourceTree = "<group>"; };
 		26BEEC361F6A7D45005224C9 /* UserDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
-		26BEEC371F6A7D45005224C9 /* ValidateEnteredExpenseOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateEnteredExpenseOperation.swift; sourceTree = "<group>"; };
+		26BEEC371F6A7D45005224C9 /* ValidateExpenseOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateExpenseOperation.swift; sourceTree = "<group>"; };
 		26BEEC381F6A7D45005224C9 /* ValidExpense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidExpense.swift; sourceTree = "<group>"; };
 		26C572191F1C9061005F63ED /* DateFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFieldView.swift; sourceTree = "<group>"; };
 		26C5721B1F1C90BC005F63ED /* DateFieldView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DateFieldView.xib; sourceTree = "<group>"; };
@@ -583,7 +583,7 @@
 				26BEEC341F6A7D45005224C9 /* Theme.swift */,
 				26BEEC351F6A7D45005224C9 /* TimestampFormatter.swift */,
 				26BEEC361F6A7D45005224C9 /* UserDefaultsKey.swift */,
-				26BEEC371F6A7D45005224C9 /* ValidateEnteredExpenseOperation.swift */,
+				26BEEC371F6A7D45005224C9 /* ValidateExpenseOperation.swift */,
 				26BEEC381F6A7D45005224C9 /* ValidExpense.swift */,
 			);
 			path = Utilities;
@@ -805,7 +805,7 @@
 				26BEEC4D1F6A7DB6005224C9 /* Theme.swift in Sources */,
 				26BEEC4E1F6A7DB6005224C9 /* TimestampFormatter.swift in Sources */,
 				26BEEC4F1F6A7DB6005224C9 /* UserDefaultsKey.swift in Sources */,
-				26BEEC501F6A7DB6005224C9 /* ValidateEnteredExpenseOperation.swift in Sources */,
+				26BEEC501F6A7DB6005224C9 /* ValidateExpenseOperation.swift in Sources */,
 				26BEEC511F6A7DB6005224C9 /* ValidExpense.swift in Sources */,
 				26320B321F6E4CDB00D8E1FC /* Expense+CoreDataClass.swift in Sources */,
 				26E98BF41F0CD7B900A5C3D5 /* TagPickerViewController.swift in Sources */,
