@@ -106,6 +106,7 @@
 		26BEEC511F6A7DB6005224C9 /* ValidExpense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BEEC381F6A7D45005224C9 /* ValidExpense.swift */; };
 		26C5721A1F1C9061005F63ED /* DateFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C572191F1C9061005F63ED /* DateFieldView.swift */; };
 		26C5721C1F1C90BC005F63ED /* DateFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26C5721B1F1C90BC005F63ED /* DateFieldView.xib */; };
+		26DB29691F8226EC0042E39D /* AddExpense_DayCategoryGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DB29681F8226EC0042E39D /* AddExpense_DayCategoryGroup.swift */; };
 		26DDDCA81E5C238B001617A1 /* LoadAppVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DDDCA71E5C238B001617A1 /* LoadAppVC.swift */; };
 		26DDDCAA1E5C23AB001617A1 /* _LAVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DDDCA91E5C23AB001617A1 /* _LAVCView.swift */; };
 		26DDDCAC1E5C23C2001617A1 /* _LAVCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26DDDCAB1E5C23C2001617A1 /* _LAVCView.xib */; };
@@ -149,6 +150,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 261EB85E18DDB630009DDF78;
 			remoteInfo = Spare;
+		};
+		26A190811F837D9300A9BBF6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 260023B51CC7D9CE00EB2026 /* Mold.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 26A1906B1F83739300A9BBF6;
+			remoteInfo = MoldTests;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -276,6 +284,7 @@
 		26C572191F1C9061005F63ED /* DateFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFieldView.swift; sourceTree = "<group>"; };
 		26C5721B1F1C90BC005F63ED /* DateFieldView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DateFieldView.xib; sourceTree = "<group>"; };
 		26D4C8F41946E624001B42DC /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		26DB29681F8226EC0042E39D /* AddExpense_DayCategoryGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpense_DayCategoryGroup.swift; sourceTree = "<group>"; };
 		26DDDCA71E5C238B001617A1 /* LoadAppVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadAppVC.swift; sourceTree = "<group>"; };
 		26DDDCA91E5C23AB001617A1 /* _LAVCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _LAVCView.swift; sourceTree = "<group>"; };
 		26DDDCAB1E5C23C2001617A1 /* _LAVCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = _LAVCView.xib; sourceTree = "<group>"; };
@@ -330,6 +339,7 @@
 			isa = PBXGroup;
 			children = (
 				260024301CC8C53A00EB2026 /* Mold.framework */,
+				26A190821F837D9300A9BBF6 /* MoldTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -404,6 +414,7 @@
 				26F51AFD1F7E41B40073DAF2 /* AddExpense_Amount.swift */,
 				26F51AFB1F7E3D2C0073DAF2 /* CoreDataTestCase.swift */,
 				264EE4A51EF90450004011FE /* Info.plist */,
+				26DB29681F8226EC0042E39D /* AddExpense_DayCategoryGroup.swift */,
 			);
 			path = SpareTests;
 			sourceTree = "<group>";
@@ -709,6 +720,13 @@
 			remoteRef = 2600242F1CC8C53A00EB2026 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		26A190821F837D9300A9BBF6 /* MoldTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = MoldTests.xctest;
+			remoteRef = 26A190811F837D9300A9BBF6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -761,6 +779,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				26F51AFE1F7E41B40073DAF2 /* AddExpense_Amount.swift in Sources */,
+				26DB29691F8226EC0042E39D /* AddExpense_DayCategoryGroup.swift in Sources */,
 				26F51AFC1F7E3D2C0073DAF2 /* CoreDataTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -12,15 +12,6 @@ import CoreData
 
 class AddExpense_Amount: CoreDataTestCase {
     
-    func makeValidExpense(from rawExpense: RawExpense) -> ValidExpense {
-        let validateOp = ValidateExpenseOperation(rawExpense: rawExpense, context: coreDataStack.viewContext, completionBlock: nil)
-        validateOp.start()
-        if case .success(let validExpense) = validateOp.result {
-            return validExpense
-        }
-        fatalError()
-    }
-    
     func testAmount_validAmount_shouldSucceed() {
         let rawExpense = RawExpense(amount: "250.00",
                                     dateSpent: Date(),

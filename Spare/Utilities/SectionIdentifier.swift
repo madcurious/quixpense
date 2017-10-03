@@ -10,23 +10,23 @@ import Foundation
 
 final class SectionIdentifier {
     
-    class func make(dateSpent: Date, periodization: Periodization) -> String {
+    class func make(referenceDate: Date, periodization: Periodization) -> String {
         let startDate: Date
         let endDate: Date
         
         switch periodization {
         case .day:
-            startDate = dateSpent.startOfDay()
-            endDate = dateSpent.endOfDay()
+            startDate = referenceDate.startOfDay()
+            endDate = referenceDate.endOfDay()
             
         case .week:
             let firstWeekday = Global.startOfWeek.rawValue
-            startDate = dateSpent.startOfWeek(firstWeekday: firstWeekday)
-            endDate = dateSpent.endOfWeek(firstWeekday: firstWeekday)
+            startDate = referenceDate.startOfWeek(firstWeekday: firstWeekday)
+            endDate = referenceDate.endOfWeek(firstWeekday: firstWeekday)
             
         case .month:
-            startDate = dateSpent.startOfMonth()
-            endDate = dateSpent.endOfMonth()
+            startDate = referenceDate.startOfMonth()
+            endDate = referenceDate.endOfMonth()
         }
         
         return "\(startDate.timeIntervalSince1970)-\(endDate.timeIntervalSince1970)"

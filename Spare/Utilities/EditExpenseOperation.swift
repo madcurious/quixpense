@@ -169,7 +169,7 @@ extension EditExpenseOperation {
     }
     
     func fetchReplacementClassifierGroup(periodization: Periodization, classifier: Classifier, dateSpent: Date) -> ClassifierGroup? {
-        let sectionIdentififer = SectionIdentifier.make(dateSpent: dateSpent, periodization: periodization)
+        let sectionIdentififer = SectionIdentifier.make(referenceDate: dateSpent, periodization: periodization)
         let predicate = NSPredicate(format: "%K == %@ AND %K == %@",
                                     #keyPath(ClassifierGroup.sectionIdentifier), sectionIdentififer,
                                     #keyPath(ClassifierGroup.classifier), classifier)
@@ -221,7 +221,7 @@ extension EditExpenseOperation {
                 return MonthCategoryGroup(context: context)
             }
         }()
-        newClassifierGroup.sectionIdentifier = SectionIdentifier.make(dateSpent: validExpense.dateSpent, periodization: periodization)
+        newClassifierGroup.sectionIdentifier = SectionIdentifier.make(referenceDate: validExpense.dateSpent, periodization: periodization)
         newClassifierGroup.total = validExpense.amount
         newClassifierGroup.classifier = classifier
         return newClassifierGroup
