@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13221.4" systemVersion="16F73" minimumToolsVersion="Xcode 8.0" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13240" systemVersion="16G29" minimumToolsVersion="Xcode 8.0" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Category" representedClassName="Category" syncable="YES">
         <attribute name="name" attributeType="String" indexed="YES" syncable="YES"/>
         <relationship name="dayCategoryGroups" toMany="YES" deletionRule="Nullify" destinationEntity="DayCategoryGroup" inverseName="classifier" inverseEntity="DayCategoryGroup" syncable="YES"/>
@@ -44,21 +44,6 @@
         <relationship name="classifier" maxCount="1" deletionRule="Nullify" destinationEntity="Tag" inverseName="monthTagGroups" inverseEntity="Tag" syncable="YES"/>
         <relationship name="expenses" toMany="YES" deletionRule="Nullify" destinationEntity="Expense" inverseName="monthTagGroups" inverseEntity="Expense" syncable="YES"/>
     </entity>
-    <entity name="SPRCategory" representedClassName=".SPRCategory" syncable="YES">
-        <attribute name="colorNumber" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="displayedTotal" optional="YES" transient="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="displayOrder" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="expenses" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="SPRExpense" inverseName="category" inverseEntity="SPRExpense" syncable="YES"/>
-    </entity>
-    <entity name="SPRExpense" representedClassName=".SPRExpense" syncable="YES">
-        <attribute name="amount" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="dateSpent" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="dateSpentAsSectionTitle" optional="YES" transient="YES" attributeType="String" syncable="YES"/>
-        <attribute name="displayOrder" optional="YES" attributeType="Integer 64" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SPRCategory" inverseName="expenses" inverseEntity="SPRCategory" syncable="YES"/>
-    </entity>
     <entity name="Tag" representedClassName=".Tag" syncable="YES">
         <attribute name="name" attributeType="String" indexed="YES" syncable="YES"/>
         <relationship name="dayTagGroups" toMany="YES" deletionRule="Nullify" destinationEntity="DayTagGroup" inverseName="classifier" inverseEntity="DayTagGroup" syncable="YES"/>
@@ -79,14 +64,12 @@
         <relationship name="expenses" toMany="YES" deletionRule="Nullify" destinationEntity="Expense" inverseName="weekTagGroups" inverseEntity="Expense" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Category" positionX="268" positionY="450" width="128" height="118"/>
+        <element name="Category" positionX="268" positionY="450" width="128" height="120"/>
         <element name="DayCategoryGroup" positionX="189" positionY="180" width="128" height="105"/>
         <element name="DayTagGroup" positionX="180" positionY="171" width="128" height="105"/>
         <element name="Expense" positionX="189" positionY="180" width="128" height="210"/>
         <element name="MonthCategoryGroup" positionX="189" positionY="153" width="128" height="105"/>
         <element name="MonthTagGroup" positionX="216" positionY="207" width="128" height="105"/>
-        <element name="SPRCategory" positionX="198" positionY="27" width="128" height="120"/>
-        <element name="SPRExpense" positionX="376" positionY="45" width="128" height="135"/>
         <element name="Tag" positionX="-18" positionY="294" width="128" height="118"/>
         <element name="WeekCategoryGroup" positionX="216" positionY="207" width="128" height="105"/>
         <element name="WeekTagGroup" positionX="207" positionY="198" width="128" height="105"/>

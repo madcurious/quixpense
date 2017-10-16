@@ -7,10 +7,27 @@
 //
 
 import Foundation
+import CoreData
+import Mold
 
-final class DefaultClassifier {
+enum DefaultClassifier {
     
-    static let defaultCategoryName = "Uncategorized"
-    static let defaultTagName = "Untagged"
+    case noCategory
+    case noTags
+    
+    var classifierName: String {
+        switch self {
+        case .noCategory:
+            return "No category"
+        case .noTags:
+            return "No tags"
+        }
+    }
+    
+    func fetch<T: Classifier>(in context: NSManagedObjectContext) -> T {
+        let fetchRequest: NSFetchRequest<T> = NSFetchRequest<T>(entityName: md_getClassName(T.self))
+        fetchRequest.predicate = NSPredicate(format: "%K == %@", #keyPath(Classifier.name), classifierName)
+        return try! context.fetch(fetchRequest).first!
+    }
     
 }

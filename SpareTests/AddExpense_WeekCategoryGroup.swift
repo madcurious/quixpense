@@ -1,8 +1,8 @@
 //
-//  class AddExpense_DayCategoryGroup.swift
+//  AddExpense_WeekCategoryGroup.swift
 //  SpareTests
 //
-//  Created by Matt Quiros on 02/10/2017.
+//  Created by Matt Quiros on 16/10/2017.
 //  Copyright © 2017 Matt Quiros. All rights reserved.
 //
 
@@ -11,28 +11,18 @@ import Mold
 import CoreData
 @testable import Spare
 
-class AddExpense_DayCategoryGroup: CoreDataTestCase {
-    
-    func testSectionIdentifier_shouldSucceed() {
-        var components = DateComponents()
-        components.day = 30
-        components.month = 9
-        components.year = 2017
-        let date = Calendar.current.date(from: components)!
-        let identifier = SectionIdentifier.make(referenceDate: date, periodization: .day)
-        XCTAssertEqual(identifier, "\(Calendar.current.startOfDay(for: date).timeIntervalSince1970)-\(TBDateUtils.endOfDay(for: date).timeIntervalSince1970)")
-    }
+class AddExpense_WeekCategoryGroup: CoreDataTestCase {
     
     func test_notYetExisting_shouldBeCreated() {
         let date = makeDate(day: 30, month: 9, year: 2017)
-        let sectionId = SectionIdentifier.make(referenceDate: date, periodization: .day)
+        let sectionId = SectionIdentifier.make(referenceDate: date, periodization: .week)
         let categoryName = "Transportation"
         
         let context = coreDataStack.newBackgroundContext()
-        let fetchRequest: NSFetchRequest<DayCategoryGroup> = DayCategoryGroup.fetchRequest()
+        let fetchRequest: NSFetchRequest<WeekCategoryGroup> = WeekCategoryGroup.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "%K == %@ AND %K == %@",
-                                             #keyPath(DayCategoryGroup.sectionIdentifier), sectionId,
-                                             #keyPath(DayCategoryGroup.classifier.name), categoryName
+                                             #keyPath(WeekCategoryGroup.sectionIdentifier), sectionId,
+                                             #keyPath(WeekCategoryGroup.classifier.name), categoryName
         )
         XCTAssertNil(try! context.fetch(fetchRequest).first)
         

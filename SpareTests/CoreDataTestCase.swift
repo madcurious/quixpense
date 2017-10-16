@@ -32,18 +32,21 @@ class CoreDataTestCase: XCTestCase {
     
     func loadCoreDataStack(completion: (() -> Void)?) {
         let xp = expectation(description: #function)
-        operationQueue.addOperation(
-            LoadCoreDataStackOperation(inMemory: true) {[unowned self] result in
-                switch result {
-                case .success(let container):
-                    self.coreDataStack = container
-                    completion?()
-                default:
-                    fatalError(#function)
-                }
-                xp.fulfill()
-        })
+        let loadOp = LoadCoreDataStackOperation(inMemory: true) { _ in
+            xp.fulfill()
+        }
+        operationQueue.addOperation(loadOp)
         wait(for: [xp], timeout: setupTimeout)
+        
+        switch loadOp.result {
+        case .success(let container):
+            coreDataStack = container
+            completion?()
+        case .error(let error):
+            XCTFail(error.localizedDescription)
+        case .none:
+            XCTFail("No result")
+        }
     }
     
     override func tearDown() {
@@ -70,6 +73,17 @@ class CoreDataTestCase: XCTestCase {
             return validExpense
         }
         fatalError()
+    }
+    
+    func makeDate(day: Int = 1, month: Int = 1, year: Int = 2017, hour: Int = 0, minute: Int = 0, second: Int = 0) -> Date {
+        var components = DateComponents()
+        components.day = day
+        components.month = month
+        components.year = year
+        components.hour = hour
+        components.minute = minute
+        components.second = second
+        return Calendar.current.date(from: components)!
     }
     
 }

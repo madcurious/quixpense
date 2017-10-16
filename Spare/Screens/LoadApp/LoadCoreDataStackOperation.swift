@@ -41,18 +41,18 @@ class LoadCoreDataStackOperation: TBAsynchronousOperation<NSPersistentContainer,
             // Generate the default classifiers, if not yet existing.
             let context = persistentContainer.newBackgroundContext()
             let categoryFetch: NSFetchRequest<Category> = Category.fetchRequest()
-            categoryFetch.predicate = NSPredicate(format: "%K == %@", #keyPath(Category.name), DefaultClassifier.defaultCategoryName)
+            categoryFetch.predicate = NSPredicate(format: "%K == %@", #keyPath(Category.name), DefaultClassifier.noCategory.classifierName)
             let tagFetch: NSFetchRequest<Tag> = Tag.fetchRequest()
-            tagFetch.predicate = NSPredicate(format: "%K == %@", #keyPath(Tag.name), DefaultClassifier.defaultTagName)
+            tagFetch.predicate = NSPredicate(format: "%K == %@", #keyPath(Tag.name), DefaultClassifier.noTags.classifierName)
             do {
                 if try context.fetch(categoryFetch).first == nil {
                     let defaultCategory = Category(context: context)
-                    defaultCategory.name = DefaultClassifier.defaultCategoryName
+                    defaultCategory.name = DefaultClassifier.noCategory.classifierName
                 }
                 
                 if try context.fetch(tagFetch).first == nil {
                     let defaultTag = Tag(context: context)
-                    defaultTag.name = DefaultClassifier.defaultTagName
+                    defaultTag.name = DefaultClassifier.noTags.classifierName
                 }
                 
                 try context.saveToStore()

@@ -129,7 +129,7 @@ extension EditExpenseOperation {
             return true
             
         case .none:
-            if category?.name == DefaultClassifier.defaultCategoryName {
+            if category?.name == DefaultClassifier.noCategory.classifierName {
                 return false
             }
             return true
@@ -163,7 +163,7 @@ extension EditExpenseOperation {
             
         case .none:
             let fetchRequest: NSFetchRequest<Category> = Category.fetchRequest()
-            fetchRequest.predicate = NSPredicate(format: "%K == %@", #keyPath(Category.name), DefaultClassifier.defaultCategoryName)
+            fetchRequest.predicate = NSPredicate(format: "%K == %@", #keyPath(Category.name), DefaultClassifier.noCategory.classifierName)
             return try! context.fetch(fetchRequest).first!
         }
     }

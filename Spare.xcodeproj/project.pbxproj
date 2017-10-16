@@ -32,6 +32,8 @@
 		2647CD481EF136770098E700 /* FilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2647CD351EF136770098E700 /* FilterButton.swift */; };
 		2647CD491EF136770098E700 /* FilterButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2647CD361EF136770098E700 /* FilterButton.xib */; };
 		2647CD4E1EF136770098E700 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2647CD3B1EF136770098E700 /* HomeViewController.swift */; };
+		264AE14B1F94A8ED00F87C55 /* AddExpense_WeekCategoryGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264AE14A1F94A8ED00F87C55 /* AddExpense_WeekCategoryGroup.swift */; };
+		264AE14E1F94C32500F87C55 /* AddExpense_Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264AE14D1F94C32500F87C55 /* AddExpense_Category.swift */; };
 		265390EF1F15EB8000C7BD34 /* NewClassifierView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265390EE1F15EB8000C7BD34 /* NewClassifierView.swift */; };
 		265390F11F15EB9200C7BD34 /* NewClassifierView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 265390F01F15EB9200C7BD34 /* NewClassifierView.xib */; };
 		265733291EDD507C00AD1AB9 /* FilterPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265733261EDD507C00AD1AB9 /* FilterPopupView.swift */; };
@@ -204,6 +206,8 @@
 		2647CD351EF136770098E700 /* FilterButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterButton.swift; sourceTree = "<group>"; };
 		2647CD361EF136770098E700 /* FilterButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilterButton.xib; sourceTree = "<group>"; };
 		2647CD3B1EF136770098E700 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		264AE14A1F94A8ED00F87C55 /* AddExpense_WeekCategoryGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpense_WeekCategoryGroup.swift; sourceTree = "<group>"; };
+		264AE14D1F94C32500F87C55 /* AddExpense_Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpense_Category.swift; sourceTree = "<group>"; };
 		264EE4A51EF90450004011FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		265390EE1F15EB8000C7BD34 /* NewClassifierView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewClassifierView.swift; sourceTree = "<group>"; };
 		265390F01F15EB9200C7BD34 /* NewClassifierView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewClassifierView.xib; sourceTree = "<group>"; };
@@ -415,6 +419,8 @@
 				26F51AFB1F7E3D2C0073DAF2 /* CoreDataTestCase.swift */,
 				264EE4A51EF90450004011FE /* Info.plist */,
 				26DB29681F8226EC0042E39D /* AddExpense_DayCategoryGroup.swift */,
+				264AE14A1F94A8ED00F87C55 /* AddExpense_WeekCategoryGroup.swift */,
+				264AE14D1F94C32500F87C55 /* AddExpense_Category.swift */,
 			);
 			path = SpareTests;
 			sourceTree = "<group>";
@@ -778,6 +784,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				264AE14E1F94C32500F87C55 /* AddExpense_Category.swift in Sources */,
+				264AE14B1F94A8ED00F87C55 /* AddExpense_WeekCategoryGroup.swift in Sources */,
 				26F51AFE1F7E41B40073DAF2 /* AddExpense_Amount.swift in Sources */,
 				26DB29691F8226EC0042E39D /* AddExpense_DayCategoryGroup.swift in Sources */,
 				26F51AFC1F7E3D2C0073DAF2 /* CoreDataTestCase.swift in Sources */,
