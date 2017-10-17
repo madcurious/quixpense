@@ -8,7 +8,7 @@
 
 import Foundation
 import CoreData
-import Mold
+import Bedrock
 
 enum EditExpenseError: LocalizedError {
     
@@ -31,13 +31,13 @@ enum EditExpenseError: LocalizedError {
  The operation does not accept the type `EnteredData` because doing so will require the execution
  of the validation operation anyway.
  */
-class EditExpenseOperation: TBOperation<NSManagedObjectID, EditExpenseError> {
+class EditExpenseOperation: BROperation<NSManagedObjectID, EditExpenseError> {
     
     let context: NSManagedObjectContext
     let expenseId: NSManagedObjectID
     let validExpense: ValidExpense
     
-    init(context: NSManagedObjectContext, expenseId: NSManagedObjectID, validExpense: ValidExpense, completionBlock: TBOperationCompletionBlock?) {
+    init(context: NSManagedObjectContext, expenseId: NSManagedObjectID, validExpense: ValidExpense, completionBlock: BROperationCompletionBlock?) {
         self.context = context
         self.expenseId = expenseId
         self.validExpense = validExpense

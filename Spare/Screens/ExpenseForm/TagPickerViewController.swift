@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreData
-import Mold
+import Bedrock
 
 protocol TagPickerViewControllerDelegate {
     func tagPicker(_ picker: TagPickerViewController, didSelectTags tags: TagSelection)
@@ -282,13 +282,13 @@ extension TagListViewController: NewClassifierViewControllerDelegate {
         guard let enteredName = classifierName?.trim(),
             enteredName.isEmpty == false
             else {
-                MDAlertDialog.showInPresenter(self, title: nil, message: "You must enter a tag name.", cancelButtonTitle: "Got it!")
+                BRAlertDialog.showInPresenter(self, title: nil, message: "You must enter a tag name.", cancelButtonTitle: "Got it!")
                 return
         }
         
         // Don't allow duplicate additions.
         if currentSelectionListAsStrings().contains(enteredName) {
-            MDAlertDialog.showInPresenter(self, title: nil, message: "You already have a tag named '\(enteredName).'", cancelButtonTitle: "Got it!")
+            BRAlertDialog.showInPresenter(self, title: nil, message: "You already have a tag named '\(enteredName).'", cancelButtonTitle: "Got it!")
             return
         }
         

@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreData
-import Mold
+import Bedrock
 
 protocol CategoryPickerViewControllerDelegate {
     func categoryPicker(_ picker: CategoryPickerViewController, didSelectCategory category: CategorySelection)
@@ -246,13 +246,13 @@ extension CategoryListViewController: NewClassifierViewControllerDelegate {
         guard let categoryName = classifierName?.trim(),
             categoryName.isEmpty == false
             else {
-                MDAlertDialog.showInPresenter(self, title: nil, message: "You must enter a category name.", cancelButtonTitle: "Got it!")
+                BRAlertDialog.showInPresenter(self, title: nil, message: "You must enter a category name.", cancelButtonTitle: "Got it!")
                 return
         }
         
         // Do not allow categories with duplicate names.
         if currentSelectionListAsStrings().contains(categoryName) {
-            MDAlertDialog.showInPresenter(self, title: nil, message: "You already have a category named '\(categoryName).'", cancelButtonTitle: "Got it!")
+            BRAlertDialog.showInPresenter(self, title: nil, message: "You already have a category named '\(categoryName).'", cancelButtonTitle: "Got it!")
             return
         }
         

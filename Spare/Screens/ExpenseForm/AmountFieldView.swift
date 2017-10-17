@@ -19,7 +19,7 @@ class AmountFieldView: UIView, Themeable {
         super.awakeFromNib()
         applyTheme()
         
-        imageView.image = UIImage.templateNamed("amountIcon")
+        imageView.image = UIImage.template(named: "amountIcon")
         
         currencyLabel.text = AmountFormatter.currencySymbol()
         currencyLabel.textAlignment = .left

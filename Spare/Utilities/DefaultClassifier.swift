@@ -8,7 +8,7 @@
 
 import Foundation
 import CoreData
-import Mold
+import Bedrock
 
 enum DefaultClassifier {
     

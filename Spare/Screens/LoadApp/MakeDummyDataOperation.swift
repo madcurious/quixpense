@@ -7,7 +7,7 @@
 //
 
 import CoreData
-import Mold
+import Bedrock
 
 private let kCategoryNames: [String?] = [
     "Food and Drinks",
@@ -27,7 +27,7 @@ private let kTagNames = [
     "Work"
 ]
 
-class MakeDummyDataOperation: TBOperation<Bool, Error> {
+class MakeDummyDataOperation: BROperation<Bool, Error> {
     
     enum StartDate {
         case date(Date)
@@ -36,7 +36,7 @@ class MakeDummyDataOperation: TBOperation<Bool, Error> {
     
     let startDate: MakeDummyDataOperation.StartDate
     
-    init(from startDate: MakeDummyDataOperation.StartDate, completionBlock: TBOperationCompletionBlock?) {
+    init(from startDate: MakeDummyDataOperation.StartDate, completionBlock: BROperationCompletionBlock?) {
         self.startDate = startDate
         super.init(completionBlock: completionBlock)
     }

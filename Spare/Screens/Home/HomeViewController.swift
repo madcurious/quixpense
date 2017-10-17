@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Mold
+import Bedrock
 import CoreData
 
 fileprivate enum ViewID: String {
@@ -45,7 +45,7 @@ class HomeViewController: UIViewController {
     }
     
     func initialize() {
-        tabBarItem.image = UIImage.templateNamed("tabIconExpenseList")
+        tabBarItem.image = UIImage.template(named: "tabIconExpenseList")
         navigationItem.titleView = filterButton
     }
     

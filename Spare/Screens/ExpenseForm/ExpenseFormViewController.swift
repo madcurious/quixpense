@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Mold
+import Bedrock
 
 class ExpenseFormViewController: UIViewController {
     
@@ -93,14 +93,14 @@ class ExpenseFormViewController: UIViewController {
             case .success(let validExpense):
                 completion(validExpense)
             case .error(let error):
-                MDDispatcher.asyncRunInMainThread {
-                    MDAlertDialog.showInPresenter(self, title: "Error", message: error.errorDescription, cancelButtonTitle: "Got it!")
+                BRDispatch.asyncRunInMain {
+                    BRAlertDialog.showInPresenter(self, title: "Error", message: error.errorDescription, cancelButtonTitle: "Got it!")
                 }
             case .none:
                 break
             }
         }
-        MDDispatcher.asyncRunInBackgroundThread {
+        BRDispatch.asyncRunInBackground {
             validateOp.start()
         }
     }

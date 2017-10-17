@@ -7,13 +7,13 @@
 //
 
 import CoreData
-import Mold
+import Bedrock
 
-class LoadCoreDataStackOperation: TBAsynchronousOperation<NSPersistentContainer, Error> {
+class LoadCoreDataStackOperation: BRAsynchronousOperation<NSPersistentContainer, Error> {
     
     let inMemory: Bool
     
-    init(inMemory: Bool, completionBlock: TBOperationCompletionBlock?) {
+    init(inMemory: Bool, completionBlock: BROperationCompletionBlock?) {
         self.inMemory = inMemory
         super.init(completionBlock: completionBlock)
     }

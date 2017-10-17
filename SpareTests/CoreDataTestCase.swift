@@ -8,7 +8,7 @@
 
 import XCTest
 import CoreData
-import Mold
+import Bedrock
 @testable import Spare
 
 class CoreDataTestCase: XCTestCase {

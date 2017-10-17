@@ -18,11 +18,11 @@ class PickerItemCell: UITableViewCell {
         var templateImage: UIImage? {
             switch self {
             case .add:
-                return UIImage.templateNamed("cellAccessoryAdd")
+                return UIImage.template(named: "cellAccessoryAdd")
             case .check:
-                return UIImage.templateNamed("cellAccessoryItemChecked")
+                return UIImage.template(named: "cellAccessoryItemChecked")
             case .remove:
-                return UIImage.templateNamed("cellAccessoryRemove")
+                return UIImage.template(named: "cellAccessoryRemove")
             }
         }
     }

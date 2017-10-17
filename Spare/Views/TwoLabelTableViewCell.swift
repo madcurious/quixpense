@@ -32,7 +32,7 @@ class TwoLabelTableViewCell: UITableViewCell, Themeable {
         self.rightLabel.textColor = Global.theme.color(for: .regularText)
         self.rightLabel.numberOfLines = 1
         
-        self.disclosureIndicatorImageView.image = UIImage.templateNamed("disclosureIndicator")
+        self.disclosureIndicatorImageView.image = UIImage.template(named: "disclosureIndicator")
         self.disclosureIndicatorImageView.tintColor = Global.theme.color(for: .disclosureIndicator)
     }
     

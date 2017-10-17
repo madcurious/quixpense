@@ -7,7 +7,7 @@
 //
 
 import XCTest
-import Mold
+import Bedrock
 import CoreData
 @testable import Spare
 
@@ -20,7 +20,7 @@ class AddExpense_DayCategoryGroup: CoreDataTestCase {
         components.year = 2017
         let date = Calendar.current.date(from: components)!
         let identifier = SectionIdentifier.make(referenceDate: date, periodization: .day)
-        XCTAssertEqual(identifier, "\(Calendar.current.startOfDay(for: date).timeIntervalSince1970)-\(TBDateUtils.endOfDay(for: date).timeIntervalSince1970)")
+        XCTAssertEqual(identifier, "\(Calendar.current.startOfDay(for: date).timeIntervalSince1970)-\(BRDateUtils.endOfDay(for: date).timeIntervalSince1970)")
     }
     
     func test_notYetExisting_shouldBeCreated() {

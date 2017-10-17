@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Mold
+import Bedrock
 
 class AddExpenseViewController: ExpenseFormViewController {
     
@@ -47,13 +47,13 @@ class AddExpenseViewController: ExpenseFormViewController {
                                             validExpense: validExpense) {[unowned self] result in
                                                 switch result {
                                                 case .success(_):
-                                                    MDDispatcher.asyncRunInMainThread {
-                                                        MDAlertDialog.showInPresenter(self, title: "Expense saved.", message: nil, cancelButtonTitle: "Got it!")
+                                                    BRDispatch.asyncRunInMain {
+                                                        BRAlertDialog.showInPresenter(self, title: "Expense saved.", message: nil, cancelButtonTitle: "Got it!")
                                                         self.resetFields()
                                                     }
                                                     
                                                 case .error(let error):
-                                                    MDAlertDialog.showInPresenter(self, title: error.localizedDescription, message: nil, cancelButtonTitle: "Got it!")
+                                                    BRAlertDialog.showInPresenter(self, title: error.localizedDescription, message: nil, cancelButtonTitle: "Got it!")
                                                     
                                                 default: break
                                                 }

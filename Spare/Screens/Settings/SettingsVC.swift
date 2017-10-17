@@ -21,7 +21,7 @@ class SettingsVC: UIViewController {
     }
     
     func initialize() {
-        self.tabBarItem.image = UIImage.templateNamed("tabIconSettings")
+        self.tabBarItem.image = UIImage.template(named: "tabIconSettings")
         
     }
     

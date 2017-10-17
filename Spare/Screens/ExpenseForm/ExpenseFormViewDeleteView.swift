@@ -7,12 +7,12 @@
 //
 
 import UIKit
-import Mold
+import Bedrock
 
 class ExpenseFormViewDeleteView: UIView {
     
     @IBOutlet var separatorViews: [UIView]!
-    @IBOutlet weak var deleteButton: MDButton!
+    @IBOutlet weak var deleteButton: BRButton!
     @IBOutlet weak var deleteButtonLabel: UILabel!
     
     override init(frame: CGRect) {

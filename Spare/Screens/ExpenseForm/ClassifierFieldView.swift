@@ -7,14 +7,14 @@
 //
 
 import UIKit
-import Mold
+import Bedrock
 
 class ClassifierFieldView: UIView, Themeable {
     
     @IBOutlet weak var iconImageView: UIImageView!
-    @IBOutlet weak var editButton: MDButton!
+    @IBOutlet weak var editButton: BRButton!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var clearButton: MDButton!
+    @IBOutlet weak var clearButton: BRButton!
     @IBOutlet weak var clearButtonImageView: UIImageView!
     
     override init(frame: CGRect) {
@@ -37,7 +37,7 @@ class ClassifierFieldView: UIView, Themeable {
         nameLabel.numberOfLines = 0
         nameLabel.lineBreakMode = .byWordWrapping
         
-        clearButtonImageView.image = UIImage.templateNamed("cellAccessoryClear")
+        clearButtonImageView.image = UIImage.template(named: "cellAccessoryClear")
     }
     
     func applyTheme() {

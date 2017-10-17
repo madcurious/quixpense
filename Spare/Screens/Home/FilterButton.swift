@@ -7,9 +7,9 @@
 //
 
 import UIKit
-import Mold
+import Bedrock
 
-class FilterButton: MDButton, Themeable {
+class FilterButton: BRButton, Themeable {
     
     @IBOutlet weak var sizerView: UIView!
     @IBOutlet weak var sizerViewWidth: NSLayoutConstraint!
@@ -48,7 +48,7 @@ class FilterButton: MDButton, Themeable {
         self.filterLabel.text = self.filter.text()
         self.filterLabel.textAlignment = .center
         
-        self.arrowImageView.image = UIImage.templateNamed("filterButtonArrow")
+        self.arrowImageView.image = UIImage.template(named: "filterButtonArrow")
         
         self.applyTheme()
         

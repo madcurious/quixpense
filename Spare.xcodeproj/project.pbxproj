@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		260024311CC8C5AE00EB2026 /* Mold.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 260024301CC8C53A00EB2026 /* Mold.framework */; };
-		260024321CC8C5AE00EB2026 /* Mold.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 260024301CC8C53A00EB2026 /* Mold.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2603F8C31CCA45FF007F311F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2603F8C21CCA45FF007F311F /* LaunchScreen.storyboard */; };
 		2605B7FE1F4ED72D00CE9883 /* EditExpenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2605B7FD1F4ED72D00CE9883 /* EditExpenseViewController.swift */; };
 		261BB01F1EFE6E1E006E0DC3 /* CategoryFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261BB01E1EFE6E1E006E0DC3 /* CategoryFieldView.swift */; };
@@ -34,6 +32,8 @@
 		2647CD4E1EF136770098E700 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2647CD3B1EF136770098E700 /* HomeViewController.swift */; };
 		264AE14B1F94A8ED00F87C55 /* AddExpense_WeekCategoryGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264AE14A1F94A8ED00F87C55 /* AddExpense_WeekCategoryGroup.swift */; };
 		264AE14E1F94C32500F87C55 /* AddExpense_Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264AE14D1F94C32500F87C55 /* AddExpense_Category.swift */; };
+		264AE17A1F95F91400F87C55 /* Bedrock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 264AE1771F95F90000F87C55 /* Bedrock.framework */; };
+		264AE17B1F95F91800F87C55 /* Bedrock.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 264AE1771F95F90000F87C55 /* Bedrock.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		265390EF1F15EB8000C7BD34 /* NewClassifierView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265390EE1F15EB8000C7BD34 /* NewClassifierView.swift */; };
 		265390F11F15EB9200C7BD34 /* NewClassifierView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 265390F01F15EB9200C7BD34 /* NewClassifierView.xib */; };
 		265733291EDD507C00AD1AB9 /* FilterPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265733261EDD507C00AD1AB9 /* FilterPopupView.swift */; };
@@ -43,8 +43,6 @@
 		2657DEBC1F14C2A4003DA778 /* SlideUpPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2657DEBB1F14C2A4003DA778 /* SlideUpPickerView.swift */; };
 		2657DEBE1F14C2B9003DA778 /* SlideUpPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2657DEBD1F14C2B9003DA778 /* SlideUpPickerView.xib */; };
 		2666C2C61957CF7A003752BF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2666C2C41957CF7A003752BF /* SystemConfiguration.framework */; };
-		2666C2C81957CF93003752BF /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2666C2C71957CF93003752BF /* libz.dylib */; };
-		2666C2CA1957CFA1003752BF /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2666C2C91957CFA1003752BF /* libsqlite3.dylib */; };
 		2668CA5F1F13AA0900E77198 /* NewClassifierViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2668CA5E1F13AA0900E77198 /* NewClassifierViewController.swift */; };
 		266946831CC7711000A68424 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 266946491CC7711000A68424 /* Default-568h@2x.png */; };
 		266946841CC7711000A68424 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2669464A1CC7711000A68424 /* Default@2x.png */; };
@@ -132,20 +130,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		2600242F1CC8C53A00EB2026 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 260023B51CC7D9CE00EB2026 /* Mold.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 26904D301C7757540094DA08;
-			remoteInfo = Mold;
-		};
-		260024331CC8C5AE00EB2026 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 260023B51CC7D9CE00EB2026 /* Mold.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 26904D2F1C7757540094DA08;
-			remoteInfo = Mold;
-		};
 		2602F3721F3084C200BDCCC5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 261EB85718DDB630009DDF78 /* Project object */;
@@ -153,12 +137,19 @@
 			remoteGlobalIDString = 261EB85E18DDB630009DDF78;
 			remoteInfo = Spare;
 		};
-		26A190811F837D9300A9BBF6 /* PBXContainerItemProxy */ = {
+		264AE1761F95F90000F87C55 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 260023B51CC7D9CE00EB2026 /* Mold.xcodeproj */;
+			containerPortal = 264AE1711F95F8FF00F87C55 /* Bedrock.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 26904D301C7757540094DA08;
+			remoteInfo = Bedrock;
+		};
+		264AE1781F95F90000F87C55 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 264AE1711F95F8FF00F87C55 /* Bedrock.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 26A1906B1F83739300A9BBF6;
-			remoteInfo = MoldTests;
+			remoteInfo = BedrockTests;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -169,7 +160,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				260024321CC8C5AE00EB2026 /* Mold.framework in Embed Frameworks */,
+				264AE17B1F95F91800F87C55 /* Bedrock.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -177,8 +168,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		260023B51CC7D9CE00EB2026 /* Mold.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Mold.xcodeproj; path = Mold/Mold.xcodeproj; sourceTree = "<group>"; };
-		260023FD1CC7E0B000EB2026 /* Mold.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mold.framework; path = "Mold/build/Debug-iphoneos/Mold.framework"; sourceTree = "<group>"; };
 		2602F36D1F3084C200BDCCC5 /* SpareTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpareTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2603F8C21CCA45FF007F311F /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2603F8C61CCA476E007F311F /* Spare_v2.0.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Spare_v2.0.xcdatamodel; sourceTree = "<group>"; };
@@ -191,7 +180,6 @@
 		261EB86418DDB630009DDF78 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		261EB86618DDB631009DDF78 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		261EB86818DDB631009DDF78 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		261EB88018DDB631009DDF78 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		26320B301F6E4CDB00D8E1FC /* Expense+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Expense+CoreDataClass.swift"; sourceTree = "<group>"; };
 		26320B311F6E4CDB00D8E1FC /* Expense+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Expense+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		26320B341F6E4DD700D8E1FC /* MonthTagGroup+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MonthTagGroup+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -208,6 +196,7 @@
 		2647CD3B1EF136770098E700 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		264AE14A1F94A8ED00F87C55 /* AddExpense_WeekCategoryGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpense_WeekCategoryGroup.swift; sourceTree = "<group>"; };
 		264AE14D1F94C32500F87C55 /* AddExpense_Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpense_Category.swift; sourceTree = "<group>"; };
+		264AE1711F95F8FF00F87C55 /* Bedrock.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Bedrock.xcodeproj; path = Bedrock/Bedrock.xcodeproj; sourceTree = "<group>"; };
 		264EE4A51EF90450004011FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		265390EE1F15EB8000C7BD34 /* NewClassifierView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewClassifierView.swift; sourceTree = "<group>"; };
 		265390F01F15EB9200C7BD34 /* NewClassifierView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewClassifierView.xib; sourceTree = "<group>"; };
@@ -216,11 +205,8 @@
 		265733281EDD507C00AD1AB9 /* FilterPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterPopupViewController.swift; sourceTree = "<group>"; };
 		2657DEBB1F14C2A4003DA778 /* SlideUpPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideUpPickerView.swift; sourceTree = "<group>"; };
 		2657DEBD1F14C2B9003DA778 /* SlideUpPickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SlideUpPickerView.xib; sourceTree = "<group>"; };
-		2666C2C11957CF4F003752BF /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalyticsServices.a; path = GoogleAnalytics/libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
 		2666C2C31957CF7A003752BF /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		2666C2C41957CF7A003752BF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		2666C2C71957CF93003752BF /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		2666C2C91957CFA1003752BF /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		2668CA5E1F13AA0900E77198 /* NewClassifierViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewClassifierViewController.swift; sourceTree = "<group>"; };
 		2668CA641F13BD0400E77198 /* SlideUpPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideUpPickerViewController.swift; sourceTree = "<group>"; };
 		266946491CC7711000A68424 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -287,7 +273,6 @@
 		26BEEC381F6A7D45005224C9 /* ValidExpense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidExpense.swift; sourceTree = "<group>"; };
 		26C572191F1C9061005F63ED /* DateFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFieldView.swift; sourceTree = "<group>"; };
 		26C5721B1F1C90BC005F63ED /* DateFieldView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DateFieldView.xib; sourceTree = "<group>"; };
-		26D4C8F41946E624001B42DC /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		26DB29681F8226EC0042E39D /* AddExpense_DayCategoryGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpense_DayCategoryGroup.swift; sourceTree = "<group>"; };
 		26DDDCA71E5C238B001617A1 /* LoadAppVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadAppVC.swift; sourceTree = "<group>"; };
 		26DDDCA91E5C23AB001617A1 /* _LAVCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _LAVCView.swift; sourceTree = "<group>"; };
@@ -309,7 +294,6 @@
 		26F78C8F1F0A388000CF0389 /* CategoryPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPickerViewController.swift; sourceTree = "<group>"; };
 		26F78C951F0A49CE00CF0389 /* PickerItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerItemCell.swift; sourceTree = "<group>"; };
 		26F78C971F0A49E100CF0389 /* PickerItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PickerItemCell.xib; sourceTree = "<group>"; };
-		59C2B0311ED5D0556A5A2FEF /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -324,11 +308,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2666C2CA1957CFA1003752BF /* libsqlite3.dylib in Frameworks */,
-				2666C2C81957CF93003752BF /* libz.dylib in Frameworks */,
+				264AE17A1F95F91400F87C55 /* Bedrock.framework in Frameworks */,
 				261EB86518DDB630009DDF78 /* CoreGraphics.framework in Frameworks */,
 				261EB86918DDB631009DDF78 /* CoreData.framework in Frameworks */,
-				260024311CC8C5AE00EB2026 /* Mold.framework in Frameworks */,
 				26E4E0591937AF690096191A /* QuartzCore.framework in Frameworks */,
 				2666C2C61957CF7A003752BF /* SystemConfiguration.framework in Frameworks */,
 				261EB86718DDB631009DDF78 /* UIKit.framework in Frameworks */,
@@ -339,15 +321,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2600242C1CC8C53A00EB2026 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				260024301CC8C53A00EB2026 /* Mold.framework */,
-				26A190821F837D9300A9BBF6 /* MoldTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		261370A91CD7A114007BAF56 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -362,7 +335,7 @@
 		261EB85618DDB630009DDF78 = {
 			isa = PBXGroup;
 			children = (
-				260023B51CC7D9CE00EB2026 /* Mold.xcodeproj */,
+				264AE1711F95F8FF00F87C55 /* Bedrock.xcodeproj */,
 				266946471CC7711000A68424 /* Spare */,
 				266946481CC7711000A68424 /* Supporting Files */,
 				264EE4A21EF90450004011FE /* SpareTests */,
@@ -383,20 +356,13 @@
 		261EB86118DDB630009DDF78 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				260023FD1CC7E0B000EB2026 /* Mold.framework */,
-				2666C2C91957CFA1003752BF /* libsqlite3.dylib */,
-				2666C2C71957CF93003752BF /* libz.dylib */,
 				2666C2C31957CF7A003752BF /* AdSupport.framework */,
 				2666C2C41957CF7A003752BF /* SystemConfiguration.framework */,
-				2666C2C11957CF4F003752BF /* libGoogleAnalyticsServices.a */,
-				26D4C8F41946E624001B42DC /* Crashlytics.framework */,
 				26E4E0581937AF690096191A /* QuartzCore.framework */,
 				261EB86218DDB630009DDF78 /* Foundation.framework */,
 				261EB86418DDB630009DDF78 /* CoreGraphics.framework */,
 				261EB86618DDB631009DDF78 /* UIKit.framework */,
 				261EB86818DDB631009DDF78 /* CoreData.framework */,
-				261EB88018DDB631009DDF78 /* XCTest.framework */,
-				59C2B0311ED5D0556A5A2FEF /* Pods.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -410,6 +376,15 @@
 				2647CD3B1EF136770098E700 /* HomeViewController.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		264AE1721F95F8FF00F87C55 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				264AE1771F95F90000F87C55 /* Bedrock.framework */,
+				264AE1791F95F90000F87C55 /* BedrockTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		264EE4A21EF90450004011FE /* SpareTests */ = {
@@ -663,7 +638,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				260024341CC8C5AE00EB2026 /* PBXTargetDependency */,
 			);
 			name = Spare;
 			productName = Spare;
@@ -706,8 +680,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 2600242C1CC8C53A00EB2026 /* Products */;
-					ProjectRef = 260023B51CC7D9CE00EB2026 /* Mold.xcodeproj */;
+					ProductGroup = 264AE1721F95F8FF00F87C55 /* Products */;
+					ProjectRef = 264AE1711F95F8FF00F87C55 /* Bedrock.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -719,18 +693,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		260024301CC8C53A00EB2026 /* Mold.framework */ = {
+		264AE1771F95F90000F87C55 /* Bedrock.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			path = Mold.framework;
-			remoteRef = 2600242F1CC8C53A00EB2026 /* PBXContainerItemProxy */;
+			path = Bedrock.framework;
+			remoteRef = 264AE1761F95F90000F87C55 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		26A190821F837D9300A9BBF6 /* MoldTests.xctest */ = {
+		264AE1791F95F90000F87C55 /* BedrockTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			path = MoldTests.xctest;
-			remoteRef = 26A190811F837D9300A9BBF6 /* PBXContainerItemProxy */;
+			path = BedrockTests.xctest;
+			remoteRef = 264AE1781F95F90000F87C55 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -882,11 +856,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		260024341CC8C5AE00EB2026 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Mold;
-			targetProxy = 260024331CC8C5AE00EB2026 /* PBXContainerItemProxy */;
-		};
 		2602F3731F3084C200BDCCC5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 261EB85E18DDB630009DDF78 /* Spare */;

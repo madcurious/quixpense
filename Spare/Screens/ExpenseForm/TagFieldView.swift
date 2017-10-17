@@ -15,7 +15,7 @@ class TagFieldView: ClassifierFieldView {
     override func setup() {
         super.setup()
         
-        iconImageView.image = UIImage.templateNamed("tagIcon")
+        iconImageView.image = UIImage.template(named: "tagIcon")
         
         setTags(.none)
     }

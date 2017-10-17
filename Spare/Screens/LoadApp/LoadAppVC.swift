@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Mold
+import Bedrock
 import CoreData
 
 class LoadAppVC: UIViewController {
@@ -25,7 +25,7 @@ class LoadAppVC: UIViewController {
         let loadOp = LoadCoreDataStackOperation(inMemory: false) {[unowned self] (result) in
             switch result {
             case .error(let error):
-                MDAlertDialog.showInPresenter(self, title: nil, message: error.localizedDescription, cancelButtonTitle: "OK")
+                BRAlertDialog.showInPresenter(self, title: nil, message: error.localizedDescription, cancelButtonTitle: "OK")
                 
             case .success(let container):
                 Global.coreDataStack = container
@@ -36,9 +36,9 @@ class LoadAppVC: UIViewController {
                 let makeDummyDataOp = MakeDummyDataOperation(from: .lastDateSpent) {[unowned self] (result) in
                     switch result {
                     case .error(let error):
-                        MDAlertDialog.showInPresenter(self, title: nil, message: error.localizedDescription, cancelButtonTitle: "OK")
+                        BRAlertDialog.showInPresenter(self, title: nil, message: error.localizedDescription, cancelButtonTitle: "OK")
                     default:
-                        MDDispatcher.asyncRunInMainThread {
+                        BRDispatch.asyncRunInMain {
                             self.navigationController?.pushViewController(MainTabBarVC(), animated: true)
                         }
                     }

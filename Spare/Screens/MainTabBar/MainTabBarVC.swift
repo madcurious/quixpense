@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Mold
+import Bedrock
 
 class MainTabBarVC: UITabBarController, Themeable {
     

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Mold
+import Bedrock
 
 final class BarButtonItems {
     
@@ -18,7 +18,7 @@ final class BarButtonItems {
     }
     
     class func make(_ buttonType: ButtonType, target: Any, action: Selector) -> UIBarButtonItem {
-        let button: MDImageButton = {
+        let button: BRImageButton = {
             switch buttonType {
             case .back:
                 return self.makeBackButton()
@@ -36,27 +36,27 @@ final class BarButtonItems {
         return barButtonItem
     }
     
-    private class func makeBackButton() -> MDImageButton {
-        let backButton = MDImageButton()
+    private class func makeBackButton() -> BRImageButton {
+        let backButton = BRImageButton()
         backButton.widthAnchor.constraint(equalToConstant: 30).isActive = true
         backButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        backButton.image = UIImage.templateNamed("navBarButtonBack")
+        backButton.image = UIImage.template(named: "navBarButtonBack")
         return backButton
     }
     
-    private class func makeCancelButton() -> MDImageButton {
-        let cancelButton = MDImageButton()
+    private class func makeCancelButton() -> BRImageButton {
+        let cancelButton = BRImageButton()
         cancelButton.widthAnchor.constraint(equalToConstant: 30).isActive = true
         cancelButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        cancelButton.image = UIImage.templateNamed("navBarButtonCancel")
+        cancelButton.image = UIImage.template(named: "navBarButtonCancel")
         return cancelButton
     }
     
-    private class func makeDoneButton() -> MDImageButton {
-        let doneButton = MDImageButton()
+    private class func makeDoneButton() -> BRImageButton {
+        let doneButton = BRImageButton()
         doneButton.widthAnchor.constraint(equalToConstant: 30).isActive = true
         doneButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        doneButton.image = UIImage.templateNamed("navBarButtonDone")
+        doneButton.image = UIImage.template(named: "navBarButtonDone")
         return doneButton
     }
     

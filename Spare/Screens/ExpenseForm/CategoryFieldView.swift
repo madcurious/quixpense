@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Mold
+import Bedrock
 
 class CategoryFieldView: ClassifierFieldView {
     
@@ -16,7 +16,7 @@ class CategoryFieldView: ClassifierFieldView {
     override func setup() {
         super.setup()
         
-        iconImageView.image = UIImage.templateNamed("categoryIcon")
+        iconImageView.image = UIImage.template(named: "categoryIcon")
         
         setCategory(.none)
     }

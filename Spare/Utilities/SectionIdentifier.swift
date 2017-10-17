@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Mold
+import Bedrock
 
 final class SectionIdentifier {
     
@@ -18,16 +18,16 @@ final class SectionIdentifier {
         switch periodization {
         case .day:
             startDate = Calendar.current.startOfDay(for: referenceDate)
-            endDate = TBDateUtils.endOfDay(for: referenceDate)
+            endDate = BRDateUtils.endOfDay(for: referenceDate)
             
         case .week:
             let firstWeekday = Global.startOfWeek.rawValue
-            startDate = TBDateUtils.startOfWeek(for: referenceDate, firstWeekday: firstWeekday)
-            endDate = TBDateUtils.endOfWeek(for: referenceDate, firstWeekday: firstWeekday)
+            startDate = BRDateUtils.startOfWeek(for: referenceDate, firstWeekday: firstWeekday)
+            endDate = BRDateUtils.endOfWeek(for: referenceDate, firstWeekday: firstWeekday)
             
         case .month:
-            startDate = TBDateUtils.startOfMonth(for: referenceDate)
-            endDate = TBDateUtils.endOfMonth(for: referenceDate)
+            startDate = BRDateUtils.startOfMonth(for: referenceDate)
+            endDate = BRDateUtils.endOfMonth(for: referenceDate)
         }
         
         return "\(startDate.timeIntervalSince1970)-\(endDate.timeIntervalSince1970)"

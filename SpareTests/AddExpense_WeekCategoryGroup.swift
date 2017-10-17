@@ -7,7 +7,7 @@
 //
 
 import XCTest
-import Mold
+import Bedrock
 import CoreData
 @testable import Spare
 

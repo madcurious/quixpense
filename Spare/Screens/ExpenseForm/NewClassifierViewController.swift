@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Mold
+import Bedrock
 
 protocol NewClassifierViewControllerDelegate {
     func newClassifierViewController(_ newClassifierViewController: NewClassifierViewController, didEnter classifierName: String?)

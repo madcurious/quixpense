@@ -8,7 +8,7 @@
 
 import Foundation
 import CoreData
-import Mold
+import Bedrock
 
 enum ValidateExpenseError: LocalizedError {
     
@@ -32,7 +32,7 @@ enum ValidateExpenseError: LocalizedError {
     
 }
 
-class ValidateExpenseOperation: TBOperation<ValidExpense, ValidateExpenseError> {
+class ValidateExpenseOperation: BROperation<ValidExpense, ValidateExpenseError> {
     
     let rawExpense: RawExpense
     let context: NSManagedObjectContext
@@ -43,7 +43,7 @@ class ValidateExpenseOperation: TBOperation<ValidExpense, ValidateExpenseError> 
          - rawExpense: The struct holding the raw values entered by the user.
          - context: The context where categories and tags will be fetched from to check if they already exist.
      */
-    init(rawExpense: RawExpense, context: NSManagedObjectContext, completionBlock: TBOperationCompletionBlock?) {
+    init(rawExpense: RawExpense, context: NSManagedObjectContext, completionBlock: BROperationCompletionBlock?) {
         self.rawExpense = rawExpense
         self.context = context
         super.init(completionBlock: completionBlock)

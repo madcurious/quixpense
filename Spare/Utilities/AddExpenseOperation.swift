@@ -8,7 +8,7 @@
 
 import Foundation
 import CoreData
-import Mold
+import Bedrock
 
 enum AddExpenseError: LocalizedError {
     
@@ -30,12 +30,12 @@ enum AddExpenseError: LocalizedError {
  If any of the operations are adding a new category name to the persistent store, multiple categories
  of the same name will be added to the store. To add multiple expenses, run the add operations serially.
  */
-class AddExpenseOperation: TBOperation<NSManagedObjectID, AddExpenseError> {
+class AddExpenseOperation: BROperation<NSManagedObjectID, AddExpenseError> {
     
     let context: NSManagedObjectContext
     let validExpense: ValidExpense
     
-    init(context: NSManagedObjectContext, validExpense: ValidExpense, completionBlock: TBOperationCompletionBlock?) {
+    init(context: NSManagedObjectContext, validExpense: ValidExpense, completionBlock: BROperationCompletionBlock?) {
         self.context = context
         self.validExpense = validExpense
         super.init(completionBlock: completionBlock)

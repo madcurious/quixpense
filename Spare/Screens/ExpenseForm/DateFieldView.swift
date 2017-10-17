@@ -7,14 +7,14 @@
 //
 
 import UIKit
-import Mold
+import Bedrock
 
 class DateFieldView: UIView {
     
     @IBOutlet weak var iconImageView: UIImageView!
-    @IBOutlet weak var editButton: MDButton!
+    @IBOutlet weak var editButton: BRButton!
     @IBOutlet weak var editButtonLabel: UILabel!
-    @IBOutlet weak var refreshButton: MDButton!
+    @IBOutlet weak var refreshButton: BRButton!
     @IBOutlet weak var refreshButtonImageView: UIImageView!
     
     private let dateFormatter: DateFormatter = {
@@ -30,9 +30,9 @@ class DateFieldView: UIView {
         clearAllBackgroundColors()
         setDate(Date())
         
-        iconImageView.image = UIImage.templateNamed("dateIcon")
+        iconImageView.image = UIImage.template(named: "dateIcon")
         
-        refreshButtonImageView.image = UIImage.templateNamed("cellAccessoryRefresh")
+        refreshButtonImageView.image = UIImage.template(named: "cellAccessoryRefresh")
         
         datePicker.addTarget(self, action: #selector(handleValueChangeOnDatePicker), for: .valueChanged)
         

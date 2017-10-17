@@ -7,15 +7,15 @@
 //
 
 import UIKit
-import Mold
+import Bedrock
 
-class LoadableView: UIView, TBLoadableView, Themeable {
+class LoadableView: UIView, BRLoadableView, Themeable {
     
     let loadingView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
     let infoLabel = UILabel(frame: .zero)
     let dataViewContainer = UIView(frame: .zero)
     
-    var state = TBLoadableViewState.initial {
+    var state = BRLoadableViewState.initial {
         didSet {
             loadingView.isHidden = state != .initial || state != .loading
             if state == .initial || state == .loading {
