@@ -78,10 +78,10 @@ class HomeViewController: UIViewController {
             try fetchedResultsController.performFetch()
             if let count = fetchedResultsController.fetchedObjects?.count,
                 count == 0 {
-                loadableView.state = .noData(["message" : noDataText])
+                loadableView.state = .empty(["message" : noDataText])
             } else {
                 tableView.reloadData()
-                loadableView.state = .data
+                loadableView.state = .success
             }
         } catch {
             loadableView.state = .error(error)

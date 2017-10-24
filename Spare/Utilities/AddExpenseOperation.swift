@@ -14,7 +14,7 @@ enum AddExpenseError: LocalizedError {
     
     case coreDataError(Error)
     
-    var localizedDescription: String {
+    var errorDescription: String? {
         switch self {
         case .coreDataError(let error):
             return "Database error occurred: \(error)"

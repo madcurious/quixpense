@@ -42,7 +42,14 @@ class MakeDummyDataOperation: BROperation<Bool, Error> {
     }
     
     override func main() {
-        let context = Global.coreDataStack.newBackgroundContext()
+        guard let loadOp = dependencies.first(where: { $0 is BRLoadPersistentContainer }) as? BRLoadPersistentContainer,
+            let loadResult = loadOp.result,
+            case .success(let persistentContainer) = loadResult
+            else {
+                return
+        }
+        
+        let context = persistentContainer.newBackgroundContext()
         let currentDate = Date()
         var start: Date
         

@@ -103,9 +103,7 @@ class ExpenseFormViewController: UIViewController {
                 }
             }
         }
-        BRDispatch.asyncRunInBackground {
-            validateOp.start()
-        }
+        validateOp.start()
     }
     
     deinit {

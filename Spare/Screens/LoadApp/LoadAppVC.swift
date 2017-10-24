@@ -13,16 +13,27 @@ import CoreData
 class LoadAppVC: UIViewController {
     
     var operationQueue = OperationQueue()
-    let customView = _LAVCView.instantiateFromNib()
+    let loadableView = BRDefaultLoadableView(frame: .zero)
     
     override func loadView() {
-        self.view = self.customView
+        view = loadableView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let loadOp = LoadCoreDataStackOperation(inMemory: false) {[weak self] (result) in
+        loadableView.retryButton.addTarget(self, action: #selector(loadPersistentContainer), for: .touchUpInside)
+        
+        loadPersistentContainer()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
+    @objc func loadPersistentContainer() {
+        let loadOp = BRLoadPersistentContainer(documentName: "Spare", inMemory: false) { [weak self] (result) in
             guard let weakSelf = self,
                 let result = result
                 else {
@@ -30,43 +41,33 @@ class LoadAppVC: UIViewController {
             }
             switch result {
             case .error(let error):
-                BRAlertDialog.showInPresenter(weakSelf, title: nil, message: error.localizedDescription, cancelButtonTitle: "OK")
+                weakSelf.loadableView.state = .error(error)
                 
-            case .success(let container):
-                Global.coreDataStack = container
-                
-                // Needs to be inside the completion block because the Global.coreDataStack variable needs to have been set.
-                // If loadOp is added as a dependency instead, makeDummyDataOp will be triggered once loadOp finishes,
-                // but without waiting for loadOp.completionBlock to finish, during which Global.coreDataStack is not yet set.
-                let makeDummyDataOp = MakeDummyDataOperation(from: .lastDateSpent) { [weak self] (result) in
-                    guard let weakSelf = self,
-                        let result = result
-                        else {
-                            return
-                    }
-                    switch result {
-                    case .error(let error):
-                        BRAlertDialog.showInPresenter(weakSelf, title: nil, message: error.localizedDescription, cancelButtonTitle: "OK")
-                    default:
-                        DispatchQueue.main.async {
-                            weakSelf.navigationController?.pushViewController(MainTabBarVC(), animated: true)
-                        }
-                    }
-                }
-                weakSelf.operationQueue.addOperation(makeDummyDataOp)
+            case .success(let persistentContainer):
+                Global.coreDataStack = persistentContainer
             }
         }
-        self.operationQueue.addOperation(loadOp)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.customView.activityIndicator.startAnimating()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        self.customView.activityIndicator.stopAnimating()
+        
+        let makeDummyDataOp = MakeDummyDataOperation(from: .lastDateSpent) { [weak self] (result) in
+            guard let weakSelf = self,
+                let result = result
+                else {
+                    return
+            }
+            DispatchQueue.main.async {
+                switch result {
+                case .error(let error):
+                    weakSelf.loadableView.state = .error(error)
+                    
+                default:
+                    weakSelf.navigationController?.pushViewController(MainTabBarVC(), animated: true)
+                }
+            }
+        }
+        makeDummyDataOp.addDependency(loadOp)
+        
+        loadableView.state = .loading
+        operationQueue.addOperations([loadOp, makeDummyDataOp], waitUntilFinished: false)
     }
     
 }

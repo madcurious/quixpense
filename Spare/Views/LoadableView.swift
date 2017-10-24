@@ -24,12 +24,12 @@ class LoadableView: UIView, BRLoadableView, Themeable {
                 loadingView.stopAnimating()
             }
             
-            dataViewContainer.isHidden = state != .data
+            dataViewContainer.isHidden = state != .success
             
             if case .error(let error) = state {
                 infoLabel.isHidden = false
                 infoLabel.text = error.localizedDescription
-            } else if case .noData(let someMessage) = state {
+            } else if case .empty(let someMessage) = state {
                 infoLabel.isHidden = false
                 if let stringMessage = someMessage as? String {
                     infoLabel.text = stringMessage

@@ -60,9 +60,9 @@ class ExpenseListViewController: UIViewController {
             })
             self.expenses = sortedExpenses
             self.tableView.reloadData()
-            self.loadableView.state = .data
+            self.loadableView.state = .success
         } else {
-            self.loadableView.state = .noData(["message" : "Could not load expenses for this group."])
+            self.loadableView.state = .empty(["message" : "Could not load expenses for this group."])
         }
     }
     
