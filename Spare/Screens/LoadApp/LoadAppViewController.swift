@@ -1,5 +1,5 @@
 //
-//  LoadAppVC.swift
+//  LoadAppViewController.swift
 //  Spare
 //
 //  Created by Matt Quiros on 21/02/2017.
@@ -10,7 +10,7 @@ import UIKit
 import Bedrock
 import CoreData
 
-class LoadAppVC: UIViewController {
+class LoadAppViewController: UIViewController {
     
     var operationQueue = OperationQueue()
     let loadableView = BRDefaultLoadableView(frame: .zero)

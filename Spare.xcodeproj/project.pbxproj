@@ -107,9 +107,7 @@
 		26C5721A1F1C9061005F63ED /* DateFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C572191F1C9061005F63ED /* DateFieldView.swift */; };
 		26C5721C1F1C90BC005F63ED /* DateFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26C5721B1F1C90BC005F63ED /* DateFieldView.xib */; };
 		26DB29691F8226EC0042E39D /* AddExpense_DayCategoryGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DB29681F8226EC0042E39D /* AddExpense_DayCategoryGroup.swift */; };
-		26DDDCA81E5C238B001617A1 /* LoadAppVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DDDCA71E5C238B001617A1 /* LoadAppVC.swift */; };
-		26DDDCAA1E5C23AB001617A1 /* _LAVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DDDCA91E5C23AB001617A1 /* _LAVCView.swift */; };
-		26DDDCAC1E5C23C2001617A1 /* _LAVCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26DDDCAB1E5C23C2001617A1 /* _LAVCView.xib */; };
+		26DDDCA81E5C238B001617A1 /* LoadAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DDDCA71E5C238B001617A1 /* LoadAppViewController.swift */; };
 		26DF098C1EF41B0800D26D14 /* ExpenseListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DF098B1EF41B0800D26D14 /* ExpenseListViewController.swift */; };
 		26DF09A11EF800D900D26D14 /* LoadableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DF099C1EF800D900D26D14 /* LoadableView.swift */; };
 		26DF09A21EF800D900D26D14 /* SectionTotalHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DF099D1EF800D900D26D14 /* SectionTotalHeaderView.swift */; };
@@ -274,9 +272,7 @@
 		26C572191F1C9061005F63ED /* DateFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFieldView.swift; sourceTree = "<group>"; };
 		26C5721B1F1C90BC005F63ED /* DateFieldView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DateFieldView.xib; sourceTree = "<group>"; };
 		26DB29681F8226EC0042E39D /* AddExpense_DayCategoryGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpense_DayCategoryGroup.swift; sourceTree = "<group>"; };
-		26DDDCA71E5C238B001617A1 /* LoadAppVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadAppVC.swift; sourceTree = "<group>"; };
-		26DDDCA91E5C23AB001617A1 /* _LAVCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _LAVCView.swift; sourceTree = "<group>"; };
-		26DDDCAB1E5C23C2001617A1 /* _LAVCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = _LAVCView.xib; sourceTree = "<group>"; };
+		26DDDCA71E5C238B001617A1 /* LoadAppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadAppViewController.swift; sourceTree = "<group>"; };
 		26DF098B1EF41B0800D26D14 /* ExpenseListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseListViewController.swift; sourceTree = "<group>"; };
 		26DF099C1EF800D900D26D14 /* LoadableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadableView.swift; sourceTree = "<group>"; };
 		26DF099D1EF800D900D26D14 /* SectionTotalHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionTotalHeaderView.swift; sourceTree = "<group>"; };
@@ -576,9 +572,7 @@
 		26DDDCA61E5C237F001617A1 /* LoadApp */ = {
 			isa = PBXGroup;
 			children = (
-				26DDDCA71E5C238B001617A1 /* LoadAppVC.swift */,
-				26DDDCA91E5C23AB001617A1 /* _LAVCView.swift */,
-				26DDDCAB1E5C23C2001617A1 /* _LAVCView.xib */,
+				26DDDCA71E5C238B001617A1 /* LoadAppViewController.swift */,
 				26F1A96D1E5D890400752F1A /* MakeDummyDataOperation.swift */,
 				26974F3B1F2F14E600CF15E2 /* LoadCoreDataStackOperation.swift */,
 			);
@@ -736,7 +730,6 @@
 				264370D71F501DD0009CE9D7 /* ExpenseFormViewDeleteView.xib in Resources */,
 				2657332A1EDD507C00AD1AB9 /* FilterPopupView.xib in Resources */,
 				266946891CC7711000A68424 /* Icon@2x.png in Resources */,
-				26DDDCAC1E5C23C2001617A1 /* _LAVCView.xib in Resources */,
 				26DF09A31EF800D900D26D14 /* SectionTotalHeaderView.xib in Resources */,
 				26A1CB4C1DD1ABD600DAE89E /* NotoSansUI-Bold.ttf in Resources */,
 				266946861CC7711000A68424 /* Icon-40@2x.png in Resources */,
@@ -804,8 +797,7 @@
 				266B5FF81EFCEADC00063803 /* ExpenseFormViewController.swift in Sources */,
 				266946931CC77A1A00A68424 /* AppDelegate.swift in Sources */,
 				26DF09A11EF800D900D26D14 /* LoadableView.swift in Sources */,
-				26DDDCA81E5C238B001617A1 /* LoadAppVC.swift in Sources */,
-				26DDDCAA1E5C23AB001617A1 /* _LAVCView.swift in Sources */,
+				26DDDCA81E5C238B001617A1 /* LoadAppViewController.swift in Sources */,
 				2647CD4E1EF136770098E700 /* HomeViewController.swift in Sources */,
 				26DF09A21EF800D900D26D14 /* SectionTotalHeaderView.swift in Sources */,
 				26974F3C1F2F14E600CF15E2 /* LoadCoreDataStackOperation.swift in Sources */,
