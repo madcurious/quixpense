@@ -26,7 +26,7 @@ class ExpenseFormViewDeleteView: UIView {
     }
     
     func setup() {
-        let ownedView = ownedViewFromNib()
+        let ownedView = viewFromOwnedNib()
         addSubviewsAndFill(ownedView)
         clearAllBackgroundColors()
         backgroundColor = Global.theme.color(for: .mainBackground)

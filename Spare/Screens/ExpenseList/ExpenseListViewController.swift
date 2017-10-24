@@ -62,7 +62,7 @@ class ExpenseListViewController: UIViewController {
             self.tableView.reloadData()
             self.loadableView.state = .data
         } else {
-            self.loadableView.state = .noData("Could not load expenses for this group.")
+            self.loadableView.state = .noData(["message" : "Could not load expenses for this group."])
         }
     }
     

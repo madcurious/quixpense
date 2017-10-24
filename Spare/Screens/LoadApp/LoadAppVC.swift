@@ -22,10 +22,15 @@ class LoadAppVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let loadOp = LoadCoreDataStackOperation(inMemory: false) {[unowned self] (result) in
+        let loadOp = LoadCoreDataStackOperation(inMemory: false) {[weak self] (result) in
+            guard let weakSelf = self,
+                let result = result
+                else {
+                    return
+            }
             switch result {
             case .error(let error):
-                BRAlertDialog.showInPresenter(self, title: nil, message: error.localizedDescription, cancelButtonTitle: "OK")
+                BRAlertDialog.showInPresenter(weakSelf, title: nil, message: error.localizedDescription, cancelButtonTitle: "OK")
                 
             case .success(let container):
                 Global.coreDataStack = container
@@ -33,19 +38,22 @@ class LoadAppVC: UIViewController {
                 // Needs to be inside the completion block because the Global.coreDataStack variable needs to have been set.
                 // If loadOp is added as a dependency instead, makeDummyDataOp will be triggered once loadOp finishes,
                 // but without waiting for loadOp.completionBlock to finish, during which Global.coreDataStack is not yet set.
-                let makeDummyDataOp = MakeDummyDataOperation(from: .lastDateSpent) {[unowned self] (result) in
+                let makeDummyDataOp = MakeDummyDataOperation(from: .lastDateSpent) { [weak self] (result) in
+                    guard let weakSelf = self,
+                        let result = result
+                        else {
+                            return
+                    }
                     switch result {
                     case .error(let error):
-                        BRAlertDialog.showInPresenter(self, title: nil, message: error.localizedDescription, cancelButtonTitle: "OK")
+                        BRAlertDialog.showInPresenter(weakSelf, title: nil, message: error.localizedDescription, cancelButtonTitle: "OK")
                     default:
-                        BRDispatch.asyncRunInMain {
-                            self.navigationController?.pushViewController(MainTabBarVC(), animated: true)
+                        DispatchQueue.main.async {
+                            weakSelf.navigationController?.pushViewController(MainTabBarVC(), animated: true)
                         }
                     }
                 }
-                self.operationQueue.addOperation(makeDummyDataOp)
-                
-            default: break
+                weakSelf.operationQueue.addOperation(makeDummyDataOp)
             }
         }
         self.operationQueue.addOperation(loadOp)

@@ -44,18 +44,21 @@ class AddExpenseViewController: ExpenseFormViewController {
     override func handleTapOnDoneButton() {
         validateExpense { [unowned self] (validExpense) in
             let addOp = AddExpenseOperation(context: Global.coreDataStack.newBackgroundContext(),
-                                            validExpense: validExpense) {[unowned self] result in
+                                            validExpense: validExpense) {[weak self] result in
+                                                guard let weakSelf = self,
+                                                    let result = result
+                                                    else {
+                                                        return
+                                                }
                                                 switch result {
                                                 case .success(_):
-                                                    BRDispatch.asyncRunInMain {
-                                                        BRAlertDialog.showInPresenter(self, title: "Expense saved.", message: nil, cancelButtonTitle: "Got it!")
-                                                        self.resetFields()
+                                                    DispatchQueue.main.async {
+                                                        BRAlertDialog.showInPresenter(weakSelf, title: "Expense saved.", message: nil, cancelButtonTitle: "Got it!")
+                                                        weakSelf.resetFields()
                                                     }
                                                     
                                                 case .error(let error):
-                                                    BRAlertDialog.showInPresenter(self, title: error.localizedDescription, message: nil, cancelButtonTitle: "Got it!")
-                                                    
-                                                default: break
+                                                    BRAlertDialog.showInPresenter(weakSelf, title: error.localizedDescription, message: nil, cancelButtonTitle: "Got it!")
                                                 }
             }
             self.operationQueue.addOperation(addOp)

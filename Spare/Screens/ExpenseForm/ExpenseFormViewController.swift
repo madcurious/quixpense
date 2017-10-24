@@ -88,16 +88,19 @@ class ExpenseFormViewController: UIViewController {
     }
     
     func validateExpense(completion: @escaping (ValidExpense) -> Void) {
-        let validateOp = ValidateExpenseOperation(rawExpense: rawExpense, context: Global.coreDataStack.viewContext) { [unowned self] (result) in
+        let validateOp = ValidateExpenseOperation(rawExpense: rawExpense, context: Global.coreDataStack.viewContext) { [weak self] (result) in
+            guard let weakSelf = self,
+                let result = result
+                else {
+                    return
+            }
             switch result {
             case .success(let validExpense):
                 completion(validExpense)
             case .error(let error):
-                BRDispatch.asyncRunInMain {
-                    BRAlertDialog.showInPresenter(self, title: "Error", message: error.errorDescription, cancelButtonTitle: "Got it!")
+                DispatchQueue.main.async {
+                    BRAlertDialog.showInPresenter(weakSelf, title: "Error", message: error.errorDescription, cancelButtonTitle: "Got it!")
                 }
-            case .none:
-                break
             }
         }
         BRDispatch.asyncRunInBackground {
