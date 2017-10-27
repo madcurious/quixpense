@@ -48,26 +48,26 @@ class LoadAppViewController: UIViewController {
             }
         }
         
-        let makeDummyDataOp = MakeDummyDataOperation(from: .lastDateSpent) { [weak self] (result) in
-            guard let weakSelf = self,
-                let result = result
-                else {
-                    return
-            }
-            DispatchQueue.main.async {
-                switch result {
-                case .error(let error):
-                    weakSelf.loadableView.state = .error(error)
-                    
-                default: ()
+//        let makeDummyDataOp = MakeDummyDataOperation(from: .lastDateSpent) { [weak self] (result) in
+//            guard let weakSelf = self,
+//                let result = result
+//                else {
+//                    return
+//            }
+//            DispatchQueue.main.async {
+//                switch result {
+//                case .error(let error):
+//                    weakSelf.loadableView.state = .error(error)
+//
+//                default: ()
 //                    weakSelf.navigationController?.pushViewController(MainTabBarVC(), animated: true)
-                }
-            }
-        }
-        makeDummyDataOp.addDependency(loadOp)
+//                }
+//            }
+//        }
+//        makeDummyDataOp.addDependency(loadOp)
         
         loadableView.state = .loading
-        operationQueue.addOperations([loadOp, makeDummyDataOp], waitUntilFinished: false)
+        operationQueue.addOperations([loadOp], waitUntilFinished: false)
     }
     
 }

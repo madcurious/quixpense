@@ -64,7 +64,6 @@
 		26BEEC3D1F6A7DB6005224C9 /* ClassifierType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BEEC241F6A7D45005224C9 /* ClassifierType.swift */; };
 		26BEEC3F1F6A7DB6005224C9 /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BEEC261F6A7D45005224C9 /* Debug.swift */; };
 		26BEEC401F6A7DB6005224C9 /* DefaultClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BEEC271F6A7D45005224C9 /* DefaultClassifier.swift */; };
-		26BEEC411F6A7DB6005224C9 /* EditExpenseOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BEEC281F6A7D45005224C9 /* EditExpenseOperation.swift */; };
 		26BEEC421F6A7DB6005224C9 /* RawExpense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BEEC291F6A7D45005224C9 /* RawExpense.swift */; };
 		26BEEC451F6A7DB6005224C9 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BEEC2C1F6A7D45005224C9 /* Global.swift */; };
 		26BEEC461F6A7DB6005224C9 /* Grouping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BEEC2D1F6A7D45005224C9 /* Grouping.swift */; };
@@ -85,7 +84,6 @@
 		26DF09A41EF800D900D26D14 /* TwoLabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DF099F1EF800D900D26D14 /* TwoLabelTableViewCell.swift */; };
 		26DF09A51EF800D900D26D14 /* TwoLabelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26DF09A01EF800D900D26D14 /* TwoLabelTableViewCell.xib */; };
 		26E4E0591937AF690096191A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E4E0581937AF690096191A /* QuartzCore.framework */; };
-		26F1A96E1E5D890400752F1A /* MakeDummyDataOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F1A96D1E5D890400752F1A /* MakeDummyDataOperation.swift */; };
 		26F51AFC1F7E3D2C0073DAF2 /* CoreDataTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F51AFB1F7E3D2C0073DAF2 /* CoreDataTestCase.swift */; };
 		26F51AFE1F7E41B40073DAF2 /* AddExpense_Amount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F51AFD1F7E41B40073DAF2 /* AddExpense_Amount.swift */; };
 /* End PBXBuildFile section */
@@ -192,7 +190,6 @@
 		26BEEC241F6A7D45005224C9 /* ClassifierType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassifierType.swift; sourceTree = "<group>"; };
 		26BEEC261F6A7D45005224C9 /* Debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
 		26BEEC271F6A7D45005224C9 /* DefaultClassifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultClassifier.swift; sourceTree = "<group>"; };
-		26BEEC281F6A7D45005224C9 /* EditExpenseOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditExpenseOperation.swift; sourceTree = "<group>"; };
 		26BEEC291F6A7D45005224C9 /* RawExpense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawExpense.swift; sourceTree = "<group>"; };
 		26BEEC2C1F6A7D45005224C9 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		26BEEC2D1F6A7D45005224C9 /* Grouping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grouping.swift; sourceTree = "<group>"; };
@@ -213,7 +210,6 @@
 		26DF099F1EF800D900D26D14 /* TwoLabelTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoLabelTableViewCell.swift; sourceTree = "<group>"; };
 		26DF09A01EF800D900D26D14 /* TwoLabelTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TwoLabelTableViewCell.xib; sourceTree = "<group>"; };
 		26E4E0581937AF690096191A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		26F1A96D1E5D890400752F1A /* MakeDummyDataOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeDummyDataOperation.swift; sourceTree = "<group>"; };
 		26F51AFB1F7E3D2C0073DAF2 /* CoreDataTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataTestCase.swift; sourceTree = "<group>"; };
 		26F51AFD1F7E41B40073DAF2 /* AddExpense_Amount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddExpense_Amount.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -401,7 +397,6 @@
 				26BEEC241F6A7D45005224C9 /* ClassifierType.swift */,
 				26BEEC261F6A7D45005224C9 /* Debug.swift */,
 				26BEEC271F6A7D45005224C9 /* DefaultClassifier.swift */,
-				26BEEC281F6A7D45005224C9 /* EditExpenseOperation.swift */,
 				26BEEC2C1F6A7D45005224C9 /* Global.swift */,
 				26BEEC2D1F6A7D45005224C9 /* Grouping.swift */,
 				26BEEC2E1F6A7D45005224C9 /* LightTheme.swift */,
@@ -424,7 +419,6 @@
 			isa = PBXGroup;
 			children = (
 				26DDDCA71E5C238B001617A1 /* LoadAppViewController.swift */,
-				26F1A96D1E5D890400752F1A /* MakeDummyDataOperation.swift */,
 				26974F3B1F2F14E600CF15E2 /* LoadCoreDataStackOperation.swift */,
 			);
 			path = LoadApp;
@@ -604,7 +598,6 @@
 				26BEEC3F1F6A7DB6005224C9 /* Debug.swift in Sources */,
 				26BEEC401F6A7DB6005224C9 /* DefaultClassifier.swift in Sources */,
 				26320B3A1F6E4DD700D8E1FC /* MonthTagGroup+CoreDataClass.swift in Sources */,
-				26BEEC411F6A7DB6005224C9 /* EditExpenseOperation.swift in Sources */,
 				26BEEC421F6A7DB6005224C9 /* RawExpense.swift in Sources */,
 				26BEEC451F6A7DB6005224C9 /* Global.swift in Sources */,
 				26BEEC461F6A7DB6005224C9 /* Grouping.swift in Sources */,
@@ -630,7 +623,6 @@
 				26320B3B1F6E4DD700D8E1FC /* MonthTagGroup+CoreDataProperties.swift in Sources */,
 				26B89D381F6E449D00D96C0D /* CoreDataStack.swift in Sources */,
 				26B89D401F6E44C500D96C0D /* DayCategoryGroup+CoreDataProperties.swift in Sources */,
-				26F1A96E1E5D890400752F1A /* MakeDummyDataOperation.swift in Sources */,
 				26B89D531F6E47ED00D96C0D /* Tag+CoreDataClass.swift in Sources */,
 				2669468F1CC7711000A68424 /* Spare.xcdatamodeld in Sources */,
 				26B89D4C1F6E45AA00D96C0D /* ClassifierGroup.swift in Sources */,

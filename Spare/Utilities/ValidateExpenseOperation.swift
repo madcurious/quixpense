@@ -93,7 +93,21 @@ class ValidateExpenseOperation: BROperation<ValidExpense, ValidateExpenseError> 
             return
         }
         
-        let validExpense = ValidExpense(amount: amountNumber, dateSpent: rawExpense.dateSpent, categorySelection: rawExpense.categorySelection, tagSelection: rawExpense.tagSelection)
+        let selectedCategory: String = {
+            if let categoryName = rawExpense.categorySelection {
+                return categoryName
+            }
+            return DefaultClassifier.noCategory.classifierName
+        }()
+        
+        let selectedTags: [String] = {
+            if let tagNames = rawExpense.tagSelection {
+                return tagNames
+            }
+            return [DefaultClassifier.noTags.classifierName]
+        }()
+        
+        let validExpense = ValidExpense(amount: amountNumber, dateSpent: rawExpense.dateSpent, categorySelection: selectedCategory, tagSelection: selectedTags)
         result = .success(validExpense)
     }
     

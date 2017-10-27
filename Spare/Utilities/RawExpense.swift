@@ -13,7 +13,7 @@ struct RawExpense {
     
     var amount: String?
     var dateSpent = Date()
-    var categorySelection = CategorySelection.none
-    var tagSelection = TagSelection.none
+    var categorySelection: String?
+    var tagSelection: [String]?
     
 }

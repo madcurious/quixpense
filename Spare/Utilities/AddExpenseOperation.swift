@@ -10,18 +10,18 @@ import Foundation
 import CoreData
 import Bedrock
 
-enum AddExpenseError: LocalizedError {
-    
-    case coreDataError(Error)
-    
-    var errorDescription: String? {
-        switch self {
-        case .coreDataError(let error):
-            return "Database error occurred: \(error)"
-        }
-    }
-    
-}
+//enum AddExpenseError: LocalizedError {
+//
+//    case coreDataError(Error)
+//
+//    var errorDescription: String? {
+//        switch self {
+//        case .coreDataError(let error):
+//            return "Database error occurred: \(error)"
+//        }
+//    }
+//
+//}
 
 /**
  Adds an operation to the persistent store.
@@ -30,7 +30,7 @@ enum AddExpenseError: LocalizedError {
  If any of the operations are adding a new category name to the persistent store, multiple categories
  of the same name will be added to the store. To add multiple expenses, run the add operations serially.
  */
-class AddExpenseOperation: BROperation<NSManagedObjectID, AddExpenseError> {
+class AddExpenseOperation: BROperation<NSManagedObjectID, Error> {
     
     let context: NSManagedObjectContext
     let validExpense: ValidExpense
@@ -42,67 +42,100 @@ class AddExpenseOperation: BROperation<NSManagedObjectID, AddExpenseError> {
     }
     
     override func main() {
-        let expense = Expense(context: context)
-        expense.amount = validExpense.amount
-        expense.dateSpent = validExpense.dateSpent
-        
-        let category = AddExpenseOperation.category(forSelection: validExpense.categorySelection, in: context)
-        expense.category = category
-        
-        if let dayCategoryGroup: DayCategoryGroup = fetchExistingClassifierGroup(with: category, date: validExpense.dateSpent) {
-            dayCategoryGroup.total = dayCategoryGroup.total?.adding(validExpense.amount)
-            expense.dayCategoryGroup = dayCategoryGroup
-        } else {
-            let newGroup: DayCategoryGroup = makeClassifierGroup(with: category, date: validExpense.dateSpent)
-            newGroup.total = validExpense.amount
-            expense.dayCategoryGroup = newGroup
-        }
-        
-        if let weekCategoryGroup: WeekCategoryGroup = fetchExistingClassifierGroup(with: category, date: validExpense.dateSpent) {
-            weekCategoryGroup.total = weekCategoryGroup.total?.adding(validExpense.amount)
-            expense.weekCategoryGroup = weekCategoryGroup
-        } else {
-            
-        }
-        
-        
-        
         do {
+            let expense = Expense(context: context)
+            expense.dateCreated = Date()
+            expense.amount = validExpense.amount
+            expense.dateSpent = validExpense.dateSpent
+            
+            // Set category
+            if let existingCategory = try AddExpenseOperation.fetchExistingClassifier(classifierType: .category, name: validExpense.categorySelection, context: context) {
+                expense.setValue(existingCategory, forKey: #keyPath(Expense.category))
+            } else {
+                let newCategory = Category(context: context)
+                newCategory.name = validExpense.categorySelection
+                expense.category = newCategory
+            }
+            
+            var tags = [NSManagedObject]()
+            for tagName in validExpense.tagSelection {
+                if let existingTag = try AddExpenseOperation.fetchExistingClassifier(classifierType: .tag, name: tagName, context: context) {
+                    tags.append(existingTag)
+                } else {
+                    let newTag = Tag(context: context)
+                    newTag.name = tagName
+                    tags.append(newTag)
+                }
+            }
+            expense.tags = NSSet(array: tags)
+            
+            let categoryGroupKeyPaths: [(String, Periodization)] = [
+                (#keyPath(Expense.dayCategoryGroup), .day),
+                (#keyPath(Expense.weekCategoryGroup), .week),
+                (#keyPath(Expense.monthCategoryGroup), .month)
+            ]
+            
+            for (keyPath, periodization) in categoryGroupKeyPaths {
+                if let existingGroup = try AddExpenseOperation.fetchExistingClassifierGroup(periodization: periodization, classifierType: .category, classifierName: validExpense.categorySelection, referenceDate: validExpense.dateSpent, context: context) {
+                    
+                    if let runningTotal = existingGroup.value(forKey: #keyPath(ClassifierGroup.total)) as? NSDecimalNumber {
+                        existingGroup.setValue(runningTotal.adding(validExpense.amount), forKey: #keyPath(ClassifierGroup.total))
+                    } else {
+                        existingGroup.setValue(NSDecimalNumber.zero, forKey: #keyPath(ClassifierGroup.total))
+                    }
+                    
+                    expense.setValue(existingGroup, forKey: keyPath)
+                } else {
+                    let entityDescription = AddExpenseOperation.classifierGroupEntityDescription(periodization: periodization, classifierType: .category, context: context)
+                    let newGroup = NSManagedObject(entity: entityDescription, insertInto: context)
+                    
+                    let identifier = SectionIdentifier.make(referenceDate: validExpense.dateSpent, periodization: periodization)
+                    newGroup.setValue(identifier, forKey: #keyPath(ClassifierGroup.sectionIdentifier))
+                    newGroup.setValue(expense.category, forKey: #keyPath(ClassifierGroup.classifier))
+                    newGroup.setValue(validExpense.amount, forKey: #keyPath(ClassifierGroup.total))
+                    
+                    expense.setValue(newGroup, forKey: keyPath)
+                }
+            }
+            
+            let tagGroupKeyPaths: [(String, Periodization)] = [
+                (#keyPath(Expense.dayTagGroups), .day),
+                (#keyPath(Expense.weekTagGroups), .week),
+                (#keyPath(Expense.monthTagGroups), .month)
+            ]
+            
+            for (keyPath, periodization) in tagGroupKeyPaths {
+                var tagGroups = [NSManagedObject]()
+                
+                for tagName in validExpense.tagSelection {
+                    if let existingGroup = try AddExpenseOperation.fetchExistingClassifierGroup(periodization: periodization, classifierType: .tag, classifierName: tagName, referenceDate: validExpense.dateSpent, context: context) {
+                        if let runningTotal = existingGroup.value(forKey: #keyPath(ClassifierGroup.total)) as? NSDecimalNumber {
+                            existingGroup.setValue(runningTotal.adding(validExpense.amount), forKey: #keyPath(ClassifierGroup.total))
+                        } else {
+                            existingGroup.setValue(NSDecimalNumber.zero, forKey: #keyPath(ClassifierGroup.total))
+                        }
+                        expense.setValue(existingGroup, forKey: keyPath)
+                    } else {
+                        let entityDescription = AddExpenseOperation.classifierGroupEntityDescription(periodization: periodization, classifierType: .tag, context: context)
+                        let identifier = SectionIdentifier.make(referenceDate: validExpense.dateSpent, periodization: periodization)
+                        let tag = try AddExpenseOperation.fetchExistingClassifier(classifierType: .tag, name: tagName, context: context)
+                        
+                        let newGroup = NSManagedObject(entity: entityDescription, insertInto: context)
+                        newGroup.setValue(identifier, forKey: #keyPath(ClassifierGroup.sectionIdentifier))
+                        newGroup.setValue(tag, forKey: #keyPath(ClassifierGroup.classifier))
+                        newGroup.setValue(validExpense.amount, forKey: #keyPath(ClassifierGroup.total))
+                        tagGroups.append(newGroup)
+                    }
+                }
+                
+                expense.setValue(NSSet(array: tagGroups), forKey: keyPath)
+            }
+            
             try context.saveToStore()
             result = .success(expense.objectID)
         } catch {
-            result = .error(.coreDataError(error))
+            result = .error(error)
         }
-    }
-    
-    func derivePeriodization(from classifierGroupType: AnyClass) -> Periodization {
-        switch classifierGroupType {
-        case _ where classifierGroupType === DayCategoryGroup.self || classifierGroupType === DayTagGroup.self:
-            return .day
-        case _ where classifierGroupType === WeekCategoryGroup.self || classifierGroupType === WeekTagGroup.self:
-            return .week
-        default:
-            return .month
-        }
-    }
-    
-    func makeClassifierGroup<T: ClassifierGroup>(with classifier: Classifier, date: Date) -> T {
-        let periodization = derivePeriodization(from: T.self)
-        let classifierGroup = T(context: context)
-        classifierGroup.sectionIdentifier = SectionIdentifier.make(referenceDate: date, periodization: periodization)
-        classifierGroup.classifier = classifier
-        return classifierGroup
-    }
-    
-    func fetchExistingClassifierGroup<T: ClassifierGroup>(with classifier: Classifier, date: Date) -> T? {
-        let periodization = derivePeriodization(from: T.self)
-        let sectionIdentifier = SectionIdentifier.make(referenceDate: date, periodization: periodization)
-        let fetchRequest: NSFetchRequest<T> = NSFetchRequest<T>(entityName: md_getClassName(T.self))
-        fetchRequest.predicate = NSPredicate(format: "%K == %@ AND %K == %@",
-                                             #keyPath(ClassifierGroup.sectionIdentifier), sectionIdentifier,
-                                             #keyPath(ClassifierGroup.classifier), classifier
-        )
-        return try! context.fetch(fetchRequest).first
     }
     
 }
@@ -110,6 +143,54 @@ class AddExpenseOperation: BROperation<NSManagedObjectID, AddExpenseError> {
 // MARK: - Class functions
 
 extension AddExpenseOperation {
+    
+    class func fetchExistingClassifier(classifierType: ClassifierType, name: String, context: NSManagedObjectContext) throws -> NSManagedObject? {
+        let entityDescription = classifierType == .category ? Category.entity() : Tag.entity()
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityDescription.name!)
+        fetchRequest.predicate = NSPredicate(format: "%K == %@",
+                                             #keyPath(Classifier.name), name
+        )
+        return try context.fetch(fetchRequest).first
+    }
+    
+    class func fetchExistingClassifierGroup(periodization: Periodization, classifierType: ClassifierType, classifierName: String, referenceDate: Date, context: NSManagedObjectContext) throws -> NSManagedObject? {
+        let entityDescription = classifierGroupEntityDescription(periodization: periodization, classifierType: classifierType, context: context)
+        let sectionIdentifier = SectionIdentifier.make(referenceDate: referenceDate, periodization: periodization)
+        let fetchRequest: NSFetchRequest<NSManagedObject> = NSFetchRequest<NSManagedObject>(entityName: entityDescription.name!)
+        fetchRequest.predicate = NSPredicate(format: "%K == %@ AND %K == %@",
+                                             #keyPath(ClassifierGroup.sectionIdentifier), sectionIdentifier,
+                                             #keyPath(ClassifierGroup.classifier.name), classifierName
+        )
+        return try context.fetch(fetchRequest).first
+    }
+    
+    class func classifierGroupEntityDescription(periodization: Periodization, classifierType: ClassifierType, context: NSManagedObjectContext) -> NSEntityDescription {
+        let classType: AnyClass = {
+            switch (periodization, classifierType) {
+            case (.day, .category):
+                return DayCategoryGroup.self
+            case (.week, .category):
+                return WeekCategoryGroup.self
+            case (.month, .category):
+                return MonthCategoryGroup.self
+            case (.day, .tag):
+                return DayTagGroup.self
+            case (.week, .tag):
+                return WeekTagGroup.self
+            case (.month, .tag):
+                return MonthTagGroup.self
+            }
+        }()
+        let className = BRClassName(of: classType)
+        return NSEntityDescription.entity(forEntityName: className, in: context)!
+    }
+    
+    
+    
+    
+    
+    
+    
     
     /**
      Returns the `Category` that will be assigned to an `Expense` based on the `CategorySelection` indicated
