@@ -147,7 +147,8 @@ fileprivate class SlideUpPickerPresentationAnimator: NSObject, UIViewControllerA
                         toView.setNeedsLayout()
                         toView.layoutIfNeeded()
         }, completion: { _ in
-            transitionContext.completeTransition(true)
+            let cancelled = transitionContext.transitionWasCancelled
+            transitionContext.completeTransition(cancelled )
         })
     }
     

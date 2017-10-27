@@ -58,6 +58,15 @@ class AddExpenseOperation: BROperation<NSManagedObjectID, AddExpenseError> {
             expense.dayCategoryGroup = newGroup
         }
         
+        if let weekCategoryGroup: WeekCategoryGroup = fetchExistingClassifierGroup(with: category, date: validExpense.dateSpent) {
+            weekCategoryGroup.total = weekCategoryGroup.total?.adding(validExpense.amount)
+            expense.weekCategoryGroup = weekCategoryGroup
+        } else {
+            
+        }
+        
+        
+        
         do {
             try context.saveToStore()
             result = .success(expense.objectID)
@@ -96,7 +105,11 @@ class AddExpenseOperation: BROperation<NSManagedObjectID, AddExpenseError> {
         return try! context.fetch(fetchRequest).first
     }
     
-    // MARK: - Class functions
+}
+
+// MARK: - Class functions
+
+extension AddExpenseOperation {
     
     /**
      Returns the `Category` that will be assigned to an `Expense` based on the `CategorySelection` indicated

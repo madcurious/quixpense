@@ -38,14 +38,17 @@ class CoreDataTestCase: XCTestCase {
         operationQueue.addOperation(loadOp)
         wait(for: [xp], timeout: setupTimeout)
         
-        switch loadOp.result {
+        guard let result = loadOp.result
+            else {
+                fatalError("No result")
+        }
+        
+        switch result {
         case .success(let container):
             coreDataStack = container
             completion?()
         case .error(let error):
             XCTFail(error.localizedDescription)
-        case .none:
-            XCTFail("No result")
         }
     }
     
@@ -69,10 +72,18 @@ class CoreDataTestCase: XCTestCase {
     func makeValidExpense(from rawExpense: RawExpense) -> ValidExpense {
         let validateOp = ValidateExpenseOperation(rawExpense: rawExpense, context: coreDataStack.viewContext, completionBlock: nil)
         validateOp.start()
-        if case .success(let validExpense) = validateOp.result {
-            return validExpense
+        
+        guard let result = validateOp.result
+            else {
+                fatalError("No result")
         }
-        fatalError()
+        
+        switch result {
+        case .success(let validExpense):
+            return validExpense
+        case .error(let error):
+            fatalError("Error: \(error)")
+        }
     }
     
     func makeDate(day: Int = 1, month: Int = 1, year: Int = 2017, hour: Int = 0, minute: Int = 0, second: Int = 0) -> Date {

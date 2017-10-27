@@ -59,8 +59,8 @@ class LoadAppViewController: UIViewController {
                 case .error(let error):
                     weakSelf.loadableView.state = .error(error)
                     
-                default:
-                    weakSelf.navigationController?.pushViewController(MainTabBarVC(), animated: true)
+                default: ()
+//                    weakSelf.navigationController?.pushViewController(MainTabBarVC(), animated: true)
                 }
             }
         }

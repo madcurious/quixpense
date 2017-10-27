@@ -48,4 +48,43 @@ class AddExpense_DayCategoryGroup: CoreDataTestCase {
         XCTAssertEqual(group?.expenses?.count, 1)
     }
     
+    func test_totalIsCorrect_shouldPass() {
+        let context = coreDataStack.newBackgroundContext()
+        let sectionIdentifier = SectionIdentifier.make(referenceDate: Date(), periodization: .day)
+        
+        let category = Category(context: context)
+        category.name = "Transportation"
+        
+        let dayCategoryGroup = DayCategoryGroup(context: context)
+        dayCategoryGroup.sectionIdentifier = sectionIdentifier
+        dayCategoryGroup.total = NSDecimalNumber(value: 1000)
+        dayCategoryGroup.classifier = category
+        
+        try! context.saveToStore()
+        
+        let validExpense = makeValidExpense(from: RawExpense(amount: "1875.25", dateSpent: Date(), categorySelection: .existing(category.objectID), tagSelection: .none))
+        let addOp = AddExpenseOperation(context: context, validExpense: validExpense, completionBlock: nil)
+        addOp.start()
+        
+        guard let result = addOp.result
+            else {
+                XCTFail("No result - \(#function)")
+                return
+        }
+        
+        switch result {
+        case .success(let expenseId):
+            guard let expense = coreDataStack.viewContext.object(with: expenseId) as? Expense,
+                let expenseDayCategoryGroup = expense.dayCategoryGroup
+                else {
+                    XCTFail("Objects to test are nil - \(#function)")
+                    return
+            }
+            XCTAssertEqual(expenseDayCategoryGroup.total, NSDecimalNumber(value: 2875.25))
+            
+        case .error(let error):
+            XCTFail("\(#function) - Error: \(error)")
+        }
+    }
+    
 }
