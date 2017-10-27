@@ -36,7 +36,7 @@ class AddExpense_DayCategoryGroup: CoreDataTestCase {
         )
         XCTAssertNil(try! context.fetch(fetchRequest).first)
         
-        let validExpense = makeValidExpense(from: RawExpense(amount: "200", dateSpent: date, categorySelection: categoryName, tagSelection: .none))
+        let validExpense = makeValidExpense(from: RawExpense(amount: "200", dateSpent: date, category: categoryName, tags: nil))
         let addOp = AddExpenseOperation(context: context, validExpense: validExpense, completionBlock: nil)
         addOp.start()
         
@@ -62,7 +62,7 @@ class AddExpense_DayCategoryGroup: CoreDataTestCase {
         
         try! context.saveToStore()
         
-        let validExpense = makeValidExpense(from: RawExpense(amount: "1875.25", dateSpent: Date(), categorySelection: "Transportation", tagSelection: .none))
+        let validExpense = makeValidExpense(from: RawExpense(amount: "1875.25", dateSpent: Date(), category: "Transportation", tags: nil))
         let addOp = AddExpenseOperation(context: context, validExpense: validExpense, completionBlock: nil)
         addOp.start()
         

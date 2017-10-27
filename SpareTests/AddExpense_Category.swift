@@ -15,9 +15,9 @@ class AddExpense_Category: CoreDataTestCase {
     func test_noCategory_shouldReturnUncategorized() {
         let validExpense = makeValidExpense(from: RawExpense(amount: "200",
                                                              dateSpent: Date(),
-                                                             categorySelection: .none,
-                                                             tagSelection: .none))
-        XCTAssertEqual(validExpense.categorySelection, DefaultClassifier.noCategory.classifierName)
+                                                             category: nil,
+                                                             tags: nil))
+        XCTAssertEqual(validExpense.category, DefaultClassifier.noCategory.classifierName)
     }
     
 }

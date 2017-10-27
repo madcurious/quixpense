@@ -24,10 +24,4 @@ enum DefaultClassifier {
         }
     }
     
-    func fetch<T: Classifier>(in context: NSManagedObjectContext) -> T {
-        let fetchRequest: NSFetchRequest<T> = NSFetchRequest<T>(entityName: md_getClassName(T.self))
-        fetchRequest.predicate = NSPredicate(format: "%K == %@", #keyPath(Classifier.name), classifierName)
-        return try! context.fetch(fetchRequest).first!
-    }
-    
 }

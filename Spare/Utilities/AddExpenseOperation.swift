@@ -36,16 +36,16 @@ class AddExpenseOperation: BROperation<NSManagedObjectID, Error> {
             expense.dateSpent = validExpense.dateSpent
             
             // Set category
-            if let existingCategory = try AddExpenseOperation.fetchExistingClassifier(classifierType: .category, name: validExpense.categorySelection, context: context) {
+            if let existingCategory = try AddExpenseOperation.fetchExistingClassifier(classifierType: .category, name: validExpense.category, context: context) {
                 expense.setValue(existingCategory, forKey: #keyPath(Expense.category))
             } else {
                 let newCategory = Category(context: context)
-                newCategory.name = validExpense.categorySelection
+                newCategory.name = validExpense.category
                 expense.category = newCategory
             }
             
             var tags = [NSManagedObject]()
-            for tagName in validExpense.tagSelection {
+            for tagName in validExpense.tags {
                 if let existingTag = try AddExpenseOperation.fetchExistingClassifier(classifierType: .tag, name: tagName, context: context) {
                     tags.append(existingTag)
                 } else {
@@ -63,7 +63,7 @@ class AddExpenseOperation: BROperation<NSManagedObjectID, Error> {
             ]
             
             for (keyPath, periodization) in categoryGroupKeyPaths {
-                if let existingGroup = try AddExpenseOperation.fetchExistingClassifierGroup(periodization: periodization, classifierType: .category, classifierName: validExpense.categorySelection, referenceDate: validExpense.dateSpent, context: context) {
+                if let existingGroup = try AddExpenseOperation.fetchExistingClassifierGroup(periodization: periodization, classifierType: .category, classifierName: validExpense.category, referenceDate: validExpense.dateSpent, context: context) {
                     
                     if let runningTotal = existingGroup.value(forKey: #keyPath(ClassifierGroup.total)) as? NSDecimalNumber {
                         existingGroup.setValue(runningTotal.adding(validExpense.amount), forKey: #keyPath(ClassifierGroup.total))
@@ -94,7 +94,7 @@ class AddExpenseOperation: BROperation<NSManagedObjectID, Error> {
             for (keyPath, periodization) in tagGroupKeyPaths {
                 var tagGroups = [NSManagedObject]()
                 
-                for tagName in validExpense.tagSelection {
+                for tagName in validExpense.tags {
                     if let existingGroup = try AddExpenseOperation.fetchExistingClassifierGroup(periodization: periodization, classifierType: .tag, classifierName: tagName, referenceDate: validExpense.dateSpent, context: context) {
                         if let runningTotal = existingGroup.value(forKey: #keyPath(ClassifierGroup.total)) as? NSDecimalNumber {
                             existingGroup.setValue(runningTotal.adding(validExpense.amount), forKey: #keyPath(ClassifierGroup.total))

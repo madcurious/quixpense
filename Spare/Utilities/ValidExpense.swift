@@ -16,7 +16,7 @@ struct ValidExpense {
     
     let amount: NSDecimalNumber
     let dateSpent: Date
-    let categorySelection: String
-    let tagSelection: [String]
+    let category: String
+    let tags: [String]
     
 }

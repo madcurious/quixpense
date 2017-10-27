@@ -36,7 +36,6 @@
 		2669468B1CC7711000A68424 /* iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 266946521CC7711000A68424 /* iPhone.storyboard */; };
 		2669468F1CC7711000A68424 /* Spare.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 266946571CC7711000A68424 /* Spare.xcdatamodeld */; };
 		266946931CC77A1A00A68424 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266946921CC77A1A00A68424 /* AppDelegate.swift */; };
-		268B61F11FA2F03A00CBC386 /* ClassifierSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268B61F01FA2F03A00CBC386 /* ClassifierSelection.swift */; };
 		26974F3C1F2F14E600CF15E2 /* LoadCoreDataStackOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26974F3B1F2F14E600CF15E2 /* LoadCoreDataStackOperation.swift */; };
 		26A1CB4C1DD1ABD600DAE89E /* NotoSansUI-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26A1CB441DD1ABD600DAE89E /* NotoSansUI-Bold.ttf */; };
 		26A1CB4D1DD1ABD600DAE89E /* NotoSansUI-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26A1CB451DD1ABD600DAE89E /* NotoSansUI-BoldItalic.ttf */; };
@@ -60,7 +59,6 @@
 		26BEEC391F6A7DB6005224C9 /* AddExpenseOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BEEC201F6A7D45005224C9 /* AddExpenseOperation.swift */; };
 		26BEEC3A1F6A7DB6005224C9 /* AmountFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BEEC211F6A7D45005224C9 /* AmountFormatter.swift */; };
 		26BEEC3B1F6A7DB6005224C9 /* BarButtonItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BEEC221F6A7D45005224C9 /* BarButtonItems.swift */; };
-		26BEEC3C1F6A7DB6005224C9 /* CategorySelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BEEC231F6A7D45005224C9 /* CategorySelection.swift */; };
 		26BEEC3D1F6A7DB6005224C9 /* ClassifierType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BEEC241F6A7D45005224C9 /* ClassifierType.swift */; };
 		26BEEC3F1F6A7DB6005224C9 /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BEEC261F6A7D45005224C9 /* Debug.swift */; };
 		26BEEC401F6A7DB6005224C9 /* DefaultClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BEEC271F6A7D45005224C9 /* DefaultClassifier.swift */; };
@@ -72,7 +70,6 @@
 		26BEEC491F6A7DB6005224C9 /* Periodization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BEEC301F6A7D45005224C9 /* Periodization.swift */; };
 		26BEEC4A1F6A7DB6005224C9 /* SectionIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BEEC311F6A7D45005224C9 /* SectionIdentifier.swift */; };
 		26BEEC4B1F6A7DB6005224C9 /* StartOfWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BEEC321F6A7D45005224C9 /* StartOfWeek.swift */; };
-		26BEEC4C1F6A7DB6005224C9 /* TagSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BEEC331F6A7D45005224C9 /* TagSelection.swift */; };
 		26BEEC4D1F6A7DB6005224C9 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BEEC341F6A7D45005224C9 /* Theme.swift */; };
 		26BEEC4E1F6A7DB6005224C9 /* TimestampFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BEEC351F6A7D45005224C9 /* TimestampFormatter.swift */; };
 		26BEEC4F1F6A7DB6005224C9 /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BEEC361F6A7D45005224C9 /* UserDefaultsKey.swift */; };
@@ -85,7 +82,6 @@
 		26DF09A51EF800D900D26D14 /* TwoLabelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26DF09A01EF800D900D26D14 /* TwoLabelTableViewCell.xib */; };
 		26E4E0591937AF690096191A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E4E0581937AF690096191A /* QuartzCore.framework */; };
 		26F51AFC1F7E3D2C0073DAF2 /* CoreDataTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F51AFB1F7E3D2C0073DAF2 /* CoreDataTestCase.swift */; };
-		26F51AFE1F7E41B40073DAF2 /* AddExpense_Amount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F51AFD1F7E41B40073DAF2 /* AddExpense_Amount.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -162,7 +158,6 @@
 		266946581CC7711000A68424 /* Spare.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Spare.xcdatamodel; sourceTree = "<group>"; };
 		266946911CC77A1900A68424 /* Spare-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Spare-Bridging-Header.h"; sourceTree = "<group>"; };
 		266946921CC77A1A00A68424 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		268B61F01FA2F03A00CBC386 /* ClassifierSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassifierSelection.swift; sourceTree = "<group>"; };
 		26974F3B1F2F14E600CF15E2 /* LoadCoreDataStackOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadCoreDataStackOperation.swift; sourceTree = "<group>"; };
 		26A1CB441DD1ABD600DAE89E /* NotoSansUI-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansUI-Bold.ttf"; sourceTree = "<group>"; };
 		26A1CB451DD1ABD600DAE89E /* NotoSansUI-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansUI-BoldItalic.ttf"; sourceTree = "<group>"; };
@@ -186,7 +181,6 @@
 		26BEEC201F6A7D45005224C9 /* AddExpenseOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseOperation.swift; sourceTree = "<group>"; };
 		26BEEC211F6A7D45005224C9 /* AmountFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountFormatter.swift; sourceTree = "<group>"; };
 		26BEEC221F6A7D45005224C9 /* BarButtonItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarButtonItems.swift; sourceTree = "<group>"; };
-		26BEEC231F6A7D45005224C9 /* CategorySelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySelection.swift; sourceTree = "<group>"; };
 		26BEEC241F6A7D45005224C9 /* ClassifierType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassifierType.swift; sourceTree = "<group>"; };
 		26BEEC261F6A7D45005224C9 /* Debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
 		26BEEC271F6A7D45005224C9 /* DefaultClassifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultClassifier.swift; sourceTree = "<group>"; };
@@ -198,7 +192,6 @@
 		26BEEC301F6A7D45005224C9 /* Periodization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Periodization.swift; sourceTree = "<group>"; };
 		26BEEC311F6A7D45005224C9 /* SectionIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionIdentifier.swift; sourceTree = "<group>"; };
 		26BEEC321F6A7D45005224C9 /* StartOfWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartOfWeek.swift; sourceTree = "<group>"; };
-		26BEEC331F6A7D45005224C9 /* TagSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagSelection.swift; sourceTree = "<group>"; };
 		26BEEC341F6A7D45005224C9 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		26BEEC351F6A7D45005224C9 /* TimestampFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimestampFormatter.swift; sourceTree = "<group>"; };
 		26BEEC361F6A7D45005224C9 /* UserDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
@@ -211,7 +204,6 @@
 		26DF09A01EF800D900D26D14 /* TwoLabelTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TwoLabelTableViewCell.xib; sourceTree = "<group>"; };
 		26E4E0581937AF690096191A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		26F51AFB1F7E3D2C0073DAF2 /* CoreDataTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataTestCase.swift; sourceTree = "<group>"; };
-		26F51AFD1F7E41B40073DAF2 /* AddExpense_Amount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddExpense_Amount.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -297,7 +289,6 @@
 		264EE4A21EF90450004011FE /* SpareTests */ = {
 			isa = PBXGroup;
 			children = (
-				26F51AFD1F7E41B40073DAF2 /* AddExpense_Amount.swift */,
 				26F51AFB1F7E3D2C0073DAF2 /* CoreDataTestCase.swift */,
 				264EE4A51EF90450004011FE /* Info.plist */,
 				26DB29681F8226EC0042E39D /* AddExpense_DayCategoryGroup.swift */,
@@ -392,8 +383,6 @@
 				26BEEC201F6A7D45005224C9 /* AddExpenseOperation.swift */,
 				26BEEC211F6A7D45005224C9 /* AmountFormatter.swift */,
 				26BEEC221F6A7D45005224C9 /* BarButtonItems.swift */,
-				26BEEC231F6A7D45005224C9 /* CategorySelection.swift */,
-				268B61F01FA2F03A00CBC386 /* ClassifierSelection.swift */,
 				26BEEC241F6A7D45005224C9 /* ClassifierType.swift */,
 				26BEEC261F6A7D45005224C9 /* Debug.swift */,
 				26BEEC271F6A7D45005224C9 /* DefaultClassifier.swift */,
@@ -405,7 +394,6 @@
 				26BEEC291F6A7D45005224C9 /* RawExpense.swift */,
 				26BEEC311F6A7D45005224C9 /* SectionIdentifier.swift */,
 				26BEEC321F6A7D45005224C9 /* StartOfWeek.swift */,
-				26BEEC331F6A7D45005224C9 /* TagSelection.swift */,
 				26BEEC341F6A7D45005224C9 /* Theme.swift */,
 				26BEEC351F6A7D45005224C9 /* TimestampFormatter.swift */,
 				26BEEC361F6A7D45005224C9 /* UserDefaultsKey.swift */,
@@ -577,7 +565,6 @@
 			files = (
 				264AE14E1F94C32500F87C55 /* AddExpense_Category.swift in Sources */,
 				264AE14B1F94A8ED00F87C55 /* AddExpense_WeekCategoryGroup.swift in Sources */,
-				26F51AFE1F7E41B40073DAF2 /* AddExpense_Amount.swift in Sources */,
 				26DB29691F8226EC0042E39D /* AddExpense_DayCategoryGroup.swift in Sources */,
 				26F51AFC1F7E3D2C0073DAF2 /* CoreDataTestCase.swift in Sources */,
 			);
@@ -592,7 +579,6 @@
 				26BEEC391F6A7DB6005224C9 /* AddExpenseOperation.swift in Sources */,
 				26BEEC3A1F6A7DB6005224C9 /* AmountFormatter.swift in Sources */,
 				26BEEC3B1F6A7DB6005224C9 /* BarButtonItems.swift in Sources */,
-				26BEEC3C1F6A7DB6005224C9 /* CategorySelection.swift in Sources */,
 				26BEEC3D1F6A7DB6005224C9 /* ClassifierType.swift in Sources */,
 				26B89D441F6E44C500D96C0D /* MonthCategoryGroup+CoreDataProperties.swift in Sources */,
 				26BEEC3F1F6A7DB6005224C9 /* Debug.swift in Sources */,
@@ -601,14 +587,12 @@
 				26BEEC421F6A7DB6005224C9 /* RawExpense.swift in Sources */,
 				26BEEC451F6A7DB6005224C9 /* Global.swift in Sources */,
 				26BEEC461F6A7DB6005224C9 /* Grouping.swift in Sources */,
-				268B61F11FA2F03A00CBC386 /* ClassifierSelection.swift in Sources */,
 				26BEEC471F6A7DB6005224C9 /* LightTheme.swift in Sources */,
 				26BEEC481F6A7DB6005224C9 /* NotoSansUI.swift in Sources */,
 				26BEEC491F6A7DB6005224C9 /* Periodization.swift in Sources */,
 				26BEEC4A1F6A7DB6005224C9 /* SectionIdentifier.swift in Sources */,
 				26B89D421F6E44C500D96C0D /* WeekCategoryGroup+CoreDataProperties.swift in Sources */,
 				26BEEC4B1F6A7DB6005224C9 /* StartOfWeek.swift in Sources */,
-				26BEEC4C1F6A7DB6005224C9 /* TagSelection.swift in Sources */,
 				26B89D3F1F6E44C500D96C0D /* DayCategoryGroup+CoreDataClass.swift in Sources */,
 				26BEEC4D1F6A7DB6005224C9 /* Theme.swift in Sources */,
 				26BEEC4E1F6A7DB6005224C9 /* TimestampFormatter.swift in Sources */,

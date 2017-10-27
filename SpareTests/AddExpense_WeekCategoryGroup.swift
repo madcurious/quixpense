@@ -26,7 +26,7 @@ class AddExpense_WeekCategoryGroup: CoreDataTestCase {
         )
         XCTAssertNil(try! context.fetch(fetchRequest).first)
         
-        let validExpense = makeValidExpense(from: RawExpense(amount: "200", dateSpent: date, categorySelection: categoryName, tagSelection: .none))
+        let validExpense = makeValidExpense(from: RawExpense(amount: "200", dateSpent: date, category: categoryName, tags: nil))
         let addOp = AddExpenseOperation(context: context, validExpense: validExpense, completionBlock: nil)
         addOp.start()
         
