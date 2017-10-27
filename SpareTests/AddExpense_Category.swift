@@ -17,10 +17,7 @@ class AddExpense_Category: CoreDataTestCase {
                                                              dateSpent: Date(),
                                                              categorySelection: .none,
                                                              tagSelection: .none))
-        let context = coreDataStack.newBackgroundContext()
-        let category = AddExpenseOperation.category(forSelection: .new(validExpense.categorySelection), in: context)
-        XCTAssertNotNil(category)
-        XCTAssertEqual(category.name, DefaultClassifier.noCategory.classifierName)
+        XCTAssertEqual(validExpense.categorySelection, DefaultClassifier.noCategory.classifierName)
     }
     
 }

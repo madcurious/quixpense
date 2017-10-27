@@ -60,11 +60,6 @@ class AddExpense_DayCategoryGroup: CoreDataTestCase {
         dayCategoryGroup.total = NSDecimalNumber(value: 1000)
         dayCategoryGroup.classifier = category
         
-        let weekCategoryGroup = WeekCategoryGroup(context: context)
-        weekCategoryGroup.sectionIdentifier = SectionIdentifier.make(referenceDate: Date(), periodization: .week)
-        weekCategoryGroup.total = .zero
-        weekCategoryGroup.classifier = category
-        
         try! context.saveToStore()
         
         let validExpense = makeValidExpense(from: RawExpense(amount: "1875.25", dateSpent: Date(), categorySelection: "Transportation", tagSelection: .none))

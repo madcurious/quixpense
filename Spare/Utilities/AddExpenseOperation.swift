@@ -10,19 +10,6 @@ import Foundation
 import CoreData
 import Bedrock
 
-//enum AddExpenseError: LocalizedError {
-//
-//    case coreDataError(Error)
-//
-//    var errorDescription: String? {
-//        switch self {
-//        case .coreDataError(let error):
-//            return "Database error occurred: \(error)"
-//        }
-//    }
-//
-//}
-
 /**
  Adds an operation to the persistent store.
  
@@ -183,56 +170,6 @@ extension AddExpenseOperation {
         }()
         let className = BRClassName(of: classType)
         return NSEntityDescription.entity(forEntityName: className, in: context)!
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    /**
-     Returns the `Category` that will be assigned to an `Expense` based on the `CategorySelection` indicated
-     in the `ValidExpense`.
-     */
-    class func category(forSelection categorySelection: CategorySelection, in context: NSManagedObjectContext) -> Category {
-        switch categorySelection {
-        case .existing(let objectId):
-            return context.object(with: objectId) as! Category
-            
-        case .new(let categoryName):
-            if let existingCategory = AddExpenseOperation.fetchExistingCategory(named: categoryName, in: context) {
-                return existingCategory
-            } else {
-                let category = Category(context: context)
-                category.name = categoryName
-                return category
-            }
-            
-        case .none:
-            return DefaultClassifier.noCategory.fetch(in: context)
-        }
-    }
-    
-    /**
-     Returns a `Category` if the provided name already exists in the store. Returns `nil` otherwise.
-     */
-    class func fetchExistingCategory(named name: String, in context: NSManagedObjectContext) -> Category? {
-        let fetchRequest: NSFetchRequest<Category> = Category.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "%K == %@", #keyPath(Category.name), name)
-        return try! context.fetch(fetchRequest).first
-    }
-    
-    class func fetchExistingTag(forTagSelectionMember member: TagSelection.Member, in context: NSManagedObjectContext) -> Tag? {
-        switch member {
-        case .existing(let objectId):
-            return context.object(with: objectId) as? Tag
-        case .new(let tagName):
-            let fetchRequest: NSFetchRequest<Tag> = Tag.fetchRequest()
-            fetchRequest.predicate = NSPredicate(format: "%K == %@", #keyPath(Tag.name), tagName)
-            return try! context.fetch(fetchRequest).first
-        }
     }
     
 }
