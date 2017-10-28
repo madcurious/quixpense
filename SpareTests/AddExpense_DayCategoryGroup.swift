@@ -20,7 +20,7 @@ class AddExpense_DayCategoryGroup: CoreDataTestCase {
         components.year = 2017
         let date = Calendar.current.date(from: components)!
         let identifier = SectionIdentifier.make(referenceDate: date, periodization: .day)
-        XCTAssertEqual(identifier, "\(Calendar.current.startOfDay(for: date).timeIntervalSince1970)-\(BRDateUtils.endOfDay(for: date).timeIntervalSince1970)")
+        XCTAssertEqual(identifier, "\(Calendar.current.startOfDay(for: date).timeIntervalSince1970)-\(BRDateUtil.endOfDay(for: date).timeIntervalSince1970)")
     }
     
     func test_notYetExisting_shouldBeCreated() {
@@ -68,7 +68,7 @@ class AddExpense_DayCategoryGroup: CoreDataTestCase {
         
         guard let result = addOp.result
             else {
-                XCTFail("No result - \(#function)")
+                XCTFail(BRTest.fail(#function, type: .noResult))
                 return
         }
         
@@ -77,13 +77,86 @@ class AddExpense_DayCategoryGroup: CoreDataTestCase {
             guard let expense = coreDataStack.viewContext.object(with: expenseId) as? Expense,
                 let expenseDayCategoryGroup = expense.dayCategoryGroup
                 else {
-                    XCTFail("Objects to test are nil - \(#function)")
+                    XCTFail(BRTest.fail(#function, type: .nil))
                     return
             }
             XCTAssertEqual(expenseDayCategoryGroup.total, NSDecimalNumber(value: 2875.25))
             
         case .error(let error):
             XCTFail("\(#function) - Error: \(error)")
+        }
+    }
+    
+    func test_categoryIsCorrect_shouldPass() {
+        let context = coreDataStack.newBackgroundContext()
+        let validExpense = makeValidExpense(from:
+            RawExpense(amount: "500.75",
+                       dateSpent: makeDate(day: 26, month: 09, year: 2017, hour: 16, minute: 17, second: 00),
+                       category: "Food",
+                       tags: nil)
+        )
+        let addOp = AddExpenseOperation(context: context, validExpense: validExpense, completionBlock: nil)
+        addOp.start()
+        
+        guard let result = addOp.result
+            else {
+                XCTFail("No result - \(#function)")
+                return
+        }
+        
+        switch result {
+        case .error(let error):
+            XCTFail(BRTest.fail(#function, type: .error(error)))
+            
+        case .success(let expenseId):
+            let expense = coreDataStack.viewContext.object(with: expenseId) as! Expense
+            if let classifierName = expense.dayCategoryGroup?.classifier?.name {
+                XCTAssertEqual("Food", classifierName)
+            } else {
+                XCTFail(BRTest.fail(#function, type: .nil))
+            }
+        }
+    }
+    
+    func test_containsExpense_shouldPass() {
+        let validExpenses = [
+            makeValidExpense(from: RawExpense(amount: "443.17", dateSpent: Date(), category: "Food", tags: nil)),
+            makeValidExpense(from: RawExpense(amount: "443.17", dateSpent: Date(), category: "Transpo", tags: nil)),
+            makeValidExpense(from: RawExpense(amount: "443.17", dateSpent: Date(), category: "Transpo", tags: nil)),
+            makeValidExpense(from: RawExpense(amount: "443.17", dateSpent: Date(), category: "Food", tags: nil)),
+            makeValidExpense(from: RawExpense(amount: "443.17", dateSpent: Date(), category: "Food", tags: nil))
+        ]
+        
+        for expense in validExpenses {
+            let context = coreDataStack.newBackgroundContext()
+            let addOp = AddExpenseOperation(context: context, validExpense: expense, completionBlock: nil)
+            addOp.start()
+        }
+        
+        let context = coreDataStack.newBackgroundContext()
+        let newExpense = makeValidExpense(from: RawExpense(amount: "443.17", dateSpent: Date(), category: "Food", tags: nil))
+        let addOp = AddExpenseOperation(context: context, validExpense: newExpense, completionBlock: nil)
+        addOp.start()
+        
+        guard let result = addOp.result
+            else {
+                XCTFail(BRTest.fail(#function, type: .noResult))
+                return
+        }
+        
+        switch result {
+        case .error(let error):
+            XCTFail(BRTest.fail(#function, type: .error(error)))
+            
+        case .success(let objectId):
+            let expense = coreDataStack.viewContext.object(with: objectId) as! Expense
+            guard let expenses = expense.dayCategoryGroup?.expenses
+                else {
+                    XCTFail(BRTest.fail(#function, type: .nil))
+                    return
+            }
+            XCTAssertEqual(expenses.count, 4)
+            XCTAssertTrue(expenses.contains(expense))
         }
     }
     

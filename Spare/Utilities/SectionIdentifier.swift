@@ -18,16 +18,16 @@ final class SectionIdentifier {
         switch periodization {
         case .day:
             startDate = Calendar.current.startOfDay(for: referenceDate)
-            endDate = BRDateUtils.endOfDay(for: referenceDate)
+            endDate = BRDateUtil.endOfDay(for: referenceDate)
             
         case .week:
             let firstWeekday = Global.startOfWeek.rawValue
-            startDate = BRDateUtils.startOfWeek(for: referenceDate, firstWeekday: firstWeekday)
-            endDate = BRDateUtils.endOfWeek(for: referenceDate, firstWeekday: firstWeekday)
+            startDate = BRDateUtil.startOfWeek(for: referenceDate, firstWeekday: firstWeekday)
+            endDate = BRDateUtil.endOfWeek(for: referenceDate, firstWeekday: firstWeekday)
             
         case .month:
-            startDate = BRDateUtils.startOfMonth(for: referenceDate)
-            endDate = BRDateUtils.endOfMonth(for: referenceDate)
+            startDate = BRDateUtil.startOfMonth(for: referenceDate)
+            endDate = BRDateUtil.endOfMonth(for: referenceDate)
         }
         
         return "\(startDate.timeIntervalSince1970)-\(endDate.timeIntervalSince1970)"

@@ -11,7 +11,7 @@ import CoreData
 import Bedrock
 
 /**
- Adds an operation to the persistent store.
+ Adds an expense to the persistent store.
  
  - Important: Though it is possible, do not run multiple add expense operations simultaneously.
  If any of the operations are adding a new category name to the persistent store, multiple categories
@@ -101,7 +101,7 @@ class AddExpenseOperation: BROperation<NSManagedObjectID, Error> {
                         } else {
                             existingGroup.setValue(NSDecimalNumber.zero, forKey: #keyPath(ClassifierGroup.total))
                         }
-                        expense.setValue(existingGroup, forKey: keyPath)
+                        tagGroups.append(existingGroup)
                     } else {
                         let entityDescription = AddExpenseOperation.classifierGroupEntityDescription(periodization: periodization, classifierType: .tag, context: context)
                         let identifier = SectionIdentifier.make(referenceDate: validExpense.dateSpent, periodization: periodization)
