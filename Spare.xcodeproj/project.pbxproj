@@ -75,6 +75,7 @@
 		26BEEC4F1F6A7DB6005224C9 /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BEEC361F6A7D45005224C9 /* UserDefaultsKey.swift */; };
 		26BEEC501F6A7DB6005224C9 /* ValidateExpenseOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BEEC371F6A7D45005224C9 /* ValidateExpenseOperation.swift */; };
 		26BEEC511F6A7DB6005224C9 /* ValidExpense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BEEC381F6A7D45005224C9 /* ValidExpense.swift */; };
+		26C7A24C1FAAB05800D6908D /* DeleteExpenseOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C7A24B1FAAB05800D6908D /* DeleteExpenseOperation.swift */; };
 		26DB29691F8226EC0042E39D /* AddExpense_DayCategoryGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DB29681F8226EC0042E39D /* AddExpense_DayCategoryGroup.swift */; };
 		26DDDCA81E5C238B001617A1 /* LoadAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DDDCA71E5C238B001617A1 /* LoadAppViewController.swift */; };
 		26DF09A11EF800D900D26D14 /* LoadableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DF099C1EF800D900D26D14 /* LoadableView.swift */; };
@@ -197,6 +198,7 @@
 		26BEEC361F6A7D45005224C9 /* UserDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
 		26BEEC371F6A7D45005224C9 /* ValidateExpenseOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateExpenseOperation.swift; sourceTree = "<group>"; };
 		26BEEC381F6A7D45005224C9 /* ValidExpense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidExpense.swift; sourceTree = "<group>"; };
+		26C7A24B1FAAB05800D6908D /* DeleteExpenseOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteExpenseOperation.swift; sourceTree = "<group>"; };
 		26DB29681F8226EC0042E39D /* AddExpense_DayCategoryGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpense_DayCategoryGroup.swift; sourceTree = "<group>"; };
 		26DDDCA71E5C238B001617A1 /* LoadAppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadAppViewController.swift; sourceTree = "<group>"; };
 		26DF099C1EF800D900D26D14 /* LoadableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadableView.swift; sourceTree = "<group>"; };
@@ -399,6 +401,7 @@
 				26BEEC361F6A7D45005224C9 /* UserDefaultsKey.swift */,
 				26BEEC371F6A7D45005224C9 /* ValidateExpenseOperation.swift */,
 				26BEEC381F6A7D45005224C9 /* ValidExpense.swift */,
+				26C7A24B1FAAB05800D6908D /* DeleteExpenseOperation.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -585,6 +588,7 @@
 				26BEEC401F6A7DB6005224C9 /* DefaultClassifier.swift in Sources */,
 				26320B3A1F6E4DD700D8E1FC /* MonthTagGroup+CoreDataClass.swift in Sources */,
 				26BEEC421F6A7DB6005224C9 /* RawExpense.swift in Sources */,
+				26C7A24C1FAAB05800D6908D /* DeleteExpenseOperation.swift in Sources */,
 				26BEEC451F6A7DB6005224C9 /* Global.swift in Sources */,
 				26BEEC461F6A7DB6005224C9 /* Grouping.swift in Sources */,
 				26BEEC471F6A7DB6005224C9 /* LightTheme.swift in Sources */,
