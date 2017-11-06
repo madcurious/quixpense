@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 import Bedrock
 
-class DeleteExpenseOperation: BROperation<Bool, Error> {
+class DeleteExpenseOperation: BROperation<NSManagedObjectID, Error> {
     
     let context: NSManagedObjectContext
     let expenseId: NSManagedObjectID
@@ -22,7 +22,43 @@ class DeleteExpenseOperation: BROperation<Bool, Error> {
     }
     
     override func main() {
+        guard let expense = context.object(with: expenseId) as? Expense
+            else {
+                result = .error(BRError("Expense with ID \(expenseId) not found."))
+                return
+        }
         
+        var classifierGroups: [ClassifierGroup?] = [
+            expense.dayCategoryGroup,
+            expense.weekCategoryGroup,
+            expense.monthCategoryGroup
+        ]
+        let tagGroupKeyPaths = [
+            #keyPath(Expense.dayTagGroups),
+            #keyPath(Expense.weekTagGroups),
+            #keyPath(Expense.monthTagGroups)
+        ]
+        for keyPath in tagGroupKeyPaths {
+            if let set = expense.value(forKey: keyPath) as? NSSet {
+                let groups = set.map({ $0 as? ClassifierGroup })
+                classifierGroups.append(contentsOf: groups)
+            }
+        }
+        
+        context.delete(expense)
+        for group in classifierGroups {
+            if let group = group,
+                group.expenses?.count == 0 {
+                context.delete(group)
+            }
+        }
+        
+        do {
+            try context.saveToStore()
+            result = .success(expenseId)
+        } catch {
+            result = .error(error)
+        }
     }
     
 }
