@@ -45,13 +45,16 @@ class DeleteExpenseOperation: BROperation<NSManagedObjectID, Error> {
             }
         }
         
-        context.delete(expense)
         for group in classifierGroups {
-            if let group = group,
-                group.expenses?.count == 0 {
-                context.delete(group)
+            if let group = group {
+                group.removeFromExpenses(expense)
+                group.total = group.total?.subtracting(expense.amount ?? 0)
+                if group.expenses?.count == 0 {
+                    context.delete(group)
+                }
             }
         }
+        context.delete(expense)
         
         do {
             try context.saveToStore()

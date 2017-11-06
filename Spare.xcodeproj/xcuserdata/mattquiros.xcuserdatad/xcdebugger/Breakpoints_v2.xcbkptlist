@@ -2,4 +2,148 @@
 <Bucket
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SpareTests/DeleteExpense/DeleteExpense_DayCategoryGroup.swift"
+            timestampString = "531640537.18006"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
+            landmarkName = "test_someExpensesRemaining_totalShouldBeCorrect_countShouldBeCorrect()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SpareTests.DeleteExpense_DayCategoryGroup.test_someExpensesRemaining_totalShouldBeCorrect_countShouldBeCorrect() -&gt; ()"
+                  moduleName = "SpareTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mattquiros/Developer/spare-ios/SpareTests/DeleteExpense/DeleteExpense_DayCategoryGroup.swift"
+                  timestampString = "531640537.849222"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "92"
+                  endingLineNumber = "92"
+                  offsetFromSymbolStart = "3752">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "implicit closure #1 : @autoclosure () throws -&gt; Swift.Optional&lt;Swift.Int&gt; in SpareTests.DeleteExpense_DayCategoryGroup.test_someExpensesRemaining_totalShouldBeCorrect_countShouldBeCorrect() -&gt; ()"
+                  moduleName = "SpareTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mattquiros/Developer/spare-ios/SpareTests/DeleteExpense/DeleteExpense_DayCategoryGroup.swift"
+                  timestampString = "531640537.851055"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "92"
+                  endingLineNumber = "92"
+                  offsetFromSymbolStart = "30">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "implicit closure #2 : @autoclosure () throws -&gt; Swift.Optional&lt;Swift.Int&gt; in SpareTests.DeleteExpense_DayCategoryGroup.test_someExpensesRemaining_totalShouldBeCorrect_countShouldBeCorrect() -&gt; ()"
+                  moduleName = "SpareTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mattquiros/Developer/spare-ios/SpareTests/DeleteExpense/DeleteExpense_DayCategoryGroup.swift"
+                  timestampString = "531640537.852792"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "92"
+                  endingLineNumber = "92"
+                  offsetFromSymbolStart = "26">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SpareTests/DeleteExpense/DeleteExpense_DayCategoryGroup.swift"
+            timestampString = "531640537.180794"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
+            landmarkName = "test_someExpensesRemaining_totalShouldBeCorrect_countShouldBeCorrect()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SpareTests.DeleteExpense_DayCategoryGroup.test_someExpensesRemaining_totalShouldBeCorrect_countShouldBeCorrect() -&gt; ()"
+                  moduleName = "SpareTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mattquiros/Developer/spare-ios/SpareTests/DeleteExpense/DeleteExpense_DayCategoryGroup.swift"
+                  timestampString = "531640537.855236"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "93"
+                  endingLineNumber = "93"
+                  offsetFromSymbolStart = "4282">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "implicit closure #3 : @autoclosure () throws -&gt; Swift.Optional&lt;__ObjC.NSDecimalNumber&gt; in SpareTests.DeleteExpense_DayCategoryGroup.test_someExpensesRemaining_totalShouldBeCorrect_countShouldBeCorrect() -&gt; ()"
+                  moduleName = "SpareTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mattquiros/Developer/spare-ios/SpareTests/DeleteExpense/DeleteExpense_DayCategoryGroup.swift"
+                  timestampString = "531640537.856829"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "93"
+                  endingLineNumber = "93"
+                  offsetFromSymbolStart = "29">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "implicit closure #4 : @autoclosure () throws -&gt; Swift.Optional&lt;__ObjC.NSDecimalNumber&gt; in SpareTests.DeleteExpense_DayCategoryGroup.test_someExpensesRemaining_totalShouldBeCorrect_countShouldBeCorrect() -&gt; ()"
+                  moduleName = "SpareTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mattquiros/Developer/spare-ios/SpareTests/DeleteExpense/DeleteExpense_DayCategoryGroup.swift"
+                  timestampString = "531640537.858403"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "93"
+                  endingLineNumber = "93"
+                  offsetFromSymbolStart = "33">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SpareTests/DeleteExpense/DeleteExpense_DayCategoryGroup.swift"
+            timestampString = "531640537.181206"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
+            landmarkName = "test_someExpensesRemaining_totalShouldBeCorrect_countShouldBeCorrect()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

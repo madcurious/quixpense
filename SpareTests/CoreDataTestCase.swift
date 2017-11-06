@@ -45,6 +45,7 @@ class CoreDataTestCase: XCTestCase {
         
         switch result {
         case .success(let container):
+            container.viewContext.automaticallyMergesChangesFromParent = true
             coreDataStack = container
             completion?()
         case .error(let error):

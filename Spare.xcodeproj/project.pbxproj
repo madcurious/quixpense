@@ -57,6 +57,9 @@
 		26B89D551F6E47ED00D96C0D /* Category+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B89D511F6E47ED00D96C0D /* Category+CoreDataClass.swift */; };
 		26B89D561F6E47ED00D96C0D /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B89D521F6E47ED00D96C0D /* Category+CoreDataProperties.swift */; };
 		26BB406E1FAFF9DD008160BD /* DeleteExpense_Classifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BB406D1FAFF9DD008160BD /* DeleteExpense_Classifiers.swift */; };
+		26BB40771FB01457008160BD /* DeleteExpenseTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BB40761FB01457008160BD /* DeleteExpenseTestCase.swift */; };
+		26BB407B1FB01508008160BD /* DeleteExpense_ClassifierGroups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BB407A1FB01508008160BD /* DeleteExpense_ClassifierGroups.swift */; };
+		26BB407F1FB0191B008160BD /* DeleteExpense_DayCategoryGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BB407E1FB0191B008160BD /* DeleteExpense_DayCategoryGroup.swift */; };
 		26BEEC391F6A7DB6005224C9 /* AddExpenseOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BEEC201F6A7D45005224C9 /* AddExpenseOperation.swift */; };
 		26BEEC3A1F6A7DB6005224C9 /* AmountFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BEEC211F6A7D45005224C9 /* AmountFormatter.swift */; };
 		26BEEC3B1F6A7DB6005224C9 /* BarButtonItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BEEC221F6A7D45005224C9 /* BarButtonItems.swift */; };
@@ -181,6 +184,9 @@
 		26B89D511F6E47ED00D96C0D /* Category+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataClass.swift"; sourceTree = "<group>"; };
 		26B89D521F6E47ED00D96C0D /* Category+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		26BB406D1FAFF9DD008160BD /* DeleteExpense_Classifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteExpense_Classifiers.swift; sourceTree = "<group>"; };
+		26BB40761FB01457008160BD /* DeleteExpenseTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteExpenseTestCase.swift; sourceTree = "<group>"; };
+		26BB407A1FB01508008160BD /* DeleteExpense_ClassifierGroups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteExpense_ClassifierGroups.swift; sourceTree = "<group>"; };
+		26BB407E1FB0191B008160BD /* DeleteExpense_DayCategoryGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteExpense_DayCategoryGroup.swift; sourceTree = "<group>"; };
 		26BEEC201F6A7D45005224C9 /* AddExpenseOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseOperation.swift; sourceTree = "<group>"; };
 		26BEEC211F6A7D45005224C9 /* AmountFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountFormatter.swift; sourceTree = "<group>"; };
 		26BEEC221F6A7D45005224C9 /* BarButtonItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarButtonItems.swift; sourceTree = "<group>"; };
@@ -295,10 +301,8 @@
 			children = (
 				26F51AFB1F7E3D2C0073DAF2 /* CoreDataTestCase.swift */,
 				264EE4A51EF90450004011FE /* Info.plist */,
-				26DB29681F8226EC0042E39D /* AddExpense_DayCategoryGroup.swift */,
-				264AE14A1F94A8ED00F87C55 /* AddExpense_WeekCategoryGroup.swift */,
-				264AE14D1F94C32500F87C55 /* AddExpense_Category.swift */,
-				26BB406D1FAFF9DD008160BD /* DeleteExpense_Classifiers.swift */,
+				26BB407D1FB01520008160BD /* AddExpense */,
+				26BB407C1FB01518008160BD /* DeleteExpense */,
 			);
 			path = SpareTests;
 			sourceTree = "<group>";
@@ -380,6 +384,27 @@
 				26B89D4D1F6E45D100D96C0D /* Classifier.swift */,
 			);
 			path = "Core Data";
+			sourceTree = "<group>";
+		};
+		26BB407C1FB01518008160BD /* DeleteExpense */ = {
+			isa = PBXGroup;
+			children = (
+				26BB406D1FAFF9DD008160BD /* DeleteExpense_Classifiers.swift */,
+				26BB40761FB01457008160BD /* DeleteExpenseTestCase.swift */,
+				26BB407A1FB01508008160BD /* DeleteExpense_ClassifierGroups.swift */,
+				26BB407E1FB0191B008160BD /* DeleteExpense_DayCategoryGroup.swift */,
+			);
+			path = DeleteExpense;
+			sourceTree = "<group>";
+		};
+		26BB407D1FB01520008160BD /* AddExpense */ = {
+			isa = PBXGroup;
+			children = (
+				26DB29681F8226EC0042E39D /* AddExpense_DayCategoryGroup.swift */,
+				264AE14A1F94A8ED00F87C55 /* AddExpense_WeekCategoryGroup.swift */,
+				264AE14D1F94C32500F87C55 /* AddExpense_Category.swift */,
+			);
+			path = AddExpense;
 			sourceTree = "<group>";
 		};
 		26BEEC1F1F6A7D45005224C9 /* Utilities */ = {
@@ -569,7 +594,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26BB407B1FB01508008160BD /* DeleteExpense_ClassifierGroups.swift in Sources */,
 				26BB406E1FAFF9DD008160BD /* DeleteExpense_Classifiers.swift in Sources */,
+				26BB407F1FB0191B008160BD /* DeleteExpense_DayCategoryGroup.swift in Sources */,
+				26BB40771FB01457008160BD /* DeleteExpenseTestCase.swift in Sources */,
 				264AE14E1F94C32500F87C55 /* AddExpense_Category.swift in Sources */,
 				264AE14B1F94A8ED00F87C55 /* AddExpense_WeekCategoryGroup.swift in Sources */,
 				26DB29691F8226EC0042E39D /* AddExpense_DayCategoryGroup.swift in Sources */,
