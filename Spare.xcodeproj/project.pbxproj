@@ -79,6 +79,7 @@
 		26BEEC4F1F6A7DB6005224C9 /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BEEC361F6A7D45005224C9 /* UserDefaultsKey.swift */; };
 		26BEEC501F6A7DB6005224C9 /* ValidateExpenseOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BEEC371F6A7D45005224C9 /* ValidateExpenseOperation.swift */; };
 		26BEEC511F6A7DB6005224C9 /* ValidExpense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BEEC381F6A7D45005224C9 /* ValidExpense.swift */; };
+		26BFE0211FB2F43E009A0643 /* DeleteExpense_DayTagGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BFE0201FB2F43E009A0643 /* DeleteExpense_DayTagGroup.swift */; };
 		26C7A24C1FAAB05800D6908D /* DeleteExpenseOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C7A24B1FAAB05800D6908D /* DeleteExpenseOperation.swift */; };
 		26DB29691F8226EC0042E39D /* AddExpense_DayCategoryGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DB29681F8226EC0042E39D /* AddExpense_DayCategoryGroup.swift */; };
 		26DDDCA81E5C238B001617A1 /* LoadAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DDDCA71E5C238B001617A1 /* LoadAppViewController.swift */; };
@@ -206,6 +207,7 @@
 		26BEEC361F6A7D45005224C9 /* UserDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
 		26BEEC371F6A7D45005224C9 /* ValidateExpenseOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateExpenseOperation.swift; sourceTree = "<group>"; };
 		26BEEC381F6A7D45005224C9 /* ValidExpense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidExpense.swift; sourceTree = "<group>"; };
+		26BFE0201FB2F43E009A0643 /* DeleteExpense_DayTagGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteExpense_DayTagGroup.swift; sourceTree = "<group>"; };
 		26C7A24B1FAAB05800D6908D /* DeleteExpenseOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteExpenseOperation.swift; sourceTree = "<group>"; };
 		26DB29681F8226EC0042E39D /* AddExpense_DayCategoryGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpense_DayCategoryGroup.swift; sourceTree = "<group>"; };
 		26DDDCA71E5C238B001617A1 /* LoadAppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadAppViewController.swift; sourceTree = "<group>"; };
@@ -393,6 +395,7 @@
 				26BB40761FB01457008160BD /* DeleteExpenseTestCase.swift */,
 				26BB407A1FB01508008160BD /* DeleteExpense_ClassifierGroups.swift */,
 				26BB407E1FB0191B008160BD /* DeleteExpense_DayCategoryGroup.swift */,
+				26BFE0201FB2F43E009A0643 /* DeleteExpense_DayTagGroup.swift */,
 			);
 			path = DeleteExpense;
 			sourceTree = "<group>";
@@ -602,6 +605,7 @@
 				264AE14B1F94A8ED00F87C55 /* AddExpense_WeekCategoryGroup.swift in Sources */,
 				26DB29691F8226EC0042E39D /* AddExpense_DayCategoryGroup.swift in Sources */,
 				26F51AFC1F7E3D2C0073DAF2 /* CoreDataTestCase.swift in Sources */,
+				26BFE0211FB2F43E009A0643 /* DeleteExpense_DayTagGroup.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
