@@ -13,13 +13,13 @@ class DeleteExpenseTestCase: CoreDataTestCase {
     
     func makeExpenses() {
         let rawExpenses = [
-            RawExpense(amount: "200", dateSpent: Date(), category: "Food", tags: ["credit", "eat out"]),
+            RawExpense(amount: "200", dateSpent: Date(), category: "Food", tags: ["eat out", "credit"]),
             RawExpense(amount: "120", dateSpent: Date(), category: "Food", tags: ["coffee", "rewards card"]),
             RawExpense(amount: "149.99", dateSpent: Date(), category: "Food", tags: ["cash"]),
-            RawExpense(amount: "88.94", dateSpent: Date(), category: "Transpo", tags: ["rideshare"]),
-            RawExpense(amount: "15", dateSpent: Date(), category: "Transpo", tags: ["puv"]),
-            RawExpense(amount: "8", dateSpent: Date(), category: "Transpo", tags: ["puv"]),
-            RawExpense(amount: "1875", dateSpent: Date(), category: "Medicines", tags: ["fiber"])
+            RawExpense(amount: "88.94", dateSpent: Date(), category: "Transpo", tags: ["rideshare", "credit"]),
+            RawExpense(amount: "15", dateSpent: Date(), category: "Transpo", tags: ["puv", "cash"]),
+            RawExpense(amount: "8", dateSpent: Date(), category: "Transpo", tags: ["puv", "cash"]),
+            RawExpense(amount: "1875", dateSpent: Date(), category: "Medicines", tags: ["fiber", "debit"])
         ]
         let validExpenses = rawExpenses.map({ makeValidExpense(from: $0) })
         for expense in validExpenses {

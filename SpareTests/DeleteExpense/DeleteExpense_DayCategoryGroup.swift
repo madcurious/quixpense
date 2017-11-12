@@ -54,7 +54,7 @@ class DeleteExpense_DayCategoryGroup: DeleteExpense_ClassifierGroups {
         }
     }
     
-    func test_someExpensesRemaining_totalShouldBeCorrect_countShouldBeCorrect() {
+    func test_someExpensesRemaining_totalAndCountShouldBeCorrect() {
         makeExpenses()
         let categoryName = "Food"
         let categoryFetch: NSFetchRequest<Spare.Category> = Category.fetchRequest()
@@ -64,7 +64,6 @@ class DeleteExpense_DayCategoryGroup: DeleteExpense_ClassifierGroups {
             guard let category = try coreDataStack.viewContext.fetch(categoryFetch).first,
                 let randomExpense = category.expenses?.allObjects.first as? Expense,
                 let group = randomExpense.dayCategoryGroup,
-//                let sectionId = group.sectionIdentifier,
                 let preDeleteCount = group.expenses?.count,
                 let preDeleteTotal = group.total,
                 let amountToBeDeducted = randomExpense.amount
@@ -78,16 +77,6 @@ class DeleteExpense_DayCategoryGroup: DeleteExpense_ClassifierGroups {
                                    expenseId: randomExpense.objectID,
                                    completionBlock: nil).start()
             
-//            let groupFetch: NSFetchRequest<DayCategoryGroup> = DayCategoryGroup.fetchRequest()
-//            groupFetch.predicate = NSPredicate(format: "%K == %@ AND %K == %@",
-//                                               #keyPath(DayCategoryGroup.sectionIdentifier), sectionId,
-//                                               #keyPath(DayCategoryGroup.classifier), category)
-//            if let sameGroup = try coreDataStack.viewContext.fetch(groupFetch).first {
-//                XCTAssertEqual(sameGroup.expenses?.count, preDeleteCount - 1)
-//                XCTAssertEqual(sameGroup.total, preDeleteTotal.subtracting(amountToBeDeducted))
-//            } else {
-//                XCTFail(BRTest.fail(#function, type: .nil))
-//            }
             coreDataStack.viewContext.refreshAllObjects()
             XCTAssertEqual(group.expenses?.count, preDeleteCount - 1)
             XCTAssertEqual(group.total, preDeleteTotal.subtracting(amountToBeDeducted))
