@@ -22,12 +22,12 @@ enum ClassifierType {
         }
     }
     
-    func entityName() -> String {
+    var groupTypes: [ClassifierGroupType] {
         switch self {
         case .category:
-            return md_getClassName(Category.self)
+            return [.dayCategory, .weekCategory, .monthCategory]
         case .tag:
-            return md_getClassName(Tag.self)
+            return [.dayTag, .weekTag, .monthTag]
         }
     }
     
