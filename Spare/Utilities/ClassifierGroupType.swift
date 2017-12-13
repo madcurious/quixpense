@@ -55,7 +55,7 @@ enum ClassifierGroupType {
         }
     }
     
-    var expenseKeyPath: String {
+    var propertyKeyPath: String {
         switch self {
         case .dayCategory:
             return #keyPath(Expense.dayCategoryGroup)

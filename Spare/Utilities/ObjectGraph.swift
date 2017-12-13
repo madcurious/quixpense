@@ -12,7 +12,7 @@ import Bedrock
 
 final class ObjectGraph {
     
-    class func classifier(withName name: String, type: ClassifierType, in context: NSManagedObjectContext) throws -> NSManagedObject? {
+    class func classifier(named name: String, type: ClassifierType, in context: NSManagedObjectContext) throws -> NSManagedObject? {
         let entityDescription = type == .category ? Category.entity() : Tag.entity()
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityDescription.name!)
         fetchRequest.predicate = NSPredicate(format: "%K == %@",
@@ -21,7 +21,7 @@ final class ObjectGraph {
         return try context.fetch(fetchRequest).first
     }
     
-    class func classifierGroup(withType type: ClassifierGroupType, classifierName: String, referenceDate: Date, in context: NSManagedObjectContext) throws -> NSManagedObject? {
+    class func classifierGroup(ofType type: ClassifierGroupType, classifierName: String, referenceDate: Date, in context: NSManagedObjectContext) throws -> NSManagedObject? {
         let entityDescription = type.entityDescription
         let sectionIdentifier = SectionIdentifier.make(referenceDate: referenceDate, periodization: type.periodization)
         let fetchRequest: NSFetchRequest<NSManagedObject> = NSFetchRequest<NSManagedObject>(entityName: entityDescription.name!)

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2603F8C31CCA45FF007F311F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2603F8C21CCA45FF007F311F /* LaunchScreen.storyboard */; };
+		260AB52C1FE11D3100F58C69 /* ExpenseOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260AB52B1FE11D3100F58C69 /* ExpenseOperation.swift */; };
 		261EB86318DDB630009DDF78 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86218DDB630009DDF78 /* Foundation.framework */; };
 		261EB86518DDB630009DDF78 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86418DDB630009DDF78 /* CoreGraphics.framework */; };
 		261EB86718DDB631009DDF78 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86618DDB631009DDF78 /* UIKit.framework */; };
@@ -89,7 +90,6 @@
 		26E4E0591937AF690096191A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E4E0581937AF690096191A /* QuartzCore.framework */; };
 		26F3F0F61FCD4B04006A44FD /* ObjectGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F3F0F51FCD4B04006A44FD /* ObjectGraph.swift */; };
 		26F3F0FA1FCD4D34006A44FD /* ClassifierGroupType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F3F0F91FCD4D34006A44FD /* ClassifierGroupType.swift */; };
-		26F3F0FC1FCD5083006A44FD /* ExpenseUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F3F0FB1FCD5083006A44FD /* ExpenseUtil.swift */; };
 		26F51AFC1F7E3D2C0073DAF2 /* CoreDataTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F51AFB1F7E3D2C0073DAF2 /* CoreDataTestCase.swift */; };
 /* End PBXBuildFile section */
 
@@ -135,6 +135,7 @@
 		2602F36D1F3084C200BDCCC5 /* SpareTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpareTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2603F8C21CCA45FF007F311F /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2603F8C61CCA476E007F311F /* Spare_v2.0.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Spare_v2.0.xcdatamodel; sourceTree = "<group>"; };
+		260AB52B1FE11D3100F58C69 /* ExpenseOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseOperation.swift; sourceTree = "<group>"; };
 		261EB85F18DDB630009DDF78 /* Spare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		261EB86218DDB630009DDF78 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		261EB86418DDB630009DDF78 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -220,7 +221,6 @@
 		26E4E0581937AF690096191A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		26F3F0F51FCD4B04006A44FD /* ObjectGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectGraph.swift; sourceTree = "<group>"; };
 		26F3F0F91FCD4D34006A44FD /* ClassifierGroupType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassifierGroupType.swift; sourceTree = "<group>"; };
-		26F3F0FB1FCD5083006A44FD /* ExpenseUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseUtil.swift; sourceTree = "<group>"; };
 		26F51AFB1F7E3D2C0073DAF2 /* CoreDataTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataTestCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -441,7 +441,7 @@
 				26C7A24B1FAAB05800D6908D /* DeleteExpenseOperation.swift */,
 				26F3F0F51FCD4B04006A44FD /* ObjectGraph.swift */,
 				26F3F0F91FCD4D34006A44FD /* ClassifierGroupType.swift */,
-				26F3F0FB1FCD5083006A44FD /* ExpenseUtil.swift */,
+				260AB52B1FE11D3100F58C69 /* ExpenseOperation.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -625,6 +625,7 @@
 				26320B3F1F6E4DD700D8E1FC /* DayTagGroup+CoreDataProperties.swift in Sources */,
 				26BEEC391F6A7DB6005224C9 /* AddExpenseOperation.swift in Sources */,
 				26BEEC3A1F6A7DB6005224C9 /* AmountFormatter.swift in Sources */,
+				260AB52C1FE11D3100F58C69 /* ExpenseOperation.swift in Sources */,
 				26BEEC3B1F6A7DB6005224C9 /* BarButtonItems.swift in Sources */,
 				26BEEC3D1F6A7DB6005224C9 /* ClassifierType.swift in Sources */,
 				26B89D441F6E44C500D96C0D /* MonthCategoryGroup+CoreDataProperties.swift in Sources */,
@@ -648,7 +649,6 @@
 				26BEEC4F1F6A7DB6005224C9 /* UserDefaultsKey.swift in Sources */,
 				26BEEC501F6A7DB6005224C9 /* ValidateExpenseOperation.swift in Sources */,
 				26BEEC511F6A7DB6005224C9 /* ValidExpense.swift in Sources */,
-				26F3F0FC1FCD5083006A44FD /* ExpenseUtil.swift in Sources */,
 				26320B321F6E4CDB00D8E1FC /* Expense+CoreDataClass.swift in Sources */,
 				266946931CC77A1A00A68424 /* AppDelegate.swift in Sources */,
 				26DF09A11EF800D900D26D14 /* LoadableView.swift in Sources */,
