@@ -22,6 +22,7 @@ class SettingsViewController: UIViewController {
     
     func setup() {
         title = "Settings"
+        tabBarItem.image = UIImage.template(named: "tabIconSettings")
     }
     
     override func viewDidLoad() {

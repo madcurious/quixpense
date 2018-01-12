@@ -12,9 +12,13 @@ class RootTabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let placeholderViewController = UIViewController(nibName: nil, bundle: nil)
+        placeholderViewController.title = "Add"
+        placeholderViewController.tabBarItem.image = UIImage.template(named: "tabIconAdd")
         viewControllers = [
             UINavigationController(rootViewController: ExpensesViewController()),
-            UIViewController(),
+            placeholderViewController,
             UINavigationController(rootViewController: SettingsViewController())
         ]
     }

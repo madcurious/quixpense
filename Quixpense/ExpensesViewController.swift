@@ -24,6 +24,7 @@ class ExpensesViewController: UIViewController {
     
     func setup() {
         title = "Expenses"
+        tabBarItem.image = UIImage.template(named: "tabIconExpenses")
     }
     
     override func loadView() {
