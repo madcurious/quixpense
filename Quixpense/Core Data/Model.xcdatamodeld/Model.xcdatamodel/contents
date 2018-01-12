@@ -2,13 +2,13 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13533" systemVersion="17B48" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Expense" representedClassName="Expense" syncable="YES">
         <attribute name="amount" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="category" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="category" attributeType="String" syncable="YES"/>
         <attribute name="dateCreated" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="dateSpent" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="daySection" attributeType="String" syncable="YES"/>
-        <attribute name="monthSection" attributeType="String" syncable="YES"/>
-        <attribute name="tags" optional="YES" attributeType="Transformable" customClassName="[String]" syncable="YES"/>
-        <attribute name="weekSection" attributeType="String" syncable="YES"/>
+        <attribute name="daySectionIdentifier" attributeType="String" syncable="YES"/>
+        <attribute name="monthSectionIdentifier" attributeType="String" syncable="YES"/>
+        <attribute name="tags" attributeType="Transformable" customClassName="[String]" syncable="YES"/>
+        <attribute name="weekSectionIdentifier" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
         <element name="Expense" positionX="-63" positionY="-18" width="128" height="165"/>

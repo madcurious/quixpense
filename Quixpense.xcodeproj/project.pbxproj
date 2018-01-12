@@ -17,6 +17,16 @@
 		2624CE562008B094002AA811 /* Expense+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2624CE542008B094002AA811 /* Expense+CoreDataClass.swift */; };
 		2624CE572008B094002AA811 /* Expense+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2624CE552008B094002AA811 /* Expense+CoreDataProperties.swift */; };
 		2624CE5A2008B35B002AA811 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2624CE592008B35B002AA811 /* SettingsViewController.swift */; };
+		2624CEE02008B761002AA811 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 2624CE9E2008B761002AA811 /* README.md */; };
+		2624CEE12008B761002AA811 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 2624CEA22008B761002AA811 /* .gitignore */; };
+		2624CEE32008B80E002AA811 /* Bedrock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2624CEA62008B761002AA811 /* Bedrock.framework */; };
+		2624CEE52008B825002AA811 /* WriteExpense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2624CEE42008B825002AA811 /* WriteExpense.swift */; };
+		2624CEE82008B8AA002AA811 /* RawExpense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2624CEE72008B8AA002AA811 /* RawExpense.swift */; };
+		2624CEEA2008B8CB002AA811 /* ValidExpense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2624CEE92008B8CB002AA811 /* ValidExpense.swift */; };
+		2624CEEC2008BB3D002AA811 /* SectionIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2624CEEB2008BB3D002AA811 /* SectionIdentifier.swift */; };
+		2624CEEE2008BB70002AA811 /* Period.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2624CEED2008BB70002AA811 /* Period.swift */; };
+		2624CEF02008BB80002AA811 /* Classifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2624CEEF2008BB80002AA811 /* Classifier.swift */; };
+		2624CEF22008C05B002AA811 /* DeleteExpense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2624CEF12008C05B002AA811 /* DeleteExpense.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,6 +36,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = 2624CE272008A2D1002AA811;
 			remoteInfo = Quixpense;
+		};
+		2624CEA52008B761002AA811 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2624CE9F2008B761002AA811 /* Bedrock.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 26904D301C7757540094DA08;
+			remoteInfo = Bedrock;
+		};
+		2624CEA72008B761002AA811 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2624CE9F2008B761002AA811 /* Bedrock.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 26A1906B1F83739300A9BBF6;
+			remoteInfo = BedrockTests;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -44,6 +68,16 @@
 		2624CE542008B094002AA811 /* Expense+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Expense+CoreDataClass.swift"; sourceTree = "<group>"; };
 		2624CE552008B094002AA811 /* Expense+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Expense+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		2624CE592008B35B002AA811 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		2624CE9E2008B761002AA811 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		2624CE9F2008B761002AA811 /* Bedrock.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Bedrock.xcodeproj; sourceTree = "<group>"; };
+		2624CEA22008B761002AA811 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		2624CEE42008B825002AA811 /* WriteExpense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteExpense.swift; sourceTree = "<group>"; };
+		2624CEE72008B8AA002AA811 /* RawExpense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawExpense.swift; sourceTree = "<group>"; };
+		2624CEE92008B8CB002AA811 /* ValidExpense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidExpense.swift; sourceTree = "<group>"; };
+		2624CEEB2008BB3D002AA811 /* SectionIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionIdentifier.swift; sourceTree = "<group>"; };
+		2624CEED2008BB70002AA811 /* Period.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Period.swift; sourceTree = "<group>"; };
+		2624CEEF2008BB80002AA811 /* Classifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classifier.swift; sourceTree = "<group>"; };
+		2624CEF12008C05B002AA811 /* DeleteExpense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteExpense.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2624CEE32008B80E002AA811 /* Bedrock.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,9 +102,11 @@
 		2624CE1F2008A2D1002AA811 = {
 			isa = PBXGroup;
 			children = (
+				2624CE5B2008B761002AA811 /* Bedrock */,
 				2624CE2A2008A2D1002AA811 /* Quixpense */,
 				2624CE3F2008A2D1002AA811 /* QuixpenseTests */,
 				2624CE292008A2D1002AA811 /* Products */,
+				2624CEE22008B80E002AA811 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -93,6 +130,13 @@
 				2624CE4B2008A447002AA811 /* RootTabBarController.swift */,
 				2624CE4F2008A5A3002AA811 /* ExpensesViewController.swift */,
 				2624CE592008B35B002AA811 /* SettingsViewController.swift */,
+				2624CEE42008B825002AA811 /* WriteExpense.swift */,
+				2624CEE72008B8AA002AA811 /* RawExpense.swift */,
+				2624CEE92008B8CB002AA811 /* ValidExpense.swift */,
+				2624CEEB2008BB3D002AA811 /* SectionIdentifier.swift */,
+				2624CEED2008BB70002AA811 /* Period.swift */,
+				2624CEEF2008BB80002AA811 /* Classifier.swift */,
+				2624CEF12008C05B002AA811 /* DeleteExpense.swift */,
 			);
 			path = Quixpense;
 			sourceTree = "<group>";
@@ -114,6 +158,32 @@
 				2624CE512008AF58002AA811 /* Model.xcdatamodeld */,
 			);
 			path = "Core Data";
+			sourceTree = "<group>";
+		};
+		2624CE5B2008B761002AA811 /* Bedrock */ = {
+			isa = PBXGroup;
+			children = (
+				2624CE9E2008B761002AA811 /* README.md */,
+				2624CE9F2008B761002AA811 /* Bedrock.xcodeproj */,
+				2624CEA22008B761002AA811 /* .gitignore */,
+			);
+			path = Bedrock;
+			sourceTree = "<group>";
+		};
+		2624CEA02008B761002AA811 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2624CEA62008B761002AA811 /* Bedrock.framework */,
+				2624CEA82008B761002AA811 /* BedrockTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2624CEE22008B80E002AA811 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -186,6 +256,12 @@
 			mainGroup = 2624CE1F2008A2D1002AA811;
 			productRefGroup = 2624CE292008A2D1002AA811 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 2624CEA02008B761002AA811 /* Products */;
+					ProjectRef = 2624CE9F2008B761002AA811 /* Bedrock.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				2624CE272008A2D1002AA811 /* Quixpense */,
@@ -194,6 +270,23 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		2624CEA62008B761002AA811 /* Bedrock.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Bedrock.framework;
+			remoteRef = 2624CEA52008B761002AA811 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2624CEA82008B761002AA811 /* BedrockTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = BedrockTests.xctest;
+			remoteRef = 2624CEA72008B761002AA811 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
 		2624CE262008A2D1002AA811 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
@@ -201,6 +294,8 @@
 			files = (
 				2624CE362008A2D1002AA811 /* LaunchScreen.storyboard in Resources */,
 				2624CE332008A2D1002AA811 /* Assets.xcassets in Resources */,
+				2624CEE02008B761002AA811 /* README.md in Resources */,
+				2624CEE12008B761002AA811 /* .gitignore in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,13 +313,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2624CEE82008B8AA002AA811 /* RawExpense.swift in Sources */,
 				2624CE2C2008A2D1002AA811 /* AppDelegate.swift in Sources */,
 				2624CE4C2008A447002AA811 /* RootTabBarController.swift in Sources */,
+				2624CEF02008BB80002AA811 /* Classifier.swift in Sources */,
+				2624CEEA2008B8CB002AA811 /* ValidExpense.swift in Sources */,
 				2624CE5A2008B35B002AA811 /* SettingsViewController.swift in Sources */,
 				2624CE572008B094002AA811 /* Expense+CoreDataProperties.swift in Sources */,
+				2624CEE52008B825002AA811 /* WriteExpense.swift in Sources */,
 				2624CE562008B094002AA811 /* Expense+CoreDataClass.swift in Sources */,
 				2624CE502008A5A3002AA811 /* ExpensesViewController.swift in Sources */,
 				2624CE532008AF58002AA811 /* Model.xcdatamodeld in Sources */,
+				2624CEEE2008BB70002AA811 /* Period.swift in Sources */,
+				2624CEEC2008BB3D002AA811 /* SectionIdentifier.swift in Sources */,
+				2624CEF22008C05B002AA811 /* DeleteExpense.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

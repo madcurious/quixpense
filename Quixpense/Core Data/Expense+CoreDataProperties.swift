@@ -18,12 +18,12 @@ extension Expense {
     }
 
     @NSManaged public var amount: NSDecimalNumber?
-    @NSManaged public var dateSpent: NSDate?
-    @NSManaged public var dateCreated: NSDate?
     @NSManaged public var category: String?
+    @NSManaged public var dateCreated: NSDate?
+    @NSManaged public var dateSpent: NSDate?
+    @NSManaged public var daySectionIdentifier: String?
+    @NSManaged public var weekSectionIdentifier: String?
     @NSManaged public var tags: [String]?
-    @NSManaged public var daySection: String?
-    @NSManaged public var weekSection: String?
-    @NSManaged public var monthSection: String?
+    @NSManaged public var monthSectionIdentifier: String?
 
 }
