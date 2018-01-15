@@ -27,6 +27,10 @@
 		2624CEEE2008BB70002AA811 /* Period.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2624CEED2008BB70002AA811 /* Period.swift */; };
 		2624CEF02008BB80002AA811 /* Classifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2624CEEF2008BB80002AA811 /* Classifier.swift */; };
 		2624CEF22008C05B002AA811 /* DeleteExpense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2624CEF12008C05B002AA811 /* DeleteExpense.swift */; };
+		26438145200C2D7500F6DE14 /* WriteExpenseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26438144200C2D7500F6DE14 /* WriteExpenseTest.swift */; };
+		26438149200C2DBF00F6DE14 /* TestUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26438148200C2DBF00F6DE14 /* TestUtil.swift */; };
+		2643814B200C2DF900F6DE14 /* ValidateExpense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2643814A200C2DF900F6DE14 /* ValidateExpense.swift */; };
+		2643814E200C329A00F6DE14 /* CoreDataTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2643814D200C329A00F6DE14 /* CoreDataTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +82,10 @@
 		2624CEED2008BB70002AA811 /* Period.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Period.swift; sourceTree = "<group>"; };
 		2624CEEF2008BB80002AA811 /* Classifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classifier.swift; sourceTree = "<group>"; };
 		2624CEF12008C05B002AA811 /* DeleteExpense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteExpense.swift; sourceTree = "<group>"; };
+		26438144200C2D7500F6DE14 /* WriteExpenseTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteExpenseTest.swift; sourceTree = "<group>"; };
+		26438148200C2DBF00F6DE14 /* TestUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUtil.swift; sourceTree = "<group>"; };
+		2643814A200C2DF900F6DE14 /* ValidateExpense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateExpense.swift; sourceTree = "<group>"; };
+		2643814D200C329A00F6DE14 /* CoreDataTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,14 +130,12 @@
 		2624CE2A2008A2D1002AA811 /* Quixpense */ = {
 			isa = PBXGroup;
 			children = (
+				2643814C200C2F4700F6DE14 /* Screens */,
 				2624CE582008B09C002AA811 /* Core Data */,
 				2624CE2B2008A2D1002AA811 /* AppDelegate.swift */,
 				2624CE322008A2D1002AA811 /* Assets.xcassets */,
 				2624CE342008A2D1002AA811 /* LaunchScreen.storyboard */,
 				2624CE372008A2D1002AA811 /* Info.plist */,
-				2624CE4B2008A447002AA811 /* RootTabBarController.swift */,
-				2624CE4F2008A5A3002AA811 /* ExpensesViewController.swift */,
-				2624CE592008B35B002AA811 /* SettingsViewController.swift */,
 				2624CEE42008B825002AA811 /* WriteExpense.swift */,
 				2624CEE72008B8AA002AA811 /* RawExpense.swift */,
 				2624CEE92008B8CB002AA811 /* ValidExpense.swift */,
@@ -137,6 +143,7 @@
 				2624CEED2008BB70002AA811 /* Period.swift */,
 				2624CEEF2008BB80002AA811 /* Classifier.swift */,
 				2624CEF12008C05B002AA811 /* DeleteExpense.swift */,
+				2643814A200C2DF900F6DE14 /* ValidateExpense.swift */,
 			);
 			path = Quixpense;
 			sourceTree = "<group>";
@@ -146,6 +153,9 @@
 			children = (
 				2624CE402008A2D1002AA811 /* QuixpenseTests.swift */,
 				2624CE422008A2D1002AA811 /* Info.plist */,
+				26438144200C2D7500F6DE14 /* WriteExpenseTest.swift */,
+				26438148200C2DBF00F6DE14 /* TestUtil.swift */,
+				2643814D200C329A00F6DE14 /* CoreDataTest.swift */,
 			);
 			path = QuixpenseTests;
 			sourceTree = "<group>";
@@ -184,6 +194,16 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2643814C200C2F4700F6DE14 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				2624CE4B2008A447002AA811 /* RootTabBarController.swift */,
+				2624CE4F2008A5A3002AA811 /* ExpensesViewController.swift */,
+				2624CE592008B35B002AA811 /* SettingsViewController.swift */,
+			);
+			path = Screens;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -324,6 +344,7 @@
 				2624CE562008B094002AA811 /* Expense+CoreDataClass.swift in Sources */,
 				2624CE502008A5A3002AA811 /* ExpensesViewController.swift in Sources */,
 				2624CE532008AF58002AA811 /* Model.xcdatamodeld in Sources */,
+				2643814B200C2DF900F6DE14 /* ValidateExpense.swift in Sources */,
 				2624CEEE2008BB70002AA811 /* Period.swift in Sources */,
 				2624CEEC2008BB3D002AA811 /* SectionIdentifier.swift in Sources */,
 				2624CEF22008C05B002AA811 /* DeleteExpense.swift in Sources */,
@@ -334,6 +355,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2643814E200C329A00F6DE14 /* CoreDataTest.swift in Sources */,
+				26438149200C2DBF00F6DE14 /* TestUtil.swift in Sources */,
+				26438145200C2D7500F6DE14 /* WriteExpenseTest.swift in Sources */,
 				2624CE412008A2D1002AA811 /* QuixpenseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

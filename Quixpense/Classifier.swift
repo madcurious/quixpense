@@ -9,5 +9,9 @@
 import Foundation
 
 enum Classifier {
+    
     case category, tag
+    
+    static let `default` = "None"
+    
 }
