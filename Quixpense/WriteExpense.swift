@@ -16,14 +16,16 @@ import Bedrock
 class WriteExpense: BROperation<NSManagedObjectID, Error> {
     
     let context: NSManagedObjectContext
-    let validExpense: ValidExpense
+    let data: ValidExpense
     let objectId: NSManagedObjectID?
+    let shouldSave: Bool
     
-    init(context: NSManagedObjectContext, validExpense: ValidExpense, objectId: NSManagedObjectID?, completionBlock: BROperationCompletionBlock?) {
+    init(context: NSManagedObjectContext, data: ValidExpense, objectId: NSManagedObjectID?, shouldSave: Bool, completion: BROperationCompletionBlock?) {
         self.context = context
-        self.validExpense = validExpense
+        self.data = data
         self.objectId = objectId
-        super.init(completionBlock: completionBlock)
+        self.shouldSave = shouldSave
+        super.init(completionBlock: completion)
     }
     
     override func main() {
@@ -37,15 +39,17 @@ class WriteExpense: BROperation<NSManagedObjectID, Error> {
                 expense.dateCreated = Date() as NSDate
             }
             
-            expense.amount = validExpense.amount
-            expense.dateSpent = validExpense.dateSpent as NSDate
-            expense.category = validExpense.category
-            expense.tags = validExpense.tags
-            for (key, value) in SectionIdentifier.makeAll(for: validExpense.dateSpent) {
+            expense.amount = data.amount
+            expense.dateSpent = data.dateSpent as NSDate
+            expense.category = data.category
+            expense.tags = data.tags
+            for (key, value) in SectionIdentifier.makeAll(for: data.dateSpent) {
                 expense.setValue(value, forKey: key)
             }
             
-            try context.saveToStore()
+            if shouldSave == true {
+                try context.saveToStore()
+            }
             result = .success(expense.objectID)
         } catch {
             result = .error(error)

@@ -27,8 +27,9 @@ extension WriteExpenseTest {
         
         let xp = expectation(description: "\(#function)\(#line)")
         let writeOp = WriteExpense(context: container.newBackgroundContext(),
-                                   validExpense: expense,
-                                   objectId: nil) { _ in
+                                   data: expense,
+                                   objectId: nil,
+                                   shouldSave: true) { _ in
                                     xp.fulfill()
         }
         queue.addOperation(writeOp)
@@ -73,7 +74,7 @@ extension WriteExpenseTest {
                        tags: nil))
         let xp = expectation(description: "\(#function)\(#line)")
         let writeOp = WriteExpense(context: container.newBackgroundContext(),
-                                   validExpense: expense,
+                                   data: expense,
                                    objectId: nil) { _ in
                                     xp.fulfill()
         }

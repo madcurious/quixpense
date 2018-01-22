@@ -92,9 +92,12 @@ class GenerateDummy: BROperation<Bool, Error> {
                         tags: tags))
                 print(validExpense)
                 let add = WriteExpense(context: context,
-                                       validExpense: validExpense,
-                                       objectId: nil, completionBlock: nil)
+                                       data: validExpense,
+                                       objectId: nil,
+                                       shouldSave: false, // save later
+                                       completion: nil)
                 add.start()
+                
                 if case .some(.error(let error)) = add.result {
                     result = .error(error)
                     return
@@ -104,6 +107,13 @@ class GenerateDummy: BROperation<Bool, Error> {
             currentDateSpent = Calendar.current.date(byAdding: .day, value: 1, to: currentDateSpent)!
             i += 1
         } while i < numberOfDays
+        
+        do {
+            try context.saveToStore()
+        } catch {
+            result = .error(error)
+            return
+        }
         result = .success(true)
     }
     
