@@ -49,6 +49,17 @@ class SetupApp: BROperation<NSPersistentContainer, Error> {
             if lastTimeZone == nil || lastTimeZone != TimeZone.current.identifier {
                 // Recompute section identifiers for all expenses.
                 updateBlock?("Updating date groups for new time zone")
+                let updateOp = UpdateSections(context: container.newBackgroundContext(), completion: nil)
+                queue.addOperations([updateOp], waitUntilFinished: true)
+                guard let updateResult = updateOp.result
+                    else {
+                        result = .error(BRError("Unexpected: No result from updating sections"))
+                        return
+                }
+                if case .error(let error) = updateResult {
+                    result = .error(error)
+                    return
+                }
             }
             
             // Keep track of the last seen time zone so that we can determine
