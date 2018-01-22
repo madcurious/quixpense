@@ -41,10 +41,9 @@ class WriteExpense: BROperation<NSManagedObjectID, Error> {
             expense.dateSpent = validExpense.dateSpent as NSDate
             expense.category = validExpense.category
             expense.tags = validExpense.tags
-            
-            expense.daySectionIdentifier = SectionIdentifier.make(for: validExpense.dateSpent, period: .day)
-            expense.weekSectionIdentifier = SectionIdentifier.make(for: validExpense.dateSpent, period: .week)
-            expense.monthSectionIdentifier = SectionIdentifier.make(for: validExpense.dateSpent, period: .month)
+            for (key, value) in SectionIdentifier.makeAll(for: validExpense.dateSpent) {
+                expense.setValue(value, forKey: key)
+            }
             
             try context.saveToStore()
             result = .success(expense.objectID)

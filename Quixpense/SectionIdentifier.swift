@@ -11,26 +11,23 @@ import Bedrock
 
 class SectionIdentifier {
     
-    class func make(for date: Date, period: Period) -> String {
-        let startDate: Date
-        let endDate: Date
-        
-        switch period {
-        case .day:
-            startDate = Calendar.current.startOfDay(for: date)
-            endDate = BRDateUtil.endOfDay(for: date)
-            
-        case .week:
-            let firstWeekday = Calendar.current.firstWeekday
-            startDate = BRDateUtil.startOfWeek(for: date, firstWeekday: firstWeekday)
-            endDate = BRDateUtil.endOfWeek(for: date, firstWeekday: firstWeekday)
-            
-        case .month:
-            startDate = BRDateUtil.startOfMonth(for: date)
-            endDate = BRDateUtil.endOfMonth(for: date)
+    class func makeAll(for date: Date) -> [String : String] {
+        func join(_ date1: Date, _ date2: Date) -> String {
+            return "\(date1.timeIntervalSince1970)-\(date2.timeIntervalSince1970)"
         }
         
-        return "\(startDate.timeIntervalSince1970)-\(endDate.timeIntervalSince1970)"
+        return [
+            #keyPath(Expense.daySectionId) :
+                join(Calendar.current.startOfDay(for: date), BRDateUtil.endOfDay(for: date)),
+            #keyPath(Expense.weekSectionIdSunday) :
+                join(BRDateUtil.startOfWeek(for: date, firstWeekday: 1), BRDateUtil.endOfWeek(for: date, firstWeekday: 1)),
+            #keyPath(Expense.weekSectionIdMonday) :
+                join(BRDateUtil.startOfWeek(for: date, firstWeekday: 2), BRDateUtil.endOfWeek(for: date, firstWeekday: 2)),
+            #keyPath(Expense.weekSectionIdSaturday) :
+                join(BRDateUtil.startOfWeek(for: date, firstWeekday: 7), BRDateUtil.endOfWeek(for: date, firstWeekday: 7)),
+            #keyPath(Expense.monthSectionId) :
+                join(BRDateUtil.startOfMonth(for: date), BRDateUtil.endOfMonth(for: date))
+        ]
     }
     
     class func parse(_ sectionIdentifier: String) -> (Date, Date) {

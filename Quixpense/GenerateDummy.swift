@@ -57,7 +57,7 @@ class GenerateDummy: BROperation<Bool, Error> {
             return
         }
         
-        let numberOfDays = Calendar.current.dateComponents([.day], from: startDate, to: endDate).day!
+        let numberOfDays = Calendar.current.dateComponents([.day], from: startDate, to: endDate).day! + 1
         var i = 0
         var currentDateSpent = startDate
         

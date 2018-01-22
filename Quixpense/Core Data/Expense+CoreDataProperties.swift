@@ -2,7 +2,7 @@
 //  Expense+CoreDataProperties.swift
 //  Quixpense
 //
-//  Created by Matt Quiros on 12/01/2018.
+//  Created by Matt Quiros on 21/01/2018.
 //  Copyright © 2018 Matt Quiros. All rights reserved.
 //
 //
@@ -21,9 +21,11 @@ extension Expense {
     @NSManaged public var category: String?
     @NSManaged public var dateCreated: NSDate?
     @NSManaged public var dateSpent: NSDate?
-    @NSManaged public var daySectionIdentifier: String?
-    @NSManaged public var weekSectionIdentifier: String?
+    @NSManaged public var daySectionId: String?
+    @NSManaged public var monthSectionId: String?
     @NSManaged public var tags: [String]?
-    @NSManaged public var monthSectionIdentifier: String?
+    @NSManaged public var weekSectionIdSunday: String?
+    @NSManaged public var weekSectionIdMonday: String?
+    @NSManaged public var weekSectionIdSaturday: String?
 
 }
