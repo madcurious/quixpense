@@ -21,6 +21,28 @@ class SectionHeaderView: UITableViewHeaderFooterView {
         }
     }
     
+    var total: NSDecimalNumber? {
+        didSet {
+            updateTotal()
+        }
+    }
+    
+    fileprivate let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.timeStyle = .none
+        return formatter
+    }()
+    
+    fileprivate let numberFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.locale = Locale.current
+        formatter.alwaysShowsDecimalSeparator = true
+        formatter.minimumFractionDigits = 2
+        return formatter
+    }()
+    
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         setupStructure()
@@ -45,13 +67,6 @@ class SectionHeaderView: UITableViewHeaderFooterView {
         rightLabel.textColor = Palette.white
     }
     
-    fileprivate let dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .short
-        formatter.timeStyle = .none
-        return formatter
-    }()
-    
 }
 
 fileprivate extension SectionHeaderView {
@@ -74,6 +89,15 @@ fileprivate extension SectionHeaderView {
             let startString = dateFormatter.string(from: startDate)
             let endString = dateFormatter.string(from: endDate)
             return "\(startString) to \(endString)"
+        }()
+    }
+    
+    func updateTotal() {
+        rightLabel.text = {
+            if let total = total {
+                return numberFormatter.string(from: total)
+            }
+            return nil
         }()
     }
     

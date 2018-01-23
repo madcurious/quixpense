@@ -16,6 +16,7 @@ class ExpensesViewController: UIViewController {
     let fetchController: NSFetchedResultsController<Expense>
     let loadableView = BRDefaultLoadableView(frame: .zero)
     let tableView = UITableView(frame: .zero, style: .plain)
+    let totalCache = NSCache<NSString, NSDecimalNumber>()
     
     enum ViewId: String {
         case cell = "cell"
@@ -74,6 +75,31 @@ class ExpensesViewController: UIViewController {
     
 }
 
+// MARK: - fileprivate
+fileprivate extension ExpensesViewController {
+    
+    func total(for section: Int) -> NSDecimalNumber {
+        guard let sectionName = fetchController.sections?[section].name as NSString?
+            else {
+                return .zero
+        }
+        
+        // If the total exists, return the cached value.
+        if let existing = totalCache.object(forKey: sectionName) {
+            return existing
+        }
+        
+        // Otherwise, compute for the total.
+        guard let expenses = fetchController.sections?[section].objects as? [Expense]
+            else {
+                return .zero
+        }
+        return expenses.reduce(NSDecimalNumber.zero, { $0.adding($1.amount ?? .zero) })
+    }
+    
+}
+
+// MARK: - UITableViewDataSource
 extension ExpensesViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -95,6 +121,7 @@ extension ExpensesViewController: UITableViewDataSource {
     
 }
 
+// MARK: - UITableViewDelegate
 extension ExpensesViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -107,6 +134,7 @@ extension ExpensesViewController: UITableViewDelegate {
                 return nil
         }
         view.sectionIdentifier = fetchController.sections?[section].name
+        view.total = total(for: section)
         return view
     }
     
