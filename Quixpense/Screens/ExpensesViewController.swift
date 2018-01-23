@@ -19,6 +19,7 @@ class ExpensesViewController: UIViewController {
     
     enum ViewId: String {
         case cell = "cell"
+        case sectionHeader = "sectionHeader"
     }
     
     init(container: NSPersistentContainer) {
@@ -62,6 +63,7 @@ class ExpensesViewController: UIViewController {
                 tableView.dataSource = self
                 tableView.delegate = self
                 tableView.register(UITableViewCell.self, forCellReuseIdentifier: ViewId.cell.rawValue)
+                tableView.register(SectionHeaderView.self, forHeaderFooterViewReuseIdentifier: ViewId.sectionHeader.rawValue)
                 tableView.reloadData()
                 loadableView.state = .success
             }
@@ -99,8 +101,13 @@ extension ExpensesViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return fetchController.sections?[section].name ?? "Unnamed"
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: ViewId.sectionHeader.rawValue) as? SectionHeaderView
+            else {
+                return nil
+        }
+        view.sectionIdentifier = fetchController.sections?[section].name
+        return view
     }
     
 }
