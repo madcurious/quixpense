@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Filter {
+struct Filter: Equatable {
     
     enum DisplayMode {
         case expenses
@@ -37,5 +37,16 @@ struct Filter {
     }
     
     static let `default` = Filter(displayMode: .expenses, period: .day)
+    
+    static func ==(lhs: Filter, rhs: Filter) -> Bool {
+        if lhs.displayMode == rhs.displayMode && lhs.period == rhs.period {
+            return true
+        }
+        return false
+    }
+    
+    static func != (lhs: Filter, rhs: Filter) -> Bool {
+        return !(lhs == rhs)
+    }
     
 }

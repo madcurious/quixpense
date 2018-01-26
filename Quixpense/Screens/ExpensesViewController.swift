@@ -13,10 +13,11 @@ import Bedrock
 class ExpensesViewController: UIViewController {
     
     let container: NSPersistentContainer
-    let fetchController: NSFetchedResultsController<Expense>
+    var fetchController: NSFetchedResultsController<Expense>
     let loadableView = BRDefaultLoadableView(frame: .zero)
     let tableView = UITableView(frame: .zero, style: .plain)
     let totalCache = NSCache<NSString, NSDecimalNumber>()
+    let groupCache = NSCache<NSString, NSArray>()
     
     let filterButton = BRLabelButton(frame: .zero)
     var filter = Filter.default
@@ -159,10 +160,23 @@ extension ExpensesViewController: UITableViewDelegate {
 extension ExpensesViewController: FilterViewControllerDelegate {
     
     func filterViewController(_ filterViewController: FilterViewController, didSelect filter: Filter) {
+        // Do nothing if the filter wasn't changed.
+        guard self.filter != filter
+            else {
+                return
+        }
+        
         self.filter = filter
         filterButton.titleLabel.text = filter.title
         filterButton.setNeedsLayout()
         filterButton.layoutIfNeeded()
+        
+        // Purge the caches.
+        totalCache.removeAllObjects()
+        
+        // Rebuild the fetch controller.
+        
+        // Reload data.
     }
     
 }
