@@ -9,5 +9,20 @@
 import Foundation
 
 enum Period {
+    
     case day, week, month
+    
+    static let all: [Period] = [.day, .week, .month]
+    
+    var title: String {
+        switch self {
+        case .day:
+            return "daily"
+        case .week:
+            return "weekly"
+        case .month:
+            return "monthly"
+        }
+    }
+    
 }

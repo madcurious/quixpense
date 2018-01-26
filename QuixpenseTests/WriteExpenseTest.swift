@@ -75,7 +75,8 @@ extension WriteExpenseTest {
         let xp = expectation(description: "\(#function)\(#line)")
         let writeOp = WriteExpense(context: container.newBackgroundContext(),
                                    data: expense,
-                                   objectId: nil) { _ in
+                                   objectId: nil,
+                                   shouldSave: true) { _ in
                                     xp.fulfill()
         }
         queue.addOperation(writeOp)
@@ -93,9 +94,9 @@ extension WriteExpenseTest {
                     XCTFail(BRTest.fail(#function, type: .nil))
                     return
             }
-            XCTAssertEqual(expense.daySectionIdentifier, testDayId)
-            XCTAssertEqual(expense.weekSectionIdentifier, testWeekId)
-            XCTAssertEqual(expense.monthSectionIdentifier, testMonthId)
+            XCTAssertEqual(expense.daySectionId, testDayId)
+            XCTAssertEqual(expense.weekSectionIdSunday, testWeekId)
+            XCTAssertEqual(expense.monthSectionId, testMonthId)
         case .error(let error):
             XCTFail(BRTest.fail(#function, type: .error(error)))
         }

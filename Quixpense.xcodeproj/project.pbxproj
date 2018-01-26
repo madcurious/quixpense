@@ -27,6 +27,8 @@
 		2624CEEE2008BB70002AA811 /* Period.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2624CEED2008BB70002AA811 /* Period.swift */; };
 		2624CEF02008BB80002AA811 /* Classifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2624CEEF2008BB80002AA811 /* Classifier.swift */; };
 		2624CEF22008C05B002AA811 /* DeleteExpense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2624CEF12008C05B002AA811 /* DeleteExpense.swift */; };
+		2626F6B0201B3C9B009B7BBB /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2626F6AF201B3C9B009B7BBB /* FilterViewController.swift */; };
+		2626F6B6201B3E79009B7BBB /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2626F6B5201B3E79009B7BBB /* Filter.swift */; };
 		26438145200C2D7500F6DE14 /* WriteExpenseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26438144200C2D7500F6DE14 /* WriteExpenseTest.swift */; };
 		26438149200C2DBF00F6DE14 /* TestUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26438148200C2DBF00F6DE14 /* TestUtil.swift */; };
 		2643814B200C2DF900F6DE14 /* ValidateExpense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2643814A200C2DF900F6DE14 /* ValidateExpense.swift */; };
@@ -91,6 +93,8 @@
 		2624CEED2008BB70002AA811 /* Period.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Period.swift; sourceTree = "<group>"; };
 		2624CEEF2008BB80002AA811 /* Classifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classifier.swift; sourceTree = "<group>"; };
 		2624CEF12008C05B002AA811 /* DeleteExpense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteExpense.swift; sourceTree = "<group>"; };
+		2626F6AF201B3C9B009B7BBB /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
+		2626F6B5201B3E79009B7BBB /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		26438144200C2D7500F6DE14 /* WriteExpenseTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteExpenseTest.swift; sourceTree = "<group>"; };
 		26438148200C2DBF00F6DE14 /* TestUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUtil.swift; sourceTree = "<group>"; };
 		2643814A200C2DF900F6DE14 /* ValidateExpense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateExpense.swift; sourceTree = "<group>"; };
@@ -166,6 +170,7 @@
 				2676150F20147E7F002F96F0 /* DefaultsKey.swift */,
 				26A02F2D2015F26000A5A9D8 /* UpdateSections.swift */,
 				26A02F3520172A9600A5A9D8 /* Palette.swift */,
+				2626F6B5201B3E79009B7BBB /* Filter.swift */,
 			);
 			path = Quixpense;
 			sourceTree = "<group>";
@@ -229,6 +234,7 @@
 				2676150B20147B5C002F96F0 /* SetupApp.swift */,
 				26A02F31201729CE00A5A9D8 /* SectionHeaderView.swift */,
 				26A02F33201729E100A5A9D8 /* SectionHeaderView.xib */,
+				2626F6AF201B3C9B009B7BBB /* FilterViewController.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -369,11 +375,13 @@
 				2624CEF02008BB80002AA811 /* Classifier.swift in Sources */,
 				26A02F32201729CE00A5A9D8 /* SectionHeaderView.swift in Sources */,
 				2624CEEA2008B8CB002AA811 /* ValidExpense.swift in Sources */,
+				2626F6B0201B3C9B009B7BBB /* FilterViewController.swift in Sources */,
 				2676150C20147B5C002F96F0 /* SetupApp.swift in Sources */,
 				26438153200C3EBA00F6DE14 /* GenerateDummy.swift in Sources */,
 				2624CE5A2008B35B002AA811 /* SettingsViewController.swift in Sources */,
 				2624CE572008B094002AA811 /* Expense+CoreDataProperties.swift in Sources */,
 				2624CEE52008B825002AA811 /* WriteExpense.swift in Sources */,
+				2626F6B6201B3E79009B7BBB /* Filter.swift in Sources */,
 				2624CE562008B094002AA811 /* Expense+CoreDataClass.swift in Sources */,
 				26A02F2E2015F26000A5A9D8 /* UpdateSections.swift in Sources */,
 				2676150620147854002F96F0 /* SetupViewController.swift in Sources */,

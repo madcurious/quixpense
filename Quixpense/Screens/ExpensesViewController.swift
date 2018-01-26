@@ -18,6 +18,9 @@ class ExpensesViewController: UIViewController {
     let tableView = UITableView(frame: .zero, style: .plain)
     let totalCache = NSCache<NSString, NSDecimalNumber>()
     
+    let filterButton = BRLabelButton(frame: .zero)
+    var filter = Filter.default
+    
     enum ViewId: String {
         case cell = "cell"
         case sectionHeader = "sectionHeader"
@@ -51,8 +54,11 @@ class ExpensesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.largeTitleDisplayMode = .automatic
+        
+        filterButton.titleLabel.font = .boldSystemFont(ofSize: UIFont.buttonFontSize)
+        filterButton.titleLabel.text = "All expenses, daily"
+        filterButton.addTarget(self, action: #selector(handleTapOnFilterButton), for: .touchUpInside)
+        navigationItem.titleView = filterButton
         
         do {
             loadableView.state = .loading
@@ -75,8 +81,8 @@ class ExpensesViewController: UIViewController {
     
 }
 
-// MARK: - fileprivate
-fileprivate extension ExpensesViewController {
+// MARK: - Helpers
+extension ExpensesViewController {
     
     func total(for section: Int) -> NSDecimalNumber {
         guard let sectionName = fetchController.sections?[section].name as NSString?
@@ -95,6 +101,15 @@ fileprivate extension ExpensesViewController {
                 return .zero
         }
         return expenses.reduce(NSDecimalNumber.zero, { $0.adding($1.amount ?? .zero) })
+    }
+    
+}
+
+// MARK: - Target actions
+@objc extension ExpensesViewController {
+    
+    func handleTapOnFilterButton() {
+        FilterViewController.present(from: self, initialSelection: filter, delegate: self)
     }
     
 }
@@ -136,6 +151,18 @@ extension ExpensesViewController: UITableViewDelegate {
         view.sectionIdentifier = fetchController.sections?[section].name
         view.total = total(for: section)
         return view
+    }
+    
+}
+
+// MARK: - FilterViewControllerDelegate
+extension ExpensesViewController: FilterViewControllerDelegate {
+    
+    func filterViewController(_ filterViewController: FilterViewController, didSelect filter: Filter) {
+        self.filter = filter
+        filterButton.titleLabel.text = filter.title
+        filterButton.setNeedsLayout()
+        filterButton.layoutIfNeeded()
     }
     
 }
