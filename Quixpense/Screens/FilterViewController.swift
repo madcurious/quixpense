@@ -95,9 +95,9 @@ extension FilterViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: ViewId.cell.rawValue, for: indexPath)
         cell.textLabel?.text = {
             if indexPath.section == 0 {
-                return Filter.DisplayMode.all[indexPath.row].title.capitalized
+                return Filter.DisplayMode.all[indexPath.row].title
             }
-            return Period.all[indexPath.row].title.capitalized
+            return Period.all[indexPath.row].title
         }()
         cell.accessoryType = {
             switch indexPath.section {

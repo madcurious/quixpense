@@ -18,11 +18,11 @@ struct Filter: Equatable {
         var title: String {
             switch self {
             case .expenses:
-                return "all expenses"
+                return "All expenses"
             case .categories:
-                return "categories"
+                return "Categories"
             case .tags:
-                return "tags"
+                return "Tags"
             }
         }
         

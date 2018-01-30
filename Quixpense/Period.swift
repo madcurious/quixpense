@@ -17,11 +17,11 @@ enum Period {
     var title: String {
         switch self {
         case .day:
-            return "daily"
+            return "Daily"
         case .week:
-            return "weekly"
+            return "Weekly"
         case .month:
-            return "monthly"
+            return "Monthly"
         }
     }
     
