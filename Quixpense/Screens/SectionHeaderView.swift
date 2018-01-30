@@ -34,15 +34,6 @@ class SectionHeaderView: UITableViewHeaderFooterView {
         return formatter
     }()
     
-    fileprivate let numberFormatter: NumberFormatter = {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        formatter.locale = Locale.current
-        formatter.alwaysShowsDecimalSeparator = true
-        formatter.minimumFractionDigits = 2
-        return formatter
-    }()
-    
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         setupStructure()
@@ -95,7 +86,7 @@ fileprivate extension SectionHeaderView {
     func updateTotal() {
         rightLabel.text = {
             if let total = total {
-                return numberFormatter.string(from: total)
+                return AmountFormatter.string(from: total)
             }
             return nil
         }()

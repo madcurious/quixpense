@@ -42,6 +42,7 @@
 		26A02F32201729CE00A5A9D8 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A02F31201729CE00A5A9D8 /* SectionHeaderView.swift */; };
 		26A02F34201729E100A5A9D8 /* SectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26A02F33201729E100A5A9D8 /* SectionHeaderView.xib */; };
 		26A02F3620172A9600A5A9D8 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A02F3520172A9600A5A9D8 /* Palette.swift */; };
+		26FDC9F020206A2500947A6F /* AmountFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FDC9EF20206A2500947A6F /* AmountFormatter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +109,7 @@
 		26A02F31201729CE00A5A9D8 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		26A02F33201729E100A5A9D8 /* SectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SectionHeaderView.xib; sourceTree = "<group>"; };
 		26A02F3520172A9600A5A9D8 /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
+		26FDC9EF20206A2500947A6F /* AmountFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountFormatter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +173,7 @@
 				26A02F2D2015F26000A5A9D8 /* UpdateSections.swift */,
 				26A02F3520172A9600A5A9D8 /* Palette.swift */,
 				2626F6B5201B3E79009B7BBB /* Filter.swift */,
+				26FDC9EF20206A2500947A6F /* AmountFormatter.swift */,
 			);
 			path = Quixpense;
 			sourceTree = "<group>";
@@ -385,6 +388,7 @@
 				2624CE562008B094002AA811 /* Expense+CoreDataClass.swift in Sources */,
 				26A02F2E2015F26000A5A9D8 /* UpdateSections.swift in Sources */,
 				2676150620147854002F96F0 /* SetupViewController.swift in Sources */,
+				26FDC9F020206A2500947A6F /* AmountFormatter.swift in Sources */,
 				2624CE502008A5A3002AA811 /* ExpensesViewController.swift in Sources */,
 				2676151020147E7F002F96F0 /* DefaultsKey.swift in Sources */,
 				2624CE532008AF58002AA811 /* Model.xcdatamodeld in Sources */,

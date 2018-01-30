@@ -17,7 +17,7 @@ class ExpensesViewController: UIViewController {
     let loadableView = BRDefaultLoadableView(frame: .zero)
     let tableView = UITableView(frame: .zero, style: .plain)
     let totalCache = NSCache<NSString, NSDecimalNumber>()
-    let groupCache = NSCache<NSString, NSArray>()
+    let groupCache = NSCache<NSString, NSArray>() // NSCache<String, [[String : NSDecimalNumber]]>
     
     let filterButton = BRLabelButton(frame: .zero)
     var filter = Filter.default
@@ -29,16 +29,7 @@ class ExpensesViewController: UIViewController {
     
     init(container: NSPersistentContainer) {
         self.container = container
-        self.fetchController = {
-            let request: NSFetchRequest<Expense> = Expense.fetchRequest()
-            request.sortDescriptors = [
-                NSSortDescriptor(key: #keyPath(Expense.dateCreated), ascending: false)
-            ]
-            return NSFetchedResultsController(fetchRequest: request,
-                                              managedObjectContext: container.viewContext,
-                                              sectionNameKeyPath: #keyPath(Expense.daySectionId),
-                                              cacheName: "cache")
-        }()
+        self.fetchController = ExpensesViewController.makeFetchController(from: filter, firstWeekday: Calendar.current.firstWeekday, context: container.viewContext)
         super.init(nibName: nil, bundle: nil)
         title = "Expenses"
         tabBarItem.image = UIImage.template(named: "tabIconExpenses")
@@ -61,17 +52,27 @@ class ExpensesViewController: UIViewController {
         filterButton.addTarget(self, action: #selector(handleTapOnFilterButton), for: .touchUpInside)
         navigationItem.titleView = filterButton
         
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: ViewId.cell.rawValue)
+        tableView.register(SectionHeaderView.self, forHeaderFooterViewReuseIdentifier: ViewId.sectionHeader.rawValue)
+        
+        fetchExpenses()
+    }
+    
+}
+
+// MARK: - Helpers
+fileprivate extension ExpensesViewController {
+    
+    func fetchExpenses() {
         do {
             loadableView.state = .loading
             try fetchController.performFetch()
             
             if fetchController.sections?.isEmpty ?? false {
-                
+                loadableView.state = .empty(nil)
             } else {
-                tableView.dataSource = self
-                tableView.delegate = self
-                tableView.register(UITableViewCell.self, forCellReuseIdentifier: ViewId.cell.rawValue)
-                tableView.register(SectionHeaderView.self, forHeaderFooterViewReuseIdentifier: ViewId.sectionHeader.rawValue)
                 tableView.reloadData()
                 loadableView.state = .success
             }
@@ -79,11 +80,6 @@ class ExpensesViewController: UIViewController {
             loadableView.state = .error(error)
         }
     }
-    
-}
-
-// MARK: - Helpers
-extension ExpensesViewController {
     
     func total(for section: Int) -> NSDecimalNumber {
         guard let sectionName = fetchController.sections?[section].name as NSString?
@@ -97,11 +93,66 @@ extension ExpensesViewController {
         }
         
         // Otherwise, compute for the total.
-        guard let expenses = fetchController.sections?[section].objects as? [Expense]
+        let total: NSDecimalNumber = {
+            if let expenses = fetchController.sections?[section].objects as? [Expense] {
+                return expenses.reduce(NSDecimalNumber.zero, { $0.adding($1.amount ?? .zero) })
+            }
+            return .zero
+        }()
+        totalCache.setObject(total, forKey: sectionName)
+        return total
+    }
+    
+    func categories(for section: Int) -> [[String : NSDecimalNumber]] {
+        guard let sectionName = fetchController.sections?[section].name as NSString?
             else {
-                return .zero
+                return []
         }
-        return expenses.reduce(NSDecimalNumber.zero, { $0.adding($1.amount ?? .zero) })
+        
+        if let existing = groupCache.object(forKey: sectionName) {
+            let categories = existing.flatMap({ $0 as? [String : NSDecimalNumber] })
+            return categories
+        }
+        
+        let categories: [[String : NSDecimalNumber]] = {
+            guard let expenses = fetchController.sections?[section].objects as? [Expense]
+                else {
+                    return []
+            }
+            let categoryNameAndExpenses = Dictionary(grouping: expenses, by: { $0.category! })
+            let categoryNameAndTotal: [[String : NSDecimalNumber]] = categoryNameAndExpenses.flatMap({ (categoryName, expenses) in
+                return [categoryName : expenses.reduce(NSDecimalNumber.zero, {$0.adding($1.amount ?? .zero)})]
+            })
+            return categoryNameAndTotal.sorted(by: { $0.first!.value > $1.first!.value })
+        }()
+        groupCache.setObject(categories as NSArray, forKey: sectionName)
+        return categories
+    }
+    
+    class func makeFetchController(from filter: Filter, firstWeekday: Int, context: NSManagedObjectContext) -> NSFetchedResultsController<Expense> {
+        let request: NSFetchRequest<Expense> = Expense.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(key: #keyPath(Expense.dateCreated), ascending: false)]
+        let sectionKeyPath: String = {
+            switch filter.period {
+            case .day:
+                return #keyPath(Expense.daySectionId)
+            case .week:
+                switch firstWeekday {
+                case 2:
+                    return #keyPath(Expense.weekSectionIdMonday)
+                case 7:
+                    return #keyPath(Expense.weekSectionIdSaturday)
+                default:
+                    return #keyPath(Expense.weekSectionIdSunday)
+                }
+            case .month:
+                return #keyPath(Expense.monthSectionId)
+            }
+        }()
+        return NSFetchedResultsController(fetchRequest: request,
+                                          managedObjectContext: context,
+                                          sectionNameKeyPath: sectionKeyPath,
+                                          cacheName: "cache")
     }
     
 }
@@ -123,7 +174,14 @@ extension ExpensesViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return fetchController.sections?[section].numberOfObjects ?? 0
+        switch filter.displayMode {
+        case .expenses:
+            return fetchController.sections?[section].numberOfObjects ?? 0
+        case .categories:
+            return categories(for: section).count
+        case .tags:
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -131,7 +189,17 @@ extension ExpensesViewController: UITableViewDataSource {
         let expense = fetchController.object(at: indexPath)
         cell.textLabel?.numberOfLines = 0
         cell.textLabel?.lineBreakMode = .byWordWrapping
-        cell.textLabel?.text = "\(expense.amount!)\n\(expense.dateSpent!)\n\(expense.category!)\n\(expense.tags!.joined(separator: ","))"
+        cell.textLabel?.text = {
+            switch filter.displayMode {
+            case .expenses:
+                return "\(AmountFormatter.string(from: expense.amount!)!)\n\(expense.dateSpent!)\n\(expense.category!)\n\(expense.tags!.joined(separator: ","))"
+            case .categories:
+                let data = categories(for: indexPath.section)[indexPath.row]
+                return "\(data.first!.key) : \(AmountFormatter.string(from: data.first!.value)!)"
+            case .tags:
+                return nil
+            }
+        }()
         return cell
     }
     
@@ -161,7 +229,8 @@ extension ExpensesViewController: FilterViewControllerDelegate {
     
     func filterViewController(_ filterViewController: FilterViewController, didSelect filter: Filter) {
         // Do nothing if the filter wasn't changed.
-        guard self.filter != filter
+        guard self.filter != filter,
+            filter.displayMode != .tags
             else {
                 return
         }
@@ -173,10 +242,13 @@ extension ExpensesViewController: FilterViewControllerDelegate {
         
         // Purge the caches.
         totalCache.removeAllObjects()
+        groupCache.removeAllObjects()
         
         // Rebuild the fetch controller.
+        fetchController = ExpensesViewController.makeFetchController(from: filter, firstWeekday: Calendar.current.firstWeekday, context: container.viewContext)
         
         // Reload data.
+        fetchExpenses()
     }
     
 }
