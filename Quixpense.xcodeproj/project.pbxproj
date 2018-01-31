@@ -42,6 +42,9 @@
 		26A02F32201729CE00A5A9D8 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A02F31201729CE00A5A9D8 /* SectionHeaderView.swift */; };
 		26A02F34201729E100A5A9D8 /* SectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26A02F33201729E100A5A9D8 /* SectionHeaderView.xib */; };
 		26A02F3620172A9600A5A9D8 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A02F3520172A9600A5A9D8 /* Palette.swift */; };
+		26A76799202235000032CDAA /* ExpenseEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A76798202235000032CDAA /* ExpenseEditorViewController.swift */; };
+		26A7679D202235130032CDAA /* ExpenseEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A7679C202235130032CDAA /* ExpenseEditorView.swift */; };
+		26A7679F2022352E0032CDAA /* ExpenseEditorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26A7679E2022352E0032CDAA /* ExpenseEditorView.xib */; };
 		26FDC9F020206A2500947A6F /* AmountFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FDC9EF20206A2500947A6F /* AmountFormatter.swift */; };
 /* End PBXBuildFile section */
 
@@ -109,6 +112,9 @@
 		26A02F31201729CE00A5A9D8 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		26A02F33201729E100A5A9D8 /* SectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SectionHeaderView.xib; sourceTree = "<group>"; };
 		26A02F3520172A9600A5A9D8 /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
+		26A76798202235000032CDAA /* ExpenseEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseEditorViewController.swift; sourceTree = "<group>"; };
+		26A7679C202235130032CDAA /* ExpenseEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseEditorView.swift; sourceTree = "<group>"; };
+		26A7679E2022352E0032CDAA /* ExpenseEditorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpenseEditorView.xib; sourceTree = "<group>"; };
 		26FDC9EF20206A2500947A6F /* AmountFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountFormatter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -238,8 +244,19 @@
 				26A02F31201729CE00A5A9D8 /* SectionHeaderView.swift */,
 				26A02F33201729E100A5A9D8 /* SectionHeaderView.xib */,
 				2626F6AF201B3C9B009B7BBB /* FilterViewController.swift */,
+				26A767A0202235350032CDAA /* ExpenseEditor */,
 			);
 			path = Screens;
+			sourceTree = "<group>";
+		};
+		26A767A0202235350032CDAA /* ExpenseEditor */ = {
+			isa = PBXGroup;
+			children = (
+				26A76798202235000032CDAA /* ExpenseEditorViewController.swift */,
+				26A7679C202235130032CDAA /* ExpenseEditorView.swift */,
+				26A7679E2022352E0032CDAA /* ExpenseEditorView.xib */,
+			);
+			path = ExpenseEditor;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -352,6 +369,7 @@
 				26A02F34201729E100A5A9D8 /* SectionHeaderView.xib in Resources */,
 				26761508201478A4002F96F0 /* SetupViewController.xib in Resources */,
 				2624CE332008A2D1002AA811 /* Assets.xcassets in Resources */,
+				26A7679F2022352E0032CDAA /* ExpenseEditorView.xib in Resources */,
 				2624CEE02008B761002AA811 /* README.md in Resources */,
 				2624CEE12008B761002AA811 /* .gitignore in Resources */,
 			);
@@ -373,6 +391,7 @@
 			files = (
 				2624CEE82008B8AA002AA811 /* RawExpense.swift in Sources */,
 				26A02F3620172A9600A5A9D8 /* Palette.swift in Sources */,
+				26A7679D202235130032CDAA /* ExpenseEditorView.swift in Sources */,
 				2624CE2C2008A2D1002AA811 /* AppDelegate.swift in Sources */,
 				2624CE4C2008A447002AA811 /* RootTabBarController.swift in Sources */,
 				2624CEF02008BB80002AA811 /* Classifier.swift in Sources */,
@@ -393,6 +412,7 @@
 				2676151020147E7F002F96F0 /* DefaultsKey.swift in Sources */,
 				2624CE532008AF58002AA811 /* Model.xcdatamodeld in Sources */,
 				2643814B200C2DF900F6DE14 /* ValidateExpense.swift in Sources */,
+				26A76799202235000032CDAA /* ExpenseEditorViewController.swift in Sources */,
 				2624CEEE2008BB70002AA811 /* Period.swift in Sources */,
 				2624CEEC2008BB3D002AA811 /* SectionIdentifier.swift in Sources */,
 				2624CEF22008C05B002AA811 /* DeleteExpense.swift in Sources */,
