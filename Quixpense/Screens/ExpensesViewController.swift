@@ -57,7 +57,6 @@ class ExpensesViewController: UIViewController {
         
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: ViewId.cell.rawValue)
         tableView.register(SectionHeaderView.self, forHeaderFooterViewReuseIdentifier: ViewId.sectionHeader.rawValue)
         
         fetchExpenses()
@@ -224,22 +223,45 @@ extension ExpensesViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ViewId.cell.rawValue, for: indexPath)
-        cell.textLabel?.numberOfLines = 0
-        cell.textLabel?.lineBreakMode = .byWordWrapping
+        let cell: UITableViewCell = {
+            if let existingCell = tableView.dequeueReusableCell(withIdentifier: ViewId.cell.rawValue) {
+                return existingCell
+            }
+            let newCell = UITableViewCell(style: .value1, reuseIdentifier: ViewId.cell.rawValue)
+            newCell.accessoryType = .disclosureIndicator
+            return newCell
+        }()
+        
         cell.textLabel?.text = {
             switch filter.displayMode {
             case .expenses:
                 let expense = fetchController.object(at: indexPath)
-                return "\(AmountFormatter.string(from: expense.amount!)!)\n\(expense.dateSpent!)\n\(expense.category!)\n\(expense.tags!.joined(separator: ","))"
+                return AmountFormatter.string(from: expense.amount!)!
             case .categories:
                 let category = cachedCategoryTotals(for: indexPath.section)[indexPath.row]
-                return "\(category.name) : \(AmountFormatter.string(from: category.total)!)"
+                return AmountFormatter.string(from: category.total)!
             case .tags:
                 let tag = cachedTagTotals(for: indexPath.section)[indexPath.row]
-                return "\(tag.name) : \(AmountFormatter.string(from: tag.total)!)"
+                return AmountFormatter.string(from: tag.total)!
             }
         }()
+        
+        cell.detailTextLabel?.text = {
+            switch filter.displayMode {
+            case .expenses:
+                let expense = fetchController.object(at: indexPath)
+                var description = [expense.category ?? Classifier.category.default]
+                description.append(contentsOf: expense.tags ?? [Classifier.tag.default])
+                return description.joined(separator: ", ")
+            case .categories:
+                let category = cachedCategoryTotals(for: indexPath.section)[indexPath.row]
+                return category.name
+            case .tags:
+                let tag = cachedTagTotals(for: indexPath.section)[indexPath.row]
+                return tag.name
+            }
+        }()
+        
         return cell
     }
     

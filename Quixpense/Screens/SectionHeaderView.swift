@@ -29,7 +29,7 @@ class SectionHeaderView: UITableViewHeaderFooterView {
     
     fileprivate let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.dateStyle = .short
+        formatter.dateStyle = .medium
         formatter.timeStyle = .none
         return formatter
     }()
@@ -54,7 +54,11 @@ class SectionHeaderView: UITableViewHeaderFooterView {
     
     func applyTheme() {
         containerView.backgroundColor = Palette.gray_666666
+        
+        leftLabel.font = .systemFont(ofSize: 14, weight: .semibold)
         leftLabel.textColor = Palette.white
+        
+        rightLabel.font = .systemFont(ofSize: 14, weight: .semibold)
         rightLabel.textColor = Palette.white
     }
     
@@ -63,17 +67,18 @@ class SectionHeaderView: UITableViewHeaderFooterView {
 fileprivate extension SectionHeaderView {
     
     func updateSectionIdentifier() {
+        let displayLabel = rightLabel
         guard let tokens = sectionIdentifier?.components(separatedBy: "-"),
             let startTimeInterval = TimeInterval(tokens[0]),
             let endTimeInterval = TimeInterval(tokens[1])
             else {
-                leftLabel.text = nil
+                displayLabel?.text = nil
                 return
         }
         
         let startDate = Date(timeIntervalSince1970: startTimeInterval)
         let endDate = Date(timeIntervalSince1970: endTimeInterval)
-        leftLabel.text = {
+        displayLabel?.text = {
             if BRDateUtil.isSameDay(date1: startDate, date2: endDate, inCalendar: .current) {
                 return dateFormatter.string(from: startDate)
             }
@@ -84,7 +89,7 @@ fileprivate extension SectionHeaderView {
     }
     
     func updateTotal() {
-        rightLabel.text = {
+        leftLabel.text = {
             if let total = total {
                 return AmountFormatter.string(from: total)
             }
