@@ -44,7 +44,7 @@ extension RootTabBarController: UITabBarControllerDelegate {
     
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         if viewController.title == "Add" {
-            present(UINavigationController(rootViewController: ExpenseEditorViewController()), animated: true, completion: nil)
+            present(FormNavigationController(rootViewController: ExpenseEditorViewController()), animated: true, completion: nil)
             return false
         }
         return true

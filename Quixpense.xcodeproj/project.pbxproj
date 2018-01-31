@@ -45,6 +45,7 @@
 		26A76799202235000032CDAA /* ExpenseEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A76798202235000032CDAA /* ExpenseEditorViewController.swift */; };
 		26A7679D202235130032CDAA /* ExpenseEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A7679C202235130032CDAA /* ExpenseEditorView.swift */; };
 		26A7679F2022352E0032CDAA /* ExpenseEditorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26A7679E2022352E0032CDAA /* ExpenseEditorView.xib */; };
+		26A767A22022558C0032CDAA /* FormNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A767A12022558C0032CDAA /* FormNavigationController.swift */; };
 		26FDC9F020206A2500947A6F /* AmountFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FDC9EF20206A2500947A6F /* AmountFormatter.swift */; };
 /* End PBXBuildFile section */
 
@@ -115,6 +116,7 @@
 		26A76798202235000032CDAA /* ExpenseEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseEditorViewController.swift; sourceTree = "<group>"; };
 		26A7679C202235130032CDAA /* ExpenseEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseEditorView.swift; sourceTree = "<group>"; };
 		26A7679E2022352E0032CDAA /* ExpenseEditorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpenseEditorView.xib; sourceTree = "<group>"; };
+		26A767A12022558C0032CDAA /* FormNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormNavigationController.swift; sourceTree = "<group>"; };
 		26FDC9EF20206A2500947A6F /* AmountFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountFormatter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -255,6 +257,7 @@
 				26A76798202235000032CDAA /* ExpenseEditorViewController.swift */,
 				26A7679C202235130032CDAA /* ExpenseEditorView.swift */,
 				26A7679E2022352E0032CDAA /* ExpenseEditorView.xib */,
+				26A767A12022558C0032CDAA /* FormNavigationController.swift */,
 			);
 			path = ExpenseEditor;
 			sourceTree = "<group>";
@@ -394,6 +397,7 @@
 				26A7679D202235130032CDAA /* ExpenseEditorView.swift in Sources */,
 				2624CE2C2008A2D1002AA811 /* AppDelegate.swift in Sources */,
 				2624CE4C2008A447002AA811 /* RootTabBarController.swift in Sources */,
+				26A767A22022558C0032CDAA /* FormNavigationController.swift in Sources */,
 				2624CEF02008BB80002AA811 /* Classifier.swift in Sources */,
 				26A02F32201729CE00A5A9D8 /* SectionHeaderView.swift in Sources */,
 				2624CEEA2008B8CB002AA811 /* ValidExpense.swift in Sources */,

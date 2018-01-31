@@ -14,14 +14,15 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ExpenseEditorView" customModule="Quixpense" customModuleProvider="target">
             <connections>
                 <outlet property="amountTextField" destination="xld-gh-Zgg" id="5B9-Bd-8Rb"/>
+                <outlet property="stackView" destination="O1t-fX-rpU" id="O9V-r7-a0U"/>
                 <outletCollection property="underlineViews" destination="GB0-0T-7jv" collectionClass="NSMutableArray" id="7k2-lz-QDO"/>
-                <outletCollection property="underlineViews" destination="hYR-mG-Qq5" collectionClass="NSMutableArray" id="JFj-Ad-bhk"/>
-                <outletCollection property="underlineViews" destination="oZw-wd-U4Y" collectionClass="NSMutableArray" id="LBw-E8-8TE"/>
-                <outletCollection property="underlineViews" destination="1PN-ma-WfQ" collectionClass="NSMutableArray" id="QXo-77-oX5"/>
                 <outletCollection property="fieldLabels" destination="XgW-dU-XFJ" collectionClass="NSMutableArray" id="ZIT-ve-TnW"/>
                 <outletCollection property="fieldLabels" destination="Coh-8F-3C3" collectionClass="NSMutableArray" id="2Yq-Vw-6iQ"/>
+                <outletCollection property="underlineViews" destination="hYR-mG-Qq5" collectionClass="NSMutableArray" id="JFj-Ad-bhk"/>
                 <outletCollection property="fieldLabels" destination="4Fs-pa-moT" collectionClass="NSMutableArray" id="blO-yj-a2e"/>
+                <outletCollection property="underlineViews" destination="oZw-wd-U4Y" collectionClass="NSMutableArray" id="LBw-E8-8TE"/>
                 <outletCollection property="fieldLabels" destination="GDw-WS-dnd" collectionClass="NSMutableArray" id="pNR-oi-MKM"/>
+                <outletCollection property="underlineViews" destination="1PN-ma-WfQ" collectionClass="NSMutableArray" id="QXo-77-oX5"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -75,84 +76,79 @@
                                         <constraint firstItem="FVB-nA-tT7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Ne0-xx-7I8" secondAttribute="leading" id="eIA-7a-A3M"/>
                                     </constraints>
                                 </view>
-                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Vlu-kI-uyh">
-                                    <rect key="frame" x="0.0" y="83.5" width="280" height="192.5"/>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="JkL-fs-yg8">
+                                    <rect key="frame" x="0.0" y="83.5" width="280" height="57.5"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="JkL-fs-yg8">
-                                            <rect key="frame" x="0.0" y="0.0" width="280" height="57.5"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Coh-8F-3C3">
-                                                    <rect key="frame" x="0.0" y="0.0" width="280" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U26-J1-Mjo" customClass="BRLabelButton" customModule="Bedrock">
-                                                    <rect key="frame" x="0.0" y="20.5" width="280" height="36"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="36" id="8wo-Yb-H33"/>
-                                                    </constraints>
-                                                </view>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hYR-mG-Qq5">
-                                                    <rect key="frame" x="0.0" y="56.5" width="280" height="1"/>
-                                                    <color key="backgroundColor" red="1" green="0.3294117647" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="1" id="E9y-Ya-jFl"/>
-                                                    </constraints>
-                                                </view>
-                                            </subviews>
-                                        </stackView>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="DgZ-sh-0OH">
-                                            <rect key="frame" x="0.0" y="67.5" width="280" height="57.5"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Fs-pa-moT">
-                                                    <rect key="frame" x="0.0" y="0.0" width="280" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7xf-wz-hkL" customClass="BRLabelButton" customModule="Bedrock">
-                                                    <rect key="frame" x="0.0" y="20.5" width="280" height="36"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="36" id="5mO-0y-rAN"/>
-                                                    </constraints>
-                                                </view>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oZw-wd-U4Y">
-                                                    <rect key="frame" x="0.0" y="56.5" width="280" height="1"/>
-                                                    <color key="backgroundColor" red="1" green="0.3294117647" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="1" id="cM3-nP-j2k"/>
-                                                    </constraints>
-                                                </view>
-                                            </subviews>
-                                        </stackView>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Ba2-JI-Gzg">
-                                            <rect key="frame" x="0.0" y="135" width="280" height="57.5"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GDw-WS-dnd">
-                                                    <rect key="frame" x="0.0" y="0.0" width="280" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VkA-UG-thk" customClass="BRLabelButton" customModule="Bedrock">
-                                                    <rect key="frame" x="0.0" y="20.5" width="280" height="36"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="36" id="h7W-fN-HoE"/>
-                                                    </constraints>
-                                                </view>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1PN-ma-WfQ">
-                                                    <rect key="frame" x="0.0" y="56.5" width="280" height="1"/>
-                                                    <color key="backgroundColor" red="1" green="0.3294117647" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="1" id="a77-qs-E00"/>
-                                                    </constraints>
-                                                </view>
-                                            </subviews>
-                                        </stackView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Coh-8F-3C3">
+                                            <rect key="frame" x="0.0" y="0.0" width="280" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U26-J1-Mjo" customClass="BRLabelButton" customModule="Bedrock">
+                                            <rect key="frame" x="0.0" y="20.5" width="280" height="36"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="36" id="8wo-Yb-H33"/>
+                                            </constraints>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hYR-mG-Qq5">
+                                            <rect key="frame" x="0.0" y="56.5" width="280" height="1"/>
+                                            <color key="backgroundColor" red="1" green="0.3294117647" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="1" id="E9y-Ya-jFl"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                </stackView>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="DgZ-sh-0OH">
+                                    <rect key="frame" x="0.0" y="151" width="280" height="57.5"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Fs-pa-moT">
+                                            <rect key="frame" x="0.0" y="0.0" width="280" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7xf-wz-hkL" customClass="BRLabelButton" customModule="Bedrock">
+                                            <rect key="frame" x="0.0" y="20.5" width="280" height="36"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="36" id="5mO-0y-rAN"/>
+                                            </constraints>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oZw-wd-U4Y">
+                                            <rect key="frame" x="0.0" y="56.5" width="280" height="1"/>
+                                            <color key="backgroundColor" red="1" green="0.3294117647" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="1" id="cM3-nP-j2k"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                </stackView>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Ba2-JI-Gzg">
+                                    <rect key="frame" x="0.0" y="218.5" width="280" height="57.5"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GDw-WS-dnd">
+                                            <rect key="frame" x="0.0" y="0.0" width="280" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VkA-UG-thk" customClass="BRLabelButton" customModule="Bedrock">
+                                            <rect key="frame" x="0.0" y="20.5" width="280" height="36"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="36" id="h7W-fN-HoE"/>
+                                            </constraints>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1PN-ma-WfQ">
+                                            <rect key="frame" x="0.0" y="56.5" width="280" height="1"/>
+                                            <color key="backgroundColor" red="1" green="0.3294117647" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="1" id="a77-qs-E00"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
                                 </stackView>
                             </subviews>

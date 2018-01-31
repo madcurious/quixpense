@@ -10,12 +10,13 @@ import UIKit
 
 class ExpenseEditorView: UIView {
     
+    @IBOutlet weak var stackView: UIStackView!
     @IBOutlet var underlineViews: [UIView]!
     @IBOutlet weak var amountTextField: UITextField!
     @IBOutlet var fieldLabels: [UILabel]!
     
     let fieldLabelTexts = [
-        "PHP",
+        Locale.current.currencyCode ?? "AMOUNT",
         "DATE",
         "CATEGORY",
         "TAGS"
@@ -45,6 +46,10 @@ class ExpenseEditorView: UIView {
         
         amountTextField.keyboardType = .decimalPad
         amountTextField.textAlignment = .center
+        
+        if UIScreen.main.nativeSize.height > 568 {
+            stackView.spacing = 20
+        }
     }
     
     func applyTheme() {
