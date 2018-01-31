@@ -17,7 +17,10 @@ class ExpensesViewController: UIViewController {
     let loadableView = BRDefaultLoadableView(frame: .zero)
     let tableView = UITableView(frame: .zero, style: .plain)
     let totalCache = NSCache<NSString, NSDecimalNumber>()
-    let groupCache = NSCache<NSString, NSArray>() // NSCache<String, [[String : NSDecimalNumber]]>
+    
+    // The cache used as the data source when the filter displays classifiers (categories or tags).
+    // The key is the section name, and the array contains the classifiers and their totals.
+    let groupCache = NSCache<NSString, NSArray>()
     
     let filterButton = BRLabelButton(frame: .zero)
     var filter = Filter.default
@@ -81,7 +84,7 @@ fileprivate extension ExpensesViewController {
         }
     }
     
-    func total(for section: Int) -> NSDecimalNumber {
+    func cachedTotal(for section: Int) -> NSDecimalNumber {
         guard let sectionName = fetchController.sections?[section].name as NSString?
             else {
                 return .zero
@@ -103,30 +106,66 @@ fileprivate extension ExpensesViewController {
         return total
     }
     
-    func categories(for section: Int) -> [[String : NSDecimalNumber]] {
+    func cachedCategoryTotals(for section: Int) -> [(name: String, total: NSDecimalNumber)] {
         guard let sectionName = fetchController.sections?[section].name as NSString?
             else {
                 return []
         }
-        
-        if let existing = groupCache.object(forKey: sectionName) {
-            let categories = existing.flatMap({ $0 as? [String : NSDecimalNumber] })
-            return categories
+        // If there's an existing array of totals, return it.
+        if let existing = groupCache.object(forKey: sectionName) as? [(String, NSDecimalNumber)] {
+            return existing
         }
         
-        let categories: [[String : NSDecimalNumber]] = {
+        // Otherwise, compute for the totals, cache it, then return it.
+        let categoryTotals: [(String, NSDecimalNumber)] = {
             guard let expenses = fetchController.sections?[section].objects as? [Expense]
                 else {
                     return []
             }
-            let categoryNameAndExpenses = Dictionary(grouping: expenses, by: { $0.category! })
-            let categoryNameAndTotal: [[String : NSDecimalNumber]] = categoryNameAndExpenses.flatMap({ (categoryName, expenses) in
-                return [categoryName : expenses.reduce(NSDecimalNumber.zero, {$0.adding($1.amount ?? .zero)})]
-            })
-            return categoryNameAndTotal.sorted(by: { $0.first!.value > $1.first!.value })
+            let groupingByCategory = Dictionary(grouping: expenses, by: { $0.category ?? Classifier.category.default })
+            let categoryTotals = groupingByCategory
+                .flatMap({ ($0.key, $0.value.reduce(NSDecimalNumber.zero, {$0.adding($1.amount ?? .zero)})) })
+                .sorted(by: { $0.1 > $1.1 })
+            return categoryTotals
         }()
-        groupCache.setObject(categories as NSArray, forKey: sectionName)
-        return categories
+        groupCache.setObject(categoryTotals as NSArray, forKey: sectionName)
+        return categoryTotals
+    }
+    
+    func cachedTagTotals(for section: Int) -> [(name: String, total: NSDecimalNumber)] {
+        guard let sectionName = fetchController.sections?[section].name as NSString?
+            else {
+                return []
+        }
+        // If there's an existing array of totals, return it.
+        if let existing = groupCache.object(forKey: sectionName) as? [(String, NSDecimalNumber)] {
+            return existing
+        }
+        
+        // Otherwise, compute for the totals, cache it, then return it.
+        let tagTotals: [(String, NSDecimalNumber)] = {
+            guard let expenses = fetchController.sections?[section].objects as? [Expense]
+                else {
+                    return []
+            }
+            var groupingByTag = [String : Set<Expense>]()
+            for expense in expenses {
+                let tags = expense.tags ?? [Classifier.tag.default]
+                for tag in tags {
+                    if var existingSet = groupingByTag[tag] {
+                        existingSet.insert(expense)
+                    } else {
+                        groupingByTag[tag] = Set([expense])
+                    }
+                }
+            }
+            let tagTotals = groupingByTag
+                .flatMap({ ($0.key, $0.value.reduce(NSDecimalNumber.zero, {$0.adding($1.amount ?? .zero)})) })
+                .sorted(by: { $0.1 > $1.1 })
+            return tagTotals
+        }()
+        groupCache.setObject(tagTotals as NSArray, forKey: sectionName)
+        return tagTotals
     }
     
     class func makeFetchController(from filter: Filter, firstWeekday: Int, context: NSManagedObjectContext) -> NSFetchedResultsController<Expense> {
@@ -178,26 +217,27 @@ extension ExpensesViewController: UITableViewDataSource {
         case .expenses:
             return fetchController.sections?[section].numberOfObjects ?? 0
         case .categories:
-            return categories(for: section).count
+            return cachedCategoryTotals(for: section).count
         case .tags:
-            return 0
+            return cachedTagTotals(for: section).count
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ViewId.cell.rawValue, for: indexPath)
-        let expense = fetchController.object(at: indexPath)
         cell.textLabel?.numberOfLines = 0
         cell.textLabel?.lineBreakMode = .byWordWrapping
         cell.textLabel?.text = {
             switch filter.displayMode {
             case .expenses:
+                let expense = fetchController.object(at: indexPath)
                 return "\(AmountFormatter.string(from: expense.amount!)!)\n\(expense.dateSpent!)\n\(expense.category!)\n\(expense.tags!.joined(separator: ","))"
             case .categories:
-                let data = categories(for: indexPath.section)[indexPath.row]
-                return "\(data.first!.key) : \(AmountFormatter.string(from: data.first!.value)!)"
+                let category = cachedCategoryTotals(for: indexPath.section)[indexPath.row]
+                return "\(category.name) : \(AmountFormatter.string(from: category.total)!)"
             case .tags:
-                return nil
+                let tag = cachedTagTotals(for: indexPath.section)[indexPath.row]
+                return "\(tag.name) : \(AmountFormatter.string(from: tag.total)!)"
             }
         }()
         return cell
@@ -218,7 +258,7 @@ extension ExpensesViewController: UITableViewDelegate {
                 return nil
         }
         view.sectionIdentifier = fetchController.sections?[section].name
-        view.total = total(for: section)
+        view.total = cachedTotal(for: section)
         return view
     }
     
@@ -229,8 +269,7 @@ extension ExpensesViewController: FilterViewControllerDelegate {
     
     func filterViewController(_ filterViewController: FilterViewController, didSelect filter: Filter) {
         // Do nothing if the filter wasn't changed.
-        guard self.filter != filter,
-            filter.displayMode != .tags
+        guard self.filter != filter
             else {
                 return
         }

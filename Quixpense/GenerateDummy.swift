@@ -22,7 +22,7 @@ class GenerateDummy: BROperation<Bool, Error> {
         "Travel",
         "Clothing",
         "Medical",
-        Classifier.default
+        Classifier.category.default
     ]
     
     let tags = [
@@ -69,7 +69,7 @@ class GenerateDummy: BROperation<Bool, Error> {
                 let tags: [String] = {
                     let noTags = arc4random_uniform(3) == 1
                     if noTags {
-                        return [Classifier.default]
+                        return [Classifier.tag.default]
                     } else {
                         let numberOfTags = 1 + Int(arc4random_uniform(UInt32(self.tags.count - 1)))
                         var chosenTags: [String] = []

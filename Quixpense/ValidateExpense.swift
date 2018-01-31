@@ -61,13 +61,13 @@ class ValidateExpense: BROperation<ValidExpense, Error> {
             return
         }
         
-        let category = rawExpense.category ?? Classifier.default
+        let category = rawExpense.category ?? Classifier.category.default
         let tags: [String] = {
             if let tags = rawExpense.tags?.filter({ $0.trim().isEmpty == false }),
                 tags.isEmpty == false {
                 return tags
             }
-            return [Classifier.default]
+            return [Classifier.tag.default]
         }()
         let validExpense = ValidExpense(amount: amountNumber,
                                         dateSpent: rawExpense.dateSpent,

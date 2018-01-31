@@ -12,6 +12,11 @@ enum Classifier {
     
     case category, tag
     
-    static let `default` = "None"
+    var `default`: String {
+        if self == .category {
+            return "Uncategorized"
+        }
+        return "Untagged"
+    }
     
 }
