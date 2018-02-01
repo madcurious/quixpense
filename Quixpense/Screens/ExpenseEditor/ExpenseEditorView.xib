@@ -14,7 +14,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ExpenseEditorView" customModule="Quixpense" customModuleProvider="target">
             <connections>
                 <outlet property="amountTextField" destination="xld-gh-Zgg" id="5B9-Bd-8Rb"/>
+                <outlet property="categoryButton" destination="7xf-wz-hkL" id="MzS-OV-xAX"/>
+                <outlet property="dateButton" destination="U26-J1-Mjo" id="gm1-Cp-4Bb"/>
                 <outlet property="stackView" destination="O1t-fX-rpU" id="O9V-r7-a0U"/>
+                <outlet property="tagsButton" destination="1PN-ma-WfQ" id="Yym-1K-f4a"/>
                 <outletCollection property="underlineViews" destination="GB0-0T-7jv" collectionClass="NSMutableArray" id="7k2-lz-QDO"/>
                 <outletCollection property="fieldLabels" destination="XgW-dU-XFJ" collectionClass="NSMutableArray" id="ZIT-ve-TnW"/>
                 <outletCollection property="fieldLabels" destination="Coh-8F-3C3" collectionClass="NSMutableArray" id="2Yq-Vw-6iQ"/>
@@ -40,16 +43,16 @@
                                     <rect key="frame" x="0.0" y="0.0" width="280" height="73.5"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="FVB-nA-tT7">
-                                            <rect key="frame" x="44" y="0.0" width="192" height="73.5"/>
+                                            <rect key="frame" x="20" y="0.0" width="240" height="73.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XgW-dU-XFJ">
-                                                    <rect key="frame" x="0.0" y="0.0" width="192" height="20.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xld-gh-Zgg">
-                                                    <rect key="frame" x="0.0" y="24.5" width="192" height="44"/>
+                                                    <rect key="frame" x="0.0" y="24.5" width="240" height="44"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="44" id="LA0-fs-58M"/>
                                                     </constraints>
@@ -58,7 +61,7 @@
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GB0-0T-7jv">
-                                                    <rect key="frame" x="0.0" y="72.5" width="192" height="1"/>
+                                                    <rect key="frame" x="0.0" y="72.5" width="240" height="1"/>
                                                     <color key="backgroundColor" red="1" green="0.22098938130000001" blue="0.20376318839999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="cLd-KQ-N5U"/>
@@ -71,9 +74,8 @@
                                     <constraints>
                                         <constraint firstItem="FVB-nA-tT7" firstAttribute="top" secondItem="Ne0-xx-7I8" secondAttribute="top" id="LKt-yQ-UeP"/>
                                         <constraint firstAttribute="bottom" secondItem="FVB-nA-tT7" secondAttribute="bottom" id="Ma4-1l-MUf"/>
-                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="FVB-nA-tT7" secondAttribute="trailing" id="YFA-ll-4sR"/>
-                                        <constraint firstItem="FVB-nA-tT7" firstAttribute="centerX" secondItem="Ne0-xx-7I8" secondAttribute="centerX" id="bxx-0K-OI7"/>
-                                        <constraint firstItem="FVB-nA-tT7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Ne0-xx-7I8" secondAttribute="leading" id="eIA-7a-A3M"/>
+                                        <constraint firstAttribute="trailing" secondItem="FVB-nA-tT7" secondAttribute="trailing" constant="20" id="YFA-ll-4sR"/>
+                                        <constraint firstItem="FVB-nA-tT7" firstAttribute="leading" secondItem="Ne0-xx-7I8" secondAttribute="leading" constant="20" id="eIA-7a-A3M"/>
                                     </constraints>
                                 </view>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="JkL-fs-yg8">
@@ -168,7 +170,6 @@
             <constraints>
                 <constraint firstItem="bq4-tH-vUd" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="Z0k-ay-CSv"/>
                 <constraint firstItem="bq4-tH-vUd" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="ZSU-Ka-W7q"/>
-                <constraint firstItem="FVB-nA-tT7" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="3:5" id="Zwc-A8-xYZ"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="bq4-tH-vUd" secondAttribute="trailing" id="u2P-xJ-4kI"/>
                 <constraint firstItem="bq4-tH-vUd" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="1:2" id="yzy-RV-rNs"/>
             </constraints>

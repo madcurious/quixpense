@@ -20,6 +20,8 @@ class ExpenseEditorViewController: UIViewController {
         super.viewDidLoad()
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(handleTapOnCancelButton))
         navigationItem.title = "Add Expense"
+        
+        editorView.dateButton.addTarget(self, action: #selector(handleTapOnDateButton), for: .touchUpInside)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -33,6 +35,10 @@ class ExpenseEditorViewController: UIViewController {
     
     func handleTapOnCancelButton() {
         dismiss(animated: true, completion: nil)
+    }
+    
+    func handleTapOnDateButton() {
+        DatePickerViewController.present(from: self)
     }
     
 }

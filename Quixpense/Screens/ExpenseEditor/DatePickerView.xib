@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DatePickerView" customModule="Quixpense" customModuleProvider="target">
+            <connections>
+                <outlet property="cancelBarButtonItem" destination="tV3-VX-22x" id="MKP-O1-2e0"/>
+                <outlet property="currentBarButtonItem" destination="0oL-Fn-xwe" id="8vH-U1-gxe"/>
+                <outlet property="dimView" destination="zKN-5a-UaC" id="VNx-Xr-rcU"/>
+                <outlet property="doneBarButtonItem" destination="Aqs-CK-zrW" id="R5q-hk-jpg"/>
+                <outlet property="pickerContainerView" destination="PFC-L4-NZg" id="5vf-I2-vd2"/>
+                <outlet property="pickerView" destination="5me-GW-AJX" id="ih9-h9-qpD"/>
+                <outlet property="stackView" destination="KaS-Qf-xnx" id="NIe-WO-rJI"/>
+                <outlet property="stackViewBottom" destination="5FT-K6-khN" id="J0t-L4-0py"/>
+                <outlet property="toolBar" destination="kve-4y-mwY" id="Wcu-nk-Is5"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zKN-5a-UaC">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="KaS-Qf-xnx">
+                    <rect key="frame" x="0.0" y="399" width="375" height="268"/>
+                    <subviews>
+                        <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kve-4y-mwY">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <items>
+                                <barButtonItem style="plain" systemItem="cancel" id="tV3-VX-22x"/>
+                                <barButtonItem title="Current" style="plain" id="0oL-Fn-xwe"/>
+                                <barButtonItem systemItem="flexibleSpace" id="nbs-Cs-mbd"/>
+                                <barButtonItem style="done" systemItem="done" id="Aqs-CK-zrW"/>
+                            </items>
+                        </toolbar>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PFC-L4-NZg">
+                            <rect key="frame" x="0.0" y="44" width="375" height="224"/>
+                            <subviews>
+                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="5me-GW-AJX">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="224"/>
+                                    <date key="date" timeIntervalSinceReferenceDate="539170024.97065198">
+                                        <!--2018-02-01 09:27:04 +0000-->
+                                    </date>
+                                </datePicker>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="5me-GW-AJX" firstAttribute="top" secondItem="PFC-L4-NZg" secondAttribute="top" id="N7u-UQ-ICq"/>
+                                <constraint firstItem="5me-GW-AJX" firstAttribute="bottom" secondItem="ogV-rl-NuE" secondAttribute="bottom" id="fFi-fs-15B"/>
+                                <constraint firstAttribute="trailing" secondItem="5me-GW-AJX" secondAttribute="trailing" id="sNX-H8-GFD"/>
+                                <constraint firstItem="5me-GW-AJX" firstAttribute="leading" secondItem="PFC-L4-NZg" secondAttribute="leading" id="son-Vf-Y2P"/>
+                            </constraints>
+                            <viewLayoutGuide key="safeArea" id="ogV-rl-NuE"/>
+                        </view>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="KaS-Qf-xnx" secondAttribute="bottom" id="5FT-K6-khN"/>
+                <constraint firstAttribute="bottom" secondItem="zKN-5a-UaC" secondAttribute="bottom" id="PmH-VO-pgh"/>
+                <constraint firstAttribute="trailing" secondItem="KaS-Qf-xnx" secondAttribute="trailing" id="Wz6-eS-vVx"/>
+                <constraint firstAttribute="trailing" secondItem="zKN-5a-UaC" secondAttribute="trailing" id="cKD-qV-39P"/>
+                <constraint firstItem="zKN-5a-UaC" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="epg-d6-Y47"/>
+                <constraint firstItem="KaS-Qf-xnx" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="hiC-Xg-dzb"/>
+                <constraint firstItem="zKN-5a-UaC" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="sDH-QL-Eet"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+        </view>
+    </objects>
+</document>

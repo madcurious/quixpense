@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Bedrock
 
 class ExpenseEditorView: UIView {
     
@@ -14,6 +15,10 @@ class ExpenseEditorView: UIView {
     @IBOutlet var underlineViews: [UIView]!
     @IBOutlet weak var amountTextField: UITextField!
     @IBOutlet var fieldLabels: [UILabel]!
+    
+    @IBOutlet weak var dateButton: BRLabelButton!
+    @IBOutlet weak var categoryButton: BRLabelButton!
+    @IBOutlet weak var tagsButton: UIView!
     
     let fieldLabelTexts = [
         Locale.current.currencyCode ?? "AMOUNT",
@@ -63,7 +68,7 @@ class ExpenseEditorView: UIView {
             $0.textColor = Palette.gray_aaaaaa
         }
         
-        amountTextField.font = .systemFont(ofSize: 26, weight: .semibold)
+        amountTextField.font = .systemFont(ofSize: 30, weight: .semibold)
         
         underlineViews.forEach {
             $0.backgroundColor = .hex(0xeeeeee)
