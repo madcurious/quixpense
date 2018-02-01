@@ -35,6 +35,7 @@
 		2643814E200C329A00F6DE14 /* CoreDataTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2643814D200C329A00F6DE14 /* CoreDataTest.swift */; };
 		26438153200C3EBA00F6DE14 /* GenerateDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26438152200C3EBA00F6DE14 /* GenerateDummy.swift */; };
 		264E14FF2023145400CBEC4F /* DatePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 264E14FE2023145400CBEC4F /* DatePickerView.xib */; };
+		264E150120231FE900CBEC4F /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264E150020231FE900CBEC4F /* DateUtil.swift */; };
 		2676150620147854002F96F0 /* SetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2676150520147854002F96F0 /* SetupViewController.swift */; };
 		26761508201478A4002F96F0 /* SetupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26761507201478A4002F96F0 /* SetupViewController.xib */; };
 		2676150C20147B5C002F96F0 /* SetupApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2676150B20147B5C002F96F0 /* SetupApp.swift */; };
@@ -109,6 +110,7 @@
 		2643814D200C329A00F6DE14 /* CoreDataTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataTest.swift; sourceTree = "<group>"; };
 		26438152200C3EBA00F6DE14 /* GenerateDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateDummy.swift; sourceTree = "<group>"; };
 		264E14FE2023145400CBEC4F /* DatePickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DatePickerView.xib; sourceTree = "<group>"; };
+		264E150020231FE900CBEC4F /* DateUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtil.swift; sourceTree = "<group>"; };
 		2676150520147854002F96F0 /* SetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupViewController.swift; sourceTree = "<group>"; };
 		26761507201478A4002F96F0 /* SetupViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SetupViewController.xib; sourceTree = "<group>"; };
 		2676150B20147B5C002F96F0 /* SetupApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupApp.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 				26A02F3520172A9600A5A9D8 /* Palette.swift */,
 				2626F6B5201B3E79009B7BBB /* Filter.swift */,
 				26FDC9EF20206A2500947A6F /* AmountFormatter.swift */,
+				264E150020231FE900CBEC4F /* DateUtil.swift */,
 			);
 			path = Quixpense;
 			sourceTree = "<group>";
@@ -423,6 +426,7 @@
 				2624CE562008B094002AA811 /* Expense+CoreDataClass.swift in Sources */,
 				26A02F2E2015F26000A5A9D8 /* UpdateSections.swift in Sources */,
 				2676150620147854002F96F0 /* SetupViewController.swift in Sources */,
+				264E150120231FE900CBEC4F /* DateUtil.swift in Sources */,
 				26FDC9F020206A2500947A6F /* AmountFormatter.swift in Sources */,
 				2624CE502008A5A3002AA811 /* ExpensesViewController.swift in Sources */,
 				2676151020147E7F002F96F0 /* DefaultsKey.swift in Sources */,

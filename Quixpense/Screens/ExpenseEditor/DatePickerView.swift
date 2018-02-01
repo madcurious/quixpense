@@ -39,7 +39,7 @@ class DatePickerView: UIView {
         viewFromNib.performRecursively { $0.backgroundColor = .clear }
         addSubviewAndFill(viewFromNib)
         
-        toolBar.isTranslucent = false
+        toolBar.isTranslucent = true
     }
     
     func applyTheme() {

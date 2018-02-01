@@ -38,7 +38,9 @@ class ExpenseEditorViewController: UIViewController {
     }
     
     func handleTapOnDateButton() {
-        DatePickerViewController.present(from: self)
+        DatePickerViewController.present(from: self, initialSelection: Date()) { (selectedDate) in
+            self.editorView.dateButton.titleLabel.text = DateUtil.stringForExpenseEditor(for: selectedDate)
+        }
     }
     
 }

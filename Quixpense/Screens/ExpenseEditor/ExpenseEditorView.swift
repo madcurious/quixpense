@@ -18,7 +18,7 @@ class ExpenseEditorView: UIView {
     
     @IBOutlet weak var dateButton: BRLabelButton!
     @IBOutlet weak var categoryButton: BRLabelButton!
-    @IBOutlet weak var tagsButton: UIView!
+    @IBOutlet weak var tagsButton: BRLabelButton!
     
     let fieldLabelTexts = [
         Locale.current.currencyCode ?? "AMOUNT",
