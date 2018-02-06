@@ -7,7 +7,6 @@
         <attribute name="dateSpent" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="daySectionId" attributeType="String" syncable="YES"/>
         <attribute name="monthSectionId" attributeType="String" syncable="YES"/>
-        <attribute name="tags" attributeType="Transformable" customClassName="[String]" syncable="YES"/>
         <attribute name="weekSectionIdMonday" attributeType="String" syncable="YES"/>
         <attribute name="weekSectionIdSaturday" attributeType="String" syncable="YES"/>
         <attribute name="weekSectionIdSunday" attributeType="String" syncable="YES"/>
@@ -21,7 +20,7 @@
         </fetchIndex>
     </entity>
     <elements>
-        <element name="Expense" positionX="-63" positionY="-18" width="128" height="210"/>
+        <element name="Expense" positionX="-63" positionY="-18" width="128" height="195"/>
         <element name="Tag" positionX="-63" positionY="54" width="128" height="75"/>
     </elements>
 </model>

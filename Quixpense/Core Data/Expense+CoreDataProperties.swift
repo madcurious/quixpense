@@ -23,7 +23,6 @@ extension Expense {
     @NSManaged public var dateSpent: NSDate?
     @NSManaged public var daySectionId: String?
     @NSManaged public var monthSectionId: String?
-    @NSManaged public var tags: [String]?
     @NSManaged public var weekSectionIdMonday: String?
     @NSManaged public var weekSectionIdSaturday: String?
     @NSManaged public var weekSectionIdSunday: String?

@@ -40,6 +40,7 @@
 		26761508201478A4002F96F0 /* SetupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26761507201478A4002F96F0 /* SetupViewController.xib */; };
 		2676150C20147B5C002F96F0 /* SetupApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2676150B20147B5C002F96F0 /* SetupApp.swift */; };
 		2676151020147E7F002F96F0 /* DefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2676150F20147E7F002F96F0 /* DefaultsKey.swift */; };
+		268589FA2029BC29006B1D3D /* Expense+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268589F92029BC29006B1D3D /* Expense+Extensions.swift */; };
 		2694A549202438DB0099C22C /* CategoryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2694A548202438DB0099C22C /* CategoryPickerViewController.swift */; };
 		26A02F2E2015F26000A5A9D8 /* UpdateSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A02F2D2015F26000A5A9D8 /* UpdateSections.swift */; };
 		26A02F32201729CE00A5A9D8 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A02F31201729CE00A5A9D8 /* SectionHeaderView.swift */; };
@@ -119,6 +120,7 @@
 		26761507201478A4002F96F0 /* SetupViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SetupViewController.xib; sourceTree = "<group>"; };
 		2676150B20147B5C002F96F0 /* SetupApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupApp.swift; sourceTree = "<group>"; };
 		2676150F20147E7F002F96F0 /* DefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsKey.swift; sourceTree = "<group>"; };
+		268589F92029BC29006B1D3D /* Expense+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Expense+Extensions.swift"; sourceTree = "<group>"; };
 		2694A548202438DB0099C22C /* CategoryPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPickerViewController.swift; sourceTree = "<group>"; };
 		26A02F2D2015F26000A5A9D8 /* UpdateSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateSections.swift; sourceTree = "<group>"; };
 		26A02F31201729CE00A5A9D8 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 				2624CE542008B094002AA811 /* Expense+CoreDataClass.swift */,
 				2624CE552008B094002AA811 /* Expense+CoreDataProperties.swift */,
 				2624CE512008AF58002AA811 /* Model.xcdatamodeld */,
+				268589F92029BC29006B1D3D /* Expense+Extensions.swift */,
 			);
 			path = "Core Data";
 			sourceTree = "<group>";
@@ -427,6 +430,7 @@
 				2624CEF02008BB80002AA811 /* Classifier.swift in Sources */,
 				26FAA3C62029B7E600C4CFDE /* TagPickerViewController.swift in Sources */,
 				26A767A4202310FB0032CDAA /* DatePickerViewController.swift in Sources */,
+				268589FA2029BC29006B1D3D /* Expense+Extensions.swift in Sources */,
 				26A02F32201729CE00A5A9D8 /* SectionHeaderView.swift in Sources */,
 				2624CEEA2008B8CB002AA811 /* ValidExpense.swift in Sources */,
 				2626F6B0201B3C9B009B7BBB /* FilterViewController.swift in Sources */,

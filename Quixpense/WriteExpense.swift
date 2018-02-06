@@ -42,7 +42,7 @@ class WriteExpense: BROperation<NSManagedObjectID, Error> {
             expense.amount = data.amount
             expense.dateSpent = data.dateSpent as NSDate
             expense.category = data.category
-            expense.tags = data.tags
+            
             for (key, value) in SectionIdentifier.makeAll(for: data.dateSpent) {
                 expense.setValue(value, forKey: key)
             }
