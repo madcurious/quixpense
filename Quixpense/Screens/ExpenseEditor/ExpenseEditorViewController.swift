@@ -37,6 +37,7 @@ class ExpenseEditorViewController: UIViewController {
         editorView.dateButton.text = DateUtil.stringForExpenseEditor(for: rawExpense.dateSpent)
         editorView.dateButton.addTarget(self, action: #selector(handleTapOnDateButton), for: .touchUpInside)
         editorView.categoryButton.addTarget(self, action: #selector(handleTapOnCategoryButton), for: .touchUpInside)
+        editorView.tagsButton.addTarget(self, action: #selector(handleTapOnTagsButton), for: .touchUpInside)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -62,6 +63,11 @@ class ExpenseEditorViewController: UIViewController {
     func handleTapOnCategoryButton() {
         let categoryPicker = CategoryPickerViewController(viewContext: container.viewContext, initialSelection: nil)
         navigationController?.pushViewController(categoryPicker, animated: true)
+    }
+    
+    func handleTapOnTagsButton() {
+        let tagPicker = TagPickerViewController(viewContext: container.viewContext)
+        navigationController?.pushViewController(tagPicker, animated: true)
     }
     
 }

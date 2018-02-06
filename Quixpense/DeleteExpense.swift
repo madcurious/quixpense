@@ -23,8 +23,20 @@ class DeleteExpense: BROperation<Bool, Error> {
     
     override func main() {
         do {
-            if let expense = context.object(with: objectId) as? Expense {
+            if let expense = context.object(with: objectId) as? Expense,
+                let tags = expense.tagRefs as? Set<Tag> {
                 context.delete(expense)
+                
+                // Delete the tag if it it is not the default tag and no longer has expenses.
+                for tag in tags {
+                    guard tag.name != Classifier.tag.default &&
+                        (tag.expenses == nil || tag.expenses?.count == 0)
+                        else {
+                            continue
+                    }
+                    context.delete(tag)
+                }
+                
                 try context.saveToStore()
             }
             result = .success(true)

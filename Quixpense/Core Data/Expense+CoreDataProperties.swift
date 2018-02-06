@@ -2,7 +2,7 @@
 //  Expense+CoreDataProperties.swift
 //  Quixpense
 //
-//  Created by Matt Quiros on 21/01/2018.
+//  Created by Matt Quiros on 06/02/2018.
 //  Copyright © 2018 Matt Quiros. All rights reserved.
 //
 //
@@ -24,8 +24,26 @@ extension Expense {
     @NSManaged public var daySectionId: String?
     @NSManaged public var monthSectionId: String?
     @NSManaged public var tags: [String]?
-    @NSManaged public var weekSectionIdSunday: String?
     @NSManaged public var weekSectionIdMonday: String?
     @NSManaged public var weekSectionIdSaturday: String?
+    @NSManaged public var weekSectionIdSunday: String?
+    @NSManaged public var tagRefs: NSSet?
+
+}
+
+// MARK: Generated accessors for tagRefs
+extension Expense {
+
+    @objc(addTagRefsObject:)
+    @NSManaged public func addToTagRefs(_ value: Tag)
+
+    @objc(removeTagRefsObject:)
+    @NSManaged public func removeFromTagRefs(_ value: Tag)
+
+    @objc(addTagRefs:)
+    @NSManaged public func addToTagRefs(_ values: NSSet)
+
+    @objc(removeTagRefs:)
+    @NSManaged public func removeFromTagRefs(_ values: NSSet)
 
 }

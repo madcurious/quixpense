@@ -51,6 +51,9 @@
 		26A767A22022558C0032CDAA /* FormNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A767A12022558C0032CDAA /* FormNavigationController.swift */; };
 		26A767A4202310FB0032CDAA /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A767A3202310FB0032CDAA /* DatePickerViewController.swift */; };
 		26A767A8202311290032CDAA /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A767A7202311290032CDAA /* DatePickerView.swift */; };
+		26FAA3C12029B27B00C4CFDE /* Tag+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FAA3BF2029B27B00C4CFDE /* Tag+CoreDataClass.swift */; };
+		26FAA3C22029B27B00C4CFDE /* Tag+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FAA3C02029B27B00C4CFDE /* Tag+CoreDataProperties.swift */; };
+		26FAA3C62029B7E600C4CFDE /* TagPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FAA3C52029B7E600C4CFDE /* TagPickerViewController.swift */; };
 		26FDC9F020206A2500947A6F /* AmountFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FDC9EF20206A2500947A6F /* AmountFormatter.swift */; };
 /* End PBXBuildFile section */
 
@@ -127,6 +130,9 @@
 		26A767A12022558C0032CDAA /* FormNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormNavigationController.swift; sourceTree = "<group>"; };
 		26A767A3202310FB0032CDAA /* DatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
 		26A767A7202311290032CDAA /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
+		26FAA3BF2029B27B00C4CFDE /* Tag+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tag+CoreDataClass.swift"; sourceTree = "<group>"; };
+		26FAA3C02029B27B00C4CFDE /* Tag+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tag+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		26FAA3C52029B7E600C4CFDE /* TagPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagPickerViewController.swift; sourceTree = "<group>"; };
 		26FDC9EF20206A2500947A6F /* AmountFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountFormatter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -212,6 +218,8 @@
 		2624CE582008B09C002AA811 /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
+				26FAA3BF2029B27B00C4CFDE /* Tag+CoreDataClass.swift */,
+				26FAA3C02029B27B00C4CFDE /* Tag+CoreDataProperties.swift */,
 				2624CE542008B094002AA811 /* Expense+CoreDataClass.swift */,
 				2624CE552008B094002AA811 /* Expense+CoreDataProperties.swift */,
 				2624CE512008AF58002AA811 /* Model.xcdatamodeld */,
@@ -273,6 +281,7 @@
 				26A767A7202311290032CDAA /* DatePickerView.swift */,
 				264E14FE2023145400CBEC4F /* DatePickerView.xib */,
 				2694A548202438DB0099C22C /* CategoryPickerViewController.swift */,
+				26FAA3C52029B7E600C4CFDE /* TagPickerViewController.swift */,
 			);
 			path = ExpenseEditor;
 			sourceTree = "<group>";
@@ -416,6 +425,7 @@
 				26A767A22022558C0032CDAA /* FormNavigationController.swift in Sources */,
 				26A767A8202311290032CDAA /* DatePickerView.swift in Sources */,
 				2624CEF02008BB80002AA811 /* Classifier.swift in Sources */,
+				26FAA3C62029B7E600C4CFDE /* TagPickerViewController.swift in Sources */,
 				26A767A4202310FB0032CDAA /* DatePickerViewController.swift in Sources */,
 				26A02F32201729CE00A5A9D8 /* SectionHeaderView.swift in Sources */,
 				2624CEEA2008B8CB002AA811 /* ValidExpense.swift in Sources */,
@@ -426,7 +436,9 @@
 				2624CE572008B094002AA811 /* Expense+CoreDataProperties.swift in Sources */,
 				2624CEE52008B825002AA811 /* WriteExpense.swift in Sources */,
 				2626F6B6201B3E79009B7BBB /* Filter.swift in Sources */,
+				26FAA3C22029B27B00C4CFDE /* Tag+CoreDataProperties.swift in Sources */,
 				2624CE562008B094002AA811 /* Expense+CoreDataClass.swift in Sources */,
+				26FAA3C12029B27B00C4CFDE /* Tag+CoreDataClass.swift in Sources */,
 				26A02F2E2015F26000A5A9D8 /* UpdateSections.swift in Sources */,
 				2676150620147854002F96F0 /* SetupViewController.swift in Sources */,
 				264E150120231FE900CBEC4F /* DateUtil.swift in Sources */,

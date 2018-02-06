@@ -47,6 +47,24 @@ class WriteExpense: BROperation<NSManagedObjectID, Error> {
                 expense.setValue(value, forKey: key)
             }
             
+            // Reset the tag references.
+            expense.tagRefs = nil
+            for name in data.tags {
+                // Find an existing tag, or make a new one.
+                let tag: Tag = try {
+                    let tagFetch: NSFetchRequest<Tag> = Tag.fetchRequest()
+                    tagFetch.predicate = NSPredicate(format: "%K == %@", #keyPath(Tag.name), name)
+                    if let existingTag = try context.fetch(tagFetch).first {
+                        return existingTag
+                    } else {
+                        let newTag = Tag(context: context)
+                        newTag.name = name
+                        return newTag
+                    }
+                }()
+                expense.addToTagRefs(tag)
+            }
+            
             if shouldSave == true {
                 try context.saveToStore()
             }

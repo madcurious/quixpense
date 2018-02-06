@@ -44,7 +44,6 @@ class CategoryPickerViewController: UIViewController {
         super.viewDidLoad()
         
         navigationItem.title = "Categories"
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Select", style: .done, target: self, action: #selector(handleTapOnDoneButton))
         
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> = Expense.fetchRequest()
         fetchRequest.resultType = .dictionaryResultType
@@ -74,6 +73,7 @@ class CategoryPickerViewController: UIViewController {
             // Reload the table view with the loaded categories.
             tableView.dataSource = self
             tableView.delegate = self
+            tableView.register(UITableViewCell.self, forCellReuseIdentifier: ViewId.cell.rawValue)
             
             // Determine the initially selected index.
             if let initialSelection = initialSelection,
@@ -92,14 +92,6 @@ class CategoryPickerViewController: UIViewController {
     
 }
 
-@objc fileprivate extension CategoryPickerViewController {
-    
-//    func handleTapOnDoneButton() {
-//        navigationController?.popViewController(animated: true)
-//    }
-    
-}
-
 // MARK: - UITableViewDataSource
 extension CategoryPickerViewController: UITableViewDataSource {
     
@@ -108,13 +100,7 @@ extension CategoryPickerViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: UITableViewCell = {
-            if let reusableCell = tableView.dequeueReusableCell(withIdentifier: ViewId.cell.rawValue) {
-                return reusableCell
-            }
-            let newCell = UITableViewCell(style: .default, reuseIdentifier: ViewId.cell.rawValue)
-            return newCell
-        }()
+        let cell = tableView.dequeueReusableCell(withIdentifier: ViewId.cell.rawValue, for: indexPath)
         cell.accessoryType = indexPath.row == selectedIndex ? .checkmark : .none
         cell.textLabel?.text = categories[indexPath.row]
         return cell
