@@ -74,6 +74,8 @@ class ExpenseEditorView: UIView {
             $0.backgroundColor = .hex(0xeeeeee)
         }
         
+        dateButton.tintColor = Palette.black
+        
         categoryButton.enableTextFieldBehavior(placeholderText: "(optional)",
                                                placeholderTextColor: Palette.gray_cccccc,
                                                textColor: Palette.black)

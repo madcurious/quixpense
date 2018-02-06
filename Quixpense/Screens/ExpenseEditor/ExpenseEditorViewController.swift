@@ -13,6 +13,7 @@ class ExpenseEditorViewController: UIViewController {
     
     let editorView = ExpenseEditorView(frame: .zero)
     let container: NSPersistentContainer
+    var rawExpense = RawExpense()
     
     init(container: NSPersistentContainer) {
         self.container = container
@@ -33,6 +34,7 @@ class ExpenseEditorViewController: UIViewController {
         navigationItem.title = "Add Expense"
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
         
+        editorView.dateButton.text = DateUtil.stringForExpenseEditor(for: rawExpense.dateSpent)
         editorView.dateButton.addTarget(self, action: #selector(handleTapOnDateButton), for: .touchUpInside)
         editorView.categoryButton.addTarget(self, action: #selector(handleTapOnCategoryButton), for: .touchUpInside)
     }
@@ -51,8 +53,9 @@ class ExpenseEditorViewController: UIViewController {
     }
     
     func handleTapOnDateButton() {
-        DatePickerViewController.present(from: self, initialSelection: Date()) { (selectedDate) in
-            self.editorView.dateButton.titleLabel.text = DateUtil.stringForExpenseEditor(for: selectedDate)
+        DatePickerViewController.present(from: self, initialSelection: rawExpense.dateSpent) { (selectedDate) in
+            self.rawExpense.dateSpent = selectedDate
+            self.editorView.dateButton.text = DateUtil.stringForExpenseEditor(for: selectedDate)
         }
     }
     
