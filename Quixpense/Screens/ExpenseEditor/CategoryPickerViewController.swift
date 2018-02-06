@@ -43,7 +43,8 @@ class CategoryPickerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Select", style: .done, target: self, action: #selector(handleTapOnDoneButton))
+        navigationItem.title = "Categories"
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Select", style: .done, target: self, action: #selector(handleTapOnDoneButton))
         
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> = Expense.fetchRequest()
         fetchRequest.resultType = .dictionaryResultType
@@ -73,6 +74,15 @@ class CategoryPickerViewController: UIViewController {
             // Reload the table view with the loaded categories.
             tableView.dataSource = self
             tableView.delegate = self
+            
+            // Determine the initially selected index.
+            if let initialSelection = initialSelection,
+                let index = categories.index(of: initialSelection) {
+                selectedIndex = index
+            } else if let index = categories.index(of: Classifier.category.default) {
+                selectedIndex = index
+            }
+            
             tableView.reloadData()
             loadableView.state = .success
         } catch {
@@ -84,9 +94,9 @@ class CategoryPickerViewController: UIViewController {
 
 @objc fileprivate extension CategoryPickerViewController {
     
-    func handleTapOnDoneButton() {
-        navigationController?.popViewController(animated: true)
-    }
+//    func handleTapOnDoneButton() {
+//        navigationController?.popViewController(animated: true)
+//    }
     
 }
 
@@ -105,7 +115,7 @@ extension CategoryPickerViewController: UITableViewDataSource {
             let newCell = UITableViewCell(style: .default, reuseIdentifier: ViewId.cell.rawValue)
             return newCell
         }()
-        cell.accessoryType = .checkmark
+        cell.accessoryType = indexPath.row == selectedIndex ? .checkmark : .none
         cell.textLabel?.text = categories[indexPath.row]
         return cell
     }
@@ -117,6 +127,13 @@ extension CategoryPickerViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        if indexPath.row != selectedIndex {
+            let oldIndexPath = IndexPath(row: selectedIndex, section: 0)
+            selectedIndex = indexPath.row
+            tableView.reloadRows(at: [oldIndexPath, indexPath], with: .automatic)
+            navigationController?.popViewController(animated: true)
+        }
     }
     
 }

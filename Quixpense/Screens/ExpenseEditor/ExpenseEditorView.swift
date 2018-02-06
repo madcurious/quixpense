@@ -73,6 +73,14 @@ class ExpenseEditorView: UIView {
         underlineViews.forEach {
             $0.backgroundColor = .hex(0xeeeeee)
         }
+        
+        categoryButton.enableTextFieldBehavior(placeholderText: "(optional)",
+                                               placeholderTextColor: Palette.gray_cccccc,
+                                               textColor: Palette.black)
+        
+        tagsButton.enableTextFieldBehavior(placeholderText: "(optional)",
+                                           placeholderTextColor: Palette.gray_cccccc,
+                                           textColor: Palette.black)
     }
     
 }

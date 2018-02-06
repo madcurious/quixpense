@@ -16,5 +16,6 @@ final class Palette {
     
     static let gray_666666 = UIColor.hex(0x666666)
     static let gray_aaaaaa = UIColor.hex(0xaaaaaa)
+    static let gray_cccccc = UIColor.hex(0xcccccc)
     
 }
