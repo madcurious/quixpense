@@ -48,7 +48,7 @@ class WriteExpense: BROperation<NSManagedObjectID, Error> {
             }
             
             // Reset the tag references.
-            expense.tagRefs = nil
+            expense.tags = nil
             for name in data.tags {
                 // Find an existing tag, or make a new one.
                 let tag: Tag = try {
@@ -62,7 +62,7 @@ class WriteExpense: BROperation<NSManagedObjectID, Error> {
                         return newTag
                     }
                 }()
-                expense.addToTagRefs(tag)
+                expense.addToTags(tag)
             }
             
             if shouldSave == true {

@@ -24,7 +24,7 @@ class DeleteExpense: BROperation<Bool, Error> {
     override func main() {
         do {
             if let expense = context.object(with: objectId) as? Expense,
-                let tags = expense.tagRefs as? Set<Tag> {
+                let tags = expense.tags as? Set<Tag> {
                 context.delete(expense)
                 
                 // Delete the tag if it it is not the default tag and no longer has expenses.

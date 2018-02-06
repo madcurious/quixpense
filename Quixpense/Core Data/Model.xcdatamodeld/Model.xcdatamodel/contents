@@ -10,11 +10,11 @@
         <attribute name="weekSectionIdMonday" attributeType="String" syncable="YES"/>
         <attribute name="weekSectionIdSaturday" attributeType="String" syncable="YES"/>
         <attribute name="weekSectionIdSunday" attributeType="String" syncable="YES"/>
-        <relationship name="tagRefs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="expenses" inverseEntity="Tag" syncable="YES"/>
+        <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="expenses" inverseEntity="Tag" syncable="YES"/>
     </entity>
     <entity name="Tag" representedClassName="Tag" syncable="YES">
         <attribute name="name" attributeType="String" syncable="YES"/>
-        <relationship name="expenses" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Expense" inverseName="tagRefs" inverseEntity="Expense" syncable="YES"/>
+        <relationship name="expenses" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Expense" inverseName="tags" inverseEntity="Expense" syncable="YES"/>
         <fetchIndex name="byPropertyIndex">
             <fetchIndexElement property="name" type="Binary" order="ascending"/>
         </fetchIndex>

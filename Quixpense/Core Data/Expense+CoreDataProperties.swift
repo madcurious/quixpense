@@ -26,23 +26,23 @@ extension Expense {
     @NSManaged public var weekSectionIdMonday: String?
     @NSManaged public var weekSectionIdSaturday: String?
     @NSManaged public var weekSectionIdSunday: String?
-    @NSManaged public var tagRefs: NSSet?
+    @NSManaged public var tags: NSSet?
 
 }
 
-// MARK: Generated accessors for tagRefs
+// MARK: Generated accessors for tags
 extension Expense {
 
-    @objc(addTagRefsObject:)
-    @NSManaged public func addToTagRefs(_ value: Tag)
+    @objc(addTagsObject:)
+    @NSManaged public func addToTags(_ value: Tag)
 
-    @objc(removeTagRefsObject:)
-    @NSManaged public func removeFromTagRefs(_ value: Tag)
+    @objc(removeTagsObject:)
+    @NSManaged public func removeFromTags(_ value: Tag)
 
-    @objc(addTagRefs:)
-    @NSManaged public func addToTagRefs(_ values: NSSet)
+    @objc(addTags:)
+    @NSManaged public func addToTags(_ values: NSSet)
 
-    @objc(removeTagRefs:)
-    @NSManaged public func removeFromTagRefs(_ values: NSSet)
+    @objc(removeTags:)
+    @NSManaged public func removeFromTags(_ values: NSSet)
 
 }
