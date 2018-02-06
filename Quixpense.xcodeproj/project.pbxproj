@@ -40,6 +40,7 @@
 		26761508201478A4002F96F0 /* SetupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26761507201478A4002F96F0 /* SetupViewController.xib */; };
 		2676150C20147B5C002F96F0 /* SetupApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2676150B20147B5C002F96F0 /* SetupApp.swift */; };
 		2676151020147E7F002F96F0 /* DefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2676150F20147E7F002F96F0 /* DefaultsKey.swift */; };
+		2694A549202438DB0099C22C /* CategoryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2694A548202438DB0099C22C /* CategoryPickerViewController.swift */; };
 		26A02F2E2015F26000A5A9D8 /* UpdateSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A02F2D2015F26000A5A9D8 /* UpdateSections.swift */; };
 		26A02F32201729CE00A5A9D8 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A02F31201729CE00A5A9D8 /* SectionHeaderView.swift */; };
 		26A02F34201729E100A5A9D8 /* SectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26A02F33201729E100A5A9D8 /* SectionHeaderView.xib */; };
@@ -115,6 +116,7 @@
 		26761507201478A4002F96F0 /* SetupViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SetupViewController.xib; sourceTree = "<group>"; };
 		2676150B20147B5C002F96F0 /* SetupApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupApp.swift; sourceTree = "<group>"; };
 		2676150F20147E7F002F96F0 /* DefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsKey.swift; sourceTree = "<group>"; };
+		2694A548202438DB0099C22C /* CategoryPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPickerViewController.swift; sourceTree = "<group>"; };
 		26A02F2D2015F26000A5A9D8 /* UpdateSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateSections.swift; sourceTree = "<group>"; };
 		26A02F31201729CE00A5A9D8 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		26A02F33201729E100A5A9D8 /* SectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SectionHeaderView.xib; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 				26A767A3202310FB0032CDAA /* DatePickerViewController.swift */,
 				26A767A7202311290032CDAA /* DatePickerView.swift */,
 				264E14FE2023145400CBEC4F /* DatePickerView.xib */,
+				2694A548202438DB0099C22C /* CategoryPickerViewController.swift */,
 			);
 			path = ExpenseEditor;
 			sourceTree = "<group>";
@@ -429,6 +432,7 @@
 				264E150120231FE900CBEC4F /* DateUtil.swift in Sources */,
 				26FDC9F020206A2500947A6F /* AmountFormatter.swift in Sources */,
 				2624CE502008A5A3002AA811 /* ExpensesViewController.swift in Sources */,
+				2694A549202438DB0099C22C /* CategoryPickerViewController.swift in Sources */,
 				2676151020147E7F002F96F0 /* DefaultsKey.swift in Sources */,
 				2624CE532008AF58002AA811 /* Model.xcdatamodeld in Sources */,
 				2643814B200C2DF900F6DE14 /* ValidateExpense.swift in Sources */,
