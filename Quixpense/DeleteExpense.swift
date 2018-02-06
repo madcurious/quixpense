@@ -23,22 +23,13 @@ class DeleteExpense: BROperation<Bool, Error> {
     
     override func main() {
         do {
-            if let expense = context.object(with: objectId) as? Expense,
-                let tags = expense.tags as? Set<Tag> {
+            if let expense = context.object(with: objectId) as? Expense {
+                expense.removeAllTagsAndMarkEmptyTagsForDeletion()
                 context.delete(expense)
-                
-                // Delete the tag if it it is not the default tag and no longer has expenses.
-                for tag in tags {
-                    guard tag.name != Classifier.tag.default &&
-                        (tag.expenses == nil || tag.expenses?.count == 0)
-                        else {
-                            continue
-                    }
-                    context.delete(tag)
-                }
-                
-                try context.saveToStore()
+            } else {
+                throw BRError("Unexpected error: Expense to delete was not found in the database.")
             }
+            try context.saveToStore()
             result = .success(true)
         } catch {
             result = .error(error)

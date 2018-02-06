@@ -60,6 +60,8 @@ class ExpensesViewController: UIViewController {
         tableView.register(SectionHeaderView.self, forHeaderFooterViewReuseIdentifier: ViewId.sectionHeader.rawValue)
         
         fetchExpenses()
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Nuke", style: .done, target: self, action: #selector(handleTapOnNuke))
     }
     
 }
@@ -70,6 +72,14 @@ fileprivate extension ExpensesViewController {
     func fetchExpenses() {
         do {
             loadableView.state = .loading
+            
+            // Purge the caches.
+            totalCache.removeAllObjects()
+            groupCache.removeAllObjects()
+            
+            // Rebuild the fetch controller.
+            fetchController = ExpensesViewController.makeFetchController(from: filter, firstWeekday: Calendar.current.firstWeekday, context: container.viewContext)
+            
             try fetchController.performFetch()
             
             if fetchController.sections?.isEmpty ?? false {
@@ -202,6 +212,20 @@ fileprivate extension ExpensesViewController {
         FilterViewController.present(from: self, initialSelection: filter, delegate: self)
     }
     
+    func handleTapOnNuke() {
+        do {
+            loadableView.state = .loading
+            let request: NSFetchRequest<Expense> = Expense.fetchRequest()
+            let expenses = try container.viewContext.fetch(request)
+            for expense in expenses {
+                DeleteExpense(context: container.viewContext, objectId: expense.objectID, completionBlock: nil).start()
+            }
+            fetchExpenses()
+        } catch {
+            loadableView.state = .error(error)
+        }
+    }
+    
 }
 
 // MARK: - UITableViewDataSource
@@ -300,13 +324,6 @@ extension ExpensesViewController: FilterViewControllerDelegate {
         filterButton.titleLabel.text = filter.title
         filterButton.setNeedsLayout()
         filterButton.layoutIfNeeded()
-        
-        // Purge the caches.
-        totalCache.removeAllObjects()
-        groupCache.removeAllObjects()
-        
-        // Rebuild the fetch controller.
-        fetchController = ExpensesViewController.makeFetchController(from: filter, firstWeekday: Calendar.current.firstWeekday, context: container.viewContext)
         
         // Reload data.
         fetchExpenses()

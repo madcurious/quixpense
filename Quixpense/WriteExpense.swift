@@ -48,7 +48,7 @@ class WriteExpense: BROperation<NSManagedObjectID, Error> {
             }
             
             // Reset the tag references.
-            expense.tags = nil
+            expense.removeAllTagsAndMarkEmptyTagsForDeletion()
             for name in data.tags {
                 // Find an existing tag, or make a new one.
                 let tag: Tag = try {
