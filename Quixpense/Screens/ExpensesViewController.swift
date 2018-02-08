@@ -131,7 +131,7 @@ fileprivate extension ExpensesViewController {
                 else {
                     return []
             }
-            let groupingByCategory = Dictionary(grouping: expenses, by: { $0.category ?? Classifier.category.default })
+            let groupingByCategory = Dictionary(grouping: expenses, by: { $0.category ?? DefaultClassifier.category.storedName })
             let categoryTotals = groupingByCategory
                 .flatMap({ ($0.key, $0.value.reduce(NSDecimalNumber.zero, {$0.adding($1.amount ?? .zero)})) })
                 .sorted(by: { $0.1 > $1.1 })
@@ -159,7 +159,7 @@ fileprivate extension ExpensesViewController {
             }
             var groupingByTag = [String : Set<Expense>]()
             for expense in expenses {
-                let tags = expense.tagNames ?? [Classifier.tag.default]
+                let tags = expense.tagNames ?? [DefaultClassifier.tag.storedName]
                 for tag in tags {
                     if var existingSet = groupingByTag[tag] {
                         existingSet.insert(expense)
@@ -274,8 +274,8 @@ extension ExpensesViewController: UITableViewDataSource {
             switch filter.displayMode {
             case .expenses:
                 let expense = fetchController.object(at: indexPath)
-                var description = [expense.category ?? Classifier.category.default]
-                description.append(contentsOf: expense.tagNames ?? [Classifier.tag.default])
+                var description = [expense.category ?? DefaultClassifier.category.groupName]
+                description.append(contentsOf: expense.tagNames ?? [DefaultClassifier.tag.groupName])
                 return description.joined(separator: ", ")
             case .categories:
                 let category = cachedCategoryTotals(for: indexPath.section)[indexPath.row]

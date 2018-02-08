@@ -37,19 +37,27 @@ class TagPickerViewController: UIViewController {
         
         do {
             let fetchRequest: NSFetchRequest<Tag> = Tag.fetchRequest()
+            fetchRequest.predicate = NSPredicate(format: "%K != %@", #keyPath(Tag.name), DefaultClassifier.tag.storedName)
+//            tags = try viewContext.fetch(fetchRequest).sorted(by: {
+//                switch ($0, $1) {
+//                case _ where $0.name == Classifier.tag.default:
+//                    return true
+//                case _ where $1.name == Classifier.tag.default:
+//                    return false
+//                default:
+//                    if let name0 = $0.name,
+//                        let name1 = $1.name {
+//                        return name0.compare(name1) == .orderedAscending
+//                    }
+//                    return false
+//                }
+//            })
             tags = try viewContext.fetch(fetchRequest).sorted(by: {
-                switch ($0, $1) {
-                case _ where $0.name == Classifier.tag.default:
-                    return true
-                case _ where $1.name == Classifier.tag.default:
-                    return false
-                default:
-                    if let name0 = $0.name,
-                        let name1 = $1.name {
-                        return name0.compare(name1) == .orderedAscending
-                    }
-                    return false
+                if let name0 = $0.name,
+                    let name1 = $1.name {
+                    return name0.compare(name1) == .orderedAscending
                 }
+                return false
             })
             
             tableView.dataSource = self

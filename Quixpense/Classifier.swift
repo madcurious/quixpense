@@ -8,15 +8,13 @@
 
 import Foundation
 
-enum Classifier {
-    
-    case category, tag
-    
-    var `default`: String {
-        if self == .category {
-            return "Uncategorized"
-        }
-        return "Untagged"
-    }
-    
-}
+//enum Classifier {
+//    
+//    case category, tag
+//    
+//    var `default`: String {
+//        return "__default__"
+//    }
+//    
+//}
+

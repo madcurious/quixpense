@@ -41,6 +41,7 @@
 		2676150C20147B5C002F96F0 /* SetupApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2676150B20147B5C002F96F0 /* SetupApp.swift */; };
 		2676151020147E7F002F96F0 /* DefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2676150F20147E7F002F96F0 /* DefaultsKey.swift */; };
 		268589FA2029BC29006B1D3D /* Expense+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268589F92029BC29006B1D3D /* Expense+Extensions.swift */; };
+		26858A07202BC305006B1D3D /* DefaultClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26858A06202BC305006B1D3D /* DefaultClassifier.swift */; };
 		2694A549202438DB0099C22C /* CategoryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2694A548202438DB0099C22C /* CategoryPickerViewController.swift */; };
 		26A02F2E2015F26000A5A9D8 /* UpdateSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A02F2D2015F26000A5A9D8 /* UpdateSections.swift */; };
 		26A02F32201729CE00A5A9D8 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A02F31201729CE00A5A9D8 /* SectionHeaderView.swift */; };
@@ -121,6 +122,7 @@
 		2676150B20147B5C002F96F0 /* SetupApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupApp.swift; sourceTree = "<group>"; };
 		2676150F20147E7F002F96F0 /* DefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsKey.swift; sourceTree = "<group>"; };
 		268589F92029BC29006B1D3D /* Expense+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Expense+Extensions.swift"; sourceTree = "<group>"; };
+		26858A06202BC305006B1D3D /* DefaultClassifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultClassifier.swift; sourceTree = "<group>"; };
 		2694A548202438DB0099C22C /* CategoryPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPickerViewController.swift; sourceTree = "<group>"; };
 		26A02F2D2015F26000A5A9D8 /* UpdateSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateSections.swift; sourceTree = "<group>"; };
 		26A02F31201729CE00A5A9D8 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 				2626F6B5201B3E79009B7BBB /* Filter.swift */,
 				26FDC9EF20206A2500947A6F /* AmountFormatter.swift */,
 				264E150020231FE900CBEC4F /* DateUtil.swift */,
+				26858A06202BC305006B1D3D /* DefaultClassifier.swift */,
 			);
 			path = Quixpense;
 			sourceTree = "<group>";
@@ -425,6 +428,7 @@
 				26A7679D202235130032CDAA /* ExpenseEditorView.swift in Sources */,
 				2624CE2C2008A2D1002AA811 /* AppDelegate.swift in Sources */,
 				2624CE4C2008A447002AA811 /* RootTabBarController.swift in Sources */,
+				26858A07202BC305006B1D3D /* DefaultClassifier.swift in Sources */,
 				26A767A22022558C0032CDAA /* FormNavigationController.swift in Sources */,
 				26A767A8202311290032CDAA /* DatePickerView.swift in Sources */,
 				2624CEF02008BB80002AA811 /* Classifier.swift in Sources */,

@@ -25,7 +25,7 @@ extension Expense {
         }
         for tag in tags {
             removeFromTags(tag)
-            if tag.name != Classifier.tag.default && (tag.expenses == nil || tag.expenses?.count == 0) {
+            if tag.name != DefaultClassifier.tag.storedName && (tag.expenses == nil || tag.expenses?.count == 0) {
                 managedObjectContext?.delete(tag)
             }
         }
