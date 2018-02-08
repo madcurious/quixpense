@@ -18,7 +18,7 @@ enum DefaultClassifier {
     }
     
     /// The name displayed in a picker.
-    var pickerName: String {
+    var optionName: String {
         return "None"
     }
     

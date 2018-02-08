@@ -106,9 +106,18 @@ extension CategoryPickerViewController: UITableViewDataSource {
             cell.textLabel?.textColor = UIControl(frame: .zero).tintColor
         default:
             cell.accessoryType = indexPath == selectedIndexPath ? .checkmark : .none
+            cell.textLabel?.textColor = nil
         }
-        cell.textLabel?.text = options[indexPath.section][indexPath.row] ?? DefaultClassifier.category.pickerName
+        cell.textLabel?.text = options[indexPath.section][indexPath.row] ?? DefaultClassifier.category.optionName
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        guard section == options.count - 1
+            else {
+                return nil
+        }
+        return "New categories are saved only when the expense is saved."
     }
     
 }
@@ -121,13 +130,34 @@ extension CategoryPickerViewController: UITableViewDelegate {
         
         switch indexPath.section {
         case options.count - 1:
-            ()
+            let addAlert = UIAlertController(title: "New Category", message: nil, preferredStyle: .alert)
+            addAlert.addTextField(configurationHandler: {
+                $0.placeholder = "Name"
+                $0.autocapitalizationType = .words
+            })
+            addAlert.addAction(UIAlertAction(title: "Done", style: .default) { _ in
+                guard let category = addAlert.textFields?.first?.text
+                    else {
+                        return
+                }
+                if self.options.first?.first == nil {
+                    self.options.insert([category], at: 0)
+                } else if let categories = self.options.first?.flatMap({ $0 ?? nil }),
+                    let index = categories.index(where: { category < $0 }) {
+                    self.options[0].insert(category, at: index)
+                    self.selectedIndexPath = IndexPath(row: index, section: 0)
+                    self.tableView.reloadData()
+                }
+            })
+            addAlert.addCancelAction()
+            present(addAlert, animated: true, completion: nil)
         
         default:
-            let oldIndexPath = selectedIndexPath!
-            selectedIndexPath = indexPath
-            tableView.reloadRows(at: [oldIndexPath, indexPath], with: .automatic)
-            didSelect?(options[indexPath.section][indexPath.row])
+            if let oldIndexPath = selectedIndexPath {
+                selectedIndexPath = indexPath
+                tableView.reloadRows(at: [oldIndexPath, indexPath], with: .automatic)
+                didSelect?(options[indexPath.section][indexPath.row])
+            }
             navigationController?.popViewController(animated: true)
         }
     }
