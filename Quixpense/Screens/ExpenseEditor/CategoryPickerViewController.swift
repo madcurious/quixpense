@@ -14,8 +14,9 @@ class CategoryPickerViewController: UIViewController {
     
     let viewContext: NSManagedObjectContext
     let initialSelection: String?
-    var categories = [String]()
+    var options: [[String?]] = [[nil], ["Add new category"]]
     var selectedIndexPath: IndexPath?
+    var didSelect: ((String?) -> Void)?
     
     let loadableView = BRDefaultLoadableView(frame: .zero)
     let tableView = UITableView(frame: .zero, style: .grouped)
@@ -24,9 +25,10 @@ class CategoryPickerViewController: UIViewController {
         case cell = "cell"
     }
     
-    init(viewContext: NSManagedObjectContext, initialSelection: String?) {
+    init(viewContext: NSManagedObjectContext, initialSelection: String?, didSelect: ((String?) -> Void)?) {
         self.viewContext = viewContext
         self.initialSelection = initialSelection
+        self.didSelect = didSelect
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -56,7 +58,10 @@ class CategoryPickerViewController: UIViewController {
                     loadableView.state = .error(BRError("Can't fetch categories."))
                     return
             }
-            categories = results.flatMap({ $0[#keyPath(Expense.category)] }).sorted(by: { $0.compare($1) == .orderedAscending })
+            let sortedResults = results.flatMap({ $0[#keyPath(Expense.category)] }).sorted(by: { $0.compare($1) == .orderedAscending })
+            if sortedResults.isEmpty == false {
+                options.insert(sortedResults, at: 0)
+            }
             
             // Reload the table view with the loaded categories.
             tableView.dataSource = self
@@ -65,10 +70,10 @@ class CategoryPickerViewController: UIViewController {
             
             // Determine the initially selected index.
             if let initialSelection = initialSelection,
-                let index = categories.index(of: initialSelection) {
+                let index = sortedResults.index(of: initialSelection) {
                 selectedIndexPath = IndexPath(row: index, section: 0)
             } else {
-                selectedIndexPath = IndexPath(row: 0, section: 1)
+                selectedIndexPath = IndexPath(row: 0, section: options.count - 2)
             }
             
             tableView.reloadData()
@@ -84,29 +89,25 @@ class CategoryPickerViewController: UIViewController {
 extension CategoryPickerViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1 + (categories.count > 0 ? 1 : 0)
+        return options.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch categories.count {
-        case let count where count > 0 && section == 0:
-            return count
-        default:
-            return 1
-        }
+        return options[section].count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ViewId.cell.rawValue, for: indexPath)
-        cell.accessoryType = indexPath == selectedIndexPath ? .checkmark : .none
-        cell.textLabel?.text = {
-            switch categories.count {
-            case let count where count > 0 && indexPath.section == 0:
-                return categories[indexPath.row]
-            default:
-                return DefaultClassifier.category.pickerName
-            }
-        }()
+        switch (indexPath.section, indexPath.row) {
+        case (options.count - 1, options[options.count - 1].count - 1):
+            let addIcon = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+            addIcon.image = UIImage.template(named: "cellAccessoryAdd")
+            cell.accessoryView = addIcon
+            cell.textLabel?.textColor = UIControl(frame: .zero).tintColor
+        default:
+            cell.accessoryType = indexPath == selectedIndexPath ? .checkmark : .none
+        }
+        cell.textLabel?.text = options[indexPath.section][indexPath.row] ?? DefaultClassifier.category.pickerName
         return cell
     }
     
@@ -118,10 +119,15 @@ extension CategoryPickerViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        if indexPath != selectedIndexPath,
-            let oldIndexPath = selectedIndexPath {
+        switch indexPath.section {
+        case options.count - 1:
+            ()
+        
+        default:
+            let oldIndexPath = selectedIndexPath!
             selectedIndexPath = indexPath
             tableView.reloadRows(at: [oldIndexPath, indexPath], with: .automatic)
+            didSelect?(options[indexPath.section][indexPath.row])
             navigationController?.popViewController(animated: true)
         }
     }

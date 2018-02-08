@@ -61,7 +61,9 @@ class ExpenseEditorViewController: UIViewController {
     }
     
     func handleTapOnCategoryButton() {
-        let categoryPicker = CategoryPickerViewController(viewContext: container.viewContext, initialSelection: nil)
+        let categoryPicker = CategoryPickerViewController(viewContext: container.viewContext, initialSelection: editorView.categoryButton.text) {
+            self.editorView.categoryButton.text = $0
+        }
         navigationController?.pushViewController(categoryPicker, animated: true)
     }
     
