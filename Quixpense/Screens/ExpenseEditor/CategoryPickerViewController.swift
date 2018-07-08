@@ -142,8 +142,8 @@ extension CategoryPickerViewController: UITableViewDelegate {
                 }
                 if self.options.first?.first == nil {
                     self.options.insert([category], at: 0)
-                } else if let categories = self.options.first?.flatMap({ $0 ?? nil }),
-                    let index = categories.index(where: { category < $0 }) {
+                } else if let categories = self.options.first?.flatMap({ $0 ?? nil }) {
+                    let index = categories.index(where: { category < $0 }) ?? 0
                     self.options[0].insert(category, at: index)
                     self.selectedIndexPath = IndexPath(row: index, section: 0)
                     self.tableView.reloadData()
