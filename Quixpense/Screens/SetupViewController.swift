@@ -15,6 +15,8 @@ class SetupViewController: UIViewController {
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var loadingView: UIActivityIndicatorView!
     
+    var hasBeenInitialized = false
+    
     let queue = OperationQueue()
     
     var successBlock: ((NSPersistentContainer) -> Void)?
@@ -32,8 +34,13 @@ class SetupViewController: UIViewController {
         view = viewFromOwnedNib()
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        guard hasBeenInitialized == false
+            else {
+                return
+        }
         
         queue.addOperation(SetupApp(
             updateBlock: { [weak self] message in
@@ -50,10 +57,8 @@ class SetupViewController: UIViewController {
                 }
                 successBlock(container)
         }))
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        
+        hasBeenInitialized = true
     }
     
 }

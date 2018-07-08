@@ -38,12 +38,16 @@ class ExpenseEditorViewController: UIViewController {
         editorView.dateButton.addTarget(self, action: #selector(handleTapOnDateButton), for: .touchUpInside)
         editorView.categoryButton.addTarget(self, action: #selector(handleTapOnCategoryButton), for: .touchUpInside)
         editorView.tagsButton.addTarget(self, action: #selector(handleTapOnTagsButton), for: .touchUpInside)
+        
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTapOnView))
+        tapRecognizer.cancelsTouchesInView = false
+        editorView.addGestureRecognizer(tapRecognizer)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        editorView.amountTextField.becomeFirstResponder()
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        editorView.amountTextField.becomeFirstResponder()
+//    }
     
 }
 
@@ -70,6 +74,10 @@ class ExpenseEditorViewController: UIViewController {
     func handleTapOnTagsButton() {
         let tagPicker = TagPickerViewController(viewContext: container.viewContext)
         navigationController?.pushViewController(tagPicker, animated: true)
+    }
+    
+    func handleTapOnView() {
+        editorView.endEditing(true)
     }
     
 }

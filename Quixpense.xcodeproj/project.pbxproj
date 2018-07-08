@@ -27,6 +27,7 @@
 		2624CEEE2008BB70002AA811 /* Period.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2624CEED2008BB70002AA811 /* Period.swift */; };
 		2624CEF02008BB80002AA811 /* Classifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2624CEEF2008BB80002AA811 /* Classifier.swift */; };
 		2624CEF22008C05B002AA811 /* DeleteExpense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2624CEF12008C05B002AA811 /* DeleteExpense.swift */; };
+		2625030E20F236B500DE5EBE /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2625030D20F236B500DE5EBE /* SplitViewController.swift */; };
 		2626F6B0201B3C9B009B7BBB /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2626F6AF201B3C9B009B7BBB /* FilterViewController.swift */; };
 		2626F6B6201B3E79009B7BBB /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2626F6B5201B3E79009B7BBB /* Filter.swift */; };
 		26438145200C2D7500F6DE14 /* WriteExpenseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26438144200C2D7500F6DE14 /* WriteExpenseTest.swift */; };
@@ -50,7 +51,6 @@
 		26A76799202235000032CDAA /* ExpenseEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A76798202235000032CDAA /* ExpenseEditorViewController.swift */; };
 		26A7679D202235130032CDAA /* ExpenseEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A7679C202235130032CDAA /* ExpenseEditorView.swift */; };
 		26A7679F2022352E0032CDAA /* ExpenseEditorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26A7679E2022352E0032CDAA /* ExpenseEditorView.xib */; };
-		26A767A22022558C0032CDAA /* FormNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A767A12022558C0032CDAA /* FormNavigationController.swift */; };
 		26A767A4202310FB0032CDAA /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A767A3202310FB0032CDAA /* DatePickerViewController.swift */; };
 		26A767A8202311290032CDAA /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A767A7202311290032CDAA /* DatePickerView.swift */; };
 		26FAA3C12029B27B00C4CFDE /* Tag+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FAA3BF2029B27B00C4CFDE /* Tag+CoreDataClass.swift */; };
@@ -108,6 +108,7 @@
 		2624CEED2008BB70002AA811 /* Period.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Period.swift; sourceTree = "<group>"; };
 		2624CEEF2008BB80002AA811 /* Classifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classifier.swift; sourceTree = "<group>"; };
 		2624CEF12008C05B002AA811 /* DeleteExpense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteExpense.swift; sourceTree = "<group>"; };
+		2625030D20F236B500DE5EBE /* SplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
 		2626F6AF201B3C9B009B7BBB /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		2626F6B5201B3E79009B7BBB /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		26438144200C2D7500F6DE14 /* WriteExpenseTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteExpenseTest.swift; sourceTree = "<group>"; };
@@ -131,7 +132,6 @@
 		26A76798202235000032CDAA /* ExpenseEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseEditorViewController.swift; sourceTree = "<group>"; };
 		26A7679C202235130032CDAA /* ExpenseEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseEditorView.swift; sourceTree = "<group>"; };
 		26A7679E2022352E0032CDAA /* ExpenseEditorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpenseEditorView.xib; sourceTree = "<group>"; };
-		26A767A12022558C0032CDAA /* FormNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormNavigationController.swift; sourceTree = "<group>"; };
 		26A767A3202310FB0032CDAA /* DatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
 		26A767A7202311290032CDAA /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 		26FAA3BF2029B27B00C4CFDE /* Tag+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tag+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -272,6 +272,7 @@
 				26A02F33201729E100A5A9D8 /* SectionHeaderView.xib */,
 				2626F6AF201B3C9B009B7BBB /* FilterViewController.swift */,
 				26A767A0202235350032CDAA /* ExpenseEditor */,
+				2625030D20F236B500DE5EBE /* SplitViewController.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -282,7 +283,6 @@
 				26A76798202235000032CDAA /* ExpenseEditorViewController.swift */,
 				26A7679C202235130032CDAA /* ExpenseEditorView.swift */,
 				26A7679E2022352E0032CDAA /* ExpenseEditorView.xib */,
-				26A767A12022558C0032CDAA /* FormNavigationController.swift */,
 				26A767A3202310FB0032CDAA /* DatePickerViewController.swift */,
 				26A767A7202311290032CDAA /* DatePickerView.swift */,
 				264E14FE2023145400CBEC4F /* DatePickerView.xib */,
@@ -429,7 +429,6 @@
 				2624CE2C2008A2D1002AA811 /* AppDelegate.swift in Sources */,
 				2624CE4C2008A447002AA811 /* RootTabBarController.swift in Sources */,
 				26858A07202BC305006B1D3D /* DefaultClassifier.swift in Sources */,
-				26A767A22022558C0032CDAA /* FormNavigationController.swift in Sources */,
 				26A767A8202311290032CDAA /* DatePickerView.swift in Sources */,
 				2624CEF02008BB80002AA811 /* Classifier.swift in Sources */,
 				26FAA3C62029B7E600C4CFDE /* TagPickerViewController.swift in Sources */,
@@ -440,6 +439,7 @@
 				2626F6B0201B3C9B009B7BBB /* FilterViewController.swift in Sources */,
 				2676150C20147B5C002F96F0 /* SetupApp.swift in Sources */,
 				26438153200C3EBA00F6DE14 /* GenerateDummy.swift in Sources */,
+				2625030E20F236B500DE5EBE /* SplitViewController.swift in Sources */,
 				2624CE5A2008B35B002AA811 /* SettingsViewController.swift in Sources */,
 				2624CE572008B094002AA811 /* Expense+CoreDataProperties.swift in Sources */,
 				2624CEE52008B825002AA811 /* WriteExpense.swift in Sources */,

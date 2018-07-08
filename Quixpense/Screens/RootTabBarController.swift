@@ -14,26 +14,36 @@ class RootTabBarController: UITabBarController {
     
     var hasAppeared = false
     let queue = OperationQueue()
-    weak var container: NSPersistentContainer?
+    let persistentContainer: NSPersistentContainer
+    
+    init(persistentContainer: NSPersistentContainer) {
+        self.persistentContainer = persistentContainer
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewControllers = [
-            SetupViewController() { container in
-                DispatchQueue.main.async {
-                    self.container = container
-                    self.setupTabs(with: container)
-                }
-            }
-        ]
+        setupTabs()
+//        viewControllers = [
+//            SetupViewController() { container in
+//                DispatchQueue.main.async {
+//                    self.container = container
+//                    self.setupTabs(with: container)
+//                }
+//            }
+//        ]
     }
     
-    func setupTabs(with container: NSPersistentContainer) {
+    func setupTabs() {
         let placeholderViewController = UIViewController(nibName: nil, bundle: nil)
         placeholderViewController.title = "Add"
         placeholderViewController.tabBarItem.image = UIImage.template(named: "tabIconAdd")
         viewControllers = [
-            UINavigationController(rootViewController: ExpensesViewController(container: container)),
+            UINavigationController(rootViewController: ExpensesViewController(persistentContainer: persistentContainer)),
             placeholderViewController,
             UINavigationController(rootViewController: SettingsViewController())
         ]
@@ -45,9 +55,8 @@ class RootTabBarController: UITabBarController {
 extension RootTabBarController: UITabBarControllerDelegate {
     
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-        if viewController.title == "Add",
-            let container = container {
-            present(FormNavigationController(rootViewController: ExpenseEditorViewController(container: container)), animated: true, completion: nil)
+        if viewController.title == "Add" {
+            present(UINavigationController(rootViewController: ExpenseEditorViewController(container: persistentContainer)), animated: true, completion: nil)
             return false
         }
         return true

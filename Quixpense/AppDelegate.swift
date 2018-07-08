@@ -14,8 +14,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
         let keyWindow = UIWindow(frame: UIScreen.main.bounds)
-        keyWindow.rootViewController = RootTabBarController()
+        keyWindow.rootViewController = SetupViewController() { persistentContainer in
+            DispatchQueue.main.async {
+                keyWindow.rootViewController = SplitViewController(persistentContainer: persistentContainer)
+            }
+        }
+        
         keyWindow.makeKeyAndVisible()
         window = keyWindow
         return true

@@ -12,7 +12,7 @@ import Bedrock
 
 class ExpensesViewController: UIViewController {
     
-    let container: NSPersistentContainer
+    let persistentContainer: NSPersistentContainer
     var fetchController: NSFetchedResultsController<Expense>
     let loadableView = BRDefaultLoadableView(frame: .zero)
     let tableView = UITableView(frame: .zero, style: .plain)
@@ -30,9 +30,9 @@ class ExpensesViewController: UIViewController {
         case sectionHeader = "sectionHeader"
     }
     
-    init(container: NSPersistentContainer) {
-        self.container = container
-        self.fetchController = ExpensesViewController.makeFetchController(from: filter, firstWeekday: Calendar.current.firstWeekday, context: container.viewContext)
+    init(persistentContainer: NSPersistentContainer) {
+        self.persistentContainer = persistentContainer
+        self.fetchController = ExpensesViewController.makeFetchController(from: filter, firstWeekday: Calendar.current.firstWeekday, context: persistentContainer.viewContext)
         super.init(nibName: nil, bundle: nil)
         title = "Expenses"
         tabBarItem.image = UIImage.template(named: "tabIconExpenses")
@@ -61,7 +61,8 @@ class ExpensesViewController: UIViewController {
         
         fetchExpenses()
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Nuke", style: .done, target: self, action: #selector(handleTapOnNuke))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Nuke", style: .done, target: self, action: #selector(handleTapOnNuke))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(handleTapOnAddButton))
     }
     
 }
@@ -78,7 +79,7 @@ fileprivate extension ExpensesViewController {
             groupCache.removeAllObjects()
             
             // Rebuild the fetch controller.
-            fetchController = ExpensesViewController.makeFetchController(from: filter, firstWeekday: Calendar.current.firstWeekday, context: container.viewContext)
+            fetchController = ExpensesViewController.makeFetchController(from: filter, firstWeekday: Calendar.current.firstWeekday, context: persistentContainer.viewContext)
             
             try fetchController.performFetch()
             
@@ -216,14 +217,20 @@ fileprivate extension ExpensesViewController {
         do {
             loadableView.state = .loading
             let request: NSFetchRequest<Expense> = Expense.fetchRequest()
-            let expenses = try container.viewContext.fetch(request)
+            let expenses = try persistentContainer.viewContext.fetch(request)
             for expense in expenses {
-                DeleteExpense(context: container.viewContext, objectId: expense.objectID, completionBlock: nil).start()
+                DeleteExpense(context: persistentContainer.viewContext, objectId: expense.objectID, completionBlock: nil).start()
             }
             fetchExpenses()
         } catch {
             loadableView.state = .error(error)
         }
+    }
+    
+    func handleTapOnAddButton() {
+        let form = UINavigationController(rootViewController: ExpenseEditorViewController(container: persistentContainer))
+        form.modalPresentationStyle = .formSheet
+        present(form, animated: true, completion: nil)
     }
     
 }
