@@ -23,7 +23,7 @@ class SetupApp: BROperation<NSPersistentContainer, Error> {
     override func main() {
         // Load the persistent container.
         updateBlock?("Loading the database")
-        let loadOp = BRLoadPersistentContainer(documentName: "Model", inMemory: false, completionBlock: nil)
+        let loadOp = LoadPersistentContainerOperation(documentName: "Model", inMemory: false, completionBlock: nil)
         queue.addOperations([loadOp], waitUntilFinished: true)
         
         if isCancelled {

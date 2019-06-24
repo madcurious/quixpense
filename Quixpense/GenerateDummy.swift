@@ -45,9 +45,9 @@ class GenerateDummy: BROperation<Bool, Error> {
                 return lastDateSpent
             }
             var custom = DateComponents()
-            custom.month = 9
+            custom.month = 1
             custom.day = 1
-            custom.year = 2017
+            custom.year = 2019
             return Calendar.current.date(from: custom)!
         }()
         let endDate = Date()

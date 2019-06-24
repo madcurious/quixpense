@@ -11,7 +11,7 @@ import Foundation
 extension Expense {
     
     var tagNames: [String]? {
-        return (tags as? Set<Tag>)?.flatMap({ $0.name })
+        return (tags as? Set<Tag>)?.compactMap({ $0.name })
     }
     
     /**

@@ -49,8 +49,8 @@ extension WriteExpenseTest {
                     XCTFail(BRTest.fail(#function, type: .nil))
                     return
             }
-            XCTAssertEqual(category, Classifier.default)
-            XCTAssertEqual(tags, [Classifier.default])
+            XCTAssertEqual(category, DefaultClassifier.category.storedName)
+            XCTAssertEqual(tags, [DefaultClassifier.tag.storedName])
         case .error(let error):
             XCTFail(BRTest.fail(#function, type: .error(error)))
         }

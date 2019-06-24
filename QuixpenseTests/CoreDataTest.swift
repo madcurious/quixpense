@@ -32,7 +32,7 @@ class CoreDataTest: XCTestCase {
     
     func loadCoreDataStack(completion: (() -> Void)?) {
         let xp = expectation(description: #function)
-        let loadOp = BRLoadPersistentContainer(documentName: "Model", inMemory: true) { _ in
+        let loadOp = LoadPersistentContainerOperation(documentName: "Model", inMemory: true) { _ in
             xp.fulfill()
         }
         queue.addOperation(loadOp)

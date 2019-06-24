@@ -14,7 +14,11 @@ enum DefaultClassifier {
     
     /// The name stored in Core Data.
     var storedName: String {
-        return "__default__"
+//        return "__default__"
+			if self == .category {
+				return "__noCat"
+			}
+			return "__noTags"
     }
     
     /// The name displayed in a picker.

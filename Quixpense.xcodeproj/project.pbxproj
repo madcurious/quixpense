@@ -81,6 +81,13 @@
 			remoteGlobalIDString = 26A1906B1F83739300A9BBF6;
 			remoteInfo = BedrockTests;
 		};
+		2DBB2B4C21844F55001C6BE6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2624CE9F2008B761002AA811 /* Bedrock.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 26904D2F1C7757540094DA08;
+			remoteInfo = Bedrock;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -306,6 +313,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				2DBB2B4D21844F55001C6BE6 /* PBXTargetDependency */,
 			);
 			name = Quixpense;
 			productName = Quixpense;
@@ -481,6 +489,11 @@
 			isa = PBXTargetDependency;
 			target = 2624CE272008A2D1002AA811 /* Quixpense */;
 			targetProxy = 2624CE3D2008A2D1002AA811 /* PBXContainerItemProxy */;
+		};
+		2DBB2B4D21844F55001C6BE6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Bedrock;
+			targetProxy = 2DBB2B4C21844F55001C6BE6 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
